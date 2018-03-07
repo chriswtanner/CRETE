@@ -7,7 +7,3 @@ class CorefEngine:
 
 		# handles passed-in args
 		args = params.setCorefEngineParams()
-
-		testasdf
-
-	
