@@ -8,4 +8,9 @@ class CorefEngine:
 		# handles passed-in args
 		args = params.setCorefEngineParams()
 
-		what = ""
+		# parses the real, actual corpus (ECB's XML files)
+		corpus = ECBParser(args)
+		#helper = ECBHelper(args, corpus, hddcrp_parsed, runFFNN)
+
+		#hddcrp_parsed = HDDCRPParser(args)
+
