@@ -4,8 +4,8 @@ export PYTHONIOENCODING=UTF-8
 # manually set these base params
 me=`whoami`
 hn=`hostname`
-baseDir="/Users/christanner/research/DeepCoref/"
-brownDir="/home/ctanner/researchcode/DeepCoref/"
+baseDir="/Users/christanner/research/CRETE/"
+brownDir="/home/ctanner/researchcode/CRETE/"
 
 if [ ${me} = "ctanner" ]
 then
@@ -33,6 +33,8 @@ dataDir=${baseDir}"data/"
 resultsDir=${baseDir}"results/"
 refDir=${scriptDir}"reference-coreference-scorers-8.01/"
 replacementsFile=${baseDir}"data/replacements.txt"
+stoplistFile=${baseDir}"/data/stoplist.txt"
+
 charEmbeddingsFile=${baseDir}"data/charRandomEmbeddings.txt"
 
 stanfordPath="/Users/christanner/research/libraries/stanford-corenlp-full-2017-06-09/"
@@ -94,3 +96,32 @@ echo "stanOutputDir:" $stanOutputDir
 echo "------------------------"
 
 cd $scriptDir
+
+python3 -u CorefEngine.py \
+--corpusPath=${corpusPath} \
+--useECBTest=${useECBTest} \
+--stoplistFile=${stoplistFile} \
+--replacementsFile=${replacementsFile} \
+--verbose=${verbose} \
+--stanOutputDir=${stanOutputDir} \
+--baseDir=${baseDir} \
+--hddcrpFullFile=${hddcrpFullFile} \
+--numLayers=${numLayers} \
+--embeddingsFile=${embeddingsFile} \
+--numNegPerPos=${numNegPerPos} \
+--numEpochs=${numEpochs} \
+--batchSize=${batchSize} \
+--windowSize=${windowSize} \
+--dropout=${dropout} \
+--numFilters=${numFilters} \
+--filterMultiplier=${filterMultiplier} \
+--posType=${posType} \
+--posEmbeddingsFile=${posEmbeddingsFile} \
+--lemmaType=${lemmaType} \
+--dependencyType=${dependencyType} \
+--charEmbeddingsFile=${charEmbeddingsFile} \
+--charType=${charType} \
+--devDir=${devDir} \
+--FFNNnumEpochs=${FFNNnumEpochs} \
+--FFNNnumCorpusSamples=${FFNNnumCorpusSamples} \
+--FFNNOpt=${FFNNOpt}

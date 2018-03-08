@@ -1,6 +1,6 @@
 
 from collections import defaultdict
-from Dir import Dir
+from DirHalf import DirHalf
 class Corpus:
     def __init__(self):
         self.numCorpusTokens = 0
@@ -13,8 +13,10 @@ class Corpus:
         self.refToDMs = defaultdict(list)
 
         self.dirs = set()
-        self.dirHalves = set() # same as what's contained across all dirs
+        self.dirHalves = defaultdict(DirHalf) # same as what's contained across all dirs
         
+        self.UIDToMentions = {}
+        self.UIDToToken = {}
         self.typeToGlobalID = {}
         self.globalIDsToType = {}
         self.corpusTypeIDs = []

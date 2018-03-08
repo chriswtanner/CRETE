@@ -1,7 +1,7 @@
 # AUTHOR: Chris Tanner (christanner@cs.brown.edu) 
 # PURPOSE: CRETE: Coreference Resolution for EnTities and Events (uses ECB+ corpus)
 import params
-
+from ECBParser import ECBParser
 class CorefEngine:
 	if __name__ == "__main__":
 
