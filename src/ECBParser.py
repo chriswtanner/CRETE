@@ -29,36 +29,6 @@ class ECBParser:
         # globally sets params
         corpus = Corpus()
 
-        self.docToGlobalSentenceNums = defaultdict(set)
-        self.docToTokens = defaultdict(list)
-        self.docToREFs = defaultdict(list)
-
-        # dirHalf's (for cross-doc work)
-        self.dirHalfREFToDMs = defaultdict(lambda: defaultdict(set))
-        self.dirHalfToHMs = defaultdict(list)
-
-        # key: (doc_id,ref_id) -> [(doc_id1,m_id1), ... (doc_id3,m_id3)]
-        self.docREFsToDMs = defaultdict(list)
-        self.docToDMs = defaultdict(list)
-        self.docToUIDs = defaultdict(list)
-        self.UIDToMentions = {}
-        self.UIDToToken = {}
-
-        # same tokens as corpusTokens, just made into lists according
-        # to each doc.  (1 doc = 1 list of tokens); used for printing corpus to .txt file
-        self.docTokens = []
-
-        self.typeToGlobalID = {}
-        self.globalIDsToType = {}
-        self.corpusTypeIDs = []
-
-        self.docToHighestSentenceNum = defaultdict(
-            int)  # TMP -- just for creating
-        # an aligned goldTruth from HDDCRP
-        self.globalSentenceNumToTokens = defaultdict(
-            list)  # added so that we can
-        # easily parse the original sentence which contains each Mention
-
         files = []
         for root, dirnames, filenames in os.walk(corpusPath):
             for filename in fnmatch.filter(filenames, '*.xml'):

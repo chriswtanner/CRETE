@@ -15,3 +15,9 @@ class Corpus:
         self.dirs = set()
         self.dirHalves = set() # same as what's contained across all dirs
         
+        self.typeToGlobalID = {}
+        self.globalIDsToType = {}
+        self.corpusTypeIDs = []
+
+        # to easily parse the original sentence which contains each Mention
+        self.globalSentenceNumToTokens = defaultdict(list)
