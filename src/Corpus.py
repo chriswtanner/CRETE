@@ -38,7 +38,14 @@ class Corpus:
 
     def assignDMREF(self, dm, dirHalf, doc_id, ref_id):
         self.dmToREF[dm] = ref_id
-        self.refToDMs[ref_id].append(dm)
+        self.refToDMs[ref_id].add(dm)
         self.dmToMention[dm].REF = ref_id
 
         self.dirHalves[dirHalf].assignDMREF(dm, doc_id, ref_id)
+
+    def printStats(self):
+        print("[ CORPUS STATS ]")
+        print("\t# dirHalves:",str(len(self.dirHalves)))
+        print("\t# docs:",len([doc for dh in self.dirHalves for doc in self.dirHalves[dh].docs]))
+        print("\t# REFs:",len(self.refToDMs.keys()))
+        print("\t# DMs:", len(self.dmToREF.keys()))

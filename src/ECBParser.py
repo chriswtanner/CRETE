@@ -26,7 +26,7 @@ class ECBParser:
         corpus = self.parseCorpus(args.corpusPath, args.verbose)
 
     def parseCorpus(self, corpusPath, isVerbose):
-        print("* parsing ECB corpus...", end='')
+        print("* parsing ECB corpus...")
         
         # globally sets params
         corpus = Corpus()
@@ -215,9 +215,7 @@ class ECBParser:
                     
                     corpus.assignDMREF(dm, dirHalf, doc_id, ref_id)
         
-        for t in corpus.corpusTokens:
-            corpus.globalSentenceNumToTokens[int(t.globalSentenceNum)].append(t)
-            print("t:",t)
+        corpus.printStats()
 
 	# loads replacement file
     def loadReplacements(self, replacementsFile):
