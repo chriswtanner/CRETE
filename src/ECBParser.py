@@ -121,7 +121,104 @@ class ECBParser:
                 lastTokenText = tokenText
                 lastToken_id = t_id
 
-                NOTE: this is where i left off.  my RSI hurts
+            # if sentence ended with an atomic ":", let's change it to a "."
+            if lastTokenText == ":":
+                lastToken = tmpDocTokenIDsToTokens[lastToken_id]
+                lastToken.text = "."
+                tmpDocTokenIDsToTokens[lastToken_id] = lastToken
+            elif lastTokenText not in self.endPunctuation:
+                endToken = Token("-1", lastSentenceNum, globalSentenceNum, tokenNum, doc_id, -1, -1, ".")
+                tmpDocTokens.append(endToken)
+
+            globalSentenceNum = globalSentenceNum + 1
+
+            # reads <markables> 1st time
+            regex = r"<([\w]+) m_id=\"(\d+)?\".*?>(.*?)?</.*?>"
+            markables = fileContents[fileContents.find("<Markables>")+11:fileContents.find("</Markables>")]
+            it = tuple(re.finditer(regex, markables))
+            for match in it:
+                # gets the token IDs
+                regex2 = r"<token_anchor t_id=\"(\d+)\".*?/>"
+                it2 = tuple(re.finditer(regex2, match.group(3)))
+                tmpCurrentMentionSpanIDs = []
+                hasAllTokens = True
+                for match2 in it2:
+                    tokenID = match2.group(1)
+                    tmpCurrentMentionSpanIDs.append(int(tokenID))
+                    if tokenID not in tmpDocTokenIDsToTokens.keys():
+                        hasAllTokens = False
+
+            for t in tmpDocTokens:
+                corpus.addToken(t)
+                curDoc.tokens.append(t)  # all non-padded tokens
+                
+            # reads <markables> 2nd time
+            regex = r"<([\w]+) m_id=\"(\d+)?\".*?>(.*?)?</.*?>"
+            markables = fileContents[fileContents.find("<Markables>")+11:fileContents.find("</Markables>")]
+            it = tuple(re.finditer(regex, markables))
+            for match in it:
+                isPred = False
+                entityType = match.group(1)
+                if "ACTION" in entityType:
+                    isPred = True
+                m_id = int(match.group(2))
+
+                # gets the token IDs
+                regex2 = r"<token_anchor t_id=\"(\d+)\".*?/>"
+                it2 = tuple(re.finditer(regex2, match.group(3)))
+                tmpMentionCorpusIndices = []
+                tmpTokens = []  # can remove after testing if our corpus matches HDDCRP's
+                text = []
+                hasAllTokens = True
+                for match2 in it2:
+                    tokenID = match2.group(1)
+                    if tokenID in tmpDocTokenIDsToTokens.keys():
+                        cur_token = tmpDocTokenIDsToTokens[tokenID]
+                        tmpTokens.append(cur_token)
+                        text.append(cur_token.text)
+
+                        # gets corpusIndex (we ensure we don't add the same index twice, which would happen for stitched tokens)
+                        tmpCorpusIndex = corpus.corpusTokensToCorpusIndex[cur_token]
+                        if tmpCorpusIndex not in tmpMentionCorpusIndices:
+                            tmpMentionCorpusIndices.append(tmpCorpusIndex)
+                    else:
+                        hasAllTokens = False
+
+                # we should only have incomplete Mentions for our hand-curated, sample corpus,
+                # for we do not want to have all mentions, so we curtail the sentences of tokens
+                if hasAllTokens:
+                    # regardless of if we reverse the corpus or not, these indices should be in ascending order
+                    tmpMentionCorpusIndices.sort()
+
+                    curMention = Mention(dir_num, doc_id, m_id, tmpTokens, tmpMentionCorpusIndices, text, isPred, entityType)
+                    # we only save the Mentions that are in self.validMentions,
+                    # that way, we can always iterate over self.mentions (since we care about them all)
+                    if isPred:
+                        corpus.addMention(curMention)
+
+            # reads <relations>
+            relations = fileContents[fileContents.find("<Relations>"):fileContents.find("</Relations>")]
+            regex = r"<CROSS_DOC_COREF.*?note=\"(.+?)\".*?>(.*?)?</.*?>"
+            it = tuple(re.finditer(regex, relations))
+            for match in it:
+                ref_id = match.group(1)
+                regex2 = r"<source m_id=\"(\d+)\".*?/>"
+                it2 = tuple(re.finditer(regex2, match.group(2)))
+
+                # only keep track of REFs for which we have found Mentions
+                for match2 in it2:
+                    m_id = int(match2.group(1))
+                    dm = (doc_id, m_id)
+                    if dm not in corpus.dmToMention.keys():
+                        #print("*** MISSING MENTION!")
+                        continue
+                    
+                    corpus.assignDMREF(dm, dirHalf, doc_id, ref_id)
+        
+        for t in corpus.corpusTokens:
+            corpus.globalSentenceNumToTokens[int(t.globalSentenceNum)].append(t)
+            print("t:",t)
+
 	# loads replacement file
     def loadReplacements(self, replacementsFile):
         f = open(replacementsFile, 'r', encoding="utf-8")

@@ -6,5 +6,9 @@ class Doc:
         self.globalSentenceNums = set() # unique #s across entire corpus
         self.tokens = []
         self.REFToDMs = defaultdict(set)
-        self.DMs = [] # NOTE: can this be changed to a Set()?
+        self.DMs = set() # NOTE: can this be changed to a Set()?
         self.UIDs = []
+
+    def assignDMREF(self, dm, ref_id):
+        self.REFToDMs[ref_id].add(dm)
+        self.DMs.add(dm)
