@@ -3,13 +3,14 @@ from Doc import Doc
 class DirHalf:
     def __init__(self):
         self.docs = defaultdict(lambda: Doc)
-        self.REFToDMs = defaultdict(set) # should be supset of all its docs
-        self.DMs = set() # NOTE: can this be changed to a Set()?
+        self.REFToMUIDs = defaultdict(set) # should be supset of all its docs
+        self.MUIDs = set()
+        #self.DMs = set() # NOTE: can this be changed to a Set()?
 
-    def assignDMREF(self, dm, doc_id, ref_id):
+    def assignMUIDREF(self, MUID, doc_id, REF):
         # assigns DirHalf vars
-        self.REFToDMs[ref_id].add(dm)
-        self.DMs.add(dm)
+        self.REFToMUIDs[REF].add(MUID)
+        self.MUIDs.add(MUID)
 
         # assigns Doc vars
-        self.docs[doc_id].assignDMREF(dm, ref_id)
+        self.docs[doc_id].assignMUIDREF(MUID, REF)

@@ -6,20 +6,16 @@ class Corpus:
         self.numCorpusTokens = 0
         self.corpusTokens = []
         self.corpusTokensToCorpusIndex = {}
-
         self.mentions = []
-        self.dmToMention = {}  # (doc_id,m_id) -> Mention
-        self.dmToREF = {}
-        self.refToDMs = defaultdict(set)
+        self.curMUID = 0
+        self.MUIDToMention = {}
+        self.MUIDToREF = {}
+        self.refToMUIDs = defaultdict(set)
 
         self.dirs = set()
         self.dirHalves = defaultdict(DirHalf) # same as what's contained across all dirs
         
-        self.UIDToMentions = {}
         self.UIDToToken = {}
-        self.typeToGlobalID = {}
-        self.globalIDsToType = {}
-        self.corpusTypeIDs = []
 
         # to easily parse the original sentence which contains each Mention
         self.globalSentenceNumToTokens = defaultdict(list)
@@ -31,21 +27,30 @@ class Corpus:
         self.numCorpusTokens = self.numCorpusTokens + 1
 
     # adds a Mention to the corpus
-    def addMention(self, mention):
-        dm = (mention.doc_id, mention.m_id)
+    def addMention(self, mention, REF):
+
+        # updates the mention w/ REF and muid info
+        mention.setMUID(self.curMUID)
+        mention.setREF(REF)
+
         self.mentions.append(mention)
-        self.dmToMention[dm] = mention
+        self.MUIDToMention[self.curMUID] = mention
+        self.MUIDToREF[self.curMUID] = REF
+        self.refToMUIDs[REF].add(self.curMUID)
+        self.dirHalves[mention.dirHalf].assignMUIDREF(self.curMUID, mention.doc_id, REF)
+        self.curMUID += 1
 
-    def assignDMREF(self, dm, dirHalf, doc_id, ref_id):
-        self.dmToREF[dm] = ref_id
-        self.refToDMs[ref_id].add(dm)
-        self.dmToMention[dm].REF = ref_id
-
-        self.dirHalves[dirHalf].assignDMREF(dm, doc_id, ref_id)
+    def assignGlobalSentenceNums(self):
+        for t in self.corpusTokens:
+            self.globalSentenceNumToTokens[int(t.globalSentenceNum)].append(t)
 
     def printStats(self):
         print("[ CORPUS STATS ]")
         print("\t# dirHalves:",str(len(self.dirHalves)))
         print("\t# docs:",len([doc for dh in self.dirHalves for doc in self.dirHalves[dh].docs]))
-        print("\t# REFs:",len(self.refToDMs.keys()))
-        print("\t# DMs:", len(self.dmToREF.keys()))
+        print("\t# REFs:", len(self.refToMUIDs.keys()))
+        print("\t# Mentions:", len(self.MUIDToREF.keys()))
+        for REF in self.refToMUIDs:
+            print("REF:",REF,"has # mentions:",len(self.refToMUIDs[REF]))
+            for m in self.refToMUIDs[REF]:
+                print(self.MUIDToMention[m])

@@ -8,7 +8,6 @@ class Token:
         self.hSentenceNum = hSentenceNum
         self.hTokenNum = hTokenNum
         self.doc_id = doc_id
-        self.UID = str(self.doc_id) + ";" + str(self.hSentenceNum) + ";" + str(self.hTokenNum)
 
         # list of the stan tokens that map to this (USUALLY this is just 1 stan token, though)
         self.stanTokens = []
@@ -16,6 +15,9 @@ class Token:
         self.sentenceNum = sentenceNum
         self.globalSentenceNum = globalSentenceNum
         self.text = text
+
+        self.UID = str(self.doc_id) + ";" + str(self.hSentenceNum) + \
+            ";" + str(self.hTokenNum) + ";" + str(self.text)
 
     def addStanTokens(self, stanTokens):
         self.stanTokens = stanTokens

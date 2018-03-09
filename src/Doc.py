@@ -5,10 +5,10 @@ class Doc:
         self.highestSentenceNum = -1
         self.globalSentenceNums = set() # unique #s across entire corpus
         self.tokens = []
-        self.REFToDMs = defaultdict(set)
-        self.DMs = set() # NOTE: can this be changed to a Set()?
-        self.UIDs = []
+        self.REFToMUIDs = defaultdict(set)
+        self.MUIDs = set()
+        #self.UIDs = []
 
-    def assignDMREF(self, dm, ref_id):
-        self.REFToDMs[ref_id].add(dm)
-        self.DMs.add(dm)
+    def assignMUIDREF(self, MUID, REF):
+        self.REFToMUIDs[REF].add(MUID)
+        self.MUIDs.add(MUID)

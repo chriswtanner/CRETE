@@ -23,7 +23,6 @@ class ECBParser:
 
         # invokes functions
         self.loadReplacements(args.replacementsFile)
-        corpus = self.parseCorpus(args.corpusPath, args.verbose)
 
     def parseCorpus(self, corpusPath, isVerbose):
         print("* parsing ECB corpus...")
@@ -40,6 +39,7 @@ class ECBParser:
         lastToken_id = -1
         for f in files:
 
+            lm_idToMention = {} # only used to tmp store the mentions
             doc_id = f[f.rfind("/") + 1:]
             dir_num = int(doc_id.split("_")[0])
             extension = doc_id[doc_id.find("ecb"):]
@@ -190,32 +190,30 @@ class ECBParser:
                     # regardless of if we reverse the corpus or not, these indices should be in ascending order
                     tmpMentionCorpusIndices.sort()
 
-                    curMention = Mention(dir_num, doc_id, m_id, tmpTokens, tmpMentionCorpusIndices, text, isPred, entityType)
-                    # we only save the Mentions that are in self.validMentions,
-                    # that way, we can always iterate over self.mentions (since we care about them all)
-                    if isPred:
-                        corpus.addMention(curMention)
+                    curMention = Mention(dirHalf, dir_num, doc_id, tmpTokens, tmpMentionCorpusIndices, text, isPred, entityType)
+                    lm_idToMention[m_id] = curMention
 
             # reads <relations>
             relations = fileContents[fileContents.find("<Relations>"):fileContents.find("</Relations>")]
             regex = r"<CROSS_DOC_COREF.*?note=\"(.+?)\".*?>(.*?)?</.*?>"
             it = tuple(re.finditer(regex, relations))
             for match in it:
-                ref_id = match.group(1)
+                REF = match.group(1)
                 regex2 = r"<source m_id=\"(\d+)\".*?/>"
                 it2 = tuple(re.finditer(regex2, match.group(2)))
 
                 # only keep track of REFs for which we have found Mentions
                 for match2 in it2:
                     m_id = int(match2.group(1))
-                    dm = (doc_id, m_id)
-                    if dm not in corpus.dmToMention.keys():
-                        #print("*** MISSING MENTION!")
-                        continue
-                    
-                    corpus.assignDMREF(dm, dirHalf, doc_id, ref_id)
-        
+                    if m_id not in lm_idToMention:
+                        print("*** MISSING MENTION! EXITING")
+                        exit(1)
+                    elif lm_idToMention[m_id].isPred:
+                        foundMention = lm_idToMention[m_id]
+                        corpus.addMention(foundMention, REF)
+        corpus.assignGlobalSentenceNums()
         corpus.printStats()
+        return corpus
 
 	# loads replacement file
     def loadReplacements(self, replacementsFile):

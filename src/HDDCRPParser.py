@@ -5,39 +5,25 @@ from collections import defaultdict
 
 class HDDCRPParser:
 	def __init__(self, args):
-		print("* loading HDDCRP's mention boundaries file:")
 		self.args = args
 		
-
-''' 
-        self.parse(self.hddcrpFullFile)
-		print("\t* parsed",str(len(self.hmentions)),"mentions")
-		print("\t* created",str(len(self.hm_idToHMention.keys())),"hm_ids!")
-
-		self.loadGold("gold.WD.semeval.txt") # was NS.WD for Choubey comparison # gold.WD.semeval.txt REGULARLY
-		#self.makeNewGoldHDDCRP(inputFile, "gold.NS.WD.semeval.txt")
-		sys.stdout.flush()
 	# parses the hddcrp *semeval.txt file (which is in CoNLL-ready format)
-	def parse(self, inputFile):
-
-		# global vars
+	def parseCorpus(self, inputFile):
 		self.htokens = {}
-        # only used for comparing against HDDCRP's gold mention boundaries
-		self.MUIDToHMentions = {}
 		self.UIDToToken = {}
 		self.hmentions = []
-		self.docToHMentions = defaultdict(list)
-		self.docToUIDs = defaultdict(list)
-		self.hm_idToHMention = {}
-		self.dirToDocs = defaultdict(set)
+		#self.docToHMentions = defaultdict(list)
+		#self.docToUIDs = defaultdict(list)
+		self.HMUIDToHMention = {}
+		#self.dirToDocs = defaultdict(set)
 
 		REFToStartTuple = defaultdict(list)
 		tokenIndex = 0
 		sentenceNum = 0
-		hm_id = 0
+		HMUID = 0
 
-		self.docREFToHM_IDs = defaultdict(set)
-		self.docSentences = defaultdict(lambda: defaultdict(list))
+		#self.docREFToHMUIDs = defaultdict(set)
+		#self.docSentences = defaultdict(lambda: defaultdict(list))
 
 		f = open(inputFile, "r")
 		for line in f:
@@ -49,7 +35,6 @@ class HDDCRPParser:
 				sentenceNum += 1
 			elif len(tokens) == 5:
 				doc, _, tokenNum, text, ref_ = tokens
-
 				dir_num = doc[0:doc.find("_")]
 
 				# the construction sets a member variable "uid" = doc_id, sentence_id, token_num
@@ -103,14 +88,14 @@ class HDDCRPParser:
 							MUID = curToken.UID + ";"
 
 						curMention = HMention(doc, ref_id, tokens, MUID,
-						                      hm_id, startTuple, endTuple)
+						                      HMUID, startTuple, endTuple)
 						self.docToHMentions[doc].append(curMention)
 						self.hmentions.append(curMention)
 						self.MUIDToHMentions[MUID] = curMention
-						self.hm_idToHMention[hm_id] = curMention
-						self.docREFsToHM_IDs[(doc, ref_id)].add(hm_id)
+						self.HMUIDToHMention[HMUID] = curMention
+						self.docREFsToHMUIDs[(doc, ref_id)].add(HMUID)
 						self.dirToDocs[dir_num].add(doc)
-						hm_id += 1
+						HMUID += 1
 
 					isFirst = False
 				# end of current token line
@@ -125,4 +110,3 @@ class HDDCRPParser:
 			for hm in self.docToHMentions[doc_id]:
 				hms.add(hm)
 		print("\t# hms by end of parsing, based on a per doc basis:", str(len(hms)))
-'''
