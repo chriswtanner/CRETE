@@ -3,13 +3,13 @@
 import params
 from ECBParser import ECBParser
 from HDDCRPParser import HDDCRPParser
+from ECBHelper import ECBHelper
 class CorefEngine:
 
 	# TODO:
-	# X - adjust Mention class so that the initializer sets "dirHalf"
-	# - write HDDCRPParser, which will reuse the Mention class but store them in DirHalf and Doc as HMs.  nested setters, just like I do for DMs
-	# - 	and generates all Mentions merely as hddcrp_parser.mentions
 	# - start writing ECBHelper, which takes HDDCRPParser's mentions and looks at each one's extension in order to figure out which DirHalf.addHM() to call
+	# - sinc ei'll eventually need to write a new Gold File (CoNLL format but ECB Gold),
+	#    i'll need to make sure that i point each HDDCRP UID to each Mention that it creates -- since some lines point to multiple mentions
 	# - write StanfordParser
 	# - compute stats on how many entities and events in ECB Corpus
 	# - how many of these does Stanford contain? (for Ent+Events)
@@ -25,7 +25,10 @@ class CorefEngine:
 		ecb_parser = ECBParser(args)
 		ecb_corpus = ecb_parser.parseCorpus(args.corpusPath, args.verbose)
 
+		# most functionality lives here
+		helper = ECBHelper(args, ecb_corpus)
+		
 		# parses the HDDCRP Mentions
 		hddcrp_parser = HDDCRPParser(args)
-		hddcrp_corpus = hddcrp_parser.parseCorpus(args.hddcrpFullFile)
-
+		hddcrp_mentions = hddcrp_parser.parseCorpus(args.hddcrpFullFile)
+		helper.createHDDCRPMention(hddcrp_mentions)

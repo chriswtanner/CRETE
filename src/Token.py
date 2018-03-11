@@ -17,7 +17,7 @@ class Token:
         self.text = text
 
         self.UID = str(self.doc_id) + ";" + str(self.hSentenceNum) + \
-            ";" + str(self.hTokenNum) + ";" + str(self.text)
+            ";" + str(self.hTokenNum)
 
     def addStanTokens(self, stanTokens):
         self.stanTokens = stanTokens

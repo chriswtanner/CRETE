@@ -1,26 +1,25 @@
 import sys
-from Token import *
-from Mention import *
-from collections import defaultdict
 
+from collections import defaultdict
 class HDDCRPParser:
 	def __init__(self, args):
 		self.args = args
-		
+
 	# parses the hddcrp *semeval.txt file (which is in CoNLL-ready format)
 	def parseCorpus(self, inputFile):
-		self.htokens = {}
-		self.UIDToToken = {}
+		#self.htokens = {}
+		#self.UIDToToken = {}
 		self.hmentions = []
 		#self.docToHMentions = defaultdict(list)
 		#self.docToUIDs = defaultdict(list)
-		self.HMUIDToHMention = {}
+		#self.HMUIDToHMention = {}
 		#self.dirToDocs = defaultdict(set)
 
 		REFToStartTuple = defaultdict(list)
 		tokenIndex = 0
 		sentenceNum = 0
-		HMUID = 0
+		tokenIndexToHUID = {}
+		#HMUID = 0
 
 		#self.docREFToHMUIDs = defaultdict(set)
 		#self.docSentences = defaultdict(lambda: defaultdict(list))
@@ -34,17 +33,20 @@ class HDDCRPParser:
 			elif line == "":
 				sentenceNum += 1
 			elif len(tokens) == 5:
-				doc, _, tokenNum, text, ref_ = tokens
-				dir_num = doc[0:doc.find("_")]
+				doc_id, _, hTokenNum, text, ref_ = tokens
+				dir_num = doc_id[0:doc_id.find("_")]
 
-				# the construction sets a member variable "uid" = doc_id, sentence_id, token_num
-				curToken = HToken(doc, sentenceNum, tokenNum, text.lower())
-				self.htokens[tokenIndex] = curToken
-				self.UIDToToken[curToken.UID] = curToken
-				self.docToUIDs[doc].append(curToken.UID)
+				HUID = str(doc_id) + ";" + str(sentenceNum) + \
+                                    ";" + str(hTokenNum) + \
+                                    ";" + str(text.lower())
+				tokenIndexToHUID[tokenIndex] = HUID
+				#curToken = HToken(doc, sentenceNum, tokenNum, text.lower())
+				#self.htokens[tokenIndex] = curToken
+				#self.UIDToToken[curToken.UID] = curToken
+				#self.docToUIDs[doc].append(curToken.UID)
 
 				# TMP: only used for analyzeResults() in CCNN (to see the original sentences)
-				self.docSentences[doc][sentenceNum].append(text.lower())
+				#self.docSentences[doc][sentenceNum].append(text.lower())
 
 				refs = []
 				if ref_.find("|") == -1:
@@ -67,10 +69,9 @@ class HDDCRPParser:
 					# represents we are ending a mention
 					elif ref[-1] == ")":  # i.e., ref_id) or (ref_id)
 						ref_id = -1
-						tokens = []
-						MUID = ""
-						endTuple = (tokenIndex, isFirst)
+						HUIDs = []
 						startTuple = ()
+
 						# we set ref_if, tokens, UID
 						if ref[0] != "(":  # ref_id)
 							ref_id = int(ref[:-1])
@@ -78,24 +79,23 @@ class HDDCRPParser:
 
 							# add all tokens, including current one
 							for i in range(startTuple[0], tokenIndex+1):
-								tokens.append(self.htokens[i])
-								MUID += self.htokens[i].UID + ";"
+								HUIDs.append(tokenIndexToHUID[i])
 
-						else:  # (ref_id)
+						else: # (ref_id)
 							ref_id = int(ref[1:-1])
 							startTuple = (tokenIndex, isFirst)
-							tokens.append(curToken)
-							MUID = curToken.UID + ";"
+							HUIDs.append(HUID)
 
-						curMention = HMention(doc, ref_id, tokens, MUID,
-						                      HMUID, startTuple, endTuple)
-						self.docToHMentions[doc].append(curMention)
-						self.hmentions.append(curMention)
-						self.MUIDToHMentions[MUID] = curMention
-						self.HMUIDToHMention[HMUID] = curMention
-						self.docREFsToHMUIDs[(doc, ref_id)].add(HMUID)
-						self.dirToDocs[dir_num].add(doc)
-						HMUID += 1
+						self.hmentions.append(HUIDs)
+
+						#curMention = HMention(doc, ref_id, tokens, MUID, HMUID, startTuple, endTuple)
+						#self.docToHMentions[doc].append(curMention)
+						#self.hmentions.append(curMention)
+						#self.MUIDToHMentions[MUID] = curMention
+						#self.HMUIDToHMention[HMUID] = curMention
+						#self.docREFsToHMUIDs[(doc, ref_id)].add(HMUID)
+						#self.dirToDocs[dir_num].add(doc)
+						#HMUID += 1
 
 					isFirst = False
 				# end of current token line
@@ -105,8 +105,13 @@ class HDDCRPParser:
 				print("ERROR: curLine:", str(line))
 				exit(1)
 		f.close()
+		'''
 		hms = set()
 		for doc_id in self.docToHMentions.keys():
 			for hm in self.docToHMentions[doc_id]:
 				hms.add(hm)
 		print("\t# hms by end of parsing, based on a per doc basis:", str(len(hms)))
+		'''
+
+		print("hddcrp parsed:",len(self.hmentions))
+		return self.hmentions

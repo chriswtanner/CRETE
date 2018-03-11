@@ -7,7 +7,6 @@ from Corpus import Corpus
 from Doc import Doc
 from Token import Token
 from Mention import Mention
-
 class ECBParser:
     def __init__(self, args):
         self.args = args
@@ -110,7 +109,7 @@ class ECBParser:
                     # adds token
                     curToken = Token(t_id, sentenceNum, globalSentenceNum, tokenNum, doc_id, hSentenceNum, hTokenNum, tokenText)
                     corpus.UIDToToken[curToken.UID] = curToken
-                    curDoc.UIDs.append(curToken.UID)
+                    #curDoc.UIDs.append(curToken.UID)
                     tmpDocTokenIDsToTokens[t_id] = curToken
 
                     firstToken = False
@@ -166,7 +165,6 @@ class ECBParser:
                 # gets the token IDs
                 regex2 = r"<token_anchor t_id=\"(\d+)\".*?/>"
                 it2 = tuple(re.finditer(regex2, match.group(3)))
-                tmpMentionCorpusIndices = []
                 tmpTokens = []  # can remove after testing if our corpus matches HDDCRP's
                 text = []
                 hasAllTokens = True
@@ -176,21 +174,13 @@ class ECBParser:
                         cur_token = tmpDocTokenIDsToTokens[tokenID]
                         tmpTokens.append(cur_token)
                         text.append(cur_token.text)
-
-                        # gets corpusIndex (we ensure we don't add the same index twice, which would happen for stitched tokens)
-                        tmpCorpusIndex = corpus.corpusTokensToCorpusIndex[cur_token]
-                        if tmpCorpusIndex not in tmpMentionCorpusIndices:
-                            tmpMentionCorpusIndices.append(tmpCorpusIndex)
                     else:
                         hasAllTokens = False
 
                 # we should only have incomplete Mentions for our hand-curated, sample corpus,
                 # for we do not want to have all mentions, so we curtail the sentences of tokens
                 if hasAllTokens:
-                    # regardless of if we reverse the corpus or not, these indices should be in ascending order
-                    tmpMentionCorpusIndices.sort()
-
-                    curMention = Mention(dirHalf, dir_num, doc_id, tmpTokens, tmpMentionCorpusIndices, text, isPred, entityType)
+                    curMention = Mention(dirHalf, dir_num, doc_id, tmpTokens, text, isPred, entityType)
                     lm_idToMention[m_id] = curMention
 
             # reads <relations>

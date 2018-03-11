@@ -1,10 +1,9 @@
 class Mention:
-    def __init__(self, dirHalf, dirNum, doc_id, tokens, corpusTokenIndices, text, isPred, mentionType):
+    def __init__(self, dirHalf, dir_num, doc_id, tokens, text, isPred, mentionType):
         self.dirHalf = dirHalf
-        self.dirNum = dirNum
+        self.dir_num = dir_num
         self.doc_id = doc_id
         self.tokens = tokens
-        self.corpusTokenIndices = corpusTokenIndices
         self.text = text
         self.isPred = isPred
         self.relativeTokenIndices = []
@@ -28,5 +27,5 @@ class Mention:
     #def castAsHDDCRPMention(self)
 
     def __str__(self):
-        return "MENTION: " + str(self.MUID) + " (dir " + str(self.dirNum) + "; doc: " + str(self.doc_id) + "): text: " + str(self.text) + " corpusIndices: " + str(self.corpusTokenIndices)
+        return "MENTION: " + str(self.MUID) + " (dir " + str(self.dir_num) + "; doc: " + str(self.doc_id) + "): text: " + str(self.text) + " corpusIndices: " + str(self.corpusTokenIndices)
 

@@ -50,7 +50,9 @@ class Corpus:
         print("\t# docs:",len([doc for dh in self.dirHalves for doc in self.dirHalves[dh].docs]))
         print("\t# REFs:", len(self.refToMUIDs.keys()))
         print("\t# Mentions:", len(self.MUIDToREF.keys()))
+        '''
         for REF in self.refToMUIDs:
             print("REF:",REF,"has # mentions:",len(self.refToMUIDs[REF]))
             for m in self.refToMUIDs[REF]:
                 print(self.MUIDToMention[m])
+        '''
