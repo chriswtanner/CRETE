@@ -14,7 +14,7 @@ class Mention:
         # gets filled in by Corpus.add*Mention()
         # robust to handle ECB or HDDCRP (if we named it MUID, then it
         # could look like it's only used for ECB Mentions, which isn't true)
-        self.XUID = -1 
+        self.XUID = -1
         self.REF = ""
 
         for t in self.tokens:

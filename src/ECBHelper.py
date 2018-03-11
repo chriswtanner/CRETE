@@ -13,6 +13,10 @@ class ECBHelper:
         print("devDirs:", str(self.devDirs))
         print("testingDirs:", str(self.testingDirs))
 
+        # filled in via createHDDCRPMentions() (maps text UID
+        # lines from CoNLL file to the created HDDCRP Mention)
+        self.HUIDToHMUID = {}  
+
     def createHDDCRPMentions(self, hddcrp_mentions):
         for i in range(len(hddcrp_mentions)):
             HUIDs = hddcrp_mentions[i]
@@ -36,3 +40,4 @@ class ECBHelper:
                     print("WARNING: TEXT MISMATCH: HUID:", HUID, "ECB token:", token)
             curMention = Mention(dirHalf, dir_num, doc_id, tokens, text, True, "unknown")
             self.ecb_corpus.addHDDCRPMention(curMention)
+            self.HUIDToHMUID[HUID] = curMention.XUID

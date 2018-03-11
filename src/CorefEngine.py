@@ -4,16 +4,15 @@ import params
 from ECBParser import ECBParser
 from HDDCRPParser import HDDCRPParser
 from ECBHelper import ECBHelper
+from StanParser import StanParser
 class CorefEngine:
 
 	# TODO:
-	# - start writing ECBHelper, which takes HDDCRPParser's mentions and looks at each one's extension in order to figure out which DirHalf.addHM() to call
-	# - sinc ei'll eventually need to write a new Gold File (CoNLL format but ECB Gold),
-	#    i'll need to make sure that i point each HDDCRP UID to each Mention that it creates -- since some lines point to multiple mentions
 	# - write StanfordParser
-	# - compute stats on how many entities and events in ECB Corpus
-	# - how many of these does Stanford contain? (for Ent+Events)
-	# - make a new Gold file (CoNLL format) which
+	# - compute stats on how many entities and events in ECB Corpus -- TRAIN/DEV/TEST
+	# - how many of these does Stanford contain? (for Ent+Events) -- TRAIN/DEV
+	#	- vary the cutoff point (N=inf, 10,9,8,7,6,5,4,3,2,1) -- TRAIN/DEV
+	# - make 2 new Gold files (CoNLL format) which
 	#   includes entity information: (1) all Ent+Events; (2) remove singletons
 
 	if __name__ == "__main__":
@@ -32,3 +31,6 @@ class CorefEngine:
 		hddcrp_parser = HDDCRPParser(args)
 		hddcrp_mentions = hddcrp_parser.parseCorpus(args.hddcrpFullFile)
 		helper.createHDDCRPMentions(hddcrp_mentions)
+
+		# loads Stanford's parse
+		stan = StanParser(args, ecb_corpus)
