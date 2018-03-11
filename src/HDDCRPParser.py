@@ -34,8 +34,6 @@ class HDDCRPParser:
 				sentenceNum += 1
 			elif len(tokens) == 5:
 				doc_id, _, hTokenNum, text, ref_ = tokens
-				dir_num = doc_id[0:doc_id.find("_")]
-
 				HUID = str(doc_id) + ";" + str(sentenceNum) + \
                                     ";" + str(hTokenNum) + \
                                     ";" + str(text.lower())

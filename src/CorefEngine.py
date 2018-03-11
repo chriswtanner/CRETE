@@ -31,4 +31,4 @@ class CorefEngine:
 		# parses the HDDCRP Mentions
 		hddcrp_parser = HDDCRPParser(args)
 		hddcrp_mentions = hddcrp_parser.parseCorpus(args.hddcrpFullFile)
-		helper.createHDDCRPMention(hddcrp_mentions)
+		helper.createHDDCRPMentions(hddcrp_mentions)

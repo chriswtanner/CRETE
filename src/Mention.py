@@ -11,8 +11,10 @@ class Mention:
         self.mentionType = mentionType
         self.UID = "" # a unique concatenation of its Tokens' UIDs
         
-        # gets filled in by Corpus.addMention()
-        self.MUID = -1
+        # gets filled in by Corpus.add*Mention()
+        # robust to handle ECB or HDDCRP (if we named it MUID, then it
+        # could look like it's only used for ECB Mentions, which isn't true)
+        self.XUID = -1 
         self.REF = ""
 
         for t in self.tokens:
@@ -21,11 +23,9 @@ class Mention:
     def setREF(self, REF):
         self.REF = REF
 
-    def setMUID(self, MUID):
-        self.MUID = MUID
-
-    #def castAsHDDCRPMention(self)
+    def setXUID(self, XUID):
+        self.XUID = XUID
 
     def __str__(self):
-        return "MENTION: " + str(self.MUID) + " (dir " + str(self.dir_num) + "; doc: " + str(self.doc_id) + "): text: " + str(self.text) + " corpusIndices: " + str(self.corpusTokenIndices)
+        return "MENTION: " + str(self.XUID) + " (dir " + str(self.dir_num) + "; doc: " + str(self.doc_id) + "): text: " + str(self.text)
 

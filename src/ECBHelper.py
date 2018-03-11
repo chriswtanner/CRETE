@@ -13,7 +13,7 @@ class ECBHelper:
         print("devDirs:", str(self.devDirs))
         print("testingDirs:", str(self.testingDirs))
 
-    def createHDDCRPMention(self, hddcrp_mentions):
+    def createHDDCRPMentions(self, hddcrp_mentions):
         for i in range(len(hddcrp_mentions)):
             HUIDs = hddcrp_mentions[i]
             tokens = []
@@ -33,8 +33,6 @@ class ECBHelper:
                 tokens.append(token)
                 text.append(token.text)
                 if HUID.split(";")[-1] != token.text:
-                    print("TEXT MISMATCH: HUID:", HUID, "ECB token:", token)
+                    print("WARNING: TEXT MISMATCH: HUID:", HUID, "ECB token:", token)
             curMention = Mention(dirHalf, dir_num, doc_id, tokens, text, True, "unknown")
-
-            # TODO: 
-            - add them to the corpus a la Corpus.addMention, but call it .addHDDCRPMention()
+            self.ecb_corpus.addHDDCRPMention(curMention)
