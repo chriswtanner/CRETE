@@ -26,7 +26,11 @@ class Corpus:
 
         self.dirs = set()
         self.dirHalves = defaultdict(DirHalf) # same as what's contained across all dirs
-        
+
+        # Docs are stored within dirHalves,
+        # but also accessible from here, by its name
+        self.doc_idToDocs = {}
+
         # to easily parse the original sentence which contains each Mention
         self.globalSentenceNumToTokens = defaultdict(list)
 
@@ -64,15 +68,7 @@ class Corpus:
         for t in self.corpusTokens:
             self.globalSentenceNumToTokens[int(t.globalSentenceNum)].append(t)
 
-    def printStats(self):
-        print("[ CORPUS STATS ]")
-        print("\t# dirHalves:",str(len(self.dirHalves)))
-        print("\t# docs:",len([doc for dh in self.dirHalves for doc in self.dirHalves[dh].docs]))
-        print("\t# REFs:", len(self.refToMUIDs.keys()))
-        print("\t# ECB Mentions:", len(self.ecb_mentions))
-        '''
-        for REF in self.refToMUIDs:
-            print("REF:",REF,"has # mentions:",len(self.refToMUIDs[REF]))
-            for m in self.refToMUIDs[REF]:
-                print(self.MUIDToMention[m])
-        '''
+    # adds access to the Docs via their names
+    def addDocPointer(self, doc_id, curDoc):
+        self.doc_idToDocs[doc_id] = curDoc
+

@@ -1,7 +1,6 @@
+import pickle
 class Token:
-    def __init__(self, tokenID, sentenceNum, globalSentenceNum, tokenNum, doc_id, hSentenceNum, hTokenNum, text, tokens=[]):
-    
-        self.tokens = tokens
+    def __init__(self, tokenID, sentenceNum, globalSentenceNum, tokenNum, doc_id, hSentenceNum, hTokenNum, text):
 
         # NOTE, this is relative to the given sentence <start> = 1  the = 2 (1-based)
         self.tokenNum = tokenNum

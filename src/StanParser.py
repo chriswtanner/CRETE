@@ -1,4 +1,6 @@
 import fnmatch, os
+from StanToken import StanToken
+from StanLink import StanLink
 from collections import defaultdict
 try:
     import xml.etree.cElementTree as ET
@@ -13,6 +15,8 @@ class StanParser:
         self.replacementsList = [] # must maintain order
         self.relationshipTypes = set()
 
+        self.docToSentenceTokens = {}
+
         self.loadReplacements(args.replacementsFile)
         self.parseDir(args.stanOutputDir)
 
@@ -23,9 +27,9 @@ class StanParser:
                 files.append(os.path.join(root, filename))
         for f in files:
             doc_id = str(f[f.rfind("/")+1:])
-            if doc_id in self.corpus.docToGlobalSentenceNums.keys():
+            if doc_id in self.corpus.doc_idToDocs:
                 # format: [sentenceNum] -> {[tokenNum] -> StanToken}
-                self.parseFile(f)
+                self.docToSentenceTokens[doc_id] = self.parseFile(f)
 
     # (1) reads stanford's output, saves it
     # (2) aligns it w/ our sentence tokens
@@ -42,7 +46,6 @@ class StanParser:
         for elem in sentences:  # tree.iter(tag='sentence'):
 
             sentenceNum = int(elem.attrib["id"])
-            #print("FOUND SENT NUM:  ", str(sentenceNum))
             for section in elem:
 
                 # process every token for the given sentence

@@ -7,7 +7,6 @@ class Doc:
         self.tokens = []
         self.REFToMUIDs = defaultdict(set)
         self.MUIDs = set()
-        
         self.HMUIDs = set()
 
     def assignECBMention(self, MUID, REF):

@@ -33,7 +33,7 @@ dataDir=${baseDir}"data/"
 resultsDir=${baseDir}"results/"
 refDir=${scriptDir}"reference-coreference-scorers-8.01/"
 replacementsFile=${baseDir}"data/replacements.txt"
-stoplistFile=${baseDir}"/data/stoplist.txt"
+stanTokensFile=${baseDir}"/data/stan_tokens.p"
 
 charEmbeddingsFile=${baseDir}"data/charRandomEmbeddings.txt"
 
@@ -100,7 +100,7 @@ cd $scriptDir
 python3 -u CorefEngine.py \
 --corpusPath=${corpusPath} \
 --useECBTest=${useECBTest} \
---stoplistFile=${stoplistFile} \
+--stanTokensFile=${stanTokensFile} \
 --replacementsFile=${replacementsFile} \
 --verbose=${verbose} \
 --stanOutputDir=${stanOutputDir} \

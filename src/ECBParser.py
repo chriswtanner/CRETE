@@ -108,7 +108,7 @@ class ECBParser:
                         tokenNum = 0
                     # adds token
                     curToken = Token(t_id, sentenceNum, globalSentenceNum, tokenNum, doc_id, hSentenceNum, hTokenNum, tokenText)
-                    corpus.UIDToToken[curToken.UID] = curToken
+                    #corpus.UIDToToken[curToken.UID] = curToken
                     #curDoc.UIDs.append(curToken.UID)
                     tmpDocTokenIDsToTokens[t_id] = curToken
 
@@ -149,7 +149,8 @@ class ECBParser:
 
             for t in tmpDocTokens:
                 corpus.addToken(t)
-                curDoc.tokens.append(t)  # all non-padded tokens
+                curDoc.tokens.append(t)
+                corpus.UIDToToken[t.UID] = t
                 
             # reads <markables> 2nd time
             regex = r"<([\w]+) m_id=\"(\d+)?\".*?>(.*?)?</.*?>"
@@ -182,7 +183,7 @@ class ECBParser:
                 if hasAllTokens:
                     curMention = Mention(dirHalf, dir_num, doc_id, tmpTokens, text, isPred, entityType)
                     lm_idToMention[m_id] = curMention
-
+                    corpus.addMention(curMention, "123")
             # reads <relations>
             relations = fileContents[fileContents.find("<Relations>"):fileContents.find("</Relations>")]
             regex = r"<CROSS_DOC_COREF.*?note=\"(.+?)\".*?>(.*?)?</.*?>"
@@ -198,11 +199,11 @@ class ECBParser:
                     if m_id not in lm_idToMention:
                         print("*** MISSING MENTION! EXITING")
                         exit(1)
-                    elif lm_idToMention[m_id].isPred:
+                    else: #elif lm_idToMention[m_id].isPred:
                         foundMention = lm_idToMention[m_id]
-                        corpus.addMention(foundMention, REF)
+                        #corpus.addMention(foundMention, REF)
+            corpus.addDocPointer(doc_id, curDoc)
         corpus.assignGlobalSentenceNums()
-        corpus.printStats()
         return corpus
 
 	# loads replacement file
