@@ -7,6 +7,7 @@ def setCorefEngineParams():
 	parser.add_argument("--corpusPath", help="the corpus dir")
 	parser.add_argument("--useECBTest", help="use the ECB test set or not", type=str2bool, nargs='?', default="f")
 	parser.add_argument("--stanTokensFile", help="pickled file containing StanTokens")
+	parser.add_argument("--verifiedSentencesFile", help="file containing the ECB+ sentences that are trustworthy")
 	parser.add_argument("--replacementsFile", help="we replace all instances of these tokens which appear in our corpus -- this is to help standardize the format, useful for creating embeddings and running stanfordCoreNLP")
 	parser.add_argument("--verbose", help="print a lot of debugging info", type=str2bool, nargs='?', default="f")
 

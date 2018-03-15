@@ -10,7 +10,11 @@ from StanParser import StanParser
 class CorefEngine:
 
 	# TODO:
-	# - figure out correctness of ECB+ (does it annotate every sentence?)
+	# Q1: what's the distribution of mention types (ECB+)?
+	# Q2: which ones do HDDCRP include?
+	# Q3A: which ones do Stanford include? (coref only)
+	# Q3B: which ones do Stanford include? (NER)
+	# Q3C: which ones do Stanford include? (coref only+NER)
 	# - how many of these does Stanford contain? (for Ent+Events) -- TRAIN/DEV
 	#	- vary the cutoff point (N=inf, 10,9,8,7,6,5,4,3,2,1) -- TRAIN/DEV
 	# - make 2 new Gold files (CoNLL format) which includes
@@ -22,29 +26,29 @@ class CorefEngine:
 	#    (B) test on non-events
 	#    (C) test on non-events non-pronouns
  	# - (2) how well does StanCoreNLP do on:
-	#	 (A) test on all and hope our system doens't mix ents and events
+	#	 (A) test on all and hope our system doesn't mix ents and events
 	#    (B) test on non-events
 	if __name__ == "__main__":
 		runStanford = False
 		useEntities = False
+		start_time = time.time()
 
 		# handles passed-in args
 		args = params.setCorefEngineParams()
 
+		# most functionality lives here
+		helper = ECBHelper(args)
+
 		# parses the real, actual corpus (ECB's XML files)
 		ecb_parser = ECBParser(args)
-		corpus = ecb_parser.parseCorpus(args.corpusPath, args.verbose)
-		
-		# most functionality lives here
-		helper = ECBHelper(args, corpus)
-		helper.printCorpusStats()
-		
+		corpus = ecb_parser.parseCorpus(helper.docToVerifiedSentences)
+		helper.addECBCorpus(corpus)
+
 		# parses the HDDCRP Mentions
 		hddcrp_parser = HDDCRPParser(args)
 		hddcrp_mentions = hddcrp_parser.parseCorpus(args.hddcrpFullFile)
 		helper.createHDDCRPMentions(hddcrp_mentions)
-
-		start_time = time.time()
+		helper.printCorpusStats()
 		
 		# loads Stanford's parse
 		if runStanford:
@@ -53,5 +57,6 @@ class CorefEngine:
 			helper.saveStanTokens()
 		else:
 			helper.loadStanTokens()
+		helper.createStanMentions()
 		print("took:", str((time.time() - start_time)), "seconds")
 		

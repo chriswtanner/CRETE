@@ -7,22 +7,11 @@ class HDDCRPParser:
 
 	# parses the hddcrp *semeval.txt file (which is in CoNLL-ready format)
 	def parseCorpus(self, inputFile):
-		#self.htokens = {}
-		#self.UIDToToken = {}
 		self.hmentions = []
-		#self.docToHMentions = defaultdict(list)
-		#self.docToUIDs = defaultdict(list)
-		#self.HMUIDToHMention = {}
-		#self.dirToDocs = defaultdict(set)
-
 		REFToStartTuple = defaultdict(list)
 		tokenIndex = 0
 		sentenceNum = 0
 		tokenIndexToHUID = {}
-		#HMUID = 0
-
-		#self.docREFToHMUIDs = defaultdict(set)
-		#self.docSentences = defaultdict(lambda: defaultdict(list))
 
 		f = open(inputFile, "r")
 		for line in f:

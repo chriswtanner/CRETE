@@ -11,26 +11,24 @@ class ECBParser:
     def __init__(self, args):
         self.args = args
 
-        # sets global vars
+        # filled in via loadReplacements()
         self.replacements = {}
         self.replacementsList = []
-        # for quicker indexing, since we'll do it over every token
-        self.replacementsSet = set()
+        self.replacementsSet = set() # for quicker indexing
+
         self.endPunctuation = set()
         self.endPunctuation.update(".", "!", "?")
-        self.validMentions = set()
-
+        
         # invokes functions
         self.loadReplacements(args.replacementsFile)
 
-    def parseCorpus(self, corpusPath, isVerbose):
-        print("* parsing ECB corpus...")
-        
-        # globally sets params
-        corpus = Corpus()
+    def parseCorpus(self, docToVerifiedSentences):
 
+        print("* parsing ECB corpus...")
+        numMentionsIgnored = 0
+        corpus = Corpus()
         files = []
-        for root, dirnames, filenames in os.walk(corpusPath):
+        for root, dirnames, filenames in os.walk(self.args.corpusPath):
             for filename in fnmatch.filter(filenames, '*.xml'):
                 files.append(os.path.join(root, filename))
 
@@ -183,7 +181,7 @@ class ECBParser:
                 if hasAllTokens:
                     curMention = Mention(dirHalf, dir_num, doc_id, tmpTokens, text, isPred, entityType)
                     lm_idToMention[m_id] = curMention
-                    corpus.addMention(curMention, "123")
+                    #corpus.addMention(curMention, "123")
             # reads <relations>
             relations = fileContents[fileContents.find("<Relations>"):fileContents.find("</Relations>")]
             regex = r"<CROSS_DOC_COREF.*?note=\"(.+?)\".*?>(.*?)?</.*?>"
@@ -201,9 +199,15 @@ class ECBParser:
                         exit(1)
                     else: #elif lm_idToMention[m_id].isPred:
                         foundMention = lm_idToMention[m_id]
-                        #corpus.addMention(foundMention, REF)
+                        
+                        token0 = foundMention.tokens[0]
+                        if token0.sentenceNum in docToVerifiedSentences[doc_id]:
+                            corpus.addMention(foundMention, REF)
+                        else:
+                            numMentionsIgnored += 1
             corpus.addDocPointer(doc_id, curDoc)
         corpus.assignGlobalSentenceNums()
+        print("numMentionsIgnored:", numMentionsIgnored)
         return corpus
 
 	# loads replacement file

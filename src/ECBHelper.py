@@ -2,9 +2,9 @@ import pickle
 from Mention import Mention
 from collections import defaultdict
 class ECBHelper:
-    def __init__(self, args, corpus):
+    def __init__(self, args):
         self.args = args
-        self.corpus = corpus
+        self.corpus = None # should be passed-in
 
         # data splits
         self.trainingDirs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 18, 19, 20, 21, 22]
@@ -19,6 +19,25 @@ class ECBHelper:
         # lines from CoNLL file to the created HDDCRP Mention)
         self.HUIDToHMUID = {}
 
+        self.docToVerifiedSentences = self.loadVerifiedSentences(args.verifiedSentencesFile)
+
+    def addECBCorpus(self, corpus):
+        self.corpus = corpus
+
+    # ECB+ only makes guarantees that the following sentences are correctly annotated
+    def loadVerifiedSentences(self, sentFile):
+        docToVerifiedSentences = defaultdict(set)
+        f = open(sentFile, 'r')
+        f.readline()
+        for line in f:
+            tokens = line.rstrip().split(",")
+            doc_id = tokens[0] + "_" + tokens[1] + ".xml"
+            sentNum = tokens[2]
+            docToVerifiedSentences[doc_id].add(int(sentNum))
+        f.close()
+        return docToVerifiedSentences
+
+    # pickles the StanTokens
     def saveStanTokens(self):
         UIDToStanTokens = {}  # UID -> StanToken[]
         for t in self.corpus.corpusTokens:
@@ -27,8 +46,8 @@ class ECBHelper:
         pickle_out = open(self.args.stanTokensFile, 'wb')
         pickle.dump(UIDToStanTokens, pickle_out)
 
+    # reads in the pickled StanTokens
     def loadStanTokens(self):
-        
         pickle_in = open(self.args.stanTokensFile, 'rb')
         UIDToStanTokens = pickle.load(pickle_in)
         for uid in UIDToStanTokens:
@@ -37,11 +56,9 @@ class ECBHelper:
         print("corpus has #UIDS:", str(len(self.corpus.UIDToToken)))
 
     def addStanfordAnnotations(self, stanfordParser):
-
         stanDocSet = set()
         for doc_id in stanfordParser.docToSentenceTokens.keys():
             stanDocSet.add(doc_id)
-
         # adds stan links on a per doc basis
         for doc_id in stanDocSet:
             stanTokens = []  # builds list of stanford tokens
@@ -53,10 +70,6 @@ class ECBHelper:
 
             # for readability, make a new var
             ourTokens = self.corpus.doc_idToDocs[doc_id].tokens
-            #for sent_num in sorted(self.corpus.docToGlobalSentenceNums[doc_id]):
-            #    for token in self.corpus.globalSentenceNumToTokens[sent_num]:
-            #        ourTokens.append(token)
-
             j = 0
             i = 0
             while i < len(ourTokens):
@@ -113,27 +126,23 @@ class ECBHelper:
                             elif stan == "31/2":
                                 stan = "3½"
                             j += 1
-                            #print("\tstan is now:", str(stan))
                         else:
                             print("\tran out of stanTokens")
                             exit(1)
 
                     while len(ours) < len(stan):
-                        #print("\tour length is shorter:",str(ours),"vs:",str(stan),"stanlength:",str(len(stan)))
                         if i+1 < len(ourTokens):
                             ours += ourTokens[i+1].text
                             curOurTokens.append(ourTokens[i+1])
                             if ours == "31/2":
                                 ours = "3 1/2"
                             elif ours == "21/2":
-                                #print("converted to: 2 1/2")
                                 ours = "2 1/2"
                             elif ours == "31/2-inch":
                                 ours = "3 1/2-inch"
                             elif ours == "3 1/2":
                                 ours = "3 1/2"
                             i += 1
-                            #print("\tours is now:", str(ours))
                         else:
                             print("\tran out of ourTokens")
                             exit(1)
@@ -154,6 +163,9 @@ class ECBHelper:
                     print("Token:", str(t), " never linked w/ a stanToken!")
                     exit(1)
         print("we've successfully added stanford links to every single token within our", str(len(self.corpus.doc_idToDocs)), "docs")
+
+    def createStanMentions(self):
+        
 
     def createHDDCRPMentions(self, hddcrp_mentions):
         for i in range(len(hddcrp_mentions)):
@@ -176,9 +188,11 @@ class ECBHelper:
                 text.append(token.text)
                 if HUID.split(";")[-1] != token.text:
                     print("WARNING: TEXT MISMATCH: HUID:", HUID, "ECB token:", token)
-            curMention = Mention(dirHalf, dir_num, doc_id, tokens, text, True, "unknown")
-            self.corpus.addHDDCRPMention(curMention)
-            self.HUIDToHMUID[HUID] = curMention.XUID
+            
+            if tokens[0].sentenceNum in self.docToVerifiedSentences[tokens[0].doc_id]:
+                curMention = Mention(dirHalf, dir_num, doc_id, tokens, text, True, "unknown")
+                self.corpus.addHDDCRPMention(curMention)
+                self.HUIDToHMUID[HUID] = curMention.XUID
 
     def printCorpusStats(self):
         trainEnts = 0
@@ -203,8 +217,17 @@ class ECBHelper:
         print("\t# dirHalves:", str(len(self.corpus.dirHalves)))
         print("\t# docs:", len(self.corpus.doc_idToDocs))
         print("\t# REFs:", len(self.corpus.refToMUIDs.keys()))
+        numS = 0
+        numC = 0
+        for ref in self.corpus.refToMUIDs:
+            if len(self.corpus.refToMUIDs[ref]) == 1:
+                numS +=1 
+            else:
+                numC += 1
+        print("\t\t# singletons:",numS,"# nons",numC)
         print("\t# ECB Mentions (total):", len(self.corpus.ecb_mentions))
-        print("\t# ECB Mentions (train): entities:", mentionStats[("train", 0)], "events:", mentionStats[("train",1)])
-        print("\t# ECB Mentions (dev): entities:", mentionStats[("dev", 0)], "events:", mentionStats[("dev",1)])
-        print("\t# ECB Mentions (test): entities:", mentionStats[("test", 0)], "events:", mentionStats[("test", 1)])
+        print("\t# ECB Mentions (train): NON-ACTION:", mentionStats[("train", 0)], "ACTION:", mentionStats[("train",1)])
+        print("\t# ECB Mentions (dev): NON-ACTION:", mentionStats[("dev", 0)], "ACTION:", mentionStats[("dev", 1)])
+        print("\t# ECB Mentions (test): NON-ACTION:", mentionStats[("test", 0)], "events:", mentionStats[("test", 1)])
+        print("\t# HDDCRP Mentions (total):", len(self.corpus.hddcrp_mentions))
         print("\t# ECB Tokens:", len(self.corpus.corpusTokens))

@@ -33,7 +33,8 @@ dataDir=${baseDir}"data/"
 resultsDir=${baseDir}"results/"
 refDir=${scriptDir}"reference-coreference-scorers-8.01/"
 replacementsFile=${baseDir}"data/replacements.txt"
-stanTokensFile=${baseDir}"/data/stan_tokens.p"
+stanTokensFile=${baseDir}"data/stan_tokens.p"
+verifiedSentencesFile=${baseDir}"data/ECBplus_coreference_sentences.csv"
 
 charEmbeddingsFile=${baseDir}"data/charRandomEmbeddings.txt"
 
@@ -93,6 +94,8 @@ echo "replacementsFile:" ${replacementsFile}
 echo "embeddingsFile:" $embeddingsFile
 echo "hddcrpFullFile:" $hddcrpFullFile
 echo "stanOutputDir:" $stanOutputDir
+echo "stanTokensFile:" $stanTokensFile
+echo "verifiedSentencesFile:" $verifiedSentencesFile
 echo "------------------------"
 
 cd $scriptDir
@@ -101,6 +104,7 @@ python3 -u CorefEngine.py \
 --corpusPath=${corpusPath} \
 --useECBTest=${useECBTest} \
 --stanTokensFile=${stanTokensFile} \
+--verifiedSentencesFile=${verifiedSentencesFile} \
 --replacementsFile=${replacementsFile} \
 --verbose=${verbose} \
 --stanOutputDir=${stanOutputDir} \
