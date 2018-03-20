@@ -156,8 +156,8 @@ class ECBParser:
             it = tuple(re.finditer(regex, markables))
             for match in it:
                 isPred = False
-                entityType = match.group(1)
-                if "ACTION" in entityType:
+                mentionType = match.group(1)
+                if "ACTION" in mentionType:
                     isPred = True
                 m_id = int(match.group(2))
 
@@ -179,7 +179,7 @@ class ECBParser:
                 # we should only have incomplete Mentions for our hand-curated, sample corpus,
                 # for we do not want to have all mentions, so we curtail the sentences of tokens
                 if hasAllTokens:
-                    curMention = Mention(dirHalf, dir_num, doc_id, tmpTokens, text, isPred, entityType)
+                    curMention = Mention(dirHalf, dir_num, doc_id, tmpTokens, text, isPred, mentionType)
                     lm_idToMention[m_id] = curMention
                     #corpus.addMention(curMention, "123")
             # reads <relations>

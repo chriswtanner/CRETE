@@ -10,8 +10,7 @@ from StanParser import StanParser
 class CorefEngine:
 
 	# TODO:
-	# Q1: what's the distribution of mention types (ECB+)?
-	# Q2: which ones do HDDCRP include?
+	# X - Q2: which ones do HDDCRP include?
 	# Q3A: which ones do Stanford include? (coref only)
 	# Q3B: which ones do Stanford include? (NER)
 	# Q3C: which ones do Stanford include? (coref only+NER)

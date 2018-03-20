@@ -1,4 +1,5 @@
 import pickle
+import operator
 from Mention import Mention
 from collections import defaultdict
 class ECBHelper:
@@ -165,7 +166,7 @@ class ECBHelper:
         print("we've successfully added stanford links to every single token within our", str(len(self.corpus.doc_idToDocs)), "docs")
 
     def createStanMentions(self):
-        
+        a = 2
 
     def createHDDCRPMentions(self, hddcrp_mentions):
         for i in range(len(hddcrp_mentions)):
@@ -195,20 +196,14 @@ class ECBHelper:
                 self.HUIDToHMUID[HUID] = curMention.XUID
 
     def printCorpusStats(self):
-        trainEnts = 0
-        trainEvents = 0
-        devEnts = 0
-        devEvents = 0
-        testEnts = 0
-        testEvents = 0
-        mentionStats = defaultdict(int)
+        mentionStats = defaultdict(lambda: defaultdict(int))
         for m in self.corpus.ecb_mentions:
             if m.dir_num in self.trainingDirs:
-                mentionStats[("train",m.isPred)] += 1
+                mentionStats["train"][m.mentionType] += 1
             elif m.dir_num in self.devDirs:
-                mentionStats[("dev", m.isPred)] += 1
+                mentionStats["dev"][m.mentionType] += 1
             elif m.dir_num in self.testingDirs:
-                mentionStats[("test", m.isPred)] += 1
+                mentionStats["test"][m.mentionType] += 1
             else:
                 print("* ERROR: wrong dir")
                 exit(1)
@@ -226,8 +221,50 @@ class ECBHelper:
                 numC += 1
         print("\t\t# singletons:",numS,"# nons",numC)
         print("\t# ECB Mentions (total):", len(self.corpus.ecb_mentions))
+        
+
+        tokenToMention = {}
+        hddcrpStats = defaultdict(lambda: defaultdict(int))
+        for m in self.corpus.ecb_mentions:
+            for t in m.tokens:
+                tokenToMention[t] = m
+        
+        for hm in self.corpus.hddcrp_mentions:
+            mentionsFound = set()
+            for t in hm.tokens:
+                if t in tokenToMention:
+                    mentionsFound.add(tokenToMention[t])
+                else:
+                    mentionsFound.add("n/a")
+            if len(mentionsFound) == 1: # all or nothing
+                print(mentionsFound)
+                _ = mentionsFound.pop()
+                
+                if _ == "n/a":
+                    hddcrpStats["n/a"]["n/a"] += 1
+                else:
+                    hddcrpStats["all"][_.mentionType] += 1
+            else:
+                mmFound = set()
+                for m in mentionsFound:
+                    if m == "n/a":
+                        mmFound.add(m)
+                    else:
+                        hddcrpStats["partial"][m.mentionType] += 1
+        for d in hddcrpStats:
+            sorted_x = sorted(hddcrpStats[d].items(), key=operator.itemgetter(1), reverse=True)
+            for (k, v) in sorted_x:
+                print(d, str(k), v)
+
+        print("\t# HDDCRP Mentions (total):", len(self.corpus.hddcrp_mentions))
+        '''
+        for d in mentionStats:
+            sorted_x = sorted(mentionStats[d].items(), key=operator.itemgetter(1), reverse=True)
+            for (k,v) in sorted_x:
+                print(d,str(k),v)
+        
         print("\t# ECB Mentions (train): NON-ACTION:", mentionStats[("train", 0)], "ACTION:", mentionStats[("train",1)])
         print("\t# ECB Mentions (dev): NON-ACTION:", mentionStats[("dev", 0)], "ACTION:", mentionStats[("dev", 1)])
         print("\t# ECB Mentions (test): NON-ACTION:", mentionStats[("test", 0)], "events:", mentionStats[("test", 1)])
-        print("\t# HDDCRP Mentions (total):", len(self.corpus.hddcrp_mentions))
+        '''
         print("\t# ECB Tokens:", len(self.corpus.corpusTokens))
