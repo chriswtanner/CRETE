@@ -7,11 +7,15 @@ class Doc:
         self.tokens = []
         self.REFToMUIDs = defaultdict(set)
         self.MUIDs = set()
+        self.SUIDs = set()
         self.HMUIDs = set()
 
     def assignECBMention(self, MUID, REF):
         self.REFToMUIDs[REF].add(MUID)
         self.MUIDs.add(MUID)
-        
+
+    def assignStanMention(self, SUID):
+        self.SUIDs.add(SUID)
+
     def assignHDDCRPMention(self, HMUID):
         self.HMUIDs.add(HMUID)

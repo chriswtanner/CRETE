@@ -24,6 +24,10 @@ class Corpus:
         self.hddcrp_mentions = []
         self.HMUIDToMention = {}
 
+        # only used for Stan mentions (we have no REF info)
+        self.stan_mentions = []
+        self.SUIDToMention = {}
+
         self.dirs = set()
         self.dirHalves = defaultdict(DirHalf) # same as what's contained across all dirs
 
@@ -40,15 +44,20 @@ class Corpus:
         self.corpusTokensToCorpusIndex[token] = self.numCorpusTokens
         self.numCorpusTokens = self.numCorpusTokens + 1
 
+    # adds a Stan Mention to the corpus (no REF info)
+    def addStanMention(self, mention):
+        mention.setXUID(self.curXUID)  # updates the mention w/ MUID info
+        self.stan_mentions.append(mention)
+        self.SUIDToMention[self.curXUID] = mention
+        self.dirHalves[mention.dirHalf].assignStanMention(self.curXUID, mention.doc_id)
+        self.curXUID += 1
+
     # adds a HDDCRP Mention to the corpus (no REF info)
     def addHDDCRPMention(self, mention):
-        # updates the mention w/ MUID info
-        mention.setXUID(self.curXUID)
-
+        mention.setXUID(self.curXUID)  # updates the mention w/ MUID info
         self.hddcrp_mentions.append(mention)
         self.HMUIDToMention[self.curXUID] = mention
         self.dirHalves[mention.dirHalf].assignHDDCRPMention(self.curXUID, mention.doc_id)
-
         self.curXUID += 1
 
     # adds a Mention to the corpus
@@ -71,4 +80,3 @@ class Corpus:
     # adds access to the Docs via their names
     def addDocPointer(self, doc_id, curDoc):
         self.doc_idToDocs[doc_id] = curDoc
-

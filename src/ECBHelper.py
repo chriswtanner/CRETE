@@ -166,7 +166,64 @@ class ECBHelper:
         print("we've successfully added stanford links to every single token within our", str(len(self.corpus.doc_idToDocs)), "docs")
 
     def createStanMentions(self):
-        a = 2
+        tokenToMention = {}
+        stanStats = defaultdict(lambda: defaultdict(int))
+        for m in self.corpus.ecb_mentions:
+            for t in m.tokens:
+                tokenToMention[t] = m
+
+        numStanNER = 0
+        numAligned = 0
+        numNotAligned = 0
+        numZeros = 0
+        TN = 0
+        for each_token in self.corpus.corpusTokens:
+            if each_token.sentenceNum not in self.docToVerifiedSentences[each_token.doc_id]:
+                continue
+            dir_num = int(each_token.doc_id.split("_")[0])
+            if dir_num not in self.testingDirs:
+                continue
+        #numMentions = 0
+        #for m in self.corpus.ecb_mentions:
+        #    if m.dir_num not in self.testingDirs:
+        #        continue
+        #    numMentions += 1
+            #for each_token in m.tokens:
+            mentionsFound = set()
+            for st in each_token.stanTokens:
+                if st.ner != "O":
+                    if each_token in tokenToMention:
+                        mentionsFound.add(tokenToMention[each_token])
+                        numAligned += 1
+                    else:
+                        mentionsFound.add("n/a")
+                        numNotAligned += 1
+                    numStanNER += 1
+                else:
+                    if each_token not in tokenToMention:
+                        TN += 1
+                    numZeros += 1
+            if len(mentionsFound) == 1:  # all or nothing
+                _ = mentionsFound.pop()
+                if _ == "n/a":
+                    stanStats["n/a"]["n/a"] += 1
+                else:
+                    stanStats["all"][_.mentionType] += 1
+            else:
+                for m in mentionsFound:
+                    if m != "n/a":
+                        stanStats["partial"][m.mentionType] += 1
+        
+        for d in stanStats:
+            sorted_x = sorted(stanStats[d].items(), key=operator.itemgetter(1), reverse=True)
+            for (k, v) in sorted_x:
+                print(d, str(k), v)
+        print("numStanNER", numStanNER)
+        print("numAligned", numAligned)
+        print("numNotAligned", numNotAligned)
+        print("numZeros", numZeros)
+        print("TN:", TN)
+        #print("numMentions", numMentions)
 
     def createHDDCRPMentions(self, hddcrp_mentions):
         for i in range(len(hddcrp_mentions)):
@@ -222,7 +279,6 @@ class ECBHelper:
         print("\t\t# singletons:",numS,"# nons",numC)
         print("\t# ECB Mentions (total):", len(self.corpus.ecb_mentions))
         
-
         tokenToMention = {}
         hddcrpStats = defaultdict(lambda: defaultdict(int))
         for m in self.corpus.ecb_mentions:
@@ -237,7 +293,6 @@ class ECBHelper:
                 else:
                     mentionsFound.add("n/a")
             if len(mentionsFound) == 1: # all or nothing
-                print(mentionsFound)
                 _ = mentionsFound.pop()
                 
                 if _ == "n/a":
@@ -245,19 +300,17 @@ class ECBHelper:
                 else:
                     hddcrpStats["all"][_.mentionType] += 1
             else:
-                mmFound = set()
                 for m in mentionsFound:
-                    if m == "n/a":
-                        mmFound.add(m)
-                    else:
+                    if m != "n/a":
                         hddcrpStats["partial"][m.mentionType] += 1
+        '''
         for d in hddcrpStats:
             sorted_x = sorted(hddcrpStats[d].items(), key=operator.itemgetter(1), reverse=True)
             for (k, v) in sorted_x:
                 print(d, str(k), v)
 
         print("\t# HDDCRP Mentions (total):", len(self.corpus.hddcrp_mentions))
-        '''
+        
         for d in mentionStats:
             sorted_x = sorted(mentionStats[d].items(), key=operator.itemgetter(1), reverse=True)
             for (k,v) in sorted_x:

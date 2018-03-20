@@ -8,8 +8,8 @@ class DirHalf:
         self.REFToMUIDs = defaultdict(set) # should be superset of all its docs
         self.MUIDs = set()
 
-        # HDDCRP Mentions
-        self.HMUIDs = set()
+        self.SUIDs = set()  # Stan Mentions
+        self.HMUIDs = set()  # HDDCRP Mentions
 
     # sets the MUID and REF info
     def assignECBMention(self, MUID, doc_id, REF):
@@ -19,6 +19,11 @@ class DirHalf:
 
         # assigns Doc vars
         self.docs[doc_id].assignECBMention(MUID, REF)
+
+    # sets the SUID info
+    def assignStanMention(self, SUID, doc_id):
+        self.SUIDs.add(SUID)  # assigns DirHalf vars
+        self.docs[doc_id].assignStanMention(SUID)  # assigns Doc vars
 
     # sets the HMUID info
     def assignHDDCRPMention(self, HMUID, doc_id):
