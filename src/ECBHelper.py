@@ -18,8 +18,13 @@ class ECBHelper:
 
         # filled in via createHDDCRPMentions() (maps text UID
         # lines from CoNLL file to the created HDDCRP Mention)
-        self.HUIDToHMUID = {}
+        self.UIDToHMUID = defaultdict(list)
 
+        # filled in via createStanMentions() (maps text UID
+        # lines from CoNLL file to the created Stan Mention)
+        # where StanMention is a regular Mention w/ regular Tokens
+        # (which contain lists of StanTokens)
+        self.UIDToSUID = defaultdict(list)
         self.docToVerifiedSentences = self.loadVerifiedSentences(args.verifiedSentencesFile)
 
     def addECBCorpus(self, corpus):
@@ -166,6 +171,57 @@ class ECBHelper:
         print("we've successfully added stanford links to every single token within our", str(len(self.corpus.doc_idToDocs)), "docs")
 
     def createStanMentions(self):
+        print("in createStanMentions()")
+        last_ner = ""
+        toBeMentions = [] # list of StanToken Lists
+        curTokens = []
+        tokenToNER = {} # only used for creating a 'type' field in Mention
+        for each_token in self.corpus.corpusTokens:
+            if each_token.sentenceNum not in self.docToVerifiedSentences[each_token.doc_id]:
+                continue
+            
+            cur_ner = ""
+            for st in each_token.stanTokens:
+                if st.ner != "O":
+                    cur_ner = st.ner
+            
+            if cur_ner != "":
+                tokenToNER[each_token] = cur_ner
+
+            if last_ner == "" and cur_ner != "":  # start of a new StanMention
+                curTokens.append(each_token)
+            else:
+                if cur_ner != last_ner: # if we end curMention
+                    toBeMentions.append(curTokens)
+                    curTokens = []  # new clean slate
+                if cur_ner != "": # either keep it going or start a new one
+                    curTokens.append(each_token)
+            last_ner = cur_ner
+        if len(curTokens) > 0: # had some left, let's make a mention
+            toBeMentions.append(curTokens)
+        
+        for m in toBeMentions:
+            doc_id = m[0].doc_id 
+            dir_num = int(doc_id.split("_")[0])
+            extension = doc_id[doc_id.find("ecb"):]
+            dirHalf = str(dir_num) + extension
+            text = []
+            SUIDs = []
+            for t in m:
+                sentenceNum = m[0].sentenceNum
+                hTokenNum = t.hTokenNum
+                SUID = str(doc_id) + ";" + str(sentenceNum) + ";" + str(hTokenNum)
+                SUIDs.append(SUID)
+                if self.corpus.UIDToToken[SUID] != t:
+                    print("ERROR: Token mismatch")
+                text.append(t.text)
+
+            curMention = Mention(dirHalf, dir_num, doc_id, m, text, False, tokenToNER[m[0]])
+            self.corpus.addStanMention(curMention)
+            for SUID in SUIDs:
+                self.UIDToSUID[SUID].append(curMention.XUID)
+
+        '''
         tokenToMention = {}
         stanStats = defaultdict(lambda: defaultdict(int))
         for m in self.corpus.ecb_mentions:
@@ -214,6 +270,7 @@ class ECBHelper:
                     if m != "n/a":
                         stanStats["partial"][m.mentionType] += 1
         
+
         for d in stanStats:
             sorted_x = sorted(stanStats[d].items(), key=operator.itemgetter(1), reverse=True)
             for (k, v) in sorted_x:
@@ -224,7 +281,7 @@ class ECBHelper:
         print("numZeros", numZeros)
         print("TN:", TN)
         #print("numMentions", numMentions)
-
+        '''
     def createHDDCRPMentions(self, hddcrp_mentions):
         for i in range(len(hddcrp_mentions)):
             HUIDs = hddcrp_mentions[i]
@@ -233,6 +290,7 @@ class ECBHelper:
             if len(HUIDs) == 0:
                 print("ERROR: empty HDDCRP Mention")
                 exit(1)
+
             for HUID in HUIDs:
                 HUID_minus_text = HUID[0:HUID.rfind(";")]
 
@@ -250,7 +308,8 @@ class ECBHelper:
             if tokens[0].sentenceNum in self.docToVerifiedSentences[tokens[0].doc_id]:
                 curMention = Mention(dirHalf, dir_num, doc_id, tokens, text, True, "unknown")
                 self.corpus.addHDDCRPMention(curMention)
-                self.HUIDToHMUID[HUID] = curMention.XUID
+                for HUID in HUIDs: # UID == HUID always, because we checked above (in the warning check)
+                    self.UIDToHMUID[HUID].append(curMention.XUID)
 
     def printCorpusStats(self):
         mentionStats = defaultdict(lambda: defaultdict(int))
