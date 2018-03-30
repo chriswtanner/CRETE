@@ -11,8 +11,8 @@ class CorefEngine:
 
 	# TODO:
 	# X - Q2: which ones do HDDCRP include?
-	# Q3A: which ones do Stanford include? (coref only)
 	# Q3B: which ones do Stanford include? (NER)
+	# Q3A: which ones do Stanford include? (coref only)
 	# Q3C: which ones do Stanford include? (coref only+NER)
 	# - how many of these does Stanford contain? (for Ent+Events) -- TRAIN/DEV
 	#	- vary the cutoff point (N=inf, 10,9,8,7,6,5,4,3,2,1) -- TRAIN/DEV
@@ -29,7 +29,6 @@ class CorefEngine:
 	#    (B) test on non-events
 	if __name__ == "__main__":
 		runStanford = False
-		useEntities = False
 		start_time = time.time()
 
 		# handles passed-in args
@@ -39,7 +38,7 @@ class CorefEngine:
 		helper = ECBHelper(args)
 
 		# parses the real, actual corpus (ECB's XML files)
-		ecb_parser = ECBParser(args)
+		ecb_parser = ECBParser(args, helper.docToVerifiedSentences)
 		corpus = ecb_parser.parseCorpus(helper.docToVerifiedSentences)
 		helper.addECBCorpus(corpus)
 
@@ -47,8 +46,8 @@ class CorefEngine:
 		hddcrp_parser = HDDCRPParser(args)
 		hddcrp_mentions = hddcrp_parser.parseCorpus(args.hddcrpFullFile)
 		helper.createHDDCRPMentions(hddcrp_mentions)
-		helper.printCorpusStats()
-		
+		#helper.printCorpusStats()
+
 		# loads Stanford's parse
 		if runStanford:
 			stan = StanParser(args, corpus)
@@ -57,5 +56,6 @@ class CorefEngine:
 		else:
 			helper.loadStanTokens()
 		helper.createStanMentions()
+		#helper.printHDDCRPMentionCoverage()
 		print("took:", str((time.time() - start_time)), "seconds")
 		

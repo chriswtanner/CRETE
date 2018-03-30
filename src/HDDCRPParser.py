@@ -27,13 +27,6 @@ class HDDCRPParser:
                                     ";" + str(hTokenNum) + \
                                     ";" + str(text.lower())
 				tokenIndexToHUID[tokenIndex] = HUID
-				#curToken = HToken(doc, sentenceNum, tokenNum, text.lower())
-				#self.htokens[tokenIndex] = curToken
-				#self.UIDToToken[curToken.UID] = curToken
-				#self.docToUIDs[doc].append(curToken.UID)
-
-				# TMP: only used for analyzeResults() in CCNN (to see the original sentences)
-				#self.docSentences[doc][sentenceNum].append(text.lower())
 
 				refs = []
 				if ref_.find("|") == -1:
@@ -41,7 +34,6 @@ class HDDCRPParser:
 				else:  # we at most have 1 |
 					refs.append(ref_[0:ref_.find("|")])
 					refs.append(ref_[ref_.find("|")+1:])
-					#print("***** FOUND 2:",str(line))
 
 				isFirst = True
 				for ref in refs:
@@ -75,30 +67,12 @@ class HDDCRPParser:
 
 						self.hmentions.append(HUIDs)
 
-						#curMention = HMention(doc, ref_id, tokens, MUID, HMUID, startTuple, endTuple)
-						#self.docToHMentions[doc].append(curMention)
-						#self.hmentions.append(curMention)
-						#self.MUIDToHMentions[MUID] = curMention
-						#self.HMUIDToHMention[HMUID] = curMention
-						#self.docREFsToHMUIDs[(doc, ref_id)].add(HMUID)
-						#self.dirToDocs[dir_num].add(doc)
-						#HMUID += 1
-
 					isFirst = False
 				# end of current token line
 				tokenIndex += 1  # this always increases whenever we see a token
-
 			else:
 				print("ERROR: curLine:", str(line))
 				exit(1)
 		f.close()
-		'''
-		hms = set()
-		for doc_id in self.docToHMentions.keys():
-			for hm in self.docToHMentions[doc_id]:
-				hms.add(hm)
-		print("\t# hms by end of parsing, based on a per doc basis:", str(len(hms)))
-		'''
-
 		print("hddcrp parsed:",len(self.hmentions))
 		return self.hmentions

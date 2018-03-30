@@ -41,20 +41,25 @@ class StanParser:
 
         document = root[0]
         sentences, corefs = document
-
+        print("doc:", inputFile)
+        for elem in corefs:
+            print("el:",elem)
+            for section in elem:
+                print("sec:",section)
+                for s2 in section:
+                    print("s2:",s2)
+                    
+            
+            exit(1)
         self.relationshipTypes = set()
         for elem in sentences:  # tree.iter(tag='sentence'):
-
             sentenceNum = int(elem.attrib["id"])
             for section in elem:
-
                 # process every token for the given sentence
                 if section.tag == "tokens":
-
                     # constructs a ROOT StanToken, which represents the NULL ROOT of the DependencyParse
                     rootToken = StanToken(True, sentenceNum, 0, "ROOT", "ROOT", -1, -1, "-", "-")
                     sentenceTokens[sentenceNum][0] = rootToken
-
                     for token in section:
                         tokenNum = int(token.attrib["id"])
                         word = ""

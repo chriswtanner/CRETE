@@ -8,8 +8,11 @@ from Doc import Doc
 from Token import Token
 from Mention import Mention
 class ECBParser:
-    def __init__(self, args):
+    def __init__(self, args, docToVerifiedSentences):
         self.args = args
+        
+        # TMP REMOVE THIS
+        #self.docToVerifiedSentences = docToVerifiedSentences
 
         # filled in via loadReplacements()
         self.replacements = {}
@@ -59,6 +62,8 @@ class ECBParser:
                 r"<token t\_id=\"(\d+)\" sentence=\"(\d+)\" number=\"(\d+)\".*?>(.*?)</(.*?)>", fileContents))
             lastSentenceNum = -1
 
+            tmpFOUT = open("../data/stanford_input/"+doc_id, "w")
+
             # numbers every token in each given sentence, starting at 1 (each sentence starts at 1)
             tokenNum = 0
             firstToken = True
@@ -67,6 +72,9 @@ class ECBParser:
                 t_id = match.group(1)
                 sentenceNum = int(match.group(2))
                 hTokenNum = int(match.group(3))  # only used for matching w/ HDDCRP's files
+                
+                tmpFOUT.write(match.group(4).rstrip() + " ")
+
                 tokenText = match.group(4).lower().rstrip()
                 # removes tokens that end in : (e.g., newspaper:) but leaves the atomic ":" alone
                 if len(tokenText) > 1 and tokenText[-1] == ":":
@@ -87,6 +95,12 @@ class ECBParser:
                     hSentenceNum = sentenceNum
                     if "plus" in doc_id:
                         hSentenceNum = sentenceNum - 1
+
+                    # TMP
+                    '''
+                    if sentenceNum not in tmpSentenceNums:
+                        tmpSentenceNums.append(sentenceNum)
+                    '''
 
                     # we are starting a new sentence
                     if sentenceNum != lastSentenceNum:
@@ -118,6 +132,8 @@ class ECBParser:
                 lastTokenText = tokenText
                 lastToken_id = t_id
 
+            tmpFOUT.close()
+
             # if sentence ended with an atomic ":", let's change it to a "."
             if lastTokenText == ":":
                 lastToken = tmpDocTokenIDsToTokens[lastToken_id]
@@ -128,6 +144,8 @@ class ECBParser:
                 tmpDocTokens.append(endToken)
 
             globalSentenceNum = globalSentenceNum + 1
+
+
 
             # reads <markables> 1st time
             regex = r"<([\w]+) m_id=\"(\d+)?\".*?>(.*?)?</.*?>"
@@ -181,6 +199,7 @@ class ECBParser:
                 if hasAllTokens:
                     curMention = Mention(dirHalf, dir_num, doc_id, tmpTokens, text, isPred, mentionType)
                     lm_idToMention[m_id] = curMention
+                    #tmpSentenceNumToMentions[tmpTokens[0].sentenceNum].append(curMention)
                     #corpus.addMention(curMention, "123")
             # reads <relations>
             relations = fileContents[fileContents.find("<Relations>"):fileContents.find("</Relations>")]
@@ -205,6 +224,24 @@ class ECBParser:
                             corpus.addMention(foundMention, REF)
                         else:
                             numMentionsIgnored += 1
+                        
+            # TMP
+            '''
+            print("doc_id:",doc_id)
+            for i in tmpSentenceNums:
+                o = str(i)
+                if i in self.docToVerifiedSentences[doc_id]:
+                    o += " * "
+                else:
+                    o += "  "
+                if i in tmpSentenceNumToMentions:
+                    o += str(len(tmpSentenceNumToMentions[i]))
+                    for m in tmpSentenceNumToMentions[i]:
+                        print(m)
+                else:
+                    o += "0"
+                print(o)
+            '''
             corpus.addDocPointer(doc_id, curDoc)
         corpus.assignGlobalSentenceNums()
         print("numMentionsIgnored:", numMentionsIgnored)

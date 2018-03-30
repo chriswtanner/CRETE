@@ -27,5 +27,4 @@ class Mention:
         self.XUID = XUID
 
     def __str__(self):
-        return "MENTION: " + str(self.XUID) + " (dir " + str(self.dir_num) + "; doc: " + str(self.doc_id) + "): text: " + str(self.text)
-
+        return "MENTION: " + str(self.XUID) + " (dir " + str(self.dir_num) + "; doc: " + str(self.doc_id) + "): text: " + str(self.text) + " type: " + str(self.mentionType)
