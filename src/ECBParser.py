@@ -73,8 +73,6 @@ class ECBParser:
                 sentenceNum = int(match.group(2))
                 hTokenNum = int(match.group(3))  # only used for matching w/ HDDCRP's files
                 
-                tmpFOUT.write(match.group(4).rstrip() + " ")
-
                 tokenText = match.group(4).lower().rstrip()
                 # removes tokens that end in : (e.g., newspaper:) but leaves the atomic ":" alone
                 if len(tokenText) > 1 and tokenText[-1] == ":":
@@ -92,6 +90,10 @@ class ECBParser:
                     curDoc.highestSentenceNum = sentenceNum
                 
                 if sentenceNum > 0 or "plus" not in doc_id:
+                    
+                    # TMP: only used to write Stanford_input
+                    tmpFOUT.write(match.group(4).rstrip() + " ")
+
                     hSentenceNum = sentenceNum
                     if "plus" in doc_id:
                         hSentenceNum = sentenceNum - 1
