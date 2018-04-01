@@ -68,8 +68,8 @@ class ECBHelper:
         stan_db = pickle.load(pickle_in)
         for uid in stan_db.UIDToStanTokens:
             self.corpus.UIDToToken[uid].stanTokens = stan_db.UIDToStanTokens[uid]
-        print("* loaded", len(stan_db.UIDToStanTokens), "UIDs' StanTokens")
-        print("corpus has #UIDS:", str(len(self.corpus.UIDToToken)))
+        print("* [StanDB] loaded", len(stan_db.UIDToStanTokens), "UIDs' StanTokens")
+        print("* [StanDB] corpus has #UIDS:", str(len(self.corpus.UIDToToken)))
 
     def addStanfordAnnotations(self, stanfordParser):
         stanDocSet = set()

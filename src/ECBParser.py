@@ -9,6 +9,9 @@ from Token import Token
 from Mention import Mention
 class ECBParser:
     def __init__(self, args, docToVerifiedSentences):
+        
+        self.onlyEvents = True
+        self.onlyValidSentences = True
         self.args = args
         
         # TMP REMOVE THIS
@@ -62,7 +65,7 @@ class ECBParser:
                 r"<token t\_id=\"(\d+)\" sentence=\"(\d+)\" number=\"(\d+)\".*?>(.*?)</(.*?)>", fileContents))
             lastSentenceNum = -1
 
-            tmpFOUT = open("../data/stanford_input/"+doc_id, "w")
+            #tmpFOUT = open("../data/stanford_input/"+doc_id, "w")
 
             # numbers every token in each given sentence, starting at 1 (each sentence starts at 1)
             tokenNum = 0
@@ -92,7 +95,7 @@ class ECBParser:
                 if sentenceNum > 0 or "plus" not in doc_id:
                     
                     # TMP: only used to write Stanford_input
-                    tmpFOUT.write(match.group(4).rstrip() + " ")
+                    #tmpFOUT.write(match.group(4).rstrip() + " ")
 
                     hSentenceNum = sentenceNum
                     if "plus" in doc_id:
@@ -134,7 +137,7 @@ class ECBParser:
                 lastTokenText = tokenText
                 lastToken_id = t_id
 
-            tmpFOUT.close()
+            #tmpFOUT.close()
 
             # if sentence ended with an atomic ":", let's change it to a "."
             if lastTokenText == ":":
@@ -146,8 +149,6 @@ class ECBParser:
                 tmpDocTokens.append(endToken)
 
             globalSentenceNum = globalSentenceNum + 1
-
-
 
             # reads <markables> 1st time
             regex = r"<([\w]+) m_id=\"(\d+)?\".*?>(.*?)?</.*?>"
@@ -220,13 +221,17 @@ class ECBParser:
                         exit(1)
                     else: #elif lm_idToMention[m_id].isPred:
                         foundMention = lm_idToMention[m_id]
-                        
+
+                        if self.onlyEvents and not foundMention.isPred:
+                            continue
+
                         token0 = foundMention.tokens[0]
-                        if token0.sentenceNum in docToVerifiedSentences[doc_id]:
+                        if self.onlyValidSentences and token0.sentenceNum not in docToVerifiedSentences[doc_id]:
+                            continue
+                        if True: # token0.sentenceNum in docToVerifiedSentences[doc_id]:
                             corpus.addMention(foundMention, REF)
                         else:
-                            numMentionsIgnored += 1
-                        
+                            numMentionsIgnored += 1    
             # TMP
             '''
             print("doc_id:",doc_id)
@@ -247,6 +252,7 @@ class ECBParser:
             corpus.addDocPointer(doc_id, curDoc)
         corpus.assignGlobalSentenceNums()
         print("numMentionsIgnored:", numMentionsIgnored)
+        print("# mentions created:", len(corpus.ecb_mentions))
         return corpus
 
 	# loads replacement file

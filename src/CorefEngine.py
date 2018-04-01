@@ -27,6 +27,7 @@ class CorefEngine:
  	# - (2) how well does StanCoreNLP do on:
 	#	 (A) test on all and hope our system doesn't mix ents and events
 	#    (B) test on non-events
+
 	if __name__ == "__main__":
 		runStanford = False
 		start_time = time.time()
@@ -47,7 +48,8 @@ class CorefEngine:
 		hddcrp_mentions = hddcrp_parser.parseCorpus(args.hddcrpFullFile)
 		helper.createHDDCRPMentions(hddcrp_mentions)
 		#helper.printCorpusStats()
-
+		#helper.printHDDCRPMentionCoverage()
+		
 		# loads Stanford's parse
 		if runStanford:
 			stan = StanParser(args, corpus)
@@ -56,6 +58,6 @@ class CorefEngine:
 		else:
 			helper.loadStanTokens()
 		helper.createStanMentions()
-		#helper.printHDDCRPMentionCoverage()
+		
 		print("took:", str((time.time() - start_time)), "seconds")
 		
