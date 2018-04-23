@@ -41,6 +41,7 @@ class StanParser:
 
         document = root[0]
         sentences, corefs = document
+        '''
         print("doc:", inputFile)
         for elem in corefs:
             print("el:",elem)
@@ -48,9 +49,9 @@ class StanParser:
                 print("sec:",section)
                 for s2 in section:
                     print("s2:",s2)
-                    
+        '''         
             
-            exit(1)
+
         self.relationshipTypes = set()
         for elem in sentences:  # tree.iter(tag='sentence'):
             sentenceNum = int(elem.attrib["id"])

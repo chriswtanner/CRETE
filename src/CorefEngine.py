@@ -39,7 +39,7 @@ class CorefEngine:
 		helper = ECBHelper(args)
 
 		# parses the real, actual corpus (ECB's XML files)
-		ecb_parser = ECBParser(args, helper.docToVerifiedSentences)
+		ecb_parser = ECBParser(args, helper)
 		corpus = ecb_parser.parseCorpus(helper.docToVerifiedSentences)
 		helper.addECBCorpus(corpus)
 
@@ -47,9 +47,8 @@ class CorefEngine:
 		hddcrp_parser = HDDCRPParser(args)
 		hddcrp_mentions = hddcrp_parser.parseCorpus(args.hddcrpFullFile)
 		helper.createHDDCRPMentions(hddcrp_mentions)
-		#helper.printCorpusStats()
+		helper.printCorpusStats()
 		#helper.printHDDCRPMentionCoverage()
-		
 		# loads Stanford's parse
 		if runStanford:
 			stan = StanParser(args, corpus)
@@ -57,6 +56,7 @@ class CorefEngine:
 			helper.saveStanTokens()
 		else:
 			helper.loadStanTokens()
+
 		helper.createStanMentions()
 		
 		print("took:", str((time.time() - start_time)), "seconds")

@@ -7,7 +7,10 @@ class HDDCRPParser:
 
 	# parses the hddcrp *semeval.txt file (which is in CoNLL-ready format)
 	def parseCorpus(self, inputFile):
-		self.hmentions = []
+		
+		self.hmentions = [] # STORE ALL PARSED HMENTIONS, even if we don't
+		# add it to corpus (i.e., ones not in ECB's ValidSentences)
+		
 		REFToStartTuple = defaultdict(list)
 		tokenIndex = 0
 		sentenceNum = 0

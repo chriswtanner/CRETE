@@ -19,14 +19,17 @@ class Corpus:
         self.MUIDToMention = {}
         self.MUIDToREF = {}
         self.refToMUIDs = defaultdict(set)
+        self.docSentToMentions = defaultdict(list)
 
         # only used for HDDCRP mentions (we have no REF info)
         self.hddcrp_mentions = []
         self.HMUIDToMention = {}
+        self.docSentToHMentions = defaultdict(list)
 
         # only used for Stan mentions (we have no REF info)
         self.stan_mentions = []
         self.SUIDToMention = {}
+        self.docSentToSMentions = defaultdict(list)
 
         self.dirs = set()
         self.dirHalves = defaultdict(DirHalf) # same as what's contained across all dirs
@@ -46,22 +49,27 @@ class Corpus:
 
     # adds a Stan Mention to the corpus (no REF info)
     def addStanMention(self, mention):
+        (doc_id, sentenceNum) = self.getDocAndSentence(mention)
         mention.setXUID(self.curXUID)  # updates the mention w/ MUID info
         self.stan_mentions.append(mention)
         self.SUIDToMention[self.curXUID] = mention
         self.dirHalves[mention.dirHalf].assignStanMention(self.curXUID, mention.doc_id)
+        self.docSentToSMentions[(doc_id, sentenceNum)].append(mention)
         self.curXUID += 1
 
     # adds a HDDCRP Mention to the corpus (no REF info)
     def addHDDCRPMention(self, mention):
+        (doc_id, sentenceNum) = self.getDocAndSentence(mention)
         mention.setXUID(self.curXUID)  # updates the mention w/ MUID info
         self.hddcrp_mentions.append(mention)
         self.HMUIDToMention[self.curXUID] = mention
         self.dirHalves[mention.dirHalf].assignHDDCRPMention(self.curXUID, mention.doc_id)
+        self.docSentToHMentions[(doc_id, sentenceNum)].append(mention)
         self.curXUID += 1
 
     # adds a Mention to the corpus
     def addMention(self, mention, REF):
+        (doc_id, sentenceNum) = self.getDocAndSentence(mention)
         # updates the mention w/ REF and MUID info
         mention.setXUID(self.curXUID)
         mention.setREF(REF)
@@ -71,6 +79,7 @@ class Corpus:
         self.MUIDToREF[self.curXUID] = REF
         self.refToMUIDs[REF].add(self.curXUID)
         self.dirHalves[mention.dirHalf].assignECBMention(self.curXUID, mention.doc_id, REF)
+        self.docSentToMentions[(doc_id, sentenceNum)].append(mention)
         self.curXUID += 1
 
     def assignGlobalSentenceNums(self):
@@ -80,3 +89,8 @@ class Corpus:
     # adds access to the Docs via their names
     def addDocPointer(self, doc_id, curDoc):
         self.doc_idToDocs[doc_id] = curDoc
+
+    def getDocAndSentence(self, mention):
+        doc_id = mention.doc_id
+        sentenceNum = mention.tokens[0].sentenceNum
+        return (doc_id, sentenceNum)

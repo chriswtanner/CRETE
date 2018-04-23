@@ -1,6 +1,7 @@
 #!/bin/bash
 prefix="ccnnagg" # used to help identify experiments' outputs, as the output files will have this prefix
 corpus="FULL"
+onlyValidSentences="T"
 useECBTest=true
 featureMap=(2) # 4)
 numLayers=(2) # 3) # 1 3
@@ -77,15 +78,14 @@ do
 															for fo in "${FFNNOpt[@]}"
 															do
 																# qsub -pe smp 8 -l vlong -o
-
-																fout=gpu_${prefix}_nl${nl}_ne${ne}_ws${ws}_neg${neg}_bs${bs}_dr${dr}_nf${nf}_fm${fm}_pt${pt}_lt${lt}_dt${dt}_ct${ct}_dd${dd}_fn${fn}_fp${fp}_fo${fo}.out
+																fout=gpu_${prefix}_ov${onlyValidSentences}_nl${nl}_ne${ne}_ws${ws}_neg${neg}_bs${bs}_dr${dr}_nf${nf}_fm${fm}_pt${pt}_lt${lt}_dt${dt}_ct${ct}_dd${dd}_fn${fn}_fp${fp}_fo${fo}.out
 																echo ${fout}
 																if [ ${hn} = "titanx" ] || [ ${hn} = "Christophers-MacBook-Pro-2" ]
 																then
 																	echo "* kicking off CRETE2 natively"
-																	./CRETE2.sh ${corpus} ${useECBTest} ${nl} ${ne} ${ws} ${neg} ${bs} ${dr} ${nf} ${fm} ${pt} ${lt} ${dt} ${ct} ${dd} ${fn} ${fp} ${fo} # > ${fout}												
+																	./CRETE2.sh ${corpus} ${useECBTest} ${onlyValidSentences} ${nl} ${ne} ${ws} ${neg} ${bs} ${dr} ${nf} ${fm} ${pt} ${lt} ${dt} ${ct} ${dd} ${fn} ${fp} ${fo} # > ${fout}												
 																else
-																	qsub -l gpus=1 -o ${fout} CRETE2.sh ${corpus} ${useECBTest} ${nl} ${ne} ${ws} ${neg} ${bs} ${dr} ${nf} ${fm} ${pt} ${lt} ${dt} ${ct} ${dd} ${fn} ${fp} ${fo}
+																	qsub -l gpus=1 -o ${fout} CRETE2.sh ${corpus} ${useECBTest} ${onlyValidSentences} ${nl} ${ne} ${ws} ${neg} ${bs} ${dr} ${nf} ${fm} ${pt} ${lt} ${dt} ${ct} ${dd} ${fn} ${fp} ${fo}
 																fi
 															done
 														done

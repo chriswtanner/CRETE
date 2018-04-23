@@ -42,49 +42,51 @@ stanfordPath="/Users/christanner/research/libraries/stanford-corenlp-full-2017-0
 
 corpusPath=${baseDir}"data/ECB_$1/"
 useECBTest=$2
-numLayers=$3
-numEpochs=$4
-windowSize=$5
-numNegPerPos=$6
-batchSize=$7
+onlyValidSentences=$3
+numLayers=$4
+numEpochs=$5
+windowSize=$6
+numNegPerPos=$7
+batchSize=$8
 
 # CCNN features 
-dropout=${8}
-numFilters=${9}
-filterMultiplier=${10}
-posType=${11}
+dropout=${9}
+numFilters=${10}
+filterMultiplier=${11}
+posType=${12}
 posEmbeddingsFile=${baseDir}"data/posEmbeddings100.txt"
-lemmaType=${12}
-dependencyType=${13}
-charType=${14}
-devDir=${15}
-FFNNnumEpochs=${16}
-FFNNnumCorpusSamples=${17}
-FFNNOpt=${18}
+lemmaType=${13}
+dependencyType=${14}
+charType=${15}
+devDir=${16}
+FFNNnumEpochs=${17}
+FFNNnumCorpusSamples=${18}
+FFNNOpt=${19}
 
-stanOutputDir=${baseDir}"data/stanford_output/"
+stanOutputDir=${baseDir}"data/stanford_output_all/"
 
 echo "-------- params --------"
 echo "corpus:" ${corpusPath}
-echo "useECBTest:" ${useECBTest} # 2 
-echo "numLayers:" $numLayers # 3
-echo "numEpochs:" $numEpochs # 4
-echo "windowSize:" $windowSize # 5
-echo "numNegPerPos:" $numNegPerPos # 6
-echo "batchSize:" $batchSize # 7
-echo "dropout:" $dropout # 8
-echo "numFilters:" $numFilters # 9
-echo "filterMultiplier:" $filterMultiplier # 10
-echo "posType:" $posType # 11
+echo "useECBTest:" ${useECBTest} # 2
+echo "onlyValidSentences:" ${onlyValidSentences} # 3
+echo "numLayers:" $numLayers # 4
+echo "numEpochs:" $numEpochs # 5
+echo "windowSize:" $windowSize # 6
+echo "numNegPerPos:" $numNegPerPos # 7
+echo "batchSize:" $batchSize # 8
+echo "dropout:" $dropout # 9
+echo "numFilters:" $numFilters # 10
+echo "filterMultiplier:" $filterMultiplier # 11
+echo "posType:" $posType # 12
 echo "posEmbeddingsFile:" $posEmbeddingsFile # static
-echo "lemmaType:" $lemmaType # 12
-echo "dependencyType:" $dependencyType # 13
-echo "charType:" $charType # 14
+echo "lemmaType:" $lemmaType # 13
+echo "dependencyType:" $dependencyType # 14
+echo "charType:" $charType # 15
 echo "charEmbeddingsFile:" $charEmbeddingsFile # static
-echo "devDir:" $devDir # 15
-echo "FFNNnumEpochs:" $FFNNnumEpochs # 16
-echo "FFNNnumCorpusSamples:" $FFNNnumCorpusSamples # 17
-echo "FFNNOpt:" $FFNNOpt # 18
+echo "devDir:" $devDir # 16
+echo "FFNNnumEpochs:" $FFNNnumEpochs # 17
+echo "FFNNnumCorpusSamples:" $FFNNnumCorpusSamples # 18
+echo "FFNNOpt:" $FFNNOpt # 19
 
 echo "-------- STATIC PATHS --------"
 echo "resultsDir:" ${resultsDir}
@@ -103,6 +105,7 @@ cd $scriptDir
 python3 -u CorefEngine.py \
 --corpusPath=${corpusPath} \
 --useECBTest=${useECBTest} \
+--onlyValidSentences=${onlyValidSentences} \
 --stanTokensFile=${stanTokensFile} \
 --verifiedSentencesFile=${verifiedSentencesFile} \
 --replacementsFile=${replacementsFile} \

@@ -8,14 +8,11 @@ from Doc import Doc
 from Token import Token
 from Mention import Mention
 class ECBParser:
-    def __init__(self, args, docToVerifiedSentences):
+    def __init__(self, args, helper):
         
         self.onlyEvents = True
-        self.onlyValidSentences = True
         self.args = args
-        
-        # TMP REMOVE THIS
-        #self.docToVerifiedSentences = docToVerifiedSentences
+        self.helper = helper
 
         # filled in via loadReplacements()
         self.replacements = {}
@@ -185,7 +182,7 @@ class ECBParser:
                 # gets the token IDs
                 regex2 = r"<token_anchor t_id=\"(\d+)\".*?/>"
                 it2 = tuple(re.finditer(regex2, match.group(3)))
-                tmpTokens = []  # can remove after testing if our corpus matches HDDCRP's
+                tmpTokens = []
                 text = []
                 hasAllTokens = True
                 for match2 in it2:
@@ -226,33 +223,17 @@ class ECBParser:
                             continue
 
                         token0 = foundMention.tokens[0]
-                        if self.onlyValidSentences and token0.sentenceNum not in docToVerifiedSentences[doc_id]:
+                        if self.args.onlyValidSentences and token0.sentenceNum not in docToVerifiedSentences[doc_id]:
                             continue
                         if True: # token0.sentenceNum in docToVerifiedSentences[doc_id]:
                             corpus.addMention(foundMention, REF)
                         else:
                             numMentionsIgnored += 1    
-            # TMP
-            '''
-            print("doc_id:",doc_id)
-            for i in tmpSentenceNums:
-                o = str(i)
-                if i in self.docToVerifiedSentences[doc_id]:
-                    o += " * "
-                else:
-                    o += "  "
-                if i in tmpSentenceNumToMentions:
-                    o += str(len(tmpSentenceNumToMentions[i]))
-                    for m in tmpSentenceNumToMentions[i]:
-                        print(m)
-                else:
-                    o += "0"
-                print(o)
-            '''
             corpus.addDocPointer(doc_id, curDoc)
         corpus.assignGlobalSentenceNums()
         print("numMentionsIgnored:", numMentionsIgnored)
         print("# mentions created:", len(corpus.ecb_mentions))
+        print("# ECB+ tokens:", len(corpus.corpusTokens))
         return corpus
 
 	# loads replacement file
