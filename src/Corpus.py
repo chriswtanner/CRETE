@@ -41,6 +41,24 @@ class Corpus:
         # to easily parse the original sentence which contains each Mention
         self.globalSentenceNumToTokens = defaultdict(list)
 
+    def checkMentions(self):
+        allKeys = set()
+        allKeys.update(self.docSentToMentions.keys())
+        allKeys.update(self.docSentToHMentions.keys())
+        allKeys.update(self.docSentToSMentions.keys())
+        print("# keys:",len(allKeys))
+        docToSent = defaultdict(set)
+        for doc, _ in allKeys:
+            docToSent[doc].add(_)
+        for doc in docToSent.keys():
+            #print(doc)
+            for sent in docToSent[doc]:
+                necb = len(self.docSentToMentions[(doc, sent)])
+                nh = len(self.docSentToHMentions[(doc, sent)])
+                ns = len(self.docSentToSMentions[(doc, sent)])
+                if necb == 0 and ns > 0:
+                    print("doc:",doc, "sent:",sent)
+                    print(necb,",",nh,",",ns)
     # adds a Token to the corpus
     def addToken(self, token):
         self.corpusTokens.append(token)
@@ -70,6 +88,7 @@ class Corpus:
     # adds a Mention to the corpus
     def addMention(self, mention, REF):
         (doc_id, sentenceNum) = self.getDocAndSentence(mention)
+
         # updates the mention w/ REF and MUID info
         mention.setXUID(self.curXUID)
         mention.setREF(REF)

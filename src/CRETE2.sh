@@ -43,25 +43,26 @@ stanfordPath="/Users/christanner/research/libraries/stanford-corenlp-full-2017-0
 corpusPath=${baseDir}"data/ECB_$1/"
 useECBTest=$2
 onlyValidSentences=$3
-numLayers=$4
-numEpochs=$5
-windowSize=$6
-numNegPerPos=$7
-batchSize=$8
+addIntraDocs=$4
+numLayers=$5
+numEpochs=$6
+windowSize=$7
+numNegPerPos=$8
+batchSize=$9
 
 # CCNN features 
-dropout=${9}
-numFilters=${10}
-filterMultiplier=${11}
-posType=${12}
+dropout=${10}
+numFilters=${11}
+filterMultiplier=${12}
+posType=${13}
 posEmbeddingsFile=${baseDir}"data/posEmbeddings100.txt"
-lemmaType=${13}
-dependencyType=${14}
-charType=${15}
-devDir=${16}
-FFNNnumEpochs=${17}
-FFNNnumCorpusSamples=${18}
-FFNNOpt=${19}
+lemmaType=${14}
+dependencyType=${15}
+charType=${16}
+devDir=${17}
+FFNNnumEpochs=${18}
+FFNNnumCorpusSamples=${19}
+FFNNOpt=${20}
 
 stanOutputDir=${baseDir}"data/stanford_output_all/"
 
@@ -69,6 +70,7 @@ echo "-------- params --------"
 echo "corpus:" ${corpusPath}
 echo "useECBTest:" ${useECBTest} # 2
 echo "onlyValidSentences:" ${onlyValidSentences} # 3
+echo "addIntraDocs:" ${addIntraDocs}
 echo "numLayers:" $numLayers # 4
 echo "numEpochs:" $numEpochs # 5
 echo "windowSize:" $windowSize # 6
@@ -106,6 +108,7 @@ python3 -u CorefEngine.py \
 --corpusPath=${corpusPath} \
 --useECBTest=${useECBTest} \
 --onlyValidSentences=${onlyValidSentences} \
+--addIntraDocs=${addIntraDocs} \
 --stanTokensFile=${stanTokensFile} \
 --verifiedSentencesFile=${verifiedSentencesFile} \
 --replacementsFile=${replacementsFile} \

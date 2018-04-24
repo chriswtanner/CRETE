@@ -47,8 +47,7 @@ class CorefEngine:
 		hddcrp_parser = HDDCRPParser(args)
 		hddcrp_mentions = hddcrp_parser.parseCorpus(args.hddcrpFullFile)
 		helper.createHDDCRPMentions(hddcrp_mentions)
-		helper.printCorpusStats()
-		#helper.printHDDCRPMentionCoverage()
+
 		# loads Stanford's parse
 		if runStanford:
 			stan = StanParser(args, corpus)
@@ -58,6 +57,9 @@ class CorefEngine:
 			helper.loadStanTokens()
 
 		helper.createStanMentions()
-		
+		helper.printCorpusStats()
+		helper.printHDDCRPMentionCoverage()
+		corpus.checkMentions()
+
 		print("took:", str((time.time() - start_time)), "seconds")
 		

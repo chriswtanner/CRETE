@@ -10,7 +10,7 @@ from Mention import Mention
 class ECBParser:
     def __init__(self, args, helper):
         
-        self.onlyEvents = True
+        self.onlyEvents = False
         self.args = args
         self.helper = helper
 
@@ -37,6 +37,7 @@ class ECBParser:
 
         globalSentenceNum = 0
         lastToken_id = -1
+        intraCount = 0
         for f in files:
 
             lm_idToMention = {} # only used to tmp store the mentions
@@ -167,6 +168,9 @@ class ECBParser:
                 corpus.addToken(t)
                 curDoc.tokens.append(t)
                 corpus.UIDToToken[t.UID] = t
+
+                #if doc_id == "31_3ecbplus.xml":
+                #    print("t:",t)
                 
             # reads <markables> 2nd time
             regex = r"<([\w]+) m_id=\"(\d+)?\".*?>(.*?)?</.*?>"
@@ -209,26 +213,51 @@ class ECBParser:
                 REF = match.group(1)
                 regex2 = r"<source m_id=\"(\d+)\".*?/>"
                 it2 = tuple(re.finditer(regex2, match.group(2)))
-
                 # only keep track of REFs for which we have found Mentions
                 for match2 in it2:
                     m_id = int(match2.group(1))
+                    if doc_id == "36_10ecbplus.xml":
+                        print("CROSS mid:", m_id)
                     if m_id not in lm_idToMention:
                         print("*** MISSING MENTION! EXITING")
                         exit(1)
                     else: #elif lm_idToMention[m_id].isPred:
                         foundMention = lm_idToMention[m_id]
-
                         if self.onlyEvents and not foundMention.isPred:
                             continue
-
                         token0 = foundMention.tokens[0]
                         if self.args.onlyValidSentences and token0.sentenceNum not in docToVerifiedSentences[doc_id]:
+                            numMentionsIgnored += 1
                             continue
-                        if True: # token0.sentenceNum in docToVerifiedSentences[doc_id]:
-                            corpus.addMention(foundMention, REF)
                         else:
-                            numMentionsIgnored += 1    
+                            corpus.addMention(foundMention, REF)
+
+            if self.args.addIntraDocs:
+                regex = r"<INTRA_DOC_COREF.*?>(.*?)?</.*?>"
+                it = tuple(re.finditer(regex, relations))
+                for match in it:
+                    regex2 = r"<source m_id=\"(\d+)\".*?/>"
+                    it2 = tuple(re.finditer(regex2, match.group(1)))
+                    # only keep track of REFs for which we have found Mentions
+                    for match2 in it2:
+
+                        m_id = int(match2.group(1))
+                        if doc_id == "36_10ecbplus.xml":
+                            print("INTRA mid:", m_id)
+                        if m_id not in lm_idToMention:
+                            print("*** MISSING MENTION! EXITING")
+                            exit(1)
+                        else:
+                            foundMention = lm_idToMention[m_id]
+                            if self.onlyEvents and not foundMention.isPred:
+                                continue
+                            token0 = foundMention.tokens[0]
+                            if self.args.onlyValidSentences and token0.sentenceNum not in docToVerifiedSentences[doc_id]:
+                                numMentionsIgnored += 1
+                                continue
+                            else:
+                                corpus.addMention(foundMention, "INTRA"+str(intraCount))
+                                intraCount += 1
             corpus.addDocPointer(doc_id, curDoc)
         corpus.assignGlobalSentenceNums()
         print("numMentionsIgnored:", numMentionsIgnored)
