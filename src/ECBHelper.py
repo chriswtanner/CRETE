@@ -70,7 +70,6 @@ class ECBHelper:
 		for uid in stan_db.UIDToStanTokens:
 			self.corpus.UIDToToken[uid].stanTokens = stan_db.UIDToStanTokens[uid]
 		print("* [StanDB] loaded", len(stan_db.UIDToStanTokens), "UIDs' StanTokens")
-		print("* [StanDB] corpus has #UIDS:", str(len(self.corpus.UIDToToken)))
 
 	def addStanfordAnnotations(self, stanfordParser):
 		stanDocSet = set()
@@ -292,68 +291,7 @@ class ECBHelper:
 			for SUID in SUIDs:
 				self.UIDToSUID[SUID].append(curMention.XUID)
 
-		print("# stan mentionS:",len(self.corpus.stan_mentions))
-		'''
-		tokenToMention = {}
-		stanStats = defaultdict(lambda: defaultdict(int))
-		for m in self.corpus.ecb_mentions:
-			for t in m.tokens:
-				tokenToMention[t] = m
-
-		numStanNER = 0
-		numAligned = 0
-		numNotAligned = 0
-		numZeros = 0
-		TN = 0
-		for each_token in self.corpus.corpusTokens:
-			if each_token.sentenceNum not in self.docToVerifiedSentences[each_token.doc_id]:
-				continue
-			dir_num = int(each_token.doc_id.split("_")[0])
-			if dir_num not in self.testingDirs:
-				continue
-		#numMentions = 0
-		#for m in self.corpus.ecb_mentions:
-		#    if m.dir_num not in self.testingDirs:
-		#        continue
-		#    numMentions += 1
-			#for each_token in m.tokens:
-			mentionsFound = set()
-			for st in each_token.stanTokens:
-				if st.ner != "O":
-					if each_token in tokenToMention:
-						mentionsFound.add(tokenToMention[each_token])
-						numAligned += 1
-					else:
-						mentionsFound.add("n/a")
-						numNotAligned += 1
-					numStanNER += 1
-				else:
-					if each_token not in tokenToMention:
-						TN += 1
-					numZeros += 1
-			if len(mentionsFound) == 1:  # all or nothing
-				_ = mentionsFound.pop()
-				if _ == "n/a":
-					stanStats["n/a"]["n/a"] += 1
-				else:
-					stanStats["all"][_.mentionType] += 1
-			else:
-				for m in mentionsFound:
-					if m != "n/a":
-						stanStats["partial"][m.mentionType] += 1
-		
-
-		for d in stanStats:
-			sorted_x = sorted(stanStats[d].items(), key=operator.itemgetter(1), reverse=True)
-			for (k, v) in sorted_x:
-				print(d, str(k), v)
-		print("numStanNER", numStanNER)
-		print("numAligned", numAligned)
-		print("numNotAligned", numNotAligned)
-		print("numZeros", numZeros)
-		print("TN:", TN)
-		#print("numMentions", numMentions)
-		'''
+		print("# stan mentions:",len(self.corpus.stan_mentions))
 	def createHDDCRPMentions(self, hddcrp_mentions):
 
 		tmpECBTokens = set()
@@ -438,20 +376,9 @@ class ECBHelper:
 			else:
 				numC += 1
 
-		'''
-		print("\t\t# singletons:",numS,"# nons",numC)
-		print("\t# ECB Mentions (total):", len(self.corpus.ecb_mentions))
-		print("\t# HDDCRP Mentions (total):", len(self.corpus.hddcrp_mentions))
-		
-		for d in mentionStats:
-			sorted_x = sorted(mentionStats[d].items(), key=operator.itemgetter(1), reverse=True)
-			for (k,v) in sorted_x:
-				print(d,str(k),v)
-		'''
 		print("\t# ECB Mentions (train): NON-ACTION:", mentionStats[("train", 0)], "ACTION:", mentionStats[("train",1)])
 		print("\t# ECB Mentions (dev): NON-ACTION:", mentionStats[("dev", 0)], "ACTION:", mentionStats[("dev", 1)])
 		print("\t# ECB Mentions (test): NON-ACTION:", mentionStats[("test", 0)], "events:", mentionStats[("test", 1)])
-		
 		print("\t# ECB Tokens:", len(self.corpus.corpusTokens))
 
 	# calculates the prec, recall, F1 of tokens
@@ -461,7 +388,12 @@ class ECBHelper:
 		event_ecb_tokens = set()
 		non_event_ecb_tokens = set()
 		all_ecb_tokens = set()
+
+		ecb_muids = set()
+		stan_muids = set()
+
 		for m in self.corpus.ecb_mentions:
+			ecb_muids.add(m.UID)
 			for t in m.tokens:
 				dir_num = int(t.doc_id.split("_")[0])
 				if dir_num not in self.testingDirs:
@@ -477,6 +409,7 @@ class ECBHelper:
 		# gathers stan tokens
 		stan_tokens = set()
 		for m in self.corpus.stan_mentions:
+			stan_muids.add(m.UID)
 			for t in m.tokens:
 				dir_num = int(t.doc_id.split("_")[0])
 				if dir_num not in self.testingDirs:
@@ -493,10 +426,57 @@ class ECBHelper:
 				hddcrp_tokens.add(t)
 				both_tokens.add(t)
 
+		# collects mention-performance
+		perfects = set()
+		partials = set()
+		falseNegatives = set()
+		falsePositives = set()
+		for m in self.corpus.ecb_mentions:
+			if m.dir_num not in self.testingDirs or m.isPred:
+				continue
+			muid = m.UID
+			if muid in stan_muids:
+				perfects.add(m)
+			else:
+				# check if partial coverage or none
+				isPartial = False
+				for t in m.tokens:
+					if t in stan_tokens:
+						isPartial = True
+						break
+				if isPartial:
+					partials.add(m)
+				else:
+					falseNegatives.add(m)
+		for m in self.corpus.stan_mentions:
+			if m.dir_num not in self.testingDirs:
+				continue
+			muid = m.UID
+			if muid not in ecb_muids: # check if partial or none
+				isPartial = False
+				for t in m.tokens:
+					if t in all_ecb_tokens:
+						isPartial = True
+						break
+				if not isPartial: # no shared tokens; false positive
+					falsePositives.add(m)
+
+		print("# perfect ECB_MENTIONS:",len(perfects))
+		print("# partials ECB_MENTIONS:", len(partials))
+		print("# false Negatives (misses) ECB_MENTIONS:", len(falseNegatives))
+		print("# false Positives ECB_MENTIONS:", len(falsePositives))
+		self.printSet("perfects",perfects)
+		self.printSet("partials", partials)
+		self.printSet("falseNegatives", falseNegatives)
+		self.printSet("falsePositives", falsePositives)
 		self.printMentionCoverage("HDDCRP", hddcrp_tokens, event_ecb_tokens, non_event_ecb_tokens, all_ecb_tokens)
 		self.printMentionCoverage("STAN", stan_tokens, event_ecb_tokens, non_event_ecb_tokens, all_ecb_tokens)
 		self.printMentionCoverage("STAN+HDDCRP", both_tokens, event_ecb_tokens, non_event_ecb_tokens, all_ecb_tokens)
 
+	def printSet(self, label, set):
+		print(label,":")
+		for i in set:
+			print(i)
 	def printMentionCoverage(self, label, our_tokens, event_ecb_tokens, non_event_ecb_tokens, all_ecb_tokens):
 		# events
 		numETP = 0

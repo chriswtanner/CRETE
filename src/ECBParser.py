@@ -216,8 +216,6 @@ class ECBParser:
                 # only keep track of REFs for which we have found Mentions
                 for match2 in it2:
                     m_id = int(match2.group(1))
-                    if doc_id == "36_10ecbplus.xml":
-                        print("CROSS mid:", m_id)
                     if m_id not in lm_idToMention:
                         print("*** MISSING MENTION! EXITING")
                         exit(1)
@@ -242,8 +240,6 @@ class ECBParser:
                     for match2 in it2:
 
                         m_id = int(match2.group(1))
-                        if doc_id == "36_10ecbplus.xml":
-                            print("INTRA mid:", m_id)
                         if m_id not in lm_idToMention:
                             print("*** MISSING MENTION! EXITING")
                             exit(1)

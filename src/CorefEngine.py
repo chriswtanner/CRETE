@@ -58,8 +58,8 @@ class CorefEngine:
 
 		helper.createStanMentions()
 		helper.printCorpusStats()
-		helper.printHDDCRPMentionCoverage()
-		corpus.checkMentions()
+		#helper.printHDDCRPMentionCoverage()
+		#corpus.checkMentions()
 
 		print("took:", str((time.time() - start_time)), "seconds")
 		
