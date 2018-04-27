@@ -333,8 +333,8 @@ class ECBHelper:
 				self.corpus.addHDDCRPMention(curMention)
 				for HUID in HUIDs: # UID == HUID always, because we checked above (in the warning check)
 					self.UIDToHMUID[HUID].append(curMention.XUID)
-		print("# ecb tokens (from mentions)", len(tmpECBTokens))
-		print("# hddcrp tokens (form mentions):",len(tmpHDDCRPTokens))
+		print("# ecb testing tokens (from mentions)", len(tmpECBTokens))
+		print("# hddcrp testing tokens (from mentions):",len(tmpHDDCRPTokens))
 		'''
 		tp = 0
 		fn = 0
@@ -375,10 +375,7 @@ class ECBHelper:
 				numS +=1
 			else:
 				numC += 1
-
-		print("\t# ECB Mentions (train): NON-ACTION:", mentionStats[("train", 0)], "ACTION:", mentionStats[("train",1)])
-		print("\t# ECB Mentions (dev): NON-ACTION:", mentionStats[("dev", 0)], "ACTION:", mentionStats[("dev", 1)])
-		print("\t# ECB Mentions (test): NON-ACTION:", mentionStats[("test", 0)], "events:", mentionStats[("test", 1)])
+		#print("\t# HDDCRP Mentions (test): NON-ACTION:", mentionStats["test"])
 		print("\t# ECB Tokens:", len(self.corpus.corpusTokens))
 
 	# calculates the prec, recall, F1 of tokens

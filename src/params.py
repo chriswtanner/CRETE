@@ -29,16 +29,29 @@ def setCorefEngineParams():
 	parser.add_argument("--numFilters", help="num CNN filters", type=int)
 	parser.add_argument("--filterMultiplier", help="the \% of how many filters to use at each successive layer", type=float)
 	# optionally added features to the CCNN
-	parser.add_argument("--posType", help="pos feature: {none,sum,avg}", default="none")
-	parser.add_argument("--posEmbeddingsFile", help="the POS embeddings file", default="none")
-	# note, we used to read in the files for embeddings when we wanted to use 
+	# note, we used to read in the files for embeddings when we wanted to use
 	# lemma, distinct from the regular word embeddings and dependency embeddings
 	# but it makes most sense to just read in 1 set of embeddings (which have all the word types we'd care to use)
-	parser.add_argument("--lemmaType", help="pos feature: {none,sum,avg}", default="none")
-	parser.add_argument("--dependencyType", help="dependency feature: {none,sum,avg}", default="none")
-	parser.add_argument("--charEmbeddingsFile", help="the char embeddings file", default="none")
-	parser.add_argument("--charType", help="charEmb feature: {none,concat,avg}", default="none")
-	
+	parser.add_argument("--charEmbeddingsFile",
+	                    help="the char embeddings file", default="none")
+	parser.add_argument("--posEmbeddingsFile", help="the POS embeddings file", default="none")
+	parser.add_argument("--wordFeature", help="print a lot of debugging info",
+	                    type=str2bool, nargs='?', default="f")
+	parser.add_argument("--lemmaFeature", help="print a lot of debugging info",
+	                    type=str2bool, nargs='?', default="f")
+	parser.add_argument("--charFeature", help="print a lot of debugging info",
+	                    type=str2bool, nargs='?', default="f")
+	parser.add_argument("--posFeature", help="print a lot of debugging info",
+	                    type=str2bool, nargs='?', default="f")
+	parser.add_argument("--dependencyFeature", help="print a lot of debugging info",
+	                    type=str2bool, nargs='?', default="f")
+	parser.add_argument("--bowFeature", help="print a lot of debugging info",
+	                    type=str2bool, nargs='?', default="f")
+	parser.add_argument("--wordnetFeature", help="print a lot of debugging info",
+	                    type=str2bool, nargs='?', default="f")
+	parser.add_argument("--framenetFeature", help="print a lot of debugging info",
+	                    type=str2bool, nargs='?', default="f")
+
 	# for FFNN
 	parser.add_argument("--devDir", help="the directory to use for dev", type=int)
 	parser.add_argument("--FFNNnumEpochs", help="FFNN's # of epochs", default="none", type=int)

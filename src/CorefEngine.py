@@ -58,6 +58,8 @@ class CorefEngine:
 
 		helper.createStanMentions()
 		helper.printCorpusStats()
+
+		
 		#helper.printHDDCRPMentionCoverage()
 		#corpus.checkMentions()
 

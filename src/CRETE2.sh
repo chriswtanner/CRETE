@@ -54,18 +54,21 @@ batchSize=$9
 dropout=${10}
 numFilters=${11}
 filterMultiplier=${12}
-posType=${13}
-posEmbeddingsFile=${baseDir}"data/posEmbeddings100.txt"
-lemmaType=${14}
-dependencyType=${15}
-charType=${16}
-devDir=${17}
-FFNNnumEpochs=${18}
-FFNNnumCorpusSamples=${19}
-FFNNOpt=${20}
 
 stanOutputDir=${baseDir}"data/stanford_output_all/"
-
+posEmbeddingsFile=${baseDir}"data/posEmbeddings100.txt"
+wordFeature=${13}
+lemmaFeature=${14}
+charFeature=${15}
+posFeature=${16}
+dependencyFeature=${17}
+bowFeature=${18}
+wordnetFeature=${19}
+framenetFeature=${20}
+devDir=${21}
+FFNNnumEpochs=${22}
+FFNNnumCorpusSamples=${23}
+FFNNOpt=${24}
 echo "-------- params --------"
 echo "corpus:" ${corpusPath}
 echo "useECBTest:" ${useECBTest} # 2
@@ -79,12 +82,14 @@ echo "batchSize:" $batchSize # 8
 echo "dropout:" $dropout # 9
 echo "numFilters:" $numFilters # 10
 echo "filterMultiplier:" $filterMultiplier # 11
-echo "posType:" $posType # 12
-echo "posEmbeddingsFile:" $posEmbeddingsFile # static
-echo "lemmaType:" $lemmaType # 13
-echo "dependencyType:" $dependencyType # 14
-echo "charType:" $charType # 15
-echo "charEmbeddingsFile:" $charEmbeddingsFile # static
+echo "wordFeature:" $wordFeature
+echo "lemmaFeature:" $lemmaFeature
+echo "charFeature:" $charFeature
+echo "posFeature:" $posFeature
+echo "dependencyFeature:" $dependencyFeature
+echo "bowFeature:" $bowFeature
+echo "wordnetFeature:" $wordnetFeature
+echo "framenetFeature:" $framenetFeature
 echo "devDir:" $devDir # 16
 echo "FFNNnumEpochs:" $FFNNnumEpochs # 17
 echo "FFNNnumCorpusSamples:" $FFNNnumCorpusSamples # 18
@@ -98,8 +103,10 @@ echo "replacementsFile:" ${replacementsFile}
 echo "embeddingsFile:" $embeddingsFile
 echo "hddcrpFullFile:" $hddcrpFullFile
 echo "stanOutputDir:" $stanOutputDir
-echo "stanTokensFile:" $stanTokensFile
+echo "stanTokensFile:" $stanTokensFile # the database of stan-parsed tokens
 echo "verifiedSentencesFile:" $verifiedSentencesFile
+echo "charEmbeddingsFile:" $charEmbeddingsFile
+echo "posEmbeddingsFile:" $posEmbeddingsFile
 echo "------------------------"
 
 cd $scriptDir
@@ -125,12 +132,16 @@ python3 -u CorefEngine.py \
 --dropout=${dropout} \
 --numFilters=${numFilters} \
 --filterMultiplier=${filterMultiplier} \
---posType=${posType} \
+--wordFeature=${wordFeature} \
+--lemmaFeature=${lemmaFeature} \
+--charFeature=${charFeature} \
+--posFeature=${posFeature} \
+--dependencyFeature=${dependencyFeature} \
+--bowFeature=${bowFeature} \
+--wordnetFeature=${wordnetFeature} \
+--framenetFeature=${framenetFeature} \
 --posEmbeddingsFile=${posEmbeddingsFile} \
---lemmaType=${lemmaType} \
---dependencyType=${dependencyType} \
 --charEmbeddingsFile=${charEmbeddingsFile} \
---charType=${charType} \
 --devDir=${devDir} \
 --FFNNnumEpochs=${FFNNnumEpochs} \
 --FFNNnumCorpusSamples=${FFNNnumCorpusSamples} \
