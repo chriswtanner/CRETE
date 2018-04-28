@@ -77,5 +77,5 @@ class HDDCRPParser:
 				print("ERROR: curLine:", str(line))
 				exit(1)
 		f.close()
-		print("hddcrp parsed:",len(self.hmentions))
+		#print("hddcrp parsed:",len(self.hmentions))
 		return self.hmentions

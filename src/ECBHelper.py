@@ -335,6 +335,7 @@ class ECBHelper:
 					self.UIDToHMUID[HUID].append(curMention.XUID)
 		print("# ecb testing tokens (from mentions)", len(tmpECBTokens))
 		print("# hddcrp testing tokens (from mentions):",len(tmpHDDCRPTokens))
+		print("# HDDCRP Mentions created:",len(self.corpus.hddcrp_mentions))
 		'''
 		tp = 0
 		fn = 0
@@ -349,6 +350,16 @@ class ECBHelper:
 		print("p,r,f1:",prec,recall,f1)
 		'''
 	def printCorpusStats(self):
+		mentionStats = defaultdict(int)
+		for m in self.corpus.ecb_mentions:
+			if m.dir_num in self.trainingDirs:
+				mentionStats["train"] += 1
+			elif m.dir_num in self.devDirs:
+				mentionStats["dev"] += 1
+			elif m.dir_num in self.testingDirs:
+				mentionStats["test"] += 1
+		print(mentionStats)
+	
 		mentionStats = defaultdict(lambda: defaultdict(int))
 		for m in self.corpus.hddcrp_mentions:
 			for t in m.tokens:

@@ -10,7 +10,7 @@ from Mention import Mention
 class ECBParser:
     def __init__(self, args, helper):
         
-        self.onlyEvents = False
+        self.onlyEvents = True
         self.args = args
         self.helper = helper
 
@@ -257,7 +257,7 @@ class ECBParser:
             corpus.addDocPointer(doc_id, curDoc)
         corpus.assignGlobalSentenceNums()
         print("numMentionsIgnored:", numMentionsIgnored)
-        print("# mentions created:", len(corpus.ecb_mentions))
+        print("# ECB mentions created:", len(corpus.ecb_mentions))
         print("# ECB+ tokens:", len(corpus.corpusTokens))
         return corpus
 

@@ -7,6 +7,7 @@ from ECBParser import ECBParser
 from HDDCRPParser import HDDCRPParser
 from ECBHelper import ECBHelper
 from StanParser import StanParser
+from FeatureHandler import FeatureHandler
 class CorefEngine:
 
 	# TODO:
@@ -42,11 +43,10 @@ class CorefEngine:
 		ecb_parser = ECBParser(args, helper)
 		corpus = ecb_parser.parseCorpus(helper.docToVerifiedSentences)
 		helper.addECBCorpus(corpus)
-
+		helper.printCorpusStats()
 		# parses the HDDCRP Mentions
 		hddcrp_parser = HDDCRPParser(args)
-		hddcrp_mentions = hddcrp_parser.parseCorpus(args.hddcrpFullFile)
-		helper.createHDDCRPMentions(hddcrp_mentions)
+		helper.createHDDCRPMentions(hddcrp_parser.parseCorpus(args.hddcrpFullFile))
 
 		# loads Stanford's parse
 		if runStanford:
@@ -57,11 +57,19 @@ class CorefEngine:
 			helper.loadStanTokens()
 
 		helper.createStanMentions()
-		helper.printCorpusStats()
-
 		
 		#helper.printHDDCRPMentionCoverage()
 		#corpus.checkMentions()
 
-		print("took:", str((time.time() - start_time)), "seconds")
+		# DEFINE WHICH MENTIONS TO USE
+		mentions = set()
+		for m in corpus.ecb_mentions:
+			if m.dir_num in helper.testingDirs:
+				mentions.add(m)
+		for m in corpus.hddcrp_mentions:
+			mentions.add(m)
+
+		fh = FeatureHandler(args, helper, mentions)
+		fh.createWordNetFeatures()
 		
+		print("took:", str((time.time() - start_time)), "seconds")
