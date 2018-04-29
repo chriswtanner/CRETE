@@ -14,6 +14,8 @@ class Corpus:
         self.UIDToToken = {}
         self.curXUID = 0 # counter used for both ECB and HDDCRP, hence the X
 
+        self.XUIDToMention = {} # used for *all* mentions, regardless if ECB, HDDCRP, Stan
+
         # only used for ECB Corpus mentions
         self.ecb_mentions = []
         self.MUIDToMention = {}
@@ -74,6 +76,7 @@ class Corpus:
         self.SUIDToMention[self.curXUID] = mention
         self.dirHalves[mention.dirHalf].assignStanMention(self.curXUID, mention.doc_id)
         self.docSentToSMentions[(doc_id, sentenceNum)].append(mention)
+        self.XUIDToMention[self.curXUID] = mention
         self.curXUID += 1
 
     # adds a HDDCRP Mention to the corpus (no REF info)
@@ -84,6 +87,7 @@ class Corpus:
         self.HMUIDToMention[self.curXUID] = mention
         self.dirHalves[mention.dirHalf].assignHDDCRPMention(self.curXUID, mention.doc_id)
         self.docSentToHMentions[(doc_id, sentenceNum)].append(mention)
+        self.XUIDToMention[self.curXUID] = mention
         self.curXUID += 1
 
     # adds a Mention to the corpus
@@ -100,6 +104,7 @@ class Corpus:
         self.refToMUIDs[REF].add(self.curXUID)
         self.dirHalves[mention.dirHalf].assignECBMention(self.curXUID, mention.doc_id, REF)
         self.docSentToMentions[(doc_id, sentenceNum)].append(mention)
+        self.XUIDToMention[self.curXUID] = mention
         self.curXUID += 1
 
     def assignGlobalSentenceNums(self):

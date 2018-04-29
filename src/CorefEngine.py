@@ -3,6 +3,7 @@
 import params
 import time
 import pickle
+from nltk.corpus import wordnet as wn
 from ECBParser import ECBParser
 from HDDCRPParser import HDDCRPParser
 from ECBHelper import ECBHelper
@@ -30,6 +31,15 @@ class CorefEngine:
 	#    (B) test on non-events
 
 	if __name__ == "__main__":
+		'''
+		dog = wn.synsets('asj0zj0')
+		print(dog)
+		cat = wn.synsets('cat')[0]
+		print(dog.res_similarity(cat))
+		print(cat.wup_similarity(dog))
+
+		exit(1)
+		'''
 		runStanford = False
 		start_time = time.time()
 
@@ -70,6 +80,6 @@ class CorefEngine:
 			mentions.add(m)
 
 		fh = FeatureHandler(args, helper, mentions)
-		fh.createWordNetFeatures()
-		
+		#fh.saveWordNetFeatures("../data/features/wordnet.f")
+		fh.saveBoWFeatures("../data/features/bow.f")
 		print("took:", str((time.time() - start_time)), "seconds")

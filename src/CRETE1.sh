@@ -72,7 +72,7 @@ do
 	FFNNnumCorpusSamples=(1) # 5 10 20)
 	FFNNPosRatio=(0.8) # 0.2 0.8
 	FFNNOpt=("adam") # "rms" "adam" "adagrad"
-	source ~/researchcode/venv/bin/activate
+	#source ~/researchcode/venv/bin/activate
 
 	for nl in "${numLayers[@]}"
 	do

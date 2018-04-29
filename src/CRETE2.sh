@@ -1,5 +1,5 @@
 #!/bin/bash
-export PYTHONIOENCODING=UTF-8
+#export PYTHONIOENCODING=UTF-8
 
 # manually set these base params
 me=`whoami`
@@ -23,11 +23,12 @@ then
 	export PATH=${CUDA_HOME}/bin:${PATH}
 else
 	echo "[ RUNNING LOCALLY ]"
+	source ~/research/venv/bin/activate
 fi
 
 hddcrpFullFile=${baseDir}"data/predict.ran.WD.semeval.txt" # MAKE SURE THIS IS WHAT YOU WANT (gold vs predict)
 verbose="true"
-embeddingsFile=${baseDir}"data/gloveEmbeddings.6B.300.txt"
+embeddingsFile=${baseDir}"data/features/gloveEmbeddings.6B.300.txt"
 scriptDir=${baseDir}"src/"
 dataDir=${baseDir}"data/"
 resultsDir=${baseDir}"results/"
@@ -36,7 +37,7 @@ replacementsFile=${baseDir}"data/replacements.txt"
 stanTokensFile=${baseDir}"data/stan_tokens.p"
 verifiedSentencesFile=${baseDir}"data/ECBplus_coreference_sentences.csv"
 
-charEmbeddingsFile=${baseDir}"data/charRandomEmbeddings.txt"
+charEmbeddingsFile=${baseDir}"data/features/charRandomEmbeddings.txt"
 
 stanfordPath="/Users/christanner/research/libraries/stanford-corenlp-full-2017-06-09/"
 
@@ -56,7 +57,7 @@ numFilters=${11}
 filterMultiplier=${12}
 
 stanOutputDir=${baseDir}"data/stanford_output_all/"
-posEmbeddingsFile=${baseDir}"data/posEmbeddings100.txt"
+posEmbeddingsFile=${baseDir}"data/features/posEmbeddings100.txt"
 wordFeature=${13}
 lemmaFeature=${14}
 charFeature=${15}

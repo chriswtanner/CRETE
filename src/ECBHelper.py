@@ -60,7 +60,6 @@ class ECBHelper:
 			s.UIDToStanTokens[t.UID] = t.stanTokens
 		print("* writing out", len(s.UIDToStanTokens), "UIDs' StanTokens")
 		pickle_out = open(self.args.stanTokensFile, 'wb')
-		#pickle.dump(s.UIDToStanTokens, pickle_out)
 		pickle.dump(s, pickle_out)
 
 	# reads in the pickled StanTokens
