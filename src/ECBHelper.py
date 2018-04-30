@@ -229,7 +229,6 @@ class ECBHelper:
 		print("we've successfully added stanford links to every single token within our", str(len(self.corpus.doc_idToDocs)), "docs")
 
 	def createStanMentions(self):
-		print("in createStanMentions()")
 		last_ner = ""
 		toBeMentions = [] # list of StanToken Lists
 		curTokens = []
@@ -290,7 +289,7 @@ class ECBHelper:
 			for SUID in SUIDs:
 				self.UIDToSUID[SUID].append(curMention.XUID)
 
-		print("# stan mentions:",len(self.corpus.stan_mentions))
+		print("* Created",len(self.corpus.stan_mentions),"Stan Mentions")
 	def createHDDCRPMentions(self, hddcrp_mentions):
 
 		tmpECBTokens = set()

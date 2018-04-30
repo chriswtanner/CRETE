@@ -3,6 +3,7 @@
 import params
 import time
 import pickle
+import random
 from nltk.corpus import wordnet as wn
 from ECBParser import ECBParser
 from HDDCRPParser import HDDCRPParser
@@ -31,15 +32,10 @@ class CorefEngine:
 	#    (B) test on non-events
 
 	if __name__ == "__main__":
-		'''
-		dog = wn.synsets('asj0zj0')
-		print(dog)
-		cat = wn.synsets('cat')[0]
-		print(dog.res_similarity(cat))
-		print(cat.wup_similarity(dog))
-
-		exit(1)
-		'''
+		wordnetRelFeaturesFile = "../data/features/wordnet_rel.f"
+		bowSingleFeaturesFile = "../data/features/bow_single.f"
+		bowRelFeaturesFile = "../data/features/bow_rel.f"
+		
 		runStanford = False
 		start_time = time.time()
 
@@ -52,6 +48,9 @@ class CorefEngine:
 		# parses the real, actual corpus (ECB's XML files)
 		ecb_parser = ECBParser(args, helper)
 		corpus = ecb_parser.parseCorpus(helper.docToVerifiedSentences)
+
+
+
 		helper.addECBCorpus(corpus)
 		helper.printCorpusStats()
 		# parses the HDDCRP Mentions
@@ -80,6 +79,6 @@ class CorefEngine:
 			mentions.add(m)
 
 		fh = FeatureHandler(args, helper, mentions)
-		#fh.saveWordNetFeatures("../data/features/wordnet.f")
-		fh.saveBoWFeatures("../data/features/bow.f")
+		#fh.saveWordNetFeatures(wordnetRelFeaturesFile)
+		fh.saveBoWFeatures(bowSingleFeaturesFile, bowRelFeaturesFile)
 		print("took:", str((time.time() - start_time)), "seconds")
