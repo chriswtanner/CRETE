@@ -88,5 +88,5 @@ class CorefEngine:
 		#fh.saveLemmaFeatures(lemmaFeaturesFile)
 		#fh.saveCharFeatures(charFeaturesFile)
 		#fh.savePOSFeatures(posFeaturesFile)
-		fh.saveDependencyFeatures(dependencyFeaturesFile)
+		#fh.saveDependencyFeatures(dependencyFeaturesFile)
 		print("took:", str((time.time() - start_time)), "seconds")
