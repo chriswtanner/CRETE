@@ -32,10 +32,15 @@ class CorefEngine:
 	#    (B) test on non-events
 
 	if __name__ == "__main__":
-		wordnetRelFeaturesFile = "../data/features/wordnet_rel.f"
-		bowSingleFeaturesFile = "../data/features/bow_single.f"
-		bowRelFeaturesFile = "../data/features/bow_rel.f"
-		
+
+		wordFeaturesFile = "../data/features/word.f"
+		lemmaFeaturesFile = "../data/features/lemma.f"
+		charFeaturesFile = "../data/features/char.f"
+		posFeaturesFile = "../data/features/pos.f"
+		dependencyFeaturesFile = "../data/features/dependency.f"
+		wordnetFeaturesFile = "../data/features/wordnet.f"
+		bowFeaturesFile = "../data/features/bow.f"
+
 		runStanford = False
 		start_time = time.time()
 
@@ -48,8 +53,6 @@ class CorefEngine:
 		# parses the real, actual corpus (ECB's XML files)
 		ecb_parser = ECBParser(args, helper)
 		corpus = ecb_parser.parseCorpus(helper.docToVerifiedSentences)
-
-
 
 		helper.addECBCorpus(corpus)
 		helper.printCorpusStats()
@@ -70,7 +73,7 @@ class CorefEngine:
 		#helper.printHDDCRPMentionCoverage()
 		#corpus.checkMentions()
 
-		# DEFINE WHICH MENTIONS TO USE
+		# DEFINES WHICH MENTIONS TO USE
 		mentions = set()
 		for m in corpus.ecb_mentions:
 			if m.dir_num in helper.testingDirs:
@@ -79,6 +82,11 @@ class CorefEngine:
 			mentions.add(m)
 
 		fh = FeatureHandler(args, helper, mentions)
-		#fh.saveWordNetFeatures(wordnetRelFeaturesFile)
-		fh.saveBoWFeatures(bowSingleFeaturesFile, bowRelFeaturesFile)
+		#fh.saveWordNetFeatures(wordnetFeaturesFile)
+		#fh.saveBoWFeatures(bowFeaturesFile)
+		#fh.saveWordFeatures(wordFeaturesFile)
+		#fh.saveLemmaFeatures(lemmaFeaturesFile)
+		#fh.saveCharFeatures(charFeaturesFile)
+		#fh.savePOSFeatures(posFeaturesFile)
+		fh.saveDependencyFeatures(dependencyFeaturesFile)
 		print("took:", str((time.time() - start_time)), "seconds")
