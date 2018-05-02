@@ -1,4 +1,5 @@
 import os
+import sys
 import keras
 import random
 import numpy as np
@@ -98,6 +99,7 @@ class FFNN:
 			f1 = 2*(recall*prec) / (recall + prec)
 			f1s.append(f1)
 			print("acc:", acc, "r:", recall, "p:", prec, "f1:", f1)
+			sys.stdout.flush()
 		# clears ram
 		self.trainX = None
 		self.trainY = None
@@ -105,7 +107,7 @@ class FFNN:
 		if len(f1s) > 1:
 			stddev = self.standard_deviation(f1s)
 		print("avgf1:", sum(f1s)/len(f1s), "stddev:", stddev)
-
+		sys.stdout.flush()
 	def standard_deviation(self, lst):
 		num_items = len(lst)
 		mean = sum(lst) / num_items
