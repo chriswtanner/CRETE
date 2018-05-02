@@ -4,7 +4,7 @@ import random
 import numpy as np
 import tensorflow as tf
 import keras.backend as K
-from math import sqrt
+from math import sqrt, floor
 from keras.models import Sequential
 from keras.layers import Dense, Activation, Dropout
 from keras.optimizers import Adam
@@ -45,7 +45,19 @@ class FFNN:
 		f1s = []
 		for i in range(numRuns):
 			self.model = Sequential()
-			self.model.add(Dense(units=self.hidden_size, input_shape=(self.dataDim,), use_bias=True, kernel_initializer='normal'))
+
+			# optionally add a 3rd layer
+			if self.dataDim > 1000:
+				h1 = floor(self.dataDim / 2)
+				print("h1:",h1)
+				self.model.add(Dense(units=h1, input_shape=(self.dataDim,), use_bias=True, kernel_initializer='normal'))
+				self.model.add(Activation('relu'))
+				if h1 > 1600:
+					h2 = floor(h1 / 4.0)
+					self.model.add(Dense(units=h2, \
+					use_bias=True, kernel_initializer='normal'))
+					self.model.add(Activation('relu'))
+			self.model.add(Dense(units=self.hidden_size, use_bias=True, kernel_initializer='normal'))
 			self.model.add(Activation('relu'))
 			self.model.add(Dense(units=50, use_bias=True, kernel_initializer='normal'))
 			self.model.add(Activation('relu'))
