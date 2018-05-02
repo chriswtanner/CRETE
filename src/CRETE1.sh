@@ -1,13 +1,13 @@
 #!/bin/bash
-prefix="ccnnagg" # used to help identify experiments' outputs, as the output files will have this prefix
+prefix="ffnn" # used to help identify experiments' outputs, as the output files will have this prefix
 corpus="FULL"
 onlyValidSentences="T"
 addIntraDocs="T"
 exhaustivelyTestAllFeatures=false
 useECBTest=true
-featureMap=(1 2 3 4 5 6 7) # 4)
+featureMap=(1 2) # 4)
 numLayers=(2) # 3) # 1 3
-numEpochs=(20) # 20)
+numEpochs=(2) # 20)
 windowSize=(0)
 numNeg=(5)
 batchSize=(128) # 128) # 64 128

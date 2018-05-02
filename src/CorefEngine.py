@@ -45,7 +45,7 @@ class CorefEngine:
 		runStanford = False
 
 		# classifier params
-		numRuns = 3
+		numRuns = 1
 		useWD = True
 		useRelationalFeatures = True
 
