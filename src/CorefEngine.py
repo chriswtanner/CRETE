@@ -45,7 +45,7 @@ class CorefEngine:
 		runStanford = False
 
 		# classifier params
-		numRuns = 1
+		numRuns = 3
 		useWD = False
 		useRelationalFeatures = True
 
@@ -94,6 +94,7 @@ class CorefEngine:
 			testMUIDs.add(m.XUID)
 
 		fh = FeatureHandler(args, helper, trainMUIDs, devMUIDs, testMUIDs)
+		
 		'''
 		fh.saveWordFeatures(wordFeaturesFile)
 		fh.saveLemmaFeatures(lemmaFeaturesFile)
@@ -103,10 +104,9 @@ class CorefEngine:
 		fh.saveWordNetFeatures(wordnetFeaturesFile)
 		fh.saveBoWFeatures(bowFeaturesFile)
 		'''
-		coref = Inference(numRuns, fh, helper, useRelationalFeatures, useWD)
+
+		coref = Inference(fh, helper, useRelationalFeatures, useWD)
 		model = FFNN(helper, coref)
-		model.train()
-		model.test()
-		coref.evaluate(model.predictions)
+		preds = model.train_and_test(numRuns)
 
 		print("took:", str((time.time() - start_time)), "seconds")

@@ -33,11 +33,16 @@ class FeatureHandler:
 		ret = set()
 		for dirhalf in self.corpus.dirHalves:
 			for m1 in self.corpus.dirHalves[dirhalf].MUIDs:
+				if m1 in self.corpus.dirHalves[dirhalf].HMUIDs or m1 in self.corpus.dirHalves[dirhalf].HMUIDs:
+					print("DUPE1")
+
 				for m2 in self.corpus.dirHalves[dirhalf].MUIDs:
 					if m2 <= m1:
 						continue
 					ret.add((m1, m2))
 			for m1 in self.corpus.dirHalves[dirhalf].HMUIDs:
+				if m1 in self.corpus.dirHalves[dirhalf].SUIDs:
+					print("DUPE2")
 				for m2 in self.corpus.dirHalves[dirhalf].HMUIDs:
 					if m2 <= m1:
 						continue
@@ -155,12 +160,15 @@ class FeatureHandler:
 			feature.addSingle(self.corpus.XUIDToMention[muid].UID, sumEmb)
 		# go through all pairs to compute relational data
 		proc = 0
+		completed = set()
 		for muid1, muid2 in muidPairs:
 			uid1, uid2 = sorted([self.corpus.XUIDToMention[muid1].UID,
 							self.corpus.XUIDToMention[muid2].UID])
+			if (uid1,uid2) in completed or (uid2,uid1) in completed:
+				continue
+			completed.add((uid1,uid2))
 			flatv1 = feature.singles[uid1]
 			flatv2 = feature.singles[uid2]
-
 			(dp, cs) = self.getDPCS(flatv1, flatv2)
 			feature.addRelational(uid1, uid2, dp)
 			feature.addRelational(uid1, uid2, cs)
@@ -190,9 +198,13 @@ class FeatureHandler:
 			feature.addSingle(self.corpus.XUIDToMention[muid].UID, sumEmb)
 		# go through all pairs to compute relational data
 		proc = 0
+		completed = set()
 		for muid1, muid2 in muidPairs:
 			uid1, uid2 = sorted([self.corpus.XUIDToMention[muid1].UID,
 							self.corpus.XUIDToMention[muid2].UID])
+			if (uid1, uid2) in completed or (uid2, uid1) in completed:
+				continue
+			completed.add((uid1, uid2))
 			flatv1 = feature.singles[uid1]
 			flatv2 = feature.singles[uid2]
 
@@ -238,12 +250,15 @@ class FeatureHandler:
 
 		# go through all pairs to compute relational data
 		proc = 0
+		completed = set()
 		for muid1, muid2 in muidPairs:
 			uid1, uid2 = sorted([self.corpus.XUIDToMention[muid1].UID,
 							self.corpus.XUIDToMention[muid2].UID])
+			if (uid1, uid2) in completed or (uid2, uid1) in completed:
+				continue
+			completed.add((uid1, uid2))
 			flatv1 = feature.singles[uid1]
 			flatv2 = feature.singles[uid2]
-
 			(dp, cs) = self.getDPCS(flatv1, flatv2)
 			feature.addRelational(uid1, uid2, dp)
 			feature.addRelational(uid1, uid2, cs)
@@ -292,10 +307,14 @@ class FeatureHandler:
 			feature.addSingle(self.corpus.XUIDToMention[muid].UID, sumEmb)
 
 		# go through all pairs to compute relational data
+		completed = set()
 		proc = 0
 		for muid1, muid2 in muidPairs:
 			uid1, uid2 = sorted([self.corpus.XUIDToMention[muid1].UID,
 							self.corpus.XUIDToMention[muid2].UID])
+			if (uid1, uid2) in completed or (uid2, uid1) in completed:
+				continue
+			completed.add((uid1, uid2))
 			flatv1 = feature.singles[uid1]
 			flatv2 = feature.singles[uid2]
 
@@ -366,8 +385,12 @@ class FeatureHandler:
 			feature.addSingle(self.corpus.XUIDToMention[muid].UID, parentEmb + childrenEmb)
 		# go through all pairs to compute relational data
 		proc = 0
+		completed = set()
 		for muid1, muid2 in muidPairs:
 			uid1, uid2 = sorted([self.corpus.XUIDToMention[muid1].UID, self.corpus.XUIDToMention[muid2].UID])
+			if (uid1, uid2) in completed or (uid2, uid1) in completed:
+				continue
+			completed.add((uid1, uid2))
 			flatv1 = feature.singles[uid1]
 			flatv2 = feature.singles[uid2]
 
@@ -388,7 +411,13 @@ class FeatureHandler:
 		muidPairs = self.getMUIDPairs()
 		print("calculating wordnet features for", len(muidPairs), "unique pairs")
 		i = 0
+		completed = set()
 		for m1, m2 in muidPairs:
+			uid1 = self.corpus.XUIDToMention[m1].UID
+			uid2 = self.corpus.XUIDToMention[m2].UID
+			if (uid1, uid2) in completed or (uid2, uid1) in completed:
+				continue
+			completed.add((uid1, uid2))
 			textTokens1 = self.corpus.XUIDToMention[m1].text
 			textTokens2 = self.corpus.XUIDToMention[m2].text
 			bestScore = -1
@@ -413,8 +442,7 @@ class FeatureHandler:
 						synSynToScore[(syn1, syn2)] = curScore
 						if curScore != None and curScore > bestScore:
 							bestScore = curScore
-			uid1 = self.corpus.XUIDToMention[m1].UID
-			uid2 = self.corpus.XUIDToMention[m2].UID
+
 			feature.addRelational(uid1, uid2, bestScore)
 			i += 1
 			if i % 1000 == 0:

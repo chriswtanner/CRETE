@@ -1,8 +1,8 @@
 import pickle
+import numpy as np
 from collections import defaultdict
 class Inference:
-	def __init__(self, numRuns, featureHandler, helper, useRelationalFeatures, useWD):
-		self.numRuns = numRuns
+	def __init__(self, featureHandler, helper, useRelationalFeatures, useWD):
 		self.featureHandler = featureHandler
 		self.helper = helper
 		self.corpus = helper.corpus
@@ -41,9 +41,6 @@ class Inference:
 
 		(self.trainID, self.trainX, self.trainY) = self.createData(helper.trainingDirs, featureHandler.trainMUIDs, useRelationalFeatures)
 		(self.devID, self.devX, self.devY) = self.createData(helper.devDirs, featureHandler.devMUIDs, useRelationalFeatures)
-
-	def evaluate(self, preds):
-		print(1.0)
 
 	def loadFeature(self, file):
 		print("loading",file)
@@ -98,5 +95,15 @@ class Inference:
 			pairs.append((muid1, muid2))
 			X.append(features)
 			Y.append(label)
+		#X = np.asarray(X)
+		#Y = np.asarray(Y)
+		'''
+		xn = np.zeros(shape=(len(X),len(X[0])))
+		for i in range(len(X)):
+			xn[i] = X[i]
+		xy = np.zeros(shape=(len(Y), len(Y[0])))
+		for i in range(len(Y)):
+			xy[i] = Y[i]
+		'''
 		print("* createData() loaded",len(pairs), "pairs")
-		return [pairs, X, Y]
+		return (pairs, X, Y)
