@@ -93,10 +93,16 @@ class FFNN:
 				else:
 					print("what happened")
 					exit(1)
-			recall = float(TP / (TP + FN))
-			prec = float(TP / (TP + FP))
+			recall = 0
+			if (TP + FN) > 0:
+				recall = float(TP / (TP + FN))
+			prec = 0
+			if (TP + FP) > 0:
+				prec = float(TP / (TP + FP))
 			acc = float((TP + TN) / len(preds))
-			f1 = 2*(recall*prec) / (recall + prec)
+			f1 = 0
+			if (recall + prec) > 0:
+				f1 = 2*(recall*prec) / (recall + prec)
 			f1s.append(f1)
 			print("acc:", acc, "r:", recall, "p:", prec, "f1:", f1)
 			sys.stdout.flush()
