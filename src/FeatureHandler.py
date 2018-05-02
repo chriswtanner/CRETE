@@ -8,16 +8,18 @@ from StanToken import StanToken
 from Feature import Feature
 from collections import defaultdict
 
-# NOTE: the save* functions operate on *all* mentions passed-in
-# with constructor, regardless if ecb, hddcrp, stan.
+# NOTE: the save* functions operate on *all* mentions in self.corpus
+# regardless if ecb, hddcrp, stan.
 # the load() functions should ensure we only care about the right
 # mentions
 class FeatureHandler:
-	def __init__(self, args, helper, mentions):
+	def __init__(self, args, helper, trainMUIDs, devMUIDs, testMUIDs):
 		self.args = args
 		self.helper = helper
 		self.corpus = helper.corpus
-		self.mentions = mentions
+		self.trainMUIDs = trainMUIDs
+		self.devMUIDs = devMUIDs
+		self.testMUIDs = testMUIDs
 		self.bowWindow = 3 # number of tokens on each side to look at
 		self.gloveEmb = {} # to be filled in via loadGloveEmbeddings()
 		self.charEmb = {} # to be filled in via loadCharEmbeddings()
@@ -524,4 +526,3 @@ class FeatureHandler:
 
 		pickle_out = open(fileOut, 'wb')
 		pickle.dump(feature, pickle_out)
-

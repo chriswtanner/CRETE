@@ -4,12 +4,13 @@ import params
 import time
 import pickle
 import random
-from nltk.corpus import wordnet as wn
 from ECBParser import ECBParser
 from HDDCRPParser import HDDCRPParser
 from ECBHelper import ECBHelper
 from StanParser import StanParser
 from FeatureHandler import FeatureHandler
+from Inference import Inference
+from FFNN import FFNN
 class CorefEngine:
 
 	# TODO:
@@ -42,6 +43,12 @@ class CorefEngine:
 		bowFeaturesFile = "../data/features/bow.f"
 
 		runStanford = False
+
+		# classifier params
+		numRuns = 1
+		useWD = False
+		useRelationalFeatures = True
+
 		start_time = time.time()
 
 		# handles passed-in args
@@ -61,32 +68,45 @@ class CorefEngine:
 		helper.createHDDCRPMentions(hddcrp_parser.parseCorpus(args.hddcrpFullFile))
 
 		# loads Stanford's parse
+		'''
 		if runStanford:
 			stan = StanParser(args, corpus)
 			helper.addStanfordAnnotations(stan)
 			helper.saveStanTokens()
 		else:
 			helper.loadStanTokens()
-
 		helper.createStanMentions()
-		
+		'''
+
 		#helper.printHDDCRPMentionCoverage()
 		#corpus.checkMentions()
 
 		# DEFINES WHICH MENTIONS TO USE
-		mentions = set()
+		trainMUIDs = set()
+		devMUIDs = set()
+		testMUIDs = set()
 		for m in corpus.ecb_mentions:
-			if m.dir_num in helper.testingDirs:
-				mentions.add(m)
+			if m.dir_num in helper.trainingDirs:
+				trainMUIDs.add(m.XUID)
+			elif m.dir_num in helper.devDirs:
+				devMUIDs.add(m.XUID)
 		for m in corpus.hddcrp_mentions:
-			mentions.add(m)
+			testMUIDs.add(m.XUID)
 
-		fh = FeatureHandler(args, helper, mentions)
-		#fh.saveWordNetFeatures(wordnetFeaturesFile)
-		#fh.saveBoWFeatures(bowFeaturesFile)
-		#fh.saveWordFeatures(wordFeaturesFile)
-		#fh.saveLemmaFeatures(lemmaFeaturesFile)
-		#fh.saveCharFeatures(charFeaturesFile)
-		#fh.savePOSFeatures(posFeaturesFile)
-		#fh.saveDependencyFeatures(dependencyFeaturesFile)
+		fh = FeatureHandler(args, helper, trainMUIDs, devMUIDs, testMUIDs)
+		'''
+		fh.saveWordFeatures(wordFeaturesFile)
+		fh.saveLemmaFeatures(lemmaFeaturesFile)
+		fh.saveCharFeatures(charFeaturesFile)
+		fh.savePOSFeatures(posFeaturesFile)
+		fh.saveDependencyFeatures(dependencyFeaturesFile)
+		fh.saveWordNetFeatures(wordnetFeaturesFile)
+		fh.saveBoWFeatures(bowFeaturesFile)
+		'''
+		coref = Inference(numRuns, fh, helper, useRelationalFeatures, useWD)
+		model = FFNN(helper, coref)
+		model.train()
+		model.test()
+		coref.evaluate(model.predictions)
+
 		print("took:", str((time.time() - start_time)), "seconds")
