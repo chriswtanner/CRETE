@@ -33,9 +33,9 @@ class FeatureHandler:
 		ret = set()
 		for dirhalf in self.corpus.dirHalves:
 			for m1 in self.corpus.dirHalves[dirhalf].MUIDs:
-				if m1 in self.corpus.dirHalves[dirhalf].HMUIDs or m1 in self.corpus.dirHalves[dirhalf].HMUIDs:
+				if m1 in self.corpus.dirHalves[dirhalf].HMUIDs or m1 in self.corpus.dirHalves[dirhalf].SUIDs:
 					print("DUPE1")
-
+					exit(1)
 				for m2 in self.corpus.dirHalves[dirhalf].MUIDs:
 					if m2 <= m1:
 						continue
@@ -43,6 +43,7 @@ class FeatureHandler:
 			for m1 in self.corpus.dirHalves[dirhalf].HMUIDs:
 				if m1 in self.corpus.dirHalves[dirhalf].SUIDs:
 					print("DUPE2")
+					exit(1)
 				for m2 in self.corpus.dirHalves[dirhalf].HMUIDs:
 					if m2 <= m1:
 						continue
@@ -157,13 +158,12 @@ class FeatureHandler:
 				word = self.getBestStanToken(t.stanTokens).text.lower()
 				curEmb = self.gloveEmb[word]
 				sumEmb = [x + y for x,y in zip(sumEmb, curEmb)]
-			feature.addSingle(self.corpus.XUIDToMention[muid].UID, sumEmb)
+			feature.setSingle(self.corpus.XUIDToMention[muid].UID, sumEmb)
 		# go through all pairs to compute relational data
 		proc = 0
 		completed = set()
 		for muid1, muid2 in muidPairs:
-			uid1, uid2 = sorted([self.corpus.XUIDToMention[muid1].UID,
-							self.corpus.XUIDToMention[muid2].UID])
+			uid1, uid2 = sorted([self.corpus.XUIDToMention[muid1].UID, self.corpus.XUIDToMention[muid2].UID])
 			if (uid1,uid2) in completed or (uid2,uid1) in completed:
 				continue
 			completed.add((uid1,uid2))
@@ -195,7 +195,7 @@ class FeatureHandler:
 				lemma = self.getBestStanToken(t.stanTokens).lemma.lower()
 				curEmb = self.gloveEmb[lemma]
 				sumEmb = [x + y for x, y in zip(sumEmb, curEmb)]
-			feature.addSingle(self.corpus.XUIDToMention[muid].UID, sumEmb)
+			feature.setSingle(self.corpus.XUIDToMention[muid].UID, sumEmb)
 		# go through all pairs to compute relational data
 		proc = 0
 		completed = set()
@@ -246,7 +246,7 @@ class FeatureHandler:
 						#exit(1)
 			while len(charEmb) < 400: # 20 chars * 20 dim
 				charEmb.append(0.0)
-			feature.addSingle(self.corpus.XUIDToMention[muid].UID, charEmb)
+			feature.setSingle(self.corpus.XUIDToMention[muid].UID, charEmb)
 
 		# go through all pairs to compute relational data
 		proc = 0
@@ -304,7 +304,7 @@ class FeatureHandler:
 
 				curEmb = self.posEmb[pos]
 				sumEmb = [x + y for x,y in zip(sumEmb, curEmb)]
-			feature.addSingle(self.corpus.XUIDToMention[muid].UID, sumEmb)
+			feature.setSingle(self.corpus.XUIDToMention[muid].UID, sumEmb)
 
 		# go through all pairs to compute relational data
 		completed = set()
@@ -382,7 +382,7 @@ class FeatureHandler:
 					sumChildrenEmb = [x + y for x,y in zip(sumChildrenEmb, curEmb)]
 			parentEmb = sumParentEmb  # makes parent emb
 			childrenEmb = sumChildrenEmb  # makes chid emb
-			feature.addSingle(self.corpus.XUIDToMention[muid].UID, parentEmb + childrenEmb)
+			feature.setSingle(self.corpus.XUIDToMention[muid].UID, parentEmb + childrenEmb)
 		# go through all pairs to compute relational data
 		proc = 0
 		completed = set()
@@ -537,10 +537,14 @@ class FeatureHandler:
 			#uidToVector[self.corpus.XUIDToMention[muid].UID] = tmpTokens
 			flatvector = [item for sublist in tmpTokens for item in sublist]
 			#print(flatvector)
-			feature.addSingle(self.corpus.XUIDToMention[muid].UID, flatvector)
+			feature.setSingle(self.corpus.XUIDToMention[muid].UID, flatvector)
 		proc = 0
+		completed = set()
 		for muid1, muid2 in muidPairs:
 			uid1, uid2 = sorted([self.corpus.XUIDToMention[muid1].UID, self.corpus.XUIDToMention[muid2].UID])
+			if (uid1, uid2) in completed or (uid2, uid1) in completed:
+				continue
+			completed.add((uid1, uid2))
 			flatv1 = feature.singles[uid1]
 			flatv2 = feature.singles[uid2]
 

@@ -5,9 +5,9 @@ onlyValidSentences="T"
 addIntraDocs="T"
 exhaustivelyTestAllFeatures=false
 useECBTest=true
-featureMap=(1 2) # 4)
+featureMap=(1 2 3 4 5 6 7) # 4)
 numLayers=(2) # 3) # 1 3
-numEpochs=(2) # 20)
+numEpochs=(20) # 20)
 windowSize=(0)
 numNeg=(5)
 batchSize=(128) # 128) # 64 128
@@ -26,6 +26,7 @@ bowFeature="False" # f6
 wordnetFeature="False" # f7
 framenetFeature="False" # f8
 
+native="False"
 hn=`hostname`
 
 IFS=$'\r\n' GLOBIGNORE='*' command eval  'XYZ=($(cat featureCombos.txt))'
@@ -69,11 +70,8 @@ do
 	fi
 	# FFNN params
 	FFNNnumEpochs=(10)
-	FFNNnumCorpusSamples=(1) # 5 10 20)
 	FFNNPosRatio=(0.8) # 0.2 0.8
-	FFNNOpt=("adam") # "rms" "adam" "adagrad"
 	#source ~/researchcode/venv/bin/activate
-
 	for nl in "${numLayers[@]}"
 	do
 		for ne in "${numEpochs[@]}"
@@ -94,22 +92,17 @@ do
 									do
 										for fn in "${FFNNnumEpochs[@]}"
 										do
-											for fp in "${FFNNnumCorpusSamples[@]}"
-											do
-												for fo in "${FFNNOpt[@]}"
-												do
-													# qsub -pe smp 8 -l vlong -o
-													fout=gpu_${prefix}_ov${onlyValidSentences}_id${addIntraDocs}_nl${nl}_ne${ne}_ws${ws}_neg${neg}_bs${bs}_dr${dr}_nf${nf}_fm${fm}_pt${pt}_lt${lt}_dt${dt}_ct${ct}_dd${dd}_fn${fn}_fp${fp}_fo${fo}.out
-													echo ${fout}
-													if [ ${hn} = "titanx" ] || [ ${hn} = "Christophers-MacBook-Pro-2" ]
-													then
-														echo "* kicking off CRETE2 natively"
-														./CRETE2.sh ${corpus} ${useECBTest} ${onlyValidSentences} ${addIntraDocs} ${nl} ${ne} ${ws} ${neg} ${bs} ${dr} ${nf} ${fm} ${wordFeature} ${lemmaFeature} ${charFeature} ${posFeature} ${dependencyFeature} ${bowFeature} ${wordnetFeature} ${framenetFeature} ${dd} ${fn} ${fp} ${fo} # > ${fout}												
-													else
-														qsub -l gpus=1 -o ${fout} CRETE2.sh ${corpus} ${useECBTest} ${onlyValidSentences} ${addIntraDocs} ${nl} ${ne} ${ws} ${neg} ${bs} ${dr} ${nf} ${fm} ${wordFeature} ${lemmaFeature} ${charFeature} ${posFeature} ${dependencyFeature} ${bowFeature} ${wordnetFeature} ${framenetFeature} ${dd} ${fn} ${fp} ${fo}
-													fi
-												done
-											done
+											# qsub -pe smp 8 -l vlong -o
+											fout=gpu_${prefix}_ov${onlyValidSentences}_id${addIntraDocs}_nl${nl}_ne${ne}_ws${ws}_neg${neg}_bs${bs}_dr${dr}_nf${nf}_fm${fm}_dd${dd}_fn${fn}.out
+											echo ${fout}
+											if [ ${hn} = "titanx" ] || [ ${hn} = "Christophers-MacBook-Pro-2" ]
+											then
+												echo "* kicking off CRETE2 natively"
+												native="True"
+												./CRETE2.sh ${corpus} ${useECBTest} ${onlyValidSentences} ${addIntraDocs} ${nl} ${ne} ${ws} ${neg} ${bs} ${dr} ${nf} ${fm} ${wordFeature} ${lemmaFeature} ${charFeature} ${posFeature} ${dependencyFeature} ${bowFeature} ${wordnetFeature} ${framenetFeature} ${dd} ${fn} ${native}
+											else
+												qsub -l gpus=1 -o ${fout} CRETE2.sh ${corpus} ${useECBTest} ${onlyValidSentences} ${addIntraDocs} ${nl} ${ne} ${ws} ${neg} ${bs} ${dr} ${nf} ${fm} ${wordFeature} ${lemmaFeature} ${charFeature} ${posFeature} ${dependencyFeature} ${bowFeature} ${wordnetFeature} ${framenetFeature} ${dd} ${fn} ${native}
+											fi
 										done
 									done
 								done

@@ -51,13 +51,11 @@ def setCorefEngineParams():
 	                    type=str2bool, nargs='?', default="f")
 	parser.add_argument("--framenetFeature", help="print a lot of debugging info",
 	                    type=str2bool, nargs='?', default="f")
-
 	# for FFNN
 	parser.add_argument("--devDir", help="the directory to use for dev", type=int)
 	parser.add_argument("--FFNNnumEpochs", help="FFNN's # of epochs", default="none", type=int)
-	parser.add_argument("--FFNNnumCorpusSamples", help="# of times to loop through corpus, generating synthetic training data", type=int, default=1)
-	parser.add_argument("--FFNNOpt", help="optimizer for FFNNs {rms,adagrad,adam}", default="adam")
 
+	parser.add_argument("--native", help="true if running locally",type=str2bool, nargs='?', default="f")
 	return parser.parse_args()
 
 # allows for handling boolean params

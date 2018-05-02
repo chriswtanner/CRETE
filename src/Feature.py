@@ -5,7 +5,7 @@ class Feature:
         self.singles = {} # maps a UID to a feature vector
         self.relational = defaultdict(list) # maps a pair of UIDs to relational scalar
 
-    def addSingle(self, uid, vector):
+    def setSingle(self, uid, vector):
         self.singles[uid] = vector
     
     def addRelational(self, uid1, uid2, val):

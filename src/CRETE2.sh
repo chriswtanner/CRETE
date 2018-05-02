@@ -68,8 +68,7 @@ wordnetFeature=${19}
 framenetFeature=${20}
 devDir=${21}
 FFNNnumEpochs=${22}
-FFNNnumCorpusSamples=${23}
-FFNNOpt=${24}
+native=${23}
 echo "-------- params --------"
 echo "corpus:" ${corpusPath}
 echo "useECBTest:" ${useECBTest} # 2
@@ -145,5 +144,4 @@ python3 -u CorefEngine.py \
 --charEmbeddingsFile=${charEmbeddingsFile} \
 --devDir=${devDir} \
 --FFNNnumEpochs=${FFNNnumEpochs} \
---FFNNnumCorpusSamples=${FFNNnumCorpusSamples} \
---FFNNOpt=${FFNNOpt}
+--native=${native}

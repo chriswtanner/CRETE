@@ -17,8 +17,9 @@ class FFNN:
 		(self.trainID, self.trainX, self.trainY) = (coref.trainID, coref.trainX, coref.trainY)
 		(self.devID, self.devX, self.devY) = (coref.devID, coref.devX, coref.devY)
 
-		sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))
-		os.environ['CUDA_VISIBLE_DEVICES'] = ''
+		if self.args.native:
+			sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))
+			os.environ['CUDA_VISIBLE_DEVICES'] = ''
 
 		# model params
 		self.model = None
@@ -48,7 +49,7 @@ class FFNN:
 			self.model.add(Activation('relu'))
 			self.model.add(Dense(units=50, use_bias=True, kernel_initializer='normal'))
 			self.model.add(Activation('relu'))
-			self.model.add(Dense(units=2, input_shape=(self.hidden_size,), use_bias=True, kernel_initializer='normal'))
+			self.model.add(Dense(units=2, use_bias=True, kernel_initializer='normal'))
 			self.model.add(Activation('softmax'))
 			self.model.compile(loss=self.weighted_binary_crossentropy, optimizer=Adam(lr=0.001), metrics=['accuracy'])
 			self.model.summary()
@@ -88,7 +89,10 @@ class FFNN:
 		# clears ram
 		self.trainX = None
 		self.trainY = None
-		print("avgF1:", sum(f1s)/len(f1s), "stddev:", self.standard_deviation(f1s))
+		stddev = -1
+		if len(f1s) > 1:
+			stddev = self.standard_deviation(f1s)
+		print("avgf1:", sum(f1s)/len(f1s), "stddev:", stddev)
 
 	def standard_deviation(self, lst):
 		num_items = len(lst)

@@ -74,11 +74,11 @@ class Inference:
 		pairs = []
 		X = []
 		Y = []
+		numFeatures = 0
 		muidPairs = self.createMUIDPairs(MUIDs)
 		for (muid1, muid2) in muidPairs:
 			features = []
-			uid1 = self.corpus.XUIDToMention[muid1].UID
-			uid2 = self.corpus.XUIDToMention[muid2].UID
+			(uid1, uid2) = sorted([self.corpus.XUIDToMention[muid1].UID, self.corpus.XUIDToMention[muid2].UID])
 			# loops through each feature (e.g., BoW, lemma) for the given uid pair
 			for feature in self.singleFeatures:
 				for i in feature[uid1]: # loops through each val of the given feature
@@ -87,14 +87,21 @@ class Inference:
 					features.append(i)
 			# loops through each feature (e.g., BoW, lemma) for the given uid pair
 			for feature in self.relFeatures:
+				if (uid1, uid2) not in feature:
+					print("not in")
+					exit(1)
 				for i in feature[(uid1, uid2)]:
 					features.append(i)
+			if len(features) != numFeatures and numFeatures != 0:
+				print("* ERROR: # features diff:",len(features),"and",numFeatures)
+			numFeatures = len(features)
 			label = [1,0]
 			if self.corpus.XUIDToMention[muid1].REF == self.corpus.XUIDToMention[muid2].REF:
 				label = [0,1]
 			pairs.append((muid1, muid2))
 			X.append(features)
 			Y.append(label)
+		print("features have a length of:",numFeatures)
 		#X = np.asarray(X)
 		#Y = np.asarray(Y)
 		'''

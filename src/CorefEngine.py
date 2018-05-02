@@ -46,7 +46,7 @@ class CorefEngine:
 
 		# classifier params
 		numRuns = 3
-		useWD = False
+		useWD = True
 		useRelationalFeatures = True
 
 		start_time = time.time()
@@ -68,7 +68,7 @@ class CorefEngine:
 		helper.createHDDCRPMentions(hddcrp_parser.parseCorpus(args.hddcrpFullFile))
 
 		# loads Stanford's parse
-		'''
+		
 		if runStanford:
 			stan = StanParser(args, corpus)
 			helper.addStanfordAnnotations(stan)
@@ -76,7 +76,7 @@ class CorefEngine:
 		else:
 			helper.loadStanTokens()
 		helper.createStanMentions()
-		'''
+		
 
 		#helper.printHDDCRPMentionCoverage()
 		#corpus.checkMentions()
