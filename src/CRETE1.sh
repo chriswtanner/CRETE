@@ -5,7 +5,7 @@ onlyValidSentences="T"
 addIntraDocs="T"
 exhaustivelyTestAllFeatures=false
 useECBTest=true
-featureMap=(1 2 3 4 5 6 7) # 4)
+featureMap=(1) # 4)
 numLayers=(2) # 3) # 1 3
 numEpochs=(2 5 10 20) # 20)
 windowSize=(0)
@@ -32,6 +32,7 @@ hn=`hostname`
 IFS=$'\r\n' GLOBIGNORE='*' command eval  'XYZ=($(cat featureCombos.txt))'
 for features in "${XYZ[@]}"
 do
+	prefix="ffnn"
 	if [ "$exhaustivelyTestAllFeatures" = false ] ; then
 		features=${featureMap[@]}
 	fi

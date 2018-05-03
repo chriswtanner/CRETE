@@ -115,7 +115,7 @@ class FFNN:
 		stddev = -1
 		if len(f1s) > 1:
 			stddev = self.standard_deviation(f1s)
-		print("avgf1:", sum(f1s)/len(f1s), "stddev:", stddev)
+		print("avgf1:", sum(f1s)/len(f1s), "max:",max(f1s), "min:",min(f1s), "stddev:", stddev)
 		sys.stdout.flush()
 	def standard_deviation(self, lst):
 		num_items = len(lst)
