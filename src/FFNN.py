@@ -48,6 +48,7 @@ class FFNN:
 			self.model = Sequential()
 
 			# optionally add a 3rd layer
+			
 			if self.dataDim > 1000:
 				h1 = floor(self.dataDim / 2)
 				print("h1:",h1)
@@ -58,7 +59,9 @@ class FFNN:
 					self.model.add(Dense(units=h2, \
 					use_bias=True, kernel_initializer='normal'))
 					self.model.add(Activation('relu'))
-			self.model.add(Dense(units=self.hidden_size, use_bias=True, kernel_initializer='normal'))
+				self.model.add(Dense(units=self.hidden_size, use_bias=True, kernel_initializer='normal'))
+			else:
+				self.model.add(Dense(units=self.hidden_size, input_shape=(self.dataDim,), use_bias=True, kernel_initializer='normal'))
 			self.model.add(Activation('relu'))
 			self.model.add(Dense(units=50, use_bias=True, kernel_initializer='normal'))
 			self.model.add(Activation('relu'))
@@ -66,7 +69,7 @@ class FFNN:
 			self.model.add(Activation('softmax'))
 			self.model.compile(loss=self.weighted_binary_crossentropy, optimizer=Adam(lr=0.001), metrics=['accuracy'])
 			self.model.summary()
-			self.model.fit(self.trainX, self.trainY, epochs=self.num_epochs, batch_size=self.batch_size, validation_data=(self.devX, self.devY), verbose=1)
+			self.model.fit(self.trainX, self.trainY, epochs=self.num_epochs, batch_size=self.batch_size, verbose=1)
 			
 			preds = self.model.predict(self.devX)
 
