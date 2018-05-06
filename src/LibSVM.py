@@ -26,15 +26,16 @@ class LibSVM:
 
 	def train_and_test(self, numRuns):
 		f1s = []
-		weights = [1,5,15]
+		weights = [1,5,10]
+		t = [0.01, 0.0001, 0.000001]
 		for w1 in weights:
-			for w2 in weights:
-				print("w1:", w1, "w2",w2)
+			for to in t:
+				print("w1:", w1, "to",to)
 				#print(self.trainY)
 				#print(len(self.trainX))
-				clf = LinearSVC(C=1, class_weight={0:w1,1:w2}, dual=True, fit_intercept=True,
-								intercept_scaling=1, loss='squared_hinge', max_iter=1000,
-								multi_class='ovr', penalty='l2', random_state=0, tol=0.0001,
+				clf = LinearSVC(C=1, class_weight={0:w1,1:1}, dual=True, fit_intercept=True,
+								intercept_scaling=1, loss='squared_hinge', max_iter=5000,
+								multi_class='ovr', penalty='l2', random_state=0, tol=to,
 								verbose=1)
 				clf.fit(self.trainX, self.trainY)
 				'''
