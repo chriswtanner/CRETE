@@ -37,7 +37,6 @@ class CorefEngine:
 	#    (B) test on non-events
 
 	if __name__ == "__main__":
-
 		wordFeaturesFile = "../data/features/word.f"
 		lemmaFeaturesFile = "../data/features/lemma.f"
 		charFeaturesFile = "../data/features/char.f"
@@ -49,7 +48,7 @@ class CorefEngine:
 		runStanford = False
 
 		# classifier params
-		numRuns = 5
+		numRuns = 3
 		useWD = True
 		useRelationalFeatures = True
 
