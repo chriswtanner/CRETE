@@ -96,15 +96,18 @@ class CCNN:
 		kernel_rows = 1
 		seq.add(Conv2D(self.args.numFilters, kernel_size=(kernel_rows, 3), activation='relu', padding="same", input_shape=input_shape, data_format="channels_first"))
 		seq.add(Dropout(float(self.args.dropout)))
-		
-		seq.add(Conv2D(curNumFilters, kernel_size=(kernel_rows, 3), activation='relu', padding="same", data_format="channels_first"))
+		seq.add(MaxPooling2D(pool_size=(kernel_rows, 2), padding="same", data_format="channels_first"))
+
+
+		seq.add(Conv2D(96, kernel_size=(kernel_rows, 3), activation='relu', padding="same", data_format="channels_first"))
+		seq.add(Dropout(0.3))
 		seq.add(MaxPooling2D(pool_size=(kernel_rows, 2), padding="same", data_format="channels_first"))
 		
-		seq.add(Conv2D(self.args.numFilters, kernel_size=(kernel_rows, 3), activation='relu', padding="same", input_shape=input_shape, data_format="channels_first"))
-		seq.add(Dropout(float(self.args.dropout)))
+		#seq.add(Conv2D(self.args.numFilters, kernel_size=(kernel_rows, 3), activation='relu', padding="same", input_shape=input_shape, data_format="channels_first"))
+		#seq.add(Dropout(float(self.args.dropout)))
 
-		seq.add(Conv2D(curNumFilters, kernel_size=(kernel_rows, 3), activation='relu', padding="same", data_format="channels_first"))
-		seq.add(MaxPooling2D(pool_size=(kernel_rows, 2), padding="same", data_format="channels_first"))	
+		#seq.add(Conv2D(curNumFilters, kernel_size=(kernel_rows, 3), activation='relu', padding="same", data_format="channels_first"))
+		#seq.add(MaxPooling2D(pool_size=(kernel_rows, 2), padding="same", data_format="channels_first"))	
 
 		seq.add(Flatten())
 		seq.add(Dense(curNumFilters, activation='relu'))
