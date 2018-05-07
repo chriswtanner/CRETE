@@ -39,8 +39,8 @@ class Inference:
 			lf = self.loadFeature("../data/features/wordnet.f")
 			self.relFeatures.append(lf.relational)
 
-		(self.trainID, self.trainX, self.trainY) = self.createDataForCCNN(helper.trainingDirs, featureHandler.trainMUIDs, useRelationalFeatures)
-		(self.devID, self.devX, self.devY) = self.createDataForCCNN(helper.devDirs, featureHandler.devMUIDs, useRelationalFeatures)
+		(self.trainID, self.trainX, self.trainY) = self.createDataForCCNN(helper.trainingDirs, featureHandler.trainMUIDs, useRelationalFeatures, True)
+		(self.devID, self.devX, self.devY) = self.createDataForCCNN(helper.devDirs, featureHandler.devMUIDs, useRelationalFeatures, False)
 
 		'''
 		(self.trainID, self.trainX, self.trainY) = self.createData(helper.trainingDirs, featureHandler.trainMUIDs, useRelationalFeatures)
@@ -72,14 +72,24 @@ class Inference:
 						muidPairs.add((muid1, muid2))
 		return muidPairs
 	
-	def createDataForCCNN(self, dirs, MUIDs, useRelationalFeatures):
+	def createDataForCCNN(self, dirs, MUIDs, useRelationalFeatures, negSubsample):
 		pairs = []
 		X = []
 		Y = []
 		labels = []
 		numFeatures = 0
+		numPosAdded = 0
+		numNegAdded = 0
 		muidPairs = self.createMUIDPairs(MUIDs)
 		for (muid1, muid2) in muidPairs:
+			if self.corpus.XUIDToMention[muid1].REF == self.corpus.XUIDToMention[muid2].REF:
+				labels.append(1)
+				numPosAdded += 1
+			else:
+				if negSubsample and numNegAdded > numPosAdded*self.args.numNegPerPos:
+					continue
+				numNegAdded += 1
+				labels.append(0)
 			m1_features = []
 			m2_features = []
 			(uid1, uid2) = sorted([self.corpus.XUIDToMention[muid1].UID, self.corpus.XUIDToMention[muid2].UID])
@@ -114,12 +124,6 @@ class Inference:
 			m2Matrix = np.asarray(m2Matrix).reshape(1, len(m2_features),1)
 			pair = np.asarray([m1Matrix, m2Matrix])
 			X.append(pair)
-
-			# makes label
-			if self.corpus.XUIDToMention[muid1].REF == self.corpus.XUIDToMention[muid2].REF:
-				labels.append(1)
-			else:
-				labels.append(0)
 
 			# makes xuid (aka muid) pairs
 			pairs.append((muid1, muid2))

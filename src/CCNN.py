@@ -54,7 +54,7 @@ class CCNN:
 					pred = preds[_][0]
 					pred_label = 0
 					gold_label = self.devY[_]
-					if pred >= threshold:
+					if pred < threshold:
 						pred_label = 1
 					if pred_label and gold_label:
 						TP += 1
