@@ -12,6 +12,7 @@ from StanParser import StanParser
 from FeatureHandler import FeatureHandler
 from Inference import Inference
 from FFNN import FFNN
+from CCNN import CCNN
 from LibSVM import LibSVM
 from sklearn import svm
 class CorefEngine:
@@ -37,38 +38,6 @@ class CorefEngine:
 
 	if __name__ == "__main__":
 
-		from sklearn.svm import LinearSVC
-		from sklearn.datasets import make_classification
-		X = [[0, 0], [1, 1]]
-		y = [0, 1]
-		clf = svm.SVC(C=1.0, cache_size=200, class_weight=None, coef0=0.0,
-                    decision_function_shape='ovr', degree=3, gamma='auto',
-                    kernel='linear', max_iter=-1, probability=False, random_state=None,
-                    shrinking=True, tol=0.001, verbose=False)
-		clf.fit(X, y)
-		print(clf.predict([[2., 2.]]))
-		'''
-		SVC(C=1.0, cache_size=200, class_weight=None, coef0=0.0, \
-		decision_function_shape='ovr', degree=3, gamma='auto', \
-		kernel='rbf', max_iter=-1, probability=False, random_state=None, \
-		shrinking=True, tol=0.001, verbose=False)
-		
-		'''
-		#exit(1)
-		'''
-		#X, y = make_classification(n_features=4, random_state=0)
-		#clf = LinearSVC(random_state=0)
-		#clf.fit(X, y)
-		# [ [example1], [example2] ]
-		# y should be [ scalars ]
-		LinearSVC(C=1.0, class_weight=None, dual=True, fit_intercept=True,
-          intercept_scaling=1, loss='squared_hinge', max_iter=1000,
-          multi_class='ovr', penalty='l2', random_state=0, tol=0.0001,
-          verbose=0)
-		#print(clf.coef_)
-		#print(clf.intercept_)
-		#print(clf.predict([[0, 0, 0, 0],[1,1,1,1]]))
-		'''
 		wordFeaturesFile = "../data/features/word.f"
 		lemmaFeaturesFile = "../data/features/lemma.f"
 		charFeaturesFile = "../data/features/char.f"
@@ -80,7 +49,7 @@ class CorefEngine:
 		runStanford = False
 
 		# classifier params
-		numRuns = 1
+		numRuns = 5
 		useWD = True
 		useRelationalFeatures = True
 
@@ -103,7 +72,6 @@ class CorefEngine:
 		helper.createHDDCRPMentions(hddcrp_parser.parseCorpus(args.hddcrpFullFile))
 
 		# loads Stanford's parse
-		
 		if runStanford:
 			stan = StanParser(args, corpus)
 			helper.addStanfordAnnotations(stan)
@@ -111,8 +79,6 @@ class CorefEngine:
 		else:
 			helper.loadStanTokens()
 		helper.createStanMentions()
-		
-
 		#helper.printHDDCRPMentionCoverage()
 		#corpus.checkMentions()
 
@@ -141,8 +107,9 @@ class CorefEngine:
 		'''
 
 		coref = Inference(fh, helper, useRelationalFeatures, useWD)
-		model = LibSVM(helper, coref)
+		#model = LibSVM(helper, coref)
 		#model = FFNN(helper, coref)
-		preds = model.train_and_test(numRuns)
+		model = CCNN(helper, coref)
+		model.train_and_test(numRuns)
 
 		print("took:", str((time.time() - start_time)), "seconds")
