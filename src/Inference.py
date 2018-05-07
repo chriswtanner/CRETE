@@ -39,7 +39,7 @@ class Inference:
 			lf = self.loadFeature("../data/features/wordnet.f")
 			self.relFeatures.append(lf.relational)
 
-		(self.trainID, self.trainX, self.trainY) = self.createDataForCCNN(helper.trainingDirs, featureHandler.trainMUIDs, useRelationalFeatures, True)
+		(self.trainID, self.trainX, self.trainY) = self.createDataForCCNN(helper.trainingDirs, featureHandler.trainMUIDs, useRelationalFeatures, False)
 		(self.devID, self.devX, self.devY) = self.createDataForCCNN(helper.devDirs, featureHandler.devMUIDs, useRelationalFeatures, False)
 
 		'''
