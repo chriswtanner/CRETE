@@ -126,3 +126,12 @@ class CCNN:
 	def contrastive_loss(self, y_true, y_pred):
 		margin = 1
 		return K.mean(y_true * K.square(y_pred) + (1 - y_true) * K.square(K.maximum(margin - y_pred, 0)))
+
+	def standard_deviation(self, lst):
+		num_items = len(lst)
+		mean = sum(lst) / num_items
+		differences = [x - mean for x in lst]
+		sq_differences = [d ** 2 for d in differences]
+		ssd = sum(sq_differences)
+		variance = ssd / (num_items - 1)
+		return sqrt(variance)
