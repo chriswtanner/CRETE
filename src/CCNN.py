@@ -106,8 +106,10 @@ class CCNN:
 		seq.add(Dropout(float(self.args.dropout)))
 		seq.add(MaxPooling2D(pool_size=(kernel_rows, 2), padding="same", data_format="channels_first"))
 		
-		#seq.add(Conv2D(self.args.numFilters, kernel_size=(kernel_rows, 3), activation='relu', padding="same", input_shape=input_shape, data_format="channels_first"))
-		#seq.add(Dropout(float(self.args.dropout)))
+		# prev didn't have the layer below and i got 62.3 avg conll (50 runs)
+		seq.add(Conv2D(self.args.numFilters, kernel_size=(kernel_rows, 3), activation='relu', padding="same", input_shape=input_shape, data_format="channels_first"))
+		seq.add(Dropout(float(self.args.dropout)))
+		seq.add(MaxPooling2D(pool_size=(kernel_rows, 2), padding="same", data_format="channels_first"))
 
 		#seq.add(Conv2D(curNumFilters, kernel_size=(kernel_rows, 3), activation='relu', padding="same", data_format="channels_first"))
 		#seq.add(MaxPooling2D(pool_size=(kernel_rows, 2), padding="same", data_format="channels_first"))	

@@ -1,5 +1,5 @@
 #!/bin/bash
-prefix="ccnn" # used to help identify experiments' outputs, as the output files will have this prefix
+prefix="ccnn3" # used to help identify experiments' outputs, as the output files will have this prefix
 corpus="FULL"
 onlyValidSentences="T"
 addIntraDocs="T"
