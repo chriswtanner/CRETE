@@ -26,7 +26,6 @@ class CCNN:
 
 	def train_and_test(self, numRuns):
 		f1s = []
-		thresholds = np.linspace(0, 1, 50)
 		while len(f1s) < numRuns:
 			# define model
 			input_shape = self.trainX.shape[2:]
@@ -81,48 +80,9 @@ class CCNN:
 					bestVal = eachVal
 				#print("fwd:", eachVal, "(", numReturnedSoFar,"returned)",recall,prec,"f1:",f1)
 			print("fwd_best_f1:",bestF1,"val:",bestVal)
+			sys.stdout.flush()
 			if bestF1 > 0:
 				f1s.append(bestF1)
-
-			'''
-			for threshold in thresholds:
-				TN = 0.0
-				TP = 0.0
-				FN = 0.0
-				FP = 0.0
-				for _ in range(len(preds)):
-					pred = preds[_][0]
-					pred_label = 0
-					gold_label = self.testY[_]
-					#print("pred:",str(preds[_][0]),"gold:",str(gold_label))
-					if pred < threshold:
-						pred_label = 1
-					if pred_label and gold_label:
-						TP += 1
-					elif pred_label and not gold_label:
-						FP += 1
-					elif not pred_label and gold_label:
-						FN += 1
-					elif not pred_label and not gold_label:
-						TN += 1
-					else:
-						print("what happened")
-						exit(1)
-				#exit(1)
-				recall = 0
-				if (TP + FN) > 0:
-					recall = float(TP / (TP + FN))
-				prec = 0
-				if (TP + FP) > 0:
-					prec = float(TP / (TP + FP))
-				acc = float((TP + TN) / len(preds))
-				f1 = 0
-				if (recall + prec) > 0:
-					f1 = 2*(recall*prec) / (recall + prec)
-				f1s.append(f1)
-				print("thresh:",threshold,"acc:", acc, "r:", recall, "p:", prec, "f1:", f1)
-				sys.stdout.flush()
-			'''
 		# clears ram
 		self.trainX = None
 		self.trainY = None
