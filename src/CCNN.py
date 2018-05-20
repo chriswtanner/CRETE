@@ -18,6 +18,7 @@ class CCNN:
 		self.args = helper.args
 		(self.trainID, self.trainX, self.trainY) = (coref.trainID, coref.trainX, coref.trainY)
 		(self.devID, self.devX, self.devY) = (coref.devID, coref.devX, coref.devY)
+		(self.testID, self.testX, self.testY) = (coref.testID, coref.testX, coref.testY)
 
 		if self.args.native:
 			sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))
@@ -26,7 +27,7 @@ class CCNN:
 	def train_and_test(self, numRuns):
 		f1s = []
 		thresholds = np.linspace(0, 1, 50)
-		for i in range(numRuns):
+		while len(f1s) < numRuns:
 			# define model
 			input_shape = self.trainX.shape[2:]
 			base_network = self.create_base_network(input_shape)
@@ -43,8 +44,47 @@ class CCNN:
 				epochs=self.args.numEpochs, \
 				validation_data=([self.devX[:, 0], self.devX[:, 1]], self.devY))
 
-			preds = model.predict([self.devX[:, 0], self.devX[:, 1]])
+
+			preds = model.predict([self.testX[:, 0], self.testX[:, 1]])
 			
+			numGoldPos = 0
+			scoreToGoldTruth = defaultdict(list)
+			for _ in range(len(preds)):
+				if self.testY[_]:
+					numGoldPos += 1
+					scoreToGoldTruth[preds[_][0]].append(1)
+				else:
+					scoreToGoldTruth[preds[_][0]].append(0)
+			#print("numGoldPos:", numGoldPos)
+			s = sorted(scoreToGoldTruth.keys())
+			TN = 0.0
+			TP = 0.0
+			FN = 0.0
+			FP = 0.0
+			bestF1 = 0
+			bestVal = -1
+			numReturnedSoFar = 0
+			for eachVal in s:
+				for _ in scoreToGoldTruth[eachVal]:
+					if _ == 1:
+						TP += 1
+					else:
+						FP += 1
+				numReturnedSoFar += len(scoreToGoldTruth[eachVal])
+				recall = float(TP / numGoldPos)
+				prec = float(TP / numReturnedSoFar)
+				f1 = 0
+				if (recall + prec) > 0:
+					f1 = 2*(recall*prec) / (recall + prec)
+				if f1 > bestF1:
+					bestF1 = f1
+					bestVal = eachVal
+				#print("fwd:", eachVal, "(", numReturnedSoFar,"returned)",recall,prec,"f1:",f1)
+			print("fwd_best_f1:",bestF1,"val:",bestVal)
+			if bestF1 > 0:
+				f1s.append(bestF1)
+
+			'''
 			for threshold in thresholds:
 				TN = 0.0
 				TP = 0.0
@@ -53,7 +93,8 @@ class CCNN:
 				for _ in range(len(preds)):
 					pred = preds[_][0]
 					pred_label = 0
-					gold_label = self.devY[_]
+					gold_label = self.testY[_]
+					#print("pred:",str(preds[_][0]),"gold:",str(gold_label))
 					if pred < threshold:
 						pred_label = 1
 					if pred_label and gold_label:
@@ -67,6 +108,7 @@ class CCNN:
 					else:
 						print("what happened")
 						exit(1)
+				#exit(1)
 				recall = 0
 				if (TP + FN) > 0:
 					recall = float(TP / (TP + FN))
@@ -80,6 +122,7 @@ class CCNN:
 				f1s.append(f1)
 				print("thresh:",threshold,"acc:", acc, "r:", recall, "p:", prec, "f1:", f1)
 				sys.stdout.flush()
+			'''
 		# clears ram
 		self.trainX = None
 		self.trainY = None
@@ -100,7 +143,7 @@ class CCNN:
 
 
 		seq.add(Conv2D(96, kernel_size=(kernel_rows, 3), activation='relu', padding="same", data_format="channels_first"))
-		seq.add(Dropout(0.3))
+		seq.add(Dropout(float(self.args.dropout)))
 		seq.add(MaxPooling2D(pool_size=(kernel_rows, 2), padding="same", data_format="channels_first"))
 		
 		#seq.add(Conv2D(self.args.numFilters, kernel_size=(kernel_rows, 3), activation='relu', padding="same", input_shape=input_shape, data_format="channels_first"))
@@ -124,7 +167,7 @@ class CCNN:
 	# Contrastive loss from Hadsell-et-al.'06
 	# http://yann.lecun.com/exdb/publis/pdf/hadsell-chopra-lecun-06.pdf
 	def contrastive_loss(self, y_true, y_pred):
-		margin = 1
+		margin = self.args.numLayers
 		return K.mean(y_true * K.square(y_pred) + (1 - y_true) * K.square(K.maximum(margin - y_pred, 0)))
 
 	def standard_deviation(self, lst):

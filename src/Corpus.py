@@ -43,7 +43,7 @@ class Corpus:
         # to easily parse the original sentence which contains each Mention
         self.globalSentenceNumToTokens = defaultdict(list)
 
-    # ensures we've created ECB/HDDCRP/Stan Mentions all from teh same sentences
+    # ensures we've created ECB/HDDCRP/Stan Mentions all from the same sentences
     def checkMentions(self):
         allKeys = set()
         allKeys.update(self.docSentToMentions.keys())

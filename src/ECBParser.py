@@ -74,6 +74,7 @@ class ECBParser:
                 sentenceNum = int(match.group(2))
                 hTokenNum = int(match.group(3))  # only used for matching w/ HDDCRP's files
                 
+                #tokenText = match.group(4).rstrip() # should be used if i'll write out hte corpus for Stan
                 tokenText = match.group(4).lower().rstrip()
                 # removes tokens that end in : (e.g., newspaper:) but leaves the atomic ":" alone
                 if len(tokenText) > 1 and tokenText[-1] == ":":

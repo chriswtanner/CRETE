@@ -9,6 +9,7 @@ class Inference:
 		self.useWD = useWD
 		self.args = featureHandler.args
 
+		self.badPOS = ["‘’", "``", "POS", "$", "''"] # TMP FOR SAMELEMMA TEST
 		self.singleFeatures = []
 		self.relFeatures = []
 		if self.args.wordFeature:
@@ -41,7 +42,8 @@ class Inference:
 
 		(self.trainID, self.trainX, self.trainY) = self.createDataForCCNN(helper.trainingDirs, featureHandler.trainMUIDs, useRelationalFeatures, False)
 		(self.devID, self.devX, self.devY) = self.createDataForCCNN(helper.devDirs, featureHandler.devMUIDs, useRelationalFeatures, False)
-
+		(self.testID, self.testX, self.testY) = self.createDataForCCNN(helper.testingDirs, featureHandler.testMUIDs, useRelationalFeatures, False)
+	
 		'''
 		(self.trainID, self.trainX, self.trainY) = self.createData(helper.trainingDirs, featureHandler.trainMUIDs, useRelationalFeatures)
 		(self.devID, self.devX, self.devY) = self.createData(helper.devDirs, featureHandler.devMUIDs, useRelationalFeatures)
@@ -81,11 +83,55 @@ class Inference:
 		numPosAdded = 0
 		numNegAdded = 0
 		muidPairs = self.createMUIDPairs(MUIDs)
+
+		# TMP ADDED FOR SAME LEMMA TEST
+		'''
+		TN = 0.0
+		TP = 0.0
+		FN = 0.0
+		FP = 0.0
+		'''
+
 		for (muid1, muid2) in muidPairs:
+			if muid1 == muid2:
+				print("whaaaaa: muidPairs:", muidPairs)
+			'''
+			# TMP ADDED FOR SAME LEMMA TEST
+			sameLemma = True
+			lemmaList1 = []
+			lemmaList2 = []
+			for t1 in self.corpus.XUIDToMention[muid1].tokens:
+				lemma = self.getBestStanToken(t1.stanTokens).lemma.lower()
+				lemmaList1.append(lemma)
+			for t2 in self.corpus.XUIDToMention[muid2].tokens:
+				lemma = self.getBestStanToken(t2.stanTokens).lemma.lower()
+				lemmaList2.append(lemma)
+			if len(lemmaList1) != len(lemmaList2):
+				sameLemma = False
+			else:
+				for _ in range(len(lemmaList1)):
+					if lemmaList1[_] != lemmaList2[_]:
+						sameLemma = False
+						break
+			'''
 			if self.corpus.XUIDToMention[muid1].REF == self.corpus.XUIDToMention[muid2].REF:
+				
+				'''
+				if sameLemma:
+					TP += 1
+				else:
+					FN += 1
+				'''
 				labels.append(1)
 				numPosAdded += 1
 			else:
+
+				'''
+				if not sameLemma:
+					TN += 1
+				else:
+					FP += 1
+				'''
 				if negSubsample and numNegAdded > numPosAdded*self.args.numNegPerPos:
 					continue
 				numNegAdded += 1
@@ -116,6 +162,8 @@ class Inference:
 				print("* ERROR: m1 and m2 have diff feature emb lengths")
 				exit(1)
 			# make the joint embedding
+
+
 			m1Matrix = np.zeros(shape=(1, len(m1_features)))
 			m2Matrix = np.zeros(shape=(1, len(m2_features)))
 			m1Matrix[0] = m1_features
@@ -129,9 +177,23 @@ class Inference:
 			pairs.append((muid1, muid2))
 
 		X = np.asarray(X)
+		#print("labels:",labels)
 		Y = np.asarray(labels)
 		print("features have a length of:", numFeatures)
 		print("* createData() loaded", len(pairs), "pairs")
+
+		''' # TMP SAME LEMMA TEST
+		recall = 0
+		if (TP + FN) > 0:
+			recall = float(TP / (TP + FN))
+		prec = 0
+		if (TP + FP) > 0:
+			prec = float(TP / (TP + FP))
+		f1 = 0
+		if (recall + prec) > 0:
+			f1 = 2*(recall*prec) / (recall + prec)
+		print("samelamma f1:",f1)
+		'''
 		return (pairs, X, Y)
 
 	# creates data for FFNN and SVM:
@@ -181,3 +243,23 @@ class Inference:
 		print("features have a length of:",numFeatures)
 		print("* createData() loaded",len(pairs), "pairs")
 		return (pairs, X, Y)
+
+	# TMP, REMOV ETHIS.  only used for testing samelemma in a rush
+	def getBestStanToken(self, stanTokens, token=None):
+		longestToken = ""
+		bestStanToken = None
+		for stanToken in stanTokens:
+			if stanToken.pos in self.badPOS:
+				# only use the badPOS if no others have been set
+				if bestStanToken == None:
+					bestStanToken = stanToken
+			else:  # save the longest, nonBad POS tag
+				if len(stanToken.text) > len(longestToken):
+					longestToken = stanToken.text
+					bestStanToken = stanToken
+		if len(stanTokens) > 1 and token != None:
+			print("token:", str(token.text), "=>", str(bestStanToken))
+		if bestStanToken == None:
+			print("* ERROR: our bestStanToken is empty!")
+			exit(1)
+		return bestStanToken

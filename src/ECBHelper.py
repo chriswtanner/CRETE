@@ -19,7 +19,7 @@ class ECBHelper:
 		print("devDirs:", str(self.devDirs))
 		print("testingDirs:", str(self.testingDirs))
 
-		self.UIDToMention = defaultdict(list) # could be TMP
+		self.UIDToMention = defaultdict(list)
 
 		# filled in via createHDDCRPMentions() (maps text UID
 		# lines from CoNLL file to the created HDDCRP Mention)
@@ -34,7 +34,6 @@ class ECBHelper:
 
 	def addECBCorpus(self, corpus):
 		self.corpus = corpus
-		# TMP
 		for m in corpus.ecb_mentions:
 			for t in m.tokens:
 				self.UIDToMention[t.UID] = m
@@ -282,8 +281,7 @@ class ECBHelper:
 					print("ERROR: Token mismatch")
 					exit(1)
 				text.append(t.text)
-			# TMP:
-			#print("new mention text:", text, "NER:", tokenToNER[m[0]], "(", doc_id, ")")
+
 			curMention = Mention(dirHalf, dir_num, doc_id, m, text, False, tokenToNER[m[0]])
 			self.corpus.addStanMention(curMention)
 			for SUID in SUIDs:
@@ -299,6 +297,7 @@ class ECBHelper:
 					tmpECBTokens.add(t)
 
 		tmpHDDCRPTokens = set()
+		numMismatch = 0
 		for i in range(len(hddcrp_mentions)):
 			HUIDs = hddcrp_mentions[i]
 			tokens = []
@@ -320,13 +319,12 @@ class ECBHelper:
 				text.append(token.text)
 				if HUID.split(";")[-1] != token.text:
 					print("WARNING: TEXT MISMATCH: HUID:", HUID, "ECB token:", token)
-
+					numMismatch += 1
 			if self.args.onlyValidSentences and tokens[0].sentenceNum not in self.docToVerifiedSentences[tokens[0].doc_id]:
 				continue
 			else:
 				for t in tokens:
 					tmpHDDCRPTokens.add(t)
-			#if tokens[0].sentenceNum in self.docToVerifiedSentences[tokens[0].doc_id]:
 				curMention = Mention(dirHalf, dir_num, doc_id, tokens, text, True, "unknown")
 				self.corpus.addHDDCRPMention(curMention)
 				for HUID in HUIDs: # UID == HUID always, because we checked above (in the warning check)
@@ -334,6 +332,7 @@ class ECBHelper:
 		print("# ecb testing tokens (from mentions)", len(tmpECBTokens))
 		print("# hddcrp testing tokens (from mentions):",len(tmpHDDCRPTokens))
 		print("# HDDCRP Mentions created:",len(self.corpus.hddcrp_mentions))
+		print("# numMismatch:", numMismatch)
 		'''
 		tp = 0
 		fn = 0

@@ -14,6 +14,7 @@ from Inference import Inference
 from FFNN import FFNN
 from CCNN import CCNN
 from LibSVM import LibSVM
+from HDF5Reader import HDF5Reader
 from sklearn import svm
 class CorefEngine:
 
@@ -48,22 +49,39 @@ class CorefEngine:
 		runStanford = False
 
 		# classifier params
-		numRuns = 2
+		numRuns = 1
 		useWD = True
-		useRelationalFeatures = True
+		useRelationalFeatures = False
 
 		start_time = time.time()
 
 		# handles passed-in args
 		args = params.setCorefEngineParams()
 
+		# parses elmo embeddings
+		#elmo = HDF5Reader('/Users/christanner/research/CRETE/data/features/alloutput3.hdf5')
+		#exit(1)
 		# most functionality lives here
 		helper = ECBHelper(args)
 
 		# parses the real, actual corpus (ECB's XML files)
 		ecb_parser = ECBParser(args, helper)
 		corpus = ecb_parser.parseCorpus(helper.docToVerifiedSentences)
+		'''
+		i = 0
+		not_in = 0
+		for dirHalf in sorted(corpus.dirHalves):
+			for doc_id in sorted(corpus.dirHalves[dirHalf].docs):
+				doc = corpus.doc_idToDocs[doc_id]
+				out = ""
+				for _ in doc.tokens:
+					out += _.text + " "
+				out = out.rstrip()
+				#print(doc_id + " " + out)
 
+				i += 1
+		exit(1)
+		'''
 		helper.addECBCorpus(corpus)
 		helper.printCorpusStats()
 		# parses the HDDCRP Mentions
@@ -90,8 +108,10 @@ class CorefEngine:
 				trainMUIDs.add(m.XUID)
 			elif m.dir_num in helper.devDirs:
 				devMUIDs.add(m.XUID)
-		for m in corpus.hddcrp_mentions:
-			testMUIDs.add(m.XUID)
+			elif m.dir_num in helper.testingDirs:
+				testMUIDs.add(m.XUID)
+		#for m in corpus.hddcrp_mentions:
+		#	testMUIDs.add(m.XUID)
 
 		fh = FeatureHandler(args, helper, trainMUIDs, devMUIDs, testMUIDs)
 		
@@ -110,5 +130,6 @@ class CorefEngine:
 		#model = FFNN(helper, coref)
 		model = CCNN(helper, coref)
 		model.train_and_test(numRuns)
-
 		print("took:", str((time.time() - start_time)), "seconds")
+
+
