@@ -1,7 +1,7 @@
 #!/bin/bash
 prefix="ccnn3" # used to help identify experiments' outputs, as the output files will have this prefix
 corpus="FULL"
-onlyValidSentences="T"
+onlyValidSentences="F"
 addIntraDocs="T"
 exhaustivelyTestAllFeatures=false
 useECBTest=true

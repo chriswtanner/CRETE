@@ -112,11 +112,8 @@ class CorefEngine:
 				testMUIDs.add(m.XUID)
 		#for m in corpus.hddcrp_mentions:
 		#	testMUIDs.add(m.XUID)
-
 		fh = FeatureHandler(args, helper, trainMUIDs, devMUIDs, testMUIDs)
-		
 		'''
-		fh.saveWordFeatures(wordFeaturesFile)
 		fh.saveLemmaFeatures(lemmaFeaturesFile)
 		fh.saveCharFeatures(charFeaturesFile)
 		fh.savePOSFeatures(posFeaturesFile)
@@ -124,7 +121,6 @@ class CorefEngine:
 		fh.saveWordNetFeatures(wordnetFeaturesFile)
 		fh.saveBoWFeatures(bowFeaturesFile)
 		'''
-
 		coref = Inference(fh, helper, useRelationalFeatures, useWD)
 		#model = LibSVM(helper, coref)
 		#model = FFNN(helper, coref)

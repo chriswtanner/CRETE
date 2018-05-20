@@ -225,6 +225,7 @@ class ECBParser:
                         if self.onlyEvents and not foundMention.isPred:
                             continue
                         token0 = foundMention.tokens[0]
+                        #dir_num not in self.helper.testingDirs and
                         if self.args.onlyValidSentences and token0.sentenceNum not in docToVerifiedSentences[doc_id]:
                             numMentionsIgnored += 1
                             continue
@@ -239,7 +240,6 @@ class ECBParser:
                     it2 = tuple(re.finditer(regex2, match.group(1)))
                     # only keep track of REFs for which we have found Mentions
                     for match2 in it2:
-
                         m_id = int(match2.group(1))
                         if m_id not in lm_idToMention:
                             print("*** MISSING MENTION! EXITING")
@@ -249,6 +249,7 @@ class ECBParser:
                             if self.onlyEvents and not foundMention.isPred:
                                 continue
                             token0 = foundMention.tokens[0]
+                            #dir_num not in self.helper.testingDirs and
                             if self.args.onlyValidSentences and token0.sentenceNum not in docToVerifiedSentences[doc_id]:
                                 numMentionsIgnored += 1
                                 continue

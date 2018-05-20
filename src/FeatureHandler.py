@@ -156,6 +156,9 @@ class FeatureHandler:
 			sumEmb = [0] * 300
 			for t in self.corpus.XUIDToMention[muid].tokens:
 				word = self.getBestStanToken(t.stanTokens).text.lower()
+				if word not in self.gloveEmb:
+					print("* ERROR: no word emb for", word)
+					continue
 				curEmb = self.gloveEmb[word]
 				sumEmb = [x + y for x,y in zip(sumEmb, curEmb)]
 			feature.setSingle(self.corpus.XUIDToMention[muid].UID, sumEmb)
@@ -193,6 +196,9 @@ class FeatureHandler:
 			sumEmb = [0] * 300
 			for t in self.corpus.XUIDToMention[muid].tokens:
 				lemma = self.getBestStanToken(t.stanTokens).lemma.lower()
+				if lemma not in self.gloveEmb:
+					print("* ERROR: no emb for",lemma)
+					continue
 				curEmb = self.gloveEmb[lemma]
 				sumEmb = [x + y for x, y in zip(sumEmb, curEmb)]
 			feature.setSingle(self.corpus.XUIDToMention[muid].UID, sumEmb)
