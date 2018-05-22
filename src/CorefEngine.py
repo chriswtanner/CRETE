@@ -49,8 +49,8 @@ class CorefEngine:
 		runStanford = False
 
 		# classifier params
-		numRuns = 20
-		useWD = True
+		numRuns = 1
+		useWD = False
 		useRelationalFeatures = False
 
 		start_time = time.time()
@@ -113,6 +113,8 @@ class CorefEngine:
 		#for m in corpus.hddcrp_mentions:
 		#	testMUIDs.add(m.XUID)
 		fh = FeatureHandler(args, helper, trainMUIDs, devMUIDs, testMUIDs)
+		#fh.saveCharFeatures(charFeaturesFile)
+		#exit(1)
 		'''
 		fh.saveLemmaFeatures(lemmaFeaturesFile)
 		fh.saveCharFeatures(charFeaturesFile)
