@@ -98,7 +98,7 @@ class CCNN:
 		stddev = -1
 		if len(f1s) > 1:
 			stddev = self.standard_deviation(f1s)
-		print("avgf1:", sum(f1s)/len(f1s), "max:", max(f1s), "min:", min(f1s), "avgP:",sum(bestP)/len(bestP),"avgR:",sum(bestR)/len(bestR),"stddev:", stddev)
+		print("avgf1:", sum(f1s)/len(f1s), "max:", max(f1s), "min:", min(f1s), "avgP:",sum(precs)/len(precs),"avgR:",sum(recalls)/len(recalls),"stddev:", stddev)
 		sys.stdout.flush()
 
 	# Base network to be shared (eq. to feature extraction).
