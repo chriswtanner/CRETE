@@ -26,7 +26,7 @@ else
 	source ~/research/venv/bin/activate
 fi
 
-hddcrpFullFile=${baseDir}"data/predict.ran.WD.semeval.txt" # MAKE SURE THIS IS WHAT YOU WANT (gold vs predict)
+hddcrpFullFile=${baseDir}"data/predict.ran.WD.semeval.txt" #predict.ran MAKE SURE THIS IS WHAT YOU WANT (gold vs predict)
 verbose="true"
 embeddingsFile=${baseDir}"data/features/gloveEmbeddings.6B.300.txt"
 scriptDir=${baseDir}"src/"

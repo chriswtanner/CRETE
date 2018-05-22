@@ -44,7 +44,8 @@ class CCNN:
 				validation_data=([self.devX[:, 0], self.devX[:, 1]], self.devY))
 
 
-			preds = model.predict([self.testX[:, 0], self.testX[:, 1]])
+			preds = model.predict([self.devX[:, 0], self.devX[:, 1]])
+			#preds = model.predict([self.testX[:, 0], self.testX[:, 1]])
 			
 			numGoldPos = 0
 			scoreToGoldTruth = defaultdict(list)
@@ -97,22 +98,14 @@ class CCNN:
 		seq = Sequential()
 		curNumFilters = self.args.numFilters
 		kernel_rows = 1
-		seq.add(Conv2D(self.args.numFilters, kernel_size=(kernel_rows, 3), activation='relu', padding="same", input_shape=input_shape, data_format="channels_first"))
-		seq.add(Dropout(float(self.args.dropout)))
-		seq.add(MaxPooling2D(pool_size=(kernel_rows, 2), padding="same", data_format="channels_first"))
 
-
-		seq.add(Conv2D(96, kernel_size=(kernel_rows, 3), activation='relu', padding="same", data_format="channels_first"))
-		seq.add(Dropout(float(self.args.dropout)))
-		seq.add(MaxPooling2D(pool_size=(kernel_rows, 2), padding="same", data_format="channels_first"))
-		
-		# prev didn't have the layer below and i got 62.3 avg conll (50 runs)
-		seq.add(Conv2D(self.args.numFilters, kernel_size=(kernel_rows, 3), activation='relu', padding="same", input_shape=input_shape, data_format="channels_first"))
-		seq.add(Dropout(float(self.args.dropout)))
-		seq.add(MaxPooling2D(pool_size=(kernel_rows, 2), padding="same", data_format="channels_first"))
-
-		#seq.add(Conv2D(curNumFilters, kernel_size=(kernel_rows, 3), activation='relu', padding="same", data_format="channels_first"))
-		#seq.add(MaxPooling2D(pool_size=(kernel_rows, 2), padding="same", data_format="channels_first"))	
+		for i in range(self.args.numLayers):
+			nf = self.args.numFilters
+			if i == 1: # meaning 2nd layer, since i in {0,1,2, ...}
+				nf = 96
+			seq.add(Conv2D(self.args.numFilters, kernel_size=(kernel_rows, 3), activation='relu', padding="same", input_shape=input_shape, data_format="channels_first"))
+			seq.add(Dropout(float(self.args.dropout)))
+			seq.add(MaxPooling2D(pool_size=(kernel_rows, 2), padding="same", data_format="channels_first"))
 
 		seq.add(Flatten())
 		seq.add(Dense(curNumFilters, activation='relu'))
@@ -129,7 +122,7 @@ class CCNN:
 	# Contrastive loss from Hadsell-et-al.'06
 	# http://yann.lecun.com/exdb/publis/pdf/hadsell-chopra-lecun-06.pdf
 	def contrastive_loss(self, y_true, y_pred):
-		margin = self.args.numLayers
+		margin = 1
 		return K.mean(y_true * K.square(y_pred) + (1 - y_true) * K.square(K.maximum(margin - y_pred, 0)))
 
 	def standard_deviation(self, lst):

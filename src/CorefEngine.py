@@ -87,7 +87,7 @@ class CorefEngine:
 		# parses the HDDCRP Mentions
 		hddcrp_parser = HDDCRPParser(args)
 		helper.createHDDCRPMentions(hddcrp_parser.parseCorpus(args.hddcrpFullFile))
-
+		#exit(1)
 		# loads Stanford's parse
 		if runStanford:
 			stan = StanParser(args, corpus)
