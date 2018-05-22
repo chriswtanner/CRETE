@@ -1,15 +1,15 @@
 #!/bin/bash
-prefix="ccnn3" # used to help identify experiments' outputs, as the output files will have this prefix
+prefix="ccnn" # used to help identify experiments' outputs, as the output files will have this prefix
 corpus="FULL"
 onlyValidSentences="F"
 addIntraDocs="F" # since these are singletons w.r.t. cross-doc
 exhaustivelyTestAllFeatures=false
 useECBTest=true
 featureMap=(2) # 1 2 3 4 5 6 7)
-numLayers=(3) # 3) # 1 3
+numLayers=(2) # 3) # 1 3
 numEpochs=(3) # 20)
 windowSize=(0)
-numNeg=(1)
+numNeg=(999)
 batchSize=(128) # 128) # 64 128
 dropout=(0.0) # 0.2 0.4)
 numFilters=(6)

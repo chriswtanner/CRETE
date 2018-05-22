@@ -91,12 +91,12 @@ class Inference:
 		FN = 0.0
 		FP = 0.0
 		'''
-
 		for (muid1, muid2) in muidPairs:
 			if muid1 == muid2:
 				print("whaaaaa: muidPairs:", muidPairs)
-			'''
+			
 			# TMP ADDED FOR SAME LEMMA TEST
+			'''
 			sameLemma = True
 			lemmaList1 = []
 			lemmaList2 = []
@@ -116,6 +116,7 @@ class Inference:
 			'''
 			if self.corpus.XUIDToMention[muid1].REF == self.corpus.XUIDToMention[muid2].REF:
 				
+				# TMP ADDED FOR SAME LEMMA TEST
 				'''
 				if sameLemma:
 					TP += 1
@@ -126,6 +127,7 @@ class Inference:
 				numPosAdded += 1
 			else:
 
+				# TMP ADDED FOR SAME LEMMA TEST
 				'''
 				if not sameLemma:
 					TN += 1
@@ -161,9 +163,8 @@ class Inference:
 			if len(m1_features) != len(m2_features):
 				print("* ERROR: m1 and m2 have diff feature emb lengths")
 				exit(1)
+
 			# make the joint embedding
-
-
 			m1Matrix = np.zeros(shape=(1, len(m1_features)))
 			m2Matrix = np.zeros(shape=(1, len(m2_features)))
 			m1Matrix[0] = m1_features
@@ -182,7 +183,8 @@ class Inference:
 		print("features have a length of:", numFeatures)
 		print("* createData() loaded", len(pairs), "pairs")
 
-		''' # TMP SAME LEMMA TEST
+		# TMP ADDED FOR SAME LEMMA TEST
+		'''
 		recall = 0
 		if (TP + FN) > 0:
 			recall = float(TP / (TP + FN))
@@ -192,7 +194,7 @@ class Inference:
 		f1 = 0
 		if (recall + prec) > 0:
 			f1 = 2*(recall*prec) / (recall + prec)
-		print("samelamma f1:",f1)
+		print("samelamma f1:",f1, prec, recall)
 		'''
 		return (pairs, X, Y)
 
@@ -244,7 +246,8 @@ class Inference:
 		print("* createData() loaded",len(pairs), "pairs")
 		return (pairs, X, Y)
 
-	# TMP, REMOV ETHIS.  only used for testing samelemma in a rush
+	# TMP, REMOVE THIS.  only used for testing samelemma in a rush
+	# this method normally resides in a diff class, just we didn't have access to it from this class
 	def getBestStanToken(self, stanTokens, token=None):
 		longestToken = ""
 		bestStanToken = None

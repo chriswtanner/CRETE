@@ -49,7 +49,7 @@ class CorefEngine:
 		runStanford = False
 
 		# classifier params
-		numRuns = 1
+		numRuns = 20
 		useWD = True
 		useRelationalFeatures = False
 

@@ -18,7 +18,7 @@ class CCNN:
 		self.args = helper.args
 		(self.trainID, self.trainX, self.trainY) = (coref.trainID, coref.trainX, coref.trainY)
 		(self.devID, self.devX, self.devY) = (coref.devID, coref.devX, coref.devY)
-		(self.testID, self.testX, self.testY) = (coref.testID, coref.testX, coref.testY)
+		#(self.testID, self.testX, self.testY) = (coref.testID, coref.testX, coref.testY)
 
 		if self.args.native:
 			sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))
@@ -52,7 +52,7 @@ class CCNN:
 			numGoldPos = 0
 			scoreToGoldTruth = defaultdict(list)
 			for _ in range(len(preds)):
-				if self.testY[_]:
+				if self.devY[_]:
 					numGoldPos += 1
 					scoreToGoldTruth[preds[_][0]].append(1)
 				else:
@@ -86,7 +86,7 @@ class CCNN:
 					bestR = recall
 					bestP = prec
 				#print("fwd:", eachVal, "(", numReturnedSoFar,"returned)",recall,prec,"f1:",f1)
-			print("fwd_best_f1:",bestF1,"val:",bestVal)
+			print("fwd_best_f1:",bestF1,"prec:",bestP,"recall:",bestR,"threshold:",bestVal)
 			sys.stdout.flush()
 			if bestF1 > 0:
 				f1s.append(bestF1)
