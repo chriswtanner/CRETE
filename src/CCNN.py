@@ -26,6 +26,8 @@ class CCNN:
 
 	def train_and_test(self, numRuns):
 		f1s = []
+		recalls = []
+		precs = []
 		while len(f1s) < numRuns:
 			# define model
 			input_shape = self.trainX.shape[2:]
@@ -63,6 +65,8 @@ class CCNN:
 			FP = 0.0
 			bestF1 = 0
 			bestVal = -1
+			bestR = 0
+			bestP = 0
 			numReturnedSoFar = 0
 			for eachVal in s:
 				for _ in scoreToGoldTruth[eachVal]:
@@ -79,18 +83,22 @@ class CCNN:
 				if f1 > bestF1:
 					bestF1 = f1
 					bestVal = eachVal
+					bestR = recall
+					bestP = prec
 				#print("fwd:", eachVal, "(", numReturnedSoFar,"returned)",recall,prec,"f1:",f1)
 			print("fwd_best_f1:",bestF1,"val:",bestVal)
 			sys.stdout.flush()
 			if bestF1 > 0:
 				f1s.append(bestF1)
+				recalls.append(bestR)
+				precs.append(bestP)
 		# clears ram
 		self.trainX = None
 		self.trainY = None
 		stddev = -1
 		if len(f1s) > 1:
 			stddev = self.standard_deviation(f1s)
-		print("avgf1:", sum(f1s)/len(f1s), "max:", max(f1s), "min:", min(f1s), "stddev:", stddev)
+		print("avgf1:", sum(f1s)/len(f1s), "max:", max(f1s), "min:", min(f1s), "avgP:",sum(bestP)/len(bestP),"avgR:",sum(bestR)/len(bestR),"stddev:", stddev)
 		sys.stdout.flush()
 
 	# Base network to be shared (eq. to feature extraction).
