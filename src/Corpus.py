@@ -59,9 +59,9 @@ class Corpus:
                 necb = len(self.docSentToMentions[(doc, sent)])
                 nh = len(self.docSentToHMentions[(doc, sent)])
                 ns = len(self.docSentToSMentions[(doc, sent)])
-                if necb == 0 and ns > 0:
-                    print("doc:",doc, "sent:",sent)
-                    print(necb,",",nh,",",ns)
+                #if necb == 0 and ns > 0:
+                    #print("doc:",doc, "sent:",sent)
+                    #print(necb,",",nh,",",ns)
     # adds a Token to the corpus
     def addToken(self, token):
         self.corpusTokens.append(token)

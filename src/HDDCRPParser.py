@@ -98,7 +98,6 @@ class HDDCRPParser:
 		print("HDDCRP Gold file had #REFs:", len(REFToDocs),
 		      "(", numSingletons, " were singletons)")
 
-
 		'''
 		# TMP -- writing new non-singleton file
 		g_wd = open("gold.ns.wd.txt", 'w')

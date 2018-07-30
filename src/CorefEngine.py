@@ -50,7 +50,7 @@ class CorefEngine:
 
 		# classifier params
 		numRuns = 1
-		useWD = False
+		useWD = True
 		useRelationalFeatures = False
 
 		start_time = time.time()
@@ -67,23 +67,10 @@ class CorefEngine:
 		# parses the real, actual corpus (ECB's XML files)
 		ecb_parser = ECBParser(args, helper)
 		corpus = ecb_parser.parseCorpus(helper.docToVerifiedSentences)
-		'''
-		i = 0
-		not_in = 0
-		for dirHalf in sorted(corpus.dirHalves):
-			for doc_id in sorted(corpus.dirHalves[dirHalf].docs):
-				doc = corpus.doc_idToDocs[doc_id]
-				out = ""
-				for _ in doc.tokens:
-					out += _.text + " "
-				out = out.rstrip()
-				#print(doc_id + " " + out)
 
-				i += 1
-		exit(1)
-		'''
 		helper.addECBCorpus(corpus)
 		helper.printCorpusStats()
+
 		# parses the HDDCRP Mentions
 		hddcrp_parser = HDDCRPParser(args)
 		helper.createHDDCRPMentions(hddcrp_parser.parseCorpus(args.hddcrpFullFile))
@@ -97,7 +84,7 @@ class CorefEngine:
 			helper.loadStanTokens()
 		helper.createStanMentions()
 		#helper.printHDDCRPMentionCoverage()
-		#corpus.checkMentions()
+		corpus.checkMentions()
 
 		# DEFINES WHICH MENTIONS TO USE
 		trainMUIDs = set()
@@ -113,8 +100,7 @@ class CorefEngine:
 		#for m in corpus.hddcrp_mentions:
 		#	testMUIDs.add(m.XUID)
 		fh = FeatureHandler(args, helper, trainMUIDs, devMUIDs, testMUIDs)
-		#fh.saveCharFeatures(charFeaturesFile)
-		#exit(1)
+
 		'''
 		fh.saveLemmaFeatures(lemmaFeaturesFile)
 		fh.saveCharFeatures(charFeaturesFile)
@@ -125,9 +111,7 @@ class CorefEngine:
 		'''
 		coref = Inference(fh, helper, useRelationalFeatures, useWD)
 		#model = LibSVM(helper, coref)
-		#model = FFNN(helper, coref)
-		model = CCNN(helper, coref)
+		model = FFNN(helper, coref)
+		#model = CCNN(helper, coref)
 		model.train_and_test(numRuns)
 		print("took:", str((time.time() - start_time)), "seconds")
-
-

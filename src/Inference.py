@@ -40,14 +40,17 @@ class Inference:
 			lf = self.loadFeature("../data/features/wordnet.f")
 			self.relFeatures.append(lf.relational)
 
+		# FOR CCNN
+		'''
 		(self.trainID, self.trainX, self.trainY) = self.createDataForCCNN(helper.trainingDirs, featureHandler.trainMUIDs, useRelationalFeatures, True)
 		(self.devID, self.devX, self.devY) = self.createDataForCCNN(helper.devDirs, featureHandler.devMUIDs, useRelationalFeatures, False)
 		#(self.testID, self.testX, self.testY) = self.createDataForCCNN(helper.testingDirs, featureHandler.testMUIDs, useRelationalFeatures, False)
-	
 		'''
-		(self.trainID, self.trainX, self.trainY) = self.createData(helper.trainingDirs, featureHandler.trainMUIDs, useRelationalFeatures)
-		(self.devID, self.devX, self.devY) = self.createData(helper.devDirs, featureHandler.devMUIDs, useRelationalFeatures)
-		'''
+
+		# FOR FFNN
+		(self.trainID, self.trainX, self.trainY) = self.createData(helper.trainingDirs, featureHandler.trainMUIDs, useRelationalFeatures, True)
+		(self.devID, self.devX, self.devY) = self.createData(helper.devDirs, featureHandler.devMUIDs, useRelationalFeatures, False)
+		
 	def loadFeature(self, file):
 		print("loading",file)
 		return pickle.load(open(file, 'rb'))
@@ -74,6 +77,8 @@ class Inference:
 						muidPairs.add((muid1, muid2))
 		return muidPairs
 	
+	# almost identical to createData() but it re-shapes the vectors to be 5D -- pairwise.
+	# i could probably combine this into 1 function and have a boolean flag isCCNN=True
 	def createDataForCCNN(self, dirs, MUIDs, useRelationalFeatures, negSubsample):
 		pairs = []
 		X = []
@@ -200,7 +205,7 @@ class Inference:
 
 	# creates data for FFNN and SVM:
 	# [(muid1,muid2), [features], [1,0]]
-	def createData(self, dirs, MUIDs, useRelationalFeatures):
+	def createData(self, dirs, MUIDs, useRelationalFeatures, negSubsample):
 		pairs = []
 		X = []
 		Y = []
@@ -209,13 +214,12 @@ class Inference:
 		numNegAdded = 0
 		muidPairs = self.createMUIDPairs(MUIDs)
 		for (muid1, muid2) in muidPairs:
-
 			label = [1, 0]
 			if self.corpus.XUIDToMention[muid1].REF == self.corpus.XUIDToMention[muid2].REF:
 				label = [0, 1]
 				numPosAdded += 1
 			else:
-				if numNegAdded > numPosAdded*self.numNegPerPos:
+				if negSubsample and numNegAdded > numPosAdded*self.args.numNegPerPos:
 					continue
 				numNegAdded += 1
 
@@ -243,7 +247,9 @@ class Inference:
 			X.append(features)
 			Y.append(label)
 		print("features have a length of:",numFeatures)
-		print("* createData() loaded",len(pairs), "pairs")
+		pp = float(numPosAdded / (numPosAdded+numNegAdded))
+		pn = float(numNegAdded / (numPosAdded+numNegAdded))
+		print("* createData() loaded", len(pairs), "pairs (",pp,"% pos, ",pn,"% neg)")
 		return (pairs, X, Y)
 
 	# TMP, REMOVE THIS.  only used for testing samelemma in a rush

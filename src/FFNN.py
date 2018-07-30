@@ -44,7 +44,9 @@ class FFNN:
 
 	def train_and_test(self, numRuns):
 		f1s = []
-		for i in range(numRuns):
+		recalls = []
+		precs = []
+		while len(f1s) < numRuns:
 			self.model = Sequential()
 
 			# optionally add a 3rd layer
@@ -71,52 +73,91 @@ class FFNN:
 			self.model.summary()
 			self.model.fit(self.trainX, self.trainY, epochs=self.num_epochs, batch_size=self.batch_size, verbose=1)
 			
+			# TODO: don't leave this as trainX.  should be devX or testX
 			preds = self.model.predict(self.devX)
-
+			print("# preds:",len(preds)) #, preds)
+			numGoldPos = 0
+			scoreToGoldTruth = defaultdict(list)
+			for _ in range(len(preds)):
+				pred = preds[_][1]
+				# TODO: dont leave this as trainX
+				#if self.trainY[_][1] > self.trainY[_][0]:
+				if self.devY[_][1] > self.devY[_][0]:
+					numGoldPos += 1
+					scoreToGoldTruth[pred].append(1)
+				else:
+					scoreToGoldTruth[pred].append(0)
+			#print("numGoldPos:", numGoldPos)
+			s = sorted(scoreToGoldTruth.keys())
+			#print("s:",s)
+			'''
 			TN = 0.0
 			TP = 0.0
 			FN = 0.0
 			FP = 0.0
-			for _ in range(len(preds)):
-				pred = preds[_]
-				pred_label = 0
-				gold_label = 0
-				if self.devY[_][1] >= self.devY[_][0]:
-					gold_label = 1
-				if pred[1] >= pred[0]:
-					pred_label = 1
-				if pred_label and gold_label:
-					TP += 1
-				elif pred_label and not gold_label:
-					FP += 1
-				elif not pred_label and gold_label:
-					FN += 1
-				elif not pred_label and not gold_label:
-					TN += 1
-				else:
-					print("what happened")
-					exit(1)
-			recall = 0
-			if (TP + FN) > 0:
-				recall = float(TP / (TP + FN))
-			prec = 0
-			if (TP + FP) > 0:
-				prec = float(TP / (TP + FP))
-			acc = float((TP + TN) / len(preds))
-			f1 = 0
-			if (recall + prec) > 0:
-				f1 = 2*(recall*prec) / (recall + prec)
-			f1s.append(f1)
-			print("acc:", acc, "r:", recall, "p:", prec, "f1:", f1)
+			numReturnedSoFar = 0
+			'''
+			bestF1 = 0
+			bestVal = -1
+			bestR = 0
+			bestP = 0
+
+
+			s = [xy for xy in np.arange(1, 0, -0.1)]
+			for eachVal in s:
+				TN = 0.0
+				TP = 0.0
+				FN = 0.0
+				FP = 0.0
+				numReturnedSoFar = 0
+				numCorrect = 0
+				numIncorrect = 0
+				for s2 in scoreToGoldTruth.keys():
+					for _ in scoreToGoldTruth[s2]:
+						if s2 >= eachVal:
+							if _ == 1:
+								TP += 1
+								numCorrect += 1
+							else:
+								FP += 1
+								numIncorrect += 1
+							numReturnedSoFar += len(scoreToGoldTruth[s2])
+						else:
+							if _ == 0:
+								numCorrect += 1
+							else:
+								numIncorrect += 1
+				recall = float(TP / numGoldPos)
+				prec = 0
+				acc = float(numCorrect / (numCorrect + numIncorrect))
+				if numReturnedSoFar > 0:
+					prec = float(TP / numReturnedSoFar)
+				f1 = 0
+				if (recall + prec) > 0:
+					f1 = 2*(recall*prec) / (recall + prec)
+				if f1 > bestF1:
+					bestF1 = f1
+					bestVal = eachVal
+					bestR = recall
+					bestP = prec
+				print("ffnn:", eachVal, "(", numReturnedSoFar,"returned)","r:",recall,"p:",prec,"f1:",f1,"acc:",acc)
+			print("ffnn_best_f1:", bestF1, "prec:", bestP,
+			      "recall:", bestR, "threshold:", bestVal)
 			sys.stdout.flush()
+			if bestF1 > 0:
+				f1s.append(bestF1)
+				recalls.append(bestR)
+				precs.append(bestP)
+
 		# clears ram
 		self.trainX = None
 		self.trainY = None
 		stddev = -1
 		if len(f1s) > 1:
 			stddev = self.standard_deviation(f1s)
-		print("avgf1:", sum(f1s)/len(f1s), "max:",max(f1s), "min:",min(f1s), "stddev:", stddev)
+		print("avgf1:", sum(f1s)/len(f1s), "max:", max(f1s), "min:", min(f1s), "avgP:", sum(precs)/len(precs), "avgR:", sum(recalls)/len(recalls), "stddev:", stddev)
 		sys.stdout.flush()
+
 	def standard_deviation(self, lst):
 		num_items = len(lst)
 		mean = sum(lst) / num_items
