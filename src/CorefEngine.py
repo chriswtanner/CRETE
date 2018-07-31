@@ -51,6 +51,7 @@ class CorefEngine:
 		# classifier params
 		numRuns = 1
 		useWD = True
+		useCCNN = True
 		useRelationalFeatures = False
 
 		start_time = time.time()
@@ -74,6 +75,7 @@ class CorefEngine:
 		# parses the HDDCRP Mentions
 		hddcrp_parser = HDDCRPParser(args)
 		helper.createHDDCRPMentions(hddcrp_parser.parseCorpus(args.hddcrpFullFile))
+		
 		#exit(1)
 		# loads Stanford's parse
 		if runStanford:
@@ -109,9 +111,13 @@ class CorefEngine:
 		fh.saveWordNetFeatures(wordnetFeaturesFile)
 		fh.saveBoWFeatures(bowFeaturesFile)
 		'''
-		coref = Inference(fh, helper, useRelationalFeatures, useWD)
+		coref = Inference(fh, helper, useRelationalFeatures, useWD, useCCNN)
 		#model = LibSVM(helper, coref)
-		model = FFNN(helper, coref)
-		#model = CCNN(helper, coref)
+
+		if useCCNN:
+			model = CCNN(helper, coref)
+		else:
+			model = FFNN(helper, coref)
+
 		model.train_and_test(numRuns)
 		print("took:", str((time.time() - start_time)), "seconds")

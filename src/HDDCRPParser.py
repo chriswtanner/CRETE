@@ -93,8 +93,8 @@ class HDDCRPParser:
 		for ref in REFToDocs:
 			if len(REFToDocs[ref]) == 1:
 				numSingletons += 1
-			if len(REFToDirHalves[ref]) > 1:
-				print("* WHOA. 2 dirhalves for REF:",ref,REFToDirHalves[ref])
+			#if len(REFToDirHalves[ref]) > 1:
+			#	print("* WHOA. 2 dirhalves for REF:",ref,REFToDirHalves[ref])
 		print("HDDCRP Gold file had #REFs:", len(REFToDocs),
 		      "(", numSingletons, " were singletons)")
 

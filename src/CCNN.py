@@ -45,7 +45,6 @@ class CCNN:
 				epochs=self.args.numEpochs, \
 				validation_data=([self.devX[:, 0], self.devX[:, 1]], self.devY))
 
-
 			preds = model.predict([self.devX[:, 0], self.devX[:, 1]])
 			#preds = model.predict([self.testX[:, 0], self.testX[:, 1]])
 			
@@ -86,19 +85,20 @@ class CCNN:
 					bestR = recall
 					bestP = prec
 				#print("fwd:", eachVal, "(", numReturnedSoFar,"returned)",recall,prec,"f1:",f1)
-			print("fwd_best_f1:",bestF1,"prec:",bestP,"recall:",bestR,"threshold:",bestVal)
-			sys.stdout.flush()
 			if bestF1 > 0:
 				f1s.append(bestF1)
 				recalls.append(bestR)
 				precs.append(bestP)
+			print("ccnn_best_f1 (run ", len(f1s),"): ", bestF1, " prec: ",bestP, " recall: ", bestR, " threshold:", bestVal, sep="")
+			sys.stdout.flush()
+
 		# clears ram
 		self.trainX = None
 		self.trainY = None
 		stddev = -1
 		if len(f1s) > 1:
 			stddev = self.standard_deviation(f1s)
-		print("avgf1:", sum(f1s)/len(f1s), "max:", max(f1s), "min:", min(f1s), "avgP:",sum(precs)/len(precs),"avgR:",sum(recalls)/len(recalls),"stddev:", stddev)
+		print("avgf1 (over",len(f1s),"runs):", sum(f1s)/len(f1s), "max:", max(f1s), "min:", min(f1s), "avgP:",sum(precs)/len(precs),"avgR:",sum(recalls)/len(recalls),"stddev:", stddev)
 		sys.stdout.flush()
 
 	# Base network to be shared (eq. to feature extraction).

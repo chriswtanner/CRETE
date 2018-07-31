@@ -50,7 +50,6 @@ class FFNN:
 			self.model = Sequential()
 
 			# optionally add a 3rd layer
-			
 			if self.dataDim > 1000:
 				h1 = floor(self.dataDim / 2)
 				print("h1:",h1)
@@ -73,23 +72,18 @@ class FFNN:
 			self.model.summary()
 			self.model.fit(self.trainX, self.trainY, epochs=self.num_epochs, batch_size=self.batch_size, verbose=1)
 			
-			# TODO: don't leave this as trainX.  should be devX or testX
 			preds = self.model.predict(self.devX)
 			print("# preds:",len(preds)) #, preds)
 			numGoldPos = 0
 			scoreToGoldTruth = defaultdict(list)
 			for _ in range(len(preds)):
 				pred = preds[_][1]
-				# TODO: dont leave this as trainX
-				#if self.trainY[_][1] > self.trainY[_][0]:
 				if self.devY[_][1] > self.devY[_][0]:
 					numGoldPos += 1
 					scoreToGoldTruth[pred].append(1)
 				else:
 					scoreToGoldTruth[pred].append(0)
-			#print("numGoldPos:", numGoldPos)
 			s = sorted(scoreToGoldTruth.keys())
-			#print("s:",s)
 			'''
 			TN = 0.0
 			TP = 0.0
@@ -101,7 +95,6 @@ class FFNN:
 			bestVal = -1
 			bestR = 0
 			bestP = 0
-
 
 			s = [xy for xy in np.arange(1, 0, -0.1)]
 			for eachVal in s:
@@ -140,14 +133,14 @@ class FFNN:
 					bestVal = eachVal
 					bestR = recall
 					bestP = prec
+
 				print("ffnn:", eachVal, "(", numReturnedSoFar,"returned)","r:",recall,"p:",prec,"f1:",f1,"acc:",acc)
-			print("ffnn_best_f1:", bestF1, "prec:", bestP,
-			      "recall:", bestR, "threshold:", bestVal)
-			sys.stdout.flush()
+				sys.stdout.flush()
 			if bestF1 > 0:
 				f1s.append(bestF1)
 				recalls.append(bestR)
 				precs.append(bestP)
+			print("ffnn_best_f1:", bestF1, "prec:", bestP, "recall:", bestR, "threshold:", bestVal)
 
 		# clears ram
 		self.trainX = None

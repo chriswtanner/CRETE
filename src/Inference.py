@@ -2,7 +2,7 @@ import pickle
 import numpy as np
 from collections import defaultdict
 class Inference:
-	def __init__(self, featureHandler, helper, useRelationalFeatures, useWD):
+	def __init__(self, featureHandler, helper, useRelationalFeatures, useWD, useCCNN):
 		self.featureHandler = featureHandler
 		self.helper = helper
 		self.corpus = helper.corpus
@@ -41,16 +41,15 @@ class Inference:
 			self.relFeatures.append(lf.relational)
 
 		# FOR CCNN
-		'''
-		(self.trainID, self.trainX, self.trainY) = self.createDataForCCNN(helper.trainingDirs, featureHandler.trainMUIDs, useRelationalFeatures, True)
-		(self.devID, self.devX, self.devY) = self.createDataForCCNN(helper.devDirs, featureHandler.devMUIDs, useRelationalFeatures, False)
-		#(self.testID, self.testX, self.testY) = self.createDataForCCNN(helper.testingDirs, featureHandler.testMUIDs, useRelationalFeatures, False)
-		'''
-
-		# FOR FFNN
-		(self.trainID, self.trainX, self.trainY) = self.createData(helper.trainingDirs, featureHandler.trainMUIDs, useRelationalFeatures, True)
-		(self.devID, self.devX, self.devY) = self.createData(helper.devDirs, featureHandler.devMUIDs, useRelationalFeatures, False)
-		
+		if useCCNN:
+			(self.trainID, self.trainX, self.trainY) = self.createDataForCCNN(helper.trainingDirs, featureHandler.trainMUIDs, useRelationalFeatures, True)
+			(self.devID, self.devX, self.devY) = self.createDataForCCNN(helper.devDirs, featureHandler.devMUIDs, useRelationalFeatures, False)
+			#(self.testID, self.testX, self.testY) = self.createDataForCCNN(helper.testingDirs, featureHandler.testMUIDs, useRelationalFeatures, False)
+		else:
+			# FOR FFNN
+			(self.trainID, self.trainX, self.trainY) = self.createData(helper.trainingDirs, featureHandler.trainMUIDs, useRelationalFeatures, True)
+			(self.devID, self.devX, self.devY) = self.createData(helper.devDirs, featureHandler.devMUIDs, useRelationalFeatures, False)
+			
 	def loadFeature(self, file):
 		print("loading",file)
 		return pickle.load(open(file, 'rb'))
