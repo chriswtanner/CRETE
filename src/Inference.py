@@ -54,14 +54,18 @@ class Inference:
 		print("loading",file)
 		return pickle.load(open(file, 'rb'))
 
-	# return a list of MUID pairs, where each pair comes from the same dirHalf
+	# return a list of MUID pairs, where each pair comes from either:
+	# (1) the same doc (within-dic); or,
+	# (2) the same dirHalf (cross-doc)
 	def createMUIDPairs(self, MUIDs):
 		muidPairs = set()
 		dirHalfToMUIDs = defaultdict(set)
+		docToMUIDs = defaultdict(set)
 		for muid in MUIDs:
 			mention = self.corpus.XUIDToMention[muid]
 			dirHalfToMUIDs[mention.dirHalf].add(muid)
-		# we sort to ensure consistency
+
+		# we sort to ensure consistency across multiple runs
 		for dirHalf in sorted(dirHalfToMUIDs.keys()):
 			for muid1 in sorted(dirHalfToMUIDs[dirHalf]):
 				for muid2 in sorted(dirHalfToMUIDs[dirHalf]):

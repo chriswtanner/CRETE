@@ -96,7 +96,7 @@ class FFNN:
 			bestR = 0
 			bestP = 0
 
-			s = [xy for xy in np.arange(1, 0, -0.1)]
+			#s = [xy for xy in np.arange(1, 0, -0.1)]
 			for eachVal in s:
 				TN = 0.0
 				TP = 0.0
@@ -114,7 +114,7 @@ class FFNN:
 							else:
 								FP += 1
 								numIncorrect += 1
-							numReturnedSoFar += len(scoreToGoldTruth[s2])
+							numReturnedSoFar += 1
 						else:
 							if _ == 0:
 								numCorrect += 1
@@ -140,15 +140,15 @@ class FFNN:
 				f1s.append(bestF1)
 				recalls.append(bestR)
 				precs.append(bestP)
-			print("ffnn_best_f1:", bestF1, "prec:", bestP, "recall:", bestR, "threshold:", bestVal)
-
+			print("ffnn_best_f1 (run ", len(f1s), "): ", bestF1, " prec: ", bestP, " recall: ", bestR, " threshold:", bestVal, sep="")
+			sys.stdout.flush()
 		# clears ram
 		self.trainX = None
 		self.trainY = None
 		stddev = -1
 		if len(f1s) > 1:
 			stddev = self.standard_deviation(f1s)
-		print("avgf1:", sum(f1s)/len(f1s), "max:", max(f1s), "min:", min(f1s), "avgP:", sum(precs)/len(precs), "avgR:", sum(recalls)/len(recalls), "stddev:", stddev)
+		print("avgf1 (over", len(f1s), "runs):", sum(f1s)/len(f1s), "max:", max(f1s), "min:", min(f1s), "avgP:", sum(precs)/len(precs), "avgR:", sum(recalls)/len(recalls), "stddev:", stddev)
 		sys.stdout.flush()
 
 	def standard_deviation(self, lst):

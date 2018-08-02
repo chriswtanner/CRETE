@@ -73,8 +73,9 @@ class CorefEngine:
 		helper.printCorpusStats()
 
 		# parses the HDDCRP Mentions
-		hddcrp_parser = HDDCRPParser(args)
-		helper.createHDDCRPMentions(hddcrp_parser.parseCorpus(args.hddcrpFullFile))
+		if not args.useECBTest:
+			hddcrp_parser = HDDCRPParser(args)
+			helper.createHDDCRPMentions(hddcrp_parser.parseCorpus(args.hddcrpFullFile))
 		
 		#exit(1)
 		# loads Stanford's parse
@@ -120,4 +121,5 @@ class CorefEngine:
 			model = FFNN(helper, coref)
 
 		model.train_and_test(numRuns)
-		print("took:", str((time.time() - start_time)), "seconds")
+		print("* done.  took ", str((time.time() - start_time)), "seconds")
+		exit(1) # Tensorflow takes a long time to close sessions, so let's just kill the program
