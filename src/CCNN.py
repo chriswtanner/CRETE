@@ -11,6 +11,7 @@ from keras.models import Sequential, Model
 from keras.layers import Dense, Activation, Dropout, merge, Merge, Flatten, Input, Lambda, Conv2D, AveragePooling2D, MaxPooling2D
 from keras.optimizers import Adam
 from collections import defaultdict
+from get_coref_metrics import *
 class CCNN:
 	def __init__(self, helper, coref):
 		self.helper = helper
@@ -28,6 +29,7 @@ class CCNN:
 		f1s = []
 		recalls = []
 		precs = []
+		spToCoNLL = defaultdict(list)
 		while len(f1s) < numRuns:
 			# define model
 			input_shape = self.trainX.shape[2:]
@@ -39,7 +41,7 @@ class CCNN:
 			distance = Lambda(self.euclidean_distance, output_shape=self.eucl_dist_output_shape)([processed_a, processed_b])
 			model = Model(inputs=[input_a, input_b], outputs=distance)
 			model.compile(loss=self.contrastive_loss, optimizer=Adam())
-			print(model.summary())
+			#print(model.summary())
 			model.fit([self.trainX[:, 0], self.trainX[:, 1]], self.trainY, \
 				batch_size=self.args.batchSize, \
 				epochs=self.args.numEpochs, \
@@ -56,7 +58,6 @@ class CCNN:
 					scoreToGoldTruth[preds[_][0]].append(1)
 				else:
 					scoreToGoldTruth[preds[_][0]].append(0)
-			#print("numGoldPos:", numGoldPos)
 			s = sorted(scoreToGoldTruth.keys())
 			TN = 0.0
 			TP = 0.0
@@ -73,6 +74,7 @@ class CCNN:
 						TP += 1
 					else:
 						FP += 1
+
 				numReturnedSoFar += len(scoreToGoldTruth[eachVal])
 				recall = float(TP / numGoldPos)
 				prec = float(TP / numReturnedSoFar)
@@ -84,24 +86,26 @@ class CCNN:
 					bestVal = eachVal
 					bestR = recall
 					bestP = prec
-				#print("fwd:", eachVal, "(", numReturnedSoFar,"returned)",recall,prec,"f1:",f1)
+
 			if bestF1 > 0:
 				f1s.append(bestF1)
 				recalls.append(bestR)
 				precs.append(bestP)
 
 				# performs agglomerative clustering
-				stoppingPoints = [s for s in np.arange(0.5, 1, 0.1)]
+				stoppingPoints = [s for s in np.arange(0.25, 0.5, 0.02)]
 				for sp in stoppingPoints:
-					print("sp:",sp)
-					#(wd_predictedClusters, wd_goldenClusters) =
-					self.aggClusterWD(self.devID, preds, sp)
+					(wd_predictedClusters, wd_goldenClusters) = self.aggClusterWD(self.devID, preds, sp)
+					(bcub_p, bcub_r, bcub_f1, muc_p, muc_r, muc_f1, ceafe_p, \
+						ceafe_r, ceafe_f1, conll_f1) = get_conll_scores(wd_goldenClusters, wd_predictedClusters)
+					spToCoNLL[sp].append(conll_f1)
 
-					# measure performance
-					exit(1)
+					#print("[DEV] AGGWD SP:", str(round(sp,4)), "CoNLL F1:", str(round(conll_f1,4)), "MUC:", str(round(muc_f1,4)), "BCUB:", str(round(bcub_f1,4)), "CEAF:", str(round(ceafe_f1,4)))
+
+					# perform CD now
 
 
-			print("ccnn_best_f1 (run ", len(f1s),"): ", bestF1, " prec: ",bestP, " recall: ", bestR, " threshold:", bestVal, sep="")
+			print("ccnn_best_f1 (run ", len(f1s), "): best pairwisef1", bestF1, " prec: ",bestP, " recall: ", bestR, " threshold: ", bestVal, sep="")
 			sys.stdout.flush()
 
 		# clears ram
@@ -110,9 +114,21 @@ class CCNN:
 		stddev = -1
 		if len(f1s) > 1:
 			stddev = self.standard_deviation(f1s)
-		print("avgf1 (over",len(f1s),"runs):", sum(f1s)/len(f1s), "max:", max(f1s), "min:", min(f1s), "avgP:",sum(precs)/len(precs),"avgR:",sum(recalls)/len(recalls),"stddev:", stddev)
-		sys.stdout.flush()
+		print("pairwise f1 (over",len(f1s),"runs) -- avg:", sum(f1s)/len(f1s), "max:", max(f1s), "min:", min(f1s), "avgP:",sum(precs)/len(precs),"avgR:",sum(recalls)/len(recalls),"stddev:", stddev)
 
+		(best_sp, best_conll) = self.calculateBestKey(spToCoNLL)
+		sys.stdout.flush()
+		print("* conll f1 -- best sp:",best_sp, "yielded an avg:",best_conll)
+
+	def calculateBestKey(self, dict):
+		best_conll = 0
+		best_sp = 0
+		for sp in dict.keys():
+			avg = float(sum(dict[sp])/len(dict[sp]))
+			if avg > best_conll:
+				best_conll = avg
+				best_sp = sp
+		return (best_sp, best_conll)
 
 	# agglomerative cluster the within-doc predicted pairs
 	def aggClusterWD(self, ids, preds, stoppingPoint):
@@ -203,8 +219,8 @@ class CCNN:
 								closestAvgAvgClusterKeys = (c1,c2)
 						j += 1
 					i += 1
-					print("closestAvgAvgDist is now:", str(closestAvgAvgDist),
-						  "which is b/w:", str(closestAvgAvgClusterKeys))
+				# print("closestAvgAvgDist is:", str(closestAvgAvgDist),"which is b/w:", str(closestAvgAvgClusterKeys))
+				
 				# only merge clusters if it's less than our threshold
 				if closestAvgAvgDist > stoppingPoint:
 					break
@@ -218,14 +234,12 @@ class CCNN:
 				ourDocClusters.pop(c1, None)
 				ourDocClusters.pop(c2, None)
 				ourDocClusters[c1] = newCluster
-			
+
 			# end of clustering current doc
 			for i in ourDocClusters.keys():
 				ourClusterSuperSet[ourClusterID] = ourDocClusters[i]
-				#print("setting ourClusterSuperSet[",str(ourClusterID),"] to:",str(ourDocClusters[i]))
 				ourClusterID += 1
-		print("# total golden clusters:",str(len(goldenSuperSet.keys())))
-		print("# total our clusters:",str(len(ourClusterSuperSet)))
+		#print("# golden clusters:",str(len(goldenSuperSet.keys())), "; # our clusters:",str(len(ourClusterSuperSet)))
 		return (ourClusterSuperSet, goldenSuperSet)
 
 	# Base network to be shared (eq. to feature extraction).
