@@ -1,12 +1,11 @@
 import pickle
 import numpy as np
 from collections import defaultdict
-class Inference:
-	def __init__(self, featureHandler, helper, useRelationalFeatures, useWD, useCCNN):
+class DataHandler:
+	def __init__(self, featureHandler, helper):
 		self.featureHandler = featureHandler
 		self.helper = helper
 		self.corpus = helper.corpus
-		self.useWD = useWD
 		self.args = featureHandler.args
 
 		self.badPOS = ["‘’", "``", "POS", "$", "''"] # TMP FOR SAMELEMMA TEST
@@ -40,16 +39,16 @@ class Inference:
 			lf = self.loadFeature("../data/features/wordnet.f")
 			self.relFeatures.append(lf.relational)
 
-		# FOR CCNN
+	def loadWDData(self, useRelationalFeatures, useCCNN):
 		if useCCNN:
-			(self.trainID, self.trainX, self.trainY) = self.createDataForCCNN(helper.trainingDirs, featureHandler.trainMUIDs, useRelationalFeatures, True)
-			(self.devID, self.devX, self.devY) = self.createDataForCCNN(helper.devDirs, featureHandler.devMUIDs, useRelationalFeatures, False)
+			(self.trainID, self.trainX, self.trainY) = self.createDataForCCNN(self.helper.trainingDirs, self.featureHandler.trainMUIDs, useRelationalFeatures, True, True)
+			(self.devID, self.devX, self.devY) = self.createDataForCCNN(self.helper.devDirs, self.featureHandler.devMUIDs, useRelationalFeatures, False, True)
 			#(self.testID, self.testX, self.testY) = self.createDataForCCNN(helper.testingDirs, featureHandler.testMUIDs, useRelationalFeatures, False)
-		else:
-			# FOR FFNN
-			(self.trainID, self.trainX, self.trainY) = self.createData(helper.trainingDirs, featureHandler.trainMUIDs, useRelationalFeatures, True)
-			(self.devID, self.devX, self.devY) = self.createData(helper.devDirs, featureHandler.devMUIDs, useRelationalFeatures, False)
-			
+		else: # FOR FFNN and SVM
+			(self.trainID, self.trainX, self.trainY) = self.createDataForFFNN(self.helper.trainingDirs, self.featureHandler.trainMUIDs, useRelationalFeatures, True, True)
+			(self.devID, self.devX, self.devY) = self.createDataForFFNN(self.helper.devDirs, self.featureHandler.devMUIDs, useRelationalFeatures, False, True)
+
+
 	def loadFeature(self, file):
 		print("loading",file)
 		return pickle.load(open(file, 'rb'))
@@ -57,10 +56,9 @@ class Inference:
 	# return a list of MUID pairs, where each pair comes from either:
 	# (1) the same doc (within-dic); or,
 	# (2) the same dirHalf (cross-doc)
-	def createMUIDPairs(self, MUIDs):
+	def createMUIDPairs(self, MUIDs, useWD):
 		muidPairs = set()
 		dirHalfToMUIDs = defaultdict(set)
-		docToMUIDs = defaultdict(set)
 		for muid in MUIDs:
 			mention = self.corpus.XUIDToMention[muid]
 			dirHalfToMUIDs[mention.dirHalf].add(muid)
@@ -74,15 +72,15 @@ class Inference:
 					inSameDoc = False
 					if self.corpus.XUIDToMention[muid1].doc_id == self.corpus.XUIDToMention[muid2].doc_id:
 						inSameDoc = True
-					if self.useWD and inSameDoc:
+					if useWD and inSameDoc:
 						muidPairs.add((muid1, muid2))
-					elif not self.useWD and not inSameDoc:
+					elif not useWD and not inSameDoc:
 						muidPairs.add((muid1, muid2))
 		return muidPairs
 	
 	# almost identical to createData() but it re-shapes the vectors to be 5D -- pairwise.
 	# i could probably combine this into 1 function and have a boolean flag isCCNN=True
-	def createDataForCCNN(self, dirs, MUIDs, useRelationalFeatures, negSubsample):
+	def createDataForCCNN(self, dirs, MUIDs, useRelationalFeatures, negSubsample, useWD):
 		pairs = []
 		X = []
 		Y = []
@@ -90,7 +88,7 @@ class Inference:
 		numFeatures = 0
 		numPosAdded = 0
 		numNegAdded = 0
-		muidPairs = self.createMUIDPairs(MUIDs)
+		muidPairs = self.createMUIDPairs(MUIDs, useWD)
 
 		# TMP ADDED FOR SAME LEMMA TEST
 		'''
@@ -188,8 +186,7 @@ class Inference:
 		X = np.asarray(X)
 		#print("labels:",labels)
 		Y = np.asarray(labels)
-		print("features have a length of:", numFeatures)
-		print("* createData() loaded", len(pairs), "pairs")
+		print("* createData() loaded", len(pairs), "pairs (features' length = ",numFeatures,")")
 
 		# TMP ADDED FOR SAME LEMMA TEST
 		'''
@@ -208,14 +205,14 @@ class Inference:
 
 	# creates data for FFNN and SVM:
 	# [(muid1,muid2), [features], [1,0]]
-	def createData(self, dirs, MUIDs, useRelationalFeatures, negSubsample):
+	def createDataForFFNN(self, dirs, MUIDs, useRelationalFeatures, negSubsample, useWD):
 		pairs = []
 		X = []
 		Y = []
 		numFeatures = 0
 		numPosAdded = 0
 		numNegAdded = 0
-		muidPairs = self.createMUIDPairs(MUIDs)
+		muidPairs = self.createMUIDPairs(MUIDs, useWD)
 		for (muid1, muid2) in muidPairs:
 			label = [1, 0]
 			if self.corpus.XUIDToMention[muid1].REF == self.corpus.XUIDToMention[muid2].REF:

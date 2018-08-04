@@ -11,21 +11,36 @@ from keras.models import Sequential, Model
 from keras.layers import Dense, Activation, Dropout, merge, Merge, Flatten, Input, Lambda, Conv2D, AveragePooling2D, MaxPooling2D
 from keras.optimizers import Adam
 from collections import defaultdict
-from get_coref_metrics import *
+from get_coref_metrics import get_conll_scores
 class CCNN:
-	def __init__(self, helper, coref):
+	def __init__(self, helper, dh, useRelationalFeatures, useWD, presets):
 		self.helper = helper
 		self.corpus = helper.corpus
 		self.args = helper.args
-		(self.trainID, self.trainX, self.trainY) = (coref.trainID, coref.trainX, coref.trainY)
-		(self.devID, self.devX, self.devY) = (coref.devID, coref.devX, coref.devY)
+
+		if presets == []:
+			self.bs = self.args.batchSize
+			self.ne = self.args.numEpochs
+			self.nl = self.args.numLayers
+			self.nf = self.args.numFilters
+			self.do = self.args.dropout
+		else:
+			(self.bs, self.ne, self.nl, self.nf, self.do) = presets
+		print("[ccnn] useWD?:",useWD,"bs:",self.bs,"ne:",self.ne,"nl:",self.nl,"nf:",self.nf,"do:",self.do)
+		if useWD:
+			dh.loadWDData(useRelationalFeatures, True) # this 'True' means use CCNN
+		else:
+			dh.loadCDData(useRelationalFeatures, True) # this 'True' means use CCNN
+
+		(self.trainID, self.trainX, self.trainY) = (dh.trainID, dh.trainX, dh.trainY)
+		(self.devID, self.devX, self.devY) = (dh.devID, dh.devX, dh.devY)
 		#(self.testID, self.testX, self.testY) = (coref.testID, coref.testX, coref.testY)
 
 		if self.args.native:
-			sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))
+			tf.Session(config=tf.ConfigProto(log_device_placement=True))
 			os.environ['CUDA_VISIBLE_DEVICES'] = ''
 
-	def train_and_test(self, numRuns):
+	def train_and_test_wd(self, numRuns):
 		f1s = []
 		recalls = []
 		precs = []
@@ -43,8 +58,8 @@ class CCNN:
 			model.compile(loss=self.contrastive_loss, optimizer=Adam())
 			#print(model.summary())
 			model.fit([self.trainX[:, 0], self.trainX[:, 1]], self.trainY, \
-				batch_size=self.args.batchSize, \
-				epochs=self.args.numEpochs, \
+				batch_size=self.bs, \
+				epochs=self.ne, \
 				validation_data=([self.devX[:, 0], self.devX[:, 1]], self.devY))
 
 			preds = model.predict([self.devX[:, 0], self.devX[:, 1]])
@@ -59,9 +74,7 @@ class CCNN:
 				else:
 					scoreToGoldTruth[preds[_][0]].append(0)
 			s = sorted(scoreToGoldTruth.keys())
-			TN = 0.0
 			TP = 0.0
-			FN = 0.0
 			FP = 0.0
 			bestF1 = 0
 			bestVal = -1
@@ -96,16 +109,14 @@ class CCNN:
 				stoppingPoints = [s for s in np.arange(0.25, 0.5, 0.02)]
 				for sp in stoppingPoints:
 					(wd_predictedClusters, wd_goldenClusters) = self.aggClusterWD(self.devID, preds, sp)
-					(bcub_p, bcub_r, bcub_f1, muc_p, muc_r, muc_f1, ceafe_p, \
-						ceafe_r, ceafe_f1, conll_f1) = get_conll_scores(wd_goldenClusters, wd_predictedClusters)
-					spToCoNLL[sp].append(conll_f1)
+					#(bcub_p, bcub_r, bcub_f1, muc_p, muc_r, muc_f1, ceafe_p, ceafe_r, ceafe_f1, conll_f1)
+					scores = get_conll_scores(wd_goldenClusters, wd_predictedClusters)
+					spToCoNLL[sp].append(scores[-1])
 
 					#print("[DEV] AGGWD SP:", str(round(sp,4)), "CoNLL F1:", str(round(conll_f1,4)), "MUC:", str(round(muc_f1,4)), "BCUB:", str(round(bcub_f1,4)), "CEAF:", str(round(ceafe_f1,4)))
 
-					# perform CD now
 
-
-			print("ccnn_best_f1 (run ", len(f1s), "): best pairwisef1", bestF1, " prec: ",bestP, " recall: ", bestR, " threshold: ", bestVal, sep="")
+			print("ccnn_best_f1 (run ", len(f1s), "): best_pairwise_f1: ", round(bestF1,4), " prec: ",round(bestP,4), " recall: ", round(bestR,4), " threshold: ", round(bestVal,3), sep="")
 			sys.stdout.flush()
 
 		# clears ram
@@ -119,6 +130,8 @@ class CCNN:
 		(best_sp, best_conll) = self.calculateBestKey(spToCoNLL)
 		sys.stdout.flush()
 		print("* conll f1 -- best sp:",best_sp, "yielded an avg:",best_conll)
+		return (wd_goldenClusters, wd_predictedClusters)
+
 
 	def calculateBestKey(self, dict):
 		best_conll = 0
@@ -245,19 +258,18 @@ class CCNN:
 	# Base network to be shared (eq. to feature extraction).
 	def create_base_network(self, input_shape):
 		seq = Sequential()
-		curNumFilters = self.args.numFilters
 		kernel_rows = 1
 
-		for i in range(self.args.numLayers):
-			nf = self.args.numFilters
+		for i in range(self.nl):
+			nf = self.nf
 			if i == 1: # meaning 2nd layer, since i in {0,1,2, ...}
 				nf = 96
-			seq.add(Conv2D(self.args.numFilters, kernel_size=(kernel_rows, 3), activation='relu', padding="same", input_shape=input_shape, data_format="channels_first"))
-			seq.add(Dropout(float(self.args.dropout)))
+			seq.add(Conv2D(nf, kernel_size=(kernel_rows, 3), activation='relu', padding="same", input_shape=input_shape, data_format="channels_first"))
+			seq.add(Dropout(float(self.do)))
 			seq.add(MaxPooling2D(pool_size=(kernel_rows, 2), padding="same", data_format="channels_first"))
 
 		seq.add(Flatten())
-		seq.add(Dense(curNumFilters, activation='relu'))
+		seq.add(Dense(self.nf, activation='relu'))
 		return seq
 
 	def euclidean_distance(self, vects):
@@ -265,7 +277,7 @@ class CCNN:
 		return K.sqrt(K.maximum(K.sum(K.square(x - y), axis=1, keepdims=True), K.epsilon()))
 
 	def eucl_dist_output_shape(self, shapes):
-		shape1, shape2 = shapes
+		shape1, _ = shapes
 		return (shape1[0], 1)
 
 	# Contrastive loss from Hadsell-et-al.'06

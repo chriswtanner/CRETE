@@ -19,7 +19,7 @@ class FFNN:
 		(self.devID, self.devX, self.devY) = (coref.devID, coref.devX, coref.devY)
 
 		if self.args.native:
-			sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))
+			tf.Session(config=tf.ConfigProto(log_device_placement=True))
 			os.environ['CUDA_VISIBLE_DEVICES'] = ''
 
 		# model params
@@ -42,7 +42,7 @@ class FFNN:
 		cost = tf.nn.weighted_cross_entropy_with_logits(y_true, y_pred, self.weights)
 		return K.mean(cost * self.pos_ratio, axis=-1)
 
-	def train_and_test(self, numRuns):
+	def train_and_test_wd(self, numRuns):
 		f1s = []
 		recalls = []
 		precs = []

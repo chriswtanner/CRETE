@@ -10,8 +10,7 @@ from collections import defaultdict
 
 # NOTE: the save* functions operate on *all* mentions in self.corpus
 # regardless if ecb, hddcrp, stan.
-# the load() functions should ensure we only care about the right
-# mentions
+# the load() functions should ensure we only care about the right mentions
 class FeatureHandler:
 	def __init__(self, args, helper, trainMUIDs, devMUIDs, testMUIDs):
 		self.args = args
@@ -29,6 +28,8 @@ class FeatureHandler:
 	###   HELPER FUNCTIONS   ###
 	############################
 	# create all pairs, for ecb, hddcrp, stan
+	# this is correct; don't want to merely create all XUID pairs
+	# because that would create, e.g., HDDCRP <-> STAN pairs
 	def getMUIDPairs(self):
 		ret = set()
 		for dirhalf in self.corpus.dirHalves:

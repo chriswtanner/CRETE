@@ -10,7 +10,7 @@ from HDDCRPParser import HDDCRPParser
 from ECBHelper import ECBHelper
 from StanParser import StanParser
 from FeatureHandler import FeatureHandler
-from Inference import Inference
+from DataHandler import DataHandler
 from FFNN import FFNN
 from CCNN import CCNN
 from LibSVM import LibSVM
@@ -47,18 +47,17 @@ class CorefEngine:
 		bowFeaturesFile = "../data/features/bow.f"
 
 		runStanford = False
-
+		
 		# classifier params
 		numRuns = 2
-		useWD = True
 		useCCNN = True
 		useRelationalFeatures = False
-
-		start_time = time.time()
+		wdPresets = [64, 5, 2, 32, 0.0]
 
 		# handles passed-in args
 		args = params.setCorefEngineParams()
-
+		
+		start_time = time.time()
 		# parses elmo embeddings
 		#elmo = HDF5Reader('/Users/christanner/research/CRETE/data/features/alloutput3.hdf5')
 		#exit(1)
@@ -112,14 +111,17 @@ class CorefEngine:
 		fh.saveWordNetFeatures(wordnetFeaturesFile)
 		fh.saveBoWFeatures(bowFeaturesFile)
 		'''
-		coref = Inference(fh, helper, useRelationalFeatures, useWD, useCCNN)
+		dh = DataHandler(fh, helper)
 		#model = LibSVM(helper, coref)
 
+		# within-doc first, then cross-doc
 		if useCCNN:
-			model = CCNN(helper, coref)
+			wd_model = CCNN(helper, dh, useRelationalFeatures, True, wdPresets)
+			wd_model.train_and_test_wd(1) # 1 means only 1 run of WD
+			cd_model = CCNN(helper, dh, useRelationalFeatures, False, [])
 		else:
-			model = FFNN(helper, coref)
-
-		model.train_and_test(numRuns)
+			wd_model = FFNN(helper, dh)
+			wd_model.train_and_test_wd(numRuns)
+		
 		print("* done.  took ", str((time.time() - start_time)), "seconds")
 		exit(1) # Tensorflow takes a long time to close sessions, so let's just kill the program

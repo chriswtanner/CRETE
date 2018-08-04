@@ -1,6 +1,6 @@
 #!/bin/bash
 prefix="ccnn" # used to help identify experiments' outputs, as the output files will have this prefix
-corpus="FULL"
+corpus="SMALL"
 onlyValidSentences="T"
 addIntraDocs="F" # since these are singletons w.r.t. cross-doc
 exhaustivelyTestAllFeatures=false
@@ -10,7 +10,7 @@ numLayers=(2) # 3) # 1 3
 numEpochs=(3) # 20)
 windowSize=(0)
 numNeg=(999)
-batchSize=(32) # 128) # 64 128
+batchSize=(128) # 128) # 64 128
 dropout=(0.0) # 0.2 0.4)
 numFilters=(6)
 filterMultiplier=(1.0) # 2.0)
