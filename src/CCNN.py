@@ -382,10 +382,10 @@ class CCNN:
 				dir_num = m1.dirHalf
 
 
-			if scope == "dir" and m2.dir_num != dir_num:
+			if self.scope == "dir" and m2.dir_num != dir_num:
 				print("* ERROR: xuids are from diff dirs!")
 				exit(1)
-			if scope == "dirHalf" and m2.dirHalf != dir_num:
+			if self.scope == "dirHalf" and m2.dirHalf != dir_num:
 				print("* ERROR: xuids are from diff dirHalves!")
 				exit(1)
 			if xuid1 not in dirToXUIDs[dir_num]:
