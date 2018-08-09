@@ -382,8 +382,11 @@ class CCNN:
 				dir_num = m1.dirHalf
 
 
-			if m2.dir_num != dir_num:
+			if scope == "dir" and m2.dir_num != dir_num:
 				print("* ERROR: xuids are from diff dirs!")
+				exit(1)
+			if scope == "dirHalf" and m2.dirHalf != dir_num:
+				print("* ERROR: xuids are from diff dirHalves!")
 				exit(1)
 			if xuid1 not in dirToXUIDs[dir_num]:
 				dirToXUIDs[dir_num].append(xuid1)
@@ -409,8 +412,6 @@ class CCNN:
 			else:
 				print("* incorrect scope")
 				exit(1)
-
-			print("cur_dir:",cur_dir)
 
 			# we check our mentions to the corpus, and we correctly
 			# use HDDCRP Mentions if that's what we're working with
