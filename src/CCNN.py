@@ -457,7 +457,7 @@ class CCNN:
 			print("* constructing base clusters (wd predictions)")
 			# check if the doc belongs to our current dirHalf or dir (whichever is of our focus)
 			ij = 0
-			numMentions = 0
+			wd_relevant_xuid = set()
 			for doc_id in self.wd_pred_clusters:
 				tmp_dir_num = int(doc_id.split("_")[0])
 				tmp_extension = doc_id[doc_id.find("ecb"):]
@@ -470,11 +470,21 @@ class CCNN:
 					print("adding:", doc_id, "for dirhalf:",dir_num)
 					ourDirHalfClusters[ij] = self.wd_pred_clusters[doc_id][c]
 					clusterNumToDocs[ij].add(doc_id)
-					numMentions += len(self.wd_pred_clusters[doc_id][c])
+					for xuid in self.wd_pred_clusters[doc_id][c]:
+						wd_relevant_xuid.add(xuid)
 					ij += 1
-			if numMentions != len(dirToXUIDs[dir_num]):
+			print("wd_relevant_xuid:", len(wd_relevant_xuid), "; len(dirToXUIDs[dir_num]:", len(dirToXUIDs[dir_num]))
+			for xuid in wd_relevant_xuid:
+				if xuid not in dirToXUIDs[dir_num]:
+					print("* ERROR: wd had ", xuid, "but our passed-in predictions didn't... it's mention:",self.corpus.XUIDToMention[xuid])
+			for xuid in dirToXUIDs[dir_num]:
+				if xuid not in wd_relevant_xuid:
+					print("* ERROR: passed-in had ", xuid, "but our wd didn't... it's mention:", self.corpus.XUIDToMention[xuid])
+			if len(wd_relevant_xuid) != len(dirToXUIDs[dir_num]):
 				print("* ERROR: we have a different number of mentions via passed-in WD clusters than what we have predictions for")
 				exit(1)
+			else:
+				print("* same #")
 			print("we have", len(ourDirHalfClusters.keys()), "clusters for current dirhalf:")
 			print("ourDirHalfClusters:",ourDirHalfClusters)
 			print("clusterNumToDocs:", clusterNumToDocs)
