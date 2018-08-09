@@ -404,6 +404,8 @@ class CCNN:
 				print("* incorrect scope")
 				exit(1)
 
+			print("cur_dir:",cur_dir)
+			
 			# we check our mentions to the corpus, and we correctly
 			# use HDDCRP Mentions if that's what we're working with
 			curMentionSet = cur_dir.EUIDs

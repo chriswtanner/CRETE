@@ -50,11 +50,11 @@ class CorefEngine:
 		runStanford = False
 
 		# classifier params
-		numRuns = 2
+		numRuns = 1
 		useCCNN = True
 		cd_scope = "dirHalf" # or dir
 		useRelationalFeatures = False
-		wdPresets = [128, 3, 2, 4, 0.0]
+		wdPresets = [128, 3, 2, 8, 0.0]
 		#wdPresets = [64, 5, 2, 32, 0.0] # batchsize, num epochs, num layers, num filters, dropout
 
 		# handles passed-in args

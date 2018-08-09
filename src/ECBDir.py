@@ -28,3 +28,6 @@ class ECBDir:
 	def assignHDDCRPMention(self, HUID, doc_id):
 		self.HUIDs.add(HUID)  # assigns DirHalf vars
 		self.docs[doc_id].assignHDDCRPMention(HUID)  # assigns Doc vars
+
+	def __str__(self):
+		return "[ECBDir] # ECB Mentions:" + str(len(self.EUIDs)) + "; # SUIDs:" + str(len(self.SUIDs)) + "; # HUIDs:" + str(len(self.HUIDs))
