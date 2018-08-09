@@ -5,14 +5,14 @@ class Doc:
         self.highestSentenceNum = -1
         self.globalSentenceNums = set() # unique #s across entire corpus
         self.tokens = []
-        self.REFToMUIDs = defaultdict(set)
-        self.MUIDs = set()
+        self.REFToEUIDs = defaultdict(set)
+        self.EUIDs = set()
         self.SUIDs = set()
         self.HMUIDs = set()
 
-    def assignECBMention(self, MUID, REF):
-        self.REFToMUIDs[REF].add(MUID)
-        self.MUIDs.add(MUID)
+    def assignEMention(self, EUID, REF):
+        self.REFToEUIDs[REF].add(EUID)
+        self.EUIDs.add(EUID)
 
     def assignStanMention(self, SUID):
         self.SUIDs.add(SUID)

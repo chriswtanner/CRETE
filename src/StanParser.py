@@ -22,7 +22,7 @@ class StanParser:
 
     def parseDir(self, stanOutputDir):
         files = []
-        for root, dirnames, filenames in os.walk(stanOutputDir):
+        for root, _, filenames in os.walk(stanOutputDir):
             for filename in fnmatch.filter(filenames, '*.xml'):
                 files.append(os.path.join(root, filename))
         for f in files:
@@ -40,7 +40,7 @@ class StanParser:
         root = tree.getroot()
 
         document = root[0]
-        sentences, corefs = document
+        sentences, _ = document
         '''
         print("doc:", inputFile)
         for elem in corefs:

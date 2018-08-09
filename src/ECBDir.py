@@ -1,6 +1,6 @@
 from collections import defaultdict
 from Doc import Doc
-class DirHalf:
+class ECBDir:
 	def __init__(self):
 		self.docs = defaultdict(lambda: Doc)
 
@@ -10,7 +10,7 @@ class DirHalf:
 		self.SUIDs = set()  # Stan Mentions
 		self.HUIDs = set()  # HDDCRP Mentions
 
-	# sets the MUID and REF info
+	# sets the EUID and REF info
 	def assignECBMention(self, EUID, doc_id, REF):
 		# assigns DirHalf vars
 		self.REFToEUIDs[REF].add(EUID)

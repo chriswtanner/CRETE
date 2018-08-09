@@ -15,15 +15,11 @@ class ECBHelper:
 		self.devDirs = [23, 24, 25]
 		self.testingDirs = [26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45]
 
-		print("trainingDirs:", str(self.trainingDirs))
-		print("devDirs:", str(self.devDirs))
-		print("testingDirs:", str(self.testingDirs))
-
 		self.UIDToMention = defaultdict(list)
 
-		# filled in via createHDDCRPMentions() (maps text UID
-		# lines from CoNLL file to the created HDDCRP Mention)
-		self.UIDToHMUID = defaultdict(list)
+		# filled in via createHDDCRPMentions()
+		# (maps text UID lines from CoNLL file to the created HDDCRP Mention)
+		self.UIDToHUID = defaultdict(list)
 
 		# filled in via createStanMentions() (maps text UID
 		# lines from CoNLL file to the created Stan Mention)
@@ -86,6 +82,7 @@ class ECBHelper:
 			# for readability, make a new var
 			ourTokens = self.corpus.doc_idToDocs[doc_id].tokens
 
+			'''
 			max_i = max(len(ourTokens), len(stanTokens))
 			for _ in range(max_i):
 				otoken = ""
@@ -95,7 +92,7 @@ class ECBHelper:
 				if _ < len(stanTokens):
 					stoken = stanTokens[_].text
 				#print(str(_), "ours:", otoken, " vs ", stoken)
-
+			'''
 			j = 0
 			i = 0
 			while i < len(ourTokens):
@@ -271,8 +268,8 @@ class ECBHelper:
 			SUIDs = []
 			#print("new mention")
 			for t in m:
-				sentenceNum = t.sentenceNum
-				tokenNum = t.tokenNum
+				#sentenceNum = t.sentenceNum
+				#tokenNum = t.tokenNum
 				SUID = t.UID
 				SUIDs.append(SUID)
 				#print("t.text:",t.text)
@@ -290,6 +287,7 @@ class ECBHelper:
 
 		print("* Created",len(self.corpus.stan_mentions),"Stan Mentions")
 	
+	# creates HDDCRP Mentions
 	def createHDDCRPMentions(self, hddcrp_mentions):
 
 		tmpECBTokens = set()
@@ -330,7 +328,7 @@ class ECBHelper:
 				curMention = Mention(dirHalf, dir_num, doc_id, tokens, text, True, "unknown")
 				self.corpus.addHDDCRPMention(curMention)
 				for HUID in HUIDs: # UID == HUID always, because we checked above (in the warning check)
-					self.UIDToHMUID[HUID].append(curMention.XUID)
+					self.UIDToHUID[HUID].append(curMention.XUID)
 		print("# ecb testing tokens (from mentions)", len(tmpECBTokens))
 		print("# hddcrp testing tokens (from mentions):",len(tmpHDDCRPTokens))
 		print("# HDDCRP Mentions created:",len(self.corpus.hddcrp_mentions))
@@ -377,16 +375,41 @@ class ECBHelper:
 		print("[ CORPUS STATS ]")
 		print("\t# dirHalves:", str(len(self.corpus.dirHalves)))
 		print("\t# docs:", len(self.corpus.doc_idToDocs))
-		print("\t# REFs:", len(self.corpus.refToMUIDs.keys()))
+		print("\t# REFs:", len(self.corpus.refToEUIDs.keys()))
 		numS = 0
 		numC = 0
-		for ref in self.corpus.refToMUIDs:
-			if len(self.corpus.refToMUIDs[ref]) == 1:
+		for ref in self.corpus.refToEUIDs:
+			if len(self.corpus.refToEUIDs[ref]) == 1:
 				numS +=1
 			else:
 				numC += 1
+		numTrain = 0
+		numDev = 0
+		numTest = 0
+		trainDirs = set()
+		devDirs = set()
+		testDirs = set()
+		for m in self.corpus.ecb_mentions:
+			if m.dir_num in self.trainingDirs:
+				numTrain += 1
+				trainDirs.add(m.dir_num)
+			elif m.dir_num in self.devDirs:
+				numDev += 1
+				devDirs.add(m.dir_num)
+			elif m.dir_num in self.testingDirs:
+				numTest += 1
+				testDirs.add(m.dir_num)
+
 		#print("\t# HDDCRP Mentions (test): NON-ACTION:", mentionStats["test"])
 		print("\t# ECB Tokens:", len(self.corpus.corpusTokens))
+		print("\t# ECB Mentions:", len(self.corpus.EUIDToMention))
+		print("\t\ttrain (", numTrain, " mentions) dirs: ", sorted(trainDirs), sep="")
+		print("\t\tdev (", numDev, " mentions) dirs: ", sorted(devDirs), sep="")
+		print("\t\ttest (", numTest, " mentions) dirs: ", sorted(testDirs), sep="")
+		print("\t# Stan Mentions:", len(self.corpus.SUIDToMention))
+		print("\t# HDDCRP Mentions:", len(self.corpus.HMUIDToMention))
+		print("\t== # Total Mentions:", len(self.corpus.XUIDToMention))
+		
 
 	# calculates the prec, recall, F1 of tokens
 	# w.r.t. (a) Stan; (b) HDDCRP; (c) Stan+HDDCRP
@@ -396,11 +419,11 @@ class ECBHelper:
 		non_event_ecb_tokens = set()
 		all_ecb_tokens = set()
 
-		ecb_muids = set()
-		stan_muids = set()
+		ecb_uids = set()
+		stan_uids = set()
 
 		for m in self.corpus.ecb_mentions:
-			ecb_muids.add(m.UID)
+			ecb_uids.add(m.UID)
 			for t in m.tokens:
 				dir_num = int(t.doc_id.split("_")[0])
 				if dir_num not in self.testingDirs:
@@ -416,13 +439,14 @@ class ECBHelper:
 		# gathers stan tokens
 		stan_tokens = set()
 		for m in self.corpus.stan_mentions:
-			stan_muids.add(m.UID)
+			ecb_uids.add(m.UID)
 			for t in m.tokens:
 				dir_num = int(t.doc_id.split("_")[0])
 				if dir_num not in self.testingDirs:
 					continue
 				stan_tokens.add(t)
 				both_tokens.add(t)
+
 		# gathers HDDCRP tokens
 		hddcrp_tokens = set()
 		for hm in self.corpus.hddcrp_mentions:
@@ -441,8 +465,8 @@ class ECBHelper:
 		for m in self.corpus.ecb_mentions:
 			if m.dir_num not in self.testingDirs or m.isPred:
 				continue
-			muid = m.UID
-			if muid in stan_muids:
+			uid = m.UID
+			if uid in stan_uids:
 				perfects.add(m)
 			else:
 				# check if partial coverage or none
@@ -458,8 +482,8 @@ class ECBHelper:
 		for m in self.corpus.stan_mentions:
 			if m.dir_num not in self.testingDirs:
 				continue
-			muid = m.UID
-			if muid not in ecb_muids: # check if partial or none
+			uid = m.UID
+			if uid not in ecb_uids: # check if partial or none
 				isPartial = False
 				for t in m.tokens:
 					if t in all_ecb_tokens:
@@ -484,6 +508,7 @@ class ECBHelper:
 		print(label,":")
 		for i in set:
 			print(i)
+
 	def printMentionCoverage(self, label, our_tokens, event_ecb_tokens, non_event_ecb_tokens, all_ecb_tokens):
 		# events
 		numETP = 0

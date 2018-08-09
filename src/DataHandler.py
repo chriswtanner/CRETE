@@ -39,48 +39,66 @@ class DataHandler:
 			lf = self.loadFeature("../data/features/wordnet.f")
 			self.relFeatures.append(lf.relational)
 
-	def loadWDData(self, useRelationalFeatures, useCCNN):
+	def loadNNData(self, useRelationalFeatures, useCCNN, scope):
 		if useCCNN:
-			(self.trainID, self.trainX, self.trainY) = self.createDataForCCNN(self.helper.trainingDirs, self.featureHandler.trainMUIDs, useRelationalFeatures, True, True)
-			(self.devID, self.devX, self.devY) = self.createDataForCCNN(self.helper.devDirs, self.featureHandler.devMUIDs, useRelationalFeatures, False, True)
-			#(self.testID, self.testX, self.testY) = self.createDataForCCNN(helper.testingDirs, featureHandler.testMUIDs, useRelationalFeatures, False)
+			(self.trainID, self.trainX, self.trainY) = self.createDataForCCNN(self.helper.trainingDirs, self.featureHandler.trainXUIDs, useRelationalFeatures, True, scope)
+			(self.devID, self.devX, self.devY) = self.createDataForCCNN(self.helper.devDirs, self.featureHandler.devXUIDs, useRelationalFeatures, False, scope)
+			#(self.testID, self.testX, self.testY) = self.createDataForCCNN(helper.testingDirs, featureHandler.testXUIDs, useRelationalFeatures, False)
 		else: # FOR FFNN and SVM
-			(self.trainID, self.trainX, self.trainY) = self.createDataForFFNN(self.helper.trainingDirs, self.featureHandler.trainMUIDs, useRelationalFeatures, True, True)
-			(self.devID, self.devX, self.devY) = self.createDataForFFNN(self.helper.devDirs, self.featureHandler.devMUIDs, useRelationalFeatures, False, True)
+			(self.trainID, self.trainX, self.trainY) = self.createDataForFFNN(self.helper.trainingDirs, self.featureHandler.trainXUIDs, useRelationalFeatures, True, scope)
+			(self.devID, self.devX, self.devY) = self.createDataForFFNN(self.helper.devDirs, self.featureHandler.devXUIDs, useRelationalFeatures, False, scope)
 
 
 	def loadFeature(self, file):
 		print("loading",file)
 		return pickle.load(open(file, 'rb'))
 
-	# return a list of MUID pairs, where each pair comes from either:
-	# (1) the same doc (within-dic); or,
-	# (2) the same dirHalf (cross-doc)
-	def createMUIDPairs(self, MUIDs, useWD):
-		muidPairs = set()
-		dirHalfToMUIDs = defaultdict(set)
-		for muid in MUIDs:
-			mention = self.corpus.XUIDToMention[muid]
-			dirHalfToMUIDs[mention.dirHalf].add(muid)
+	# return a list of XUID pairs, based on what was passed-in,
+	# where each pair comes from either:
+	# (1) 'doc' = the same doc (within-dic); or,
+	# (2) 'dirHalf' = the same dirHalf (but not same doc)
+	# (3) 'dir' = the same dir (but not same doc)
+	def createXUIDPairs(self, XUIDs, scope):
+		if scope != "doc" and scope != "dirHalf" and scope != "dir":
+			print("* ERROR: scope must be doc, dirHalf, or dir")
+			exit(1)
+		xuidPairs = set()
+		
+		dirHalfToXUIDs = defaultdict(set)
+		ECBDirToXUIDs = defaultdict(set)
+		
+		for xuid in XUIDs:
+			mention = self.corpus.XUIDToMention[xuid]
+			dirHalfToXUIDs[mention.dirHalf].add(xuid)
+			ECBDirToXUIDs[mention.dir_num].add(xuid)
 
+			# NOTE: left off here
+		
 		# we sort to ensure consistency across multiple runs
-		for dirHalf in sorted(dirHalfToMUIDs.keys()):
-			for muid1 in sorted(dirHalfToMUIDs[dirHalf]):
-				for muid2 in sorted(dirHalfToMUIDs[dirHalf]):
-					if muid2 <= muid1:
+		print("# mentions passed-in:", len(XUIDs))
+		for ecb_dir in sorted(ECBDirToXUIDs.keys()):
+
+		#for dirHalf in sorted(dirHalfToXUIDs.keys()):
+			for xuid1 in sorted(ECBDirToXUIDs[ecb_dir]):
+				for xuid2 in sorted(ECBDirToXUIDs[ecb_dir]):
+					if xuid2 <= xuid1:
 						continue
 					inSameDoc = False
-					if self.corpus.XUIDToMention[muid1].doc_id == self.corpus.XUIDToMention[muid2].doc_id:
+					if self.corpus.XUIDToMention[xuid1].doc_id == self.corpus.XUIDToMention[xuid2].doc_id:
 						inSameDoc = True
-					if useWD and inSameDoc:
-						muidPairs.add((muid1, muid2))
-					elif not useWD and not inSameDoc:
-						muidPairs.add((muid1, muid2))
-		return muidPairs
+					if scope == "doc" and inSameDoc:
+						xuidPairs.add((xuid1, xuid2))
+					elif scope == "dirHalf" and not inSameDoc:
+						xuidPairs.add((xuid1, xuid2))
+					elif scope == "dir" and not inSameDoc:
+						xuidPairs.add((xuid1, xuid2))
+		return xuidPairs
 	
 	# almost identical to createData() but it re-shapes the vectors to be 5D -- pairwise.
-	# i could probably combine this into 1 function and have a boolean flag isCCNN=True
-	def createDataForCCNN(self, dirs, MUIDs, useRelationalFeatures, negSubsample, useWD):
+	# i could probably combine this into 1 function and have a boolean flag isCCNN=True.
+	# we pass in XUID because the mentions could be from any Stan, HDDCRP, or ECB; however,
+	# we need to remember that the co-reference REF tags only exist in the output file that we compare against
+	def createDataForCCNN(self, dirs, XUIDs, useRelationalFeatures, negSubsample, scope):
 		pairs = []
 		X = []
 		Y = []
@@ -88,8 +106,9 @@ class DataHandler:
 		numFeatures = 0
 		numPosAdded = 0
 		numNegAdded = 0
-		muidPairs = self.createMUIDPairs(MUIDs, useWD)
+		xuidPairs = self.createXUIDPairs(XUIDs, scope)
 
+		print("# pairs: ", len(xuidPairs))
 		# TMP ADDED FOR SAME LEMMA TEST
 		'''
 		TN = 0.0
@@ -97,19 +116,19 @@ class DataHandler:
 		FN = 0.0
 		FP = 0.0
 		'''
-		for (muid1, muid2) in muidPairs:
-			if muid1 == muid2:
-				print("whaaaaa: muidPairs:", muidPairs)
+		for (xuid1, xuid2) in xuidPairs:
+			if xuid1 == xuid2:
+				print("whaaaaa: xuidPairs:", xuidPairs)
 			
 			# TMP ADDED FOR SAME LEMMA TEST
 			'''
 			sameLemma = True
 			lemmaList1 = []
 			lemmaList2 = []
-			for t1 in self.corpus.XUIDToMention[muid1].tokens:
+			for t1 in self.corpus.XUIDToMention[xuid1].tokens:
 				lemma = self.getBestStanToken(t1.stanTokens).lemma.lower()
 				lemmaList1.append(lemma)
-			for t2 in self.corpus.XUIDToMention[muid2].tokens:
+			for t2 in self.corpus.XUIDToMention[xuid2].tokens:
 				lemma = self.getBestStanToken(t2.stanTokens).lemma.lower()
 				lemmaList2.append(lemma)
 			if len(lemmaList1) != len(lemmaList2):
@@ -120,7 +139,10 @@ class DataHandler:
 						sameLemma = False
 						break
 			'''
-			if self.corpus.XUIDToMention[muid1].REF == self.corpus.XUIDToMention[muid2].REF:
+
+			# NOTE: if this is for HDDCRP or Stan mentions, the REFs will always be True
+			# because we don't have such info for them, so they are ""
+			if self.corpus.XUIDToMention[xuid1].REF == self.corpus.XUIDToMention[xuid2].REF:
 				
 				# TMP ADDED FOR SAME LEMMA TEST
 				'''
@@ -146,7 +168,7 @@ class DataHandler:
 				labels.append(0)
 			m1_features = []
 			m2_features = []
-			(uid1, uid2) = sorted([self.corpus.XUIDToMention[muid1].UID, self.corpus.XUIDToMention[muid2].UID])
+			(uid1, uid2) = sorted([self.corpus.XUIDToMention[xuid1].UID, self.corpus.XUIDToMention[xuid2].UID])
 			# loops through each feature (e.g., BoW, lemma) for the given uid pair
 			for feature in self.singleFeatures:
 				for i in feature[uid1]:  # loops through each val of the given feature
@@ -164,6 +186,7 @@ class DataHandler:
 						m2_features.append(i)
 			if len(m1_features) != numFeatures and numFeatures != 0:
 				print("* ERROR: # features diff:", len(m1_features), "and", numFeatures)
+				exit(1)
 			numFeatures = len(m1_features)
 
 			if len(m1_features) != len(m2_features):
@@ -180,14 +203,19 @@ class DataHandler:
 			pair = np.asarray([m1Matrix, m2Matrix])
 			X.append(pair)
 
-			# makes xuid (aka muid) pairs
-			pairs.append((muid1, muid2))
+			# makes xuid (aka xuid) pairs
+			pairs.append((xuid1, xuid2))
 
 		X = np.asarray(X)
 		#print("labels:",labels)
 		Y = np.asarray(labels)
-		print("* createData() loaded", len(pairs), "pairs (features' length = ",numFeatures,")")
-
+		pp = float(numPosAdded / (numPosAdded+numNegAdded))
+		pn = float(numNegAdded / (numPosAdded+numNegAdded))
+		print("* createData() loaded", len(pairs), "pairs (", pp, "% pos, ",
+		      pn, "% neg); features' length = ", numFeatures)
+			  		
+		if len(pairs) == 0:
+			exit(1)
 		# TMP ADDED FOR SAME LEMMA TEST
 		'''
 		recall = 0
@@ -204,18 +232,20 @@ class DataHandler:
 		return (pairs, X, Y)
 
 	# creates data for FFNN and SVM:
-	# [(muid1,muid2), [features], [1,0]]
-	def createDataForFFNN(self, dirs, MUIDs, useRelationalFeatures, negSubsample, useWD):
+	# [(xuid1,xuid2), [features], [1,0]]
+	def createDataForFFNN(self, dirs, XUIDs, useRelationalFeatures, negSubsample, scope):
 		pairs = []
 		X = []
 		Y = []
 		numFeatures = 0
 		numPosAdded = 0
 		numNegAdded = 0
-		muidPairs = self.createMUIDPairs(MUIDs, useWD)
-		for (muid1, muid2) in muidPairs:
+		xuidPairs = self.createXUIDPairs(XUIDs, scope)
+		for (xuid1, xuid2) in xuidPairs:
 			label = [1, 0]
-			if self.corpus.XUIDToMention[muid1].REF == self.corpus.XUIDToMention[muid2].REF:
+			# NOTE: if this is for HDDCRP or Stan mentions, the REFs will always be True
+			# because we don't have such info for them, so they are ""
+			if self.corpus.XUIDToMention[xuid1].REF == self.corpus.XUIDToMention[xuid2].REF:
 				label = [0, 1]
 				numPosAdded += 1
 			else:
@@ -224,7 +254,7 @@ class DataHandler:
 				numNegAdded += 1
 
 			features = []
-			(uid1, uid2) = sorted([self.corpus.XUIDToMention[muid1].UID, self.corpus.XUIDToMention[muid2].UID])
+			(uid1, uid2) = sorted([self.corpus.XUIDToMention[xuid1].UID, self.corpus.XUIDToMention[xuid2].UID])
 			# loops through each feature (e.g., BoW, lemma) for the given uid pair
 			for feature in self.singleFeatures:
 				for i in feature[uid1]: # loops through each val of the given feature
@@ -243,7 +273,7 @@ class DataHandler:
 				print("* ERROR: # features diff:",len(features),"and",numFeatures)
 			numFeatures = len(features)
 
-			pairs.append((muid1, muid2))
+			pairs.append((xuid1, xuid2))
 			X.append(features)
 			Y.append(label)
 		print("features have a length of:",numFeatures)

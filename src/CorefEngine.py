@@ -38,6 +38,7 @@ class CorefEngine:
 	#    (B) test on non-events
 
 	if __name__ == "__main__":
+
 		wordFeaturesFile = "../data/features/word.f"
 		lemmaFeaturesFile = "../data/features/lemma.f"
 		charFeaturesFile = "../data/features/char.f"
@@ -47,12 +48,14 @@ class CorefEngine:
 		bowFeaturesFile = "../data/features/bow.f"
 
 		runStanford = False
-		
+
 		# classifier params
 		numRuns = 2
 		useCCNN = True
+		cd_scope = "dirHalf" # or dir
 		useRelationalFeatures = False
-		wdPresets = [64, 5, 2, 32, 0.0]
+		wdPresets = [128, 3, 2, 4, 0.0]
+		#wdPresets = [64, 5, 2, 32, 0.0] # batchsize, num epochs, num layers, num filters, dropout
 
 		# handles passed-in args
 		args = params.setCorefEngineParams()
@@ -69,7 +72,7 @@ class CorefEngine:
 		corpus = ecb_parser.parseCorpus(helper.docToVerifiedSentences)
 
 		helper.addECBCorpus(corpus)
-		helper.printCorpusStats()
+
 
 		# parses the HDDCRP Mentions
 		if not args.useECBTest:
@@ -85,23 +88,24 @@ class CorefEngine:
 		else:
 			helper.loadStanTokens()
 		helper.createStanMentions()
+		helper.printCorpusStats()
 		#helper.printHDDCRPMentionCoverage()
-		corpus.checkMentions()
+		#corpus.checkMentions()
 
 		# DEFINES WHICH MENTIONS TO USE
-		trainMUIDs = set()
-		devMUIDs = set()
-		testMUIDs = set()
+		trainXUIDs = set()
+		devXUIDs = set()
+		testXUIDs = set()
 		for m in corpus.ecb_mentions:
 			if m.dir_num in helper.trainingDirs:
-				trainMUIDs.add(m.XUID)
+				trainXUIDs.add(m.XUID)
 			elif m.dir_num in helper.devDirs:
-				devMUIDs.add(m.XUID)
+				devXUIDs.add(m.XUID)
 			elif m.dir_num in helper.testingDirs:
-				testMUIDs.add(m.XUID)
+				testXUIDs.add(m.XUID)
 		#for m in corpus.hddcrp_mentions:
 		#	testMUIDs.add(m.XUID)
-		fh = FeatureHandler(args, helper, trainMUIDs, devMUIDs, testMUIDs)
+		fh = FeatureHandler(args, helper, trainXUIDs, devXUIDs, testXUIDs)
 
 		'''
 		fh.saveLemmaFeatures(lemmaFeaturesFile)
@@ -116,9 +120,10 @@ class CorefEngine:
 
 		# within-doc first, then cross-doc
 		if useCCNN:
-			wd_model = CCNN(helper, dh, useRelationalFeatures, True, wdPresets)
-			wd_model.train_and_test_wd(1) # 1 means only 1 run of WD
-			cd_model = CCNN(helper, dh, useRelationalFeatures, False, [])
+			wd_model = CCNN(helper, dh, useRelationalFeatures, "doc", wdPresets)
+			(wd_pred, wd_gold) = wd_model.train_and_test_wd(1)  # 1 means only 1 run of WD
+			cd_model = CCNN(helper, dh, useRelationalFeatures, cd_scope, [])
+			cd_model.train_and_test_cd(wd_pred, wd_gold, numRuns)
 		else:
 			wd_model = FFNN(helper, dh)
 			wd_model.train_and_test_wd(numRuns)

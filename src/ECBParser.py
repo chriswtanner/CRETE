@@ -26,12 +26,11 @@ class ECBParser:
         self.loadReplacements(args.replacementsFile)
 
     def parseCorpus(self, docToVerifiedSentences):
-
-        print("* parsing ECB corpus...")
+        print("* parsing ECB corpus:", self.args.corpusPath)
         numMentionsIgnored = 0
         corpus = Corpus()
         files = []
-        for root, dirnames, filenames in os.walk(self.args.corpusPath):
+        for root, _, filenames in os.walk(self.args.corpusPath):
             for filename in fnmatch.filter(filenames, '*.xml'):
                 files.append(os.path.join(root, filename))
 

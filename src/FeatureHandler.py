@@ -12,13 +12,14 @@ from collections import defaultdict
 # regardless if ecb, hddcrp, stan.
 # the load() functions should ensure we only care about the right mentions
 class FeatureHandler:
-	def __init__(self, args, helper, trainMUIDs, devMUIDs, testMUIDs):
+	def __init__(self, args, helper, trainXUIDs, devXUIDs, testXUIDs):
 		self.args = args
 		self.helper = helper
 		self.corpus = helper.corpus
-		self.trainMUIDs = trainMUIDs
-		self.devMUIDs = devMUIDs
-		self.testMUIDs = testMUIDs
+		self.trainXUIDs = trainXUIDs
+		self.devXUIDs = devXUIDs
+		self.testXUIDs = testXUIDs
+		self.saveRelationalFeatures = False # NOTE: ensure this is what you want
 		self.bowWindow = 3 # number of tokens on each side to look at
 		self.gloveEmb = {} # to be filled in via loadGloveEmbeddings()
 		self.charEmb = {} # to be filled in via loadCharEmbeddings()
@@ -28,32 +29,59 @@ class FeatureHandler:
 	###   HELPER FUNCTIONS   ###
 	############################
 	# create all pairs, for ecb, hddcrp, stan
-	# this is correct; don't want to merely create all XUID pairs
+	# this is correct; don't want to merely create *every* XUID pairs
 	# because that would create, e.g., HDDCRP <-> STAN pairs
-	def getMUIDPairs(self):
+	def getAllXUIDPairs(self):
 		ret = set()
-		for dirhalf in self.corpus.dirHalves:
-			for m1 in self.corpus.dirHalves[dirhalf].MUIDs:
-				if m1 in self.corpus.dirHalves[dirhalf].HMUIDs or m1 in self.corpus.dirHalves[dirhalf].SUIDs:
+
+		# on a per-dir basis
+		for d in sorted(self.corpus.dirs):
+			for euid1 in self.corpus.dirs[d].EUIDs:
+				if euid1 in self.corpus.dirs[d].HUIDs or euid1 in self.corpus.dirs[d].SUIDs:
 					print("DUPE1")
 					exit(1)
-				for m2 in self.corpus.dirHalves[dirhalf].MUIDs:
-					if m2 <= m1:
+				for euid2 in self.corpus.dirs[d].EUIDs:
+					if euid2 <= euid1:
 						continue
-					ret.add((m1, m2))
-			for m1 in self.corpus.dirHalves[dirhalf].HMUIDs:
-				if m1 in self.corpus.dirHalves[dirhalf].SUIDs:
+					ret.add((euid1, euid2))
+			for huid1 in self.corpus.dirs[d].HUIDs:
+				if huid1 in self.corpus.dirs[d].SUIDs:
 					print("DUPE2")
 					exit(1)
-				for m2 in self.corpus.dirHalves[dirhalf].HMUIDs:
-					if m2 <= m1:
+				for huid2 in self.corpus.dirs[d].HUIDs:
+					if huid2 <= huid1:
 						continue
-					ret.add((m1, m2))
-			for m1 in self.corpus.dirHalves[dirhalf].SUIDs:
-				for m2 in self.corpus.dirHalves[dirhalf].SUIDs:
-					if m2 <= m1:
+					ret.add((huid1, huid2))
+			for suid1 in self.corpus.dirs[d].SUIDs:
+				for suid2 in self.corpus.dirs[d].SUIDs:
+					if suid2 <= suid1:
 						continue
-					ret.add((m1, m2))
+					ret.add((suid1, suid2))
+		# a per-dirhalf basis
+		'''
+		for dirhalf in self.corpus.dirHalves:
+			for euid1 in self.corpus.dirHalves[dirhalf].EUIDs:
+				if euid1 in self.corpus.dirHalves[dirhalf].HUIDs or euid1 in self.corpus.dirHalves[dirhalf].SUIDs:
+					print("DUPE1")
+					exit(1)
+				for euid2 in self.corpus.dirHalves[dirhalf].EUIDs:
+					if euid2 <= euid1:
+						continue
+					ret.add((euid1, euid2))
+			for huid1 in self.corpus.dirHalves[dirhalf].HUIDs:
+				if huid1 in self.corpus.dirHalves[dirhalf].SUIDs:
+					print("DUPE2")
+					exit(1)
+				for huid2 in self.corpus.dirHalves[dirhalf].HUIDs:
+					if huid2 <= huid1:
+						continue
+					ret.add((huid1, huid2))
+			for huid1 in self.corpus.dirHalves[dirhalf].SUIDs:
+				for huid2 in self.corpus.dirHalves[dirhalf].SUIDs:
+					if huid2 <= huid1:
+						continue
+					ret.add((huid1, huid2))
+		'''
 		return ret
 
 	# return dot product and cosine sim
@@ -148,38 +176,40 @@ class FeatureHandler:
 		feature = Feature()
 		if len(self.gloveEmb) == 0: # don't want to wastefully load again
 			self.loadGloveEmbeddings()
-		muidPairs = self.getMUIDPairs()
-		muids = set()
-		for (m1, m2) in muidPairs:
-			muids.add(m1)
-			muids.add(m2)
-		for muid in muids:
+		xuidPairs = self.getAllXUIDPairs()
+		xuids = set()
+		for (xuid1, xuid2) in xuidPairs:
+			xuids.add(xuid1)
+			xuids.add(xuid2)
+		for xuid in xuids:
 			sumEmb = [0] * 300
-			for t in self.corpus.XUIDToMention[muid].tokens:
+			for t in self.corpus.XUIDToMention[xuid].tokens:
 				word = self.getBestStanToken(t.stanTokens).text.lower()
 				if word not in self.gloveEmb:
 					print("* ERROR: no word emb for", word)
 					continue
 				curEmb = self.gloveEmb[word]
 				sumEmb = [x + y for x,y in zip(sumEmb, curEmb)]
-			feature.setSingle(self.corpus.XUIDToMention[muid].UID, sumEmb)
+			feature.setSingle(self.corpus.XUIDToMention[xuid].UID, sumEmb)
+		
 		# go through all pairs to compute relational data
-		proc = 0
-		completed = set()
-		for muid1, muid2 in muidPairs:
-			uid1, uid2 = sorted([self.corpus.XUIDToMention[muid1].UID, self.corpus.XUIDToMention[muid2].UID])
-			if (uid1,uid2) in completed or (uid2,uid1) in completed:
-				continue
-			completed.add((uid1,uid2))
-			flatv1 = feature.singles[uid1]
-			flatv2 = feature.singles[uid2]
-			(dp, cs) = self.getDPCS(flatv1, flatv2)
-			feature.addRelational(uid1, uid2, dp)
-			feature.addRelational(uid1, uid2, cs)
-			if proc % 1000 == 0:
-				print("\tprocessed", proc, "of", len(muidPairs), "(%2.2f)" %
-					  float(100.0*proc/len(muidPairs)), end="\r")
-			proc += 1
+		if self.saveRelationalFeatures:
+			proc = 0
+			completed = set()
+			for xuid1, xuid2 in xuidPairs:
+				uid1, uid2 = sorted([self.corpus.XUIDToMention[xuid1].UID, self.corpus.XUIDToMention[xuid2].UID])
+				if (uid1,uid2) in completed or (uid2,uid1) in completed:
+					continue
+				completed.add((uid1,uid2))
+				flatv1 = feature.singles[uid1]
+				flatv2 = feature.singles[uid2]
+				(dp, cs) = self.getDPCS(flatv1, flatv2)
+				feature.addRelational(uid1, uid2, dp)
+				feature.addRelational(uid1, uid2, cs)
+				if proc % 1000 == 0:
+					print("\tprocessed", proc, "of", len(xuidPairs), "(%2.2f)" %
+						float(100.0*proc/len(xuidPairs)), end="\r")
+				proc += 1
 
 		pickle_out = open(fileOut, 'wb')
 		pickle.dump(feature, pickle_out)
@@ -188,40 +218,42 @@ class FeatureHandler:
 		feature = Feature()
 		if len(self.gloveEmb) == 0:  # don't want to wastefully load again
 			self.loadGloveEmbeddings()
-		muidPairs = self.getMUIDPairs()
-		muids = set()
-		for (m1, m2) in muidPairs:
-			muids.add(m1)
-			muids.add(m2)
-		for muid in muids:
+		xuidPairs = self.getAllXUIDPairs()
+		xuids = set()
+		for (xuid1, xuid2) in xuidPairs:
+			xuids.add(xuid1)
+			xuids.add(xuid2)
+		for xuid in xuids:
 			sumEmb = [0] * 300
-			for t in self.corpus.XUIDToMention[muid].tokens:
+			for t in self.corpus.XUIDToMention[xuid].tokens:
 				lemma = self.getBestStanToken(t.stanTokens).lemma.lower()
 				if lemma not in self.gloveEmb:
 					print("* ERROR: no emb for",lemma)
 					continue
 				curEmb = self.gloveEmb[lemma]
 				sumEmb = [x + y for x, y in zip(sumEmb, curEmb)]
-			feature.setSingle(self.corpus.XUIDToMention[muid].UID, sumEmb)
-		# go through all pairs to compute relational data
-		proc = 0
-		completed = set()
-		for muid1, muid2 in muidPairs:
-			uid1, uid2 = sorted([self.corpus.XUIDToMention[muid1].UID,
-							self.corpus.XUIDToMention[muid2].UID])
-			if (uid1, uid2) in completed or (uid2, uid1) in completed:
-				continue
-			completed.add((uid1, uid2))
-			flatv1 = feature.singles[uid1]
-			flatv2 = feature.singles[uid2]
+			feature.setSingle(self.corpus.XUIDToMention[xuid].UID, sumEmb)
 
-			(dp, cs) = self.getDPCS(flatv1, flatv2)
-			feature.addRelational(uid1, uid2, dp)
-			feature.addRelational(uid1, uid2, cs)
-			if proc % 1000 == 0:
-				print("\tprocessed", proc, "of", len(muidPairs), "(%2.2f)" %
-					  float(100.0*proc/len(muidPairs)), end="\r")
-			proc += 1
+		if self.saveRelationalFeatures:
+			# go through all pairs to compute relational data
+			proc = 0
+			completed = set()
+			for xuid1, xuid2 in xuidPairs:
+				uid1, uid2 = sorted([self.corpus.XUIDToMention[xuid1].UID,
+								self.corpus.XUIDToMention[xuid2].UID])
+				if (uid1, uid2) in completed or (uid2, uid1) in completed:
+					continue
+				completed.add((uid1, uid2))
+				flatv1 = feature.singles[uid1]
+				flatv2 = feature.singles[uid2]
+
+				(dp, cs) = self.getDPCS(flatv1, flatv2)
+				feature.addRelational(uid1, uid2, dp)
+				feature.addRelational(uid1, uid2, cs)
+				if proc % 1000 == 0:
+					print("\tprocessed", proc, "of", len(xuidPairs), "(%2.2f)" %
+						float(100.0*proc/len(xuidPairs)), end="\r")
+				proc += 1
 		pickle_out = open(fileOut, 'wb')
 		pickle.dump(feature, pickle_out)
 
@@ -229,15 +261,15 @@ class FeatureHandler:
 		feature = Feature()
 		if len(self.charEmb) == 0:
 			self.loadCharEmbeddings()
-		muidPairs = self.getMUIDPairs()
-		muids = set()
-		for (m1, m2) in muidPairs:
-			muids.add(m1)
-			muids.add(m2)
-		for muid in muids:
+		xuidPairs = self.getAllXUIDPairs()
+		xuids = set()
+		for (xuid1, xuid2) in xuidPairs:
+			xuids.add(xuid1)
+			xuids.add(xuid2)
+		for xuid in xuids:
 			charEmb = []
 			numCharsFound = 0
-			for t in self.corpus.XUIDToMention[muid].tokens:
+			for t in self.corpus.XUIDToMention[xuid].tokens:
 				lemma = self.getBestStanToken(t.stanTokens).lemma.lower()
 				for char in lemma:
 					if char == "ô":
@@ -253,26 +285,27 @@ class FeatureHandler:
 						#exit(1)
 			while len(charEmb) < 400: # 20 chars * 20 dim
 				charEmb.append(0.0)
-			feature.setSingle(self.corpus.XUIDToMention[muid].UID, charEmb)
+			feature.setSingle(self.corpus.XUIDToMention[xuid].UID, charEmb)
 
 		# go through all pairs to compute relational data
-		proc = 0
-		completed = set()
-		for muid1, muid2 in muidPairs:
-			uid1, uid2 = sorted([self.corpus.XUIDToMention[muid1].UID,
-							self.corpus.XUIDToMention[muid2].UID])
-			if (uid1, uid2) in completed or (uid2, uid1) in completed:
-				continue
-			completed.add((uid1, uid2))
-			flatv1 = feature.singles[uid1]
-			flatv2 = feature.singles[uid2]
-			(dp, cs) = self.getDPCS(flatv1, flatv2)
-			feature.addRelational(uid1, uid2, dp)
-			feature.addRelational(uid1, uid2, cs)
-			if proc % 1000 == 0:
-				print("\tprocessed", proc, "of", len(muidPairs), "(%2.2f)" %
-					  float(100.0*proc/len(muidPairs)), end="\r")
-			proc += 1
+		if self.saveRelationalFeatures:
+			proc = 0
+			completed = set()
+			for xuid1, xuid2 in xuidPairs:
+				uid1, uid2 = sorted([self.corpus.XUIDToMention[xuid1].UID,
+								self.corpus.XUIDToMention[xuid2].UID])
+				if (uid1, uid2) in completed or (uid2, uid1) in completed:
+					continue
+				completed.add((uid1, uid2))
+				flatv1 = feature.singles[uid1]
+				flatv2 = feature.singles[uid2]
+				(dp, cs) = self.getDPCS(flatv1, flatv2)
+				feature.addRelational(uid1, uid2, dp)
+				feature.addRelational(uid1, uid2, cs)
+				if proc % 1000 == 0:
+					print("\tprocessed", proc, "of", len(xuidPairs), "(%2.2f)" %
+						float(100.0*proc/len(xuidPairs)), end="\r")
+				proc += 1
 		pickle_out = open(fileOut, 'wb')
 		pickle.dump(feature, pickle_out)
 
@@ -282,14 +315,14 @@ class FeatureHandler:
 		posLength = 50
 		if len(self.posEmb) == 0:
 			self.loadPOSEmbeddings()
-		muidPairs = self.getMUIDPairs()
-		muids = set()
-		for (m1, m2) in muidPairs:
-			muids.add(m1)
-			muids.add(m2)
-		for muid in muids:
+		xuidPairs = self.getAllXUIDPairs()
+		xuids = set()
+		for (xuid1, xuid2) in xuidPairs:
+			xuids.add(xuid1)
+			xuids.add(xuid2)
+		for xuid in xuids:
 			sumEmb = [0]*posLength
-			for t in self.corpus.XUIDToMention[muid].tokens:
+			for t in self.corpus.XUIDToMention[xuid].tokens:
 				pos = ""
 				posOfLongestToken = ""
 				longestToken = ""
@@ -311,27 +344,28 @@ class FeatureHandler:
 
 				curEmb = self.posEmb[pos]
 				sumEmb = [x + y for x,y in zip(sumEmb, curEmb)]
-			feature.setSingle(self.corpus.XUIDToMention[muid].UID, sumEmb)
+			feature.setSingle(self.corpus.XUIDToMention[xuid].UID, sumEmb)
 
 		# go through all pairs to compute relational data
-		completed = set()
-		proc = 0
-		for muid1, muid2 in muidPairs:
-			uid1, uid2 = sorted([self.corpus.XUIDToMention[muid1].UID,
-							self.corpus.XUIDToMention[muid2].UID])
-			if (uid1, uid2) in completed or (uid2, uid1) in completed:
-				continue
-			completed.add((uid1, uid2))
-			flatv1 = feature.singles[uid1]
-			flatv2 = feature.singles[uid2]
+		if self.saveRelationalFeatures:
+			completed = set()
+			proc = 0
+			for xuid1, xuid2 in xuidPairs:
+				uid1, uid2 = sorted([self.corpus.XUIDToMention[xuid1].UID,
+								self.corpus.XUIDToMention[xuid2].UID])
+				if (uid1, uid2) in completed or (uid2, uid1) in completed:
+					continue
+				completed.add((uid1, uid2))
+				flatv1 = feature.singles[uid1]
+				flatv2 = feature.singles[uid2]
 
-			(dp, cs) = self.getDPCS(flatv1, flatv2)
-			feature.addRelational(uid1, uid2, dp)
-			feature.addRelational(uid1, uid2, cs)
-			if proc % 1000 == 0:
-				print("\tprocessed", proc, "of", len(muidPairs), "(%2.2f)" %
-					  float(100.0*proc/len(muidPairs)), end="\r")
-			proc += 1
+				(dp, cs) = self.getDPCS(flatv1, flatv2)
+				feature.addRelational(uid1, uid2, dp)
+				feature.addRelational(uid1, uid2, cs)
+				if proc % 1000 == 0:
+					print("\tprocessed", proc, "of", len(xuidPairs), "(%2.2f)" %
+						float(100.0*proc/len(xuidPairs)), end="\r")
+				proc += 1
 		pickle_out = open(fileOut, 'wb')
 		pickle.dump(feature, pickle_out)
 
@@ -339,19 +373,19 @@ class FeatureHandler:
 		feature = Feature()
 		if len(self.gloveEmb) == 0:
 			self.loadGloveEmbeddings()
-		muidPairs = self.getMUIDPairs()
-		muids = set()
-		for (m1, m2) in muidPairs:
-			muids.add(m1)
-			muids.add(m2)
-		for muid in muids:
+		xuidPairs = self.getAllXUIDPairs()
+		xuids = set()
+		for (xuid1, xuid2) in xuidPairs:
+			xuids.add(xuid1)
+			xuids.add(xuid2)
+		for xuid in xuids:
 			sumParentEmb = [0]*300
 			sumChildrenEmb = [0]*300
 			numParentFound = 0
 			tmpParentLemmas = []
 			numChildrenFound = 0
 			tmpChildrenLemmas = []
-			for t in self.corpus.XUIDToMention[muid].tokens:
+			for t in self.corpus.XUIDToMention[xuid].tokens:
 				bestStanToken = self.getBestStanToken(t.stanTokens)
 				
 				if len(bestStanToken.parentLinks) == 0:
@@ -389,44 +423,47 @@ class FeatureHandler:
 					sumChildrenEmb = [x + y for x,y in zip(sumChildrenEmb, curEmb)]
 			parentEmb = sumParentEmb  # makes parent emb
 			childrenEmb = sumChildrenEmb  # makes chid emb
-			feature.setSingle(self.corpus.XUIDToMention[muid].UID, parentEmb + childrenEmb)
+			feature.setSingle(self.corpus.XUIDToMention[xuid].UID, parentEmb + childrenEmb)
+		
 		# go through all pairs to compute relational data
-		proc = 0
-		completed = set()
-		for muid1, muid2 in muidPairs:
-			uid1, uid2 = sorted([self.corpus.XUIDToMention[muid1].UID, self.corpus.XUIDToMention[muid2].UID])
-			if (uid1, uid2) in completed or (uid2, uid1) in completed:
-				continue
-			completed.add((uid1, uid2))
-			flatv1 = feature.singles[uid1]
-			flatv2 = feature.singles[uid2]
+		if self.saveRelationalFeatures:
+			proc = 0
+			completed = set()
+			for xuid1, xuid2 in xuidPairs:
+				uid1, uid2 = sorted([self.corpus.XUIDToMention[xuid1].UID, self.corpus.XUIDToMention[xuid2].UID])
+				if (uid1, uid2) in completed or (uid2, uid1) in completed:
+					continue
+				completed.add((uid1, uid2))
+				flatv1 = feature.singles[uid1]
+				flatv2 = feature.singles[uid2]
 
-			(dp, cs) = self.getDPCS(flatv1, flatv2)
-			feature.addRelational(uid1, uid2, dp)
-			feature.addRelational(uid1, uid2, cs)
-			if proc % 1000 == 0:
-				print("\tprocessed", proc, "of", len(muidPairs), "(%2.2f)" %
-                                    float(100.0*proc/len(muidPairs)), end="\r")
-			proc += 1
+				(dp, cs) = self.getDPCS(flatv1, flatv2)
+				feature.addRelational(uid1, uid2, dp)
+				feature.addRelational(uid1, uid2, cs)
+				if proc % 1000 == 0:
+					print("\tprocessed", proc, "of", len(xuidPairs), "(%2.2f)" %
+										float(100.0*proc/len(xuidPairs)), end="\r")
+				proc += 1
 		pickle_out = open(fileOut, 'wb')
 		pickle.dump(feature, pickle_out)
 
+	# entire feature is relational
 	def saveWordNetFeatures(self, fileOut):
 		feature = Feature()
 
 		synSynToScore = {}
-		muidPairs = self.getMUIDPairs()
-		print("calculating wordnet features for", len(muidPairs), "unique pairs")
+		xuidPairs = self.getAllXUIDPairs()
+		print("calculating wordnet features for", len(xuidPairs), "unique pairs")
 		i = 0
 		completed = set()
-		for m1, m2 in muidPairs:
-			uid1 = self.corpus.XUIDToMention[m1].UID
-			uid2 = self.corpus.XUIDToMention[m2].UID
+		for xuid1, xuid2 in xuidPairs:
+			uid1 = self.corpus.XUIDToMention[xuid1].UID
+			uid2 = self.corpus.XUIDToMention[xuid2].UID
 			if (uid1, uid2) in completed or (uid2, uid1) in completed:
 				continue
 			completed.add((uid1, uid2))
-			textTokens1 = self.corpus.XUIDToMention[m1].text
-			textTokens2 = self.corpus.XUIDToMention[m2].text
+			textTokens1 = self.corpus.XUIDToMention[xuid1].text
+			textTokens2 = self.corpus.XUIDToMention[xuid2].text
 			bestScore = -1
 			for t1 in textTokens1:
 				syn1 = wn.synsets(t1)
@@ -453,8 +490,8 @@ class FeatureHandler:
 			feature.addRelational(uid1, uid2, bestScore)
 			i += 1
 			if i % 1000 == 0:
-				print("\tprocessed", i, "of", len(muidPairs), "(%2.2f)" %
-					  float(100.0*i/len(muidPairs)), end="\r")
+				print("\tprocessed", i, "of", len(xuidPairs), "(%2.2f)" %
+					  float(100.0*i/len(xuidPairs)), end="\r")
 
 		pickle_out = open(fileOut, 'wb')
 		pickle.dump(feature, pickle_out)
@@ -470,20 +507,20 @@ class FeatureHandler:
 		feature = Feature()
 		if len(self.gloveEmb) == 0: # don't want to wastefully load again
 			self.loadGloveEmbeddings()
-		muidPairs = self.getMUIDPairs()
-		muids = set()
-		for (m1,m2) in muidPairs:
-			muids.add(m1)
-			muids.add(m2)
+		xuidPairs = self.getAllXUIDPairs()
+		xuids = set()
+		for (xuid1,xuid2) in xuidPairs:
+			xuids.add(xuid1)
+			xuids.add(xuid2)
 
 		#uidToVector = {} # will pickle
 		#uiduidToFeature = {} # will pickle
 		# gets a vector for each mention
-		for muid in muids:
+		for xuid in xuids:
 			t_startIndex = 99999999
 			t_endIndex = -1
-			doc_id = self.corpus.XUIDToMention[muid].doc_id
-			for t in self.corpus.XUIDToMention[muid].tokens:
+			doc_id = self.corpus.XUIDToMention[xuid].doc_id
+			for t in self.corpus.XUIDToMention[xuid].tokens:
 				ind = self.corpus.corpusTokensToCorpusIndex[t]
 				if ind < t_startIndex:
 					t_startIndex = ind
@@ -541,27 +578,29 @@ class FeatureHandler:
 						tmpTokens.append([0] * 300)
 				else:
 					tmpTokens.append([0] * 300)
-			#uidToVector[self.corpus.XUIDToMention[muid].UID] = tmpTokens
+			#uidToVector[self.corpus.XUIDToMention[xuid].UID] = tmpTokens
 			flatvector = [item for sublist in tmpTokens for item in sublist]
 			#print(flatvector)
-			feature.setSingle(self.corpus.XUIDToMention[muid].UID, flatvector)
-		proc = 0
-		completed = set()
-		for muid1, muid2 in muidPairs:
-			uid1, uid2 = sorted([self.corpus.XUIDToMention[muid1].UID, self.corpus.XUIDToMention[muid2].UID])
-			if (uid1, uid2) in completed or (uid2, uid1) in completed:
-				continue
-			completed.add((uid1, uid2))
-			flatv1 = feature.singles[uid1]
-			flatv2 = feature.singles[uid2]
+			feature.setSingle(self.corpus.XUIDToMention[xuid].UID, flatvector)
+		
+		if self.saveRelationalFeatures:
+			proc = 0
+			completed = set()
+			for xuid1, xuid2 in xuidPairs:
+				uid1, uid2 = sorted([self.corpus.XUIDToMention[xuid1].UID, self.corpus.XUIDToMention[xuid2].UID])
+				if (uid1, uid2) in completed or (uid2, uid1) in completed:
+					continue
+				completed.add((uid1, uid2))
+				flatv1 = feature.singles[uid1]
+				flatv2 = feature.singles[uid2]
 
-			(dp, cs) = self.getDPCS(flatv1, flatv2)
-			feature.addRelational(uid1, uid2, dp)
-			feature.addRelational(uid1, uid2, cs)
-			if proc % 1000 == 0:
-				print("\tprocessed", proc, "of", len(muidPairs), "(%2.2f)" %
-					  float(100.0*proc/len(muidPairs)), end="\r")
-			proc += 1
+				(dp, cs) = self.getDPCS(flatv1, flatv2)
+				feature.addRelational(uid1, uid2, dp)
+				feature.addRelational(uid1, uid2, cs)
+				if proc % 1000 == 0:
+					print("\tprocessed", proc, "of", len(xuidPairs), "(%2.2f)" %
+						float(100.0*proc/len(xuidPairs)), end="\r")
+				proc += 1
 
 		pickle_out = open(fileOut, 'wb')
 		pickle.dump(feature, pickle_out)
