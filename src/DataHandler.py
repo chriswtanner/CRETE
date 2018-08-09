@@ -83,11 +83,14 @@ class DataHandler:
 					if xuid2 <= xuid1:
 						continue
 					inSameDoc = False
+					inSameDirHalf = False
 					if self.corpus.XUIDToMention[xuid1].doc_id == self.corpus.XUIDToMention[xuid2].doc_id:
 						inSameDoc = True
+					if self.corpus.XUIDToMention[xuid1].dirHalf == self.corpus.XUIDToMention[xuid2].dirHalf:
+						inSameDirHalf = True
 					if scope == "doc" and inSameDoc:
 						xuidPairs.add((xuid1, xuid2))
-					elif scope == "dirHalf" and not inSameDoc:
+					elif scope == "dirHalf" and not inSameDoc and inSameDirHalf:
 						xuidPairs.add((xuid1, xuid2))
 					elif scope == "dir" and not inSameDoc:
 						xuidPairs.add((xuid1, xuid2))

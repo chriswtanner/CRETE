@@ -2,6 +2,7 @@ import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 import sys
 import keras
+import pickle
 import random
 import numpy as np
 import tensorflow as tf
@@ -18,7 +19,7 @@ class CCNN:
 		self.helper = helper
 		self.corpus = helper.corpus
 		self.args = helper.args
-		self.scope = scope  # used by aggClusterCD()
+		self.scope = scope # used by aggClusterCD()
 		if presets == []:
 			self.bs = self.args.batchSize
 			self.ne = self.args.numEpochs
@@ -28,6 +29,9 @@ class CCNN:
 		else:
 			(self.bs, self.ne, self.nl, self.nf, self.do) = presets
 		print("[ccnn] scope:",self.scope,"bs:",self.bs,"ne:",self.ne,"nl:",self.nl,"nf:",self.nf,"do:",self.do)
+
+		print("loading wd predicted clusters")
+		self.wd_pred_clusters = pickle.load(open("wd_clusters", 'rb'))
 
 		dh.loadNNData(useRelationalFeatures, True, self.scope) # this 'True' means use CCNN
 		(self.trainID, self.trainX, self.trainY) = (dh.trainID, dh.trainX, dh.trainY)
@@ -107,7 +111,7 @@ class CCNN:
 				# performs agglomerative clustering
 				stoppingPoints = [s for s in np.arange(0.25, 0.5, 0.02)]
 				for sp in stoppingPoints:
-					(wd_predictedClusters, wd_goldenClusters) = self.aggClusterWD(self.devID, preds, sp)
+					(wd_docPredClusters, wd_predictedClusters, wd_goldenClusters) = self.aggClusterWD(self.devID, preds, sp)
 					#(bcub_p, bcub_r, bcub_f1, muc_p, muc_r, muc_f1, ceafe_p, ceafe_r, ceafe_f1, conll_f1)
 					scores = get_conll_scores(wd_goldenClusters, wd_predictedClusters)
 					spToCoNLL[sp].append(scores[-1])
@@ -128,13 +132,13 @@ class CCNN:
 		(best_sp, best_conll) = self.calculateBestKey(spToCoNLL)
 		sys.stdout.flush()
 		print("* conll f1 -- best sp:",best_sp, "yielded an avg:",best_conll)
-		return (wd_predictedClusters, wd_goldenClusters)
+		return (wd_docPredClusters, wd_predictedClusters, wd_goldenClusters)
 
 ##########################
 ##########################
 
 	# CROSS-DOC MODEL
-	def train_and_test_cd(self, wd_pred, wd_gold, numRuns):
+	def train_and_test_cd(self, numRuns): #, wd_pred, wd_gold, numRuns):
 		f1s = []
 		recalls = []
 		precs = []
@@ -263,10 +267,12 @@ class CCNN:
 		goldenClusterID = 0
 		goldenSuperSet = {}
 		
+		docToPredClusters = defaultdict(list) # only used for pickling' and later loading WD preds again
+
 		XUIDToDocs = defaultdict(set)
 
 		for doc_id in docToXUIDPredictions.keys():
-			#print("-----------\ncurrent doc:",str(doc_id),"\n-----------")
+			print("-----------\ncurrent doc:",str(doc_id),"\n-----------")
 			# construct the golden truth for the current doc
 			curDoc = self.corpus.doc_idToDocs[doc_id]
 			
@@ -353,11 +359,14 @@ class CCNN:
 				ourDocClusters[c1] = newCluster
 
 			# end of clustering current doc
+			docToPredClusters[doc_id] = ourDocClusters
+			print("ourDocClusters has # keys:", len(ourDocClusters))
 			for i in ourDocClusters.keys():
+				print("doc:",doc_id,"adding a cluster")
 				ourClusterSuperSet[ourClusterID] = ourDocClusters[i]
 				ourClusterID += 1
 		#print("# golden clusters:",str(len(goldenSuperSet.keys())), "; # our clusters:",str(len(ourClusterSuperSet)))
-		return (ourClusterSuperSet, goldenSuperSet)
+		return (docToPredClusters, ourClusterSuperSet, goldenSuperSet)
 
 	# agglomerative cluster the cross-doc predicted pairs
 	# NOTE: 'dir_num' in this function is used to refer to EITHER
@@ -380,7 +389,6 @@ class CCNN:
 			dir_num = m1.dir_num
 			if self.scope == "dirHalf":
 				dir_num = m1.dirHalf
-
 
 			if self.scope == "dir" and m2.dir_num != dir_num:
 				print("* ERROR: xuids are from diff dirs!")
@@ -427,7 +435,7 @@ class CCNN:
 					print("* ERROR: missing xuid from our predictions for dir:", dir_num)
 					exit(1)
 
-			# ensures each of our predicted mentions are valid per our corpus
+			# ensures each of our predicted mentions is valid per our corpus
 			print("# dirToXUIDs[dirnum]:", len(dirToXUIDs[dir_num]))
 			print("curMentionSet:", len(curMentionSet))
 			for xuid in dirToXUIDs[dir_num]:
@@ -440,12 +448,38 @@ class CCNN:
 			for curREF in cur_dir.REFToEUIDs:
 				print("ref:",curREF)
 				goldenSuperSet[goldenClusterID] = set(cur_dir.REFToEUIDs[curREF])
+				print("golden cluster has size:", len(goldenSuperSet[goldenClusterID]))
 				goldenClusterID += 1
 
-			print("golden cluster has size:",len(goldenSuperSet[goldenClusterID - 1]))
-			
-			'''
 			# constructs our base clusters (singletons)
+			ourDirHalfClusters = {}
+			clusterNumToDocs = defaultdict(set)
+			print("* constructing base clusters (wd predictions)")
+			# check if the doc belongs to our current dirHalf or dir (whichever is of our focus)
+			ij = 0
+			numMentions = 0
+			for doc_id in self.wd_pred_clusters:
+				tmp_dir_num = int(doc_id.split("_")[0])
+				tmp_extension = doc_id[doc_id.find("ecb"):]
+				tmp_dirHalf = str(tmp_dir_num) + tmp_extension
+				if self.scope == "dirHalf" and tmp_dirHalf != dir_num: # yes, this 'dir_num' is correct
+					continue
+				if self.scope == "dir" and tmp_dir_num != dir_num:
+					continue
+				for c in self.wd_pred_clusters[doc_id]:
+					print("adding:", doc_id, "for dirhalf:",dir_num)
+					ourDirHalfClusters[ij] = self.wd_pred_clusters[doc_id][c]
+					clusterNumToDocs[ij].add(doc_id)
+					numMentions += len(self.wd_pred_clusters[doc_id][c])
+					ij += 1
+			if numMentions != len(dirToXUIDs[dir_num]):
+				print("* ERROR: we have a different number of mentions via passed-in WD clusters than what we have predictions for")
+				exit(1)
+			print("we have", len(ourDirHalfClusters.keys()), "clusters for current dirhalf:")
+			print("ourDirHalfClusters:",ourDirHalfClusters)
+			print("clusterNumToDocs:", clusterNumToDocs)
+
+			'''
 			ourDocClusters = {}
 			for i in range(len(docToXUIDs[doc_id])):
 				xuid = docToXUIDs[doc_id][i]
@@ -457,6 +491,7 @@ class CCNN:
 				a.add(xuid)
 				ourDocClusters[i] = a
 
+			
 			# the following keeps merging until our shortest distance > stopping threshold,
 			# or we have 1 cluster, whichever happens first
 			while len(ourDocClusters.keys()) > 1:
