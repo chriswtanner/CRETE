@@ -360,6 +360,8 @@ class CCNN:
 		return (ourClusterSuperSet, goldenSuperSet)
 
 	# agglomerative cluster the cross-doc predicted pairs
+	# NOTE: 'dir_num' in this function is used to refer to EITHER
+	# dirHalf or the actual dir; 
 	def aggClusterCD(self, ids, preds, stoppingPoint):
 
 		# NOTE: this is called dir, but we may be operating on dirHalf, which is fine;
@@ -374,7 +376,11 @@ class CCNN:
 			m2 = self.corpus.XUIDToMention[xuid2]
 			# NOTE: the lower the score, the more likely they are the same.  it's a dissimilarity score
 			pred = pred[0]
+
 			dir_num = m1.dir_num
+			if self.scope == "dirHalf":
+				dir_num = m1.dirHalf
+
 
 			if m2.dir_num != dir_num:
 				print("* ERROR: xuids are from diff dirs!")
@@ -405,7 +411,7 @@ class CCNN:
 				exit(1)
 
 			print("cur_dir:",cur_dir)
-			
+
 			# we check our mentions to the corpus, and we correctly
 			# use HDDCRP Mentions if that's what we're working with
 			curMentionSet = cur_dir.EUIDs

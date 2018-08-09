@@ -62,8 +62,8 @@ class DataHandler:
 		if scope != "doc" and scope != "dirHalf" and scope != "dir":
 			print("* ERROR: scope must be doc, dirHalf, or dir")
 			exit(1)
+
 		xuidPairs = set()
-		
 		dirHalfToXUIDs = defaultdict(set)
 		ECBDirToXUIDs = defaultdict(set)
 		
@@ -72,10 +72,9 @@ class DataHandler:
 			dirHalfToXUIDs[mention.dirHalf].add(xuid)
 			ECBDirToXUIDs[mention.dir_num].add(xuid)
 
-			# NOTE: left off here
-		
 		# we sort to ensure consistency across multiple runs
 		print("# mentions passed-in:", len(XUIDs))
+		print("createXUIDPairs() created ECBDirToXUIDs to have this many dirHalves:",len(ECBDirToXUIDs.keys()))
 		for ecb_dir in sorted(ECBDirToXUIDs.keys()):
 
 		#for dirHalf in sorted(dirHalfToXUIDs.keys()):
@@ -213,7 +212,7 @@ class DataHandler:
 		pn = float(numNegAdded / (numPosAdded+numNegAdded))
 		print("* createData() loaded", len(pairs), "pairs (", pp, "% pos, ",
 		      pn, "% neg); features' length = ", numFeatures)
-			  		
+
 		if len(pairs) == 0:
 			exit(1)
 		# TMP ADDED FOR SAME LEMMA TEST
