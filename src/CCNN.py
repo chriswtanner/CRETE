@@ -380,6 +380,8 @@ class CCNN:
 		dirToXUIDPredictions = defaultdict(lambda: defaultdict(float))
 		# this list is constructed just to ensure it's the same as the corpus'
 		dirToXUIDs = defaultdict(list)
+
+		corpusDirHalf = defaultdict(set) # TMP
 		for ((xuid1, xuid2), pred) in zip(ids, preds):
 			m1 = self.corpus.XUIDToMention[xuid1]
 			m2 = self.corpus.XUIDToMention[xuid2]
@@ -389,6 +391,9 @@ class CCNN:
 			dir_num = m1.dir_num
 			if self.scope == "dirHalf":
 				dir_num = m1.dirHalf
+
+			corpusDirHalf[dir_num].add(xuid1)
+			corpusDirHalf[dir_num].add(xuid2)
 
 			if self.scope == "dir" and m2.dir_num != dir_num:
 				print("* ERROR: xuids are from diff dirs!")
@@ -404,6 +409,10 @@ class CCNN:
 				dirToXUIDs[dir_num].append(xuid2)
 			dirToXUIDPredictions[dir_num][(xuid1, xuid2)] = pred
 
+		print("corpus' halfs, based on the xuid's that were passed in locally from our predictions")
+		print(corpusDirHalf)
+		for dh in corpusDirHalf:
+			print("dh:",dh,"corpusDirHalf[dh]",corpusDirHalf[dh])
 		ourClusterID = 0
 		ourClusterSuperSet = {}
 		goldenClusterID = 0
@@ -458,6 +467,8 @@ class CCNN:
 			# check if the doc belongs to our current dirHalf or dir (whichever is of our focus)
 			ij = 0
 			wd_relevant_xuid = set()
+
+			wd_dirHalf = defaultdict(set)
 			for doc_id in self.wd_pred_clusters:
 				tmp_dir_num = int(doc_id.split("_")[0])
 				tmp_extension = doc_id[doc_id.find("ecb"):]
@@ -474,6 +485,7 @@ class CCNN:
 					clusterNumToDocs[ij].add(doc_id)
 					for xuid in self.wd_pred_clusters[doc_id][c]:
 						wd_relevant_xuid.add(xuid)
+						wd_dirHalf[tmp_dirHalf].add(xuid)
 					ij += 1
 			print("wd_relevant_xuid:", len(wd_relevant_xuid), "; len(dirToXUIDs[dir_num]:", len(dirToXUIDs[dir_num]))
 			print("wd_relevant_xuid:", wd_relevant_xuid)
