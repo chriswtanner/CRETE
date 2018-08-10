@@ -127,18 +127,37 @@ class CorefEngine:
 				m = corpus.XUIDToMention[xuid]
 				tmp_corpusDirHalfToXUIDs[m.dirHalf].add(xuid)
 			print("parsed corpus' dirhalves")
-			for dh2 in tmp_corpusDirHalfToXUIDs:
-				print("dh2:",dh2," = ",tmp_corpusDirHalfToXUIDs[dh2])
-			'''
+			
 			wd_model = CCNN(helper, dh, useRelationalFeatures, "doc", wdPresets)
 			(wd_docPreds, wd_pred, wd_gold) = wd_model.train_and_test_wd(1)  # 1 means only 1 run of WD
-			print("wd_docPreds:",wd_docPreds)
+			
+			tmp_wdDirHalfToXUIDs = defaultdict(set)
+			#print("wd_docPreds:",wd_docPreds)
 			for doc in wd_docPreds:
-				print("doc:",doc)
-				print("wd_docPreds[doc]:",wd_docPreds[doc])
+				for c in wd_docPreds[doc]:
+					for xuid in wd_docPreds[doc][c]:
+						m = corpus.XUIDToMention[xuid]
+						tmp_wdDirHalfToXUIDs[m.dirHalf].add(xuid)
+			
+			print("SANITY CHECKING THE XUIDs before we save WD preds to file")
+			for dirhalf in tmp_corpusDirHalfToXUIDs:
+				print("dirhalf:", dirhalf)
+				for xuid in tmp_corpusDirHalfToXUIDs[dirhalf]:
+					if xuid not in tmp_wdDirHalfToXUIDs[dirhalf]:
+						print("* ERROR, our wd predictions don't have")
+			print("cleared 1st half")
+			for dirhalf in tmp_wdDirHalfToXUIDs:
+				print("dirhalf:", dirhalf)
+				for xuid in tmp_wdDirHalfToXUIDs[dirhalf]:
+					if xuid not in tmp_corpusDirHalfToXUIDs[dirhalf]:
+						print("* ERROR, our corpus doesn't have")
+			exit(1)
+				#print("doc:",doc)
+				#print("wd_docPreds[doc]:",wd_docPreds[doc])
 			pickle_out = open("wd_clusters", 'wb')
 			pickle.dump(wd_docPreds, pickle_out)
-			'''
+			
+			exit(1)
 			cd_model = CCNN(helper, dh, useRelationalFeatures, cd_scope, [])
 			cd_model.train_and_test_cd(1) #wd_pred, wd_gold, numRuns)
 		else:
