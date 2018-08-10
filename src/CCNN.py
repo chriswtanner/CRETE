@@ -245,6 +245,7 @@ class CCNN:
 
 	# agglomerative cluster the within-doc predicted pairs
 	def aggClusterWD(self, ids, preds, stoppingPoint):
+		print("** in aggClusterWD(), stoppingPoint:",stoppingPoint)
 		docToXUIDPredictions = defaultdict(lambda: defaultdict(float))
 		docToXUIDs = defaultdict(list) # this list is constructed just to ensure it's the same as the corpus'
 		for ((xuid1, xuid2), pred) in zip(ids, preds):
@@ -272,7 +273,7 @@ class CCNN:
 		XUIDToDocs = defaultdict(set)
 
 		for doc_id in docToXUIDPredictions.keys():
-			#print("-----------\ncurrent doc:",str(doc_id),"\n-----------")
+			print("-----------\ncurrent doc:",str(doc_id),"\n-----------")
 			# construct the golden truth for the current doc
 			curDoc = self.corpus.doc_idToDocs[doc_id]
 			
