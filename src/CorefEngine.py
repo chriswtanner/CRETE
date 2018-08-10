@@ -129,7 +129,7 @@ class CorefEngine:
 			print("parsed corpus' dirhalves")
 			for dh2 in tmp_corpusDirHalfToXUIDs:
 				print("dh2:",dh2," = ",tmp_corpusDirHalfToXUIDs[dh2])
-
+			'''
 			wd_model = CCNN(helper, dh, useRelationalFeatures, "doc", wdPresets)
 			(wd_docPreds, wd_pred, wd_gold) = wd_model.train_and_test_wd(1)  # 1 means only 1 run of WD
 			print("wd_docPreds:",wd_docPreds)
@@ -138,7 +138,7 @@ class CorefEngine:
 				print("wd_docPreds[doc]:",wd_docPreds[doc])
 			pickle_out = open("wd_clusters", 'wb')
 			pickle.dump(wd_docPreds, pickle_out)
-			
+			'''
 			cd_model = CCNN(helper, dh, useRelationalFeatures, cd_scope, [])
 			cd_model.train_and_test_cd(1) #wd_pred, wd_gold, numRuns)
 		else:
