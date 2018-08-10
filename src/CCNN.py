@@ -482,12 +482,12 @@ class CCNN:
 				print("xuid:",xuid)
 				print("dir_num:",dir_num)
 				if xuid not in dirToXUIDs[dir_num]:
-					print("* ERROR: wd had ", xuid, "but our passed-in predictions didn't... it's mention:",self.corpus.XUIDToMention[xuid])
+					print("* ERROR: WD (passed-in) had ", xuid, "but our current local predictions didn't... it's mention:",self.corpus.XUIDToMention[xuid])
 					print("dir_num:", dir_num)
 					print(dirToXUIDs[dir_num])
 			for xuid in dirToXUIDs[dir_num]:
 				if xuid not in wd_relevant_xuid:
-					print("* ERROR: passed-in had ", xuid, "but our wd didn't... it's mention:", self.corpus.XUIDToMention[xuid])
+					print("* ERROR: current local predictions had ", xuid, "but our WD (passed-in) didn't... it's mention:", self.corpus.XUIDToMention[xuid])
 			if len(wd_relevant_xuid) != len(dirToXUIDs[dir_num]):
 				print("* ERROR: we have a different number of mentions via passed-in WD clusters than what we have predictions for")
 				exit(1)
