@@ -272,7 +272,7 @@ class CCNN:
 		XUIDToDocs = defaultdict(set)
 
 		for doc_id in docToXUIDPredictions.keys():
-			print("-----------\ncurrent doc:",str(doc_id),"\n-----------")
+			#print("-----------\ncurrent doc:",str(doc_id),"\n-----------")
 			# construct the golden truth for the current doc
 			curDoc = self.corpus.doc_idToDocs[doc_id]
 			
