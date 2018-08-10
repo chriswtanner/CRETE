@@ -5,6 +5,7 @@ import time
 import pickle
 import random
 import sys
+from collections import defaultdict
 from ECBParser import ECBParser
 from HDDCRPParser import HDDCRPParser
 from ECBHelper import ECBHelper
@@ -120,16 +121,25 @@ class CorefEngine:
 
 		# within-doc first, then cross-doc
 		if useCCNN:
-			'''
+
+			tmp_corpusDirHalfToXUIDs = defaultdict(set)
+			for xuid in corpus.XUIDToMention:
+				m = corpus.XUIDToMention[xuid]
+				tmp_corpusDirHalfToXUIDs[m.dirHalf].add(xuid)
+			for dh in tmp_corpusDirHalfToXUIDs:
+				print("dh:",dh," = ",tmp_corpusDirHalfToXUIDs[dh])
+
+			
 			wd_model = CCNN(helper, dh, useRelationalFeatures, "doc", wdPresets)
 			(wd_docPreds, wd_pred, wd_gold) = wd_model.train_and_test_wd(1)  # 1 means only 1 run of WD
-			print(wd_docPreds)
+			print("wd_docPreds:",wd_docPreds)
+			
 			for doc in wd_docPreds:
 				print("doc:",doc)
-				print(wd_docPreds[doc])
-			pickle_out = open("wd_clusters", 'wb')
-			pickle.dump(wd_docPreds, pickle_out)
-			'''
+				print("wd_docPreds[doc]:",wd_docPreds[doc])
+			#pickle_out = open("wd_clusters", 'wb')
+			#pickle.dump(wd_docPreds, pickle_out)
+			
 			cd_model = CCNN(helper, dh, useRelationalFeatures, cd_scope, [])
 			cd_model.train_and_test_cd(1) #wd_pred, wd_gold, numRuns)
 		else:
