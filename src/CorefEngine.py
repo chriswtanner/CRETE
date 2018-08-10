@@ -133,7 +133,6 @@ class CorefEngine:
 			wd_model = CCNN(helper, dh, useRelationalFeatures, "doc", wdPresets)
 			(wd_docPreds, wd_pred, wd_gold) = wd_model.train_and_test_wd(1)  # 1 means only 1 run of WD
 			print("wd_docPreds:",wd_docPreds)
-			
 			for doc in wd_docPreds:
 				print("doc:",doc)
 				print("wd_docPreds[doc]:",wd_docPreds[doc])
