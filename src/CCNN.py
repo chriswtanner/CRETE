@@ -380,13 +380,19 @@ class CCNN:
 		dirToXUIDPredictions = defaultdict(lambda: defaultdict(float))
 		# this list is constructed just to ensure it's the same as the corpus'
 		dirToXUIDs = defaultdict(list)
-
 		corpusDirHalf = defaultdict(set) # TMP
 		for ((xuid1, xuid2), pred) in zip(ids, preds):
 			m1 = self.corpus.XUIDToMention[xuid1]
 			m2 = self.corpus.XUIDToMention[xuid2]
 			# NOTE: the lower the score, the more likely they are the same.  it's a dissimilarity score
 			pred = pred[0]
+
+			if xuid1 in self.corpus.SUIDToMention:
+				print("* ERROR: why is xuid:",xuid1,"in our local predictions? it's a SUID")
+				exit(1)
+			if xuid2 in self.corpus.SUIDToMention:
+				print("* ERROR: why is xuid:", xuid2,"in our local predictions? it's a SUID")
+				exit(1)
 
 			dir_num = m1.dir_num
 			if self.scope == "dirHalf":

@@ -141,13 +141,23 @@ class CorefEngine:
 			
 			print("SANITY CHECKING THE XUIDs before we save WD preds to file")
 			for dirhalf in tmp_corpusDirHalfToXUIDs:
+				if dirhalf not in tmp_wdDirHalfToXUIDs:
+					continue
 				print("dirhalf:", dirhalf)
+				print("\tcorpus has:",tmp_corpusDirHalfToXUIDs[dirhalf])
+				have = set()
+				donthave = set()
 				for xuid in tmp_corpusDirHalfToXUIDs[dirhalf]:
 					if xuid not in tmp_wdDirHalfToXUIDs[dirhalf]:
-						print("* ERROR, our wd predictions don't have")
+						donthave.add(xuid)
+					else:
+						have.add(xuid)
+				print("\t# have:",len(have), "; #dont have:",len(donthave))
+				print("\tdonthave:",donthave)
 			print("cleared 1st half")
 			for dirhalf in tmp_wdDirHalfToXUIDs:
 				print("dirhalf:", dirhalf)
+				print("\twd preds have:", tmp_wdDirHalfToXUIDs[dirhalf])
 				for xuid in tmp_wdDirHalfToXUIDs[dirhalf]:
 					if xuid not in tmp_corpusDirHalfToXUIDs[dirhalf]:
 						print("* ERROR, our corpus doesn't have")
