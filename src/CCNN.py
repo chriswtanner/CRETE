@@ -474,9 +474,13 @@ class CCNN:
 						wd_relevant_xuid.add(xuid)
 					ij += 1
 			print("wd_relevant_xuid:", len(wd_relevant_xuid), "; len(dirToXUIDs[dir_num]:", len(dirToXUIDs[dir_num]))
+			print("wd_relevant_xuid:", wd_relevant_xuid)
+			print("dirToXUIDs:",dirToXUIDs)
 			for xuid in wd_relevant_xuid:
+				print("xuid:",xuid)
 				if xuid not in dirToXUIDs[dir_num]:
 					print("* ERROR: wd had ", xuid, "but our passed-in predictions didn't... it's mention:",self.corpus.XUIDToMention[xuid])
+					print(dirToXUIDs[dir_num])
 			for xuid in dirToXUIDs[dir_num]:
 				if xuid not in wd_relevant_xuid:
 					print("* ERROR: passed-in had ", xuid, "but our wd didn't... it's mention:", self.corpus.XUIDToMention[xuid])
