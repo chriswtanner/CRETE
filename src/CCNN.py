@@ -478,7 +478,7 @@ class CCNN:
 					continue
 				if self.scope == "dir" and tmp_dir_num != dir_num:
 					continue
-				print("self.wd_pred_clusters[doc_id]", self.wd_pred_clusters[doc_id])
+				print("tmp_dirHalf:",tmp_dirHalf, "; self.wd_pred_clusters[doc_id]", self.wd_pred_clusters[doc_id])
 				for c in self.wd_pred_clusters[doc_id]:
 					print("adding:", doc_id, "for dirhalf:",dir_num)
 					ourDirHalfClusters[ij] = self.wd_pred_clusters[doc_id][c]
@@ -487,6 +487,8 @@ class CCNN:
 						wd_relevant_xuid.add(xuid)
 						wd_dirHalf[tmp_dirHalf].add(xuid)
 					ij += 1
+			print("these are the dirHalves assigned from having loaded in the wd_pred_clusters:")
+			print("\twd_dirHalf:", wd_dirHalf)
 			print("wd_relevant_xuid:", len(wd_relevant_xuid), "; len(dirToXUIDs[dir_num]:", len(dirToXUIDs[dir_num]))
 			print("wd_relevant_xuid:", wd_relevant_xuid)
 			print("dirToXUIDs:",dirToXUIDs)

@@ -74,7 +74,7 @@ class DataHandler:
 
 		# we sort to ensure consistency across multiple runs
 		print("# mentions passed-in:", len(XUIDs))
-		print("createXUIDPairs() created ECBDirToXUIDs to have this many dirHalves:",len(ECBDirToXUIDs.keys()))
+		print("createXUIDPairs() created ECBDirToXUIDs to have this many [real] dirs:",len(ECBDirToXUIDs.keys()))
 		for ecb_dir in sorted(ECBDirToXUIDs.keys()):
 
 		#for dirHalf in sorted(dirHalfToXUIDs.keys()):
