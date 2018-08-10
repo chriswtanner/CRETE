@@ -164,8 +164,8 @@ class CorefEngine:
 			#exit(1)
 				#print("doc:",doc)
 				#print("wd_docPreds[doc]:",wd_docPreds[doc])
-			#pickle_out = open("wd_clusters", 'wb')
-			#pickle.dump(wd_docPreds, pickle_out)
+			pickle_out = open("wd_clusters", 'wb')
+			pickle.dump(wd_docPreds, pickle_out)
 			
 			#exit(1)
 			cd_model = CCNN(helper, dh, useRelationalFeatures, cd_scope, [])
