@@ -126,10 +126,10 @@ class CorefEngine:
 			for xuid in corpus.XUIDToMention:
 				m = corpus.XUIDToMention[xuid]
 				tmp_corpusDirHalfToXUIDs[m.dirHalf].add(xuid)
-			for dh in tmp_corpusDirHalfToXUIDs:
-				print("dh:",dh," = ",tmp_corpusDirHalfToXUIDs[dh])
+			print("parsed corpus' dirhalves")
+			for dh2 in tmp_corpusDirHalfToXUIDs:
+				print("dh2:",dh2," = ",tmp_corpusDirHalfToXUIDs[dh2])
 
-			
 			wd_model = CCNN(helper, dh, useRelationalFeatures, "doc", wdPresets)
 			(wd_docPreds, wd_pred, wd_gold) = wd_model.train_and_test_wd(1)  # 1 means only 1 run of WD
 			print("wd_docPreds:",wd_docPreds)
