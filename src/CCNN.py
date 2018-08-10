@@ -462,10 +462,12 @@ class CCNN:
 				tmp_dir_num = int(doc_id.split("_")[0])
 				tmp_extension = doc_id[doc_id.find("ecb"):]
 				tmp_dirHalf = str(tmp_dir_num) + tmp_extension
+				print("considering doc_id:",doc_id)
 				if self.scope == "dirHalf" and tmp_dirHalf != dir_num: # yes, this 'dir_num' is correct
 					continue
 				if self.scope == "dir" and tmp_dir_num != dir_num:
 					continue
+				print("self.wd_pred_clusters[doc_id]", self.wd_pred_clusters[doc_id])
 				for c in self.wd_pred_clusters[doc_id]:
 					print("adding:", doc_id, "for dirhalf:",dir_num)
 					ourDirHalfClusters[ij] = self.wd_pred_clusters[doc_id][c]
@@ -478,8 +480,10 @@ class CCNN:
 			print("dirToXUIDs:",dirToXUIDs)
 			for xuid in wd_relevant_xuid:
 				print("xuid:",xuid)
+				print("dir_num:",dir_num)
 				if xuid not in dirToXUIDs[dir_num]:
 					print("* ERROR: wd had ", xuid, "but our passed-in predictions didn't... it's mention:",self.corpus.XUIDToMention[xuid])
+					print("dir_num:", dir_num)
 					print(dirToXUIDs[dir_num])
 			for xuid in dirToXUIDs[dir_num]:
 				if xuid not in wd_relevant_xuid:
