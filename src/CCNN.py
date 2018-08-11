@@ -17,6 +17,7 @@ from get_coref_metrics import get_conll_scores
 class CCNN:
 	def __init__(self, helper, dh, useRelationalFeatures, scope, presets):
 		self.helper = helper
+		self.dh = dh
 		self.corpus = helper.corpus
 		self.args = helper.args
 		self.scope = scope # used by aggClusterCD()
@@ -32,6 +33,12 @@ class CCNN:
 
 		print("loading wd predicted clusters")
 		self.wd_pred_clusters = pickle.load(open("wd_clusters", 'rb'))
+		wd_relevant_xuid = set()
+		for doc_id in self.wd_pred_clusters:
+			for c in self.wd_pred_clusters[doc_id]:
+				for xuid in self.wd_pred_clusters[doc_id][c]:
+					wd_relevant_xuid.add(xuid)
+		print("wd_relevant_xuid:",len(wd_relevant_xuid))
 
 		dh.loadNNData(useRelationalFeatures, True, self.scope) # this 'True' means use CCNN
 		(self.trainID, self.trainX, self.trainY) = (dh.trainID, dh.trainX, dh.trainY)
@@ -109,15 +116,23 @@ class CCNN:
 				precs.append(bestP)
 
 				# performs agglomerative clustering
-				stoppingPoints = [s for s in np.arange(0.25, 0.5, 0.02)]
+				stoppingPoints = [s for s in np.arange(0.30, 0.50, 0.02)]
+				bestScore = 0
 				for sp in stoppingPoints:
-					(wd_docPredClusters, wd_predictedClusters, wd_goldenClusters) = self.aggClusterWD(self.devID, preds, sp)
+					(wd_docPredClusters, wd_predictedClusters, wd_goldenClusters) = self.aggClusterWD(self.helper.devDirs, self.devID, preds, sp)
 					#(bcub_p, bcub_r, bcub_f1, muc_p, muc_r, muc_f1, ceafe_p, ceafe_r, ceafe_f1, conll_f1)
 					scores = get_conll_scores(wd_goldenClusters, wd_predictedClusters)
+
 					spToCoNLL[sp].append(scores[-1])
+					if scores[-1] > bestScore:
+						print("* new best score:", scores[-1])
+						pickle_out = open("wd_clusters", 'wb')
+						pickle.dump(wd_docPredClusters, pickle_out)
+						bestScore = scores[-1]
+
 
 					#print("[DEV] AGGWD SP:", str(round(sp,4)), "CoNLL F1:", str(round(conll_f1,4)), "MUC:", str(round(muc_f1,4)), "BCUB:", str(round(bcub_f1,4)), "CEAF:", str(round(ceafe_f1,4)))
-
+			print("conll scores:", spToCoNLL)
 			print("ccnn_best_f1 (run ", len(f1s), "): best_pairwise_f1: ", round(bestF1,4), " prec: ",round(bestP,4), " recall: ", round(bestR,4), " threshold: ", round(bestVal,3), sep="")
 			sys.stdout.flush()
 
@@ -131,7 +146,7 @@ class CCNN:
 
 		(best_sp, best_conll) = self.calculateBestKey(spToCoNLL)
 		sys.stdout.flush()
-		print("* conll f1 -- best sp:",best_sp, "yielded an avg:",best_conll)
+		print("* [AGGWD] conll f1 -- best sp:",best_sp, "yielded an avg:",best_conll)
 		return (wd_docPredClusters, wd_predictedClusters, wd_goldenClusters)
 
 ##########################
@@ -244,23 +259,25 @@ class CCNN:
 		return (best_sp, best_conll)
 
 	# agglomerative cluster the within-doc predicted pairs
-	def aggClusterWD(self, ids, preds, stoppingPoint):
+	def aggClusterWD(self, relevant_dirs, ids, preds, stoppingPoint):
 		print("** in aggClusterWD(), stoppingPoint:",stoppingPoint)
 		docToXUIDPredictions = defaultdict(lambda: defaultdict(float))
-		docToXUIDs = defaultdict(list) # this list is constructed just to ensure it's the same as the corpus'
+		docToXUIDsFromPredictions = defaultdict(list) # this list is constructed just to ensure it's the same as the corpus'
 		for ((xuid1, xuid2), pred) in zip(ids, preds):
 			m1 = self.corpus.XUIDToMention[xuid1]
 			m2 = self.corpus.XUIDToMention[xuid2]
 			pred = pred[0] # NOTE: the lower the score, the more likely they are the same.  it's a dissimilarity score
 			doc_id = m1.doc_id
-			
+			if m1.dir_num not in relevant_dirs:
+				print("* ERROR: passed in predictions which belong to a dir other than what we specify")
+				exit(1)
 			if m2.doc_id != doc_id:
 				print("* ERROR: xuids are from diff docs!")
 				exit(1)
-			if xuid1 not in docToXUIDs[doc_id]:
-				docToXUIDs[doc_id].append(xuid1)
-			if xuid2 not in docToXUIDs[doc_id]:
-				docToXUIDs[doc_id].append(xuid2)
+			if xuid1 not in docToXUIDsFromPredictions[doc_id]:
+				docToXUIDsFromPredictions[doc_id].append(xuid1)
+			if xuid2 not in docToXUIDsFromPredictions[doc_id]:
+				docToXUIDsFromPredictions[doc_id].append(xuid2)
 			docToXUIDPredictions[doc_id][(xuid1, xuid2)] = pred
 
 		ourClusterID = 0
@@ -272,101 +289,120 @@ class CCNN:
 
 		XUIDToDocs = defaultdict(set)
 
-		for doc_id in docToXUIDPredictions.keys():
-			print("-----------\ncurrent doc:",str(doc_id),"\n-----------")
-			# construct the golden truth for the current doc
+		for doc_id in self.dh.docToXUIDsWeWantToUse.keys():
+			dir_num = int(doc_id.split("_")[0])
+			if dir_num not in relevant_dirs:
+				continue
+			#print("-----------\ncurrent doc:",str(doc_id),"\n-----------")
+			
 			curDoc = self.corpus.doc_idToDocs[doc_id]
-			
-			# we check our mentions to the corpus, and we correctly
-			# use HDDCRP Mentions if that's what we're working with
-			docMentionSet = curDoc.EUIDs
-			if not self.args.useECBTest:
-				docMentionSet = curDoc.HMUIDs
-			
-			# ensures our predictions include each of the Doc's mentions
-			for xuid in docMentionSet:
-				if xuid not in docToXUIDs[doc_id]:
-					print("* ERROR: missing xuid from our predictions")
-					exit(1)
+			ourDocClusters = {}
 
-			# ensures each of our predicted mentions are valid per our corpus
-			for xuid in docToXUIDs[doc_id]:
-				if xuid not in docMentionSet:
-					print("* ERROR: missing xuid from our corpus")
-					exit(1)
-
+			# construct the golden truth for the current doc
 			# we don't need to check if xuid is in our corpus or predictions because Doc.assignECBMention() adds
 			# xuids to REFToEUIDs and .XUIDS() -- the latter we checked, so it's all good
 			for curREF in curDoc.REFToEUIDs:
 				goldenSuperSet[goldenClusterID] = set(curDoc.REFToEUIDs[curREF])
 				goldenClusterID += 1
 
-			# constructs our base clusters (singletons)
-			ourDocClusters = {}
-			for i in range(len(docToXUIDs[doc_id])):
-				xuid = docToXUIDs[doc_id][i]
-				XUIDToDocs[xuid].add(doc_id)
-				if len(XUIDToDocs[i]) > 1:
-					print("* ERROR, we have multiple XUIDs that share the same ID, despite being in diff docs")
-					exit(1)
-				a = set()
-				a.add(xuid)
-				ourDocClusters[i] = a
-
-			# the following keeps merging until our shortest distance > stopping threshold,
-			# or we have 1 cluster, whichever happens first
-			while len(ourDocClusters.keys()) > 1:
-				# find best merge, having looked at every pair of clusters
-				closestAvgAvgDist = 999999
-				closestAvgAvgClusterKeys = (-1,-1)
-				i = 0
-				for c1 in ourDocClusters.keys():
-					j = 0
-					for c2 in ourDocClusters.keys():
-						if j > i:
-							avgavgdists = []
-							for xuid1 in ourDocClusters[c1]:
-								for xuid2 in ourDocClusters[c2]:
-									dist = 99999
-									if (xuid1, xuid2) in docToXUIDPredictions[doc_id]:
-										dist = docToXUIDPredictions[doc_id][(xuid1, xuid2)]
-										avgavgdists.append(dist)
-									elif (xuid2, xuid1) in docToXUIDPredictions[doc_id]:
-										dist = docToXUIDPredictions[doc_id][(xuid2, xuid1)]
-										avgavgdists.append(dist)
-									else:
-										print("* error, why don't we have either xuid1 or xuid2 in doc_id")
-										exit(1)
-							avgavgDist = float(sum(avgavgdists)) / float(len(avgavgdists))
-							if avgavgDist < closestAvgAvgDist:
-								closestAvgAvgDist = avgavgDist
-								closestAvgAvgClusterKeys = (c1,c2)
-						j += 1
-					i += 1
-				# print("closestAvgAvgDist is:", str(closestAvgAvgDist),"which is b/w:", str(closestAvgAvgClusterKeys))
+			# if our doc only has 1 XUID, then we merely need to:
+			# (1) add a golden cluster and (2) add 1 single returned cluster
+			if len(self.dh.docToXUIDsWeWantToUse[doc_id]) == 1:
 				
-				# only merge clusters if it's less than our threshold
-				if closestAvgAvgDist > stoppingPoint:
-					break
+				#print("\tdoc:", doc_id, "has only 1 XUID (per DataHandler):", self.dh.docToXUIDsWeWantToUse[doc_id])
+				if len(curDoc.REFToEUIDs) != 1:
+					print("* ERROR: doc:",doc_id,"has only 1 XUID (per DataHandler), but per Corpus has more")
+					exit(1)
 
-				newCluster = set()
-				(c1,c2) = closestAvgAvgClusterKeys
-				for _ in ourDocClusters[c1]:
-					newCluster.add(_)
-				for _ in ourDocClusters[c2]:
-					newCluster.add(_)
-				ourDocClusters.pop(c1, None)
-				ourDocClusters.pop(c2, None)
-				ourDocClusters[c1] = newCluster
+				ourDocClusters[0] = set([next(iter(self.dh.docToXUIDsWeWantToUse[doc_id]))])
+				#ourClusterSuperSet[ourClusterID] = set([next(iter(self.dh.docToXUIDsWeWantToUse[doc_id]))])
+				#ourClusterID += 1
+
+			else: # we have more than 1 XUID for the given doc
+
+				# we check our mentions to the corpus, and we correctly
+				# use HDDCRP Mentions if that's what we're working with
+				docXUIDsFromCorpus = curDoc.EUIDs
+				if not self.args.useECBTest:
+					docXUIDsFromCorpus = curDoc.HMUIDs
+				
+				# ensures our predictions include each of the Doc's mentions
+				for xuid in docXUIDsFromCorpus:
+					if xuid not in docToXUIDsFromPredictions[doc_id]:
+						print("* ERROR: missing xuid from our predictions")
+						exit(1)
+
+				# ensures each of our predicted mentions are valid per our corpus
+				for xuid in docToXUIDsFromPredictions[doc_id]:
+					if xuid not in docXUIDsFromCorpus:
+						print("* ERROR: missing xuid from our corpus")
+						exit(1)
+
+				# constructs our base clusters (singletons)
+				for i in range(len(docToXUIDsFromPredictions[doc_id])):
+					xuid = docToXUIDsFromPredictions[doc_id][i]
+					XUIDToDocs[xuid].add(doc_id)
+					if len(XUIDToDocs[xuid]) > 1: # check in real-time, as we build it up
+						print("* ERROR, we have multiple XUIDs that share the same ID, despite being in diff docs")
+						exit(1)
+					a = set()
+					a.add(xuid)
+					ourDocClusters[i] = a
+
+				# the following keeps merging until our shortest distance > stopping threshold,
+				# or we have 1 cluster, whichever happens first
+				while len(ourDocClusters.keys()) > 1:
+					# find best merge, having looked at every pair of clusters
+					closestAvgAvgDist = 999999
+					closestAvgAvgClusterKeys = (-1,-1)
+					i = 0
+					for c1 in ourDocClusters.keys():
+						j = 0
+						for c2 in ourDocClusters.keys():
+							if j > i:
+								avgavgdists = []
+								for xuid1 in ourDocClusters[c1]:
+									for xuid2 in ourDocClusters[c2]:
+										dist = 99999
+										if (xuid1, xuid2) in docToXUIDPredictions[doc_id]:
+											dist = docToXUIDPredictions[doc_id][(xuid1, xuid2)]
+											avgavgdists.append(dist)
+										elif (xuid2, xuid1) in docToXUIDPredictions[doc_id]:
+											dist = docToXUIDPredictions[doc_id][(xuid2, xuid1)]
+											avgavgdists.append(dist)
+										else:
+											print("* error, why don't we have either xuid1 or xuid2 in doc_id")
+											exit(1)
+								avgavgDist = float(sum(avgavgdists)) / float(len(avgavgdists))
+								if avgavgDist < closestAvgAvgDist:
+									closestAvgAvgDist = avgavgDist
+									closestAvgAvgClusterKeys = (c1,c2)
+							j += 1
+						i += 1
+					# print("closestAvgAvgDist is:", str(closestAvgAvgDist),"which is b/w:", str(closestAvgAvgClusterKeys))
+					
+					# only merge clusters if it's less than our threshold
+					if closestAvgAvgDist > stoppingPoint:
+						break
+
+					newCluster = set()
+					(c1,c2) = closestAvgAvgClusterKeys
+					for _ in ourDocClusters[c1]:
+						newCluster.add(_)
+					for _ in ourDocClusters[c2]:
+						newCluster.add(_)
+					ourDocClusters.pop(c1, None)
+					ourDocClusters.pop(c2, None)
+					ourDocClusters[c1] = newCluster
 
 			# end of clustering current doc
 			docToPredClusters[doc_id] = ourDocClusters
-			print("ourDocClusters has # keys:", len(ourDocClusters))
+			#print("ourDocClusters has # keys:", len(ourDocClusters))
 			for i in ourDocClusters.keys():
-				print("doc:",doc_id,"adding a cluster")
+				#print("doc:",doc_id,"adding a cluster")
 				ourClusterSuperSet[ourClusterID] = ourDocClusters[i]
 				ourClusterID += 1
-		#print("# golden clusters:",str(len(goldenSuperSet.keys())), "; # our clusters:",str(len(ourClusterSuperSet)))
+		print("# golden clusters:",str(len(goldenSuperSet.keys())), "; # our clusters:",str(len(ourClusterSuperSet)))
 		return (docToPredClusters, ourClusterSuperSet, goldenSuperSet)
 
 	# agglomerative cluster the cross-doc predicted pairs

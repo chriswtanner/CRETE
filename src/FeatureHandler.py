@@ -12,13 +12,15 @@ from collections import defaultdict
 # regardless if ecb, hddcrp, stan.
 # the load() functions should ensure we only care about the right mentions
 class FeatureHandler:
-	def __init__(self, args, helper, trainXUIDs, devXUIDs, testXUIDs):
+	def __init__(self, args, helper): #, trainXUIDs, devXUIDs, testXUIDs):
 		self.args = args
 		self.helper = helper
 		self.corpus = helper.corpus
+		'''
 		self.trainXUIDs = trainXUIDs
 		self.devXUIDs = devXUIDs
 		self.testXUIDs = testXUIDs
+		'''
 		self.saveRelationalFeatures = False # NOTE: ensure this is what you want
 		self.bowWindow = 3 # number of tokens on each side to look at
 		self.gloveEmb = {} # to be filled in via loadGloveEmbeddings()

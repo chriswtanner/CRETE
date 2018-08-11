@@ -1,12 +1,26 @@
 import pickle
 import numpy as np
+from itertools import chain
 from collections import defaultdict
 class DataHandler:
-	def __init__(self, featureHandler, helper):
-		self.featureHandler = featureHandler
+	def __init__(self, helper, trainXUIDs, devXUIDs, testXUIDs):
 		self.helper = helper
+		self.args = helper.args
 		self.corpus = helper.corpus
-		self.args = featureHandler.args
+
+		self.trainXUIDs = trainXUIDs
+		self.devXUIDs = devXUIDs
+		self.testXUIDs = testXUIDs
+
+		# we are passing in 3 sets of XUIDs, and these are the ones we
+		# actually want to use for our model, so this is where we
+		# should keep track of which docs -> XUIDs (only for the sake of
+		# knowing if we have singletons -- docs with only 1 XUID, and thus would
+		# have no pairs constructed for training/testing)
+		self.docToXUIDsWeWantToUse = defaultdict(set)
+		for xuid in chain(self.trainXUIDs, self.devXUIDs, self.testXUIDs):
+			doc_id = self.corpus.XUIDToMention[xuid].doc_id
+			self.docToXUIDsWeWantToUse[doc_id].add(xuid)
 
 		self.badPOS = ["‘’", "``", "POS", "$", "''"] # TMP FOR SAMELEMMA TEST
 		self.singleFeatures = []
@@ -41,13 +55,12 @@ class DataHandler:
 
 	def loadNNData(self, useRelationalFeatures, useCCNN, scope):
 		if useCCNN:
-			(self.trainID, self.trainX, self.trainY) = self.createDataForCCNN(self.helper.trainingDirs, self.featureHandler.trainXUIDs, useRelationalFeatures, True, scope)
-			(self.devID, self.devX, self.devY) = self.createDataForCCNN(self.helper.devDirs, self.featureHandler.devXUIDs, useRelationalFeatures, False, scope)
-			#(self.testID, self.testX, self.testY) = self.createDataForCCNN(helper.testingDirs, featureHandler.testXUIDs, useRelationalFeatures, False)
+			(self.trainID, self.trainX, self.trainY) = self.createDataForCCNN(self.helper.trainingDirs, self.trainXUIDs, useRelationalFeatures, True, scope)
+			(self.devID, self.devX, self.devY) = self.createDataForCCNN(self.helper.devDirs, self.devXUIDs, useRelationalFeatures, False, scope)
+			#(self.testID, self.testX, self.testY) = self.createDataForCCNN(helper.testingDirs, self.testXUIDs, useRelationalFeatures, False)
 		else: # FOR FFNN and SVM
-			(self.trainID, self.trainX, self.trainY) = self.createDataForFFNN(self.helper.trainingDirs, self.featureHandler.trainXUIDs, useRelationalFeatures, True, scope)
-			(self.devID, self.devX, self.devY) = self.createDataForFFNN(self.helper.devDirs, self.featureHandler.devXUIDs, useRelationalFeatures, False, scope)
-
+			(self.trainID, self.trainX, self.trainY) = self.createDataForFFNN(self.helper.trainingDirs, self.trainXUIDs, useRelationalFeatures, True, scope)
+			(self.devID, self.devX, self.devY) = self.createDataForFFNN(self.helper.devDirs, self.devXUIDs, useRelationalFeatures, False, scope)
 
 	def loadFeature(self, file):
 		print("loading",file)
@@ -75,10 +88,12 @@ class DataHandler:
 		# we sort to ensure consistency across multiple runs
 		print("# mentions passed-in:", len(XUIDs))
 		print("createXUIDPairs() created ECBDirToXUIDs to have this many [real] dirs:",len(ECBDirToXUIDs.keys()))
+		tmp_xuids_reclaimed = set()
+		tmp_ecbtoxuids = set()
 		for ecb_dir in sorted(ECBDirToXUIDs.keys()):
-
 		#for dirHalf in sorted(dirHalfToXUIDs.keys()):
 			for xuid1 in sorted(ECBDirToXUIDs[ecb_dir]):
+				tmp_ecbtoxuids.add(xuid1)
 				for xuid2 in sorted(ECBDirToXUIDs[ecb_dir]):
 					if xuid2 <= xuid1:
 						continue
@@ -90,10 +105,16 @@ class DataHandler:
 						inSameDirHalf = True
 					if scope == "doc" and inSameDoc:
 						xuidPairs.add((xuid1, xuid2))
+						tmp_xuids_reclaimed.add(xuid1)
+						tmp_xuids_reclaimed.add(xuid2)
 					elif scope == "dirHalf" and not inSameDoc and inSameDirHalf:
 						xuidPairs.add((xuid1, xuid2))
+						tmp_xuids_reclaimed.add(xuid1)
+						tmp_xuids_reclaimed.add(xuid2)
 					elif scope == "dir" and not inSameDoc:
 						xuidPairs.add((xuid1, xuid2))
+		print("tmp_xuids_reclaimed:", len(tmp_xuids_reclaimed))
+		print("tmp_ecbtoxuids:", len(tmp_ecbtoxuids))
 		return xuidPairs
 	
 	# almost identical to createData() but it re-shapes the vectors to be 5D -- pairwise.
@@ -109,8 +130,8 @@ class DataHandler:
 		numPosAdded = 0
 		numNegAdded = 0
 		xuidPairs = self.createXUIDPairs(XUIDs, scope)
+		print("* [createDataForCCNN] # XUIDs passed-in:", len(XUIDs), "; # pairs made from these: ", len(xuidPairs))
 
-		print("# pairs: ", len(xuidPairs))
 		# TMP ADDED FOR SAME LEMMA TEST
 		'''
 		TN = 0.0
