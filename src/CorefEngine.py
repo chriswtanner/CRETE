@@ -93,6 +93,9 @@ class CorefEngine:
 		#helper.printHDDCRPMentionCoverage()
 		#corpus.checkMentions()
 
+		for xuid in corpus.XUIDToMention:
+			print("xuid:", xuid, corpus.XUIDToMention[xuid])
+		exit(1)
 		# DEFINES WHICH MENTIONS TO USE
 		trainXUIDs = set()
 		devXUIDs = set()
