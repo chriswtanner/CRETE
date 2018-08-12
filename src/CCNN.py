@@ -537,11 +537,6 @@ class CCNN:
 			dirToXUIDPredictions[dir_num][(xuid1, xuid2)] = pred
 		print("* xuidsFromPredictions:",len(xuidsFromPredictions))
 
-		ourClusterID = 0
-		ourClusterSuperSet = {}
-		goldenClusterID = 0
-		goldenSuperSet = {}
-
 		# sanity check: ensures our DataHandler's XUID's matches the WD ones we import
 		for xuid in xuidsFromPredictions:
 			if xuid not in self.dh.devXUIDs:
@@ -552,23 +547,57 @@ class CCNN:
 					print("* ERROR: xuid's mention is from a dir other than helper.devDirs")
 					exit(1)
 
-		print("let's make golden clusters now")
-		# our base clusters are dependent on our scope (dir vs dirHalf)
-		for dirHalf in dirToXUIDPredictions.keys():
+		ourClusterID = 0
+		ourClusterSuperSet = {}
+		goldenClusterID = 0
+		goldenSuperSet = {}
+
+		for dir_num in dirToXUIDPredictions.keys():
+			print("dir_num:", dir_num)
+
+			# adds to our golden clusters
 			REFToUIDs = None
 			if self.scope == "dirHalf":
-				REFToUIDs = self.corpus.dirHalves[dirHalf].REFToEUIDs
+				REFToUIDs = self.corpus.dirHalves[dir_num].REFToEUIDs
 			elif self.scope == "dir":
-				REFTOUIDs = self.corpus.ECBDirs[dirHalf].REFToEUIDs
+				REFToUIDs = self.corpus.ECBDirs[dir_num].REFToEUIDs
 			else:
 				print("* incorrect scope")
 				exit(1)
 			for curREF in REFToUIDs:
 				goldenSuperSet[goldenClusterID] = set(REFToUIDs[curREF])
 				goldenClusterID += 1
+
+			# creates our base clusters
+			ourDocClusters = {}
+			curClusterNum = 0
+			for doc_id in self.wd_pred_clusters:
+				dn = int(doc_id.split("_")[0])
+				extension = doc_id[doc_id.find("ecb"):]
+				dh = str(dn) + extension
+				if self.scope == "dirHalf" and dh != dir_num:
+					continue
+				elif self.scope == "dir" and dn != dir_num:
+					continue
+				else:
+					print("* incorrect scope")
+					exit(1)
+				print("we believe doc_id:", doc_id, "is valid")
+				
+				for cluster in self.wd_pred_clusters[doc_id]:
+					a = set()
+					for xuid in self.wd_pred_clusters[doc_id][cluster]:
+						a.add(xuid)
+					ourDocClusters[curClusterNum] = a
+					curClusterNum += 1
+			print("\twill cluster w/ teh base clusters:")
+			for c in ourDocClusters:
+				print("\t\tc:", c, ourDocClusters[c])
+
 		for g in goldenSuperSet:
 			print("g:",g,goldenSuperSet[g])
-		exit(1)
+
+		# our base clusters are dependent on our scope (dir vs dirHalf)
 
 		'''
 			clusterIDToXUIDs = defaultdict(set)
