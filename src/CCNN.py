@@ -564,7 +564,7 @@ class CCNN:
 				print("* incorrect scope")
 				exit(1)
 			for curREF in REFToUIDs:
-				goldenSuperSet[goldenClusterID] = set(REFToEUIDs[curREF])
+				goldenSuperSet[goldenClusterID] = set(REFToUIDs[curREF])
 				goldenClusterID += 1
 		for g in goldenSuperSet:
 			print("g:",g,goldenSuperSet[g])
