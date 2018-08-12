@@ -38,7 +38,7 @@ class ECBParser:
         lastToken_id = -1
         intraCount = 0
         for f in files:
-
+            print("file:",f)
             lm_idToMention = {} # only used to tmp store the mentions
             doc_id = f[f.rfind("/") + 1:]
             dir_num = int(doc_id.split("_")[0])
@@ -260,6 +260,7 @@ class ECBParser:
         print("numMentionsIgnored:", numMentionsIgnored)
         print("# ECB mentions created:", len(corpus.ecb_mentions))
         print("# ECB+ tokens:", len(corpus.corpusTokens))
+        exit(1)
         return corpus
 
 	# loads replacement file
