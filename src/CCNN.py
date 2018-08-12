@@ -227,7 +227,7 @@ class CCNN:
 				precs.append(bestP)
 
 				# performs agglomerative clustering
-				stoppingPoints = [s for s in np.arange(0.18, 0.50, 0.02)]
+				stoppingPoints = [s for s in np.arange(0.1, 0.50, 0.02)]
 				bestScore = 0
 				for sp in stoppingPoints:
 					(wd_docPredClusters, wd_predictedClusters, wd_goldenClusters) = self.aggClusterWD(self.helper.devDirs, self.devID, preds, sp)
