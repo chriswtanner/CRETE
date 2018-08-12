@@ -557,12 +557,15 @@ class CCNN:
 		for dirHalf in dirToXUIDPredictions.keys():
 			REFToUIDs = None
 			if self.scope == "dirHalf":
-				goldenSuperSet[goldenClusterID] = self.corpus.dirHalves[dirHalf].REFToEUIDs
+				REFToUIDs = self.corpus.dirHalves[dirHalf].REFToEUIDs
 			elif self.scope == "dir":
-				goldenSuperSet[goldenClusterID] = self.corpus.ECBDirs[dirHalf].REFToEUIDs
+				REFTOUIDs = self.corpus.ECBDirs[dirHalf].REFToEUIDs
 			else:
 				print("* incorrect scope")
 				exit(1)
+			for curREF in REFToUIDs:
+				goldenSuperSet[goldenClusterID] = set(REFToEUIDs[curREF])
+				goldenClusterID += 1
 		for g in goldenSuperSet:
 			print("g:",g,goldenSuperSet[g])
 		exit(1)
