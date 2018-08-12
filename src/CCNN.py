@@ -554,20 +554,23 @@ class CCNN:
 
 		print("let's make golden clusters now")
 		# our base clusters are dependent on our scope (dir vs dirHalf)
-		dirHalfToClusters = defaultdict(set)
-		for doc_id in self.wd_pred_clusters:
-			dir_num = int(doc_id.split("_")[0])
-			extension = doc_id[doc_id.find("ecb"):]
-			dirHalf = str(dir_num) + extension
-			for cluster in self.wd_pred_clusters[doc_id]:
-				s = self.wd_pred_clusters[doc_id][cluster]
-				if self.scope == "dir":
-					dirHalfToClusters[dir_num].add(set([s]))
-				elif self.scope == "dirHalf":
-					dirHalfToClusters[dirHalf].add(set([s]))
-				else:
-					print("* ERROR: incorrect scope")
-					exit(1)
+		dirHalfToClusters = {}
+		for dirHalf in dirToXUIDPredictions.keys():
+			s = set()
+			for doc_id in self.wd_pred_clusters:
+				dir_num = int(doc_id.split("_")[0])
+				extension = doc_id[doc_id.find("ecb"):]
+				dirHalf = str(dir_num) + extension
+				for cluster in self.wd_pred_clusters[doc_id]:
+					curCluster = self.wd_pred_clusters[doc_id][cluster]
+					if self.scope == "dir":
+						s.add(curCluster)
+					elif self.scope == "dirHalf":
+						s.add(curCluster)
+					else:
+						print("* ERROR: incorrect scope")
+						exit(1)
+			dirHalfToClusters[dirHalf] = s
 		print("base clustersS:")
 		for dh in dirHalfToClusters:
 			print("dh:",dh,dirHalfToClusters[dh])
