@@ -32,6 +32,8 @@ class CCNN:
 		print("[ccnn] scope:",self.scope,"bs:",self.bs,"ne:",self.ne,"nl:",self.nl,"nf:",self.nf,"do:",self.do)
 
 		if self.scope != "doc":
+
+			print("corpus' 3104:", self.corpus.XUIDToMention[3104])
 			#print("loading wd predicted clusters")
 			self.wd_pred_clusters = pickle.load(open("wd_clusters_test_804", 'rb'))
 			
@@ -76,30 +78,30 @@ class CCNN:
 				if tmp_wdXUIDToDH[xuid] != tmp_corpusXUIDToDH[xuid]:
 					print("* ERROR!", xuid, tmp_wdXUIDToDH[xuid], tmp_corpusXUIDToDH[xuid])
 					exit(1)
-			print("* [PASSED] WD_PREDICTIONS align w/ the corpus in terms of dirHalves")
+		print("* [PASSED] WD_PREDICTIONS align w/ the corpus in terms of dirHalves")
 
 		'''
-			for dh in tmp_wdDirHalfToEUIDs:
-				print("dh:", dh, len(tmp_wdDirHalfToEUIDs[dh]), len(tmp_corpusDirHalfToEUIDs[dh]))
-				print("\t", tmp_wdDirHalfToEUIDs[dh])
+		for dh in tmp_wdDirHalfToEUIDs:
+			print("dh:", dh, len(tmp_wdDirHalfToEUIDs[dh]), len(tmp_corpusDirHalfToEUIDs[dh]))
+			print("\t", tmp_wdDirHalfToEUIDs[dh])
 			
-			exit(1)
-			
-			self.wd_xuids = set()
-			self.wd_dirHalfToXUIDs = defaultdict(set)
-			self.wd_xuidToDirHalf = {}
-			for doc_id in self.wd_pred_clusters:
-				print("wd loaded, doc:",doc_id,"which has # clusters:",len(self.wd_pred_clusters[doc_id]))
-				for c in self.wd_pred_clusters[doc_id]:
-					for xuid in self.wd_pred_clusters[doc_id][c]:
-						self.wd_xuids.add(xuid)
-						m = self.corpus.XUIDToMention[xuid]
-						self.wd_dirHalfToXUIDs[m.dirHalf].add(xuid)
-						self.wd_xuidToDirHalf[xuid] = m.dirHalf
-			print("WD IMPORTED:")
-			print("self.wd_xuids:", len(self.wd_xuids))
-			for dirHalf in self.wd_dirHalfToXUIDs:
-				print("dirHalf:", dirHalf, "(", len(self.wd_dirHalfToXUIDs[dirHalf]), "):", self.wd_dirHalfToXUIDs[dirHalf])
+		exit(1)
+		
+		self.wd_xuids = set()
+		self.wd_dirHalfToXUIDs = defaultdict(set)
+		self.wd_xuidToDirHalf = {}
+		for doc_id in self.wd_pred_clusters:
+			print("wd loaded, doc:",doc_id,"which has # clusters:",len(self.wd_pred_clusters[doc_id]))
+			for c in self.wd_pred_clusters[doc_id]:
+				for xuid in self.wd_pred_clusters[doc_id][c]:
+					self.wd_xuids.add(xuid)
+					m = self.corpus.XUIDToMention[xuid]
+					self.wd_dirHalfToXUIDs[m.dirHalf].add(xuid)
+					self.wd_xuidToDirHalf[xuid] = m.dirHalf
+		print("WD IMPORTED:")
+		print("self.wd_xuids:", len(self.wd_xuids))
+		for dirHalf in self.wd_dirHalfToXUIDs:
+			print("dirHalf:", dirHalf, "(", len(self.wd_dirHalfToXUIDs[dirHalf]), "):", self.wd_dirHalfToXUIDs[dirHalf])
 		'''
 		dh.loadNNData(useRelationalFeatures, True, self.scope) # this 'True' means use CCNN
 		(self.trainID, self.trainX, self.trainY) = (dh.trainID, dh.trainX, dh.trainY)

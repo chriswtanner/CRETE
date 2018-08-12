@@ -72,6 +72,7 @@ class CorefEngine:
 		ecb_parser = ECBParser(args, helper)
 		corpus = ecb_parser.parseCorpus(helper.docToVerifiedSentences)
 
+		print("corpus' 3104:", corpus.XUIDToMention[3104])
 		helper.addECBCorpus(corpus)
 
 		# parses the HDDCRP Mentions
@@ -116,6 +117,8 @@ class CorefEngine:
 		dh = DataHandler(helper, trainXUIDs, devXUIDs, testXUIDs)
 		#model = LibSVM(helper, coref)
 
+
+		print("corpus' 3104:", corpus.XUIDToMention[3104])
 		# within-doc first, then cross-doc
 		if useCCNN:
 			'''
