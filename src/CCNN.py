@@ -571,6 +571,9 @@ class CCNN:
 			# creates our base clusters
 			ourDocClusters = {}
 			curClusterNum = 0
+
+			tmpGoldClusters = {}
+			tmpGoldNum = 0
 			for doc_id in self.wd_pred_clusters:
 				dn = int(doc_id.split("_")[0])
 				extension = doc_id[doc_id.find("ecb"):]
@@ -590,10 +593,18 @@ class CCNN:
 						a.add(xuid)
 					ourDocClusters[curClusterNum] = a
 					curClusterNum += 1
+
+				for ref in self.corpus.doc_idToDocs[doc_id].REFToEUIDs:
+					a = set()
+					for xuid in self.corpus.doc_idToDocs[doc_id].REFToEUIDs[ref]:
+						a.add(xuid)
+					tmpGoldClusters[tmpGoldNum] = a
+					tmpGoldNum += 1
 			print("\twill cluster w/ teh base clusters:")
 			for c in ourDocClusters:
 				print("\t\tc:", c, ourDocClusters[c])
-
+			for c in tmpGoldClusters:
+				print("\t\tc:", c, tmpGoldClusters[c])
 		for g in goldenSuperSet:
 			print("g:",g,goldenSuperSet[g])
 
