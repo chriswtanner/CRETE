@@ -587,17 +587,21 @@ class CCNN:
 					exit(1)
 				print("we believe doc_id:", doc_id, "is valid")
 				
+				# wd predictions for current dir
 				for cluster in self.wd_pred_clusters[doc_id]:
 					a = set()
 					for xuid in self.wd_pred_clusters[doc_id][cluster]:
 						a.add(xuid)
+						print("c +",self.corpus.XUIDToMention[xuid])
 					ourDocClusters[curClusterNum] = a
 					curClusterNum += 1
 
+				# tmp gold for current dir
 				for ref in self.corpus.doc_idToDocs[doc_id].REFToEUIDs:
 					a = set()
 					for xuid in self.corpus.doc_idToDocs[doc_id].REFToEUIDs[ref]:
 						a.add(xuid)
+						print("g +",self.corpus.XUIDToMention[xuid])
 					tmpGoldClusters[tmpGoldNum] = a
 					tmpGoldNum += 1
 			print("\twill cluster w/ teh base clusters:")
