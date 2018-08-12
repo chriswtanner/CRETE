@@ -563,6 +563,7 @@ class CCNN:
 				dirHalf = str(dir_num) + extension
 				for cluster in self.wd_pred_clusters[doc_id]:
 					curCluster = self.wd_pred_clusters[doc_id][cluster]
+					print("curCluster:",curCluster)
 					if self.scope == "dir":
 						s.add(curCluster)
 					elif self.scope == "dirHalf":
