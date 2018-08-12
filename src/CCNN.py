@@ -546,7 +546,7 @@ class CCNN:
 		for xuid in xuidsFromPredictions:
 			if xuid not in self.dh.devXUIDs:
 				print("* ERROR: xuid (from predictions) isn't in dh.devXUIDs")
-			 	exit(1)
+				exit(1)
 				m = self.corpus.XUIDToMention[xuid]
 				if m.dir_num not in self.helper.devDirs:
 					print("* ERROR: xuid's mention is from a dir other than helper.devDirs")
