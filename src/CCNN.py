@@ -552,6 +552,33 @@ class CCNN:
 					print("* ERROR: xuid's mention is from a dir other than helper.devDirs")
 					exit(1)
 
+		print("let's make golden clusters now")
+		# our base clusters are dependent on our scope (dir vs dirHalf)
+		dirHalfToClusters = defaultdict(set)
+		for doc_id in self.wd_pred_clusters:
+			dir_num = int(doc_id.split("_")[0])
+			extension = doc_id[doc_id.find("ecb"):]
+			dirHalf = str(dir_num) + extension
+			for cluster in self.wd_pred_clusters[doc_id]:
+				s = self.wd_pred_clusters[doc_id][cluster]
+				if self.scope == "dir":
+					dirHalfToClusters[dir_num].add(set([s]))
+				elif self.scope == "dirHalf":
+					dirHalfToClusters[dirHalf].add(set([s]))
+				else:
+					print("* ERROR: incorrect scope")
+					exit(1)
+		print("base clustersS:")
+		for dh in dirHalfToClusters:
+			print("dh:",dh,dirHalfToClusters[dh])
+		exit(1)
+		for dirHalf in dirToXUIDPredictions.keys():
+			print("-----------\ncurrent dirHalf:", str(dirHalf), "\n-----------")
+
+			# iterate through all wd_clusters to find the ones we care to use
+			
+			exit(1)
+
 		'''
 		XUIDToDocs = defaultdict(set)
 		for dir_num in dirToXUIDPredictions.keys():
