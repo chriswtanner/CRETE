@@ -15,7 +15,7 @@ from DataHandler import DataHandler
 from FFNN import FFNN
 from CCNN import CCNN
 from LibSVM import LibSVM
-from HDF5Reader import HDF5Reader
+#from HDF5Reader import HDF5Reader
 from sklearn import svm
 class CorefEngine:
 
