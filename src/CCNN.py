@@ -37,7 +37,7 @@ class CCNN:
 			
 			#print("self.wd_pred_clusters:", self.wd_pred_clusters)
 			#exit(1)
-			'''
+			
 			tmp_corpusDirHalfToEUIDs = defaultdict(set)
 			tmp_corpusXUIDToDH = {}
 			for euid in self.corpus.XUIDToMention:
@@ -57,10 +57,13 @@ class CCNN:
 			for xuid in tmp_wdXUIDToDH:
 				if tmp_wdXUIDToDH[xuid] != tmp_corpusXUIDToDH[xuid]:
 					print("* ERROR!", xuid, tmp_wdXUIDToDH[xuid], tmp_corpusXUIDToDH[xuid])
+					exit(1)
+			print("* [PASSED] WD_PREDICTIONS align w/ the corpus in terms of dirHalves")
+			'''
 			for dh in tmp_wdDirHalfToEUIDs:
 				print("dh:", dh, len(tmp_wdDirHalfToEUIDs[dh]), len(tmp_corpusDirHalfToEUIDs[dh]))
 				print("\t", tmp_wdDirHalfToEUIDs[dh])
-
+			
 			exit(1)
 			
 			self.wd_xuids = set()
