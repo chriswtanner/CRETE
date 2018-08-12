@@ -551,7 +551,6 @@ class CCNN:
 				if m.dir_num not in self.helper.devDirs:
 					print("* ERROR: xuid's mention is from a dir other than helper.devDirs")
 					exit(1)
-		exit(1)
 
 		'''
 		XUIDToDocs = defaultdict(set)
@@ -647,7 +646,7 @@ class CCNN:
 			print("ourDirHalfClusters:",ourDirHalfClusters)
 			print("clusterNumToDocs:", clusterNumToDocs)
 
-			'''
+			
 			ourDocClusters = {}
 			for i in range(len(docToXUIDs[doc_id])):
 				xuid = docToXUIDs[doc_id][i]
