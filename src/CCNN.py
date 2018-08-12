@@ -35,6 +35,22 @@ class CCNN:
 			#print("loading wd predicted clusters")
 			self.wd_pred_clusters = pickle.load(open("wd_clusters_test_804", 'rb'))
 			
+			# creates our base clusters
+			ourDocClusters = {}
+			curClusterNum = 0
+
+			for doc_id in self.wd_pred_clusters:
+				print("doc_id:",doc_id)
+				dn = int(doc_id.split("_")[0])
+				extension = doc_id[doc_id.find("ecb"):]
+				dh = str(dn) + extension
+
+				# wd predictions for current dir
+				for cluster in self.wd_pred_clusters[doc_id]:
+					for xuid in self.wd_pred_clusters[doc_id][cluster]:
+						print("c +", self.corpus.XUIDToMention[xuid],
+						      "|", self.corpus.EUIDToMention[xuid])
+
 			#print("self.wd_pred_clusters:", self.wd_pred_clusters)
 			#exit(1)
 			
@@ -59,6 +75,7 @@ class CCNN:
 					print("* ERROR!", xuid, tmp_wdXUIDToDH[xuid], tmp_corpusXUIDToDH[xuid])
 					exit(1)
 			print("* [PASSED] WD_PREDICTIONS align w/ the corpus in terms of dirHalves")
+
 			'''
 			for dh in tmp_wdDirHalfToEUIDs:
 				print("dh:", dh, len(tmp_wdDirHalfToEUIDs[dh]), len(tmp_corpusDirHalfToEUIDs[dh]))
@@ -595,7 +612,8 @@ class CCNN:
 					a = set()
 					for xuid in self.wd_pred_clusters[doc_id][cluster]:
 						a.add(xuid)
-						print("c +",self.corpus.XUIDToMention[xuid])
+						print("c +", self.corpus.XUIDToMention[xuid],
+						      "|", self.corpus.EUIDToMention[xuid])
 					ourDocClusters[curClusterNum] = a
 					curClusterNum += 1
 
