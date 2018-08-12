@@ -37,7 +37,7 @@ class ECBParser:
         globalSentenceNum = 0
         lastToken_id = -1
         intraCount = 0
-        for f in files:
+        for f in sorted(files):
             print("file:",f)
             lm_idToMention = {} # only used to tmp store the mentions
             doc_id = f[f.rfind("/") + 1:]
