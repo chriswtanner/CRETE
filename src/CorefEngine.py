@@ -55,8 +55,8 @@ class CorefEngine:
 		useCCNN = True
 		cd_scope = "dirHalf" # or dir
 		useRelationalFeatures = False
-		wdPresets = [256, 1, 2, 4, 0.0]
-		#wdPresets = [64, 5, 2, 32, 0.0] # batchsize, num epochs, num layers, num filters, dropout
+		#wdPresets = [256, 1, 2, 4, 0.0]
+		wdPresets = [64, 5, 2, 32, 0.0] # batchsize, num epochs, num layers, num filters, dropout
 		
 		# handles passed-in args
 		args = params.setCorefEngineParams()
@@ -93,9 +93,9 @@ class CorefEngine:
 		#helper.printHDDCRPMentionCoverage()
 		#corpus.checkMentions()
 
-		for xuid in corpus.XUIDToMention:
-			print("xuid:", xuid, corpus.XUIDToMention[xuid])
-		exit(1)
+		#for xuid in corpus.XUIDToMention:
+		#	print("xuid:", xuid, corpus.XUIDToMention[xuid])
+		#exit(1)
 		# DEFINES WHICH MENTIONS TO USE
 		trainXUIDs = set()
 		devXUIDs = set()
@@ -124,13 +124,12 @@ class CorefEngine:
 		print("corpus' 3104:", corpus.XUIDToMention[3104])
 		# within-doc first, then cross-doc
 		if useCCNN:
-			'''
+			
 			wd_model = CCNN(helper, dh, useRelationalFeatures, "doc", wdPresets)
 			(wd_docPreds, wd_pred, wd_gold) = wd_model.train_and_test_wd(1)  # 1 means only 1 run of WD			
-			pickle_out = open("wd_clusters_817", 'wb')
-			pickle.dump(wd_docPreds, pickle_out)
-			#exit(1)
-			'''
+			pickle_out = open("wd_clusters_test", 'wb')
+			pickle.dump(wd_docPreds, pickle_out)			
+			exit(1)
 			cd_model = CCNN(helper, dh, useRelationalFeatures, cd_scope, [])
 			cd_model.train_and_test_cd(1) #wd_pred, wd_gold, numRuns)
 		else:
