@@ -48,8 +48,10 @@ class CCNN:
 				# wd predictions for current dir
 				for cluster in self.wd_pred_clusters[doc_id]:
 					for xuid in self.wd_pred_clusters[doc_id][cluster]:
-						print("c +", self.corpus.XUIDToMention[xuid],
-						      "|", self.corpus.EUIDToMention[xuid])
+						print("c +", self.corpus.XUIDToMention[xuid])
+						if self.corpus.XUIDToMention[xuid].doc_id != doc_id:
+							print("DOCS DIFFER!!")
+							exit(1)
 
 			#print("self.wd_pred_clusters:", self.wd_pred_clusters)
 			#exit(1)
@@ -76,7 +78,7 @@ class CCNN:
 					exit(1)
 			print("* [PASSED] WD_PREDICTIONS align w/ the corpus in terms of dirHalves")
 
-			'''
+		'''
 			for dh in tmp_wdDirHalfToEUIDs:
 				print("dh:", dh, len(tmp_wdDirHalfToEUIDs[dh]), len(tmp_corpusDirHalfToEUIDs[dh]))
 				print("\t", tmp_wdDirHalfToEUIDs[dh])
@@ -98,7 +100,7 @@ class CCNN:
 			print("self.wd_xuids:", len(self.wd_xuids))
 			for dirHalf in self.wd_dirHalfToXUIDs:
 				print("dirHalf:", dirHalf, "(", len(self.wd_dirHalfToXUIDs[dirHalf]), "):", self.wd_dirHalfToXUIDs[dirHalf])
-			'''
+		'''
 		dh.loadNNData(useRelationalFeatures, True, self.scope) # this 'True' means use CCNN
 		(self.trainID, self.trainX, self.trainY) = (dh.trainID, dh.trainX, dh.trainY)
 		(self.devID, self.devX, self.devY) = (dh.devID, dh.devX, dh.devY)
