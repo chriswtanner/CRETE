@@ -55,7 +55,7 @@ class CorefEngine:
 		useCCNN = True
 		cd_scope = "dirHalf" # or dir
 		useRelationalFeatures = False
-		wdPresets = [64, 5, 2, 32, 0.0]
+		wdPresets = [256, 1, 2, 4, 0.0]
 		#wdPresets = [64, 5, 2, 32, 0.0] # batchsize, num epochs, num layers, num filters, dropout
 		
 		# handles passed-in args
@@ -74,25 +74,6 @@ class CorefEngine:
 
 		helper.addECBCorpus(corpus)
 
-		# TMP: checks if we have docs that are single-mentions
-		'''
-		docToMentions = defaultdict(set)
-		for xuid in corpus.EUIDToMention:
-			m = corpus.EUIDToMention[xuid]
-			docToMentions[m.doc_id].add(xuid)
-		for doc in docToMentions:
-			if len(docToMentions[doc]) == 1:
-				for xuid in docToMentions[doc]:
-					m = corpus.EUIDToMention[xuid]
-					if m.dir_num in helper.trainingDirs:
-						print("** doc:",doc,"has only 1 mention:",xuid,":","training")
-					elif m.dir_num in helper.devDirs:
-						print("** doc:", doc, "has only 1 mention:", xuid, ":", "dev")
-					elif m.dir_num in helper.testingDirs:
-						print("** doc:", doc, "has only 1 mention:", xuid, ":", "testing")
-					else:
-						print("wtf went wrong")
-		'''
 		# parses the HDDCRP Mentions
 		if not args.useECBTest:
 			hddcrp_parser = HDDCRPParser(args)
@@ -137,51 +118,13 @@ class CorefEngine:
 
 		# within-doc first, then cross-doc
 		if useCCNN:
+			'''
 			wd_model = CCNN(helper, dh, useRelationalFeatures, "doc", wdPresets)
-			(wd_docPreds, wd_pred, wd_gold) = wd_model.train_and_test_wd(1)  # 1 means only 1 run of WD
-			
-			'''
-			tmp_corpusDirHalfToEUIDs = defaultdict(set)
-			for euid in corpus.EUIDToMention:
-				m = corpus.EUIDToMention[euid]
-				tmp_corpusDirHalfToEUIDs[m.dirHalf].add(euid)
-			print("parsed corpus' dirhalves")
-			
-
-			tmp_wdDirHalfToEUIDs = defaultdict(set)
-			for doc in wd_docPreds:
-				for c in wd_docPreds[doc]:
-					for euid in wd_docPreds[doc][c]:
-						m = corpus.EUIDToMention[euid]
-						tmp_wdDirHalfToEUIDs[m.dirHalf].add(euid)
-			
-			print("SANITY CHECKING THE XUIDs before we save WD preds to file")
-			for dirhalf in tmp_corpusDirHalfToEUIDs:
-				print("dirhalf:", dirhalf)
-				if dirhalf not in tmp_wdDirHalfToEUIDs:
-					print("\tskipping dirhalf:", dirhalf)
-					continue
-				print("\tcorpus has:", tmp_corpusDirHalfToEUIDs[dirhalf])
-				have = set()
-				donthave = set()
-				for xuid in tmp_corpusDirHalfToEUIDs[dirhalf]:
-					if xuid not in tmp_wdDirHalfToEUIDs[dirhalf]:
-						donthave.add(xuid)
-					else:
-						have.add(xuid)
-				print("\t# have (wd preds):",len(have), "; #dont have:",len(donthave))
-				print("\tdonthave (wd preds):",donthave)
-			print("cleared 1st half")
-			for dirhalf in tmp_wdDirHalfToEUIDs:
-				print("dirhalf:", dirhalf)
-				print("\twd preds have:", tmp_wdDirHalfToEUIDs[dirhalf])
-				for xuid in tmp_wdDirHalfToEUIDs[dirhalf]:
-					if xuid not in tmp_corpusDirHalfToEUIDs[dirhalf]:
-						print("* ERROR, our corpus doesn't have")
-			'''
-			pickle_out = open("wd_clusters", 'wb')
+			(wd_docPreds, wd_pred, wd_gold) = wd_model.train_and_test_wd(1)  # 1 means only 1 run of WD			
+			pickle_out = open("wd_clusters_817", 'wb')
 			pickle.dump(wd_docPreds, pickle_out)
-			exit(1)
+			#exit(1)
+			'''
 			cd_model = CCNN(helper, dh, useRelationalFeatures, cd_scope, [])
 			cd_model.train_and_test_cd(1) #wd_pred, wd_gold, numRuns)
 		else:

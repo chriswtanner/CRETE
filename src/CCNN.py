@@ -31,20 +31,107 @@ class CCNN:
 			(self.bs, self.ne, self.nl, self.nf, self.do) = presets
 		print("[ccnn] scope:",self.scope,"bs:",self.bs,"ne:",self.ne,"nl:",self.nl,"nf:",self.nf,"do:",self.do)
 
-		print("loading wd predicted clusters")
-		self.wd_pred_clusters = pickle.load(open("wd_clusters", 'rb'))
-		wd_relevant_xuid = set()
-		for doc_id in self.wd_pred_clusters:
-			for c in self.wd_pred_clusters[doc_id]:
-				for xuid in self.wd_pred_clusters[doc_id][c]:
-					wd_relevant_xuid.add(xuid)
-		print("wd_relevant_xuid:",len(wd_relevant_xuid))
+		if self.scope != "doc":
+			#print("loading wd predicted clusters")
+			self.wd_pred_clusters = pickle.load(open("wd_clusters_test_804", 'rb'))
+			
+			#print("self.wd_pred_clusters:", self.wd_pred_clusters)
+			#exit(1)
+			'''
+			tmp_corpusDirHalfToEUIDs = defaultdict(set)
+			tmp_corpusXUIDToDH = {}
+			for euid in self.corpus.XUIDToMention:
+				m = self.corpus.XUIDToMention[euid]
+				tmp_corpusDirHalfToEUIDs[m.dirHalf].add(euid)
+				tmp_corpusXUIDToDH[euid] = m.dirHalf
 
+			tmp_wdDirHalfToEUIDs = defaultdict(set)
+			tmp_wdXUIDToDH = {}
+			for doc in self.wd_pred_clusters:
+				for c in self.wd_pred_clusters[doc]:
+					for euid in self.wd_pred_clusters[doc][c]:
+						m = self.corpus.XUIDToMention[euid]
+						tmp_wdDirHalfToEUIDs[m.dirHalf].add(euid)
+						tmp_wdXUIDToDH[euid] = m.dirHalf
+
+			for xuid in tmp_wdXUIDToDH:
+				if tmp_wdXUIDToDH[xuid] != tmp_corpusXUIDToDH[xuid]:
+					print("* ERROR!", xuid, tmp_wdXUIDToDH[xuid], tmp_corpusXUIDToDH[xuid])
+			for dh in tmp_wdDirHalfToEUIDs:
+				print("dh:", dh, len(tmp_wdDirHalfToEUIDs[dh]), len(tmp_corpusDirHalfToEUIDs[dh]))
+				print("\t", tmp_wdDirHalfToEUIDs[dh])
+
+			exit(1)
+			
+			self.wd_xuids = set()
+			self.wd_dirHalfToXUIDs = defaultdict(set)
+			self.wd_xuidToDirHalf = {}
+			for doc_id in self.wd_pred_clusters:
+				print("wd loaded, doc:",doc_id,"which has # clusters:",len(self.wd_pred_clusters[doc_id]))
+				for c in self.wd_pred_clusters[doc_id]:
+					for xuid in self.wd_pred_clusters[doc_id][c]:
+						self.wd_xuids.add(xuid)
+						m = self.corpus.XUIDToMention[xuid]
+						self.wd_dirHalfToXUIDs[m.dirHalf].add(xuid)
+						self.wd_xuidToDirHalf[xuid] = m.dirHalf
+			print("WD IMPORTED:")
+			print("self.wd_xuids:", len(self.wd_xuids))
+			for dirHalf in self.wd_dirHalfToXUIDs:
+				print("dirHalf:", dirHalf, "(", len(self.wd_dirHalfToXUIDs[dirHalf]), "):", self.wd_dirHalfToXUIDs[dirHalf])
+			'''
 		dh.loadNNData(useRelationalFeatures, True, self.scope) # this 'True' means use CCNN
 		(self.trainID, self.trainX, self.trainY) = (dh.trainID, dh.trainX, dh.trainY)
 		(self.devID, self.devX, self.devY) = (dh.devID, dh.devX, dh.devY)
 		#(self.testID, self.testX, self.testY) = (coref.testID, coref.testX, coref.testY)
 
+		# sanity check:
+		'''
+		corpus_xuids = set()
+		corpus_dirHalfToXUIDs = defaultdict(set)
+		corpus_xuidToDirHalf = {}
+		for (xuid1, xuid2) in self.devID:
+			corpus_xuids.add(xuid1)
+			corpus_xuids.add(xuid2)
+			m1 = self.corpus.XUIDToMention[xuid1]
+			m2 = self.corpus.XUIDToMention[xuid2]
+			if m1.dirHalf != m2.dirHalf:
+				print("** ERROR; mismatch dirhalves")
+				exit(1)
+			corpus_dirHalfToXUIDs[m1.dirHalf].add(xuid1)
+			corpus_dirHalfToXUIDs[m2.dirHalf].add(xuid2)
+			corpus_xuidToDirHalf[xuid1] = m1.dirHalf
+			corpus_xuidToDirHalf[xuid2] = m2.dirHalf
+
+		for dh in self.wd_dirHalfToXUIDs:
+			print("dh:",dh)
+			print("\twd:",self.wd_dirHalfToXUIDs[dh])
+			print("\tco:", corpus_dirHalfToXUIDs[dh])
+
+		exit(1)
+
+		for xuid in self.wd_xuidToDirHalf:
+			if self.wd_xuidToDirHalf[xuid] != corpus_xuidToDirHalf[xuid]:
+				print("** ERROR, xuid:", xuid, "is:", self.wd_xuidToDirHalf[xuid],corpus_xuidToDirHalf[xuid])
+		exit(1)
+		for xuid in self.wd_xuids:
+			if xuid not in corpus_xuids:
+				print("** ERROR:", xuid, "not in corpus xuids")
+		for xuid in corpus_xuids:
+			if xuid not in self.wd_xuids:
+				print("** ERROR:", xuid, "not in wd xuids")
+		print("# corpus_xuids:", len(corpus_xuids))
+		for dirHalf in corpus_dirHalfToXUIDs:
+			print("dirHalf:", dirHalf, "(", len(corpus_dirHalfToXUIDs[dirHalf]), ")", corpus_dirHalfToXUIDs[dirHalf])
+			for xuid in corpus_dirHalfToXUIDs[dirHalf]:
+				if xuid not in self.wd_dirHalfToXUIDs[dirHalf]:
+					print("** ERROR, ", xuid, "is not in wd_dirhalftoxuid")
+		for dirHalf in self.wd_dirHalfToXUIDs:
+			print("dirHalf:", dirHalf)
+			for xuid in self.wd_dirHalfToXUIDs[dirHalf]:
+				if xuid not in corpus_dirHalfToXUIDs[dirHalf]:
+					print("*** ERROR, ",xuid,"not in corpusdirhalf")
+		exit(1)
+		'''
 		if self.args.native:
 			tf.Session(config=tf.ConfigProto(log_device_placement=True))
 			os.environ['CUDA_VISIBLE_DEVICES'] = ''
@@ -116,7 +203,7 @@ class CCNN:
 				precs.append(bestP)
 
 				# performs agglomerative clustering
-				stoppingPoints = [s for s in np.arange(0.30, 0.50, 0.02)]
+				stoppingPoints = [s for s in np.arange(0.18, 0.50, 0.02)]
 				bestScore = 0
 				for sp in stoppingPoints:
 					(wd_docPredClusters, wd_predictedClusters, wd_goldenClusters) = self.aggClusterWD(self.helper.devDirs, self.devID, preds, sp)
@@ -129,7 +216,6 @@ class CCNN:
 						pickle_out = open("wd_clusters", 'wb')
 						pickle.dump(wd_docPredClusters, pickle_out)
 						bestScore = scores[-1]
-
 
 					#print("[DEV] AGGWD SP:", str(round(sp,4)), "CoNLL F1:", str(round(conll_f1,4)), "MUC:", str(round(muc_f1,4)), "BCUB:", str(round(bcub_f1,4)), "CEAF:", str(round(ceafe_f1,4)))
 			print("conll scores:", spToCoNLL)
@@ -230,8 +316,7 @@ class CCNN:
 
 					#print("[DEV] AGGWD SP:", str(round(sp,4)), "CoNLL F1:", str(round(conll_f1,4)), "MUC:", str(round(muc_f1,4)), "BCUB:", str(round(bcub_f1,4)), "CEAF:", str(round(ceafe_f1,4)))
 
-			print("ccnn_best_f1 (run ", len(f1s), "): best_pairwise_f1: ", round(bestF1, 4), " prec: ",
-			      round(bestP, 4), " recall: ", round(bestR, 4), " threshold: ", round(bestVal, 3), sep="")
+			print("ccnn_best_f1 (run ", len(f1s), "): best_pairwise_f1: ", round(bestF1, 4), " prec: ", round(bestP, 4), " recall: ", round(bestR, 4), " threshold: ", round(bestVal, 3), sep="")
 			sys.stdout.flush()
 
 		# clears ram
@@ -416,8 +501,8 @@ class CCNN:
 		# to *other* dirHalves within the same dir, despite the name being 'dirTo...' 
 		dirToXUIDPredictions = defaultdict(lambda: defaultdict(float))
 		# this list is constructed just to ensure it's the same as the corpus'
-		dirToXUIDs = defaultdict(list)
-		corpusDirHalf = defaultdict(set) # TMP
+		dirToXUIDsFromPredictions = defaultdict(list)
+		xuidsFromPredictions = set()
 		for ((xuid1, xuid2), pred) in zip(ids, preds):
 			m1 = self.corpus.XUIDToMention[xuid1]
 			m2 = self.corpus.XUIDToMention[xuid2]
@@ -435,9 +520,6 @@ class CCNN:
 			if self.scope == "dirHalf":
 				dir_num = m1.dirHalf
 
-			corpusDirHalf[dir_num].add(xuid1)
-			corpusDirHalf[dir_num].add(xuid2)
-
 			if self.scope == "dir" and m2.dir_num != dir_num:
 				print("* ERROR: xuids are from diff dirs!")
 				exit(1)
@@ -446,20 +528,25 @@ class CCNN:
 				print("dir_num:", dir_num)
 				print("* ERROR: xuids are from diff dirHalves!")
 				exit(1)
-			if xuid1 not in dirToXUIDs[dir_num]:
-				dirToXUIDs[dir_num].append(xuid1)
-			if xuid2 not in dirToXUIDs[dir_num]:
-				dirToXUIDs[dir_num].append(xuid2)
+			if xuid1 not in dirToXUIDsFromPredictions[dir_num]:
+				dirToXUIDsFromPredictions[dir_num].append(xuid1)
+			if xuid2 not in dirToXUIDsFromPredictions[dir_num]:
+				dirToXUIDsFromPredictions[dir_num].append(xuid2)
+			xuidsFromPredictions.add(xuid1)
+			xuidsFromPredictions.add(xuid2)
 			dirToXUIDPredictions[dir_num][(xuid1, xuid2)] = pred
+		print("* xuidsFromPredictions:",len(xuidsFromPredictions))
 
-		print("corpus' halfs, based on the xuid's that were passed in locally from our predictions")
-		print(corpusDirHalf)
-		for dh in corpusDirHalf:
-			print("dh:",dh,"corpusDirHalf[dh]",corpusDirHalf[dh])
 		ourClusterID = 0
 		ourClusterSuperSet = {}
 		goldenClusterID = 0
 		goldenSuperSet = {}
+
+		# sanity check: ensures our DataHandler's XUID's matches the WD ones we import
+		#for xuid in self.dh.devXUIDs:
+		#	if 
+
+		exit(1)
 
 		XUIDToDocs = defaultdict(set)
 		for dir_num in dirToXUIDPredictions.keys():
@@ -483,14 +570,14 @@ class CCNN:
 
 			# ensures our predictions include each of the Doc's mentions
 			for xuid in curMentionSet:
-				if xuid not in dirToXUIDs[dir_num]:
+				if xuid not in dirToXUIDsFromPredictions[dir_num]:
 					print("* ERROR: missing xuid from our predictions for dir:", dir_num)
 					exit(1)
 
 			# ensures each of our predicted mentions is valid per our corpus
-			print("# dirToXUIDs[dirnum]:", len(dirToXUIDs[dir_num]))
+			print("# dirToXUIDsFromPredictions[dirnum]:", len(dirToXUIDsFromPredictions[dir_num]))
 			print("curMentionSet:", len(curMentionSet))
-			for xuid in dirToXUIDs[dir_num]:
+			for xuid in dirToXUIDsFromPredictions[dir_num]:
 				if xuid not in curMentionSet:
 					print("* ERROR: missing xuid from our corpus, but we think it belongs to dir:", dir_num)
 					exit(1)
@@ -498,9 +585,9 @@ class CCNN:
 			# we don't need to check if xuid is in our corpus or predictions because Doc.assignECBMention() adds
 			# xuids to REFToEUIDs and .XUIDS() -- the latter we checked, so it's all good
 			for curREF in cur_dir.REFToEUIDs:
-				print("ref:",curREF)
+				#print("ref:",curREF)
 				goldenSuperSet[goldenClusterID] = set(cur_dir.REFToEUIDs[curREF])
-				print("golden cluster has size:", len(goldenSuperSet[goldenClusterID]))
+				#print("golden cluster has size:", len(goldenSuperSet[goldenClusterID]))
 				goldenClusterID += 1
 
 			# constructs our base clusters (singletons)
@@ -532,20 +619,20 @@ class CCNN:
 					ij += 1
 			print("these are the dirHalves assigned from having loaded in the wd_pred_clusters:")
 			print("\twd_dirHalf:", wd_dirHalf)
-			print("wd_relevant_xuid:", len(wd_relevant_xuid), "; len(dirToXUIDs[dir_num]:", len(dirToXUIDs[dir_num]))
+			print("wd_relevant_xuid:", len(wd_relevant_xuid), "; len(dirToXUIDsFromPredictions[dir_num]:", len(dirToXUIDsFromPredictions[dir_num]))
 			print("wd_relevant_xuid:", wd_relevant_xuid)
-			print("dirToXUIDs:",dirToXUIDs)
+			print("dirToXUIDsFromPredictions:",dirToXUIDsFromPredictions)
 			for xuid in wd_relevant_xuid:
 				print("xuid:",xuid)
 				print("dir_num:",dir_num)
-				if xuid not in dirToXUIDs[dir_num]:
+				if xuid not in dirToXUIDsFromPredictions[dir_num]:
 					print("* ERROR: WD (passed-in) had ", xuid, "but our current local predictions didn't... it's mention:",self.corpus.XUIDToMention[xuid])
 					print("dir_num:", dir_num)
-					print(dirToXUIDs[dir_num])
-			for xuid in dirToXUIDs[dir_num]:
+					print(dirToXUIDsFromPredictions[dir_num])
+			for xuid in dirToXUIDsFromPredictions[dir_num]:
 				if xuid not in wd_relevant_xuid:
 					print("* ERROR: current local predictions had ", xuid, "but our WD (passed-in) didn't... it's mention:", self.corpus.XUIDToMention[xuid])
-			if len(wd_relevant_xuid) != len(dirToXUIDs[dir_num]):
+			if len(wd_relevant_xuid) != len(dirToXUIDsFromPredictions[dir_num]):
 				print("* ERROR: we have a different number of mentions via passed-in WD clusters than what we have predictions for")
 				exit(1)
 			else:

@@ -87,7 +87,7 @@ class DataHandler:
 
 		# we sort to ensure consistency across multiple runs
 		print("# mentions passed-in:", len(XUIDs))
-		print("createXUIDPairs() created ECBDirToXUIDs to have this many [real] dirs:",len(ECBDirToXUIDs.keys()))
+		#print("createXUIDPairs() created ECBDirToXUIDs to have this many [real] dirs:",len(ECBDirToXUIDs.keys()))
 		tmp_xuids_reclaimed = set()
 		tmp_ecbtoxuids = set()
 		for ecb_dir in sorted(ECBDirToXUIDs.keys()):
@@ -113,7 +113,7 @@ class DataHandler:
 						tmp_xuids_reclaimed.add(xuid2)
 					elif scope == "dir" and not inSameDoc:
 						xuidPairs.add((xuid1, xuid2))
-		print("tmp_xuids_reclaimed:", len(tmp_xuids_reclaimed))
+		#print("tmp_xuids_reclaimed:", len(tmp_xuids_reclaimed))
 		print("tmp_ecbtoxuids:", len(tmp_ecbtoxuids))
 		return xuidPairs
 	
