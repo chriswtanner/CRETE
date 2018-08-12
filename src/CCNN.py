@@ -603,10 +603,10 @@ class CCNN:
 			print("\twill cluster w/ teh base clusters:")
 			for c in ourDocClusters:
 				print("\t\tc:", c, ourDocClusters[c])
-			for c in tmpGoldClusters:
-				print("\t\tc:", c, tmpGoldClusters[c])
-		for g in goldenSuperSet:
-			print("g:",g,goldenSuperSet[g])
+			for g in tmpGoldClusters:
+				print("\t\tg:", g, tmpGoldClusters[g])
+		#for g in goldenSuperSet:
+		#	print("g:",g,goldenSuperSet[g])
 
 		# our base clusters are dependent on our scope (dir vs dirHalf)
 
