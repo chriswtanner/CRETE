@@ -579,7 +579,7 @@ class CCNN:
 					continue
 				elif self.scope == "dir" and dn != dir_num:
 					continue
-				else:
+				elif self.scope != "dirHalf" and self.scope != "dir":
 					print("* incorrect scope")
 					exit(1)
 				print("we believe doc_id:", doc_id, "is valid")
