@@ -608,7 +608,7 @@ class CCNN:
 			for i in ourDirNumClusters.keys():
 				ourClusterSuperSet[ourClusterID] = ourDirNumClusters[i]
 				ourClusterID += 1
-			exit(1)
+				
 		for g in goldenSuperSet:
 			print("g superset:",g,goldenSuperSet[g])
 
