@@ -511,10 +511,11 @@ class CCNN:
 				goldenSuperSet[goldenClusterID] = set(REFToUIDs[curREF])
 				goldenClusterID += 1
 
-			# creates our base clusters
-			ourDocClusters = {}
+			# used for our local base clusters
+			ourDirNumClusters = {}
+			clusterNumToDocs = defaultdict(set)
 			curClusterNum = 0
-
+			
 			tmpGoldClusters = {}
 			tmpGoldNum = 0
 			for doc_id in self.wd_pred_clusters:
@@ -528,16 +529,15 @@ class CCNN:
 				elif self.scope != "dirHalf" and self.scope != "dir":
 					print("* incorrect scope")
 					exit(1)
-				print("we believe doc_id:", doc_id, "is valid")
+				#print("we believe doc_id:", doc_id, "is valid")
 				
 				# wd predictions for current dir
 				for cluster in self.wd_pred_clusters[doc_id]:
 					a = set()
 					for xuid in self.wd_pred_clusters[doc_id][cluster]:
 						a.add(xuid)
-						print("c +", self.corpus.XUIDToMention[xuid],
-							  "|", self.corpus.EUIDToMention[xuid])
-					ourDocClusters[curClusterNum] = a
+					ourDirNumClusters[curClusterNum] = a
+					clusterNumToDocs[curClusterNum].add(doc_id)
 					curClusterNum += 1
 
 				# tmp gold for current dir
@@ -545,14 +545,12 @@ class CCNN:
 					a = set()
 					for xuid in self.corpus.doc_idToDocs[doc_id].REFToEUIDs[ref]:
 						a.add(xuid)
-						print("g +",self.corpus.XUIDToMention[xuid])
 					tmpGoldClusters[tmpGoldNum] = a
 					tmpGoldNum += 1
-			print("\twill cluster w/ the base clusters:")
-			for c in ourDocClusters:
-				print("\t\tc:", c, ourDocClusters[c])
-			for g in tmpGoldClusters:
-				print("\t\tg:", g, tmpGoldClusters[g])
+
+			# agg cluster.  check every combination O(n^2) but n is small (e.g., 10-30)
+			#while len(ourDirNumClusters.keys()) > 1:
+			print("# clusters for it:", len(ourDirNumClusters), ":::", ourDirNumClusters)
 		#for g in goldenSuperSet:
 		#	print("g:",g,goldenSuperSet[g])
 
