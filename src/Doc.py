@@ -11,6 +11,7 @@ class Doc:
         self.HMUIDs = set()
 
     def assignEMention(self, EUID, REF):
+        print("*assignEmention:",EUID,REF)
         self.REFToEUIDs[REF].add(EUID)
         self.EUIDs.add(EUID)
 
