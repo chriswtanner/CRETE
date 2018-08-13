@@ -50,6 +50,8 @@ class CCNN:
 		recalls = []
 		precs = []
 		spToCoNLL = defaultdict(list)
+		spToPredictedCluster = {}
+		spToDocPredictedCluster = {}
 		while len(f1s) < numRuns:
 			# define model
 			input_shape = self.trainX.shape[2:]
@@ -112,19 +114,14 @@ class CCNN:
 
 				# performs agglomerative clustering
 				stoppingPoints = [s for s in np.arange(0.1, 0.50, 0.02)]
-				bestScore = 0
 				for sp in stoppingPoints:
 					(wd_docPredClusters, wd_predictedClusters, wd_goldenClusters) = self.aggClusterWD(self.helper.devDirs, self.devID, preds, sp)
 					#(bcub_p, bcub_r, bcub_f1, muc_p, muc_r, muc_f1, ceafe_p, ceafe_r, ceafe_f1, conll_f1)
 					scores = get_conll_scores(wd_goldenClusters, wd_predictedClusters)
 
 					spToCoNLL[sp].append(scores[-1])
-					if scores[-1] > bestScore:
-						print("* new best score:", scores[-1])
-						pickle_out = open("wd_clusters", 'wb')
-						pickle.dump(wd_docPredClusters, pickle_out)
-						bestScore = scores[-1]
-
+					spToPredictedCluster[sp] = wd_predictedClusters
+					spToDocPredictedCluster[sp] = wd_docPredClusters
 					#print("[DEV] AGGWD SP:", str(round(sp,4)), "CoNLL F1:", str(round(conll_f1,4)), "MUC:", str(round(muc_f1,4)), "BCUB:", str(round(bcub_f1,4)), "CEAF:", str(round(ceafe_f1,4)))
 			print("conll scores:", spToCoNLL)
 			print("ccnn_best_f1 (run ", len(f1s), "): best_pairwise_f1: ", round(bestF1,4), " prec: ",round(bestP,4), " recall: ", round(bestR,4), " threshold: ", round(bestVal,3), sep="")
@@ -141,7 +138,7 @@ class CCNN:
 		(best_sp, best_conll, min_conll, max_conll, std_conll) = self.calculateBestKey(spToCoNLL)
 		sys.stdout.flush()
 		print("* [AGGWD] conll f1 -- best sp:",best_sp, "yielded: min:",min_conll,"avg:",best_conll,"max:",max_conll,"stddev:",std_conll)
-		return (wd_docPredClusters, wd_predictedClusters, wd_goldenClusters)
+		return (next(iter(spToDocPredictedCluster)), next(iter(wd_predictedClusters)), wd_goldenClusters)
 
 ##########################
 ##########################
