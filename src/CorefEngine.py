@@ -5,6 +5,8 @@ import time
 import pickle
 import random
 import sys
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 from collections import defaultdict
 from ECBParser import ECBParser
 from HDDCRPParser import HDDCRPParser
@@ -53,7 +55,7 @@ class CorefEngine:
 		# classifier params
 		numRuns = 1
 		useCCNN = True
-		cd_scope = "dir" # or dir
+		cd_scope = "dirHalf" # or dir
 		useRelationalFeatures = False
 		#wdPresets = [256, 1, 2, 4, 0.0]
 		wdPresets = [64, 5, 2, 32, 0.0] # batchsize, num epochs, num layers, num filters, dropout
