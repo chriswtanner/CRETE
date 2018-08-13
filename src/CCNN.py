@@ -452,8 +452,6 @@ class CCNN:
 		goldenSuperSet = {}
 
 		for dir_num in dirToXUIDPredictions.keys():
-			print("dir_num:", dir_num)
-
 			# adds to our golden clusters
 			REFToUIDs = None
 			if self.scope == "dirHalf":
@@ -579,10 +577,9 @@ class CCNN:
 				dist = closestAvgAvgDist
 				(c1,c2) = closestAvgAvgClusterKeys
 
-				print("* dist:",dist,"we think we should merge:",c1,c2,"which are:",ourDirNumClusters[c1],"and",ourDirNumClusters[c2])
+				#print("* dist:",dist,"we think we should merge:",c1,c2,"which are:",ourDirNumClusters[c1],"and",ourDirNumClusters[c2])
 
 				if dist > stoppingPoint:  # also handles the case when no candidate clusters were used
-					print("breaking!")
 					break
 
 				newCluster = set()
