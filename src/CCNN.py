@@ -613,7 +613,20 @@ class CCNN:
 			print("g superset:",g,goldenSuperSet[g])
 
 		for c in ourClusterSuperSet:
-			print("c superset:",ourClusterSuperSet[c])
+			print("c superset:",c,ourClusterSuperSet[c])
+
+		# SANITY CHECK -- ensures our returned gold and predicted clusters all contain the same XUIDs
+		golds = [x for c in goldenSuperSet for x in goldenSuperSet[c]]
+		preds = [x for c in ourClusterSuperSet for x in ourClusterSuperSet[c]]
+		for xuid in golds:
+			if xuid not in preds:
+				print("* ERROR: missing",xuid,"from preds")
+				exit(1)
+		for xuid in preds:
+			if xuid not in golds:
+				print("* ERROR: missing",xuid,"from golds")
+				exit(1)
+
 		# our base clusters are dependent on our scope (dir vs dirHalf)
 		#print("# golden clusters:",str(len(goldenSuperSet.keys())), "; # our clusters:",str(len(ourClusterSuperSet)))
 		return (ourClusterSuperSet, goldenSuperSet)
