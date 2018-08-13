@@ -35,7 +35,7 @@ class CCNN:
 
 			print("corpus' 3104:", self.corpus.XUIDToMention[3104])
 			#print("loading wd predicted clusters")
-			self.wd_pred_clusters = pickle.load(open("wd_clusters_test_804", 'rb'))
+			self.wd_pred_clusters = pickle.load(open("wd_clusters_test_815", 'rb'))
 			
 			# creates our base clusters
 			ourDocClusters = {}
@@ -629,7 +629,7 @@ class CCNN:
 						print("g +",self.corpus.XUIDToMention[xuid])
 					tmpGoldClusters[tmpGoldNum] = a
 					tmpGoldNum += 1
-			print("\twill cluster w/ teh base clusters:")
+			print("\twill cluster w/ the base clusters:")
 			for c in ourDocClusters:
 				print("\t\tc:", c, ourDocClusters[c])
 			for g in tmpGoldClusters:
