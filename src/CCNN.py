@@ -467,6 +467,7 @@ class CCNN:
 
 			tmp_goldXUIDs = set() # TODO REMOVE
 			for curREF in REFToUIDs:
+				print("curREF:",curREF,"adding:",set(REFToUIDs[curREF]))
 				goldenSuperSet[goldenClusterID] = set(REFToUIDs[curREF])
 				goldenClusterID += 1
 				tmp_goldXUIDs.add(set(REFToUIDs[curREF]))
@@ -518,7 +519,7 @@ class CCNN:
 				if xuid not in tmpCurXUIDs:
 					print("missing from tmpcur:",xuid)
 					exit(1)
-					
+
 			# agg cluster.  check every combination O(n^2) but n is small (e.g., 10-30)
 			while len(ourDirNumClusters.keys()) > 1:
 
