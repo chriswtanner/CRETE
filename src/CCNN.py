@@ -214,15 +214,14 @@ class CCNN:
 				precs.append(bestP)
 
 				# performs agglomerative clustering
-				stoppingPoints = [s for s in np.arange(0.3, 1.0, 0.02)] # should be 0.1 to 0.8 with 0.05
+				stoppingPoints = [s for s in np.arange(0.1, 1.0, 0.1)] # should be 0.1 to 0.8 with 0.05
 				for sp in stoppingPoints:
 					(wd_predictedClusters, wd_goldenClusters) = self.aggClusterCD(self.devID, preds, sp)
-					exit(1)
 					#(bcub_p, bcub_r, bcub_f1, muc_p, muc_r, muc_f1, ceafe_p, ceafe_r, ceafe_f1, conll_f1)
 					scores = get_conll_scores(wd_goldenClusters, wd_predictedClusters)
 					spToCoNLL[sp].append(scores[-1])
 
-					#print("[DEV] AGGWD SP:", str(round(sp,4)), "CoNLL F1:", str(round(conll_f1,4)), "MUC:", str(round(muc_f1,4)), "BCUB:", str(round(bcub_f1,4)), "CEAF:", str(round(ceafe_f1,4)))
+					print("[DEV] AGGCD SP:", str(round(sp,4)), "CoNLL F1:", str(round(conll_f1,4)), "MUC:", str(round(muc_f1,4)), "BCUB:", str(round(bcub_f1,4)), "CEAF:", str(round(ceafe_f1,4)))
 
 			print("ccnn_best_f1 (run ", len(f1s), "): best_pairwise_f1: ", round(bestF1, 4), " prec: ", round(bestP, 4), " recall: ", round(bestR, 4), " threshold: ", round(bestVal, 3), sep="")
 			sys.stdout.flush()
@@ -609,11 +608,6 @@ class CCNN:
 				ourClusterSuperSet[ourClusterID] = ourDirNumClusters[i]
 				ourClusterID += 1
 				
-		for g in goldenSuperSet:
-			print("g superset:",g,goldenSuperSet[g])
-
-		for c in ourClusterSuperSet:
-			print("c superset:",c,ourClusterSuperSet[c])
 
 		# SANITY CHECK -- ensures our returned gold and predicted clusters all contain the same XUIDs
 		golds = [x for c in goldenSuperSet for x in goldenSuperSet[c]]
@@ -628,7 +622,7 @@ class CCNN:
 				exit(1)
 
 		# our base clusters are dependent on our scope (dir vs dirHalf)
-		#print("# golden clusters:",str(len(goldenSuperSet.keys())), "; # our clusters:",str(len(ourClusterSuperSet)))
+		print("# golden clusters:",str(len(goldenSuperSet.keys())), "; # our clusters:",str(len(ourClusterSuperSet)))
 		return (ourClusterSuperSet, goldenSuperSet)
 
 	# Base network to be shared (eq. to feature extraction).
