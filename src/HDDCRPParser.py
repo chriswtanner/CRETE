@@ -95,8 +95,7 @@ class HDDCRPParser:
 				numSingletons += 1
 			#if len(REFToDirHalves[ref]) > 1:
 			#	print("* WHOA. 2 dirhalves for REF:",ref,REFToDirHalves[ref])
-		print("HDDCRP Gold file had #REFs:", len(REFToDocs),
-		      "(", numSingletons, " were singletons)")
+		print("HDDCRP Gold file had #REFs:", len(REFToDocs),"(", numSingletons, " were singletons)")
 
 		'''
 		# TMP -- writing new non-singleton file

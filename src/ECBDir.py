@@ -16,8 +16,6 @@ class ECBDir:
 		self.REFToEUIDs[REF].add(EUID)
 		self.EUIDs.add(EUID)
 
-
-		print("EUID:", EUID, ":doc_id:", doc_id, "REF:", REF)
 		# assigns Doc vars
 		self.docs[doc_id].assignEMention(EUID, REF)
 

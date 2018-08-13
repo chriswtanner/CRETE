@@ -105,8 +105,8 @@ class Corpus:
 		self.EUIDToMention[self.curXUID] = mention
 		self.EUIDToREF[self.curXUID] = REF
 		self.refToEUIDs[REF].add(self.curXUID)
-		self.ECBDirs[mention.dir_num].assignECBMention(self.curXUID, mention.doc_id, REF)
 		self.dirHalves[mention.dirHalf].assignECBMention(self.curXUID, mention.doc_id, REF)
+		self.ECBDirs[mention.dir_num].assignECBMention(self.curXUID, mention.doc_id, REF)
 		self.docSentToEMentions[(doc_id, sentenceNum)].append(mention)
 		self.XUIDToMention[self.curXUID] = mention
 		self.curXUID += 1

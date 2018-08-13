@@ -45,6 +45,7 @@ class ECBParser:
             dirHalf = str(dir_num) + extension
 
             curDoc = Doc(doc_id)
+            corpus.ECBDirs[dir_num].docs[doc_id] = curDoc
             corpus.dirHalves[dirHalf].docs[doc_id] = curDoc
             tmpDocTokens = []
             tmpDocTokenIDsToTokens = {}
