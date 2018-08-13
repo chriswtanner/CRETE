@@ -453,7 +453,6 @@ class CCNN:
 		goldenSuperSet = {}
 
 		for dir_num in dirToXUIDPredictions.keys():
-			print("dir_num:", dir_num)
 			
 			# adds to our golden clusters
 			REFToUIDs = None
@@ -501,25 +500,6 @@ class CCNN:
 					ourDirNumClusters[curClusterNum] = a
 					clusterNumToDocs[curClusterNum].add(doc_id)
 					curClusterNum += 1
-
-				# tmp gold for current dir
-				for ref in self.corpus.doc_idToDocs[doc_id].REFToEUIDs:
-					a = set()
-					for xuid in self.corpus.doc_idToDocs[doc_id].REFToEUIDs[ref]:
-						a.add(xuid)
-					tmpGoldClusters[tmpGoldNum] = a
-					tmpGoldNum += 1
-
-			tmpCurXUIDs = [xuid for c in ourDirNumClusters for xuid in ourDirNumClusters[c]]
-			print("lentmpCurXUIDs:",len(tmpCurXUIDs),"lentmp_goldXUIDs:",len(tmp_goldXUIDs))
-			for xuid in tmpCurXUIDs:
-				if xuid not in tmp_goldXUIDs:
-					print("missing from gold:",xuid)
-					exit(1)
-			for xuid in tmp_goldXUIDs:
-				if xuid not in tmpCurXUIDs:
-					print("missing from tmpcur:",xuid)
-					exit(1)
 
 			# agg cluster.  check every combination O(n^2) but n is small (e.g., 10-30)
 			while len(ourDirNumClusters.keys()) > 1:
