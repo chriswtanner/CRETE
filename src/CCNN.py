@@ -443,7 +443,7 @@ class CCNN:
 			xuidsFromPredictions.add(xuid1)
 			xuidsFromPredictions.add(xuid2)
 			dirToXUIDPredictions[dir_num][(xuid1, xuid2)] = pred
-		print("* xuidsFromPredictions:",len(xuidsFromPredictions))
+		#print("* xuidsFromPredictions:",len(xuidsFromPredictions))
 		
 		self.sanityCheck2(xuidsFromPredictions)
 
