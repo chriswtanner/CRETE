@@ -33,7 +33,7 @@ class CCNN:
 		sys.stdout.flush()
 
 		if self.scope != "doc":
-			self.wd_pred_clusters = pickle.load(open("wd_clusters_test_815", 'rb'))
+			self.wd_pred_clusters = pickle.load(open("wd_clusters_full_817", 'rb'))
 			self.sanityCheck1()
 
 		self.dh.loadNNData(useRelationalFeatures, True, self.scope) # True means use CCNN
@@ -138,9 +138,9 @@ class CCNN:
 			stddev = self.standard_deviation(f1s)
 		print("pairwise f1 (over",len(f1s),"runs) -- avg:", sum(f1s)/len(f1s), "max:", max(f1s), "min:", min(f1s), "avgP:",sum(precs)/len(precs),"avgR:",sum(recalls)/len(recalls),"stddev:", stddev)
 
-		(best_sp, best_conll) = self.calculateBestKey(spToCoNLL)
+		(best_sp, best_conll, min_conll, max_conll, std_conll) = self.calculateBestKey(spToCoNLL)
 		sys.stdout.flush()
-		print("* [AGGWD] conll f1 -- best sp:",best_sp, "yielded an avg:",best_conll)
+		print("* [AGGWD] conll f1 -- best sp:",best_sp, "yielded: min:",min_conll,"avg:",best_conll,"max:",max_conll,"stddev:",std_conll)
 		return (wd_docPredClusters, wd_predictedClusters, wd_goldenClusters)
 
 ##########################
@@ -216,13 +216,13 @@ class CCNN:
 				# performs agglomerative clustering
 				stoppingPoints = [s for s in np.arange(0.1, 1.0, 0.1)] # should be 0.1 to 0.8 with 0.05
 				for sp in stoppingPoints:
-					(wd_predictedClusters, wd_goldenClusters) = self.aggClusterCD(self.devID, preds, sp)
+					(cd_predictedClusters, cd_goldenClusters) = self.aggClusterCD(self.devID, preds, sp)
 					#(bcub_p, bcub_r, bcub_f1, muc_p, muc_r, muc_f1, ceafe_p, ceafe_r, ceafe_f1, conll_f1)
-					scores = get_conll_scores(wd_goldenClusters, wd_predictedClusters)
+					scores = get_conll_scores(cd_goldenClusters, cd_predictedClusters)
 					spToCoNLL[sp].append(scores[-1])
 
-					print("[DEV] AGGCD SP:", str(round(sp, 4)), "CoNLL F1:", str(round(scores[-1], 4)), "MUC:") #,
-					      #str(round(muc_f1, 4)), "BCUB:", str(round(bcub_f1, 4)), "CEAF:", str(round(ceafe_f1, 4)))
+					#print("[DEV] AGGCD SP:", str(round(sp, 4)), "CoNLL F1:", str(round(scores[-1], 4)))
+					#, "MUC:", str(round(muc_f1, 4)), "BCUB:", str(round(bcub_f1, 4)), "CEAF:", str(round(ceafe_f1, 4)))
 
 			print("ccnn_best_f1 (run ", len(f1s), "): best_pairwise_f1: ", round(bestF1, 4), " prec: ", round(bestP, 4), " recall: ", round(bestR, 4), " threshold: ", round(bestVal, 3), sep="")
 			sys.stdout.flush()
@@ -236,10 +236,10 @@ class CCNN:
 		print("pairwise f1 (over", len(f1s), "runs) -- avg:", sum(f1s)/len(f1s), "max:", max(f1s), "min:",
 			  min(f1s), "avgP:", sum(precs)/len(precs), "avgR:", sum(recalls)/len(recalls), "stddev:", stddev)
 
-		(best_sp, best_conll) = self.calculateBestKey(spToCoNLL)
+		(best_sp, best_conll, min_conll, max_conll, std_conll) = self.calculateBestKey(spToCoNLL)
 		sys.stdout.flush()
-		print("* conll f1 -- best sp:", best_sp, "yielded an avg:", best_conll)
-		return (wd_predictedClusters, wd_goldenClusters)
+		print("* [AGGCD] conll f1 -- best sp:",best_sp, "yielded: min:",min_conll,"avg:",best_conll,"max:",max_conll,"stddev:",std_conll)
+		return (cd_predictedClusters, cd_goldenClusters)
 
 	def calculateBestKey(self, dict):
 		best_conll = 0
@@ -249,7 +249,8 @@ class CCNN:
 			if avg > best_conll:
 				best_conll = avg
 				best_sp = sp
-		return (best_sp, best_conll)
+		std_dev = self.standard_deviation(dict[best_sp])
+		return (best_sp, best_conll, min(dict[best_sp]), max(dict[best_sp]), std_dev)
 
 	# agglomerative cluster the within-doc predicted pairs
 	def aggClusterWD(self, relevant_dirs, ids, preds, stoppingPoint):

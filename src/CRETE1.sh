@@ -1,6 +1,6 @@
 #!/bin/bash
 prefix="ccnn" # used to help identify experiments' outputs, as the output files will have this prefix
-corpus="TEST"
+corpus="FULL"
 onlyValidSentences="T"
 addIntraDocs="F" # since these are singletons w.r.t. cross-doc
 exhaustivelyTestAllFeatures=false
