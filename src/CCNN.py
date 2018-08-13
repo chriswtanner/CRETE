@@ -36,7 +36,7 @@ class CCNN:
 
 		
 		if self.scope != "doc":
-			self.wd_pred_clusters = pickle.load(open("wd_clusters_full_817.p", 'rb'))
+			self.wd_pred_clusters = pickle.load(open("wd_clusters_FULL_dirHalf_818.p", 'rb'))
 			self.sanityCheck1()
 
 		self.dh.loadNNData(useRelationalFeatures, True, self.scope) # True means use CCNN
