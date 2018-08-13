@@ -221,7 +221,8 @@ class CCNN:
 					scores = get_conll_scores(wd_goldenClusters, wd_predictedClusters)
 					spToCoNLL[sp].append(scores[-1])
 
-					print("[DEV] AGGCD SP:", str(round(sp,4)), "CoNLL F1:", str(round(conll_f1,4)), "MUC:", str(round(muc_f1,4)), "BCUB:", str(round(bcub_f1,4)), "CEAF:", str(round(ceafe_f1,4)))
+					print("[DEV] AGGCD SP:", str(round(sp, 4)), "CoNLL F1:", str(round(scores[-1], 4)), "MUC:") #,
+					      #str(round(muc_f1, 4)), "BCUB:", str(round(bcub_f1, 4)), "CEAF:", str(round(ceafe_f1, 4)))
 
 			print("ccnn_best_f1 (run ", len(f1s), "): best_pairwise_f1: ", round(bestF1, 4), " prec: ", round(bestP, 4), " recall: ", round(bestR, 4), " threshold: ", round(bestVal, 3), sep="")
 			sys.stdout.flush()
