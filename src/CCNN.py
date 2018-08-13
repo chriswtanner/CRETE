@@ -32,8 +32,6 @@ class CCNN:
 		print("[ccnn] scope:",self.scope,"bs:",self.bs,"ne:",self.ne,"nl:",self.nl,"nf:",self.nf,"do:",self.do)
 
 		if self.scope != "doc":
-
-			print("corpus' 3104:", self.corpus.XUIDToMention[3104])
 			#print("loading wd predicted clusters")
 			self.wd_pred_clusters = pickle.load(open("wd_clusters_test_815", 'rb'))
 			
@@ -41,7 +39,6 @@ class CCNN:
 				# wd predictions for current dir
 				for cluster in self.wd_pred_clusters[doc_id]:
 					for xuid in self.wd_pred_clusters[doc_id][cluster]:
-						print("c +", self.corpus.XUIDToMention[xuid])
 						if self.corpus.XUIDToMention[xuid].doc_id != doc_id:
 							print("DOCS DIFFER!!")
 							exit(1)

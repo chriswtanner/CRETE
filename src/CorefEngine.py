@@ -53,7 +53,7 @@ class CorefEngine:
 		# classifier params
 		numRuns = 1
 		useCCNN = True
-		cd_scope = "dirHalf" # or dir
+		cd_scope = "dir" # or dir
 		useRelationalFeatures = False
 		#wdPresets = [256, 1, 2, 4, 0.0]
 		wdPresets = [64, 5, 2, 32, 0.0] # batchsize, num epochs, num layers, num filters, dropout
@@ -71,8 +71,6 @@ class CorefEngine:
 		# parses the real, actual corpus (ECB's XML files)
 		ecb_parser = ECBParser(args, helper)
 		corpus = ecb_parser.parseCorpus(helper.docToVerifiedSentences)
-
-		print("corpus' 3104:", corpus.XUIDToMention[3104])
 		helper.addECBCorpus(corpus)
 
 		# parses the HDDCRP Mentions
