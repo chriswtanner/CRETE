@@ -467,10 +467,11 @@ class CCNN:
 
 			tmp_goldXUIDs = set() # TODO REMOVE
 			for curREF in REFToUIDs:
-				print("curREF:",curREF,"adding:",set(REFToUIDs[curREF]))
 				goldenSuperSet[goldenClusterID] = set(REFToUIDs[curREF])
 				goldenClusterID += 1
-				tmp_goldXUIDs.add(set(REFToUIDs[curREF]))
+
+				for _ in REFToUIDs[curREF]:
+					tmp_goldXUIDs.add(_)
 
 			# used for our local base clusters
 			ourDirNumClusters = {}
