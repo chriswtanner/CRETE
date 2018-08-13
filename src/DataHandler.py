@@ -54,6 +54,7 @@ class DataHandler:
 			self.relFeatures.append(lf.relational)
 
 	def loadNNData(self, useRelationalFeatures, useCCNN, scope):
+		print("[dh] loading ...")
 		if useCCNN:
 			(self.trainID, self.trainX, self.trainY) = self.createDataForCCNN(self.helper.trainingDirs, self.trainXUIDs, useRelationalFeatures, True, scope)
 			(self.devID, self.devX, self.devY) = self.createDataForCCNN(self.helper.devDirs, self.devXUIDs, useRelationalFeatures, False, scope)
@@ -61,6 +62,7 @@ class DataHandler:
 		else: # FOR FFNN and SVM
 			(self.trainID, self.trainX, self.trainY) = self.createDataForFFNN(self.helper.trainingDirs, self.trainXUIDs, useRelationalFeatures, True, scope)
 			(self.devID, self.devX, self.devY) = self.createDataForFFNN(self.helper.devDirs, self.devXUIDs, useRelationalFeatures, False, scope)
+		print("[dh] done loading")
 
 	def loadFeature(self, file):
 		print("loading",file)

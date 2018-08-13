@@ -30,6 +30,7 @@ class CCNN:
 		else:
 			(self.bs, self.ne, self.nl, self.nf, self.do) = presets
 		print("[ccnn] scope:",self.scope,"bs:",self.bs,"ne:",self.ne,"nl:",self.nl,"nf:",self.nf,"do:",self.do)
+		sys.stdout.flush()
 
 		if self.scope != "doc":
 			self.wd_pred_clusters = pickle.load(open("wd_clusters_test_815", 'rb'))
@@ -542,10 +543,10 @@ class CCNN:
 									exit(1)
 
 								dist = 9999
-								if (dm1, dm2) in dirToXUIDPredictions[doc_id]:
-									dist = dirToXUIDPredictions[doc_id][(dm1, dm2)]
-								elif (dm2, dm1) in dirToXUIDPredictions[doc_id]:
-									dist = dirToXUIDPredictions[doc_id][(dm2, dm1)]
+								if (dm1, dm2) in dirToXUIDPredictions[dir_num]:
+									dist = dirToXUIDPredictions[dir_num][(dm1, dm2)]
+								elif (dm2, dm1) in dirToXUIDPredictions[dir_num]:
+									dist = dirToXUIDPredictions[dir_num][(dm2, dm1)]
 								else:
 									print("* ERROR: missing dist for dm1,dm2")
 									print("dms:", str(dm1), str(dm2))
