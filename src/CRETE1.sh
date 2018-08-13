@@ -7,12 +7,12 @@ exhaustivelyTestAllFeatures=false
 useECBTest=true
 featureMap=(2) # 1 2 3 4 5 6 7)
 numLayers=(2) # 3) # 1 3
-numEpochs=(2) # 20)
+numEpochs=(5) # 20)
 windowSize=(0)
-numNeg=(1)
-batchSize=(128) # 128) # 64 128
+numNeg=(5)
+batchSize=(64) # 128) # 64 128
 dropout=(0.0) # 0.2 0.4)
-numFilters=(6)
+numFilters=(32)
 filterMultiplier=(1.0) # 2.0)
 devDir=(23) # this # and above will be the dev dirs.  See ECBHelper.py for more
 

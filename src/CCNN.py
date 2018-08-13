@@ -15,11 +15,12 @@ from keras.optimizers import Adam
 from collections import defaultdict
 from get_coref_metrics import get_conll_scores
 class CCNN:
-	def __init__(self, helper, dh, useRelationalFeatures, scope, presets):
+	def __init__(self, helper, dh, useRelationalFeatures, scope, presets, wd_docPreds):
 		self.helper = helper
 		self.dh = dh
 		self.corpus = helper.corpus
 		self.args = helper.args
+		#self.wd_docPreds = wd_docPreds
 		self.scope = scope # used by aggClusterCD()
 		if presets == []:
 			self.bs = self.args.batchSize
@@ -29,9 +30,11 @@ class CCNN:
 			self.do = self.args.dropout
 		else:
 			(self.bs, self.ne, self.nl, self.nf, self.do) = presets
+		
 		print("[ccnn] scope:",self.scope,"bs:",self.bs,"ne:",self.ne,"nl:",self.nl,"nf:",self.nf,"do:",self.do)
 		sys.stdout.flush()
 
+		
 		if self.scope != "doc":
 			self.wd_pred_clusters = pickle.load(open("wd_clusters_full_817.p", 'rb'))
 			self.sanityCheck1()
