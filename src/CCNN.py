@@ -32,42 +32,9 @@ class CCNN:
 		print("[ccnn] scope:",self.scope,"bs:",self.bs,"ne:",self.ne,"nl:",self.nl,"nf:",self.nf,"do:",self.do)
 
 		if self.scope != "doc":
-			#print("loading wd predicted clusters")
 			self.wd_pred_clusters = pickle.load(open("wd_clusters_test_815", 'rb'))
-			
-			for doc_id in self.wd_pred_clusters:
-				# wd predictions for current dir
-				for cluster in self.wd_pred_clusters[doc_id]:
-					for xuid in self.wd_pred_clusters[doc_id][cluster]:
-						if self.corpus.XUIDToMention[xuid].doc_id != doc_id:
-							print("DOCS DIFFER!!")
-							exit(1)
+			self.sanityCheck1()
 
-			#print("self.wd_pred_clusters:", self.wd_pred_clusters)
-			#exit(1)
-			
-			tmp_corpusDirHalfToEUIDs = defaultdict(set)
-			tmp_corpusXUIDToDH = {}
-			for euid in self.corpus.XUIDToMention:
-				m = self.corpus.XUIDToMention[euid]
-				tmp_corpusDirHalfToEUIDs[m.dirHalf].add(euid)
-				tmp_corpusXUIDToDH[euid] = m.dirHalf
-
-			tmp_wdDirHalfToEUIDs = defaultdict(set)
-			tmp_wdXUIDToDH = {}
-			for doc in self.wd_pred_clusters:
-				for c in self.wd_pred_clusters[doc]:
-					for euid in self.wd_pred_clusters[doc][c]:
-						m = self.corpus.XUIDToMention[euid]
-						tmp_wdDirHalfToEUIDs[m.dirHalf].add(euid)
-						tmp_wdXUIDToDH[euid] = m.dirHalf
-
-			for xuid in tmp_wdXUIDToDH:
-				if tmp_wdXUIDToDH[xuid] != tmp_corpusXUIDToDH[xuid]:
-					print("* ERROR!", xuid, tmp_wdXUIDToDH[xuid], tmp_corpusXUIDToDH[xuid])
-					exit(1)
-			print("* [PASSED] WD_PREDICTIONS align w/ the corpus in terms of dirHalves")
-		
 		self.dh.loadNNData(useRelationalFeatures, True, self.scope) # True means use CCNN
 		(self.trainID, self.trainX, self.trainY) = (dh.trainID, dh.trainX, dh.trainY)
 		(self.devID, self.devX, self.devY) = (dh.devID, dh.devX, dh.devY)
@@ -246,7 +213,7 @@ class CCNN:
 				precs.append(bestP)
 
 				# performs agglomerative clustering
-				stoppingPoints = [s for s in np.arange(0.5, 1.0, 0.02)] # should be 0.1 to 0.8 with 0.05
+				stoppingPoints = [s for s in np.arange(0.3, 1.0, 0.02)] # should be 0.1 to 0.8 with 0.05
 				for sp in stoppingPoints:
 					(wd_predictedClusters, wd_goldenClusters) = self.aggClusterCD(self.devID, preds, sp)
 					exit(1)
@@ -476,16 +443,8 @@ class CCNN:
 			xuidsFromPredictions.add(xuid2)
 			dirToXUIDPredictions[dir_num][(xuid1, xuid2)] = pred
 		print("* xuidsFromPredictions:",len(xuidsFromPredictions))
-
-		# sanity check: ensures our DataHandler's XUID's matches the WD ones we import
-		for xuid in xuidsFromPredictions:
-			if xuid not in self.dh.devXUIDs:
-				print("* ERROR: xuid (from predictions) isn't in dh.devXUIDs")
-				exit(1)
-				m = self.corpus.XUIDToMention[xuid]
-				if m.dir_num not in self.helper.devDirs:
-					print("* ERROR: xuid's mention is from a dir other than helper.devDirs")
-					exit(1)
+		
+		self.sanityCheck2(xuidsFromPredictions)
 
 		ourClusterID = 0
 		ourClusterSuperSet = {}
@@ -518,8 +477,8 @@ class CCNN:
 			for doc_id in self.wd_pred_clusters:
 				dn = int(doc_id.split("_")[0])
 				extension = doc_id[doc_id.find("ecb"):]
-				dh = str(dn) + extension
-				if self.scope == "dirHalf" and dh != dir_num:
+				dirHalf = str(dn) + extension
+				if self.scope == "dirHalf" and dirHalf != dir_num:
 					continue
 				elif self.scope == "dir" and dn != dir_num:
 					continue
@@ -546,11 +505,114 @@ class CCNN:
 					tmpGoldNum += 1
 
 			# agg cluster.  check every combination O(n^2) but n is small (e.g., 10-30)
-			#while len(ourDirNumClusters.keys()) > 1:
-			print("# clusterz for it:", len(ourDirNumClusters), "::", ourDirNumClusters)
-		#for g in goldenSuperSet:
-		#	print("g:",g,goldenSuperSet[g])
+			while len(ourDirNumClusters.keys()) > 1:
 
+				closestDist = 999999
+				closestClusterKeys = (-1, -1)
+
+				closestAvgDist = 999999
+				closestAvgClusterKeys = (-1,-1)
+				
+				closestAvgAvgDist = 999999
+				closestAvgAvgClusterKeys = (-1, -1)
+
+				added = set()
+				for c1 in ourDirNumClusters:
+					docsInC1 = clusterNumToDocs[c1]
+					for c2 in ourDirNumClusters:
+						if (c2, c1) in added or (c1, c2) in added or c1 == c2:
+							continue
+						docsInC2 = clusterNumToDocs[c2]
+
+						# only consider merging clusters that are disjoint in their docs
+						containsOverlap = False
+						for d1 in docsInC1:
+							if d1 in docsInC2:
+								containsOverlap = True
+								break
+						if containsOverlap:
+							continue
+
+						avgavgdists = []
+						dmToDists = defaultdict(list)
+						for dm1 in ourDirNumClusters[c1]:
+							for dm2 in ourDirNumClusters[c2]:
+								if dm1 == dm2:
+									print("* ERROR: somehow dm1 == dm2")
+									exit(1)
+
+								dist = 9999
+								if (dm1, dm2) in dirToXUIDPredictions[doc_id]:
+									dist = dirToXUIDPredictions[doc_id][(dm1, dm2)]
+								elif (dm2, dm1) in dirToXUIDPredictions[doc_id]:
+									dist = dirToXUIDPredictions[doc_id][(dm2, dm1)]
+								else:
+									print("* ERROR: missing dist for dm1,dm2")
+									print("dms:", str(dm1), str(dm2))
+									exit(1)
+
+								avgavgdists.append(dist)
+								dmToDists[dm1].append(dist)
+								dmToDists[dm2].append(dist)
+								if dist < closestDist:
+									closestDist = dist
+									closestClusterKeys = (c1, c2)
+						for dm in dmToDists:
+							avg = float(sum(dmToDists[dm])/float(len(dmToDists[dm])))
+							if avg < closestAvgDist:
+								closestAvgDist = avg
+								closestAvgClusterKeys = (c1, c2)
+						avgavg = float(sum(avgavgdists)) / float(len(avgavgdists))
+						if avgavg < closestAvgAvgDist:
+							closestAvgAvgDist = avgavg
+							closestAvgAvgClusterKeys = (c1, c2)
+						added.add((c1, c2))
+						added.add((c2, c1))
+
+				# min pair (could also be avg or avgavg)
+				#dist = closestDist
+				#(c1,c2) = closestClusterKeys
+
+				#dist = closestAvgDist
+				#(c1, c2) = closestAvgClusterKeys
+
+				dist = closestAvgAvgDist
+				(c1,c2) = closestAvgAvgClusterKeys
+
+				print("* dist:",dist,"we think we should merge:",c1,c2,"which are:",ourDirNumClusters[c1],"and",ourDirNumClusters[c2])
+
+				if dist > stoppingPoint:  # also handles the case when no candidate clusters were used
+					print("breaking!")
+					break
+
+				newCluster = set()
+				for _ in ourDirNumClusters[c1]:
+					newCluster.add(_)
+				for _ in ourDirNumClusters[c2]:
+					newCluster.add(_)
+				ourDirNumClusters.pop(c1, None)
+				ourDirNumClusters.pop(c2, None)
+				ourDirNumClusters[curClusterNum] = newCluster
+				newDocSet = set()
+				for _ in clusterNumToDocs[c1]:
+					newDocSet.add(_)
+				for _ in clusterNumToDocs[c2]:
+					newDocSet.add(_)
+				clusterNumToDocs.pop(c1, None)
+				clusterNumToDocs.pop(c2, None)
+				clusterNumToDocs[curClusterNum] = newDocSet
+				curClusterNum += 1
+			
+			# done merging clusters for current 'dir_num' (aka dir or dirHalf)
+			for i in ourDirNumClusters.keys():
+				ourClusterSuperSet[ourClusterID] = ourDirNumClusters[i]
+				ourClusterID += 1
+			exit(1)
+		for g in goldenSuperSet:
+			print("g superset:",g,goldenSuperSet[g])
+
+		for c in ourClusterSuperSet:
+			print("c superset:",ourClusterSuperSet[c])
 		# our base clusters are dependent on our scope (dir vs dirHalf)
 		#print("# golden clusters:",str(len(goldenSuperSet.keys())), "; # our clusters:",str(len(ourClusterSuperSet)))
 		return (ourClusterSuperSet, goldenSuperSet)
@@ -594,3 +656,46 @@ class CCNN:
 		ssd = sum(sq_differences)
 		variance = ssd / (num_items - 1)
 		return sqrt(variance)
+
+	# SANITY CHECKS: ensure the loaded predictions use XUID mentions like intended (w/ our corpus)
+	def sanityCheck1(self):
+		for doc_id in self.wd_pred_clusters:
+			# wd predictions for current dir
+			for cluster in self.wd_pred_clusters[doc_id]:
+				for xuid in self.wd_pred_clusters[doc_id][cluster]:
+					if self.corpus.XUIDToMention[xuid].doc_id != doc_id:
+						print("DOCS DIFFER!!")
+						exit(1)
+
+		tmp_corpusDirHalfToEUIDs = defaultdict(set)
+		tmp_corpusXUIDToDH = {}
+		for euid in self.corpus.XUIDToMention:
+			m = self.corpus.XUIDToMention[euid]
+			tmp_corpusDirHalfToEUIDs[m.dirHalf].add(euid)
+			tmp_corpusXUIDToDH[euid] = m.dirHalf
+
+		tmp_wdDirHalfToEUIDs = defaultdict(set)
+		tmp_wdXUIDToDH = {}
+		for doc in self.wd_pred_clusters:
+			for c in self.wd_pred_clusters[doc]:
+				for euid in self.wd_pred_clusters[doc][c]:
+					m = self.corpus.XUIDToMention[euid]
+					tmp_wdDirHalfToEUIDs[m.dirHalf].add(euid)
+					tmp_wdXUIDToDH[euid] = m.dirHalf
+
+		for xuid in tmp_wdXUIDToDH:
+			if tmp_wdXUIDToDH[xuid] != tmp_corpusXUIDToDH[xuid]:
+				print("* ERROR!", xuid, tmp_wdXUIDToDH[xuid], tmp_corpusXUIDToDH[xuid])
+				exit(1)
+		print("* [PASSED] WD_PREDICTIONS align w/ the corpus in terms of dirHalves")
+
+	def sanityCheck2(self, xuidsFromPredictions):
+		# sanity check: ensures our DataHandler's XUID's matches the WD ones we import
+		for xuid in xuidsFromPredictions:
+			if xuid not in self.dh.devXUIDs:
+				print("* ERROR: xuid (from predictions) isn't in dh.devXUIDs")
+				exit(1)
+				m = self.corpus.XUIDToMention[xuid]
+				if m.dir_num not in self.helper.devDirs:
+					print("* ERROR: xuid's mention is from a dir other than helper.devDirs")
+					exit(1)
