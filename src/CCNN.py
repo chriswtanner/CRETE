@@ -123,7 +123,7 @@ class CCNN:
 					spToPredictedCluster[sp] = wd_predictedClusters
 					spToDocPredictedCluster[sp] = wd_docPredClusters
 					#print("[DEV] AGGWD SP:", str(round(sp,4)), "CoNLL F1:", str(round(conll_f1,4)), "MUC:", str(round(muc_f1,4)), "BCUB:", str(round(bcub_f1,4)), "CEAF:", str(round(ceafe_f1,4)))
-			print("conll scores:", spToCoNLL)
+			#print("conll scores:", spToCoNLL)
 			print("ccnn_best_f1 (run ", len(f1s), "): best_pairwise_f1: ", round(bestF1,4), " prec: ",round(bestP,4), " recall: ", round(bestR,4), " threshold: ", round(bestVal,3), sep="")
 			sys.stdout.flush()
 
@@ -251,7 +251,7 @@ class CCNN:
 
 	# agglomerative cluster the within-doc predicted pairs
 	def aggClusterWD(self, relevant_dirs, ids, preds, stoppingPoint):
-		print("** in aggClusterWD(), stoppingPoint:",stoppingPoint)
+		#print("** in aggClusterWD(), stoppingPoint:",stoppingPoint)
 		docToXUIDPredictions = defaultdict(lambda: defaultdict(float))
 		docToXUIDsFromPredictions = defaultdict(list) # this list is constructed just to ensure it's the same as the corpus'
 		for ((xuid1, xuid2), pred) in zip(ids, preds):
@@ -393,7 +393,7 @@ class CCNN:
 				#print("doc:",doc_id,"adding a cluster")
 				ourClusterSuperSet[ourClusterID] = ourDocClusters[i]
 				ourClusterID += 1
-		print("# golden clusters:",str(len(goldenSuperSet.keys())), "; # our clusters:",str(len(ourClusterSuperSet)))
+		#print("# golden clusters:",str(len(goldenSuperSet.keys())), "; # our clusters:",str(len(ourClusterSuperSet)))
 		return (docToPredClusters, ourClusterSuperSet, goldenSuperSet)
 
 	# agglomerative cluster the cross-doc predicted pairs
