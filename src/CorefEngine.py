@@ -120,8 +120,6 @@ class CorefEngine:
 		dh = DataHandler(helper, trainXUIDs, devXUIDs, testXUIDs)
 		#model = LibSVM(helper, coref)
 
-
-		print("corpus' 3104:", corpus.XUIDToMention[3104])
 		# within-doc first, then cross-doc
 		if useCCNN:
 			'''

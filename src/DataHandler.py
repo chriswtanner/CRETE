@@ -235,7 +235,7 @@ class DataHandler:
 		pp = float(numPosAdded / (numPosAdded+numNegAdded))
 		pn = float(numNegAdded / (numPosAdded+numNegAdded))
 		print("* createData() loaded", len(pairs), "pairs (", pp, "% pos, ",
-		      pn, "% neg); features' length = ", numFeatures)
+			  pn, "% neg); features' length = ", numFeatures)
 
 		if len(pairs) == 0:
 			exit(1)
