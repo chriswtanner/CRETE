@@ -550,7 +550,7 @@ class CCNN:
 
 			# agg cluster.  check every combination O(n^2) but n is small (e.g., 10-30)
 			#while len(ourDirNumClusters.keys()) > 1:
-			print("# clusters for it:", len(ourDirNumClusters), ":::", ourDirNumClusters)
+			print("# clusters for it:", len(ourDirNumClusters), "::", ourDirNumClusters)
 		#for g in goldenSuperSet:
 		#	print("g:",g,goldenSuperSet[g])
 
