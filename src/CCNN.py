@@ -133,11 +133,11 @@ class CCNN:
 		stddev = -1
 		if len(f1s) > 1:
 			stddev = self.standard_deviation(f1s)
-		print("pairwise f1 (over",len(f1s),"runs) -- avg:", sum(f1s)/len(f1s), "max:", max(f1s), "min:", min(f1s), "avgP:",sum(precs)/len(precs),"avgR:",sum(recalls)/len(recalls),"stddev:", stddev)
+		print("pairwise f1 (over",len(f1s),"runs) -- avg:", round(sum(f1s)/len(f1s),4), "max:", round(max(f1s),4), "min:", round(min(f1s),4), "avgP:",sum(precs)/len(precs),"avgR:",round(sum(recalls)/len(recalls),4),"stddev:", round(stddev,4))
 
 		(best_sp, best_conll, min_conll, max_conll, std_conll) = self.calculateBestKey(spToCoNLL)
 		sys.stdout.flush()
-		print("* [AGGWD] conll f1 -- best sp:",best_sp, "yielded: min:",min_conll,"avg:",best_conll,"max:",max_conll,"stddev:",std_conll)
+		print("* [AGGWD] conll f1 -- best sp:",best_sp, "yielded: min:",round(100*min_conll,4),"avg:",round(100*best_conll,4),"max:",round(max_conll,4),"stddev:",round(std_conll,4))
 		return (next(iter(spToDocPredictedCluster)), next(iter(wd_predictedClusters)), wd_goldenClusters)
 
 ##########################
