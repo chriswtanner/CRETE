@@ -14,7 +14,7 @@ batchSize=(64) # 128) # 64 128
 dropout=(0.0) # 0.2 0.4)
 numFilters=(32)
 filterMultiplier=(1.0) # 2.0)
-devDir=(1 3 5 10 15 20 25) # this # and above will be the dev dirs.  See ECBHelper.py for more
+devDir=(25) # this # and above will be the dev dirs.  See ECBHelper.py for more
 
 # features (default = False)
 wordFeature="False" # f1
