@@ -140,7 +140,7 @@ class CCNN:
 		(best_sp, best_conll, min_conll, max_conll, std_conll) = self.calculateBestKey(spToCoNLL)
 		sys.stdout.flush()
 		print("* [AGGWD] conll f1 -- best sp:",best_sp, "yielded: min:",round(100*min_conll,4),"avg:",round(100*best_conll,4),"max:",round(max_conll,4),"stddev:",round(std_conll,4))
-		return (next(iter(spToDocPredictedCluster[best_sp])), next(iter(spToPredictedCluster[best_sp])), wd_goldenClusters)
+		return (spToDocPredictedCluster[best_sp], spToPredictedCluster[best_sp], wd_goldenClusters)
 
 ##########################
 ##########################
