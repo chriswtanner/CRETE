@@ -139,7 +139,8 @@ class CorefEngine:
 			pickle_out = open("wd_clusters_FULL_23.p", 'wb')
 			pickle.dump(wd_docPreds, pickle_out)			
 			#exit(1)
-			cd_model = CCNN(helper, dh, useRelationalFeatures, cd_scope, wdPresets, wd_docPreds, False, sp_cd)
+			cd_model = CCNN(helper, dh, useRelationalFeatures, cd_scope, wdPresets, wd_docPreds, False, -1)
+			#cd_model = CCNN(helper, dh, useRelationalFeatures, cd_scope, wdPresets, wd_docPreds, False, sp_cd)
 			cd_model.train_and_test_cd(1) #wd_pred, wd_gold, numRuns)
 		else:
 			wd_model = FFNN(helper, dh)
