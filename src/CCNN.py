@@ -129,7 +129,7 @@ class CCNN:
 				precs.append(bestP)
 
 				# performs agglomerative clustering
-				stoppingPoints = [s for s in np.arange(0.1, 0.50, 0.02)]
+				stoppingPoints = [s for s in np.arange(0.3, 0.51, 0.1)]
 				for sp in stoppingPoints:
 
 					if self.devMode:
@@ -158,6 +158,9 @@ class CCNN:
 		(best_sp, best_conll, min_conll, max_conll, std_conll) = self.calculateBestKey(spToCoNLL)
 		sys.stdout.flush()
 		print("* [AGGWD] conll f1 -- best sp:",best_sp, "yielded: min:",round(100*min_conll,4),"avg:",round(100*best_conll,4),"max:",round(max_conll,4),"stddev:",round(std_conll,4))
+		fout = open("ccnn_agg_"+self.scope+".csv", "a+")
+		fout.write(self.args.devDir + "," + str(best_conll))
+		fout.close()
 		return (spToDocPredictedCluster[best_sp], spToPredictedCluster[best_sp], wd_goldenClusters)
 
 ##########################
@@ -268,6 +271,9 @@ class CCNN:
 		(best_sp, best_conll, min_conll, max_conll, std_conll) = self.calculateBestKey(spToCoNLL)
 		sys.stdout.flush()
 		print("* [AGGCD] conll f1 -- best sp:", best_sp, "yielded: min:", round(100*min_conll, 4), "avg:", round(100*best_conll, 4), "max:", round(max_conll, 4), "stddev:", round(std_conll, 4))
+		fout = open("ccnn_agg_"+self.scope+".csv", "a+")
+		fout.write(str(best_conll) + "\n")
+		fout.close()
 		return (cd_predictedClusters, cd_goldenClusters)
 
 	def calculateBestKey(self, dict):

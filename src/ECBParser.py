@@ -30,8 +30,16 @@ class ECBParser:
         numMentionsIgnored = 0
         corpus = Corpus()
         files = []
+
+        filteredTrainingDirs = self.helper.trainingDirs[0:self.args.devDir]
+        print("filteredTrainingDirs:", filteredTrainingDirs)
         for root, _, filenames in os.walk(self.args.corpusPath):
             for filename in fnmatch.filter(filenames, '*.xml'):
+                f = os.path.join(root, filename)
+                doc_id = f[f.rfind("/") + 1:]
+                dir_num = int(doc_id.split("_")[0])
+                if dir_num in self.helper.trainingDirs and dir_num not in filteredTrainingDirs:
+                    continue
                 files.append(os.path.join(root, filename))
 
         globalSentenceNum = 0

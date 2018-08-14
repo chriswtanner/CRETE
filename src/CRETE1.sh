@@ -5,7 +5,7 @@ onlyValidSentences="T"
 addIntraDocs="F" # since these are singletons w.r.t. cross-doc
 exhaustivelyTestAllFeatures=false
 useECBTest=true
-featureMap=(2) # 1 2 3 4 5 6 7)
+featureMap=(2 3) # 1 2 3 4 5 6 7)
 numLayers=(2) # 3) # 1 3
 numEpochs=(5) # 20)
 windowSize=(0)
@@ -14,7 +14,7 @@ batchSize=(64) # 128) # 64 128
 dropout=(0.0) # 0.2 0.4)
 numFilters=(32)
 filterMultiplier=(1.0) # 2.0)
-devDir=(23) # this # and above will be the dev dirs.  See ECBHelper.py for more
+devDir=(10) # this # and above will be the dev dirs.  See ECBHelper.py for more
 
 # features (default = False)
 wordFeature="False" # f1
