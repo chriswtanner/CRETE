@@ -133,7 +133,7 @@ class CorefEngine:
 			print("\t** BEST DEV-WD stopping points:", sp_wd,"and",sp_cd)
 
 			wd_model = CCNN(helper, dh, useRelationalFeatures, "doc", wdPresets, None, False, sp_wd)
-			(wd_docPreds, wd_pred, wd_gold, _) = wd_model.train_and_test_wd(10)  # 1 means only 1 run of WD
+			(wd_docPreds, wd_pred, wd_gold, _) = wd_model.train_and_test_wd(3)  # 1 means only 1 run of WD
 			#pickle_out = open("wd_clusters_FULL_" + cd_scope + ".p", 'wb')
 			#pickle.dump(wd_docPreds, pickle_out)			
 			#exit(1)
