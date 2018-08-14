@@ -21,7 +21,7 @@ class CCNN:
 		self.dh = dh
 		self.corpus = helper.corpus
 		self.args = helper.args
-		self.wd_docPreds = wd_docPreds
+		self.wd_pred_clusters = wd_docPreds
 		self.scope = scope # used by aggClusterCD()
 		if presets == []:
 			self.bs = self.args.batchSize
