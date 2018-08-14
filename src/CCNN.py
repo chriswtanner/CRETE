@@ -33,7 +33,7 @@ class CCNN:
 		else:
 			(self.bs, self.ne, self.nl, self.nf, self.do) = presets
 		
-		print("[ccnn] scope:",self.scope,"bs:",self.bs,"ne:",self.ne,"nl:",self.nl,"nf:",self.nf,"do:",self.do)
+		print("[ccnn] scope:",self.scope,"bs:",self.bs,"ne:",self.ne,"nl:",self.nl,"nf:",self.nf,"do:",self.do, "dm:",self.devMode, "sp:",self.stoppingPoint)
 		sys.stdout.flush()
 
 		
@@ -162,7 +162,7 @@ class CCNN:
 		sys.stdout.flush()
 		print("* [AGGWD] conll f1 -- best sp:",best_sp, "yielded: min:",round(100*min_conll,4),"avg:",round(100*best_conll,4),"max:",round(max_conll,4),"stddev:",round(std_conll,4))
 		fout = open("ccnn_agg_dirHalf.csv", "a+")
-		fout.write(str(self.args.devDir) + "," + str(best_conll) + ",")
+		fout.write(str(self.args.devDir) + "," + str(self.devMode) + "," + str(best_conll) + ",")
 		fout.close()
 		return (spToDocPredictedCluster[best_sp], spToPredictedCluster[best_sp], wd_goldenClusters, best_sp)
 
@@ -659,7 +659,7 @@ class CCNN:
 				exit(1)
 
 		# our base clusters are dependent on our scope (dir vs dirHalf)
-		print("# golden clusters:",str(len(goldenSuperSet.keys())), "; # our clusters:",str(len(ourClusterSuperSet)))
+		#print("# golden clusters:",str(len(goldenSuperSet.keys())), "; # our clusters:",str(len(ourClusterSuperSet)))
 		return (ourClusterSuperSet, goldenSuperSet)
 
 	# Base network to be shared (eq. to feature extraction).
