@@ -58,10 +58,11 @@ class DataHandler:
 		if useCCNN:
 			(self.trainID, self.trainX, self.trainY) = self.createDataForCCNN(self.helper.trainingDirs, self.trainXUIDs, useRelationalFeatures, True, scope)
 			(self.devID, self.devX, self.devY) = self.createDataForCCNN(self.helper.devDirs, self.devXUIDs, useRelationalFeatures, False, scope)
-			#(self.testID, self.testX, self.testY) = self.createDataForCCNN(helper.testingDirs, self.testXUIDs, useRelationalFeatures, False)
+			(self.testID, self.testX, self.testY) = self.createDataForCCNN(self.helper.testingDirs, self.testXUIDs, useRelationalFeatures, False, scope)
 		else: # FOR FFNN and SVM
 			(self.trainID, self.trainX, self.trainY) = self.createDataForFFNN(self.helper.trainingDirs, self.trainXUIDs, useRelationalFeatures, True, scope)
 			(self.devID, self.devX, self.devY) = self.createDataForFFNN(self.helper.devDirs, self.devXUIDs, useRelationalFeatures, False, scope)
+			(self.testID, self.testX, self.testY) = self.createDataForFFNN(self.helper.testingDirs, self.testXUIDs, useRelationalFeatures, False, scope)
 		print("[dh] done loading")
 
 	def loadFeature(self, file):

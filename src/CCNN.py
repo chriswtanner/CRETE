@@ -42,7 +42,8 @@ class CCNN:
 		self.dh.loadNNData(useRelationalFeatures, True, self.scope) # True means use CCNN
 		(self.trainID, self.trainX, self.trainY) = (dh.trainID, dh.trainX, dh.trainY)
 		(self.devID, self.devX, self.devY) = (dh.devID, dh.devX, dh.devY)
-		#(self.testID, self.testX, self.testY) = (coref.testID, coref.testX, coref.testY)
+		(self.testID, self.testX, self.testY) = (dh.testID, dh.testX, dh.testY)
+		
 		if self.args.native:
 			tf.Session(config=tf.ConfigProto(log_device_placement=True))
 			os.environ['CUDA_VISIBLE_DEVICES'] = ''
@@ -72,8 +73,8 @@ class CCNN:
 				epochs=self.ne, \
 				validation_data=([self.devX[:, 0], self.devX[:, 1]], self.devY))
 
-			preds = model.predict([self.devX[:, 0], self.devX[:, 1]])
-			#preds = model.predict([self.testX[:, 0], self.testX[:, 1]])
+			#preds = model.predict([self.devX[:, 0], self.devX[:, 1]])
+			preds = model.predict([self.testX[:, 0], self.testX[:, 1]])
 			
 			numGoldPos = 0
 			scoreToGoldTruth = defaultdict(list)
@@ -136,7 +137,7 @@ class CCNN:
 		stddev = -1
 		if len(f1s) > 1:
 			stddev = self.standard_deviation(f1s)
-		print("pairwise f1 (over",len(f1s),"runs) -- avg:", round(sum(f1s)/len(f1s),4), "max:", round(max(f1s),4), "min:", round(min(f1s),4), "avgP:",sum(precs)/len(precs),"avgR:",round(sum(recalls)/len(recalls),4),"stddev:", round(stddev,4))
+		print("pairwise f1 (over",len(f1s),"runs) -- avg:", round(sum(f1s)/len(f1s),4), "max:", round(max(f1s),4), "min:", round(min(f1s),4), "avgP:",sum(precs)/len(precs),"avgR:",round(sum(recalls)/len(recalls),4),"stddev:", round(100*stddev,4))
 		(best_sp, best_conll, min_conll, max_conll, std_conll) = self.calculateBestKey(spToCoNLL)
 		sys.stdout.flush()
 		print("* [AGGWD] conll f1 -- best sp:",best_sp, "yielded: min:",round(100*min_conll,4),"avg:",round(100*best_conll,4),"max:",round(max_conll,4),"stddev:",round(std_conll,4))
@@ -169,8 +170,8 @@ class CCNN:
 							epochs=self.ne,
 							validation_data=([self.devX[:, 0], self.devX[:, 1]], self.devY))
 
-			preds = model.predict([self.devX[:, 0], self.devX[:, 1]])
-			#preds = model.predict([self.testX[:, 0], self.testX[:, 1]])
+			#preds = model.predict([self.devX[:, 0], self.devX[:, 1]])
+			preds = model.predict([self.testX[:, 0], self.testX[:, 1]])
 
 			numGoldPos = 0
 			scoreToGoldTruth = defaultdict(list)
@@ -237,7 +238,7 @@ class CCNN:
 
 		(best_sp, best_conll, min_conll, max_conll, std_conll) = self.calculateBestKey(spToCoNLL)
 		sys.stdout.flush()
-		print("* [AGGCD] conll f1 -- best sp:",best_sp, "yielded: min:",min_conll,"avg:",best_conll,"max:",max_conll,"stddev:",std_conll)
+		print("* [AGGCD] conll f1 -- best sp:", best_sp, "yielded: min:", round(100*min_conll, 4), "avg:", round(100*best_conll, 4), "max:", round(max_conll, 4), "stddev:", round(std_conll, 4))
 		return (cd_predictedClusters, cd_goldenClusters)
 
 	def calculateBestKey(self, dict):
@@ -696,7 +697,8 @@ class CCNN:
 	def sanityCheck2(self, xuidsFromPredictions):
 		# sanity check: ensures our DataHandler's XUID's matches the WD ones we import
 		for xuid in xuidsFromPredictions:
-			if xuid not in self.dh.devXUIDs:
+			if xuid not in self.dh.testXUIDs:
+			#if xuid not in self.dh.devXUIDs:
 				print("* ERROR: xuid (from predictions) isn't in dh.devXUIDs")
 				exit(1)
 				m = self.corpus.XUIDToMention[xuid]
