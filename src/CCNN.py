@@ -79,7 +79,8 @@ class CCNN:
 			numGoldPos = 0
 			scoreToGoldTruth = defaultdict(list)
 			for _ in range(len(preds)):
-				if self.devY[_]:
+				if self.testY[_]:
+				#if self.devY[_]:
 					numGoldPos += 1
 					scoreToGoldTruth[preds[_][0]].append(1)
 				else:
@@ -119,7 +120,8 @@ class CCNN:
 				# performs agglomerative clustering
 				stoppingPoints = [s for s in np.arange(0.1, 0.50, 0.02)]
 				for sp in stoppingPoints:
-					(wd_docPredClusters, wd_predictedClusters, wd_goldenClusters) = self.aggClusterWD(self.helper.devDirs, self.devID, preds, sp)
+					(wd_docPredClusters, wd_predictedClusters, wd_goldenClusters) = self.aggClusterWD(self.helper.testDirs, self.testID, preds, sp)
+					#self.aggClusterWD(self.helper.devDirs, self.devID, preds, sp)
 					#(bcub_p, bcub_r, bcub_f1, muc_p, muc_r, muc_f1, ceafe_p, ceafe_r, ceafe_f1, conll_f1)
 					scores = get_conll_scores(wd_goldenClusters, wd_predictedClusters)
 
@@ -176,7 +178,8 @@ class CCNN:
 			numGoldPos = 0
 			scoreToGoldTruth = defaultdict(list)
 			for _ in range(len(preds)):
-				if self.devY[_]:
+				if self.testY[_]:
+				#if self.devY[_]:
 					numGoldPos += 1
 					scoreToGoldTruth[preds[_][0]].append(1)
 				else:
@@ -216,7 +219,7 @@ class CCNN:
 				# performs agglomerative clustering
 				stoppingPoints = [s for s in np.arange(0.1, 1.0, 0.1)] # should be 0.1 to 0.8 with 0.05
 				for sp in stoppingPoints:
-					(cd_predictedClusters, cd_goldenClusters) = self.aggClusterCD(self.devID, preds, sp)
+					(cd_predictedClusters, cd_goldenClusters) = self.aggClusterCD(self.testID, preds, sp)# self.aggClusterCD(self.devID, preds, sp)
 					#(bcub_p, bcub_r, bcub_f1, muc_p, muc_r, muc_f1, ceafe_p, ceafe_r, ceafe_f1, conll_f1)
 					scores = get_conll_scores(cd_goldenClusters, cd_predictedClusters)
 					spToCoNLL[sp].append(scores[-1])
