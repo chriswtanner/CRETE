@@ -55,7 +55,7 @@ class CorefEngine:
 		# classifier params
 		numRuns = 1
 		useCCNN = True
-		cd_scope = "dirHalf" # {dir, dirHalf}
+		cd_scope = "dir" # {dir, dirHalf}
 		useRelationalFeatures = False
 		#wdPresets = [256, 1, 2, 4, 0.0]
 		wdPresets = [64, 5, 2, 32, 0.0] # batchsize, num epochs, num layers, num filters, dropout
