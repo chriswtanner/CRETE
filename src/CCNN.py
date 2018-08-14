@@ -16,6 +16,7 @@ from collections import defaultdict
 from get_coref_metrics import get_conll_scores
 class CCNN:
 	def __init__(self, helper, dh, useRelationalFeatures, scope, presets, wd_docPreds):
+		self.devMode = True
 		self.helper = helper
 		self.dh = dh
 		self.corpus = helper.corpus
@@ -73,18 +74,28 @@ class CCNN:
 				epochs=self.ne, \
 				validation_data=([self.devX[:, 0], self.devX[:, 1]], self.devY))
 
-			#preds = model.predict([self.devX[:, 0], self.devX[:, 1]])
-			preds = model.predict([self.testX[:, 0], self.testX[:, 1]])
+			if self.devMode:
+				preds = model.predict([self.devX[:, 0], self.devX[:, 1]])
+			else:
+				preds = model.predict([self.testX[:, 0], self.testX[:, 1]])
 			
 			numGoldPos = 0
 			scoreToGoldTruth = defaultdict(list)
 			for _ in range(len(preds)):
-				if self.testY[_]:
-				#if self.devY[_]:
-					numGoldPos += 1
-					scoreToGoldTruth[preds[_][0]].append(1)
+
+				if self.devMode:
+					if self.devY[_]:
+						numGoldPos += 1
+						scoreToGoldTruth[preds[_][0]].append(1)
+					else:
+						scoreToGoldTruth[preds[_][0]].append(0)
+
 				else:
-					scoreToGoldTruth[preds[_][0]].append(0)
+					if self.testY[_]:
+						numGoldPos += 1
+						scoreToGoldTruth[preds[_][0]].append(1)
+					else:
+						scoreToGoldTruth[preds[_][0]].append(0)
 			s = sorted(scoreToGoldTruth.keys())
 			TP = 0.0
 			FP = 0.0
@@ -120,7 +131,11 @@ class CCNN:
 				# performs agglomerative clustering
 				stoppingPoints = [s for s in np.arange(0.1, 0.50, 0.02)]
 				for sp in stoppingPoints:
-					(wd_docPredClusters, wd_predictedClusters, wd_goldenClusters) = self.aggClusterWD(self.helper.testingDirs, self.testID, preds, sp)
+
+					if self.devMode:
+						(wd_docPredClusters, wd_predictedClusters, wd_goldenClusters) = self.aggClusterWD(self.helper.devDirs, self.devID, preds, sp)
+					else:
+						(wd_docPredClusters, wd_predictedClusters, wd_goldenClusters) = self.aggClusterWD(self.helper.testingDirs, self.testID, preds, sp)
 					#self.aggClusterWD(self.helper.devDirs, self.devID, preds, sp)
 					#(bcub_p, bcub_r, bcub_f1, muc_p, muc_r, muc_f1, ceafe_p, ceafe_r, ceafe_f1, conll_f1)
 					scores = get_conll_scores(wd_goldenClusters, wd_predictedClusters)
@@ -172,18 +187,26 @@ class CCNN:
 							epochs=self.ne,
 							validation_data=([self.devX[:, 0], self.devX[:, 1]], self.devY))
 
-			#preds = model.predict([self.devX[:, 0], self.devX[:, 1]])
-			preds = model.predict([self.testX[:, 0], self.testX[:, 1]])
+			if self.devMode:
+				preds = model.predict([self.devX[:, 0], self.devX[:, 1]])
+			else:
+				preds = model.predict([self.testX[:, 0], self.testX[:, 1]])
 
 			numGoldPos = 0
 			scoreToGoldTruth = defaultdict(list)
 			for _ in range(len(preds)):
-				if self.testY[_]:
-				#if self.devY[_]:
-					numGoldPos += 1
-					scoreToGoldTruth[preds[_][0]].append(1)
+				if self.devMode:
+					if self.devY[_]:
+						numGoldPos += 1
+						scoreToGoldTruth[preds[_][0]].append(1)
+					else:
+						scoreToGoldTruth[preds[_][0]].append(0)
 				else:
-					scoreToGoldTruth[preds[_][0]].append(0)
+					if self.testY[_]:
+						numGoldPos += 1
+						scoreToGoldTruth[preds[_][0]].append(1)
+					else:
+						scoreToGoldTruth[preds[_][0]].append(0)
 			s = sorted(scoreToGoldTruth.keys())
 			TP = 0.0
 			FP = 0.0
@@ -219,7 +242,10 @@ class CCNN:
 				# performs agglomerative clustering
 				stoppingPoints = [s for s in np.arange(0.1, 1.0, 0.1)] # should be 0.1 to 0.8 with 0.05
 				for sp in stoppingPoints:
-					(cd_predictedClusters, cd_goldenClusters) = self.aggClusterCD(self.testID, preds, sp)# self.aggClusterCD(self.devID, preds, sp)
+					if self.devMode:
+						(cd_predictedClusters, cd_goldenClusters) = self.aggClusterCD(self.devID, preds, sp)
+					else:
+						(cd_predictedClusters, cd_goldenClusters) = self.aggClusterCD(self.testID, preds, sp)# self.aggClusterCD(self.devID, preds, sp)
 					#(bcub_p, bcub_r, bcub_f1, muc_p, muc_r, muc_f1, ceafe_p, ceafe_r, ceafe_f1, conll_f1)
 					scores = get_conll_scores(cd_goldenClusters, cd_predictedClusters)
 					spToCoNLL[sp].append(scores[-1])
@@ -700,11 +726,19 @@ class CCNN:
 	def sanityCheck2(self, xuidsFromPredictions):
 		# sanity check: ensures our DataHandler's XUID's matches the WD ones we import
 		for xuid in xuidsFromPredictions:
-			if xuid not in self.dh.testXUIDs:
-			#if xuid not in self.dh.devXUIDs:
-				print("* ERROR: xuid (from predictions) isn't in dh.devXUIDs")
-				exit(1)
-				m = self.corpus.XUIDToMention[xuid]
-				if m.dir_num not in self.helper.devDirs:
-					print("* ERROR: xuid's mention is from a dir other than helper.devDirs")
+			if self.devMode:
+				if xuid not in self.dh.devXUIDs:
+					print("* ERROR: xuid (from predictions) isn't in dh.devXUIDs")
 					exit(1)
+					m = self.corpus.XUIDToMention[xuid]
+					if m.dir_num not in self.helper.devDirs:
+						print("* ERROR: xuid's mention is from a dir other than helper.devDirs")
+						exit(1)
+			else:
+				if xuid not in self.dh.testXUIDs:
+					print("* ERROR: xuid (from predictions) isn't in dh.devXUIDs")
+					exit(1)
+					m = self.corpus.XUIDToMention[xuid]
+					if m.dir_num not in self.helper.devDirs:
+						print("* ERROR: xuid's mention is from a dir other than helper.devDirs")
+						exit(1)
