@@ -120,7 +120,7 @@ class CCNN:
 				# performs agglomerative clustering
 				stoppingPoints = [s for s in np.arange(0.1, 0.50, 0.02)]
 				for sp in stoppingPoints:
-					(wd_docPredClusters, wd_predictedClusters, wd_goldenClusters) = self.aggClusterWD(self.helper.testDirs, self.testID, preds, sp)
+					(wd_docPredClusters, wd_predictedClusters, wd_goldenClusters) = self.aggClusterWD(self.helper.testingDirs, self.testID, preds, sp)
 					#self.aggClusterWD(self.helper.devDirs, self.devID, preds, sp)
 					#(bcub_p, bcub_r, bcub_f1, muc_p, muc_r, muc_f1, ceafe_p, ceafe_r, ceafe_f1, conll_f1)
 					scores = get_conll_scores(wd_goldenClusters, wd_predictedClusters)
