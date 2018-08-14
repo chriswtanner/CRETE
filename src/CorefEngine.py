@@ -55,7 +55,7 @@ class CorefEngine:
 		# classifier params
 		numRuns = 1
 		useCCNN = True
-		cd_scope = "dirHalf" # {dir, dirHalf}
+		cd_scope = "dir" # {dir, dirHalf}
 		useRelationalFeatures = False
 		#wdPresets = [256, 1, 2, 4, 0.0]
 		wdPresets = [64, 5, 2, 32, 0.0] # batchsize, num epochs, num layers, num filters, dropout
@@ -138,7 +138,7 @@ class CorefEngine:
 			#pickle.dump(wd_docPreds, pickle_out)			
 			#exit(1)
 			cd_model = CCNN(helper, dh, useRelationalFeatures, cd_scope, wdPresets, wd_docPreds, False, sp_cd)
-			cd_model.train_and_test_cd(3) #wd_pred, wd_gold, numRuns)
+			cd_model.train_and_test_cd(1) #wd_pred, wd_gold, numRuns)
 		else:
 			wd_model = FFNN(helper, dh)
 			wd_model.train_and_test_wd(numRuns)
