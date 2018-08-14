@@ -55,7 +55,7 @@ class CorefEngine:
 		# classifier params
 		numRuns = 1
 		useCCNN = True
-		cd_scope = "dirHalf" # {dir, dirHalf}
+		cd_scope = "dir" # {dir, dirHalf}
 		useRelationalFeatures = False
 		#wdPresets = [256, 1, 2, 4, 0.0]
 		wdPresets = [64, 5, 2, 32, 0.0] # batchsize, num epochs, num layers, num filters, dropout
@@ -136,8 +136,8 @@ class CorefEngine:
 			wd_model = CCNN(helper, dh, useRelationalFeatures, "doc", wdPresets, None, False, -1)
 			#wd_model = CCNN(helper, dh, useRelationalFeatures, "doc", wdPresets, None, False, sp_wd)
 			(wd_docPreds, wd_pred, wd_gold, _) = wd_model.train_and_test_wd(1)  # 1 means only 1 run of WD
-			pickle_out = open("wd_clusters_FULL_23.p", 'wb')
-			pickle.dump(wd_docPreds, pickle_out)			
+			#pickle_out = open("wd_clusters_FULL_23.p", 'wb')
+			#pickle.dump(wd_docPreds, pickle_out)			
 			#exit(1)
 			cd_model = CCNN(helper, dh, useRelationalFeatures, cd_scope, wdPresets, wd_docPreds, False, -1)
 			#cd_model = CCNN(helper, dh, useRelationalFeatures, cd_scope, wdPresets, wd_docPreds, False, sp_cd)
