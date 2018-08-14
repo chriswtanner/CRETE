@@ -159,7 +159,7 @@ class CCNN:
 		sys.stdout.flush()
 		print("* [AGGWD] conll f1 -- best sp:",best_sp, "yielded: min:",round(100*min_conll,4),"avg:",round(100*best_conll,4),"max:",round(max_conll,4),"stddev:",round(std_conll,4))
 		fout = open("ccnn_agg_"+self.scope+".csv", "a+")
-		fout.write(self.args.devDir + "," + str(best_conll))
+		fout.write(str(self.args.devDir) + "," + str(best_conll) + ",")
 		fout.close()
 		return (spToDocPredictedCluster[best_sp], spToPredictedCluster[best_sp], wd_goldenClusters)
 
