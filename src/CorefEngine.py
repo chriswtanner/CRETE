@@ -128,7 +128,7 @@ class CorefEngine:
 			(wd_docPreds, wd_pred, wd_gold, sp_wd) = wd_model.train_and_test_wd(10) # 1 means only
 			
 			cd_model = CCNN(helper, dh, useRelationalFeatures, cd_scope, wdPresets, wd_docPreds, True)  # True means use DEV SET
-			(cd_docPreds, cd_pred, cd_gold, sp_cd) = cd_model.train_and_test_cd(10)
+			(cd_docPreds, cd_pred, cd_gold, sp_cd) = cd_model.train_and_test_cd(3)
 
 			print("\t** BEST DEV-WD stopping points:", sp_wd,"and",sp_cd)
 
