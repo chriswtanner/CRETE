@@ -15,14 +15,15 @@ from keras.optimizers import Adam
 from collections import defaultdict
 from get_coref_metrics import get_conll_scores
 class CCNN:
-	def __init__(self, helper, dh, useRelationalFeatures, scope, presets, wd_docPreds):
-		self.devMode = True
+	def __init__(self, helper, dh, useRelationalFeatures, scope, presets, wd_docPreds, devMode, sp=-1):
+		self.devMode = devMode
 		self.helper = helper
 		self.dh = dh
 		self.corpus = helper.corpus
 		self.args = helper.args
 		self.wd_pred_clusters = wd_docPreds
 		self.scope = scope # used by aggClusterCD()
+		self.stoppingPoint = -1
 		if presets == []:
 			self.bs = self.args.batchSize
 			self.ne = self.args.numEpochs
@@ -129,7 +130,9 @@ class CCNN:
 				precs.append(bestP)
 
 				# performs agglomerative clustering
-				stoppingPoints = [s for s in np.arange(0.3, 0.51, 0.1)]
+				stoppingPoints = [s for s in np.arange(0.1, 1.0, 0.025)]
+				if self.stoppingPoint != -1:
+					stoppingPoints = [self.stoppingPoint]
 				for sp in stoppingPoints:
 
 					if self.devMode:
@@ -161,7 +164,7 @@ class CCNN:
 		fout = open("ccnn_agg_dirHalf.csv", "a+")
 		fout.write(str(self.args.devDir) + "," + str(best_conll) + ",")
 		fout.close()
-		return (spToDocPredictedCluster[best_sp], spToPredictedCluster[best_sp], wd_goldenClusters)
+		return (spToDocPredictedCluster[best_sp], spToPredictedCluster[best_sp], wd_goldenClusters, best_sp)
 
 ##########################
 ##########################
@@ -243,7 +246,9 @@ class CCNN:
 				precs.append(bestP)
 
 				# performs agglomerative clustering
-				stoppingPoints = [s for s in np.arange(0.1, 1.0, 0.1)] # should be 0.1 to 0.8 with 0.05
+				stoppingPoints = [s for s in np.arange(0.1, 1.0, 0.025)]
+				if self.stoppingPoint != -1:
+					stoppingPoints = [self.stoppingPoint]				
 				for sp in stoppingPoints:
 					if self.devMode:
 						(cd_predictedClusters, cd_goldenClusters) = self.aggClusterCD(self.devID, preds, sp)
@@ -274,7 +279,7 @@ class CCNN:
 		fout = open("ccnn_agg_dirHalf.csv", "a+")
 		fout.write(str(best_conll) + "\n")
 		fout.close()
-		return (cd_predictedClusters, cd_goldenClusters)
+		return (None, cd_predictedClusters, cd_goldenClusters, best_sp)
 
 	def calculateBestKey(self, dict):
 		best_conll = 0
