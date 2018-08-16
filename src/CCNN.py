@@ -140,8 +140,9 @@ class CCNN:
 						(wd_docPredClusters, wd_predictedClusters, wd_goldenClusters) = self.aggClusterWD(self.helper.testingDirs, self.testID, preds, sp)
 					#self.aggClusterWD(self.helper.devDirs, self.devID, preds, sp)
 					#(bcub_p, bcub_r, bcub_f1, muc_p, muc_r, muc_f1, ceafe_p, ceafe_r, ceafe_f1, conll_f1)
+					start_time = time.time()
 					scores = get_conll_scores(wd_goldenClusters, wd_predictedClusters)
-
+					print("* getting conll score took", str((time.time() - start_time)), "seconds")
 					spToCoNLL[sp].append(scores[-1])
 					spToPredictedCluster[sp] = wd_predictedClusters
 					spToDocPredictedCluster[sp] = wd_docPredClusters
