@@ -129,7 +129,7 @@ class CCNN:
 				precs.append(bestP)
 
 				# performs agglomerative clustering
-				stoppingPoints = [s for s in np.arange(0.1, 1.0, 0.025)]
+				stoppingPoints = [s for s in np.arange(0.28, .35, 0.05)]
 				if self.stoppingPoint != -1:
 					stoppingPoints = [self.stoppingPoint]
 				for sp in stoppingPoints:
@@ -197,7 +197,8 @@ class CCNN:
 				preds = model.predict([self.devX[:, 0], self.devX[:, 1]])
 			else:
 				preds = model.predict([self.testX[:, 0], self.testX[:, 1]])
-
+			print("* done training")
+			
 			numGoldPos = 0
 			scoreToGoldTruth = defaultdict(list)
 			for _ in range(len(preds)):
@@ -246,10 +247,11 @@ class CCNN:
 				precs.append(bestP)
 
 				# performs agglomerative clustering
-				stoppingPoints = [s for s in np.arange(0.1, 1.0, 0.025)]
+				stoppingPoints = [s for s in np.arange(0.3, 1.0, 0.10)]
 				if self.stoppingPoint != -1:
 					stoppingPoints = [self.stoppingPoint]				
 				for sp in stoppingPoints:
+					print("* [agg] sp:", sp)
 					if self.devMode:
 						(cd_predictedClusters, cd_goldenClusters) = self.aggClusterCD(self.devID, preds, sp)
 					else:
