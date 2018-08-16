@@ -78,7 +78,9 @@ class CorefEngine:
 		# parses the HDDCRP Mentions
 		if not args.useECBTest:
 			hddcrp_parser = HDDCRPParser(args)
-			helper.createHDDCRPMentions(hddcrp_parser.parseCorpus(args.hddcrpFullFile))
+			# returns a list of tokens for *every* HDDCRP mention, even if it's not in validSentences
+			allHDDCRPMentionTokens = hddcrp_parser.parseCorpus(args.hddcrpFullFile)
+			helper.createHDDCRPMentions(allHDDCRPMentionTokens) # constructs correct Mentions
 		
 		#exit(1)
 		# loads Stanford's parse
@@ -105,8 +107,13 @@ class CorefEngine:
 				trainXUIDs.add(m.XUID)
 			elif m.dir_num in helper.devDirs:
 				devXUIDs.add(m.XUID)
-			elif m.dir_num in helper.testingDirs:
+			elif args.useECBTest and m.dir_num in helper.testingDirs:
 				testXUIDs.add(m.XUID)
+
+		# conditionally add HDDCRP Mentions (as the test set)
+		if not args.useECBTest:
+			for xuid in corpus.HMUIDToMention:
+				testXUIDs.add(xuid)
 
 		'''
 		fh = FeatureHandler(args, helper) #, trainXUIDs, devXUIDs, testXUIDs)
