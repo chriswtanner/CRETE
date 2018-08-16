@@ -198,7 +198,7 @@ class CCNN:
 			else:
 				preds = model.predict([self.testX[:, 0], self.testX[:, 1]])
 			print("* done training")
-			
+
 			numGoldPos = 0
 			scoreToGoldTruth = defaultdict(list)
 			for _ in range(len(preds)):
@@ -348,8 +348,10 @@ class CCNN:
 				
 				#print("\tdoc:", doc_id, "has only 1 XUID (per DataHandler):", self.dh.docToXUIDsWeWantToUse[doc_id])
 				if len(curDoc.REFToEUIDs) != 1:
-					print("* ERROR: doc:",doc_id,"has only 1 XUID (per DataHandler), but per Corpus has more")
-					exit(1)
+					print("* WARNING: doc:",doc_id,"has only 1 XUID (per DataHandler), but per Corpus has more")
+					if self.args.useECBTest:
+						print("(this shouldn't happen w/ ECBTest, so exiting")
+						exit(1)
 
 				ourDocClusters[0] = set([next(iter(self.dh.docToXUIDsWeWantToUse[doc_id]))])
 				#ourClusterSuperSet[ourClusterID] = set([next(iter(self.dh.docToXUIDsWeWantToUse[doc_id]))])
