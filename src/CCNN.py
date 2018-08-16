@@ -122,7 +122,10 @@ class CCNN:
 					bestVal = eachVal
 					bestR = recall
 					bestP = prec
-
+				if f1 == 1:
+					print("*** somehow, F1 is 1, so numReturnedSoFar:", numReturnedSoFar)
+				print("\t\tWD eachVal:",eachVal,"=>",f1)
+			print("WD bestF1:",bestF1)
 			if bestF1 > 0:
 				f1s.append(bestF1)
 				recalls.append(bestR)
@@ -155,6 +158,7 @@ class CCNN:
 		self.trainX = None
 		self.trainY = None
 		stddev = -1
+		print("WD f1s:", f1s)
 		if len(f1s) > 1:
 			stddev = self.standard_deviation(f1s)
 		print("pairwise f1 (over",len(f1s),"runs) -- avg:", round(sum(f1s)/len(f1s),4), "max:", round(max(f1s),4), "min:", round(min(f1s),4), "avgP:",sum(precs)/len(precs),"avgR:",round(sum(recalls)/len(recalls),4),"stddev:", round(100*stddev,4))
@@ -241,6 +245,10 @@ class CCNN:
 					bestR = recall
 					bestP = prec
 
+				if f1 == 1:
+					print("*** somehow, F1 is 1, so numReturnedSoFar:", numReturnedSoFar)
+				print("\t\tCD eachVal:",eachVal,"=>",f1)
+			print("CD bestF1:",bestF1)
 			if bestF1 > 0:
 				f1s.append(bestF1)
 				recalls.append(bestR)
@@ -270,6 +278,7 @@ class CCNN:
 		self.trainX = None
 		self.trainY = None
 		stddev = -1
+		print("CD f1s here:",f1s)
 		if len(f1s) > 1:
 			stddev = self.standard_deviation(f1s)
 		print("pairwise f1 (over", len(f1s), "runs) -- avg:", sum(f1s)/len(f1s), "max:", max(f1s), "min:",
@@ -700,6 +709,7 @@ class CCNN:
 		return K.mean(y_true * K.square(y_pred) + (1 - y_true) * K.square(K.maximum(margin - y_pred, 0)))
 
 	def standard_deviation(self, lst):
+		print("* calculating std dev of:",lst)
 		num_items = len(lst)
 		mean = sum(lst) / num_items
 		differences = [x - mean for x in lst]
