@@ -6,7 +6,7 @@ import pickle
 import random
 import sys
 import os
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+#os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 from collections import defaultdict
 from ECBParser import ECBParser
 from HDDCRPParser import HDDCRPParser

@@ -1,6 +1,7 @@
 import os
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+#os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 import sys
+import time
 import keras
 import pickle
 import random
@@ -36,7 +37,6 @@ class CCNN:
 		print("[ccnn] scope:",self.scope,"bs:",self.bs,"ne:",self.ne,"nl:",self.nl,"nf:",self.nf,"do:",self.do, "dm:",self.devMode, "sp:",self.stoppingPoint)
 		sys.stdout.flush()
 
-		
 		if self.scope != "doc":
 			#self.wd_pred_clusters = pickle.load(open("wd_clusters_FULL_dirHalf_812.p", 'rb'))
 			self.sanityCheck1()
@@ -79,11 +79,10 @@ class CCNN:
 				preds = model.predict([self.devX[:, 0], self.devX[:, 1]])
 			else:
 				preds = model.predict([self.testX[:, 0], self.testX[:, 1]])
-			
+			print("* done training")
 			numGoldPos = 0
 			scoreToGoldTruth = defaultdict(list)
 			for _ in range(len(preds)):
-
 				if self.devMode:
 					if self.devY[_]:
 						numGoldPos += 1
@@ -134,7 +133,7 @@ class CCNN:
 				if self.stoppingPoint != -1:
 					stoppingPoints = [self.stoppingPoint]
 				for sp in stoppingPoints:
-
+					print("* [agg] sp:", sp)
 					if self.devMode:
 						(wd_docPredClusters, wd_predictedClusters, wd_goldenClusters) = self.aggClusterWD(self.helper.devDirs, self.devID, preds, sp)
 					else:
@@ -295,6 +294,7 @@ class CCNN:
 	# agglomerative cluster the within-doc predicted pairs
 	def aggClusterWD(self, relevant_dirs, ids, preds, stoppingPoint):
 		#print("** in aggClusterWD(), stoppingPoint:",stoppingPoint)
+		start_time = time.time()
 		docToXUIDPredictions = defaultdict(lambda: defaultdict(float))
 		docToXUIDsFromPredictions = defaultdict(list) # this list is constructed just to ensure it's the same as the corpus'
 		for ((xuid1, xuid2), pred) in zip(ids, preds):
@@ -436,6 +436,7 @@ class CCNN:
 				#print("doc:",doc_id,"adding a cluster")
 				ourClusterSuperSet[ourClusterID] = ourDocClusters[i]
 				ourClusterID += 1
+		print("\tagg took ", str((time.time() - start_time)), "seconds")
 		#print("# golden clusters:",str(len(goldenSuperSet.keys())), "; # our clusters:",str(len(ourClusterSuperSet)))
 		return (docToPredClusters, ourClusterSuperSet, goldenSuperSet)
 
@@ -753,4 +754,3 @@ class CCNN:
 					if m.dir_num not in self.helper.devDirs:
 						print("* ERROR: xuid's mention is from a dir other than helper.devDirs")
 						exit(1)
-						

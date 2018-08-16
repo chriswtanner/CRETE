@@ -1,3 +1,4 @@
+import time
 import pickle
 import numpy as np
 from itertools import chain
@@ -55,6 +56,7 @@ class DataHandler:
 
 	def loadNNData(self, useRelationalFeatures, useCCNN, scope):
 		print("[dh] loading ...")
+		start_time = time.time()
 		if useCCNN:
 			(self.trainID, self.trainX, self.trainY) = self.createDataForCCNN(self.helper.trainingDirs, self.trainXUIDs, useRelationalFeatures, True, scope)
 			(self.devID, self.devX, self.devY) = self.createDataForCCNN(self.helper.devDirs, self.devXUIDs, useRelationalFeatures, False, scope)
@@ -63,7 +65,7 @@ class DataHandler:
 			(self.trainID, self.trainX, self.trainY) = self.createDataForFFNN(self.helper.trainingDirs, self.trainXUIDs, useRelationalFeatures, True, scope)
 			(self.devID, self.devX, self.devY) = self.createDataForFFNN(self.helper.devDirs, self.devXUIDs, useRelationalFeatures, False, scope)
 			(self.testID, self.testX, self.testY) = self.createDataForFFNN(self.helper.testingDirs, self.testXUIDs, useRelationalFeatures, False, scope)
-		print("[dh] done loading")
+		print("[dh] done loading -- took ", str((time.time() - start_time)), "seconds")
 
 	def loadFeature(self, file):
 		print("loading",file)
