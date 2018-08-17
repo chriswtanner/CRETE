@@ -102,8 +102,8 @@ class CCNN:
 					self.helper.writeCoNLLFile(wd_predictedClusters, "wd", sp)
 
 					# pickles the predictions
-					pickle_out = open("wd_hddcrp_clusters_FULL_sp" + str(sp) + ".p", 'wb')
-					pickle.dump(wd_docPredClusters, pickle_out)
+					with open("wd_hddcrp_clusters_FULL_sp" + str(sp) + ".p", 'wb') as pickle_out:
+						pickle.dump(wd_docPredClusters, pickle_out)
 				#print("[DEV] AGGWD SP:", str(round(sp,4)), "CoNLL F1:", str(round(conll_f1,4)), "MUC:", str(round(muc_f1,4)), "BCUB:", str(round(bcub_f1,4)), "CEAF:", str(round(ceafe_f1,4)))
 	
 			if self.args.useECBTest:
@@ -176,7 +176,10 @@ class CCNN:
 			fout.close()
 
 			return (spToDocPredictedCluster[best_sp], spToPredictedCluster[best_sp], wd_goldenClusters, best_sp)
-
+		
+		else: # HDDCRP
+			# non-sensical return; only done so that the return handler doesn't complain
+			return wd_docPredClusters, wd_predictedClusters, wd_goldenClusters, 0
 ##########################
 ##########################
 
