@@ -39,21 +39,21 @@ class FeatureHandler:
 		# on a per-dir basis
 		for d in sorted(self.corpus.dirs):
 			for euid1 in self.corpus.dirs[d].EUIDs:
-				if euid1 in self.corpus.dirs[d].HUIDs or euid1 in self.corpus.dirs[d].SUIDs:
+				if euid1 in self.corpus.dirs[d].HMUIDs or euid1 in self.corpus.dirs[d].SUIDs:
 					print("DUPE1")
 					exit(1)
 				for euid2 in self.corpus.dirs[d].EUIDs:
 					if euid2 <= euid1:
 						continue
 					ret.add((euid1, euid2))
-			for huid1 in self.corpus.dirs[d].HUIDs:
-				if huid1 in self.corpus.dirs[d].SUIDs:
+			for hmuid1 in self.corpus.dirs[d].HMUIDs:
+				if hmuid1 in self.corpus.dirs[d].SUIDs:
 					print("DUPE2")
 					exit(1)
-				for huid2 in self.corpus.dirs[d].HUIDs:
-					if huid2 <= huid1:
+				for hmuid2 in self.corpus.dirs[d].HMUIDs:
+					if hmuid2 <= hmuid1:
 						continue
-					ret.add((huid1, huid2))
+					ret.add((hmuid1, hmuid2))
 			for suid1 in self.corpus.dirs[d].SUIDs:
 				for suid2 in self.corpus.dirs[d].SUIDs:
 					if suid2 <= suid1:
@@ -63,26 +63,26 @@ class FeatureHandler:
 		'''
 		for dirhalf in self.corpus.dirHalves:
 			for euid1 in self.corpus.dirHalves[dirhalf].EUIDs:
-				if euid1 in self.corpus.dirHalves[dirhalf].HUIDs or euid1 in self.corpus.dirHalves[dirhalf].SUIDs:
+				if euid1 in self.corpus.dirHalves[dirhalf].HMUIDs or euid1 in self.corpus.dirHalves[dirhalf].SUIDs:
 					print("DUPE1")
 					exit(1)
 				for euid2 in self.corpus.dirHalves[dirhalf].EUIDs:
 					if euid2 <= euid1:
 						continue
 					ret.add((euid1, euid2))
-			for huid1 in self.corpus.dirHalves[dirhalf].HUIDs:
-				if huid1 in self.corpus.dirHalves[dirhalf].SUIDs:
+			for hmuid1 in self.corpus.dirHalves[dirhalf].HMUIDs:
+				if hmuid1 in self.corpus.dirHalves[dirhalf].SUIDs:
 					print("DUPE2")
 					exit(1)
-				for huid2 in self.corpus.dirHalves[dirhalf].HUIDs:
-					if huid2 <= huid1:
+				for hmuid2 in self.corpus.dirHalves[dirhalf].HMUIDs:
+					if hmuid2 <= hmuid1:
 						continue
-					ret.add((huid1, huid2))
-			for huid1 in self.corpus.dirHalves[dirhalf].SUIDs:
-				for huid2 in self.corpus.dirHalves[dirhalf].SUIDs:
-					if huid2 <= huid1:
+					ret.add((hmuid1, hmuid2))
+			for hmuid1 in self.corpus.dirHalves[dirhalf].SUIDs:
+				for hmuid2 in self.corpus.dirHalves[dirhalf].SUIDs:
+					if hmuid2 <= hmuid1:
 						continue
-					ret.add((huid1, huid2))
+					ret.add((hmuid1, hmuid2))
 		'''
 		return ret
 

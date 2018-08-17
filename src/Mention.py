@@ -10,7 +10,8 @@ class Mention:
         self.suffix = doc_id[doc_id.find("ecb"):]
         self.mentionType = mentionType
         self.UID = "" # a unique concatenation of its Tokens' UIDs
-        
+        self.startTuple = ()
+        self.endTuple = ()
         # gets filled in by Corpus.add*Mention()
         # robust to handle ECB or HDDCRP (if we named it MUID, then it
         # could look like it's only used for ECB Mentions, which isn't true)
@@ -19,6 +20,13 @@ class Mention:
 
         for t in self.tokens:
             self.UID += t.UID + ";"
+
+    # only used for HDDCRP Mentions
+    def setStartTuple(self, st):
+        self.startTuple = st
+
+    def setEndTuple(self, et):
+        self.endTuple = et
 
     def setREF(self, REF):
         self.REF = REF

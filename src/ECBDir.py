@@ -8,7 +8,7 @@ class ECBDir:
 		self.REFToEUIDs = defaultdict(set) # should be superset of all its docs
 		self.EUIDs = set()  # ECB parsed Mentions
 		self.SUIDs = set()  # Stan Mentions
-		self.HUIDs = set()  # HDDCRP Mentions
+		self.HMUIDs = set()  # HDDCRP Mentions
 
 	# sets the EUID and REF info
 	def assignECBMention(self, EUID, doc_id, REF):
@@ -25,9 +25,9 @@ class ECBDir:
 		self.docs[doc_id].assignStanMention(SUID)  # assigns Doc vars
 
 	# sets the HMUID info
-	def assignHDDCRPMention(self, HUID, doc_id):
-		self.HUIDs.add(HUID)  # assigns DirHalf vars
-		self.docs[doc_id].assignHDDCRPMention(HUID)  # assigns Doc vars
+	def assignHDDCRPMention(self, HMUID, doc_id):
+		self.HMUIDs.add(HMUID)  # assigns DirHalf vars
+		self.docs[doc_id].assignHDDCRPMention(HMUID)  # assigns Doc vars
 
 	def __str__(self):
-		return "[ECBDir] # ECB Mentions:" + str(len(self.EUIDs)) + "; # SUIDs:" + str(len(self.SUIDs)) + "; # HUIDs:" + str(len(self.HUIDs))
+		return "[ECBDir] # ECB Mentions:" + str(len(self.EUIDs)) + "; # SUIDs:" + str(len(self.SUIDs)) + "; # HMUIDs:" + str(len(self.HMUIDs))

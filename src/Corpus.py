@@ -87,8 +87,8 @@ class Corpus:
 		mention.setXUID(self.curXUID)  # updates the mention w/ XUID info
 		self.hddcrp_mentions.append(mention)
 		self.HMUIDToMention[self.curXUID] = mention
-		#self.dirs[mention.dir_num].assignHDDCRPMention(self.curXUID, mention.doc_id)
 		self.dirHalves[mention.dirHalf].assignHDDCRPMention(self.curXUID, mention.doc_id)
+		self.ECBDirs[mention.dir_num].assignHDDCRPMention(self.curXUID, mention.doc_id)
 		self.docSentToHMentions[(doc_id, sentenceNum)].append(mention)
 		self.XUIDToMention[self.curXUID] = mention
 		self.curXUID += 1

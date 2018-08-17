@@ -45,7 +45,8 @@ class CCNN:
 		(self.trainID, self.trainX, self.trainY) = (dh.trainID, dh.trainX, dh.trainY)
 		(self.devID, self.devX, self.devY) = (dh.devID, dh.devX, dh.devY)
 		(self.testID, self.testX, self.testY) = (dh.testID, dh.testX, dh.testY)
-		
+		print("self.testY:", self.testY)
+
 		if self.args.native:
 			tf.Session(config=tf.ConfigProto(log_device_placement=True))
 			os.environ['CUDA_VISIBLE_DEVICES'] = ''
@@ -122,17 +123,14 @@ class CCNN:
 					bestVal = eachVal
 					bestR = recall
 					bestP = prec
-				if f1 == 1:
-					print("*** somehow, F1 is 1, so numReturnedSoFar:", numReturnedSoFar)
-				print("\t\tWD eachVal:",eachVal,"=>",f1)
-			print("WD bestF1:",bestF1)
+
 			if bestF1 > 0:
 				f1s.append(bestF1)
 				recalls.append(bestR)
 				precs.append(bestP)
 
 				# performs agglomerative clustering
-				stoppingPoints = [s for s in np.arange(0.28, .35, 0.05)]
+				stoppingPoints = [s for s in np.arange(0.3, 0.31, 0.04)]
 				if self.stoppingPoint != -1:
 					stoppingPoints = [self.stoppingPoint]
 				for sp in stoppingPoints:
@@ -141,34 +139,42 @@ class CCNN:
 						(wd_docPredClusters, wd_predictedClusters, wd_goldenClusters) = self.aggClusterWD(self.helper.devDirs, self.devID, preds, sp)
 					else:
 						(wd_docPredClusters, wd_predictedClusters, wd_goldenClusters) = self.aggClusterWD(self.helper.testingDirs, self.testID, preds, sp)
-					#self.aggClusterWD(self.helper.devDirs, self.devID, preds, sp)
 					#(bcub_p, bcub_r, bcub_f1, muc_p, muc_r, muc_f1, ceafe_p, ceafe_r, ceafe_f1, conll_f1)
 					start_time = time.time()
-					scores = get_conll_scores(wd_goldenClusters, wd_predictedClusters)
-					print("* getting conll score took", str((time.time() - start_time)), "seconds")
-					spToCoNLL[sp].append(scores[-1])
-					spToPredictedCluster[sp] = wd_predictedClusters
-					spToDocPredictedCluster[sp] = wd_docPredClusters
+
+					self.helper.writeCoNLLFile(wd_predictedClusters, "wd", sp)
+					print("wrote out file. exit")
+					exit(1)
+					if self.args.useECBTest:
+						scores = get_conll_scores(wd_goldenClusters, wd_predictedClusters)
+						print("* getting conll score took", str((time.time() - start_time)), "seconds")
+						spToCoNLL[sp].append(scores[-1])
+						spToPredictedCluster[sp] = wd_predictedClusters
+						spToDocPredictedCluster[sp] = wd_docPredClusters
 					#print("[DEV] AGGWD SP:", str(round(sp,4)), "CoNLL F1:", str(round(conll_f1,4)), "MUC:", str(round(muc_f1,4)), "BCUB:", str(round(bcub_f1,4)), "CEAF:", str(round(ceafe_f1,4)))
 			#print("conll scores:", spToCoNLL)
-			print("ccnn_best_f1 (run ", len(f1s), "): best_pairwise_f1: ", round(bestF1,4), " prec: ",round(bestP,4), " recall: ", round(bestR,4), " threshold: ", round(bestVal,3), sep="")
+			if self.args.useECBTest:
+				print("ccnn_best_f1 (run ", len(f1s), "): best_pairwise_f1: ", round(bestF1,4), " prec: ",round(bestP,4), " recall: ", round(bestR,4), " threshold: ", round(bestVal,3), sep="")
 			sys.stdout.flush()
 
 		# clears ram
 		self.trainX = None
 		self.trainY = None
-		stddev = -1
-		print("WD f1s:", f1s)
-		if len(f1s) > 1:
-			stddev = self.standard_deviation(f1s)
-		print("pairwise f1 (over",len(f1s),"runs) -- avg:", round(sum(f1s)/len(f1s),4), "max:", round(max(f1s),4), "min:", round(min(f1s),4), "avgP:",sum(precs)/len(precs),"avgR:",round(sum(recalls)/len(recalls),4),"stddev:", round(100*stddev,4))
-		(best_sp, best_conll, min_conll, max_conll, std_conll) = self.calculateBestKey(spToCoNLL)
-		sys.stdout.flush()
-		print("* [AGGWD] conll f1 -- best sp:",best_sp, "yielded: min:",round(100*min_conll,4),"avg:",round(100*best_conll,4),"max:",round(max_conll,4),"stddev:",round(std_conll,4))
-		fout = open("ccnn_agg_dirHalf.csv", "a+")
-		fout.write(str(self.args.devDir) + ",wd," + str(self.devMode) + "," + str(best_conll) + "\n")
-		fout.close()
-		return (spToDocPredictedCluster[best_sp], spToPredictedCluster[best_sp], wd_goldenClusters, best_sp)
+		if self.args.useECBTest:
+			stddev = -1
+			if len(f1s) > 1:
+				stddev = self.standard_deviation(f1s)
+			print("pairwise f1 (over",len(f1s),"runs) -- avg:", round(sum(f1s)/len(f1s),4), "max:", round(max(f1s),4), "min:", round(min(f1s),4), "avgP:",sum(precs)/len(precs),"avgR:",round(sum(recalls)/len(recalls),4),"stddev:", round(100*stddev,4))
+			(best_sp, best_conll, min_conll, max_conll, std_conll) = self.calculateBestKey(spToCoNLL)
+
+			sys.stdout.flush()
+			
+			print("* [AGGWD] conll f1 -- best sp:",best_sp, "yielded: min:",round(100*min_conll,4),"avg:",round(100*best_conll,4),"max:",round(max_conll,4),"stddev:",round(std_conll,4))
+			
+			fout = open("ccnn_agg_dirHalf.csv", "a+")
+			fout.write(str(self.args.devDir) + ",wd," + str(self.devMode) + "," + str(best_conll) + "\n")
+			fout.close()
+			return (spToDocPredictedCluster[best_sp], spToPredictedCluster[best_sp], wd_goldenClusters, best_sp)
 
 ##########################
 ##########################
@@ -278,7 +284,6 @@ class CCNN:
 		self.trainX = None
 		self.trainY = None
 		stddev = -1
-		print("CD f1s here:",f1s)
 		if len(f1s) > 1:
 			stddev = self.standard_deviation(f1s)
 		print("pairwise f1 (over", len(f1s), "runs) -- avg:", sum(f1s)/len(f1s), "max:", max(f1s), "min:",
@@ -286,7 +291,9 @@ class CCNN:
 
 		(best_sp, best_conll, min_conll, max_conll, std_conll) = self.calculateBestKey(spToCoNLL)
 		sys.stdout.flush()
+
 		print("* [AGGCD] conll f1 -- best sp:", best_sp, "yielded: min:", round(100*min_conll, 4), "avg:", round(100*best_conll, 4), "max:", round(max_conll, 4), "stddev:", round(std_conll, 4))
+		
 		fout = open("ccnn_agg_dirHalf.csv", "a+")
 		fout.write(str(self.args.devDir) + ",cd," + str(self.devMode) + "," + str(best_conll) + "\n")
 		fout.close()
@@ -709,7 +716,6 @@ class CCNN:
 		return K.mean(y_true * K.square(y_pred) + (1 - y_true) * K.square(K.maximum(margin - y_pred, 0)))
 
 	def standard_deviation(self, lst):
-		print("* calculating std dev of:",lst)
 		num_items = len(lst)
 		mean = sum(lst) / num_items
 		differences = [x - mean for x in lst]

@@ -51,15 +51,29 @@ class CorefEngine:
 		bowFeaturesFile = "../data/features/bow.f"
 
 		runStanford = False
-		
+
 		# classifier params
 		numRuns = 1
 		useCCNN = True
 		cd_scope = "dirHalf" # {dir, dirHalf}
 		useRelationalFeatures = False
-		#wdPresets = [256, 1, 2, 4, 0.0]
-		wdPresets = [64, 5, 2, 32, 0.0] # batchsize, num epochs, num layers, num filters, dropout
+		wdPresets = [256, 1, 2, 4, 0.0]
+		#wdPresets = [64, 5, 2, 32, 0.0] # batchsize, num epochs, num layers, num filters, dropout
 		
+		a = [1,2,3]
+		b = [4,5]
+		c = [6,7]
+		ret = []
+		ret.append((a,"REF1", (1,2)))
+		ret.append((b,"REF2", (3,4)))
+		ret.append((c,"REF3", (5,6)))
+		print(ret)
+		x, y, z = ret[0]
+		print(x)
+		print(y)
+		print(z)
+		#exit(1)
+
 		# handles passed-in args
 		args = params.setCorefEngineParams()
 		

@@ -15,11 +15,11 @@ class ECBHelper:
 		self.devDirs = [23, 24, 25]
 		self.testingDirs = [26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45]
 
-		self.UIDToMention = defaultdict(list)
+		self.UIDToMention = defaultdict(list) # used only for ECBMentions
 
 		# filled in via createHDDCRPMentions()
-		# (maps text UID lines from CoNLL file to the created HDDCRP Mention)
-		self.UIDToHUID = defaultdict(list)
+		# (maps text UID lines from CoNLL file to the XUID (aka HMUID) of the created HDDCRP Mention
+		self.UIDToHMUID = defaultdict(list)
 
 		# filled in via createStanMentions() (maps text UID
 		# lines from CoNLL file to the created Stan Mention)
@@ -27,6 +27,130 @@ class ECBHelper:
 		# (which contain lists of StanTokens)
 		self.UIDToSUID = defaultdict(list)
 		self.docToVerifiedSentences = self.loadVerifiedSentences(args.verifiedSentencesFile)
+
+	def writeCoNLLFile(self, predictedClusters, suffix, stoppingPoint):
+		hmuidToClusterID = {}
+		for c_id in predictedClusters.keys():
+			for hmuid in predictedClusters[c_id]:
+				hmuidToClusterID[hmuid] = c_id
+
+		#print("# hmuid:", str(len(hmuidToClusterID.keys())))
+		# sanity check
+		'''
+		for hmuid in self.hddcrp_parsed.hm_idToHMention.keys():
+			if hmuid not in hmuidToClusterID.keys():
+				print("ERROR: hmuid:",str(hmuid),"NOT FOUND within our clusters, but it's parsed!")
+				exit(1)
+		'''
+		# constructs output file
+		fileOut = str(self.args.baseDir) + "results/hddcrp_pred_" + suffix + "_" + str(stoppingPoint) + ".txt"
+		print("ECBHelper writing out:", str(fileOut))
+		fout = open(fileOut, 'w')
+
+		#print("self.UIDToHMUID:", self.UIDToHMUID)
+
+		# reads the original CoNLL prediction file (not golden), while writing each line
+		f = open(self.args.hddcrpFullFile, 'r')
+		tokenIndex = 0
+		REFToStartTuple = defaultdict(list)
+		for line in f:
+			line = line.rstrip()
+			tokens = line.split("\t")
+			if line.startswith("#") and "document" in line:
+				sentenceNum = 0
+				fout.write(line + "\n")
+			elif line == "":
+				sentenceNum += 1
+				fout.write(line + "\n")
+			elif len(tokens) == 5:
+				doc, _, tokenNum, text, ref_ = tokens
+				UID = str(doc) + ";" + str(sentenceNum) + ";" + str(tokenNum)
+
+				#print("\tfound a line:",UID)
+				# reconstructs the HMention(s) that exist on this line, for the
+				# sake of being able to now look up what cluster assignent it/they belong to
+				hmentions = set()
+				for hmuid in self.UIDToHMUID[UID]:
+					#print("hmuid:",hmuid)
+					hmentions.add(self.corpus.XUIDToMention[hmuid])
+					#print("corpus.XUIDToMention:", self.corpus.XUIDToMention)
+				print("line:", UID, ": hmentions: ", hmentions)
+				refs = []
+				if ref_.find("|") == -1:
+					refs.append(ref_)
+				else:  # we at most have 1 "|""
+					refs.append(ref_[0:ref_.find("|")])
+					refs.append(ref_[ref_.find("|")+1:])
+					#print("***** FOUND 2:",str(line))
+
+				if (len(refs) == 1 and refs[0] == "-"):
+					# just output it, since we want to keep the same mention going
+					fout.write(line + "\n")
+				else:
+					ref_section = ""
+					isFirst = True
+					for ref in refs:
+						if ref[0] == "(" and ref[-1] != ")":  # i.e. (ref_id
+							ref_id = int(ref[1:])
+							REFToStartTuple[ref_id].append((tokenIndex, isFirst))
+							startTuple = (tokenIndex, isFirst)
+							foundMention = False
+							for hmention in hmentions:
+								if hmention.REF == ref_id and hmention.startTuple == startTuple:  # we found the exact mention
+									foundMention = True
+									hmuid = hmention.XUID
+									if hmuid in hmuidToClusterID:
+										clusterID = hmuidToClusterID[hmuid]
+										ref_section += "(" + str(clusterID)
+										break
+							if not foundMention:
+								print("* ERROR #1, we never found the mention for this line:", str(line))
+								ref_section = "-"
+								#exit(1)
+
+						# represents we are ending a mention
+						elif ref[-1] == ")":  # i.e., ref_id) or (ref_id)
+							ref_id = -1
+
+							endTuple = (tokenIndex, isFirst)
+							startTuple = ()
+							# we set ref_if, tokens, UID
+							if ref[0] != "(":  # ref_id)
+								ref_id = int(ref[:-1])
+								startTuple = REFToStartTuple[ref_id].pop()
+							else:  # (ref_id)
+								ref_id = int(ref[1:-1])
+								startTuple = (tokenIndex, isFirst)
+								ref_section += "("
+
+							#print("starttuple:",str(startTuple))
+							#print("endTuple:",str(endTuple))
+
+							foundMention = False
+							for hmention in hmentions:
+								#print("looking at hmention:",str(hmention))
+								if hmention.REF == ref_id and hmention.startTuple == startTuple and hmention.endTuple == endTuple:  # we found the exact mention
+									foundMention = True
+									hmuid = hmention.XUID
+									if hmuid in hmuidToClusterID:
+										clusterID = hmuidToClusterID[hmuid]
+										ref_section += str(clusterID) + ")"
+										break
+							if not foundMention:
+								print("* ERROR #2, we never found the mention for this line:", str(line))
+								ref_section = "-"
+								#exit(1)
+
+						if len(refs) == 2 and isFirst:
+							ref_section += "|"
+						isFirst = False
+					fout.write(str(doc) + "\t" + str(_) + "\t" + str(tokenNum) +
+											"\t" + str(text) + "\t" + str(ref_section) + "\n")
+					# end of current token line
+				tokenIndex += 1  # this always increases whenever we see a token
+		f.close()
+		fout.close()
+
 
 	def addECBCorpus(self, corpus):
 		self.corpus = corpus
@@ -298,8 +422,10 @@ class ECBHelper:
 
 		tmpHDDCRPTokens = set()
 		numMismatch = 0
+
+		# these are correctly 'HUIDs' (i.e., text fields concatenated, not a XUID)
 		for i in range(len(hddcrp_mentions)):
-			HUIDs = hddcrp_mentions[i]
+			HUIDs, ref_id, startTuple, endTuple = hddcrp_mentions[i]
 			tokens = []
 			text = []
 			if len(HUIDs) == 0:
@@ -326,9 +452,17 @@ class ECBHelper:
 				for t in tokens:
 					tmpHDDCRPTokens.add(t)
 				curMention = Mention(dirHalf, dir_num, doc_id, tokens, text, True, "unknown")
+
+				# sets the HDDCRP Mention's REF to being what was listed in the prediction file
+				# this is done just so that we can later match it w/ the prediction file again, as there may be multiple
+				# HMentions on the same line of the file, and we need a unique identifier
+				curMention.setREF(ref_id)
+				curMention.setStartTuple(startTuple)
+				curMention.setEndTuple(endTuple)
 				self.corpus.addHDDCRPMention(curMention)
 				for HUID in HUIDs: # UID == HUID always, because we checked above (in the warning check)
-					self.UIDToHUID[HUID].append(curMention.XUID)
+					HUID_minus_text = HUID[0:HUID.rfind(";")]
+					self.UIDToHMUID[HUID_minus_text].append(curMention.XUID)
 		print("# ecb testing tokens (from mentions)", len(tmpECBTokens))
 		print("# hddcrp testing tokens (from mentions):",len(tmpHDDCRPTokens))
 		print("# HDDCRP Mentions created:",len(self.corpus.hddcrp_mentions))
