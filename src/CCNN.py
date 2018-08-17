@@ -81,76 +81,80 @@ class CCNN:
 			else:
 				preds = model.predict([self.testX[:, 0], self.testX[:, 1]])
 			print("* done training")
-			numGoldPos = 0
-			scoreToGoldTruth = defaultdict(list)
-			for _ in range(len(preds)):
+
+			# performs WD agglomerative clustering
+			for sp in self.stopping_points:
+				print("* [agg] sp:", sp)
 				if self.devMode:
-					if self.devY[_]:
-						numGoldPos += 1
-						scoreToGoldTruth[preds[_][0]].append(1)
-					else:
-						scoreToGoldTruth[preds[_][0]].append(0)
-
+					(wd_docPredClusters, wd_predictedClusters, wd_goldenClusters) = self.aggClusterWD(self.helper.devDirs, self.devID, preds, sp)
 				else:
-					if self.testY[_]:
-						numGoldPos += 1
-						scoreToGoldTruth[preds[_][0]].append(1)
-					else:
-						scoreToGoldTruth[preds[_][0]].append(0)
-			s = sorted(scoreToGoldTruth.keys())
-			TP = 0.0
-			FP = 0.0
-			bestF1 = 0
-			bestVal = -1
-			bestR = 0
-			bestP = 0
-			numReturnedSoFar = 0
-			for eachVal in s:
-				for _ in scoreToGoldTruth[eachVal]:
-					if _ == 1:
-						TP += 1
-					else:
-						FP += 1
+					(wd_docPredClusters, wd_predictedClusters, wd_goldenClusters) = self.aggClusterWD(self.helper.testingDirs, self.testID, preds, sp)
+				#(bcub_p, bcub_r, bcub_f1, muc_p, muc_r, muc_f1, ceafe_p, ceafe_r, ceafe_f1, conll_f1)
+				start_time = time.time()
 
-				numReturnedSoFar += len(scoreToGoldTruth[eachVal])
-				recall = float(TP / numGoldPos)
-				prec = float(TP / numReturnedSoFar)
-				f1 = 0
-				if (recall + prec) > 0:
-					f1 = 2*(recall*prec) / (recall + prec)
-				if f1 > bestF1:
-					bestF1 = f1
-					bestVal = eachVal
-					bestR = recall
-					bestP = prec
-
-			if bestF1 > 0:
-				f1s.append(bestF1)
-				recalls.append(bestR)
-				precs.append(bestP)
-
-				# performs WD agglomerative clustering
-				for sp in self.stopping_points:
-					print("* [agg] sp:", sp)
-					if self.devMode:
-						(wd_docPredClusters, wd_predictedClusters, wd_goldenClusters) = self.aggClusterWD(self.helper.devDirs, self.devID, preds, sp)
-					else:
-						(wd_docPredClusters, wd_predictedClusters, wd_goldenClusters) = self.aggClusterWD(self.helper.testingDirs, self.testID, preds, sp)
-					#(bcub_p, bcub_r, bcub_f1, muc_p, muc_r, muc_f1, ceafe_p, ceafe_r, ceafe_f1, conll_f1)
-					start_time = time.time()
-
+				if self.args.useECBTest: # uses ECB Test Mentions
+					scores = get_conll_scores(wd_goldenClusters, wd_predictedClusters)
+					print("* getting conll score took", str((time.time() - start_time)), "seconds")
+					spToCoNLL[sp].append(scores[-1])
+					spToPredictedCluster[sp] = wd_predictedClusters
+					spToDocPredictedCluster[sp] = wd_docPredClusters
+				else: # uses HDDCRP Test Mentions
 					self.helper.writeCoNLLFile(wd_predictedClusters, "wd", sp)
-					print("wrote out file. exit")
-					if self.args.useECBTest:
-						scores = get_conll_scores(wd_goldenClusters, wd_predictedClusters)
-						print("* getting conll score took", str((time.time() - start_time)), "seconds")
-						spToCoNLL[sp].append(scores[-1])
-						spToPredictedCluster[sp] = wd_predictedClusters
-						spToDocPredictedCluster[sp] = wd_docPredClusters
-					#print("[DEV] AGGWD SP:", str(round(sp,4)), "CoNLL F1:", str(round(conll_f1,4)), "MUC:", str(round(muc_f1,4)), "BCUB:", str(round(bcub_f1,4)), "CEAF:", str(round(ceafe_f1,4)))
-			#print("conll scores:", spToCoNLL)
+
+					# pickles the predictions
+					pickle_out = open("wd_hddcrp_clusters_FULL_sp" + str(sp) + ".p", 'wb')
+					pickle.dump(wd_docPredClusters, pickle_out)
+				#print("[DEV] AGGWD SP:", str(round(sp,4)), "CoNLL F1:", str(round(conll_f1,4)), "MUC:", str(round(muc_f1,4)), "BCUB:", str(round(bcub_f1,4)), "CEAF:", str(round(ceafe_f1,4)))
+	
 			if self.args.useECBTest:
-				print("ccnn_best_f1 (run ", len(f1s), "): best_pairwise_f1: ", round(bestF1,4), " prec: ",round(bestP,4), " recall: ", round(bestR,4), " threshold: ", round(bestVal,3), sep="")
+				numGoldPos = 0
+				scoreToGoldTruth = defaultdict(list)
+				for _ in range(len(preds)):
+					if self.devMode:
+						if self.devY[_]:
+							numGoldPos += 1
+							scoreToGoldTruth[preds[_][0]].append(1)
+						else:
+							scoreToGoldTruth[preds[_][0]].append(0)
+
+					else:
+						if self.testY[_]:
+							numGoldPos += 1
+							scoreToGoldTruth[preds[_][0]].append(1)
+						else:
+							scoreToGoldTruth[preds[_][0]].append(0)
+				s = sorted(scoreToGoldTruth.keys())
+				TP = 0.0
+				FP = 0.0
+				bestF1 = 0
+				bestVal = -1
+				bestR = 0
+				bestP = 0
+				numReturnedSoFar = 0
+				for eachVal in s:
+					for _ in scoreToGoldTruth[eachVal]:
+						if _ == 1:
+							TP += 1
+						else:
+							FP += 1
+
+					numReturnedSoFar += len(scoreToGoldTruth[eachVal])
+					recall = float(TP / numGoldPos)
+					prec = float(TP / numReturnedSoFar)
+					f1 = 0
+					if (recall + prec) > 0:
+						f1 = 2*(recall*prec) / (recall + prec)
+					if f1 > bestF1:
+						bestF1 = f1
+						bestVal = eachVal
+						bestR = recall
+						bestP = prec
+
+				if bestF1 > 0:
+					f1s.append(bestF1)
+					recalls.append(bestR)
+					precs.append(bestP)
+					print("ccnn_best_f1 (run ", len(f1s), "): best_pairwise_f1: ", round(bestF1,4), " prec: ",round(bestP,4), " recall: ", round(bestR,4), " threshold: ", round(bestVal,3), sep="")
 			sys.stdout.flush()
 
 		# clears ram
@@ -170,6 +174,7 @@ class CCNN:
 			fout = open("ccnn_agg_dirHalf.csv", "a+")
 			fout.write(str(self.args.devDir) + ",wd," + str(self.devMode) + "," + str(best_conll) + "\n")
 			fout.close()
+
 			return (spToDocPredictedCluster[best_sp], spToPredictedCluster[best_sp], wd_goldenClusters, best_sp)
 
 ##########################

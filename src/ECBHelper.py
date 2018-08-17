@@ -74,7 +74,7 @@ class ECBHelper:
 					#print("hmuid:",hmuid)
 					hmentions.add(self.corpus.XUIDToMention[hmuid])
 					#print("corpus.XUIDToMention:", self.corpus.XUIDToMention)
-				print("line:", UID, ": hmentions: ", hmentions)
+				#print("line:", UID, ": hmentions: ", hmentions)
 				refs = []
 				if ref_.find("|") == -1:
 					refs.append(ref_)
