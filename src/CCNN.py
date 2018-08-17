@@ -59,7 +59,7 @@ class CCNN:
 		spToCoNLL = defaultdict(list)
 		spToPredictedCluster = {}
 		spToDocPredictedCluster = {}
-		while len(f1s) < numRuns:
+		for _ in range(numRuns):
 			# define model
 			input_shape = self.trainX.shape[2:]
 			base_network = self.create_base_network(input_shape)
