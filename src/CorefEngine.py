@@ -63,8 +63,6 @@ class CorefEngine:
 
 		wd_stopping_points = [0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6]
 		cd_stopping_points = [s for s in np.linspace(0.2, 0.6, 5)]
-		print(wd_stopping_points)
-		exit(1)
 
 		# handles passed-in args
 		args = params.setCorefEngineParams()
