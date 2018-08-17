@@ -6,6 +6,7 @@ import pickle
 import random
 import sys
 import os
+import numpy as np
 #os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 from collections import defaultdict
 from ECBParser import ECBParser
@@ -59,20 +60,9 @@ class CorefEngine:
 		useRelationalFeatures = False
 		wdPresets = [256, 1, 2, 4, 0.0]
 		#wdPresets = [64, 5, 2, 32, 0.0] # batchsize, num epochs, num layers, num filters, dropout
-		
-		a = [1,2,3]
-		b = [4,5]
-		c = [6,7]
-		ret = []
-		ret.append((a,"REF1", (1,2)))
-		ret.append((b,"REF2", (3,4)))
-		ret.append((c,"REF3", (5,6)))
-		print(ret)
-		x, y, z = ret[0]
-		print(x)
-		print(y)
-		print(z)
-		#exit(1)
+
+		wd_stopping_points = [s for s in np.linspace(0.2, 0.6, 5)]
+		cd_stopping_points = [s for s in np.linspace(0.2, 0.6, 5)]
 
 		# handles passed-in args
 		args = params.setCorefEngineParams()
@@ -154,13 +144,13 @@ class CorefEngine:
 
 			print("\t** BEST DEV-WD stopping points:", sp_wd,"and",sp_cd)
 			'''
-			wd_model = CCNN(helper, dh, useRelationalFeatures, "doc", wdPresets, None, False, -1)
+			wd_model = CCNN(helper, dh, useRelationalFeatures, "doc", wdPresets, None, False, wd_stopping_points)
 			#wd_model = CCNN(helper, dh, useRelationalFeatures, "doc", wdPresets, None, False, sp_wd)
 			(wd_docPreds, wd_pred, wd_gold, _) = wd_model.train_and_test_wd(1)  # 1 means only 1 run of WD
 			#pickle_out = open("wd_clusters_FULL_23.p", 'wb')
 			#pickle.dump(wd_docPreds, pickle_out)			
 			#exit(1)
-			cd_model = CCNN(helper, dh, useRelationalFeatures, cd_scope, wdPresets, wd_docPreds, False, -1)
+			cd_model = CCNN(helper, dh, useRelationalFeatures, cd_scope, wdPresets, wd_docPreds, False, cd_stopping_points)
 			#cd_model = CCNN(helper, dh, useRelationalFeatures, cd_scope, wdPresets, wd_docPreds, False, sp_cd)
 			cd_model.train_and_test_cd(1) #wd_pred, wd_gold, numRuns)
 		else:

@@ -16,7 +16,7 @@ from keras.optimizers import Adam
 from collections import defaultdict
 from get_coref_metrics import get_conll_scores
 class CCNN:
-	def __init__(self, helper, dh, useRelationalFeatures, scope, presets, wd_docPreds, devMode, sp=-1):
+	def __init__(self, helper, dh, useRelationalFeatures, scope, presets, wd_docPreds, devMode, stopping_points):
 		self.devMode = devMode
 		self.helper = helper
 		self.dh = dh
@@ -24,7 +24,7 @@ class CCNN:
 		self.args = helper.args
 		self.wd_pred_clusters = wd_docPreds
 		self.scope = scope # used by aggClusterCD()
-		self.stoppingPoint = -1
+		self.stopping_points = stopping_points
 		if presets == []:
 			self.bs = self.args.batchSize
 			self.ne = self.args.numEpochs
@@ -34,7 +34,7 @@ class CCNN:
 		else:
 			(self.bs, self.ne, self.nl, self.nf, self.do) = presets
 		
-		print("[ccnn] scope:",self.scope,"bs:",self.bs,"ne:",self.ne,"nl:",self.nl,"nf:",self.nf,"do:",self.do, "dm:",self.devMode, "sp:",self.stoppingPoint)
+		print("[ccnn] scope:",self.scope,"bs:",self.bs,"ne:",self.ne,"nl:",self.nl,"nf:",self.nf,"do:",self.do, "dm:",self.devMode, "sp:",self.stopping_points)
 		sys.stdout.flush()
 
 		if self.scope != "doc":
@@ -129,11 +129,8 @@ class CCNN:
 				recalls.append(bestR)
 				precs.append(bestP)
 
-				# performs agglomerative clustering
-				stoppingPoints = [s for s in np.arange(0.3, 0.31, 0.04)]
-				if self.stoppingPoint != -1:
-					stoppingPoints = [self.stoppingPoint]
-				for sp in stoppingPoints:
+				# performs WD agglomerative clustering
+				for sp in self.stopping_points:
 					print("* [agg] sp:", sp)
 					if self.devMode:
 						(wd_docPredClusters, wd_predictedClusters, wd_goldenClusters) = self.aggClusterWD(self.helper.devDirs, self.devID, preds, sp)
@@ -260,11 +257,8 @@ class CCNN:
 				recalls.append(bestR)
 				precs.append(bestP)
 
-				# performs agglomerative clustering
-				stoppingPoints = [s for s in np.arange(0.3, 1.0, 0.10)]
-				if self.stoppingPoint != -1:
-					stoppingPoints = [self.stoppingPoint]				
-				for sp in stoppingPoints:
+				# performs CD agglomerative clustering				
+				for sp in self.stopping_points:
 					print("* [agg] sp:", sp)
 					if self.devMode:
 						(cd_predictedClusters, cd_goldenClusters) = self.aggClusterCD(self.devID, preds, sp)

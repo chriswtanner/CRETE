@@ -7,6 +7,10 @@ hn=`hostname`
 baseDir="/Users/christanner/research/CRETE/"
 brownDir="/home/ctanner/researchcode/CRETE/"
 
+# NOTE: these should match what's in CorefEngine.py (which gets passed to CCNN.py)
+wd_stopping_points=(0.2 0.3 0.4 0.5 0.6)
+cd_stopping_points=(0.525) # 0.401 0.45 0.475 0.501 0.525 0.55 0.601)
+
 if [ ${me} = "ctanner" ]
 then
 	echo "[ RUNNING ON BROWN NETWORK ]"
@@ -145,3 +149,23 @@ python3 -u CorefEngine.py \
 --devDir=${devDir} \
 --FFNNnumEpochs=${FFNNnumEpochs} \
 --native=${native}
+
+if [ "$useECBTest" = false ] ; then
+	cd ${refDir}
+	goldWDFile=${baseDir}"data/gold.WD.semeval.txt" # data/gold.NS.WD.semeval.txt"
+	goldCDFile=${baseDir}"data/gold.CD2.semeval.txt" # CD2 contains the formatting that we adhere to; NS.CD2 is for Choubey comparison
+	shopt -s nullglob
+
+	for sp in "${wd_stopping_points[@]}"
+	do
+		f=${baseDir}"results/hddcrp_pred_"
+		WD_file=${f}"wd_"${sp}".txt"
+		
+		muc=`./scorer.pl muc ${goldWDFile} ${WD_file} | grep "Coreference: Recall" | cut -d" " -f 11 | sed 's/.$//'`
+		bcub=`./scorer.pl bcub ${goldWDFile} ${WD_file} | grep "Coreference: Recall" | cut -d" " -f 11 | sed 's/.$//'`
+		ceafe=`./scorer.pl ceafe ${goldWDFile} ${WD_file} | grep "Coreference: Recall" | cut -d" " -f 11 | sed 's/.$//'`
+		sum=`echo ${muc}+${bcub}+${ceafe} | bc`
+		avg=`echo "scale=2;$sum/3.0" | bc`
+		echo "HDDCRP-WD SP:"$sp "F1:" ${avg} "MUC:" ${muc} "BCUB:" ${bcub} "CEAF:" ${ceafe} ${WD_file}		
+	done
+fi
