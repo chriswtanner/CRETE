@@ -160,7 +160,6 @@ if [ "$useECBTest" = false ] ; then
 	do
 		f=${baseDir}"results/hddcrp_pred_"
 		WD_file=${f}"wd_"${sp}".txt"
-		
 		muc=`./scorer.pl muc ${goldWDFile} ${WD_file} | grep "Coreference: Recall" | cut -d" " -f 11 | sed 's/.$//'`
 		bcub=`./scorer.pl bcub ${goldWDFile} ${WD_file} | grep "Coreference: Recall" | cut -d" " -f 11 | sed 's/.$//'`
 		ceafe=`./scorer.pl ceafe ${goldWDFile} ${WD_file} | grep "Coreference: Recall" | cut -d" " -f 11 | sed 's/.$//'`
