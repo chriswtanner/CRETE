@@ -58,11 +58,13 @@ class CorefEngine:
 		useCCNN = True
 		cd_scope = "dirHalf" # {dir, dirHalf}
 		useRelationalFeatures = False
-		wdPresets = [256, 1, 2, 4, 0.0]
-		#wdPresets = [64, 5, 2, 32, 0.0] # batchsize, num epochs, num layers, num filters, dropout
+		#wdPresets = [256, 1, 2, 4, 0.0]
+		wdPresets = [64, 5, 2, 32, 0.0] # batchsize, num epochs, num layers, num filters, dropout
 
-		wd_stopping_points = [s for s in np.linspace(0.2, 0.6, 5)]
+		wd_stopping_points = [0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6]
 		cd_stopping_points = [s for s in np.linspace(0.2, 0.6, 5)]
+		print(wd_stopping_points)
+		exit(1)
 
 		# handles passed-in args
 		args = params.setCorefEngineParams()

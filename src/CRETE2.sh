@@ -8,7 +8,7 @@ baseDir="/Users/christanner/research/CRETE/"
 brownDir="/home/ctanner/researchcode/CRETE/"
 
 # NOTE: these should match what's in CorefEngine.py (which gets passed to CCNN.py)
-wd_stopping_points=(0.2 0.3 0.4 0.5 0.6)
+wd_stopping_points=(0.1 0.15 0.2 0.25 0.3 0.35 0.4 0.45 0.5 0.55 0.6)
 cd_stopping_points=(0.525) # 0.401 0.45 0.475 0.501 0.525 0.55 0.601)
 
 if [ ${me} = "ctanner" ]

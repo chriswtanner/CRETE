@@ -141,7 +141,6 @@ class CCNN:
 
 					self.helper.writeCoNLLFile(wd_predictedClusters, "wd", sp)
 					print("wrote out file. exit")
-					exit(1)
 					if self.args.useECBTest:
 						scores = get_conll_scores(wd_goldenClusters, wd_predictedClusters)
 						print("* getting conll score took", str((time.time() - start_time)), "seconds")
