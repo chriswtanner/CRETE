@@ -268,12 +268,18 @@ class CCNN:
 				for sp in self.stopping_points:
 					print("* [agg] sp:", sp)
 					if self.devMode:
-						(cd_predictedClusters, cd_goldenClusters) = self.aggClusterCD(self.devID, preds, sp)
+						(cd_docPredClusters, cd_predictedClusters, cd_goldenClusters) = self.aggClusterCD(self.devID, preds, sp)
 					else:
-						(cd_predictedClusters, cd_goldenClusters) = self.aggClusterCD(self.testID, preds, sp)# self.aggClusterCD(self.devID, preds, sp)
+						(cd_docPredClusters, cd_predictedClusters, cd_goldenClusters) = self.aggClusterCD(self.testID, preds, sp)  # self.aggClusterCD(self.devID, preds, sp)
 					#(bcub_p, bcub_r, bcub_f1, muc_p, muc_r, muc_f1, ceafe_p, ceafe_r, ceafe_f1, conll_f1)
-					scores = get_conll_scores(cd_goldenClusters, cd_predictedClusters)
-					spToCoNLL[sp].append(scores[-1])
+					
+					start_time = time.time()
+					if self.args.useECBTest:  # uses ECB Test Mentions
+						scores = get_conll_scores(cd_goldenClusters, cd_predictedClusters)
+						print("* getting conll score took", str((time.time() - start_time)), "seconds")
+						spToCoNLL[sp].append(scores[-1])
+					else:  # uses HDDCRP Test Mentions
+						self.helper.writeCoNLLFile(cd_predictedClusters, "cd", sp)
 
 					#print("[DEV] AGGCD SP:", str(round(sp, 4)), "CoNLL F1:", str(round(scores[-1], 4)))
 					#, "MUC:", str(round(muc_f1, 4)), "BCUB:", str(round(bcub_f1, 4)), "CEAF:", str(round(ceafe_f1, 4)))
@@ -281,9 +287,35 @@ class CCNN:
 			print("ccnn_best_f1 (run ", len(f1s), "): best_pairwise_f1: ", round(bestF1, 4), " prec: ", round(bestP, 4), " recall: ", round(bestR, 4), " threshold: ", round(bestVal, 3), sep="")
 			sys.stdout.flush()
 
+
+
 		# clears ram
 		self.trainX = None
 		self.trainY = None
+		
+		if self.args.useECBTest:
+			stddev = -1
+			if len(f1s) > 1:
+				stddev = self.standard_deviation(f1s)
+			print("pairwise f1 (over",len(f1s),"runs) -- avg:", round(sum(f1s)/len(f1s),4), "max:", round(max(f1s),4), "min:",
+			      round(min(f1s),4), "avgP:",sum(precs)/len(precs),"avgR:",round(sum(recalls)/len(recalls),4),"stddev:", round(100*stddev,4))
+			(best_sp, best_conll, min_conll, max_conll,
+			 std_conll) = self.calculateBestKey(spToCoNLL)
+
+			sys.stdout.flush()
+
+			print("* [AGGCD] conll f1 -- best sp:",best_sp, "yielded: min:",round(100*min_conll,4), "avg:",round(100*best_conll,4),"max:",round(max_conll,4),"stddev:",round(std_conll,4))
+			fout = open("ccnn_agg_dirHalf.csv", "a+")
+			fout.write(str(self.args.devDir) + ",cd," + str(self.devMode) + "," + str(best_conll) + "\n")
+			fout.close()
+			return (None, None, None, None) # we don't ever care about using the return values
+
+		else: # HDDCRP
+			# non-sensical return; only done so that the return handler doesn't complain
+			return cd_docPredClusters, cd_predictedClusters, cd_goldenClusters, 0
+		
+
+		#### 
 		stddev = -1
 		if len(f1s) > 1:
 			stddev = self.standard_deviation(f1s)
@@ -515,6 +547,9 @@ class CCNN:
 		ourClusterSuperSet = {}
 		goldenClusterID = 0
 		goldenSuperSet = {}
+		
+		# only used for output'ing CD clusters to file
+		docToPredClusters = defaultdict(list)
 
 		for dir_num in dirToXUIDPredictions.keys():
 			
@@ -541,6 +576,8 @@ class CCNN:
 			clusterNumToDocs = defaultdict(set)
 			curClusterNum = 0
 			
+
+
 			tmpGoldClusters = {}
 			tmpGoldNum = 0
 			for doc_id in self.wd_pred_clusters:
@@ -664,26 +701,32 @@ class CCNN:
 				curClusterNum += 1
 			
 			# done merging clusters for current 'dir_num' (aka dir or dirHalf)
+			docToPredClusters[dir_num] = ourDirNumClusters
 			for i in ourDirNumClusters.keys():
 				ourClusterSuperSet[ourClusterID] = ourDirNumClusters[i]
 				ourClusterID += 1
-				
+
+		print("\tagg took ", str((time.time() - start_time)), "seconds")
+		#print("# golden clusters:",str(len(goldenSuperSet.keys())), "; # our clusters:",str(len(ourClusterSuperSet)))
+		return (docToPredClusters, ourClusterSuperSet, goldenSuperSet)
+
 
 		# SANITY CHECK -- ensures our returned gold and predicted clusters all contain the same XUIDs
-		golds = [x for c in goldenSuperSet for x in goldenSuperSet[c]]
-		preds = [x for c in ourClusterSuperSet for x in ourClusterSuperSet[c]]
-		for xuid in golds:
-			if xuid not in preds:
-				print("* ERROR: missing",xuid,"from preds")
-				exit(1)
-		for xuid in preds:
-			if xuid not in golds:
-				print("* ERROR: missing",xuid,"from golds")
-				exit(1)
+		if self.args.useECBTest:
+			golds = [x for c in goldenSuperSet for x in goldenSuperSet[c]]
+			preds = [x for c in ourClusterSuperSet for x in ourClusterSuperSet[c]]
+			for xuid in golds:
+				if xuid not in preds:
+					print("* ERROR: missing",xuid,"from preds")
+					exit(1)
+			for xuid in preds:
+				if xuid not in golds:
+					print("* ERROR: missing",xuid,"from golds")
+					exit(1)
 
 		# our base clusters are dependent on our scope (dir vs dirHalf)
 		#print("# golden clusters:",str(len(goldenSuperSet.keys())), "; # our clusters:",str(len(ourClusterSuperSet)))
-		return (ourClusterSuperSet, goldenSuperSet)
+		return (   ourClusterSuperSet, goldenSuperSet)
 
 	# Base network to be shared (eq. to feature extraction).
 	def create_base_network(self, input_shape):
