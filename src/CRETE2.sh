@@ -158,7 +158,7 @@ if [ "$useECBTest" = false ] ; then
 
 	for sp in "${wd_stopping_points[@]}"
 	do
-		for i in {1..4}; do
+		for i in {0..3}; do
 			f=${baseDir}"results/hddcrp_pred_"
 			WD_file=${f}"wd_"${sp}"_"${i}".txt"
 			muc=`./scorer.pl muc ${goldWDFile} ${WD_file} | grep "Coreference: Recall" | cut -d" " -f 11 | sed 's/.$//'`

@@ -628,8 +628,6 @@ class CCNN:
 			clusterNumToDocs = defaultdict(set)
 			curClusterNum = 0
 			
-
-
 			tmpGoldClusters = {}
 			tmpGoldNum = 0
 			for doc_id in self.wd_pred_clusters:
