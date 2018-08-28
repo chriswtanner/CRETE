@@ -54,14 +54,14 @@ class CorefEngine:
 		runStanford = False
 
 		# classifier params
-		numRuns = 1
+		numRuns = 3
 		useCCNN = True
 		cd_scope = "dirHalf" # {dir, dirHalf}
 		useRelationalFeatures = False
 		wdPresets = [256, 3, 2, 16, 0.0]
 		#wdPresets = [64, 5, 2, 32, 0.0] # batchsize, num epochs, num layers, num filters, dropout
 
-		wd_stopping_points = [0.44, 0.45, 0.46, 0.47, 0.48, 0.49, 0.501, 0.51, 0.52, 0.54, 0.55, 0.56, 0.57, 0.58, 0.59, 0.601]
+		wd_stopping_points = [0.39] #[0.44, 0.45, 0.46, 0.47, 0.48, 0.49, 0.501, 0.51, 0.52, 0.54, 0.55, 0.56, 0.57, 0.58, 0.59, 0.601]
 		cd_stopping_points = [0.5]
 
 		# handles passed-in args
@@ -118,7 +118,6 @@ class CorefEngine:
 		if not args.useECBTest:
 			for xuid in corpus.HMUIDToMention:
 				testXUIDs.add(xuid)
-
 		'''
 		fh = FeatureHandler(args, helper) #, trainXUIDs, devXUIDs, testXUIDs)
 		fh.saveLemmaFeatures(lemmaFeaturesFile)
@@ -144,9 +143,12 @@ class CorefEngine:
 
 			print("\t** BEST DEV-WD stopping points:", sp_wd,"and",sp_cd)
 			'''
-			#wd_model = CCNN(helper, dh, useRelationalFeatures, "doc", wdPresets, None, False, wd_stopping_points)
-			#(wd_docPreds, wd_pred, wd_gold, _) = wd_model.train_and_test_wd(1)  # 1 means only 1 run of WD
+
+			# WITHIN DOC
+			wd_model = CCNN(helper, dh, useRelationalFeatures, "doc", wdPresets, None, False, wd_stopping_points)
+			(wd_docPreds, wd_pred, wd_gold, _) = wd_model.train_and_test_wd(numRuns)  # 1 means only 1 run of WD
 			
+			# CROSS DOC
 			wd_docPreds = pickle.load(open("wd_hddcrp_clusters_FULL_sp0.51.p", 'rb'))
 			cd_model = CCNN(helper, dh, useRelationalFeatures, cd_scope, wdPresets, wd_docPreds, False, cd_stopping_points)
 			#cd_model = CCNN(helper, dh, useRelationalFeatures, cd_scope, wdPresets, wd_docPreds, False, sp_cd)

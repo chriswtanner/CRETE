@@ -25,6 +25,7 @@ class CCNN:
 		self.wd_pred_clusters = wd_docPreds
 		self.scope = scope # used by aggClusterCD()
 		self.stopping_points = stopping_points
+		self.ensembleDocPairPredictions = defaultdict(lambda: defaultdict(list)) # for ensemble approach
 		if presets == []:
 			self.bs = self.args.batchSize
 			self.ne = self.args.numEpochs
@@ -51,6 +52,29 @@ class CCNN:
 			tf.Session(config=tf.ConfigProto(log_device_placement=True))
 			os.environ['CUDA_VISIBLE_DEVICES'] = ''
 
+	# takes the CCNN pairwise predictions and adds to them our list, which will be averaged
+	# over all of the runs
+	def addEnsemblePredictions(self, relevant_dirs, ids, preds):
+		print("preds:",preds)
+		new_preds = []
+		for ((xuid1, xuid2), pred) in zip(ids, preds):
+			print("cur pred:",pred)
+			m1 = self.corpus.XUIDToMention[xuid1]
+			m2 = self.corpus.XUIDToMention[xuid2]
+			# NOTE: the lower the score, the more likely they are the same.  it's a dissimilarity score
+			pred = pred[0]
+			doc_id = m1.doc_id
+			if m1.dir_num not in relevant_dirs:
+				print("* ERROR: passed in predictions which belong to a dir other than what we specify")
+				exit(1)
+			if m2.doc_id != doc_id:
+				print("* ERROR: xuids are from diff docs!")
+				exit(1)
+			self.ensembleDocPairPredictions[doc_id][(xuid1, xuid2)].append(pred)
+			thesum = sum(self.ensembleDocPairPredictions[doc_id][(xuid1, xuid2)])
+			thelength = len(self.ensembleDocPairPredictions[doc_id][(xuid1, xuid2)])
+			new_preds.append([thesum / float(thelength)])
+		return new_preds
 	# WITHIN-DOC MODEL
 	def train_and_test_wd(self, numRuns):
 		f1s = []
@@ -59,6 +83,7 @@ class CCNN:
 		spToCoNLL = defaultdict(list)
 		spToPredictedCluster = {}
 		spToDocPredictedCluster = {}
+
 		for _ in range(numRuns):
 			# define model
 			input_shape = self.trainX.shape[2:]
@@ -82,6 +107,15 @@ class CCNN:
 				preds = model.predict([self.testX[:, 0], self.testX[:, 1]])
 			print("* done training")
 
+			# append to the ensemble of pairwise predictions
+			if self.devMode:
+				ensemblePreds = self.addEnsemblePredictions(self.helper.devDirs, self.devID, preds)
+			else:
+				ensemblePreds = self.addEnsemblePredictions(self.helper.testingDirs, self.testID, preds)
+
+			print("preds:",preds)
+			print("ensemblePreds:", ensemblePreds)
+			exit(1)
 			# performs WD agglomerative clustering
 			for sp in self.stopping_points:
 				print("* [agg] sp:", sp)
@@ -171,6 +205,11 @@ class CCNN:
 			
 			print("* [AGGWD] conll f1 -- best sp:",best_sp, "yielded: min:",round(100*min_conll,4),"avg:",round(100*best_conll,4),"max:",round(max_conll,4),"stddev:",round(std_conll,4))
 			
+			# ENSEMBLE
+			print("* NOW RUNNING AGG ON OUR ENSEMBLE PAIRWISE PREDICTIONS")
+			asdf
+
+
 			fout = open("ccnn_agg_dirHalf.csv", "a+")
 			fout.write(str(self.args.devDir) + ",wd," + str(self.devMode) + "," + str(best_conll) + "\n")
 			fout.close()
