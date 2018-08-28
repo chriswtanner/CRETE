@@ -111,9 +111,11 @@ class CCNN:
 			else:
 				ensemblePreds = self.addEnsemblePredictions(self.helper.testingDirs, self.testID, preds)
 
-			print("preds:", len(preds), ":",len(preds[0]))
-			print("ensemblePreds:", len(ensemblePreds), ":", len(ensemblePreds[0]))
-			exit(1)
+			# if it's our last run, let's use the ensemble'd preds
+			if _ == numRuns - 1:
+				print("*** SETTING PREDS = ensemble!!")
+				preds = ensemblePreds
+
 			# performs WD agglomerative clustering
 			for sp in self.stopping_points:
 				print("* [agg] sp:", sp)
@@ -204,8 +206,7 @@ class CCNN:
 			print("* [AGGWD] conll f1 -- best sp:",best_sp, "yielded: min:",round(100*min_conll,4),"avg:",round(100*best_conll,4),"max:",round(max_conll,4),"stddev:",round(std_conll,4))
 			
 			# ENSEMBLE
-			print("* NOW RUNNING AGG ON OUR ENSEMBLE PAIRWISE PREDICTIONS")
-			asdf
+			#print("* NOW RUNNING AGG ON OUR ENSEMBLE PAIRWISE PREDICTIONS")
 
 
 			fout = open("ccnn_agg_dirHalf.csv", "a+")
