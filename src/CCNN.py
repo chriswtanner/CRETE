@@ -83,6 +83,10 @@ class CCNN:
 		spToDocPredictedCluster = {}
 
 		for _ in range(numRuns):
+			
+			bestRunCoNLL = -1
+			bestRunSP = -1
+
 			# define model
 			input_shape = self.trainX.shape[2:]
 			base_network = self.create_base_network(input_shape)
@@ -132,6 +136,11 @@ class CCNN:
 					spToCoNLL[sp].append(scores[-1])
 					spToPredictedCluster[sp] = wd_predictedClusters
 					spToDocPredictedCluster[sp] = wd_docPredClusters
+
+					if scores[-1] > bestRunCoNLL:
+						bestRunCoNLL = scores[-1]
+						bestRunSP = sp
+
 				else: # uses HDDCRP Test Mentions
 					self.helper.writeCoNLLFile(wd_predictedClusters, "wd", sp)
 
@@ -189,6 +198,7 @@ class CCNN:
 					recalls.append(bestR)
 					precs.append(bestP)
 					print("ccnn_best_f1 (run ", len(f1s), "): best_pairwise_f1: ", round(bestF1,4), " prec: ",round(bestP,4), " recall: ", round(bestR,4), " threshold: ", round(bestVal,3), sep="")
+					print("** AGG - run", str(_), "bestRunCoNLL:",bestRunCoNLL, "sp: ",bestRunSP)
 			sys.stdout.flush()
 
 		# clears ram
