@@ -28,7 +28,7 @@ class ECBHelper:
 		self.UIDToSUID = defaultdict(list)
 		self.docToVerifiedSentences = self.loadVerifiedSentences(args.verifiedSentencesFile)
 
-	def writeCoNLLFile(self, predictedClusters, suffix, stoppingPoint):
+	def writeCoNLLFile(self, predictedClusters, suffix): # suffix should be wd_"${sp}"_"${run#}".txt" or cd instead of wd
 		hmuidToClusterID = {}
 		for c_id in predictedClusters.keys():
 			for hmuid in predictedClusters[c_id]:
@@ -43,7 +43,7 @@ class ECBHelper:
 				exit(1)
 		'''
 		# constructs output file
-		fileOut = str(self.args.baseDir) + "results/hddcrp_pred_" + suffix + "_" + str(stoppingPoint) + ".txt"
+		fileOut = str(self.args.baseDir) + "results/hddcrp_pred_" + str(suffix) + ".txt"
 		print("ECBHelper writing out:", str(fileOut))
 		fout = open(fileOut, 'w')
 
@@ -150,7 +150,6 @@ class ECBHelper:
 				tokenIndex += 1  # this always increases whenever we see a token
 		f.close()
 		fout.close()
-
 
 	def addECBCorpus(self, corpus):
 		self.corpus = corpus

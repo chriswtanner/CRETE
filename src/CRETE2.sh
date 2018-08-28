@@ -8,7 +8,7 @@ baseDir="/Users/christanner/research/CRETE/"
 brownDir="/home/ctanner/researchcode/CRETE/"
 
 # NOTE: these should match what's in CorefEngine.py (which gets passed to CCNN.py)
-wd_stopping_points=(0.39) # (0.44 0.45 0.46 0.47 0.48 0.49 0.501 0.51 0.52 0.54 0.55 0.56 0.57 0.58 0.59 0.601)
+wd_stopping_points=(0.39 0.45 0.51) # (0.44 0.45 0.46 0.47 0.48 0.49 0.501 0.51 0.52 0.54 0.55 0.56 0.57 0.58 0.59 0.601)
 cd_stopping_points=(0.525) # 0.401 0.45 0.475 0.501 0.525 0.55 0.601)
 
 if [ ${me} = "ctanner" ]
@@ -158,13 +158,15 @@ if [ "$useECBTest" = false ] ; then
 
 	for sp in "${wd_stopping_points[@]}"
 	do
-		f=${baseDir}"results/hddcrp_pred_"
-		WD_file=${f}"wd_"${sp}".txt"
-		muc=`./scorer.pl muc ${goldWDFile} ${WD_file} | grep "Coreference: Recall" | cut -d" " -f 11 | sed 's/.$//'`
-		bcub=`./scorer.pl bcub ${goldWDFile} ${WD_file} | grep "Coreference: Recall" | cut -d" " -f 11 | sed 's/.$//'`
-		ceafe=`./scorer.pl ceafe ${goldWDFile} ${WD_file} | grep "Coreference: Recall" | cut -d" " -f 11 | sed 's/.$//'`
-		sum=`echo ${muc}+${bcub}+${ceafe} | bc`
-		avg=`echo "scale=2;$sum/3.0" | bc`
-		echo "HDDCRP-WD SP:"$sp "F1:" ${avg} "MUC:" ${muc} "BCUB:" ${bcub} "CEAF:" ${ceafe} ${WD_file}		
+		for i in {1..4}; do
+			f=${baseDir}"results/hddcrp_pred_"
+			WD_file=${f}"wd_"${sp}"_"${i}".txt"
+			muc=`./scorer.pl muc ${goldWDFile} ${WD_file} | grep "Coreference: Recall" | cut -d" " -f 11 | sed 's/.$//'`
+			bcub=`./scorer.pl bcub ${goldWDFile} ${WD_file} | grep "Coreference: Recall" | cut -d" " -f 11 | sed 's/.$//'`
+			ceafe=`./scorer.pl ceafe ${goldWDFile} ${WD_file} | grep "Coreference: Recall" | cut -d" " -f 11 | sed 's/.$//'`
+			sum=`echo ${muc}+${bcub}+${ceafe} | bc`
+			avg=`echo "scale=2;$sum/3.0" | bc`
+			echo "HDDCRP-WD SP:"$sp "RUN:" ${i} "F1:" ${avg} "MUC:" ${muc} "BCUB:" ${bcub} "CEAF:" ${ceafe} ${WD_file}
+		done
 	done
 fi

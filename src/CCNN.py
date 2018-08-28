@@ -142,10 +142,11 @@ class CCNN:
 						bestRunSP = sp
 
 				else: # uses HDDCRP Test Mentions
-					self.helper.writeCoNLLFile(wd_predictedClusters, "wd", sp)
+					suffix = "wd_" + str(sp) + "_" + str(_)
+					self.helper.writeCoNLLFile(wd_predictedClusters, suffix)
 
 					# pickles the predictions
-					with open("wd_hddcrp_clusters_FULL_sp" + str(sp) + ".p", 'wb') as pickle_out:
+					with open("hddcrp_clusters_FULL_" + str(suffix) + ".p", 'wb') as pickle_out:
 						pickle.dump(wd_docPredClusters, pickle_out)
 				#print("[DEV] AGGWD SP:", str(round(sp,4)), "CoNLL F1:", str(round(conll_f1,4)), "MUC:", str(round(muc_f1,4)), "BCUB:", str(round(bcub_f1,4)), "CEAF:", str(round(ceafe_f1,4)))
 	
@@ -327,7 +328,8 @@ class CCNN:
 						print("* getting conll score took", str((time.time() - start_time)), "seconds")
 						spToCoNLL[sp].append(scores[-1])
 					else:  # uses HDDCRP Test Mentions
-						self.helper.writeCoNLLFile(cd_predictedClusters, "cd", sp)
+						suffix = "cd_" + str(sp) + "_" + str(_)
+						self.helper.writeCoNLLFile(cd_predictedClusters, suffix)
 
 					#print("[DEV] AGGCD SP:", str(round(sp, 4)), "CoNLL F1:", str(round(scores[-1], 4)))
 					#, "MUC:", str(round(muc_f1, 4)), "BCUB:", str(round(bcub_f1, 4)), "CEAF:", str(round(ceafe_f1, 4)))

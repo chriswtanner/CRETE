@@ -1,6 +1,6 @@
 #!/bin/bash
 prefix="ccnn" # used to help identify experiments' outputs, as the output files will have this prefix
-corpus="TEST"
+corpus="FULL"
 onlyValidSentences="F"
 addIntraDocs="F" # since these are singletons w.r.t. cross-doc
 exhaustivelyTestAllFeatures=false
@@ -28,6 +28,7 @@ framenetFeature="False" # f8
 
 native="False"
 hn=`hostname`
+
 
 IFS=$'\r\n' GLOBIGNORE='*' command eval  'XYZ=($(cat featureCombos.txt))'
 for features in "${XYZ[@]}"
