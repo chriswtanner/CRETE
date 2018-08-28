@@ -112,7 +112,7 @@ class CCNN:
 				ensemblePreds = self.addEnsemblePredictions(self.helper.devDirs, self.devID, preds)
 			else:
 				ensemblePreds = self.addEnsemblePredictions(self.helper.testingDirs, self.testID, preds)
-
+				
 			print("preds:",preds)
 			print("ensemblePreds:", ensemblePreds)
 			exit(1)
