@@ -55,10 +55,8 @@ class CCNN:
 	# takes the CCNN pairwise predictions and adds to them our list, which will be averaged
 	# over all of the runs
 	def addEnsemblePredictions(self, relevant_dirs, ids, preds):
-		print("preds:",preds)
 		new_preds = []
 		for ((xuid1, xuid2), pred) in zip(ids, preds):
-			print("cur pred:",pred)
 			m1 = self.corpus.XUIDToMention[xuid1]
 			m2 = self.corpus.XUIDToMention[xuid2]
 			# NOTE: the lower the score, the more likely they are the same.  it's a dissimilarity score
@@ -112,9 +110,9 @@ class CCNN:
 				ensemblePreds = self.addEnsemblePredictions(self.helper.devDirs, self.devID, preds)
 			else:
 				ensemblePreds = self.addEnsemblePredictions(self.helper.testingDirs, self.testID, preds)
-				
-			print("preds:",preds)
-			print("ensemblePreds:", ensemblePreds)
+
+			print("preds:", len(preds), ":",len(preds[0]))
+			print("ensemblePreds:", len(ensemblePreds), ":", len(ensemblePreds[0]))
 			exit(1)
 			# performs WD agglomerative clustering
 			for sp in self.stopping_points:
