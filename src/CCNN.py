@@ -73,6 +73,7 @@ class CCNN:
 			thelength = len(self.ensembleDocPairPredictions[doc_id][(xuid1, xuid2)])
 			new_preds.append([thesum / float(thelength)])
 		return new_preds
+	
 	# WITHIN-DOC MODEL
 	def train_and_test_wd(self, numRuns):
 		f1s = []
@@ -549,6 +550,7 @@ class CCNN:
 	# dirHalf or the actual dir; 
 	def aggClusterCD(self, ids, preds, stoppingPoint):
 
+		start_time = time.time()
 		# NOTE: this is called dir, but we may be operating on dirHalf, which is fine;
 		# the ids and predictions passed-in will only be of legit, valid pairs we care about
 		# so even if it is dirHalf, it's not like we'll wrongly consider pairs that belong
