@@ -6,9 +6,11 @@ import pickle
 import random
 import sys
 import os
+import fnmatch
 import numpy as np
 #os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 from collections import defaultdict
+from KBPParser import KBPParser
 from ECBParser import ECBParser
 from HDDCRPParser import HDDCRPParser
 from ECBHelper import ECBHelper
@@ -54,7 +56,7 @@ class CorefEngine:
 		runStanford = False
 
 		# classifier params
-		numRuns = 11
+		numRuns = 1
 		useCCNN = True
 		cd_scope = "dirHalf" # {dir, dirHalf}
 		useRelationalFeatures = False
@@ -67,6 +69,12 @@ class CorefEngine:
 		# handles passed-in args
 		args = params.setCorefEngineParams()
 		
+		# handles passed-in args
+		args = params.setCorefEngineParams()
+		kbp_parser = KBPParser(args, "../data/KBP/")
+		kbp_parser.parseCorpus()
+		exit(1)
+
 		start_time = time.time()
 		# parses elmo embeddings
 		#elmo = HDF5Reader('/Users/christanner/research/CRETE/data/features/alloutput3.hdf5')
@@ -77,6 +85,8 @@ class CorefEngine:
 		# parses the real, actual corpus (ECB's XML files)
 		ecb_parser = ECBParser(args, helper)
 		corpus = ecb_parser.parseCorpus(helper.docToVerifiedSentences)
+		corpus.calculateEntEnvAgreement()
+		exit(1)
 		helper.addECBCorpus(corpus)
 
 		# parses the HDDCRP Mentions
@@ -149,7 +159,6 @@ class CorefEngine:
 			(wd_docPreds, wd_pred, wd_gold, _) = wd_model.train_and_test_wd(numRuns)  # 1 means only 1 run of WD
 			
 			# saves WITHIN-DOC PREDS
-
 
 			exit(1)
 			# CROSS DOC

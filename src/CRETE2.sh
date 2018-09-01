@@ -1,5 +1,5 @@
 #!/bin/bash
-#export PYTHONIOENCODING=UTF-8
+export PYTHONIOENCODING=UTF-8
 
 # manually set these base params
 me=`whoami`
@@ -158,7 +158,7 @@ if [ "$useECBTest" = false ] ; then
 
 	for sp in "${wd_stopping_points[@]}"
 	do
-		for i in {0..10}; do
+		for i in {0..1}; do
 			f=${baseDir}"results/hddcrp_pred_"
 			WD_file=${f}"wd_"${sp}"_"${i}".txt"
 			muc=`./scorer.pl muc ${goldWDFile} ${WD_file} | grep "Coreference: Recall" | cut -d" " -f 11 | sed 's/.$//'`

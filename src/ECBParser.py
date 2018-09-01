@@ -10,7 +10,8 @@ from Mention import Mention
 class ECBParser:
     def __init__(self, args, helper):
         
-        self.onlyEvents = True
+        self.onlyEvents = False
+        self.printCorpusTokens = False
         self.args = args
         self.helper = helper
 
@@ -26,6 +27,11 @@ class ECBParser:
         self.loadReplacements(args.replacementsFile)
 
     def parseCorpus(self, docToVerifiedSentences):
+
+        # maps the long, original REF names to a small, more readable REF ID
+        REFToUREF = {}
+        UREF = 0
+
         print("* parsing ECB corpus:", self.args.corpusPath)
         numMentionsIgnored = 0
         corpus = Corpus()
@@ -66,8 +72,7 @@ class ECBParser:
                     fileContents = fileContents.replace(badToken, self.replacements[badToken])
 
             # reads <tokens>
-            it = tuple(re.finditer(
-                r"<token t\_id=\"(\d+)\" sentence=\"(\d+)\" number=\"(\d+)\".*?>(.*?)</(.*?)>", fileContents))
+            it = tuple(re.finditer(r"<token t\_id=\"(\d+)\" sentence=\"(\d+)\" number=\"(\d+)\".*?>(.*?)</(.*?)>", fileContents))
             lastSentenceNum = -1
 
             #tmpFOUT = open("../data/stanford_input/"+doc_id, "w")
@@ -232,7 +237,7 @@ class ECBParser:
                         if self.onlyEvents and not foundMention.isPred:
                             continue
                         token0 = foundMention.tokens[0]
-                        #dir_num not in self.helper.testingDirs and
+
                         if self.args.onlyValidSentences and token0.sentenceNum not in docToVerifiedSentences[doc_id]:
                             numMentionsIgnored += 1
                             continue
@@ -264,6 +269,51 @@ class ECBParser:
                                 corpus.addMention(foundMention, "INTRA"+str(intraCount))
                                 intraCount += 1
             corpus.addDocPointer(doc_id, curDoc)
+
+            # optionally displays annotations (Mentions clearly designated w/ unique REF IDs#)
+            if self.printCorpusTokens:
+                print("\n------------------\ndoc:",doc_id,"\n------------------")
+                sent_num = -1
+                oline = ""
+                lastMentions = set()
+                for t in curDoc.tokens:
+                    if t.sentenceNum != sent_num and sent_num != -1:
+                        sent_num = t.sentenceNum
+                        print(oline)
+                        oline = ""
+                    added = False
+                    removed = False
+                    urefToAdd = -1
+                    entOrEventToAdd = ""
+                    for m in t.mentions:
+                        if m not in lastMentions:
+                            if m.REF in REFToUREF.keys():
+                                urefToAdd = REFToUREF[m.REF]
+                            else:
+                                urefToAdd = UREF
+                                REFToUREF[m.REF] = UREF
+                                UREF += 1
+                            if m.isPred:
+                                entOrEventToAdd = "v"
+                            else:
+                                entOrEventToAdd = "ent"
+                            added = True
+                    
+                    if len(lastMentions) > 0:
+                        for m in lastMentions:
+                            if m not in t.mentions:
+                                removed = True
+                    if removed:
+                        oline += "] "
+                    if added:
+                        if len(oline) > 0 and oline[-1] != " ":
+                            oline += " "
+                        oline += str(entOrEventToAdd) + str(urefToAdd) + "["
+                    if len(oline) > 0 and oline[-1] != " " and oline[-1] != "[":
+                        oline += " "
+                    oline += str(t.text)
+                    lastMentions = t.mentions
+                print(oline)
         corpus.assignGlobalSentenceNums()
         print("numMentionsIgnored:", numMentionsIgnored)
         print("# ECB mentions created:", len(corpus.ecb_mentions))

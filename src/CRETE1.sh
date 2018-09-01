@@ -1,10 +1,11 @@
 #!/bin/bash
+export PYTHONIOENCODING=UTF-8
 prefix="ccnn" # used to help identify experiments' outputs, as the output files will have this prefix
 corpus="FULL"
-onlyValidSentences="T"
+onlyValidSentences="F"
 addIntraDocs="F" # since these are singletons w.r.t. cross-doc
 exhaustivelyTestAllFeatures=false
-useECBTest=false
+useECBTest=true
 featureMap=(2 3) # 1 2 3 4 5 6 7)
 numLayers=(2) # 3) # 1 3
 numEpochs=(3) # 20)

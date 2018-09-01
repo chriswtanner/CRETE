@@ -33,8 +33,8 @@ class Corpus:
 		self.SUIDToMention = {}
 		self.docSentToSMentions = defaultdict(list)
 
-		self.ECBDirs = defaultdict(ECBDir) # contains the two dirHalves
-		self.dirHalves = defaultdict(DirHalf) # same as what's contained across all dirs
+		self.ECBDirs = defaultdict(ECBDir) # a full DIR, aka encompasses both dirHalves
+		self.dirHalves = defaultdict(DirHalf) # half a DIR
 
 		# Docs are stored within dirHalves,
 		# but also accessible from here, by its name
@@ -43,6 +43,67 @@ class Corpus:
 		# to easily parse the original sentence which contains each Mention
 		self.globalSentenceNumToTokens = defaultdict(list)
 
+	# TMP: just displays how many times each event-pair is co-ref or not, w.r.t.
+	# belonging to sentences which contain co-ref entities
+	def calculateEntEnvAgreement(self):
+		withinDocPairs = defaultdict(lambda: defaultdict(int))
+		crossDocPairs = defaultdict(lambda: defaultdict(int))
+
+		# keeps track of sentence -> entities
+		sentenceNumToEntities = defaultdict(set)
+		for euid in self.EUIDToMention:
+			m = self.EUIDToMention[euid]
+			if not m.isPred:
+				sentenceNumToEntities[m.globalSentenceNum].add(m)
+
+		# iterates over all event mention pairs
+		for dh in self.dirHalves:
+			print("dh:",dh)
+			for euid1 in sorted(self.dirHalves[dh].EUIDs):
+				m1 = self.EUIDToMention[euid1]
+				if not m1.isPred:
+					continue
+				sentence1 = m1.globalSentenceNum
+				entities1 = sentenceNumToEntities[sentence1]
+				for euid2 in sorted(self.dirHalves[dh].EUIDs):
+					if euid1 >= euid2:
+						continue
+
+					m2 = self.EUIDToMention[euid2]
+					if not m2.isPred:
+						continue
+					sentence2 = m2.globalSentenceNum
+					entities2 = sentenceNumToEntities[sentence2]
+
+					eventCoref = "eventCoref_no"
+					if self.EUIDToREF[euid1] == self.EUIDToREF[euid2]:
+						eventCoref = "eventCoref_yes"
+
+					entityCoref = "entCoref_no"
+					for ent1 in entities1:
+						REF1 = ent1.REF
+						for ent2 in entities2:
+							if ent1 == ent2:
+								continue
+							if ent2.REF == REF1:
+								entityCoref = "entCoref_yes"
+								break
+					
+					isSameDoc = False
+					if self.EUIDToMention[euid1].doc_id == self.EUIDToMention[euid2].doc_id:
+						isSameDoc = True
+					
+					if isSameDoc:
+						withinDocPairs[eventCoref][entityCoref] += 1
+					else:
+						crossDocPairs[eventCoref][entityCoref] += 1
+		print("withinDocPairs:")
+		for _ in withinDocPairs:
+			print(_, withinDocPairs[_])
+		
+		print("crossDocPairs:")
+		for _ in crossDocPairs:
+			print(_, crossDocPairs[_])
 	# ensures we've created ECB/HDDCRP/Stan Mentions all from the same sentences
 	def checkMentions(self):
 		allKeys = set()
@@ -95,6 +156,12 @@ class Corpus:
 
 	# adds a Mention to the corpus
 	def addMention(self, mention, REF):
+
+		# TMP -- just for annotation viewing
+		# (we iterate through all tokens this mention spans, and point those tokens to this mention)
+		for t in mention.tokens:
+			t.addMentionSpan(mention)
+
 		(doc_id, sentenceNum) = self.getDocAndSentence(mention)
 
 		# updates the mention w/ REF and XUID info
