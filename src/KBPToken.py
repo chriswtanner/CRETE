@@ -1,6 +1,6 @@
 class KBPToken:
 	def __init__(self, event_file, source_file, charStartingIndex, charEndingIndex, text, globalTokenNum):
-		self.trimEndChars = ["'", "\"", ".", ","]
+		self.trimEndChars = ["'", "\"", ".", ",", "?", ":"]
 		self.event_file = event_file
 		self.source_file = source_file
 		self.charStartingIndex = charStartingIndex
@@ -10,6 +10,12 @@ class KBPToken:
 		self.globalTokenNum = globalTokenNum
 
 	def cleanText(self, text):
+
+		#if text == "picked.'":
+		#	return "picked"
+		#if text == "....":
+		#	return "..."
+		print("cleaning:",text)
 		if len(text) > 0:
 			if text == "''" or text == "\"":
 				return "\""
@@ -19,7 +25,7 @@ class KBPToken:
 				if text[0] == "'" or text[0] == "\"":
 					text = text[1:]
 				if len(text) > 0:
-					if text[-1] in self.trimEndChars:
+					while len(text) > 0 and text[-1] in self.trimEndChars:
 						text = text[0:-1]
 				if text[0:3] == "ex-":
 					text = "ex"
@@ -31,5 +37,5 @@ class KBPToken:
 			return ""
 
 	def __str__(self):
-		return "text " + str(self.globalTokenNum) + ": " + \
+		return "Token# " + str(self.globalTokenNum) + ": " + \
 			str(self.text) + " (" + str(self.charStartingIndex) + " - " + str(self.charEndingIndex) + ") => " + self.cleaned_text

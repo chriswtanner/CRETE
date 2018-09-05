@@ -8,7 +8,6 @@ class KBPCorpus:
 		# filled in from Source file
 		self.corpusTokens = []
 		self.corpusTokensToCorpusIndex = {}
-		self.charStartingIndexToToken = {}
 
 		self.eventToSourceFile = {}
 		self.sourceToEventFile = {}
@@ -24,7 +23,7 @@ class KBPCorpus:
 	def addToken(self, token, globalTokenNum):
 		self.corpusTokens.append(token)
 		self.corpusTokensToCorpusIndex[token] = globalTokenNum
-		self.charStartingIndexToToken[token.charStartingIndex] = token
+		#self.charStartingIndexToToken[token.charStartingIndex] = token
 
 	def addMention(self, mention):
 		print("adding mention")
