@@ -70,11 +70,12 @@ class CorefEngine:
 		args = params.setCorefEngineParams()
 		
 		# handles passed-in args
+		'''
 		args = params.setCorefEngineParams()
 		kbp_parser = KBPParser(args, "../data/KBP/")
 		kbp_parser.parseCorpus()
 		exit(1)
-
+		'''
 		start_time = time.time()
 		# parses elmo embeddings
 		#elmo = HDF5Reader('/Users/christanner/research/CRETE/data/features/alloutput3.hdf5')
@@ -86,6 +87,7 @@ class CorefEngine:
 		ecb_parser = ECBParser(args, helper)
 		corpus = ecb_parser.parseCorpus(helper.docToVerifiedSentences)
 		corpus.calculateEntEnvAgreement()
+		exit(1)
 		
 		helper.addECBCorpus(corpus)
 
