@@ -86,7 +86,7 @@ class CorefEngine:
 		ecb_parser = ECBParser(args, helper)
 		corpus = ecb_parser.parseCorpus(helper.docToVerifiedSentences)
 		corpus.calculateEntEnvAgreement()
-		exit(1)
+		
 		helper.addECBCorpus(corpus)
 
 		# parses the HDDCRP Mentions
