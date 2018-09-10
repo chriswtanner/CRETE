@@ -71,7 +71,7 @@ class CorefEngine:
 		
 		# handles passed-in args
 		'''
-		testing this
+		testing this a
 		args = params.setCorefEngineParams()
 		kbp_parser = KBPParser(args, "../data/KBP/")
 		kbp_parser.parseCorpus()
