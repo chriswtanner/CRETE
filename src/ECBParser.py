@@ -261,7 +261,7 @@ class ECBParser:
                             if self.onlyEvents and not foundMention.isPred:
                                 continue
                             token0 = foundMention.tokens[0]
-                            #dir_num not in self.helper.testingDirs and
+
                             if self.args.onlyValidSentences and token0.sentenceNum not in docToVerifiedSentences[doc_id]:
                                 numMentionsIgnored += 1
                                 continue

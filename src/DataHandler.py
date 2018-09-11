@@ -26,32 +26,41 @@ class DataHandler:
 		self.badPOS = ["‘’", "``", "POS", "$", "''"] # TMP FOR SAMELEMMA TEST
 		self.singleFeatures = []
 		self.relFeatures = []
+
+		if self.args.useECBTest:
+			f_suffix = "ecb"
+		else:
+			f_suffix = "hddcrp"
+
 		if self.args.wordFeature:
-			lf = self.loadFeature("../data/features/word.f")
+			lf = self.loadFeature("../data/features/" + str(f_suffix) + "/word.f")
 			self.singleFeatures.append(lf.singles)
 			self.relFeatures.append(lf.relational)
 		if self.args.lemmaFeature:
-			lf = self.loadFeature("../data/features/lemma.f")
+			lf = self.loadFeature("../data/features/" + str(f_suffix) + "/lemma.f")
+
+			for uid in lf.singles:
+				print("loaded uid:", uid)
 			self.singleFeatures.append(lf.singles)
 			self.relFeatures.append(lf.relational)
 		if self.args.charFeature:
-			lf = self.loadFeature("../data/features/char.f")
+			lf = self.loadFeature("../data/features/" + str(f_suffix) + "/char.f")
 			self.singleFeatures.append(lf.singles)
 			self.relFeatures.append(lf.relational)
 		if self.args.posFeature:
-			lf = self.loadFeature("../data/features/pos.f")
+			lf = self.loadFeature("../data/features/" + str(f_suffix) + "/pos.f")
 			self.singleFeatures.append(lf.singles)
 			self.relFeatures.append(lf.relational)
 		if self.args.dependencyFeature:
-			lf = self.loadFeature("../data/features/dependency.f")
+			lf = self.loadFeature("../data/features/" + str(f_suffix) + "/dependency.f")
 			self.singleFeatures.append(lf.singles)
 			self.relFeatures.append(lf.relational)
 		if self.args.bowFeature:
-			lf = self.loadFeature("../data/features/bow.f")
+			lf = self.loadFeature("../data/features/" + str(f_suffix) + "/bow.f")
 			self.singleFeatures.append(lf.singles)
 			self.relFeatures.append(lf.relational)
 		if self.args.wordnetFeature:
-			lf = self.loadFeature("../data/features/wordnet.f")
+			lf = self.loadFeature("../data/features/" + str(f_suffix) + "/wordnet.f")
 			self.relFeatures.append(lf.relational)
 
 	def loadNNData(self, useRelationalFeatures, useCCNN, scope):
@@ -198,7 +207,9 @@ class DataHandler:
 			m2_features = []
 			(uid1, uid2) = sorted([self.corpus.XUIDToMention[xuid1].UID, self.corpus.XUIDToMention[xuid2].UID])
 			# loops through each feature (e.g., BoW, lemma) for the given uid pair
+			
 			for feature in self.singleFeatures:
+				#print("feature keys:", feature.keys())
 				for i in feature[uid1]:  # loops through each val of the given feature
 					m1_features.append(i)
 				for i in feature[uid2]:

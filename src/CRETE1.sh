@@ -5,7 +5,7 @@ corpus="FULL"
 onlyValidSentences="F"
 addIntraDocs="F" # since these are singletons w.r.t. cross-doc
 exhaustivelyTestAllFeatures=false
-useECBTest=true
+useECBTest=false
 featureMap=(2 3) # 1 2 3 4 5 6 7)
 numLayers=(2) # 3) # 1 3
 numEpochs=(3) # 20)
@@ -98,7 +98,7 @@ do
 											# qsub -pe smp 8 -l vlong -o
 											fout=gpu_${prefix}_ov${onlyValidSentences}_id${addIntraDocs}_nl${nl}_ne${ne}_ws${ws}_neg${neg}_bs${bs}_dr${dr}_nf${nf}_fm${fm}_dd${dd}_fn${fn}.out
 											echo ${fout}
-											if [ ${hn} = "titanx" ] || [ ${hn} = "Christophers-MacBook-Pro-2" ]
+											if [ ${hn} = "ctanner" ] || [ ${hn} = "Christophers-MacBook-Pro-2" ]
 											then
 												echo "* kicking off CRETE2 natively"
 												native="True"

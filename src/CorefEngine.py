@@ -45,14 +45,6 @@ class CorefEngine:
 
 	if __name__ == "__main__":
 
-		wordFeaturesFile = "../data/features/word.f"
-		lemmaFeaturesFile = "../data/features/lemma.f"
-		charFeaturesFile = "../data/features/char.f"
-		posFeaturesFile = "../data/features/pos.f"
-		dependencyFeaturesFile = "../data/features/dependency.f"
-		wordnetFeaturesFile = "../data/features/wordnet.f"
-		bowFeaturesFile = "../data/features/bow.f"
-
 		runStanford = False
 
 		# classifier params
@@ -63,16 +55,28 @@ class CorefEngine:
 		#wdPresets = [256, 3, 2, 16, 0.0]
 		wdPresets = [64, 5, 2, 32, 0.0] # batchsize, num epochs, num layers, num filters, dropout
 
-		wd_stopping_points = [0.39, 0.401, 0.41, 0.42, 0.43, 0.44, 0.45, 0.46, 0.47, 0.48, 0.49, 0.501, 0.51, 0.52, 0.54, 0.55, 0.56, 0.57, 0.58, 0.59, 0.601]
+		wd_stopping_points = [0.39] #, 0.401, 0.41, 0.42, 0.43, 0.44, 0.45, 0.46, 0.47, 0.48, 0.49, 0.501, 0.51, 0.52, 0.54, 0.55, 0.56, 0.57, 0.58, 0.59, 0.601]
 		cd_stopping_points = [0.5]
 
 		# handles passed-in args
 		args = params.setCorefEngineParams()
-		
+
+		if args.useECBTest:
+			f_suffix = "ecb"
+		else:
+			f_suffix = "hddcrp"
+		wordFeaturesFile = "../data/features/" + str(f_suffix) + "/word.f"
+		lemmaFeaturesFile = "../data/features/" + str(f_suffix) + "/lemma.f"
+		charFeaturesFile = "../data/features/" + str(f_suffix) + "/char.f"
+		posFeaturesFile = "../data/features/" + str(f_suffix) + "/pos.f"
+		dependencyFeaturesFile = "../data/features/" + str(f_suffix) + "/dependency.f"
+		wordnetFeaturesFile = "../data/features/" + str(f_suffix) + "/wordnet.f"
+		bowFeaturesFile = "../data/features/" + str(f_suffix) + "/bow.f"
+
 		# handles passed-in args
 		'''
 		testing this w/ auto login
-		args = params.setCorefEngineParamss()
+		args = params.setCorefEngineParams()
 		kbp_parser = KBPParser(args, "../data/KBP/")
 		kbp_parser.parseCorpus()
 		exit(1)
@@ -87,8 +91,8 @@ class CorefEngine:
 		# parses the real, actual corpus (ECB's XML files)
 		ecb_parser = ECBParser(args, helper)
 		corpus = ecb_parser.parseCorpus(helper.docToVerifiedSentences)
-		corpus.calculateEntEnvAgreement()
-		exit(1)
+		#corpus.calculateEntEnvAgreement()
+		#exit(1)
 		
 		helper.addECBCorpus(corpus)
 
@@ -131,15 +135,19 @@ class CorefEngine:
 		if not args.useECBTest:
 			for xuid in corpus.HMUIDToMention:
 				testXUIDs.add(xuid)
+		
 		'''
+		# only used for saving features
 		fh = FeatureHandler(args, helper) #, trainXUIDs, devXUIDs, testXUIDs)
 		fh.saveLemmaFeatures(lemmaFeaturesFile)
 		fh.saveCharFeatures(charFeaturesFile)
+		exit(1)
 		fh.savePOSFeatures(posFeaturesFile)
 		fh.saveDependencyFeatures(dependencyFeaturesFile)
 		fh.saveWordNetFeatures(wordnetFeaturesFile)
 		fh.saveBoWFeatures(bowFeaturesFile)
 		'''
+		
 		dh = DataHandler(helper, trainXUIDs, devXUIDs, testXUIDs)
 		#model = LibSVM(helper, coref)
 

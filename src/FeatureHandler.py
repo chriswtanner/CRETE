@@ -12,15 +12,11 @@ from collections import defaultdict
 # regardless if ecb, hddcrp, stan.
 # the load() functions should ensure we only care about the right mentions
 class FeatureHandler:
-	def __init__(self, args, helper): #, trainXUIDs, devXUIDs, testXUIDs):
+	def __init__(self, args, helper):
 		self.args = args
 		self.helper = helper
 		self.corpus = helper.corpus
-		'''
-		self.trainXUIDs = trainXUIDs
-		self.devXUIDs = devXUIDs
-		self.testXUIDs = testXUIDs
-		'''
+
 		self.saveRelationalFeatures = False # NOTE: ensure this is what you want
 		self.bowWindow = 3 # number of tokens on each side to look at
 		self.gloveEmb = {} # to be filled in via loadGloveEmbeddings()
@@ -36,8 +32,9 @@ class FeatureHandler:
 	def getAllXUIDPairs(self):
 		ret = set()
 
+		'''
 		# on a per-dir basis
-		for d in sorted(self.corpus.dirs):
+		for d in sorted(self.corpus.ECBDirs):
 			for euid1 in self.corpus.dirs[d].EUIDs:
 				if euid1 in self.corpus.dirs[d].HMUIDs or euid1 in self.corpus.dirs[d].SUIDs:
 					print("DUPE1")
@@ -59,8 +56,9 @@ class FeatureHandler:
 					if suid2 <= suid1:
 						continue
 					ret.add((suid1, suid2))
-		# a per-dirhalf basis
+		
 		'''
+		# a per-dirhalf basis
 		for dirhalf in self.corpus.dirHalves:
 			for euid1 in self.corpus.dirHalves[dirhalf].EUIDs:
 				if euid1 in self.corpus.dirHalves[dirhalf].HMUIDs or euid1 in self.corpus.dirHalves[dirhalf].SUIDs:
@@ -83,7 +81,7 @@ class FeatureHandler:
 					if hmuid2 <= hmuid1:
 						continue
 					ret.add((hmuid1, hmuid2))
-		'''
+		
 		return ret
 
 	# return dot product and cosine sim
@@ -209,8 +207,7 @@ class FeatureHandler:
 				feature.addRelational(uid1, uid2, dp)
 				feature.addRelational(uid1, uid2, cs)
 				if proc % 1000 == 0:
-					print("\tprocessed", proc, "of", len(xuidPairs), "(%2.2f)" %
-						float(100.0*proc/len(xuidPairs)), end="\r")
+					print("\tprocessed", proc, "of", len(xuidPairs), "(%2.2f)" % float(100.0*proc/len(xuidPairs)), end="\r")
 				proc += 1
 
 		pickle_out = open(fileOut, 'wb')
@@ -226,6 +223,7 @@ class FeatureHandler:
 			xuids.add(xuid1)
 			xuids.add(xuid2)
 		for xuid in xuids:
+
 			sumEmb = [0] * 300
 			for t in self.corpus.XUIDToMention[xuid].tokens:
 				lemma = self.getBestStanToken(t.stanTokens).lemma.lower()
@@ -234,6 +232,7 @@ class FeatureHandler:
 					continue
 				curEmb = self.gloveEmb[lemma]
 				sumEmb = [x + y for x, y in zip(sumEmb, curEmb)]
+			#print("saving lemma for:", xuid, ": (", self.corpus.XUIDToMention[xuid].UID, ")")
 			feature.setSingle(self.corpus.XUIDToMention[xuid].UID, sumEmb)
 
 		if self.saveRelationalFeatures:
@@ -283,7 +282,7 @@ class FeatureHandler:
 							charEmb += self.charEmb[char]
 							numCharsFound += 1
 					else:
-						print("* WARNING: we don't have char:", str(char))
+						print("* WARNING: we don't have char:", str(char), "of len:", len(char))
 						#exit(1)
 			while len(charEmb) < 400: # 20 chars * 20 dim
 				charEmb.append(0.0)
@@ -365,8 +364,7 @@ class FeatureHandler:
 				feature.addRelational(uid1, uid2, dp)
 				feature.addRelational(uid1, uid2, cs)
 				if proc % 1000 == 0:
-					print("\tprocessed", proc, "of", len(xuidPairs), "(%2.2f)" %
-						float(100.0*proc/len(xuidPairs)), end="\r")
+					print("\tprocessed", proc, "of", len(xuidPairs), "(%2.2f)" % float(100.0*proc/len(xuidPairs)), end="\r")
 				proc += 1
 		pickle_out = open(fileOut, 'wb')
 		pickle.dump(feature, pickle_out)

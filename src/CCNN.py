@@ -11,7 +11,7 @@ import keras.backend as K
 from math import sqrt, floor
 from keras import backend as K
 from keras.models import Sequential, Model
-from keras.layers import Dense, Activation, Dropout, merge, Merge, Flatten, Input, Lambda, Conv2D, AveragePooling2D, MaxPooling2D
+from keras.layers import Dense, Activation, Dropout, merge, Flatten, Input, Lambda, Conv2D, AveragePooling2D, MaxPooling2D
 from keras.optimizers import Adam
 from collections import defaultdict
 from get_coref_metrics import get_conll_scores
