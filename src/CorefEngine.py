@@ -79,7 +79,7 @@ class CorefEngine:
 		args = params.setCorefEngineParams()
 		kbp_parser = KBPParser(args, "../data/KBP/")
 		kbp_parser.parseCorpus()
-		exit(1) d
+		exit(1) testing this
 		'''
 		start_time = time.time()
 		# parses elmo embeddings
