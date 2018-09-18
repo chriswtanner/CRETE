@@ -21,6 +21,9 @@ class Corpus:
 		self.EUIDToMention = {}
 		self.EUIDToREF = {}
 		self.refToEUIDs = defaultdict(set)
+		# while self.refToEUIDs contains all refs (entities and events)
+		# self.eventREFs keeps track of if the ref stores entities or events
+		self.refToMentionTypes = defaultdict(set)
 		self.docSentToEMentions = defaultdict(list)
 
 		# only used for HDDCRP mentions (we have no REF info)
@@ -172,6 +175,11 @@ class Corpus:
 		self.EUIDToMention[self.curXUID] = mention
 		self.EUIDToREF[self.curXUID] = REF
 		self.refToEUIDs[REF].add(self.curXUID)
+		if mention.isPred:
+			self.refToMentionTypes[REF].add("event")
+		else:
+			self.refToMentionTypes[REF].add("entity")
+			
 		self.dirHalves[mention.dirHalf].assignECBMention(self.curXUID, mention.doc_id, REF)
 		self.ECBDirs[mention.dir_num].assignECBMention(self.curXUID, mention.doc_id, REF)
 		self.docSentToEMentions[(doc_id, sentenceNum)].append(mention)

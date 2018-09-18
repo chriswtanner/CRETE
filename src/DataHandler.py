@@ -74,13 +74,22 @@ class DataHandler:
 			# TMP dependency features -- train and test a NN over the dependency features
 			print("len:", len(self.trainX), len(self.trainY))
 			print("len:", len(self.devX), len(self.devY))
-			clf = MLPClassifier(solver='lbfgs', alpha=1e-5, hidden_layer_sizes=(5, 2), random_state=1)
-			clf.fit(self.trainX, self.trainY)
-			preds = clf.predict(self.devX)
-			print(preds)
-			print(classification_report(self.devY, preds))
-			print(accuracy_score(self.devY, preds))
+			'''
+			alphas = [0.0001, 0.001]
+			num_epochs = [10, 50]
+			for a in alphas:
+				for ne in num_epochs:
+					#for _ in range(3):
+					clf = MLPClassifier(alpha = a, max_iter=ne, verbose=False)
+					clf.fit(self.trainX, self.trainY)
+					preds = clf.predict(self.devX)
+					print("ALPHA:", a, "ne:") #, ne, "run:", int(_))
+					print(classification_report(self.devY, preds))
+					print(accuracy_score(self.devY, preds))
+					print("self.devY:", self.devY)
+					print("preds:", preds)
 			exit(1)
+			'''
 			(self.testID, self.testX, self.testY) = self.createDataForCCNN(self.helper.testingDirs, self.testXUIDs, useRelationalFeatures, False, scope)
 		else: # FOR FFNN and SVM
 			(self.trainID, self.trainX, self.trainY) = self.createDataForFFNN(self.helper.trainingDirs, self.trainXUIDs, useRelationalFeatures, True, scope)
@@ -440,8 +449,11 @@ class DataHandler:
 			f1 = 2*(recall*prec) / (recall + prec)
 		print("samelamma f1:",f1, prec, recall)
 		'''
-		return (pairs, X_dep, Y_dep)
-		#return (pairs, X, Y)
+		#print("shape:", X.shape, "len:", len(X), len(X[0]), len(X[0][0]), len(X[0][0][0]), len(X[0][0][0][0]))
+		#print("shapeY:", Y.shape) #, "len:", len(Y), len(Y[0]), len(Y[0][0]), len(Y[0][0][0]))
+		#exit(1)
+		#return (pairs, X_dep, Y_dep)
+		return (pairs, X, Y)
 
 	# creates data for FFNN and SVM:
 	# [(xuid1,xuid2), [features], [1,0]]

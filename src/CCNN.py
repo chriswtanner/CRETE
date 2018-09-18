@@ -17,6 +17,8 @@ from collections import defaultdict
 from get_coref_metrics import get_conll_scores
 class CCNN:
 	def __init__(self, helper, dh, useRelationalFeatures, scope, presets, wd_docPreds, devMode, stopping_points):
+		self.calculateCoNLLScore = False # should always be True, except for debugging things that don't depend on it
+		
 		self.devMode = devMode
 		self.helper = helper
 		self.dh = dh
@@ -131,26 +133,29 @@ class CCNN:
 				#(bcub_p, bcub_r, bcub_f1, muc_p, muc_r, muc_f1, ceafe_p, ceafe_r, ceafe_f1, conll_f1)
 				start_time = time.time()
 
-				if self.args.useECBTest: # uses ECB Test Mentions
-					scores = get_conll_scores(wd_goldenClusters, wd_predictedClusters)
-					print("* getting conll score took", str((time.time() - start_time)), "seconds")
-					spToCoNLL[sp].append(scores[-1])
-					spToPredictedCluster[sp] = wd_predictedClusters
-					spToDocPredictedCluster[sp] = wd_docPredClusters
 
-					if scores[-1] > bestRunCoNLL:
-						bestRunCoNLL = scores[-1]
-						bestRunSP = sp
+				if self.calculateCoNLLScore:
+					if self.args.useECBTest: # uses ECB Test Mentions
+						scores = get_conll_scores(wd_goldenClusters, wd_predictedClusters)
+						print("* getting conll score took", str((time.time() - start_time)), "seconds")
+						spToCoNLL[sp].append(scores[-1])
+						spToPredictedCluster[sp] = wd_predictedClusters
+						spToDocPredictedCluster[sp] = wd_docPredClusters
 
-				else: # uses HDDCRP Test Mentions
-					suffix = "wd_" + str(sp) + "_" + str(_)
-					self.helper.writeCoNLLFile(wd_predictedClusters, suffix)
+						if scores[-1] > bestRunCoNLL:
+							bestRunCoNLL = scores[-1]
+							bestRunSP = sp
 
-					# pickles the predictions
-					with open("hddcrp_clusters_FULL_WITH_ENTITIES_" + str(suffix) + ".p", 'wb') as pickle_out:
-						pickle.dump(wd_docPredClusters, pickle_out)
+					else: # uses HDDCRP Test Mentions
+						suffix = "wd_" + str(sp) + "_" + str(_)
+						self.helper.writeCoNLLFile(wd_predictedClusters, suffix)
+
+						# pickles the predictions
+						with open("hddcrp_clusters_FULL_WITH_ENTITIES_" + str(suffix) + ".p", 'wb') as pickle_out:
+							pickle.dump(wd_docPredClusters, pickle_out)
+
 				#print("[DEV] AGGWD SP:", str(round(sp,4)), "CoNLL F1:", str(round(conll_f1,4)), "MUC:", str(round(muc_f1,4)), "BCUB:", str(round(bcub_f1,4)), "CEAF:", str(round(ceafe_f1,4)))
-	
+				
 			if self.args.useECBTest:
 				numGoldPos = 0
 				scoreToGoldTruth = defaultdict(list)
@@ -200,7 +205,6 @@ class CCNN:
 					recalls.append(bestR)
 					precs.append(bestP)
 					print("ccnn_best_f1 (run ", len(f1s), "): best_pairwise_f1: ", round(bestF1,4), " prec: ",round(bestP,4), " recall: ", round(bestR,4), " threshold: ", round(bestVal,3), sep="")
-					print("** AGG - run", str(_), "bestRunCoNLL:",bestRunCoNLL, "sp: ",bestRunSP)
 			sys.stdout.flush()
 
 		# clears ram
@@ -211,22 +215,19 @@ class CCNN:
 			if len(f1s) > 1:
 				stddev = self.standard_deviation(f1s)
 			print("pairwise f1 (over",len(f1s),"runs) -- avg:", round(sum(f1s)/len(f1s),4), "max:", round(max(f1s),4), "min:", round(min(f1s),4), "avgP:",sum(precs)/len(precs),"avgR:",round(sum(recalls)/len(recalls),4),"stddev:", round(100*stddev,4))
-			(best_sp, best_conll, min_conll, max_conll, std_conll) = self.calculateBestKey(spToCoNLL)
-
-			sys.stdout.flush()
 			
-			print("* [AGGWD] conll f1 -- best sp:",best_sp, "yielded: min:",round(100*min_conll,4),"avg:",round(100*best_conll,4),"max:",round(max_conll,4),"stddev:",round(std_conll,4))
-			
-			# ENSEMBLE
-			#print("* NOW RUNNING AGG ON OUR ENSEMBLE PAIRWISE PREDICTIONS")
-
-
-			fout = open("ccnn_agg_dirHalf.csv", "a+")
-			fout.write(str(self.args.devDir) + ",wd," + str(self.devMode) + "," + str(best_conll) + "\n")
-			fout.close()
-
-			return (spToDocPredictedCluster[best_sp], spToPredictedCluster[best_sp], wd_goldenClusters, best_sp)
-		
+			best_sp = self.stopping_points[0] # just return the 1st one, by default.
+			best_conll = -1
+			if self.calculateCoNLLScore:
+				(best_sp, best_conll, min_conll, max_conll, std_conll) = self.calculateBestKey(spToCoNLL)
+				sys.stdout.flush()
+				print("* [AGGWD] conll f1 -- best sp:",best_sp, "yielded: min:",round(100*min_conll,4),"avg:",round(100*best_conll,4),"max:",round(max_conll,4),"stddev:",round(std_conll,4))
+				
+				fout = open("ccnn_agg_dirHalf.csv", "a+")
+				fout.write(str(self.args.devDir) + ",wd," + str(self.devMode) + "," + str(best_conll) + "\n")
+				fout.close()
+				return (spToDocPredictedCluster[best_sp], spToPredictedCluster[best_sp], wd_goldenClusters, best_sp)
+			return None
 		else: # HDDCRP
 			# non-sensical return; only done so that the return handler doesn't complain
 			return wd_docPredClusters, wd_predictedClusters, wd_goldenClusters, 0
@@ -403,6 +404,11 @@ class CCNN:
 		for ((xuid1, xuid2), pred) in zip(ids, preds):
 			m1 = self.corpus.XUIDToMention[xuid1]
 			m2 = self.corpus.XUIDToMention[xuid2]
+
+			if not m1.isPred or not m2.isPred:
+				print("* ERROR: we're trying to do AGG on some non-event mentions")
+				exit(1)
+
 			pred = pred[0] # NOTE: the lower the score, the more likely they are the same.  it's a dissimilarity score
 			doc_id = m1.doc_id
 			if m1.dir_num not in relevant_dirs:
@@ -435,27 +441,36 @@ class CCNN:
 			curDoc = self.corpus.doc_idToDocs[doc_id]
 			ourDocClusters = {}
 
-			# construct the golden truth for the current doc
+			# construct the golden truth for the current doc (events only)
 			# we don't need to check if xuid is in our corpus or predictions because Doc.assignECBMention() adds
 			# xuids to REFToEUIDs and .XUIDS() -- the latter we checked, so it's all good
 			for curREF in curDoc.REFToEUIDs:
-				goldenSuperSet[goldenClusterID] = set(curDoc.REFToEUIDs[curREF])
-				goldenClusterID += 1
+				if "entity" not in self.corpus.refToMentionTypes[curREF]:
+					goldenSuperSet[goldenClusterID] = set(curDoc.REFToEUIDs[curREF])
+					goldenClusterID += 1
 
 			# if our doc only has 1 XUID, then we merely need to:
-			# (1) add a golden cluster and (2) add 1 single returned cluster
+			# (1) ensure it's an event mention; (2) add a golden cluster; and (3) add 1 single returned cluster
 			if len(self.dh.docToXUIDsWeWantToUse[doc_id]) == 1:
-				
-				#print("\tdoc:", doc_id, "has only 1 XUID (per DataHandler):", self.dh.docToXUIDsWeWantToUse[doc_id])
-				if len(curDoc.REFToEUIDs) != 1:
-					print("* WARNING: doc:",doc_id,"has only 1 XUID (per DataHandler), but per Corpus has more")
-					if self.args.useECBTest:
-						print("(this shouldn't happen w/ ECBTest, so exiting")
-						exit(1)
 
-				ourDocClusters[0] = set([next(iter(self.dh.docToXUIDsWeWantToUse[doc_id]))])
-				#ourClusterSuperSet[ourClusterID] = set([next(iter(self.dh.docToXUIDsWeWantToUse[doc_id]))])
-				#ourClusterID += 1
+				# check if the solo mention is an event or not
+				xuid = next(iter(self.dh.docToXUIDsWeWantToUse[doc_id]))
+				solo_mention = self.corpus.XUIDToMention[xuid]
+				if solo_mention.isPred:
+
+					# count how many REFs are only-events
+					num_refs_only_contains_events = 0
+					for ref in curDoc.REFToEUIDs:
+						if "entity" not in self.corpus.refToMentionTypes[ref]:
+							num_refs_only_contains_events += 1
+
+					if num_refs_only_contains_events != 1:
+						print("* WARNING: doc:",doc_id,"has only 1 XUID (per DataHandler), but per Corpus has more")
+						if self.args.useECBTest:
+							print("(this shouldn't happen w/ ECBTest, so we're exiting")
+							exit(1)
+
+					ourDocClusters[0] = set([next(iter(self.dh.docToXUIDsWeWantToUse[doc_id]))])
 
 			else: # we have more than 1 XUID for the given doc
 

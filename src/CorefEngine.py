@@ -48,7 +48,7 @@ class CorefEngine:
 		runStanford = False
 
 		# classifier params
-		numRuns = 1
+		numRuns = 5
 		useCCNN = True
 		cd_scope = "dirHalf" # {dir, dirHalf}
 		useRelationalFeatures = False
@@ -172,9 +172,9 @@ class CorefEngine:
 			'''
 
 			# WITHIN DOC
-			wd_model = CCNN(helper, dh, useRelationalFeatures, "doc", wdPresets, None, False, wd_stopping_points)
+			wd_model = CCNN(helper, dh, useRelationalFeatures, "doc", wdPresets, None, True, wd_stopping_points)
 			(wd_docPreds, wd_pred, wd_gold, _) = wd_model.train_and_test_wd(numRuns)  # 1 means only 1 run of WD
-			
+			exit(1)
 			# saves WITHIN-DOC PREDS
 			# CROSS DOC
 			#wd_docPreds = pickle.load(open("wd_hddcrp_clusters_FULL_sp0.51.p", 'rb'))
