@@ -21,6 +21,12 @@ class Mention:
 		self.XUID = -1
 		self.REF = ""
 
+		#### TMP -- used for auxilary dependency info
+		self.parentTokens = []
+		self.parentEntities = []
+		self.childrenTokens = []
+		self.childrenEntities = []
+
 		for t in self.tokens:
 			self.UID += t.UID + ";"
 

@@ -22,7 +22,15 @@ class StanToken:
         self.childLinks.append(childLink)
 
     def __str__(self):
-        parent = ""
+
+
+        parents = ""
+        for pl in self.parentLinks:
+            parents += "\n\t   ---" + str(pl.relationship) + "-->" + str(pl.parent.text)
+        children = ""
+        for cl in self.childLinks:
+            children += "\n\t   ---" + str(cl.relationship) + "-->" + str(cl.child.text)
+
         if len(self.parentLinks) > 0:
             parent = str(self.parentLinks[0].parent)
-        return("STAN TEXT: [" + str(self.text) + "]" + "; LEMMA:" + str(self.lemma) + "; POS:" + str(self.pos) + "; NER:" + str(self.ner) + "parents:" + parent)
+        return("STAN TEXT: [" + str(self.text) + "]" + "; LEMMA:" + str(self.lemma) + "; POS:" + str(self.pos) + "; NER:" + str(self.ner)) # + "\n\tparents:" + parents + "\n\tchildren:" + children)

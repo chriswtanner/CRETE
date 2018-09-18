@@ -55,7 +55,7 @@ class CorefEngine:
 		#wdPresets = [256, 3, 2, 16, 0.0]
 		wdPresets = [64, 5, 2, 32, 0.0] # batchsize, num epochs, num layers, num filters, dropout
 
-		wd_stopping_points = [0.39] #, 0.401, 0.41, 0.42, 0.43, 0.44, 0.45, 0.46, 0.47, 0.48, 0.49, 0.501, 0.51, 0.52, 0.54, 0.55, 0.56, 0.57, 0.58, 0.59, 0.601]
+		wd_stopping_points = [0.51] #, 0.401, 0.41, 0.42, 0.43, 0.44, 0.45, 0.46, 0.47, 0.48, 0.49, 0.501, 0.51, 0.52, 0.54, 0.55, 0.56, 0.57, 0.58, 0.59, 0.601]
 		cd_stopping_points = [0.5]
 
 		# handles passed-in args
@@ -124,6 +124,8 @@ class CorefEngine:
 		devXUIDs = set()
 		testXUIDs = set()
 		for m in corpus.ecb_mentions:
+			if not m.isPred:
+				continue
 			if m.dir_num in helper.trainingDirs:
 				trainXUIDs.add(m.XUID)
 			elif m.dir_num in helper.devDirs:
@@ -149,6 +151,10 @@ class CorefEngine:
 		'''
 		
 		dh = DataHandler(helper, trainXUIDs, devXUIDs, testXUIDs)
+
+		# prints every sentence's tokens, and displays the stanford dependency parents and children, too
+		helper.addDependenciesToMentions(dh)
+
 		#model = LibSVM(helper, coref)
 
 		# within-doc first, then cross-doc
@@ -170,8 +176,6 @@ class CorefEngine:
 			(wd_docPreds, wd_pred, wd_gold, _) = wd_model.train_and_test_wd(numRuns)  # 1 means only 1 run of WD
 			
 			# saves WITHIN-DOC PREDS
-
-			exit(1)
 			# CROSS DOC
 			#wd_docPreds = pickle.load(open("wd_hddcrp_clusters_FULL_sp0.51.p", 'rb'))
 			cd_model = CCNN(helper, dh, useRelationalFeatures, cd_scope, wdPresets, wd_docPreds, False, cd_stopping_points)

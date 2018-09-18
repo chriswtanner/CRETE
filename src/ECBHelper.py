@@ -28,6 +28,161 @@ class ECBHelper:
 		self.UIDToSUID = defaultdict(list)
 		self.docToVerifiedSentences = self.loadVerifiedSentences(args.verifiedSentencesFile)
 
+
+	# given a regular ECB-token, find its ecb-governor tokens
+	# just, we have to use stan tokens as the intermediatary, since that's
+	# where our dependency information comes from.  this gets tricky because
+	# there's sometimes a non-1-to-1 mapping from ecb-token to stan-token
+	def getParents(self, dh, token, depth):
+		if token not in self.tokensVisited:
+			bestStan = dh.getBestStanToken(token.stanTokens)
+			prefix = "\t"
+			for i in range(depth):
+				prefix += "\t"
+			#print(prefix, token, "; bestStan:", bestStan)
+			
+			# grab its parent(s)
+			#print(prefix,"# parentLinks:",len(bestStan.parentLinks))
+			self.tokensVisited.add(token)
+			for p in bestStan.parentLinks:
+				#print(prefix,"\tstanparent:", p.parent)
+
+				ecbTokens = self.stanTokenToECBToken[p.parent]
+				#print(prefix,"\tecbTokens:", ecbTokens)
+				if len(ecbTokens) > 0:
+					ecbParentToken = next(iter(self.stanTokenToECBToken[p.parent]))
+					self.levelToParents[depth].add(ecbParentToken)
+					self.getParents(dh, ecbParentToken, depth+1)
+
+	def getChildren(self, dh, token, depth):
+		if token not in self.tokensVisited:
+			bestStan = dh.getBestStanToken(token.stanTokens)
+			prefix = "\t"
+			for i in range(depth):
+				prefix += "\t"
+			#print(prefix, token, "; bestStan:", bestStan)
+			
+			# grab its parent(s)
+			#print(prefix,"# parentLinks:",len(bestStan.parentLinks))
+			self.tokensVisited.add(token)
+			for p in bestStan.childLinks:
+				#print(prefix,"\tstanparent:", p.parent)
+
+				ecbTokens = self.stanTokenToECBToken[p.child]
+				#print(prefix,"\tecbTokens:", ecbTokens)
+				if len(ecbTokens) > 0:
+					ecbChildToken = next(iter(self.stanTokenToECBToken[p.child]))
+					self.levelToChildren[depth].add(ecbChildToken)
+					self.getChildren(dh, ecbChildToken, depth+1)
+
+	def addDependenciesToMentions(self, dh):
+		for doc_id in self.corpus.doc_idToDocs:
+			#if not doc_id.startswith("1_") or "plus" in doc_id:
+			#if doc_id != "1_10ecb.xml":
+			#	continue
+			#print("[DOC: ", doc_id)
+			# maps ECB Token -> StanToken and vice versa
+			self.stanTokenToECBToken = defaultdict(set)
+			curdoctokens = ""
+			for t in self.corpus.doc_idToDocs[doc_id].tokens:
+				curdoctokens += t.text + " "
+				for s in t.stanTokens:
+					self.stanTokenToECBToken[s].add(t)
+					#print("t:",t.text,"s:",s.text)
+			#print("curdoctokens:", curdoctokens)
+			for k in self.stanTokenToECBToken:
+				if len(self.stanTokenToECBToken[k]) > 1:
+					print("woops, we have len of :", len(self.stanTokenToECBToken[k]), ":", k)
+					#exit(1)
+
+			# looks through each mention, to print the most immediate governor
+			# and modifier mentions of the opposite type
+			# maps each mention to a SENTENCE
+			sentenceToEventMentions = defaultdict(set)
+			sentenceToEntityMentions = defaultdict(set)
+			sentenceTokenToMention = defaultdict(lambda: defaultdict(set))
+			for euid in self.corpus.doc_idToDocs[doc_id].EUIDs:
+				m = self.corpus.EUIDToMention[euid]
+				sentNum = m.globalSentenceNum
+
+				for t in m.tokens:
+					sentenceTokenToMention[sentNum][t].add(m)
+
+				if m.isPred:
+					sentenceToEventMentions[sentNum].add(m)
+				else:
+					sentenceToEntityMentions[sentNum].add(m)
+
+			for s in sentenceToEventMentions:
+				#print("sentence #:", s)
+				#print("\tevents:", sentenceToEventMentions)
+				for m in sentenceToEventMentions[s]:
+					#print("\t", m)
+
+					# finds its parents (governors)
+					self.levelToParents = defaultdict(set)
+					self.tokensVisited = set()
+					for t in m.tokens:
+						#print("\t\ttoken:", t)
+						self.getParents(dh, t, 1)
+					#print("\tmention yielded following governor structure:", self.levelToParents)
+					
+					if len(self.levelToParents) > 0:
+						#print("\n\tgovernors:")
+						for level in sorted(self.levelToParents):
+							#print("\t\tlevel:", level)
+							for t in self.levelToParents[level]:
+								#print("\t\t\t", t)
+
+								# adds dependency parent tokens
+								if t not in m.parentTokens:
+									m.parentTokens.append(t)
+								for parent_mention in sentenceTokenToMention[s][t]:
+									#print("\t\t\t\tparent mention:", parent_mention)
+									if not parent_mention.isPred:
+										if parent_mention not in m.parentEntities:
+											m.parentEntities.append(parent_mention)
+										#print("\t\t\t\t****** WE HAVE AN ENTITY MENTION!!! w/ ref:", parent_mention.REF)
+
+					# finds its children (modifiers)
+					self.levelToChildren = defaultdict(set)
+					self.tokensVisited = set()
+					for t in m.tokens:
+						#print("\t\ttoken:", t)
+						self.getChildren(dh, t, 1)
+					#print("\tmention yielded following governor structure:", self.levelToParents)
+					
+					if len(self.levelToChildren) > 0:
+						#print("\n\tdependents:")
+						for level in sorted(self.levelToChildren):
+							#print("\t\tlevel:", level)
+							for t in self.levelToChildren[level]:
+								#print("\t\t\t", t)
+
+								# adds dependency parent tokens
+								if t not in m.childrenTokens:
+									m.childrenTokens.append(t)
+								for child_mention in sentenceTokenToMention[s][t]:
+									#print("\t\t\tchild mention:", child_mention)
+									if not child_mention.isPred:
+										if child_mention not in m.childrenEntities:
+											m.childrenEntities.append(child_mention)
+										#print("\t\t\t\t****** WE HAVE AN ENTITY MENTION!!! w/ ref:", child_mention.REF)
+
+
+				'''
+				print("\tentities:")
+				for m in sentenceToEntityMentions[s]:
+					print("\t", m)
+				'''
+				
+			# prints tokens and their dependencies
+			'''
+			for t in self.corpus.doc_idToDocs[doc_id].tokens:
+				print("\n" + str(t))
+				bestStan = dh.getBestStanToken(t.stanTokens)
+				print("bestStan:", bestStan)
+			'''
 	def writeCoNLLFile(self, predictedClusters, suffix): # suffix should be wd_"${sp}"_"${run#}".txt" or cd instead of wd
 		hmuidToClusterID = {}
 		for c_id in predictedClusters.keys():
@@ -205,21 +360,9 @@ class ECBHelper:
 			# for readability, make a new var
 			ourTokens = self.corpus.doc_idToDocs[doc_id].tokens
 
-			'''
-			max_i = max(len(ourTokens), len(stanTokens))
-			for _ in range(max_i):
-				otoken = ""
-				stoken = ""
-				if _ < len(ourTokens):
-					otoken = ourTokens[_].text
-				if _ < len(stanTokens):
-					stoken = stanTokens[_].text
-				#print(str(_), "ours:", otoken, " vs ", stoken)
-			'''
 			j = 0
 			i = 0
 			while i < len(ourTokens):
-				#print("i:",i,"j:",j)
 				if j >= len(stanTokens):
 					if i == len(ourTokens) - 1 and stanTokens[-1].text == "...":
 						ourTokens[i].addStanTokens([stanTokens[-1]])
@@ -262,9 +405,6 @@ class ECBHelper:
 				elif stan == "0845 125 222":
 					stan = "0845125222"
 
-
-				#print(i,"ours:",ours,"and stan:",stan)
-
 				# pre-check for unalignable tokens
 				# ours: "." stan misses it completely
 				# NOTE: if we're here, it means we are aligned up
@@ -291,7 +431,6 @@ class ECBHelper:
 					j += 1
 					continue
 
-				#print(i, "ours:", len(ours), "and stan:", len(stan))
 				# get the words to equal lengths first
 				while len(ours) != len(stan):
 					#print("ne!")

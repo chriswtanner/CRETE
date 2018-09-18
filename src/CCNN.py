@@ -147,7 +147,7 @@ class CCNN:
 					self.helper.writeCoNLLFile(wd_predictedClusters, suffix)
 
 					# pickles the predictions
-					with open("hddcrp_clusters_FULL_" + str(suffix) + ".p", 'wb') as pickle_out:
+					with open("hddcrp_clusters_FULL_WITH_ENTITIES_" + str(suffix) + ".p", 'wb') as pickle_out:
 						pickle.dump(wd_docPredClusters, pickle_out)
 				#print("[DEV] AGGWD SP:", str(round(sp,4)), "CoNLL F1:", str(round(conll_f1,4)), "MUC:", str(round(muc_f1,4)), "BCUB:", str(round(bcub_f1,4)), "CEAF:", str(round(ceafe_f1,4)))
 	
@@ -467,7 +467,7 @@ class CCNN:
 				
 				# ensures our predictions include each of the Doc's mentions
 				for xuid in docXUIDsFromCorpus:
-					if xuid not in docToXUIDsFromPredictions[doc_id]:
+					if xuid not in docToXUIDsFromPredictions[doc_id] and self.corpus.XUIDToMention[xuid].isPred:
 						print("* ERROR: missing xuid from our predictions")
 						exit(1)
 

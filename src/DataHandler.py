@@ -1,6 +1,10 @@
 import time
 import pickle
 import numpy as np
+import random
+from sklearn.metrics import accuracy_score # TMP -- dependency parse features
+from sklearn.neural_network import MLPClassifier # TMP -- dependency parse features
+from sklearn.metrics import classification_report # TMP -- dependency parse features
 from itertools import chain
 from collections import defaultdict
 class DataHandler:
@@ -38,9 +42,6 @@ class DataHandler:
 			self.relFeatures.append(lf.relational)
 		if self.args.lemmaFeature:
 			lf = self.loadFeature("../data/features/" + str(f_suffix) + "/lemma.f")
-
-			for uid in lf.singles:
-				print("loaded uid:", uid)
 			self.singleFeatures.append(lf.singles)
 			self.relFeatures.append(lf.relational)
 		if self.args.charFeature:
@@ -69,6 +70,17 @@ class DataHandler:
 		if useCCNN:
 			(self.trainID, self.trainX, self.trainY) = self.createDataForCCNN(self.helper.trainingDirs, self.trainXUIDs, useRelationalFeatures, True, scope)
 			(self.devID, self.devX, self.devY) = self.createDataForCCNN(self.helper.devDirs, self.devXUIDs, useRelationalFeatures, False, scope)
+
+			# TMP dependency features -- train and test a NN over the dependency features
+			print("len:", len(self.trainX), len(self.trainY))
+			print("len:", len(self.devX), len(self.devY))
+			clf = MLPClassifier(solver='lbfgs', alpha=1e-5, hidden_layer_sizes=(5, 2), random_state=1)
+			clf.fit(self.trainX, self.trainY)
+			preds = clf.predict(self.devX)
+			print(preds)
+			print(classification_report(self.devY, preds))
+			print(accuracy_score(self.devY, preds))
+			exit(1)
 			(self.testID, self.testX, self.testY) = self.createDataForCCNN(self.helper.testingDirs, self.testXUIDs, useRelationalFeatures, False, scope)
 		else: # FOR FFNN and SVM
 			(self.trainID, self.trainX, self.trainY) = self.createDataForFFNN(self.helper.trainingDirs, self.trainXUIDs, useRelationalFeatures, True, scope)
@@ -136,6 +148,11 @@ class DataHandler:
 	# we pass in XUID because the mentions could be from any Stan, HDDCRP, or ECB; however,
 	# we need to remember that the co-reference REF tags only exist in the output file that we compare against
 	def createDataForCCNN(self, dirs, XUIDs, useRelationalFeatures, negSubsample, scope):
+
+		# TMP for dependency features testing for adding entities
+		X_dep = []
+		Y_dep = []
+
 		pairs = []
 		X = []
 		Y = []
@@ -152,6 +169,23 @@ class DataHandler:
 		TP = 0.0
 		FN = 0.0
 		FP = 0.0
+		'''
+
+		# just for dependency sanity check
+		'''
+		for xuid in XUIDs:
+			m = self.corpus.XUIDToMention[xuid]
+			if m.dirHalf == "1ecb.xml":
+				print(m)
+				t1textp = [_.text for _ in m.parentTokens]
+				e1REFsp = [_.REF for _ in m.parentEntities]
+				t1textc = [_.text for _ in m.childrenTokens]
+				e1REFsc = [_.REF for _ in m.childrenEntities]
+				print("\tt1textp:", t1textp)
+				print("\te1REFsp:", e1REFsp)
+				print("\tt1textc:", t1textc)
+				print("\te1REFsc:", e1REFsc)
+		exit(1)
 		'''
 		for (xuid1, xuid2) in xuidPairs:
 			if xuid1 == xuid2:
@@ -177,6 +211,137 @@ class DataHandler:
 						break
 			'''
 
+			# TMP ADDED TO CHECK DEPENDENCY FEATURES
+			# PARENTS, CHILDREN, MIXED (do any tokens exist)
+			# 1 do the mentions have a token in common?
+			# 2 do the mentions have an entity mention in common?
+			# 3 do the mentions have their 1st entity mention in common?
+			m1 = self.corpus.XUIDToMention[xuid1]
+			m2 = self.corpus.XUIDToMention[xuid2]
+			features = []
+
+
+			# prints the dependency stuff, to see if it makes sense
+			#if m1.REF == m2.REF or random.random() < 0.2: # 1/5 of the negatives
+
+			# 1
+			tokenShared = False
+			t1text = [_.text for _ in m1.parentTokens]
+			t2text = [_.text for _ in m2.parentTokens]
+
+			e1REFs = [_.REF for _ in m1.parentEntities]
+			e2REFs = [_.REF for _ in m2.parentEntities]
+			for t1 in t1text:
+				if t1 in t2text:
+					tokenShared = True
+					break
+						
+			# 2
+			entityInCommon = False
+			for p1 in e1REFs:
+				if p1 in e2REFs:
+					entityInCommon = True
+					break
+			# 3
+			firstEntitiesEqual = False
+			if len(e1REFs) > 0 and len(e2REFs) > 0 and e1REFs[0] == e2REFs[0]:
+				firstEntitiesEqual = True
+			features.append(tokenShared)
+			features.append(entityInCommon)
+			features.append(firstEntitiesEqual)
+
+			# children
+			# 1
+			tokenShared = False
+			t1text = [_.text for _ in m1.childrenTokens]
+			t2text = [_.text for _ in m2.childrenTokens]
+
+			e1REFs = [_.REF for _ in m1.childrenEntities]
+			e2REFs = [_.REF for _ in m2.childrenEntities]
+			for t1 in t1text:
+				if t1 in t2text:
+					tokenShared = True
+					break
+			
+			# 2
+			entityInCommon = False
+			for p1 in e1REFs:
+				if p1 in e2REFs:
+					entityInCommon = True
+					break
+			# 3
+			firstEntitiesEqual = False
+			if len(e1REFs) > 0 and len(e2REFs) > 0 and e1REFs[0] == e2REFs[0]:
+				firstEntitiesEqual = True
+			features.append(tokenShared)
+			features.append(entityInCommon)
+			features.append(firstEntitiesEqual)
+
+			# MIXED
+			# 1
+			tokenShared = False
+			#parents
+			t1textp = [_.text for _ in m1.parentTokens]
+			t2textp = [_.text for _ in m2.parentTokens]
+			e1REFsp = [_.REF for _ in m1.parentEntities]
+			e2REFsp = [_.REF for _ in m2.parentEntities]
+			#children
+			t1textc = [_.text for _ in m1.childrenTokens]
+			t2textc = [_.text for _ in m2.childrenTokens]
+			e1REFsc = [_.REF for _ in m1.childrenEntities]
+			e2REFsc = [_.REF for _ in m2.childrenEntities]
+			for t1 in [t1textp, t1textc]:
+				if t1 in t2textp or t1 in t2textc:
+					tokenShared = True
+					break
+			# 2
+			entityInCommon = False
+			for p1 in [e1REFsp, e1REFsc]:
+				if p1 in e2REFsp or p1 in e2REFsc:
+					entityInCommon = True
+					break
+			# 3
+			firstEntitiesEqual = False
+			if features[2] or features[5]:
+				firstEntitiesEqual = True
+			if not firstEntitiesEqual:
+				if len(e1REFsc) > 0 and len(e2REFsp) > 0:
+					if e1REFsc[0] == e2REFsp[0]:
+						firstEntitiesEqual = True
+				if len(e1REFsp) > 0 and len(e2REFsc) > 0:
+					if e1REFsp[0] == e2REFsc[0]:
+						firstEntitiesEqual = True
+
+			features.append(tokenShared)
+			features.append(entityInCommon)
+			features.append(firstEntitiesEqual)
+
+			if len(t1textp) > 0:
+				features.append(1)
+			else:
+				features.append(0)
+			if len(t1textc) > 0:
+				features.append(1)
+			else:
+				features.append(0)
+
+			if len(t2textp) > 0:
+				features.append(1)
+			else:
+				features.append(0)
+			if len(t2textc) > 0:
+				features.append(1)
+			else:
+				features.append(0)
+
+			#features.append(m1.REF == m2.REF)
+			#if m1.dirHalf == "1ecb.xml":
+			if m1.REF == m2.REF or random.random() < 0.2: # 1/5 of the negatives:
+			#print("p1:", m1.parentTokens, "p2:", m2.parentTokens)
+				X_dep.append([int(_) for _ in features])
+				Y_dep.append(int(m1.REF == m2.REF))
+					#print(str(int(m1.REF == m2.REF)), t1text, t2text, features)
+
 			# NOTE: if this is for HDDCRP or Stan mentions, the REFs will always be True
 			# because we don't have such info for them, so they are ""
 			if self.corpus.XUIDToMention[xuid1].REF == self.corpus.XUIDToMention[xuid2].REF:
@@ -190,6 +355,8 @@ class DataHandler:
 				'''
 				labels.append(1)
 				numPosAdded += 1
+				#if m1.dirHalf == "1ecb.xml":
+				#	print(features)
 			else:
 
 				# TMP ADDED FOR SAME LEMMA TEST
@@ -203,6 +370,8 @@ class DataHandler:
 					continue
 				numNegAdded += 1
 				labels.append(0)
+				#if m1.dirHalf == "1ecb.xml":
+				#	print(features)
 			m1_features = []
 			m2_features = []
 			(uid1, uid2) = sorted([self.corpus.XUIDToMention[xuid1].UID, self.corpus.XUIDToMention[xuid2].UID])
@@ -254,7 +423,10 @@ class DataHandler:
 			  pn, "% neg); features' length = ", numFeatures)
 
 		if len(pairs) == 0:
+			print("* ERROR: no pairs!")
 			exit(1)
+		
+		
 		# TMP ADDED FOR SAME LEMMA TEST
 		'''
 		recall = 0
@@ -268,7 +440,8 @@ class DataHandler:
 			f1 = 2*(recall*prec) / (recall + prec)
 		print("samelamma f1:",f1, prec, recall)
 		'''
-		return (pairs, X, Y)
+		return (pairs, X_dep, Y_dep)
+		#return (pairs, X, Y)
 
 	# creates data for FFNN and SVM:
 	# [(xuid1,xuid2), [features], [1,0]]
