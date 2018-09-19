@@ -365,9 +365,9 @@ class DataHandler:
 
 			# TMP -- trying to add supplemental CCNN features
 			curRelational = [0]
-			if elf.corpus.XUIDToMention[xuid1].REF == self.corpus.XUIDToMention[xuid2].REF:
+			if self.corpus.XUIDToMention[xuid1].REF == self.corpus.XUIDToMention[xuid2].REF:
 				curRelational = [1]
-				
+
 			relational_features.append(np.asarray(curRelational))
 
 			(uid1, uid2) = sorted([self.corpus.XUIDToMention[xuid1].UID, self.corpus.XUIDToMention[xuid2].UID])
