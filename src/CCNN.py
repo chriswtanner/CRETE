@@ -8,6 +8,11 @@ import random
 import numpy as np
 import tensorflow as tf
 import keras.backend as K
+
+from sklearn.metrics import accuracy_score # TMP -- dependency parse features
+from sklearn.neural_network import MLPClassifier # TMP -- dependency parse features
+from sklearn.metrics import classification_report # TMP -- dependency parse features
+
 from math import sqrt, floor
 from keras import backend as K
 from keras.models import Sequential, Model
@@ -17,8 +22,8 @@ from collections import defaultdict
 from get_coref_metrics import get_conll_scores
 class CCNN:
 	def __init__(self, helper, dh, useRelationalFeatures, scope, presets, wd_docPreds, devMode, stopping_points):
-		self.calculateCoNLLScore = False # should always be True, except for debugging things that don't depend on it
-		
+		self.calculateCoNLLScore = True # should always be True, except for debugging things that don't depend on it
+		self.CCNNSupplement = True
 		self.devMode = devMode
 		self.helper = helper
 		self.dh = dh
@@ -48,8 +53,11 @@ class CCNN:
 		(self.trainID, self.trainX, self.trainY) = (dh.trainID, dh.trainX, dh.trainY)
 		(self.devID, self.devX, self.devY) = (dh.devID, dh.devX, dh.devY)
 		(self.testID, self.testX, self.testY) = (dh.testID, dh.testX, dh.testY)
-		print("self.testY:", self.testY)
 
+		self.supplementalTrain = dh.supplementalTrain
+		self.supplementalDev = dh.supplementalDev
+		self.supplementalTest = dh.supplementalTest
+		print("shape:", self.supplementalTrain.shape)
 		if self.args.native:
 			tf.Session(config=tf.ConfigProto(log_device_placement=True))
 			os.environ['CUDA_VISIBLE_DEVICES'] = ''
@@ -76,6 +84,57 @@ class CCNN:
 			new_preds.append([thesum / float(thelength)])
 		return new_preds
 	
+	# evaluates the CCNN pairwise predictions,
+	# returning the F1, PREC, RECALL scores
+	def evaluateCCNNPairwisePreds(self, preds):
+		numGoldPos = 0
+		scoreToGoldTruth = defaultdict(list)
+		for _ in range(len(preds)):
+			if self.devMode:
+				if self.devY[_]:
+					numGoldPos += 1
+					scoreToGoldTruth[preds[_][0]].append(1)
+				else:
+					scoreToGoldTruth[preds[_][0]].append(0)
+
+			else:
+				if self.testY[_]:
+					numGoldPos += 1
+					scoreToGoldTruth[preds[_][0]].append(1)
+				else:
+					scoreToGoldTruth[preds[_][0]].append(0)
+		s = sorted(scoreToGoldTruth.keys())
+		TP = 0.0
+		FP = 0.0
+		bestF1 = 0
+		bestVal = -1
+		bestR = 0
+		bestP = 0
+		numReturnedSoFar = 0
+		for eachVal in s:
+			for _ in scoreToGoldTruth[eachVal]:
+				if _ == 1:
+					TP += 1
+				else:
+					FP += 1
+
+			numReturnedSoFar += len(scoreToGoldTruth[eachVal])
+			recall = float(TP / numGoldPos)
+			prec = float(TP / numReturnedSoFar)
+			f1 = 0
+			if (recall + prec) > 0:
+				f1 = 2*(recall*prec) / (recall + prec)
+			if f1 > bestF1:
+				bestF1 = f1
+				bestVal = eachVal
+				bestR = recall
+				bestP = prec
+
+		if bestF1 <=0:
+			print("* ERROR: our F1 was <= 0")
+			exit(1)
+		return (bestF1, bestP, bestR, bestVal)
+		
 	# WITHIN-DOC MODEL
 	def train_and_test_wd(self, numRuns):
 		f1s = []
@@ -93,23 +152,115 @@ class CCNN:
 			# define model
 			input_shape = self.trainX.shape[2:]
 			base_network = self.create_base_network(input_shape)
-			input_a = Input(shape=input_shape)
-			input_b = Input(shape=input_shape)
+
+			if self.CCNNSupplement: # relational, merged layer way
+				input_a = Input(shape=input_shape, name='input_a')
+				input_b = Input(shape=input_shape, name='input_b')
+			else:
+				input_a = Input(shape=input_shape)
+				input_b = Input(shape=input_shape)
+			
 			processed_a = base_network(input_a)
 			processed_b = base_network(input_b)
 			distance = Lambda(self.euclidean_distance, output_shape=self.eucl_dist_output_shape)([processed_a, processed_b])
-			model = Model(inputs=[input_a, input_b], outputs=distance)
-			model.compile(loss=self.contrastive_loss, optimizer=Adam())
-			#print(model.summary())
-			model.fit([self.trainX[:, 0], self.trainX[:, 1]], self.trainY, \
-				batch_size=self.bs, \
-				epochs=self.ne, \
-				validation_data=([self.devX[:, 0], self.devX[:, 1]], self.devY))
 
-			if self.devMode:
-				preds = model.predict([self.devX[:, 0], self.devX[:, 1]])
+			if self.CCNNSupplement:
+				auxiliary_input = Input(shape=(1,), name='auxiliary_input')
+				combined_layer = keras.layers.concatenate([distance, auxiliary_input])
+				x = Dense(4, activation='relu')(combined_layer)
+				main_output = Dense(1, activation='sigmoid', name='main_output')(x)
+				model = Model([input_a, input_b, auxiliary_input], outputs=main_output)
+				model.compile(loss=self.contrastive_loss, optimizer=Adam())
+				model.fit({'input_a': self.trainX[:, 0], 'input_b': self.trainX[:, 1], 'auxiliary_input': self.supplementalTrain},
+						{'main_output': self.trainY}, 
+						batch_size=self.bs, \
+						epochs=self.ne, \
+						validation_data=({'input_a': self.devX[:, 0], 'input_b': self.devX[:, 1], 'auxiliary_input': self.supplementalDev}, {'main_output': self.devY}))
 			else:
-				preds = model.predict([self.testX[:, 0], self.testX[:, 1]])
+				model = Model(inputs=[input_a, input_b], outputs=distance)
+				model.compile(loss=self.contrastive_loss, optimizer=Adam())
+
+				print(model.summary())
+				model.fit([self.trainX[:, 0], self.trainX[:, 1]], self.trainY, \
+					batch_size=self.bs, \
+					epochs=self.ne, \
+					validation_data=([self.devX[:, 0], self.devX[:, 1]], self.devY))
+			'''
+			# TMP dependency features -- train and test a NN over the dependency features
+			print("len:", len(self.trainX), len(self.trainY))
+			print("len:", len(self.devX), len(self.devY))
+			
+			alphas = [0.00001, 0.001, 0.01]
+			num_epochs = [200, 500]
+			
+			for a in alphas:
+				for ne in num_epochs:
+					preds = []
+					#for _ in range(3):
+					clf = MLPClassifier(solver='lbfgs', alpha=1e-5, hidden_layer_sizes=(15), random_state=1, max_iter=ne)
+					clf.fit(self.trainX, self.trainY)
+					blah = clf.predict(self.devX)
+					scikits_preds = clf.predict_proba(self.devX)
+					print(classification_report(self.devY, blah))
+
+					for _ in range(len(scikits_preds)):
+						preds.append([scikits_preds[_][0]])
+					#print("preds:", preds)
+					#preds = clf.predict(self.devX)
+					numGoldPos = 0
+					scoreToGoldTruth = defaultdict(list)
+					#print("lenpreds:",len(preds))
+					for _ in range(len(preds)):
+						#print("_:", _)
+						if self.devY[_]:
+							numGoldPos += 1
+							scoreToGoldTruth[preds[_][0]].append(1)
+						else:
+							scoreToGoldTruth[preds[_][0]].append(0)
+					s = sorted(scoreToGoldTruth.keys())
+					TP = 0.0
+					FP = 0.0
+					bestF1 = 0
+					bestVal = -1
+					bestR = 0
+					bestP = 0
+					numReturnedSoFar = 0
+					for eachVal in s:
+						for _ in scoreToGoldTruth[eachVal]:
+							if _ == 1:
+								TP += 1
+							else:
+								FP += 1
+
+						numReturnedSoFar += len(scoreToGoldTruth[eachVal])
+						recall = float(TP / numGoldPos)
+						prec = float(TP / numReturnedSoFar)
+						f1 = 0
+						if (recall + prec) > 0:
+							f1 = 2*(recall*prec) / (recall + prec)
+						if f1 > bestF1:
+							bestF1 = f1
+							bestVal = eachVal
+							bestR = recall
+							bestP = prec
+						#print("eachVL:", eachVal, "f1:", f1)
+					if bestF1 > 0:
+						f1s.append(bestF1)
+						recalls.append(bestR)
+						precs.append(bestP)
+						print("ALPHA:", a, "ne:", ne, "ccnn_best_f1 (run ", len(f1s), "): best_pairwise_f1: ", round(bestF1,4), " prec: ",round(bestP,4), " recall: ", round(bestR,4), " threshold: ", round(bestVal,3), sep="")
+					#print("ALPHA:", a, "ne:") #, ne, "run:", int(_))
+					#print(classification_report(self.devY, preds))
+					#print(accuracy_score(self.devY, preds))
+					#print("self.devY:", self.devY)
+			'''
+			if self.CCNNSupplement:
+				preds = model.predict({'input_a': self.testX[:, 0], 'input_b': self.testX[:, 1], 'auxiliary_input': self.supplementalTest})
+			else:
+				if self.devMode:
+					preds = model.predict([self.devX[:, 0], self.devX[:, 1]])
+				else:
+					preds = model.predict([self.testX[:, 0], self.testX[:, 1]])
 			print("* done training")
 
 			# append to the ensemble of pairwise predictions
@@ -123,88 +274,48 @@ class CCNN:
 				print("*** SETTING PREDS = ensemble!!")
 				preds = ensemblePreds
 
-			# performs WD agglomerative clustering
-			for sp in self.stopping_points:
-				print("* [agg] sp:", sp)
-				if self.devMode:
-					(wd_docPredClusters, wd_predictedClusters, wd_goldenClusters) = self.aggClusterWD(self.helper.devDirs, self.devID, preds, sp)
-				else:
-					(wd_docPredClusters, wd_predictedClusters, wd_goldenClusters) = self.aggClusterWD(self.helper.testingDirs, self.testID, preds, sp)
-				#(bcub_p, bcub_r, bcub_f1, muc_p, muc_r, muc_f1, ceafe_p, ceafe_r, ceafe_f1, conll_f1)
-				start_time = time.time()
+				# NOTE: the following used to not be indented, but i recently decided that
+				# the ensemble seems to be teh best performing, and since measuring CoNLL takes 1-2 minutes,
+				# i might as well ONLY perform clustering+CoNLL eval on the best predictions.
+				# however, pairwise CCNN eval is fast, so let's do that for every run
+				# performs WD agglomerative clustering
+				for sp in self.stopping_points:
+					print("* [agg] sp:", sp)
+					if self.devMode:
+						(wd_docPredClusters, wd_predictedClusters, wd_goldenClusters) = self.aggClusterWD(self.helper.devDirs, self.devID, preds, sp)
+					else:
+						(wd_docPredClusters, wd_predictedClusters, wd_goldenClusters) = self.aggClusterWD(self.helper.testingDirs, self.testID, preds, sp)
+					#(bcub_p, bcub_r, bcub_f1, muc_p, muc_r, muc_f1, ceafe_p, ceafe_r, ceafe_f1, conll_f1)
+					start_time = time.time()
 
-
-				if self.calculateCoNLLScore:
-					if self.args.useECBTest: # uses ECB Test Mentions
-						scores = get_conll_scores(wd_goldenClusters, wd_predictedClusters)
-						print("* getting conll score took", str((time.time() - start_time)), "seconds")
-						spToCoNLL[sp].append(scores[-1])
-						spToPredictedCluster[sp] = wd_predictedClusters
-						spToDocPredictedCluster[sp] = wd_docPredClusters
-
-						if scores[-1] > bestRunCoNLL:
-							bestRunCoNLL = scores[-1]
-							bestRunSP = sp
-
-					else: # uses HDDCRP Test Mentions
+					if self.calculateCoNLLScore:
 						suffix = "wd_" + str(sp) + "_" + str(_)
-						self.helper.writeCoNLLFile(wd_predictedClusters, suffix)
-
 						# pickles the predictions
-						with open("hddcrp_clusters_FULL_WITH_ENTITIES_" + str(suffix) + ".p", 'wb') as pickle_out:
+						with open("hddcrp_clusters_ONLY_EVENTS_" + str(suffix) + ".p", 'wb') as pickle_out:
 							pickle.dump(wd_docPredClusters, pickle_out)
+
+						if self.args.useECBTest: # uses ECB Test Mentions
+							scores = get_conll_scores(wd_goldenClusters, wd_predictedClusters)
+							print("* getting conll score took", str((time.time() - start_time)), "seconds")
+							spToCoNLL[sp].append(scores[-1])
+							spToPredictedCluster[sp] = wd_predictedClusters
+							spToDocPredictedCluster[sp] = wd_docPredClusters
+
+							if scores[-1] > bestRunCoNLL:
+								bestRunCoNLL = scores[-1]
+								bestRunSP = sp
+
+						else: # uses HDDCRP Test Mentions
+							self.helper.writeCoNLLFile(wd_predictedClusters, suffix)
 
 				#print("[DEV] AGGWD SP:", str(round(sp,4)), "CoNLL F1:", str(round(conll_f1,4)), "MUC:", str(round(muc_f1,4)), "BCUB:", str(round(bcub_f1,4)), "CEAF:", str(round(ceafe_f1,4)))
 				
 			if self.args.useECBTest:
-				numGoldPos = 0
-				scoreToGoldTruth = defaultdict(list)
-				for _ in range(len(preds)):
-					if self.devMode:
-						if self.devY[_]:
-							numGoldPos += 1
-							scoreToGoldTruth[preds[_][0]].append(1)
-						else:
-							scoreToGoldTruth[preds[_][0]].append(0)
-
-					else:
-						if self.testY[_]:
-							numGoldPos += 1
-							scoreToGoldTruth[preds[_][0]].append(1)
-						else:
-							scoreToGoldTruth[preds[_][0]].append(0)
-				s = sorted(scoreToGoldTruth.keys())
-				TP = 0.0
-				FP = 0.0
-				bestF1 = 0
-				bestVal = -1
-				bestR = 0
-				bestP = 0
-				numReturnedSoFar = 0
-				for eachVal in s:
-					for _ in scoreToGoldTruth[eachVal]:
-						if _ == 1:
-							TP += 1
-						else:
-							FP += 1
-
-					numReturnedSoFar += len(scoreToGoldTruth[eachVal])
-					recall = float(TP / numGoldPos)
-					prec = float(TP / numReturnedSoFar)
-					f1 = 0
-					if (recall + prec) > 0:
-						f1 = 2*(recall*prec) / (recall + prec)
-					if f1 > bestF1:
-						bestF1 = f1
-						bestVal = eachVal
-						bestR = recall
-						bestP = prec
-
-				if bestF1 > 0:
-					f1s.append(bestF1)
-					recalls.append(bestR)
-					precs.append(bestP)
-					print("ccnn_best_f1 (run ", len(f1s), "): best_pairwise_f1: ", round(bestF1,4), " prec: ",round(bestP,4), " recall: ", round(bestR,4), " threshold: ", round(bestVal,3), sep="")
+				(f1, prec, rec, bestThreshold) = self.evaluateCCNNPairwisePreds(preds)
+				f1s.append(f1)
+				recalls.append(rec)
+				precs.append(prec)
+				print("ccnn_best_f1 (run ", len(f1s), "): best_pairwise_f1: ", round(f1,4), " prec: ",round(prec,4), " recall: ", round(rec,4), " threshold: ", round(bestThreshold,3), sep="")
 			sys.stdout.flush()
 
 		# clears ram
@@ -350,7 +461,7 @@ class CCNN:
 			if len(f1s) > 1:
 				stddev = self.standard_deviation(f1s)
 			print("pairwise f1 (over",len(f1s),"runs) -- avg:", round(sum(f1s)/len(f1s),4), "max:", round(max(f1s),4), "min:",
-			      round(min(f1s),4), "avgP:",sum(precs)/len(precs),"avgR:",round(sum(recalls)/len(recalls),4),"stddev:", round(100*stddev,4))
+				  round(min(f1s),4), "avgP:",sum(precs)/len(precs),"avgR:",round(sum(recalls)/len(recalls),4),"stddev:", round(100*stddev,4))
 			(best_sp, best_conll, min_conll, max_conll,
 			 std_conll) = self.calculateBestKey(spToCoNLL)
 

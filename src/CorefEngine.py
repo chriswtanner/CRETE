@@ -48,12 +48,12 @@ class CorefEngine:
 		runStanford = False
 
 		# classifier params
-		numRuns = 5
+		numRuns = 8
 		useCCNN = True
-		cd_scope = "dirHalf" # {dir, dirHalf}
+		cd_scope = "dir" # {dir, dirHalf}
 		useRelationalFeatures = False
 		#wdPresets = [256, 3, 2, 16, 0.0]
-		wdPresets = [64, 5, 2, 32, 0.0] # batchsize, num epochs, num layers, num filters, dropout
+		wdPresets = [64, 10, 2, 32, 0.0] # batchsize, num epochs, num layers, num filters, dropout
 
 		wd_stopping_points = [0.51] #, 0.401, 0.41, 0.42, 0.43, 0.44, 0.45, 0.46, 0.47, 0.48, 0.49, 0.501, 0.51, 0.52, 0.54, 0.55, 0.56, 0.57, 0.58, 0.59, 0.601]
 		cd_stopping_points = [0.5]
@@ -153,7 +153,8 @@ class CorefEngine:
 		dh = DataHandler(helper, trainXUIDs, devXUIDs, testXUIDs)
 
 		# prints every sentence's tokens, and displays the stanford dependency parents and children, too
-		helper.addDependenciesToMentions(dh)
+		
+		#helper.addDependenciesToMentions(dh)
 
 		#model = LibSVM(helper, coref)
 
@@ -172,7 +173,7 @@ class CorefEngine:
 			'''
 
 			# WITHIN DOC
-			wd_model = CCNN(helper, dh, useRelationalFeatures, "doc", wdPresets, None, True, wd_stopping_points)
+			wd_model = CCNN(helper, dh, useRelationalFeatures, "doc", wdPresets, None, False, wd_stopping_points)
 			(wd_docPreds, wd_pred, wd_gold, _) = wd_model.train_and_test_wd(numRuns)  # 1 means only 1 run of WD
 			exit(1)
 			# saves WITHIN-DOC PREDS

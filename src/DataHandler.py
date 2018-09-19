@@ -2,9 +2,7 @@ import time
 import pickle
 import numpy as np
 import random
-from sklearn.metrics import accuracy_score # TMP -- dependency parse features
-from sklearn.neural_network import MLPClassifier # TMP -- dependency parse features
-from sklearn.metrics import classification_report # TMP -- dependency parse features
+
 from itertools import chain
 from collections import defaultdict
 class DataHandler:
@@ -68,29 +66,9 @@ class DataHandler:
 		print("[dh] loading ...")
 		start_time = time.time()
 		if useCCNN:
-			(self.trainID, self.trainX, self.trainY) = self.createDataForCCNN(self.helper.trainingDirs, self.trainXUIDs, useRelationalFeatures, True, scope)
-			(self.devID, self.devX, self.devY) = self.createDataForCCNN(self.helper.devDirs, self.devXUIDs, useRelationalFeatures, False, scope)
-
-			# TMP dependency features -- train and test a NN over the dependency features
-			print("len:", len(self.trainX), len(self.trainY))
-			print("len:", len(self.devX), len(self.devY))
-			'''
-			alphas = [0.0001, 0.001]
-			num_epochs = [10, 50]
-			for a in alphas:
-				for ne in num_epochs:
-					#for _ in range(3):
-					clf = MLPClassifier(alpha = a, max_iter=ne, verbose=False)
-					clf.fit(self.trainX, self.trainY)
-					preds = clf.predict(self.devX)
-					print("ALPHA:", a, "ne:") #, ne, "run:", int(_))
-					print(classification_report(self.devY, preds))
-					print(accuracy_score(self.devY, preds))
-					print("self.devY:", self.devY)
-					print("preds:", preds)
-			exit(1)
-			'''
-			(self.testID, self.testX, self.testY) = self.createDataForCCNN(self.helper.testingDirs, self.testXUIDs, useRelationalFeatures, False, scope)
+			(self.trainID, self.trainX, self.supplementalTrain, self.trainY) = self.createDataForCCNN(self.helper.trainingDirs, self.trainXUIDs, useRelationalFeatures, True, scope)
+			(self.devID, self.devX, self.supplementalDev, self.devY) = self.createDataForCCNN(self.helper.devDirs, self.devXUIDs, useRelationalFeatures, False, scope)			
+			(self.testID, self.testX, self.supplementalTest, self.testY) = self.createDataForCCNN(self.helper.testingDirs, self.testXUIDs, useRelationalFeatures, False, scope)
 		else: # FOR FFNN and SVM
 			(self.trainID, self.trainX, self.trainY) = self.createDataForFFNN(self.helper.trainingDirs, self.trainXUIDs, useRelationalFeatures, True, scope)
 			(self.devID, self.devX, self.devY) = self.createDataForFFNN(self.helper.devDirs, self.devXUIDs, useRelationalFeatures, False, scope)
@@ -165,6 +143,7 @@ class DataHandler:
 		pairs = []
 		X = []
 		Y = []
+		relational_features = []
 		labels = []
 		numFeatures = 0
 		numPosAdded = 0
@@ -345,10 +324,10 @@ class DataHandler:
 
 			#features.append(m1.REF == m2.REF)
 			#if m1.dirHalf == "1ecb.xml":
-			if m1.REF == m2.REF or random.random() < 0.2: # 1/5 of the negatives:
+			#if m1.REF == m2.REF or random.random() < 0.2: # 1/5 of the negatives:
 			#print("p1:", m1.parentTokens, "p2:", m2.parentTokens)
-				X_dep.append([int(_) for _ in features])
-				Y_dep.append(int(m1.REF == m2.REF))
+				#X_dep.append([int(_) for _ in features])
+				#Y_dep.append(int(m1.REF == m2.REF))
 					#print(str(int(m1.REF == m2.REF)), t1text, t2text, features)
 
 			# NOTE: if this is for HDDCRP or Stan mentions, the REFs will always be True
@@ -383,6 +362,14 @@ class DataHandler:
 				#	print(features)
 			m1_features = []
 			m2_features = []
+
+			# TMP -- trying to add supplemental CCNN features
+			curRelational = [0]
+			if elf.corpus.XUIDToMention[xuid1].REF == self.corpus.XUIDToMention[xuid2].REF:
+				curRelational = [1]
+				
+			relational_features.append(np.asarray(curRelational))
+
 			(uid1, uid2) = sorted([self.corpus.XUIDToMention[xuid1].UID, self.corpus.XUIDToMention[xuid2].UID])
 			# loops through each feature (e.g., BoW, lemma) for the given uid pair
 			
@@ -418,12 +405,24 @@ class DataHandler:
 			m1Matrix = np.asarray(m1Matrix).reshape(1,len(m1_features),1)
 			m2Matrix = np.asarray(m2Matrix).reshape(1, len(m2_features),1)
 			pair = np.asarray([m1Matrix, m2Matrix])
+
+			# make the joint dependency embedding
+			X_dep.append([int(_) for _ in features])
+			'''
+			dep1Matrix = np.zeros(shape=(1, len(features)))
+			dep2Matrix = np.zeros(shape=(1, len(features)))
+			dep1Matrix[0] = features
+			dep2Matrix[0] = features
+			dep1Matrix = np.asarray(dep1Matrix).reshape(1, len(features), 1)
+			dep2Matrix = np.asarray(dep2Matrix).reshape(1, len(features), 1)
+			'''
 			X.append(pair)
 
 			# makes xuid (aka xuid) pairs
 			pairs.append((xuid1, xuid2))
 
 		X = np.asarray(X)
+		relational_features = np.asarray(relational_features)
 		#print("labels:",labels)
 		Y = np.asarray(labels)
 		pp = float(numPosAdded / (numPosAdded+numNegAdded))
@@ -434,7 +433,6 @@ class DataHandler:
 		if len(pairs) == 0:
 			print("* ERROR: no pairs!")
 			exit(1)
-		
 		
 		# TMP ADDED FOR SAME LEMMA TEST
 		'''
@@ -452,8 +450,8 @@ class DataHandler:
 		#print("shape:", X.shape, "len:", len(X), len(X[0]), len(X[0][0]), len(X[0][0][0]), len(X[0][0][0][0]))
 		#print("shapeY:", Y.shape) #, "len:", len(Y), len(Y[0]), len(Y[0][0]), len(Y[0][0][0]))
 		#exit(1)
-		#return (pairs, X_dep, Y_dep)
-		return (pairs, X, Y)
+		#return (pairs, X_dep, Y)
+		return (pairs, X, relational_features, Y)
 
 	# creates data for FFNN and SVM:
 	# [(xuid1,xuid2), [features], [1,0]]
