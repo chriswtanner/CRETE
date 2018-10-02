@@ -2,7 +2,7 @@
 export PYTHONIOENCODING=UTF-8
 prefix="ccnn" # used to help identify experiments' outputs, as the output files will have this prefix
 corpus="FULL"
-onlyValidSentences="F"
+onlyValidSentences="T"
 addIntraDocs="F" # since these are singletons w.r.t. cross-doc
 exhaustivelyTestAllFeatures=false
 useECBTest=true

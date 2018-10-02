@@ -51,6 +51,8 @@ class Corpus:
 	def calculateEntEnvAgreement(self):
 		withinDocPairs = defaultdict(lambda: defaultdict(int))
 		crossDocPairs = defaultdict(lambda: defaultdict(int))
+		withinDocParentLinks = defaultdict(lambda: defaultdict(lambda: defaultdict(int)))
+		withinDocChildrenLinks = defaultdict(lambda: defaultdict(lambda: defaultdict(int)))
 
 		# keeps track of sentence -> entities
 		sentenceNumToEntities = defaultdict(set)
@@ -60,12 +62,13 @@ class Corpus:
 				sentenceNumToEntities[m.globalSentenceNum].add(m)
 
 		# iterates over all event mention pairs
-		for dh in self.dirHalves:
-			print("dh:",dh)
+		for dh in sorted(self.dirHalves):
+			#dprint("dh:",dh)
 			for euid1 in sorted(self.dirHalves[dh].EUIDs):
 				m1 = self.EUIDToMention[euid1]
 				if not m1.isPred:
 					continue
+				print("m1:", m1)
 				sentence1 = m1.globalSentenceNum
 				entities1 = sentenceNumToEntities[sentence1]
 				for euid2 in sorted(self.dirHalves[dh].EUIDs):
@@ -75,6 +78,19 @@ class Corpus:
 					m2 = self.EUIDToMention[euid2]
 					if not m2.isPred:
 						continue
+
+					# at this point, we have an m1 and m2, both of which are events
+					print("m2:", m2)
+					
+					sameParentLink = False
+					m1_parentDep = ""
+					m2_parentDep = ""
+					if 1 in m.levelToParentLinks.keys():
+						print("levelToParentLinks[1]:", m.levelToParentLinks[1])
+
+
+					# checks if our entities coref
+
 					sentence2 = m2.globalSentenceNum
 					entities2 = sentenceNumToEntities[sentence2]
 
@@ -98,6 +114,7 @@ class Corpus:
 					
 					if isSameDoc:
 						withinDocPairs[eventCoref][entityCoref] += 1
+						#withinDocParentLinks[eventCoref][entityCoref][]
 					else:
 						crossDocPairs[eventCoref][entityCoref] += 1
 		print("withinDocPairs:")
@@ -107,6 +124,7 @@ class Corpus:
 		print("crossDocPairs:")
 		for _ in crossDocPairs:
 			print(_, crossDocPairs[_])
+
 	# ensures we've created ECB/HDDCRP/Stan Mentions all from the same sentences
 	def checkMentions(self):
 		allKeys = set()
@@ -179,7 +197,7 @@ class Corpus:
 			self.refToMentionTypes[REF].add("event")
 		else:
 			self.refToMentionTypes[REF].add("entity")
-			
+
 		self.dirHalves[mention.dirHalf].assignECBMention(self.curXUID, mention.doc_id, REF)
 		self.ECBDirs[mention.dir_num].assignECBMention(self.curXUID, mention.doc_id, REF)
 		self.docSentToEMentions[(doc_id, sentenceNum)].append(mention)

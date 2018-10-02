@@ -364,11 +364,8 @@ class DataHandler:
 			m2_features = []
 
 			# TMP -- trying to add supplemental CCNN features
-			curRelational = [0]
-			if self.corpus.XUIDToMention[xuid1].REF == self.corpus.XUIDToMention[xuid2].REF:
-				curRelational = [1]
-
-			relational_features.append(np.asarray(curRelational))
+			relational_features.append(np.asarray(features))
+			#relational_features.append(np.asarray(curRelational))
 
 			(uid1, uid2) = sorted([self.corpus.XUIDToMention[xuid1].UID, self.corpus.XUIDToMention[xuid2].UID])
 			# loops through each feature (e.g., BoW, lemma) for the given uid pair

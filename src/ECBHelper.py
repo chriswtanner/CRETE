@@ -1,6 +1,7 @@
 import pickle
 import operator
 import sys
+import copy
 from Mention import Mention
 from StanDB import StanDB
 from StanToken import StanToken
@@ -33,7 +34,7 @@ class ECBHelper:
 	# just, we have to use stan tokens as the intermediatary, since that's
 	# where our dependency information comes from.  this gets tricky because
 	# there's sometimes a non-1-to-1 mapping from ecb-token to stan-token
-	def getParents(self, dh, token, depth):
+	def getParents(self, mentionStans, dh, token, depth):
 		if token not in self.tokensVisited:
 			bestStan = dh.getBestStanToken(token.stanTokens)
 			prefix = "\t"
@@ -46,15 +47,19 @@ class ECBHelper:
 			self.tokensVisited.add(token)
 			for p in bestStan.parentLinks:
 				#print(prefix,"\tstanparent:", p.parent)
+				
+				# only explore the parent if it's not part of the original Mention!
+				if p.parent not in mentionStans:
+					ecbTokens = self.stanTokenToECBTokens[p.parent]
+					self.levelToParentLinks[depth].add(p)
 
-				ecbTokens = self.stanTokenToECBToken[p.parent]
-				#print(prefix,"\tecbTokens:", ecbTokens)
-				if len(ecbTokens) > 0:
-					ecbParentToken = next(iter(self.stanTokenToECBToken[p.parent]))
-					self.levelToParents[depth].add(ecbParentToken)
-					self.getParents(dh, ecbParentToken, depth+1)
+					#print(prefix,"\tecbTokens:", ecbTokens)
+					if len(ecbTokens) > 0:
+						ecbParentToken = next(iter(self.stanTokenToECBTokens[p.parent]))
+						self.levelToParents[depth].add(ecbParentToken)
+						self.getParents(mentionStans, dh, ecbParentToken, depth+1)
 
-	def getChildren(self, dh, token, depth):
+	def getChildren(self, mentionStans, dh, token, depth):
 		if token not in self.tokensVisited:
 			bestStan = dh.getBestStanToken(token.stanTokens)
 			prefix = "\t"
@@ -68,12 +73,15 @@ class ECBHelper:
 			for p in bestStan.childLinks:
 				#print(prefix,"\tstanparent:", p.parent)
 
-				ecbTokens = self.stanTokenToECBToken[p.child]
-				#print(prefix,"\tecbTokens:", ecbTokens)
-				if len(ecbTokens) > 0:
-					ecbChildToken = next(iter(self.stanTokenToECBToken[p.child]))
-					self.levelToChildren[depth].add(ecbChildToken)
-					self.getChildren(dh, ecbChildToken, depth+1)
+				if p.child not in mentionStans:
+					ecbTokens = self.stanTokenToECBTokens[p.child]
+					self.levelToChildrenLinks[depth].add(p)
+
+					#print(prefix,"\tecbTokens:", ecbTokens)
+					if len(ecbTokens) > 0:
+						ecbChildToken = next(iter(self.stanTokenToECBTokens[p.child]))
+						self.levelToChildren[depth].add(ecbChildToken)
+						self.getChildren(mentionStans, dh, ecbChildToken, depth+1)
 
 	def addDependenciesToMentions(self, dh):
 		for doc_id in self.corpus.doc_idToDocs:
@@ -82,17 +90,17 @@ class ECBHelper:
 			#	continue
 			#print("[DOC: ", doc_id)
 			# maps ECB Token -> StanToken and vice versa
-			self.stanTokenToECBToken = defaultdict(set)
+			self.stanTokenToECBTokens = defaultdict(set)
 			curdoctokens = ""
 			for t in self.corpus.doc_idToDocs[doc_id].tokens:
 				curdoctokens += t.text + " "
 				for s in t.stanTokens:
-					self.stanTokenToECBToken[s].add(t)
+					self.stanTokenToECBTokens[s].add(t)
 					#print("t:",t.text,"s:",s.text)
 			#print("curdoctokens:", curdoctokens)
-			for k in self.stanTokenToECBToken:
-				if len(self.stanTokenToECBToken[k]) > 1:
-					print("woops, we have len of :", len(self.stanTokenToECBToken[k]), ":", k)
+			for k in self.stanTokenToECBTokens:
+				if len(self.stanTokenToECBTokens[k]) > 1:
+					print("woops, we have len of :", len(self.stanTokenToECBTokens[k]), ":", k)
 					#exit(1)
 
 			# looks through each mention, to print the most immediate governor
@@ -117,16 +125,31 @@ class ECBHelper:
 				#print("sentence #:", s)
 				#print("\tevents:", sentenceToEventMentions)
 				for m in sentenceToEventMentions[s]:
-					#print("\t", m)
+					print("\t", m)
+
+					# gets the StanTokens for the current mention, so that we \
+					# never explore any of them as parents or chilren
+					mentionStanTokens = set()
+					for t in m.tokens:
+						bestStan = dh.getBestStanToken(t.stanTokens)
+						mentionStanTokens.add(bestStan)
 
 					# finds its parents (governors)
 					self.levelToParents = defaultdict(set)
+					self.levelToParentLinks = defaultdict(set)
+
 					self.tokensVisited = set()
 					for t in m.tokens:
 						#print("\t\ttoken:", t)
-						self.getParents(dh, t, 1)
-					#print("\tmention yielded following governor structure:", self.levelToParents)
+						self.getParents(mentionStanTokens, dh, t, 1)
+					print("\tmention yielded following governor structure:", self.levelToParentLinks)
 					
+					m.addParentLinks(self.levelToParentLinks)
+					print("m:")
+					for level in m.levelToParentLinks:
+						print("level:", level)
+						for pl in m.levelToParentLinks[level]:
+							print("\t", str(pl))
 					if len(self.levelToParents) > 0:
 						#print("\n\tgovernors:")
 						for level in sorted(self.levelToParents):
@@ -146,12 +169,15 @@ class ECBHelper:
 
 					# finds its children (modifiers)
 					self.levelToChildren = defaultdict(set)
+					self.levelToChildrenLinks = defaultdict(set)
 					self.tokensVisited = set()
 					for t in m.tokens:
 						#print("\t\ttoken:", t)
-						self.getChildren(dh, t, 1)
+						self.getChildren(mentionStanTokens, dh, t, 1)
 					#print("\tmention yielded following governor structure:", self.levelToParents)
 					
+					m.addChildrenLinks(copy.deepcopy(self.levelToChildrenLinks))
+
 					if len(self.levelToChildren) > 0:
 						#print("\n\tdependents:")
 						for level in sorted(self.levelToChildren):
@@ -175,7 +201,8 @@ class ECBHelper:
 				for m in sentenceToEntityMentions[s]:
 					print("\t", m)
 				'''
-				
+			print("done w/ current doc:", str(doc_id))
+			exit(1)
 			# prints tokens and their dependencies
 			'''
 			for t in self.corpus.doc_idToDocs[doc_id].tokens:

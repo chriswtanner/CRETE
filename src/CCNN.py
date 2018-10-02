@@ -64,7 +64,7 @@ class CCNN:
 
 	# takes the CCNN pairwise predictions and adds to them our list, which will be averaged
 	# over all of the runs
-	def addEnsemblePredictions(self, relevant_dirs, ids, preds):
+	def addEnsemblePredictions(self, withinDoc, relevant_dirs, ids, preds):
 		new_preds = []
 		for ((xuid1, xuid2), pred) in zip(ids, preds):
 			m1 = self.corpus.XUIDToMention[xuid1]
@@ -75,7 +75,7 @@ class CCNN:
 			if m1.dir_num not in relevant_dirs:
 				print("* ERROR: passed in predictions which belong to a dir other than what we specify")
 				exit(1)
-			if m2.doc_id != doc_id:
+			if withinDoc and m2.doc_id != doc_id:
 				print("* ERROR: xuids are from diff docs!")
 				exit(1)
 			self.ensembleDocPairPredictions[doc_id][(xuid1, xuid2)].append(pred)
@@ -143,7 +143,7 @@ class CCNN:
 		spToCoNLL = defaultdict(list)
 		spToPredictedCluster = {}
 		spToDocPredictedCluster = {}
-
+		ensemblePreds = [] # DUMMY INITIALIZER
 		for _ in range(numRuns):
 			
 			bestRunCoNLL = -1
@@ -165,14 +165,16 @@ class CCNN:
 			distance = Lambda(self.euclidean_distance, output_shape=self.eucl_dist_output_shape)([processed_a, processed_b])
 
 			if self.CCNNSupplement:
-				auxiliary_input = Input(shape=(1,), name='auxiliary_input')
+				auxiliary_input = Input(shape=(len(self.supplementalTrain[0]),), name='auxiliary_input')
 				combined_layer = keras.layers.concatenate([distance, auxiliary_input])
-				x = Dense(4, activation='relu')(combined_layer)
-				main_output = Dense(1, activation='sigmoid', name='main_output')(x)
+				x = Dense(20, activation='relu')(combined_layer)
+				x2 = Dense(5, activation='relu')(x)
+				main_output = Dense(1, activation='relu', name='main_output')(x2)
 				model = Model([input_a, input_b, auxiliary_input], outputs=main_output)
 				model.compile(loss=self.contrastive_loss, optimizer=Adam())
+				#print(model.summary())
 				model.fit({'input_a': self.trainX[:, 0], 'input_b': self.trainX[:, 1], 'auxiliary_input': self.supplementalTrain},
-						{'main_output': self.trainY}, 
+						{'main_output': self.trainY},
 						batch_size=self.bs, \
 						epochs=self.ne, \
 						validation_data=({'input_a': self.devX[:, 0], 'input_b': self.devX[:, 1], 'auxiliary_input': self.supplementalDev}, {'main_output': self.devY}))
@@ -263,17 +265,11 @@ class CCNN:
 					preds = model.predict([self.testX[:, 0], self.testX[:, 1]])
 			print("* done training")
 
-			# append to the ensemble of pairwise predictions
-			if self.devMode:
-				ensemblePreds = self.addEnsemblePredictions(self.helper.devDirs, self.devID, preds)
-			else:
-				ensemblePreds = self.addEnsemblePredictions(self.helper.testingDirs, self.testID, preds)
-
 			# if it's our last run, let's use the ensemble'd preds
 			if _ == numRuns - 1:
 				print("*** SETTING PREDS = ensemble!!")
 				preds = ensemblePreds
-
+				print("len PREDS:", len(preds))
 				# NOTE: the following used to not be indented, but i recently decided that
 				# the ensemble seems to be teh best performing, and since measuring CoNLL takes 1-2 minutes,
 				# i might as well ONLY perform clustering+CoNLL eval on the best predictions.
@@ -312,11 +308,20 @@ class CCNN:
 				
 			if self.args.useECBTest:
 				(f1, prec, rec, bestThreshold) = self.evaluateCCNNPairwisePreds(preds)
-				f1s.append(f1)
-				recalls.append(rec)
-				precs.append(prec)
-				print("ccnn_best_f1 (run ", len(f1s), "): best_pairwise_f1: ", round(f1,4), " prec: ",round(prec,4), " recall: ", round(rec,4), " threshold: ", round(bestThreshold,3), sep="")
-			sys.stdout.flush()
+				print("ccnn_best_f1 (# successful runs: ", len(f1s), "): best_pairwise_f1: ", round(f1,4), " prec: ",round(prec,4), " recall: ", round(rec,4), " threshold: ", round(bestThreshold,3))
+				if f1 > 0.50:
+					print("**** ADDING TO ENSEMBLE!")
+					# append to the ensemble of pairwise predictions
+					if self.devMode:
+						ensemblePreds = self.addEnsemblePredictions(True, self.helper.devDirs, self.devID, preds)
+					else:
+						ensemblePreds = self.addEnsemblePredictions(True, self.helper.testingDirs, self.testID, preds)
+
+					f1s.append(f1)
+					recalls.append(rec)
+					precs.append(prec)
+					
+				sys.stdout.flush()
 
 		# clears ram
 		self.trainX = None
@@ -337,8 +342,7 @@ class CCNN:
 				fout = open("ccnn_agg_dirHalf.csv", "a+")
 				fout.write(str(self.args.devDir) + ",wd," + str(self.devMode) + "," + str(best_conll) + "\n")
 				fout.close()
-				return (spToDocPredictedCluster[best_sp], spToPredictedCluster[best_sp], wd_goldenClusters, best_sp)
-			return None
+				return spToDocPredictedCluster[best_sp], spToPredictedCluster[best_sp], wd_goldenClusters, best_sp
 		else: # HDDCRP
 			# non-sensical return; only done so that the return handler doesn't complain
 			return wd_docPredClusters, wd_predictedClusters, wd_goldenClusters, 0
@@ -346,111 +350,117 @@ class CCNN:
 ##########################
 
 	# CROSS-DOC MODEL
-	def train_and_test_cd(self, numRuns): #, wd_pred, wd_gold, numRuns):
+	def train_and_test_cd(self, numRuns):
 		f1s = []
 		recalls = []
 		precs = []
 		spToCoNLL = defaultdict(list)
+		spToPredictedCluster = {}
+		spToDocPredictedCluster = {}
+		ensemblePreds = [] # DUMMY INITIALIZER
 		while len(f1s) < numRuns:
+
+			bestRunCoNLL = -1
+			bestRunSP = -1
+
 			# define model
 			input_shape = self.trainX.shape[2:]
 			base_network = self.create_base_network(input_shape)
-			input_a = Input(shape=input_shape)
-			input_b = Input(shape=input_shape)
+
+			if self.CCNNSupplement: # relational, merged layer way
+				input_a = Input(shape=input_shape, name='input_a')
+				input_b = Input(shape=input_shape, name='input_b')
+			else:
+				input_a = Input(shape=input_shape)
+				input_b = Input(shape=input_shape)
+
 			processed_a = base_network(input_a)
 			processed_b = base_network(input_b)
-			distance = Lambda(self.euclidean_distance, output_shape=self.eucl_dist_output_shape)(
-				[processed_a, processed_b])
-			model = Model(inputs=[input_a, input_b], outputs=distance)
-			model.compile(loss=self.contrastive_loss, optimizer=Adam())
-			#print(model.summary())
-			model.fit([self.trainX[:, 0], self.trainX[:, 1]], self.trainY,
-							batch_size=self.bs,
-							epochs=self.ne,
-							validation_data=([self.devX[:, 0], self.devX[:, 1]], self.devY))
+			distance = Lambda(self.euclidean_distance, output_shape=self.eucl_dist_output_shape)([processed_a, processed_b])
 
-			if self.devMode:
-				preds = model.predict([self.devX[:, 0], self.devX[:, 1]])
+			if self.CCNNSupplement:
+				auxiliary_input = Input(shape=(len(self.supplementalTrain[0]),), name='auxiliary_input')
+				combined_layer = keras.layers.concatenate([distance, auxiliary_input])
+				x = Dense(20, activation='relu')(combined_layer)
+				#x2 = Dense(5, activation='relu')(x)
+				main_output = Dense(1, activation='relu', name='main_output')(x)
+				model = Model([input_a, input_b, auxiliary_input], outputs=main_output)
+				model.compile(loss=self.contrastive_loss, optimizer=Adam())
+				#print(model.summary())
+				model.fit({'input_a': self.trainX[:, 0], 'input_b': self.trainX[:, 1], 'auxiliary_input': self.supplementalTrain},
+						{'main_output': self.trainY},
+						batch_size=self.bs, \
+						epochs=self.ne, \
+						validation_data=({'input_a': self.devX[:, 0], 'input_b': self.devX[:, 1], 'auxiliary_input': self.supplementalDev}, {'main_output': self.devY}))
 			else:
-				preds = model.predict([self.testX[:, 0], self.testX[:, 1]])
-			print("* done training")
+				model = Model(inputs=[input_a, input_b], outputs=distance)
+				model.compile(loss=self.contrastive_loss, optimizer=Adam())
+				#print(model.summary())
+				model.fit([self.trainX[:, 0], self.trainX[:, 1]], self.trainY, \
+					batch_size=self.bs, \
+					epochs=self.ne, \
+					validation_data=([self.devX[:, 0], self.devX[:, 1]], self.devY))
 
-			numGoldPos = 0
-			scoreToGoldTruth = defaultdict(list)
-			for _ in range(len(preds)):
+			if self.CCNNSupplement:
+				preds = model.predict({'input_a': self.testX[:, 0], 'input_b': self.testX[:, 1], 'auxiliary_input': self.supplementalTest})
+			else:
 				if self.devMode:
-					if self.devY[_]:
-						numGoldPos += 1
-						scoreToGoldTruth[preds[_][0]].append(1)
-					else:
-						scoreToGoldTruth[preds[_][0]].append(0)
+					preds = model.predict([self.devX[:, 0], self.devX[:, 1]])
 				else:
-					if self.testY[_]:
-						numGoldPos += 1
-						scoreToGoldTruth[preds[_][0]].append(1)
-					else:
-						scoreToGoldTruth[preds[_][0]].append(0)
-			s = sorted(scoreToGoldTruth.keys())
-			TP = 0.0
-			FP = 0.0
-			bestF1 = 0
-			bestVal = -1
-			bestR = 0
-			bestP = 0
-			numReturnedSoFar = 0
-			for eachVal in s:
-				for _ in scoreToGoldTruth[eachVal]:
-					if _ == 1:
-						TP += 1
-					else:
-						FP += 1
+					preds = model.predict([self.testX[:, 0], self.testX[:, 1]])
+			print("* done training")
+			print("len of preds:", len(preds))
 
-				numReturnedSoFar += len(scoreToGoldTruth[eachVal])
-				recall = float(TP / numGoldPos)
-				prec = float(TP / numReturnedSoFar)
-				f1 = 0
-				if (recall + prec) > 0:
-					f1 = 2*(recall*prec) / (recall + prec)
-				if f1 > bestF1:
-					bestF1 = f1
-					bestVal = eachVal
-					bestR = recall
-					bestP = prec
+			if len(f1s) == numRuns-1:
+				
+				if len(ensemblePreds) > 0:
+					preds = ensemblePreds
+					print("*** SETTING PREDS = ensemble!!")
+				print("len PREDS in the last run:", len(preds))
 
-				if f1 == 1:
-					print("*** somehow, F1 is 1, so numReturnedSoFar:", numReturnedSoFar)
-				print("\t\tCD eachVal:",eachVal,"=>",f1)
-			print("CD bestF1:",bestF1)
-			if bestF1 > 0:
-				f1s.append(bestF1)
-				recalls.append(bestR)
-				precs.append(bestP)
-
-				# performs CD agglomerative clustering				
 				for sp in self.stopping_points:
 					print("* [agg] sp:", sp)
 					if self.devMode:
-						(cd_docPredClusters, cd_predictedClusters, cd_goldenClusters) = self.aggClusterCD(self.devID, preds, sp)
+						(cd_docPredClusters, cd_predictedClusters, cd_goldenClusters) = self.aggClusterCD(self.helper.devDirs, self.devID, preds, sp)
 					else:
-						(cd_docPredClusters, cd_predictedClusters, cd_goldenClusters) = self.aggClusterCD(self.testID, preds, sp)  # self.aggClusterCD(self.devID, preds, sp)
+						(cd_docPredClusters, cd_predictedClusters, cd_goldenClusters) = self.aggClusterCD(self.helper.testingDirs, self.testID, preds, sp)
 					#(bcub_p, bcub_r, bcub_f1, muc_p, muc_r, muc_f1, ceafe_p, ceafe_r, ceafe_f1, conll_f1)
-					
 					start_time = time.time()
-					if self.args.useECBTest:  # uses ECB Test Mentions
-						scores = get_conll_scores(cd_goldenClusters, cd_predictedClusters)
-						print("* getting conll score took", str((time.time() - start_time)), "seconds")
-						spToCoNLL[sp].append(scores[-1])
-					else:  # uses HDDCRP Test Mentions
-						suffix = "cd_" + str(sp) + "_" + str(_)
-						self.helper.writeCoNLLFile(cd_predictedClusters, suffix)
 
-					#print("[DEV] AGGCD SP:", str(round(sp, 4)), "CoNLL F1:", str(round(scores[-1], 4)))
-					#, "MUC:", str(round(muc_f1, 4)), "BCUB:", str(round(bcub_f1, 4)), "CEAF:", str(round(ceafe_f1, 4)))
+					if self.calculateCoNLLScore:
+						suffix = "cd_" + str(sp) + "_" + str(len(f1s))
 
-			print("ccnn_best_f1 (run ", len(f1s), "): best_pairwise_f1: ", round(bestF1, 4), " prec: ", round(bestP, 4), " recall: ", round(bestR, 4), " threshold: ", round(bestVal, 3), sep="")
-			sys.stdout.flush()
+						if self.args.useECBTest: # uses ECB Test Mentions
+							scores = get_conll_scores(cd_goldenClusters, cd_predictedClusters)
+							print("CONLL SCORES:", scores)
+							print("* getting conll score took", str((time.time() - start_time)), "seconds")
+							spToCoNLL[sp].append(scores[-1])
+							spToPredictedCluster[sp] = cd_predictedClusters
+							spToDocPredictedCluster[sp] = cd_docPredClusters
 
+							if scores[-1] > bestRunCoNLL:
+								bestRunCoNLL = scores[-1]
+								bestRunSP = sp
 
+						else: # uses HDDCRP Test Mentions
+							self.helper.writeCoNLLFile(cd_predictedClusters, suffix)
+
+			if self.args.useECBTest:
+				(f1, prec, rec, bestThreshold) = self.evaluateCCNNPairwisePreds(preds)
+				print("ccnn_best_f1 (# successful runs: ", len(f1s), "): best_pairwise_f1: ", round(f1,4), " prec: ",round(prec,4), " recall: ", round(rec,4), " threshold: ", round(bestThreshold,3))
+				if f1 > 0.20:
+					print("**** ADDING TO ENSEMBLE!")
+					# append to the ensemble of pairwise predictions
+					if self.devMode:
+						ensemblePreds = self.addEnsemblePredictions(False, self.helper.devDirs, self.devID, preds)
+					else:
+						ensemblePreds = self.addEnsemblePredictions(False, self.helper.testingDirs, self.testID, preds)
+
+					f1s.append(f1)
+					recalls.append(rec)
+					precs.append(prec)
+					
+				sys.stdout.flush()
 
 		# clears ram
 		self.trainX = None
@@ -460,40 +470,22 @@ class CCNN:
 			stddev = -1
 			if len(f1s) > 1:
 				stddev = self.standard_deviation(f1s)
-			print("pairwise f1 (over",len(f1s),"runs) -- avg:", round(sum(f1s)/len(f1s),4), "max:", round(max(f1s),4), "min:",
-				  round(min(f1s),4), "avgP:",sum(precs)/len(precs),"avgR:",round(sum(recalls)/len(recalls),4),"stddev:", round(100*stddev,4))
-			(best_sp, best_conll, min_conll, max_conll,
-			 std_conll) = self.calculateBestKey(spToCoNLL)
-
-			sys.stdout.flush()
-
-			print("* [AGGCD] conll f1 -- best sp:",best_sp, "yielded: min:",round(100*min_conll,4), "avg:",round(100*best_conll,4),"max:",round(max_conll,4),"stddev:",round(std_conll,4))
-			fout = open("ccnn_agg_dirHalf.csv", "a+")
-			fout.write(str(self.args.devDir) + ",cd," + str(self.devMode) + "," + str(best_conll) + "\n")
-			fout.close()
+			print("pairwise f1 (over",len(f1s),"runs) -- avg:", round(sum(f1s)/len(f1s),4), "max:", round(max(f1s),4), "min:", round(min(f1s),4), "avgP:",sum(precs)/len(precs),"avgR:",round(sum(recalls)/len(recalls),4),"stddev:", round(100*stddev,4))
+			
+			best_sp = self.stopping_points[0] # just return the 1st one, by default.
+			best_conll = -1
+			if self.calculateCoNLLScore:
+				(best_sp, best_conll, min_conll, max_conll, std_conll) = self.calculateBestKey(spToCoNLL)
+				sys.stdout.flush()
+				print("* [AGGCD] conll f1 -- best sp:",best_sp, "yielded: min:",round(100*min_conll,4), "avg:",round(100*best_conll,4),"max:",round(max_conll,4),"stddev:",round(std_conll,4))
+				fout = open("ccnn_agg_dirHalf.csv", "a+")
+				fout.write(str(self.args.devDir) + ",cd," + str(self.devMode) + "," + str(best_conll) + "\n")
+				fout.close()
 			return (None, None, None, None) # we don't ever care about using the return values
 
 		else: # HDDCRP
 			# non-sensical return; only done so that the return handler doesn't complain
-			return cd_docPredClusters, cd_predictedClusters, cd_goldenClusters, 0
-		
-
-		#### 
-		stddev = -1
-		if len(f1s) > 1:
-			stddev = self.standard_deviation(f1s)
-		print("pairwise f1 (over", len(f1s), "runs) -- avg:", sum(f1s)/len(f1s), "max:", max(f1s), "min:",
-			  min(f1s), "avgP:", sum(precs)/len(precs), "avgR:", sum(recalls)/len(recalls), "stddev:", stddev)
-
-		(best_sp, best_conll, min_conll, max_conll, std_conll) = self.calculateBestKey(spToCoNLL)
-		sys.stdout.flush()
-
-		print("* [AGGCD] conll f1 -- best sp:", best_sp, "yielded: min:", round(100*min_conll, 4), "avg:", round(100*best_conll, 4), "max:", round(max_conll, 4), "stddev:", round(std_conll, 4))
-		
-		fout = open("ccnn_agg_dirHalf.csv", "a+")
-		fout.write(str(self.args.devDir) + ",cd," + str(self.devMode) + "," + str(best_conll) + "\n")
-		fout.close()
-		return (None, cd_predictedClusters, cd_goldenClusters, best_sp)
+			return (cd_docPredClusters, cd_predictedClusters, cd_goldenClusters, 0)
 
 	def calculateBestKey(self, dict):
 		best_conll = 0
@@ -674,7 +666,7 @@ class CCNN:
 	# agglomerative cluster the cross-doc predicted pairs
 	# NOTE: 'dir_num' in this function is used to refer to EITHER
 	# dirHalf or the actual dir; 
-	def aggClusterCD(self, ids, preds, stoppingPoint):
+	def aggClusterCD(self, relevant_dirs, ids, preds, stoppingPoint):
 
 		start_time = time.time()
 		# NOTE: this is called dir, but we may be operating on dirHalf, which is fine;
@@ -688,9 +680,17 @@ class CCNN:
 		for ((xuid1, xuid2), pred) in zip(ids, preds):
 			m1 = self.corpus.XUIDToMention[xuid1]
 			m2 = self.corpus.XUIDToMention[xuid2]
+
+			if not m1.isPred or not m2.isPred:
+				print("* ERROR: we're trying to do AGG on some non-event mentions")
+				exit(1)
+
 			# NOTE: the lower the score, the more likely they are the same.  it's a dissimilarity score
 			pred = pred[0]
-
+			doc_id = m1.doc_id
+			if m1.dir_num not in relevant_dirs:
+				print("* ERROR: passed in predictions which belong to a dir other than what we specify")
+				exit(1)
 			if xuid1 in self.corpus.SUIDToMention:
 				print("* ERROR: why is xuid:",xuid1,"in our local predictions? it's a SUID")
 				exit(1)
@@ -731,6 +731,9 @@ class CCNN:
 
 		for dir_num in dirToXUIDPredictions.keys():
 			
+			if dir_num not in relevant_dirs:
+				continue
+
 			# adds to our golden clusters
 			REFToUIDs = None
 			if self.scope == "dirHalf":
@@ -885,7 +888,6 @@ class CCNN:
 		print("\tagg took ", str((time.time() - start_time)), "seconds")
 		#print("# golden clusters:",str(len(goldenSuperSet.keys())), "; # our clusters:",str(len(ourClusterSuperSet)))
 		return (docToPredClusters, ourClusterSuperSet, goldenSuperSet)
-
 
 		# SANITY CHECK -- ensures our returned gold and predicted clusters all contain the same XUIDs
 		if self.args.useECBTest:

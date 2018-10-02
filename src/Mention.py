@@ -1,3 +1,4 @@
+from collections import defaultdict
 class Mention:
 	def __init__(self, dirHalf, dir_num, doc_id, tokens, text, isPred, mentionType):
 		self.dirHalf = dirHalf
@@ -26,7 +27,9 @@ class Mention:
 		self.parentEntities = []
 		self.childrenTokens = []
 		self.childrenEntities = []
-
+		self.levelToParentLinks = defaultdict(set)
+		self.levelToChildrenLinks = defaultdict(set)
+		
 		for t in self.tokens:
 			self.UID += t.UID + ";"
 
@@ -42,6 +45,13 @@ class Mention:
 
 	def setXUID(self, XUID):
 		self.XUID = XUID
+
+	#### TMP -- used for auxilary dependency info
+	def addParentLinks(self, levelToParentLinks):
+		self.levelToParentLinks = levelToParentLinks
+
+	def addChildrenLinks(self, levelToChildrenLinks):
+		self.levelToChildrenLinks = levelToChildrenLinks
 
 	def __str__(self):
 		return "MENTION: " + str(self.XUID) + " (dir " + str(self.dir_num) + "; doc: " + str(self.doc_id) + "): text: " + str(self.text) + " type: " + str(self.mentionType)

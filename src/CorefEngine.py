@@ -32,7 +32,7 @@ class CorefEngine:
 	# - how many of these does Stanford contain? (for Ent+Events) -- TRAIN/DEV
 	#	- vary the cutoff point (N=inf, 10,9,8,7,6,5,4,3,2,1) -- TRAIN/DEV
 	# - make 2 new Gold files (CoNLL format) which includes
-	#     entity information: (1) all Ent+Events; (2) Ent+Events and remove singletons
+	#     entity information: (1) all Ent+Events; (2) Ent+Events and remove sindgletons
 	#      (3) Ents (minus pronouns)+Events
 	# measure performance on entities, events, entities+events:
 	# - (1) how well does our system (CCNN+AGG) do on:
@@ -48,12 +48,12 @@ class CorefEngine:
 		runStanford = False
 
 		# classifier params
-		numRuns = 8
+		numRuns = 11
 		useCCNN = True
 		cd_scope = "dir" # {dir, dirHalf}
 		useRelationalFeatures = False
 		#wdPresets = [256, 3, 2, 16, 0.0]
-		wdPresets = [64, 10, 2, 32, 0.0] # batchsize, num epochs, num layers, num filters, dropout
+		wdPresets = [64, 3, 2, 32, 0.0] # batchsize, num epochs, num layers, num filters, dropout
 
 		wd_stopping_points = [0.51] #, 0.401, 0.41, 0.42, 0.43, 0.44, 0.45, 0.46, 0.47, 0.48, 0.49, 0.501, 0.51, 0.52, 0.54, 0.55, 0.56, 0.57, 0.58, 0.59, 0.601]
 		cd_stopping_points = [0.5]
@@ -154,8 +154,10 @@ class CorefEngine:
 
 		# prints every sentence's tokens, and displays the stanford dependency parents and children, too
 		
-		#helper.addDependenciesToMentions(dh)
+		helper.addDependenciesToMentions(dh)
 
+		corpus.calculateEntEnvAgreement()
+		exit(1)
 		#model = LibSVM(helper, coref)
 
 		# within-doc first, then cross-doc
@@ -173,15 +175,16 @@ class CorefEngine:
 			'''
 
 			# WITHIN DOC
-			wd_model = CCNN(helper, dh, useRelationalFeatures, "doc", wdPresets, None, False, wd_stopping_points)
-			(wd_docPreds, wd_pred, wd_gold, _) = wd_model.train_and_test_wd(numRuns)  # 1 means only 1 run of WD
-			exit(1)
+			#wd_model = CCNN(helper, dh, useRelationalFeatures, "doc", wdPresets, None, False, wd_stopping_points)
+			#(wd_docPreds, wd_pred, wd_gold, _) = wd_model.train_and_test_wd(numRuns)  # 1 means only 1 run of WD
+			#exit(1)
+
 			# saves WITHIN-DOC PREDS
 			# CROSS DOC
-			#wd_docPreds = pickle.load(open("wd_hddcrp_clusters_FULL_sp0.51.p", 'rb'))
+			wd_docPreds = pickle.load(open("hddcrp_clusters_ONLY_EVENTS_wd_0.51_9.p", 'rb'))
 			cd_model = CCNN(helper, dh, useRelationalFeatures, cd_scope, wdPresets, wd_docPreds, False, cd_stopping_points)
 			#cd_model = CCNN(helper, dh, useRelationalFeatures, cd_scope, wdPresets, wd_docPreds, False, sp_cd)
-			cd_model.train_and_test_cd(1)
+			cd_model.train_and_test_cd(3)
 		else:
 			wd_model = FFNN(helper, dh)
 			wd_model.train_and_test_wd(numRuns)
