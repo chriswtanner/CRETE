@@ -122,10 +122,15 @@ class ECBHelper:
 					sentenceToEntityMentions[sentNum].add(m)
 
 			for s in sentenceToEventMentions:
-				#print("sentence #:", s)
-				#print("\tevents:", sentenceToEventMentions)
+				tokenText = ""
+				'''
+				for t in self.corpus.globalSentenceNumToTokens[s]:
+					tokenText += t.text + " "
+				print("sentence #:", s, "tokens:", tokenText)
+				'''
+				#print("\tevents:", sentenceToEventMentions[s])
 				for m in sentenceToEventMentions[s]:
-					print("\t", m)
+					#print("\n\t", m)
 
 					# gets the StanTokens for the current mention, so that we \
 					# never explore any of them as parents or chilren
@@ -142,14 +147,15 @@ class ECBHelper:
 					for t in m.tokens:
 						#print("\t\ttoken:", t)
 						self.getParents(mentionStanTokens, dh, t, 1)
-					print("\tmention yielded following governor structure:", self.levelToParentLinks)
-					
+					#print("\tmention yielded following governor structure:", self.levelToParentLinks)
 					m.addParentLinks(self.levelToParentLinks)
-					print("m:")
+					#print("\tm:")
+					'''
 					for level in m.levelToParentLinks:
-						print("level:", level)
+						print("\tlevel:", level)
 						for pl in m.levelToParentLinks[level]:
-							print("\t", str(pl))
+							print("\t\t", str(pl))
+					'''
 					if len(self.levelToParents) > 0:
 						#print("\n\tgovernors:")
 						for level in sorted(self.levelToParents):
@@ -177,7 +183,6 @@ class ECBHelper:
 					#print("\tmention yielded following governor structure:", self.levelToParents)
 					
 					m.addChildrenLinks(copy.deepcopy(self.levelToChildrenLinks))
-
 					if len(self.levelToChildren) > 0:
 						#print("\n\tdependents:")
 						for level in sorted(self.levelToChildren):
@@ -201,8 +206,8 @@ class ECBHelper:
 				for m in sentenceToEntityMentions[s]:
 					print("\t", m)
 				'''
-			print("done w/ current doc:", str(doc_id))
-			exit(1)
+			#print("done w/ current doc:", str(doc_id))
+
 			# prints tokens and their dependencies
 			'''
 			for t in self.corpus.doc_idToDocs[doc_id].tokens:

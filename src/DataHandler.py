@@ -208,10 +208,7 @@ class DataHandler:
 			m2 = self.corpus.XUIDToMention[xuid2]
 			features = []
 
-
-			# prints the dependency stuff, to see if it makes sense
-			#if m1.REF == m2.REF or random.random() < 0.2: # 1/5 of the negatives
-
+			''' DEPENDENCY FEATURES
 			# 1
 			tokenShared = False
 			t1text = [_.text for _ in m1.parentTokens]
@@ -321,8 +318,10 @@ class DataHandler:
 				features.append(1)
 			else:
 				features.append(0)
+			'''
 
-			#features.append(m1.REF == m2.REF)
+			# TODO: this is GOLD TRUTH, so only use this for sanity checking
+			features.append(m1.REF == m2.REF)
 			#if m1.dirHalf == "1ecb.xml":
 			#if m1.REF == m2.REF or random.random() < 0.2: # 1/5 of the negatives:
 			#print("p1:", m1.parentTokens, "p2:", m2.parentTokens)

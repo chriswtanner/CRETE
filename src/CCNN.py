@@ -1,5 +1,4 @@
 import os
-#os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 import sys
 import time
 import keras
@@ -287,8 +286,9 @@ class CCNN:
 					if self.calculateCoNLLScore:
 						suffix = "wd_" + str(sp) + "_" + str(_)
 						# pickles the predictions
-						with open("hddcrp_clusters_ONLY_EVENTS_" + str(suffix) + ".p", 'wb') as pickle_out:
-							pickle.dump(wd_docPredClusters, pickle_out)
+						pickle_out = open("hddcrp_clusters_ONLY_EVENTS_" + str(suffix) + ".p", 'wb')
+						pickle.dump(wd_docPredClusters, pickle_out)
+						pickle_out.close()
 
 						if self.args.useECBTest: # uses ECB Test Mentions
 							scores = get_conll_scores(wd_goldenClusters, wd_predictedClusters)

@@ -29,6 +29,8 @@ class Mention:
 		self.childrenEntities = []
 		self.levelToParentLinks = defaultdict(set)
 		self.levelToChildrenLinks = defaultdict(set)
+		self.parentRel = "None"
+		self.childRel = "None"
 		
 		for t in self.tokens:
 			self.UID += t.UID + ";"
@@ -49,9 +51,17 @@ class Mention:
 	#### TMP -- used for auxilary dependency info
 	def addParentLinks(self, levelToParentLinks):
 		self.levelToParentLinks = levelToParentLinks
+		if 1 in levelToParentLinks:
+			for pl in levelToParentLinks[1]:
+				self.parentRel = pl.relationship.lower()
+				break
 
 	def addChildrenLinks(self, levelToChildrenLinks):
 		self.levelToChildrenLinks = levelToChildrenLinks
+		if 1 in levelToChildrenLinks:
+			for pl in levelToChildrenLinks[1]:
+				self.childRel = pl.relationship.lower()
+				break
 
 	def __str__(self):
 		return "MENTION: " + str(self.XUID) + " (dir " + str(self.dir_num) + "; doc: " + str(self.doc_id) + "): text: " + str(self.text) + " type: " + str(self.mentionType)

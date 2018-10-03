@@ -8,7 +8,7 @@ import sys
 import os
 import fnmatch
 import numpy as np
-#os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+
 from collections import defaultdict
 from KBPParser import KBPParser
 from ECBParser import ECBParser
@@ -48,12 +48,12 @@ class CorefEngine:
 		runStanford = False
 
 		# classifier params
-		numRuns = 11
+		numRuns = 10
 		useCCNN = True
 		cd_scope = "dir" # {dir, dirHalf}
 		useRelationalFeatures = False
 		#wdPresets = [256, 3, 2, 16, 0.0]
-		wdPresets = [64, 3, 2, 32, 0.0] # batchsize, num epochs, num layers, num filters, dropout
+		wdPresets = [64, 10, 2, 32, 0.0] # batchsize, num epochs, num layers, num filters, dropout
 
 		wd_stopping_points = [0.51] #, 0.401, 0.41, 0.42, 0.43, 0.44, 0.45, 0.46, 0.47, 0.48, 0.49, 0.501, 0.51, 0.52, 0.54, 0.55, 0.56, 0.57, 0.58, 0.59, 0.601]
 		cd_stopping_points = [0.5]
@@ -156,10 +156,9 @@ class CorefEngine:
 		
 		helper.addDependenciesToMentions(dh)
 
-		corpus.calculateEntEnvAgreement()
-		exit(1)
-		#model = LibSVM(helper, coref)
-
+		# displays stats for dependency features we're interested in
+		#corpus.calculateEntEnvAgreement()
+		
 		# within-doc first, then cross-doc
 		if useCCNN:
 			# DEV-WD
@@ -175,19 +174,18 @@ class CorefEngine:
 			'''
 
 			# WITHIN DOC
-			#wd_model = CCNN(helper, dh, useRelationalFeatures, "doc", wdPresets, None, False, wd_stopping_points)
-			#(wd_docPreds, wd_pred, wd_gold, _) = wd_model.train_and_test_wd(numRuns)  # 1 means only 1 run of WD
+			wd_model = CCNN(helper, dh, useRelationalFeatures, "doc", wdPresets, None, False, wd_stopping_points)
+			(wd_docPreds, wd_pred, wd_gold, _) = wd_model.train_and_test_wd(numRuns)  # 1 means only 1 run of WD
 			#exit(1)
 
 			# saves WITHIN-DOC PREDS
 			# CROSS DOC
-			wd_docPreds = pickle.load(open("hddcrp_clusters_ONLY_EVENTS_wd_0.51_9.p", 'rb'))
-			cd_model = CCNN(helper, dh, useRelationalFeatures, cd_scope, wdPresets, wd_docPreds, False, cd_stopping_points)
+			#wd_docPreds = pickle.load(open("hddcrp_clusters_ONLY_EVENTS_wd_0.51_9.p", 'rb'))
+			#cd_model = CCNN(helper, dh, useRelationalFeatures, cd_scope, wdPresets, wd_docPreds, False, cd_stopping_points)
 			#cd_model = CCNN(helper, dh, useRelationalFeatures, cd_scope, wdPresets, wd_docPreds, False, sp_cd)
-			cd_model.train_and_test_cd(3)
+			#cd_model.train_and_test_cd(3)
 		else:
 			wd_model = FFNN(helper, dh)
 			wd_model.train_and_test_wd(numRuns)
 		
 		print("* done.  took ", str((time.time() - start_time)), "seconds")
-		exit(1) # Tensorflow takes a long time to close sessions, so let's just kill the program
