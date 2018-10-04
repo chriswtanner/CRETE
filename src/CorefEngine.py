@@ -22,6 +22,13 @@ from CCNN import CCNN
 #from LibSVM import LibSVM
 #from HDF5Reader import HDF5Reader
 from sklearn import svm
+
+# TMP for plotting dependency relations
+import matplotlib
+import matplotlib.pyplot as plt
+import numpy as np; np.random.seed(0)
+import seaborn as sns
+import pandas as pd
 class CorefEngine:
 
 	# TODO:
@@ -45,6 +52,19 @@ class CorefEngine:
 
 	if __name__ == "__main__":
 
+		'''
+		sns.set(style="whitegrid")
+		# Load the example Titanic dataset
+		titanic = sns.load_dataset("titanic")
+		print(titanic)
+		# Draw a nested barplot to show survival for class and sex
+		g = sns.catplot(x="class", y="survived", hue="sex", data=titanic, \
+			height=6, kind="bar", palette="muted")
+
+		g.despine(left=True)
+		g.set_ylabels("# sentences")
+		plt.show()
+		'''
 		runStanford = False
 
 		# classifier params
@@ -53,7 +73,7 @@ class CorefEngine:
 		cd_scope = "dir" # {dir, dirHalf}
 		useRelationalFeatures = False
 		#wdPresets = [256, 3, 2, 16, 0.0]
-		wdPresets = [64, 10, 2, 32, 0.0] # batchsize, num epochs, num layers, num filters, dropout
+		wdPresets = [64, 3, 2, 32, 0.2] # batchsize, num epochs, num layers, num filters, dropout
 
 		wd_stopping_points = [0.51] #, 0.401, 0.41, 0.42, 0.43, 0.44, 0.45, 0.46, 0.47, 0.48, 0.49, 0.501, 0.51, 0.52, 0.54, 0.55, 0.56, 0.57, 0.58, 0.59, 0.601]
 		cd_stopping_points = [0.5]
@@ -91,8 +111,8 @@ class CorefEngine:
 		# parses the real, actual corpus (ECB's XML files)
 		ecb_parser = ECBParser(args, helper)
 		corpus = ecb_parser.parseCorpus(helper.docToVerifiedSentences)
-		#corpus.calculateEntEnvAgreement()
-		#exit(1)
+		corpus.calculateEntEnvAgreement()
+		exit(1)
 		
 		helper.addECBCorpus(corpus)
 
@@ -176,6 +196,7 @@ class CorefEngine:
 			# WITHIN DOC
 			wd_model = CCNN(helper, dh, useRelationalFeatures, "doc", wdPresets, None, False, wd_stopping_points)
 			(wd_docPreds, wd_pred, wd_gold, _) = wd_model.train_and_test_wd(numRuns)  # 1 means only 1 run of WD
+			
 			#exit(1)
 
 			# saves WITHIN-DOC PREDS

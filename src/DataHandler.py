@@ -321,7 +321,10 @@ class DataHandler:
 			'''
 
 			# TODO: this is GOLD TRUTH, so only use this for sanity checking
-			features.append(m1.REF == m2.REF)
+			if m1.REF == m2.REF:
+				features.append(1)
+			else:
+				features.append(0)
 			#if m1.dirHalf == "1ecb.xml":
 			#if m1.REF == m2.REF or random.random() < 0.2: # 1/5 of the negatives:
 			#print("p1:", m1.parentTokens, "p2:", m2.parentTokens)

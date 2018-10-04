@@ -40,7 +40,7 @@ class CCNN:
 			self.do = self.args.dropout
 		else:
 			(self.bs, self.ne, self.nl, self.nf, self.do) = presets
-		
+
 		print("[ccnn] scope:",self.scope,"bs:",self.bs,"ne:",self.ne,"nl:",self.nl,"nf:",self.nf,"do:",self.do, "dm:",self.devMode, "sp:",self.stopping_points)
 		sys.stdout.flush()
 
@@ -56,6 +56,9 @@ class CCNN:
 		self.supplementalTrain = dh.supplementalTrain
 		self.supplementalDev = dh.supplementalDev
 		self.supplementalTest = dh.supplementalTest
+		print("self.trainY:", self.trainY)
+		print("dh.supplementalTrain:", dh.supplementalTrain)
+		#exit(1)
 		print("shape:", self.supplementalTrain.shape)
 		if self.args.native:
 			tf.Session(config=tf.ConfigProto(log_device_placement=True))
@@ -103,6 +106,10 @@ class CCNN:
 				else:
 					scoreToGoldTruth[preds[_][0]].append(0)
 		s = sorted(scoreToGoldTruth.keys())
+		'''
+		for _ in s:
+			print("score:", str(_), ":", str(scoreToGoldTruth[_]))
+		'''
 		TP = 0.0
 		FP = 0.0
 		bestF1 = 0
@@ -128,7 +135,9 @@ class CCNN:
 				bestVal = eachVal
 				bestR = recall
 				bestP = prec
-
+		if numReturnedSoFar != len(preds):
+			print("* ERROR: we didn't look at preds correctly")
+			exit(1)
 		if bestF1 <=0:
 			print("* ERROR: our F1 was <= 0")
 			exit(1)
@@ -163,12 +172,13 @@ class CCNN:
 			processed_b = base_network(input_b)
 			distance = Lambda(self.euclidean_distance, output_shape=self.eucl_dist_output_shape)([processed_a, processed_b])
 
+			# WD PART
 			if self.CCNNSupplement:
 				auxiliary_input = Input(shape=(len(self.supplementalTrain[0]),), name='auxiliary_input')
 				combined_layer = keras.layers.concatenate([distance, auxiliary_input])
-				x = Dense(20, activation='relu')(combined_layer)
-				x2 = Dense(5, activation='relu')(x)
-				main_output = Dense(1, activation='relu', name='main_output')(x2)
+				x = Dense(5, activation='relu')(combined_layer)
+				#x2 = Dense(1, activation='relu')(x)
+				main_output = Dense(1, activation='relu', name='main_output')(x)
 				model = Model([input_a, input_b, auxiliary_input], outputs=main_output)
 				model.compile(loss=self.contrastive_loss, optimizer=Adam())
 				#print(model.summary())
@@ -180,8 +190,9 @@ class CCNN:
 			else:
 				model = Model(inputs=[input_a, input_b], outputs=distance)
 				model.compile(loss=self.contrastive_loss, optimizer=Adam())
-
-				print(model.summary())
+				#model.compile(loss=self.weighted_binary_crossentropy,optimizer=Adam(),metrics=['accuracy'])
+				
+				#print(model.summary())
 				model.fit([self.trainX[:, 0], self.trainX[:, 1]], self.trainY, \
 					batch_size=self.bs, \
 					epochs=self.ne, \
@@ -377,16 +388,18 @@ class CCNN:
 			processed_a = base_network(input_a)
 			processed_b = base_network(input_b)
 			distance = Lambda(self.euclidean_distance, output_shape=self.eucl_dist_output_shape)([processed_a, processed_b])
-
+			
+			# CD PART
 			if self.CCNNSupplement:
 				auxiliary_input = Input(shape=(len(self.supplementalTrain[0]),), name='auxiliary_input')
 				combined_layer = keras.layers.concatenate([distance, auxiliary_input])
-				x = Dense(20, activation='relu')(combined_layer)
+				#x = Dense(100, activation='relu')(combined_layer)
 				#x2 = Dense(5, activation='relu')(x)
 				main_output = Dense(1, activation='relu', name='main_output')(x)
 				model = Model([input_a, input_b, auxiliary_input], outputs=main_output)
 				model.compile(loss=self.contrastive_loss, optimizer=Adam())
-				#print(model.summary())
+				print("model summary:")
+				print(model.summary())
 				model.fit({'input_a': self.trainX[:, 0], 'input_b': self.trainX[:, 1], 'auxiliary_input': self.supplementalTrain},
 						{'main_output': self.trainY},
 						batch_size=self.bs, \
@@ -913,6 +926,7 @@ class CCNN:
 
 		for i in range(self.nl):
 			nf = self.nf
+			print("i:", i)
 			if i == 1: # meaning 2nd layer, since i in {0,1,2, ...}
 				nf = 96
 			seq.add(Conv2D(nf, kernel_size=(kernel_rows, 3), activation='relu', padding="same", input_shape=input_shape, data_format="channels_first"))
@@ -930,6 +944,13 @@ class CCNN:
 	def eucl_dist_output_shape(self, shapes):
 		shape1, _ = shapes
 		return (shape1[0], 1)
+
+	def weighted_binary_crossentropy(self, y_true, y_pred):
+		epsilon = tf.convert_to_tensor(K.common._EPSILON, y_pred.dtype.base_dtype)
+		y_pred = tf.clip_by_value(y_pred, epsilon, 1 - epsilon)
+		y_pred = tf.log(y_pred / (1 - y_pred))
+		cost = tf.nn.weighted_cross_entropy_with_logits(y_true, y_pred, 0.25)
+		return K.mean(cost * 0.8, axis=-1)
 
 	# Contrastive loss from Hadsell-et-al.'06
 	# http://yann.lecun.com/exdb/publis/pdf/hadsell-chopra-lecun-06.pdf
