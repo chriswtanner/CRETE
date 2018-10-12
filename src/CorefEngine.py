@@ -23,12 +23,6 @@ from CCNN import CCNN
 #from HDF5Reader import HDF5Reader
 from sklearn import svm
 
-# TMP for plotting dependency relations
-import matplotlib
-import matplotlib.pyplot as plt
-import numpy as np; np.random.seed(0)
-import seaborn as sns
-import pandas as pd
 class CorefEngine:
 
 	# TODO:
@@ -52,19 +46,6 @@ class CorefEngine:
 
 	if __name__ == "__main__":
 
-		'''
-		sns.set(style="whitegrid")
-		# Load the example Titanic dataset
-		titanic = sns.load_dataset("titanic")
-		print(titanic)
-		# Draw a nested barplot to show survival for class and sex
-		g = sns.catplot(x="class", y="survived", hue="sex", data=titanic, \
-			height=6, kind="bar", palette="muted")
-
-		g.despine(left=True)
-		g.set_ylabels("# sentences")
-		plt.show()
-		'''
 		runStanford = False
 
 		# classifier params
@@ -111,8 +92,8 @@ class CorefEngine:
 		# parses the real, actual corpus (ECB's XML files)
 		ecb_parser = ECBParser(args, helper)
 		corpus = ecb_parser.parseCorpus(helper.docToVerifiedSentences)
-		corpus.calculateEntEnvAgreement()
-		exit(1)
+		
+		
 		
 		helper.addECBCorpus(corpus)
 
@@ -175,7 +156,9 @@ class CorefEngine:
 		# prints every sentence's tokens, and displays the stanford dependency parents and children, too
 		
 		helper.addDependenciesToMentions(dh)
-
+		helper.checkDependencyRelations()
+		#corpus.calculateEntEnvAgreement()
+		exit(1)
 		# displays stats for dependency features we're interested in
 		#corpus.calculateEntEnvAgreement()
 		

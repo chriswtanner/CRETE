@@ -29,6 +29,57 @@ class ECBHelper:
 		self.UIDToSUID = defaultdict(list)
 		self.docToVerifiedSentences = self.loadVerifiedSentences(args.verifiedSentencesFile)
 
+	def getAllChildrenPaths(self, dh, tokenToMentions, originalMentionStans, token, curPath, allPaths):
+		bestStan = dh.getBestStanToken(token.stanTokens)
+		if len(bestStan.childLinks) == 0: # we've reached the end
+			out = "\t"
+			for p in curPath:
+				cur_stan = p.child
+				ecbTokens = self.stanTokenToECBTokens[cur_stan]
+				ecbText = ""
+				
+				for ecb in ecbTokens:
+					if ecb in tokenToMentions:
+						ecbText += "[" + ecb.text + "] "
+					else:
+						ecbText += ecb.text + " "
+				ecbText = ecbText.rstrip()
+				out += "-->" + str(ecbText)
+			print(out)
+		else:
+			for cl in bestStan.childLinks:
+				if cl.child not in originalMentionStans and cl not in curPath:
+					ecbTokens = self.stanTokenToECBTokens[cl.child]
+					for ecbToken in ecbTokens:
+						new_path = copy.copy(curPath) # creates its own copy of the visited
+						new_path.append(cl) # adds our new edge
+						self.getAllChildrenPaths(dh, tokenToMentions, originalMentionStans, ecbToken, new_path, allPaths)
+				else:
+					print("\t* we either hit our original mention or found a loop")
+
+	# returns a list of all paths to an entity mention (a list of lists)
+	def getAllChildrenMentionPaths(self, dh, tokenToMentions, originalMentionStans, token, curPath, allPaths):
+		if token in tokenToMentions and len(curPath) > 0: # we hit a mention of some sort (event or entity)
+			#print("\t [ found a mention!]")
+			foundMentions = tokenToMentions[token]
+			for m in foundMentions:
+				if not m.isPred:
+					allPaths.append(curPath)
+					#print("\t\t and it's an entity!")
+		else:
+			#print("\t [ NO MENTION]")
+
+			bestStan = dh.getBestStanToken(token.stanTokens)
+			for cl in bestStan.childLinks:
+				if cl.child not in originalMentionStans and cl not in curPath:
+					ecbTokens = self.stanTokenToECBTokens[cl.child]
+					for ecbToken in ecbTokens:
+						
+						#new_visited = copy.copy(visited) # creates its own copy of the visited
+						new_path = copy.copy(curPath) # creates its own copy of the visited
+						new_path.append(cl) # adds our new edge
+						#print("\tnew_path:", str(new_path), " with token we'll explore: ", str(ecbToken))
+						self.getAllChildrenMentionPaths(dh, tokenToMentions, originalMentionStans, ecbToken, new_path, allPaths)
 
 	# given a regular ECB-token, find its ecb-governor tokens
 	# just, we have to use stan tokens as the intermediatary, since that's
@@ -59,6 +110,7 @@ class ECBHelper:
 						self.levelToParents[depth].add(ecbParentToken)
 						self.getParents(mentionStans, dh, ecbParentToken, depth+1)
 
+	'''
 	def getChildren(self, mentionStans, dh, token, depth):
 		if token not in self.tokensVisited:
 			bestStan = dh.getBestStanToken(token.stanTokens)
@@ -82,6 +134,148 @@ class ECBHelper:
 						ecbChildToken = next(iter(self.stanTokenToECBTokens[p.child]))
 						self.levelToChildren[depth].add(ecbChildToken)
 						self.getChildren(mentionStans, dh, ecbChildToken, depth+1)
+	'''
+
+	def checkDependencyRelations(self):
+		distancesCounts = defaultdict(int)
+		distanceZero = 0
+		distanceNonZero = 0
+		entitiesCoref = 0
+		entitiesNoCoref = 0
+
+		howManyEntities = defaultdict(int) # Q0
+		howManyLevelEntitiesAppear = defaultdict(int) # Q1
+		depthOfFirstEntity = defaultdict(int) # Q2
+		distOfEntitiesAtFirstLevel = defaultdict(int) # Q3
+		bothEventAndEntitiesExist = defaultdict(lambda: defaultdict(int)) # Q4
+		bothEventAndEntitiesCoref = defaultdict(lambda: defaultdict(int)) # Q4
+		num_pairs = 0
+		for dh in sorted(self.corpus.dirHalves):
+			#print("dh:",dh)
+
+			for euid1 in sorted(self.corpus.dirHalves[dh].EUIDs):
+				m1 = self.corpus.EUIDToMention[euid1]
+				if not m1.isPred:
+					continue
+				#print("m1:", m1)
+				
+				# Q1
+				num_levels = len(m1.levelToChildrenEntities.keys())
+				howManyLevelEntitiesAppear[num_levels] += 1
+
+				# Q2 depthOfFirstEntity
+				if len(m1.levelToChildrenEntities) > 0:
+					shortest_level = sorted(m1.levelToChildrenEntities)[0]
+					depthOfFirstEntity[shortest_level] += 1
+				else:
+					depthOfFirstEntity[0] += 1
+
+				# Q3
+				# print("*** M1 ents: ", str(m1.entitiesLinked))
+				m1_shortests = set()
+				if len(m1.levelToChildrenEntities) > 0:
+					shortest_level = sorted(m1.levelToChildrenEntities)[0]
+					for ents in m1.levelToChildrenEntities[shortest_level]:
+						m1_shortests.add(ents)
+
+					num_found = len(m1.levelToChildrenEntities[shortest_level])
+					distOfEntitiesAtFirstLevel[num_found] += 1
+				else:
+					distOfEntitiesAtFirstLevel[0] += 1
+
+				# Q6: all entities
+				m1_allEntities = set()
+				for level in m1.levelToChildrenEntities:
+					for ents in m1.levelToChildrenEntities[level]:
+						m1_allEntities.add(ents)
+
+				# Q0: how many entities
+				howManyEntities[len(m1_allEntities)] += 1
+
+				for euid2 in sorted(self.corpus.dirHalves[dh].EUIDs):
+					if euid1 >= euid2:
+						continue
+
+					m2 = self.corpus.EUIDToMention[euid2]
+					if not m2.isPred:
+						continue
+					
+					#if m1.REF != m2.REF:
+					#	continue
+
+					# WITHIN DOC
+					if m1.doc_id == m2.doc_id: # == means cross
+						continue
+
+					# Q6
+					m2_allEntities = set()
+					for level in m2.levelToChildrenEntities:
+						for ents in m2.levelToChildrenEntities[level]:
+							m2_allEntities.add(ents)
+
+					num_pairs += 1
+
+					# Q4
+					entBothExist = False
+					if len(m1.levelToChildrenEntities) > 0 and len(m2.levelToChildrenEntities) > 0:
+						entBothExist = True
+					eventsCoref = False
+					if m1.REF == m2.REF:
+						eventsCoref = True
+					bothEventAndEntitiesExist[eventsCoref][entBothExist] += 1
+
+					# no man's land.  some other basic stat i was doing
+					m2_shortests = set()
+					if len(m2.levelToChildrenEntities) > 0:
+						shortest_level = sorted(m2.levelToChildrenEntities)[0]
+						for ents in m2.levelToChildrenEntities[shortest_level]:
+							m2_shortests.add(ents)
+				
+					entcoref = False
+					for ment1 in m1_shortests:
+						for ment2 in m2_shortests:
+							if ment1.REF == ment2.REF:
+								entcoref = True
+								break
+
+					
+					if entcoref:
+						entitiesCoref += 1
+					else:
+						entitiesNoCoref += 1
+					
+					#######
+
+					# Q5
+					if entBothExist:
+						bothEventAndEntitiesCoref[eventsCoref][entcoref] += 1
+
+					#print("m2_shortests:", str(m2_shortests))
+					# only compare m1,m2 if they're both events
+					if len(m1_shortests) == 0 or len(m2_shortests) == 0:
+						distanceZero += 1
+					else:
+						distanceNonZero += 1
+					if len(m1_shortests) <= len(m2_shortests):
+						distancesCounts[(len(m1_shortests),len(m2_shortests))] += 1
+					else:
+						distancesCounts[(len(m2_shortests),len(m1_shortests))] += 1
+		
+		print("distancesCounts:", str(distancesCounts))
+		print("distanceNonZero:", str(distanceNonZero))
+		print("distanceZero:", str(distanceZero))
+		print("% non-zero:", str(float(distanceNonZero / (distanceNonZero + distanceZero))))
+		print("entitiesCoref:", str(entitiesCoref))
+		print("entitiesNoCoref:", str(entitiesNoCoref))
+		print("Q0: howManyEntities:", str(howManyEntities))
+		print("Q1: howManyLevelEntitiesAppear: " + str(howManyLevelEntitiesAppear))
+		print("Q2: depthOfFirstEntity:" + str(depthOfFirstEntity))
+		print("sum:"  + str(sum([depthOfFirstEntity[key] for key in depthOfFirstEntity.keys()])))
+		print("Q3: distOfEntitiesAtFirstLevel:", distOfEntitiesAtFirstLevel)
+		print("Q4: bothEventAndEntitiesExist:", bothEventAndEntitiesExist)
+		print("Q5: bothEventAndEntitiesCoref:", bothEventAndEntitiesCoref)
+		print("num_pairs:", str(num_pairs))
+		exit(1)
 
 	def addDependenciesToMentions(self, dh):
 		for doc_id in self.corpus.doc_idToDocs:
@@ -122,12 +316,14 @@ class ECBHelper:
 					sentenceToEntityMentions[sentNum].add(m)
 
 			for s in sentenceToEventMentions:
-				tokenText = ""
+				
 				'''
+				tokenText = ""
 				for t in self.corpus.globalSentenceNumToTokens[s]:
 					tokenText += t.text + " "
 				print("sentence #:", s, "tokens:", tokenText)
 				'''
+
 				#print("\tevents:", sentenceToEventMentions[s])
 				for m in sentenceToEventMentions[s]:
 					#print("\n\t", m)
@@ -174,14 +370,51 @@ class ECBHelper:
 										#print("\t\t\t\t****** WE HAVE AN ENTITY MENTION!!! w/ ref:", parent_mention.REF)
 
 					# finds its children (modifiers)
-					self.levelToChildren = defaultdict(set)
+					# was unreliable in getChildren()
+					# bc i dont explore all ecbtokens, only the first.  now it should be good, bc i explore all paths
+					self.levelToChildren = defaultdict(set) 
+
 					self.levelToChildrenLinks = defaultdict(set)
 					self.tokensVisited = set()
+
+					#print(str(m), "has", str(len(m.tokens)), "tokens")
 					for t in m.tokens:
-						#print("\t\ttoken:", t)
-						self.getChildren(mentionStanTokens, dh, t, 1)
+
+						visited = set()
+						allPaths = []
+						curPath = []
+
+						#self.getAllChildrenPaths(dh, sentenceTokenToMention[s], mentionStanTokens, t, curPath, allPaths)
+						self.getAllChildrenMentionPaths(dh, sentenceTokenToMention[s], mentionStanTokens, t, curPath, allPaths)
+						#if len(allPaths) == 0:
+						#	print("")
+						
+						#print("\t\tlen paths:", str(len(allPaths)))
+						for path in allPaths:
+							#print("path:", path)
+							m.pathsToChildrenEntities.append(path)
+							level = 1
+							for p in path:
+								cur_stan = p.child
+								#print("cur_stan:", cur_stan)
+								ecbTokens = self.stanTokenToECBTokens[cur_stan]
+								#print("ecbTokens:", ecbTokens)
+								for ecb in ecbTokens:
+									if ecb in sentenceTokenToMention[s]:
+										#print("\tecb in it!")
+										foundMentions = sentenceTokenToMention[s][ecb]
+										for mfound in foundMentions:
+											if not mfound.isPred:
+												m.entitiesLinked.add(mfound)
+												m.levelToChildrenEntities[level].add(mfound)
+								level += 1
+
+						#self.getChildren(mentionStanTokens, dh, t, 1)
+					#print("\ttotal paths:", str(len(m.pathsToChildrenEntities)))
 					#print("\tmention yielded following governor structure:", self.levelToParents)
 					
+
+					'''
 					m.addChildrenLinks(copy.deepcopy(self.levelToChildrenLinks))
 					if len(self.levelToChildren) > 0:
 						#print("\n\tdependents:")
@@ -190,7 +423,7 @@ class ECBHelper:
 							for t in self.levelToChildren[level]:
 								#print("\t\t\t", t)
 
-								# adds dependency parent tokens
+								# adds dependency children tokens (unsure how this is useful)
 								if t not in m.childrenTokens:
 									m.childrenTokens.append(t)
 								for child_mention in sentenceTokenToMention[s][t]:
@@ -199,7 +432,7 @@ class ECBHelper:
 										if child_mention not in m.childrenEntities:
 											m.childrenEntities.append(child_mention)
 										#print("\t\t\t\t****** WE HAVE AN ENTITY MENTION!!! w/ ref:", child_mention.REF)
-
+					'''
 
 				'''
 				print("\tentities:")
@@ -207,7 +440,7 @@ class ECBHelper:
 					print("\t", m)
 				'''
 			#print("done w/ current doc:", str(doc_id))
-
+			
 			# prints tokens and their dependencies
 			'''
 			for t in self.corpus.doc_idToDocs[doc_id].tokens:

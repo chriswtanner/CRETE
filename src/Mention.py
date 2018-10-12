@@ -27,7 +27,11 @@ class Mention:
 		self.parentEntities = []
 		self.childrenTokens = []
 		self.childrenEntities = []
+		
+		self.pathsToChildrenEntities = []
+		self.entitiesLinked = set()
 		self.levelToParentLinks = defaultdict(set)
+		self.levelToChildrenEntities = defaultdict(set)
 		self.levelToChildrenLinks = defaultdict(set)
 		self.parentRel = "None"
 		self.childRel = "None"
