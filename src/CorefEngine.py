@@ -54,7 +54,7 @@ class CorefEngine:
 		cd_scope = "dir" # {dir, dirHalf}
 		useRelationalFeatures = False
 		#wdPresets = [256, 3, 2, 16, 0.0]
-		wdPresets = [64, 3, 2, 32, 0.2] # batchsize, num epochs, num layers, num filters, dropout
+		wdPresets = [64, 20, 2, 32, 0.0] # batchsize, num epochs, num layers, num filters, dropout
 
 		wd_stopping_points = [0.51] #, 0.401, 0.41, 0.42, 0.43, 0.44, 0.45, 0.46, 0.47, 0.48, 0.49, 0.501, 0.51, 0.52, 0.54, 0.55, 0.56, 0.57, 0.58, 0.59, 0.601]
 		cd_stopping_points = [0.5]
@@ -93,8 +93,6 @@ class CorefEngine:
 		ecb_parser = ECBParser(args, helper)
 		corpus = ecb_parser.parseCorpus(helper.docToVerifiedSentences)
 		
-		
-		
 		helper.addECBCorpus(corpus)
 
 		# parses the HDDCRP Mentions
@@ -117,9 +115,6 @@ class CorefEngine:
 		#helper.printHDDCRPMentionCoverage()
 		#corpus.checkMentions()
 
-		#for xuid in corpus.XUIDToMention:
-		#	print("xuid:", xuid, corpus.XUIDToMention[xuid])
-		#exit(1)
 		# DEFINES WHICH MENTIONS TO USE
 		trainXUIDs = set()
 		devXUIDs = set()
@@ -156,10 +151,7 @@ class CorefEngine:
 		# prints every sentence's tokens, and displays the stanford dependency parents and children, too
 		
 		helper.addDependenciesToMentions(dh)
-		helper.checkDependencyRelations()
-		#corpus.calculateEntEnvAgreement()
-		exit(1)
-		# displays stats for dependency features we're interested in
+		#helper.checkDependencyRelations()
 		#corpus.calculateEntEnvAgreement()
 		
 		# within-doc first, then cross-doc

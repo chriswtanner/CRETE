@@ -53,13 +53,6 @@ class KBPParser:
 		return ret
 
 	def parseCorpus(self):
-		'''
-		0a94a90f8451a8bb7b64ad15120db374.txt == source
-		0a94a90f8451a8bb7b64ad15120db374.event_hoppers.xml == hopper
-		NYT_ENG_20130622.0061.txt
-		NYT_ENG_20130622.0061.event_hoppers.xml
-		1b386c986f9d06fd0a0dda70c3b8ade9.event_hoppers.xml
-		'''
 
 		corpus = KBPCorpus()
 		for root, _, filenames in os.walk(self.corpusPath):

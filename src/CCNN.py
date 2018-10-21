@@ -22,7 +22,7 @@ from get_coref_metrics import get_conll_scores
 class CCNN:
 	def __init__(self, helper, dh, useRelationalFeatures, scope, presets, wd_docPreds, devMode, stopping_points):
 		self.calculateCoNLLScore = True # should always be True, except for debugging things that don't depend on it
-		self.CCNNSupplement = True
+		self.CCNNSupplement = False
 		self.devMode = devMode
 		self.helper = helper
 		self.dh = dh
@@ -45,7 +45,6 @@ class CCNN:
 		sys.stdout.flush()
 
 		if self.scope != "doc":
-			#self.wd_pred_clusters = pickle.load(open("wd_clusters_FULL_dirHalf_812.p", 'rb'))
 			self.sanityCheck1()
 
 		self.dh.loadNNData(useRelationalFeatures, True, self.scope) # True means use CCNN
@@ -56,10 +55,7 @@ class CCNN:
 		self.supplementalTrain = dh.supplementalTrain
 		self.supplementalDev = dh.supplementalDev
 		self.supplementalTest = dh.supplementalTest
-		print("self.trainY:", self.trainY)
-		print("dh.supplementalTrain:", dh.supplementalTrain)
-		#exit(1)
-		print("shape:", self.supplementalTrain.shape)
+
 		if self.args.native:
 			tf.Session(config=tf.ConfigProto(log_device_placement=True))
 			os.environ['CUDA_VISIBLE_DEVICES'] = ''
@@ -153,7 +149,7 @@ class CCNN:
 		spToDocPredictedCluster = {}
 		ensemblePreds = [] # DUMMY INITIALIZER
 		for _ in range(numRuns):
-			
+
 			bestRunCoNLL = -1
 			bestRunSP = -1
 
@@ -176,11 +172,12 @@ class CCNN:
 			if self.CCNNSupplement:
 				auxiliary_input = Input(shape=(len(self.supplementalTrain[0]),), name='auxiliary_input')
 				combined_layer = keras.layers.concatenate([distance, auxiliary_input])
-				x = Dense(5, activation='relu')(combined_layer)
+				x = Dense(5, activation='sigmoid', use_bias=True)(combined_layer)
 				#x2 = Dense(1, activation='relu')(x)
-				main_output = Dense(1, activation='relu', name='main_output')(x)
+				main_output = Dense(1, activation='sigmoid', name='main_output', use_bias=True)(x)
 				model = Model([input_a, input_b, auxiliary_input], outputs=main_output)
 				model.compile(loss=self.contrastive_loss, optimizer=Adam())
+				#model.compile(loss=self.contrastive_loss, optimizer=Adam())
 				#print(model.summary())
 				model.fit({'input_a': self.trainX[:, 0], 'input_b': self.trainX[:, 1], 'auxiliary_input': self.supplementalTrain},
 						{'main_output': self.trainY},
@@ -266,6 +263,8 @@ class CCNN:
 					#print(accuracy_score(self.devY, preds))
 					#print("self.devY:", self.devY)
 			'''
+			if _ == 0:
+				continue
 			if self.CCNNSupplement:
 				preds = model.predict({'input_a': self.testX[:, 0], 'input_b': self.testX[:, 1], 'auxiliary_input': self.supplementalTest})
 			else:
@@ -273,11 +272,10 @@ class CCNN:
 					preds = model.predict([self.devX[:, 0], self.devX[:, 1]])
 				else:
 					preds = model.predict([self.testX[:, 0], self.testX[:, 1]])
-			print("* done training")
 
 			# if it's our last run, let's use the ensemble'd preds
 			if _ == numRuns - 1:
-				print("*** SETTING PREDS = ensemble!!")
+				print("*** ENSEMBLE RESULTS!!:")
 				preds = ensemblePreds
 				print("len PREDS:", len(preds))
 				# NOTE: the following used to not be indented, but i recently decided that
@@ -319,7 +317,7 @@ class CCNN:
 				
 			if self.args.useECBTest:
 				(f1, prec, rec, bestThreshold) = self.evaluateCCNNPairwisePreds(preds)
-				print("ccnn_best_f1 (# successful runs: ", len(f1s), "): best_pairwise_f1: ", round(f1,4), " prec: ",round(prec,4), " recall: ", round(rec,4), " threshold: ", round(bestThreshold,3))
+				print("ccnn_best_f1 (# successful runs:",len(f1s),"): best_pairwise_f1: ", round(f1,4), " prec: ",round(prec,4), " recall: ", round(rec,4), " threshold: ", round(bestThreshold,3))
 				if f1 > 0.50:
 					print("**** ADDING TO ENSEMBLE!")
 					# append to the ensemble of pairwise predictions
@@ -421,15 +419,13 @@ class CCNN:
 					preds = model.predict([self.devX[:, 0], self.devX[:, 1]])
 				else:
 					preds = model.predict([self.testX[:, 0], self.testX[:, 1]])
-			print("* done training")
 			print("len of preds:", len(preds))
 
 			if len(f1s) == numRuns-1:
 				
 				if len(ensemblePreds) > 0:
 					preds = ensemblePreds
-					print("*** SETTING PREDS = ensemble!!")
-				print("len PREDS in the last run:", len(preds))
+					print("*** USING ENSEMBLE of PREDIcTIONS!!")
 
 				for sp in self.stopping_points:
 					print("* [agg] sp:", sp)
@@ -926,7 +922,6 @@ class CCNN:
 
 		for i in range(self.nl):
 			nf = self.nf
-			print("i:", i)
 			if i == 1: # meaning 2nd layer, since i in {0,1,2, ...}
 				nf = 96
 			seq.add(Conv2D(nf, kernel_size=(kernel_rows, 3), activation='relu', padding="same", input_shape=input_shape, data_format="channels_first"))
@@ -963,8 +958,7 @@ class CCNN:
 		mean = sum(lst) / num_items
 		differences = [x - mean for x in lst]
 		sq_differences = [d ** 2 for d in differences]
-		ssd = sum(sq_differences)
-		variance = ssd / (num_items - 1)
+		variance = sum(sq_differences) / (num_items - 1)
 		return sqrt(variance)
 
 	# SANITY CHECKS: ensure the loaded predictions use XUID mentions like intended (w/ our corpus)

@@ -32,7 +32,7 @@ class Mention:
 		self.entitiesLinked = set()
 		self.levelToParentLinks = defaultdict(set)
 		self.levelToChildrenEntities = defaultdict(set)
-		self.levelToChildrenLinks = defaultdict(set)
+		self.levelToEntityPath = defaultdict(list)
 		self.parentRel = "None"
 		self.childRel = "None"
 		
@@ -60,12 +60,11 @@ class Mention:
 				self.parentRel = pl.relationship.lower()
 				break
 
-	def addChildrenLinks(self, levelToChildrenLinks):
-		self.levelToChildrenLinks = levelToChildrenLinks
-		if 1 in levelToChildrenLinks:
-			for pl in levelToChildrenLinks[1]:
-				self.childRel = pl.relationship.lower()
-				break
+	def addEntityPath(self, level, path):
+		relations = []
+		for p in path:
+			relations.append(p.relationship)
+		self.levelToEntityPath[level].append(relations)
 
 	def __str__(self):
 		return "MENTION: " + str(self.XUID) + " (dir " + str(self.dir_num) + "; doc: " + str(self.doc_id) + "): text: " + str(self.text) + " type: " + str(self.mentionType)

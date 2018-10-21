@@ -208,123 +208,33 @@ class DataHandler:
 			m2 = self.corpus.XUIDToMention[xuid2]
 			features = []
 
-			''' DEPENDENCY FEATURES
-			# 1
-			tokenShared = False
-			t1text = [_.text for _ in m1.parentTokens]
-			t2text = [_.text for _ in m2.parentTokens]
-
-			e1REFs = [_.REF for _ in m1.parentEntities]
-			e2REFs = [_.REF for _ in m2.parentEntities]
-			for t1 in t1text:
-				if t1 in t2text:
-					tokenShared = True
-					break
-						
-			# 2
-			entityInCommon = False
-			for p1 in e1REFs:
-				if p1 in e2REFs:
-					entityInCommon = True
-					break
-			# 3
-			firstEntitiesEqual = False
-			if len(e1REFs) > 0 and len(e2REFs) > 0 and e1REFs[0] == e2REFs[0]:
-				firstEntitiesEqual = True
-			features.append(tokenShared)
-			features.append(entityInCommon)
-			features.append(firstEntitiesEqual)
-
-			# children
-			# 1
-			tokenShared = False
-			t1text = [_.text for _ in m1.childrenTokens]
-			t2text = [_.text for _ in m2.childrenTokens]
-
-			e1REFs = [_.REF for _ in m1.childrenEntities]
-			e2REFs = [_.REF for _ in m2.childrenEntities]
-			for t1 in t1text:
-				if t1 in t2text:
-					tokenShared = True
-					break
-			
-			# 2
-			entityInCommon = False
-			for p1 in e1REFs:
-				if p1 in e2REFs:
-					entityInCommon = True
-					break
-			# 3
-			firstEntitiesEqual = False
-			if len(e1REFs) > 0 and len(e2REFs) > 0 and e1REFs[0] == e2REFs[0]:
-				firstEntitiesEqual = True
-			features.append(tokenShared)
-			features.append(entityInCommon)
-			features.append(firstEntitiesEqual)
-
-			# MIXED
-			# 1
-			tokenShared = False
-			#parents
-			t1textp = [_.text for _ in m1.parentTokens]
-			t2textp = [_.text for _ in m2.parentTokens]
-			e1REFsp = [_.REF for _ in m1.parentEntities]
-			e2REFsp = [_.REF for _ in m2.parentEntities]
-			#children
-			t1textc = [_.text for _ in m1.childrenTokens]
-			t2textc = [_.text for _ in m2.childrenTokens]
-			e1REFsc = [_.REF for _ in m1.childrenEntities]
-			e2REFsc = [_.REF for _ in m2.childrenEntities]
-			for t1 in [t1textp, t1textc]:
-				if t1 in t2textp or t1 in t2textc:
-					tokenShared = True
-					break
-			# 2
-			entityInCommon = False
-			for p1 in [e1REFsp, e1REFsc]:
-				if p1 in e2REFsp or p1 in e2REFsc:
-					entityInCommon = True
-					break
-			# 3
-			firstEntitiesEqual = False
-			if features[2] or features[5]:
-				firstEntitiesEqual = True
-			if not firstEntitiesEqual:
-				if len(e1REFsc) > 0 and len(e2REFsp) > 0:
-					if e1REFsc[0] == e2REFsp[0]:
-						firstEntitiesEqual = True
-				if len(e1REFsp) > 0 and len(e2REFsc) > 0:
-					if e1REFsp[0] == e2REFsc[0]:
-						firstEntitiesEqual = True
-
-			features.append(tokenShared)
-			features.append(entityInCommon)
-			features.append(firstEntitiesEqual)
-
-			if len(t1textp) > 0:
-				features.append(1)
-			else:
-				features.append(0)
-			if len(t1textc) > 0:
-				features.append(1)
-			else:
-				features.append(0)
-
-			if len(t2textp) > 0:
-				features.append(1)
-			else:
-				features.append(0)
-			if len(t2textc) > 0:
-				features.append(1)
-			else:
-				features.append(0)
-			'''
+			# TODO: change this; these lines enforce us to only look at mention pairs which both lead to Entities
+			#if len(m1.levelToChildrenEntities) == 0 or len(m2.levelToChildrenEntities) == 0:
+			#	continue
+			if 1 not in m1.levelToChildrenEntities or 1 not in m2.levelToChildrenEntities:
+				continue
 
 			# TODO: this is GOLD TRUTH, so only use this for sanity checking
+			m1_shortests = set([] if len(m1.levelToChildrenEntities) == 0 else [x for x in m1.levelToChildrenEntities[next(iter(sorted(m1.levelToChildrenEntities)))]])
+			m2_shortests = set([] if len(m2.levelToChildrenEntities) == 0 else [x for x in m2.levelToChildrenEntities[next(iter(sorted(m2.levelToChildrenEntities)))]])
+		
+			entcoref = False
+			for ment1 in m1_shortests:
+				for ment2 in m2_shortests:
+					if ment1.REF == ment2.REF:
+						entcoref = True
+						break
+			if entcoref:
+				features.append(1)
+			else:
+				features.append(0)
+			
+			'''
 			if m1.REF == m2.REF:
 				features.append(1)
 			else:
 				features.append(0)
+			'''
 			#if m1.dirHalf == "1ecb.xml":
 			#if m1.REF == m2.REF or random.random() < 0.2: # 1/5 of the negatives:
 			#print("p1:", m1.parentTokens, "p2:", m2.parentTokens)

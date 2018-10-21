@@ -29,8 +29,15 @@ class ECBHelper:
 		self.UIDToSUID = defaultdict(list)
 		self.docToVerifiedSentences = self.loadVerifiedSentences(args.verifiedSentencesFile)
 
-	def getAllChildrenPaths(self, dh, tokenToMentions, originalMentionStans, token, curPath, allPaths):
+	def getAllChildrenPaths(self, dh, entities, tokenToMentions, originalMentionStans, token, curPath, allPaths):
 		bestStan = dh.getBestStanToken(token.stanTokens)
+
+		if token in tokenToMentions and len(curPath) > 0: # we hit a mention of some sort (event or entity)
+			foundMentions = tokenToMentions[token]
+			for m in foundMentions:
+				if not m.isPred:
+					allPaths.append(curPath)
+
 		if len(bestStan.childLinks) == 0: # we've reached the end
 			out = "\t"
 			for p in curPath:
@@ -40,7 +47,16 @@ class ECBHelper:
 				
 				for ecb in ecbTokens:
 					if ecb in tokenToMentions:
-						ecbText += "[" + ecb.text + "] "
+						foundMentions = tokenToMentions[ecb]
+						foundEnt = False
+						for m in foundMentions:
+							if not m.isPred:
+								foundEnt = True
+								entities.add(" ".join(m.text))
+						if foundEnt:
+							ecbText += "**[" + ecb.text + "]** "
+						else:
+							ecbText += "[" + ecb.text + "] "
 					else:
 						ecbText += ecb.text + " "
 				ecbText = ecbText.rstrip()
@@ -53,22 +69,23 @@ class ECBHelper:
 					for ecbToken in ecbTokens:
 						new_path = copy.copy(curPath) # creates its own copy of the visited
 						new_path.append(cl) # adds our new edge
-						self.getAllChildrenPaths(dh, tokenToMentions, originalMentionStans, ecbToken, new_path, allPaths)
+						self.getAllChildrenPaths(dh, entities, tokenToMentions, originalMentionStans, ecbToken, new_path, allPaths)
 				else:
 					print("\t* we either hit our original mention or found a loop")
-
+	
 	# returns a list of all paths to an entity mention (a list of lists)
 	def getAllChildrenMentionPaths(self, dh, tokenToMentions, originalMentionStans, token, curPath, allPaths):
+		foundEntity = False
 		if token in tokenToMentions and len(curPath) > 0: # we hit a mention of some sort (event or entity)
 			#print("\t [ found a mention!]")
 			foundMentions = tokenToMentions[token]
 			for m in foundMentions:
 				if not m.isPred:
 					allPaths.append(curPath)
+					foundEntity = True
 					#print("\t\t and it's an entity!")
-		else:
+		if not foundEntity:
 			#print("\t [ NO MENTION]")
-
 			bestStan = dh.getBestStanToken(token.stanTokens)
 			for cl in bestStan.childLinks:
 				if cl.child not in originalMentionStans and cl not in curPath:
@@ -148,8 +165,12 @@ class ECBHelper:
 		depthOfFirstEntity = defaultdict(int) # Q2
 		distOfEntitiesAtFirstLevel = defaultdict(int) # Q3
 		bothEventAndEntitiesExist = defaultdict(lambda: defaultdict(int)) # Q4
-		bothEventAndEntitiesCoref = defaultdict(lambda: defaultdict(int)) # Q4
+		bothEventAndEntitiesCoref = defaultdict(lambda: defaultdict(int)) # Q5
+		#bothEventAndEntitiesCoref
 		num_pairs = 0
+
+		eventsConsidered = set()
+
 		for dh in sorted(self.corpus.dirHalves):
 			#print("dh:",dh)
 
@@ -158,7 +179,21 @@ class ECBHelper:
 				if not m1.isPred:
 					continue
 				#print("m1:", m1)
-				
+				if m1 in eventsConsidered:
+					print("ALREADY HAVE IT")
+					exit(1)
+				eventsConsidered.add(m1)
+
+				# TODO tmp: only look at pairs where both of their entities occurred at 1 hope
+				# for now, let's just store the 1-hop ones
+				m1_paths = []
+				'''
+				if 1 in m1.levelToEntityPath.keys():
+					for p in m1.levelToEntityPath[1]:
+						m1_paths.append(p)
+				else:
+					continue
+				'''
 				# Q1
 				num_levels = len(m1.levelToChildrenEntities.keys())
 				howManyLevelEntitiesAppear[num_levels] += 1
@@ -199,12 +234,21 @@ class ECBHelper:
 					m2 = self.corpus.EUIDToMention[euid2]
 					if not m2.isPred:
 						continue
-					
+
+					# TODO: tmp: only look at pairs which both have entities 1 hop away
+					m2_paths = []
+					'''
+					if 1 in m2.levelToEntityPath.keys():
+						for p in m2.levelToEntityPath[1]:
+							m2_paths.append(p)
+					else:
+						continue
+					'''
 					#if m1.REF != m2.REF:
 					#	continue
 
 					# WITHIN DOC
-					if m1.doc_id == m2.doc_id: # == means cross
+					if m1.doc_id != m2.doc_id: # == means cross
 						continue
 
 					# Q6
@@ -237,8 +281,14 @@ class ECBHelper:
 							if ment1.REF == ment2.REF:
 								entcoref = True
 								break
-
 					
+					haveIdenticalPath = False
+					for m1p in m1_paths:
+						for m2p in m2_paths:
+							if m1p[0] == m2p[0]:
+								haveIdenticalPath = True
+								break
+
 					if entcoref:
 						entitiesCoref += 1
 					else:
@@ -246,9 +296,12 @@ class ECBHelper:
 					
 					#######
 
+					flag = haveIdenticalPath and entcoref
+
 					# Q5
 					if entBothExist:
-						bothEventAndEntitiesCoref[eventsCoref][entcoref] += 1
+						bothEventAndEntitiesCoref[eventsCoref][flag] += 1
+						#bothEventAndEntitiesCoref[eventsCoref][entcoref] += 1
 
 					#print("m2_shortests:", str(m2_shortests))
 					# only compare m1,m2 if they're both events
@@ -261,6 +314,7 @@ class ECBHelper:
 					else:
 						distancesCounts[(len(m2_shortests),len(m1_shortests))] += 1
 		
+
 		print("distancesCounts:", str(distancesCounts))
 		print("distanceNonZero:", str(distanceNonZero))
 		print("distanceZero:", str(distanceZero))
@@ -275,14 +329,15 @@ class ECBHelper:
 		print("Q4: bothEventAndEntitiesExist:", bothEventAndEntitiesExist)
 		print("Q5: bothEventAndEntitiesCoref:", bothEventAndEntitiesCoref)
 		print("num_pairs:", str(num_pairs))
-		exit(1)
+		print("eventsConsidered:", str(len(eventsConsidered)))
 
 	def addDependenciesToMentions(self, dh):
+		eventsConsidered = set()
+		numEntities = defaultdict(int)
+		relation_to_count = defaultdict(int)
+		shortest_path_to_ent = defaultdict(int) # keeps track of how many events had their shortest path to be of depth N
 		for doc_id in self.corpus.doc_idToDocs:
-			#if not doc_id.startswith("1_") or "plus" in doc_id:
-			#if doc_id != "1_10ecb.xml":
-			#	continue
-			#print("[DOC: ", doc_id)
+			
 			# maps ECB Token -> StanToken and vice versa
 			self.stanTokenToECBTokens = defaultdict(set)
 			curdoctokens = ""
@@ -290,13 +345,13 @@ class ECBHelper:
 				curdoctokens += t.text + " "
 				for s in t.stanTokens:
 					self.stanTokenToECBTokens[s].add(t)
-					#print("t:",t.text,"s:",s.text)
-			#print("curdoctokens:", curdoctokens)
+
+			# checks if a given stan token maps to multiple ECB tokens
+			'''
 			for k in self.stanTokenToECBTokens:
 				if len(self.stanTokenToECBTokens[k]) > 1:
 					print("woops, we have len of :", len(self.stanTokenToECBTokens[k]), ":", k)
-					#exit(1)
-
+			'''
 			# looks through each mention, to print the most immediate governor
 			# and modifier mentions of the opposite type
 			# maps each mention to a SENTENCE
@@ -317,18 +372,17 @@ class ECBHelper:
 
 			for s in sentenceToEventMentions:
 				
-				'''
 				tokenText = ""
 				for t in self.corpus.globalSentenceNumToTokens[s]:
 					tokenText += t.text + " "
-				print("sentence #:", s, "tokens:", tokenText)
-				'''
 
-				#print("\tevents:", sentenceToEventMentions[s])
+				#print("sentence #:", s, "tokens:", tokenText)
 				for m in sentenceToEventMentions[s]:
+					eventsConsidered.add(m)
+					
 					#print("\n\t", m)
 
-					# gets the StanTokens for the current mention, so that we \
+					# gets the StanTokens for the current mention, so that we
 					# never explore any of them as parents or chilren
 					mentionStanTokens = set()
 					for t in m.tokens:
@@ -338,8 +392,8 @@ class ECBHelper:
 					# finds its parents (governors)
 					self.levelToParents = defaultdict(set)
 					self.levelToParentLinks = defaultdict(set)
-
 					self.tokensVisited = set()
+
 					for t in m.tokens:
 						#print("\t\ttoken:", t)
 						self.getParents(mentionStanTokens, dh, t, 1)
@@ -373,28 +427,35 @@ class ECBHelper:
 					# was unreliable in getChildren()
 					# bc i dont explore all ecbtokens, only the first.  now it should be good, bc i explore all paths
 					self.levelToChildren = defaultdict(set) 
-
 					self.levelToChildrenLinks = defaultdict(set)
 					self.tokensVisited = set()
 
 					#print(str(m), "has", str(len(m.tokens)), "tokens")
+					entities = set()
+					isEmpty = True
 					for t in m.tokens:
 
 						visited = set()
 						allPaths = []
 						curPath = []
 
-						#self.getAllChildrenPaths(dh, sentenceTokenToMention[s], mentionStanTokens, t, curPath, allPaths)
+						# prints all paths (even if there are no entities)
+						#self.getAllChildrenPaths(dh, entities, sentenceTokenToMention[s], mentionStanTokens, t, curPath, allPaths)
+
+						# constructs all paths that have a way to entities
+						allPaths = []
 						self.getAllChildrenMentionPaths(dh, sentenceTokenToMention[s], mentionStanTokens, t, curPath, allPaths)
 						#if len(allPaths) == 0:
 						#	print("")
 						
 						#print("\t\tlen paths:", str(len(allPaths)))
+						one_hop_relations = [] # stores the dependency relation that took us to an entity in just 1 hop
 						for path in allPaths:
 							#print("path:", path)
 							m.pathsToChildrenEntities.append(path)
 							level = 1
 							for p in path:
+								relation = p.relationship
 								cur_stan = p.child
 								#print("cur_stan:", cur_stan)
 								ecbTokens = self.stanTokenToECBTokens[cur_stan]
@@ -406,39 +467,37 @@ class ECBHelper:
 										for mfound in foundMentions:
 											if not mfound.isPred:
 												m.entitiesLinked.add(mfound)
+												isEmpty = False
 												m.levelToChildrenEntities[level].add(mfound)
+												one_hop_relations.append(relation)
+												m.addEntityPath(level, path)
 								level += 1
 
-						#self.getChildren(mentionStanTokens, dh, t, 1)
-					#print("\ttotal paths:", str(len(m.pathsToChildrenEntities)))
-					#print("\tmention yielded following governor structure:", self.levelToParents)
+						# the shortest level/depth at which an entity appears
+						shortest_level = 0 if len(m.levelToChildrenEntities) == 0 else \
+							next(iter(sorted(m.levelToChildrenEntities)))
+
+						shortest_path_to_ent[shortest_level] += 1
+						
+						for rel in one_hop_relations:
+							relation_to_count[rel] += 1
+						
+						'''
+						print("mentions' paths to entities:")
+						for l in sorted(m.levelToEntityPath.keys()):
+							for p in m.levelToEntityPath[l]:
+								print("\t", str(l), ":", str(p))
+						'''
+					'''					
+					print("\tmention above had # entities:", str(entities))
+					if isEmpty and len(entities) > 0:
+						print("** MISMATCH")
+						print(m.levelToChildrenEntities)
+						print(entities)
+						exit(1)
+					'''
+					numEntities[len(entities)] += 1
 					
-
-					'''
-					m.addChildrenLinks(copy.deepcopy(self.levelToChildrenLinks))
-					if len(self.levelToChildren) > 0:
-						#print("\n\tdependents:")
-						for level in sorted(self.levelToChildren):
-							#print("\t\tlevel:", level)
-							for t in self.levelToChildren[level]:
-								#print("\t\t\t", t)
-
-								# adds dependency children tokens (unsure how this is useful)
-								if t not in m.childrenTokens:
-									m.childrenTokens.append(t)
-								for child_mention in sentenceTokenToMention[s][t]:
-									#print("\t\t\tchild mention:", child_mention)
-									if not child_mention.isPred:
-										if child_mention not in m.childrenEntities:
-											m.childrenEntities.append(child_mention)
-										#print("\t\t\t\t****** WE HAVE AN ENTITY MENTION!!! w/ ref:", child_mention.REF)
-					'''
-
-				'''
-				print("\tentities:")
-				for m in sentenceToEntityMentions[s]:
-					print("\t", m)
-				'''
 			#print("done w/ current doc:", str(doc_id))
 			
 			# prints tokens and their dependencies
@@ -448,6 +507,15 @@ class ECBHelper:
 				bestStan = dh.getBestStanToken(t.stanTokens)
 				print("bestStan:", bestStan)
 			'''
+		print("eventsConsidered:", str(len(eventsConsidered)))
+		sorted_x = sorted(relation_to_count.items(), key=operator.itemgetter(1), reverse=True)
+		''' prints coutns of dependency relations
+		for x in sorted_x:
+			print(x[0], ",", x[1])
+		for level in shortest_path_to_ent.keys():
+			print("level", level, " = ", str(shortest_path_to_ent[level]))
+		'''
+
 	def writeCoNLLFile(self, predictedClusters, suffix): # suffix should be wd_"${sp}"_"${run#}".txt" or cd instead of wd
 		hmuidToClusterID = {}
 		for c_id in predictedClusters.keys():
