@@ -7,6 +7,9 @@ from itertools import chain
 from collections import defaultdict
 class DataHandler:
 	def __init__(self, helper, trainXUIDs, devXUIDs, testXUIDs):
+		
+		self.multiclass = True
+
 		self.helper = helper
 		self.args = helper.args
 		self.corpus = helper.corpus
@@ -253,7 +256,10 @@ class DataHandler:
 				else:
 					FN += 1
 				'''
-				labels.append(1)
+				if self.multiclass:
+					labels.append([0, 1])
+				else:
+					labels.append(1)
 				numPosAdded += 1
 				#if m1.dirHalf == "1ecb.xml":
 				#	print(features)
@@ -269,7 +275,10 @@ class DataHandler:
 				if negSubsample and numNegAdded > numPosAdded*self.args.numNegPerPos:
 					continue
 				numNegAdded += 1
-				labels.append(0)
+				if self.multiclass:
+					labels.append([1, 0])
+				else:
+					labels.append(0)
 				#if m1.dirHalf == "1ecb.xml":
 				#	print(features)
 			m1_features = []

@@ -405,7 +405,8 @@ class CCNN:
 						validation_data=({'input_a': self.devX[:, 0], 'input_b': self.devX[:, 1], 'auxiliary_input': self.supplementalDev}, {'main_output': self.devY}))
 			else:
 				model = Model(inputs=[input_a, input_b], outputs=distance)
-				model.compile(loss=self.contrastive_loss, optimizer=Adam())
+				model.compile(loss='binary_crossentropy', optimizer=Adam())
+				#model.compile(loss=self.contrastive_loss, optimizer=Adam())
 				#print(model.summary())
 				model.fit([self.trainX[:, 0], self.trainX[:, 1]], self.trainY, \
 					batch_size=self.bs, \
@@ -938,6 +939,8 @@ class CCNN:
 
 	def eucl_dist_output_shape(self, shapes):
 		shape1, _ = shapes
+		print(keras.backend.shape(shapes))
+		print(keras.backend.shape1)
 		return (shape1[0], 1)
 
 	def weighted_binary_crossentropy(self, y_true, y_pred):

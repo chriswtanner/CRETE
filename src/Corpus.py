@@ -3,11 +3,11 @@ from DirHalf import DirHalf
 from ECBDir import ECBDir
 
 # TMP for plotting dependency relations
-import matplotlib
-import matplotlib.pyplot as plt
+#import matplotlib
+#import matplotlib.pyplot as plt
 import numpy as np; np.random.seed(0)
-import seaborn as sns
-import pandas as pd
+#import seaborn as sns
+#import pandas as pd
 class Corpus:
 	def __init__(self):
 
