@@ -96,11 +96,13 @@ class CCNN:
 					scoreToGoldTruth[preds[_][0]].append(0)
 
 			else:
-				if self.testY[_]:
+				# TODO: i changed this code in trying to do multi-class prediction
+				# it used to be just self.testY[_]  and preds[_][0]
+				if self.testY[_][1]:
 					numGoldPos += 1
-					scoreToGoldTruth[preds[_][0]].append(1)
+					scoreToGoldTruth[preds[_][1]].append(1)
 				else:
-					scoreToGoldTruth[preds[_][0]].append(0)
+					scoreToGoldTruth[preds[_][1]].append(0)
 		s = sorted(scoreToGoldTruth.keys())
 		'''
 		for _ in s:
@@ -939,8 +941,6 @@ class CCNN:
 
 	def eucl_dist_output_shape(self, shapes):
 		shape1, _ = shapes
-		print(keras.backend.shape(shapes))
-		print(keras.backend.shape1)
 		return (shape1[0], 1)
 
 	def weighted_binary_crossentropy(self, y_true, y_pred):
