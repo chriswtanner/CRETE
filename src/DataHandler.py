@@ -7,8 +7,6 @@ from itertools import chain
 from collections import defaultdict
 class DataHandler:
 	def __init__(self, helper, trainXUIDs, devXUIDs, testXUIDs):
-		
-		self.multiclass = True
 
 		self.helper = helper
 		self.args = helper.args
@@ -220,7 +218,7 @@ class DataHandler:
 			# TODO: this is GOLD TRUTH, so only use this for sanity checking
 			m1_shortests = set([] if len(m1.levelToChildrenEntities) == 0 else [x for x in m1.levelToChildrenEntities[next(iter(sorted(m1.levelToChildrenEntities)))]])
 			m2_shortests = set([] if len(m2.levelToChildrenEntities) == 0 else [x for x in m2.levelToChildrenEntities[next(iter(sorted(m2.levelToChildrenEntities)))]])
-		
+
 			entcoref = False
 			for ment1 in m1_shortests:
 				for ment2 in m2_shortests:
@@ -229,14 +227,42 @@ class DataHandler:
 						break
 			if entcoref:
 				features.append(1)
+				features.append(0)
 			else:
 				features.append(0)
+				features.append(1)
+			
+			# looks at path info
+			m1_paths = []
+			if 1 in m1.levelToEntityPath.keys():
+				for p in m1.levelToEntityPath[1]:
+					m1_paths.append(p)
+
+			m2_paths = []	
+			if 1 in m2.levelToEntityPath.keys():
+				for p in m2.levelToEntityPath[1]:
+					m2_paths.append(p)
+				
+			haveIdenticalPath = False
+			for m1p in m1_paths:
+				for m2p in m2_paths:
+					if m1p[0] == m2p[0]:
+						haveIdenticalPath = True
+						break
+			if haveIdenticalPath:
+				features.append(1)
+				features.append(0)
+			else:
+				features.append(0)
+				features.append(1)
 			
 			'''
 			if m1.REF == m2.REF:
 				features.append(1)
+				features.append(0)
 			else:
 				features.append(0)
+				features.append(1)
 			'''
 			#if m1.dirHalf == "1ecb.xml":
 			#if m1.REF == m2.REF or random.random() < 0.2: # 1/5 of the negatives:
@@ -256,13 +282,9 @@ class DataHandler:
 				else:
 					FN += 1
 				'''
-				if self.multiclass:
-					labels.append([0, 1])
-				else:
-					labels.append(1)
+
+				labels.append(1)
 				numPosAdded += 1
-				#if m1.dirHalf == "1ecb.xml":
-				#	print(features)
 			else:
 
 				# TMP ADDED FOR SAME LEMMA TEST
@@ -275,12 +297,8 @@ class DataHandler:
 				if negSubsample and numNegAdded > numPosAdded*self.args.numNegPerPos:
 					continue
 				numNegAdded += 1
-				if self.multiclass:
-					labels.append([1, 0])
-				else:
-					labels.append(0)
-				#if m1.dirHalf == "1ecb.xml":
-				#	print(features)
+				labels.append(0)
+
 			m1_features = []
 			m2_features = []
 

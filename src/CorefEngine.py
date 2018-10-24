@@ -49,7 +49,7 @@ class CorefEngine:
 		runStanford = False
 
 		# classifier params
-		numRuns = 10
+		numRuns = 20
 		useCCNN = True
 		cd_scope = "dir" # {dir, dirHalf}
 		useRelationalFeatures = False
@@ -102,7 +102,6 @@ class CorefEngine:
 			allHDDCRPMentionTokens = hddcrp_parser.parseCorpus(args.hddcrpFullFile)
 			helper.createHDDCRPMentions(allHDDCRPMentionTokens) # constructs correct Mentions
 		
-		#exit(1)
 		# loads Stanford's parse
 		if runStanford:
 			stan = StanParser(args, corpus)
@@ -148,8 +147,6 @@ class CorefEngine:
 		
 		dh = DataHandler(helper, trainXUIDs, devXUIDs, testXUIDs)
 
-		# prints every sentence's tokens, and displays the stanford dependency parents and children, too
-		
 		helper.addDependenciesToMentions(dh)
 		#helper.checkDependencyRelations()
 		#corpus.calculateEntEnvAgreement()

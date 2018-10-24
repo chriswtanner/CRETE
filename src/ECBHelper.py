@@ -187,13 +187,13 @@ class ECBHelper:
 				# TODO tmp: only look at pairs where both of their entities occurred at 1 hope
 				# for now, let's just store the 1-hop ones
 				m1_paths = []
-				'''
+				
 				if 1 in m1.levelToEntityPath.keys():
 					for p in m1.levelToEntityPath[1]:
 						m1_paths.append(p)
 				else:
 					continue
-				'''
+				
 				# Q1
 				num_levels = len(m1.levelToChildrenEntities.keys())
 				howManyLevelEntitiesAppear[num_levels] += 1
@@ -237,13 +237,13 @@ class ECBHelper:
 
 					# TODO: tmp: only look at pairs which both have entities 1 hop away
 					m2_paths = []
-					'''
+					
 					if 1 in m2.levelToEntityPath.keys():
 						for p in m2.levelToEntityPath[1]:
 							m2_paths.append(p)
 					else:
 						continue
-					'''
+					
 					#if m1.REF != m2.REF:
 					#	continue
 

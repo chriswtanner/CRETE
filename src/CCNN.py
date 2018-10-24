@@ -85,6 +85,7 @@ class CCNN:
 	# evaluates the CCNN pairwise predictions,
 	# returning the F1, PREC, RECALL scores
 	def evaluateCCNNPairwisePreds(self, preds):
+		print("# preds:", str(len(preds)))
 		numGoldPos = 0
 		scoreToGoldTruth = defaultdict(list)
 		for _ in range(len(preds)):
@@ -96,18 +97,13 @@ class CCNN:
 					scoreToGoldTruth[preds[_][0]].append(0)
 
 			else:
-				# TODO: i changed this code in trying to do multi-class prediction
-				# it used to be just self.testY[_]  and preds[_][0]
-				if self.testY[_][1]:
+				if self.testY[_]:
 					numGoldPos += 1
-					scoreToGoldTruth[preds[_][1]].append(1)
+					scoreToGoldTruth[preds[_][0]].append(1)
 				else:
-					scoreToGoldTruth[preds[_][1]].append(0)
+					scoreToGoldTruth[preds[_][0]].append(0)
 		s = sorted(scoreToGoldTruth.keys())
-		'''
-		for _ in s:
-			print("score:", str(_), ":", str(scoreToGoldTruth[_]))
-		'''
+
 		TP = 0.0
 		FP = 0.0
 		bestF1 = 0
@@ -152,6 +148,7 @@ class CCNN:
 		ensemblePreds = [] # DUMMY INITIALIZER
 		for _ in range(numRuns):
 
+			preds = []
 			bestRunCoNLL = -1
 			bestRunSP = -1
 
@@ -168,13 +165,14 @@ class CCNN:
 			
 			processed_a = base_network(input_a)
 			processed_b = base_network(input_b)
-			distance = Lambda(self.euclidean_distance, output_shape=self.eucl_dist_output_shape)([processed_a, processed_b])
+			distance = Lambda(self.euclidean_distance)([processed_a, processed_b])
+			#distance = Lambda(self.euclidean_distance, output_shape=self.eucl_dist_output_shape)([processed_a, processed_b])
 
 			# WD PART
 			if self.CCNNSupplement:
 				auxiliary_input = Input(shape=(len(self.supplementalTrain[0]),), name='auxiliary_input')
 				combined_layer = keras.layers.concatenate([distance, auxiliary_input])
-				x = Dense(5, activation='sigmoid', use_bias=True)(combined_layer)
+				x = Dense(10, activation='relu', use_bias=True)(combined_layer)
 				#x2 = Dense(1, activation='relu')(x)
 				main_output = Dense(1, activation='sigmoid', name='main_output', use_bias=True)(x)
 				model = Model([input_a, input_b, auxiliary_input], outputs=main_output)
@@ -182,9 +180,7 @@ class CCNN:
 				#model.compile(loss=self.contrastive_loss, optimizer=Adam())
 				#print(model.summary())
 				model.fit({'input_a': self.trainX[:, 0], 'input_b': self.trainX[:, 1], 'auxiliary_input': self.supplementalTrain},
-						{'main_output': self.trainY},
-						batch_size=self.bs, \
-						epochs=self.ne, \
+						{'main_output': self.trainY}, batch_size=self.bs, epochs=self.ne, \
 						validation_data=({'input_a': self.devX[:, 0], 'input_b': self.devX[:, 1], 'auxiliary_input': self.supplementalDev}, {'main_output': self.devY}))
 			else:
 				model = Model(inputs=[input_a, input_b], outputs=distance)
@@ -193,8 +189,7 @@ class CCNN:
 				
 				#print(model.summary())
 				model.fit([self.trainX[:, 0], self.trainX[:, 1]], self.trainY, \
-					batch_size=self.bs, \
-					epochs=self.ne, \
+					batch_size=self.bs, epochs=self.ne, \
 					validation_data=([self.devX[:, 0], self.devX[:, 1]], self.devY))
 			'''
 			# TMP dependency features -- train and test a NN over the dependency features
@@ -265,8 +260,7 @@ class CCNN:
 					#print(accuracy_score(self.devY, preds))
 					#print("self.devY:", self.devY)
 			'''
-			if _ == 0:
-				continue
+
 			if self.CCNNSupplement:
 				preds = model.predict({'input_a': self.testX[:, 0], 'input_b': self.testX[:, 1], 'auxiliary_input': self.supplementalTest})
 			else:
@@ -316,7 +310,7 @@ class CCNN:
 							self.helper.writeCoNLLFile(wd_predictedClusters, suffix)
 
 				#print("[DEV] AGGWD SP:", str(round(sp,4)), "CoNLL F1:", str(round(conll_f1,4)), "MUC:", str(round(muc_f1,4)), "BCUB:", str(round(bcub_f1,4)), "CEAF:", str(round(ceafe_f1,4)))
-				
+			
 			if self.args.useECBTest:
 				(f1, prec, rec, bestThreshold) = self.evaluateCCNNPairwisePreds(preds)
 				print("ccnn_best_f1 (# successful runs:",len(f1s),"): best_pairwise_f1: ", round(f1,4), " prec: ",round(prec,4), " recall: ", round(rec,4), " threshold: ", round(bestThreshold,3))
@@ -936,8 +930,8 @@ class CCNN:
 		return seq
 
 	def euclidean_distance(self, vects):
-		x, y = vects
-		return K.sqrt(K.maximum(K.sum(K.square(x - y), axis=1, keepdims=True), K.epsilon()))
+		return tf.clip_by_value(K.sqrt(K.maximum(K.sum(K.square(vects[0] - vects[1]), axis=1, keepdims=True), K.epsilon())), 0, 1)
+		#return K.sqrt(K.maximum(K.sum(K.square(vects[0] - vects[1]), axis=1, keepdims=True), K.epsilon()))
 
 	def eucl_dist_output_shape(self, shapes):
 		shape1, _ = shapes
