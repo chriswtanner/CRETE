@@ -29,6 +29,84 @@ class ECBHelper:
 		self.UIDToSUID = defaultdict(list)
 		self.docToVerifiedSentences = self.loadVerifiedSentences(args.verifiedSentencesFile)
 
+	def getEnsemblePreds(self, ensemblePreds):
+		preds = []
+		for i in range(len(ensemblePreds)):
+			preds.append([sum(ensemblePreds[i]) / len(ensemblePreds[i]), 0])
+		return preds
+
+	# takes pairwise predictions and adds to the dictionary's list
+	def addEnsemblePredictions(self, withinDoc, relevant_dirs, ids, preds, ensemblePreds):
+		i = 0
+		print("lenids:", str(len(ids)))
+		for ((xuid1, xuid2), pred) in zip(ids, preds):
+			
+			m1 = self.corpus.XUIDToMention[xuid1]
+			m2 = self.corpus.XUIDToMention[xuid2]
+			# NOTE: the lower the score, the more likely they are the same.  it's a dissimilarity score
+			pred = pred[0]
+			doc_id = m1.doc_id
+			if m1.dir_num not in relevant_dirs:
+				print("* ERROR: passed in predictions which belong to a dir other than what we specify")
+				exit(1)
+			if withinDoc and m2.doc_id != doc_id:
+				print("* ERROR: xuids are from diff docs!")
+				exit(1)
+
+			if len(ensemblePreds) == len(ids): # not empty
+				ensemblePreds[i].append(pred)
+			else:
+				ensemblePreds.append([pred])
+			i += 1
+		print("len(ensemblePreds):", str(len(ensemblePreds)))
+		
+	# evaluates the CCNN pairwise predictions,
+	# returning the F1, PREC, RECALL scores
+	def evaluatePairwisePreds(self, preds, golds):
+		numGoldPos = 0
+		scoreToGoldTruth = defaultdict(list)
+
+		for _ in range(len(preds)):
+			if golds[_]:
+				numGoldPos += 1
+				scoreToGoldTruth[preds[_][0]].append(1)
+			else:
+				scoreToGoldTruth[preds[_][0]].append(0)
+		s = sorted(scoreToGoldTruth.keys())
+
+		TP = 0.0
+		FP = 0.0
+		bestF1 = 0
+		bestVal = -1
+		bestR = 0
+		bestP = 0
+		numReturnedSoFar = 0
+		for eachVal in s:
+			for _ in scoreToGoldTruth[eachVal]:
+				if _ == 1:
+					TP += 1
+				else:
+					FP += 1
+
+			numReturnedSoFar += len(scoreToGoldTruth[eachVal])
+			recall = float(TP / numGoldPos)
+			prec = float(TP / numReturnedSoFar)
+			f1 = 0
+			if (recall + prec) > 0:
+				f1 = 2*(recall*prec) / (recall + prec)
+			if f1 > bestF1:
+				bestF1 = f1
+				bestVal = eachVal
+				bestR = recall
+				bestP = prec
+		if numReturnedSoFar != len(preds):
+			print("* ERROR: we didn't look at preds correctly")
+			exit(1)
+		if bestF1 <=0:
+			print("* ERROR: our F1 was <= 0")
+			exit(1)
+		return (bestF1, bestP, bestR, bestVal)
+
 	def getAllChildrenPaths(self, dh, entities, tokenToMentions, originalMentionStans, token, curPath, allPaths):
 		bestStan = dh.getBestStanToken(token.stanTokens)
 

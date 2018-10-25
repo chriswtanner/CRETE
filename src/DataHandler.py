@@ -63,17 +63,17 @@ class DataHandler:
 			lf = self.loadFeature("../data/features/" + str(f_suffix) + "/wordnet.f")
 			self.relFeatures.append(lf.relational)
 
-	def loadNNData(self, useRelationalFeatures, useCCNN, scope):
+	def loadNNData(self, supp_features, useCCNN, scope):
 		print("[dh] loading ...")
 		start_time = time.time()
 		if useCCNN:
-			(self.trainID, self.trainX, self.supplementalTrain, self.trainY) = self.createDataForCCNN(self.helper.trainingDirs, self.trainXUIDs, useRelationalFeatures, True, scope)
-			(self.devID, self.devX, self.supplementalDev, self.devY) = self.createDataForCCNN(self.helper.devDirs, self.devXUIDs, useRelationalFeatures, False, scope)			
-			(self.testID, self.testX, self.supplementalTest, self.testY) = self.createDataForCCNN(self.helper.testingDirs, self.testXUIDs, useRelationalFeatures, False, scope)
+			(self.trainID, self.trainX, self.supplementalTrain, self.trainY) = self.createDataForCCNN(self.helper.trainingDirs, self.trainXUIDs, supp_features, True, scope)
+			(self.devID, self.devX, self.supplementalDev, self.devY) = self.createDataForCCNN(self.helper.devDirs, self.devXUIDs, supp_features, False, scope)			
+			(self.testID, self.testX, self.supplementalTest, self.testY) = self.createDataForCCNN(self.helper.testingDirs, self.testXUIDs, supp_features, False, scope)
 		else: # FOR FFNN and SVM
-			(self.trainID, self.trainX, self.trainY) = self.createDataForFFNN(self.helper.trainingDirs, self.trainXUIDs, useRelationalFeatures, True, scope)
-			(self.devID, self.devX, self.devY) = self.createDataForFFNN(self.helper.devDirs, self.devXUIDs, useRelationalFeatures, False, scope)
-			(self.testID, self.testX, self.testY) = self.createDataForFFNN(self.helper.testingDirs, self.testXUIDs, useRelationalFeatures, False, scope)
+			(self.trainID, self.trainX, self.trainY) = self.createDataForFFNN(self.helper.trainingDirs, self.trainXUIDs, supp_features, True, scope)
+			(self.devID, self.devX, self.devY) = self.createDataForFFNN(self.helper.devDirs, self.devXUIDs, supp_features, False, scope)
+			(self.testID, self.testX, self.testY) = self.createDataForFFNN(self.helper.testingDirs, self.testXUIDs, supp_features, False, scope)
 		print("[dh] done loading -- took ", str((time.time() - start_time)), "seconds")
 
 	def loadFeature(self, file):
@@ -135,7 +135,7 @@ class DataHandler:
 	# i could probably combine this into 1 function and have a boolean flag isCCNN=True.
 	# we pass in XUID because the mentions could be from any Stan, HDDCRP, or ECB; however,
 	# we need to remember that the co-reference REF tags only exist in the output file that we compare against
-	def createDataForCCNN(self, dirs, XUIDs, useRelationalFeatures, negSubsample, scope):
+	def createDataForCCNN(self, dirs, XUIDs, supp_features_type, negSubsample, scope):
 
 		# TMP for dependency features testing for adding entities
 		X_dep = []
@@ -144,7 +144,7 @@ class DataHandler:
 		pairs = []
 		X = []
 		Y = []
-		relational_features = []
+		supp_features = []
 		labels = []
 		numFeatures = 0
 		numPosAdded = 0
@@ -200,76 +200,67 @@ class DataHandler:
 						break
 			'''
 
-			# TMP ADDED TO CHECK DEPENDENCY FEATURES
-			# PARENTS, CHILDREN, MIXED (do any tokens exist)
-			# 1 do the mentions have a token in common?
-			# 2 do the mentions have an entity mention in common?
-			# 3 do the mentions have their 1st entity mention in common?
 			m1 = self.corpus.XUIDToMention[xuid1]
 			m2 = self.corpus.XUIDToMention[xuid2]
 			features = []
 
-			# TODO: change this; these lines enforce us to only look at mention pairs which both lead to Entities
-			#if len(m1.levelToChildrenEntities) == 0 or len(m2.levelToChildrenEntities) == 0:
-			#	continue
-			if 1 not in m1.levelToChildrenEntities or 1 not in m2.levelToChildrenEntities:
-				continue
+			# TMP added: tests adding entity coref info			
+			if supp_features_type != "none":
+				if len(m1.levelToChildrenEntities) == 0 or len(m2.levelToChildrenEntities) == 0:
+					continue
+				if supp_features_type == "first":
+					if 1 not in m1.levelToChildrenEntities or 1 not in m2.levelToChildrenEntities:
+						continue
 
-			# TODO: this is GOLD TRUTH, so only use this for sanity checking
-			m1_shortests = set([] if len(m1.levelToChildrenEntities) == 0 else [x for x in m1.levelToChildrenEntities[next(iter(sorted(m1.levelToChildrenEntities)))]])
-			m2_shortests = set([] if len(m2.levelToChildrenEntities) == 0 else [x for x in m2.levelToChildrenEntities[next(iter(sorted(m2.levelToChildrenEntities)))]])
+				m1_shortests = set([] if len(m1.levelToChildrenEntities) == 0 else [x for x in m1.levelToChildrenEntities[next(iter(sorted(m1.levelToChildrenEntities)))]])
+				m2_shortests = set([] if len(m2.levelToChildrenEntities) == 0 else [x for x in m2.levelToChildrenEntities[next(iter(sorted(m2.levelToChildrenEntities)))]])
 
-			entcoref = False
-			for ment1 in m1_shortests:
-				for ment2 in m2_shortests:
-					if ment1.REF == ment2.REF:
-						entcoref = True
-						break
-			if entcoref:
-				features.append(1)
-				features.append(0)
-			else:
-				features.append(0)
-				features.append(1)
-			
-			# looks at path info
-			m1_paths = []
-			if 1 in m1.levelToEntityPath.keys():
-				for p in m1.levelToEntityPath[1]:
-					m1_paths.append(p)
-
-			m2_paths = []	
-			if 1 in m2.levelToEntityPath.keys():
-				for p in m2.levelToEntityPath[1]:
-					m2_paths.append(p)
+				entcoref = False
+				for ment1 in m1_shortests:
+					for ment2 in m2_shortests:
+						if ment1.REF == ment2.REF:
+							entcoref = True
+							break
 				
-			haveIdenticalPath = False
-			for m1p in m1_paths:
-				for m2p in m2_paths:
-					if m1p[0] == m2p[0]:
-						haveIdenticalPath = True
-						break
-			if haveIdenticalPath:
-				features.append(1)
-				features.append(0)
-			else:
-				features.append(0)
-				features.append(1)
-			
-			'''
-			if m1.REF == m2.REF:
-				features.append(1)
-				features.append(0)
-			else:
-				features.append(0)
-				features.append(1)
-			'''
-			#if m1.dirHalf == "1ecb.xml":
-			#if m1.REF == m2.REF or random.random() < 0.2: # 1/5 of the negatives:
-			#print("p1:", m1.parentTokens, "p2:", m2.parentTokens)
-				#X_dep.append([int(_) for _ in features])
-				#Y_dep.append(int(m1.REF == m2.REF))
-					#print(str(int(m1.REF == m2.REF)), t1text, t2text, features)
+				if entcoref:
+					features.append(1)
+					features.append(0)
+				else:
+					features.append(0)
+					features.append(1)
+				
+				# looks at path info
+				m1_paths = []
+				if 1 in m1.levelToEntityPath.keys():
+					for p in m1.levelToEntityPath[1]:
+						m1_paths.append(p)
+
+				m2_paths = []	
+				if 1 in m2.levelToEntityPath.keys():
+					for p in m2.levelToEntityPath[1]:
+						m2_paths.append(p)
+					
+				haveIdenticalPath = False
+				for m1p in m1_paths:
+					for m2p in m2_paths:
+						if m1p[0] == m2p[0]:
+							haveIdenticalPath = True
+							break
+				if haveIdenticalPath:
+					features.append(1)
+					features.append(0)
+				else:
+					features.append(0)
+					features.append(1)
+
+				''' # OPTIONAL GOLD INFO
+				if m1.REF == m2.REF:
+					features.append(1)
+					features.append(0)
+				else:
+					features.append(0)
+					features.append(1)
+				'''
 
 			# NOTE: if this is for HDDCRP or Stan mentions, the REFs will always be True
 			# because we don't have such info for them, so they are ""
@@ -282,11 +273,9 @@ class DataHandler:
 				else:
 					FN += 1
 				'''
-
 				labels.append(1)
 				numPosAdded += 1
 			else:
-
 				# TMP ADDED FOR SAME LEMMA TEST
 				'''
 				if not sameLemma:
@@ -302,21 +291,22 @@ class DataHandler:
 			m1_features = []
 			m2_features = []
 
-			# TMP -- trying to add supplemental CCNN features
-			relational_features.append(np.asarray(features))
-			#relational_features.append(np.asarray(curRelational))
+			features = [] # TODO: do not keep this this way; it represents NO SUPP INFO
+			if supp_features_type != "none":
+				supp_features.append(np.asarray(features))
 
 			(uid1, uid2) = sorted([self.corpus.XUIDToMention[xuid1].UID, self.corpus.XUIDToMention[xuid2].UID])
-			# loops through each feature (e.g., BoW, lemma) for the given uid pair
 			
+			# loops through each feature (e.g., BoW, lemma) for the given uid pair
 			for feature in self.singleFeatures:
-				#print("feature keys:", feature.keys())
 				for i in feature[uid1]:  # loops through each val of the given feature
 					m1_features.append(i)
 				for i in feature[uid2]:
 					m2_features.append(i)
+
 			# loops through each feature (e.g., BoW, lemma) for the given uid pair
-			if useRelationalFeatures:
+			'''
+			if useRelationalFeatures: # this never seems to help
 				for feature in self.relFeatures:
 					if (uid1, uid2) not in feature:
 						print("not in")
@@ -324,6 +314,7 @@ class DataHandler:
 					for i in feature[(uid1, uid2)]:
 						m1_features.append(i)
 						m2_features.append(i)
+			'''
 			if len(m1_features) != numFeatures and numFeatures != 0:
 				print("* ERROR: # features diff:", len(m1_features), "and", numFeatures)
 				exit(1)
@@ -354,17 +345,18 @@ class DataHandler:
 			'''
 			X.append(pair)
 
-			# makes xuid (aka xuid) pairs
+			# makes xuid pairs
 			pairs.append((xuid1, xuid2))
 
 		X = np.asarray(X)
-		relational_features = np.asarray(relational_features)
+		supp_features = np.asarray(supp_features)
 		#print("labels:",labels)
 		Y = np.asarray(labels)
 		pp = float(numPosAdded / (numPosAdded+numNegAdded))
 		pn = float(numNegAdded / (numPosAdded+numNegAdded))
-		print("* createData() loaded", len(pairs), "pairs (", pp, "% pos, ",
-			  pn, "% neg); features' length = ", numFeatures)
+		print("* createData() loaded", len(pairs), "pairs (", \
+			pp, "% pos, ", pn, "% neg); features' length = ", \
+			numFeatures, "; supp length:", str(len(supp_features)))
 
 		if len(pairs) == 0:
 			print("* ERROR: no pairs!")
@@ -383,15 +375,11 @@ class DataHandler:
 			f1 = 2*(recall*prec) / (recall + prec)
 		print("samelamma f1:",f1, prec, recall)
 		'''
-		#print("shape:", X.shape, "len:", len(X), len(X[0]), len(X[0][0]), len(X[0][0][0]), len(X[0][0][0][0]))
-		#print("shapeY:", Y.shape) #, "len:", len(Y), len(Y[0]), len(Y[0][0]), len(Y[0][0][0]))
-		#exit(1)
-		#return (pairs, X_dep, Y)
-		return (pairs, X, relational_features, Y)
+		return (pairs, X, supp_features, Y)
 
 	# creates data for FFNN and SVM:
 	# [(xuid1,xuid2), [features], [1,0]]
-	def createDataForFFNN(self, dirs, XUIDs, useRelationalFeatures, negSubsample, scope):
+	def createDataForFFNN(self, dirs, XUIDs, supp_features, negSubsample, scope):
 		pairs = []
 		X = []
 		Y = []
@@ -420,13 +408,15 @@ class DataHandler:
 				for i in feature[uid2]:
 					features.append(i)
 			# loops through each feature (e.g., BoW, lemma) for the given uid pair
-			if useRelationalFeatures:
+			'''
+			if useRelationalFeatures: # this never seems to help
 				for feature in self.relFeatures:
 					if (uid1, uid2) not in feature:
 						print("not in")
 						exit(1)
 					for i in feature[(uid1, uid2)]:
 						features.append(i)
+			'''
 			if len(features) != numFeatures and numFeatures != 0:
 				print("* ERROR: # features diff:",len(features),"and",numFeatures)
 			numFeatures = len(features)
@@ -434,7 +424,7 @@ class DataHandler:
 			pairs.append((xuid1, xuid2))
 			X.append(features)
 			Y.append(label)
-		print("features have a length of:",numFeatures)
+		print("features have a length of:", numFeatures)
 		pp = float(numPosAdded / (numPosAdded+numNegAdded))
 		pn = float(numNegAdded / (numPosAdded+numNegAdded))
 		print("* createData() loaded", len(pairs), "pairs (",pp,"% pos, ",pn,"% neg)")

@@ -20,9 +20,11 @@ from keras.optimizers import Adam
 from collections import defaultdict
 from get_coref_metrics import get_conll_scores
 class CCNN:
-	def __init__(self, helper, dh, useRelationalFeatures, scope, presets, wd_docPreds, devMode, stopping_points):
+	def __init__(self, helper, dh, supp_features, scope, presets, wd_docPreds, devMode, stopping_points):
 		self.calculateCoNLLScore = True # should always be True, except for debugging things that don't depend on it
 		self.CCNNSupplement = False
+		if supp_features != "none":
+			self.CCNNSupplement = True
 		self.devMode = devMode
 		self.helper = helper
 		self.dh = dh
@@ -31,7 +33,6 @@ class CCNN:
 		self.wd_pred_clusters = wd_docPreds
 		self.scope = scope # used by aggClusterCD()
 		self.stopping_points = stopping_points
-		self.ensembleDocPairPredictions = defaultdict(lambda: defaultdict(list)) # for ensemble approach
 		if presets == []:
 			self.bs = self.args.batchSize
 			self.ne = self.args.numEpochs
@@ -44,10 +45,12 @@ class CCNN:
 		print("[ccnn] scope:",self.scope,"bs:",self.bs,"ne:",self.ne,"nl:",self.nl,"nf:",self.nf,"do:",self.do, "dm:",self.devMode, "sp:",self.stopping_points)
 		sys.stdout.flush()
 
+		'''
 		if self.scope != "doc":
 			self.sanityCheck1()
-
-		self.dh.loadNNData(useRelationalFeatures, True, self.scope) # True means use CCNN
+		'''
+		
+		self.dh.loadNNData(supp_features, True, self.scope) # True means use CCNN
 		(self.trainID, self.trainX, self.trainY) = (dh.trainID, dh.trainX, dh.trainY)
 		(self.devID, self.devX, self.devY) = (dh.devID, dh.devX, dh.devY)
 		(self.testID, self.testX, self.testY) = (dh.testID, dh.testX, dh.testY)
@@ -59,218 +62,173 @@ class CCNN:
 		if self.args.native:
 			tf.Session(config=tf.ConfigProto(log_device_placement=True))
 			os.environ['CUDA_VISIBLE_DEVICES'] = ''
-
-	# takes the CCNN pairwise predictions and adds to them our list, which will be averaged
-	# over all of the runs
-	def addEnsemblePredictions(self, withinDoc, relevant_dirs, ids, preds):
-		new_preds = []
-		for ((xuid1, xuid2), pred) in zip(ids, preds):
-			m1 = self.corpus.XUIDToMention[xuid1]
-			m2 = self.corpus.XUIDToMention[xuid2]
-			# NOTE: the lower the score, the more likely they are the same.  it's a dissimilarity score
-			pred = pred[0]
-			doc_id = m1.doc_id
-			if m1.dir_num not in relevant_dirs:
-				print("* ERROR: passed in predictions which belong to a dir other than what we specify")
-				exit(1)
-			if withinDoc and m2.doc_id != doc_id:
-				print("* ERROR: xuids are from diff docs!")
-				exit(1)
-			self.ensembleDocPairPredictions[doc_id][(xuid1, xuid2)].append(pred)
-			thesum = sum(self.ensembleDocPairPredictions[doc_id][(xuid1, xuid2)])
-			thelength = len(self.ensembleDocPairPredictions[doc_id][(xuid1, xuid2)])
-			new_preds.append([thesum / float(thelength)])
-		return new_preds
-	
-	# evaluates the CCNN pairwise predictions,
-	# returning the F1, PREC, RECALL scores
-	def evaluateCCNNPairwisePreds(self, preds):
-		print("# preds:", str(len(preds)))
-		numGoldPos = 0
-		scoreToGoldTruth = defaultdict(list)
-		for _ in range(len(preds)):
-			if self.devMode:
-				if self.devY[_]:
-					numGoldPos += 1
-					scoreToGoldTruth[preds[_][0]].append(1)
-				else:
-					scoreToGoldTruth[preds[_][0]].append(0)
-
-			else:
-				if self.testY[_]:
-					numGoldPos += 1
-					scoreToGoldTruth[preds[_][0]].append(1)
-				else:
-					scoreToGoldTruth[preds[_][0]].append(0)
-		s = sorted(scoreToGoldTruth.keys())
-
-		TP = 0.0
-		FP = 0.0
-		bestF1 = 0
-		bestVal = -1
-		bestR = 0
-		bestP = 0
-		numReturnedSoFar = 0
-		for eachVal in s:
-			for _ in scoreToGoldTruth[eachVal]:
-				if _ == 1:
-					TP += 1
-				else:
-					FP += 1
-
-			numReturnedSoFar += len(scoreToGoldTruth[eachVal])
-			recall = float(TP / numGoldPos)
-			prec = float(TP / numReturnedSoFar)
-			f1 = 0
-			if (recall + prec) > 0:
-				f1 = 2*(recall*prec) / (recall + prec)
-			if f1 > bestF1:
-				bestF1 = f1
-				bestVal = eachVal
-				bestR = recall
-				bestP = prec
-		if numReturnedSoFar != len(preds):
-			print("* ERROR: we didn't look at preds correctly")
-			exit(1)
-		if bestF1 <=0:
-			print("* ERROR: our F1 was <= 0")
-			exit(1)
-		return (bestF1, bestP, bestR, bestVal)
 		
 	# WITHIN-DOC MODEL
-	def train_and_test_wd(self, numRuns):
+	def train_and_test(self):
 		f1s = []
 		recalls = []
 		precs = []
 		spToCoNLL = defaultdict(list)
 		spToPredictedCluster = {}
 		spToDocPredictedCluster = {}
-		ensemblePreds = [] # DUMMY INITIALIZER
-		for _ in range(numRuns):
 
-			preds = []
-			bestRunCoNLL = -1
-			bestRunSP = -1
+		preds = []
+		bestRunCoNLL = -1
+		bestRunSP = -1
 
-			# define model
-			input_shape = self.trainX.shape[2:]
-			base_network = self.create_base_network(input_shape)
+		# define model
+		input_shape = self.trainX.shape[2:]
+		base_network = self.create_base_network(input_shape)
 
-			if self.CCNNSupplement: # relational, merged layer way
-				input_a = Input(shape=input_shape, name='input_a')
-				input_b = Input(shape=input_shape, name='input_b')
-			else:
-				input_a = Input(shape=input_shape)
-				input_b = Input(shape=input_shape)
+		if self.CCNNSupplement: # relational, merged layer way
+			input_a = Input(shape=input_shape, name='input_a')
+			input_b = Input(shape=input_shape, name='input_b')
+		else:
+			input_a = Input(shape=input_shape)
+			input_b = Input(shape=input_shape)
+		
+		processed_a = base_network(input_a)
+		processed_b = base_network(input_b)
+		distance = Lambda(self.euclidean_distance)([processed_a, processed_b])
+		#distance = Lambda(self.euclidean_distance, output_shape=self.eucl_dist_output_shape)([processed_a, processed_b])
+
+		# WD PART
+		if self.CCNNSupplement:
+			auxiliary_input = Input(shape=(len(self.supplementalTrain[0]),), name='auxiliary_input')
+			combined_layer = keras.layers.concatenate([distance, auxiliary_input])
+			x = Dense(10, activation='relu', use_bias=True)(combined_layer)
+			#x2 = Dense(1, activation='relu')(x)
+			main_output = Dense(1, activation='sigmoid', name='main_output', use_bias=True)(x)
+			model = Model([input_a, input_b, auxiliary_input], outputs=main_output)
+			model.compile(loss=self.contrastive_loss, optimizer=Adam())
+			#model.compile(loss=self.contrastive_loss, optimizer=Adam())
+			#print(model.summary())
+			model.fit({'input_a': self.trainX[:, 0], 'input_b': self.trainX[:, 1], 'auxiliary_input': self.supplementalTrain},
+					{'main_output': self.trainY}, batch_size=self.bs, epochs=self.ne, \
+					validation_data=({'input_a': self.devX[:, 0], 'input_b': self.devX[:, 1], 'auxiliary_input': self.supplementalDev}, {'main_output': self.devY}))
+		else:
+			model = Model(inputs=[input_a, input_b], outputs=distance)
+			model.compile(loss=self.contrastive_loss, optimizer=Adam())
+			#model.compile(loss=self.weighted_binary_crossentropy,optimizer=Adam(),metrics=['accuracy'])
 			
-			processed_a = base_network(input_a)
-			processed_b = base_network(input_b)
-			distance = Lambda(self.euclidean_distance)([processed_a, processed_b])
-			#distance = Lambda(self.euclidean_distance, output_shape=self.eucl_dist_output_shape)([processed_a, processed_b])
+			#print(model.summary())
+			model.fit([self.trainX[:, 0], self.trainX[:, 1]], self.trainY, \
+				batch_size=self.bs, epochs=self.ne, verbose=1, \
+				validation_data=([self.devX[:, 0], self.devX[:, 1]], self.devY))
+		'''
+		# TMP dependency features -- train and test a NN over the dependency features
+		print("len:", len(self.trainX), len(self.trainY))
+		print("len:", len(self.devX), len(self.devY))
+		
+		alphas = [0.00001, 0.001, 0.01]
+		num_epochs = [200, 500]
+		
+		for a in alphas:
+			for ne in num_epochs:
+				preds = []
+				#for _ in range(3):
+				clf = MLPClassifier(solver='lbfgs', alpha=1e-5, hidden_layer_sizes=(15), random_state=1, max_iter=ne)
+				clf.fit(self.trainX, self.trainY)
+				blah = clf.predict(self.devX)
+				scikits_preds = clf.predict_proba(self.devX)
+				print(classification_report(self.devY, blah))
 
-			# WD PART
-			if self.CCNNSupplement:
-				auxiliary_input = Input(shape=(len(self.supplementalTrain[0]),), name='auxiliary_input')
-				combined_layer = keras.layers.concatenate([distance, auxiliary_input])
-				x = Dense(10, activation='relu', use_bias=True)(combined_layer)
-				#x2 = Dense(1, activation='relu')(x)
-				main_output = Dense(1, activation='sigmoid', name='main_output', use_bias=True)(x)
-				model = Model([input_a, input_b, auxiliary_input], outputs=main_output)
-				model.compile(loss=self.contrastive_loss, optimizer=Adam())
-				#model.compile(loss=self.contrastive_loss, optimizer=Adam())
-				#print(model.summary())
-				model.fit({'input_a': self.trainX[:, 0], 'input_b': self.trainX[:, 1], 'auxiliary_input': self.supplementalTrain},
-						{'main_output': self.trainY}, batch_size=self.bs, epochs=self.ne, \
-						validation_data=({'input_a': self.devX[:, 0], 'input_b': self.devX[:, 1], 'auxiliary_input': self.supplementalDev}, {'main_output': self.devY}))
-			else:
-				model = Model(inputs=[input_a, input_b], outputs=distance)
-				model.compile(loss=self.contrastive_loss, optimizer=Adam())
-				#model.compile(loss=self.weighted_binary_crossentropy,optimizer=Adam(),metrics=['accuracy'])
-				
-				#print(model.summary())
-				model.fit([self.trainX[:, 0], self.trainX[:, 1]], self.trainY, \
-					batch_size=self.bs, epochs=self.ne, \
-					validation_data=([self.devX[:, 0], self.devX[:, 1]], self.devY))
-			'''
-			# TMP dependency features -- train and test a NN over the dependency features
-			print("len:", len(self.trainX), len(self.trainY))
-			print("len:", len(self.devX), len(self.devY))
-			
-			alphas = [0.00001, 0.001, 0.01]
-			num_epochs = [200, 500]
-			
-			for a in alphas:
-				for ne in num_epochs:
-					preds = []
-					#for _ in range(3):
-					clf = MLPClassifier(solver='lbfgs', alpha=1e-5, hidden_layer_sizes=(15), random_state=1, max_iter=ne)
-					clf.fit(self.trainX, self.trainY)
-					blah = clf.predict(self.devX)
-					scikits_preds = clf.predict_proba(self.devX)
-					print(classification_report(self.devY, blah))
-
-					for _ in range(len(scikits_preds)):
-						preds.append([scikits_preds[_][0]])
-					#print("preds:", preds)
-					#preds = clf.predict(self.devX)
-					numGoldPos = 0
-					scoreToGoldTruth = defaultdict(list)
-					#print("lenpreds:",len(preds))
-					for _ in range(len(preds)):
-						#print("_:", _)
-						if self.devY[_]:
-							numGoldPos += 1
-							scoreToGoldTruth[preds[_][0]].append(1)
+				for _ in range(len(scikits_preds)):
+					preds.append([scikits_preds[_][0]])
+				#print("preds:", preds)
+				#preds = clf.predict(self.devX)
+				numGoldPos = 0
+				scoreToGoldTruth = defaultdict(list)
+				#print("lenpreds:",len(preds))
+				for _ in range(len(preds)):
+					#print("_:", _)
+					if self.devY[_]:
+						numGoldPos += 1
+						scoreToGoldTruth[preds[_][0]].append(1)
+					else:
+						scoreToGoldTruth[preds[_][0]].append(0)
+				s = sorted(scoreToGoldTruth.keys())
+				TP = 0.0
+				FP = 0.0
+				bestF1 = 0
+				bestVal = -1
+				bestR = 0
+				bestP = 0
+				numReturnedSoFar = 0
+				for eachVal in s:
+					for _ in scoreToGoldTruth[eachVal]:
+						if _ == 1:
+							TP += 1
 						else:
-							scoreToGoldTruth[preds[_][0]].append(0)
-					s = sorted(scoreToGoldTruth.keys())
-					TP = 0.0
-					FP = 0.0
-					bestF1 = 0
-					bestVal = -1
-					bestR = 0
-					bestP = 0
-					numReturnedSoFar = 0
-					for eachVal in s:
-						for _ in scoreToGoldTruth[eachVal]:
-							if _ == 1:
-								TP += 1
-							else:
-								FP += 1
+							FP += 1
 
-						numReturnedSoFar += len(scoreToGoldTruth[eachVal])
-						recall = float(TP / numGoldPos)
-						prec = float(TP / numReturnedSoFar)
-						f1 = 0
-						if (recall + prec) > 0:
-							f1 = 2*(recall*prec) / (recall + prec)
-						if f1 > bestF1:
-							bestF1 = f1
-							bestVal = eachVal
-							bestR = recall
-							bestP = prec
-						#print("eachVL:", eachVal, "f1:", f1)
-					if bestF1 > 0:
-						f1s.append(bestF1)
-						recalls.append(bestR)
-						precs.append(bestP)
-						print("ALPHA:", a, "ne:", ne, "ccnn_best_f1 (run ", len(f1s), "): best_pairwise_f1: ", round(bestF1,4), " prec: ",round(bestP,4), " recall: ", round(bestR,4), " threshold: ", round(bestVal,3), sep="")
-					#print("ALPHA:", a, "ne:") #, ne, "run:", int(_))
-					#print(classification_report(self.devY, preds))
-					#print(accuracy_score(self.devY, preds))
-					#print("self.devY:", self.devY)
-			'''
+					numReturnedSoFar += len(scoreToGoldTruth[eachVal])
+					recall = float(TP / numGoldPos)
+					prec = float(TP / numReturnedSoFar)
+					f1 = 0
+					if (recall + prec) > 0:
+						f1 = 2*(recall*prec) / (recall + prec)
+					if f1 > bestF1:
+						bestF1 = f1
+						bestVal = eachVal
+						bestR = recall
+						bestP = prec
+					#print("eachVL:", eachVal, "f1:", f1)
+				if bestF1 > 0:
+					f1s.append(bestF1)
+					recalls.append(bestR)
+					precs.append(bestP)
+					print("ALPHA:", a, "ne:", ne, "ccnn_best_f1 (run ", len(f1s), "): best_pairwise_f1: ", round(bestF1,4), " prec: ",round(bestP,4), " recall: ", round(bestR,4), " threshold: ", round(bestVal,3), sep="")
+				#print("ALPHA:", a, "ne:") #, ne, "run:", int(_))
+				#print(classification_report(self.devY, preds))
+				#print(accuracy_score(self.devY, preds))
+				#print("self.devY:", self.devY)
+		'''
 
-			if self.CCNNSupplement:
-				preds = model.predict({'input_a': self.testX[:, 0], 'input_b': self.testX[:, 1], 'auxiliary_input': self.supplementalTest})
+		if self.CCNNSupplement:
+			preds = model.predict({'input_a': self.testX[:, 0], 'input_b': self.testX[:, 1], 'auxiliary_input': self.supplementalTest})
+		else:
+			if self.devMode:
+				preds = model.predict([self.devX[:, 0], self.devX[:, 1]])
 			else:
-				if self.devMode:
-					preds = model.predict([self.devX[:, 0], self.devX[:, 1]])
-				else:
-					preds = model.predict([self.testX[:, 0], self.testX[:, 1]])
+				preds = model.predict([self.testX[:, 0], self.testX[:, 1]])
+
+			#print("[DEV] AGGWD SP:", str(round(sp,4)), "CoNLL F1:", str(round(conll_f1,4)), "MUC:", str(round(muc_f1,4)), "BCUB:", str(round(bcub_f1,4)), "CEAF:", str(round(ceafe_f1,4)))
+		
+		if self.devMode:
+			if self.args.useECBTest:
+				(f1, prec, rec, bestThreshold) = self.helper.evaluatePairwisePreds(preds, self.devY)
+				print("[CCNN BEST PAIRWISE DEV RESULTS] f1:", round(f1,4), " prec: ", round(prec,4), " recall: ", round(rec,4), " threshold: ", round(bestThreshold,3))
+			return (self.helper.devDirs, self.devID, preds, self.devY, f1)
+		else:
+			if self.args.useECBTest:
+				(f1, prec, rec, bestThreshold) = self.helper.evaluatePairwisePreds(preds, self.testY)
+				print("[CCNN BEST PAIRWISE TEST RESULTS] f1:", round(f1,4), " prec: ", round(prec,4), " recall: ", round(rec,4), " threshold: ", round(bestThreshold,3))
+			return (self.helper.testingDirs, self.testID, preds, self.testY, f1)
+
+		'''
+				print("ccnn_best_f1 (# successful runs:",len(f1s),"): best_pairwise_f1: ", round(f1,4), " prec: ",round(prec,4), " recall: ", round(rec,4), " threshold: ", round(bestThreshold,3))
+				if f1 > 0.50:
+					print("**** ADDING TO ENSEMBLE!")
+					# append to the ensemble of pairwise predictions
+					if self.devMode:
+						ensemblePreds = self.addEnsemblePredictions(True, self.helper.devDirs, self.devID, preds)
+					else:
+						ensemblePreds = self.addEnsemblePredictions(True, self.helper.testingDirs, self.testID, preds)
+
+					f1s.append(f1)
+					recalls.append(rec)
+					precs.append(prec)
+					
+				sys.stdout.flush()
+		'''
+
+##########################
+##########################
+
+	'''
 
 			# if it's our last run, let's use the ensemble'd preds
-			if _ == numRuns - 1:
 				print("*** ENSEMBLE RESULTS!!:")
 				preds = ensemblePreds
 				print("len PREDS:", len(preds))
@@ -309,24 +267,7 @@ class CCNN:
 						else: # uses HDDCRP Test Mentions
 							self.helper.writeCoNLLFile(wd_predictedClusters, suffix)
 
-				#print("[DEV] AGGWD SP:", str(round(sp,4)), "CoNLL F1:", str(round(conll_f1,4)), "MUC:", str(round(muc_f1,4)), "BCUB:", str(round(bcub_f1,4)), "CEAF:", str(round(ceafe_f1,4)))
-			
-			if self.args.useECBTest:
-				(f1, prec, rec, bestThreshold) = self.evaluateCCNNPairwisePreds(preds)
-				print("ccnn_best_f1 (# successful runs:",len(f1s),"): best_pairwise_f1: ", round(f1,4), " prec: ",round(prec,4), " recall: ", round(rec,4), " threshold: ", round(bestThreshold,3))
-				if f1 > 0.50:
-					print("**** ADDING TO ENSEMBLE!")
-					# append to the ensemble of pairwise predictions
-					if self.devMode:
-						ensemblePreds = self.addEnsemblePredictions(True, self.helper.devDirs, self.devID, preds)
-					else:
-						ensemblePreds = self.addEnsemblePredictions(True, self.helper.testingDirs, self.testID, preds)
-
-					f1s.append(f1)
-					recalls.append(rec)
-					precs.append(prec)
-					
-				sys.stdout.flush()
+			STUFF WAS HERE?
 
 		# clears ram
 		self.trainX = None
@@ -351,11 +292,10 @@ class CCNN:
 		else: # HDDCRP
 			# non-sensical return; only done so that the return handler doesn't complain
 			return wd_docPredClusters, wd_predictedClusters, wd_goldenClusters, 0
-##########################
-##########################
+	'''
 
 	# CROSS-DOC MODEL
-	def train_and_test_cd(self, numRuns):
+	def train_and_test_cd(self):
 		f1s = []
 		recalls = []
 		precs = []
@@ -453,6 +393,7 @@ class CCNN:
 
 			if self.args.useECBTest:
 				(f1, prec, rec, bestThreshold) = self.evaluateCCNNPairwisePreds(preds)
+				'''
 				print("ccnn_best_f1 (# successful runs: ", len(f1s), "): best_pairwise_f1: ", round(f1,4), " prec: ",round(prec,4), " recall: ", round(rec,4), " threshold: ", round(bestThreshold,3))
 				if f1 > 0.20:
 					print("**** ADDING TO ENSEMBLE!")
@@ -467,7 +408,7 @@ class CCNN:
 					precs.append(prec)
 					
 				sys.stdout.flush()
-
+				'''
 		# clears ram
 		self.trainX = None
 		self.trainY = None
@@ -930,8 +871,8 @@ class CCNN:
 		return seq
 
 	def euclidean_distance(self, vects):
-		return tf.clip_by_value(K.sqrt(K.maximum(K.sum(K.square(vects[0] - vects[1]), axis=1, keepdims=True), K.epsilon())), 0, 1)
-		#return K.sqrt(K.maximum(K.sum(K.square(vects[0] - vects[1]), axis=1, keepdims=True), K.epsilon()))
+		#return tf.clip_by_value(K.sqrt(K.maximum(K.sum(K.square(vects[0] - vects[1]), axis=1, keepdims=True), K.epsilon())), 0, 1)
+		return K.sqrt(K.maximum(K.sum(K.square(vects[0] - vects[1]), axis=1, keepdims=True), K.epsilon()))
 
 	def eucl_dist_output_shape(self, shapes):
 		shape1, _ = shapes
