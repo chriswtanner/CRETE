@@ -229,17 +229,33 @@ class DataHandler:
 					features.append(0)
 					features.append(1)
 				
+				dep1_relations = set()
+				dep2_relations = set()
 				# looks at path info
 				m1_paths = []
 				if 1 in m1.levelToEntityPath.keys():
 					for p in m1.levelToEntityPath[1]:
 						m1_paths.append(p)
+						dep1_relations.add(p[0])
 
-				m2_paths = []	
+				m2_paths = []
 				if 1 in m2.levelToEntityPath.keys():
 					for p in m2.levelToEntityPath[1]:
 						m2_paths.append(p)
-					
+						dep2_relations.add(p[0])
+
+				for rel in sorted(self.helper.relationToIndex):
+					if rel in dep1_relations and entcoref:
+						features.append(1)
+					else:
+						features.append(0)
+				for rel in sorted(self.helper.relationToIndex):
+					if rel in dep2_relations and entcoref:
+						features.append(1)
+					else:
+						features.append(0)
+
+				'''
 				haveIdenticalPath = False
 				for m1p in m1_paths:
 					for m2p in m2_paths:
@@ -252,6 +268,7 @@ class DataHandler:
 				else:
 					features.append(0)
 					features.append(1)
+				'''
 
 				''' # OPTIONAL GOLD INFO
 				if m1.REF == m2.REF:
@@ -291,7 +308,7 @@ class DataHandler:
 			m1_features = []
 			m2_features = []
 
-			features = [] # TODO: do not keep this this way; it represents NO SUPP INFO
+			#features = [] # TODO: do not keep this this way; it represents NO SUPP INFO
 			if supp_features_type != "none":
 				supp_features.append(np.asarray(features))
 

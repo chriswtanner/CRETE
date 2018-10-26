@@ -49,7 +49,7 @@ class CCNN:
 		if self.scope != "doc":
 			self.sanityCheck1()
 		'''
-		
+
 		self.dh.loadNNData(supp_features, True, self.scope) # True means use CCNN
 		(self.trainID, self.trainX, self.trainY) = (dh.trainID, dh.trainX, dh.trainY)
 		(self.devID, self.devX, self.devY) = (dh.devID, dh.devX, dh.devY)
@@ -96,8 +96,8 @@ class CCNN:
 		if self.CCNNSupplement:
 			auxiliary_input = Input(shape=(len(self.supplementalTrain[0]),), name='auxiliary_input')
 			combined_layer = keras.layers.concatenate([distance, auxiliary_input])
-			x = Dense(10, activation='relu', use_bias=True)(combined_layer)
-			#x2 = Dense(1, activation='relu')(x)
+			x = Dense(20, activation='relu', use_bias=True)(combined_layer)
+			#x2 = Dense(5, activation='sigmoid', use_bias=True)(x)
 			main_output = Dense(1, activation='sigmoid', name='main_output', use_bias=True)(x)
 			model = Model([input_a, input_b, auxiliary_input], outputs=main_output)
 			model.compile(loss=self.contrastive_loss, optimizer=Adam())

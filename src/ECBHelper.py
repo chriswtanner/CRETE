@@ -29,6 +29,9 @@ class ECBHelper:
 		self.UIDToSUID = defaultdict(list)
 		self.docToVerifiedSentences = self.loadVerifiedSentences(args.verifiedSentencesFile)
 
+		# TMP: created in addDependenciesToMention(), which maps each dep. relation to a unique #
+		self.relationToIndex = {}
+
 	def getEnsemblePreds(self, ensemblePreds):
 		preds = []
 		for i in range(len(ensemblePreds)):
@@ -59,7 +62,7 @@ class ECBHelper:
 				ensemblePreds.append([pred])
 			i += 1
 		print("len(ensemblePreds):", str(len(ensemblePreds)))
-		
+
 	# evaluates the CCNN pairwise predictions,
 	# returning the F1, PREC, RECALL scores
 	def evaluatePairwisePreds(self, preds, golds):
@@ -449,7 +452,6 @@ class ECBHelper:
 					sentenceToEntityMentions[sentNum].add(m)
 
 			for s in sentenceToEventMentions:
-				
 				tokenText = ""
 				for t in self.corpus.globalSentenceNumToTokens[s]:
 					tokenText += t.text + " "
@@ -587,6 +589,12 @@ class ECBHelper:
 			'''
 		print("eventsConsidered:", str(len(eventsConsidered)))
 		sorted_x = sorted(relation_to_count.items(), key=operator.itemgetter(1), reverse=True)
+
+		rel_num = 0
+		for rel in sorted(relation_to_count.keys()):
+			self.relationToIndex[rel] = rel_num
+			rel_num += 1
+		print(self.relationToIndex)
 		''' prints coutns of dependency relations
 		for x in sorted_x:
 			print(x[0], ",", x[1])
