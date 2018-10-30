@@ -30,7 +30,6 @@ framenetFeature="False" # f8
 native="False"
 hn=`hostname`
 
-
 IFS=$'\r\n' GLOBIGNORE='*' command eval  'XYZ=($(cat featureCombos.txt))'
 for features in "${XYZ[@]}"
 do

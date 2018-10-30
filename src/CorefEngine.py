@@ -168,8 +168,8 @@ class CorefEngine:
 			# WITHIN DOC
 			ensemble_predictions = []
 			while ensemble_predictions == [] or len(ensemble_predictions[0]) < numRuns:
-				#wd_model = CCNN(helper, dh, supp_features_type, "dir", wdPresets, None, devMode, wd_stopping_points)
-				wd_model = CCNN(helper, dh, supp_features_type, "doc", wdPresets, None, devMode, wd_stopping_points)
+				wd_model = CCNN(helper, dh, supp_features_type, "dir", wdPresets, None, devMode, wd_stopping_points)
+				#wd_model = CCNN(helper, dh, supp_features_type, "doc", wdPresets, None, devMode, wd_stopping_points)
 				dirs, ids, preds, golds, best_f1 = wd_model.train_and_test()
 				if best_f1 > 0.5:
 					helper.addEnsemblePredictions(False, dirs, ids, preds, ensemble_predictions) # True means WD

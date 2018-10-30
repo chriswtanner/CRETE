@@ -208,7 +208,7 @@ class DataHandler:
 			if supp_features_type != "none":
 				if len(m1.levelToChildrenEntities) == 0 or len(m2.levelToChildrenEntities) == 0:
 					continue
-				if supp_features_type == "first":
+				if supp_features_type == "one":
 					if 1 not in m1.levelToChildrenEntities or 1 not in m2.levelToChildrenEntities:
 						continue
 
@@ -244,6 +244,7 @@ class DataHandler:
 						m2_paths.append(p)
 						dep2_relations.add(p[0])
 
+				''' # adds dependency path info
 				for rel in sorted(self.helper.relationToIndex):
 					if rel in dep1_relations and entcoref:
 						features.append(1)
@@ -254,7 +255,6 @@ class DataHandler:
 						features.append(1)
 					else:
 						features.append(0)
-
 				'''
 				haveIdenticalPath = False
 				for m1p in m1_paths:
@@ -268,7 +268,7 @@ class DataHandler:
 				else:
 					features.append(0)
 					features.append(1)
-				'''
+
 
 				''' # OPTIONAL GOLD INFO
 				if m1.REF == m2.REF:
@@ -309,6 +309,7 @@ class DataHandler:
 			m2_features = []
 
 			#features = [] # TODO: do not keep this this way; it represents NO SUPP INFO
+			
 			if supp_features_type != "none":
 				supp_features.append(np.asarray(features))
 
