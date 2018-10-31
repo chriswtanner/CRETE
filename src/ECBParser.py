@@ -65,11 +65,11 @@ class ECBParser:
             tmpDocTokenIDsToTokens = {}
 
             # opens the xml file and makes needed replacements
-            with open(f, 'r', encoding="utf-8") as myfile:
-                fileContents = myfile.read().replace('\n', ' ')
-
-                for badToken in self.replacementsList:  # self.replacementsSet:
-                    fileContents = fileContents.replace(badToken, self.replacements[badToken])
+            input_file = open(f, 'r', encoding="utf-8")
+            #with open(f, 'r', encoding="utf-8") as myfile:
+            fileContents = input_file.read().replace('\n', ' ')            
+            for badToken in self.replacementsList:  # self.replacementsSet:
+                fileContents = fileContents.replace(badToken, self.replacements[badToken])
 
             # reads <tokens>
             it = tuple(re.finditer(r"<token t\_id=\"(\d+)\" sentence=\"(\d+)\" number=\"(\d+)\".*?>(.*?)</(.*?)>", fileContents))

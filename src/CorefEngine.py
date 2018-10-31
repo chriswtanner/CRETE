@@ -47,7 +47,12 @@ class CorefEngine:
 	if __name__ == "__main__":
 
 		runStanford = False
-		supp_features_type = "one" # {none, shortest, one}
+		supp_features_type = "none" # {none, shortest, one}
+
+		# mentions to use
+		trainMentions = ["entities"] #["events", "entities"]
+		testMentions = ["entities"]
+
 		# classifier params
 		numRuns = 10
 		useCCNN = True
@@ -55,7 +60,7 @@ class CorefEngine:
 		cd_scope = "dir" # {dir, dirHalf}
 		useRelationalFeatures = False
 		#wdPresets = [256, 3, 2, 16, 0.0]
-		wdPresets = [64, 20, 2, 32, 0.0] # batchsize, num epochs, num layers, num filters, dropout
+		wdPresets = [64, 20, 2, 32, 0.4] # batchsize, num epochs, num layers, num filters, dropout
 
 		wd_stopping_points = [0.51] #, 0.401, 0.41, 0.42, 0.43, 0.44, 0.45, 0.46, 0.47, 0.48, 0.49, 0.501, 0.51, 0.52, 0.54, 0.55, 0.56, 0.57, 0.58, 0.59, 0.601]
 		cd_stopping_points = [0.5]
@@ -119,16 +124,42 @@ class CorefEngine:
 		trainXUIDs = set()
 		devXUIDs = set()
 		testXUIDs = set()
+		bad_count = 0
+		good_count = 0
 		for m in corpus.ecb_mentions:
-			if not m.isPred:
-				continue
-			if m.dir_num in helper.trainingDirs:
-				trainXUIDs.add(m.XUID)
-			elif m.dir_num in helper.devDirs:
-				devXUIDs.add(m.XUID)
-			elif args.useECBTest and m.dir_num in helper.testingDirs:
-				testXUIDs.add(m.XUID)
 
+			if m.dir_num in helper.trainingDirs:
+				if ("entities" in trainMentions and not m.isPred) or \
+					("events" in trainMentions and m.isPred):
+					trainXUIDs.add(m.XUID)
+					hasPronoun = False
+					for t in m.tokens:
+						for pronoun in helper.pronouns:
+							if pronoun == t.text:
+								hasPronoun = True
+					if hasPronoun:
+						bad_count += 1
+					else:
+						good_count += 1
+			else:
+				if ("entities" in testMentions and not m.isPred) or \
+				("events" in testMentions and m.isPred):
+					if m.dir_num in helper.devDirs:
+						devXUIDs.add(m.XUID)
+					elif args.useECBTest and m.dir_num in helper.testingDirs:
+						testXUIDs.add(m.XUID)
+				hasPronoun = False
+				for t in m.tokens:
+					for pronoun in helper.pronouns:
+						if pronoun == t.text:
+							hasPronoun = True
+				if hasPronoun:
+					bad_count += 1
+				else:
+					good_count += 1
+					
+		print("bad_count:", bad_count)
+		print("good coutn:", good_count)
 		# conditionally add HDDCRP Mentions (as the test set)
 		if not args.useECBTest:
 			for xuid in corpus.HMUIDToMention:

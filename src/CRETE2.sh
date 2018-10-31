@@ -41,7 +41,7 @@ stanTokensFile=${baseDir}"data/stan_tokens.p"
 verifiedSentencesFile=${baseDir}"data/ECBplus_coreference_sentences.csv"
 
 charEmbeddingsFile=${baseDir}"data/features/charRandomEmbeddings.txt"
-
+pronounsFile=${baseDir}"data/pronouns.txt"
 stanfordPath="/Users/christanner/research/libraries/stanford-corenlp-full-2017-06-09/"
 
 corpusPath=${baseDir}"data/ECB_$1/"
@@ -110,6 +110,7 @@ echo "stanTokensFile:" $stanTokensFile # the database of stan-parsed tokens
 echo "verifiedSentencesFile:" $verifiedSentencesFile
 echo "charEmbeddingsFile:" $charEmbeddingsFile
 echo "posEmbeddingsFile:" $posEmbeddingsFile
+echo "pronounsFile:" $pronounsFile
 echo "------------------------"
 
 cd $scriptDir
@@ -145,6 +146,7 @@ python3 -u CorefEngine.py \
 --framenetFeature=${framenetFeature} \
 --posEmbeddingsFile=${posEmbeddingsFile} \
 --charEmbeddingsFile=${charEmbeddingsFile} \
+--pronounsFile=${pronounsFile} \
 --devDir=${devDir} \
 --FFNNnumEpochs=${FFNNnumEpochs} \
 --native=${native}

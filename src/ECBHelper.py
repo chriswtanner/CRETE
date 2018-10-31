@@ -16,6 +16,8 @@ class ECBHelper:
 		self.devDirs = [23, 24, 25]
 		self.testingDirs = [26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45]
 
+		self.pronouns = self.loadPronouns(args.pronounsFile)
+
 		self.UIDToMention = defaultdict(list) # used only for ECBMentions
 
 		# filled in via createHDDCRPMentions()
@@ -31,6 +33,10 @@ class ECBHelper:
 
 		# TMP: created in addDependenciesToMention(), which maps each dep. relation to a unique #
 		self.relationToIndex = {}
+
+	def loadPronouns(self, filename):
+		input_file = open(filename, 'r')
+		return set(input_file.read().lower().strip().split("\n"))
 
 	def getEnsemblePreds(self, ensemblePreds):
 		preds = []

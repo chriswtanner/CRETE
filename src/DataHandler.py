@@ -309,7 +309,7 @@ class DataHandler:
 			m2_features = []
 
 			#features = [] # TODO: do not keep this this way; it represents NO SUPP INFO
-			
+
 			if supp_features_type != "none":
 				supp_features.append(np.asarray(features))
 
@@ -370,6 +370,7 @@ class DataHandler:
 		supp_features = np.asarray(supp_features)
 		#print("labels:",labels)
 		Y = np.asarray(labels)
+		print("numPosAdded:", str(numPosAdded))
 		pp = float(numPosAdded / (numPosAdded+numNegAdded))
 		pn = float(numNegAdded / (numPosAdded+numNegAdded))
 		print("* createData() loaded", len(pairs), "pairs (", \
