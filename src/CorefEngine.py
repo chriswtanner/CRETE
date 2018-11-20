@@ -54,20 +54,19 @@ class CorefEngine:
 		testMentions = ["entities"]
 
 		# classifier params
-		numRuns = 10
+		numRuns = 5
 		useCCNN = True
 		devMode = False
 		cd_scope = "dir" # {dir, dirHalf}
 		useRelationalFeatures = False
 		#wdPresets = [256, 3, 2, 16, 0.0]
-		wdPresets = [64, 20, 2, 32, 0.4] # batchsize, num epochs, num layers, num filters, dropout
+		wdPresets = [64, 5, 2, 32, 0.4] # batchsize, num epochs, num layers, num filters, dropout
 
 		wd_stopping_points = [0.51] #, 0.401, 0.41, 0.42, 0.43, 0.44, 0.45, 0.46, 0.47, 0.48, 0.49, 0.501, 0.51, 0.52, 0.54, 0.55, 0.56, 0.57, 0.58, 0.59, 0.601]
 		cd_stopping_points = [0.5]
 
 		# handles passed-in args
 		args = params.setCorefEngineParams()
-
 		if args.useECBTest:
 			f_suffix = "ecb"
 		else:
@@ -98,8 +97,9 @@ class CorefEngine:
 		# parses the real, actual corpus (ECB's XML files)
 		ecb_parser = ECBParser(args, helper)
 		corpus = ecb_parser.parseCorpus(helper.docToVerifiedSentences)
-		
+
 		helper.addECBCorpus(corpus)
+		helper.printCorpus("corpusMentions.txt")
 
 		# parses the HDDCRP Mentions
 		if not args.useECBTest:
@@ -116,55 +116,14 @@ class CorefEngine:
 		else:
 			helper.loadStanTokens()
 		helper.createStanMentions()
-		helper.printCorpusStats()
+		#helper.printCorpusStats()
+
 		#helper.printHDDCRPMentionCoverage()
 		#corpus.checkMentions()
 
 		# DEFINES WHICH MENTIONS TO USE
-		trainXUIDs = set()
-		devXUIDs = set()
-		testXUIDs = set()
-		bad_count = 0
-		good_count = 0
-		for m in corpus.ecb_mentions:
+		trainXUIDs, devXUIDs, testXUIDs = helper.getCorpusMentions(trainMentions, testMentions)
 
-			if m.dir_num in helper.trainingDirs:
-				if ("entities" in trainMentions and not m.isPred) or \
-					("events" in trainMentions and m.isPred):
-					trainXUIDs.add(m.XUID)
-					hasPronoun = False
-					for t in m.tokens:
-						for pronoun in helper.pronouns:
-							if pronoun == t.text:
-								hasPronoun = True
-					if hasPronoun:
-						bad_count += 1
-					else:
-						good_count += 1
-			else:
-				if ("entities" in testMentions and not m.isPred) or \
-				("events" in testMentions and m.isPred):
-					if m.dir_num in helper.devDirs:
-						devXUIDs.add(m.XUID)
-					elif args.useECBTest and m.dir_num in helper.testingDirs:
-						testXUIDs.add(m.XUID)
-				hasPronoun = False
-				for t in m.tokens:
-					for pronoun in helper.pronouns:
-						if pronoun == t.text:
-							hasPronoun = True
-				if hasPronoun:
-					bad_count += 1
-				else:
-					good_count += 1
-					
-		print("bad_count:", bad_count)
-		print("good coutn:", good_count)
-		# conditionally add HDDCRP Mentions (as the test set)
-		if not args.useECBTest:
-			for xuid in corpus.HMUIDToMention:
-				testXUIDs.add(xuid)
-		
 		'''
 		# only used for saving features
 		fh = FeatureHandler(args, helper) #, trainXUIDs, devXUIDs, testXUIDs)
@@ -199,12 +158,12 @@ class CorefEngine:
 			# WITHIN DOC
 			ensemble_predictions = []
 			while ensemble_predictions == [] or len(ensemble_predictions[0]) < numRuns:
-				wd_model = CCNN(helper, dh, supp_features_type, "dir", wdPresets, None, devMode, wd_stopping_points)
-				#wd_model = CCNN(helper, dh, supp_features_type, "doc", wdPresets, None, devMode, wd_stopping_points)
+				#wd_model = CCNN(helper, dh, supp_features_type, "dir", wdPresets, None, devMode, wd_stopping_points)
+				wd_model = CCNN(helper, dh, supp_features_type, "doc", wdPresets, None, devMode, wd_stopping_points)
 				dirs, ids, preds, golds, best_f1 = wd_model.train_and_test()
-				if best_f1 > 0.5:
-					helper.addEnsemblePredictions(False, dirs, ids, preds, ensemble_predictions) # True means WD
-					#helper.addEnsemblePredictions(True, dirs, ids, preds, ensemble_predictions) # True means WD
+				if best_f1 > 0.4:
+					#helper.addEnsemblePredictions(False, dirs, ids, preds, ensemble_predictions) # True means WD
+					helper.addEnsemblePredictions(True, dirs, ids, preds, ensemble_predictions) # True means WD
 					print("len(ensemble_predictions[0]):", str(len(ensemble_predictions[0])))
 			preds = helper.getEnsemblePreds(ensemble_predictions) # normalizes them
 			(f1, prec, rec, bestThreshold) = helper.evaluatePairwisePreds(preds, golds)

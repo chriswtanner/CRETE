@@ -34,6 +34,119 @@ class ECBHelper:
 		# TMP: created in addDependenciesToMention(), which maps each dep. relation to a unique #
 		self.relationToIndex = {}
 
+	# prints the entire corpus (regardless of if entities or events) to a file
+	def printCorpus(self, filename_out):
+		print("WRITING OUT CORPUS: ", str(filename_out))
+		num_events = [m.isPred for m in self.corpus.ecb_mentions].count(True)
+		print("\t# total mentions: ", str(len(self.corpus.ecb_mentions)), "(events = ", str(num_events), ")")
+		
+		fout = open(filename_out, 'w')
+		'''
+		for ref in self.corpus.refToEUIDs:
+			print("---------------\nREF:", ref, "\n---------------")
+			for euid in self.corpus.refToEUIDs[ref]:
+		'''
+		sentToTokens = defaultdict(list)
+		for t in self.corpus.corpusTokens:
+			sentNum = t.globalSentenceNum
+			sentToTokens[sentNum].append(t)
+
+		for dh in self.corpus.dirHalves.keys():
+			print("\n=====================================")
+			print("    DIR " + str(dh) + " (has " +
+			      str(len(self.corpus.dirHalves[dh].REFToEUIDs.keys())) + " unique entity clusters, which follow below)")
+			print("=====================================")
+			for ref in self.corpus.dirHalves[dh].REFToEUIDs.keys():
+				print("\n-------------\nREF: " + ref + "\n-------------")
+				numEvents = 0
+				numEntities = 0
+				for euid in self.corpus.dirHalves[dh].REFToEUIDs[ref]:
+					if euid in self.corpus.EUIDToMention.keys():
+						mention = self.corpus.EUIDToMention[euid]
+						if mention.isPred:
+							numEvents += 1
+						else:
+							numEntities += 1
+						firstMentionToken = mention.tokens[0]
+						sentNum = firstMentionToken.globalSentenceNum
+						tmpOut = ""
+						inMention = False
+						for t in sentToTokens[sentNum]:
+							if t in mention.tokens:
+								if inMention == False:
+									tmpOut = tmpOut + "**[ "
+									inMention = True
+							else:
+								if inMention == True:
+									tmpOut = tmpOut + "]** "
+									inMention = False
+							tmpOut = tmpOut + t.text + " "
+						print("\n",tmpOut)
+					else:
+						print("* didn't have", str(euid))
+				print("\n\t--( # events:", str(numEvents), " # ents:", str(numEntities), ")")
+
+				
+		fout.close()
+
+	def getCorpusMentions(self, trainMentions, testMentions):
+		trainXUIDs = set()
+		devXUIDs = set()
+		testXUIDs = set()
+		bad_count = 0
+		good_count = 0
+		tmp_pronoun_mentions = []
+		for m in self.corpus.ecb_mentions:
+
+			if m.dir_num in self.trainingDirs:
+				if ("entities" in trainMentions and not m.isPred) or \
+					("events" in trainMentions and m.isPred):
+					
+					hasPronoun = False
+					for t in m.tokens:
+						for pronoun in self.pronouns:
+							if pronoun == t.text:
+								hasPronoun = True
+					if hasPronoun and len(m.tokens) == 1:
+						bad_count += 1
+						tmp_pronoun_mentions.append(m.text)
+					else:
+						good_count += 1
+						trainXUIDs.add(m.XUID)
+			else: # not training
+				if ("entities" in testMentions and not m.isPred) or \
+				("events" in testMentions and m.isPred):
+
+					hasPronoun = False
+					for t in m.tokens:
+						for pronoun in self.pronouns:
+							if pronoun == t.text:
+								hasPronoun = True
+					if hasPronoun and len(m.tokens) == 1:
+						bad_count += 1
+						tmp_pronoun_mentions.append(m.text)
+						continue
+					else:
+						good_count += 1
+						
+					if m.dir_num in self.devDirs:
+						devXUIDs.add(m.XUID)
+					elif self.args.useECBTest and m.dir_num in self.testingDirs:
+						testXUIDs.add(m.XUID)
+					
+		print("bad_count:", bad_count)
+		print("good count:", good_count)
+		'''
+		for i in tmp_pronoun_mentions:
+			print("bad:", str(i))
+		'''
+		# conditionally add HDDCRP Mentions (as the test set)
+		if not self.args.useECBTest:
+			for xuid in self.corpus.HMUIDToMention:
+				testXUIDs.add(xuid)
+
+		return (trainXUIDs, devXUIDs, testXUIDs)
+
 	def loadPronouns(self, filename):
 		input_file = open(filename, 'r')
 		return set(input_file.read().lower().strip().split("\n"))
