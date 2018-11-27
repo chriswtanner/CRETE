@@ -102,7 +102,7 @@ class CCNN:
 			model = Model([input_a, input_b, auxiliary_input], outputs=main_output)
 			model.compile(loss=self.contrastive_loss, optimizer=Adam())
 			#model.compile(loss=self.contrastive_loss, optimizer=Adam())
-			#print(model.summary())
+			print("summary:",model.summary())
 			model.fit({'input_a': self.trainX[:, 0], 'input_b': self.trainX[:, 1], 'auxiliary_input': self.supplementalTrain},
 					{'main_output': self.trainY}, batch_size=self.bs, epochs=self.ne, \
 					validation_data=({'input_a': self.devX[:, 0], 'input_b': self.devX[:, 1], 'auxiliary_input': self.supplementalDev}, {'main_output': self.devY}))
@@ -111,7 +111,7 @@ class CCNN:
 			model.compile(loss=self.contrastive_loss, optimizer=Adam())
 			#model.compile(loss=self.weighted_binary_crossentropy,optimizer=Adam(),metrics=['accuracy'])
 			
-			#print(model.summary())
+			print(model.summary())
 			model.fit([self.trainX[:, 0], self.trainX[:, 1]], self.trainY, \
 				batch_size=self.bs, epochs=self.ne, verbose=1, \
 				validation_data=([self.devX[:, 0], self.devX[:, 1]], self.devY))
@@ -197,12 +197,12 @@ class CCNN:
 		
 		if self.devMode:
 			if self.args.useECBTest:
-				(f1, prec, rec, bestThreshold) = self.helper.evaluatePairwisePreds(preds, self.devY)
+				(f1, prec, rec, bestThreshold) = self.helper.evaluatePairwisePreds(self.devID, preds, self.devY)
 				print("[CCNN BEST PAIRWISE DEV RESULTS] f1:", round(f1,4), " prec: ", round(prec,4), " recall: ", round(rec,4), " threshold: ", round(bestThreshold,3))
 			return (self.helper.devDirs, self.devID, preds, self.devY, f1)
 		else:
 			if self.args.useECBTest:
-				(f1, prec, rec, bestThreshold) = self.helper.evaluatePairwisePreds(preds, self.testY)
+				(f1, prec, rec, bestThreshold) = self.helper.evaluatePairwisePreds(self.testID, preds, self.testY)
 				print("[CCNN BEST PAIRWISE TEST RESULTS] f1:", round(f1,4), " prec: ", round(prec,4), " recall: ", round(rec,4), " threshold: ", round(bestThreshold,3))
 			return (self.helper.testingDirs, self.testID, preds, self.testY, f1)
 

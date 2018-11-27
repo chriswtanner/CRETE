@@ -137,6 +137,9 @@ class DataHandler:
 	# we need to remember that the co-reference REF tags only exist in the output file that we compare against
 	def createDataForCCNN(self, dirs, XUIDs, supp_features_type, negSubsample, scope):
 
+		# TMP, to ensure we correctly make pairs of entities or events but not entities-event pairs
+		mentionTypeToCount = defaultdict(int)
+
 		# TMP for dependency features testing for adding entities
 		X_dep = []
 		Y_dep = []
@@ -176,6 +179,8 @@ class DataHandler:
 				print("\te1REFsc:", e1REFsc)
 		exit(1)
 		'''
+		tmp_pairs_with = 0
+		tmp_pairs_without = 0
 		for (xuid1, xuid2) in xuidPairs:
 			if xuid1 == xuid2:
 				print("whaaaaa: xuidPairs:", xuidPairs)
@@ -199,78 +204,134 @@ class DataHandler:
 						sameLemma = False
 						break
 			'''
-
 			m1 = self.corpus.XUIDToMention[xuid1]
 			m2 = self.corpus.XUIDToMention[xuid2]
+			if m1.isPred and not m2.isPred:
+				continue
+			elif not m1.isPred and m2.isPred:
+				continue
+			
 			features = []
 
+			# TMP: if it's ent or events
+			if supp_features_type == "type":
+				if m1.isPred and m2.isPred: # events 
+					features.append(0)
+					features.append(1)
+				elif not m1.isPred and not m2.isPred: # entities
+					features.append(1)
+					features.append(0)
+
+			'''
+			if supp_features_type == "none":
+				if len(m1.levelToChildrenEntities) == 0 or len(m2.levelToChildrenEntities) == 0:
+					tmp_pairs_without += 1
+				else:
+					tmp_pairs_with += 1
+					continue
+			'''
 			# TMP added: tests adding entity coref info			
-			if supp_features_type != "none":
+			if supp_features_type == "one" or supp_features_type == "shortest":
+				
+				# checks if one of the events doesn't have a path to an entity
 				if len(m1.levelToChildrenEntities) == 0 or len(m2.levelToChildrenEntities) == 0:
 					continue
-				if supp_features_type == "one":
-					if 1 not in m1.levelToChildrenEntities or 1 not in m2.levelToChildrenEntities:
-						continue
-
-				m1_shortests = set([] if len(m1.levelToChildrenEntities) == 0 else [x for x in m1.levelToChildrenEntities[next(iter(sorted(m1.levelToChildrenEntities)))]])
-				m2_shortests = set([] if len(m2.levelToChildrenEntities) == 0 else [x for x in m2.levelToChildrenEntities[next(iter(sorted(m2.levelToChildrenEntities)))]])
-
-				entcoref = False
-				for ment1 in m1_shortests:
-					for ment2 in m2_shortests:
-						if ment1.REF == ment2.REF:
-							entcoref = True
-							break
-				
-				if entcoref:
-					features.append(1)
+					# at least one mention doesn't have a path to an Entity
 					features.append(0)
-				else:
+					#features.append(1)
+
+					# golden entity info (at shortest level)
+					features.append(0)
 					features.append(0)
 					features.append(1)
-				
-				dep1_relations = set()
-				dep2_relations = set()
-				# looks at path info
-				m1_paths = []
-				if 1 in m1.levelToEntityPath.keys():
-					for p in m1.levelToEntityPath[1]:
-						m1_paths.append(p)
-						dep1_relations.add(p[0])
 
-				m2_paths = []
-				if 1 in m2.levelToEntityPath.keys():
-					for p in m2.levelToEntityPath[1]:
-						m2_paths.append(p)
-						dep2_relations.add(p[0])
+					# do not have identical path 
+					'''
+					features.append(0)
+					features.append(0)
+					features.append(1)
+					'''
+					tmp_pairs_without += 1
+				else: # both events have a path to entities
+					features.append(1)
+					#features.append(0)
+					tmp_pairs_with += 1
+					'''
+					if supp_features_type == "one":
+						if 1 not in m1.levelToChildrenEntities or 1 not in m2.levelToChildrenEntities:
+							continue
+					'''
+					m1_shortests = set([] if len(m1.levelToChildrenEntities) == 0 else [x for x in m1.levelToChildrenEntities[next(iter(sorted(m1.levelToChildrenEntities)))]])
+					m2_shortests = set([] if len(m2.levelToChildrenEntities) == 0 else [x for x in m2.levelToChildrenEntities[next(iter(sorted(m2.levelToChildrenEntities)))]])
 
-				''' # adds dependency path info
-				for rel in sorted(self.helper.relationToIndex):
-					if rel in dep1_relations and entcoref:
+					entcoref = False
+					for ment1 in m1_shortests:
+						for ment2 in m2_shortests:
+							if ment1.REF == ment2.REF:
+								entcoref = True
+								break
+					
+					# GOLDEN ENTITY INFO (at shortest level)
+					if entcoref:
 						features.append(1)
+						features.append(0)
+						#features.append(0)
 					else:
 						features.append(0)
-				for rel in sorted(self.helper.relationToIndex):
-					if rel in dep2_relations and entcoref:
 						features.append(1)
+						#features.append(0)
+					# checks paths
+					dep1_relations = set()
+					dep2_relations = set()
+					# looks at path info
+					m1_paths = [p for level in m1.levelToEntityPath.keys() for p in m1.levelToEntityPath[level]]
+					m2_paths = [p for level in m2.levelToEntityPath.keys() for p in m2.levelToEntityPath[level]]
+					'''
+					m1_paths = []
+					if 1 in m1.levelToEntityPath.keys():
+						for p in m1.levelToEntityPath[1]:
+							m1_paths.append(p)
+							dep1_relations.add(p[0])
+
+					m2_paths = []
+					if 1 in m2.levelToEntityPath.keys():
+						for p in m2.levelToEntityPath[1]:
+							m2_paths.append(p)
+							dep2_relations.add(p[0])
+					'''
+					''' # adds dependency path info
+					for rel in sorted(self.helper.relationToIndex):
+						if rel in dep1_relations and entcoref:
+							features.append(1)
+						else:
+							features.append(0)
+					for rel in sorted(self.helper.relationToIndex):
+						if rel in dep2_relations and entcoref:
+							features.append(1)
+						else:
+							features.append(0)
+					'''
+					#print("m1_paths:", str(m1_paths))
+					
+					haveIdenticalPath = False
+					for m1p in m1_paths:
+						for m2p in m2_paths:
+							if m1p == m2p:
+							#if m1p[0] == m2p[0]:
+								haveIdenticalPath = True
+								break
+					'''
+					if haveIdenticalPath:
+						features.append(1)
+						features.append(0)
+						features.append(0)
 					else:
 						features.append(0)
+						features.append(1)
+						features.append(0)
+					'''
+				# OPTIONAL GOLD INFO
 				'''
-				haveIdenticalPath = False
-				for m1p in m1_paths:
-					for m2p in m2_paths:
-						if m1p[0] == m2p[0]:
-							haveIdenticalPath = True
-							break
-				if haveIdenticalPath:
-					features.append(1)
-					features.append(0)
-				else:
-					features.append(0)
-					features.append(1)
-
-
-				''' # OPTIONAL GOLD INFO
 				if m1.REF == m2.REF:
 					features.append(1)
 					features.append(0)
@@ -365,6 +426,9 @@ class DataHandler:
 
 			# makes xuid pairs
 			pairs.append((xuid1, xuid2))
+			
+			mentionType = str(m1.isPred) + "_" + str(m2.isPred)
+			mentionTypeToCount[mentionType] += 1
 
 		X = np.asarray(X)
 		supp_features = np.asarray(supp_features)
@@ -394,6 +458,8 @@ class DataHandler:
 			f1 = 2*(recall*prec) / (recall + prec)
 		print("samelamma f1:",f1, prec, recall)
 		'''
+		print("mentionTypeToCount:",str(mentionTypeToCount))
+		print("tmp_pairs_with:", tmp_pairs_with, "tmp_pairs_without", tmp_pairs_without)
 		return (pairs, X, supp_features, Y)
 
 	# creates data for FFNN and SVM:

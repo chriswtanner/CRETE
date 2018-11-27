@@ -47,20 +47,20 @@ class CorefEngine:
 	if __name__ == "__main__":
 
 		runStanford = False
-		supp_features_type = "none" # {none, shortest, one}
+		supp_features_type = "shortest" # {none, shortest, one, type}
 
 		# mentions to use
-		trainMentions = ["entities"] #["events", "entities"]
-		testMentions = ["entities"]
+		#trainMentions = ["entities", "events"] #["events", "entities"]
+		#testMentions = ["entities", "events"]
 
 		# classifier params
-		numRuns = 5
+		numRuns = 10
 		useCCNN = True
 		devMode = False
 		cd_scope = "dir" # {dir, dirHalf}
 		useRelationalFeatures = False
 		#wdPresets = [256, 3, 2, 16, 0.0]
-		wdPresets = [64, 5, 2, 32, 0.4] # batchsize, num epochs, num layers, num filters, dropout
+		wdPresets = [64, 20, 2, 32, 0.0] # batchsize, num epochs, num layers, num filters, dropout
 
 		wd_stopping_points = [0.51] #, 0.401, 0.41, 0.42, 0.43, 0.44, 0.45, 0.46, 0.47, 0.48, 0.49, 0.501, 0.51, 0.52, 0.54, 0.55, 0.56, 0.57, 0.58, 0.59, 0.601]
 		cd_stopping_points = [0.5]
@@ -99,7 +99,7 @@ class CorefEngine:
 		corpus = ecb_parser.parseCorpus(helper.docToVerifiedSentences)
 
 		helper.addECBCorpus(corpus)
-		helper.printCorpus("corpusMentions.txt")
+		#helper.printCorpus("corpusMentions.txt")
 
 		# parses the HDDCRP Mentions
 		if not args.useECBTest:
@@ -116,13 +116,14 @@ class CorefEngine:
 		else:
 			helper.loadStanTokens()
 		helper.createStanMentions()
-		#helper.printCorpusStats()
+		helper.printCorpusStats()
 
 		#helper.printHDDCRPMentionCoverage()
 		#corpus.checkMentions()
 
 		# DEFINES WHICH MENTIONS TO USE
-		trainXUIDs, devXUIDs, testXUIDs = helper.getCorpusMentions(trainMentions, testMentions)
+		trainXUIDs, devXUIDs, testXUIDs = helper.getCorpusMentions("events", "events")
+		#trainXUIDs, devXUIDs, testXUIDs = helper.getCorpusMentions(trainMentions, testMentions)
 
 		'''
 		# only used for saving features
@@ -155,10 +156,13 @@ class CorefEngine:
 			print("\t** BEST DEV-WD stopping points:", sp_wd,"and",sp_cd)
 			'''
 
-			# WITHIN DOC
 			ensemble_predictions = []
 			while ensemble_predictions == [] or len(ensemble_predictions[0]) < numRuns:
+
+				# CD
 				#wd_model = CCNN(helper, dh, supp_features_type, "dir", wdPresets, None, devMode, wd_stopping_points)
+				
+				# WD
 				wd_model = CCNN(helper, dh, supp_features_type, "doc", wdPresets, None, devMode, wd_stopping_points)
 				dirs, ids, preds, golds, best_f1 = wd_model.train_and_test()
 				if best_f1 > 0.4:
@@ -166,7 +170,8 @@ class CorefEngine:
 					helper.addEnsemblePredictions(True, dirs, ids, preds, ensemble_predictions) # True means WD
 					print("len(ensemble_predictions[0]):", str(len(ensemble_predictions[0])))
 			preds = helper.getEnsemblePreds(ensemble_predictions) # normalizes them
-			(f1, prec, rec, bestThreshold) = helper.evaluatePairwisePreds(preds, golds)
+
+			(f1, prec, rec, bestThreshold) = helper.evaluatePairwisePreds(ids, preds, golds)
 			print("[*** ENSEMBLE CCNN BEST PAIRWISE TEST RESULTS] f1:", round(f1,4), " prec: ", round(prec,4), " recall: ", round(rec,4), " threshold: ", round(bestThreshold,3))
 			
 			# saves WITHIN-DOC PREDS

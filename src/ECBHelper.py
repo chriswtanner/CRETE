@@ -85,8 +85,6 @@ class ECBHelper:
 					else:
 						print("* didn't have", str(euid))
 				print("\n\t--( # events:", str(numEvents), " # ents:", str(numEntities), ")")
-
-				
 		fout.close()
 
 	def getCorpusMentions(self, trainMentions, testMentions):
@@ -97,7 +95,6 @@ class ECBHelper:
 		good_count = 0
 		tmp_pronoun_mentions = []
 		for m in self.corpus.ecb_mentions:
-
 			if m.dir_num in self.trainingDirs:
 				if ("entities" in trainMentions and not m.isPred) or \
 					("events" in trainMentions and m.isPred):
@@ -154,7 +151,7 @@ class ECBHelper:
 	def getEnsemblePreds(self, ensemblePreds):
 		preds = []
 		for i in range(len(ensemblePreds)):
-			preds.append([sum(ensemblePreds[i]) / len(ensemblePreds[i]), 0])
+			preds.append([sum(ensemblePreds[i]) / len(ensemblePreds[i])])
 		return preds
 
 	# takes pairwise predictions and adds to the dictionary's list
@@ -184,10 +181,9 @@ class ECBHelper:
 
 	# evaluates the CCNN pairwise predictions,
 	# returning the F1, PREC, RECALL scores
-	def evaluatePairwisePreds(self, preds, golds):
+	def evaluatePairwisePreds(self, ids, preds, golds):
 		numGoldPos = 0
 		scoreToGoldTruth = defaultdict(list)
-
 		for _ in range(len(preds)):
 			if golds[_]:
 				numGoldPos += 1
@@ -227,6 +223,64 @@ class ECBHelper:
 		if bestF1 <=0:
 			print("* ERROR: our F1 was <= 0")
 			exit(1)
+
+		# given the best threshold, now let's check the individual performance
+		# of both entities and events
+		mentionStats = defaultdict(lambda: defaultdict(int))
+		eventPairs = defaultdict(lambda: defaultdict(int))
+		for ((xuid1, xuid2), pred, gold) in zip(ids, preds, golds):
+			m1 = self.corpus.XUIDToMention[xuid1]
+			m2 = self.corpus.XUIDToMention[xuid2]
+			pred = pred[0]
+			mentionType = ""
+			if m1.isPred and m2.isPred:
+				mentionType = "events"
+			elif not m1.isPred and not m2.isPred:
+				mentionType = "entities"
+			else:
+				print("* ERROR: our IDs are of mismatched types")
+				exit(1)
+
+			both_contain_paths = True
+			# checks if one of the events doesn't have a path to an entity
+			if len(m1.levelToChildrenEntities) == 0 or len(m2.levelToChildrenEntities) == 0:
+				both_contain_paths = False
+			
+			# updates stats on a per event- or entity- basis
+			if gold:
+				mentionStats[mentionType]["gold"] += 1
+				if mentionType == "events":
+					eventPairs[both_contain_paths]["gold"] += 1
+			if pred <= bestVal:
+				if mentionType == "events":
+					eventPairs[both_contain_paths]["predicted"] += 1
+				mentionStats[mentionType]["predicted"] += 1
+				if gold:
+					if mentionType == "events":
+						eventPairs[both_contain_paths]["TP"] += 1
+					mentionStats[mentionType]["TP"] += 1
+		# prints each of the event and entity performances
+		for mt in mentionStats.keys():
+			if mentionStats[mt]["gold"] > 0:
+				recall = mentionStats[mt]["TP"] / mentionStats[mt]["gold"]
+				prec = 0
+				if mentionStats[mt]["predicted"] > 0:
+					prec = mentionStats[mt]["TP"] / mentionStats[mt]["predicted"]
+				f1 = 2*(recall*prec) / (recall + prec)
+				print("** MENTION TYPE:", mt, "yielded F1:", str(f1))
+
+		# prints the event results (pairs with paths and not)
+		for val in eventPairs.keys():
+			if eventPairs[val]["gold"] > 0:
+				recall = eventPairs[val]["TP"] / eventPairs[val]["gold"]
+				prec = 0
+				if eventPairs[val]["predicted"] > 0:
+					prec = eventPairs[val]["TP"] / eventPairs[val]["predicted"]
+				f1 = 0
+				if recall > 0 and prec > 0:
+					f1 = 2*(recall*prec) / (recall + prec)
+				
+				print("** EVENT PAIRS WITH PATHS:", val, "yielded F1:", str(f1))
 		return (bestF1, bestP, bestR, bestVal)
 
 	def getAllChildrenPaths(self, dh, entities, tokenToMentions, originalMentionStans, token, curPath, allPaths):
@@ -1158,7 +1212,16 @@ class ECBHelper:
 		'''
 	def printCorpusStats(self):
 		mentionStats = defaultdict(int)
+		numEntities = 0
+		numEvents = 0
 		for m in self.corpus.ecb_mentions:
+
+			# logs if it's an entity or event
+			if m.isPred:
+				numEvents += 1
+			else:
+				numEntities += 1
+
 			if m.dir_num in self.trainingDirs:
 				mentionStats["train"] += 1
 			elif m.dir_num in self.devDirs:
@@ -1213,6 +1276,7 @@ class ECBHelper:
 		#print("\t# HDDCRP Mentions (test): NON-ACTION:", mentionStats["test"])
 		print("\t# ECB Tokens:", len(self.corpus.corpusTokens))
 		print("\t# ECB Mentions:", len(self.corpus.EUIDToMention))
+		print("\t\t# entities:", str(numEntities), "# events:", str(numEvents))
 		print("\t\ttrain (", numTrain, " mentions) dirs: ", sorted(trainDirs), sep="")
 		print("\t\tdev (", numDev, " mentions) dirs: ", sorted(devDirs), sep="")
 		print("\t\ttest (", numTest, " mentions) dirs: ", sorted(testDirs), sep="")
