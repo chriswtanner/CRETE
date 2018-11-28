@@ -34,6 +34,9 @@ class ECBHelper:
 		# TMP: created in addDependenciesToMention(), which maps each dep. relation to a unique #
 		self.relationToIndex = {}
 
+		self.predictions = defaultdict(float) # filled in with entity coref predictions
+
+
 	# prints the entire corpus (regardless of if entities or events) to a file
 	def printCorpus(self, filename_out):
 		print("WRITING OUT CORPUS: ", str(filename_out))
@@ -86,6 +89,11 @@ class ECBHelper:
 						print("* didn't have", str(euid))
 				print("\n\t--( # events:", str(numEvents), " # ents:", str(numEntities), ")")
 		fout.close()
+
+	# saves the entity coref predictions
+	def addPredictions(self, ids, preds):
+		for ((id1, id2), pred) in zip(ids, preds):
+			self.predictions[(id1, id2)] = pred[0]
 
 	def getCorpusMentions(self, trainMentions, testMentions):
 		trainXUIDs = set()

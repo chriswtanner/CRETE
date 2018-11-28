@@ -181,6 +181,8 @@ class DataHandler:
 		'''
 		tmp_pairs_with = 0
 		tmp_pairs_without = 0
+
+		tmp_dir_to_with = defaultdict(int)
 		for (xuid1, xuid2) in xuidPairs:
 			if xuid1 == xuid2:
 				print("whaaaaa: xuidPairs:", xuidPairs)
@@ -226,10 +228,11 @@ class DataHandler:
 			if supp_features_type == "none":
 				if len(m1.levelToChildrenEntities) == 0 or len(m2.levelToChildrenEntities) == 0:
 					tmp_pairs_without += 1
+					continue
 				else:
 					tmp_pairs_with += 1
-					continue
 			'''
+
 			# TMP added: tests adding entity coref info			
 			if supp_features_type == "one" or supp_features_type == "shortest":
 				
@@ -253,7 +256,7 @@ class DataHandler:
 					'''
 					tmp_pairs_without += 1
 				else: # both events have a path to entities
-					features.append(1)
+					#features.append(1)
 					#features.append(0)
 					tmp_pairs_with += 1
 					'''
@@ -265,28 +268,51 @@ class DataHandler:
 					m2_shortests = set([] if len(m2.levelToChildrenEntities) == 0 else [x for x in m2.levelToChildrenEntities[next(iter(sorted(m2.levelToChildrenEntities)))]])
 
 					entcoref = False
+					max_coref_score = 0
 					for ment1 in m1_shortests:
+						
 						for ment2 in m2_shortests:
+							
+							cur_score = 0
+							if (ment1.XUID, ment2.XUID) in self.helper.predictions:
+								cur_score = self.helper.predictions[(ment1.XUID, ment2.XUID)]
+								tmp_dir_to_with[ment1.dir_num] += 1
+								#print("\tgot it:", cur_score)
+							elif (ment2.XUID, ment1.XUID) in self.helper.predictions:
+								cur_score = self.helper.predictions[(ment2.XUID, ment1.XUID)]
+								tmp_dir_to_with[ment1.dir_num] += 1
+								#print("\tgot it:", cur_score)
+							else:
+								print("dont have mentions:", ment1, ment2)
+								#print("we don't have it! but we have:", self.helper.predictions)
+								#exit(1)
+							cur_score = 1 - max(cur_score, 1)
+							if cur_score > max_coref_score:
+								max_coref_score = cur_score
+							'''
 							if ment1.REF == ment2.REF:
 								entcoref = True
 								break
-					
+							'''
+					print("max_coref_score:", max_coref_score)
 					# GOLDEN ENTITY INFO (at shortest level)
+					'''
 					if entcoref:
 						features.append(1)
-						features.append(0)
+						#features.append(0)
 						#features.append(0)
 					else:
 						features.append(0)
-						features.append(1)
+						#features.append(1)
 						#features.append(0)
+					'''
 					# checks paths
 					dep1_relations = set()
 					dep2_relations = set()
 					# looks at path info
 					m1_paths = [p for level in m1.levelToEntityPath.keys() for p in m1.levelToEntityPath[level]]
 					m2_paths = [p for level in m2.levelToEntityPath.keys() for p in m2.levelToEntityPath[level]]
-					'''
+					
 					m1_paths = []
 					if 1 in m1.levelToEntityPath.keys():
 						for p in m1.levelToEntityPath[1]:
@@ -298,7 +324,7 @@ class DataHandler:
 						for p in m2.levelToEntityPath[1]:
 							m2_paths.append(p)
 							dep2_relations.add(p[0])
-					'''
+					
 					''' # adds dependency path info
 					for rel in sorted(self.helper.relationToIndex):
 						if rel in dep1_relations and entcoref:
@@ -320,16 +346,16 @@ class DataHandler:
 							#if m1p[0] == m2p[0]:
 								haveIdenticalPath = True
 								break
-					'''
+					
 					if haveIdenticalPath:
 						features.append(1)
-						features.append(0)
-						features.append(0)
+						#features.append(0)
+						#features.append(0)
 					else:
 						features.append(0)
-						features.append(1)
-						features.append(0)
-					'''
+						#features.append(1)
+						#features.append(0)
+					
 				# OPTIONAL GOLD INFO
 				'''
 				if m1.REF == m2.REF:
@@ -430,6 +456,8 @@ class DataHandler:
 			mentionType = str(m1.isPred) + "_" + str(m2.isPred)
 			mentionTypeToCount[mentionType] += 1
 
+		print("tmp_dir_to_with:", tmp_dir_to_with)
+		
 		X = np.asarray(X)
 		supp_features = np.asarray(supp_features)
 		#print("labels:",labels)
