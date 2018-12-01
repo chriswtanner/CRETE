@@ -223,7 +223,7 @@ class DataHandler:
 				elif not m1.isPred and not m2.isPred: # entities
 					features.append(1)
 					features.append(0)
-
+			
 			'''
 			if supp_features_type == "none":
 				if len(m1.levelToChildrenEntities) == 0 or len(m2.levelToChildrenEntities) == 0:
@@ -232,21 +232,20 @@ class DataHandler:
 				else:
 					tmp_pairs_with += 1
 			'''
-
 			# TMP added: tests adding entity coref info			
 			if supp_features_type == "one" or supp_features_type == "shortest":
 				
 				# checks if one of the events doesn't have a path to an entity
 				if len(m1.levelToChildrenEntities) == 0 or len(m2.levelToChildrenEntities) == 0:
-					continue
+					
 					# at least one mention doesn't have a path to an Entity
-					features.append(0)
+					#features.append(0)
 					#features.append(1)
 
 					# golden entity info (at shortest level)
-					features.append(0)
-					features.append(0)
-					features.append(1)
+					#features.append(0)
+					#features.append(0)
+					#features.append(1)
 
 					# do not have identical path 
 					'''
@@ -255,6 +254,7 @@ class DataHandler:
 					features.append(1)
 					'''
 					tmp_pairs_without += 1
+					continue
 				else: # both events have a path to entities
 					#features.append(1)
 					#features.append(0)
@@ -270,45 +270,52 @@ class DataHandler:
 					entcoref = False
 					max_coref_score = 0
 					for ment1 in m1_shortests:
-						
 						for ment2 in m2_shortests:
-							
 							cur_score = 0
 							if (ment1.XUID, ment2.XUID) in self.helper.predictions:
 								cur_score = self.helper.predictions[(ment1.XUID, ment2.XUID)]
-								tmp_dir_to_with[ment1.dir_num] += 1
 								#print("\tgot it:", cur_score)
 							elif (ment2.XUID, ment1.XUID) in self.helper.predictions:
 								cur_score = self.helper.predictions[(ment2.XUID, ment1.XUID)]
-								tmp_dir_to_with[ment1.dir_num] += 1
 								#print("\tgot it:", cur_score)
 							else:
-								print("dont have mentions:", ment1, ment2)
+								#print("dont have mentions:", ment1, ment2)
+								tmp_dir_to_with[ment1.dir_num] += 1
+								if ment1.dir_num in self.helper.testingDirs:
+									#print("MISSING A PAIR THAT WE SHOULD TESTING PREDS FOR", ment1, ment2)
+									#exit(1)
+									cur_score = 0
 								#print("we don't have it! but we have:", self.helper.predictions)
 								#exit(1)
-							cur_score = 1 - max(cur_score, 1)
+							cur_score = 1 - min(cur_score, 1)
 							if cur_score > max_coref_score:
 								max_coref_score = cur_score
-							'''
+							
+							
 							if ment1.REF == ment2.REF:
 								entcoref = True
-								break
-							'''
-					print("max_coref_score:", max_coref_score)
-					# GOLDEN ENTITY INFO (at shortest level)
-					'''
-					if entcoref:
-						features.append(1)
-						#features.append(0)
-						#features.append(0)
-					else:
-						features.append(0)
-						#features.append(1)
-						#features.append(0)
-					'''
+								#break
+							
+					if ment1.dir_num not in self.helper.testingDirs:
+						print("TRAIN: pred:", str(max_coref_score), " gold:", str(int(entcoref)))
+
+					# PREDICTED ENTITY INFO (at shortest level)
+					if ment1.dir_num in self.helper.testingDirs:
+						features.append(max_coref_score)
+						features.append(1 - max_coref_score)
+						print("TEST: pred:", str(max_coref_score), " gold:", str(int(entcoref)))
+					else: # GOLDEN ENTITY INFO (at shortest level)
+						if entcoref:
+							features.append(1)
+							features.append(0)
+						else:
+							features.append(0)
+							features.append(1)
+					
 					# checks paths
 					dep1_relations = set()
 					dep2_relations = set()
+
 					# looks at path info
 					m1_paths = [p for level in m1.levelToEntityPath.keys() for p in m1.levelToEntityPath[level]]
 					m2_paths = [p for level in m2.levelToEntityPath.keys() for p in m2.levelToEntityPath[level]]
@@ -325,7 +332,7 @@ class DataHandler:
 							m2_paths.append(p)
 							dep2_relations.add(p[0])
 					
-					''' # adds dependency path info
+					''' # adds dependency path relation info
 					for rel in sorted(self.helper.relationToIndex):
 						if rel in dep1_relations and entcoref:
 							features.append(1)
@@ -349,11 +356,11 @@ class DataHandler:
 					
 					if haveIdenticalPath:
 						features.append(1)
-						#features.append(0)
+						features.append(0)
 						#features.append(0)
 					else:
 						features.append(0)
-						#features.append(1)
+						features.append(1)
 						#features.append(0)
 					
 				# OPTIONAL GOLD INFO
@@ -456,13 +463,14 @@ class DataHandler:
 			mentionType = str(m1.isPred) + "_" + str(m2.isPred)
 			mentionTypeToCount[mentionType] += 1
 
-		print("tmp_dir_to_with:", tmp_dir_to_with)
+		print("we dont have these:", tmp_dir_to_with)
 		
 		X = np.asarray(X)
 		supp_features = np.asarray(supp_features)
 		#print("labels:",labels)
 		Y = np.asarray(labels)
 		print("numPosAdded:", str(numPosAdded))
+		print("numNegAdded:", str(numNegAdded))
 		pp = float(numPosAdded / (numPosAdded+numNegAdded))
 		pn = float(numNegAdded / (numPosAdded+numNegAdded))
 		print("* createData() loaded", len(pairs), "pairs (", \

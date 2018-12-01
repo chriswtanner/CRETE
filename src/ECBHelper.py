@@ -7,7 +7,7 @@ from StanDB import StanDB
 from StanToken import StanToken
 from collections import defaultdict
 class ECBHelper:
-	def __init__(self, args):
+	def __init__(self, args, use_pronouns):
 		self.args = args
 		self.corpus = None # should be passed-in
 
@@ -16,7 +16,8 @@ class ECBHelper:
 		self.devDirs = [23, 24, 25]
 		self.testingDirs = [26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45]
 
-		self.pronouns = self.loadPronouns(args.pronounsFile)
+		self.pronouns = self.loadPronouns(args.pronounsFile) # load the regardless
+		self.use_pronouns = use_pronouns
 
 		self.UIDToMention = defaultdict(list) # used only for ECBMentions
 
@@ -95,56 +96,49 @@ class ECBHelper:
 		for ((id1, id2), pred) in zip(ids, preds):
 			self.predictions[(id1, id2)] = pred[0]
 
-	def getCorpusMentions(self, trainMentions, testMentions):
+	def getCorpusMentions(self, mention_type):
 		trainXUIDs = set()
 		devXUIDs = set()
 		testXUIDs = set()
 		bad_count = 0
 		good_count = 0
-		tmp_pronoun_mentions = []
+		excluded_pronoun_mentions = []
 		for m in self.corpus.ecb_mentions:
-			if m.dir_num in self.trainingDirs:
-				if ("entities" in trainMentions and not m.isPred) or \
-					("events" in trainMentions and m.isPred):
-					
-					hasPronoun = False
-					for t in m.tokens:
-						for pronoun in self.pronouns:
-							if pronoun == t.text:
-								hasPronoun = True
-					if hasPronoun and len(m.tokens) == 1:
-						bad_count += 1
-						tmp_pronoun_mentions.append(m.text)
-					else:
-						good_count += 1
-						trainXUIDs.add(m.XUID)
-			else: # not training
-				if ("entities" in testMentions and not m.isPred) or \
-				("events" in testMentions and m.isPred):
+			# only return the mentions that are the type we care about
+			if ("entities" == mention_type and not m.isPred) or \
+				("events" == mention_type and m.isPred):
 
-					hasPronoun = False
-					for t in m.tokens:
-						for pronoun in self.pronouns:
-							if pronoun == t.text:
-								hasPronoun = True
-					if hasPronoun and len(m.tokens) == 1:
-						bad_count += 1
-						tmp_pronoun_mentions.append(m.text)
-						continue
-					else:
-						good_count += 1
-						
-					if m.dir_num in self.devDirs:
+				# determines if it has a pronoun or not (and if we care)
+				has_pronoun = False
+				for t in m.tokens:
+					for pronoun in self.pronouns:
+						if pronoun == t.text and len(m.tokens) == 1:
+							has_pronoun = True
+
+				if has_pronoun:
+					bad_count += 1
+				else:
+					good_count += 1
+
+				# possibly add the mention 
+				if self.use_pronouns or (not self.use_pronouns and not has_pronoun):
+					# figures out which set we add it to
+					if m.dir_num in self.trainingDirs: # training
+						trainXUIDs.add(m.XUID)
+
+					elif m.dir_num in self.devDirs:
 						devXUIDs.add(m.XUID)
 					elif self.args.useECBTest and m.dir_num in self.testingDirs:
 						testXUIDs.add(m.XUID)
+				else:
+					excluded_pronoun_mentions.append(m.text)
 					
 		print("bad_count:", bad_count)
 		print("good count:", good_count)
-		'''
-		for i in tmp_pronoun_mentions:
+		
+		for i in excluded_pronoun_mentions:
 			print("bad:", str(i))
-		'''
+		
 		# conditionally add HDDCRP Mentions (as the test set)
 		if not self.args.useECBTest:
 			for xuid in self.corpus.HMUIDToMention:
@@ -154,7 +148,7 @@ class ECBHelper:
 
 	def loadPronouns(self, filename):
 		input_file = open(filename, 'r')
-		return set(input_file.read().lower().strip().split("\n"))
+		return set(input_file.read().lower().strip().split("\n"))	
 
 	def getEnsemblePreds(self, ensemblePreds):
 		preds = []

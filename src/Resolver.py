@@ -22,7 +22,7 @@ class Resolver:
 		self.ids = ids
 		self.preds = preds
 
-	def resolve(self, mention_type, supp_features_type, num_runs):
+	def resolve(self, mention_type, supp_features_type, use_pronouns, num_runs):
 
 		# supp_features_type  = {none, shortest, one, type}
 
@@ -56,7 +56,7 @@ class Resolver:
 		exit(1) testing this
 		'''
 		start_time = time.time()
-		helper = ECBHelper(self.args)
+		helper = ECBHelper(self.args, use_pronouns)
 
 		# parses the real, actual corpus (ECB's XML files)
 		ecb_parser = ECBParser(self.args, helper)
@@ -66,6 +66,7 @@ class Resolver:
 
 		if self.ids != None:
 			helper.addPredictions(self.ids, self.preds)
+
 		#helper.printCorpus("corpusMentions.txt")
 
 		# parses the HDDCRP Mentions
@@ -101,7 +102,7 @@ class Resolver:
 		'''
 
 		# DEFINES WHICH MENTIONS TO USE
-		trainXUIDs, devXUIDs, testXUIDs = helper.getCorpusMentions(mention_type, mention_type)
+		trainXUIDs, devXUIDs, testXUIDs = helper.getCorpusMentions(mention_type)
 		dh = DataHandler(helper, trainXUIDs, devXUIDs, testXUIDs)
 		helper.addDependenciesToMentions(dh)
 		#helper.checkDependencyRelations()
