@@ -291,7 +291,7 @@ class DataHandler:
 							if cur_score > max_coref_score:
 								max_coref_score = cur_score
 							
-							
+
 							if ment1.REF == ment2.REF:
 								entcoref = True
 								#break
@@ -301,6 +301,10 @@ class DataHandler:
 
 					# PREDICTED ENTITY INFO (at shortest level)
 					if ment1.dir_num in self.helper.testingDirs:
+						if max_coref_score > self.args.entity_threshold:
+							max_coref_score = 1
+						else:
+							max_coref_score = 0
 						features.append(max_coref_score)
 						features.append(1 - max_coref_score)
 						print("TEST: pred:", str(max_coref_score), " gold:", str(int(entcoref)))

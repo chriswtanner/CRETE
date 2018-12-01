@@ -13,7 +13,6 @@ def setCorefEngineParams():
 	parser.add_argument("--replacementsFile", help="we replace all instances of these tokens which appear in our corpus -- this is to help standardize the format, useful for creating embeddings and running stanfordCoreNLP")
 	parser.add_argument("--pronounsFile", help="file of pronouns")
 	parser.add_argument("--verbose", help="print a lot of debugging info", type=str2bool, nargs='?', default="f")
-
 	# StanParser
 	parser.add_argument("--stanOutputDir", help="the file that stanfordCoreNLP output'ed")
 
@@ -29,6 +28,7 @@ def setCorefEngineParams():
 	parser.add_argument("--dropout", help="initial dropout rate", type=float)
 	parser.add_argument("--numFilters", help="num CNN filters", type=int)
 	parser.add_argument("--filterMultiplier", help="the \% of how many filters to use at each successive layer", type=float)
+	parser.add_argument("--entity_threshold", help="the threshold above which all values should be considered coref", type=float)
 	# optionally added features to the CCNN
 	# note, we used to read in the files for embeddings when we wanted to use
 	# lemma, distinct from the regular word embeddings and dependency embeddings

@@ -16,7 +16,7 @@ dropout=(0.0) # 0.2 0.4)
 numFilters=(32)
 filterMultiplier=(1.0) # 2.0)
 devDir=(23) # this # and above will be the dev dirs.  See ECBHelper.py for more
-
+entity_threshold=(0.3 0.4 0.45 0.5 0.55 0.6 0.7 0.8 0.9)
 # features (default = False)
 wordFeature="False" # f1
 lemmaFeature="False" # f2
@@ -94,17 +94,20 @@ do
 									do
 										for fn in "${FFNNnumEpochs[@]}"
 										do
-											# qsub -pe smp 8 -l vlong -o
-											fout=gpu_${prefix}_ov${onlyValidSentences}_id${addIntraDocs}_nl${nl}_ne${ne}_ws${ws}_neg${neg}_bs${bs}_dr${dr}_nf${nf}_fm${fm}_dd${dd}_fn${fn}.out
-											echo ${fout}
-											if [ ${hn} = "ctanner" ] || [ ${hn} = "Christophers-MacBook-Pro-2" ]
-											then
-												echo "* kicking off CRETE2 natively"
-												native="True"
-												./CRETE2.sh ${corpus} ${useECBTest} ${onlyValidSentences} ${addIntraDocs} ${nl} ${ne} ${ws} ${neg} ${bs} ${dr} ${nf} ${fm} ${wordFeature} ${lemmaFeature} ${charFeature} ${posFeature} ${dependencyFeature} ${bowFeature} ${wordnetFeature} ${framenetFeature} ${dd} ${fn} ${native}
-											else
-												qsub -l gpus=1 -o ${fout} CRETE2.sh ${corpus} ${useECBTest} ${onlyValidSentences} ${addIntraDocs} ${nl} ${ne} ${ws} ${neg} ${bs} ${dr} ${nf} ${fm} ${wordFeature} ${lemmaFeature} ${charFeature} ${posFeature} ${dependencyFeature} ${bowFeature} ${wordnetFeature} ${framenetFeature} ${dd} ${fn} ${native}
-											fi
+											for et in "${entity_threshold[@]}"
+											do
+												# qsub -pe smp 8 -l vlong -o
+												fout=gpu_${prefix}_ov${onlyValidSentences}_id${addIntraDocs}_nl${nl}_ne${ne}_ws${ws}_neg${neg}_bs${bs}_dr${dr}_nf${nf}_fm${fm}_dd${dd}_fn${fn}_et${et}.out
+												echo ${fout}
+												if [ ${hn} = "ctanner" ] || [ ${hn} = "Christophers-MacBook-Pro-2" ]
+												then
+													echo "* kicking off CRETE2 natively"
+													native="True"
+													./CRETE2.sh ${corpus} ${useECBTest} ${onlyValidSentences} ${addIntraDocs} ${nl} ${ne} ${ws} ${neg} ${bs} ${dr} ${nf} ${fm} ${wordFeature} ${lemmaFeature} ${charFeature} ${posFeature} ${dependencyFeature} ${bowFeature} ${wordnetFeature} ${framenetFeature} ${dd} ${fn} ${native} ${et}
+												else
+													qsub -l gpus=1 -o ${fout} CRETE2.sh ${corpus} ${useECBTest} ${onlyValidSentences} ${addIntraDocs} ${nl} ${ne} ${ws} ${neg} ${bs} ${dr} ${nf} ${fm} ${wordFeature} ${lemmaFeature} ${charFeature} ${posFeature} ${dependencyFeature} ${bowFeature} ${wordnetFeature} ${framenetFeature} ${dd} ${fn} ${native} ${et}
+												fi
+											done
 										done
 									done
 								done

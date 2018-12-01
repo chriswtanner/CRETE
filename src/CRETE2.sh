@@ -72,6 +72,7 @@ framenetFeature=${20}
 devDir=${21}
 FFNNnumEpochs=${22}
 native=${23}
+entity_threshold=${24}
 echo "-------- params --------"
 echo "corpus:" ${corpusPath}
 echo "useECBTest:" ${useECBTest} # 2
@@ -97,6 +98,7 @@ echo "devDir:" $devDir # 16
 echo "FFNNnumEpochs:" $FFNNnumEpochs # 17
 echo "FFNNnumCorpusSamples:" $FFNNnumCorpusSamples # 18
 echo "FFNNOpt:" $FFNNOpt # 19
+echo "entity_threshold:" $entity_threshold
 
 echo "-------- STATIC PATHS --------"
 echo "resultsDir:" ${resultsDir}
@@ -149,7 +151,8 @@ python3 -u CorefEngine.py \
 --pronounsFile=${pronounsFile} \
 --devDir=${devDir} \
 --FFNNnumEpochs=${FFNNnumEpochs} \
---native=${native}
+--native=${native} \
+--entity_threshold=${entity_threshold}
 
 if [ "$useECBTest" = false ] ; then
 	cd ${refDir}
