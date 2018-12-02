@@ -236,7 +236,17 @@ class DataHandler:
 			if supp_features_type == "one" or supp_features_type == "shortest":
 				
 				# checks if one of the events doesn't have a path to an entity
-				if len(m1.levelToChildrenEntities) == 0 or len(m2.levelToChildrenEntities) == 0:
+				m1_full_paths = None
+				m2_full_paths = None
+				if m1.isPred and m2.isPred: # both are events, so let's use paths to entities
+					m1_full_paths = m1.levelToChildren
+					m2_full_paths = m2.levelToChildren
+				elif not m1.isPred and not m2.isPred: # both are entities, so let's use paths to events
+					m1_full_paths = m1.levelToParents
+					m2_full_paths = m2.levelToParents
+				
+				if len(m1_full_paths) == 0 or len(m2_full_paths) == 0:
+				#if len(m1.levelToChildrenEntities) == 0 or len(m2.levelToChildrenEntities) == 0:
 					
 					# at least one mention doesn't have a path to an Entity
 					#features.append(0)
@@ -264,13 +274,17 @@ class DataHandler:
 						if 1 not in m1.levelToChildrenEntities or 1 not in m2.levelToChildrenEntities:
 							continue
 					'''
-					m1_shortests = set([] if len(m1.levelToChildrenEntities) == 0 else [x for x in m1.levelToChildrenEntities[next(iter(sorted(m1.levelToChildrenEntities)))]])
-					m2_shortests = set([] if len(m2.levelToChildrenEntities) == 0 else [x for x in m2.levelToChildrenEntities[next(iter(sorted(m2.levelToChildrenEntities)))]])
+					m1_shortests = [] if len(m1_full_paths) == 0 else [x for x in m1_full_paths[next(iter(sorted(m1_full_paths)))]]
+					m2_shortests = [] if len(m2_full_paths) == 0 else [x for x in m2_full_paths[next(iter(sorted(m2_full_paths)))]]
+
+					#m1_shortests = set([] if len(m1.levelToChildrenEntities) == 0 else [x for x in m1.levelToChildrenEntities[next(iter(sorted(m1.levelToChildrenEntities)))]])
+					#m2_shortests = set([] if len(m2.levelToChildrenEntities) == 0 else [x for x in m2.levelToChildrenEntities[next(iter(sorted(m2.levelToChildrenEntities)))]])
 
 					entcoref = False
 					max_coref_score = 0
-					for ment1 in m1_shortests:
-						for ment2 in m2_shortests:
+					same_paths = False
+					for (ment1, path1) in m1_shortests:
+						for (ment2, path2) in m2_shortests:
 							cur_score = 0
 							if (ment1.XUID, ment2.XUID) in self.helper.predictions:
 								cur_score = self.helper.predictions[(ment1.XUID, ment2.XUID)]
@@ -290,24 +304,33 @@ class DataHandler:
 							cur_score = 1 - min(cur_score, 1)
 							if cur_score > max_coref_score:
 								max_coref_score = cur_score
-							
+								
+								cur_paths_same = True
+								for p1 in path1:
+									for p2 in path2:
+										if p1.relationship != p2.relationship:
+											cur_paths_same = False
+											break
+								same_paths = cur_paths_same # resets it
 
 							if ment1.REF == ment2.REF:
 								entcoref = True
 								#break
-							
-					if ment1.dir_num not in self.helper.testingDirs:
-						print("TRAIN: pred:", str(max_coref_score), " gold:", str(int(entcoref)))
+					
+					#if m1.dir_num not in self.helper.testingDirs:
+					#	print("TRAIN: pred:", str(max_coref_score), " gold:", str(int(entcoref)))
 
 					# PREDICTED ENTITY INFO (at shortest level)
-					if ment1.dir_num in self.helper.testingDirs:
+					if m1.dir_num in self.helper.testingDirs:
 						if max_coref_score > self.args.entity_threshold:
 							max_coref_score = 1
 						else:
 							max_coref_score = 0
+						#features.append(0.5)
+						#features.append(0.5)
 						features.append(max_coref_score)
 						features.append(1 - max_coref_score)
-						print("TEST: pred:", str(max_coref_score), " gold:", str(int(entcoref)))
+						#print("TEST: pred:", str(max_coref_score), " gold:", str(int(entcoref)))
 					else: # GOLDEN ENTITY INFO (at shortest level)
 						if entcoref:
 							features.append(1)
@@ -358,7 +381,7 @@ class DataHandler:
 								haveIdenticalPath = True
 								break
 					
-					if haveIdenticalPath:
+					if same_paths: #haveIdenticalPath:
 						features.append(1)
 						features.append(0)
 						#features.append(0)

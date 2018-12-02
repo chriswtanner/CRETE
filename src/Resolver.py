@@ -23,7 +23,6 @@ class Resolver:
 		self.preds = preds
 
 	def resolve(self, mention_type, supp_features_type, use_pronouns, num_runs):
-
 		# supp_features_type  = {none, shortest, one, type}
 
 		# classifier params
@@ -105,6 +104,7 @@ class Resolver:
 		trainXUIDs, devXUIDs, testXUIDs = helper.getCorpusMentions(mention_type)
 		dh = DataHandler(helper, trainXUIDs, devXUIDs, testXUIDs)
 		helper.addDependenciesToMentions(dh)
+		
 		#helper.checkDependencyRelations()
 		#corpus.calculateEntEnvAgreement()
 		

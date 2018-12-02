@@ -47,7 +47,7 @@ class CorefEngine:
 		num_runs = 10
 
 		entity_resolution = Resolver(args, wdPresets)
-		ids, preds, golds = entity_resolution.resolve("entities", "none", True, num_runs) # True means use pronouns, False means do not
+		ids, preds, golds = entity_resolution.resolve("entities", "none", True, num_runs) # True means use pronouns, False means do not		
 		
 		event_resolution = Resolver(args, wdPresets, ids, preds)
 		event_resolution.resolve("events", "shortest", False, num_runs)

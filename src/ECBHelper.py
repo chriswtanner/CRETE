@@ -136,8 +136,8 @@ class ECBHelper:
 		print("bad_count:", bad_count)
 		print("good count:", good_count)
 		
-		for i in excluded_pronoun_mentions:
-			print("bad:", str(i))
+		#for i in excluded_pronoun_mentions:
+		#	print("bad:", str(i))
 		
 		# conditionally add HDDCRP Mentions (as the test set)
 		if not self.args.useECBTest:
@@ -229,7 +229,7 @@ class ECBHelper:
 		# given the best threshold, now let's check the individual performance
 		# of both entities and events
 		mentionStats = defaultdict(lambda: defaultdict(int))
-		eventPairs = defaultdict(lambda: defaultdict(int))
+		the_pairs = defaultdict(lambda: defaultdict(int))
 		for ((xuid1, xuid2), pred, gold) in zip(ids, preds, golds):
 			m1 = self.corpus.XUIDToMention[xuid1]
 			m2 = self.corpus.XUIDToMention[xuid2]
@@ -245,21 +245,33 @@ class ECBHelper:
 
 			both_contain_paths = True
 			# checks if one of the events doesn't have a path to an entity
-			if len(m1.levelToChildrenEntities) == 0 or len(m2.levelToChildrenEntities) == 0:
+
+			# gets the paths to entities or events
+			m1_full_paths = None
+			m2_full_paths = None
+			if m1.isPred and m2.isPred: # both are events, so let's use paths to entities
+				m1_full_paths = m1.levelToChildren
+				m2_full_paths = m2.levelToChildren
+			elif not m1.isPred and not m2.isPred: # both are entities, so let's use paths to events
+				m1_full_paths = m1.levelToParents
+				m2_full_paths = m2.levelToParents
+			
+			if len(m1_full_paths) == 0 or len(m2_full_paths) == 0:
+			#if len(m1.levelToChildrenEntities) == 0 or len(m2.levelToChildrenEntities) == 0:
 				both_contain_paths = False
 			
 			# updates stats on a per event- or entity- basis
 			if gold:
 				mentionStats[mentionType]["gold"] += 1
 				if mentionType == "events":
-					eventPairs[both_contain_paths]["gold"] += 1
+					the_pairs[both_contain_paths]["gold"] += 1
 			if pred <= bestVal:
-				if mentionType == "events":
-					eventPairs[both_contain_paths]["predicted"] += 1
 				mentionStats[mentionType]["predicted"] += 1
+				if mentionType == "events":
+					the_pairs[both_contain_paths]["predicted"] += 1
 				if gold:
 					if mentionType == "events":
-						eventPairs[both_contain_paths]["TP"] += 1
+						the_pairs[both_contain_paths]["TP"] += 1
 					mentionStats[mentionType]["TP"] += 1
 		# prints each of the event and entity performances
 		for mt in mentionStats.keys():
@@ -272,17 +284,16 @@ class ECBHelper:
 				print("** MENTION TYPE:", mt, "yielded F1:", str(f1))
 
 		# prints the event results (pairs with paths and not)
-		for val in eventPairs.keys():
-			if eventPairs[val]["gold"] > 0:
-				recall = eventPairs[val]["TP"] / eventPairs[val]["gold"]
+		for val in the_pairs.keys():
+			if the_pairs[val]["gold"] > 0:
+				recall = the_pairs[val]["TP"] / the_pairs[val]["gold"]
 				prec = 0
-				if eventPairs[val]["predicted"] > 0:
-					prec = eventPairs[val]["TP"] / eventPairs[val]["predicted"]
+				if the_pairs[val]["predicted"] > 0:
+					prec = the_pairs[val]["TP"] / the_pairs[val]["predicted"]
 				f1 = 0
 				if recall > 0 and prec > 0:
 					f1 = 2*(recall*prec) / (recall + prec)
-				
-				print("** EVENT PAIRS WITH PATHS:", val, "yielded F1:", str(f1))
+				print("** WRT PAIRS OR NOT:", val, "yielded F1:", str(f1))
 		return (bestF1, bestP, bestR, bestVal)
 
 	def getAllChildrenPaths(self, dh, entities, tokenToMentions, originalMentionStans, token, curPath, allPaths):
@@ -634,9 +645,7 @@ class ECBHelper:
 				#print("sentence #:", s, "tokens:", tokenText)
 				for m in sentenceToEventMentions[s]:
 					eventsConsidered.add(m)
-					
-					#print("\n\t", m)
-
+				
 					# gets the StanTokens for the current mention, so that we
 					# never explore any of them as parents or chilren
 					mentionStanTokens = set()
@@ -650,8 +659,8 @@ class ECBHelper:
 					self.tokensVisited = set()
 
 					for t in m.tokens:
-						#print("\t\ttoken:", t)
 						self.getParents(mentionStanTokens, dh, t, 1)
+
 					#print("\tmention yielded following governor structure:", self.levelToParentLinks)
 					m.addParentLinks(self.levelToParentLinks)
 					#print("\tm:")
@@ -689,11 +698,9 @@ class ECBHelper:
 					entities = set()
 					isEmpty = True
 					for t in m.tokens:
-
 						visited = set()
 						allPaths = []
 						curPath = []
-
 						# prints all paths (even if there are no entities)
 						#self.getAllChildrenPaths(dh, entities, sentenceTokenToMention[s], mentionStanTokens, t, curPath, allPaths)
 
@@ -720,12 +727,22 @@ class ECBHelper:
 										#print("\tecb in it!")
 										foundMentions = sentenceTokenToMention[s][ecb]
 										for mfound in foundMentions:
-											if not mfound.isPred:
+											if not mfound.isPred: # mfound is an entity
 												m.entitiesLinked.add(mfound)
 												isEmpty = False
 												m.levelToChildrenEntities[level].add(mfound)
 												one_hop_relations.append(relation)
 												m.addEntityPath(level, path)
+
+												# NEW DATA STRUCTURE
+												if (mfound, path) not in m.levelToChildren[level]:
+													m.levelToChildren[level].append((mfound, path))
+												if (m, path.reverse()) not in mfound.levelToParents[level]:
+													mfound.levelToParents[level].append((m, path.reverse()))
+												if not m.isPred or mfound.isPred:
+													print("** wrong types")
+													exit(1)
+
 								level += 1
 
 						# the shortest level/depth at which an entity appears

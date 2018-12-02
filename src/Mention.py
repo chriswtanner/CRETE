@@ -32,6 +32,10 @@ class Mention:
 		self.entitiesLinked = set()
 		self.levelToParentLinks = defaultdict(set)
 		self.levelToChildrenEntities = defaultdict(set)
+
+		self.levelToChildren = defaultdict(list) # NEW ONE, which stores tuples (mention, path)
+		self.levelToParents = defaultdict(list) # NEW ONE, which stores tuples (mention, path)
+
 		self.levelToEntityPath = defaultdict(list)
 		self.parentRel = "None"
 		self.childRel = "None"
