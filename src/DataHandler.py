@@ -280,6 +280,9 @@ class DataHandler:
 					#m1_shortests = set([] if len(m1.levelToChildrenEntities) == 0 else [x for x in m1.levelToChildrenEntities[next(iter(sorted(m1.levelToChildrenEntities)))]])
 					#m2_shortests = set([] if len(m2.levelToChildrenEntities) == 0 else [x for x in m2.levelToChildrenEntities[next(iter(sorted(m2.levelToChildrenEntities)))]])
 
+					#print("m1_shortests:", m1_shortests)
+					#print("m2_shortests:", m2_shortests)
+					
 					entcoref = False
 					max_coref_score = 0
 					same_paths = False
@@ -381,7 +384,7 @@ class DataHandler:
 								haveIdenticalPath = True
 								break
 					
-					if same_paths: #haveIdenticalPath:
+					if haveIdenticalPath:
 						features.append(1)
 						features.append(0)
 						#features.append(0)
