@@ -43,13 +43,16 @@ class CorefEngine:
 		args = params.setCorefEngineParams()
 
 		# manually-defined features (others are in Resolver.py)
-		wdPresets = [64, 20, 2, 32, 0.0] # batchsize, num epochs, num layers, num filters, dropout
-		num_runs = 10
+		wdPresets = [64, 10, 2, 32, 0.0] # batchsize, num epochs, num layers, num filters, dropout
+		num_runs = 3
 
 		entity_resolution = Resolver(args, wdPresets)
-		ids, preds, golds = entity_resolution.resolve("entities", "none", True, num_runs) # True means use pronouns, False means do not		
+		entity_ids, entity_preds, entity_golds = entity_resolution.resolve("entities", "shortest", True, num_runs) # True means use pronouns, False means do not
 		
-		event_resolution = Resolver(args, wdPresets, ids, preds)
-		event_resolution.resolve("events", "shortest", False, num_runs)
-		
+		# second try
+		event_resolution = Resolver(args, wdPresets, entity_ids, entity_preds)
+		event_ids, event_preds, event_golds = event_resolution.resolve("events", "shortest", False, num_runs)
 
+		entity_resolution = Resolver(args, wdPresets, event_ids, event_preds)
+		entity_ids, entity_preds, entity_golds = entity_resolution.resolve("entities", "shortest", True, num_runs) # True means use pronouns, False means do not
+		

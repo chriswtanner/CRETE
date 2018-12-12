@@ -93,8 +93,11 @@ class ECBHelper:
 
 	# saves the entity coref predictions
 	def addPredictions(self, ids, preds):
-		for ((id1, id2), pred) in zip(ids, preds):
-			self.predictions[(id1, id2)] = pred[0]
+		if ids == None and preds == None:
+			self.predictions = None
+		else:
+			for ((id1, id2), pred) in zip(ids, preds):
+				self.predictions[(id1, id2)] = pred[0]
 
 	def getCorpusMentions(self, mention_type):
 		trainXUIDs = set()
@@ -281,7 +284,7 @@ class ECBHelper:
 				if mentionStats[mt]["predicted"] > 0:
 					prec = mentionStats[mt]["TP"] / mentionStats[mt]["predicted"]
 				f1 = 2*(recall*prec) / (recall + prec)
-				print("** MENTION TYPE:", mt, "yielded F1:", str(f1))
+				#print("** MENTION TYPE:", mt, "yielded F1:", str(f1))
 
 		# prints the event results (pairs with paths and not)
 		for val in the_pairs.keys():
@@ -293,7 +296,7 @@ class ECBHelper:
 				f1 = 0
 				if recall > 0 and prec > 0:
 					f1 = 2*(recall*prec) / (recall + prec)
-				print("** WRT PAIRS OR NOT:", val, "yielded F1:", str(f1))
+				#print("** WRT PAIRS OR NOT:", val, "yielded F1:", str(f1))
 		return (bestF1, bestP, bestR, bestVal)
 
 	def getAllChildrenPaths(self, dh, entities, tokenToMentions, originalMentionStans, token, curPath, allPaths):
@@ -653,6 +656,7 @@ class ECBHelper:
 						bestStan = dh.getBestStanToken(t.stanTokens)
 						mentionStanTokens.add(bestStan)
 
+					'''
 					# finds its parents (governors)
 					self.levelToParents = defaultdict(set)
 					self.levelToParentLinks = defaultdict(set)
@@ -664,12 +668,12 @@ class ECBHelper:
 					#print("\tmention yielded following governor structure:", self.levelToParentLinks)
 					m.addParentLinks(self.levelToParentLinks)
 					#print("\tm:")
-					'''
+					
 					for level in m.levelToParentLinks:
 						print("\tlevel:", level)
 						for pl in m.levelToParentLinks[level]:
 							print("\t\t", str(pl))
-					'''
+					
 					if len(self.levelToParents) > 0:
 						#print("\n\tgovernors:")
 						for level in sorted(self.levelToParents):
@@ -686,12 +690,12 @@ class ECBHelper:
 										if parent_mention not in m.parentEntities:
 											m.parentEntities.append(parent_mention)
 										#print("\t\t\t\t****** WE HAVE AN ENTITY MENTION!!! w/ ref:", parent_mention.REF)
-
+					'''
 					# finds its children (modifiers)
 					# was unreliable in getChildren()
 					# bc i dont explore all ecbtokens, only the first.  now it should be good, bc i explore all paths
-					self.levelToChildren = defaultdict(set) 
-					self.levelToChildrenLinks = defaultdict(set)
+					#self.levelToChildren = defaultdict(set) 
+					#self.levelToChildrenLinks = defaultdict(set)
 					self.tokensVisited = set()
 
 					#print(str(m), "has", str(len(m.tokens)), "tokens")
@@ -738,7 +742,7 @@ class ECBHelper:
 												if (mfound, path) not in m.levelToChildren[level]:
 													m.levelToChildren[level].append((mfound, path))
 												if (m, path.reverse()) not in mfound.levelToParents[level]:
-													mfound.levelToParents[level].append((m, path.reverse()))
+													mfound.levelToParents[level].append((m, path))
 												if not m.isPred or mfound.isPred:
 													print("** wrong types")
 													exit(1)

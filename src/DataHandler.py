@@ -282,48 +282,54 @@ class DataHandler:
 
 					#print("m1_shortests:", m1_shortests)
 					#print("m2_shortests:", m2_shortests)
-					
+					#print(m1)
 					entcoref = False
 					max_coref_score = 0
 					same_paths = False
-					for (ment1, path1) in m1_shortests:
-						for (ment2, path2) in m2_shortests:
-							cur_score = 0
-							if (ment1.XUID, ment2.XUID) in self.helper.predictions:
-								cur_score = self.helper.predictions[(ment1.XUID, ment2.XUID)]
-								#print("\tgot it:", cur_score)
-							elif (ment2.XUID, ment1.XUID) in self.helper.predictions:
-								cur_score = self.helper.predictions[(ment2.XUID, ment1.XUID)]
-								#print("\tgot it:", cur_score)
-							else:
-								#print("dont have mentions:", ment1, ment2)
-								tmp_dir_to_with[ment1.dir_num] += 1
-								if ment1.dir_num in self.helper.testingDirs:
-									#print("MISSING A PAIR THAT WE SHOULD TESTING PREDS FOR", ment1, ment2)
+					if self.helper.predictions == None:
+						max_coref_score = 0.5
+					else:
+						for (ment1, path1) in m1_shortests:
+							for (ment2, path2) in m2_shortests:
+								cur_score = 0
+								if (ment1.XUID, ment2.XUID) in self.helper.predictions:
+									cur_score = self.helper.predictions[(ment1.XUID, ment2.XUID)]
+									#print("\tgot it:", cur_score)
+								elif (ment2.XUID, ment1.XUID) in self.helper.predictions:
+									cur_score = self.helper.predictions[(ment2.XUID, ment1.XUID)]
+									#print("\tgot it:", cur_score)
+								else:
+									#print("dont have mentions:", ment1, ment2)
+									tmp_dir_to_with[ment1.dir_num] += 1
+									if ment1.dir_num in self.helper.testingDirs and ment1 != ment2:
+										print("looking at:", m1, m2)
+										print("\tMISSING A PAIR THAT WE SHOULD TESTING PREDS FOR", ment1, ment2)
+										exit(1)
+										cur_score = 0
+									#print("we don't have it! but we have:", self.helper.predictions)
 									#exit(1)
-									cur_score = 0
-								#print("we don't have it! but we have:", self.helper.predictions)
-								#exit(1)
-							cur_score = 1 - min(cur_score, 1)
-							if cur_score > max_coref_score:
-								max_coref_score = cur_score
-								
-								cur_paths_same = True
-								for p1 in path1:
-									for p2 in path2:
-										if p1.relationship != p2.relationship:
-											cur_paths_same = False
-											break
-								same_paths = cur_paths_same # resets it
-
-							if ment1.REF == ment2.REF:
-								entcoref = True
-								#break
+								cur_score = 1 - min(cur_score, 1)
+								if cur_score > max_coref_score:
+									max_coref_score = cur_score
+									
+									'''
+									cur_paths_same = True
+									for p1 in path1:
+										for p2 in path2:
+											if p1.relationship != p2.relationship:
+												cur_paths_same = False
+												break
+									same_paths = cur_paths_same # resets it
+									'''
+								if ment1.REF == ment2.REF:
+									entcoref = True
+									#break
 					
 					#if m1.dir_num not in self.helper.testingDirs:
 					#	print("TRAIN: pred:", str(max_coref_score), " gold:", str(int(entcoref)))
+					# TMP -- use GOLD FOR TESTING FOR NOW
 
-					# PREDICTED ENTITY INFO (at shortest level)
+					# PREDICTED ENTITY/EVENT INFO (at shortest level)
 					if m1.dir_num in self.helper.testingDirs:
 						if max_coref_score > self.args.entity_threshold:
 							max_coref_score = 1

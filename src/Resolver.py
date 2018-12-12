@@ -63,8 +63,8 @@ class Resolver:
 
 		helper.addECBCorpus(corpus)
 
-		if self.ids != None:
-			helper.addPredictions(self.ids, self.preds)
+		#if self.ids != None:
+		helper.addPredictions(self.ids, self.preds)
 
 		#helper.printCorpus("corpusMentions.txt")
 
@@ -124,15 +124,15 @@ class Resolver:
 			ensemble_predictions = []
 			while ensemble_predictions == [] or len(ensemble_predictions[0]) < num_runs:
 				# CD
-				#wd_model = CCNN(helper, dh, supp_features_type, "dir", presets, None, devMode, wd_stopping_points) # doc = WD, dir = CD
+				wd_model = CCNN(helper, dh, supp_features_type, "dir", presets, None, devMode, wd_stopping_points) # doc = WD, dir = CD
 				# WD
-				wd_model = CCNN(helper, dh, supp_features_type, "doc", self.presets, None, devMode, wd_stopping_points)
+				#wd_model = CCNN(helper, dh, supp_features_type, "doc", self.presets, None, devMode, wd_stopping_points)
 				dirs, ids, preds, golds, best_f1 = wd_model.train_and_test()
 				if best_f1 > 0.4:
 					# CD
-					#helper.addEnsemblePredictions(False, dirs, ids, preds, ensemble_predictions) # False means CD
+					helper.addEnsemblePredictions(False, dirs, ids, preds, ensemble_predictions) # False means CD
 					# WD
-					helper.addEnsemblePredictions(True, dirs, ids, preds, ensemble_predictions) # True means WD
+					#helper.addEnsemblePredictions(True, dirs, ids, preds, ensemble_predictions) # True means WD
 					print("len(ensemble_predictions[0]):", str(len(ensemble_predictions[0])))
 
 			preds = helper.getEnsemblePreds(ensemble_predictions) # normalizes them
