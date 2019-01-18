@@ -16,11 +16,16 @@ from DataHandler import DataHandler
 from FFNN import FFNN
 from CCNN import CCNN
 class Resolver:
-	def __init__(self, args, presets, ids=None, preds=None):
+	def __init__(self, args, presets, scope, ids=None, preds=None):
 		self.args = args
+		self.scope = scope
 		self.presets = presets
 		self.ids = ids
 		self.preds = preds
+
+		if self.scope != "doc" and self.scope != "dir":
+			print("* ERROR: invalid scope!  must be doc or dir, for WD or CD, respectively")
+			exit(1)
 
 	def resolve(self, mention_type, supp_features_type, use_pronouns, num_runs):
 		# supp_features_type  = {none, shortest, one, type}
@@ -31,8 +36,7 @@ class Resolver:
 		runStanford = False
 		useRelationalFeatures = False
 
-		wd_stopping_points = [0.51] #, 0.401, 0.41, 0.42, 0.43, 0.44, 0.45, 0.46, 0.47, 0.48, 0.49, 0.501, 0.51, 0.52, 0.54, 0.55, 0.56, 0.57, 0.58, 0.59, 0.601]
-		cd_stopping_points = [0.5]
+		stopping_points = [0.51] #, 0.401, 0.41, 0.42, 0.43, 0.44, 0.45, 0.46, 0.47, 0.48, 0.49, 0.501, 0.51, 0.52, 0.54, 0.55, 0.56, 0.57, 0.58, 0.59, 0.601]
 
 		if self.args.useECBTest:
 			f_suffix = "ecb"
@@ -123,16 +127,20 @@ class Resolver:
 			'''
 			ensemble_predictions = []
 			while ensemble_predictions == [] or len(ensemble_predictions[0]) < num_runs:
-				# CD
-				wd_model = CCNN(helper, dh, supp_features_type, "dir", self.presets, None, devMode, wd_stopping_points) # doc = WD, dir = CD
-				# WD
-				#wd_model = CCNN(helper, dh, supp_features_type, "doc", self.presets, None, devMode, wd_stopping_points)
-				dirs, ids, preds, golds, best_f1 = wd_model.train_and_test()
+
+				model = CCNN(helper, dh, supp_features_type, self.scope, self.presets, None, devMode, stopping_points) # doc = WD, dir = CD
+				dirs, ids, preds, golds, best_f1 = model.train_and_test()
 				if best_f1 > 0.4:
-					# CD
-					helper.addEnsemblePredictions(False, dirs, ids, preds, ensemble_predictions) # False means CD
-					# WD
-					#helper.addEnsemblePredictions(True, dirs, ids, preds, ensemble_predictions) # True means WD
+					if self.scope == "doc": # WD
+						helper.addEnsemblePredictions(True, dirs, ids, preds, ensemble_predictions) # True means WD
+						print("DOING WITHIN-DOC ENSEMBLE!")
+					elif self.scope == "dir": # CD
+						helper.addEnsemblePredictions(False, dirs, ids, preds, ensemble_predictions) # False means CD
+						print("DOING CROSS-DOC ENSEMBLE!")
+					else:
+						print("** ERROR: invalid scope.  should be doc or dir")
+						exit(1)
+					
 					print("len(ensemble_predictions[0]):", str(len(ensemble_predictions[0])))
 
 			preds = helper.getEnsemblePreds(ensemble_predictions) # normalizes them
