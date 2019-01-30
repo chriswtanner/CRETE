@@ -27,7 +27,7 @@ class Resolver:
 			print("* ERROR: invalid scope!  must be doc or dir, for WD or CD, respectively")
 			exit(1)
 
-	def resolve(self, mention_type, supp_features_type, use_pronouns, num_runs):
+	def resolve(self, mention_type, supp_features_type, event_pronouns, entity_pronouns, num_runs):
 		# supp_features_type  = {none, shortest, one, type}
 
 		# classifier params
@@ -59,7 +59,7 @@ class Resolver:
 		exit(1) testing this
 		'''
 		start_time = time.time()
-		helper = ECBHelper(self.args, use_pronouns)
+		helper = ECBHelper(self.args, event_pronouns, entity_pronouns)
 
 		# parses the real, actual corpus (ECB's XML files)
 		ecb_parser = ECBParser(self.args, helper)
@@ -68,6 +68,7 @@ class Resolver:
 		helper.addECBCorpus(corpus)
 
 		#if self.ids != None:
+		# adds the predictions from a past model run
 		helper.addPredictions(self.ids, self.preds)
 
 		#helper.printCorpus("corpusMentions.txt")
@@ -128,7 +129,8 @@ class Resolver:
 			ensemble_predictions = []
 			while ensemble_predictions == [] or len(ensemble_predictions[0]) < num_runs:
 
-				model = CCNN(helper, dh, supp_features_type, self.scope, self.presets, None, devMode, stopping_points) # doc = WD, dir = CD
+				# self.scope == doc or dir (WD or CD)
+				model = CCNN(helper, dh, supp_features_type, self.scope, self.presets, None, devMode, stopping_points)
 				dirs, ids, preds, golds, best_f1 = model.train_and_test()
 				if best_f1 > 0.4:
 					if self.scope == "doc": # WD

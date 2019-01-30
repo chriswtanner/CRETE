@@ -51,8 +51,13 @@ class ECBParser:
         globalSentenceNum = 0
         lastToken_id = -1
         intraCount = 0
+        
+        # used for keeping track of how many mentions were pronouns
+        had_pronoun = 0
+        not_had_pronoun = 0
         for f in sorted(files):
             lm_idToMention = {} # only used to tmp store the mentions
+            removed_m_ids = set() # keeps track of the mentions that had pronouns and we removed (if we care to remove them)
             doc_id = f[f.rfind("/") + 1:]
             dir_num = int(doc_id.split("_")[0])
             extension = doc_id[doc_id.find("ecb"):]
@@ -202,18 +207,45 @@ class ECBParser:
                 tmpTokens = []
                 text = []
                 hasAllTokens = True
+
+                has_pronoun = False
                 for match2 in it2:
                     tokenID = match2.group(1)
                     if tokenID in tmpDocTokenIDsToTokens.keys():
                         cur_token = tmpDocTokenIDsToTokens[tokenID]
                         tmpTokens.append(cur_token)
                         text.append(cur_token.text)
+
                     else:
                         hasAllTokens = False
 
+                # only process Mentions if they adhere to our preferences of using pronouns or not
+                # determines if it has a pronoun or not (and if we care)
+                if len(text) == 1:
+                    if text[0] in self.helper.pronouns:
+                        has_pronoun = True
+
+                if has_pronoun:
+                    had_pronoun += 1
+                else:
+                    not_had_pronoun += 1
+
+                # possibly add the mention 
+                use_pronoun = False
+                if isPred:
+                    use_pronoun = self.helper.event_pronouns
+                else:
+                    use_pronoun = self.helper.entity_pronouns
+                
+                use_mention = True
+                if not use_pronoun and has_pronoun:
+                    use_mention = False
+                    #print("* not constructing mention:", text)
+                    removed_m_ids.add(m_id)
+
                 # we should only have incomplete Mentions for our hand-curated, sample corpus,
                 # for we do not want to have all mentions, so we curtail the sentences of tokens
-                if hasAllTokens:
+                if hasAllTokens and use_mention:
                     curMention = Mention(dirHalf, dir_num, doc_id, tmpTokens, text, isPred, mentionType)
                     lm_idToMention[m_id] = curMention
                     #tmpSentenceNumToMentions[tmpTokens[0].sentenceNum].append(curMention)
@@ -230,8 +262,10 @@ class ECBParser:
                 for match2 in it2:
                     m_id = int(match2.group(1))
                     if m_id not in lm_idToMention:
-                        print("*** MISSING MENTION! EXITING")
-                        exit(1)
+                        
+                        if  m_id not in removed_m_ids:
+                            print("*** MISSING MENTION! EXITING 1")
+                            exit(1)
                     else: #elif lm_idToMention[m_id].isPred:
                         foundMention = lm_idToMention[m_id]
                         if self.onlyEvents and not foundMention.isPred:
@@ -254,7 +288,7 @@ class ECBParser:
                     for match2 in it2:
                         m_id = int(match2.group(1))
                         if m_id not in lm_idToMention:
-                            print("*** MISSING MENTION! EXITING")
+                            print("*** MISSING MENTION! EXITING 2")
                             exit(1)
                         else:
                             foundMention = lm_idToMention[m_id]
@@ -318,9 +352,11 @@ class ECBParser:
         print("numMentionsIgnored:", numMentionsIgnored)
         print("# ECB mentions created:", len(corpus.ecb_mentions))
         print("# ECB+ tokens:", len(corpus.corpusTokens))
+        print("# mentions that had_pronoun:", had_pronoun)
+        print("# mentions that did not had_pronoun:", not_had_pronoun)
         return corpus
 
-	# loads replacement file
+    # loads replacement file
     def loadReplacements(self, replacementsFile):
         f = open(replacementsFile, 'r', encoding="utf-8")
         for line in f:

@@ -57,13 +57,15 @@ class Mention:
 		self.XUID = XUID
 
 	#### TMP -- used for auxilary dependency info
+	'''
 	def addParentLinks(self, levelToParentLinks):
 		self.levelToParentLinks = levelToParentLinks
 		if 1 in levelToParentLinks:
 			for pl in levelToParentLinks[1]:
 				self.parentRel = pl.relationship.lower()
 				break
-
+	'''
+	
 	def addEntityPath(self, level, path):
 		relations = []
 		for p in path:

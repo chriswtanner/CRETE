@@ -92,11 +92,14 @@ class CCNN:
 		distance = Lambda(self.euclidean_distance)([processed_a, processed_b])
 		#distance = Lambda(self.euclidean_distance, output_shape=self.eucl_dist_output_shape)([processed_a, processed_b])
 
+		# TODO: do NOT LEAVE THIS IN HERE.  IT FORCES NOT USING SUPPLEMENTAL FEATURES
+		#self.CCNNSupplement = False
+
 		# WD PART
 		if self.CCNNSupplement:
 			auxiliary_input = Input(shape=(len(self.supplementalTrain[0]),), name='auxiliary_input')
 			combined_layer = keras.layers.concatenate([distance, auxiliary_input])
-			x = Dense(20, activation='relu', use_bias=True)(combined_layer)
+			x = Dense(5, activation='relu', use_bias=True)(combined_layer)
 			#x2 = Dense(5, activation='sigmoid', use_bias=True)(x)
 			main_output = Dense(1, activation='sigmoid', name='main_output', use_bias=True)(x)
 			model = Model([input_a, input_b, auxiliary_input], outputs=main_output)
@@ -108,6 +111,7 @@ class CCNN:
 					validation_data=({'input_a': self.devX[:, 0], 'input_b': self.devX[:, 1], 'auxiliary_input': self.supplementalDev}, {'main_output': self.devY}))
 		else:
 			model = Model(inputs=[input_a, input_b], outputs=distance)
+			#model.compile(loss='mean_squared_error', optimizer=Adam())
 			model.compile(loss=self.contrastive_loss, optimizer=Adam())
 			#model.compile(loss=self.weighted_binary_crossentropy,optimizer=Adam(),metrics=['accuracy'])
 			
@@ -889,7 +893,8 @@ class CCNN:
 	# http://yann.lecun.com/exdb/publis/pdf/hadsell-chopra-lecun-06.pdf
 	def contrastive_loss(self, y_true, y_pred):
 		margin = 1
-		return K.mean(y_true * K.square(y_pred) + (1 - y_true) * K.square(K.maximum(margin - y_pred, 0)))
+		return K.mean((1 - y_true)*K.square(y_true - y_pred) + (y_true)*K.square(K.maximum(margin - y_pred, 0)))
+		#return K.mean(y_true * K.square(y_pred) + (1 - y_true) * K.square(K.maximum(margin - y_pred, 0)))
 
 	def standard_deviation(self, lst):
 		num_items = len(lst)

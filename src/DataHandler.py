@@ -8,6 +8,10 @@ from collections import defaultdict
 class DataHandler:
 	def __init__(self, helper, trainXUIDs, devXUIDs, testXUIDs):
 
+		# keeps track of how many event pairs coref and their entity ones too
+		self.tmp_coref_counts = defaultdict(lambda: defaultdict(int)) 
+		self.tmp_total_counts = 0
+
 		self.helper = helper
 		self.args = helper.args
 		self.corpus = helper.corpus
@@ -67,9 +71,9 @@ class DataHandler:
 		print("[dh] loading ...")
 		start_time = time.time()
 		if useCCNN:
-			(self.trainID, self.trainX, self.supplementalTrain, self.trainY) = self.createDataForCCNN(self.helper.trainingDirs, self.trainXUIDs, supp_features, True, scope)
-			(self.devID, self.devX, self.supplementalDev, self.devY) = self.createDataForCCNN(self.helper.devDirs, self.devXUIDs, supp_features, False, scope)			
-			(self.testID, self.testX, self.supplementalTest, self.testY) = self.createDataForCCNN(self.helper.testingDirs, self.testXUIDs, supp_features, False, scope)
+			(self.trainID, self.trainX, self.supplementalTrain, self.trainY) = self.createDataForCCNN(self.helper.trainingDirs, self.trainXUIDs, supp_features, True, scope, "train")
+			(self.devID, self.devX, self.supplementalDev, self.devY) = self.createDataForCCNN(self.helper.devDirs, self.devXUIDs, supp_features, False, scope, "dev")
+			(self.testID, self.testX, self.supplementalTest, self.testY) = self.createDataForCCNN(self.helper.testingDirs, self.testXUIDs, supp_features, False, scope, "test")
 		else: # FOR FFNN and SVM
 			(self.trainID, self.trainX, self.trainY) = self.createDataForFFNN(self.helper.trainingDirs, self.trainXUIDs, supp_features, True, scope)
 			(self.devID, self.devX, self.devY) = self.createDataForFFNN(self.helper.devDirs, self.devXUIDs, supp_features, False, scope)
@@ -135,7 +139,7 @@ class DataHandler:
 	# i could probably combine this into 1 function and have a boolean flag isCCNN=True.
 	# we pass in XUID because the mentions could be from any Stan, HDDCRP, or ECB; however,
 	# we need to remember that the co-reference REF tags only exist in the output file that we compare against
-	def createDataForCCNN(self, dirs, XUIDs, supp_features_type, negSubsample, scope):
+	def createDataForCCNN(self, dirs, XUIDs, supp_features_type, negSubsample, scope, split):
 
 		# TMP, to ensure we correctly make pairs of entities or events but not entities-event pairs
 		mentionTypeToCount = defaultdict(int)
@@ -153,7 +157,7 @@ class DataHandler:
 		numPosAdded = 0
 		numNegAdded = 0
 		xuidPairs = self.createXUIDPairs(XUIDs, scope)
-		print("* [createDataForCCNN] # XUIDs passed-in:", len(XUIDs), "; # pairs made from these: ", len(xuidPairs))
+		print("*",split,"[createDataForCCNN] # XUIDs passed-in:", len(XUIDs), "; # pairs made from these: ", len(xuidPairs))
 
 		# TMP ADDED FOR SAME LEMMA TEST
 		'''
@@ -181,7 +185,7 @@ class DataHandler:
 		'''
 		tmp_pairs_with = 0
 		tmp_pairs_without = 0
-
+		xuids_used_for_pairs = set()
 		tmp_dir_to_with = defaultdict(int)
 		for (xuid1, xuid2) in xuidPairs:
 			if xuid1 == xuid2:
@@ -232,7 +236,7 @@ class DataHandler:
 				else:
 					tmp_pairs_with += 1
 			'''
-			# TMP added: tests adding entity coref info			
+			# TMP added: tests adding entity coref info
 			if supp_features_type == "one" or supp_features_type == "shortest":
 				
 				# checks if one of the events doesn't have a path to an entity
@@ -279,13 +283,45 @@ class DataHandler:
 
 					#m1_shortests = set([] if len(m1.levelToChildrenEntities) == 0 else [x for x in m1.levelToChildrenEntities[next(iter(sorted(m1.levelToChildrenEntities)))]])
 					#m2_shortests = set([] if len(m2.levelToChildrenEntities) == 0 else [x for x in m2.levelToChildrenEntities[next(iter(sorted(m2.levelToChildrenEntities)))]])
+					'''
+					print("m1_shortests:", m1_shortests)
+					for _ in m1_shortests:
+						print("\t", _[0])
+					print("m2_shortests:", m2_shortests)
+					for _ in m2_shortests:
+						print("\t", _[0])
+					print(m1)
+					print(m2)
+					#exit(1)
+					'''
 
-					#print("m1_shortests:", m1_shortests)
-					#print("m2_shortests:", m2_shortests)
-					#print(m1)
 					entcoref = False
-					max_coref_score = 0
 					same_paths = False
+
+					# gold info
+					for (ment1, path1) in m1_shortests:
+						for (ment2, path2) in m2_shortests:
+							if ment1.REF == ment2.REF:
+								entcoref = True
+								#print("ent coref!", ment1, ment2)
+								#exit(1)
+
+							cur_paths_same = True
+							for p1 in path1:
+								#print("p1:", p1)
+								for p2 in path2:
+									#print("p2:", p2)
+									if p1.relationship != p2.relationship:
+										cur_paths_same = False
+										break
+							if cur_paths_same:
+								same_paths = True
+								#print("same paths!", path1, path2)
+								#exit(1)
+
+					# only useful for event coref which is looking at paths to entities
+					'''
+					max_coref_score = 0
 					if self.helper.predictions == None:
 						max_coref_score = 0.5
 					else:
@@ -312,23 +348,34 @@ class DataHandler:
 								if cur_score > max_coref_score:
 									max_coref_score = cur_score
 									
-									'''
-									cur_paths_same = True
-									for p1 in path1:
-										for p2 in path2:
-											if p1.relationship != p2.relationship:
-												cur_paths_same = False
-												break
-									same_paths = cur_paths_same # resets it
-									'''
+									
+									# cur_paths_same = True
+									# for p1 in path1:
+									# 	for p2 in path2:
+									# 		if p1.relationship != p2.relationship:
+									# 			cur_paths_same = False
+									# 			break
+									# same_paths = cur_paths_same # resets it
+									
+
 								if ment1.REF == ment2.REF:
 									entcoref = True
 									#break
-					
+					'''
 					#if m1.dir_num not in self.helper.testingDirs:
 					#	print("TRAIN: pred:", str(max_coref_score), " gold:", str(int(entcoref)))
 					# TMP -- use GOLD FOR TESTING FOR NOW
+					
+					if entcoref:
+						features.append(1)
+						features.append(0)
+						#print("we have ent corefs!!")
+						#exit(1)
+					else:
+						features.append(0)
+						features.append(1)
 
+					'''
 					# PREDICTED ENTITY/EVENT INFO (at shortest level)
 					if m1.dir_num in self.helper.testingDirs:
 						if max_coref_score > self.args.entity_threshold:
@@ -347,12 +394,14 @@ class DataHandler:
 						else:
 							features.append(0)
 							features.append(1)
-					
+					'''
 					# checks paths
 					dep1_relations = set()
 					dep2_relations = set()
 
 					# looks at path info
+					
+					#THIS WAS UNCOMMENTED
 					m1_paths = [p for level in m1.levelToEntityPath.keys() for p in m1.levelToEntityPath[level]]
 					m2_paths = [p for level in m2.levelToEntityPath.keys() for p in m2.levelToEntityPath[level]]
 					
@@ -367,7 +416,7 @@ class DataHandler:
 						for p in m2.levelToEntityPath[1]:
 							m2_paths.append(p)
 							dep2_relations.add(p[0])
-					
+
 					''' # adds dependency path relation info
 					for rel in sorted(self.helper.relationToIndex):
 						if rel in dep1_relations and entcoref:
@@ -382,9 +431,12 @@ class DataHandler:
 					'''
 					#print("m1_paths:", str(m1_paths))
 					
+					'''
 					haveIdenticalPath = False
 					for m1p in m1_paths:
+						#print("m1p:", m1p)
 						for m2p in m2_paths:
+							#print("m2p:", m2p)
 							if m1p == m2p:
 							#if m1p[0] == m2p[0]:
 								haveIdenticalPath = True
@@ -398,7 +450,22 @@ class DataHandler:
 						features.append(0)
 						features.append(1)
 						#features.append(0)
+					#print("features:", features)
+					#exit(1)
+					'''
 					
+					if same_paths:
+						features.append(1)
+						features.append(0)
+					else:
+						features.append(0)
+						features.append(1)
+					
+					# TMP COUNTS COREF STATS
+					if self.corpus.XUIDToMention[xuid1].REF == self.corpus.XUIDToMention[xuid2].REF:
+						self.tmp_coref_counts["event_coref"][entcoref] += 1
+					else:
+						self.tmp_coref_counts["event_NOcoref"][entcoref] += 1
 				# OPTIONAL GOLD INFO
 				'''
 				if m1.REF == m2.REF:
@@ -408,11 +475,13 @@ class DataHandler:
 					features.append(0)
 					features.append(1)
 				'''
+				#print("features:", features)
 
 			# NOTE: if this is for HDDCRP or Stan mentions, the REFs will always be True
 			# because we don't have such info for them, so they are ""
 			if self.corpus.XUIDToMention[xuid1].REF == self.corpus.XUIDToMention[xuid2].REF:
 				
+
 				# TMP ADDED FOR SAME LEMMA TEST
 				'''
 				if sameLemma:
@@ -420,7 +489,7 @@ class DataHandler:
 				else:
 					FN += 1
 				'''
-				labels.append(1)
+				labels.append(0)
 				numPosAdded += 1
 			else:
 				# TMP ADDED FOR SAME LEMMA TEST
@@ -433,12 +502,17 @@ class DataHandler:
 				if negSubsample and numNegAdded > numPosAdded*self.args.numNegPerPos:
 					continue
 				numNegAdded += 1
-				labels.append(0)
+				labels.append(1)
+
+
+			# TMP: merely displays statistics just like checkDependencyRelations()
+			# namely, how many events coref, and of these 
+			self.tmp_total_counts += 1
+			
+
 
 			m1_features = []
 			m2_features = []
-
-			#features = [] # TODO: do not keep this this way; it represents NO SUPP INFO
 
 			if supp_features_type != "none":
 				supp_features.append(np.asarray(features))
@@ -466,8 +540,8 @@ class DataHandler:
 			if len(m1_features) != numFeatures and numFeatures != 0:
 				print("* ERROR: # features diff:", len(m1_features), "and", numFeatures)
 				exit(1)
-			numFeatures = len(m1_features)
 
+			numFeatures = len(m1_features)
 			if len(m1_features) != len(m2_features):
 				print("* ERROR: m1 and m2 have diff feature emb lengths")
 				exit(1)
@@ -495,23 +569,27 @@ class DataHandler:
 
 			# makes xuid pairs
 			pairs.append((xuid1, xuid2))
-			
+
+			# keeps track of all unique XUIDs that were used for constructing pairs
+			xuids_used_for_pairs.add(xuid1)
+			xuids_used_for_pairs.add(xuid2)
 			mentionType = str(m1.isPred) + "_" + str(m2.isPred)
 			mentionTypeToCount[mentionType] += 1
 
-		print("we dont have these:", tmp_dir_to_with)
+		print("\t", split, "# unique XUIDs used in pairs:", len(xuids_used_for_pairs))
+		print("\t", split, "we dont have these:", tmp_dir_to_with)
 		
 		X = np.asarray(X)
 		supp_features = np.asarray(supp_features)
 		#print("labels:",labels)
 		Y = np.asarray(labels)
-		print("numPosAdded:", str(numPosAdded))
-		print("numNegAdded:", str(numNegAdded))
+		print("\t", split, "numPosAdded:", str(numPosAdded))
+		print("\t", split, "numNegAdded:", str(numNegAdded))
 		pp = float(numPosAdded / (numPosAdded+numNegAdded))
 		pn = float(numNegAdded / (numPosAdded+numNegAdded))
-		print("* createData() loaded", len(pairs), "pairs (", \
+		print("\t", split, "* createData() loaded", len(pairs), "pairs (", \
 			pp, "% pos, ", pn, "% neg); features' length = ", \
-			numFeatures, "; supp length:", str(len(supp_features)))
+			numFeatures, "; supp length:", str(len(supp_features)), str(len(supp_features[0])))
 
 		if len(pairs) == 0:
 			print("* ERROR: no pairs!")
@@ -530,8 +608,10 @@ class DataHandler:
 			f1 = 2*(recall*prec) / (recall + prec)
 		print("samelamma f1:",f1, prec, recall)
 		'''
-		print("mentionTypeToCount:",str(mentionTypeToCount))
-		print("tmp_pairs_with:", tmp_pairs_with, "tmp_pairs_without", tmp_pairs_without)
+		print("tmp_total_counts:", self.tmp_total_counts)
+		print("tmp_coref_counts:", self.tmp_coref_counts)
+		print("\t", split, "mentionTypeToCount:",str(mentionTypeToCount))
+		print("\t", split, "tmp_pairs_with paths:", tmp_pairs_with, "tmp_pairs_without paths", tmp_pairs_without)
 		return (pairs, X, supp_features, Y)
 
 	# creates data for FFNN and SVM:

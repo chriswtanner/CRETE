@@ -7,7 +7,7 @@ from StanDB import StanDB
 from StanToken import StanToken
 from collections import defaultdict
 class ECBHelper:
-	def __init__(self, args, use_pronouns):
+	def __init__(self, args, event_pronouns, entity_pronouns):
 		self.args = args
 		self.corpus = None # should be passed-in
 
@@ -17,7 +17,8 @@ class ECBHelper:
 		self.testingDirs = [26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45]
 
 		self.pronouns = self.loadPronouns(args.pronounsFile) # load the regardless
-		self.use_pronouns = use_pronouns
+		self.event_pronouns = event_pronouns
+		self.entity_pronouns = entity_pronouns
 
 		self.UIDToMention = defaultdict(list) # used only for ECBMentions
 
@@ -103,9 +104,18 @@ class ECBHelper:
 		trainXUIDs = set()
 		devXUIDs = set()
 		testXUIDs = set()
-		bad_count = 0
-		good_count = 0
+		has_pronoun_count = 0
+		has_no_pronoun_count = 0
 		excluded_pronoun_mentions = []
+		use_pronoun = False
+		if mention_type == "events":
+			use_pronoun = self.event_pronouns
+		elif mention_type == "entities":
+			use_pronoun = self.entity_pronouns
+		else:
+			print("* ERROR: incorrect mention type")
+			exit(1)
+
 		for m in self.corpus.ecb_mentions:
 			# only return the mentions that are the type we care about
 			if ("entities" == mention_type and not m.isPred) or \
@@ -117,14 +127,15 @@ class ECBHelper:
 					for pronoun in self.pronouns:
 						if pronoun == t.text and len(m.tokens) == 1:
 							has_pronoun = True
+							#print("has pronoun (bad count):", m)
 
 				if has_pronoun:
-					bad_count += 1
+					has_pronoun_count += 1
 				else:
-					good_count += 1
+					has_no_pronoun_count += 1
 
-				# possibly add the mention 
-				if self.use_pronouns or (not self.use_pronouns and not has_pronoun):
+				# possibly add the mention
+				if use_pronoun or (not use_pronoun and not has_pronoun):
 					# figures out which set we add it to
 					if m.dir_num in self.trainingDirs: # training
 						trainXUIDs.add(m.XUID)
@@ -136,9 +147,10 @@ class ECBHelper:
 				else:
 					excluded_pronoun_mentions.append(m.text)
 					
-		print("bad_count:", bad_count)
-		print("good count:", good_count)
-		
+		print("has_pronoun_count:", has_pronoun_count)
+		print("has_no_pronoun_count:", has_no_pronoun_count)
+		print("# excluded mentions:", len(excluded_pronoun_mentions))
+
 		#for i in excluded_pronoun_mentions:
 		#	print("bad:", str(i))
 		
@@ -189,14 +201,17 @@ class ECBHelper:
 	def evaluatePairwisePreds(self, ids, preds, golds):
 		numGoldPos = 0
 		scoreToGoldTruth = defaultdict(list)
+		
+		tmp_score_to_xuid_pair = {}
 		for _ in range(len(preds)):
-			if golds[_]:
+			if golds[_] == 0:
 				numGoldPos += 1
 				scoreToGoldTruth[preds[_][0]].append(1)
 			else:
 				scoreToGoldTruth[preds[_][0]].append(0)
+			tmp_score_to_xuid_pair[preds[_][0]] = ids[_]
 		s = sorted(scoreToGoldTruth.keys())
-
+		
 		TP = 0.0
 		FP = 0.0
 		bestF1 = 0
@@ -217,6 +232,8 @@ class ECBHelper:
 			f1 = 0
 			if (recall + prec) > 0:
 				f1 = 2*(recall*prec) / (recall + prec)
+
+			#print("prec:", prec, "rec:", recall, "f1:", f1)
 			if f1 > bestF1:
 				bestF1 = f1
 				bestVal = eachVal
@@ -238,6 +255,7 @@ class ECBHelper:
 			m2 = self.corpus.XUIDToMention[xuid2]
 			pred = pred[0]
 			mentionType = ""
+
 			if m1.isPred and m2.isPred:
 				mentionType = "events"
 			elif not m1.isPred and not m2.isPred:
@@ -283,7 +301,7 @@ class ECBHelper:
 				prec = 0
 				if mentionStats[mt]["predicted"] > 0:
 					prec = mentionStats[mt]["TP"] / mentionStats[mt]["predicted"]
-				f1 = 2*(recall*prec) / (recall + prec)
+				#f1 = 2*(recall*prec) / (recall + prec)
 				#print("** MENTION TYPE:", mt, "yielded F1:", str(f1))
 
 		# prints the event results (pairs with paths and not)
@@ -1251,7 +1269,7 @@ class ECBHelper:
 				mentionStats["dev"] += 1
 			elif m.dir_num in self.testingDirs:
 				mentionStats["test"] += 1
-		print(mentionStats)
+		print("mentionStats:", mentionStats)
 	
 		mentionStats = defaultdict(lambda: defaultdict(int))
 		for m in self.corpus.hddcrp_mentions:
