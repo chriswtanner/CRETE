@@ -202,6 +202,10 @@ class ECBHelper:
 		numGoldPos = 0
 		scoreToGoldTruth = defaultdict(list)
 		
+		acc = 0
+		for p, g in zip(preds[0:30], golds[0:30]):
+			print(p, g)
+
 		tmp_score_to_xuid_pair = {}
 		for _ in range(len(preds)):
 			if golds[_] == 0:

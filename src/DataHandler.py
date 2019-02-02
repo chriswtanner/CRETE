@@ -11,6 +11,7 @@ class DataHandler:
 		# keeps track of how many event pairs coref and their entity ones too
 		self.tmp_coref_counts = defaultdict(lambda: defaultdict(int)) 
 		self.tmp_total_counts = 0
+		self.tmp_xuidpair_event_entity = {}
 
 		self.helper = helper
 		self.args = helper.args
@@ -132,7 +133,7 @@ class DataHandler:
 					elif scope == "dir" and not inSameDoc:
 						xuidPairs.add((xuid1, xuid2))
 		#print("tmp_xuids_reclaimed:", len(tmp_xuids_reclaimed))
-		print("tmp_ecbtoxuids:", len(tmp_ecbtoxuids))
+		#print("tmp_ecbtoxuids:", len(tmp_ecbtoxuids))
 		return xuidPairs
 	
 	# almost identical to createData() but it re-shapes the vectors to be 5D -- pairwise.
@@ -303,9 +304,23 @@ class DataHandler:
 						for (ment2, path2) in m2_shortests:
 							if ment1.REF == ment2.REF:
 								entcoref = True
-								#print("ent coref!", ment1, ment2)
+								#print("ent coref!", ment1, ment2, "paths:", path1, "path2:", path2)
 								#exit(1)
 
+								'''
+								cur_paths_same = True
+								if len(path1) != len(path2):
+									cur_paths_same = False
+								else:
+									for i in range(len(path1)):
+										if path1[i].relationship != path2[i].relationship:
+											cur_paths_same = False
+											break
+								if cur_paths_same:
+									same_paths = True
+								'''
+							
+							# they merely share any relation
 							cur_paths_same = True
 							for p1 in path1:
 								#print("p1:", p1)
@@ -315,7 +330,9 @@ class DataHandler:
 										cur_paths_same = False
 										break
 							if cur_paths_same:
+								#print("\tsame paths!!!")
 								same_paths = True
+								
 								#print("same paths!", path1, path2)
 								#exit(1)
 
@@ -366,15 +383,16 @@ class DataHandler:
 					#	print("TRAIN: pred:", str(max_coref_score), " gold:", str(int(entcoref)))
 					# TMP -- use GOLD FOR TESTING FOR NOW
 					
+					'''
 					if entcoref:
-						features.append(1)
 						features.append(0)
+						#features.append(0)
 						#print("we have ent corefs!!")
 						#exit(1)
 					else:
-						features.append(0)
 						features.append(1)
-
+						#features.append(1)
+					'''
 					'''
 					# PREDICTED ENTITY/EVENT INFO (at shortest level)
 					if m1.dir_num in self.helper.testingDirs:
@@ -454,34 +472,38 @@ class DataHandler:
 					#exit(1)
 					'''
 					
+					'''
 					if same_paths:
 						features.append(1)
 						features.append(0)
 					else:
 						features.append(0)
 						features.append(1)
-					
+					'''
+					tmp_key = ",".join(sorted([str(xuid1), str(xuid2)]))
 					# TMP COUNTS COREF STATS
 					if self.corpus.XUIDToMention[xuid1].REF == self.corpus.XUIDToMention[xuid2].REF:
 						self.tmp_coref_counts["event_coref"][entcoref] += 1
+						self.tmp_xuidpair_event_entity[tmp_key] = ("1",entcoref)
 					else:
 						self.tmp_coref_counts["event_NOcoref"][entcoref] += 1
+						self.tmp_xuidpair_event_entity[tmp_key] = ("0",entcoref)
 				# OPTIONAL GOLD INFO
-				'''
+				
 				if m1.REF == m2.REF:
-					features.append(1)
 					features.append(0)
+					#features.append(0)
+					#features.append(0)
 				else:
-					features.append(0)
 					features.append(1)
-				'''
+					#features.append(1)
+				
 				#print("features:", features)
 
 			# NOTE: if this is for HDDCRP or Stan mentions, the REFs will always be True
 			# because we don't have such info for them, so they are ""
 			if self.corpus.XUIDToMention[xuid1].REF == self.corpus.XUIDToMention[xuid2].REF:
 				
-
 				# TMP ADDED FOR SAME LEMMA TEST
 				'''
 				if sameLemma:
@@ -509,8 +531,6 @@ class DataHandler:
 			# namely, how many events coref, and of these 
 			self.tmp_total_counts += 1
 			
-
-
 			m1_features = []
 			m2_features = []
 
@@ -580,6 +600,8 @@ class DataHandler:
 		print("\t", split, "we dont have these:", tmp_dir_to_with)
 		
 		X = np.asarray(X)
+		
+		# TODO: uncomment out this line!
 		supp_features = np.asarray(supp_features)
 		#print("labels:",labels)
 		Y = np.asarray(labels)
@@ -610,6 +632,7 @@ class DataHandler:
 		'''
 		print("tmp_total_counts:", self.tmp_total_counts)
 		print("tmp_coref_counts:", self.tmp_coref_counts)
+		#print("tmp_xuidpair_event_entity:", self.tmp_xuidpair_event_entity)
 		print("\t", split, "mentionTypeToCount:",str(mentionTypeToCount))
 		print("\t", split, "tmp_pairs_with paths:", tmp_pairs_with, "tmp_pairs_without paths", tmp_pairs_without)
 		return (pairs, X, supp_features, Y)

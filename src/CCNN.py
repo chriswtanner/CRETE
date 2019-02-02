@@ -17,6 +17,7 @@ from keras import backend as K
 from keras.models import Sequential, Model
 from keras.layers import Dense, Activation, Dropout, merge, Flatten, Input, Lambda, Conv2D, AveragePooling2D, MaxPooling2D
 from keras.optimizers import Adam
+from keras.optimizers import SGD
 from collections import defaultdict
 from get_coref_metrics import get_conll_scores
 class CCNN:
@@ -54,7 +55,9 @@ class CCNN:
 		(self.trainID, self.trainX, self.trainY) = (dh.trainID, dh.trainX, dh.trainY)
 		(self.devID, self.devX, self.devY) = (dh.devID, dh.devX, dh.devY)
 		(self.testID, self.testX, self.testY) = (dh.testID, dh.testX, dh.testY)
-
+		print("supplementalTrain:", dh.supplementalTrain[0:10])
+		print("self.trainY:", self.trainY[0:10])
+		#exit(1)
 		self.supplementalTrain = dh.supplementalTrain
 		self.supplementalDev = dh.supplementalDev
 		self.supplementalTest = dh.supplementalTest
@@ -97,13 +100,14 @@ class CCNN:
 
 		# WD PART
 		if self.CCNNSupplement:
+			#auxiliary_input = Input(shape=(len(self.supplementalTrain),), name='auxiliary_input')
 			auxiliary_input = Input(shape=(len(self.supplementalTrain[0]),), name='auxiliary_input')
 			combined_layer = keras.layers.concatenate([distance, auxiliary_input])
-			x = Dense(5, activation='relu', use_bias=True)(combined_layer)
+			#x = Dense(5, activation='sigmoid', use_bias=True)(combined_layer)
 			#x2 = Dense(5, activation='sigmoid', use_bias=True)(x)
-			main_output = Dense(1, activation='sigmoid', name='main_output', use_bias=True)(x)
-			model = Model([input_a, input_b, auxiliary_input], outputs=main_output)
-			model.compile(loss=self.contrastive_loss, optimizer=Adam())
+			main_output = Dense(1, activation='tanh', name='main_output', use_bias=False)(auxiliary_input)
+			model = Model(inputs=[input_a, input_b, auxiliary_input], outputs=main_output)
+			model.compile(loss=self.contrastive_loss, optimizer=SGD()) #, metrics=['accuracy'])
 			#model.compile(loss=self.contrastive_loss, optimizer=Adam())
 			print("summary:",model.summary())
 			model.fit({'input_a': self.trainX[:, 0], 'input_b': self.trainX[:, 1], 'auxiliary_input': self.supplementalTrain},
@@ -112,7 +116,7 @@ class CCNN:
 		else:
 			model = Model(inputs=[input_a, input_b], outputs=distance)
 			#model.compile(loss='mean_squared_error', optimizer=Adam())
-			model.compile(loss=self.contrastive_loss, optimizer=Adam())
+			model.compile(loss=self.contrastive_loss, optimizer=Adam(), metrics=['accuracy'])
 			#model.compile(loss=self.weighted_binary_crossentropy,optimizer=Adam(),metrics=['accuracy'])
 			
 			print(model.summary())

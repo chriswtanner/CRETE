@@ -109,7 +109,8 @@ class Resolver:
 		trainXUIDs, devXUIDs, testXUIDs = helper.getCorpusMentions(mention_type)
 		dh = DataHandler(helper, trainXUIDs, devXUIDs, testXUIDs)
 		helper.addDependenciesToMentions(dh)
-		
+		#print("tmp_xuidpair_event_entity:", dh.tmp_xuidpair_event_entity)
+
 		#helper.checkDependencyRelations()
 		#corpus.calculateEntEnvAgreement()
 		
