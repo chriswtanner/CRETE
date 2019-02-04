@@ -174,7 +174,7 @@ class ECBHelper:
 	# takes pairwise predictions and adds to the dictionary's list
 	def addEnsemblePredictions(self, withinDoc, relevant_dirs, ids, preds, ensemblePreds):
 		i = 0
-		print("lenids:", str(len(ids)))
+		print("lenids:", str(len(ids)), "# preds:", str(len(ensemblePreds)))
 		for ((xuid1, xuid2), pred) in zip(ids, preds):
 			
 			m1 = self.corpus.XUIDToMention[xuid1]
@@ -196,6 +196,9 @@ class ECBHelper:
 			i += 1
 		print("len(ensemblePreds):", str(len(ensemblePreds)))
 
+	def analyze_misses(self, pairs):
+		print("analyze misses")
+
 	# evaluates the CCNN pairwise predictions,
 	# returning the F1, PREC, RECALL scores
 	def evaluatePairwisePreds(self, ids, preds, golds):
@@ -204,7 +207,7 @@ class ECBHelper:
 		
 		acc = 0
 		for p, g in zip(preds[0:30], golds[0:30]):
-			print(p, g)
+			print("pred:", p, "gold:", g)
 
 		tmp_score_to_xuid_pair = {}
 		for _ in range(len(preds)):
@@ -215,7 +218,7 @@ class ECBHelper:
 				scoreToGoldTruth[preds[_][0]].append(0)
 			tmp_score_to_xuid_pair[preds[_][0]] = ids[_]
 		s = sorted(scoreToGoldTruth.keys())
-		
+		print("numGoldPos:", numGoldPos)
 		TP = 0.0
 		FP = 0.0
 		bestF1 = 0
@@ -239,6 +242,7 @@ class ECBHelper:
 
 			#print("prec:", prec, "rec:", recall, "f1:", f1)
 			if f1 > bestF1:
+				print("prec:", prec, "rec:", recall, "f1:", f1, "bestVal:", bestVal)
 				bestF1 = f1
 				bestVal = eachVal
 				bestR = recall
@@ -246,19 +250,53 @@ class ECBHelper:
 		if numReturnedSoFar != len(preds):
 			print("* ERROR: we didn't look at preds correctly")
 			exit(1)
-		if bestF1 <=0:
-			print("* ERROR: our F1 was <= 0")
+		if bestF1 <0:
+			print("* ERROR: our F1 was < 0")
 			exit(1)
+
+		pairs_falsely_predicted = []
 
 		# given the best threshold, now let's check the individual performance
 		# of both entities and events
 		mentionStats = defaultdict(lambda: defaultdict(int))
 		the_pairs = defaultdict(lambda: defaultdict(int))
+		TP = 0.0
+		FP = 0.0
+		num_gold = 0
+		num_predicted = 0
+		num_wrong = 0
+		num_right = 0
 		for ((xuid1, xuid2), pred, gold) in zip(ids, preds, golds):
 			m1 = self.corpus.XUIDToMention[xuid1]
 			m2 = self.corpus.XUIDToMention[xuid2]
 			pred = pred[0]
 			mentionType = ""
+
+			#print("pred:", pred, "golds:", gold)
+
+			# stores the falsely predicted ones
+			if gold == 0:
+				num_gold += 1
+						
+			if pred > bestVal: # those we do not predict
+				# but are actually gold
+				if gold == 0:
+					 pairs_falsely_predicted.append((xuid1, xuid2))
+					 #print("* false nega:", xuid1, xuid2, "bestVal:", bestVal, "pred:", pred)
+					 num_wrong += 1
+				else:
+					num_right += 1
+			else: # those we predict
+				num_predicted += 1
+				if gold == 1:# but are NOT actually gold
+					pairs_falsely_predicted.append((xuid1, xuid2))
+					#print("* false positive:", xuid1, xuid2, "bestVal:", bestVal, "pred:", pred)
+					num_wrong += 1
+					FP += 1
+				else: # true positive
+					TP += 1
+					num_right += 1
+			
 
 			if m1.isPred and m2.isPred:
 				mentionType = "events"
@@ -298,6 +336,13 @@ class ECBHelper:
 					if mentionType == "events":
 						the_pairs[both_contain_paths]["TP"] += 1
 					mentionStats[mentionType]["TP"] += 1
+
+		recall = float(TP / num_gold)
+		prec = float(TP / num_predicted)
+		f1 = 0
+		if (recall + prec) > 0:
+			f1 = 2*(recall*prec) / (recall + prec)
+		print("*** re-calculated f1:", f1, "num_gold:", num_gold, "TP:", TP, "FP:", FP, "len(preds):", len(preds), "num_we_think_are_gold:", num_predicted, "num_wrong:", num_wrong, "num_right:", num_right)
 		# prints each of the event and entity performances
 		for mt in mentionStats.keys():
 			if mentionStats[mt]["gold"] > 0:
@@ -319,7 +364,7 @@ class ECBHelper:
 				if recall > 0 and prec > 0:
 					f1 = 2*(recall*prec) / (recall + prec)
 				#print("** WRT PAIRS OR NOT:", val, "yielded F1:", str(f1))
-		return (bestF1, bestP, bestR, bestVal)
+		return (bestF1, bestP, bestR, bestVal, pairs_falsely_predicted)
 
 	def getAllChildrenPaths(self, dh, entities, tokenToMentions, originalMentionStans, token, curPath, allPaths):
 		bestStan = dh.getBestStanToken(token.stanTokens)

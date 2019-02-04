@@ -2,7 +2,7 @@ import time
 import pickle
 import numpy as np
 import random
-
+from MiniPred import MiniPred
 from itertools import chain
 from collections import defaultdict
 class DataHandler:
@@ -11,7 +11,7 @@ class DataHandler:
 		# keeps track of how many event pairs coref and their entity ones too
 		self.tmp_coref_counts = defaultdict(lambda: defaultdict(int)) 
 		self.tmp_total_counts = 0
-		self.tmp_xuidpair_event_entity = {}
+		self.tmp_minipreds = {}
 
 		self.helper = helper
 		self.args = helper.args
@@ -382,7 +382,6 @@ class DataHandler:
 					#if m1.dir_num not in self.helper.testingDirs:
 					#	print("TRAIN: pred:", str(max_coref_score), " gold:", str(int(entcoref)))
 					# TMP -- use GOLD FOR TESTING FOR NOW
-					
 					'''
 					if entcoref:
 						features.append(0)
@@ -393,6 +392,8 @@ class DataHandler:
 						features.append(1)
 						#features.append(1)
 					'''
+					#features.append(0)
+
 					'''
 					# PREDICTED ENTITY/EVENT INFO (at shortest level)
 					if m1.dir_num in self.helper.testingDirs:
@@ -480,16 +481,25 @@ class DataHandler:
 						features.append(0)
 						features.append(1)
 					'''
-					tmp_key = ",".join(sorted([str(xuid1), str(xuid2)]))
-					# TMP COUNTS COREF STATS
+					#features.append(1)
+					tmp_key = (xuid1, xuid2)
+					if xuid2 < xuid1:
+						tmp_key = (xuid2, xuid1)
+					# COUNTS STATISTICS OF EVENT AND ENTITY COREF'ing
 					if self.corpus.XUIDToMention[xuid1].REF == self.corpus.XUIDToMention[xuid2].REF:
 						self.tmp_coref_counts["event_coref"][entcoref] += 1
-						self.tmp_xuidpair_event_entity[tmp_key] = ("1",entcoref)
 					else:
 						self.tmp_coref_counts["event_NOcoref"][entcoref] += 1
-						self.tmp_xuidpair_event_entity[tmp_key] = ("0",entcoref)
+
+					# TMP COUNTS COREF STATS
+					event_gold = False
+					if self.corpus.XUIDToMention[xuid1].REF == self.corpus.XUIDToMention[xuid2].REF:
+						event_gold = True
+
+					mp = MiniPred(tmp_key, event_gold, entcoref)
+					self.tmp_minipreds[tmp_key] = mp
 				# OPTIONAL GOLD INFO
-				
+				'''
 				if m1.REF == m2.REF:
 					features.append(0)
 					#features.append(0)
@@ -497,7 +507,7 @@ class DataHandler:
 				else:
 					features.append(1)
 					#features.append(1)
-				
+				'''
 				#print("features:", features)
 
 			# NOTE: if this is for HDDCRP or Stan mentions, the REFs will always be True
@@ -632,10 +642,12 @@ class DataHandler:
 		'''
 		print("tmp_total_counts:", self.tmp_total_counts)
 		print("tmp_coref_counts:", self.tmp_coref_counts)
-		#print("tmp_xuidpair_event_entity:", self.tmp_xuidpair_event_entity)
+		print("tmp xuids:", len(self.tmp_minipreds.keys()))
 		print("\t", split, "mentionTypeToCount:",str(mentionTypeToCount))
 		print("\t", split, "tmp_pairs_with paths:", tmp_pairs_with, "tmp_pairs_without paths", tmp_pairs_without)
 		return (pairs, X, supp_features, Y)
+
+	#def createMiniFFNN(self, )
 
 	# creates data for FFNN and SVM:
 	# [(xuid1,xuid2), [features], [1,0]]

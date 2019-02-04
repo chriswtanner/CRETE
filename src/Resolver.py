@@ -6,6 +6,7 @@ import sys
 import os
 import fnmatch
 import numpy as np
+from collections import defaultdict
 from KBPParser import KBPParser
 from ECBParser import ECBParser
 from HDDCRPParser import HDDCRPParser
@@ -110,7 +111,7 @@ class Resolver:
 		dh = DataHandler(helper, trainXUIDs, devXUIDs, testXUIDs)
 		helper.addDependenciesToMentions(dh)
 		#print("tmp_xuidpair_event_entity:", dh.tmp_xuidpair_event_entity)
-
+	
 		#helper.checkDependencyRelations()
 		#corpus.calculateEntEnvAgreement()
 		
@@ -127,27 +128,66 @@ class Resolver:
 
 			print("\t** BEST DEV-WD stopping points:", sp_wd,"and",sp_cd)
 			'''
-			ensemble_predictions = []
-			while ensemble_predictions == [] or len(ensemble_predictions[0]) < num_runs:
+			ensemble_dev_predictions = []
+			ensemble_test_predictions = []
+			while ensemble_test_predictions == [] or len(ensemble_test_predictions[0]) < num_runs:
 
 				# self.scope == doc or dir (WD or CD)
 				model = CCNN(helper, dh, supp_features_type, self.scope, self.presets, None, devMode, stopping_points)
-				dirs, ids, preds, golds, best_f1 = model.train_and_test()
-				if best_f1 > 0.4:
+				results = model.train_and_test()
+
+				dev_dirs, dev_ids, dev_preds, dev_golds, dev_best_f1 = results[0]
+				test_dirs, test_ids, test_preds, test_golds, test_best_f1 = results[1]
+				print("****** test_preds:", test_preds)
+				if test_best_f1 > 0.4:
+					is_wd = True
 					if self.scope == "doc": # WD
-						helper.addEnsemblePredictions(True, dirs, ids, preds, ensemble_predictions) # True means WD
 						print("DOING WITHIN-DOC ENSEMBLE!")
 					elif self.scope == "dir": # CD
-						helper.addEnsemblePredictions(False, dirs, ids, preds, ensemble_predictions) # False means CD
+						is_wd = False
 						print("DOING CROSS-DOC ENSEMBLE!")
 					else:
 						print("** ERROR: invalid scope.  should be doc or dir")
 						exit(1)
-					
-					print("len(ensemble_predictions[0]):", str(len(ensemble_predictions[0])))
 
-			preds = helper.getEnsemblePreds(ensemble_predictions) # normalizes them
-			(f1, prec, rec, bestThreshold) = helper.evaluatePairwisePreds(ids, preds, golds)
-			print("[***",mention_type,"ENSEMBLE CCNN BEST PAIRWISE TEST RESULTS] f1:", round(f1,4), " prec: ", round(prec,4), " recall: ", round(rec,4), " threshold: ", round(bestThreshold,3))
+					helper.addEnsemblePredictions(is_wd, dev_dirs, dev_ids, dev_preds, ensemble_dev_predictions)	
+					helper.addEnsemblePredictions(is_wd, test_dirs, test_ids, test_preds, ensemble_test_predictions) # True means WD
+					print("lenensemble_test_predictions:", len(ensemble_test_predictions))
+					print("len(ensemble_test_predictions[0]):", str(len(ensemble_test_predictions[0])))
+
+			dev_preds = helper.getEnsemblePreds(ensemble_dev_predictions) # normalizes them
+			(dev_f1, dev_prec, dev_rec, dev_bestThreshold, wrong_dev_pairs) = helper.evaluatePairwisePreds(dev_ids, dev_preds, dev_golds)
+			print("[***",mention_type,"ENSEMBLE DEV RESULTS] f1:", round(dev_f1,4), " prec: ", round(dev_prec,4), " recall: ", round(dev_rec,4), " threshold: ", round(dev_bestThreshold,3))
+
+			test_preds = helper.getEnsemblePreds(ensemble_test_predictions) # normalizes them
+			(test_f1, test_prec, test_rec, test_bestThreshold, wrong_test_pairs) = helper.evaluatePairwisePreds(test_ids, test_preds, test_golds)
+			print("[***",mention_type,"ENSEMBLE TEST RESULTS] f1:", round(test_f1,4), " prec: ", round(test_prec,4), " recall: ", round(test_rec,4), " threshold: ", round(test_bestThreshold,3))
 			print("* done.  took ", str((time.time() - start_time)), "seconds")
-			return ids, preds, golds
+
+			# sets preds on a per-xuid basis
+			key_to_pred = {}
+			for key, val in zip(dev_ids, dev_preds):
+				key_to_pred[key] = val
+			for key, val in zip(test_ids, test_preds):
+				key_to_pred[key] = val
+
+			# adds predictions
+			print("# mini preds:", len(dh.tmp_minipreds.keys()))
+			keys_to_save = []
+			for dev_id in dev_ids:
+				keys_to_save.append(dev_id)
+			for test_id in test_ids:
+				keys_to_save.append(test_id)
+			for key in keys_to_save:
+				mp = dh.tmp_minipreds[key]
+				mp.set_event_pred(key_to_pred[key])
+				#dh.tmp_minipreds[key] = mp
+
+			tmp_coref_counts = defaultdict(lambda: defaultdict(int))
+			for key in wrong_dev_pairs: #keys_to_save:
+				mp = dh.tmp_minipreds[key]
+				#print("minipred:", dh.tmp_minipreds[key])
+				tmp_coref_counts[mp.event_gold][mp.ent_gold] += 1
+			print("FINAL tmp_coref_counts:", tmp_coref_counts)
+			#devID, devX, devY  = dh.createMiniFFNN(dev_ids, )
+			return test_ids, test_preds, test_golds

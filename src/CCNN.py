@@ -15,7 +15,7 @@ from sklearn.metrics import classification_report # TMP -- dependency parse feat
 from math import sqrt, floor
 from keras import backend as K
 from keras.models import Sequential, Model
-from keras.layers import Dense, Activation, Dropout, merge, Flatten, Input, Lambda, Conv2D, AveragePooling2D, MaxPooling2D
+from keras.layers import Dense, Activation, Dropout, Embedding, merge, Flatten, Input, Lambda, Conv2D, AveragePooling2D, MaxPooling2D
 from keras.optimizers import Adam
 from keras.optimizers import SGD
 from collections import defaultdict
@@ -92,28 +92,60 @@ class CCNN:
 		
 		processed_a = base_network(input_a)
 		processed_b = base_network(input_b)
+		
 		distance = Lambda(self.euclidean_distance)([processed_a, processed_b])
 		#distance = Lambda(self.euclidean_distance, output_shape=self.eucl_dist_output_shape)([processed_a, processed_b])
 
 		# TODO: do NOT LEAVE THIS IN HERE.  IT FORCES NOT USING SUPPLEMENTAL FEATURES
-		#self.CCNNSupplement = False
+		self.CCNNSupplement = False
 
 		# WD PART
 		if self.CCNNSupplement:
+			print("SUPP!")
 			#auxiliary_input = Input(shape=(len(self.supplementalTrain),), name='auxiliary_input')
 			auxiliary_input = Input(shape=(len(self.supplementalTrain[0]),), name='auxiliary_input')
+			#embedded_input = Embedding(input_dim=1, output_dim=1)(auxiliary_input)
 			combined_layer = keras.layers.concatenate([distance, auxiliary_input])
-			#x = Dense(5, activation='sigmoid', use_bias=True)(combined_layer)
+			#x = Dense(5, activation='sigmoid')(combined_layer)
 			#x2 = Dense(5, activation='sigmoid', use_bias=True)(x)
-			main_output = Dense(1, activation='tanh', name='main_output', use_bias=False)(auxiliary_input)
+			main_output = Dense(1, activation='sigmoid', name='main_output')(combined_layer)
+			#model = Model(inputs=[auxiliary_input], outputs=main_output)
 			model = Model(inputs=[input_a, input_b, auxiliary_input], outputs=main_output)
-			model.compile(loss=self.contrastive_loss, optimizer=SGD()) #, metrics=['accuracy'])
+			model.compile(loss=self.contrastive_loss, optimizer=Adam()) #, metrics=['accuracy'])
 			#model.compile(loss=self.contrastive_loss, optimizer=Adam())
 			print("summary:",model.summary())
-			model.fit({'input_a': self.trainX[:, 0], 'input_b': self.trainX[:, 1], 'auxiliary_input': self.supplementalTrain},
+			val_loss = [1]
+			num_tries = 0
+			while val_loss[-1] > 0.1 and num_tries < 1:
+				train_history = model.fit({'input_a': self.trainX[:, 0], 'input_b': self.trainX[:, 1], 'auxiliary_input': self.supplementalTrain},
 					{'main_output': self.trainY}, batch_size=self.bs, epochs=self.ne, \
 					validation_data=({'input_a': self.devX[:, 0], 'input_b': self.devX[:, 1], 'auxiliary_input': self.supplementalDev}, {'main_output': self.devY}))
+				val_loss = train_history.history['val_loss']
+				print("val LOSS:", val_loss)
+				num_tries += 1
+			'''
+			inp = model.input
+			outputs = [layer.output for layer in model.layers[5:7]]
+			functor = K.function(inp + [K.learning_phase()], outputs)
+			print("outputs:", outputs)
+			
+			# Testing
+			test = ({'input_a': self.devX[:, 0], 'input_b': self.devX[:, 1], 'auxiliary_input': self.supplementalDev}, {'main_output': self.devY})
+			layer_outs = functor([test, 1.])
+			print(layer_outs)
+			exit(1)
+			'''
+			for layer in model.layers:
+				print("layer:")
+				g=layer.get_config()
+				h=layer.get_weights()
+				print(g)
+				print(h)
+			
 		else:
+			#distance = Lambda(self.L1_distance)([processed_a, processed_b])
+			#concat = keras.layers.concatenate([processed_a, processed_b])
+			#distance = Dense(1, activation='sigmoid', name='main_output', use_bias=False)(concat)
 			model = Model(inputs=[input_a, input_b], outputs=distance)
 			#model.compile(loss='mean_squared_error', optimizer=Adam())
 			model.compile(loss=self.contrastive_loss, optimizer=Adam(), metrics=['accuracy'])
@@ -194,23 +226,43 @@ class CCNN:
 		'''
 
 		if self.CCNNSupplement:
-			preds = model.predict({'input_a': self.testX[:, 0], 'input_b': self.testX[:, 1], 'auxiliary_input': self.supplementalTest})
+			dev_preds = model.predict({'input_a': self.devX[:, 0], 'input_b': self.devX[:, 1], 'auxiliary_input': self.supplementalDev})
+			test_preds = model.predict({'input_a': self.testX[:, 0], 'input_b': self.testX[:, 1], 'auxiliary_input': self.supplementalTest})
+
+		else:
+			dev_preds = model.predict([self.devX[:, 0], self.devX[:, 1]])
+			test_preds = model.predict([self.testX[:, 0], self.testX[:, 1]])
+		
+		# evaluates
+		(dev_f1, dev_prec, dev_rec, dev_bestThreshold, wrong_dev_pairs) = self.helper.evaluatePairwisePreds(self.devID, dev_preds, self.devY)
+		print("[CCNN DEV RESULTS] f1:", round(dev_f1,4), " prec: ", round(dev_prec,4), " recall: ", round(dev_rec,4), " threshold: ", round(dev_bestThreshold,3))
+
+		(test_f1, test_prec, test_rec, test_bestThreshold, wrong_test_pairs) = self.helper.evaluatePairwisePreds(self.testID, test_preds, self.testY)
+		print("[CCNN TEST RESULTS] f1:", round(test_f1,4), " prec: ", round(test_prec,4), " recall: ", round(test_rec,4), " threshold: ", round(test_bestThreshold,3))
+		
+		self.helper.analyze_misses(wrong_test_pairs)
+
+		dev_results = (self.helper.devDirs, self.devID, dev_preds, self.devY, dev_f1)
+		test_results = (self.helper.testingDirs, self.testID, test_preds, self.testY, test_f1)
+		return [dev_results, test_results]
+
+		'''
 		else:
 			if self.devMode:
 				preds = model.predict([self.devX[:, 0], self.devX[:, 1]])
 			else:
 				preds = model.predict([self.testX[:, 0], self.testX[:, 1]])
-
 			#print("[DEV] AGGWD SP:", str(round(sp,4)), "CoNLL F1:", str(round(conll_f1,4)), "MUC:", str(round(muc_f1,4)), "BCUB:", str(round(bcub_f1,4)), "CEAF:", str(round(ceafe_f1,4)))
-		
+		'''
+		exit(1)
 		if self.devMode:
 			if self.args.useECBTest:
-				(f1, prec, rec, bestThreshold) = self.helper.evaluatePairwisePreds(self.devID, preds, self.devY)
+				(f1, prec, rec, bestThreshold, wrong_dev_pairs) = self.helper.evaluatePairwisePreds(self.devID, preds, self.devY)
 				print("[CCNN BEST PAIRWISE DEV RESULTS] f1:", round(f1,4), " prec: ", round(prec,4), " recall: ", round(rec,4), " threshold: ", round(bestThreshold,3))
 			return (self.helper.devDirs, self.devID, preds, self.devY, f1)
 		else:
 			if self.args.useECBTest:
-				(f1, prec, rec, bestThreshold) = self.helper.evaluatePairwisePreds(self.testID, preds, self.testY)
+				(f1, prec, rec, bestThreshold, wrong_test_pairs) = self.helper.evaluatePairwisePreds(self.testID, preds, self.testY)
 				print("[CCNN BEST PAIRWISE TEST RESULTS] f1:", round(f1,4), " prec: ", round(prec,4), " recall: ", round(rec,4), " threshold: ", round(bestThreshold,3))
 			return (self.helper.testingDirs, self.testID, preds, self.testY, f1)
 
@@ -337,11 +389,13 @@ class CCNN:
 				combined_layer = keras.layers.concatenate([distance, auxiliary_input])
 				#x = Dense(100, activation='relu')(combined_layer)
 				#x2 = Dense(5, activation='relu')(x)
+				''' # I COMMENTED THIS OUT JUST TO BRING ATTENTION TO THIS BEING CD
 				main_output = Dense(1, activation='relu', name='main_output')(x)
 				model = Model([input_a, input_b, auxiliary_input], outputs=main_output)
 				model.compile(loss=self.contrastive_loss, optimizer=Adam())
 				print("model summary:")
 				print(model.summary())
+				'''
 				model.fit({'input_a': self.trainX[:, 0], 'input_b': self.trainX[:, 1], 'auxiliary_input': self.supplementalTrain},
 						{'main_output': self.trainY},
 						batch_size=self.bs, \
@@ -865,7 +919,6 @@ class CCNN:
 	def create_base_network(self, input_shape):
 		seq = Sequential()
 		kernel_rows = 1
-
 		for i in range(self.nl):
 			nf = self.nf
 			if i == 1: # meaning 2nd layer, since i in {0,1,2, ...}
@@ -877,6 +930,12 @@ class CCNN:
 		seq.add(Flatten())
 		seq.add(Dense(self.nf, activation='relu'))
 		return seq
+
+	def L1_distance(self, vects):
+	
+		return K.sqrt(K.maximum(K.sum(K.abs(vects[0] - vects[1]), axis=1, keepdims=True), K.epsilon()))
+
+
 
 	def euclidean_distance(self, vects):
 		#return tf.clip_by_value(K.sqrt(K.maximum(K.sum(K.square(vects[0] - vects[1]), axis=1, keepdims=True), K.epsilon())), 0, 1)
@@ -898,7 +957,6 @@ class CCNN:
 	def contrastive_loss(self, y_true, y_pred):
 		margin = 1
 		return K.mean((1 - y_true)*K.square(y_true - y_pred) + (y_true)*K.square(K.maximum(margin - y_pred, 0)))
-		#return K.mean(y_true * K.square(y_pred) + (1 - y_true) * K.square(K.maximum(margin - y_pred, 0)))
 
 	def standard_deviation(self, lst):
 		num_items = len(lst)
