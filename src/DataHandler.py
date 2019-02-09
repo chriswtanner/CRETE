@@ -10,9 +10,11 @@ class DataHandler:
 
 		# keeps track of how many event pairs coref and their entity ones too
 		self.tmp_coref_counts = defaultdict(lambda: defaultdict(int)) 
-		self.tmp_total_counts = 0
 		self.tmp_minipreds = {}
 
+		self.tmp_count_in = 0
+		self.tmp_count_out = 0
+		
 		self.helper = helper
 		self.args = helper.args
 		self.corpus = helper.corpus
@@ -237,9 +239,87 @@ class DataHandler:
 				else:
 					tmp_pairs_with += 1
 			'''
+
+			if supp_features_type == "relations":
+				print("in here")
+				# ensures both event mentions have some hop relations
+				#if len(m1.valid_rel_to_entities.keys()) > 0 and len(m2.valid_rel_to_entities.keys()) > 0:
+				
+				# only looks at pairs which are both and dobj and nsubj that coref
+				if len(m1.valid_rel_to_entities.keys()) == 2 and len(m2.valid_rel_to_entities.keys()) == 2:
+					tmp_key = (xuid1, xuid2)
+					if xuid2 < xuid1:
+						tmp_key = (xuid2, xuid1)
+					
+					self.tmp_count_in += 1
+					#print("m1:", m1, "m2:", m2)
+					entcoref = False # i'm using this variable to represent if the relations and lemma are the same
+					rels_that_coref = set()
+					for rel in m1.valid_rel_to_entities:
+						linked_ents_1 = m1.valid_rel_to_entities[rel]
+						if rel in m2.valid_rel_to_entities: # same relation, let's check if they have the same lemma
+							linked_ents_2 = m2.valid_rel_to_entities[rel]
+							for ent1 in linked_ents_1:
+								for ent2 in linked_ents_2:
+									if ent1.REF == ent2.REF:
+										rels_that_coref.add(rel)
+					if len(rels_that_coref) == 2:
+						entcoref = True
+						print("**** ents coref!!")
+						exit(1)
+					else:
+						continue
+					'''
+					for rel in m1.valid_hops:
+						linked_tokens_1 = m1.valid_hops[rel]
+						if rel in m2.valid_hops: # same relation, let's check if they have the same lemma
+							linked_tokens_2 = m2.valid_hops[rel]
+							for t1 in linked_tokens_1:
+								lemma1 = self.getBestStanToken(t1.stanTokens).lemma.lower()
+								for t2 in linked_tokens_2:
+									lemma2 = self.getBestStanToken(t2.stanTokens).lemma.lower()
+									if lemma1 == lemma2:
+										entcoref = True
+										break
+					'''
+					# TMP COUNTS COREF STATS
+					event_gold = False
+					if self.corpus.XUIDToMention[xuid1].REF == self.corpus.XUIDToMention[xuid2].REF:
+						event_gold = True
+
+					mp = MiniPred(tmp_key, event_gold, entcoref)
+					self.tmp_minipreds[tmp_key] = mp
+
+					# COUNTS STATISTICS OF EVENT AND ENTITY COREF'ing
+					if m1.REF == m2.REF:
+						self.tmp_coref_counts["event_coref"][entcoref] += 1
+					else:
+						self.tmp_coref_counts["event_NOcoref"][entcoref] += 1
+
+					if entcoref:
+						features.append(0)
+					else:
+						features.append(1)
+
+					'''
+					if m1.REF == m2.REF:
+						features.append(0)
+					else:
+						features.append(1)
+					'''
+				else:
+					self.tmp_count_out += 1
+					continue
+					#print("DONT HAVE RELATIONS")
+					#print("\tm1 out:", m1, m1.valid_hops)
+					#print("\tm2 out:", m2, m2.valid_hops)
+			
+
+
 			# TMP added: tests adding entity coref info
 			if supp_features_type == "one" or supp_features_type == "shortest":
-				
+				print("*** we shouldnt be here")
+				exit(1) # we shouldn't be here
 				# checks if one of the events doesn't have a path to an entity
 				m1_full_paths = None
 				m2_full_paths = None
@@ -279,6 +359,7 @@ class DataHandler:
 						if 1 not in m1.levelToChildrenEntities or 1 not in m2.levelToChildrenEntities:
 							continue
 					'''
+
 					m1_shortests = [] if len(m1_full_paths) == 0 else [x for x in m1_full_paths[next(iter(sorted(m1_full_paths)))]]
 					m2_shortests = [] if len(m2_full_paths) == 0 else [x for x in m2_full_paths[next(iter(sorted(m2_full_paths)))]]
 
@@ -485,6 +566,7 @@ class DataHandler:
 					tmp_key = (xuid1, xuid2)
 					if xuid2 < xuid1:
 						tmp_key = (xuid2, xuid1)
+
 					# COUNTS STATISTICS OF EVENT AND ENTITY COREF'ing
 					if self.corpus.XUIDToMention[xuid1].REF == self.corpus.XUIDToMention[xuid2].REF:
 						self.tmp_coref_counts["event_coref"][entcoref] += 1
@@ -539,7 +621,6 @@ class DataHandler:
 
 			# TMP: merely displays statistics just like checkDependencyRelations()
 			# namely, how many events coref, and of these 
-			self.tmp_total_counts += 1
 			
 			m1_features = []
 			m2_features = []
@@ -640,11 +721,12 @@ class DataHandler:
 			f1 = 2*(recall*prec) / (recall + prec)
 		print("samelamma f1:",f1, prec, recall)
 		'''
-		print("tmp_total_counts:", self.tmp_total_counts)
-		print("tmp_coref_counts:", self.tmp_coref_counts)
+		print("ALL CORPUS tmp_coref_counts:", self.tmp_coref_counts)
 		print("tmp xuids:", len(self.tmp_minipreds.keys()))
 		print("\t", split, "mentionTypeToCount:",str(mentionTypeToCount))
 		print("\t", split, "tmp_pairs_with paths:", tmp_pairs_with, "tmp_pairs_without paths", tmp_pairs_without)
+		print("**** tmp_count_in:", self.tmp_count_in)
+		print("tmp_count_out:", self.tmp_count_out)
 		return (pairs, X, supp_features, Y)
 
 	#def createMiniFFNN(self, )

@@ -38,6 +38,9 @@ class ECBHelper:
 
 		self.predictions = defaultdict(float) # filled in with entity coref predictions
 
+		# TMP, manually defines the relations we care about
+		self.valid_relations = ['nsubj', 'dobj']
+
 
 	# prints the entire corpus (regardless of if entities or events) to a file
 	def printCorpus(self, filename_out):
@@ -196,27 +199,24 @@ class ECBHelper:
 			i += 1
 		print("len(ensemblePreds):", str(len(ensemblePreds)))
 
-	def analyze_misses(self, pairs):
-		print("analyze misses")
-
 	# evaluates the CCNN pairwise predictions,
 	# returning the F1, PREC, RECALL scores
-	def evaluatePairwisePreds(self, ids, preds, golds):
+	def evaluatePairwisePreds(self, ids, preds, golds, dh):
+
 		numGoldPos = 0
 		scoreToGoldTruth = defaultdict(list)
 		
 		acc = 0
-		for p, g in zip(preds[0:30], golds[0:30]):
+		for p, g in zip(preds[0:15], golds[0:15]):
 			print("pred:", p, "gold:", g)
 
-		tmp_score_to_xuid_pair = {}
 		for _ in range(len(preds)):
 			if golds[_] == 0:
 				numGoldPos += 1
 				scoreToGoldTruth[preds[_][0]].append(1)
 			else:
 				scoreToGoldTruth[preds[_][0]].append(0)
-			tmp_score_to_xuid_pair[preds[_][0]] = ids[_]
+
 		s = sorted(scoreToGoldTruth.keys())
 		print("numGoldPos:", numGoldPos)
 		TP = 0.0
@@ -226,6 +226,7 @@ class ECBHelper:
 		bestR = 0
 		bestP = 0
 		numReturnedSoFar = 0
+		score_to_index_rank = {}
 		for eachVal in s:
 			for _ in scoreToGoldTruth[eachVal]:
 				if _ == 1:
@@ -234,6 +235,10 @@ class ECBHelper:
 					FP += 1
 
 			numReturnedSoFar += len(scoreToGoldTruth[eachVal])
+
+			score_rounded = str(round(eachVal,7))
+			score_to_index_rank[score_rounded] = numReturnedSoFar
+
 			recall = float(TP / numGoldPos)
 			prec = float(TP / numReturnedSoFar)
 			f1 = 0
@@ -242,7 +247,6 @@ class ECBHelper:
 
 			#print("prec:", prec, "rec:", recall, "f1:", f1)
 			if f1 > bestF1:
-				print("prec:", prec, "rec:", recall, "f1:", f1, "bestVal:", bestVal)
 				bestF1 = f1
 				bestVal = eachVal
 				bestR = recall
@@ -254,8 +258,6 @@ class ECBHelper:
 			print("* ERROR: our F1 was < 0")
 			exit(1)
 
-		pairs_falsely_predicted = []
-
 		# given the best threshold, now let's check the individual performance
 		# of both entities and events
 		mentionStats = defaultdict(lambda: defaultdict(int))
@@ -266,13 +268,23 @@ class ECBHelper:
 		num_predicted = 0
 		num_wrong = 0
 		num_right = 0
+		pred_to_gold_features = defaultdict(list)
+		pred_to_ids_error  = defaultdict(list)
+		wrong_pairs = set()
 		for ((xuid1, xuid2), pred, gold) in zip(ids, preds, golds):
 			m1 = self.corpus.XUIDToMention[xuid1]
 			m2 = self.corpus.XUIDToMention[xuid2]
 			pred = pred[0]
 			mentionType = ""
 
-			#print("pred:", pred, "golds:", gold)
+			# saves the predictions
+			mp = dh.tmp_minipreds[(xuid1, xuid2)]
+			mp.set_event_pred(pred)
+
+			gold_feat = (mp.event_gold, mp.ent_gold)
+			pred_to_gold_features[pred].append(gold_feat)
+
+			score_rounded = str(round(pred,7))
 
 			# stores the falsely predicted ones
 			if gold == 0:
@@ -281,22 +293,21 @@ class ECBHelper:
 			if pred > bestVal: # those we do not predict
 				# but are actually gold
 				if gold == 0:
-					 pairs_falsely_predicted.append((xuid1, xuid2))
-					 #print("* false nega:", xuid1, xuid2, "bestVal:", bestVal, "pred:", pred)
-					 num_wrong += 1
+					pred_to_ids_error[score_rounded].append((xuid1, xuid2, "FN"))
+					wrong_pairs.add((xuid1, xuid2))
+					num_wrong += 1
 				else:
 					num_right += 1
 			else: # those we predict
 				num_predicted += 1
 				if gold == 1:# but are NOT actually gold
-					pairs_falsely_predicted.append((xuid1, xuid2))
-					#print("* false positive:", xuid1, xuid2, "bestVal:", bestVal, "pred:", pred)
+					pred_to_ids_error[score_rounded].append((xuid1, xuid2, "FP"))
+					wrong_pairs.add((xuid1, xuid2))
 					num_wrong += 1
 					FP += 1
 				else: # true positive
 					TP += 1
 					num_right += 1
-			
 
 			if m1.isPred and m2.isPred:
 				mentionType = "events"
@@ -343,6 +354,44 @@ class ECBHelper:
 		if (recall + prec) > 0:
 			f1 = 2*(recall*prec) / (recall + prec)
 		print("*** re-calculated f1:", f1, "num_gold:", num_gold, "TP:", TP, "FP:", FP, "len(preds):", len(preds), "num_we_think_are_gold:", num_predicted, "num_wrong:", num_wrong, "num_right:", num_right)
+		
+		err_num = 0
+		for pred in sorted(pred_to_ids_error.keys()):
+			for (xuid1, xuid2, err_type) in pred_to_ids_error[pred]:
+				m1 = self.corpus.XUIDToMention[xuid1]
+				m2 = self.corpus.XUIDToMention[xuid2]
+				mp = dh.tmp_minipreds[(xuid1, xuid2)]
+
+				index_pos = score_to_index_rank[pred]
+				percent = float(index_pos) / float(len(preds))
+
+				sentNum1 = m1.globalSentenceNum
+				sent1 = ""
+				for t in self.corpus.globalSentenceNumToTokens[sentNum1]:
+					sent1 += t.text + " "
+
+				sentNum2 = m2.globalSentenceNum
+				sent2 = ""
+				for t in self.corpus.globalSentenceNumToTokens[sentNum2]:
+					sent2 += t.text + " "
+
+				'''
+				print("\nWRONG #", err_num, ";pred:",pred,"; index rank:", index_pos, "of", len(preds), "; ERROR:", err_type)
+				print("\tGOLD TRUTH:\n\t\tEVENT COREF:", mp.event_gold, "\n\t\tENTITY COREF:", mp.ent_gold)
+				print("\tEVENT_1:", m1)
+				print("\tEVENT_2:", m2)
+				print("\tSENTENCE1:", sent1)
+				print("\tSENTENCE2:", sent2)
+				'''	
+				err_num += 1
+
+		# prints the event and entity gold info
+		'''
+		for pred in sorted(pred_to_gold_features.keys()):
+			for (event_gold, ent_gold) in pred_to_gold_features[pred]:
+				print(pred, ",", event_gold,",",ent_gold)
+		'''
+
 		# prints each of the event and entity performances
 		for mt in mentionStats.keys():
 			if mentionStats[mt]["gold"] > 0:
@@ -364,8 +413,56 @@ class ECBHelper:
 				if recall > 0 and prec > 0:
 					f1 = 2*(recall*prec) / (recall + prec)
 				#print("** WRT PAIRS OR NOT:", val, "yielded F1:", str(f1))
-		return (bestF1, bestP, bestR, bestVal, pairs_falsely_predicted)
 
+		
+		'''
+		# sets preds on a per-xuid basis
+		key_to_pred = {}
+		for key, val in zip(dev_ids, dev_preds):
+			key_to_pred[key] = val
+		for key, val in zip(test_ids, test_preds):
+			key_to_pred[key] = val
+
+		# adds predictions
+		print("# mini preds:", len(dh.tmp_minipreds.keys()))
+		keys_to_save = []
+		for dev_id in dev_ids:
+			keys_to_save.append(dev_id)
+		for test_id in test_ids:
+			keys_to_save.append(test_id)
+		for key in keys_to_save:
+			mp = dh.tmp_minipreds[key]
+			mp.set_event_pred(key_to_pred[key])
+			#dh.tmp_minipreds[key] = mp
+		'''
+		tmp_coref_counts = defaultdict(lambda: defaultdict(int))
+		for key in wrong_pairs: #keys_to_save:
+			mp = dh.tmp_minipreds[key]
+			#print("minipred:", dh.tmp_minipreds[key])
+			tmp_coref_counts[mp.event_gold][mp.ent_gold] += 1
+		print("WRONG PAIRS tmp_coref_counts:", tmp_coref_counts)
+		
+		return (bestF1, bestP, bestR, bestVal)
+
+	def get_all_valid_1hops(self, dh, token, valid_1hops, valid_relations, rel_counts):
+		#print("token:", token)
+		bestStan = dh.getBestStanToken(token.stanTokens)
+		#print("\tbestStan:", bestStan)
+		for cl in bestStan.childLinks:
+			#print("\t\tcl:", cl)
+			ecbTokens = self.stanTokenToECBTokens[cl.child]
+			#print("\t\t\tecbtokens:", ecbTokens)
+			rel_counts[cl.relationship] += 1
+			found_valid_relation = ""
+			for rel in valid_relations:
+				if cl.relationship.startswith(rel):
+					found_valid_relation = rel
+					break
+			if found_valid_relation != "":
+				for child_token in ecbTokens:
+					valid_1hops[rel].add(child_token)
+		
+	
 	def getAllChildrenPaths(self, dh, entities, tokenToMentions, originalMentionStans, token, curPath, allPaths):
 		bestStan = dh.getBestStanToken(token.stanTokens)
 
@@ -464,7 +561,7 @@ class ECBHelper:
 						self.levelToParents[depth].add(ecbParentToken)
 						self.getParents(mentionStans, dh, ecbParentToken, depth+1)
 
-	'''
+	
 	def getChildren(self, mentionStans, dh, token, depth):
 		if token not in self.tokensVisited:
 			bestStan = dh.getBestStanToken(token.stanTokens)
@@ -488,7 +585,7 @@ class ECBHelper:
 						ecbChildToken = next(iter(self.stanTokenToECBTokens[p.child]))
 						self.levelToChildren[depth].add(ecbChildToken)
 						self.getChildren(mentionStans, dh, ecbChildToken, depth+1)
-	'''
+
 
 	def checkDependencyRelations(self):
 		distancesCounts = defaultdict(int)
@@ -669,6 +766,10 @@ class ECBHelper:
 		print("eventsConsidered:", str(len(eventsConsidered)))
 
 	def addDependenciesToMentions(self, dh):
+		# TMP: keeps track of how many event mentions have entities attached or not
+		have_ent = 0
+		not_have_ent = 0
+
 		eventsConsidered = set()
 		numEntities = defaultdict(int)
 		relation_to_count = defaultdict(int)
@@ -689,6 +790,7 @@ class ECBHelper:
 				if len(self.stanTokenToECBTokens[k]) > 1:
 					print("woops, we have len of :", len(self.stanTokenToECBTokens[k]), ":", k)
 			'''
+
 			# looks through each mention, to print the most immediate governor
 			# and modifier mentions of the opposite type
 			# maps each mention to a SENTENCE
@@ -712,8 +814,50 @@ class ECBHelper:
 				for t in self.corpus.globalSentenceNumToTokens[s]:
 					tokenText += t.text + " "
 
-				#print("sentence #:", s, "tokens:", tokenText)
+				print("\nsentence #:", tokenText)
+				print("\t[events]:", [_.text for _ in sentenceToEventMentions[s]])
+				print("\t[entities]:", [_.text for _ in sentenceToEntityMentions[s]])
+				#print("details:")
 				for m in sentenceToEventMentions[s]:
+
+					# TMP, eugene's idea of using just a few relations (1-hop away)
+					
+					#print("\tentities in this sent:", sentenceToEntityMentions[s])
+					valid_1hops = defaultdict(set)
+					for mention_token in m.tokens:
+						self.get_all_valid_1hops(dh, mention_token, valid_1hops, self.valid_relations, relation_to_count)
+					m.set_valid1hops(valid_1hops, sentenceTokenToMention[sentNum])
+
+					
+					# we do this here, but the main time is below.  this is just for debugging purposes
+					mentionStanTokens = set()
+					for t in m.tokens:
+						bestStan = dh.getBestStanToken(t.stanTokens)
+						mentionStanTokens.add(bestStan)
+					print("\n\t* entity-paths for event", m.text, str(m.doc_id), "sent:", s)
+					allPaths = []
+					curPath = []
+					self.getAllChildrenMentionPaths(dh, sentenceTokenToMention[s], mentionStanTokens, t, curPath, allPaths)
+					for path in allPaths:
+						tmp_path = []
+						for _ in path:
+							tmp_path.append(_)
+						print("\t", [str(a) for a in path])
+					#print("\tvalid_hops:", m.valid_hops)
+					#print("\tvalid hop entities:", m.valid_rel_to_entities)
+					print("\t**NSUBJ and DOBJ 1-hops:")
+					if "nsubj" in m.valid_rel_to_entities.keys() or "dobj" in m.valid_rel_to_entities:
+						
+						#print("sentence:", tokenText)
+						#print("\tevent:", m.text)
+						for rel in sorted(m.valid_rel_to_entities.keys()):
+							for rel_men in m.valid_rel_to_entities[rel]:
+								print("\t", m.text, "--[", rel, "]-->", rel_men.text)
+						have_ent += 1
+					else:
+						not_have_ent += 1
+					#	print("have an ent")
+						#exit(1)
 					eventsConsidered.add(m)
 				
 					# gets the StanTokens for the current mention, so that we
@@ -822,9 +966,11 @@ class ECBHelper:
 
 						shortest_path_to_ent[shortest_level] += 1
 						
+						'''
 						for rel in one_hop_relations:
 							relation_to_count[rel] += 1
-						
+						'''
+
 						'''
 						print("mentions' paths to entities:")
 						for l in sorted(m.levelToEntityPath.keys()):
@@ -852,18 +998,21 @@ class ECBHelper:
 			'''
 		print("eventsConsidered:", str(len(eventsConsidered)))
 		sorted_x = sorted(relation_to_count.items(), key=operator.itemgetter(1), reverse=True)
-
 		rel_num = 0
 		for rel in sorted(relation_to_count.keys()):
 			self.relationToIndex[rel] = rel_num
 			rel_num += 1
-		print(self.relationToIndex)
-		''' prints coutns of dependency relations
-		for x in sorted_x:
-			print(x[0], ",", x[1])
-		for level in shortest_path_to_ent.keys():
-			print("level", level, " = ", str(shortest_path_to_ent[level]))
-		'''
+
+		print("have_ent:", have_ent)
+		print("not_have_ent:", not_have_ent)
+		#print(self.relationToIndex)
+		#prints coutns of dependency relations
+		#for x in sorted_x:
+		#	print(x[0], ",", x[1])
+
+		#for level in shortest_path_to_ent.keys():
+		#	print("level", level, " = ", str(shortest_path_to_ent[level]))
+		
 
 	def writeCoNLLFile(self, predictedClusters, suffix): # suffix should be wd_"${sp}"_"${run#}".txt" or cd instead of wd
 		hmuidToClusterID = {}

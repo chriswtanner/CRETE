@@ -9,7 +9,7 @@ from Token import Token
 from Mention import Mention
 class ECBParser:
     def __init__(self, args, helper):
-        
+        self.write_stanford_input = True
         self.onlyEvents = False
         self.printCorpusTokens = False
         self.args = args
@@ -22,6 +22,7 @@ class ECBParser:
 
         self.endPunctuation = set()
         self.endPunctuation.update(".", "!", "?")
+        
         
         # invokes functions
         self.loadReplacements(args.replacementsFile)
@@ -80,7 +81,8 @@ class ECBParser:
             it = tuple(re.finditer(r"<token t\_id=\"(\d+)\" sentence=\"(\d+)\" number=\"(\d+)\".*?>(.*?)</(.*?)>", fileContents))
             lastSentenceNum = -1
 
-            #tmpFOUT = open("../data/stanford_input/"+doc_id, "w")
+            if self.write_stanford_input:
+                tmp_line_to_stanford_input = defaultdict(list)
 
             # numbers every token in each given sentence, starting at 1 (each sentence starts at 1)
             tokenNum = 0
@@ -110,8 +112,9 @@ class ECBParser:
                 
                 if sentenceNum > 0 or "plus" not in doc_id:
                     
-                    # TMP: only used to write Stanford_input
-                    #tmpFOUT.write(match.group(4).rstrip() + " ")
+                    # writes Stanford_input
+                    if self.write_stanford_input:
+                        tmp_line_to_stanford_input[int(sentenceNum)].append(match.group(4).rstrip())
 
                     hSentenceNum = sentenceNum
                     if "plus" in doc_id:
@@ -153,7 +156,11 @@ class ECBParser:
                 lastTokenText = tokenText
                 lastToken_id = t_id
 
-            #tmpFOUT.close()
+            if self.write_stanford_input:
+                tmpFOUT = open("../data/stanford_in/"+doc_id, "w")
+                for sent_num in sorted(tmp_line_to_stanford_input.keys()):
+                    tmpFOUT.write(" ".join(tmp_line_to_stanford_input[sent_num]) + "\n")
+                tmpFOUT.close()
 
             # if sentence ended with an atomic ":", let's change it to a "."
             if lastTokenText == ":":

@@ -5,6 +5,7 @@ class MiniPred:
         self.event_gold = event_gold
         self.ent_gold = ent_gold
         self.event_pred = None
+    
     def set_event_pred(self, event_pred):
         self.event_pred = event_pred
 

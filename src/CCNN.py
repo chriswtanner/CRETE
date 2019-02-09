@@ -234,13 +234,11 @@ class CCNN:
 			test_preds = model.predict([self.testX[:, 0], self.testX[:, 1]])
 		
 		# evaluates
-		(dev_f1, dev_prec, dev_rec, dev_bestThreshold, wrong_dev_pairs) = self.helper.evaluatePairwisePreds(self.devID, dev_preds, self.devY)
+		(dev_f1, dev_prec, dev_rec, dev_bestThreshold) = self.helper.evaluatePairwisePreds(self.devID, dev_preds, self.devY, self.dh)
 		print("[CCNN DEV RESULTS] f1:", round(dev_f1,4), " prec: ", round(dev_prec,4), " recall: ", round(dev_rec,4), " threshold: ", round(dev_bestThreshold,3))
 
-		(test_f1, test_prec, test_rec, test_bestThreshold, wrong_test_pairs) = self.helper.evaluatePairwisePreds(self.testID, test_preds, self.testY)
+		(test_f1, test_prec, test_rec, test_bestThreshold) = self.helper.evaluatePairwisePreds(self.testID, test_preds, self.testY, self.dh)
 		print("[CCNN TEST RESULTS] f1:", round(test_f1,4), " prec: ", round(test_prec,4), " recall: ", round(test_rec,4), " threshold: ", round(test_bestThreshold,3))
-		
-		self.helper.analyze_misses(wrong_test_pairs)
 
 		dev_results = (self.helper.devDirs, self.devID, dev_preds, self.devY, dev_f1)
 		test_results = (self.helper.testingDirs, self.testID, test_preds, self.testY, test_f1)
@@ -254,7 +252,8 @@ class CCNN:
 				preds = model.predict([self.testX[:, 0], self.testX[:, 1]])
 			#print("[DEV] AGGWD SP:", str(round(sp,4)), "CoNLL F1:", str(round(conll_f1,4)), "MUC:", str(round(muc_f1,4)), "BCUB:", str(round(bcub_f1,4)), "CEAF:", str(round(ceafe_f1,4)))
 		'''
-		exit(1)
+		
+		'''
 		if self.devMode:
 			if self.args.useECBTest:
 				(f1, prec, rec, bestThreshold, wrong_dev_pairs) = self.helper.evaluatePairwisePreds(self.devID, preds, self.devY)
@@ -266,7 +265,7 @@ class CCNN:
 				print("[CCNN BEST PAIRWISE TEST RESULTS] f1:", round(f1,4), " prec: ", round(prec,4), " recall: ", round(rec,4), " threshold: ", round(bestThreshold,3))
 			return (self.helper.testingDirs, self.testID, preds, self.testY, f1)
 
-		'''
+		
 				print("ccnn_best_f1 (# successful runs:",len(f1s),"): best_pairwise_f1: ", round(f1,4), " prec: ",round(prec,4), " recall: ", round(rec,4), " threshold: ", round(bestThreshold,3))
 				if f1 > 0.50:
 					print("**** ADDING TO ENSEMBLE!")

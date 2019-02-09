@@ -43,6 +43,19 @@ class Mention:
 		for t in self.tokens:
 			self.UID += t.UID + ";"
 
+	# only used for trying eugene's idea of the immediate hops
+	def set_valid1hops(self, valid_hops, sentenceTokenToMention):
+		#print("* setting valid_hops:", valid_hops)
+		self.valid_rel_to_entities = defaultdict(set)
+		for rel in valid_hops:
+			for token in valid_hops[rel]:
+				if token in sentenceTokenToMention:
+					foundMentions = sentenceTokenToMention[token]
+					for mfound in foundMentions:
+						if not mfound.isPred: # mfound is an entity
+							self.valid_rel_to_entities[rel].add(mfound)
+		self.valid_hops = valid_hops
+
 	# only used for HDDCRP Mentions
 	def setStartTuple(self, st):
 		self.startTuple = st
@@ -73,4 +86,5 @@ class Mention:
 		self.levelToEntityPath[level].append(relations)
 
 	def __str__(self):
-		return "MENTION: " + str(self.XUID) + " (dir " + str(self.dir_num) + "; doc: " + str(self.doc_id) + "): text: " + str(self.text) + " type: " + str(self.mentionType)
+		return str(self.XUID) + ": " + str(self.text)
+		#return "MENTION: " + str(self.XUID) + " (dir " + str(self.dir_num) + "; doc: " + str(self.doc_id) + "): text: " + str(self.text) + " type: " + str(self.mentionType)

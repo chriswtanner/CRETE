@@ -6,4 +6,5 @@ class StanLink:
         self.relationship = relationship
 
     def __str__(self):
+        #return(str(self.parent))
         return(str(self.parent) + " --(" + str(self.relationship) + ")--> " + str(self.child))

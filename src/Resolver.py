@@ -68,6 +68,8 @@ class Resolver:
 
 		helper.addECBCorpus(corpus)
 
+		exit(1)
+
 		#if self.ids != None:
 		# adds the predictions from a past model run
 		helper.addPredictions(self.ids, self.preds)
@@ -110,6 +112,7 @@ class Resolver:
 		trainXUIDs, devXUIDs, testXUIDs = helper.getCorpusMentions(mention_type)
 		dh = DataHandler(helper, trainXUIDs, devXUIDs, testXUIDs)
 		helper.addDependenciesToMentions(dh)
+		
 		#print("tmp_xuidpair_event_entity:", dh.tmp_xuidpair_event_entity)
 	
 		#helper.checkDependencyRelations()
@@ -155,39 +158,17 @@ class Resolver:
 					print("lenensemble_test_predictions:", len(ensemble_test_predictions))
 					print("len(ensemble_test_predictions[0]):", str(len(ensemble_test_predictions[0])))
 
+	
+			print("# tmp_minipreds:", len(dh.tmp_minipreds))
+
 			dev_preds = helper.getEnsemblePreds(ensemble_dev_predictions) # normalizes them
-			(dev_f1, dev_prec, dev_rec, dev_bestThreshold, wrong_dev_pairs) = helper.evaluatePairwisePreds(dev_ids, dev_preds, dev_golds)
+			(dev_f1, dev_prec, dev_rec, dev_bestThreshold) = helper.evaluatePairwisePreds(dev_ids, dev_preds, dev_golds, dh)
 			print("[***",mention_type,"ENSEMBLE DEV RESULTS] f1:", round(dev_f1,4), " prec: ", round(dev_prec,4), " recall: ", round(dev_rec,4), " threshold: ", round(dev_bestThreshold,3))
 
 			test_preds = helper.getEnsemblePreds(ensemble_test_predictions) # normalizes them
-			(test_f1, test_prec, test_rec, test_bestThreshold, wrong_test_pairs) = helper.evaluatePairwisePreds(test_ids, test_preds, test_golds)
+			(test_f1, test_prec, test_rec, test_bestThreshold) = helper.evaluatePairwisePreds(test_ids, test_preds, test_golds, dh)
 			print("[***",mention_type,"ENSEMBLE TEST RESULTS] f1:", round(test_f1,4), " prec: ", round(test_prec,4), " recall: ", round(test_rec,4), " threshold: ", round(test_bestThreshold,3))
 			print("* done.  took ", str((time.time() - start_time)), "seconds")
 
-			# sets preds on a per-xuid basis
-			key_to_pred = {}
-			for key, val in zip(dev_ids, dev_preds):
-				key_to_pred[key] = val
-			for key, val in zip(test_ids, test_preds):
-				key_to_pred[key] = val
 
-			# adds predictions
-			print("# mini preds:", len(dh.tmp_minipreds.keys()))
-			keys_to_save = []
-			for dev_id in dev_ids:
-				keys_to_save.append(dev_id)
-			for test_id in test_ids:
-				keys_to_save.append(test_id)
-			for key in keys_to_save:
-				mp = dh.tmp_minipreds[key]
-				mp.set_event_pred(key_to_pred[key])
-				#dh.tmp_minipreds[key] = mp
-
-			tmp_coref_counts = defaultdict(lambda: defaultdict(int))
-			for key in wrong_dev_pairs: #keys_to_save:
-				mp = dh.tmp_minipreds[key]
-				#print("minipred:", dh.tmp_minipreds[key])
-				tmp_coref_counts[mp.event_gold][mp.ent_gold] += 1
-			print("FINAL tmp_coref_counts:", tmp_coref_counts)
-			#devID, devX, devY  = dh.createMiniFFNN(dev_ids, )
 			return test_ids, test_preds, test_golds

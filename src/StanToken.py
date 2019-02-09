@@ -33,4 +33,5 @@ class StanToken:
 
         if len(self.parentLinks) > 0:
             parent = str(self.parentLinks[0].parent)
-        return("STAN TEXT: [" + str(self.text) + "]" + "; LEMMA:" + str(self.lemma) + "; POS:" + str(self.pos) + "; NER:" + str(self.ner)) # + "\n\tparents:" + parents + "\n\tchildren:" + children)
+        return(self.text)
+        #return("STAN TEXT: [" + str(self.text) + "]" + "; LEMMA:" + str(self.lemma) + "; POS:" + str(self.pos) + "; NER:" + str(self.ner)) # + "\n\tparents:" + parents + "\n\tchildren:" + children)
