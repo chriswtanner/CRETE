@@ -89,7 +89,7 @@ class Resolver:
 
 		helper.createStanMentions()
 		helper.printCorpusStats()
-		exit(1)
+		
 		#helper.printHDDCRPMentionCoverage()
 		#corpus.checkMentions()
 

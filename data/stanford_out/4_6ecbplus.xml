@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="CoreNLP-to-HTML.xsl" type="text/xsl"?>
+<root>
+  <document>
+    <docId>4_6ecbplus.xml</docId>
+    <sentences>
+      <sentence id="1" line="1">
+        <tokens>
+          <token id="1">
+            <word>June</word>
+            <lemma>June</lemma>
+            <CharacterOffsetBegin>0</CharacterOffsetBegin>
+            <CharacterOffsetEnd>4</CharacterOffsetEnd>
+            <POS>NNP</POS>
+            <NER>DATE</NER>
+            <NormalizedNER>2013-06-06</NormalizedNER>
+            <Speaker>PER0</Speaker>
+            <Timex tid="t1" type="DATE">2013-06-06</Timex>
+          </token>
+          <token id="2">
+            <word>06</word>
+            <lemma>06</lemma>
+            <CharacterOffsetBegin>5</CharacterOffsetBegin>
+            <CharacterOffsetEnd>7</CharacterOffsetEnd>
+            <POS>CD</POS>
+            <NER>DATE</NER>
+            <NormalizedNER>2013-06-06</NormalizedNER>
+            <Speaker>PER0</Speaker>
+            <Timex tid="t1" type="DATE">2013-06-06</Timex>
+          </token>
+          <token id="3">
+            <word>,</word>
+            <lemma>,</lemma>
+            <CharacterOffsetBegin>8</CharacterOffsetBegin>
+            <CharacterOffsetEnd>9</CharacterOffsetEnd>
+            <POS>,</POS>
+            <NER>DATE</NER>
+            <NormalizedNER>2013-06-06</NormalizedNER>
+            <Speaker>PER0</Speaker>
+            <Timex tid="t1" type="DATE">2013-06-06</Timex>
+          </token>
+          <token id="4">
+            <word>2013</word>
+            <lemma>2013</lemma>
+            <CharacterOffsetBegin>10</CharacterOffsetBegin>
+            <CharacterOffsetEnd>14</CharacterOffsetEnd>
+            <POS>CD</POS>
+            <NER>DATE</NER>
+            <NormalizedNER>2013-06-06</NormalizedNER>
+            <Speaker>PER0</Speaker>
+            <Timex tid="t1" type="DATE">2013-06-06</Timex>
+          </token>
+        </tokens>
+        <parse>(ROOT (NP (NP (NNP June) (CD 06)) (, ,) (NP (CD 2013)))) </parse>
+        <dependencies type="basic-dependencies">
+          <dep type="root">
+            <governor idx="0">ROOT</governor>
+            <dependent idx="1">June</dependent>
+          </dep>
+          <dep type="nummod">
+            <governor idx="1">June</governor>
+            <dependent idx="2">06</dependent>
+          </dep>
+          <dep type="punct">
+            <governor idx="1">June</governor>
+            <dependent idx="3">,</dependent>
+          </dep>
+          <dep type="nummod">
+            <governor idx="1">June</governor>
+            <dependent idx="4">2013</dependent>
+          </dep>
+        </dependencies>
+        <dependencies type="collapsed-dependencies">
+          <dep type="root">
+            <governor idx="0">ROOT</governor>
+            <dependent idx="1">June</dependent>
+          </dep>
+          <dep type="nummod">
+            <governor idx="1">June</governor>
+            <dependent idx="2">06</dependent>
+          </dep>
+          <dep type="punct">
+            <governor idx="1">June</governor>
+            <dependent idx="3">,</dependent>
+          </dep>
+          <dep type="nummod">
+            <governor idx="1">June</governor>
+            <dependent idx="4">2013</dependent>
+          </dep>
+        </dependencies>
+        <dependencies type="collapsed-ccprocessed-dependencies">
+          <dep type="root">
+            <governor idx="0">ROOT</governor>
+            <dependent idx="1">June</dependent>
+          </dep>
+          <dep type="nummod">
+            <governor idx="1">June</governor>
+            <dependent idx="2">06</dependent>
+          </dep>
+          <dep type="punct">
+            <governor idx="1">June</governor>
+            <dependent idx="3">,</dependent>
+          </dep>
+          <dep type="nummod">
+            <governor idx="1">June</governor>
+            <dependent idx="4">2013</dependent>
+          </dep>
+        </dependencies>
+        <dependencies type="enhanced-dependencies">
+          <dep type="root">
+            <governor idx="0">ROOT</governor>
+            <dependent idx="1">June</dependent>
+          </dep>
+          <dep type="nummod">
+            <governor idx="1">June</governor>
+            <dependent idx="2">06</dependent>
+          </dep>
+          <dep type="punct">
+            <governor idx="1">June</governor>
+            <dependent idx="3">,</dependent>
+          </dep>
+          <dep type="nummod">
+            <governor idx="1">June</governor>
+            <dependent idx="4">2013</dependent>
+          </dep>
+        </dependencies>
+        <dependencies type="enhanced-plus-plus-dependencies">
+          <dep type="root">
+            <governor idx="0">ROOT</governor>
+            <dependent idx="1">June</dependent>
+          </dep>
+          <dep type="nummod">
+            <governor idx="1">June</governor>
+            <dependent idx="2">06</dependent>
+          </dep>
+          <dep type="punct">
+            <governor idx="1">June</governor>
+            <dependent idx="3">,</dependent>
+          </dep>
+          <dep type="nummod">
+            <governor idx="1">June</governor>
+            <dependent idx="4">2013</dependent>
+          </dep>
+        </dependencies>
+      </sentence>
+      <sentence id="2" line="2">
+        <tokens>
+          <token id="1">
+            <word>Esther</word>
+            <lemma>Esther</lemma>
+            <CharacterOffsetBegin>15</CharacterOffsetBegin>
+            <CharacterOffsetEnd>21</CharacterOffsetEnd>
+            <POS>NNP</POS>
+            <NER>PERSON</NER>
+            <Speaker>PER0</Speaker>
+          </token>
+          <token id="2">
+            <word>Williams</word>
+            <lemma>Williams</lemma>
+            <CharacterOffsetBegin>22</CharacterOffsetBegin>
+            <CharacterOffsetEnd>30</CharacterOffsetEnd>
+            <POS>NNP</POS>
+            <NER>PERSON</NER>
+            <Speaker>PER0</Speaker>
+          </token>
+          <token id="3">
+            <word>,</word>
+            <lemma>,</lemma>
+            <CharacterOffsetBegin>31</CharacterOffsetBegin>
+            <CharacterOffsetEnd>32</CharacterOffsetEnd>
+            <POS>,</POS>
+            <NER>O</NER>
+            <Speaker>PER0</Speaker>
+          </token>
+          <token id="4">
+            <word>swimming</word>
+            <lemma>swim</lemma>
+            <CharacterOffsetBegin>33</CharacterOffsetBegin>
+            <CharacterOffsetEnd>41</CharacterOffsetEnd>
+            <POS>VBG</POS>
+            <NER>O</NER>
+            <Speaker>PER0</Speaker>
+          </token>
+          <token id="5">
+            <word>star</word>
+            <lemma>star</lemma>
+            <CharacterOffsetBegin>42</CharacterOffsetBegin>
+            <CharacterOffsetEnd>46</CharacterOffsetEnd>
+            <POS>NN</POS>
+            <NER>O</NER>
+            <Speaker>PER0</Speaker>
+          </token>
+          <token id="6">
+            <word>,</word>
+            <lemma>,</lemma>
+            <CharacterOffsetBegin>47</CharacterOffsetBegin>
+            <CharacterOffsetEnd>48</CharacterOffsetEnd>
+            <POS>,</POS>
+            <NER>O</NER>
+            <Speaker>PER0</Speaker>
+          </token>
+          <token id="7">
+            <word>dies</word>
+            <lemma>die</lemma>
+            <CharacterOffsetBegin>49</CharacterOffsetBegin>
+            <CharacterOffsetEnd>53</CharacterOffsetEnd>
+            <POS>VBZ</POS>
+            <NER>O</NER>
+            <Speaker>PER0</Speaker>
+          </token>
+          <token id="8">
+            <word>at</word>
+            <lemma>at</lemma>
+            <CharacterOffsetBegin>54</CharacterOffsetBegin>
+            <CharacterOffsetEnd>56</CharacterOffsetEnd>
+            <POS>IN</POS>
+            <NER>O</NER>
+            <Speaker>PER0</Speaker>
+          </token>
+          <token id="9">
+            <word>91</word>
+            <lemma>91</lemma>
+            <CharacterOffsetBegin>57</CharacterOffsetBegin>
+            <CharacterOffsetEnd>59</CharacterOffsetEnd>
+            <POS>CD</POS>
+            <NER>NUMBER</NER>
+            <NormalizedNER>91.0</NormalizedNER>
+            <Speaker>PER0</Speaker>
+          </token>
+        </tokens>
+        <parse>(ROOT (S (NP (NP (NNP Esther) (NNP Williams)) (, ,) (NP (VBG swimming) (NN star)) (, ,)) (VP (VBZ dies) (PP (IN at) (NP (CD 91)))))) </parse>
+        <dependencies type="basic-dependencies">
+          <dep type="root">
+            <governor idx="0">ROOT</governor>
+            <dependent idx="7">dies</dependent>
+          </dep>
+          <dep type="compound">
+            <governor idx="2">Williams</governor>
+            <dependent idx="1">Esther</dependent>
+          </dep>
+          <dep type="nsubj">
+            <governor idx="7">dies</governor>
+            <dependent idx="2">Williams</dependent>
+          </dep>
+          <dep type="punct">
+            <governor idx="2">Williams</governor>
+            <dependent idx="3">,</dependent>
+          </dep>
+          <dep type="amod">
+            <governor idx="5">star</governor>
+            <dependent idx="4">swimming</dependent>
+          </dep>
+          <dep type="appos">
+            <governor idx="2">Williams</governor>
+            <dependent idx="5">star</dependent>
+          </dep>
+          <dep type="punct">
+            <governor idx="2">Williams</governor>
+            <dependent idx="6">,</dependent>
+          </dep>
+          <dep type="case">
+            <governor idx="9">91</governor>
+            <dependent idx="8">at</dependent>
+          </dep>
+          <dep type="nmod">
+            <governor idx="7">dies</governor>
+            <dependent idx="9">91</dependent>
+          </dep>
+        </dependencies>
+        <dependencies type="collapsed-dependencies">
+          <dep type="root">
+            <governor idx="0">ROOT</governor>
+            <dependent idx="7">dies</dependent>
+          </dep>
+          <dep type="compound">
+            <governor idx="2">Williams</governor>
+            <dependent idx="1">Esther</dependent>
+          </dep>
+          <dep type="nsubj">
+            <governor idx="7">dies</governor>
+            <dependent idx="2">Williams</dependent>
+          </dep>
+          <dep type="punct">
+            <governor idx="2">Williams</governor>
+            <dependent idx="3">,</dependent>
+          </dep>
+          <dep type="amod">
+            <governor idx="5">star</governor>
+            <dependent idx="4">swimming</dependent>
+          </dep>
+          <dep type="appos">
+            <governor idx="2">Williams</governor>
+            <dependent idx="5">star</dependent>
+          </dep>
+          <dep type="punct">
+            <governor idx="2">Williams</governor>
+            <dependent idx="6">,</dependent>
+          </dep>
+          <dep type="case">
+            <governor idx="9">91</governor>
+            <dependent idx="8">at</dependent>
+          </dep>
+          <dep type="nmod:at">
+            <governor idx="7">dies</governor>
+            <dependent idx="9">91</dependent>
+          </dep>
+        </dependencies>
+        <dependencies type="collapsed-ccprocessed-dependencies">
+          <dep type="root">
+            <governor idx="0">ROOT</governor>
+            <dependent idx="7">dies</dependent>
+          </dep>
+          <dep type="compound">
+            <governor idx="2">Williams</governor>
+            <dependent idx="1">Esther</dependent>
+          </dep>
+          <dep type="nsubj">
+            <governor idx="7">dies</governor>
+            <dependent idx="2">Williams</dependent>
+          </dep>
+          <dep type="punct">
+            <governor idx="2">Williams</governor>
+            <dependent idx="3">,</dependent>
+          </dep>
+          <dep type="amod">
+            <governor idx="5">star</governor>
+            <dependent idx="4">swimming</dependent>
+          </dep>
+          <dep type="appos">
+            <governor idx="2">Williams</governor>
+            <dependent idx="5">star</dependent>
+          </dep>
+          <dep type="punct">
+            <governor idx="2">Williams</governor>
+            <dependent idx="6">,</dependent>
+          </dep>
+          <dep type="case">
+            <governor idx="9">91</governor>
+            <dependent idx="8">at</dependent>
+          </dep>
+          <dep type="nmod:at">
+            <governor idx="7">dies</governor>
+            <dependent idx="9">91</dependent>
+          </dep>
+        </dependencies>
+        <dependencies type="enhanced-dependencies">
+          <dep type="root">
+            <governor idx="0">ROOT</governor>
+            <dependent idx="7">dies</dependent>
+          </dep>
+          <dep type="compound">
+            <governor idx="2">Williams</governor>
+            <dependent idx="1">Esther</dependent>
+          </dep>
+          <dep type="nsubj">
+            <governor idx="7">dies</governor>
+            <dependent idx="2">Williams</dependent>
+          </dep>
+          <dep type="punct">
+            <governor idx="2">Williams</governor>
+            <dependent idx="3">,</dependent>
+          </dep>
+          <dep type="amod">
+            <governor idx="5">star</governor>
+            <dependent idx="4">swimming</dependent>
+          </dep>
+          <dep type="appos">
+            <governor idx="2">Williams</governor>
+            <dependent idx="5">star</dependent>
+          </dep>
+          <dep type="punct">
+            <governor idx="2">Williams</governor>
+            <dependent idx="6">,</dependent>
+          </dep>
+          <dep type="case">
+            <governor idx="9">91</governor>
+            <dependent idx="8">at</dependent>
+          </dep>
+          <dep type="nmod:at">
+            <governor idx="7">dies</governor>
+            <dependent idx="9">91</dependent>
+          </dep>
+        </dependencies>
+        <dependencies type="enhanced-plus-plus-dependencies">
+          <dep type="root">
+            <governor idx="0">ROOT</governor>
+            <dependent idx="7">dies</dependent>
+          </dep>
+          <dep type="compound">
+            <governor idx="2">Williams</governor>
+            <dependent idx="1">Esther</dependent>
+          </dep>
+          <dep type="nsubj">
+            <governor idx="7">dies</governor>
+            <dependent idx="2">Williams</dependent>
+          </dep>
+          <dep type="punct">
+            <governor idx="2">Williams</governor>
+            <dependent idx="3">,</dependent>
+          </dep>
+          <dep type="amod">
+            <governor idx="5">star</governor>
+            <dependent idx="4">swimming</dependent>
+          </dep>
+          <dep type="appos">
+            <governor idx="2">Williams</governor>
+            <dependent idx="5">star</dependent>
+          </dep>
+          <dep type="punct">
+            <governor idx="2">Williams</governor>
+            <dependent idx="6">,</dependent>
+          </dep>
+          <dep type="case">
+            <governor idx="9">91</governor>
+            <dependent idx="8">at</dependent>
+          </dep>
+          <dep type="nmod:at">
+            <governor idx="7">dies</governor>
+            <dependent idx="9">91</dependent>
+          </dep>
+        </dependencies>
+      </sentence>
+    </sentences>
+    <coreference/>
+  </document>
+</root>
