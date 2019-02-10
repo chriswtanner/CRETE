@@ -42,7 +42,6 @@ verifiedSentencesFile=${baseDir}"data/ECBplus_coreference_sentences.csv"
 
 charEmbeddingsFile=${baseDir}"data/features/charRandomEmbeddings.txt"
 pronounsFile=${baseDir}"data/pronouns.txt"
-stanfordPath="/Users/christanner/research/libraries/stanford-corenlp-full-2017-06-09/"
 
 corpusPath=${baseDir}"data/ECB_$1/"
 useECBTest=$2
@@ -59,7 +58,7 @@ dropout=${10}
 numFilters=${11}
 filterMultiplier=${12}
 
-stanOutputDir=${baseDir}"data/stanford_output_all/"
+stanOutputDir=${baseDir}"data/stanford_out/"
 posEmbeddingsFile=${baseDir}"data/features/posEmbeddings100.txt"
 wordFeature=${13}
 lemmaFeature=${14}

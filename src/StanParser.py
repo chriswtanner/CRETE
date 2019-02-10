@@ -8,8 +8,13 @@ except ImportError:
     import xml.etree.ElementTree as ET
 class StanParser:
     def __init__(self, args, corpus):
+        print("init stan parser")
         self.args = args
         self.corpus = corpus
+
+        self.dependency_parses = {"basic-dependencies", "collapsed-dependencies", \
+            "collapsed-ccprocessed-dependencies", "enhanced-dependencies", \
+            "enhanced-plus-plus-dependencies"}
 
         self.replacements = {} # for O(1) look-up and the mapping
         self.replacementsList = [] # must maintain order
@@ -21,6 +26,7 @@ class StanParser:
         self.parseDir(args.stanOutputDir)
 
     def parseDir(self, stanOutputDir):
+        print("parse dir:", stanOutputDir)
         files = []
         for root, _, filenames in os.walk(stanOutputDir):
             for filename in fnmatch.filter(filenames, '*.xml'):
@@ -30,17 +36,18 @@ class StanParser:
             if doc_id in self.corpus.doc_idToDocs:
                 # format: [sentenceNum] -> {[tokenNum] -> StanToken}
                 self.docToSentenceTokens[doc_id] = self.parseFile(f)
-
+                #exit(1)
     # (1) reads stanford's output, saves it
     # (2) aligns it w/ our sentence tokens
     def parseFile(self, inputFile):
-
+        print("* parsing file:", inputFile)
         sentenceTokens = defaultdict(lambda: defaultdict(int))
         tree = ET.ElementTree(file=inputFile)
         root = tree.getroot()
 
         document = root[0]
-        sentences, _ = document
+        
+        doc_id, sentences, _ = document
         '''
         print("doc:", inputFile)
         for elem in corefs:
@@ -93,9 +100,12 @@ class StanParser:
 
                         # constructs and saves the StanToken
                         stanToken = StanToken(False, sentenceNum, tokenNum, word, lemma, startIndex, endIndex, pos, ner)
+                        if word.lower() != stanToken.text.lower():
+                            print(word, " ->", stanToken)
                         sentenceTokens[sentenceNum][tokenNum] = stanToken
 
-                elif section.tag == "dependencies" and section.attrib["type"] == "basic-dependencies":
+                elif section.tag == "dependencies" and section.attrib["type"] in self.dependency_parses:
+                    dep_parse_type = section.attrib["type"]
 
                     # iterates over all dependencies for the given sentence
                     for dep in section:
@@ -108,13 +118,13 @@ class StanParser:
 
                         # ensures correctness from Stanford
                         if parentToken.text != parent.text:
-                            for badToken in self.replacementsList:  # self.replacementsSet:
+                            for badToken in self.replacementsList: # self.replacementsSet:
                                 if badToken in parent.text:
                                     parent.text = parent.text.replace(
                                         badToken, self.replacements[badToken])
 
                         if childToken.text != child.text:
-                            for badToken in self.replacementsList:  # self.replacementsSet:
+                            for badToken in self.replacementsList: # self.replacementsSet:
                                 if badToken in child.text:
                                     child.text = child.text.replace(badToken, self.replacements[badToken])
 
@@ -127,10 +137,11 @@ class StanParser:
                             exit(1)
 
                         # creates stanford link
-                        curLink = StanLink(parentToken, childToken, relationship)
-
-                        parentToken.addChild(curLink)
-                        childToken.addParent(curLink)
+                        curLink = StanLink(
+                            parentToken, childToken, relationship, dep_parse_type)
+                        #print("making new stanlink:", curLink, "bw:", parentToken, "and", childToken)
+                        parentToken.addChild(dep_parse_type, curLink)
+                        childToken.addParent(dep_parse_type, curLink)
         return sentenceTokens
 
     # replaces the ill-formed characters/words

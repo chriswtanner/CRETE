@@ -9,7 +9,7 @@ from Token import Token
 from Mention import Mention
 class ECBParser:
     def __init__(self, args, helper):
-        self.write_stanford_input = True
+        self.write_stanford_input = False
         self.onlyEvents = False
         self.printCorpusTokens = False
         self.args = args
@@ -22,7 +22,6 @@ class ECBParser:
 
         self.endPunctuation = set()
         self.endPunctuation.update(".", "!", "?")
-        
         
         # invokes functions
         self.loadReplacements(args.replacementsFile)

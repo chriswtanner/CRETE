@@ -1190,7 +1190,7 @@ class ECBHelper:
 
 			# for readability, make a new var
 			ourTokens = self.corpus.doc_idToDocs[doc_id].tokens
-
+					
 			j = 0
 			i = 0
 			while i < len(ourTokens):

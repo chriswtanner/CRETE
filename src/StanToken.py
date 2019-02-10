@@ -1,4 +1,5 @@
 import pickle
+from collections import defaultdict
 class StanToken:
     def __init__(self, isRoot, sentenceNum, tokenNum, text, lemma, startIndex, endIndex, pos, ner):
         self.isRoot = isRoot
@@ -12,18 +13,18 @@ class StanToken:
         self.ner = ner
 
         # StanLinks
-        self.parentLinks = []
-        self.childLinks = []
+        self.parentLinks = defaultdict(list)
+        self.childLinks = defaultdict(list)
 
-    def addParent(self, parentLink):
-        self.parentLinks.append(parentLink)
+    def addParent(self, dep_parse_type, parentLink):
+        self.parentLinks[dep_parse_type].append(parentLink)
 
-    def addChild(self, childLink):
-        self.childLinks.append(childLink)
+    def addChild(self, dep_parse_type, childLink):
+        self.childLinks[dep_parse_type].append(childLink)
 
     def __str__(self):
-
-
+        return str(self.text)
+        '''
         parents = ""
         for pl in self.parentLinks:
             parents += "\n\t   ---" + str(pl.relationship) + "-->" + str(pl.parent.text)
@@ -34,4 +35,5 @@ class StanToken:
         if len(self.parentLinks) > 0:
             parent = str(self.parentLinks[0].parent)
         return(self.text)
+        '''
         #return("STAN TEXT: [" + str(self.text) + "]" + "; LEMMA:" + str(self.lemma) + "; POS:" + str(self.pos) + "; NER:" + str(self.ner)) # + "\n\tparents:" + parents + "\n\tchildren:" + children)

@@ -68,12 +68,8 @@ class Resolver:
 
 		helper.addECBCorpus(corpus)
 
-		exit(1)
-
-		#if self.ids != None:
 		# adds the predictions from a past model run
 		helper.addPredictions(self.ids, self.preds)
-
 		#helper.printCorpus("corpusMentions.txt")
 
 		# parses the HDDCRP Mentions
@@ -90,9 +86,10 @@ class Resolver:
 			helper.saveStanTokens()
 		else:
 			helper.loadStanTokens()
+
 		helper.createStanMentions()
 		helper.printCorpusStats()
-
+		exit(1)
 		#helper.printHDDCRPMentionCoverage()
 		#corpus.checkMentions()
 
