@@ -55,6 +55,7 @@ class ECBParser:
         # used for keeping track of how many mentions were pronouns
         had_pronoun = 0
         not_had_pronoun = 0
+
         for f in sorted(files):
             lm_idToMention = {} # only used to tmp store the mentions
             removed_m_ids = set() # keeps track of the mentions that had pronouns and we removed (if we care to remove them)
@@ -87,6 +88,7 @@ class ECBParser:
             tokenNum = 0
             firstToken = True
             lastTokenText = ""
+
             for match in it:
                 t_id = match.group(1)
                 sentenceNum = int(match.group(2))

@@ -50,7 +50,7 @@ class CorefEngine:
 		
 		# True means use pronouns, False means do not
 		# {none, shortest, one} for supplemental path info
-		entity_ids, entity_preds, entity_golds = entity_resolution.resolve("events", "relations", False, False, num_runs) 
+		entity_ids, entity_preds, entity_golds = entity_resolution.resolve("events", "relations", False, True, num_runs) 
 
 		'''
 		# second try

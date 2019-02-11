@@ -98,7 +98,6 @@ class Resolver:
 		fh = FeatureHandler(args, helper) #, trainXUIDs, devXUIDs, testXUIDs)
 		fh.saveLemmaFeatures(lemmaFeaturesFile)
 		fh.saveCharFeatures(charFeaturesFile)
-		exit(1)
 		fh.savePOSFeatures(posFeaturesFile)
 		fh.saveDependencyFeatures(dependencyFeaturesFile)
 		fh.saveWordNetFeatures(wordnetFeaturesFile)
@@ -109,7 +108,7 @@ class Resolver:
 		trainXUIDs, devXUIDs, testXUIDs = helper.getCorpusMentions(mention_type)
 		dh = DataHandler(helper, trainXUIDs, devXUIDs, testXUIDs)
 		helper.addDependenciesToMentions(dh)
-		
+		exit(1)
 		#print("tmp_xuidpair_event_entity:", dh.tmp_xuidpair_event_entity)
 	
 		#helper.checkDependencyRelations()

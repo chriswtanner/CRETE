@@ -31,7 +31,7 @@ class StanParser:
         for root, _, filenames in os.walk(stanOutputDir):
             for filename in fnmatch.filter(filenames, '*.xml'):
                 files.append(os.path.join(root, filename))
-        for f in files:
+        for f in sorted(files):
             doc_id = str(f[f.rfind("/")+1:])
             if doc_id in self.corpus.doc_idToDocs:
                 # format: [sentenceNum] -> {[tokenNum] -> StanToken}
@@ -40,7 +40,7 @@ class StanParser:
     # (1) reads stanford's output, saves it
     # (2) aligns it w/ our sentence tokens
     def parseFile(self, inputFile):
-        print("* parsing file:", inputFile)
+        #print("* parsing file:", inputFile)
         sentenceTokens = defaultdict(lambda: defaultdict(int))
         tree = ET.ElementTree(file=inputFile)
         root = tree.getroot()
@@ -56,12 +56,12 @@ class StanParser:
                 print("sec:",section)
                 for s2 in section:
                     print("s2:",s2)
-        '''         
-            
+        '''
 
         self.relationshipTypes = set()
         for elem in sentences:  # tree.iter(tag='sentence'):
             sentenceNum = int(elem.attrib["id"])
+            
             for section in elem:
                 # process every token for the given sentence
                 if section.tag == "tokens":
@@ -142,6 +142,7 @@ class StanParser:
                         #print("making new stanlink:", curLink, "bw:", parentToken, "and", childToken)
                         parentToken.addChild(dep_parse_type, curLink)
                         childToken.addParent(dep_parse_type, curLink)
+        #exit(1)
         return sentenceTokens
 
     # replaces the ill-formed characters/words

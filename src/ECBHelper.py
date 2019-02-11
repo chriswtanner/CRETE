@@ -10,6 +10,7 @@ class ECBHelper:
 	def __init__(self, args, event_pronouns, entity_pronouns):
 		self.args = args
 		self.corpus = None # should be passed-in
+		self.dependency_parse_type = 'basic-dependencies'
 
 		# data splits
 		self.trainingDirs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 18, 19, 20, 21, 22]
@@ -444,15 +445,15 @@ class ECBHelper:
 		
 		return (bestF1, bestP, bestR, bestVal)
 
-	def get_all_valid_1hops(self, dh, token, valid_1hops, valid_relations, rel_counts):
+	def get_all_valid_1hops(self, dh, token, valid_1hops, valid_relations):
 		#print("token:", token)
 		bestStan = dh.getBestStanToken(token.stanTokens)
 		#print("\tbestStan:", bestStan)
-		for cl in bestStan.childLinks:
+		for cl in bestStan.childLinks[self.dependency_parse_type]:
 			#print("\t\tcl:", cl)
 			ecbTokens = self.stanTokenToECBTokens[cl.child]
 			#print("\t\t\tecbtokens:", ecbTokens)
-			rel_counts[cl.relationship] += 1
+
 			found_valid_relation = ""
 			for rel in valid_relations:
 				if cl.relationship.startswith(rel):
@@ -472,7 +473,7 @@ class ECBHelper:
 				if not m.isPred:
 					allPaths.append(curPath)
 
-		if len(bestStan.childLinks) == 0: # we've reached the end
+		if len(bestStan.childLinks[self.dependency_parse_type]) == 0: # we've reached the end
 			out = "\t"
 			for p in curPath:
 				cur_stan = p.child
@@ -497,7 +498,7 @@ class ECBHelper:
 				out += "-->" + str(ecbText)
 			print(out)
 		else:
-			for cl in bestStan.childLinks:
+			for cl in bestStan.childLinks[self.dependency_parse_type]:
 				if cl.child not in originalMentionStans and cl not in curPath:
 					ecbTokens = self.stanTokenToECBTokens[cl.child]
 					for ecbToken in ecbTokens:
@@ -521,7 +522,7 @@ class ECBHelper:
 		if not foundEntity:
 			#print("\t [ NO MENTION]")
 			bestStan = dh.getBestStanToken(token.stanTokens)
-			for cl in bestStan.childLinks:
+			for cl in bestStan.childLinks[self.dependency_parse_type]:
 				if cl.child not in originalMentionStans and cl not in curPath:
 					ecbTokens = self.stanTokenToECBTokens[cl.child]
 					for ecbToken in ecbTokens:
@@ -573,7 +574,7 @@ class ECBHelper:
 			# grab its parent(s)
 			#print(prefix,"# parentLinks:",len(bestStan.parentLinks))
 			self.tokensVisited.add(token)
-			for p in bestStan.childLinks:
+			for p in bestStan.childLinks[self.dependency_parse_type]:
 				#print(prefix,"\tstanparent:", p.parent)
 
 				if p.child not in mentionStans:
@@ -797,10 +798,13 @@ class ECBHelper:
 			sentenceToEventMentions = defaultdict(set)
 			sentenceToEntityMentions = defaultdict(set)
 			sentenceTokenToMention = defaultdict(lambda: defaultdict(set))
+			print("docid:", doc_id)
 			for euid in self.corpus.doc_idToDocs[doc_id].EUIDs:
+
 				m = self.corpus.EUIDToMention[euid]
 				sentNum = m.globalSentenceNum
 
+				print("\tmention:", m)
 				for t in m.tokens:
 					sentenceTokenToMention[sentNum][t].add(m)
 
@@ -817,18 +821,17 @@ class ECBHelper:
 				print("\nsentence #:", tokenText)
 				print("\t[events]:", [_.text for _ in sentenceToEventMentions[s]])
 				print("\t[entities]:", [_.text for _ in sentenceToEntityMentions[s]])
+
 				#print("details:")
 				for m in sentenceToEventMentions[s]:
 
 					# TMP, eugene's idea of using just a few relations (1-hop away)
-					
 					#print("\tentities in this sent:", sentenceToEntityMentions[s])
 					valid_1hops = defaultdict(set)
 					for mention_token in m.tokens:
-						self.get_all_valid_1hops(dh, mention_token, valid_1hops, self.valid_relations, relation_to_count)
+						self.get_all_valid_1hops(dh, mention_token, valid_1hops, self.valid_relations)
 					m.set_valid1hops(valid_1hops, sentenceTokenToMention[sentNum])
 
-					
 					# we do this here, but the main time is below.  this is just for debugging purposes
 					mentionStanTokens = set()
 					for t in m.tokens:
@@ -966,10 +969,10 @@ class ECBHelper:
 
 						shortest_path_to_ent[shortest_level] += 1
 						
-						'''
+						
 						for rel in one_hop_relations:
 							relation_to_count[rel] += 1
-						'''
+						
 
 						'''
 						print("mentions' paths to entities:")
@@ -999,7 +1002,8 @@ class ECBHelper:
 		print("eventsConsidered:", str(len(eventsConsidered)))
 		sorted_x = sorted(relation_to_count.items(), key=operator.itemgetter(1), reverse=True)
 		rel_num = 0
-		for rel in sorted(relation_to_count.keys()):
+		for rel in sorted_x:
+			print("rel:", rel)
 			self.relationToIndex[rel] = rel_num
 			rel_num += 1
 
