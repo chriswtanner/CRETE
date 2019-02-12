@@ -86,7 +86,7 @@ class Resolver:
 			helper.saveStanTokens()
 		else:
 			helper.loadStanTokens()
-
+		
 		helper.createStanMentions()
 		helper.printCorpusStats()
 		
@@ -108,7 +108,7 @@ class Resolver:
 		trainXUIDs, devXUIDs, testXUIDs = helper.getCorpusMentions(mention_type)
 		dh = DataHandler(helper, trainXUIDs, devXUIDs, testXUIDs)
 		helper.addDependenciesToMentions(dh)
-		exit(1)
+		#exit(1)
 		#print("tmp_xuidpair_event_entity:", dh.tmp_xuidpair_event_entity)
 	
 		#helper.checkDependencyRelations()

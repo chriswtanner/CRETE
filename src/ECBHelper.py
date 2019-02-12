@@ -42,7 +42,6 @@ class ECBHelper:
 		# TMP, manually defines the relations we care about
 		self.valid_relations = ['nsubj', 'dobj']
 
-
 	# prints the entire corpus (regardless of if entities or events) to a file
 	def printCorpus(self, filename_out):
 		print("WRITING OUT CORPUS: ", str(filename_out))
@@ -446,24 +445,30 @@ class ECBHelper:
 		return (bestF1, bestP, bestR, bestVal)
 
 	def get_all_valid_1hops(self, dh, token, valid_1hops, valid_relations):
-		#print("token:", token)
+		#print("get_all_valid_1hops() on token:", token)
+		#print("init valid_1hops:", valid_1hops)
 		bestStan = dh.getBestStanToken(token.stanTokens)
 		#print("\tbestStan:", bestStan)
 		for cl in bestStan.childLinks[self.dependency_parse_type]:
-			#print("\t\tcl:", cl)
+			print("\t\tcl:", cl)
 			ecbTokens = self.stanTokenToECBTokens[cl.child]
 			#print("\t\t\tecbtokens:", ecbTokens)
 
 			found_valid_relation = ""
 			for rel in valid_relations:
+				#print("\tvalid relation:", rel)
 				if cl.relationship.startswith(rel):
 					found_valid_relation = rel
+					#print("\tfound_valid_relation!!! = ", rel)
 					break
 			if found_valid_relation != "":
+				#print("\twe found a valid relation, ", rel)
 				for child_token in ecbTokens:
+					#print("\t\tlooking at child:", child_token)
 					valid_1hops[rel].add(child_token)
-		
-	
+					#print("\t\t\tvalid_1hops nwo:", valid_1hops)
+		#print("* returning valid_1hops:", valid_1hops)
+
 	def getAllChildrenPaths(self, dh, entities, tokenToMentions, originalMentionStans, token, curPath, allPaths):
 		bestStan = dh.getBestStanToken(token.stanTokens)
 
@@ -586,7 +591,6 @@ class ECBHelper:
 						ecbChildToken = next(iter(self.stanTokenToECBTokens[p.child]))
 						self.levelToChildren[depth].add(ecbChildToken)
 						self.getChildren(mentionStans, dh, ecbChildToken, depth+1)
-
 
 	def checkDependencyRelations(self):
 		distancesCounts = defaultdict(int)
@@ -804,9 +808,10 @@ class ECBHelper:
 				m = self.corpus.EUIDToMention[euid]
 				sentNum = m.globalSentenceNum
 
-				print("\tmention:", m)
+				#print("\tmention:", m)
 				for t in m.tokens:
 					sentenceTokenToMention[sentNum][t].add(m)
+					#print("* setting", sentNum, ":", t, " to be", m)
 
 				if m.isPred:
 					sentenceToEventMentions[sentNum].add(m)
@@ -815,13 +820,27 @@ class ECBHelper:
 
 			for s in sentenceToEventMentions:
 				tokenText = ""
-				for t in self.corpus.globalSentenceNumToTokens[s]:
-					tokenText += t.text + " "
 
+				first_token = None
+				for t in self.corpus.globalSentenceNumToTokens[s]:
+					print("get best for t:", t)
+					if t.tokenID == "-1":
+						continue
+					bestStan = dh.getBestStanToken(t.stanTokens)
+					for pl in bestStan.parentLinks[self.dependency_parse_type]:
+						parentToken = pl.parent
+						if parentToken.isRoot:
+							first_token = parentToken
+							break
+					tokenText += t.text + " "
+			
+				print("root:", first_token)
 				print("\nsentence #:", tokenText)
 				print("\t[events]:", [_.text for _ in sentenceToEventMentions[s]])
 				print("\t[entities]:", [_.text for _ in sentenceToEntityMentions[s]])
-
+				
+				#exit(1)
+				
 				#print("details:")
 				for m in sentenceToEventMentions[s]:
 
@@ -830,7 +849,7 @@ class ECBHelper:
 					valid_1hops = defaultdict(set)
 					for mention_token in m.tokens:
 						self.get_all_valid_1hops(dh, mention_token, valid_1hops, self.valid_relations)
-					m.set_valid1hops(valid_1hops, sentenceTokenToMention[sentNum])
+					m.set_valid1hops(valid_1hops, sentenceTokenToMention[s])
 
 					# we do this here, but the main time is below.  this is just for debugging purposes
 					mentionStanTokens = set()
@@ -849,8 +868,8 @@ class ECBHelper:
 					#print("\tvalid_hops:", m.valid_hops)
 					#print("\tvalid hop entities:", m.valid_rel_to_entities)
 					print("\t**NSUBJ and DOBJ 1-hops:")
-					if "nsubj" in m.valid_rel_to_entities.keys() or "dobj" in m.valid_rel_to_entities:
-						
+					if "nsubj" in m.valid_rel_to_entities.keys() and "dobj" in m.valid_rel_to_entities:
+						print("!!!!!!!!!!!!!!!!!!!!!!!!!!")
 						#print("sentence:", tokenText)
 						#print("\tevent:", m.text)
 						for rel in sorted(m.valid_rel_to_entities.keys()):
@@ -989,7 +1008,25 @@ class ECBHelper:
 						exit(1)
 					'''
 					numEntities[len(entities)] += 1
-					
+			
+				'''
+				print("full parse tree for the given sentence:")
+				sample_event_mention = next(iter(sentenceToEventMentions[s]))
+				print("sample_event_mention:", sample_event_mention)
+				t = sample_event_mention.tokens[0]
+				print("\t1st token:", t)
+				bestStan = dh.getBestStanToken(t.stanTokens)
+				print("\tbestStan:", bestStan)
+				print("bestStan.parentLinks:", bestStan.parentLinks)
+				print("bestStan.parentLinks[0]:", bestStan.parentLinks[self.dependency_parse_type][0])
+				parent_stan = bestStan.parentLinks[self.dependency_parse_type][0].parent
+				while parent_stan.text != "ROOT":
+					print("\t\tparent_stan:", parent_stan)
+					parent_stan = bestStan.parentLinks[self.dependency_parse_type][0].parent
+
+				print("we have root:", parent_stan)
+				'''
+				#exit(1)
 			#print("done w/ current doc:", str(doc_id))
 			
 			# prints tokens and their dependencies

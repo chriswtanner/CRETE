@@ -241,12 +241,11 @@ class DataHandler:
 			'''
 
 			if supp_features_type == "relations":
-				print("in here")
-				# ensures both event mentions have some hop relations
-				#if len(m1.valid_rel_to_entities.keys()) > 0 and len(m2.valid_rel_to_entities.keys()) > 0:
-				
+
 				# only looks at pairs which are both and dobj and nsubj that coref
 				if len(m1.valid_rel_to_entities.keys()) == 2 and len(m2.valid_rel_to_entities.keys()) == 2:
+					print("\tboth in here!!")
+					
 					tmp_key = (xuid1, xuid2)
 					if xuid2 < xuid1:
 						tmp_key = (xuid2, xuid1)
@@ -266,9 +265,10 @@ class DataHandler:
 					if len(rels_that_coref) == 2:
 						entcoref = True
 						print("**** ents coref!!")
-						exit(1)
-					else:
-						continue
+						# |----> [ENT]
+						# |        |------> [ENT]
+						# |        |          *------>
+						# |        |------> [ENT2]
 					'''
 					for rel in m1.valid_hops:
 						linked_tokens_1 = m1.valid_hops[rel]
@@ -309,7 +309,7 @@ class DataHandler:
 					'''
 				else:
 					self.tmp_count_out += 1
-					continue
+					#continue
 					#print("DONT HAVE RELATIONS")
 					#print("\tm1 out:", m1, m1.valid_hops)
 					#print("\tm2 out:", m2, m2.valid_hops)
@@ -318,8 +318,6 @@ class DataHandler:
 
 			# TMP added: tests adding entity coref info
 			if supp_features_type == "one" or supp_features_type == "shortest":
-				print("*** we shouldnt be here")
-				exit(1) # we shouldn't be here
 				# checks if one of the events doesn't have a path to an entity
 				m1_full_paths = None
 				m2_full_paths = None
@@ -463,7 +461,7 @@ class DataHandler:
 					#if m1.dir_num not in self.helper.testingDirs:
 					#	print("TRAIN: pred:", str(max_coref_score), " gold:", str(int(entcoref)))
 					# TMP -- use GOLD FOR TESTING FOR NOW
-					'''
+					
 					if entcoref:
 						features.append(0)
 						#features.append(0)
@@ -472,7 +470,7 @@ class DataHandler:
 					else:
 						features.append(1)
 						#features.append(1)
-					'''
+					
 					#features.append(0)
 
 					'''
@@ -801,6 +799,6 @@ class DataHandler:
 		if len(stanTokens) > 1 and token != None:
 			print("token:", str(token.text), "=>", str(bestStanToken))
 		if bestStanToken == None:
-			print("* ERROR: our bestStanToken is empty!")
+			print("* ERROR: our bestStanToken is empty! stanTokens", stanTokens)
 			exit(1)
 		return bestStanToken

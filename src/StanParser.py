@@ -37,6 +37,7 @@ class StanParser:
                 # format: [sentenceNum] -> {[tokenNum] -> StanToken}
                 self.docToSentenceTokens[doc_id] = self.parseFile(f)
                 #exit(1)
+                
     # (1) reads stanford's output, saves it
     # (2) aligns it w/ our sentence tokens
     def parseFile(self, inputFile):
@@ -120,8 +121,8 @@ class StanParser:
                         if parentToken.text != parent.text:
                             for badToken in self.replacementsList: # self.replacementsSet:
                                 if badToken in parent.text:
-                                    parent.text = parent.text.replace(
-                                        badToken, self.replacements[badToken])
+                                    parent.text = parent.text.replace(badToken, \
+                                        self.replacements[badToken])
 
                         if childToken.text != child.text:
                             for badToken in self.replacementsList: # self.replacementsSet:
@@ -137,8 +138,7 @@ class StanParser:
                             exit(1)
 
                         # creates stanford link
-                        curLink = StanLink(
-                            parentToken, childToken, relationship, dep_parse_type)
+                        curLink = StanLink(parentToken, childToken, relationship, dep_parse_type)
                         #print("making new stanlink:", curLink, "bw:", parentToken, "and", childToken)
                         parentToken.addChild(dep_parse_type, curLink)
                         childToken.addParent(dep_parse_type, curLink)

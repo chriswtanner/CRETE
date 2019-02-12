@@ -45,15 +45,22 @@ class Mention:
 
 	# only used for trying eugene's idea of the immediate hops
 	def set_valid1hops(self, valid_hops, sentenceTokenToMention):
-		#print("* setting valid_hops:", valid_hops)
+		#print("* set_valid1hops(): valid_hops =", valid_hops)
+		#print("\tand passed-in mentions:")
+		#for t in sentenceTokenToMention:
+			#print("\tt:",t, "=>", sentenceTokenToMention[t])
 		self.valid_rel_to_entities = defaultdict(set)
 		for rel in valid_hops:
 			for token in valid_hops[rel]:
 				if token in sentenceTokenToMention:
 					foundMentions = sentenceTokenToMention[token]
+					#print("\tfoundMentions:", foundMentions)
 					for mfound in foundMentions:
 						if not mfound.isPred: # mfound is an entity
 							self.valid_rel_to_entities[rel].add(mfound)
+				#else:
+					#print("\ttoken not in sentencemtnions:", token)
+		#print("valid_rel_to_entities now:", self.valid_rel_to_entities)
 		self.valid_hops = valid_hops
 
 	# only used for HDDCRP Mentions

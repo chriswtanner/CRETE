@@ -43,8 +43,8 @@ class CorefEngine:
 
 		# manually-defined features (others are in Resolver.py)
 		#32, 20, 2, 32, 0
-		wdPresets = [32, 3, 2, 32, 0] # batchsize, num epochs, num layers, num filters, dropout
-		num_runs = 1
+		wdPresets = [32, 5, 2, 32, 0] # batchsize, num epochs, num layers, num filters, dropout
+		num_runs = 3
 
 		entity_resolution = Resolver(args, wdPresets, "doc") # doc or dir for WD or CD, respectively
 		
