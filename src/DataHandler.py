@@ -14,7 +14,8 @@ class DataHandler:
 
 		self.tmp_count_in = 0
 		self.tmp_count_out = 0
-		
+		self.xuid_pairs_that_meet_criterion = []
+
 		self.helper = helper
 		self.args = helper.args
 		self.corpus = helper.corpus
@@ -239,6 +240,27 @@ class DataHandler:
 				else:
 					tmp_pairs_with += 1
 			'''
+
+			if len(m1.valid_rel_to_entities.keys()) == 2 and len(m2.valid_rel_to_entities.keys()) == 2:
+				entcoref = False # i'm using this variable to represent if the relations and lemma are the same
+				rels_that_coref = set()
+				tmp_pairs_with += 1
+				for rel in m1.valid_rel_to_entities:
+					linked_ents_1 = m1.valid_rel_to_entities[rel]
+					#print("linked_ents_1:", linked_ents_1)
+					if rel in m2.valid_rel_to_entities: # same relation, let's check if they have the same lemma
+						linked_ents_2 = m2.valid_rel_to_entities[rel]
+						#print("linked_ents_2:", linked_ents_2)
+						for ent1 in linked_ents_1:
+							for ent2 in linked_ents_2:
+								if ent1.REF == ent2.REF:
+									rels_that_coref.add(rel)
+				#if entcoref:
+				#	print("** ENTCOREF!!")
+				#	exit(1)
+				self.xuid_pairs_that_meet_criterion.append((xuid1, xuid2))
+			else:
+				tmp_pairs_without += 1
 
 			if supp_features_type == "relations":
 
@@ -623,8 +645,8 @@ class DataHandler:
 			m1_features = []
 			m2_features = []
 
-			if supp_features_type != "none":
-				supp_features.append(np.asarray(features))
+			#if supp_features_type != "none":
+			supp_features.append(np.asarray(features))
 
 			(uid1, uid2) = sorted([self.corpus.XUIDToMention[xuid1].UID, self.corpus.XUIDToMention[xuid2].UID])
 			

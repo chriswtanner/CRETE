@@ -108,7 +108,7 @@ class Resolver:
 		trainXUIDs, devXUIDs, testXUIDs = helper.getCorpusMentions(mention_type)
 		dh = DataHandler(helper, trainXUIDs, devXUIDs, testXUIDs)
 		helper.addDependenciesToMentions(dh)
-		#exit(1)
+		exit(1)
 		#print("tmp_xuidpair_event_entity:", dh.tmp_xuidpair_event_entity)
 	
 		#helper.checkDependencyRelations()
@@ -133,10 +133,68 @@ class Resolver:
 
 				# self.scope == doc or dir (WD or CD)
 				model = CCNN(helper, dh, supp_features_type, self.scope, self.presets, None, devMode, stopping_points)
+				
+				print("#xuid_pairs_that_meet_criterion:", len(dh.xuid_pairs_that_meet_criterion))
+				for _ in range(len(dh.xuid_pairs_that_meet_criterion)):
+					(xuid1, xuid2) = dh.xuid_pairs_that_meet_criterion[_]
+					print("\nboth events have 1-hops to two dobj and nsubj:", str(_))
+					sentenceTokenToMention = defaultdict(lambda: defaultdict(set))
+					m1 = corpus.EUIDToMention[xuid1]
+					m2 = corpus.EUIDToMention[xuid2]
+
+					if m1.doc_id != m2.doc_id:
+						print("* ERROR: diff docs")
+						exit(1)
+					
+					for euid in corpus.doc_idToDocs[m1.doc_id].EUIDs:
+						m = corpus.EUIDToMention[euid]
+						sentNum = m.globalSentenceNum
+						for t in m.tokens:
+							sentenceTokenToMention[sentNum][t].add(m)
+
+					stanTokenToECBTokens = defaultdict(set)
+					for t in corpus.doc_idToDocs[m1.doc_id].tokens:
+						for stan in t.stanTokens:
+							stanTokenToECBTokens[stan].add(t)
+
+					first_token = None
+					sent1_text = ""
+					sentNum1 = m1.globalSentenceNum
+					for t in corpus.globalSentenceNumToTokens[sentNum1]:
+						if t.tokenID == "-1":
+							continue
+						bestStan = dh.getBestStanToken(t.stanTokens)
+						for pl in bestStan.parentLinks[helper.dependency_parse_type]:
+							parentToken = pl.parent
+							if parentToken.isRoot:
+								first_token = parentToken
+						sent1_text += t.text + " "
+					print("\t** m1:", m1, "from sentence:", sent1_text)
+					helper.dfs_tree(first_token, [], [], "", sentenceTokenToMention[sentNum1], \
+						stanTokenToECBTokens)
+
+					sentNum2 = m2.globalSentenceNum
+					sent2_text = ""
+					for t in corpus.globalSentenceNumToTokens[sentNum2]:
+						if t.tokenID == "-1":
+							continue
+						bestStan = dh.getBestStanToken(t.stanTokens)
+						for pl in bestStan.parentLinks[helper.dependency_parse_type]:
+							parentToken = pl.parent
+							if parentToken.isRoot:
+								first_token = parentToken
+						sent2_text += t.text + " "
+					print("\t*** m2:", m2, "from sentence:", sent2_text)
+					helper.dfs_tree(first_token, [], [], "", sentenceTokenToMention[sentNum2], \
+						stanTokenToECBTokens)
+				
+				exit(1)
 				results = model.train_and_test()
 
 				dev_dirs, dev_ids, dev_preds, dev_golds, dev_best_f1 = results[0]
 				test_dirs, test_ids, test_preds, test_golds, test_best_f1 = results[1]
+
+
 				print("****** test_preds:", test_preds)
 				if test_best_f1 > 0.4:
 					is_wd = True
@@ -165,6 +223,5 @@ class Resolver:
 			(test_f1, test_prec, test_rec, test_bestThreshold) = helper.evaluatePairwisePreds(test_ids, test_preds, test_golds, dh)
 			print("[***",mention_type,"ENSEMBLE TEST RESULTS] f1:", round(test_f1,4), " prec: ", round(test_prec,4), " recall: ", round(test_rec,4), " threshold: ", round(test_bestThreshold,3))
 			print("* done.  took ", str((time.time() - start_time)), "seconds")
-
 
 			return test_ids, test_preds, test_golds

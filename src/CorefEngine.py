@@ -44,13 +44,13 @@ class CorefEngine:
 		# manually-defined features (others are in Resolver.py)
 		#32, 20, 2, 32, 0
 		wdPresets = [32, 5, 2, 32, 0] # batchsize, num epochs, num layers, num filters, dropout
-		num_runs = 3
+		num_runs = 1
 
 		entity_resolution = Resolver(args, wdPresets, "doc") # doc or dir for WD or CD, respectively
 		
 		# True means use pronouns, False means do not
 		# {none, shortest, one} for supplemental path info
-		entity_ids, entity_preds, entity_golds = entity_resolution.resolve("events", "relations", False, True, num_runs) 
+		entity_ids, entity_preds, entity_golds = entity_resolution.resolve("events", "none", False, True, num_runs) 
 
 		'''
 		# second try
