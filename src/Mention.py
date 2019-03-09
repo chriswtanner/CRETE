@@ -93,5 +93,5 @@ class Mention:
 		self.levelToEntityPath[level].append(relations)
 
 	def __str__(self):
-		return str(self.XUID) + ": " + str(self.text)
-		#return "MENTION: " + str(self.XUID) + " (dir " + str(self.dir_num) + "; doc: " + str(self.doc_id) + "): text: " + str(self.text) + " type: " + str(self.mentionType)
+		#return str(self.XUID) + ": " + str(self.text)
+		return "MENTION: " + str(self.XUID) + " (dir " + str(self.dir_num) + "; doc: " + str(self.doc_id) + "): text: " + str(self.text) + " type: " + str(self.mentionType)

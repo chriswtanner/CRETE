@@ -241,6 +241,7 @@ class DataHandler:
 					tmp_pairs_with += 1
 			'''
 
+			''' TODO: I used to place restrictions on needing to have certain relations.  now, i don't care
 			if len(m1.valid_rel_to_entities.keys()) == 2 and len(m2.valid_rel_to_entities.keys()) == 2:
 				entcoref = False # i'm using this variable to represent if the relations and lemma are the same
 				rels_that_coref = set()
@@ -261,7 +262,9 @@ class DataHandler:
 				self.xuid_pairs_that_meet_criterion.append((xuid1, xuid2))
 			else:
 				tmp_pairs_without += 1
-
+			'''
+			self.xuid_pairs_that_meet_criterion.append((xuid1, xuid2))
+			
 			if supp_features_type == "relations":
 
 				# only looks at pairs which are both and dobj and nsubj that coref
@@ -638,10 +641,8 @@ class DataHandler:
 				numNegAdded += 1
 				labels.append(1)
 
-
 			# TMP: merely displays statistics just like checkDependencyRelations()
-			# namely, how many events coref, and of these 
-			
+			# namely, how many events coref, and of these 			
 			m1_features = []
 			m2_features = []
 

@@ -13,8 +13,9 @@ class ECBHelper:
 		self.dependency_parse_type = 'basic-dependencies'
 		self.tmp_ref_to_abbr = {} # tmp -- just for printing dependency parse trees
 		# data splits
-		self.trainingDirs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 18, 19, 20, 21, 22]
+		self.trainingDirs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 18, 19, 20, 21, 22] #, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35]
 		self.devDirs = [23, 24, 25]
+		#self.testingDirs = [36, 37, 38, 39, 40, 41, 42, 43, 44, 45]
 		self.testingDirs = [26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45]
 
 		self.pronouns = self.loadPronouns(args.pronounsFile) # load the regardless
@@ -213,8 +214,8 @@ class ECBHelper:
 		scoreToGoldTruth = defaultdict(list)
 		
 		acc = 0
-		for p, g in zip(preds[0:15], golds[0:15]):
-			print("pred:", p, "gold:", g)
+		#for p, g in zip(preds[0:15], golds[0:15]):
+		#	print("pred:", p, "gold:", g)
 
 		for _ in range(len(preds)):
 			if golds[_] == 0:
@@ -224,7 +225,7 @@ class ECBHelper:
 				scoreToGoldTruth[preds[_][0]].append(0)
 
 		s = sorted(scoreToGoldTruth.keys())
-		print("numGoldPos:", numGoldPos)
+		#print("numGoldPos:", numGoldPos)
 		TP = 0.0
 		FP = 0.0
 		bestF1 = 0
@@ -264,6 +265,8 @@ class ECBHelper:
 			print("* ERROR: our F1 was < 0")
 			exit(1)
 
+		print("bestVal:", bestVal, " yielded F1:", bestF1)
+
 		# given the best threshold, now let's check the individual performance
 		# of both entities and events
 		mentionStats = defaultdict(lambda: defaultdict(int))
@@ -277,18 +280,23 @@ class ECBHelper:
 		pred_to_gold_features = defaultdict(list)
 		pred_to_ids_error  = defaultdict(list)
 		wrong_pairs = set()
+		fp_pairs = []
+		fn_pairs = []
+
 		for ((xuid1, xuid2), pred, gold) in zip(ids, preds, golds):
 			m1 = self.corpus.XUIDToMention[xuid1]
 			m2 = self.corpus.XUIDToMention[xuid2]
 			pred = pred[0]
 			mentionType = ""
 
+			gold_coref = False
+			pred_coref = False
+			
 			if (xuid1, xuid2) in dh.xuid_pairs_that_meet_criterion:
-				gold_coref = False
 				if m1.REF == m2.REF:
 					gold_coref = True
 				
-				pred_coref = False
+
 				if pred <= bestVal:
 					pred_coref = True
 
@@ -300,7 +308,26 @@ class ECBHelper:
 					C.add((xuid1, xuid2))
 				elif pred_coref and not gold_coref:
 					D.add((xuid1, xuid2))
-				
+
+			if not pred_coref: # those we do not predict
+				# but are actually gold
+				if gold_coref:
+					fn_pairs.append((xuid1, xuid2))
+			else: # those we predict
+				if not gold_coref:# but are NOT actually gold
+					fp_pairs.append((xuid1, xuid2))
+
+			if m1.isPred and m2.isPred:
+				mentionType = "events"
+			elif not m1.isPred and not m2.isPred:
+				mentionType = "entities"
+				print("* ERROR: why are we looking at entity mentions?!")
+				exit(1)
+			else:
+				print("* ERROR: our IDs are of mismatched types")
+				exit(1)
+
+
 			'''
 			# saves the predictions
 			mp = dh.tmp_minipreds[(xuid1, xuid2)]
@@ -374,7 +401,47 @@ class ECBHelper:
 					mentionStats[mentionType]["TP"] += 1
 			'''
 
-		print("sizes of A:", len(A), "B:", len(B), "C:", len(C), "D:", len(D))
+		'''
+		# PRINTS FALSE POSITIVES
+		for _ in range(len(fp_pairs)):
+			xuid1, xuid2 = fp_pairs[_]
+			m1 = self.corpus.XUIDToMention[xuid1]
+			m2 = self.corpus.XUIDToMention[xuid2]
+
+			sentNum1 = m1.globalSentenceNum
+			sent1 = ""
+			for t in self.corpus.globalSentenceNumToTokens[sentNum1]:
+				sent1 += t.text + " "
+			sentNum2 = m2.globalSentenceNum
+			sent2 = ""
+			for t in self.corpus.globalSentenceNumToTokens[sentNum2]:
+				sent2 += t.text + " "
+
+			print("\tFP", _, "EVENT_1:", m1)
+			print("\tFP", _, "EVENT_2:", m2)
+			print("\tFP", _, "SENTENCE1:", sent1)
+			print("\tFP", _, "SENTENCE2:", sent2)
+
+		# PRINTS FALSE POSITIVES
+		for _ in range(len(fn_pairs)):
+			xuid1, xuid2 = fn_pairs[_]
+			m1 = self.corpus.XUIDToMention[xuid1]
+			m2 = self.corpus.XUIDToMention[xuid2]
+
+			sentNum1 = m1.globalSentenceNum
+			sent1 = ""
+			for t in self.corpus.globalSentenceNumToTokens[sentNum1]:
+				sent1 += t.text + " "
+			sentNum2 = m2.globalSentenceNum
+			sent2 = ""
+			for t in self.corpus.globalSentenceNumToTokens[sentNum2]:
+				sent2 += t.text + " "
+
+			print("\tFN", _, "EVENT_1:", m1)
+			print("\tFN", _, "EVENT_2:", m2)
+			print("\tFN", _, "SENTENCE1:", sent1)
+			print("\tFN", _, "SENTENCE2:", sent2)
+		'''
 
 		'''
 		recall = float(TP / num_gold)
@@ -473,6 +540,8 @@ class ECBHelper:
 			tmp_coref_counts[mp.event_gold][mp.ent_gold] += 1
 		print("WRONG PAIRS tmp_coref_counts:", tmp_coref_counts)
 		'''
+
+		print("# fp_pairs:", len(fp_pairs), "# fn_pairs:", len(fn_pairs))
 		return (bestF1, bestP, bestR, bestVal)
 
 	def get_all_valid_1hops(self, dh, token, valid_1hops, valid_relations):
@@ -837,7 +906,7 @@ class ECBHelper:
 			else:
 				str_line += ecb_token.text
 			print(str_line)
-			self.fout.write(str_line + "\n")
+			#self.fout.write(str_line + "\n")
 		
 		for _ in range(len(stan_node.childLinks[self.dependency_parse_type])):
 			child_link = stan_node.childLinks[self.dependency_parse_type][_]
@@ -865,7 +934,7 @@ class ECBHelper:
 		shortest_path_to_ent = defaultdict(int) # keeps track of how many events had their shortest path to be of depth N
 		for doc_id in self.corpus.doc_idToDocs:
 			
-			self.fout = open(doc_id + "_parsetree.txt", 'w')
+			#self.fout = open(doc_id + "_parsetree.txt", 'w')
 			# maps ECB Token -> StanToken and vice versa
 			self.stanTokenToECBTokens = defaultdict(set)
 			curdoctokens = ""
@@ -887,7 +956,7 @@ class ECBHelper:
 			sentenceToEventMentions = defaultdict(set)
 			sentenceToEntityMentions = defaultdict(set)
 			sentenceTokenToMention = defaultdict(lambda: defaultdict(set))
-			self.fout.write("\n-----------------------------------------\ndocid:" + doc_id + "\n-----------------------------------------\n")
+			#self.fout.write("\n-----------------------------------------\ndocid:" + doc_id + "\n-----------------------------------------\n")
 			for euid in self.corpus.doc_idToDocs[doc_id].EUIDs:
 
 				m = self.corpus.EUIDToMention[euid]
@@ -920,14 +989,14 @@ class ECBHelper:
 							break
 					tokenText += t.text + " "
 			
-				print("\nsentence #:", tokenText)
-				print("\t[events]:", [_.text for _ in sentenceToEventMentions[s]])
-				print("\t[entities]:", [_.text for _ in sentenceToEntityMentions[s]])
-				self.fout.write("\nsentence #:" + tokenText + "\n")
-				self.fout.write("\t[events]:" +  str([_.text for _ in sentenceToEventMentions[s]]) + "\n")
-				self.fout.write("\t[entities]:" +  str([_.text for _ in sentenceToEntityMentions[s]]) + "\n")
+				#print("\nsentence #:", tokenText)
+				#print("\t[events]:", [_.text for _ in sentenceToEventMentions[s]])
+				#print("\t[entities]:", [_.text for _ in sentenceToEntityMentions[s]])
+				#self.fout.write("\nsentence #:" + tokenText + "\n")
+				#self.fout.write("\t[events]:" +  str([_.text for _ in sentenceToEventMentions[s]]) + "\n")
+				#self.fout.write("\t[entities]:" +  str([_.text for _ in sentenceToEntityMentions[s]]) + "\n")
 
-				self.dfs_tree(first_token, [], [], "", sentenceTokenToMention[s], self.stanTokenToECBTokens)
+				#self.dfs_tree(first_token, [], [], "", sentenceTokenToMention[s], self.stanTokenToECBTokens)
 				
 				#print("details:")
 				for m in sentenceToEventMentions[s]:
@@ -944,8 +1013,8 @@ class ECBHelper:
 					for t in m.tokens:
 						bestStan = dh.getBestStanToken(t.stanTokens)
 						mentionStanTokens.add(bestStan)
-					print("\n\t* entity-paths for event", m.text, str(m.doc_id), "sent:", s)
-					self.fout.write("\n\t* entity-paths for event" + str(m.text) + str(m.doc_id) + "sent:" + str(s) + "\n")
+					#print("\n\t* entity-paths for event", m.text, str(m.doc_id), "sent:", s)
+					#self.fout.write("\n\t* entity-paths for event" + str(m.text) + str(m.doc_id) + "sent:" + str(s) + "\n")
 					allPaths = []
 					curPath = []
 					self.getAllChildrenMentionPaths(dh, sentenceTokenToMention[s], mentionStanTokens, t, curPath, allPaths)
@@ -953,8 +1022,8 @@ class ECBHelper:
 						tmp_path = []
 						for _ in path:
 							tmp_path.append(_)
-						print("\t", [str(a) for a in path])
-						self.fout.write("\t" +  str([str(a) for a in path]) + "\n")
+						#print("\t", [str(a) for a in path])
+						#self.fout.write("\t" +  str([str(a) for a in path]) + "\n")
 					#print("\tvalid_hops:", m.valid_hops)
 					#print("\tvalid hop entities:", m.valid_rel_to_entities)
 					
@@ -1131,8 +1200,8 @@ class ECBHelper:
 				bestStan = dh.getBestStanToken(t.stanTokens)
 				print("bestStan:", bestStan)
 			'''
-			print("end of doc:", doc_id, "exiting...")
-			self.fout.close()
+			#print("end of doc:", doc_id, "exiting...")
+			#self.fout.close()
 			#exit(1)
 		print("eventsConsidered:", str(len(eventsConsidered)))
 		sorted_x = sorted(relation_to_count.items(), key=operator.itemgetter(1), reverse=True)
@@ -1146,6 +1215,20 @@ class ECBHelper:
 		print("not_have_ent:", not_have_ent)
 		print("# sentences_we_looked_at:", len(sentences_we_looked_at))
 		print("# which have both:", len(sentences_with_both_connections))
+
+		# optionally prints a shortened REF key so that i can display the dependency parse trees in a sane manner
+		'''
+		for dir_half in self.corpus.dirHalves:
+			print("dirhalf:", dir_half, "\n---------------")
+			for ref in self.corpus.dirHalves[dir_half].REFToEUIDs:
+				if ref not in self.tmp_ref_to_abbr:
+					print("***** WHY isn't:", ref, "in self.tmp_ref_to_abbr.  size:", len(self.tmp_ref_to_abbr))
+				else:
+					print("\tREF:", self.tmp_ref_to_abbr[ref])
+					for uid in self.corpus.dirHalves[dir_half].REFToEUIDs[ref]:
+						men = self.corpus.EUIDToMention[uid]
+						print("\t\tuid:", uid, "men:", men)
+		'''
 		#print(self.relationToIndex)
 		#prints coutns of dependency relations
 		#for x in sorted_x:
@@ -1663,7 +1746,6 @@ class ECBHelper:
 		print("\t# Stan Mentions:", len(self.corpus.SUIDToMention))
 		print("\t# HDDCRP Mentions:", len(self.corpus.HMUIDToMention))
 		print("\t== # Total Mentions:", len(self.corpus.XUIDToMention))
-		
 
 	# calculates the prec, recall, F1 of tokens
 	# w.r.t. (a) Stan; (b) HDDCRP; (c) Stan+HDDCRP

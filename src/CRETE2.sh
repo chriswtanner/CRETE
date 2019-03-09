@@ -115,7 +115,6 @@ echo "pronounsFile:" $pronounsFile
 echo "------------------------"
 
 cd $scriptDir
-
 python3 -u CorefEngine.py \
 --corpusPath=${corpusPath} \
 --useECBTest=${useECBTest} \
