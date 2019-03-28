@@ -74,10 +74,16 @@ class DataHandler:
 	def loadNNData(self, supp_features, useCCNN, scope):
 		print("[dh] loading ...")
 		start_time = time.time()
+
+		# constructs pairs from the XUIDs above
+		self.trainXUIDPairs = self.createXUIDPairs(self.trainXUIDs, scope)
+		self.devXUIDPairs = self.createXUIDPairs(self.devXUIDs, scope)
+		self.testXUIDPairs = self.createXUIDPairs(self.testXUIDs, scope)
+
 		if useCCNN:
-			(self.trainID, self.trainX, self.supplementalTrain, self.trainY) = self.createDataForCCNN(self.helper.trainingDirs, self.trainXUIDs, supp_features, True, scope, "train")
-			(self.devID, self.devX, self.supplementalDev, self.devY) = self.createDataForCCNN(self.helper.devDirs, self.devXUIDs, supp_features, False, scope, "dev")
-			(self.testID, self.testX, self.supplementalTest, self.testY) = self.createDataForCCNN(self.helper.testingDirs, self.testXUIDs, supp_features, False, scope, "test")
+			(self.trainID, self.trainX, self.supplementalTrain, self.trainY) = self.createDataForCCNN(self.helper.trainingDirs, self.trainXUIDPairs, supp_features, True, scope, "train")
+			(self.devID, self.devX, self.supplementalDev, self.devY) = self.createDataForCCNN(self.helper.devDirs, self.devXUIDPairs, supp_features, False, scope, "dev")
+			(self.testID, self.testX, self.supplementalTest, self.testY) = self.createDataForCCNN(self.helper.testingDirs, self.testXUIDPairs, supp_features, False, scope, "test")
 		else: # FOR FFNN and SVM
 			(self.trainID, self.trainX, self.trainY) = self.createDataForFFNN(self.helper.trainingDirs, self.trainXUIDs, supp_features, True, scope)
 			(self.devID, self.devX, self.devY) = self.createDataForFFNN(self.helper.devDirs, self.devXUIDs, supp_features, False, scope)
@@ -137,13 +143,14 @@ class DataHandler:
 						xuidPairs.add((xuid1, xuid2))
 		#print("tmp_xuids_reclaimed:", len(tmp_xuids_reclaimed))
 		#print("tmp_ecbtoxuids:", len(tmp_ecbtoxuids))
+		print("\t# xuidPairs:", len(xuidPairs))
 		return xuidPairs
 	
 	# almost identical to createData() but it re-shapes the vectors to be 5D -- pairwise.
 	# i could probably combine this into 1 function and have a boolean flag isCCNN=True.
 	# we pass in XUID because the mentions could be from any Stan, HDDCRP, or ECB; however,
 	# we need to remember that the co-reference REF tags only exist in the output file that we compare against
-	def createDataForCCNN(self, dirs, XUIDs, supp_features_type, negSubsample, scope, split):
+	def createDataForCCNN(self, dirs, xuidPairs, supp_features_type, negSubsample, scope, split):
 
 		# TMP, to ensure we correctly make pairs of entities or events but not entities-event pairs
 		mentionTypeToCount = defaultdict(int)
@@ -160,8 +167,8 @@ class DataHandler:
 		numFeatures = 0
 		numPosAdded = 0
 		numNegAdded = 0
-		xuidPairs = self.createXUIDPairs(XUIDs, scope)
-		print("*",split,"[createDataForCCNN] # XUIDs passed-in:", len(XUIDs), "; # pairs made from these: ", len(xuidPairs))
+		#xuidPairs = self.createXUIDPairs(XUIDs, scope)
+		print("*",split,"[createDataForCCNN] # pairs made from these: ", len(xuidPairs))
 
 		# TMP ADDED FOR SAME LEMMA TEST
 		'''
@@ -313,7 +320,7 @@ class DataHandler:
 						event_gold = True
 
 					mp = MiniPred(tmp_key, event_gold, entcoref)
-					self.tmp_minipreds[tmp_key] = mp
+					#self.tmp_minipreds[tmp_key] = mp
 
 					# COUNTS STATISTICS OF EVENT AND ENTITY COREF'ing
 					if m1.REF == m2.REF:
@@ -743,7 +750,7 @@ class DataHandler:
 		print("samelamma f1:",f1, prec, recall)
 		'''
 		print("ALL CORPUS tmp_coref_counts:", self.tmp_coref_counts)
-		print("tmp xuids:", len(self.tmp_minipreds.keys()))
+		print("shortest stats: tmp xuids (# pairs w/ 2 relations):", len(self.tmp_minipreds.keys()))
 		print("\t", split, "mentionTypeToCount:",str(mentionTypeToCount))
 		print("\t", split, "tmp_pairs_with paths:", tmp_pairs_with, "tmp_pairs_without paths", tmp_pairs_without)
 		print("**** tmp_count_in:", self.tmp_count_in)

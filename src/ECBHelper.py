@@ -202,14 +202,14 @@ class ECBHelper:
 
 	# evaluates the CCNN pairwise predictions,
 	# returning the F1, PREC, RECALL scores
-	def evaluatePairwisePreds(self, ids, preds, golds, dh):
+	def evaluatePairwisePreds(self, ids, preds, golds, dh, rev=False):
 
 		A = set()
 		B = set()
 		C = set()
 		D = set()
 
-		print("* in evaluatePairwisePreds()")
+		#print("* in evaluatePairwisePreds()")
 		numGoldPos = 0
 		scoreToGoldTruth = defaultdict(list)
 		
@@ -218,13 +218,19 @@ class ECBHelper:
 		#	print("pred:", p, "gold:", g)
 
 		for _ in range(len(preds)):
+			#print("looking at pred:", preds[_][0], "and gold:", golds[_])
 			if golds[_] == 0:
 				numGoldPos += 1
 				scoreToGoldTruth[preds[_][0]].append(1)
+				#print("a")
 			else:
 				scoreToGoldTruth[preds[_][0]].append(0)
+				#print("")
 
-		s = sorted(scoreToGoldTruth.keys())
+		s = sorted(scoreToGoldTruth.keys(), reverse=rev)
+		#for _ in s:
+		#	print("score:", _, "trutH:", scoreToGoldTruth[_])
+
 		#print("numGoldPos:", numGoldPos)
 		TP = 0.0
 		FP = 0.0
@@ -242,7 +248,7 @@ class ECBHelper:
 					FP += 1
 
 			numReturnedSoFar += len(scoreToGoldTruth[eachVal])
-
+			#print("numReturnedSoFar:", numReturnedSoFar)
 			score_rounded = str(round(eachVal,7))
 			score_to_index_rank[score_rounded] = numReturnedSoFar
 
@@ -252,7 +258,7 @@ class ECBHelper:
 			if (recall + prec) > 0:
 				f1 = 2*(recall*prec) / (recall + prec)
 
-			#print("prec:", prec, "rec:", recall, "f1:", f1)
+			#print("thres:", eachVal, "prec:", prec, "rec:", recall, "f1:", f1)
 			if f1 > bestF1:
 				bestF1 = f1
 				bestVal = eachVal
@@ -265,7 +271,7 @@ class ECBHelper:
 			print("* ERROR: our F1 was < 0")
 			exit(1)
 
-		print("bestVal:", bestVal, " yielded F1:", bestF1)
+		#print("bestVal:", bestVal, " yielded F1:", bestF1)
 
 		# given the best threshold, now let's check the individual performance
 		# of both entities and events
@@ -283,6 +289,7 @@ class ECBHelper:
 		fp_pairs = []
 		fn_pairs = []
 
+		'''
 		for ((xuid1, xuid2), pred, gold) in zip(ids, preds, golds):
 			m1 = self.corpus.XUIDToMention[xuid1]
 			m2 = self.corpus.XUIDToMention[xuid2]
@@ -328,7 +335,7 @@ class ECBHelper:
 				exit(1)
 
 
-			'''
+			
 			# saves the predictions
 			mp = dh.tmp_minipreds[(xuid1, xuid2)]
 			mp.set_event_pred(pred)
@@ -399,9 +406,9 @@ class ECBHelper:
 					if mentionType == "events":
 						the_pairs[both_contain_paths]["TP"] += 1
 					mentionStats[mentionType]["TP"] += 1
-			'''
+			
 
-		'''
+		
 		# PRINTS FALSE POSITIVES
 		for _ in range(len(fp_pairs)):
 			xuid1, xuid2 = fp_pairs[_]
@@ -541,7 +548,7 @@ class ECBHelper:
 		print("WRONG PAIRS tmp_coref_counts:", tmp_coref_counts)
 		'''
 
-		print("# fp_pairs:", len(fp_pairs), "# fn_pairs:", len(fn_pairs))
+		#print("# fp_pairs:", len(fp_pairs), "# fn_pairs:", len(fn_pairs))
 		return (bestF1, bestP, bestR, bestVal)
 
 	def get_all_valid_1hops(self, dh, token, valid_1hops, valid_relations):

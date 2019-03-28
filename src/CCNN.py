@@ -3,10 +3,15 @@ import sys
 import time
 import keras
 import pickle
+import math
 import random
 import numpy as np
 import tensorflow as tf
 import keras.backend as K
+
+from sklearn.metrics.pairwise import cosine_similarity
+
+from FeatureHandler import FeatureHandler
 
 from sklearn.metrics import accuracy_score # TMP -- dependency parse features
 from sklearn.neural_network import MLPClassifier # TMP -- dependency parse features
@@ -66,6 +71,107 @@ class CCNN:
 			tf.Session(config=tf.ConfigProto(log_device_placement=True))
 			os.environ['CUDA_VISIBLE_DEVICES'] = ''
 		
+	def baseline_tests(self):
+
+		# returns same lemma results
+		print(len(self.dh.testXUIDPairs))
+		
+		fh = FeatureHandler(self.args, self.helper)
+		fh.loadGloveEmbeddings()
+		
+		xuid_to_embedding = {}
+
+		num_gold = 0
+		any_TP = 0
+		any_FP = 0
+
+		all_TP = 0
+		all_FP = 0
+
+		golds = []
+		preds = []
+
+		cs_preds = []
+		l2_preds = []
+		# goes through all pairs
+		for xuid1, xuid2 in self.dh.devXUIDPairs:
+			m1 = self.corpus.XUIDToMention[xuid1]
+			m2 = self.corpus.XUIDToMention[xuid2]
+			is_gold = False
+
+			if m1.REF == m2.REF:
+				is_gold = True
+				num_gold += 1
+				golds.append(0)
+			else:
+				golds.append(1)
+
+			same_lemma_any = False
+			same_lemma_all = True
+
+			m1_lemmas = [fh.getBestStanToken(t.stanTokens).lemma.lower() for t in m1.tokens]
+			m2_lemmas = [fh.getBestStanToken(t.stanTokens).lemma.lower() for t in m2.tokens]
+
+			if len(m1_lemmas) != len(m2_lemmas):
+				same_lemma_all = False
+			else:
+				for l1, l2 in zip(m1_lemmas, m2_lemmas):
+					if l1 != l2:
+						same_lemma_all = False
+						break
+
+			for l1 in m1_lemmas:
+				if l1 in m2_lemmas:
+					same_lemma_any = True
+
+			if same_lemma_all:
+				if is_gold:
+					all_TP += 1
+				else:
+					all_FP += 1
+
+			if same_lemma_any:
+				if is_gold:
+					any_TP += 1
+				else:
+					any_FP += 1
+			
+			(uid1, uid2) = sorted([self.corpus.XUIDToMention[xuid1].UID, self.corpus.XUIDToMention[xuid2].UID])
+			m1_features = []
+			m2_features = []
+			# loops through each feature (e.g., BoW, lemma) for the given uid pair
+			for feature in self.dh.singleFeatures:
+				for i in feature[uid1]:  # loops through each val of the given feature
+					m1_features.append(i)
+				for i in feature[uid2]:
+					m2_features.append(i)
+			
+			dot = np.dot(m1_features, m2_features)
+			norma = np.linalg.norm(m1_features)
+			normb = np.linalg.norm(m2_features)
+			cs = dot / (norma * normb)
+
+			l2 = 0
+			for i, j in zip(m1_features, m2_features):
+				l2 += math.pow(i - j, 2)
+			l2 = math.sqrt(l2)
+
+			#print("m1:", m1.text, "m2:", m2.text, "cs:", cs, "l2:", l2)
+			cs_preds.append([cs])
+			l2_preds.append([l2])
+		all_R = all_TP / float(num_gold)
+		all_P = all_TP / float(all_TP + all_FP)
+		all_F1 = 2*all_P*all_R / (all_P + all_R)
+
+		any_R = any_TP / float(num_gold)
+		any_P = any_TP / float(any_TP + any_FP)
+		any_F1 = 2*any_P*any_R / (any_P + any_R)
+
+		print("all_F1:", all_F1, "any_F1:", any_F1)
+		(cs_f1, bestP, bestR, bestVal) = self.helper.evaluatePairwisePreds(None, cs_preds, golds, self.dh, True)
+		(l2_f1, bestP, bestR, bestVal) = self.helper.evaluatePairwisePreds(None, l2_preds, golds, self.dh, False)
+		return (any_F1, all_F1, cs_f1, l2_f1)
+
 	# WITHIN-DOC MODEL
 	def train_and_test(self):
 		f1s = []
@@ -235,12 +341,11 @@ class CCNN:
 		
 		# evaluates
 		(dev_f1, dev_prec, dev_rec, dev_bestThreshold) = self.helper.evaluatePairwisePreds(self.devID, dev_preds, self.devY, self.dh)
-		print("[CCNN DEV RESULTS] f1:", round(dev_f1,4), " prec: ", round(dev_prec,4), " recall: ", round(dev_rec,4), " threshold: ", round(dev_bestThreshold,3))
-
-		(test_f1, test_prec, test_rec, test_bestThreshold) = self.helper.evaluatePairwisePreds(self.testID, test_preds, self.testY, self.dh)
-		print("[CCNN TEST RESULTS] f1:", round(test_f1,4), " prec: ", round(test_prec,4), " recall: ", round(test_rec,4), " threshold: ", round(test_bestThreshold,3))
-
+		#print("[CCNN DEV RESULTS] f1:", round(dev_f1,4), " prec: ", round(dev_prec,4), " recall: ", round(dev_rec,4), " threshold: ", round(dev_bestThreshold,3))
 		dev_results = (self.helper.devDirs, self.devID, dev_preds, self.devY, dev_f1)
+		
+		(test_f1, test_prec, test_rec, test_bestThreshold) = self.helper.evaluatePairwisePreds(self.testID, test_preds, self.testY, self.dh)
+		#print("[CCNN TEST RESULTS] f1:", round(test_f1,4), " prec: ", round(test_prec,4), " recall: ", round(test_rec,4), " threshold: ", round(test_bestThreshold,3))
 		test_results = (self.helper.testingDirs, self.testID, test_preds, self.testY, test_f1)
 		return [dev_results, test_results]
 

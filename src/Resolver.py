@@ -33,7 +33,7 @@ class Resolver:
 
 		# classifier params
 		useCCNN = True
-		devMode = False
+		devMode = True
 		runStanford = False
 		useRelationalFeatures = False
 
@@ -130,6 +130,8 @@ class Resolver:
 			'''
 			ensemble_dev_predictions = []
 			ensemble_test_predictions = []
+
+			dev_best_f1s = []
 			while ensemble_test_predictions == [] or len(ensemble_test_predictions[0]) < num_runs:
 
 				# self.scope == doc or dir (WD or CD)
@@ -190,15 +192,16 @@ class Resolver:
 					#helper.dfs_tree(first_token, [], [], "", sentenceTokenToMention[sentNum2], stanTokenToECBTokens)
 				'''
 
+
 				results = model.train_and_test()
 
 				dev_dirs, dev_ids, dev_preds, dev_golds, dev_best_f1 = results[0]
 				test_dirs, test_ids, test_preds, test_golds, test_best_f1 = results[1]
 
-
-				print("****** test_preds:", test_preds)
-				if test_best_f1 > 0.4:
+				
+				if dev_best_f1 > 0.4:
 					is_wd = True
+					'''
 					if self.scope == "doc": # WD
 						print("DOING WITHIN-DOC ENSEMBLE!")
 					elif self.scope == "dir": # CD
@@ -207,26 +210,35 @@ class Resolver:
 					else:
 						print("** ERROR: invalid scope.  should be doc or dir")
 						exit(1)
-
+					'''
 					helper.addEnsemblePredictions(is_wd, dev_dirs, dev_ids, dev_preds, ensemble_dev_predictions)	
 					helper.addEnsemblePredictions(is_wd, test_dirs, test_ids, test_preds, ensemble_test_predictions) # True means WD
-					print("lenensemble_test_predictions:", len(ensemble_test_predictions))
-					print("len(ensemble_test_predictions[0]):", str(len(ensemble_test_predictions[0])))
+					dev_best_f1s.append(dev_best_f1)
 
-	
-			print("# tmp_minipreds:", len(dh.tmp_minipreds))
+					#print("lenensemble_test_predictions:", len(ensemble_test_predictions))
+					#print("len(ensemble_test_predictions[0]):", str(len(ensemble_test_predictions[0])))
+				print("# dev runs:", len(dev_best_f1s), dev_best_f1s)
+			#print("# tmp_minipreds:", len(dh.tmp_minipreds))
 
 			dev_preds = helper.getEnsemblePreds(ensemble_dev_predictions) # normalizes them
 			(dev_f1, dev_prec, dev_rec, dev_bestThreshold) = helper.evaluatePairwisePreds(dev_ids, dev_preds, dev_golds, dh)
-			print("[***",mention_type,"ENSEMBLE DEV RESULTS] f1:", round(dev_f1,4), " prec: ", round(dev_prec,4), " recall: ", round(dev_rec,4), " threshold: ", round(dev_bestThreshold,3))
+			
+			(any_F1, all_F1, cs_f1, l2_f1) = model.baseline_tests()
+			print("samelemma_any:", round(any_F1, 4))
+			print("samelemma_all:", round(all_F1, 4))
+			print("cosine sim:", round(cs_f1, 4))
+			print("l2:", round(l2_f1, 4))
+			print("CCNN AVERAGE:", round(sum(dev_best_f1s) / float(len(dev_best_f1s)), 4), "(", model.standard_deviation(dev_best_f1s), ")")
+			print("CCNN ENSEMBLE:", round(dev_f1, 4))
+			#print("[***",mention_type,"ENSEMBLE DEV RESULTS] f1:", round(dev_f1,4), " prec: ", round(dev_prec,4), " recall: ", round(dev_rec,4), " threshold: ", round(dev_bestThreshold,3))
 
 			test_preds = helper.getEnsemblePreds(ensemble_test_predictions) # normalizes them
 			(test_f1, test_prec, test_rec, test_bestThreshold) = helper.evaluatePairwisePreds(test_ids, test_preds, test_golds, dh)
-			print("[***",mention_type,"ENSEMBLE TEST RESULTS] f1:", round(test_f1,4), " prec: ", round(test_prec,4), " recall: ", round(test_rec,4), " threshold: ", round(test_bestThreshold,3))
+			#print("[***",mention_type,"ENSEMBLE TEST RESULTS] f1:", round(test_f1,4), " prec: ", round(test_prec,4), " recall: ", round(test_rec,4), " threshold: ", round(test_bestThreshold,3))
 			print("* done.  took ", str((time.time() - start_time)), "seconds")
 
 			return test_ids, test_preds, test_golds
-
+			
 	def aggCluster(self, relevant_dirs, event_ids, event_preds, event_golds):
 		print("event ids:", event_ids)
 		print("event_preds:", event_preds)

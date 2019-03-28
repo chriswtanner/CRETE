@@ -43,14 +43,14 @@ class CorefEngine:
 
 		# manually-defined features (others are in Resolver.py)
 		#32, 20, 2, 32, 0
-		wdPresets = [128, 2, 2, 4, 0] # batchsize, num epochs, num layers, num filters, dropout
-		num_runs = 1
+		wdPresets = [32, 20, 2, 32, 0] # batchsize, num epochs, num layers, num filters, dropout
+		num_runs = 5
 
 		event_resolution = Resolver(args, wdPresets, "doc") # doc or dir for WD or CD, respectively
 		
 		# {none, relations, shortest, one} for supplemental path info
 		# resolve(mention_type, supp_features_type, event_pronouns, entity_pronouns, num_runs)
-		event_ids, event_preds, event_golds = event_resolution.resolve("events", "shortest", False, True, num_runs) 
+		event_ids, event_preds, event_golds = event_resolution.resolve("events", "none", False, True, num_runs) 
 
 		#event_resolution.aggCluster(event_ids, event_preds, event_golds)
 
