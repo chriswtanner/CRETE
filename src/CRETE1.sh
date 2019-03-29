@@ -4,7 +4,7 @@ prefix="ccnn" # used to help identify experiments' outputs, as the output files 
 corpus="FULL"
 onlyValidSentences="T"
 addIntraDocs="F" # since these are singletons w.r.t. cross-doc
-exhaustivelyTestAllFeatures=false
+exhaustivelyTestAllFeatures=true
 useECBTest=true
 featureMap=(2 3) # 1 2 3 4 5 6 7)
 numLayers=(2) # 3) # 1 3
@@ -17,15 +17,7 @@ numFilters=(32)
 filterMultiplier=(1.0) # 2.0)
 devDir=(23) # this # and above will be the dev dirs.  See ECBHelper.py for more
 entity_threshold=(0.9)
-# features (default = False)
-wordFeature="False" # f1
-lemmaFeature="False" # f2
-charFeature="False" # f3
-posFeature="False" # f4
-dependencyFeature="False" # f5
-bowFeature="False" # f6
-wordnetFeature="False" # f7
-framenetFeature="False" # f8
+
 
 native="False"
 hn=`hostname`
@@ -33,10 +25,22 @@ hn=`hostname`
 IFS=$'\r\n' GLOBIGNORE='*' command eval  'XYZ=($(cat featureCombos.txt))'
 for features in "${XYZ[@]}"
 do
+	# features (default = False)
+	wordFeature="False" # f1
+	lemmaFeature="False" # f2
+	charFeature="False" # f3
+	posFeature="False" # f4
+	dependencyFeature="False" # f5
+	bowFeature="False" # f6
+	wordnetFeature="False" # f7
+	framenetFeature="False" # f8
 	prefix="ffnn"
+
 	if [ "$exhaustivelyTestAllFeatures" = false ] ; then
 		features=${featureMap[@]}
 	fi
+
+	echo "features:" $features
 	# FEATURE MAP OVERRIDE
 	if [[ " ${features[*]} " == *"1"* ]]; then
 		wordFeature="T"
@@ -103,9 +107,11 @@ do
 												then
 													echo "* kicking off CRETE2 natively"
 													native="True"
-													./CRETE2.sh ${corpus} ${useECBTest} ${onlyValidSentences} ${addIntraDocs} ${nl} ${ne} ${ws} ${neg} ${bs} ${dr} ${nf} ${fm} ${wordFeature} ${lemmaFeature} ${charFeature} ${posFeature} ${dependencyFeature} ${bowFeature} ${wordnetFeature} ${framenetFeature} ${dd} ${fn} ${native} ${et}
+													echo "would call it on" ${wordFeature} ${lemmaFeature} ${charFeature} ${posFeature} ${dependencyFeature} ${bowFeature} ${wordnetFeature} ${framenetFeature} ${dd} ${fn}
+													#./CRETE2.sh ${corpus} ${useECBTest} ${onlyValidSentences} ${addIntraDocs} ${nl} ${ne} ${ws} ${neg} ${bs} ${dr} ${nf} ${fm} ${wordFeature} ${lemmaFeature} ${charFeature} ${posFeature} ${dependencyFeature} ${bowFeature} ${wordnetFeature} ${framenetFeature} ${dd} ${fn} ${native} ${et}
 												else
-													qsub -l gpus=1 -o ${fout} CRETE2.sh ${corpus} ${useECBTest} ${onlyValidSentences} ${addIntraDocs} ${nl} ${ne} ${ws} ${neg} ${bs} ${dr} ${nf} ${fm} ${wordFeature} ${lemmaFeature} ${charFeature} ${posFeature} ${dependencyFeature} ${bowFeature} ${wordnetFeature} ${framenetFeature} ${dd} ${fn} ${native} ${et}
+													echo "would call it on" ${wordFeature} ${lemmaFeature} ${charFeature} ${posFeature} ${dependencyFeature} ${bowFeature} ${wordnetFeature} ${framenetFeature} ${dd} ${fn}
+													#qsub -l gpus=1 -o ${fout} CRETE2.sh ${corpus} ${useECBTest} ${onlyValidSentences} ${addIntraDocs} ${nl} ${ne} ${ws} ${neg} ${bs} ${dr} ${nf} ${fm} ${wordFeature} ${lemmaFeature} ${charFeature} ${posFeature} ${dependencyFeature} ${bowFeature} ${wordnetFeature} ${framenetFeature} ${dd} ${fn} ${native} ${et}
 												fi
 											done
 										done
