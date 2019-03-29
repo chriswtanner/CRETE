@@ -224,7 +224,7 @@ class CCNN:
 			num_tries = 0
 			while val_loss[-1] > 0.1 and num_tries < 1:
 				train_history = model.fit({'input_a': self.trainX[:, 0], 'input_b': self.trainX[:, 1], 'auxiliary_input': self.supplementalTrain},
-					{'main_output': self.trainY}, batch_size=self.bs, epochs=self.ne, \
+					{'main_output': self.trainY}, shuffle=True, batch_size=self.bs, epochs=self.ne, \
 					validation_data=({'input_a': self.devX[:, 0], 'input_b': self.devX[:, 1], 'auxiliary_input': self.supplementalDev}, {'main_output': self.devY}))
 				val_loss = train_history.history['val_loss']
 				print("val LOSS:", val_loss)
@@ -259,7 +259,7 @@ class CCNN:
 			
 			print(model.summary())
 			model.fit([self.trainX[:, 0], self.trainX[:, 1]], self.trainY, \
-				batch_size=self.bs, epochs=self.ne, verbose=1, \
+				batch_size=self.bs, shuffle=True, epochs=self.ne, verbose=1, \
 				validation_data=([self.devX[:, 0], self.devX[:, 1]], self.devY))
 		'''
 		# TMP dependency features -- train and test a NN over the dependency features
@@ -504,6 +504,7 @@ class CCNN:
 						{'main_output': self.trainY},
 						batch_size=self.bs, \
 						epochs=self.ne, \
+						shuffle=True, \
 						validation_data=({'input_a': self.devX[:, 0], 'input_b': self.devX[:, 1], 'auxiliary_input': self.supplementalDev}, {'main_output': self.devY}))
 			else:
 				model = Model(inputs=[input_a, input_b], outputs=distance)
@@ -513,6 +514,7 @@ class CCNN:
 				model.fit([self.trainX[:, 0], self.trainX[:, 1]], self.trainY, \
 					batch_size=self.bs, \
 					epochs=self.ne, \
+					shuffle=True, \
 					validation_data=([self.devX[:, 0], self.devX[:, 1]], self.devY))
 
 			if self.CCNNSupplement:
