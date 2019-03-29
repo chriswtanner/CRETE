@@ -93,16 +93,16 @@ class Resolver:
 		#helper.printHDDCRPMentionCoverage()
 		#corpus.checkMentions()
 
-		'''
 		# only used for saving features
-		fh = FeatureHandler(args, helper) #, trainXUIDs, devXUIDs, testXUIDs)
-		fh.saveLemmaFeatures(lemmaFeaturesFile)
-		fh.saveCharFeatures(charFeaturesFile)
-		fh.savePOSFeatures(posFeaturesFile)
-		fh.saveDependencyFeatures(dependencyFeaturesFile)
-		fh.saveWordNetFeatures(wordnetFeaturesFile)
-		fh.saveBoWFeatures(bowFeaturesFile)
-		'''
+		#fh = FeatureHandler(self.args, helper) #, trainXUIDs, devXUIDs, testXUIDs)
+		#fh.saveLemmaFeatures(lemmaFeaturesFile)
+		#fh.saveWordFeatures(wordFeaturesFile)
+		#fh.saveCharFeatures(charFeaturesFile)
+		#fh.savePOSFeatures(posFeaturesFile)
+		#fh.saveDependencyFeatures(dependencyFeaturesFile)
+		#fh.saveWordNetFeatures(wordnetFeaturesFile)
+		#fh.saveBoWFeatures(bowFeaturesFile)
+		#exit(1)
 
 		# DEFINES WHICH MENTIONS TO USE
 		trainXUIDs, devXUIDs, testXUIDs = helper.getCorpusMentions(mention_type)

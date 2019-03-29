@@ -16,7 +16,7 @@ class FeatureHandler:
 		self.args = args
 		self.helper = helper
 		self.corpus = helper.corpus
-
+		self.dependency_parse_type = "basic-dependencies"
 		self.saveRelationalFeatures = False # NOTE: ensure this is what you want
 		self.bowWindow = 3 # number of tokens on each side to look at
 		self.gloveEmb = {} # to be filled in via loadGloveEmbeddings()
@@ -213,6 +213,50 @@ class FeatureHandler:
 		pickle_out = open(fileOut, 'wb')
 		pickle.dump(feature, pickle_out)
 
+	def saveWordFeatures(self, fileOut):
+		feature = Feature()
+		if len(self.gloveEmb) == 0:  # don't want to wastefully load again
+			self.loadGloveEmbeddings()
+		xuidPairs = self.getAllXUIDPairs()
+		xuids = set()
+		for (xuid1, xuid2) in xuidPairs:
+			xuids.add(xuid1)
+			xuids.add(xuid2)
+		for xuid in xuids:
+
+			sumEmb = [0] * 300
+			for t in self.corpus.XUIDToMention[xuid].tokens:
+				text = self.getBestStanToken(t.stanTokens).text.lower()
+				if text not in self.gloveEmb:
+					print("* ERROR: no emb for",text)
+					continue
+				curEmb = self.gloveEmb[text]
+				sumEmb = [x + y for x, y in zip(sumEmb, curEmb)]
+			feature.setSingle(self.corpus.XUIDToMention[xuid].UID, sumEmb)
+
+		if self.saveRelationalFeatures:
+			# go through all pairs to compute relational data
+			proc = 0
+			completed = set()
+			for xuid1, xuid2 in xuidPairs:
+				uid1, uid2 = sorted([self.corpus.XUIDToMention[xuid1].UID,
+								self.corpus.XUIDToMention[xuid2].UID])
+				if (uid1, uid2) in completed or (uid2, uid1) in completed:
+					continue
+				completed.add((uid1, uid2))
+				flatv1 = feature.singles[uid1]
+				flatv2 = feature.singles[uid2]
+
+				(dp, cs) = self.getDPCS(flatv1, flatv2)
+				feature.addRelational(uid1, uid2, dp)
+				feature.addRelational(uid1, uid2, cs)
+				if proc % 1000 == 0:
+					print("\tprocessed", proc, "of", len(xuidPairs), "(%2.2f)" %
+						float(100.0*proc/len(xuidPairs)), end="\r")
+				proc += 1
+		pickle_out = open(fileOut, 'wb')
+		pickle.dump(feature, pickle_out)
+
 	def saveLemmaFeatures(self, fileOut):
 		feature = Feature()
 		if len(self.gloveEmb) == 0:  # don't want to wastefully load again
@@ -387,11 +431,12 @@ class FeatureHandler:
 			tmpChildrenLemmas = []
 			for t in self.corpus.XUIDToMention[xuid].tokens:
 				bestStanToken = self.getBestStanToken(t.stanTokens)
-				
-				if len(bestStanToken.parentLinks) == 0:
+				print("bestStanToken:", bestStanToken)
+				if len(bestStanToken.parentLinks[self.dependency_parse_type]) == 0:
 					print("* token has no dependency parent!")
 					exit(1)
-				for stanParentLink in bestStanToken.parentLinks:
+				for stanParentLink in bestStanToken.parentLinks[self.dependency_parse_type]:
+					print("stanParentLink:", stanParentLink)
 					parentLemma = self.removeQuotes(stanParentLink.parent.lemma.lower())
 					curEmb = [0]*300
 					
@@ -408,7 +453,7 @@ class FeatureHandler:
 				# makes embedding for the dependency children's lemmas
 				#if len(bestStanToken.childLinks) == 0:
 				#	print("* token has no dependency children!")
-				for stanChildLink in bestStanToken.childLinks:
+				for stanChildLink in bestStanToken.childLinks[self.dependency_parse_type]:
 					childLemma = self.removeQuotes(stanChildLink.child.lemma.lower())
 					curEmb = [0]*300
 					
