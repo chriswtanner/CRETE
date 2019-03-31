@@ -1,0 +1,85 @@
+
+-----------------------------------------
+docid:35_1ecb.xml
+-----------------------------------------
+
+sentence #:an arrest for suspicion of driving under the influence will not affect the playing status of san diego chargers wide receiver vincent jackson for sunday 's divisional playoff game at pittsburgh . 
+	[events]:[['game'], ['driving', 'under', 'the', 'influence'], ['suspicion'], ['affect'], ['arrest'], ['playing']]
+	[entities]:[['vincent', 'jackson'], ['at', 'pittsburgh']]
+*R1172[affect]
+|--(nsubj)--> *R1153[arrest]
+|                |--(det)--> an
+|                |--(nmod)--> *R1155[suspicion]
+|                                 |--(case)--> for
+|                                 |--(acl)--> *R1154[driving]
+|                                                  |--(mark)--> of
+|                                                  |--(nmod)--> *R1154[influence]
+|                                                                   |--(case)--> *R1154[under]
+|                                                                   |--(det)--> *R1154[the]
+|--(aux)--> will
+|--(neg)--> not
+|--(dobj)--> status
+|                |--(det)--> the
+|                |--(compou)--> *R1173[playing]
+|                |--(nmod)--> chargers
+|                                 |--(case)--> of
+|                                 |--(compou)--> san
+|                                 |--(compou)--> diego
+|--(xcomp)--> R1156[jackson]
+|                |--(amod)--> wide
+|                |--(compou)--> receiver
+|                |--(compou)--> R1156[vincent]
+|                |--(nmod)--> *R1174[game]
+|                                 |--(case)--> for
+|                                 |--(nmod:p)--> sunday
+|                                 |                |--(case)--> 's
+|                                 |--(amod)--> divisional
+|                                 |--(compou)--> playoff
+|--(nmod)--> R1175[pittsburgh]
+|                |--(case)--> R1175[at]
+|--(punct)--> .
+
+	* entity-paths for event['game']35_1ecb.xmlsent:9606
+
+	* entity-paths for event['driving', 'under', 'the', 'influence']35_1ecb.xmlsent:9606
+
+	* entity-paths for event['suspicion']35_1ecb.xmlsent:9606
+
+	* entity-paths for event['affect']35_1ecb.xmlsent:9606
+	['affect --(xcomp)--> Jackson']
+	['affect --(nmod)--> Pittsburgh']
+
+	* entity-paths for event['arrest']35_1ecb.xmlsent:9606
+
+	* entity-paths for event['playing']35_1ecb.xmlsent:9606
+
+sentence #:jackson was arrested on the dui charge early tuesday morning by the california highway patrol . 
+	[events]:[['dui'], ['charge'], ['arrested']]
+	[entities]:[['jackson'], ['california', 'highway', 'patrol'], ['early', 'tuesday', 'morning']]
+*R1153[arrested]
+|--(nsubjp)--> R1156[jackson]
+|--(auxpas)--> was
+|--(nmod)--> *R1176[charge]
+|                |--(case)--> on
+|                |--(det)--> the
+|                |--(compou)--> *R1154[dui]
+|                |--(nmod:t)--> R1159[tuesday]
+|                                 |--(amod)--> R1159[early]
+|--(nmod:t)--> R1159[morning]
+|--(nmod)--> R1158[patrol]
+|                |--(case)--> by
+|                |--(det)--> the
+|                |--(compou)--> R1158[california]
+|                |--(compou)--> R1158[highway]
+|--(punct)--> .
+
+	* entity-paths for event['dui']35_1ecb.xmlsent:9607
+
+	* entity-paths for event['charge']35_1ecb.xmlsent:9607
+	['charge --(nmod:tmod)--> Tuesday']
+
+	* entity-paths for event['arrested']35_1ecb.xmlsent:9607
+	['arrested --(nsubjpass)--> Jackson']
+	['arrested --(nmod)--> charge', 'charge --(nmod:tmod)--> Tuesday']
+	['arrested --(nmod:tmod)--> morning']
+	['arrested --(nmod)--> Patrol']

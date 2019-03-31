@@ -1,0 +1,67 @@
+
+-----------------------------------------
+docid:32_2ecb.xml
+-----------------------------------------
+
+sentence #:the alleged fatal stabbing would be at least his third attack against mendes . 
+	[events]:[['fatal', 'stabbing']]
+	[entities]:[['mendes'], ['his']]
+attack
+|--(nsubj)--> *R1044[fatal]
+|                |--(det)--> the
+|                |--(amod)--> alleged
+|                |--(acl)--> *R1044[stabbing]
+|--(aux)--> would
+|--(cop)--> be
+|--(advmod)--> least
+|                |--(case)--> at
+|--(nmod:p)--> R1045[his]
+|--(amod)--> third
+|--(nmod)--> R1046[mendes]
+|                |--(case)--> against
+|--(punct)--> .
+
+	* entity-paths for event['fatal', 'stabbing']32_2ecb.xmlsent:8756
+
+sentence #:a man with a long history of domestic violence has been accused of stabbing his mother and a former girlfriend to death and leaving their bodies in an apartment for several days . 
+	[events]:[['stabbing', 'to', 'death'], ['leaving']]
+	[entities]:[['man'], ['in', 'an', 'apartment'], ['mother'], ['former', 'girlfriend'], ['for', 'several', 'days'], ['bodies']]
+accused
+|--(nsubjp)--> R1045[man]
+|                |--(det)--> a
+|                |--(nmod)--> history
+|                                 |--(case)--> with
+|                                 |--(det)--> a
+|                                 |--(amod)--> long
+|                                 |--(nmod)--> violence
+|                                                  |--(case)--> of
+|                                                  |--(amod)--> domestic
+|--(aux)--> has
+|--(auxpas)--> been
+|--(advcl)--> *R1044[stabbing]
+|                |--(mark)--> of
+|                |--(dobj)--> R1047[mother]
+|                |                |--(nmod:p)--> his
+|                |                |--(cc)--> and
+|                |                |--(conj)--> R1046[girlfriend]
+|                |                                 |--(det)--> a
+|                |                                 |--(amod)--> R1046[former]
+|                |--(nmod)--> *R1044[death]
+|                |                |--(case)--> *R1044[to]
+|                |--(cc)--> and
+|                |--(conj)--> *R1049[leaving]
+|                                 |--(dobj)--> R1050[bodies]
+|                                 |                |--(nmod:p)--> their
+|                                 |--(nmod)--> R1048[apartment]
+|                                                  |--(case)--> R1048[in]
+|                                                  |--(det)--> R1048[an]
+|                                                  |--(nmod)--> R1052[days]
+|                                                                   |--(case)--> R1052[for]
+|                                                                   |--(amod)--> R1052[several]
+|--(punct)--> .
+
+	* entity-paths for event['stabbing', 'to', 'death']32_2ecb.xmlsent:8749
+
+	* entity-paths for event['leaving']32_2ecb.xmlsent:8749
+	['leaving --(dobj)--> bodies']
+	['leaving --(nmod)--> apartment']

@@ -1,0 +1,67 @@
+
+-----------------------------------------
+docid:18_6ecbplus.xml
+-----------------------------------------
+
+sentence #:a jury on tuesday convicted a man charged in an april 2007 shooting at a troy accounting firm that left a receptionist dead and two managing partners wounded . 
+	[events]:[['shooting'], ['wounded'], ['dead'], ['charged']]
+	[entities]:[['man'], ['receptionist'], ['a', 'troy', 'accounting', 'firm'], ['partners'], ['april', '2007']]
+convicted
+|--(nsubj)--> jury
+|                |--(det)--> a
+|                |--(nmod)--> tuesday
+|                                 |--(case)--> on
+|--(dobj)--> R360[man]
+|                |--(det)--> a
+|                |--(acl)--> *R397[charged]
+|                |                |--(nmod)--> *R361[shooting]
+|                |                |                |--(case)--> in
+|                |                |                |--(det)--> an
+|                |                |                |--(compou)--> R379[april]
+|                |                |                |--(nummod)--> R379[2007]
+|                |                |--(nmod)--> R375[firm]
+|                |                                 |--(case)--> at
+|                |                                 |--(det)--> R375[a]
+|                |                                 |--(compou)--> R375[troy]
+|                |                                 |--(compou)--> R375[accounting]
+|                |                                 |--(acl:re)--> left
+|                |                                                  |--(nsubj)--> that
+|                |                                                  |--(xcomp)--> *R373[dead]
+|                |                                                                   |--(nsubj)--> R374[receptionist]
+|                |                                                                                    |--(det)--> a
+|                |--(cc)--> and
+|                |--(conj)--> R392[partners]
+|                                 |--(nummod)--> two
+|                                 |--(amod)--> managing
+|                                 |--(acl)--> *R391[wounded]
+|--(punct)--> .
+
+	* entity-paths for event['shooting']18_6ecbplus.xmlsent:2626
+	['shooting --(compound)--> April']
+	['shooting --(nummod)--> 2007']
+
+	* entity-paths for event['wounded']18_6ecbplus.xmlsent:2626
+
+	* entity-paths for event['dead']18_6ecbplus.xmlsent:2626
+	['dead --(nsubj)--> receptionist']
+
+	* entity-paths for event['charged']18_6ecbplus.xmlsent:2626
+	['charged --(nmod)--> shooting', 'shooting --(compound)--> April']
+	['charged --(nmod)--> shooting', 'shooting --(nummod)--> 2007']
+	['charged --(nmod)--> firm']
+
+sentence #:jury finds suspect in troy office shooting guilty 
+	[events]:[['shooting']]
+	[entities]:[['troy', 'office'], ['suspect']]
+finds
+|--(nsubj)--> jury
+|--(xcomp)--> guilty
+                 |--(nsubj)--> R360[suspect]
+                                  |--(nmod)--> *R361[shooting]
+                                                   |--(case)--> in
+                                                   |--(compou)--> R375[troy]
+                                                   |--(compou)--> R375[office]
+
+	* entity-paths for event['shooting']18_6ecbplus.xmlsent:2624
+	['shooting --(compound)--> Troy']
+	['shooting --(compound)--> office']

@@ -1,0 +1,22 @@
+
+-----------------------------------------
+docid:5_1ecb.xml
+-----------------------------------------
+
+sentence #:maurice cheeks is out as philadelphia 76ers head coach . 
+	[events]:[['out']]
+	[entities]:[['maurice', 'cheeks'], ['philadelphia', '76ers']]
+*R1672[out]
+|--(nsubj)--> R1674[cheeks]
+|                |--(compou)--> R1674[maurice]
+|--(cop)--> is
+|--(advcl)--> head
+|                |--(mark)--> as
+|                |--(nsubj)--> R1673[76ers]
+|                |                |--(compou)--> R1673[philadelphia]
+|                |--(dobj)--> coach
+|--(punct)--> .
+
+	* entity-paths for event['out']5_1ecb.xmlsent:13972
+	['out --(nsubj)--> Cheeks']
+	['out --(advcl)--> head', 'head --(nsubj)--> 76ers']

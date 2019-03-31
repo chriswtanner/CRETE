@@ -1,0 +1,71 @@
+
+-----------------------------------------
+docid:12_12ecb.xml
+-----------------------------------------
+
+sentence #:in another successful anti-piracy operation , navy warship on saturday repulsed an attack on a merchant vessel in the gulf of aden and nabbed 23 somali and yemeni sea brigands , in a show of resolve to weed out the menace that affected maritime trade in the region . 
+	[events]:[['repulsed'], ['operation'], ['nabbed'], ['attack']]
+	[entities]:[['warship'], ['the', 'region'], ['vessel'], ['saturday'], ['brigands'], ['the', 'gulf', 'of', 'aden']]
+*R232[repulsed]
+|--(nmod)--> *R233[operation]
+|                |--(case)--> in
+|                |--(det)--> another
+|                |--(amod)--> successful
+|                |--(amod)--> anti-piracy
+|--(punct)--> ,
+|--(nsubj)--> R234[warship]
+|                |--(compou)--> navy
+|                |--(nmod)--> R230[saturday]
+|                                 |--(case)--> on
+|--(dobj)--> *R235[attack]
+|                |--(det)--> an
+|--(nmod)--> R228[vessel]
+|                |--(case)--> on
+|                |--(det)--> a
+|                |--(compou)--> merchant
+|--(nmod)--> R229[gulf]
+|                |--(case)--> in
+|                |--(det)--> R229[the]
+|                |--(nmod)--> R229[aden]
+|                                 |--(case)--> R229[of]
+|--(cc)--> and
+|--(conj)--> *R214[nabbed]
+|                |--(dobj)--> somali
+|                                 |--(nummod)--> 23
+|                                 |--(cc)--> and
+|                                 |--(conj)--> R216[brigands]
+|                                                  |--(compou)--> yemeni
+|                                                  |--(compou)--> sea
+|--(punct)--> ,
+|--(nmod)--> show
+|                |--(case)--> in
+|                |--(det)--> a
+|                |--(nmod)--> resolve
+|                                 |--(case)--> of
+|                                 |--(nmod)--> weed
+|                                                  |--(case)--> to
+|                                                  |--(nmod)--> menace
+|                                                                   |--(case)--> out
+|                                                                   |--(det)--> the
+|                                                                   |--(acl:re)--> affected
+|                                                                                    |--(nsubj)--> that
+|                                                                                    |--(dobj)--> trade
+|                                                                                    |                |--(compou)--> maritime
+|                                                                                    |--(nmod)--> R229[region]
+|                                                                                                     |--(case)--> in
+|                                                                                                     |--(det)--> R229[the]
+|--(punct)--> .
+
+	* entity-paths for event['repulsed']12_12ecb.xmlsent:799
+	['repulsed --(nsubj)--> warship']
+	['repulsed --(nmod)--> vessel']
+	['repulsed --(nmod)--> Gulf']
+	['repulsed --(conj)--> nabbed', 'nabbed --(dobj)--> Somali', 'Somali --(conj)--> brigands']
+	['repulsed --(nmod)--> show', 'show --(nmod)--> resolve', 'resolve --(nmod)--> weed', 'weed --(nmod)--> menace', 'menace --(acl:relcl)--> affected', 'affected --(nmod)--> region']
+
+	* entity-paths for event['operation']12_12ecb.xmlsent:799
+
+	* entity-paths for event['nabbed']12_12ecb.xmlsent:799
+	['nabbed --(dobj)--> Somali', 'Somali --(conj)--> brigands']
+
+	* entity-paths for event['attack']12_12ecb.xmlsent:799

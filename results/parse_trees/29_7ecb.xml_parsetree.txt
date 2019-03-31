@@ -1,0 +1,126 @@
+
+-----------------------------------------
+docid:29_7ecb.xml
+-----------------------------------------
+
+sentence #:peyton manning passed for 364 yards and three touchdowns and keiwan ratliff returned an interception 35-yards for a pick-six with just under five minutes left to carry the indianapolis colts over the jacksonville jaguars 31-24 thursday night . 
+	[events]:[['passed'], ['carry']]
+	[entities]:[['peyton', 'manning'], ['jacksonville', 'jaguars'], ['31-24'], ['indianapolis', 'colts'], ['thursday', 'night']]
+left
+|--(dep)--> *R863[passed]
+|                |--(nsubj)--> R864[manning]
+|                |                |--(compou)--> R864[peyton]
+|                |--(nmod)--> yards
+|                |                |--(case)--> for
+|                |                |--(nummod)--> 364
+|                |                |--(cc)--> and
+|                |                |--(conj)--> touchdowns
+|                |                                 |--(nummod)--> three
+|                |--(cc)--> and
+|                |--(conj)--> returned
+|                                 |--(nsubj)--> ratliff
+|                                 |                |--(compou)--> keiwan
+|                                 |--(dobj)--> 35-yards
+|                                 |                |--(det)--> an
+|                                 |                |--(compou)--> interception
+|                                 |--(nmod)--> pick-six
+|                                 |                |--(case)--> for
+|                                 |                |--(det)--> a
+|                                 |--(nmod)--> minutes
+|                                                  |--(case)--> with
+|                                                  |--(nummod)--> five
+|                                                                   |--(advmod)--> just
+|                                                                   |--(advmod)--> under
+|--(xcomp)--> *R856[carry]
+|                |--(mark)--> to
+|                |--(dobj)--> R852[colts]
+|                |                |--(det)--> the
+|                |                |--(compou)--> R852[indianapolis]
+|                |--(nmod)--> R857[jaguars]
+|                                 |--(case)--> over
+|                                 |--(det)--> the
+|                                 |--(compou)--> R857[jacksonville]
+|--(nsubj)--> R865[night]
+|                |--(nummod)--> R855[31-24]
+|                |--(compou)--> R865[thursday]
+|--(punct)--> .
+
+	* entity-paths for event['passed']29_7ecb.xmlsent:7200
+	['passed --(nsubj)--> Manning']
+
+	* entity-paths for event['carry']29_7ecb.xmlsent:7200
+	['carry --(dobj)--> Colts']
+	['carry --(nmod)--> Jaguars']
+
+sentence #:indianapolis ( 11-4 ) made an nfl-best fourth double-digit comeback this season to lock up the five seed in the afc with this win , their eighth straight . 
+	[events]:[['comeback'], ['lock', 'up'], ['win'], ['eighth']]
+	[entities]:[['indianapolis'], ['their'], ['five', 'seed']]
+made
+|--(nsubj)--> R852[indianapolis]
+|                |--(appos)--> 11-4
+|                                 |--(punct)--> (
+|                                 |--(punct)--> )
+|--(dobj)--> *R856[comeback]
+|                |--(det)--> an
+|                |--(amod)--> nfl-best
+|                |--(amod)--> fourth
+|                |--(amod)--> double-digit
+|--(nmod:t)--> season
+|                |--(det)--> this
+|--(advcl)--> *R853[lock]
+|                |--(mark)--> to
+|                |--(compou)--> *R853[up]
+|                |--(dobj)--> R851[seed]
+|                                 |--(det)--> the
+|                                 |--(nummod)--> R851[five]
+|                                 |--(nmod)--> afc
+|                                                  |--(case)--> in
+|                                                  |--(det)--> the
+|                                                  |--(acl:re)--> *R856[win]
+|                                                  |                |--(mark)--> with
+|                                                  |                |--(nsubj)--> this
+|                                                  |--(punct)--> ,
+|                                                  |--(appos)--> straight
+|                                                                   |--(nmod:p)--> R852[their]
+|                                                                   |--(amod)--> *R856[eighth]
+|--(punct)--> .
+
+	* entity-paths for event['comeback']29_7ecb.xmlsent:7205
+
+	* entity-paths for event['lock', 'up']29_7ecb.xmlsent:7205
+
+	* entity-paths for event['win']29_7ecb.xmlsent:7205
+
+	* entity-paths for event['eighth']29_7ecb.xmlsent:7205
+
+sentence #:the colts defense looked shaky and gave up 409 yards , but got the game-winning interception and two late fourth-quarter sacks to seal the win . 
+	[events]:[['win']]
+	[entities]:[['colts']]
+looked
+|--(nsubj)--> defense
+|                |--(det)--> the
+|                |--(compou)--> R852[colts]
+|--(xcomp)--> shaky
+|--(cc)--> and
+|--(conj)--> gave
+|                |--(compou)--> up
+|                |--(dobj)--> yards
+|                                 |--(nummod)--> 409
+|--(punct)--> ,
+|--(cc)--> but
+|--(conj)--> got
+|                |--(dobj)--> interception
+|                |                |--(det)--> the
+|                |                |--(amod)--> game-winning
+|                |                |--(cc)--> and
+|                |                |--(conj)--> sacks
+|                |                                 |--(nummod)--> two
+|                |                                 |--(amod)--> late
+|                |                                 |--(amod)--> fourth-quarter
+|                |--(advcl)--> seal
+|                                 |--(mark)--> to
+|                                 |--(ccomp)--> *R856[win]
+|                                                  |--(nsubj)--> the
+|--(punct)--> .
+
+	* entity-paths for event['win']29_7ecb.xmlsent:7206

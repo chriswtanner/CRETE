@@ -1,0 +1,56 @@
+
+-----------------------------------------
+docid:39_5ecb.xml
+-----------------------------------------
+
+sentence #:" it 's a sublime bit of casting . 
+	[events]:[['casting']]
+	[entities]:[]
+bit
+|--(punct)--> "
+|--(nsubj)--> it
+|--(cop)--> 's
+|--(det)--> a
+|--(amod)--> sublime
+|--(nmod)--> *R1344[casting]
+|                |--(case)--> of
+|--(punct)--> .
+
+	* entity-paths for event['casting']39_5ecb.xmlsent:11036
+
+sentence #:smith , 26 , who played a young political researcher in the show , will become the biggest star of all after winning the role of the 11th doctor . 
+	[events]:[['winning']]
+	[entities]:[['smith'], ['show'], ['11th', 'doctor'], ['star']]
+become
+|--(nsubj)--> R1328[smith]
+|                |--(punct)--> ,
+|                |--(amod)--> 26
+|                |--(punct)--> ,
+|                |--(acl:re)--> played
+|                |                |--(nsubj)--> who
+|                |                |--(dobj)--> researcher
+|                |                |                |--(det)--> a
+|                |                |                |--(amod)--> young
+|                |                |                |--(amod)--> political
+|                |                |--(nmod)--> R1336[show]
+|                |                                 |--(case)--> in
+|                |                                 |--(det)--> the
+|                |--(punct)--> ,
+|--(aux)--> will
+|--(xcomp)--> R1328[star]
+|                |--(det)--> the
+|                |--(amod)--> biggest
+|                |--(nmod)--> all
+|                                 |--(case)--> of
+|--(advcl)--> *R1344[winning]
+|                |--(mark)--> after
+|                |--(dobj)--> role
+|                                 |--(det)--> the
+|                                 |--(nmod)--> R1338[doctor]
+|                                                  |--(case)--> of
+|                                                  |--(det)--> the
+|                                                  |--(amod)--> R1338[11th]
+|--(punct)--> .
+
+	* entity-paths for event['winning']39_5ecb.xmlsent:11034
+	['winning --(dobj)--> role', 'role --(nmod)--> Doctor']

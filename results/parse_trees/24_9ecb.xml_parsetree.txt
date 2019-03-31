@@ -1,0 +1,69 @@
+
+-----------------------------------------
+docid:24_9ecb.xml
+-----------------------------------------
+
+sentence #:daring diamond heist in downtown paris 
+	[events]:[['heist']]
+	[entities]:[['in', 'downtown', 'paris']]
+*R666[heist]
+|--(amod)--> daring
+|--(compou)--> diamond
+|--(nmod)--> R685[downtown]
+|                |--(case)--> R685[in]
+|--(appos)--> R685[paris]
+
+	* entity-paths for event['heist']24_9ecb.xmlsent:4914
+	['Heist --(nmod)--> Downtown']
+	['Heist --(appos)--> Paris']
+
+sentence #:at 5:30 p.m . , four armed robbers , some reportedly dressed in drag , entered the store on the chic avenue montaigne , off the champs elysees in central paris , a heavily patrolled area less than 330 feet from a police station . 
+	[events]:[['dressed']]
+	[entities]:[['at', '5:30', 'p.m'], ['the', 'store', 'on', 'the', 'chic', 'avenue', 'montaigne', ',', 'off', 'the', 'champs', 'elysees', 'in', 'central', 'paris'], ['robbers']]
+entered
+|--(dep)--> R690[5:30]
+|                |--(case)--> R690[at]
+|                |--(advmod)--> R690[p.m]
+|                |--(punct)--> .
+|--(punct)--> ,
+|--(nsubj)--> R664[robbers]
+|                |--(nummod)--> four
+|                |--(amod)--> armed
+|--(punct)--> ,
+|--(advcl)--> *R682[dressed]
+|                |--(nsubj)--> some
+|                |--(advmod)--> reportedly
+|                |--(nmod)--> drag
+|                                 |--(case)--> in
+|--(punct)--> ,
+|--(dobj)--> R665[store]
+|                |--(det)--> R665[the]
+|--(nmod)--> R665[montaigne]
+|                |--(case)--> R665[on]
+|                |--(det)--> R665[the]
+|                |--(amod)--> R665[chic]
+|                |--(compou)--> R665[avenue]
+|--(punct)--> R665[,]
+|--(nmod)--> R665[elysees]
+|                |--(case)--> R665[off]
+|                |--(det)--> R665[the]
+|                |--(compou)--> R665[champs]
+|                |--(nmod)--> R665[paris]
+|                |                |--(case)--> R665[in]
+|                |                |--(amod)--> R665[central]
+|                |--(punct)--> ,
+|                |--(appos)--> area
+|                                 |--(det)--> a
+|                                 |--(amod)--> patrolled
+|                                                  |--(advmod)--> heavily
+|--(dep)--> feet
+|                |--(nummod)--> 330
+|                |                |--(advmod)--> less
+|                |                                 |--(mwe)--> than
+|                |--(nmod)--> station
+|                                 |--(case)--> from
+|                                 |--(det)--> a
+|                                 |--(compou)--> police
+|--(punct)--> .
+
+	* entity-paths for event['dressed']24_9ecb.xmlsent:4915

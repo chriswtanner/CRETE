@@ -1,0 +1,42 @@
+
+-----------------------------------------
+docid:9_6ecb.xml
+-----------------------------------------
+
+sentence #:using the christmas season for cover , the interior department on thursday issued " revised " regulations designed to shield federal projects from review under the endangered species act . 
+	[events]:[['issued'], ['review']]
+	[entities]:[['endangered', 'species', 'act'], ['thursday'], ['interior', 'department'], ['regulations'], ['projects']]
+using
+|--(dobj)--> season
+|                |--(det)--> the
+|                |--(compou)--> christmas
+|--(advcl)--> cover
+|                |--(case)--> for
+|                |--(punct)--> ,
+|                |--(nmod)--> R1811[department]
+|                                 |--(det)--> the
+|                                 |--(compou)--> R1811[interior]
+|                                 |--(nmod)--> R1810[thursday]
+|                                 |                |--(case)--> on
+|                                 |                |--(acl)--> *R1812[issued]
+|                                 |--(punct)--> "
+|                                 |--(acl)--> revised
+|                                 |                |--(punct)--> "
+|                                 |                |--(dobj)--> R1802[regulations]
+|                                 |                |                |--(acl)--> designed
+|                                 |                |                                 |--(xcomp)--> shield
+|                                 |                |                                                  |--(mark)--> to
+|                                 |                |                                                  |--(dobj)--> R1814[projects]
+|                                 |                |                                                                   |--(amod)--> federal
+|                                 |                |--(nmod)--> *R1801[review]
+|                                 |                                 |--(case)--> from
+|                                 |--(case)--> under
+|                                 |--(dep)--> R1800[act]
+|                                                  |--(det)--> the
+|                                                  |--(compou)--> R1800[endangered]
+|                                                  |--(compou)--> R1800[species]
+|--(punct)--> .
+
+	* entity-paths for event['issued']9_6ecb.xmlsent:15612
+
+	* entity-paths for event['review']9_6ecb.xmlsent:15612

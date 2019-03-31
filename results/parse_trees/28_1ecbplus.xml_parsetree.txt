@@ -1,0 +1,87 @@
+
+-----------------------------------------
+docid:28_1ecbplus.xml
+-----------------------------------------
+
+sentence #:fred larue , known as the "bagman" because he delivered payments to ensure the silence of participants in the watergate break - in , was found dead in a hotel room in biloxi , mississippi . 
+	[events]:[['silence'], ['payments'], ['found'], ['dead'], ['watergate'], ['ensure'], ['break', '-', 'in'], ['delivered']]
+	[entities]:[['fred', 'larue'], ['participants'], ['"bagman"'], ['he'], ['in', 'a', 'hotel', 'room', 'in', 'biloxi', ',', 'mississippi']]
+*R824[found]
+|--(nsubjp)--> R815[larue]
+|                |--(compou)--> R815[fred]
+|                |--(punct)--> ,
+|                |--(acl)--> known
+|                |                |--(nmod)--> R815["bagman"]
+|                |                |                |--(case)--> as
+|                |                |                |--(det)--> the
+|                |                |                |--(punct)--> R815["bagman"]
+|                |                |                |--(punct)--> R815["bagman"]
+|                |                |                |--(case)--> *R818[in]
+|                |                |--(advcl)--> *R838[delivered]
+|                |                |                |--(mark)--> because
+|                |                |                |--(nsubj)--> R815[he]
+|                |                |                |--(dobj)--> *R839[payments]
+|                |                |                |--(advcl)--> *R840[ensure]
+|                |                |                                 |--(mark)--> to
+|                |                |                                 |--(dobj)--> *R841[silence]
+|                |                |                                                  |--(det)--> the
+|                |                |                                                  |--(nmod)--> R842[participants]
+|                |                |                                                                   |--(case)--> of
+|                |                |                                                                   |--(nmod)--> *R818[break]
+|                |                |                                                                                    |--(case)--> in
+|                |                |                                                                                    |--(det)--> the
+|                |                |                                                                                    |--(compou)--> *R812[watergate]
+|                |                |--(punct)--> *R818[-]
+|                |--(punct)--> ,
+|--(auxpas)--> was
+|--(xcomp)--> *R814[dead]
+|                |--(nmod)--> R825[room]
+|                                 |--(case)--> R825[in]
+|                                 |--(det)--> R825[a]
+|                                 |--(compou)--> R825[hotel]
+|--(nmod)--> R825[mississippi]
+|                |--(case)--> R825[in]
+|                |--(compou)--> R825[biloxi]
+|                |--(punct)--> R825[,]
+|--(punct)--> .
+
+	* entity-paths for event['silence']28_1ecbplus.xmlsent:6209
+	['silence --(nmod)--> participants']
+
+	* entity-paths for event['payments']28_1ecbplus.xmlsent:6209
+
+	* entity-paths for event['found']28_1ecbplus.xmlsent:6209
+	['found --(nsubjpass)--> LaRue']
+	['found --(xcomp)--> dead', 'dead --(nmod)--> room']
+	['found --(nmod)--> Mississippi']
+
+	* entity-paths for event['dead']28_1ecbplus.xmlsent:6209
+	['dead --(nmod)--> room']
+
+	* entity-paths for event['watergate']28_1ecbplus.xmlsent:6209
+
+	* entity-paths for event['ensure']28_1ecbplus.xmlsent:6209
+	['ensure --(dobj)--> silence', 'silence --(nmod)--> participants']
+
+	* entity-paths for event['break', '-', 'in']28_1ecbplus.xmlsent:6209
+
+	* entity-paths for event['delivered']28_1ecbplus.xmlsent:6209
+	['delivered --(nsubj)--> he']
+	['delivered --(advcl)--> ensure', 'ensure --(dobj)--> silence', 'silence --(nmod)--> participants']
+
+sentence #:deep throat suspect found dead in hotel 
+	[events]:[['found'], ['dead']]
+	[entities]:[['suspect'], ['deep', 'throat'], ['in', 'hotel']]
+*R824[found]
+|--(nsubj)--> R815[suspect]
+|                |--(amod)--> R811[deep]
+|                |--(compou)--> R811[throat]
+|--(xcomp)--> *R814[dead]
+|--(nmod)--> R825[hotel]
+                 |--(case)--> R825[in]
+
+	* entity-paths for event['found']28_1ecbplus.xmlsent:6206
+	['found --(nsubj)--> suspect']
+	['found --(nmod)--> hotel']
+
+	* entity-paths for event['dead']28_1ecbplus.xmlsent:6206

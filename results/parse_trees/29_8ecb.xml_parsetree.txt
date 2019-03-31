@@ -1,0 +1,48 @@
+
+-----------------------------------------
+docid:29_8ecb.xml
+-----------------------------------------
+
+sentence #:game slips away late as jaguars fall to indy 
+	[events]:[['fall'], ['game']]
+	[entities]:[['indy'], ['jaguars']]
+slips
+|--(nsubj)--> *R888[game]
+|--(advmod)--> late
+                 |--(advmod)--> away
+                 |--(advcl)--> *R856[fall]
+                                  |--(mark)--> as
+                                  |--(nsubj)--> R857[jaguars]
+                                  |--(nmod)--> R852[indy]
+                                                   |--(case)--> to
+
+	* entity-paths for event['fall']29_8ecb.xmlsent:7214
+	['fall --(nsubj)--> Jaguars']
+	['fall --(nmod)--> Indy']
+
+	* entity-paths for event['game']29_8ecb.xmlsent:7214
+
+sentence #:that was an all-too-familiar scenario thursday night in a frustrating 31-24 defeat to the indianapolis colts . 
+	[events]:[['defeat']]
+	[entities]:[['31-24'], ['thursday', 'night'], ['indianapolis', 'colts']]
+scenario
+|--(nsubj)--> that
+|--(cop)--> was
+|--(det)--> an
+|--(amod)--> all-too-familiar
+|--(nmod:t)--> R865[night]
+|                |--(compou)--> R865[thursday]
+|--(nmod)--> *R856[defeat]
+|                |--(case)--> in
+|                |--(det)--> a
+|                |--(amod)--> frustrating
+|                |                |--(nmod:t)--> R855[31-24]
+|                |--(nmod)--> R852[colts]
+|                                 |--(case)--> to
+|                                 |--(det)--> the
+|                                 |--(compou)--> R852[indianapolis]
+|--(punct)--> .
+
+	* entity-paths for event['defeat']29_8ecb.xmlsent:7217
+	['defeat --(amod)--> frustrating', 'frustrating --(nmod:tmod)--> 31-24']
+	['defeat --(nmod)--> Colts']

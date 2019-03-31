@@ -1,0 +1,60 @@
+
+-----------------------------------------
+docid:5_4ecb.xml
+-----------------------------------------
+
+sentence #:but the 76ers , while underachieving at 9-14 when cheeks was fired saturday morning , were not an embarassment when they went on the court , not a disjointed bunch that clearly was no longer listening to or playing for its coach . 
+	[events]:[['fired'], ['underachieving']]
+	[entities]:[['coach'], ['saturday', 'morning'], ['the', '76ers'], ['9-14'], ['they'], ['cheeks']]
+embarassment
+|--(cc)--> but
+|--(nsubj)--> R1673[76ers]
+|                |--(det)--> R1673[the]
+|                |--(punct)--> ,
+|                |--(dep)--> *R1676[underachieving]
+|                |                |--(mark)--> while
+|                |                |--(nmod)--> R1678[9-14]
+|                |                |                |--(case)--> at
+|                |                |--(advcl)--> *R1672[fired]
+|                |                                 |--(advmod)--> when
+|                |                                 |--(nsubjp)--> R1674[cheeks]
+|                |                                 |--(auxpas)--> was
+|                |                                 |--(nmod:t)--> R1675[morning]
+|                |                                                  |--(compou)--> R1675[saturday]
+|                |--(punct)--> ,
+|--(cop)--> were
+|--(neg)--> not
+|--(det)--> an
+|--(acl:re)--> went
+|                |--(advmod)--> when
+|                |--(nsubj)--> R1673[they]
+|                |--(nmod)--> court
+|                                 |--(case)--> on
+|                                 |--(det)--> the
+|--(punct)--> ,
+|--(appos)--> bunch
+|                |--(neg)--> not
+|                |--(det)--> a
+|                |--(amod)--> disjointed
+|                |--(acl:re)--> listening
+|                                 |--(nsubj)--> that
+|                                 |--(advmod)--> clearly
+|                                 |--(aux)--> was
+|                                 |--(advmod)--> longer
+|                                 |                |--(neg)--> no
+|                                 |--(nmod)--> to
+|                                 |--(cc)--> or
+|                                 |--(conj)--> playing
+|                                                  |--(nmod)--> R1674[coach]
+|                                                                   |--(case)--> for
+|                                                                   |--(nmod:p)--> its
+|--(punct)--> .
+
+	* entity-paths for event['fired']5_4ecb.xmlsent:14151
+	['fired --(nsubjpass)--> Cheeks']
+	['fired --(nmod:tmod)--> morning']
+
+	* entity-paths for event['underachieving']5_4ecb.xmlsent:14151
+	['underachieving --(nmod)--> 9-14']
+	['underachieving --(advcl)--> fired', 'fired --(nsubjpass)--> Cheeks']
+	['underachieving --(advcl)--> fired', 'fired --(nmod:tmod)--> morning']

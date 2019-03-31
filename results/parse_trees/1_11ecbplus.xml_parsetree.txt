@@ -1,0 +1,130 @@
+
+-----------------------------------------
+docid:1_11ecbplus.xml
+-----------------------------------------
+
+sentence #:lindsay lohan checked into california's betty ford center rehab facility late thursday , dodging arrest after whirlwind confusion surrounding the actress' whereabouts , sources told the daily news . 
+	[events]:[['checked', 'into'], ['told'], ['confusion'], ['arrest'], ['whereabouts']]
+	[entities]:[['late', 'thursday'], ['lindsay', 'lohan'], ["actress'"], ['sources'], ["california's", 'betty', 'ford', 'center', 'rehab', 'facility'], ['daily', 'news']]
+*R23[told]
+|--(ccomp)--> *R8[checked]
+|                |--(nsubj)--> R15[lohan]
+|                |                |--(compou)--> R15[lindsay]
+|                |--(nmod)--> R16[facility]
+|                |                |--(case)--> *R8[into]
+|                |                |--(nmod:p)--> R16[california's]
+|                |                |                |--(case)--> R16[california's]
+|                |                |--(compou)--> R16[betty]
+|                |                |--(compou)--> R16[ford]
+|                |                |--(compou)--> R16[center]
+|                |                |--(compou)--> R16[rehab]
+|                |--(nmod:t)--> R24[thursday]
+|                |                |--(amod)--> R24[late]
+|                |--(punct)--> ,
+|                |--(advcl)--> dodging
+|                                 |--(dobj)--> *R12[arrest]
+|                                 |--(nmod)--> *R25[confusion]
+|                                                  |--(case)--> after
+|                                                  |--(amod)--> whirlwind
+|                                                  |--(acl)--> surrounding
+|                                                                   |--(dobj)--> *R26[whereabouts]
+|                                                                                    |--(det)--> the
+|                                                                                    |--(compou)--> R15[actress']
+|                                                                                    |--(punct)--> R15[actress']
+|--(punct)--> ,
+|--(nsubj)--> R27[sources]
+|--(dobj)--> R28[news]
+|                |--(det)--> the
+|                |--(compou)--> R28[daily]
+|--(punct)--> .
+
+	* entity-paths for event['checked', 'into']1_11ecbplus.xmlsent:38
+
+	* entity-paths for event['told']1_11ecbplus.xmlsent:38
+	['told --(ccomp)--> checked', 'checked --(nsubj)--> Lohan']
+	['told --(ccomp)--> checked', 'checked --(nmod)--> facility']
+	['told --(ccomp)--> checked', 'checked --(nmod:tmod)--> Thursday']
+	['told --(ccomp)--> checked', 'checked --(advcl)--> dodging', 'dodging --(nmod)--> confusion', 'confusion --(acl)--> surrounding', 'surrounding --(dobj)--> whereabouts', 'whereabouts --(compound)--> actress']
+	['told --(ccomp)--> checked', 'checked --(advcl)--> dodging', 'dodging --(nmod)--> confusion', 'confusion --(acl)--> surrounding', 'surrounding --(dobj)--> whereabouts', "whereabouts --(punct)--> '"]
+	['told --(nsubj)--> sources']
+	['told --(dobj)--> News']
+
+	* entity-paths for event['confusion']1_11ecbplus.xmlsent:38
+	['confusion --(acl)--> surrounding', 'surrounding --(dobj)--> whereabouts', 'whereabouts --(compound)--> actress']
+	['confusion --(acl)--> surrounding', 'surrounding --(dobj)--> whereabouts', "whereabouts --(punct)--> '"]
+
+	* entity-paths for event['arrest']1_11ecbplus.xmlsent:38
+
+	* entity-paths for event['whereabouts']1_11ecbplus.xmlsent:38
+	['whereabouts --(compound)--> actress']
+	["whereabouts --(punct)--> '"]
+
+sentence #:actress lindsay lohan finally checked into court - mandated rehab at the betty ford center late thursday , after hiring former lawyer shawn holley for help . 
+	[events]:[['checked', 'into'], ['help'], ['hiring'], ['rehab']]
+	[entities]:[['shawn', 'holley'], ['late', 'thursday'], ['lindsay', 'lohan'], ['at', 'the', 'betty', 'ford', 'center']]
+*R8[checked]
+|--(nsubj)--> R15[lohan]
+|                |--(compou)--> actress
+|                |--(compou)--> R15[lindsay]
+|--(advmod)--> finally
+|--(nmod)--> court
+|                |--(case)--> *R8[into]
+|--(punct)--> -
+|--(parata)--> mandated
+|                |--(dobj)--> *R19[rehab]
+|                |--(nmod)--> R16[center]
+|                |                |--(case)--> R16[at]
+|                |                |--(det)--> R16[the]
+|                |                |--(compou)--> R16[betty]
+|                |                |--(compou)--> R16[ford]
+|                |--(nmod:t)--> R24[thursday]
+|                |                |--(amod)--> R24[late]
+|                |--(punct)--> ,
+|                |--(advcl)--> *R29[hiring]
+|                                 |--(mark)--> after
+|                                 |--(dobj)--> R30[holley]
+|                                 |                |--(amod)--> former
+|                                 |                |--(compou)--> lawyer
+|                                 |                |--(compou)--> R30[shawn]
+|                                 |--(nmod)--> *R31[help]
+|                                                  |--(case)--> for
+|--(punct)--> .
+
+	* entity-paths for event['checked', 'into']1_11ecbplus.xmlsent:35
+
+	* entity-paths for event['help']1_11ecbplus.xmlsent:35
+
+	* entity-paths for event['hiring']1_11ecbplus.xmlsent:35
+	['hiring --(dobj)--> Holley']
+
+	* entity-paths for event['rehab']1_11ecbplus.xmlsent:35
+
+sentence #:lindsay lohan checks into rehab at betty ford center , rehires longtime lawyer shawn holley 
+	[events]:[['rehab'], ['rehires'], ['checks', 'into']]
+	[entities]:[['shawn', 'holley'], ['at', 'betty', 'ford', 'center'], ['lindsay', 'lohan']]
+*R29[rehires]
+|--(nmod)--> *R8[checks]
+|                |--(compou)--> R15[lindsay]
+|                |--(compou)--> R15[lohan]
+|                |--(nmod)--> *R19[rehab]
+|                                 |--(case)--> *R8[into]
+|                                 |--(nmod)--> R16[center]
+|                                                  |--(case)--> R16[at]
+|                                                  |--(compou)--> R16[betty]
+|                                                  |--(compou)--> R16[ford]
+|--(punct)--> ,
+|--(nsubj)--> R30[holley]
+                 |--(amod)--> longtime
+                 |--(compou)--> lawyer
+                 |--(compou)--> R30[shawn]
+
+	* entity-paths for event['rehab']1_11ecbplus.xmlsent:34
+	['rehab --(nmod)--> Center']
+
+	* entity-paths for event['rehires']1_11ecbplus.xmlsent:34
+	['rehires --(nmod)--> checks', 'checks --(compound)--> Lindsay']
+	['rehires --(nmod)--> checks', 'checks --(compound)--> Lohan']
+	['rehires --(nmod)--> checks', 'checks --(nmod)--> rehab', 'rehab --(nmod)--> Center']
+	['rehires --(nsubj)--> Holley']
+
+	* entity-paths for event['checks', 'into']1_11ecbplus.xmlsent:34

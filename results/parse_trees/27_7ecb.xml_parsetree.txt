@@ -1,0 +1,62 @@
+
+-----------------------------------------
+docid:27_7ecb.xml
+-----------------------------------------
+
+sentence #:microsoft has issued a security patch to fix a critical vulnerability in its internet explorer browser which it said has attacked over 2m windows users . 
+	[events]:[['fix'], ['issued'], ['attacked'], ['said']]
+	[entities]:[['users'], ['patch'], ['microsoft'], ['internet', 'explorer'], ['it'], ['which'], ['its'], ['vulnerability']]
+*R763[issued]
+|--(nsubj)--> R764[microsoft]
+|--(aux)--> has
+|--(dobj)--> R765[patch]
+|                |--(det)--> a
+|                |--(compou)--> security
+|--(advcl)--> *R782[fix]
+|                |--(mark)--> to
+|                |--(dobj)--> R767[vulnerability]
+|                |                |--(det)--> a
+|                |                |--(amod)--> critical
+|                |--(nmod)--> browser
+|                                 |--(case)--> in
+|                                 |--(nmod:p)--> R764[its]
+|                                 |--(compou)--> R768[internet]
+|                                 |--(compou)--> R768[explorer]
+|                                 |--(acl:re)--> *R785[said]
+|                                                  |--(dobj)--> R767[which]
+|                                                  |--(nsubj)--> R764[it]
+|                                                  |--(ccomp)--> *R784[attacked]
+|                                                                   |--(aux)--> has
+|                                                                   |--(nmod)--> R789[users]
+|                                                                                    |--(case)--> over
+|                                                                                    |--(amod)--> 2m
+|                                                                                    |--(compou)--> windows
+|--(punct)--> .
+
+	* entity-paths for event['fix']27_7ecb.xmlsent:5956
+	['fix --(dobj)--> vulnerability']
+	['fix --(nmod)--> browser', 'browser --(nmod:poss)--> its']
+	['fix --(nmod)--> browser', 'browser --(compound)--> Internet']
+	['fix --(nmod)--> browser', 'browser --(compound)--> Explorer']
+	['fix --(nmod)--> browser', 'browser --(acl:relcl)--> said', 'said --(dobj)--> which']
+	['fix --(nmod)--> browser', 'browser --(acl:relcl)--> said', 'said --(nsubj)--> it']
+	['fix --(nmod)--> browser', 'browser --(acl:relcl)--> said', 'said --(ccomp)--> attacked', 'attacked --(nmod)--> users']
+
+	* entity-paths for event['issued']27_7ecb.xmlsent:5956
+	['issued --(nsubj)--> Microsoft']
+	['issued --(dobj)--> patch']
+	['issued --(advcl)--> fix', 'fix --(dobj)--> vulnerability']
+	['issued --(advcl)--> fix', 'fix --(nmod)--> browser', 'browser --(nmod:poss)--> its']
+	['issued --(advcl)--> fix', 'fix --(nmod)--> browser', 'browser --(compound)--> Internet']
+	['issued --(advcl)--> fix', 'fix --(nmod)--> browser', 'browser --(compound)--> Explorer']
+	['issued --(advcl)--> fix', 'fix --(nmod)--> browser', 'browser --(acl:relcl)--> said', 'said --(dobj)--> which']
+	['issued --(advcl)--> fix', 'fix --(nmod)--> browser', 'browser --(acl:relcl)--> said', 'said --(nsubj)--> it']
+	['issued --(advcl)--> fix', 'fix --(nmod)--> browser', 'browser --(acl:relcl)--> said', 'said --(ccomp)--> attacked', 'attacked --(nmod)--> users']
+
+	* entity-paths for event['attacked']27_7ecb.xmlsent:5956
+	['attacked --(nmod)--> users']
+
+	* entity-paths for event['said']27_7ecb.xmlsent:5956
+	['said --(dobj)--> which']
+	['said --(nsubj)--> it']
+	['said --(ccomp)--> attacked', 'attacked --(nmod)--> users']

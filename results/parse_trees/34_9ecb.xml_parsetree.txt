@@ -1,0 +1,93 @@
+
+-----------------------------------------
+docid:34_9ecb.xml
+-----------------------------------------
+
+sentence #:since cnn learned of gupta 's candidacy , the cable network has made sure his on-air reporting has n't touched health-care policy or other subjects involving the new administration , the wsj reports . 
+	[events]:[['candidacy'], ['reporting']]
+	[entities]:[['cnn'], ['administration'], ['gupta'], ['his'], ['cable', 'network']]
+made
+|--(advcl)--> learned
+|                |--(mark)--> since
+|                |--(nsubj)--> R1144[cnn]
+|                |--(nmod)--> *R1132[candidacy]
+|                                 |--(case)--> of
+|                                 |--(nmod:p)--> R1130[gupta]
+|                                                  |--(case)--> 's
+|--(punct)--> ,
+|--(nsubj)--> R1144[network]
+|                |--(det)--> the
+|                |--(compou)--> R1144[cable]
+|--(aux)--> has
+|--(xcomp)--> sure
+|                |--(ccomp)--> touched
+|                                 |--(nsubj)--> *R1151[reporting]
+|                                 |                |--(nmod:p)--> R1130[his]
+|                                 |                |--(amod)--> on-air
+|                                 |--(aux)--> has
+|                                 |--(neg)--> n't
+|                                 |--(dobj)--> subjects
+|                                 |                |--(compou)--> policy
+|                                 |                                 |--(compou)--> health-care
+|                                 |                                 |--(cc)--> or
+|                                 |                                 |--(conj)--> other
+|                                 |--(nmod)--> R1133[administration]
+|                                                  |--(case)--> involving
+|                                                  |--(det)--> the
+|                                                  |--(amod)--> new
+|                                                  |--(punct)--> ,
+|                                                  |--(appos)--> reports
+|                                                                   |--(det)--> the
+|                                                                   |--(compou)--> wsj
+|--(punct)--> .
+
+	* entity-paths for event['candidacy']34_9ecb.xmlsent:9519
+	['candidacy --(nmod:poss)--> Gupta']
+
+	* entity-paths for event['reporting']34_9ecb.xmlsent:9519
+	['reporting --(nmod:poss)--> his']
+
+sentence #:so in choosing gupta , the tv star and neurosurgeon , president-elect barack obama seems to be reaching back to the era when c. everett koop was the straight-talking surgeon general advocating for the public 's health . 
+	[events]:[['choosing']]
+	[entities]:[['surgeon', 'general'], ['gupta'], ['barack', 'obama']]
+seems
+|--(advmod)--> so
+|--(advcl)--> *R1132[choosing]
+|                |--(mark)--> in
+|                |--(dobj)--> R1130[gupta]
+|                                 |--(punct)--> ,
+|                                 |--(conj)--> star
+|                                 |                |--(det)--> the
+|                                 |                |--(compou)--> tv
+|                                 |--(cc)--> and
+|                                 |--(conj)--> neurosurgeon
+|--(punct)--> ,
+|--(nsubj)--> R1136[obama]
+|                |--(compou)--> president-elect
+|                |--(compou)--> R1136[barack]
+|--(xcomp)--> reaching
+|                |--(mark)--> to
+|                |--(aux)--> be
+|                |--(advmod)--> back
+|                |--(nmod)--> era
+|                                 |--(case)--> to
+|                                 |--(det)--> the
+|                                 |--(acl:re)--> was
+|                                                  |--(advmod)--> when
+|                                                  |--(nsubj)--> koop
+|                                                  |                |--(compou)--> c.
+|                                                  |                |--(compou)--> everett
+|                                                  |--(xcomp)--> advocating
+|                                                                   |--(nsubj)--> R1135[surgeon]
+|                                                                   |                |--(det)--> the
+|                                                                   |                |--(amod)--> straight-talking
+|                                                                   |--(dep)--> R1135[general]
+|                                                                   |--(nmod)--> health
+|                                                                                    |--(case)--> for
+|                                                                                    |--(nmod:p)--> public
+|                                                                                                     |--(det)--> the
+|                                                                                                     |--(case)--> 's
+|--(punct)--> .
+
+	* entity-paths for event['choosing']34_9ecb.xmlsent:9517
+	['choosing --(dobj)--> Gupta']

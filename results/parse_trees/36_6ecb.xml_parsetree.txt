@@ -1,0 +1,86 @@
+
+-----------------------------------------
+docid:36_6ecb.xml
+-----------------------------------------
+
+sentence #:rcmp sgt. tim shields and attorney-general wally oppal announced wednesday that the rcmp arrested two bountiful residents , winston k. blackmore , 52 , and james oler , 44 , on charges of polygamy . 
+	[events]:[['charges'], ['arrested'], ['polygamy'], ['announced']]
+	[entities]:[['wednesday'], ['residents'], ['winston', 'k.', 'blackmore'], ['james', 'oler'], ['rcmp'], ['tim', 'shields'], ['wally', 'oppal']]
+*R1216[announced]
+|--(nsubj)--> R1214[shields]
+|                |--(compou)--> rcmp
+|                |--(compou)--> sgt.
+|                |--(compou)--> R1214[tim]
+|                |--(cc)--> and
+|                |--(conj)--> R1202[oppal]
+|                                 |--(compou)--> attorney-general
+|                                 |--(compou)--> R1202[wally]
+|--(nmod:t)--> R1203[wednesday]
+|--(ccomp)--> *R1195[arrested]
+|                |--(mark)--> that
+|                |--(nsubj)--> R1215[rcmp]
+|                |                |--(det)--> the
+|                |--(dobj)--> R1196[residents]
+|                |                |--(nummod)--> two
+|                |                |--(amod)--> bountiful
+|                |                |--(punct)--> ,
+|                |                |--(conj)--> R1221[blackmore]
+|                |                |                |--(compou)--> R1221[winston]
+|                |                |                |--(compou)--> R1221[k.]
+|                |                |--(punct)--> ,
+|                |                |--(conj)--> 52
+|                |                |--(punct)--> ,
+|                |                |--(cc)--> and
+|                |                |--(conj)--> R1222[oler]
+|                |                                 |--(compou)--> R1222[james]
+|                |                                 |--(punct)--> ,
+|                |                                 |--(amod)--> 44
+|                |--(punct)--> ,
+|                |--(nmod)--> *R1199[charges]
+|                                 |--(case)--> on
+|                                 |--(nmod)--> *R1201[polygamy]
+|                                                  |--(case)--> of
+|--(punct)--> .
+
+	* entity-paths for event['charges']36_6ecb.xmlsent:10192
+
+	* entity-paths for event['arrested']36_6ecb.xmlsent:10192
+	['arrested --(nsubj)--> RCMP']
+	['arrested --(dobj)--> residents']
+
+	* entity-paths for event['polygamy']36_6ecb.xmlsent:10192
+
+	* entity-paths for event['announced']36_6ecb.xmlsent:10192
+	['announced --(nsubj)--> Shields']
+	['announced --(nmod:tmod)--> Wednesday']
+	['announced --(ccomp)--> arrested', 'arrested --(nsubj)--> RCMP']
+	['announced --(ccomp)--> arrested', 'arrested --(dobj)--> residents']
+
+sentence #:shields said both oler and blackmore were arrested wednesday morning without incident by eight plainclothes rcmp officers in unmarked vehicles . 
+	[events]:[['arrested']]
+	[entities]:[['blackmore'], ['shields'], ['both'], ['rcmp'], ['oler']]
+said
+|--(nsubj)--> R1214[shields]
+|--(ccomp)--> *R1195[arrested]
+|                |--(nsubjp)--> R1222[oler]
+|                |                |--(cc:pre)--> R1196[both]
+|                |                |--(cc)--> and
+|                |                |--(conj)--> R1221[blackmore]
+|                |--(auxpas)--> were
+|                |--(nmod:t)--> morning
+|                |                |--(compou)--> wednesday
+|                |--(nmod)--> incident
+|                |                |--(case)--> without
+|                |--(nmod)--> plainclothes
+|                                 |--(case)--> by
+|                                 |--(nummod)--> eight
+|                                 |--(dep)--> officers
+|                                                  |--(compou)--> R1215[rcmp]
+|                                                  |--(nmod)--> vehicles
+|                                                                   |--(case)--> in
+|                                                                   |--(amod)--> unmarked
+|--(punct)--> .
+
+	* entity-paths for event['arrested']36_6ecb.xmlsent:10194
+	['arrested --(nsubjpass)--> Oler']
+	['arrested --(nmod)--> plainclothes', 'plainclothes --(dep)--> officers', 'officers --(compound)--> RCMP']

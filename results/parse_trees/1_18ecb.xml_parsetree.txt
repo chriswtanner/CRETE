@@ -1,0 +1,51 @@
+
+-----------------------------------------
+docid:1_18ecb.xml
+-----------------------------------------
+
+sentence #:the notorious party girl , who makes headlines for her wild antics and plastic surgery-enhanced figure , had checked into the promises treatment centre in malibu , her publicist confirmed . 
+	[events]:[['antics'], ['confirmed'], ['surgery-enhanced'], ['checked', 'into']]
+	[entities]:[['who'], ['the', 'promises', 'treatment', 'centre', 'in', 'malibu'], ['girl'], ['headlines'], ['figure'], ['publicist'], ['her']]
+*R1[checked]
+|--(nsubj)--> R2[girl]
+|                |--(det)--> the
+|                |--(amod)--> notorious
+|                |--(compou)--> party
+|                |--(punct)--> ,
+|                |--(acl:re)--> makes
+|                |                |--(nsubj)--> R2[who]
+|                |                |--(dobj)--> R74[headlines]
+|                |                                 |--(nmod)--> *R75[antics]
+|                |                                                  |--(case)--> for
+|                |                                                  |--(nmod:p)--> R2[her]
+|                |                                                  |--(amod)--> wild
+|                |                                                  |--(cc)--> and
+|                |                                                  |--(conj)--> R76[figure]
+|                |                                                                   |--(amod)--> plastic
+|                |                                                                   |--(amod)--> *R77[surgery-enhanced]
+|                |--(punct)--> ,
+|--(aux)--> had
+|--(nmod)--> R3[the]
+|                |--(case)--> *R1[into]
+|                |--(acl:re)--> *R0[confirmed]
+|                                 |--(advcl)--> R3[promises]
+|                                 |                |--(nsubj)--> R3[centre]
+|                                 |                                 |--(compou)--> R3[treatment]
+|                                 |                                 |--(nmod)--> R3[malibu]
+|                                 |                                                  |--(case)--> R3[in]
+|                                 |--(punct)--> ,
+|                                 |--(nsubj)--> R4[publicist]
+|                                                  |--(nmod:p)--> her
+|--(punct)--> .
+
+	* entity-paths for event['antics']1_18ecb.xmlsent:135
+	['antics --(nmod:poss)--> her']
+	['antics --(conj)--> figure']
+
+	* entity-paths for event['confirmed']1_18ecb.xmlsent:135
+	['confirmed --(advcl)--> Promises']
+	['confirmed --(nsubj)--> publicist']
+
+	* entity-paths for event['surgery-enhanced']1_18ecb.xmlsent:135
+
+	* entity-paths for event['checked', 'into']1_18ecb.xmlsent:135

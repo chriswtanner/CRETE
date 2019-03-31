@@ -1,0 +1,52 @@
+
+-----------------------------------------
+docid:27_12ecb.xml
+-----------------------------------------
+
+sentence #:microsoft has released an emergency patch to fix a software flaw that allows hackers to get into internet explorer browsers and take over computers . 
+	[events]:[['allows'], ['take', 'over'], ['get', 'into'], ['released'], ['fix']]
+	[entities]:[['hackers'], ['microsoft'], ['flaw'], ['computers'], ['that'], ['patch'], ['internet', 'explorer']]
+*R763[released]
+|--(nsubj)--> R764[microsoft]
+|--(aux)--> has
+|--(dobj)--> R765[patch]
+|                |--(det)--> an
+|                |--(compou)--> emergency
+|--(advcl)--> *R782[fix]
+|                |--(mark)--> to
+|                |--(dobj)--> R767[flaw]
+|                                 |--(det)--> a
+|                                 |--(compou)--> software
+|                                 |--(acl:re)--> *R769[allows]
+|                                                  |--(nsubj)--> R767[that]
+|                                                  |--(dobj)--> R770[hackers]
+|                                                  |--(xcomp)--> *R783[get]
+|                                                                   |--(mark)--> to
+|                                                                   |--(nmod)--> browsers
+|                                                                   |                |--(case)--> *R783[into]
+|                                                                   |                |--(compou)--> R768[internet]
+|                                                                   |                |--(compou)--> R768[explorer]
+|                                                                   |--(cc)--> and
+|                                                                   |--(conj)--> *R784[take]
+|                                                                                    |--(compou)--> *R784[over]
+|                                                                                    |--(dobj)--> R771[computers]
+|--(punct)--> .
+
+	* entity-paths for event['allows']27_12ecb.xmlsent:5684
+	['allows --(nsubj)--> that']
+	['allows --(dobj)--> hackers']
+	['allows --(xcomp)--> get', 'get --(nmod)--> browsers', 'browsers --(compound)--> Internet']
+	['allows --(xcomp)--> get', 'get --(nmod)--> browsers', 'browsers --(compound)--> Explorer']
+	['allows --(xcomp)--> get', 'get --(conj)--> take', 'take --(dobj)--> computers']
+
+	* entity-paths for event['take', 'over']27_12ecb.xmlsent:5684
+
+	* entity-paths for event['get', 'into']27_12ecb.xmlsent:5684
+
+	* entity-paths for event['released']27_12ecb.xmlsent:5684
+	['released --(nsubj)--> Microsoft']
+	['released --(dobj)--> patch']
+	['released --(advcl)--> fix', 'fix --(dobj)--> flaw']
+
+	* entity-paths for event['fix']27_12ecb.xmlsent:5684
+	['fix --(dobj)--> flaw']

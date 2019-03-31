@@ -1,0 +1,98 @@
+
+-----------------------------------------
+docid:16_1ecbplus.xml
+-----------------------------------------
+
+sentence #:district attorney steve cooley announced today that capital murder charges were filed against a hawaiian gardens gang member accused of gunning down deputy luis gerardo ( jerry ) ortiz a month ago . 
+	[events]:[['murder'], ['announced'], ['accused'], ['charges'], ['gunning', 'down']]
+	[entities]:[['steve', 'cooley'], ['luis', 'gerardo', '(', 'jerry', ')', 'ortiz'], ['gang', 'member'], ['a', 'month', 'ago']]
+*R333[announced]
+|--(nsubj)--> R334[cooley]
+|                |--(compou)--> district
+|                |--(compou)--> attorney
+|                |--(compou)--> R334[steve]
+|--(nmod:t)--> today
+|--(ccomp)--> filed
+|                |--(dobj)--> that
+|                |--(nsubjp)--> *R335[charges]
+|                |                |--(compou)--> capital
+|                |                |--(compou)--> *R336[murder]
+|                |--(auxpas)--> were
+|                |--(nmod)--> R317[member]
+|                                 |--(case)--> against
+|                                 |--(det)--> a
+|                                 |--(amod)--> hawaiian
+|                                 |--(compou)--> gardens
+|                                 |--(compou)--> R317[gang]
+|                                 |--(acl)--> *R337[accused]
+|                                                  |--(advcl)--> *R324[gunning]
+|                                                                   |--(mark)--> of
+|                                                                   |--(compou)--> *R324[down]
+|                                                                   |--(dobj)--> deputy
+|                                                                   |--(advmod)--> R338[ago]
+|                                                                                    |--(nmod:n)--> R319[ortiz]
+|                                                                                                     |--(compou)--> R319[luis]
+|                                                                                                     |--(compou)--> R319[gerardo]
+|                                                                                                     |--(appos)--> R319[jerry]
+|                                                                                                     |                |--(punct)--> R319[(]
+|                                                                                                     |                |--(punct)--> R319[)]
+|                                                                                                     |--(dep)--> R338[month]
+|                                                                                                                      |--(det)--> R338[a]
+|--(punct)--> .
+
+	* entity-paths for event['murder']16_1ecbplus.xmlsent:1914
+
+	* entity-paths for event['announced']16_1ecbplus.xmlsent:1914
+	['announced --(nsubj)--> Cooley']
+	['announced --(ccomp)--> filed', 'filed --(nmod)--> member']
+
+	* entity-paths for event['accused']16_1ecbplus.xmlsent:1914
+	['accused --(advcl)--> gunning', 'gunning --(advmod)--> ago']
+
+	* entity-paths for event['charges']16_1ecbplus.xmlsent:1914
+
+	* entity-paths for event['gunning', 'down']16_1ecbplus.xmlsent:1914
+
+sentence #:cooley said jose luis orozco was charged with murdering the 35 - year - old deputy on june 24 outside a hawaiian gardens apartment . 
+	[events]:[['murdering'], ['charged'], ['said']]
+	[entities]:[['deputy'], ['cooley'], ['jose', 'luis', 'orozco'], ['outside', 'a', 'hawaiian', 'gardens', 'apartment'], ['on', 'june', '24']]
+*R333[said]
+|--(nsubj)--> R334[cooley]
+|--(ccomp)--> *R335[charged]
+|                |--(nsubjp)--> R317[orozco]
+|                |                |--(compou)--> R317[jose]
+|                |                |--(compou)--> R317[luis]
+|                |--(auxpas)--> was
+|                |--(advcl)--> *R336[murdering]
+|                                 |--(mark)--> with
+|                                 |--(dobj)--> 35
+|                                 |                |--(det)--> the
+|                                 |                |--(punct)--> -
+|                                 |                |--(dep)--> year
+|                                 |                |--(punct)--> -
+|                                 |                |--(dep)--> R319[deputy]
+|                                 |                                 |--(amod)--> old
+|                                 |                                 |--(nmod)--> R338[june]
+|                                 |                                                  |--(case)--> R338[on]
+|                                 |                                                  |--(nummod)--> R338[24]
+|                                 |--(nmod)--> R339[apartment]
+|                                                  |--(case)--> R339[outside]
+|                                                  |--(det)--> R339[a]
+|                                                  |--(amod)--> R339[hawaiian]
+|                                                  |--(compou)--> R339[gardens]
+|--(punct)--> .
+
+	* entity-paths for event['murdering']16_1ecbplus.xmlsent:1915
+	['murdering --(dobj)--> 35', '35 --(dep)--> deputy']
+	['murdering --(nmod)--> apartment']
+
+	* entity-paths for event['charged']16_1ecbplus.xmlsent:1915
+	['charged --(nsubjpass)--> Orozco']
+	['charged --(advcl)--> murdering', 'murdering --(dobj)--> 35', '35 --(dep)--> deputy']
+	['charged --(advcl)--> murdering', 'murdering --(nmod)--> apartment']
+
+	* entity-paths for event['said']16_1ecbplus.xmlsent:1915
+	['said --(nsubj)--> Cooley']
+	['said --(ccomp)--> charged', 'charged --(nsubjpass)--> Orozco']
+	['said --(ccomp)--> charged', 'charged --(advcl)--> murdering', 'murdering --(dobj)--> 35', '35 --(dep)--> deputy']
+	['said --(ccomp)--> charged', 'charged --(advcl)--> murdering', 'murdering --(nmod)--> apartment']

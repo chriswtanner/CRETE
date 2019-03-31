@@ -1,0 +1,54 @@
+
+-----------------------------------------
+docid:35_7ecb.xml
+-----------------------------------------
+
+sentence #:san diego 's jackson is arrested on suspicion of drunk driving 
+	[events]:[['suspicion'], ['drunk', 'driving'], ['arrested']]
+	[entities]:[['jackson']]
+*R1153[arrested]
+|--(nsubjp)--> R1156[jackson]
+|                |--(nmod:p)--> diego
+|                                 |--(compou)--> san
+|                                 |--(case)--> 's
+|--(auxpas)--> is
+|--(nmod)--> *R1155[suspicion]
+                 |--(case)--> on
+                 |--(nmod)--> *R1154[driving]
+                                  |--(case)--> of
+                                  |--(amod)--> *R1154[drunk]
+
+	* entity-paths for event['suspicion']35_7ecb.xmlsent:9798
+
+	* entity-paths for event['drunk', 'driving']35_7ecb.xmlsent:9798
+
+	* entity-paths for event['arrested']35_7ecb.xmlsent:9798
+	['arrested --(nsubjpass)--> Jackson']
+
+sentence #:san diego chargers wide receiver vincent jackson was arrested tuesday on suspicion of drunk driving . 
+	[events]:[['drunk', 'driving'], ['arrested'], ['suspicion']]
+	[entities]:[['tuesday'], ['vincent', 'jackson']]
+*R1153[arrested]
+|--(nsubjp)--> chargers
+|                |--(compou)--> san
+|                |--(compou)--> diego
+|                |--(dep)--> R1156[jackson]
+|                                 |--(amod)--> wide
+|                                 |--(compou)--> receiver
+|                                 |--(compou)--> R1156[vincent]
+|--(auxpas)--> was
+|--(nmod:t)--> R1159[tuesday]
+|--(nmod)--> *R1155[suspicion]
+|                |--(case)--> on
+|                |--(nmod)--> *R1154[driving]
+|                                 |--(case)--> of
+|                                 |--(amod)--> *R1154[drunk]
+|--(punct)--> .
+
+	* entity-paths for event['drunk', 'driving']35_7ecb.xmlsent:9801
+
+	* entity-paths for event['arrested']35_7ecb.xmlsent:9801
+	['arrested --(nsubjpass)--> Chargers', 'Chargers --(dep)--> Jackson']
+	['arrested --(nmod:tmod)--> Tuesday']
+
+	* entity-paths for event['suspicion']35_7ecb.xmlsent:9801

@@ -1,0 +1,47 @@
+
+-----------------------------------------
+docid:24_3ecb.xml
+-----------------------------------------
+
+sentence #:armed robbers stole diamonds valued at 85 million euros ( $ 108 million ) from the paris branch of jeweler harry winston , the city prosecutors ' office said . 
+	[events]:[['said'], ['stole']]
+	[entities]:[['the', 'paris', 'branch', 'of', 'jeweler', 'harry', 'winston'], ['diamonds'], ['city', 'prosecutors', "'", 'office'], ['robbers']]
+*R688[said]
+|--(advcl)--> armed
+|                |--(ccomp)--> *R663[stole]
+|                                 |--(nsubj)--> R664[robbers]
+|                                 |--(dobj)--> R695[diamonds]
+|                                                  |--(acl)--> valued
+|                                                                   |--(nmod)--> euros
+|                                                                   |                |--(case)--> at
+|                                                                   |                |--(nummod)--> million
+|                                                                   |                |                |--(compou)--> 85
+|                                                                   |                |--(dep)--> $
+|                                                                   |                                 |--(punct)--> (
+|                                                                   |                                 |--(nummod)--> million
+|                                                                   |                                 |                |--(compou)--> 108
+|                                                                   |                                 |--(punct)--> )
+|                                                                   |--(nmod)--> R665[branch]
+|                                                                                    |--(case)--> from
+|                                                                                    |--(det)--> R665[the]
+|                                                                                    |--(compou)--> R665[paris]
+|                                                                                    |--(nmod)--> R665[winston]
+|                                                                                                     |--(case)--> R665[of]
+|                                                                                                     |--(compou)--> R665[jeweler]
+|                                                                                                     |--(compou)--> R665[harry]
+|--(punct)--> ,
+|--(nsubj)--> R689[office]
+|                |--(nmod:p)--> R689[prosecutors]
+|                                 |--(det)--> the
+|                                 |--(compou)--> R689[city]
+|                                 |--(case)--> R689[']
+|--(punct)--> .
+
+	* entity-paths for event['said']24_3ecb.xmlsent:4843
+	['said --(advcl)--> Armed', 'Armed --(ccomp)--> stole', 'stole --(nsubj)--> robbers']
+	['said --(advcl)--> Armed', 'Armed --(ccomp)--> stole', 'stole --(dobj)--> diamonds']
+	['said --(nsubj)--> office']
+
+	* entity-paths for event['stole']24_3ecb.xmlsent:4843
+	['stole --(nsubj)--> robbers']
+	['stole --(dobj)--> diamonds']

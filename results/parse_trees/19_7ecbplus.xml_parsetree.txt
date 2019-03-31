@@ -1,0 +1,55 @@
+
+-----------------------------------------
+docid:19_7ecbplus.xml
+-----------------------------------------
+
+sentence #:anger in east flatbush persists over teenager " s killing by the police 
+	[events]:[['killing'], ['anger']]
+	[entities]:[['in', 'east', 'flatbush'], ['police'], ['teenager']]
+persists
+|--(nsubj)--> *R441[anger]
+|                |--(nmod)--> R426[flatbush]
+|                                 |--(case)--> R426[in]
+|                                 |--(compou)--> R426[east]
+|--(xcomp)--> s
+                 |--(dep)--> R415[teenager]
+                 |                |--(case)--> over
+                 |                |--(punct)--> "
+                 |--(acl)--> *R414[killing]
+                                  |--(nmod)--> R413[police]
+                                                   |--(case)--> by
+                                                   |--(det)--> the
+
+	* entity-paths for event['killing']19_7ecbplus.xmlsent:3247
+	['Killing --(nmod)--> Police']
+
+	* entity-paths for event['anger']19_7ecbplus.xmlsent:3247
+	['Anger --(nmod)--> Flatbush']
+
+sentence #:first came the shooting : an armed teenager killed by police officers on a darkened brooklyn street . 
+	[events]:[['killed'], ['shooting']]
+	[entities]:[['on', 'a', 'darkened', 'brooklyn', 'street'], ['officers'], ['teenager']]
+came
+|--(nsubj)--> first
+|--(dobj)--> *R412[shooting]
+|                |--(det)--> the
+|                |--(punct)--> :
+|                |--(dep)--> R415[teenager]
+|                                 |--(det)--> an
+|                                 |--(amod)--> armed
+|                                 |--(acl)--> *R414[killed]
+|                                                  |--(nmod)--> R413[officers]
+|                                                                   |--(case)--> by
+|                                                                   |--(compou)--> police
+|                                                                   |--(nmod)--> R416[street]
+|                                                                                    |--(case)--> R416[on]
+|                                                                                    |--(det)--> R416[a]
+|                                                                                    |--(amod)--> R416[darkened]
+|                                                                                    |--(compou)--> R416[brooklyn]
+|--(punct)--> .
+
+	* entity-paths for event['killed']19_7ecbplus.xmlsent:3249
+	['killed --(nmod)--> officers']
+
+	* entity-paths for event['shooting']19_7ecbplus.xmlsent:3249
+	['shooting --(dep)--> teenager']

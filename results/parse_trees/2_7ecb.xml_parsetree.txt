@@ -1,0 +1,47 @@
+
+-----------------------------------------
+docid:2_7ecb.xml
+-----------------------------------------
+
+sentence #:the academy of motion picture arts and sciences announced friday that hugh jackman will be the host of the 81st annual oscars on feb. 22 at the kodak theatre . 
+	[events]:[['oscars'], ['announced']]
+	[entities]:[['academy', 'of', 'motion', 'picture', 'arts', 'and', 'sciences'], ['friday'], ['on', 'feb.', '22'], ['hugh', 'jackman'], ['81st', 'annual'], ['host'], ['at', 'the', 'kodak', 'theatre']]
+*R458[announced]
+|--(nsubj)--> R459[academy]
+|                |--(det)--> the
+|                |--(nmod)--> R459[arts]
+|                                 |--(case)--> R459[of]
+|                                 |--(compou)--> R459[motion]
+|                                 |--(compou)--> R459[picture]
+|                                 |--(cc)--> R459[and]
+|                                 |--(conj)--> R459[sciences]
+|--(nmod:t)--> R461[friday]
+|--(ccomp)--> R462[host]
+|                |--(mark)--> that
+|                |--(nsubj)--> R462[jackman]
+|                |                |--(compou)--> R462[hugh]
+|                |--(aux)--> will
+|                |--(cop)--> be
+|                |--(det)--> the
+|                |--(nmod)--> *R460[oscars]
+|                |                |--(case)--> of
+|                |                |--(det)--> the
+|                |                |--(amod)--> R470[81st]
+|                |                |--(amod)--> R470[annual]
+|                |--(nmod)--> R476[feb.]
+|                                 |--(case)--> R476[on]
+|                                 |--(nummod)--> R476[22]
+|                                 |--(nmod)--> R495[theatre]
+|                                                  |--(case)--> R495[at]
+|                                                  |--(det)--> R495[the]
+|                                                  |--(compou)--> R495[kodak]
+|--(punct)--> .
+
+	* entity-paths for event['oscars']2_7ecb.xmlsent:3671
+	['Oscars --(amod)--> 81st']
+	['Oscars --(amod)--> annual']
+
+	* entity-paths for event['announced']2_7ecb.xmlsent:3671
+	['announced --(nsubj)--> Academy']
+	['announced --(nmod:tmod)--> Friday']
+	['announced --(ccomp)--> host']

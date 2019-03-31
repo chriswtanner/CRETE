@@ -1,0 +1,71 @@
+
+-----------------------------------------
+docid:18_7ecbplus.xml
+-----------------------------------------
+
+sentence #:a fired accountant accused of wounding two former bosses in a shotgun attack and killing a receptionist who tried to stop him was arraigned wednesday on murder and other charges . 
+	[events]:[['killing'], ['murder'], ['fired'], ['wounding'], ['attack']]
+	[entities]:[['who'], ['bosses'], ['receptionist'], ['him'], ['accountant']]
+arraigned
+|--(nsubjp)--> R360[accountant]
+|                |--(det)--> a
+|                |--(amod)--> *R363[fired]
+|                |--(acl)--> accused
+|                                 |--(advcl)--> *R391[wounding]
+|                                                  |--(mark)--> of
+|                                                  |--(dobj)--> R392[bosses]
+|                                                  |                |--(nummod)--> two
+|                                                  |                |--(amod)--> former
+|                                                  |                |--(nmod)--> *R361[attack]
+|                                                  |                                 |--(case)--> in
+|                                                  |                                 |--(det)--> a
+|                                                  |                                 |--(compou)--> shotgun
+|                                                  |--(cc)--> and
+|                                                  |--(conj)--> *R373[killing]
+|                                                                   |--(dobj)--> R374[receptionist]
+|                                                                                    |--(det)--> a
+|                                                                                    |--(acl:re)--> tried
+|                                                                                                     |--(nsubj)--> R374[who]
+|                                                                                                     |--(xcomp)--> stop
+|                                                                                                                      |--(mark)--> to
+|                                                                                                                      |--(dobj)--> R360[him]
+|--(auxpas)--> was
+|--(nmod:t)--> wednesday
+|--(nmod)--> charges
+|                |--(case)--> on
+|                |--(compou)--> *R398[murder]
+|                                 |--(cc)--> and
+|                                 |--(conj)--> other
+|--(punct)--> .
+
+	* entity-paths for event['killing']18_7ecbplus.xmlsent:2644
+	['killing --(dobj)--> receptionist']
+
+	* entity-paths for event['murder']18_7ecbplus.xmlsent:2644
+
+	* entity-paths for event['fired']18_7ecbplus.xmlsent:2644
+
+	* entity-paths for event['wounding']18_7ecbplus.xmlsent:2644
+	['wounding --(dobj)--> bosses']
+	['wounding --(conj)--> killing', 'killing --(dobj)--> receptionist']
+
+	* entity-paths for event['attack']18_7ecbplus.xmlsent:2644
+
+sentence #:mich . accountant charged with murder in office shootings 
+	[events]:[['shootings'], ['murder'], ['charged']]
+	[entities]:[['accountant']]
+R360[accountant]
+|--(compou)--> mich
+|--(punct)--> .
+|--(acl)--> *R397[charged]
+|                |--(nmod)--> *R398[murder]
+|                                 |--(case)--> with
+|--(nmod)--> *R361[shootings]
+                 |--(case)--> in
+                 |--(compou)--> office
+
+	* entity-paths for event['shootings']18_7ecbplus.xmlsent:2642
+
+	* entity-paths for event['murder']18_7ecbplus.xmlsent:2642
+
+	* entity-paths for event['charged']18_7ecbplus.xmlsent:2642

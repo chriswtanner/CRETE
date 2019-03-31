@@ -1,0 +1,51 @@
+
+-----------------------------------------
+docid:4_5ecbplus.xml
+-----------------------------------------
+
+sentence #:williams died peacefully in her sleep thursday in beverly hills , family spokesman harlan boll announced . 
+	[events]:[['announced'], ['died'], ['sleep']]
+	[entities]:[['thursday'], ['harlan', 'boll'], ['williams'], ['in', 'beverly', 'hills']]
+*R1379[announced]
+|--(ccomp)--> *R1369[died]
+|                |--(nsubj)--> R1370[williams]
+|                |--(advmod)--> peacefully
+|                |--(nmod)--> *R1377[sleep]
+|                |                |--(case)--> in
+|                |                |--(nmod:p)--> her
+|                |--(nmod:t)--> R1376[thursday]
+|                |--(nmod)--> R1392[hills]
+|                                 |--(case)--> R1392[in]
+|                                 |--(compou)--> R1392[beverly]
+|--(punct)--> ,
+|--(nsubj)--> R1378[boll]
+|                |--(compou)--> family
+|                |--(compou)--> spokesman
+|                |--(compou)--> R1378[harlan]
+|--(punct)--> .
+
+	* entity-paths for event['announced']4_5ecbplus.xmlsent:11476
+	['announced --(ccomp)--> died', 'died --(nsubj)--> Williams']
+	['announced --(ccomp)--> died', 'died --(nmod:tmod)--> Thursday']
+	['announced --(ccomp)--> died', 'died --(nmod)--> Hills']
+	['announced --(nsubj)--> Boll']
+
+	* entity-paths for event['died']4_5ecbplus.xmlsent:11476
+	['died --(nsubj)--> Williams']
+	['died --(nmod:tmod)--> Thursday']
+	['died --(nmod)--> Hills']
+
+	* entity-paths for event['sleep']4_5ecbplus.xmlsent:11476
+
+sentence #:actress esther williams dies at 91 
+	[events]:[['dies']]
+	[entities]:[['esther', 'williams']]
+*R1369[dies]
+|--(nsubj)--> R1370[williams]
+|                |--(compou)--> actress
+|                |--(compou)--> R1370[esther]
+|--(nmod)--> 91
+                 |--(case)--> at
+
+	* entity-paths for event['dies']4_5ecbplus.xmlsent:11471
+	['Dies --(nsubj)--> Williams']

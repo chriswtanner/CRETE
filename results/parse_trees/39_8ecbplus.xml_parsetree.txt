@@ -1,0 +1,43 @@
+
+-----------------------------------------
+docid:39_8ecbplus.xml
+-----------------------------------------
+
+sentence #:peter capaldi favourite to take over from matt smith as doctor who 
+	[events]:[['take', 'over']]
+	[entities]:[['peter', 'capaldi'], ['favourite'], ['doctor', 'who'], ['matt', 'smith']]
+R1331[favourite]
+|--(dep)--> R1331[capaldi]
+|                |--(compou)--> R1331[peter]
+|--(xcomp)--> *R1334[take]
+                 |--(mark)--> to
+                 |--(compou)--> *R1334[over]
+                 |--(nmod)--> R1328[smith]
+                                  |--(case)--> from
+                                  |--(compou)--> R1328[matt]
+                                  |--(nmod)--> R1333[doctor]
+                                                   |--(case)--> as
+                                                   |--(acl:re)--> R1333[who]
+
+	* entity-paths for event['take', 'over']39_8ecbplus.xmlsent:11120
+
+sentence #:peter capaldi is the bookies' favourite to become the next doctor who . 
+	[events]:[['become']]
+	[entities]:[["bookies'"], ['doctor', 'who'], ['favourite'], ['peter', 'capaldi']]
+R1361[bookies']
+|--(nsubj)--> R1331[capaldi]
+|                |--(compou)--> R1331[peter]
+|--(cop)--> is
+|--(det)--> the
+|--(case)--> R1361[bookies']
+|--(amod)--> R1331[favourite]
+|--(advcl)--> *R1356[become]
+|                |--(mark)--> to
+|                |--(xcomp)--> R1333[doctor]
+|                                 |--(det)--> the
+|                                 |--(amod)--> next
+|                                 |--(acl:re)--> R1333[who]
+|--(punct)--> .
+
+	* entity-paths for event['become']39_8ecbplus.xmlsent:11122
+	['become --(xcomp)--> Doctor']

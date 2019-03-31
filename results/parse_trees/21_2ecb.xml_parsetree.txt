@@ -1,0 +1,45 @@
+
+-----------------------------------------
+docid:21_2ecb.xml
+-----------------------------------------
+
+sentence #:a woman died wednesday night after being struck by a hit-and-run driver outside a store in bloomington , according to a report from wcco-tv channel 4 . 
+	[events]:[['died'], ['struck']]
+	[entities]:[['woman'], ['outside', 'a', 'store', 'in', 'bloomington'], ['wednesday', 'night'], ['driver']]
+*R542[died]
+|--(nsubj)--> R543[woman]
+|                |--(det)--> a
+|--(nmod:t)--> R574[night]
+|                |--(compou)--> R574[wednesday]
+|--(advcl)--> *R541[struck]
+|                |--(mark)--> after
+|                |--(auxpas)--> being
+|                |--(nmod)--> R539[driver]
+|                |                |--(case)--> by
+|                |                |--(det)--> a
+|                |                |--(amod)--> hit-and-run
+|                |--(nmod)--> R544[store]
+|                |                |--(case)--> R544[outside]
+|                |                |--(det)--> R544[a]
+|                |                |--(nmod)--> R544[bloomington]
+|                |                                 |--(case)--> R544[in]
+|                |--(punct)--> ,
+|                |--(nmod)--> report
+|                                 |--(case)--> according
+|                                 |                |--(mwe)--> to
+|                                 |--(det)--> a
+|                                 |--(nmod)--> channel
+|                                                  |--(case)--> from
+|                                                  |--(compou)--> wcco-tv
+|                                                  |--(nummod)--> 4
+|--(punct)--> .
+
+	* entity-paths for event['died']21_2ecb.xmlsent:4143
+	['died --(nsubj)--> woman']
+	['died --(nmod:tmod)--> night']
+	['died --(advcl)--> struck', 'struck --(nmod)--> driver']
+	['died --(advcl)--> struck', 'struck --(nmod)--> store']
+
+	* entity-paths for event['struck']21_2ecb.xmlsent:4143
+	['struck --(nmod)--> driver']
+	['struck --(nmod)--> store']

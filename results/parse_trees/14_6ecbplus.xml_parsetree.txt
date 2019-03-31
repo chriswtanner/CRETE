@@ -1,0 +1,42 @@
+
+-----------------------------------------
+docid:14_6ecbplus.xml
+-----------------------------------------
+
+sentence #:fire at waitrose supermarket may have been arson 
+	[events]:[['arson'], ['fire']]
+	[entities]:[['at', 'waitrose', 'supermarket']]
+*R312[arson]
+|--(nsubj)--> *R302[fire]
+|                |--(nmod)--> R303[supermarket]
+|                                 |--(case)--> R303[at]
+|                                 |--(compou)--> R303[waitrose]
+|--(aux)--> may
+|--(aux)--> have
+|--(cop)--> been
+
+	* entity-paths for event['arson']14_6ecbplus.xmlsent:1766
+	['arson --(nsubj)--> Fire', 'Fire --(nmod)--> supermarket']
+
+	* entity-paths for event['fire']14_6ecbplus.xmlsent:1766
+	['Fire --(nmod)--> supermarket']
+
+sentence #:police are continuing to investigate a fire at a waitrose supermarket in wellington . 
+	[events]:[['fire']]
+	[entities]:[['a', 'waitrose', 'supermarket', 'in', 'wellington']]
+continuing
+|--(nsubj)--> police
+|--(aux)--> are
+|--(xcomp)--> investigate
+|                |--(mark)--> to
+|                |--(dobj)--> *R302[fire]
+|                |                |--(det)--> a
+|                |--(nmod)--> R303[supermarket]
+|                                 |--(case)--> at
+|                                 |--(det)--> R303[a]
+|                                 |--(compou)--> R303[waitrose]
+|                                 |--(nmod)--> R303[wellington]
+|                                                  |--(case)--> R303[in]
+|--(punct)--> .
+
+	* entity-paths for event['fire']14_6ecbplus.xmlsent:1767

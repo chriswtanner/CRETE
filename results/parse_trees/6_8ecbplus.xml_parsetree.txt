@@ -1,0 +1,65 @@
+
+-----------------------------------------
+docid:6_8ecbplus.xml
+-----------------------------------------
+
+sentence #:according to the newspaper's sources , ross was in negotiations to direct the sequel , but was not able to come to an agreement over scheduling and compensation . 
+	[events]:[['agreement'], ['direct'], ['negotiations']]
+	[entities]:[['sequel'], ['compensation'], ['ross']]
+*R1696[negotiations]
+|--(nmod)--> sources
+|                |--(case)--> according
+|                |                |--(mwe)--> to
+|                |--(nmod:p)--> newspaper's
+|                                 |--(det)--> the
+|                                 |--(case)--> newspaper's
+|--(punct)--> ,
+|--(nsubj)--> R1692[ross]
+|--(cop)--> was
+|--(case)--> in
+|--(acl)--> *R1699[direct]
+|                |--(mark)--> to
+|                |--(dobj)--> R1702[sequel]
+|                                 |--(det)--> the
+|--(punct)--> ,
+|--(cc)--> but
+|--(conj)--> able
+|                |--(cop)--> was
+|                |--(neg)--> not
+|                |--(xcomp)--> come
+|                                 |--(mark)--> to
+|                                 |--(nmod)--> *R1693[agreement]
+|                                                  |--(case)--> to
+|                                                  |--(det)--> an
+|                                                  |--(nmod)--> scheduling
+|                                                                   |--(case)--> over
+|                                                                   |--(cc)--> and
+|                                                                   |--(conj)--> R1712[compensation]
+|--(punct)--> .
+
+	* entity-paths for event['agreement']6_8ecbplus.xmlsent:14569
+	['agreement --(nmod)--> scheduling', 'scheduling --(conj)--> compensation']
+
+	* entity-paths for event['direct']6_8ecbplus.xmlsent:14569
+	['direct --(dobj)--> sequel']
+
+	* entity-paths for event['negotiations']6_8ecbplus.xmlsent:14569
+	['negotiations --(nsubj)--> Ross']
+	['negotiations --(acl)--> direct', 'direct --(dobj)--> sequel']
+	['negotiations --(conj)--> able', 'able --(xcomp)--> come', 'come --(nmod)--> agreement', 'agreement --(nmod)--> scheduling', 'scheduling --(conj)--> compensation']
+
+sentence #:gary ross will not direct 'hunger games' sequel 
+	[events]:[['direct']]
+	[entities]:[['gary', 'ross'], ['sequel'], ["'hunger", "games'"]]
+will
+|--(compou)--> R1692[gary]
+|--(compou)--> R1692[ross]
+|--(dep)--> R1700['hunger]
+                 |--(neg)--> not
+                 |--(amod)--> *R1699[direct]
+                 |--(punct)--> R1700['hunger]
+                 |--(dep)--> R1702[sequel]
+                                  |--(nmod:p)--> R1700[games']
+                                                   |--(case)--> R1700[games']
+
+	* entity-paths for event['direct']6_8ecbplus.xmlsent:14566

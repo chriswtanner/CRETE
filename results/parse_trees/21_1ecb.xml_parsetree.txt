@@ -1,0 +1,54 @@
+
+-----------------------------------------
+docid:21_1ecb.xml
+-----------------------------------------
+
+sentence #:a woman hit and killed by a motorist wednesday night outside a sam 's club store in bloomington might be alive if the driver had listened to bystanders who frantically pleaded with him to stop . 
+	[events]:[['killed'], ['hit']]
+	[entities]:[['him'], ['motorist'], ['driver'], ['outside', 'a', 'sam', "'s", 'club', 'store', 'in', 'bloomington'], ['wednesday', 'night'], ['woman']]
+alive
+|--(nsubj)--> R543[woman]
+|                |--(det)--> a
+|                |--(amod)--> *R541[hit]
+|                                 |--(cc)--> and
+|                                 |--(conj)--> *R542[killed]
+|                                                  |--(nmod)--> R539[motorist]
+|                                                  |                |--(case)--> by
+|                                                  |                |--(det)--> a
+|                                                  |                |--(nmod:t)--> R574[wednesday]
+|                                                  |--(nmod:t)--> R574[night]
+|                                                  |--(nmod)--> R544[store]
+|                                                                   |--(case)--> R544[outside]
+|                                                                   |--(nmod:p)--> R544[sam]
+|                                                                   |                |--(det)--> R544[a]
+|                                                                   |                |--(case)--> R544['s]
+|                                                                   |--(compou)--> R544[club]
+|                                                                   |--(nmod)--> R544[bloomington]
+|                                                                                    |--(case)--> R544[in]
+|--(aux)--> might
+|--(cop)--> be
+|--(advcl)--> listened
+|                |--(mark)--> if
+|                |--(nsubj)--> R539[driver]
+|                |                |--(det)--> the
+|                |--(aux)--> had
+|                |--(nmod)--> bystanders
+|                                 |--(case)--> to
+|                                 |--(acl:re)--> pleaded
+|                                                  |--(nsubj)--> who
+|                                                  |--(advmod)--> frantically
+|                                                  |--(nmod)--> R539[him]
+|                                                  |                |--(case)--> with
+|                                                  |--(xcomp)--> stop
+|                                                                   |--(mark)--> to
+|--(punct)--> .
+
+	* entity-paths for event['killed']21_1ecb.xmlsent:4118
+	['killed --(nmod)--> motorist']
+	['killed --(nmod:tmod)--> night']
+	['killed --(nmod)--> store']
+
+	* entity-paths for event['hit']21_1ecb.xmlsent:4118
+	['hit --(conj)--> killed', 'killed --(nmod)--> motorist']
+	['hit --(conj)--> killed', 'killed --(nmod:tmod)--> night']
+	['hit --(conj)--> killed', 'killed --(nmod)--> store']

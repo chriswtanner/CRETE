@@ -1,0 +1,102 @@
+
+-----------------------------------------
+docid:12_1ecbplus.xml
+-----------------------------------------
+
+sentence #:the indian navy patrolling the gulf of aden on thursday thwarted a multi - boat attack by sea brigands on merchant vessels , apprehending 26 somali pirates and confiscating arms and ammunition , in the fifth successful anti - piracy operation since september . 
+	[events]:[['apprehending'], ['confiscating'], ['patrolling'], ['operation'], ['thwarted'], ['attack']]
+	[entities]:[['pirates'], ['the', 'gulf', 'of', 'aden'], ['navy'], ['on', 'thursday'], ['vessels'], ['ammunition'], ['since', 'september'], ['brigands']]
+*R243[patrolling]
+|--(det)--> the
+|--(amod)--> indian
+|--(compou)--> R215[navy]
+|--(acl:re)--> *R217[thwarted]
+|                |--(nsubj)--> R229[gulf]
+|                |                |--(det)--> R229[the]
+|                |                |--(nmod)--> R229[aden]
+|                |                                 |--(case)--> R229[of]
+|                |                                 |--(nmod)--> R231[thursday]
+|                |                                                  |--(case)--> R231[on]
+|                |--(dobj)--> multi
+|                |                |--(det)--> a
+|                |                |--(punct)--> -
+|                |                |--(dep)--> *R218[attack]
+|                |                                 |--(compou)--> boat
+|                |                                 |--(nmod)--> R242[brigands]
+|                |                                                  |--(case)--> by
+|                |                                                  |--(compou)--> sea
+|                |--(nmod)--> R220[vessels]
+|                |                |--(case)--> on
+|                |                |--(compou)--> merchant
+|                |--(punct)--> ,
+|                |--(dep)--> *R244[apprehending]
+|                                 |--(dobj)--> R242[pirates]
+|                                 |                |--(nummod)--> 26
+|                                 |                |--(amod)--> somali
+|                                 |--(cc)--> and
+|                                 |--(conj)--> *R223[confiscating]
+|                                                  |--(dobj)--> arms
+|                                                  |                |--(cc)--> and
+|                                                  |                |--(conj)--> R245[ammunition]
+|                                                  |--(punct)--> ,
+|                                                  |--(nmod)--> anti
+|                                                                   |--(case)--> in
+|                                                                   |--(det)--> the
+|                                                                   |--(amod)--> fifth
+|                                                                   |--(amod)--> successful
+|--(punct)--> -
+|--(dep)--> *R246[operation]
+|                |--(compou)--> piracy
+|                |--(nmod)--> R247[september]
+|                                 |--(case)--> R247[since]
+|--(punct)--> .
+
+	* entity-paths for event['apprehending']12_1ecbplus.xmlsent:893
+	['apprehending --(dobj)--> pirates']
+	['apprehending --(conj)--> confiscating', 'confiscating --(dobj)--> arms', 'arms --(conj)--> ammunition']
+
+	* entity-paths for event['confiscating']12_1ecbplus.xmlsent:893
+	['confiscating --(dobj)--> arms', 'arms --(conj)--> ammunition']
+
+	* entity-paths for event['patrolling']12_1ecbplus.xmlsent:893
+	['patrolling --(compound)--> Navy']
+	['patrolling --(acl:relcl)--> thwarted', 'thwarted --(nsubj)--> Gulf']
+	['patrolling --(acl:relcl)--> thwarted', 'thwarted --(dobj)--> multi', 'multi --(dep)--> attack', 'attack --(nmod)--> brigands']
+	['patrolling --(acl:relcl)--> thwarted', 'thwarted --(nmod)--> vessels']
+	['patrolling --(acl:relcl)--> thwarted', 'thwarted --(dep)--> apprehending', 'apprehending --(dobj)--> pirates']
+	['patrolling --(acl:relcl)--> thwarted', 'thwarted --(dep)--> apprehending', 'apprehending --(conj)--> confiscating', 'confiscating --(dobj)--> arms', 'arms --(conj)--> ammunition']
+	['patrolling --(dep)--> operation', 'operation --(nmod)--> September']
+
+	* entity-paths for event['operation']12_1ecbplus.xmlsent:893
+	['operation --(nmod)--> September']
+
+	* entity-paths for event['thwarted']12_1ecbplus.xmlsent:893
+	['thwarted --(nsubj)--> Gulf']
+	['thwarted --(dobj)--> multi', 'multi --(dep)--> attack', 'attack --(nmod)--> brigands']
+	['thwarted --(nmod)--> vessels']
+	['thwarted --(dep)--> apprehending', 'apprehending --(dobj)--> pirates']
+	['thwarted --(dep)--> apprehending', 'apprehending --(conj)--> confiscating', 'confiscating --(dobj)--> arms', 'arms --(conj)--> ammunition']
+
+	* entity-paths for event['attack']12_1ecbplus.xmlsent:893
+	['attack --(nmod)--> brigands']
+
+sentence #:navy foils somali pirate attack off gulf of aden 
+	[events]:[['attack'], ['foils']]
+	[entities]:[['pirate'], ['navy'], ['off', 'gulf', 'of', 'aden']]
+*R217[foils]
+|--(nsubj)--> R215[navy]
+|--(dobj)--> *R218[attack]
+|                |--(amod)--> somali
+|                |--(compou)--> R242[pirate]
+|--(nmod)--> R229[gulf]
+                 |--(case)--> R229[off]
+                 |--(nmod)--> R229[aden]
+                                  |--(case)--> R229[of]
+
+	* entity-paths for event['attack']12_1ecbplus.xmlsent:892
+	['attack --(compound)--> pirate']
+
+	* entity-paths for event['foils']12_1ecbplus.xmlsent:892
+	['foils --(nsubj)--> Navy']
+	['foils --(dobj)--> attack', 'attack --(compound)--> pirate']
+	['foils --(nmod)--> Gulf']

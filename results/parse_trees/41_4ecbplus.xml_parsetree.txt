@@ -1,0 +1,111 @@
+
+-----------------------------------------
+docid:41_4ecbplus.xml
+-----------------------------------------
+
+sentence #:four bombs were dropped within just a few moments - two landed inside the camp itself , while the other two bombs were dropped near the airstrip where a un helicopter was delivering much needed food aid . 
+	[events]:[['landed'], ['dropped'], ['delivering'], ['dropped']]
+	[entities]:[['two', 'bombs'], ['two'], ['un', 'helicopter'], ['food', 'aid'], ['near', 'the', 'airstrip'], ['where'], ['inside', 'the', 'camp', 'itself'], ['four', 'bombs']]
+*R1442[dropped]
+|--(nsubjp)--> R1455[bombs]
+|                |--(nummod)--> R1455[four]
+|--(auxpas)--> were
+|--(nmod)--> moments
+|                |--(case)--> within
+|                |--(nummod)--> few
+|                |                |--(advmod)--> just
+|                |                |--(advmod)--> a
+|                |--(punct)--> -
+|                |--(dep)--> R1475[two]
+|                                 |--(acl)--> *R1493[landed]
+|                                                  |--(nmod)--> R1444[camp]
+|                                                  |                |--(case)--> R1444[inside]
+|                                                  |                |--(det)--> R1444[the]
+|                                                  |--(dobj)--> R1444[itself]
+|                                                  |--(punct)--> ,
+|                                                  |--(advcl)--> *R1494[dropped]
+|                                                                   |--(mark)--> while
+|                                                                   |--(nsubjp)--> R1495[bombs]
+|                                                                   |                |--(det)--> the
+|                                                                   |                |--(amod)--> other
+|                                                                   |                |--(nummod)--> R1495[two]
+|                                                                   |--(auxpas)--> were
+|                                                                   |--(nmod)--> R1496[airstrip]
+|                                                                                    |--(case)--> R1496[near]
+|                                                                                    |--(det)--> R1496[the]
+|                                                                                    |--(acl:re)--> *R1497[delivering]
+|                                                                                                     |--(advmod)--> R1496[where]
+|                                                                                                     |--(nsubj)--> R1498[helicopter]
+|                                                                                                     |                |--(det)--> a
+|                                                                                                     |                |--(compou)--> R1498[un]
+|                                                                                                     |--(aux)--> was
+|                                                                                                     |--(dobj)--> R1499[aid]
+|                                                                                                                      |--(amod)--> much
+|                                                                                                                      |--(amod)--> needed
+|                                                                                                                      |--(compou)--> R1499[food]
+|--(punct)--> .
+
+	* entity-paths for event['landed']41_4ecbplus.xmlsent:12266
+	['landed --(nmod)--> camp']
+	['landed --(dobj)--> itself']
+	['landed --(advcl)--> dropped', 'dropped --(nsubjpass)--> bombs']
+	['landed --(advcl)--> dropped', 'dropped --(nmod)--> airstrip']
+
+	* entity-paths for event['dropped']41_4ecbplus.xmlsent:12266
+	['dropped --(nsubjpass)--> bombs']
+	['dropped --(nmod)--> moments', 'moments --(dep)--> two']
+
+	* entity-paths for event['delivering']41_4ecbplus.xmlsent:12266
+	['delivering --(advmod)--> where']
+	['delivering --(nsubj)--> helicopter']
+	['delivering --(dobj)--> aid']
+
+	* entity-paths for event['dropped']41_4ecbplus.xmlsent:12266
+	['dropped --(nsubjpass)--> bombs']
+	['dropped --(nmod)--> airstrip']
+
+sentence #:bombing at yida refugee camp , south sudan 
+	[events]:[['bombing']]
+	[entities]:[['at', 'yida', 'refugee', 'camp', ',', 'south', 'sudan']]
+*R1442[bombing]
+|--(nmod)--> R1444[camp]
+                 |--(case)--> R1444[at]
+                 |--(compou)--> R1444[yida]
+                 |--(compou)--> R1444[refugee]
+                 |--(punct)--> R1444[,]
+                 |--(appos)--> R1444[sudan]
+                                  |--(compou)--> R1444[south]
+
+	* entity-paths for event['bombing']41_4ecbplus.xmlsent:12263
+	['Bombing --(nmod)--> Camp']
+
+sentence #:on thursday , november 10th at approximately 3 : 00 pm , the yida refugee camp in south sudan was bombed . 
+	[events]:[['bombed']]
+	[entities]:[['on', 'thursday', ',', 'november', '10th', 'at', 'approximately', '3', ':', '00', 'pm'], ['the', 'yida', 'refugee', 'camp', 'in', 'south', 'sudan']]
+*R1442[bombed]
+|--(nmod)--> R1469[thursday]
+|                |--(case)--> R1469[on]
+|--(punct)--> R1469[,]
+|--(nsubjp)--> R1469[november]
+|                |--(amod)--> R1469[10th]
+|                                 |--(nmod)--> R1469[3]
+|                                                  |--(case)--> R1469[at]
+|                                                  |--(advmod)--> R1469[approximately]
+|                                                  |--(punct)--> R1469[:]
+|                                                  |--(dep)--> R1469[pm]
+|                                                                   |--(nummod)--> R1469[00]
+|                                                                   |--(punct)--> ,
+|                                                                   |--(appos)--> R1444[camp]
+|                                                                                    |--(det)--> R1444[the]
+|                                                                                    |--(compou)--> R1444[yida]
+|                                                                                    |--(compou)--> R1444[refugee]
+|                                                                                    |--(nmod)--> R1444[sudan]
+|                                                                                                     |--(case)--> R1444[in]
+|                                                                                                     |--(compou)--> R1444[south]
+|--(auxpas)--> was
+|--(punct)--> .
+
+	* entity-paths for event['bombed']41_4ecbplus.xmlsent:12264
+	['bombed --(nmod)--> Thursday']
+	['bombed --(punct)--> ,']
+	['bombed --(nsubjpass)--> November']

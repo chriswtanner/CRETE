@@ -1,0 +1,74 @@
+
+-----------------------------------------
+docid:41_5ecb.xml
+-----------------------------------------
+
+sentence #:some 30 people were killed and 55 others injured , five of them critically , when three artillery shells landed at the perimeter of a school , which usually serves as a girls ' preparatory school , in the jabaliya refugee camp , according to john ging , unrwa 's director of operations . 
+	[events]:[['landed'], ['killed']]
+	[entities]:[['unrwa'], ['at', 'the', 'perimeter', 'of', 'a', 'school', ',', 'which', 'usually', 'serves', 'as', 'a', 'girls', "'", 'preparatory', 'school', ',', 'in', 'the', 'jabaliya', 'refugee', 'camp'], ['artillery', 'shells']]
+*R1464[killed]
+|--(nsubjp)--> people
+|                |--(det)--> some
+|                |--(nummod)--> 30
+|--(auxpas)--> were
+|--(cc)--> and
+|--(conj)--> injured
+|                |--(nsubj)--> others
+|                                 |--(nummod)--> 55
+|--(punct)--> ,
+|--(parata)--> critically
+|                |--(dep)--> five
+|                                 |--(nmod)--> them
+|                                                  |--(case)--> of
+|--(punct)--> ,
+|--(advcl)--> *R1465[landed]
+|                |--(advmod)--> when
+|                |--(nsubj)--> R1500[shells]
+|                |                |--(nummod)--> three
+|                |                |--(compou)--> R1500[artillery]
+|                |--(nmod)--> R1466[perimeter]
+|                |                |--(case)--> R1466[at]
+|                |                |--(det)--> R1466[the]
+|                |                |--(nmod)--> R1466[school]
+|                |                                 |--(case)--> R1466[of]
+|                |                                 |--(det)--> R1466[a]
+|                |                                 |--(punct)--> R1466[,]
+|                |                                 |--(acl:re)--> R1466[serves]
+|                |                                 |                |--(nsubj)--> R1466[which]
+|                |                                 |                |--(advmod)--> R1466[usually]
+|                |                                 |                |--(nmod)--> R1466[school]
+|                |                                 |                                 |--(case)--> R1466[as]
+|                |                                 |                                 |--(nmod:p)--> R1466[girls]
+|                |                                 |                                 |                |--(det)--> R1466[a]
+|                |                                 |                                 |                |--(case)--> R1466[']
+|                |                                 |                                 |--(amod)--> R1466[preparatory]
+|                |                                 |--(punct)--> R1466[,]
+|                |--(nmod)--> R1466[camp]
+|                |                |--(case)--> R1466[in]
+|                |                |--(det)--> R1466[the]
+|                |                |--(compou)--> R1466[jabaliya]
+|                |                |--(compou)--> R1466[refugee]
+|                |--(punct)--> ,
+|                |--(nmod)--> ging
+|                                 |--(case)--> according
+|                                 |                |--(mwe)--> to
+|                                 |--(compou)--> john
+|                                 |--(punct)--> ,
+|                                 |--(appos)--> director
+|                                                  |--(nmod:p)--> R1473[unrwa]
+|                                                  |                |--(case)--> 's
+|                                                  |--(nmod)--> operations
+|                                                                   |--(case)--> of
+|--(punct)--> .
+
+	* entity-paths for event['landed']41_5ecb.xmlsent:12279
+	['landed --(nsubj)--> shells']
+	['landed --(nmod)--> perimeter']
+	['landed --(nmod)--> camp']
+	['landed --(nmod)--> Ging', 'Ging --(appos)--> Director', 'Director --(nmod:poss)--> UNRWA']
+
+	* entity-paths for event['killed']41_5ecb.xmlsent:12279
+	['killed --(advcl)--> landed', 'landed --(nsubj)--> shells']
+	['killed --(advcl)--> landed', 'landed --(nmod)--> perimeter']
+	['killed --(advcl)--> landed', 'landed --(nmod)--> camp']
+	['killed --(advcl)--> landed', 'landed --(nmod)--> Ging', 'Ging --(appos)--> Director', 'Director --(nmod:poss)--> UNRWA']

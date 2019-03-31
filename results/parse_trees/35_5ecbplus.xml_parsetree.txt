@@ -1,0 +1,49 @@
+
+-----------------------------------------
+docid:35_5ecbplus.xml
+-----------------------------------------
+
+sentence #:chargers defensive tackle jamal williams was arrested early sunday for suspicions of driving under the influence . 
+	[events]:[['suspicions'], ['arrested'], ['driving', 'under', 'the', 'influence']]
+	[entities]:[['early', 'sunday'], ['defensive', 'tackle', 'jamal', 'williams'], ['chargers']]
+R1160[tackle]
+|--(nsubj)--> R1157[chargers]
+|                |--(amod)--> R1160[defensive]
+|--(ccomp)--> *R1161[arrested]
+|                |--(nsubjp)--> R1160[williams]
+|                |                |--(compou)--> R1160[jamal]
+|                |--(auxpas)--> was
+|                |--(nmod:t)--> R1168[sunday]
+|                |                |--(advmod)--> R1168[early]
+|                |--(nmod)--> *R1162[suspicions]
+|                                 |--(case)--> for
+|                                 |--(acl)--> *R1163[driving]
+|                                                  |--(mark)--> of
+|                                                  |--(nmod)--> *R1163[influence]
+|                                                                   |--(case)--> *R1163[under]
+|                                                                   |--(det)--> *R1163[the]
+|--(punct)--> .
+
+	* entity-paths for event['suspicions']35_5ecbplus.xmlsent:9777
+
+	* entity-paths for event['arrested']35_5ecbplus.xmlsent:9777
+	['arrested --(nsubjpass)--> Williams']
+	['arrested --(nmod:tmod)--> Sunday']
+
+	* entity-paths for event['driving', 'under', 'the', 'influence']35_5ecbplus.xmlsent:9777
+
+sentence #:chargers " jamal williams arrested for dui 
+	[events]:[['dui'], ['arrested']]
+	[entities]:[['chargers'], ['jamal', 'williams']]
+*R1161[arrested]
+|--(nsubj)--> R1157[chargers]
+|                |--(dep)--> R1160[williams]
+|                                 |--(punct)--> "
+|                                 |--(compou)--> R1160[jamal]
+|--(nmod)--> *R1163[dui]
+                 |--(case)--> for
+
+	* entity-paths for event['dui']35_5ecbplus.xmlsent:9775
+
+	* entity-paths for event['arrested']35_5ecbplus.xmlsent:9775
+	['Arrested --(nsubj)--> Chargers']

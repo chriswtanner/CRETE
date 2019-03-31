@@ -1,0 +1,38 @@
+
+-----------------------------------------
+docid:25_12ecb.xml
+-----------------------------------------
+
+sentence #:the new orleans saints placed reggie bush on injured reserve today , officially ending his third nfl season . 
+	[events]:[['injured', 'reserve'], ['placed'], ['ending']]
+	[entities]:[['today'], ['season'], ['reggie', 'bush'], ['the', 'new', 'orleans', 'saints']]
+*R711[placed]
+|--(nsubj)--> R706[saints]
+|                |--(det)--> R706[the]
+|                |--(compou)--> R706[new]
+|                |--(compou)--> R706[orleans]
+|--(dobj)--> R707[bush]
+|                |--(compou)--> R707[reggie]
+|                |--(nmod)--> *R712[reserve]
+|                                 |--(case)--> on
+|                                 |--(amod)--> *R712[injured]
+|--(nmod:t)--> R721[today]
+|--(punct)--> ,
+|--(advcl)--> *R722[ending]
+|                |--(advmod)--> officially
+|                |--(dobj)--> R708[season]
+|                                 |--(nmod:p)--> his
+|                                 |--(amod)--> third
+|                                 |--(compou)--> nfl
+|--(punct)--> .
+
+	* entity-paths for event['injured', 'reserve']25_12ecb.xmlsent:4993
+
+	* entity-paths for event['placed']25_12ecb.xmlsent:4993
+	['placed --(nsubj)--> Saints']
+	['placed --(dobj)--> Bush']
+	['placed --(nmod:tmod)--> today']
+	['placed --(advcl)--> ending', 'ending --(dobj)--> season']
+
+	* entity-paths for event['ending']25_12ecb.xmlsent:4993
+	['ending --(dobj)--> season']

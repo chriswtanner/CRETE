@@ -1,0 +1,46 @@
+
+-----------------------------------------
+docid:14_7ecbplus.xml
+-----------------------------------------
+
+sentence #:major fire at supermarket 
+	[events]:[['fire']]
+	[entities]:[['supermarket']]
+*R302[fire]
+|--(amod)--> major
+|--(nmod)--> R303[supermarket]
+                 |--(case)--> at
+
+	* entity-paths for event['fire']14_7ecbplus.xmlsent:1785
+	['fire --(nmod)--> supermarket']
+
+sentence #:the fire has destroyed a large section of the store and fire crews and investigators are still on the scene . 
+	[events]:[['destroyed'], ['fire']]
+	[entities]:[['fire', 'crews'], ['large', 'section', 'of', 'the', 'store'], ['on', 'the', 'scene']]
+*R307[destroyed]
+|--(nsubj)--> *R302[fire]
+|                |--(det)--> the
+|--(aux)--> has
+|--(dobj)--> R308[section]
+|                |--(det)--> a
+|                |--(amod)--> R308[large]
+|                |--(nmod)--> R308[store]
+|                                 |--(case)--> R308[of]
+|                                 |--(det)--> R308[the]
+|--(cc)--> and
+|--(conj)--> R303[scene]
+|                |--(nsubj)--> R306[crews]
+|                |                |--(compou)--> R306[fire]
+|                |                |--(cc)--> and
+|                |                |--(conj)--> investigators
+|                |--(cop)--> are
+|                |--(advmod)--> still
+|                |--(case)--> R303[on]
+|                |--(det)--> R303[the]
+|--(punct)--> .
+
+	* entity-paths for event['destroyed']14_7ecbplus.xmlsent:1788
+	['destroyed --(dobj)--> section']
+	['destroyed --(conj)--> scene']
+
+	* entity-paths for event['fire']14_7ecbplus.xmlsent:1788

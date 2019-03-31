@@ -1,0 +1,104 @@
+
+-----------------------------------------
+docid:2_3ecbplus.xml
+-----------------------------------------
+
+sentence #:"we are thrilled to have ellen degeneres host the oscars , " producers craig zadan and neil meron said in a statement . 
+	[events]:[['said'], ['oscars'], ['host'], ['thrilled']]
+	[entities]:[['craig', 'zadan'], ['neil', 'meron'], ['ellen', 'degeneres'], ['"we']]
+*R482[said]
+|--(punct)--> R483["we]
+|--(ccomp)--> *R484[thrilled]
+|                |--(nsubjp)--> R483["we]
+|                |--(auxpas)--> are
+|                |--(xcomp)--> have
+|                                 |--(mark)--> to
+|                                 |--(xcomp)--> *R455[oscars]
+|                                                  |--(nsubj)--> *R456[host]
+|                                                  |                |--(compou)--> R454[ellen]
+|                                                  |                |--(compou)--> R454[degeneres]
+|                                                  |--(det)--> the
+|--(punct)--> ,
+|--(punct)--> "
+|--(nsubj)--> R485[zadan]
+|                |--(compou)--> producers
+|                |--(compou)--> R485[craig]
+|                |--(cc)--> and
+|                |--(conj)--> R486[meron]
+|                                 |--(compou)--> R486[neil]
+|--(nmod)--> statement
+|                |--(case)--> in
+|                |--(det)--> a
+|--(punct)--> .
+
+	* entity-paths for event['said']2_3ecbplus.xmlsent:3559
+	['said --(punct)--> "']
+	['said --(ccomp)--> thrilled', 'thrilled --(nsubjpass)--> We']
+	['said --(ccomp)--> thrilled', 'thrilled --(xcomp)--> have', 'have --(xcomp)--> Oscars', 'Oscars --(nsubj)--> host', 'host --(compound)--> Ellen']
+	['said --(ccomp)--> thrilled', 'thrilled --(xcomp)--> have', 'have --(xcomp)--> Oscars', 'Oscars --(nsubj)--> host', 'host --(compound)--> DeGeneres']
+	['said --(nsubj)--> Zadan']
+
+	* entity-paths for event['oscars']2_3ecbplus.xmlsent:3559
+	['Oscars --(nsubj)--> host', 'host --(compound)--> Ellen']
+	['Oscars --(nsubj)--> host', 'host --(compound)--> DeGeneres']
+
+	* entity-paths for event['host']2_3ecbplus.xmlsent:3559
+	['host --(compound)--> Ellen']
+	['host --(compound)--> DeGeneres']
+
+	* entity-paths for event['thrilled']2_3ecbplus.xmlsent:3559
+	['thrilled --(nsubjpass)--> We']
+	['thrilled --(xcomp)--> have', 'have --(xcomp)--> Oscars', 'Oscars --(nsubj)--> host', 'host --(compound)--> Ellen']
+	['thrilled --(xcomp)--> have', 'have --(xcomp)--> Oscars', 'Oscars --(nsubj)--> host', 'host --(compound)--> DeGeneres']
+
+sentence #:ellen degeneres to host the oscars 
+	[events]:[['oscars'], ['host']]
+	[entities]:[['ellen', 'degeneres']]
+*R456[host]
+|--(nsubj)--> R454[degeneres]
+|                |--(compou)--> R454[ellen]
+|--(mark)--> to
+|--(dobj)--> *R455[oscars]
+                 |--(det)--> the
+
+	* entity-paths for event['oscars']2_3ecbplus.xmlsent:3556
+
+	* entity-paths for event['host']2_3ecbplus.xmlsent:3556
+	['host --(nsubj)--> DeGeneres']
+
+sentence #:ellen degeneres will host the oscars for a second time next year , the academy announced friday . 
+	[events]:[['oscars'], ['announced'], ['host']]
+	[entities]:[['academy'], ['next', 'year'], ['friday'], ['ellen', 'degeneres'], ['a', 'second', 'time']]
+*R464[announced]
+|--(ccomp)--> *R456[host]
+|                |--(nsubj)--> R454[degeneres]
+|                |                |--(compou)--> R454[ellen]
+|                |--(aux)--> will
+|                |--(dobj)--> *R455[oscars]
+|                |                |--(det)--> the
+|                |                |--(nmod)--> R466[time]
+|                |                                 |--(case)--> for
+|                |                                 |--(det)--> R466[a]
+|                |                                 |--(amod)--> R466[second]
+|                |--(nmod:t)--> R475[year]
+|                                 |--(amod)--> R475[next]
+|--(punct)--> ,
+|--(nsubj)--> R459[academy]
+|                |--(det)--> the
+|--(nmod:t)--> R481[friday]
+|--(punct)--> .
+
+	* entity-paths for event['oscars']2_3ecbplus.xmlsent:3558
+	['Oscars --(nmod)--> time']
+
+	* entity-paths for event['announced']2_3ecbplus.xmlsent:3558
+	['announced --(ccomp)--> host', 'host --(nsubj)--> DeGeneres']
+	['announced --(ccomp)--> host', 'host --(dobj)--> Oscars', 'Oscars --(nmod)--> time']
+	['announced --(ccomp)--> host', 'host --(nmod:tmod)--> year']
+	['announced --(nsubj)--> Academy']
+	['announced --(nmod:tmod)--> Friday']
+
+	* entity-paths for event['host']2_3ecbplus.xmlsent:3558
+	['host --(nsubj)--> DeGeneres']
+	['host --(dobj)--> Oscars', 'Oscars --(nmod)--> time']
+	['host --(nmod:tmod)--> year']

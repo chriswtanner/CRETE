@@ -1,0 +1,57 @@
+
+-----------------------------------------
+docid:28_8ecb.xml
+-----------------------------------------
+
+sentence #:w. mark felt , sr. , the number 2 man at the fbi during the watergate scandal , died yesterday from alzheimer 's disease at a hospice near his home in santa rosa , california , the washington post reports . 
+	[events]:[['watergate'], ['died']]
+	[entities]:[['number', '2', 'man'], ['yesterday'], ['at', 'a', 'hospice', 'near', 'his', 'home', 'in', 'santa', 'rosa', ',', 'california'], ['w.', 'mark', 'felt', ',', 'sr.']]
+*R808[died]
+|--(nsubj)--> R809[felt]
+|                |--(compou)--> R809[w.]
+|                |--(compou)--> R809[mark]
+|                |--(punct)--> R809[,]
+|                |--(appos)--> R809[sr.]
+|                |--(punct)--> ,
+|                |--(appos)--> R809[man]
+|                |                |--(det)--> the
+|                |                |--(compou)--> R809[number]
+|                |                |--(nummod)--> R809[2]
+|                |                |--(nmod)--> fbi
+|                |                                 |--(case)--> at
+|                |                                 |--(det)--> the
+|                |                                 |--(nmod)--> scandal
+|                |                                                  |--(case)--> during
+|                |                                                  |--(det)--> the
+|                |                                                  |--(compou)--> *R812[watergate]
+|                |--(punct)--> ,
+|--(nmod:t)--> R813[yesterday]
+|--(nmod)--> disease
+|                |--(case)--> from
+|                |--(nmod:p)--> alzheimer
+|                                 |--(case)--> 's
+|--(nmod)--> R822[hospice]
+|                |--(case)--> R822[at]
+|                |--(det)--> R822[a]
+|                |--(nmod)--> R822[home]
+|                                 |--(case)--> R822[near]
+|                                 |--(nmod:p)--> R822[his]
+|--(nmod)--> R822[rosa]
+|                |--(case)--> R822[in]
+|                |--(compou)--> R822[santa]
+|                |--(punct)--> R822[,]
+|                |--(appos)--> R822[california]
+|                                 |--(punct)--> ,
+|                                 |--(appos)--> reports
+|                                                  |--(det)--> the
+|                                                  |--(compou)--> washington
+|                                                  |--(compou)--> post
+|--(punct)--> .
+
+	* entity-paths for event['watergate']28_8ecb.xmlsent:6605
+
+	* entity-paths for event['died']28_8ecb.xmlsent:6605
+	['died --(nsubj)--> Felt']
+	['died --(nmod:tmod)--> yesterday']
+	['died --(nmod)--> hospice']
+	['died --(nmod)--> Rosa']

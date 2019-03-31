@@ -1,0 +1,77 @@
+
+-----------------------------------------
+docid:31_14ecb.xml
+-----------------------------------------
+
+sentence #:hansbrough passed ford for the top spot in school history while posting 20 points in the top-ranked tar heels ' 91-73 victory against evansville on thursday night . 
+	[events]:[['victory'], ['passed']]
+	[entities]:[['tar', 'heels'], ['ford'], ['hansbrough'], ['91-73'], ['evansville'], ['on', 'thursday', 'night'], ['school']]
+*R996[passed]
+|--(nsubj)--> R997[hansbrough]
+|--(dobj)--> R1005[ford]
+|                |--(nmod)--> spot
+|                                 |--(case)--> for
+|                                 |--(det)--> the
+|                                 |--(amod)--> top
+|                                 |--(nmod)--> history
+|                                                  |--(case)--> in
+|                                                  |--(compou)--> R999[school]
+|--(advcl)--> posting
+|                |--(mark)--> while
+|                |--(nmod)--> points
+|                |                |--(nummod)--> 20
+|                |                |--(case)--> in
+|                |                |--(dep)--> *R1007[victory]
+|                |                                 |--(nmod:p)--> R999[heels]
+|                |                                 |                |--(det)--> the
+|                |                                 |                |--(amod)--> top-ranked
+|                |                                 |                |--(compou)--> R999[tar]
+|                |                                 |                |--(case)--> '
+|                |                                 |--(nummod)--> R1009[91-73]
+|                |--(nmod)--> R1008[evansville]
+|                |                |--(case)--> against
+|                |--(nmod)--> R1006[thursday]
+|                |                |--(case)--> R1006[on]
+|                |--(nmod:t)--> R1006[night]
+|--(punct)--> .
+
+	* entity-paths for event['victory']31_14ecb.xmlsent:8212
+	['victory --(nmod:poss)--> Heels']
+	['victory --(nummod)--> 91-73']
+
+	* entity-paths for event['passed']31_14ecb.xmlsent:8212
+	['passed --(nsubj)--> Hansbrough']
+	['passed --(dobj)--> Ford']
+	['passed --(advcl)--> posting', 'posting --(nmod)--> points', 'points --(dep)--> victory', 'victory --(nmod:poss)--> Heels']
+	['passed --(advcl)--> posting', 'posting --(nmod)--> points', 'points --(dep)--> victory', 'victory --(nummod)--> 91-73']
+	['passed --(advcl)--> posting', 'posting --(nmod)--> Evansville']
+	['passed --(advcl)--> posting', 'posting --(nmod)--> Thursday']
+	['passed --(advcl)--> posting', 'posting --(nmod:tmod)--> night']
+
+sentence #:hansbrough broke ford 's all-time scoring record at north carolina during the game . 
+	[events]:[['scoring', 'record'], ['game'], ['broke']]
+	[entities]:[['hansbrough'], ['north', 'carolina'], ['ford']]
+*R996[broke]
+|--(nsubj)--> R997[hansbrough]
+|--(dobj)--> *R998[record]
+|                |--(nmod:p)--> R1005[ford]
+|                |                |--(case)--> 's
+|                |--(amod)--> all-time
+|                |--(amod)--> *R998[scoring]
+|--(nmod)--> R999[carolina]
+|                |--(case)--> at
+|                |--(compou)--> R999[north]
+|                |--(nmod)--> *R1010[game]
+|                                 |--(case)--> during
+|                                 |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['scoring', 'record']31_14ecb.xmlsent:8208
+	['record --(nmod:poss)--> Ford']
+
+	* entity-paths for event['game']31_14ecb.xmlsent:8208
+
+	* entity-paths for event['broke']31_14ecb.xmlsent:8208
+	['broke --(nsubj)--> Hansbrough']
+	['broke --(dobj)--> record', 'record --(nmod:poss)--> Ford']
+	['broke --(nmod)--> Carolina']

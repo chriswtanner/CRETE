@@ -1,0 +1,50 @@
+
+-----------------------------------------
+docid:34_6ecbplus.xml
+-----------------------------------------
+
+sentence #:president obama has nominated alabama physician dr . regina benjamin to be us surgeon general . 
+	[events]:[['be'], ['nominated']]
+	[entities]:[['dr', '.', 'regina', 'benjamin'], ['obama'], ['us', 'surgeon', 'general']]
+*R1138[nominated]
+|--(nsubj)--> R1136[obama]
+|                |--(compou)--> president
+|--(aux)--> has
+|--(dobj)--> physician
+|                |--(compou)--> alabama
+|--(xcomp)--> R1135[general]
+|                |--(nsubj)--> R1139[regina]
+|                |                |--(compou)--> R1139[dr]
+|                |                |--(punct)--> R1139[.]
+|                |--(dep)--> R1139[benjamin]
+|                |--(mark)--> to
+|                |--(cop)--> *R1150[be]
+|                |--(compou)--> R1135[us]
+|                |--(compou)--> R1135[surgeon]
+|--(punct)--> .
+
+	* entity-paths for event['be']34_6ecbplus.xmlsent:9470
+
+	* entity-paths for event['nominated']34_6ecbplus.xmlsent:9470
+	['nominated --(nsubj)--> Obama']
+	['nominated --(xcomp)--> General']
+
+sentence #:president nominates regina benjamin , md to serve as surgeon general 
+	[events]:[['nominates'], ['serve']]
+	[entities]:[['surgeon', 'general'], ['president'], ['regina', 'benjamin', ',', 'md']]
+R1139[benjamin]
+|--(compou)--> R1136[president]
+|--(compou)--> *R1138[nominates]
+|--(compou)--> R1139[regina]
+|--(punct)--> R1139[,]
+|--(appos)--> R1139[md]
+                 |--(acl)--> *R1150[serve]
+                                  |--(mark)--> to
+                                  |--(nmod)--> R1135[general]
+                                                   |--(case)--> as
+                                                   |--(compou)--> R1135[surgeon]
+
+	* entity-paths for event['nominates']34_6ecbplus.xmlsent:9468
+
+	* entity-paths for event['serve']34_6ecbplus.xmlsent:9468
+	['Serve --(nmod)--> General']

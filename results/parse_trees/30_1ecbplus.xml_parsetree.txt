@@ -1,0 +1,97 @@
+
+-----------------------------------------
+docid:30_1ecbplus.xml
+-----------------------------------------
+
+sentence #:undersea cable operator seacom announced today ( 4 november 2011 ) that repairs have been completed on a broken cable off the coast of egypt that caused an outage on its network . 
+	[events]:[['caused'], ['outage'], ['announced'], ['repairs']]
+	[entities]:[['today', '(', '4', 'november', '2011'], ['seacom'], ['network'], ['cable']]
+*R980[announced]
+|--(nsubj)--> R956[seacom]
+|                |--(amod)--> undersea
+|                |--(compou)--> cable
+|                |--(compou)--> operator
+|--(dobj)--> R985[today]
+|                |--(dep)--> R985[4]
+|                |                |--(punct)--> R985[(]
+|                |                |--(nmod:t)--> R985[november]
+|                |                |                |--(nummod)--> R985[2011]
+|                |                |--(punct)--> )
+|                |--(acl:re)--> completed
+|                                 |--(dobj)--> that
+|                                 |--(nsubjp)--> *R972[repairs]
+|                                 |--(aux)--> have
+|                                 |--(auxpas)--> been
+|                                 |--(nmod)--> R974[cable]
+|                                 |                |--(case)--> on
+|                                 |                |--(det)--> a
+|                                 |                |--(amod)--> broken
+|                                 |--(nmod)--> coast
+|                                                  |--(case)--> off
+|                                                  |--(det)--> the
+|                                                  |--(nmod)--> egypt
+|                                                  |                |--(case)--> of
+|                                                  |--(acl:re)--> *R978[caused]
+|                                                                   |--(nsubj)--> that
+|                                                                   |--(dobj)--> *R963[outage]
+|                                                                   |                |--(det)--> an
+|                                                                   |--(nmod)--> R969[network]
+|                                                                                    |--(case)--> on
+|                                                                                    |--(nmod:p)--> its
+|--(punct)--> .
+
+	* entity-paths for event['caused']30_1ecbplus.xmlsent:7817
+	['caused --(nmod)--> network']
+
+	* entity-paths for event['outage']30_1ecbplus.xmlsent:7817
+
+	* entity-paths for event['announced']30_1ecbplus.xmlsent:7817
+	['announced --(nsubj)--> Seacom']
+	['announced --(dobj)--> today']
+
+	* entity-paths for event['repairs']30_1ecbplus.xmlsent:7817
+
+sentence #:the break in an undersea cable on that affected seacom has been repaired 
+	[events]:[['repaired'], ['break'], ['seacom'], ['affected']]
+	[entities]:[['undersea', 'cable']]
+*R972[repaired]
+|--(nsubjp)--> *R973[break]
+|                |--(det)--> the
+|                |--(nmod)--> R974[cable]
+|                                 |--(case)--> in
+|                                 |--(det)--> an
+|                                 |--(compou)--> R974[undersea]
+|                                 |--(nmod)--> *R958[seacom]
+|                                                  |--(case)--> on
+|                                                  |--(det)--> that
+|                                                  |--(amod)--> *R978[affected]
+|--(aux)--> has
+|--(auxpas)--> been
+
+	* entity-paths for event['repaired']30_1ecbplus.xmlsent:7815
+	['repaired --(nsubjpass)--> break', 'break --(nmod)--> cable']
+
+	* entity-paths for event['break']30_1ecbplus.xmlsent:7815
+	['break --(nmod)--> cable']
+
+	* entity-paths for event['seacom']30_1ecbplus.xmlsent:7815
+
+	* entity-paths for event['affected']30_1ecbplus.xmlsent:7815
+
+sentence #:seacom operations fully restored : 4 november 2011 
+	[events]:[['operations'], ['restored']]
+	[entities]:[['seacom'], ['4', 'november', '2011']]
+*R958[operations]
+|--(compou)--> R956[seacom]
+|--(acl)--> *R972[restored]
+|                |--(advmod)--> fully
+|--(punct)--> :
+|--(dep)--> R985[4]
+                 |--(nmod:t)--> R985[november]
+                                  |--(nummod)--> R985[2011]
+
+	* entity-paths for event['operations']30_1ecbplus.xmlsent:7814
+	['operations --(compound)--> Seacom']
+	['operations --(dep)--> 4']
+
+	* entity-paths for event['restored']30_1ecbplus.xmlsent:7814

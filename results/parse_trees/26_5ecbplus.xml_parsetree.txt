@@ -1,0 +1,29 @@
+
+-----------------------------------------
+docid:26_5ecbplus.xml
+-----------------------------------------
+
+sentence #:vincent 'the chin' gigante died while in prison custody on december 19 , 2005 . 
+	[events]:[['died']]
+	[entities]:[['prison'], ['on', 'december', '19', ',', '2005'], ['vincent', "'the", "chin'", 'gigante']]
+R740[vincent]
+|--(punct)--> R740['the]
+|--(dep)--> R740[gigante]
+|                |--(nmod:p)--> R740[chin']
+|                |                |--(det)--> R740['the]
+|                |                |--(case)--> R740[chin']
+|                |--(acl)--> *R739[died]
+|                                 |--(advcl)--> custody
+|                                                  |--(mark)--> while
+|                                                  |--(case)--> in
+|                                                  |--(compou)--> R743[prison]
+|                                                  |--(nmod)--> R744[december]
+|                                                                   |--(case)--> R744[on]
+|                                                                   |--(nummod)--> R744[19]
+|                                                                   |--(punct)--> R744[,]
+|                                                                   |--(nummod)--> R744[2005]
+|--(punct)--> .
+
+	* entity-paths for event['died']26_5ecbplus.xmlsent:5469
+	['died --(advcl)--> custody', 'custody --(compound)--> prison']
+	['died --(advcl)--> custody', 'custody --(nmod)--> December']

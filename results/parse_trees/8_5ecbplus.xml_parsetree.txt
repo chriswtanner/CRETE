@@ -1,0 +1,75 @@
+
+-----------------------------------------
+docid:8_5ecbplus.xml
+-----------------------------------------
+
+sentence #:three killed in athens bank fire amid strike 
+	[events]:[['strike'], ['fire'], ['killed']]
+	[entities]:[['in', 'athens', 'bank'], ['three']]
+*R1753[killed]
+|--(nsubj)--> R1754[three]
+|--(nmod)--> *R1748[fire]
+|                |--(case)--> R1752[in]
+|                |--(compou)--> R1752[athens]
+|                |--(compou)--> R1752[bank]
+|--(dep)--> *R1781[strike]
+                 |--(case)--> amid
+
+	* entity-paths for event['strike']8_5ecbplus.xmlsent:15062
+
+	* entity-paths for event['fire']8_5ecbplus.xmlsent:15062
+	['Fire --(case)--> In']
+	['Fire --(compound)--> Athens']
+	['Fire --(compound)--> Bank']
+
+	* entity-paths for event['killed']8_5ecbplus.xmlsent:15062
+	['Killed --(nsubj)--> Three']
+	['Killed --(nmod)--> Fire', 'Fire --(case)--> In']
+	['Killed --(nmod)--> Fire', 'Fire --(compound)--> Athens']
+	['Killed --(nmod)--> Fire', 'Fire --(compound)--> Bank']
+
+sentence #:three people have died after rioters in greece set fire to a bank in athens during a nationwide strike against huge spending cuts aimed at rescuing the country's economy . 
+	[events]:[['died'], ['set', 'fire'], ['cuts'], ['strike']]
+	[entities]:[['rioters'], ['three', 'people'], ['a', 'bank', 'in', 'athens']]
+*R1753[died]
+|--(nsubj)--> R1754[people]
+|                |--(nummod)--> R1754[three]
+|--(aux)--> have
+|--(advcl)--> *R1790[set]
+|                |--(mark)--> after
+|                |--(nsubj)--> R1750[rioters]
+|                |                |--(nmod)--> greece
+|                |                                 |--(case)--> in
+|                |--(dobj)--> *R1790[fire]
+|                |--(nmod)--> R1752[bank]
+|                |                |--(case)--> to
+|                |                |--(det)--> R1752[a]
+|                |                |--(nmod)--> R1752[athens]
+|                |                                 |--(case)--> R1752[in]
+|                |--(nmod)--> *R1781[strike]
+|                                 |--(case)--> during
+|                                 |--(det)--> a
+|                                 |--(amod)--> nationwide
+|                                 |--(nmod)--> *R1783[cuts]
+|                                                  |--(case)--> against
+|                                                  |--(amod)--> huge
+|                                                  |--(compou)--> spending
+|                                                  |--(acl)--> aimed
+|                                                                   |--(advcl)--> rescuing
+|                                                                                    |--(mark)--> at
+|                                                                                    |--(dobj)--> economy
+|                                                                                                     |--(nmod:p)--> country's
+|                                                                                                                      |--(det)--> the
+|                                                                                                                      |--(case)--> country's
+|--(punct)--> .
+
+	* entity-paths for event['died']8_5ecbplus.xmlsent:15064
+	['died --(nsubj)--> people']
+	['died --(advcl)--> set', 'set --(nsubj)--> rioters']
+	['died --(advcl)--> set', 'set --(nmod)--> bank']
+
+	* entity-paths for event['set', 'fire']8_5ecbplus.xmlsent:15064
+
+	* entity-paths for event['cuts']8_5ecbplus.xmlsent:15064
+
+	* entity-paths for event['strike']8_5ecbplus.xmlsent:15064

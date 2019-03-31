@@ -1,0 +1,86 @@
+
+-----------------------------------------
+docid:26_9ecb.xml
+-----------------------------------------
+
+sentence #:a mafioso committed suicide hours after his arrest in a police bust of almost 100 people suspected of trying to re-establish cosa nostra provincial 'commission ' . 
+	[events]:[['suicide'], ['arrest'], ['bust']]
+	[entities]:[['hours'], ['his'], ['mafioso']]
+suspected
+|--(nsubj)--> R733[mafioso]
+|                |--(det)--> a
+|                |--(acl)--> committed
+|                                 |--(dobj)--> R735[hours]
+|                                 |                |--(compou)--> *R732[suicide]
+|                                 |--(nmod)--> *R736[arrest]
+|                                                  |--(case)--> after
+|                                                  |--(nmod:p)--> R733[his]
+|                                                  |--(nmod)--> *R737[bust]
+|                                                                   |--(case)--> in
+|                                                                   |--(det)--> a
+|                                                                   |--(compou)--> police
+|                                                                   |--(nmod)--> people
+|                                                                                    |--(case)--> of
+|                                                                                    |--(nummod)--> 100
+|                                                                                                     |--(advmod)--> almost
+|--(advcl)--> trying
+|                |--(mark)--> of
+|                |--(xcomp)--> re-establish
+|                                 |--(mark)--> to
+|                                 |--(xcomp)--> 'commission
+|                                                  |--(nsubj)--> cosa
+|                                                  |--(compou)--> nostra
+|                                                  |--(amod)--> provincial
+|                                                  |--(punct)--> 'commission
+|                                                  |--(punct)--> '
+|--(punct)--> .
+
+	* entity-paths for event['suicide']26_9ecb.xmlsent:5555
+
+	* entity-paths for event['arrest']26_9ecb.xmlsent:5555
+	['arrest --(nmod:poss)--> his']
+
+	* entity-paths for event['bust']26_9ecb.xmlsent:5555
+
+sentence #:gaetano lo presti , 52 , hung himself in his cell on tuesday evening after he is believed to have read police wiretap transcripts implicating him in the affair . 
+	[events]:[['hung']]
+	[entities]:[['himself'], ['he'], ['on', 'tuesday', 'evening'], ['gaetano', 'lo', 'presti'], ['him'], ['in', 'his', 'cell']]
+*R732[hung]
+|--(nsubj)--> R733[presti]
+|                |--(compou)--> R733[gaetano]
+|                |--(compou)--> R733[lo]
+|                |--(punct)--> ,
+|                |--(amod)--> 52
+|                |--(punct)--> ,
+|--(dobj)--> R733[himself]
+|--(nmod)--> R734[cell]
+|                |--(case)--> R734[in]
+|                |--(nmod:p)--> R734[his]
+|--(nmod)--> R753[tuesday]
+|                |--(case)--> R753[on]
+|--(nmod:t)--> R753[evening]
+|--(advcl)--> believed
+|                |--(mark)--> after
+|                |--(nsubjp)--> R733[he]
+|                |--(auxpas)--> is
+|                |--(xcomp)--> read
+|                                 |--(mark)--> to
+|                                 |--(aux)--> have
+|                                 |--(dep)--> implicating
+|                                                  |--(nsubj)--> transcripts
+|                                                  |                |--(compou)--> police
+|                                                  |                |--(compou)--> wiretap
+|                                                  |--(dobj)--> R733[him]
+|                                                  |--(nmod)--> affair
+|                                                                   |--(case)--> in
+|                                                                   |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['hung']26_9ecb.xmlsent:5556
+	['hung --(nsubj)--> Presti']
+	['hung --(dobj)--> himself']
+	['hung --(nmod)--> cell']
+	['hung --(nmod)--> Tuesday']
+	['hung --(nmod:tmod)--> evening']
+	['hung --(advcl)--> believed', 'believed --(nsubjpass)--> he']
+	['hung --(advcl)--> believed', 'believed --(xcomp)--> read', 'read --(dep)--> implicating', 'implicating --(dobj)--> him']

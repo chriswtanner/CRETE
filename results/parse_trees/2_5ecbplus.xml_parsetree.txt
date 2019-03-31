@@ -1,0 +1,64 @@
+
+-----------------------------------------
+docid:2_5ecbplus.xml
+-----------------------------------------
+
+sentence #:the comedian and talk show host made the announcement via her twitter feed on friday . 
+	[events]:[['announcement']]
+	[entities]:[['host'], ['on', 'friday'], ['comedian']]
+show
+|--(nsubj)--> R454[comedian]
+|                |--(det)--> the
+|                |--(cc)--> and
+|                |--(conj)--> talk
+|--(ccomp)--> made
+|                |--(nsubj)--> R454[host]
+|                |--(dobj)--> *R474[announcement]
+|                |                |--(det)--> the
+|                |                |--(nmod)--> feed
+|                |                                 |--(case)--> via
+|                |                                 |--(nmod:p)--> her
+|                |                                 |--(compou)--> twitter
+|                |--(nmod)--> R481[friday]
+|                                 |--(case)--> R481[on]
+|--(punct)--> .
+
+	* entity-paths for event['announcement']2_5ecbplus.xmlsent:3635
+
+sentence #:ellen degeneres set as oscars host for 2014 academy awards 
+	[events]:[['set'], ['oscars'], ['academy', 'awards']]
+	[entities]:[['ellen', 'degeneres'], ['host'], ['2014']]
+R454[degeneres]
+|--(compou)--> R454[ellen]
+|--(dep)--> *R468[set]
+                 |--(advcl)--> R454[host]
+                                  |--(mark)--> as
+                                  |--(compou)--> *R455[oscars]
+                                  |--(dep)--> *R455[awards]
+                                                   |--(case)--> for
+                                                   |--(nummod)--> R475[2014]
+                                                   |--(compou)--> *R455[academy]
+
+	* entity-paths for event['set']2_5ecbplus.xmlsent:3632
+	['Set --(advcl)--> Host']
+
+	* entity-paths for event['oscars']2_5ecbplus.xmlsent:3632
+
+	* entity-paths for event['academy', 'awards']2_5ecbplus.xmlsent:3632
+	['Awards --(nummod)--> 2014']
+
+sentence #:ellen degeneres will host the oscars . 
+	[events]:[['oscars'], ['host']]
+	[entities]:[['ellen', 'degeneres']]
+*R456[host]
+|--(nsubj)--> R454[degeneres]
+|                |--(compou)--> R454[ellen]
+|--(aux)--> will
+|--(dobj)--> *R455[oscars]
+|                |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['oscars']2_5ecbplus.xmlsent:3634
+
+	* entity-paths for event['host']2_5ecbplus.xmlsent:3634
+	['host --(nsubj)--> DeGeneres']

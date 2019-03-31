@@ -1,0 +1,70 @@
+
+-----------------------------------------
+docid:16_3ecb.xml
+-----------------------------------------
+
+sentence #:two male gang members whose names remain unreleased were arrested last night in the case of the murder of los angeles county sheriff 's deputy juan abel escalante which took place outside his cypress park home this august 2nd as he prepared to leave for work . 
+	[events]:[['prepared'], ['murder'], ['arrested']]
+	[entities]:[['august', '2nd'], ['he'], ['cypress', 'park', 'home'], ['gang', 'members'], ['juan', 'abel', 'escalante']]
+*R326[arrested]
+|--(nsubjp)--> R327[members]
+|                |--(nummod)--> two
+|                |--(amod)--> male
+|                |--(compou)--> R327[gang]
+|                |--(acl:re)--> remain
+|                                 |--(nsubj)--> names
+|                                 |                |--(nmod:p)--> whose
+|                                 |--(xcomp)--> unreleased
+|--(auxpas)--> were
+|--(nmod:t)--> night
+|                |--(amod)--> last
+|--(nmod)--> case
+|                |--(case)--> in
+|                |--(det)--> the
+|                |--(nmod)--> *R328[murder]
+|                |                |--(case)--> of
+|                |                |--(det)--> the
+|                |                |--(nmod)--> R329[escalante]
+|                |                                 |--(case)--> of
+|                |                                 |--(nmod:p)--> sheriff
+|                |                                 |                |--(compou)--> los
+|                |                                 |                |--(compou)--> angeles
+|                |                                 |                |--(compou)--> county
+|                |                                 |                |--(case)--> 's
+|                |                                 |--(compou)--> deputy
+|                |                                 |--(compou)--> R329[juan]
+|                |                                 |--(compou)--> R329[abel]
+|                |--(acl:re)--> took
+|                                 |--(nsubj)--> which
+|                                 |--(dobj)--> place
+|                                 |--(nmod)--> R330[home]
+|                                 |                |--(case)--> outside
+|                                 |                |--(nmod:p)--> his
+|                                 |                |--(compou)--> R330[cypress]
+|                                 |                |--(compou)--> R330[park]
+|                                 |--(nmod:t)--> R331[august]
+|                                 |                |--(det)--> this
+|                                 |--(advcl)--> *R340[prepared]
+|                                                  |--(dep)--> R331[2nd]
+|                                                  |--(mark)--> as
+|                                                  |--(nsubj)--> R329[he]
+|                                                  |--(xcomp)--> leave
+|                                                                   |--(mark)--> to
+|                                                                   |--(nmod)--> work
+|                                                                                    |--(case)--> for
+|--(punct)--> .
+
+	* entity-paths for event['prepared']16_3ecb.xmlsent:1966
+	['prepared --(dep)--> 2nd']
+	['prepared --(nsubj)--> he']
+
+	* entity-paths for event['murder']16_3ecb.xmlsent:1966
+	['murder --(nmod)--> Escalante']
+
+	* entity-paths for event['arrested']16_3ecb.xmlsent:1966
+	['arrested --(nsubjpass)--> members']
+	['arrested --(nmod)--> case', 'case --(nmod)--> murder', 'murder --(nmod)--> Escalante']
+	['arrested --(nmod)--> case', 'case --(acl:relcl)--> took', 'took --(nmod)--> home']
+	['arrested --(nmod)--> case', 'case --(acl:relcl)--> took', 'took --(nmod:tmod)--> August']
+	['arrested --(nmod)--> case', 'case --(acl:relcl)--> took', 'took --(advcl)--> prepared', 'prepared --(dep)--> 2nd']
+	['arrested --(nmod)--> case', 'case --(acl:relcl)--> took', 'took --(advcl)--> prepared', 'prepared --(nsubj)--> he']

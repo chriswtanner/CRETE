@@ -1,0 +1,72 @@
+
+-----------------------------------------
+docid:10_2ecbplus.xml
+-----------------------------------------
+
+sentence #:the red sox have made an eight - year offer to teixeira in excess of $160 million , but sources close to the negotiations say it is less than the $184 million reported by boston wcvb sportscaster mike lynch , who first reported that the meeting would take place . 
+	[events]:[['meeting'], ['made'], ['offer']]
+	[entities]:[['red', 'sox'], ['$184', 'million'], ['$160', 'million'], ['eight', '-', 'year'], ['teixeira']]
+*R161[made]
+|--(nsubj)--> R162[sox]
+|                |--(det)--> the
+|                |--(compou)--> R162[red]
+|--(aux)--> have
+|--(dobj)--> R164[eight]
+|                |--(det)--> an
+|                |--(punct)--> R164[-]
+|                |--(dep)--> *R165[offer]
+|                                 |--(compou)--> R164[year]
+|                                 |--(nmod)--> R163[teixeira]
+|                                                  |--(case)--> to
+|--(nmod)--> excess
+|                |--(case)--> in
+|                |--(nmod)--> R173[$160]
+|                                 |--(case)--> of
+|                                 |--(nummod)--> R173[million]
+|                                                  |--(compou)--> R173[$160]
+|--(punct)--> ,
+|--(cc)--> but
+|--(conj)--> say
+|                |--(nsubj)--> sources
+|                |--(advmod)--> close
+|                |                |--(nmod)--> negotiations
+|                |                                 |--(case)--> to
+|                |                                 |--(det)--> the
+|                |--(ccomp)--> R170[$184]
+|                                 |--(nsubj)--> it
+|                                 |--(cop)--> is
+|                                 |--(advmod)--> less
+|                                 |                |--(mwe)--> than
+|                                 |--(advmod)--> the
+|                                 |--(nummod)--> R170[million]
+|                                 |                |--(compou)--> R170[$184]
+|                                 |--(acl)--> reported
+|                                                  |--(nmod)--> lynch
+|                                                                   |--(case)--> by
+|                                                                   |--(compou)--> boston
+|                                                                   |--(compou)--> wcvb
+|                                                                   |--(compou)--> sportscaster
+|                                                                   |--(compou)--> mike
+|                                                                   |--(punct)--> ,
+|                                                                   |--(acl:re)--> reported
+|                                                                                    |--(nsubj)--> who
+|                                                                                    |--(advmod)--> first
+|                                                                                    |--(ccomp)--> take
+|                                                                                                     |--(mark)--> that
+|                                                                                                     |--(nsubj)--> *R180[meeting]
+|                                                                                                     |                |--(det)--> the
+|                                                                                                     |--(aux)--> would
+|                                                                                                     |--(dobj)--> place
+|--(punct)--> .
+
+	* entity-paths for event['meeting']10_2ecbplus.xmlsent:444
+
+	* entity-paths for event['made']10_2ecbplus.xmlsent:444
+	['made --(nsubj)--> Sox']
+	['made --(dobj)--> eight']
+	['made --(nmod)--> excess', 'excess --(nmod)--> $']
+	['made --(conj)--> say', 'say --(ccomp)--> $']
+
+	* entity-paths for event['offer']10_2ecbplus.xmlsent:444
+	['offer --(compound)--> year']
+	['offer --(nmod)--> Teixeira']

@@ -1,0 +1,46 @@
+
+-----------------------------------------
+docid:40_6ecb.xml
+-----------------------------------------
+
+sentence #:apple ceo steve jobs unveiled the company 's new high-end notebook line during the special event being held at apple 's headquarters in cupertino , calif . 
+	[events]:[['unveiled'], ['held'], ['event']]
+	[entities]:[['line'], ['steve', 'jobs'], ['apple'], ['at', 'apple', "'s", 'headquarters'], ['company'], ['notebook']]
+*R1404[unveiled]
+|--(nsubj)--> R1433[jobs]
+|                |--(compou)--> R1405[apple]
+|                |--(compou)--> ceo
+|                |--(compou)--> R1433[steve]
+|--(dobj)--> R1432[line]
+|                |--(nmod:p)--> R1405[company]
+|                |                |--(det)--> the
+|                |                |--(case)--> 's
+|                |--(amod)--> new
+|                |--(amod)--> high-end
+|                |--(compou)--> R1434[notebook]
+|--(nmod)--> *R1406[event]
+|                |--(case)--> during
+|                |--(det)--> the
+|                |--(amod)--> special
+|                |--(acl)--> *R1435[held]
+|                                 |--(auxpas)--> being
+|                                 |--(nmod)--> R1436[headquarters]
+|                                                  |--(case)--> R1436[at]
+|                                                  |--(nmod:p)--> R1436[apple]
+|                                                  |                |--(case)--> R1436['s]
+|                                                  |--(nmod)--> calif
+|                                                                   |--(case)--> in
+|                                                                   |--(compou)--> cupertino
+|                                                                   |--(punct)--> ,
+|--(punct)--> .
+
+	* entity-paths for event['unveiled']40_6ecb.xmlsent:11914
+	['unveiled --(nsubj)--> Jobs']
+	['unveiled --(dobj)--> line']
+	['unveiled --(nmod)--> event', 'event --(acl)--> held', 'held --(nmod)--> headquarters']
+
+	* entity-paths for event['held']40_6ecb.xmlsent:11914
+	['held --(nmod)--> headquarters']
+
+	* entity-paths for event['event']40_6ecb.xmlsent:11914
+	['event --(acl)--> held', 'held --(nmod)--> headquarters']

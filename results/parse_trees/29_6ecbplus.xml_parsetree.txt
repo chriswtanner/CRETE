@@ -1,0 +1,124 @@
+
+-----------------------------------------
+docid:29_6ecbplus.xml
+-----------------------------------------
+
+sentence #:luck threw for 205 yards on sunday , breaking cam newton's single - season mark for yards by a first - year quarterback . 
+	[events]:[['threw'], ['mark'], ['breaking']]
+	[entities]:[['first', '-', 'year', 'quarterback'], ['on', 'sunday'], ['luck'], ['205', 'yards'], ['cam', "newton's"]]
+*R879[threw]
+|--(nsubj)--> R878[luck]
+|--(nmod)--> R880[yards]
+|                |--(case)--> for
+|                |--(nummod)--> R880[205]
+|                |--(case)--> R868[on]
+|                |--(dep)--> R868[sunday]
+|--(punct)--> ,
+|--(xcomp)--> *R874[breaking]
+|                |--(dobj)--> R886[newton's]
+|                |                |--(compou)--> R886[cam]
+|                |                |--(case)--> R886[newton's]
+|                |                |--(amod)--> single
+|                |                |--(punct)--> -
+|                |                |--(dep)--> *R876[mark]
+|                |                                 |--(compou)--> season
+|                |                                 |--(nmod)--> yards
+|                |                                                  |--(case)--> for
+|                |--(nmod)--> R875[quarterback]
+|                                 |--(case)--> by
+|                                 |--(det)--> a
+|                                 |--(amod)--> R875[first]
+|                                 |--(punct)--> R875[-]
+|                                 |--(compou)--> R875[year]
+|--(punct)--> .
+
+	* entity-paths for event['threw']29_6ecbplus.xmlsent:7161
+	['threw --(nsubj)--> Luck']
+	['threw --(nmod)--> yards']
+	['threw --(xcomp)--> breaking', 'breaking --(dobj)--> Newton']
+	['threw --(xcomp)--> breaking', 'breaking --(nmod)--> quarterback']
+
+	* entity-paths for event['mark']29_6ecbplus.xmlsent:7161
+
+	* entity-paths for event['breaking']29_6ecbplus.xmlsent:7161
+	['breaking --(dobj)--> Newton']
+	['breaking --(nmod)--> quarterback']
+
+sentence #:"it's a fun locker room , a great locker room , " luck said after leading indianapolis to a 20 - 13 victory over kansas city . 
+	[events]:[['victory'], ['leading']]
+	[entities]:[['20', '-', '13'], ['luck'], ['locker', 'room'], ['locker', 'room'], ['kansas', 'city'], ['"it\'s'], ['indianapolis']]
+said
+|--(punct)--> R887["it's]
+|--(ccomp)--> R887[room]
+|                |--(nsubj)--> R887["it's]
+|                |--(cop)--> R887["it's]
+|                |--(det)--> a
+|                |--(compou)--> fun
+|                |--(compou)--> R887[locker]
+|                |--(punct)--> ,
+|                |--(appos)--> R887[room]
+|                                 |--(det)--> a
+|                                 |--(amod)--> great
+|                                 |--(compou)--> R887[locker]
+|--(punct)--> ,
+|--(punct)--> "
+|--(nsubj)--> R878[luck]
+|--(advcl)--> *R885[leading]
+|                |--(mark)--> after
+|                |--(dobj)--> R852[indianapolis]
+|                                 |--(nmod)--> R860[20]
+|                                 |                |--(case)--> to
+|                                 |                |--(det)--> a
+|                                 |--(punct)--> R860[-]
+|                                 |--(dep)--> *R859[victory]
+|                                                  |--(nummod)--> R860[13]
+|                                                  |--(nmod)--> R858[city]
+|                                                                   |--(case)--> over
+|                                                                   |--(compou)--> R858[kansas]
+|--(punct)--> .
+
+	* entity-paths for event['victory']29_6ecbplus.xmlsent:7158
+	['victory --(nummod)--> 13']
+	['victory --(nmod)--> City']
+
+	* entity-paths for event['leading']29_6ecbplus.xmlsent:7158
+	['leading --(dobj)--> Indianapolis']
+
+sentence #:colts beat chiefs 20 - 13 to clinch playoff berth 
+	[events]:[['clinch'], ['beat'], ['playoff']]
+	[entities]:[['chiefs'], ['colts'], ['berth'], ['20', '-', '13']]
+R858[chiefs]
+|--(nsubj)--> *R859[beat]
+|                |--(compou)--> R852[colts]
+|--(dobj)--> R860[13]
+                 |--(nummod)--> R860[20]
+                 |--(punct)--> R860[-]
+                 |--(dep)--> to
+                                  |--(dobj)--> R866[berth]
+                                                   |--(compou)--> *R862[clinch]
+                                                   |--(compou)--> *R861[playoff]
+
+	* entity-paths for event['clinch']29_6ecbplus.xmlsent:7154
+
+	* entity-paths for event['beat']29_6ecbplus.xmlsent:7154
+	['BEAT --(compound)--> COLTS']
+
+	* entity-paths for event['playoff']29_6ecbplus.xmlsent:7154
+
+sentence #:a team that's headed back to the playoffs , too . 
+	[events]:[['playoffs']]
+	[entities]:[["that's"], ['team']]
+R852[team]
+|--(det)--> a
+|--(ccomp)--> headed
+|                |--(nsubjp)--> R852[that's]
+|                |--(auxpas)--> R852[that's]
+|                |--(advmod)--> back
+|                |--(nmod)--> *R861[playoffs]
+|                |                |--(case)--> to
+|                |                |--(det)--> the
+|                |--(punct)--> ,
+|                |--(advmod)--> too
+|--(punct)--> .
+
+	* entity-paths for event['playoffs']29_6ecbplus.xmlsent:7160

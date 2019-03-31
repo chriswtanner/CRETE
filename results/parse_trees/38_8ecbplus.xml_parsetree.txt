@@ -1,0 +1,70 @@
+
+-----------------------------------------
+docid:38_8ecbplus.xml
+-----------------------------------------
+
+sentence #:the temblor struck about 26 miles north of santa rosa in the geysers area . 
+	[events]:[['temblor'], ['struck']]
+	[entities]:[['in', 'the', 'geysers', 'area'], ['about', '26', 'miles', 'north', 'of', 'santa', 'rosa']]
+*R1304[struck]
+|--(nsubj)--> *R1296[temblor]
+|                |--(det)--> the
+|--(advcl)--> R1305[north]
+|                |--(case)--> R1305[about]
+|                |--(nmod:n)--> R1305[miles]
+|                                 |--(nummod)--> R1305[26]
+|--(nmod)--> R1305[rosa]
+|                |--(case)--> R1305[of]
+|                |--(compou)--> R1305[santa]
+|                |--(nmod)--> R1316[area]
+|                                 |--(case)--> R1316[in]
+|                                 |--(det)--> R1316[the]
+|                                 |--(compou)--> R1316[geysers]
+|--(punct)--> .
+
+	* entity-paths for event['temblor']38_8ecbplus.xmlsent:10830
+
+	* entity-paths for event['struck']38_8ecbplus.xmlsent:10830
+	['struck --(advcl)--> north']
+	['struck --(nmod)--> Rosa']
+
+sentence #:4 . 6 earthquake shakes northern california 
+	[events]:[['4', '.', '6', 'earthquake'], ['shakes']]
+	[entities]:[['northern', 'california']]
+*R1304[shakes]
+|--(dep)--> *R1296[4]
+|                |--(punct)--> *R1296[.]
+|--(nsubj)--> *R1296[earthquake]
+|                |--(nummod)--> *R1296[6]
+|--(dobj)--> R1326[northern]
+|--(dep)--> R1326[california]
+
+	* entity-paths for event['4', '.', '6', 'earthquake']38_8ecbplus.xmlsent:10827
+
+	* entity-paths for event['shakes']38_8ecbplus.xmlsent:10827
+	['shakes --(dobj)--> Northern']
+	['shakes --(dep)--> California']
+
+sentence #:a magnitude 4 . 6 earthquake struck northern california on thursday morning , 
+	[events]:[['magnitude', '4', '.', '6', 'earthquake'], ['struck']]
+	[entities]:[['on', 'thursday', 'morning'], ['northern', 'california']]
+*R1296[magnitude]
+|--(det)--> a
+|--(ccomp)--> *R1296[earthquake]
+                 |--(nsubj)--> *R1296[4]
+                 |                |--(punct)--> *R1296[.]
+                 |--(nummod)--> *R1296[6]
+                 |--(acl:re)--> *R1304[struck]
+                 |                |--(dobj)--> R1326[california]
+                 |                                 |--(compou)--> R1326[northern]
+                 |--(dep)--> R1299[morning]
+                                  |--(case)--> R1299[on]
+                                  |--(compou)--> R1299[thursday]
+                                  |--(punct)--> ,
+
+	* entity-paths for event['magnitude', '4', '.', '6', 'earthquake']38_8ecbplus.xmlsent:10829
+	['earthquake --(acl:relcl)--> struck', 'struck --(dobj)--> California']
+	['earthquake --(dep)--> morning']
+
+	* entity-paths for event['struck']38_8ecbplus.xmlsent:10829
+	['struck --(dobj)--> California']

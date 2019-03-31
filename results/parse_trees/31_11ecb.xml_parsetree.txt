@@ -1,0 +1,126 @@
+
+-----------------------------------------
+docid:31_11ecb.xml
+-----------------------------------------
+
+sentence #:tyler hansbrough broke phil ford 's 30-year hold on the all-time north carolina scoring record last night with an otherwise routine turnaround shot that never looks pretty with 7:41 left in the 1st half . 
+	[events]:[['broke'], ['scoring', 'record']]
+	[entities]:[['phil', 'ford'], ['north', 'carolina'], ['tyler', 'hansbrough'], ['last', 'night']]
+*R996[broke]
+|--(nsubj)--> R997[hansbrough]
+|                |--(compou)--> R997[tyler]
+|--(dobj)--> hold
+|                |--(nmod:p)--> R1005[ford]
+|                |                |--(compou)--> R1005[phil]
+|                |                |--(case)--> 's
+|                |--(amod)--> 30-year
+|                |--(nmod)--> *R998[record]
+|                                 |--(case)--> on
+|                                 |--(det)--> the
+|                                 |--(amod)--> all-time
+|                                 |--(compou)--> R999[north]
+|                                 |--(compou)--> R999[carolina]
+|                                 |--(amod)--> *R998[scoring]
+|--(nmod:t)--> R1006[night]
+|                |--(amod)--> R1006[last]
+|--(nmod)--> shot
+|                |--(case)--> with
+|                |--(det)--> an
+|                |--(amod)--> routine
+|                |                |--(advmod)--> otherwise
+|                |--(compou)--> turnaround
+|                |--(acl:re)--> looks
+|                                 |--(nsubj)--> that
+|                                 |--(neg)--> never
+|                                 |--(advmod)--> pretty
+|                                                  |--(nmod)--> 7:41
+|                                                                   |--(case)--> with
+|                                                                   |--(acl)--> left
+|                                                                                    |--(nmod)--> half
+|                                                                                                     |--(case)--> in
+|                                                                                                     |--(det)--> the
+|                                                                                                     |--(amod)--> 1st
+|--(punct)--> .
+
+	* entity-paths for event['broke']31_11ecb.xmlsent:8100
+	['broke --(nsubj)--> Hansbrough']
+	['broke --(dobj)--> hold', 'hold --(nmod:poss)--> Ford']
+	['broke --(dobj)--> hold', 'hold --(nmod)--> record', 'record --(compound)--> North']
+	['broke --(dobj)--> hold', 'hold --(nmod)--> record', 'record --(compound)--> Carolina']
+	['broke --(nmod:tmod)--> night']
+
+	* entity-paths for event['scoring', 'record']31_11ecb.xmlsent:8100
+	['record --(compound)--> North']
+	['record --(compound)--> Carolina']
+
+sentence #:hansbrough 's 20 points and the heels putting away evansville 91-73 were afterthoughts , the entire night was dedicated to the historic event inside the dean smith center . 
+	[events]:[['putting', 'away'], ['event']]
+	[entities]:[['91-73'], ['evansville'], ['hansbrough'], ['heels'], ['entire', 'night']]
+dedicated
+|--(ccomp)--> afterthoughts
+|                |--(nsubj)--> points
+|                |                |--(nmod:p)--> R997[hansbrough]
+|                |                |                |--(case)--> 's
+|                |                |--(nummod)--> 20
+|                |                |--(cc)--> and
+|                |                |--(conj)--> R999[heels]
+|                |                                 |--(det)--> the
+|                |                                 |--(acl)--> *R1007[putting]
+|                |                                                  |--(compou)--> *R1007[away]
+|                |                                                  |--(dobj)--> R1008[evansville]
+|                |                                                                   |--(nummod)--> R1009[91-73]
+|                |--(cop)--> were
+|--(punct)--> ,
+|--(nsubjp)--> R1006[night]
+|                |--(det)--> the
+|                |--(amod)--> R1006[entire]
+|--(auxpas)--> was
+|--(nmod)--> *R996[event]
+|                |--(case)--> to
+|                |--(det)--> the
+|                |--(amod)--> historic
+|                |--(nmod)--> center
+|                                 |--(case)--> inside
+|                                 |--(det)--> the
+|                                 |--(compou)--> dean
+|                                 |--(compou)--> smith
+|--(punct)--> .
+
+	* entity-paths for event['putting', 'away']31_11ecb.xmlsent:8101
+
+	* entity-paths for event['event']31_11ecb.xmlsent:8101
+
+sentence #:the game was stopped following the basket to recognize the achievement , and the celebration continued after the game when hansbrough addressed the crowd . 
+	[events]:[['game'], ['achievement'], ['game']]
+	[entities]:[['hansbrough']]
+stopped
+|--(nsubjp)--> *R1010[game]
+|                |--(det)--> the
+|--(auxpas)--> was
+|--(nmod)--> basket
+|                |--(case)--> following
+|                |--(det)--> the
+|                |--(acl)--> recognize
+|                                 |--(mark)--> to
+|                                 |--(dobj)--> *R996[achievement]
+|                                                  |--(det)--> the
+|--(punct)--> ,
+|--(cc)--> and
+|--(conj)--> continued
+|                |--(nsubj)--> celebration
+|                |                |--(det)--> the
+|                |--(nmod)--> *R1010[game]
+|                |                |--(case)--> after
+|                |                |--(det)--> the
+|                |--(advcl)--> addressed
+|                                 |--(advmod)--> when
+|                                 |--(nsubj)--> R997[hansbrough]
+|                                 |--(dobj)--> crowd
+|                                                  |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['game']31_11ecb.xmlsent:8102
+
+	* entity-paths for event['achievement']31_11ecb.xmlsent:8102
+
+	* entity-paths for event['game']31_11ecb.xmlsent:8102

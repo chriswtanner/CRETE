@@ -1,0 +1,293 @@
+
+-----------------------------------------
+docid:43_3ecb.xml
+-----------------------------------------
+
+sentence #:amd agreed to buy markham , ont-based ati for around $ 5.4 billion in cash and stock , the companies announced monday . 
+	[events]:[['announced'], ['buy'], ['agreed']]
+	[entities]:[['amd'], ['monday'], ['ati']]
+*R1561[announced]
+|--(ccomp)--> *R1564[agreed]
+|                |--(nsubj)--> R1547[amd]
+|                |--(xcomp)--> *R1562[buy]
+|                                 |--(mark)--> to
+|                                 |--(dobj)--> R1563[ati]
+|                                 |                |--(compou)--> markham
+|                                 |                |--(punct)--> ,
+|                                 |                |--(amod)--> ont-based
+|                                 |--(nmod)--> $
+|                                                  |--(case)--> for
+|                                                  |--(advmod)--> around
+|                                                  |--(nummod)--> billion
+|                                                  |                |--(compou)--> 5.4
+|                                                  |--(nmod)--> cash
+|                                                                   |--(case)--> in
+|                                                                   |--(cc)--> and
+|                                                                   |--(conj)--> stock
+|--(punct)--> ,
+|--(nsubj)--> companies
+|                |--(det)--> the
+|--(nmod:t)--> R1560[monday]
+|--(punct)--> .
+
+	* entity-paths for event['announced']43_3ecb.xmlsent:13087
+	['announced --(ccomp)--> agreed', 'agreed --(nsubj)--> AMD']
+	['announced --(ccomp)--> agreed', 'agreed --(xcomp)--> buy', 'buy --(dobj)--> ATI']
+	['announced --(nmod:tmod)--> Monday']
+
+	* entity-paths for event['buy']43_3ecb.xmlsent:13087
+	['buy --(dobj)--> ATI']
+
+	* entity-paths for event['agreed']43_3ecb.xmlsent:13087
+	['agreed --(nsubj)--> AMD']
+	['agreed --(xcomp)--> buy', 'buy --(dobj)--> ATI']
+
+sentence #:the pitched battle for supremacy in the chip-making market reached a critical phase yesterday with advanced micro devices ( amd ) in sunnyvale , calif . announcing its decision to acquire canadian graphic cards manufacturer ati technologies ( ati ) . 
+	[events]:[['announcing'], ['battle'], ['acquire'], ['chip-making', 'market']]
+	[entities]:[['ati', 'technologies', '(', 'ati', ')'], ['advanced', 'micro', 'devices', '(', 'amd'], ['its'], ['yesterday'], ['in', 'sunnyvale', ',', 'calif']]
+reached
+|--(nsubj)--> *R1571[battle]
+|                |--(det)--> the
+|                |--(amod)--> pitched
+|                |--(nmod)--> supremacy
+|                                 |--(case)--> for
+|                                 |--(nmod)--> *R1572[market]
+|                                                  |--(case)--> in
+|                                                  |--(det)--> the
+|                                                  |--(amod)--> *R1572[chip-making]
+|--(dobj)--> phase
+|                |--(det)--> a
+|                |--(amod)--> critical
+|--(nmod:t)--> R1560[yesterday]
+|--(nmod)--> R1547[devices]
+|                |--(case)--> with
+|                |--(compou)--> R1547[advanced]
+|                |--(compou)--> R1547[micro]
+|                |--(appos)--> R1547[amd]
+|                                 |--(punct)--> R1547[(]
+|                                 |--(punct)--> )
+|--(nmod)--> R1573[sunnyvale]
+|                |--(case)--> R1573[in]
+|                |--(punct)--> R1573[,]
+|                |--(appos)--> R1573[calif]
+|                                 |--(punct)--> .
+|                                 |--(acl)--> *R1561[announcing]
+|                                                  |--(dobj)--> decision
+|                                                                   |--(nmod:p)--> R1547[its]
+|                                                                   |--(acl)--> *R1562[acquire]
+|                                                                                    |--(mark)--> to
+|                                                                                    |--(iobj)--> cards
+|                                                                                    |                |--(amod)--> canadian
+|                                                                                    |                |--(amod)--> graphic
+|                                                                                    |--(dobj)--> R1563[technologies]
+|                                                                                                     |--(compou)--> manufacturer
+|                                                                                                     |--(compou)--> R1563[ati]
+|                                                                                                     |--(appos)--> R1563[ati]
+|                                                                                                                      |--(punct)--> R1563[(]
+|                                                                                                                      |--(punct)--> R1563[)]
+|--(punct)--> .
+
+	* entity-paths for event['announcing']43_3ecb.xmlsent:13085
+	['announcing --(dobj)--> decision', 'decision --(nmod:poss)--> its']
+	['announcing --(dobj)--> decision', 'decision --(acl)--> acquire', 'acquire --(dobj)--> Technologies']
+
+	* entity-paths for event['battle']43_3ecb.xmlsent:13085
+
+	* entity-paths for event['acquire']43_3ecb.xmlsent:13085
+	['acquire --(dobj)--> Technologies']
+
+	* entity-paths for event['chip-making', 'market']43_3ecb.xmlsent:13085
+
+sentence #:" you wo n't see it tomorrow , but the merger will potentially put amd on a more equal footing with intel , " said michelle warren , an analyst with evans research in toronto . 
+	[events]:[['merger']]
+	[entities]:[['amd'], ['intel']]
+said
+|--(punct)--> "
+|--(ccomp)--> see
+|                |--(nsubj)--> you
+|                |--(aux)--> wo
+|                |--(neg)--> n't
+|                |--(dobj)--> it
+|                |--(nmod:t)--> tomorrow
+|                |--(punct)--> ,
+|                |--(cc)--> but
+|                |--(conj)--> put
+|                                 |--(nsubj)--> *R1562[merger]
+|                                 |                |--(det)--> the
+|                                 |--(aux)--> will
+|                                 |--(advmod)--> potentially
+|                                 |--(dobj)--> R1547[amd]
+|                                                  |--(nmod)--> footing
+|                                                                   |--(case)--> on
+|                                                                   |--(det)--> a
+|                                                                   |--(amod)--> equal
+|                                                                   |                |--(advmod)--> more
+|                                                                   |--(nmod)--> R1426[intel]
+|                                                                                    |--(case)--> with
+|--(punct)--> ,
+|--(punct)--> "
+|--(dep)--> warren
+|                |--(compou)--> michelle
+|                |--(punct)--> ,
+|                |--(appos)--> analyst
+|                                 |--(det)--> an
+|                                 |--(nmod)--> research
+|                                                  |--(case)--> with
+|                                                  |--(compou)--> evans
+|                                                  |--(nmod)--> toronto
+|                                                                   |--(case)--> in
+|--(punct)--> .
+
+	* entity-paths for event['merger']43_3ecb.xmlsent:13089
+
+sentence #:the marketing message from ati executives too is all about the 'mutual benefits ' of the proposed acquisition . 
+	[events]:[['acquisition']]
+	[entities]:[['executives']]
+all
+|--(nsubj)--> message
+|                |--(det)--> the
+|                |--(compou)--> marketing
+|                |--(nmod)--> R1563[executives]
+|                                 |--(case)--> from
+|                                 |--(compou)--> ati
+|--(advmod)--> too
+|--(cop)--> is
+|--(nmod)--> 'mutual
+|                |--(case)--> about
+|                |--(det)--> the
+|                |--(punct)--> 'mutual
+|                |--(nmod:p)--> benefits
+|                                 |--(case)--> '
+|--(nmod)--> *R1562[acquisition]
+|                |--(case)--> of
+|                |--(det)--> the
+|                |--(amod)--> proposed
+|--(punct)--> .
+
+	* entity-paths for event['acquisition']43_3ecb.xmlsent:13096
+
+sentence #:another canadian analyst noted that the merger was likely to bring significant benefits to both companies . 
+	[events]:[['merger']]
+	[entities]:[]
+noted
+|--(nsubj)--> analyst
+|                |--(det)--> another
+|                |--(amod)--> canadian
+|--(ccomp)--> likely
+|                |--(mark)--> that
+|                |--(nsubj)--> *R1562[merger]
+|                |                |--(det)--> the
+|                |--(cop)--> was
+|                |--(xcomp)--> bring
+|                                 |--(mark)--> to
+|                                 |--(dobj)--> benefits
+|                                 |                |--(amod)--> significant
+|                                 |--(nmod)--> companies
+|                                                  |--(case)--> to
+|                                                  |--(det)--> both
+|--(punct)--> .
+
+	* entity-paths for event['merger']43_3ecb.xmlsent:13090
+
+sentence #:the acquisition , which is subject to shareholder and regulatory approvals , would turn amd into one of the world 's largest providers of graphics chips . 
+	[events]:[['acquisition']]
+	[entities]:[['amd']]
+turn
+|--(nsubj)--> *R1562[acquisition]
+|                |--(det)--> the
+|                |--(punct)--> ,
+|                |--(acl:re)--> subject
+|                |                |--(nsubj)--> which
+|                |                |--(cop)--> is
+|                |                |--(nmod)--> approvals
+|                |                                 |--(case)--> to
+|                |                                 |--(compou)--> shareholder
+|                |                                                  |--(cc)--> and
+|                |                                                  |--(conj)--> regulatory
+|                |--(punct)--> ,
+|--(aux)--> would
+|--(dobj)--> R1547[amd]
+|--(nmod)--> one
+|                |--(case)--> into
+|                |--(nmod)--> providers
+|                |                |--(case)--> of
+|                |                |--(nmod:p)--> world
+|                |                |                |--(det)--> the
+|                |                |                |--(case)--> 's
+|                |                |--(amod)--> largest
+|                |--(nmod)--> chips
+|                                 |--(case)--> of
+|                                 |--(compou)--> graphics
+|--(punct)--> .
+
+	* entity-paths for event['acquisition']43_3ecb.xmlsent:13088
+
+sentence #:the imminent purchase of ati , analysts say , is the most vital element in amd 's concerted campaign to dethrone the mighty intel corp . 
+	[events]:[['purchase']]
+	[entities]:[['ati'], ['amd'], ['intel', 'corp']]
+element
+|--(nsubj)--> *R1562[purchase]
+|                |--(det)--> the
+|                |--(amod)--> imminent
+|                |--(nmod)--> R1563[ati]
+|                                 |--(case)--> of
+|--(parata)--> say
+|                |--(punct)--> ,
+|                |--(nsubj)--> analysts
+|                |--(punct)--> ,
+|--(cop)--> is
+|--(det)--> the
+|--(amod)--> vital
+|                |--(advmod)--> most
+|--(nmod)--> campaign
+|                |--(case)--> in
+|                |--(nmod:p)--> R1547[amd]
+|                |                |--(case)--> 's
+|                |--(amod)--> concerted
+|                |--(acl)--> dethrone
+|                                 |--(mark)--> to
+|                                 |--(dobj)--> R1426[corp]
+|                                                  |--(det)--> the
+|                                                  |--(amod)--> mighty
+|                                                  |--(compou)--> R1426[intel]
+|--(punct)--> .
+
+	* entity-paths for event['purchase']43_3ecb.xmlsent:13086
+	['purchase --(nmod)--> ATI']
+
+sentence #:hartog said the purchase of ati by amd will involve ' some changes ' but he downplayed any potential lay-offs from among the company 's more than 3,000 employees . 
+	[events]:[['purchase']]
+	[entities]:[['ati'], ['amd'], ['company']]
+said
+|--(nsubj)--> hartog
+|--(ccomp)--> involve
+|                |--(nsubj)--> *R1562[purchase]
+|                |                |--(det)--> the
+|                |                |--(nmod)--> R1563[ati]
+|                |                                 |--(case)--> of
+|                |                                 |--(nmod)--> R1547[amd]
+|                |                                                  |--(case)--> by
+|                |--(aux)--> will
+|                |--(punct)--> '
+|                |--(dobj)--> changes
+|                                 |--(det)--> some
+|                                 |--(case)--> '
+|                                 |--(nmod)--> he
+|                                                  |--(case)--> but
+|                                                  |--(acl)--> downplayed
+|                                                                   |--(dobj)--> lay-offs
+|                                                                   |                |--(det)--> any
+|                                                                   |                |--(amod)--> potential
+|                                                                   |--(nmod)--> employees
+|                                                                                    |--(case)--> from
+|                                                                                    |--(case)--> among
+|                                                                                    |--(nmod:p)--> R1563[company]
+|                                                                                    |                |--(det)--> the
+|                                                                                    |                |--(case)--> 's
+|                                                                                    |--(nummod)--> 3,000
+|                                                                                                     |--(advmod)--> more
+|                                                                                                                      |--(mwe)--> than
+|--(punct)--> .
+
+	* entity-paths for event['purchase']43_3ecb.xmlsent:13109
+	['purchase --(nmod)--> ATI']

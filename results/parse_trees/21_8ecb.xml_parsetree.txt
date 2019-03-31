@@ -1,0 +1,52 @@
+
+-----------------------------------------
+docid:21_8ecb.xml
+-----------------------------------------
+
+sentence #:authorities have released the name of a 66-year-old woman who was walking outside the sam 's club in bloomington when she was struck and killed by a motorist . 
+	[events]:[['killed'], ['released'], ['struck'], ['walking']]
+	[entities]:[['motorist'], ['she'], ['authorities'], ['outside', 'the', 'sam', "'s", 'club', 'in', 'bloomington'], ['woman']]
+*R562[released]
+|--(nsubj)--> R563[authorities]
+|--(aux)--> have
+|--(dobj)--> name
+|                |--(det)--> the
+|                |--(nmod)--> R543[woman]
+|                                 |--(case)--> of
+|                                 |--(det)--> a
+|                                 |--(amod)--> 66-year-old
+|                                 |--(acl:re)--> *R564[walking]
+|                                                  |--(nsubj)--> who
+|                                                  |--(aux)--> was
+|                                                  |--(nmod)--> R544[club]
+|                                                  |                |--(case)--> R544[outside]
+|                                                  |                |--(nmod:p)--> R544[sam]
+|                                                  |                |                |--(det)--> R544[the]
+|                                                  |                |                |--(case)--> R544['s]
+|                                                  |                |--(nmod)--> R544[bloomington]
+|                                                  |                                 |--(case)--> R544[in]
+|                                                  |--(advcl)--> *R541[struck]
+|                                                                   |--(advmod)--> when
+|                                                                   |--(nsubjp)--> R543[she]
+|                                                                   |--(auxpas)--> was
+|                                                                   |--(cc)--> and
+|                                                                   |--(conj)--> *R542[killed]
+|                                                                   |--(nmod)--> R539[motorist]
+|                                                                                    |--(case)--> by
+|                                                                                    |--(det)--> a
+|--(punct)--> .
+
+	* entity-paths for event['killed']21_8ecb.xmlsent:4331
+
+	* entity-paths for event['released']21_8ecb.xmlsent:4331
+	['released --(nsubj)--> Authorities']
+	['released --(dobj)--> name', 'name --(nmod)--> woman']
+
+	* entity-paths for event['struck']21_8ecb.xmlsent:4331
+	['struck --(nsubjpass)--> she']
+	['struck --(nmod)--> motorist']
+
+	* entity-paths for event['walking']21_8ecb.xmlsent:4331
+	['walking --(nmod)--> Club']
+	['walking --(advcl)--> struck', 'struck --(nsubjpass)--> she']
+	['walking --(advcl)--> struck', 'struck --(nmod)--> motorist']

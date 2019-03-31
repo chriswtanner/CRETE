@@ -1,0 +1,24 @@
+
+-----------------------------------------
+docid:19_1ecbplus.xml
+-----------------------------------------
+
+sentence #:brooklyn neighborhood is 'a powder keg' after teen killed by police 
+	[events]:[['killed']]
+	[entities]:[['brooklyn', 'neighborhood'], ['teen'], ['police']]
+'a
+|--(nsubj)--> R416[neighborhood]
+|                |--(compou)--> R416[brooklyn]
+|--(cop)--> is
+|--(punct)--> 'a
+|--(dep)--> keg'
+                 |--(compou)--> powder
+                 |--(case)--> keg'
+                 |--(nmod)--> *R414[killed]
+                 |                |--(case)--> after
+                 |                |--(compou)--> R415[teen]
+                 |--(nmod)--> R413[police]
+                                  |--(case)--> by
+
+	* entity-paths for event['killed']19_1ecbplus.xmlsent:2893
+	['Killed --(compound)--> Teen']

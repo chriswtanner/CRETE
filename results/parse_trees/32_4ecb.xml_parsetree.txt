@@ -1,0 +1,43 @@
+
+-----------------------------------------
+docid:32_4ecb.xml
+-----------------------------------------
+
+sentence #:35-year-old gomes faces two counts of murder after his mother and his ex-girlfriend were found stabbed to death inside a new bedford home yesterday afternoon . 
+	[events]:[['two', 'counts', 'of', 'murder'], ['stabbed', 'to', 'death'], ['found']]
+	[entities]:[['gomes'], ['yesterday', 'afternoon'], ['mother'], ['ex-girlfriend'], ['inside', 'a', 'new', 'bedford', 'home']]
+faces
+|--(nsubj)--> R1045[gomes]
+|                |--(amod)--> 35-year-old
+|--(dobj)--> *R1059[counts]
+|                |--(nummod)--> *R1059[two]
+|                |--(nmod)--> *R1059[murder]
+|                                 |--(case)--> *R1059[of]
+|--(nmod)--> R1047[mother]
+|                |--(case)--> after
+|                |--(nmod:p)--> his
+|--(cc)--> and
+|--(conj)--> *R1061[found]
+|                |--(nsubjp)--> R1046[ex-girlfriend]
+|                |                |--(nmod:p)--> his
+|                |--(auxpas)--> were
+|                |--(dep)--> *R1044[stabbed]
+|                                 |--(nmod)--> *R1044[death]
+|                                                  |--(case)--> *R1044[to]
+|                                                  |--(nmod)--> R1069[afternoon]
+|                                                                   |--(case)--> R1048[inside]
+|                                                                   |--(det)--> R1048[a]
+|                                                                   |--(compou)--> R1048[new]
+|                                                                   |--(compou)--> R1048[bedford]
+|                                                                   |--(compou)--> R1048[home]
+|                                                                   |--(compou)--> R1069[yesterday]
+|--(punct)--> .
+
+	* entity-paths for event['two', 'counts', 'of', 'murder']32_4ecb.xmlsent:8846
+
+	* entity-paths for event['stabbed', 'to', 'death']32_4ecb.xmlsent:8846
+	['death --(nmod)--> afternoon']
+
+	* entity-paths for event['found']32_4ecb.xmlsent:8846
+	['found --(nsubjpass)--> ex-girlfriend']
+	['found --(dep)--> stabbed', 'stabbed --(nmod)--> death', 'death --(nmod)--> afternoon']

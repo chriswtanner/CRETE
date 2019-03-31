@@ -1,0 +1,87 @@
+
+-----------------------------------------
+docid:29_9ecbplus.xml
+-----------------------------------------
+
+sentence #:colts beat chiefs 20 - 13 to clinch playoff berth 
+	[events]:[['playoff'], ['clinch'], ['beat']]
+	[entities]:[['20', '-', '13'], ['chiefs'], ['colts'], ['berth']]
+*R859[beat]
+|--(nsubj)--> R852[colts]
+|--(dobj)--> R858[chiefs]
+                 |--(acl:re)--> R866[berth]
+                                  |--(nsubj)--> R860[13]
+                                                   |--(nummod)--> R860[20]
+                                                   |--(punct)--> R860[-]
+                                                   |--(acl)--> *R862[clinch]
+                                                                    |--(mark)--> to
+                                                                    |--(dobj)--> *R861[playoff]
+
+	* entity-paths for event['playoff']29_9ecbplus.xmlsent:7297
+
+	* entity-paths for event['clinch']29_9ecbplus.xmlsent:7297
+
+	* entity-paths for event['beat']29_9ecbplus.xmlsent:7297
+	['beat --(nsubj)--> Colts']
+	['beat --(dobj)--> Chiefs']
+
+sentence #:now , after guiding the colts back to the playoffs - and breaking cam newton 's single - season passing record for a first - year player - it's safe to say luck exceeded just about all of them . 
+	[events]:[['breaking'], ['playoffs'], ['guiding'], ['record'], ['exceeded']]
+	[entities]:[['colts'], ['cam', 'newton'], ['first', '-', 'year', 'player'], ['luck']]
+now
+|--(punct)--> ,
+|--(dep)--> *R885[guiding]
+|                |--(mark)--> after
+|                |--(dobj)--> R852[colts]
+|                |                |--(det)--> the
+|                |--(advmod)--> back
+|                |--(nmod)--> *R861[playoffs]
+|                |                |--(case)--> to
+|                |                |--(det)--> the
+|                |--(punct)--> -
+|                |--(cc)--> and
+|                |--(conj)--> *R874[breaking]
+|                                 |--(dobj)--> R875[player]
+|                                                  |--(nmod:p)--> R886[newton]
+|                                                  |                |--(compou)--> R886[cam]
+|                                                  |                |--(case)--> 's
+|                                                  |--(amod)--> single
+|                                                  |--(dep)--> *R876[record]
+|                                                  |                |--(punct)--> -
+|                                                  |                |--(compou)--> season
+|                                                  |                |--(amod)--> passing
+|                                                  |                |--(nmod)--> R875[first]
+|                                                  |                |                |--(case)--> for
+|                                                  |                |                |--(det)--> a
+|                                                  |                |--(punct)--> R875[-]
+|                                                  |--(compou)--> R875[year]
+|--(punct)--> -
+|--(parata)--> safe
+|                |--(nsubj)--> it's
+|                |--(cop)--> it's
+|                |--(xcomp)--> say
+|                                 |--(mark)--> to
+|                                 |--(ccomp)--> *R877[exceeded]
+|                                                  |--(nsubj)--> R878[luck]
+|                                                  |--(advmod)--> just
+|                                                  |--(nmod)--> all
+|                                                                   |--(case)--> about
+|                                                                   |--(nmod)--> them
+|                                                                                    |--(case)--> of
+|--(punct)--> .
+
+	* entity-paths for event['breaking']29_9ecbplus.xmlsent:7300
+	['breaking --(dobj)--> player']
+
+	* entity-paths for event['playoffs']29_9ecbplus.xmlsent:7300
+
+	* entity-paths for event['guiding']29_9ecbplus.xmlsent:7300
+	['guiding --(dobj)--> Colts']
+	['guiding --(conj)--> breaking', 'breaking --(dobj)--> player']
+
+	* entity-paths for event['record']29_9ecbplus.xmlsent:7300
+	['record --(nmod)--> first']
+	['record --(punct)--> -']
+
+	* entity-paths for event['exceeded']29_9ecbplus.xmlsent:7300
+	['exceeded --(nsubj)--> Luck']

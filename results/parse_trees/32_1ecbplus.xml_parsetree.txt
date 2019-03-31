@@ -1,0 +1,115 @@
+
+-----------------------------------------
+docid:32_1ecbplus.xml
+-----------------------------------------
+
+sentence #:john jenkin , 23 , was arrested near the terraced house where alice mcmeekin , 58 , and katie jenkin , 20 , and a dead dog , thought to be the family's pet collie , were discovered 
+	[events]:[['discovered'], ['arrested'], ['dead']]
+	[entities]:[['dog'], ['collie'], ['where'], ['john', 'jenkin'], ['alice', 'mcmeekin'], ['near', 'the', 'terraced', 'house'], ['katie', 'jenkin']]
+*R1037[arrested]
+|--(nsubjp)--> R1033[jenkin]
+|                |--(compou)--> R1033[john]
+|                |--(punct)--> ,
+|                |--(amod)--> 23
+|                |--(punct)--> ,
+|--(auxpas)--> was
+|--(nmod)--> R1042[house]
+                 |--(case)--> R1042[near]
+                 |--(det)--> R1042[the]
+                 |--(amod)--> R1042[terraced]
+                 |--(acl:re)--> *R1039[discovered]
+                                  |--(advmod)--> R1042[where]
+                                  |--(nsubjp)--> R1035[mcmeekin]
+                                  |                |--(compou)--> R1035[alice]
+                                  |                |--(punct)--> ,
+                                  |                |--(conj)--> 58
+                                  |                |--(punct)--> ,
+                                  |                |--(cc)--> and
+                                  |                |--(conj)--> R1036[jenkin]
+                                  |                |                |--(compou)--> R1036[katie]
+                                  |                |--(punct)--> ,
+                                  |                |--(conj)--> 20
+                                  |                |--(punct)--> ,
+                                  |                |--(cc)--> and
+                                  |                |--(conj)--> R1053[dog]
+                                  |                                 |--(det)--> a
+                                  |                                 |--(amod)--> *R1054[dead]
+                                  |--(punct)--> ,
+                                  |--(ccomp)--> thought
+                                  |                |--(xcomp)--> R1053[collie]
+                                  |                                 |--(mark)--> to
+                                  |                                 |--(cop)--> be
+                                  |                                 |--(nmod:p)--> family's
+                                  |                                 |                |--(det)--> the
+                                  |                                 |                |--(case)--> family's
+                                  |                                 |--(compou)--> pet
+                                  |--(punct)--> ,
+                                  |--(auxpas)--> were
+
+	* entity-paths for event['discovered']32_1ecbplus.xmlsent:8714
+	['discovered --(advmod)--> where']
+	['discovered --(nsubjpass)--> McMeekin']
+	['discovered --(ccomp)--> thought', 'thought --(xcomp)--> collie']
+
+	* entity-paths for event['arrested']32_1ecbplus.xmlsent:8714
+	['arrested --(nsubjpass)--> Jenkin']
+	['arrested --(nmod)--> house']
+
+	* entity-paths for event['dead']32_1ecbplus.xmlsent:8714
+
+sentence #:john jenkin : goth son held as mum and sister killed 
+	[events]:[['killed'], ['held']]
+	[entities]:[['sister'], ['son'], ['mum'], ['john', 'jenkin']]
+R1033[jenkin]
+|--(compou)--> R1033[john]
+|--(punct)--> :
+|--(parata)--> *R1037[held]
+                 |--(nsubj)--> R1033[son]
+                 |                |--(compou)--> goth
+                 |--(advcl)--> *R1031[killed]
+                                  |--(mark)--> as
+                                  |--(nsubj)--> R1035[mum]
+                                                   |--(cc)--> and
+                                                   |--(conj)--> R1036[sister]
+
+	* entity-paths for event['killed']32_1ecbplus.xmlsent:8712
+	['killed --(nsubj)--> mum']
+
+	* entity-paths for event['held']32_1ecbplus.xmlsent:8712
+	['held --(nsubj)--> son']
+	['held --(advcl)--> killed', 'killed --(nsubj)--> mum']
+
+sentence #:a goth was being questioned on suspicion of murder yesterday after his mother and sister were found dead at home . 
+	[events]:[['suspicion'], ['found'], ['murder'], ['dead']]
+	[entities]:[['sister'], ['goth'], ['yesterday'], ['at', 'home'], ['mother']]
+questioned
+|--(nsubjp)--> R1033[goth]
+|                |--(det)--> a
+|--(aux)--> was
+|--(auxpas)--> being
+|--(nmod)--> *R1043[suspicion]
+|                |--(case)--> on
+|                |--(nmod)--> *R1031[murder]
+|                                 |--(case)--> of
+|--(nmod:t)--> R1055[yesterday]
+|--(advcl)--> *R1039[found]
+|                |--(mark)--> after
+|                |--(nsubjp)--> R1035[mother]
+|                |                |--(nmod:p)--> his
+|                |                |--(cc)--> and
+|                |                |--(conj)--> R1036[sister]
+|                |--(auxpas)--> were
+|                |--(xcomp)--> *R1031[dead]
+|                |--(nmod)--> R1042[home]
+|                                 |--(case)--> R1042[at]
+|--(punct)--> .
+
+	* entity-paths for event['suspicion']32_1ecbplus.xmlsent:8715
+
+	* entity-paths for event['found']32_1ecbplus.xmlsent:8715
+	['found --(nsubjpass)--> mother']
+	['found --(nmod)--> home']
+
+	* entity-paths for event['murder']32_1ecbplus.xmlsent:8715
+
+	* entity-paths for event['dead']32_1ecbplus.xmlsent:8715

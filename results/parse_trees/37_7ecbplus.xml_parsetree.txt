@@ -1,0 +1,94 @@
+
+-----------------------------------------
+docid:37_7ecbplus.xml
+-----------------------------------------
+
+sentence #:at least 50 reported injured and buildings destroyed after a 6 . 1 magnitude earthquake strikes sumatra's aceh province . 
+	[events]:[['strikes'], ['injured'], ['reported'], ['destroyed'], ['6', '.', '1', 'magnitude', 'earthquake']]
+	[entities]:[["sumatra's", 'aceh', 'province'], ['50'], ['buildings']]
+*R1236[strikes]
+|--(dep)--> *R1295[reported]
+|                |--(nsubj)--> R1235[50]
+|                |                |--(nmod:n)--> least
+|                |                                 |--(case)--> at
+|                |--(dobj)--> *R1234[injured]
+|                                 |--(cc)--> and
+|                                 |--(conj)--> R1257[buildings]
+|                                                  |--(acl)--> *R1272[destroyed]
+|                                                                   |--(nmod)--> *R1233[6]
+|                                                                   |                |--(case)--> after
+|                                                                   |                |--(det)--> a
+|                                                                   |--(punct)--> *R1233[.]
+|--(nsubj)--> *R1233[earthquake]
+|                |--(nummod)--> *R1233[1]
+|                |--(compou)--> *R1233[magnitude]
+|--(dobj)--> R1237[province]
+|                |--(nmod:p)--> R1237[sumatra's]
+|                |                |--(case)--> R1237[sumatra's]
+|                |--(compou)--> R1237[aceh]
+|--(punct)--> .
+
+	* entity-paths for event['strikes']37_7ecbplus.xmlsent:10676
+	['strikes --(dep)--> reported', 'reported --(nsubj)--> 50']
+	['strikes --(dep)--> reported', 'reported --(dobj)--> injured', 'injured --(conj)--> buildings']
+	['strikes --(dobj)--> province']
+
+	* entity-paths for event['injured']37_7ecbplus.xmlsent:10676
+	['injured --(conj)--> buildings']
+
+	* entity-paths for event['reported']37_7ecbplus.xmlsent:10676
+	['reported --(nsubj)--> 50']
+	['reported --(dobj)--> injured', 'injured --(conj)--> buildings']
+
+	* entity-paths for event['destroyed']37_7ecbplus.xmlsent:10676
+
+	* entity-paths for event['6', '.', '1', 'magnitude', 'earthquake']37_7ecbplus.xmlsent:10676
+
+sentence #:powerful earthquake injures dozens in indonesia's aceh province 
+	[events]:[['earthquake'], ['injures']]
+	[entities]:[['in', "indonesia's", 'aceh', 'province'], ['dozens']]
+*R1234[injures]
+|--(nsubj)--> *R1233[earthquake]
+|                |--(amod)--> powerful
+|--(dobj)--> R1235[dozens]
+                 |--(nmod)--> R1237[province]
+                                  |--(case)--> R1237[in]
+                                  |--(nmod:p)--> R1237[indonesia's]
+                                  |                |--(case)--> R1237[indonesia's]
+                                  |--(compou)--> R1237[aceh]
+
+	* entity-paths for event['earthquake']37_7ecbplus.xmlsent:10675
+
+	* entity-paths for event['injures']37_7ecbplus.xmlsent:10675
+	['injures --(dobj)--> dozens']
+
+sentence #:a powerful 6 . 1 magnitude earthquake hit indonesia's northwestern aceh province on the island of sumatra early tuesday . 
+	[events]:[['hit'], ['6', '.', '1', 'magnitude', 'earthquake']]
+	[entities]:[['early', 'tuesday'], ["indonesia's", 'northwestern', 'aceh', 'province', 'on', 'the', 'island', 'of', 'sumatra']]
+*R1236[hit]
+|--(nsubj)--> powerful
+|                |--(det)--> a
+|                |--(acl:re)--> *R1233[6]
+|                |                |--(punct)--> *R1233[.]
+|                |--(dep)--> *R1233[earthquake]
+|                                 |--(nummod)--> *R1233[1]
+|                                 |--(compou)--> *R1233[magnitude]
+|--(dobj)--> R1237[province]
+|                |--(nmod:p)--> R1237[indonesia's]
+|                |                |--(case)--> R1237[indonesia's]
+|                |--(amod)--> R1237[northwestern]
+|                |--(compou)--> R1237[aceh]
+|                |--(nmod)--> R1237[island]
+|                                 |--(case)--> R1237[on]
+|                                 |--(det)--> R1237[the]
+|                                 |--(nmod)--> R1237[sumatra]
+|                                                  |--(case)--> R1237[of]
+|--(nmod:t)--> R1245[tuesday]
+|                |--(amod)--> R1245[early]
+|--(punct)--> .
+
+	* entity-paths for event['hit']37_7ecbplus.xmlsent:10677
+	['hit --(dobj)--> province']
+	['hit --(nmod:tmod)--> Tuesday']
+
+	* entity-paths for event['6', '.', '1', 'magnitude', 'earthquake']37_7ecbplus.xmlsent:10677

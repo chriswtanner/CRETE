@@ -1,0 +1,94 @@
+
+-----------------------------------------
+docid:27_3ecbplus.xml
+-----------------------------------------
+
+sentence #:computerworld - microsoft today said that hackers are exploiting a critical , but unpatched , vulnerability in internet explorer 8 ( ie8 ) and internet explorer 9 ( ie9 ) , and that its engineers are working on an update to plug the hole . 
+	[events]:[['working'], ['exploiting'], ['unpatched'], ['plug'], ['said']]
+	[entities]:[['internet', 'explorer', '8', '(', 'ie8'], ['engineers'], ['today'], ['hackers'], ['vulnerability'], ['internet', 'explorer', '9', '(', 'ie9'], ['update'], ['microsoft'], ['hole']]
+computerworld
+|--(punct)--> -
+|--(parata)--> *R794[said]
+|                |--(nsubj)--> R787[today]
+|                |                |--(compou)--> R764[microsoft]
+|                |--(ccomp)--> *R788[exploiting]
+|                                 |--(mark)--> that
+|                                 |--(nsubj)--> R770[hackers]
+|                                 |--(aux)--> are
+|                                 |--(dobj)--> R777[vulnerability]
+|                                 |                |--(det)--> a
+|                                 |                |--(amod)--> critical
+|                                 |                |                |--(punct)--> ,
+|                                 |                |                |--(cc)--> but
+|                                 |                |                |--(conj)--> *R795[unpatched]
+|                                 |                |                |--(punct)--> ,
+|                                 |                |--(nmod)--> R774[explorer]
+|                                 |                                 |--(case)--> in
+|                                 |                                 |--(compou)--> R774[internet]
+|                                 |                                 |--(dep)--> R774[ie8]
+|                                 |                                 |                |--(nummod)--> R774[8]
+|                                 |                                 |                |--(punct)--> R774[(]
+|                                 |                                 |                |--(punct)--> )
+|                                 |                                 |--(cc)--> and
+|                                 |                                 |--(conj)--> R775[internet]
+|                                 |                                                  |--(dep)--> R775[explorer]
+|                                 |                                                                   |--(nummod)--> R775[9]
+|                                 |                                                                   |--(appos)--> R775[ie9]
+|                                 |                                                                                    |--(punct)--> R775[(]
+|                                 |                                                                                    |--(punct)--> )
+|                                 |--(punct)--> ,
+|                                 |--(cc)--> and
+|                                 |--(conj)--> *R796[working]
+|                                                  |--(mark)--> that
+|                                                  |--(nsubj)--> R797[engineers]
+|                                                  |                |--(nmod:p)--> its
+|                                                  |--(aux)--> are
+|                                                  |--(ccomp)--> R780[update]
+|                                                                   |--(nsubj)--> an
+|                                                                   |                |--(amod)--> on
+|                                                                   |--(xcomp)--> *R781[plug]
+|                                                                                    |--(mark)--> to
+|                                                                                    |--(dobj)--> R777[hole]
+|                                                                                                     |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['working']27_3ecbplus.xmlsent:5869
+	['working --(nsubj)--> engineers']
+	['working --(ccomp)--> update']
+
+	* entity-paths for event['exploiting']27_3ecbplus.xmlsent:5869
+	['exploiting --(nsubj)--> hackers']
+	['exploiting --(dobj)--> vulnerability']
+	['exploiting --(conj)--> working', 'working --(nsubj)--> engineers']
+	['exploiting --(conj)--> working', 'working --(ccomp)--> update']
+
+	* entity-paths for event['unpatched']27_3ecbplus.xmlsent:5869
+
+	* entity-paths for event['plug']27_3ecbplus.xmlsent:5869
+	['plug --(dobj)--> hole']
+
+	* entity-paths for event['said']27_3ecbplus.xmlsent:5869
+	['said --(nsubj)--> today']
+	['said --(ccomp)--> exploiting', 'exploiting --(nsubj)--> hackers']
+	['said --(ccomp)--> exploiting', 'exploiting --(dobj)--> vulnerability']
+	['said --(ccomp)--> exploiting', 'exploiting --(conj)--> working', 'working --(nsubj)--> engineers']
+	['said --(ccomp)--> exploiting', 'exploiting --(conj)--> working', 'working --(ccomp)--> update']
+
+sentence #:hackers exploit critical ie bug ; microsoft promises patch 
+	[events]:[['exploit']]
+	[entities]:[['patch'], ['microsoft'], ['critical', 'ie', 'bug'], ['hackers']]
+*R788[exploit]
+|--(nsubj)--> R770[hackers]
+|--(dobj)--> R777[bug]
+|                |--(amod)--> R777[critical]
+|                |--(amod)--> R777[ie]
+|--(punct)--> ;
+|--(parata)--> promises
+                 |--(nsubj)--> R764[microsoft]
+                 |--(dobj)--> R780[patch]
+
+	* entity-paths for event['exploit']27_3ecbplus.xmlsent:5866
+	['exploit --(nsubj)--> Hackers']
+	['exploit --(dobj)--> bug']
+	['exploit --(parataxis)--> promises', 'promises --(nsubj)--> Microsoft']
+	['exploit --(parataxis)--> promises', 'promises --(dobj)--> patch']

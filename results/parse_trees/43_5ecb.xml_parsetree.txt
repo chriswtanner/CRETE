@@ -1,0 +1,150 @@
+
+-----------------------------------------
+docid:43_5ecb.xml
+-----------------------------------------
+
+sentence #:advanced micro devices ( nyse : amd ) announced the largest acquisition in its history monday , paying about $ 5.4 billion to acquire graphics chip specialist ati technologies . 
+	[events]:[['paying'], ['announced'], ['acquisition'], ['acquire']]
+	[entities]:[['monday'], ['its'], ['ati', 'technologies'], ['advanced', 'micro', 'devices']]
+*R1561[announced]
+|--(nsubj)--> R1547[devices]
+|                |--(compou)--> R1547[advanced]
+|                |--(compou)--> R1547[micro]
+|                |--(appos)--> nyse
+|                                 |--(punct)--> (
+|                                 |--(punct)--> :
+|                                 |--(dep)--> amd
+|                                 |--(punct)--> )
+|--(dobj)--> *R1562[acquisition]
+|                |--(det)--> the
+|                |--(amod)--> largest
+|                |--(nmod)--> history
+|                                 |--(case)--> in
+|                                 |--(nmod:p)--> R1547[its]
+|--(nmod:t)--> R1560[monday]
+|--(punct)--> ,
+|--(advcl)--> *R1574[paying]
+|                |--(nmod)--> $
+|                |                |--(case)--> about
+|                |                |--(nummod)--> billion
+|                |                                 |--(compou)--> 5.4
+|                |--(xcomp)--> *R1562[acquire]
+|                                 |--(mark)--> to
+|                                 |--(xcomp)--> R1563[technologies]
+|                                                  |--(nsubj)--> graphics
+|                                                  |--(compou)--> chip
+|                                                  |--(compou)--> specialist
+|                                                  |--(compou)--> R1563[ati]
+|--(punct)--> .
+
+	* entity-paths for event['paying']43_5ecb.xmlsent:13233
+	['paying --(xcomp)--> acquire', 'acquire --(xcomp)--> Technologies']
+
+	* entity-paths for event['announced']43_5ecb.xmlsent:13233
+	['announced --(nsubj)--> Devices']
+	['announced --(dobj)--> acquisition', 'acquisition --(nmod)--> history', 'history --(nmod:poss)--> its']
+	['announced --(nmod:tmod)--> Monday']
+	['announced --(advcl)--> paying', 'paying --(xcomp)--> acquire', 'acquire --(xcomp)--> Technologies']
+
+	* entity-paths for event['acquisition']43_5ecb.xmlsent:13233
+	['acquisition --(nmod)--> history', 'history --(nmod:poss)--> its']
+
+	* entity-paths for event['acquire']43_5ecb.xmlsent:13233
+	['acquire --(xcomp)--> Technologies']
+
+sentence #:" together we intend to create a processing powerhouse , " said hector ruiz , chairman and chief executive of amd , during a teleconference to announce the deal . 
+	[events]:[['announce'], ['deal']]
+	[entities]:[['amd']]
+said
+|--(punct)--> "
+|--(ccomp)--> intend
+|                |--(advmod)--> together
+|                |--(nsubj)--> we
+|                |--(xcomp)--> create
+|                                 |--(mark)--> to
+|                                 |--(dobj)--> powerhouse
+|                                                  |--(det)--> a
+|                                                  |--(compou)--> processing
+|--(punct)--> ,
+|--(punct)--> "
+|--(dobj)--> ruiz
+|                |--(compou)--> hector
+|                |--(punct)--> ,
+|                |--(conj)--> chairman
+|                |--(cc)--> and
+|                |--(conj)--> executive
+|                                 |--(amod)--> chief
+|                                 |--(nmod)--> R1547[amd]
+|                                                  |--(case)--> of
+|--(punct)--> ,
+|--(nmod)--> teleconference
+|                |--(case)--> during
+|                |--(det)--> a
+|                |--(acl)--> *R1561[announce]
+|                                 |--(mark)--> to
+|                                 |--(dobj)--> *R1562[deal]
+|                                                  |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['announce']43_5ecb.xmlsent:13237
+
+	* entity-paths for event['deal']43_5ecb.xmlsent:13237
+
+sentence #:the acquisition will let amd expand its position in the commercial desktop and mobile computing markets , two areas where the company has not had much success . 
+	[events]:[['acquisition']]
+	[entities]:[['company'], ['its'], ['amd']]
+let
+|--(nsubj)--> *R1562[acquisition]
+|                |--(det)--> the
+|--(aux)--> will
+|--(ccomp)--> expand
+|                |--(nsubj)--> R1547[amd]
+|                |--(dobj)--> position
+|                |                |--(nmod:p)--> R1547[its]
+|                |--(nmod)--> desktop
+|                |                |--(case)--> in
+|                |                |--(det)--> the
+|                |                |--(amod)--> commercial
+|                |                |--(cc)--> and
+|                |                |--(conj)--> markets
+|                |                                 |--(amod)--> mobile
+|                |                                 |--(compou)--> computing
+|                |--(punct)--> ,
+|                |--(dobj)--> areas
+|                                 |--(nummod)--> two
+|                                 |--(acl:re)--> had
+|                                                  |--(advmod)--> where
+|                                                  |--(nsubj)--> R1547[company]
+|                                                  |                |--(det)--> the
+|                                                  |--(aux)--> has
+|                                                  |--(neg)--> not
+|                                                  |--(dobj)--> success
+|                                                                   |--(amod)--> much
+|--(punct)--> .
+
+	* entity-paths for event['acquisition']43_5ecb.xmlsent:13234
+
+sentence #:the purchase is a combination of $ 4.2 billion in cash and 57 million shares of amd stock . 
+	[events]:[['purchase']]
+	[entities]:[['amd']]
+combination
+|--(nsubj)--> *R1562[purchase]
+|                |--(det)--> the
+|--(cop)--> is
+|--(det)--> a
+|--(nmod)--> $
+|                |--(case)--> of
+|                |--(nummod)--> billion
+|                |                |--(compou)--> 4.2
+|                |--(nmod)--> cash
+|                |                |--(case)--> in
+|                |--(cc)--> and
+|                |--(conj)--> shares
+|                                 |--(nummod)--> million
+|                                 |                |--(compou)--> 57
+|                                 |--(nmod)--> stock
+|                                                  |--(case)--> of
+|                                                  |--(compou)--> R1547[amd]
+|--(punct)--> .
+
+	* entity-paths for event['purchase']43_5ecb.xmlsent:13243

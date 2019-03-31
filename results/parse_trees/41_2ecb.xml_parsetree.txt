@@ -1,0 +1,44 @@
+
+-----------------------------------------
+docid:41_2ecb.xml
+-----------------------------------------
+
+sentence #:no militants were inside a united nations-run school attacked by israeli forces in gaza , leaving 40 people dead , the un says . 
+	[events]:[['leaving', 'dead'], ['says'], ['attacked'], ['inside']]
+	[entities]:[['40', 'people'], ['in', 'gaza'], ['un'], ['militants'], ['school'], ['israeli', 'forces']]
+*R1470[says]
+|--(ccomp)--> R1466[school]
+|                |--(nsubj)--> R1471[militants]
+|                |                |--(neg)--> no
+|                |--(cop)--> were
+|                |--(case)--> *R1472[inside]
+|                |--(det)--> a
+|                |--(compou)--> united
+|                |--(compou)--> nations-run
+|                |--(acl)--> *R1465[attacked]
+|                                 |--(nmod)--> R1462[forces]
+|                                                  |--(case)--> by
+|                                                  |--(amod)--> R1462[israeli]
+|                                                  |--(nmod)--> R1463[gaza]
+|                                                  |                |--(case)--> R1463[in]
+|                                                  |--(punct)--> ,
+|                                                  |--(acl)--> *R1464[leaving]
+|                                                                   |--(xcomp)--> *R1464[dead]
+|                                                                                    |--(nmod:n)--> R1467[people]
+|                                                                                                     |--(nummod)--> R1467[40]
+|--(punct)--> ,
+|--(nsubj)--> R1473[un]
+|                |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['leaving', 'dead']41_2ecb.xmlsent:12177
+	['dead --(nmod:npmod)--> people']
+
+	* entity-paths for event['says']41_2ecb.xmlsent:12177
+	['says --(ccomp)--> school']
+	['says --(nsubj)--> UN']
+
+	* entity-paths for event['attacked']41_2ecb.xmlsent:12177
+	['attacked --(nmod)--> forces']
+
+	* entity-paths for event['inside']41_2ecb.xmlsent:12177

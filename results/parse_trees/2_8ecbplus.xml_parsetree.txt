@@ -1,0 +1,140 @@
+
+-----------------------------------------
+docid:2_8ecbplus.xml
+-----------------------------------------
+
+sentence #:degeneres , the star of her own daytime talk show "ellen , " first hosted the oscars in 2007 , becoming only the second woman to fill that exalted role alone , after whoopi goldberg . 
+	[events]:[['hosted'], ['oscars']]
+	[entities]:[['in', '2007'], ['first'], ['degeneres'], ['star'], ['woman']]
+*R471[hosted]
+|--(nsubj)--> R454[degeneres]
+|                |--(punct)--> ,
+|                |--(appos)--> R454[star]
+|                |                |--(det)--> the
+|                |                |--(nmod)--> show
+|                |                                 |--(case)--> of
+|                |                                 |--(nmod:p)--> her
+|                |                                 |--(amod)--> own
+|                |                                 |--(amod)--> daytime
+|                |                                 |--(compou)--> talk
+|                |                                 |--(punct)--> "ellen
+|                |                                 |--(dep)--> "ellen
+|                |--(punct)--> ,
+|                |--(punct)--> "
+|--(advmod)--> R480[first]
+|--(dobj)--> *R496[oscars]
+|                |--(det)--> the
+|                |--(nmod)--> R472[2007]
+|                                 |--(case)--> R472[in]
+|--(punct)--> ,
+|--(advcl)--> becoming
+|                |--(xcomp)--> R454[woman]
+|                |                |--(advmod)--> only
+|                |                |--(det)--> the
+|                |                |--(amod)--> second
+|                |--(advcl)--> fill
+|                                 |--(mark)--> to
+|                                 |--(dobj)--> role
+|                                 |                |--(det)--> that
+|                                 |                |--(amod)--> exalted
+|                                 |--(advmod)--> alone
+|                                 |--(punct)--> ,
+|                                 |--(nmod)--> goldberg
+|                                                  |--(case)--> after
+|                                                  |--(compou)--> whoopi
+|--(punct)--> .
+
+	* entity-paths for event['hosted']2_8ecbplus.xmlsent:3756
+	['hosted --(nsubj)--> DeGeneres']
+	['hosted --(advmod)--> first']
+	['hosted --(dobj)--> Oscars', 'Oscars --(nmod)--> 2007']
+	['hosted --(advcl)--> becoming', 'becoming --(xcomp)--> woman']
+
+	* entity-paths for event['oscars']2_8ecbplus.xmlsent:3756
+	['Oscars --(nmod)--> 2007']
+
+sentence #:comedian ellen degeneres picked to host 2014 oscars 
+	[events]:[['oscars'], ['host'], ['picked']]
+	[entities]:[['ellen', 'degeneres'], ['2014']]
+*R468[picked]
+|--(dep)--> comedian
+|                |--(dep)--> R454[degeneres]
+|                                 |--(compou)--> R454[ellen]
+|--(nmod)--> *R456[host]
+|                |--(case)--> to
+|                |--(nummod)--> R475[2014]
+|--(nsubj)--> *R455[oscars]
+
+	* entity-paths for event['oscars']2_8ecbplus.xmlsent:3753
+
+	* entity-paths for event['host']2_8ecbplus.xmlsent:3753
+	['host --(nummod)--> 2014']
+
+	* entity-paths for event['picked']2_8ecbplus.xmlsent:3753
+	['picked --(dep)--> Comedian', 'Comedian --(dep)--> DeGeneres']
+	['picked --(nmod)--> host', 'host --(nummod)--> 2014']
+
+sentence #:comedian ellen degeneres will make her second appearance as an academy awards host next year , organizers said on friday , in a move widely seen as a less provocative choice for hollywood's highest honors after a ribald performance by seth macfarlane . 
+	[events]:[['choice'], ['appearance'], ['academy', 'awards'], ['move'], ['performance'], ['host']]
+	[entities]:[['next', 'year'], ['on', 'friday'], ['seth', 'macfarlane'], ['ellen', 'degeneres'], ["hollywood's"], ['second']]
+said
+|--(ccomp)--> make
+|                |--(nsubj)--> R454[degeneres]
+|                |                |--(compou)--> comedian
+|                |                |--(compou)--> R454[ellen]
+|                |--(aux)--> will
+|                |--(dobj)--> *R456[appearance]
+|                |                |--(nmod:p)--> her
+|                |                |--(amod)--> R466[second]
+|                |--(nmod)--> *R467[host]
+|                |                |--(case)--> as
+|                |                |--(det)--> an
+|                |                |--(compou)--> *R455[academy]
+|                |                |--(compou)--> *R455[awards]
+|                |--(nmod:t)--> R475[year]
+|                                 |--(amod)--> R475[next]
+|--(punct)--> ,
+|--(nsubj)--> organizers
+|--(nmod)--> R481[friday]
+|                |--(case)--> R481[on]
+|--(punct)--> ,
+|--(nmod)--> *R468[move]
+|                |--(case)--> in
+|                |--(det)--> a
+|                |--(acl)--> seen
+|                                 |--(advmod)--> widely
+|                                 |--(nmod)--> *R468[choice]
+|                                 |                |--(case)--> as
+|                                 |                |--(det)--> a
+|                                 |                |--(amod)--> provocative
+|                                 |                |                |--(dep)--> less
+|                                 |                |--(nmod)--> honors
+|                                 |                                 |--(case)--> for
+|                                 |                                 |--(nmod:p)--> R463[hollywood's]
+|                                 |                                 |                |--(case)--> R463[hollywood's]
+|                                 |                                 |--(amod)--> highest
+|                                 |--(nmod)--> *R497[performance]
+|                                                  |--(case)--> after
+|                                                  |--(det)--> a
+|                                                  |--(amod)--> ribald
+|                                                  |--(nmod)--> R498[macfarlane]
+|                                                                   |--(case)--> by
+|                                                                   |--(compou)--> R498[seth]
+|--(punct)--> .
+
+	* entity-paths for event['choice']2_8ecbplus.xmlsent:3755
+	['choice --(nmod)--> honors', 'honors --(nmod:poss)--> Hollywood']
+
+	* entity-paths for event['appearance']2_8ecbplus.xmlsent:3755
+	['appearance --(amod)--> second']
+
+	* entity-paths for event['academy', 'awards']2_8ecbplus.xmlsent:3755
+
+	* entity-paths for event['move']2_8ecbplus.xmlsent:3755
+	['move --(acl)--> seen', 'seen --(nmod)--> choice', 'choice --(nmod)--> honors', 'honors --(nmod:poss)--> Hollywood']
+	['move --(acl)--> seen', 'seen --(nmod)--> performance', 'performance --(nmod)--> MacFarlane']
+
+	* entity-paths for event['performance']2_8ecbplus.xmlsent:3755
+	['performance --(nmod)--> MacFarlane']
+
+	* entity-paths for event['host']2_8ecbplus.xmlsent:3755

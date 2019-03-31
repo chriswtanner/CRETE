@@ -1,0 +1,54 @@
+
+-----------------------------------------
+docid:36_4ecb.xml
+-----------------------------------------
+
+sentence #:winston blackmore and another member of the fundamentalist church of jesus christ of latter day saints ( flds ) were arrested for violating a little-used law against polygamy , the vancouver sun reported on its website , citing court documents . 
+	[events]:[['polygamy'], ['arrested']]
+	[entities]:[['member'], ['winston', 'blackmore'], ['fundamentalist', 'church', 'of', 'jesus', 'christ', 'of', 'latter', 'day', 'saints', '(', 'flds']]
+reported
+|--(ccomp)--> *R1195[arrested]
+|                |--(nsubjp)--> R1221[blackmore]
+|                |                |--(compou)--> R1221[winston]
+|                |                |--(cc)--> and
+|                |                |--(conj)--> R1222[member]
+|                |                                 |--(det)--> another
+|                |                                 |--(nmod)--> R1204[church]
+|                |                                                  |--(case)--> of
+|                |                                                  |--(det)--> the
+|                |                                                  |--(compou)--> R1204[fundamentalist]
+|                |                                                  |--(nmod)--> R1204[christ]
+|                |                                                                   |--(case)--> R1204[of]
+|                |                                                                   |--(compou)--> R1204[jesus]
+|                |                                                                   |--(nmod)--> R1204[saints]
+|                |                                                                                    |--(case)--> R1204[of]
+|                |                                                                                    |--(compou)--> R1204[latter]
+|                |                                                                                    |--(compou)--> R1204[day]
+|                |                                                                                    |--(appos)--> R1204[flds]
+|                |                                                                                                     |--(punct)--> R1204[(]
+|                |                                                                                                     |--(punct)--> )
+|                |--(auxpas)--> were
+|                |--(advcl)--> violating
+|                                 |--(mark)--> for
+|                                 |--(dobj)--> law
+|                                 |                |--(det)--> a
+|                                 |                |--(amod)--> little-used
+|                                 |--(nmod)--> *R1201[polygamy]
+|                                                  |--(case)--> against
+|--(punct)--> ,
+|--(nsubj)--> sun
+|                |--(det)--> the
+|                |--(compou)--> vancouver
+|--(nmod)--> website
+|                |--(case)--> on
+|                |--(nmod:p)--> its
+|--(punct)--> ,
+|--(xcomp)--> citing
+|                |--(dobj)--> documents
+|                                 |--(compou)--> court
+|--(punct)--> .
+
+	* entity-paths for event['polygamy']36_4ecb.xmlsent:10076
+
+	* entity-paths for event['arrested']36_4ecb.xmlsent:10076
+	['arrested --(nsubjpass)--> Blackmore']

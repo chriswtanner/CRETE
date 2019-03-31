@@ -1,0 +1,72 @@
+
+-----------------------------------------
+docid:14_11ecbplus.xml
+-----------------------------------------
+
+sentence #:eight crews fought the blaze which broke out in the early hours of sunday morning . 
+	[events]:[['blaze'], ['fought'], ['broke', 'out']]
+	[entities]:[['the', 'early', 'hours', 'of', 'sunday', 'morning'], ['crews']]
+*R305[fought]
+|--(nsubj)--> R306[crews]
+|                |--(nummod)--> eight
+|--(dobj)--> *R302[blaze]
+|                |--(det)--> the
+|                |--(acl:re)--> *R301[broke]
+|                                 |--(nsubj)--> which
+|                                 |--(compou)--> *R301[out]
+|                                 |--(nmod)--> R304[hours]
+|                                                  |--(case)--> in
+|                                                  |--(det)--> R304[the]
+|                                                  |--(amod)--> R304[early]
+|                                                  |--(nmod)--> R304[sunday]
+|                                                                   |--(case)--> R304[of]
+|--(nmod:t)--> R304[morning]
+|--(punct)--> .
+
+	* entity-paths for event['blaze']14_11ecbplus.xmlsent:1681
+	['blaze --(acl:relcl)--> broke', 'broke --(nmod)--> hours']
+
+	* entity-paths for event['fought']14_11ecbplus.xmlsent:1681
+	['fought --(nsubj)--> crews']
+	['fought --(dobj)--> blaze', 'blaze --(acl:relcl)--> broke', 'broke --(nmod)--> hours']
+	['fought --(nmod:tmod)--> morning']
+
+	* entity-paths for event['broke', 'out']14_11ecbplus.xmlsent:1681
+
+sentence #:fire at waitrose in wellington 
+	[events]:[['fire']]
+	[entities]:[['at', 'waitrose', 'in', 'wellington']]
+*R302[fire]
+|--(nmod)--> R303[waitrose]
+|                |--(case)--> R303[at]
+|--(nmod)--> R303[wellington]
+                 |--(case)--> R303[in]
+
+	* entity-paths for event['fire']14_11ecbplus.xmlsent:1678
+	['Fire --(nmod)--> Waitrose']
+	['Fire --(nmod)--> Wellington']
+
+sentence #:a fire has badly damaged the waitrose supermarket in wellington's high street . 
+	[events]:[['damaged'], ['fire']]
+	[entities]:[['in', "wellington's", 'high', 'street', '.'], ['the', 'waitrose', 'supermarket']]
+*R307[damaged]
+|--(nsubj)--> *R302[fire]
+|                |--(det)--> a
+|--(aux)--> has
+|--(advmod)--> badly
+|--(dobj)--> R308[supermarket]
+|                |--(det)--> R308[the]
+|                |--(compou)--> R308[waitrose]
+|--(nmod)--> R309[street]
+|                |--(case)--> R309[in]
+|                |--(nmod:p)--> R309[wellington's]
+|                |                |--(case)--> R309[wellington's]
+|                |--(compou)--> R309[high]
+|--(punct)--> R309[.]
+
+	* entity-paths for event['damaged']14_11ecbplus.xmlsent:1680
+	['damaged --(dobj)--> supermarket']
+	['damaged --(nmod)--> Street']
+	['damaged --(punct)--> .']
+
+	* entity-paths for event['fire']14_11ecbplus.xmlsent:1680

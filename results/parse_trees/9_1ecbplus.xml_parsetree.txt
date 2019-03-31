@@ -1,0 +1,25 @@
+
+-----------------------------------------
+docid:9_1ecbplus.xml
+-----------------------------------------
+
+sentence #:obama administration restores endangered species act protections ! 
+	[events]:[['protections'], ['restores']]
+	[entities]:[['administration'], ['endangered', 'species', 'act']]
+*R1798[restores]
+|--(nsubj)--> R1133[administration]
+|                |--(compou)--> obama
+|--(xcomp)--> *R1804[protections]
+|                |--(nsubj)--> R1800[species]
+|                |                |--(compou)--> R1800[endangered]
+|                |--(compou)--> R1800[act]
+|--(punct)--> !
+
+	* entity-paths for event['protections']9_1ecbplus.xmlsent:15424
+	['Protections --(nsubj)--> Species']
+	['Protections --(compound)--> Act']
+
+	* entity-paths for event['restores']9_1ecbplus.xmlsent:15424
+	['Restores --(nsubj)--> Administration']
+	['Restores --(xcomp)--> Protections', 'Protections --(nsubj)--> Species']
+	['Restores --(xcomp)--> Protections', 'Protections --(compound)--> Act']

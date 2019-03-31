@@ -1,0 +1,102 @@
+
+-----------------------------------------
+docid:33_1ecbplus.xml
+-----------------------------------------
+
+sentence #:prosecutors showed the tragic footage at the trial of the two youths charged with murdering horton . 
+	[events]:[['showed'], ['murdering'], ['trial'], ['charged']]
+	[entities]:[['youths'], ['horton'], ['footage'], ['prosecutors']]
+*R1101[showed]
+|--(nsubj)--> R1102[prosecutors]
+|--(dobj)--> R1103[footage]
+|                |--(det)--> the
+|                |--(amod)--> tragic
+|--(nmod)--> *R1104[trial]
+|                |--(case)--> at
+|                |--(det)--> the
+|                |--(nmod)--> R1105[youths]
+|                                 |--(case)--> of
+|                                 |--(det)--> the
+|                                 |--(nummod)--> two
+|                                 |--(acl)--> *R1106[charged]
+|                                                  |--(advcl)--> *R1078[murdering]
+|                                                                   |--(mark)--> with
+|                                                                   |--(dobj)--> R1079[horton]
+|--(punct)--> .
+
+	* entity-paths for event['showed']33_1ecbplus.xmlsent:8989
+	['showed --(nsubj)--> Prosecutors']
+	['showed --(dobj)--> footage']
+	['showed --(nmod)--> trial', 'trial --(nmod)--> youths']
+
+	* entity-paths for event['murdering']33_1ecbplus.xmlsent:8989
+	['murdering --(dobj)--> Horton']
+
+	* entity-paths for event['trial']33_1ecbplus.xmlsent:8989
+	['trial --(nmod)--> youths']
+
+	* entity-paths for event['charged']33_1ecbplus.xmlsent:8989
+	['charged --(advcl)--> murdering', 'murdering --(dobj)--> Horton']
+
+sentence #:video of brooklyn mother of 13 zurana horton shot and killed in a gang shooting was revealed thursday , according to the n . y . daily news . 
+	[events]:[['shooting'], ['killed'], ['revealed']]
+	[entities]:[['gang'], ['zurana', 'horton'], ['video']]
+*R1101[revealed]
+|--(nsubjp)--> R1103[video]
+|                |--(nmod)--> mother
+|                                 |--(case)--> of
+|                                 |--(compou)--> brooklyn
+|                                 |--(nmod)--> shot
+|                                                  |--(case)--> of
+|                                                  |--(nummod)--> 13
+|                                                  |--(compou)--> R1079[zurana]
+|                                                  |--(compou)--> R1079[horton]
+|                                                  |--(cc)--> and
+|                                                  |--(conj)--> *R1078[killed]
+|                                                                   |--(nmod)--> *R1083[shooting]
+|                                                                                    |--(case)--> in
+|                                                                                    |--(det)--> a
+|                                                                                    |--(compou)--> R1077[gang]
+|--(auxpas)--> was
+|--(nmod:t)--> thursday
+|--(punct)--> ,
+|--(nmod)--> n
+|                |--(case)--> according
+|                |                |--(mwe)--> to
+|                |--(det)--> the
+|                |--(punct)--> .
+|                |--(dep)--> y
+|                |--(punct)--> .
+|                |--(dep)--> news
+|                                 |--(compou)--> daily
+|--(punct)--> .
+
+	* entity-paths for event['shooting']33_1ecbplus.xmlsent:8984
+	['shooting --(compound)--> gang']
+
+	* entity-paths for event['killed']33_1ecbplus.xmlsent:8984
+	['killed --(nmod)--> shooting', 'shooting --(compound)--> gang']
+
+	* entity-paths for event['revealed']33_1ecbplus.xmlsent:8984
+	['revealed --(nsubjpass)--> Video']
+
+sentence #:footage of brooklyn mother's fatal shooting released during trial 
+	[events]:[['released'], ['trial'], ['fatal', 'shooting']]
+	[entities]:[['footage'], ['brooklyn', "mother's"]]
+R1103[footage]
+|--(nmod)--> *R1083[shooting]
+                 |--(case)--> of
+                 |--(nmod:p)--> R1079[mother's]
+                 |                |--(compou)--> R1079[brooklyn]
+                 |                |--(case)--> R1079[mother's]
+                 |--(amod)--> *R1083[fatal]
+                 |--(acl)--> *R1101[released]
+                                  |--(nmod)--> *R1104[trial]
+                                                   |--(case)--> during
+
+	* entity-paths for event['released']33_1ecbplus.xmlsent:8982
+
+	* entity-paths for event['trial']33_1ecbplus.xmlsent:8982
+
+	* entity-paths for event['fatal', 'shooting']33_1ecbplus.xmlsent:8982
+	['Shooting --(nmod:poss)--> Mother']

@@ -1,0 +1,34 @@
+
+-----------------------------------------
+docid:25_15ecb.xml
+-----------------------------------------
+
+sentence #:the biloxi sun herald suggests that reggie bush ( knee ) could be shut down for the remainder of the saints ' season . 
+	[events]:[['shut', 'down']]
+	[entities]:[['season'], ['reggie', 'bush'], ['the', 'saints']]
+suggests
+|--(nsubj)--> herald
+|                |--(det)--> the
+|                |--(compou)--> biloxi
+|                |--(compou)--> sun
+|--(ccomp)--> *R722[shut]
+|                |--(mark)--> that
+|                |--(nsubjp)--> R707[bush]
+|                |                |--(compou)--> R707[reggie]
+|                |                |--(appos)--> knee
+|                |                                 |--(punct)--> (
+|                |                                 |--(punct)--> )
+|                |--(aux)--> could
+|                |--(auxpas)--> be
+|                |--(compou)--> *R722[down]
+|                |--(nmod)--> remainder
+|                                 |--(case)--> for
+|                                 |--(det)--> the
+|                                 |--(nmod)--> R708[season]
+|                                                  |--(case)--> of
+|                                                  |--(nmod:p)--> R706[saints]
+|                                                                   |--(det)--> R706[the]
+|                                                                   |--(case)--> '
+|--(punct)--> .
+
+	* entity-paths for event['shut', 'down']25_15ecb.xmlsent:5044

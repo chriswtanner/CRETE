@@ -1,0 +1,25 @@
+
+-----------------------------------------
+docid:9_7ecbplus.xml
+-----------------------------------------
+
+sentence #:obama administration overturns rule that weakened endangered species act 
+	[events]:[['weakened'], ['overturns']]
+	[entities]:[['administration'], ['that'], ['rule'], ['endangered', 'species', 'act']]
+*R1798[overturns]
+|--(nsubj)--> R1133[administration]
+|                |--(compou)--> obama
+|--(dobj)--> R1802[rule]
+                 |--(acl:re)--> *R1808[weakened]
+                                  |--(nsubj)--> R1802[that]
+                                  |--(dobj)--> R1800[act]
+                                                   |--(compou)--> R1800[endangered]
+                                                   |--(compou)--> R1800[species]
+
+	* entity-paths for event['weakened']9_7ecbplus.xmlsent:15715
+	['weakened --(nsubj)--> that']
+	['weakened --(dobj)--> Act']
+
+	* entity-paths for event['overturns']9_7ecbplus.xmlsent:15715
+	['overturns --(nsubj)--> administration']
+	['overturns --(dobj)--> rule']

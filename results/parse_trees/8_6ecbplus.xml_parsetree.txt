@@ -1,0 +1,44 @@
+
+-----------------------------------------
+docid:8_6ecbplus.xml
+-----------------------------------------
+
+sentence #:three people have suffocated to death as a result of a fire in marfin bank during ongoing battles between anti - measure protesters and police in athens . 
+	[events]:[['fire'], ['battles'], ['death']]
+	[entities]:[['in', 'athens'], ['protesters'], ['in', 'marfin', 'bank'], ['people'], ['police']]
+suffocated
+|--(nsubj)--> R1754[people]
+|                |--(nummod)--> three
+|--(aux)--> have
+|--(nmod)--> *R1753[death]
+|                |--(case)--> to
+|--(nmod)--> result
+|                |--(case)--> as
+|                |--(det)--> a
+|                |--(nmod)--> *R1748[fire]
+|                                 |--(case)--> of
+|                                 |--(det)--> a
+|                                 |--(nmod)--> R1752[bank]
+|                                                  |--(case)--> R1752[in]
+|                                                  |--(compou)--> R1752[marfin]
+|--(nmod)--> *R1779[battles]
+|                |--(case)--> during
+|                |--(amod)--> ongoing
+|                |--(nmod)--> anti
+|                                 |--(case)--> between
+|                                 |--(punct)--> -
+|                                 |--(dep)--> R1750[protesters]
+|                                                  |--(compou)--> measure
+|                                                  |--(cc)--> and
+|                                                  |--(conj)--> R1772[police]
+|                                                  |--(nmod)--> R1792[athens]
+|                                                                   |--(case)--> R1792[in]
+|--(punct)--> .
+
+	* entity-paths for event['fire']8_6ecbplus.xmlsent:15095
+	['fire --(nmod)--> Bank']
+
+	* entity-paths for event['battles']8_6ecbplus.xmlsent:15095
+	['battles --(nmod)--> anti', 'anti --(dep)--> protesters']
+
+	* entity-paths for event['death']8_6ecbplus.xmlsent:15095

@@ -1,0 +1,121 @@
+
+-----------------------------------------
+docid:24_9ecbplus.xml
+-----------------------------------------
+
+sentence #:a smash - and - grab on a high end paris store saw four robbers make off with jewelry and watches valued at over $2 . 6 million early monday . 
+	[events]:[['make', 'off'], ['grab'], ['smash']]
+	[entities]:[['robbers'], ['early', 'monday'], ['$2', '.', '6', 'million'], ['high', 'end', 'paris', 'store'], ['jewelry'], ['watches']]
+*R678[grab]
+|--(nsubj)--> *R668[smash]
+|                |--(det)--> a
+|                |--(punct)--> -
+|                |--(advmod)--> and
+|                |--(punct)--> -
+|--(nmod)--> R671[end]
+|                |--(case)--> on
+|                |--(det)--> a
+|                |--(amod)--> R671[high]
+|                |--(dep)--> R671[paris]
+|                                 |--(acl:re)--> saw
+|                                 |                |--(nsubj)--> R671[store]
+|                                 |                |--(ccomp)--> *R675[make]
+|                                 |                                 |--(nsubj)--> R669[robbers]
+|                                 |                                 |                |--(nummod)--> four
+|                                 |                                 |--(compou)--> *R675[off]
+|                                 |                                 |--(nmod)--> R679[jewelry]
+|                                 |                                 |                |--(case)--> with
+|                                 |                                 |--(cc)--> and
+|                                 |                                 |--(conj)--> R680[watches]
+|                                 |                                                  |--(dep)--> valued
+|                                 |                                                                   |--(nmod)--> R702[$2]
+|                                 |                                                                                    |--(case)--> at
+|                                 |                                                                                    |--(advmod)--> over
+|                                 |                                                                                    |--(nummod)--> R702[$2]
+|                                 |--(punct)--> R702[.]
+|                                 |--(dep)--> R702[million]
+|                                                  |--(compou)--> R702[6]
+|                                                  |--(nmod:t)--> R672[monday]
+|                                                                   |--(amod)--> R672[early]
+|--(punct)--> .
+
+	* entity-paths for event['make', 'off']24_9ecbplus.xmlsent:4917
+
+	* entity-paths for event['grab']24_9ecbplus.xmlsent:4917
+	['grab --(nmod)--> end']
+
+	* entity-paths for event['smash']24_9ecbplus.xmlsent:4917
+
+sentence #:crooks at $2 . 6 million heist on paris jewelry store 
+	[events]:[['heist']]
+	[entities]:[['paris', 'jewelry', 'store'], ['crooks']]
+R669[crooks]
+|--(nmod)--> $2
+|                |--(case)--> at
+|                |--(dep)--> $2
+|                |--(punct)--> .
+|--(nmod)--> *R684[heist]
+                 |--(nummod)--> million
+                 |                |--(compou)--> 6
+                 |--(case)--> on
+                 |--(dep)--> R671[store]
+                                  |--(compou)--> R671[paris]
+                                  |--(compou)--> R671[jewelry]
+
+	* entity-paths for event['heist']24_9ecbplus.xmlsent:4916
+	['heist --(dep)--> store']
+
+sentence #:after scooping up jewelry and watches estimated to be worth 2 million euros ( $2 . 6 million ) the thieves reversed their car out of the store and set fire to it before making off in another vehicle , le monde reported . 
+	[events]:[['set', 'fire'], ['making', 'off'], ['scooping', 'up']]
+	[entities]:[['jewelry'], ['watches'], ['thieves'], ['2', 'million', 'euros'], ['car'], ['it'], ['vehicle'], ['the', 'store']]
+reported
+|--(advcl)--> *R678[scooping]
+|                |--(mark)--> after
+|                |--(compou)--> *R678[up]
+|                |--(dobj)--> R679[jewelry]
+|                |--(cc)--> and
+|                |--(conj)--> R680[watches]
+|                                 |--(dep)--> estimated
+|                                                  |--(xcomp)--> worth
+|                                                  |                |--(mark)--> to
+|                                                  |                |--(cop)--> be
+|                                                  |                |--(dep)--> R702[million]
+|                                                  |                |                |--(compou)--> R702[2]
+|                                                  |                |--(xcomp)--> R702[euros]
+|                                                  |                                 |--(punct)--> (
+|                                                  |                                 |--(dep)--> $2
+|                                                  |                                 |                |--(dep)--> $2
+|                                                  |                                 |                |--(punct)--> .
+|                                                  |                                 |                |--(dep)--> million
+|                                                  |                                 |                |                |--(nummod)--> 6
+|                                                  |                                 |                |--(punct)--> )
+|                                                  |                                 |                |--(dep)--> R669[thieves]
+|                                                  |                                 |                                 |--(det)--> the
+|                                                  |                                 |--(acl)--> reversed
+|                                                  |                                                  |--(dobj)--> R670[car]
+|                                                  |                                                  |                |--(nmod:p)--> their
+|                                                  |                                                  |--(compou)--> out
+|                                                  |                                                  |--(nmod)--> R671[store]
+|                                                  |                                                                   |--(case)--> of
+|                                                  |                                                                   |--(det)--> R671[the]
+|                                                  |--(cc)--> and
+|                                                  |--(conj)--> *R681[set]
+|                                                  |                |--(dobj)--> *R681[fire]
+|                                                  |                |--(nmod)--> R670[it]
+|                                                  |                                 |--(case)--> to
+|                                                  |--(advcl)--> *R675[making]
+|                                                                   |--(mark)--> before
+|                                                                   |--(compou)--> *R675[off]
+|                                                                   |--(nmod)--> R704[vehicle]
+|                                                                                    |--(case)--> in
+|                                                                                    |--(det)--> another
+|--(punct)--> ,
+|--(nsubj)--> monde
+|                |--(compou)--> le
+|--(punct)--> .
+
+	* entity-paths for event['set', 'fire']24_9ecbplus.xmlsent:4919
+
+	* entity-paths for event['making', 'off']24_9ecbplus.xmlsent:4919
+
+	* entity-paths for event['scooping', 'up']24_9ecbplus.xmlsent:4919

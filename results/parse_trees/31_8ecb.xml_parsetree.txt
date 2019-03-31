@@ -1,0 +1,123 @@
+
+-----------------------------------------
+docid:31_8ecb.xml
+-----------------------------------------
+
+sentence #:phil ford 's school mark of 2,290 points set in 1978 held strong amongst a plethora of talented tar heels over the years , but hansbrough , who came back for his senior season after being crowned the national player of the year , moved into the top spot with a tough leaner in the lane with two purple aces defenders hanging on him with 7:42 left in the first half . 
+	[events]:[['moved', 'into'], ['mark'], ['top', 'spot']]
+	[entities]:[['phil', 'ford'], ['tar', 'heels'], ['hansbrough'], ['national', 'player', 'of', 'the', 'year'], ['him']]
+held
+|--(nsubj)--> *R998[mark]
+|                |--(nmod:p)--> R1005[ford]
+|                |                |--(compou)--> R1005[phil]
+|                |                |--(case)--> 's
+|                |--(compou)--> school
+|                |--(nmod)--> points
+|                                 |--(case)--> of
+|                                 |--(nummod)--> 2,290
+|                                 |--(acl)--> set
+|                                                  |--(nmod)--> 1978
+|                                                                   |--(case)--> in
+|--(xcomp)--> strong
+|                |--(nmod)--> plethora
+|                                 |--(case)--> amongst
+|                                 |--(det)--> a
+|                                 |--(nmod)--> R999[heels]
+|                                                  |--(case)--> of
+|                                                  |--(amod)--> talented
+|                                                  |--(compou)--> R999[tar]
+|--(nmod)--> years
+|                |--(case)--> over
+|                |--(det)--> the
+|--(punct)--> ,
+|--(cc)--> but
+|--(conj)--> *R996[moved]
+|                |--(nsubj)--> R997[hansbrough]
+|                |                |--(punct)--> ,
+|                |                |--(acl:re)--> came
+|                |                |                |--(nsubj)--> who
+|                |                |                |--(advmod)--> back
+|                |                |                |--(nmod)--> season
+|                |                |                |                |--(case)--> for
+|                |                |                |                |--(nmod:p)--> his
+|                |                |                |                |--(amod)--> senior
+|                |                |                |--(advcl)--> crowned
+|                |                |                                 |--(mark)--> after
+|                |                |                                 |--(auxpas)--> being
+|                |                |                                 |--(dobj)--> R997[player]
+|                |                |                                                  |--(det)--> the
+|                |                |                                                  |--(compou)--> R997[national]
+|                |                |                                                  |--(nmod)--> R997[year]
+|                |                |                                                                   |--(case)--> R997[of]
+|                |                |                                                                   |--(det)--> R997[the]
+|                |                |--(punct)--> ,
+|                |--(nmod)--> *R998[spot]
+|                |                |--(case)--> *R996[into]
+|                |                |--(det)--> the
+|                |                |--(amod)--> *R998[top]
+|                |--(nmod)--> leaner
+|                |                |--(case)--> with
+|                |                |--(det)--> a
+|                |                |--(amod)--> tough
+|                |                |--(nmod)--> lane
+|                |                                 |--(case)--> in
+|                |                                 |--(det)--> the
+|                |--(nmod)--> defenders
+|                                 |--(case)--> with
+|                                 |--(nummod)--> two
+|                                 |--(compou)--> purple
+|                                 |--(compou)--> aces
+|                                 |--(acl)--> hanging
+|                                                  |--(nmod)--> R997[him]
+|                                                  |                |--(case)--> on
+|                                                  |--(nmod)--> 7:42
+|                                                                   |--(case)--> with
+|                                                                   |--(acl)--> left
+|                                                                                    |--(nmod)--> half
+|                                                                                                     |--(case)--> in
+|                                                                                                     |--(det)--> the
+|                                                                                                     |--(amod)--> first
+|--(punct)--> .
+
+	* entity-paths for event['moved', 'into']31_8ecb.xmlsent:8602
+
+	* entity-paths for event['mark']31_8ecb.xmlsent:8602
+	['mark --(nmod:poss)--> Ford']
+
+	* entity-paths for event['top', 'spot']31_8ecb.xmlsent:8602
+
+sentence #:forward tyler hansbrough broke north carolina 's all-time scoring record in thursday 's game against evansville . 
+	[events]:[['game'], ['broke'], ['scoring', 'record']]
+	[entities]:[['north', 'carolina'], ['thursday'], ['tyler', 'hansbrough'], ['evansville']]
+*R996[broke]
+|--(advmod)--> forward
+|--(nsubj)--> R997[hansbrough]
+|                |--(compou)--> R997[tyler]
+|--(dobj)--> *R998[record]
+|                |--(nmod:p)--> R999[carolina]
+|                |                |--(compou)--> R999[north]
+|                |                |--(case)--> 's
+|                |--(amod)--> all-time
+|                |--(amod)--> *R998[scoring]
+|                |--(nmod)--> *R1010[game]
+|                                 |--(case)--> in
+|                                 |--(nmod:p)--> R1006[thursday]
+|                                 |                |--(case)--> 's
+|                                 |--(nmod)--> R1008[evansville]
+|                                                  |--(case)--> against
+|--(punct)--> .
+
+	* entity-paths for event['game']31_8ecb.xmlsent:8601
+	['game --(nmod:poss)--> Thursday']
+	['game --(nmod)--> Evansville']
+
+	* entity-paths for event['broke']31_8ecb.xmlsent:8601
+	['broke --(nsubj)--> Hansbrough']
+	['broke --(dobj)--> record', 'record --(nmod:poss)--> Carolina']
+	['broke --(dobj)--> record', 'record --(nmod)--> game', 'game --(nmod:poss)--> Thursday']
+	['broke --(dobj)--> record', 'record --(nmod)--> game', 'game --(nmod)--> Evansville']
+
+	* entity-paths for event['scoring', 'record']31_8ecb.xmlsent:8601
+	['record --(nmod:poss)--> Carolina']
+	['record --(nmod)--> game', 'game --(nmod:poss)--> Thursday']
+	['record --(nmod)--> game', 'game --(nmod)--> Evansville']

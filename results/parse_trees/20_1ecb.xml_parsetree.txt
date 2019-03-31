@@ -1,0 +1,47 @@
+
+-----------------------------------------
+docid:20_1ecb.xml
+-----------------------------------------
+
+sentence #:a 5.6 magnitude earthquake hit an island off iran 's southern coast on sunday , injuring five people and damaging buildings , iranian media said . 
+	[events]:[['damaging'], ['earthquake'], ['hit'], ['injuring']]
+	[entities]:[['an', 'island', 'off', 'iran', "'s", 'southern', 'coast'], ['buildings'], ['sunday'], ['five', 'people'], ['5.6']]
+said
+|--(ccomp)--> *R516[hit]
+|                |--(nsubj)--> *R517[earthquake]
+|                |                |--(det)--> a
+|                |                |--(nummod)--> R518[5.6]
+|                |                |--(compou)--> magnitude
+|                |--(nmod)--> R515[coast]
+|                |                |--(advmod)--> R515[island]
+|                |                |                |--(det)--> R515[an]
+|                |                |                |--(case)--> R515[off]
+|                |                |--(nmod:p)--> R515[iran]
+|                |                |                |--(case)--> R515['s]
+|                |                |--(amod)--> R515[southern]
+|                |                |--(case)--> on
+|                |                |--(dep)--> R519[sunday]
+|                |--(punct)--> ,
+|                |--(xcomp)--> *R520[injuring]
+|                                 |--(dobj)--> R521[people]
+|                                                  |--(nummod)--> R521[five]
+|                                                  |--(cc)--> and
+|                                                  |--(conj)--> R522[buildings]
+|                                                                   |--(amod)--> *R523[damaging]
+|--(punct)--> ,
+|--(nsubj)--> media
+|                |--(amod)--> iranian
+|--(punct)--> .
+
+	* entity-paths for event['damaging']20_1ecb.xmlsent:3816
+
+	* entity-paths for event['earthquake']20_1ecb.xmlsent:3816
+	['earthquake --(nummod)--> 5.6']
+
+	* entity-paths for event['hit']20_1ecb.xmlsent:3816
+	['hit --(nsubj)--> earthquake', 'earthquake --(nummod)--> 5.6']
+	['hit --(nmod)--> coast']
+	['hit --(xcomp)--> injuring', 'injuring --(dobj)--> people']
+
+	* entity-paths for event['injuring']20_1ecb.xmlsent:3816
+	['injuring --(dobj)--> people']

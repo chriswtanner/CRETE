@@ -1,0 +1,40 @@
+
+-----------------------------------------
+docid:13_22ecb.xml
+-----------------------------------------
+
+sentence #:arson is suspected in the burning of the church former vice presidential candidate sarah palin attends . 
+	[events]:[['arson'], ['burning'], ['attends'], ['suspected']]
+	[entities]:[['the', 'church'], ['sarah', 'palin']]
+*R273[attends]
+|--(dep)--> *R286[suspected]
+|                |--(nsubjp)--> *R270[arson]
+|                |--(auxpas)--> is
+|                |--(nmod)--> *R261[burning]
+|                                 |--(case)--> in
+|                                 |--(det)--> the
+|                                 |--(nmod)--> vice
+|                                                  |--(case)--> of
+|                                                  |--(det)--> R260[the]
+|                                                  |--(compou)--> R260[church]
+|                                                  |--(amod)--> former
+|--(nsubj)--> R262[palin]
+|                |--(amod)--> presidential
+|                |--(compou)--> candidate
+|                |--(compou)--> R262[sarah]
+|--(punct)--> .
+
+	* entity-paths for event['arson']13_22ecb.xmlsent:1358
+
+	* entity-paths for event['burning']13_22ecb.xmlsent:1358
+	['burning --(nmod)--> vice', 'vice --(det)--> the']
+	['burning --(nmod)--> vice', 'vice --(compound)--> church']
+
+	* entity-paths for event['attends']13_22ecb.xmlsent:1358
+	['attends --(dep)--> suspected', 'suspected --(nmod)--> burning', 'burning --(nmod)--> vice', 'vice --(det)--> the']
+	['attends --(dep)--> suspected', 'suspected --(nmod)--> burning', 'burning --(nmod)--> vice', 'vice --(compound)--> church']
+	['attends --(nsubj)--> Palin']
+
+	* entity-paths for event['suspected']13_22ecb.xmlsent:1358
+	['suspected --(nmod)--> burning', 'burning --(nmod)--> vice', 'vice --(det)--> the']
+	['suspected --(nmod)--> burning', 'burning --(nmod)--> vice', 'vice --(compound)--> church']

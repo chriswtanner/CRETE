@@ -1,0 +1,115 @@
+
+-----------------------------------------
+docid:37_9ecbplus.xml
+-----------------------------------------
+
+sentence #:a 6 . 1 - magnitude earthquake which hit the indonesian province of aceh on tuesday killed at least one person , injured dozens and destroyed buildings , sparking panic in a region devastated by the quake - triggered tsunami of 2004 . 
+	[events]:[['6', '.', '1', '-', 'magnitude', 'earthquake'], ['quake'], ['panic'], ['killed'], ['hit'], ['sparking'], ['triggered'], ['injured'], ['destroyed'], ['devastated'], ['tsunami']]
+	[entities]:[['one', 'person'], ['dozens'], ['of', '2004'], ['indonesian', 'province', 'of', 'aceh'], ['region'], ['on', 'tuesday'], ['buildings']]
+a
+|--(acl:re)--> *R1233[6]
+|                |--(punct)--> *R1233[.]
+|--(acl:re)--> *R1272[destroyed]
+|                |--(dep)--> *R1233[1]
+|                |--(advcl)--> *R1236[hit]
+|                |                |--(dep)--> *R1233[magnitude]
+|                |                |                |--(punct)--> *R1233[-]
+|                |                |                |--(dep)--> *R1233[earthquake]
+|                |                |--(nsubj)--> which
+|                |                |--(ccomp)--> *R1275[killed]
+|                |                                 |--(nsubj)--> R1237[province]
+|                |                                 |                |--(det)--> the
+|                |                                 |                |--(amod)--> R1237[indonesian]
+|                |                                 |                |--(nmod)--> R1237[aceh]
+|                |                                 |                                 |--(case)--> R1237[of]
+|                |                                 |                                 |--(nmod)--> R1245[tuesday]
+|                |                                 |                                                  |--(case)--> R1245[on]
+|                |                                 |--(dobj)--> R1276[person]
+|                |                                                  |--(nummod)--> R1276[one]
+|                |                                                                   |--(nmod:n)--> least
+|                |                                                                                    |--(case)--> at
+|                |--(punct)--> ,
+|                |--(dep)--> *R1234[injured]
+|                |--(nsubj)--> R1235[dozens]
+|                |--(cc)--> and
+|                |--(dobj)--> R1257[buildings]
+|                |--(punct)--> ,
+|                |--(parata)--> *R1238[devastated]
+|                                 |--(nsubj)--> *R1249[panic]
+|                                 |                |--(amod)--> *R1248[sparking]
+|                                 |                |--(nmod)--> R1237[region]
+|                                 |                                 |--(case)--> in
+|                                 |                                 |--(det)--> a
+|                                 |--(nmod)--> *R1239[quake]
+|                                                  |--(case)--> by
+|                                                  |--(det)--> the
+|                                                  |--(punct)--> -
+|                                                  |--(acl)--> *R1240[triggered]
+|                                                                   |--(dobj)--> *R1241[tsunami]
+|                                                                                    |--(nmod)--> R1242[2004]
+|                                                                                                     |--(case)--> R1242[of]
+|--(punct)--> .
+
+	* entity-paths for event['6', '.', '1', '-', 'magnitude', 'earthquake']37_9ecbplus.xmlsent:10704
+
+	* entity-paths for event['quake']37_9ecbplus.xmlsent:10704
+	['quake --(acl)--> triggered', 'triggered --(dobj)--> tsunami', 'tsunami --(nmod)--> 2004']
+
+	* entity-paths for event['panic']37_9ecbplus.xmlsent:10704
+	['panic --(nmod)--> region']
+
+	* entity-paths for event['killed']37_9ecbplus.xmlsent:10704
+	['killed --(nsubj)--> province']
+	['killed --(dobj)--> person']
+
+	* entity-paths for event['hit']37_9ecbplus.xmlsent:10704
+	['hit --(ccomp)--> killed', 'killed --(nsubj)--> province']
+	['hit --(ccomp)--> killed', 'killed --(dobj)--> person']
+
+	* entity-paths for event['sparking']37_9ecbplus.xmlsent:10704
+
+	* entity-paths for event['triggered']37_9ecbplus.xmlsent:10704
+	['triggered --(dobj)--> tsunami', 'tsunami --(nmod)--> 2004']
+
+	* entity-paths for event['injured']37_9ecbplus.xmlsent:10704
+
+	* entity-paths for event['destroyed']37_9ecbplus.xmlsent:10704
+	['destroyed --(advcl)--> hit', 'hit --(ccomp)--> killed', 'killed --(nsubj)--> province']
+	['destroyed --(advcl)--> hit', 'hit --(ccomp)--> killed', 'killed --(dobj)--> person']
+	['destroyed --(nsubj)--> dozens']
+	['destroyed --(dobj)--> buildings']
+	['destroyed --(parataxis)--> devastated', 'devastated --(nsubj)--> panic', 'panic --(nmod)--> region']
+	['destroyed --(parataxis)--> devastated', 'devastated --(nmod)--> quake', 'quake --(acl)--> triggered', 'triggered --(dobj)--> tsunami', 'tsunami --(nmod)--> 2004']
+
+	* entity-paths for event['devastated']37_9ecbplus.xmlsent:10704
+	['devastated --(nsubj)--> panic', 'panic --(nmod)--> region']
+	['devastated --(nmod)--> quake', 'quake --(acl)--> triggered', 'triggered --(dobj)--> tsunami', 'tsunami --(nmod)--> 2004']
+
+	* entity-paths for event['tsunami']37_9ecbplus.xmlsent:10704
+	['tsunami --(nmod)--> 2004']
+
+sentence #:dozens injured as 6 . 1 - magnitude quake hits indonesia's aceh 
+	[events]:[['hits'], ['6', '.', '1', '-', 'magnitude', 'quake'], ['injured']]
+	[entities]:[["indonesia's", 'aceh'], ['dozens']]
+*R1234[injured]
+|--(nsubj)--> R1235[dozens]
+|--(advcl)--> *R1233[1]
+|                |--(mark)--> as
+|                |--(nsubj)--> *R1233[6]
+|                                 |--(punct)--> *R1233[.]
+|--(punct)--> *R1233[-]
+|--(parata)--> *R1236[hits]
+                 |--(nsubj)--> *R1233[quake]
+                 |                |--(compou)--> *R1233[magnitude]
+                 |--(dobj)--> R1237[aceh]
+                                  |--(nmod:p)--> R1237[indonesia's]
+                                                   |--(case)--> R1237[indonesia's]
+
+	* entity-paths for event['hits']37_9ecbplus.xmlsent:10702
+	['hits --(dobj)--> Aceh']
+
+	* entity-paths for event['6', '.', '1', '-', 'magnitude', 'quake']37_9ecbplus.xmlsent:10702
+
+	* entity-paths for event['injured']37_9ecbplus.xmlsent:10702
+	['injured --(nsubj)--> Dozens']
+	['injured --(parataxis)--> hits', 'hits --(dobj)--> Aceh']

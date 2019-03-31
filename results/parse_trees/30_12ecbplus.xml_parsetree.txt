@@ -1,0 +1,70 @@
+
+-----------------------------------------
+docid:30_12ecbplus.xml
+-----------------------------------------
+
+sentence #:"the seacom undersea cable , which provides a data link between south africa , europe and india , experienced downtime beginning on saturday 8 october 2011 , caused by a problem on a cable between abu talat ( egypt ) and marseilles ( france ) . . 
+	[events]:[['problem'], ['caused'], ['data', 'link'], ['downtime'], ['experienced']]
+	[entities]:[['between', 'abu', 'talat', '(', 'egypt', ')', 'and', 'marseilles', '(', 'france', ')'], ['undersea', 'cable'], ['on', 'saturday', '8', 'october', '2011'], ['between', 'south', 'africa', ',', 'europe', 'and', 'india'], ['seacom'], ['which'], ['cable']]
+*R971[experienced]
+|--(punct)--> "the
+|--(nsubj)--> R974[cable]
+|                |--(det)--> "the
+|                |--(compou)--> R956[seacom]
+|                |--(compou)--> R974[undersea]
+|                |--(punct)--> ,
+|                |--(acl:re)--> provides
+|                |                |--(nsubj)--> R974[which]
+|                |                |--(dobj)--> *R958[link]
+|                |                                 |--(det)--> a
+|                |                                 |--(compou)--> *R958[data]
+|                |                                 |--(nmod)--> R977[africa]
+|                |                                                  |--(case)--> R977[between]
+|                |                                                  |--(compou)--> R977[south]
+|                |                                                  |--(punct)--> R977[,]
+|                |                                                  |--(conj)--> R977[europe]
+|                |                                                  |--(cc)--> R977[and]
+|                |                                                  |--(conj)--> R977[india]
+|                |--(punct)--> ,
+|--(dobj)--> beginning
+|                |--(compou)--> *R963[downtime]
+|--(nmod)--> R970[saturday]
+|                |--(case)--> R970[on]
+|                |--(nummod)--> R970[8]
+|                |--(nmod:t)--> R970[october]
+|                |                |--(nummod)--> R970[2011]
+|                |--(punct)--> ,
+|                |--(acl)--> *R978[caused]
+|                                 |--(nmod)--> *R973[problem]
+|                                 |                |--(case)--> by
+|                                 |                |--(det)--> a
+|                                 |--(nmod)--> R974[cable]
+|                                 |                |--(case)--> on
+|                                 |                |--(det)--> a
+|                                 |                |--(nmod)--> R979[talat]
+|                                 |                                 |--(case)--> R979[between]
+|                                 |                                 |--(compou)--> R979[abu]
+|                                 |                                 |--(appos)--> R979[egypt]
+|                                 |                                 |                |--(punct)--> R979[(]
+|                                 |                                 |                |--(punct)--> R979[)]
+|                                 |                                 |--(cc)--> R979[and]
+|                                 |                                 |--(conj)--> R979[marseilles]
+|                                 |                                 |--(appos)--> R979[france]
+|                                 |                                                  |--(punct)--> R979[(]
+|                                 |                                                  |--(punct)--> R979[)]
+|                                 |--(punct)--> .
+|--(punct)--> .
+
+	* entity-paths for event['problem']30_12ecbplus.xmlsent:7762
+
+	* entity-paths for event['caused']30_12ecbplus.xmlsent:7762
+	['caused --(nmod)--> cable']
+
+	* entity-paths for event['data', 'link']30_12ecbplus.xmlsent:7762
+	['link --(nmod)--> Africa']
+
+	* entity-paths for event['downtime']30_12ecbplus.xmlsent:7762
+
+	* entity-paths for event['experienced']30_12ecbplus.xmlsent:7762
+	['experienced --(nsubj)--> cable']
+	['experienced --(nmod)--> Saturday']

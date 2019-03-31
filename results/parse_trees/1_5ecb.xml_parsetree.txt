@@ -1,0 +1,107 @@
+
+-----------------------------------------
+docid:1_5ecb.xml
+-----------------------------------------
+
+sentence #:" we appreciate your respect to her and her family 's privacy at this time , " the actress 's rep jack ketsoyan tells people magazine . 
+	[events]:[['tells'], ['appreciate'], ['respect'], ['privacy']]
+	[entities]:[['we'], ['her'], ['family'], ['jack', 'ketsoyan'], ['people', 'magazine']]
+*R0[tells]
+|--(punct)--> "
+|--(ccomp)--> *R68[appreciate]
+|                |--(nsubj)--> R69[we]
+|                |--(dobj)--> *R70[privacy]
+|                                 |--(nmod:p)--> *R71[respect]
+|                                 |                |--(nmod:p)--> your
+|                                 |                |--(nmod)--> R7[family]
+|                                 |                |                |--(case)--> to
+|                                 |                |                |--(amod)--> R2[her]
+|                                 |                |                                 |--(cc)--> and
+|                                 |                |                                 |--(conj)--> her
+|                                 |                |--(case)--> 's
+|                                 |--(nmod)--> time
+|                                                  |--(case)--> at
+|                                                  |--(det)--> this
+|--(punct)--> ,
+|--(punct)--> "
+|--(nsubj)--> R4[ketsoyan]
+|                |--(nmod:p)--> actress
+|                |                |--(det)--> the
+|                |                |--(case)--> 's
+|                |--(compou)--> rep
+|                |--(compou)--> R4[jack]
+|--(iobj)--> R5[people]
+|--(dobj)--> R5[magazine]
+|--(punct)--> .
+
+	* entity-paths for event['tells']1_5ecb.xmlsent:240
+	['tells --(ccomp)--> appreciate', 'appreciate --(nsubj)--> We']
+	['tells --(ccomp)--> appreciate', 'appreciate --(dobj)--> privacy', 'privacy --(nmod:poss)--> respect', 'respect --(nmod)--> family']
+	['tells --(nsubj)--> Ketsoyan']
+	['tells --(iobj)--> People']
+	['tells --(dobj)--> magazine']
+
+	* entity-paths for event['appreciate']1_5ecb.xmlsent:240
+	['appreciate --(nsubj)--> We']
+	['appreciate --(dobj)--> privacy', 'privacy --(nmod:poss)--> respect', 'respect --(nmod)--> family']
+
+	* entity-paths for event['respect']1_5ecb.xmlsent:240
+	['respect --(nmod)--> family']
+
+	* entity-paths for event['privacy']1_5ecb.xmlsent:240
+	['privacy --(nmod:poss)--> respect', 'respect --(nmod)--> family']
+
+sentence #:the original trainwreck tara reid 's publicist confirmed that the actress reid was admitted into promises treatment center in los angeles , california . 
+	[events]:[['confirmed'], ['admitted']]
+	[entities]:[['reid'], ['publicist'], ['into', 'promises', 'treatment', 'center', 'in', 'los', 'angeles', ',', 'california'], ['tara', 'reid']]
+R3[promises]
+|--(nsubj)--> trainwreck
+|                |--(det)--> the
+|                |--(amod)--> original
+|                |--(acl:re)--> *R0[confirmed]
+|                                 |--(nsubj)--> R4[publicist]
+|                                 |                |--(nmod:p)--> R2[reid]
+|                                 |                                 |--(compou)--> R2[tara]
+|                                 |                                 |--(case)--> 's
+|                                 |--(ccomp)--> *R1[admitted]
+|                                                  |--(mark)--> that
+|                                                  |--(nsubjp)--> R2[reid]
+|                                                  |                |--(det)--> the
+|                                                  |                |--(compou)--> actress
+|                                                  |--(auxpas)--> was
+|                                                  |--(nmod)--> R3[into]
+|--(dobj)--> R3[center]
+|                |--(compou)--> R3[treatment]
+|--(nmod)--> R3[angeles]
+|                |--(case)--> R3[in]
+|                |--(compou)--> R3[los]
+|                |--(punct)--> R3[,]
+|                |--(appos)--> R3[california]
+|--(punct)--> .
+
+	* entity-paths for event['confirmed']1_5ecb.xmlsent:239
+	['confirmed --(nsubj)--> publicist']
+	['confirmed --(ccomp)--> admitted', 'admitted --(nsubjpass)--> Reid']
+	['confirmed --(ccomp)--> admitted', 'admitted --(nmod)--> into']
+
+	* entity-paths for event['admitted']1_5ecb.xmlsent:239
+	['admitted --(nsubjpass)--> Reid']
+	['admitted --(nmod)--> into']
+
+sentence #:reid checked herself in on tuesday , december 9 , 2008 . 
+	[events]:[['checked', 'in']]
+	[entities]:[['reid'], ['herself'], ['on', 'tuesday', ',', 'december', '9', ',', '2008']]
+*R1[checked]
+|--(nsubj)--> R2[reid]
+|--(dobj)--> R2[herself]
+|--(nmod)--> R6[tuesday]
+|                |--(case)--> *R1[in]
+|                |--(case)--> R6[on]
+|                |--(punct)--> R6[,]
+|                |--(appos)--> R6[december]
+|                                 |--(nummod)--> R6[9]
+|                                 |--(punct)--> R6[,]
+|                                 |--(nummod)--> R6[2008]
+|--(punct)--> .
+
+	* entity-paths for event['checked', 'in']1_5ecb.xmlsent:241

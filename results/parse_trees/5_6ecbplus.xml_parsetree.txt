@@ -1,0 +1,39 @@
+
+-----------------------------------------
+docid:5_6ecbplus.xml
+-----------------------------------------
+
+sentence #:o'brien , fired on june 8 , is seeking up to $6 million in a breach - of - contract suit against ohio state . 
+	[events]:[['suit'], ['fired']]
+	[entities]:[['on', 'june', '8'], ["o'brien"]]
+seeking
+|--(nsubj)--> R1684[o'brien]
+|                |--(punct)--> ,
+|                |--(acl)--> *R1683[fired]
+|                |                |--(nmod)--> R1690[june]
+|                |                                 |--(case)--> R1690[on]
+|                |                                 |--(nummod)--> R1690[8]
+|                |--(punct)--> ,
+|--(aux)--> is
+|--(compou)--> up
+|--(nmod)--> $6
+|                |--(case)--> to
+|                |--(nummod)--> million
+|                |                |--(compou)--> $6
+|                |--(nmod)--> *R1691[suit]
+|                                 |--(case)--> in
+|                                 |--(dep)--> breach
+|                                 |                |--(det)--> a
+|                                 |                |--(punct)--> -
+|                                 |                |--(dep)--> of
+|                                 |--(punct)--> -
+|                                 |--(compou)--> contract
+|--(nmod)--> state
+|                |--(case)--> against
+|                |--(compou)--> ohio
+|--(punct)--> .
+
+	* entity-paths for event['suit']5_6ecbplus.xmlsent:14260
+
+	* entity-paths for event['fired']5_6ecbplus.xmlsent:14260
+	['fired --(nmod)--> June']

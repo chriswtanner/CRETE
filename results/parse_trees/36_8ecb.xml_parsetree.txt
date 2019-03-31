@@ -1,0 +1,53 @@
+
+-----------------------------------------
+docid:36_8ecb.xml
+-----------------------------------------
+
+sentence #:two leaders of polygamous groups with ties to utah have been arrested in canada , charged with practicing polygamy . 
+	[events]:[['charged'], ['polygamy'], ['arrested']]
+	[entities]:[['utah'], ['in', 'canada'], ['leaders'], ['groups']]
+*R1195[arrested]
+|--(nsubjp)--> R1196[leaders]
+|                |--(nummod)--> two
+|                |--(nmod)--> R1197[groups]
+|                                 |--(case)--> of
+|                                 |--(amod)--> polygamous
+|                                 |--(nmod)--> ties
+|                                                  |--(case)--> with
+|                                                  |--(nmod)--> R1204[utah]
+|                                                                   |--(case)--> to
+|--(aux)--> have
+|--(auxpas)--> been
+|--(nmod)--> R1198[canada]
+|                |--(case)--> R1198[in]
+|                |--(punct)--> ,
+|                |--(acl)--> *R1199[charged]
+|                                 |--(advcl)--> practicing
+|                                                  |--(mark)--> with
+|                                                  |--(dobj)--> *R1201[polygamy]
+|--(punct)--> .
+
+	* entity-paths for event['charged']36_8ecb.xmlsent:10294
+
+	* entity-paths for event['polygamy']36_8ecb.xmlsent:10294
+
+	* entity-paths for event['arrested']36_8ecb.xmlsent:10294
+	['arrested --(nsubjpass)--> leaders']
+	['arrested --(nmod)--> Canada']
+
+sentence #:polygamous leaders arrested in canada , ordered to surrender passports 
+	[events]:[['arrested']]
+	[entities]:[['in', 'canada'], ['leaders']]
+ordered
+|--(nsubj)--> R1196[leaders]
+|                |--(amod)--> polygamous
+|                |--(acl)--> *R1195[arrested]
+|                                 |--(nmod)--> R1198[canada]
+|                                                  |--(case)--> R1198[in]
+|--(punct)--> ,
+|--(xcomp)--> surrender
+                 |--(mark)--> to
+                 |--(dobj)--> passports
+
+	* entity-paths for event['arrested']36_8ecb.xmlsent:10293
+	['arrested --(nmod)--> Canada']

@@ -1,0 +1,66 @@
+
+-----------------------------------------
+docid:36_4ecbplus.xml
+-----------------------------------------
+
+sentence #:prosecutors tuesday put on the most shocking evidence yet in the trial of warren jeffs , who is charged with sexually assaulting underage girls . 
+	[events]:[['charged'], ['trial'], ['put', 'on'], ['sexually', 'assaulting']]
+	[entities]:[['girls'], ['evidence'], ['who'], ['warren', 'jeffs'], ['prosecutors']]
+*R1224[put]
+|--(nsubj)--> R1225[prosecutors]
+|--(nmod:t)--> tuesday
+|--(nmod)--> R1226[evidence]
+|                |--(case)--> *R1224[on]
+|                |--(det)--> the
+|                |--(amod)--> shocking
+|                                 |--(advmod)--> most
+|--(advmod)--> yet
+|--(nmod)--> *R1192[trial]
+|                |--(case)--> in
+|                |--(det)--> the
+|                |--(nmod)--> R1183[jeffs]
+|                                 |--(case)--> of
+|                                 |--(compou)--> R1183[warren]
+|                                 |--(punct)--> ,
+|                                 |--(acl:re)--> *R1184[charged]
+|                                                  |--(nsubjp)--> R1183[who]
+|                                                  |--(auxpas)--> is
+|                                                  |--(advcl)--> *R1186[assaulting]
+|                                                                   |--(mark)--> with
+|                                                                   |--(advmod)--> *R1186[sexually]
+|                                                                   |--(dobj)--> R1188[girls]
+|                                                                                    |--(amod)--> underage
+|--(punct)--> .
+
+	* entity-paths for event['charged']36_4ecbplus.xmlsent:10085
+	['charged --(nsubjpass)--> who']
+	['charged --(advcl)--> assaulting', 'assaulting --(dobj)--> girls']
+
+	* entity-paths for event['trial']36_4ecbplus.xmlsent:10085
+	['trial --(nmod)--> Jeffs']
+
+	* entity-paths for event['put', 'on']36_4ecbplus.xmlsent:10085
+
+	* entity-paths for event['sexually', 'assaulting']36_4ecbplus.xmlsent:10085
+	['assaulting --(dobj)--> girls']
+
+sentence #:texas jury hears warren jeffs sex tapes despite flds leader's objections 
+	[events]:[['hears']]
+	[entities]:[['warren', 'jeffs'], ['sex', 'tapes'], ['texas', 'jury'], ['flds', "leader's"]]
+*R1227[hears]
+|--(nsubj)--> R1209[jury]
+|                |--(compou)--> R1209[texas]
+|--(dobj)--> R1226[tapes]
+|                |--(compou)--> R1183[warren]
+|                |--(compou)--> R1183[jeffs]
+|                |--(compou)--> R1226[sex]
+|--(nmod)--> objections
+                 |--(case)--> despite
+                 |--(nmod:p)--> R1183[leader's]
+                                  |--(compou)--> R1183[flds]
+                                  |--(case)--> R1183[leader's]
+
+	* entity-paths for event['hears']36_4ecbplus.xmlsent:10083
+	['hears --(nsubj)--> jury']
+	['hears --(dobj)--> tapes']
+	['hears --(nmod)--> objections', 'objections --(nmod:poss)--> leader']

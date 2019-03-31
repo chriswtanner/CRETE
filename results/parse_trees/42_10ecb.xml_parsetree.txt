@@ -1,0 +1,36 @@
+
+-----------------------------------------
+docid:42_10ecb.xml
+-----------------------------------------
+
+sentence #:t-mobile has officially announce that they will launch the new rim blackbery curve 8900 sometime in mid-february . 
+	[events]:[['announce'], ['launch']]
+	[entities]:[['they'], ['t-mobile'], ['blackbery', 'curve', '8900'], ['sometime', 'in', 'mid-february']]
+has
+|--(nsubj)--> R1517[t-mobile]
+|--(advmod)--> officially
+|--(ccomp)--> *R1518[announce]
+|                |--(ccomp)--> *R1519[launch]
+|                                 |--(mark)--> that
+|                                 |--(nsubj)--> R1517[they]
+|                                 |--(aux)--> will
+|                                 |--(dobj)--> R1520[curve]
+|                                 |                |--(det)--> the
+|                                 |                |--(amod)--> new
+|                                 |                |--(compou)--> rim
+|                                 |                |--(compou)--> R1520[blackbery]
+|                                 |--(nmod)--> R1521[mid-february]
+|                                                  |--(advmod)--> R1521[sometime]
+|                                                  |                |--(nmod:n)--> R1520[8900]
+|                                                  |--(case)--> R1521[in]
+|--(punct)--> .
+
+	* entity-paths for event['announce']42_10ecb.xmlsent:12645
+	['announce --(ccomp)--> launch', 'launch --(nsubj)--> they']
+	['announce --(ccomp)--> launch', 'launch --(dobj)--> Curve']
+	['announce --(ccomp)--> launch', 'launch --(nmod)--> mid-February']
+
+	* entity-paths for event['launch']42_10ecb.xmlsent:12645
+	['launch --(nsubj)--> they']
+	['launch --(dobj)--> Curve']
+	['launch --(nmod)--> mid-February']

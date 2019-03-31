@@ -1,0 +1,58 @@
+
+-----------------------------------------
+docid:13_9ecbplus.xml
+-----------------------------------------
+
+sentence #:alaska lost part of its history on tuesday , when a pre - dawn blaze demolished the old matanuska maid dairy warehouse building in palmer . 
+	[events]:[['demolished'], ['blaze'], ['history']]
+	[entities]:[['on', 'tuesday'], ['in', 'palmer'], ['matanuska', 'maid', 'dairy'], ['alaska']]
+lost
+|--(nsubj)--> R282[alaska]
+|--(dobj)--> part
+|                |--(nmod)--> *R268[history]
+|                                 |--(case)--> of
+|                                 |--(nmod:p)--> its
+|--(nmod)--> R267[tuesday]
+|                |--(case)--> R267[on]
+|--(punct)--> ,
+|--(advcl)--> *R264[demolished]
+|                |--(advmod)--> when
+|                |--(nsubj)--> pre
+|                |                |--(det)--> a
+|                |                |--(punct)--> -
+|                |                |--(dep)--> *R263[blaze]
+|                |                                 |--(compou)--> dawn
+|                |--(dobj)--> building
+|                |                |--(det)--> the
+|                |                |--(amod)--> old
+|                |                |--(compou)--> R265[matanuska]
+|                |                |--(compou)--> R265[maid]
+|                |                |--(compou)--> R265[dairy]
+|                |                |--(compou)--> warehouse
+|                |--(nmod)--> R266[palmer]
+|                                 |--(case)--> R266[in]
+|--(punct)--> .
+
+	* entity-paths for event['demolished']13_9ecbplus.xmlsent:1645
+	['demolished --(dobj)--> building', 'building --(compound)--> Matanuska']
+	['demolished --(dobj)--> building', 'building --(compound)--> Maid']
+	['demolished --(dobj)--> building', 'building --(compound)--> Dairy']
+	['demolished --(nmod)--> Palmer']
+
+	* entity-paths for event['blaze']13_9ecbplus.xmlsent:1645
+
+	* entity-paths for event['history']13_9ecbplus.xmlsent:1645
+
+sentence #:matanuska maid building burns down 
+	[events]:[['burns', 'down']]
+	[entities]:[['matanuska', 'maid', 'building']]
+*R277[down]
+|--(compou)--> R265[matanuska]
+|--(compou)--> R265[maid]
+|--(compou)--> R265[building]
+|--(compou)--> *R277[burns]
+
+	* entity-paths for event['burns', 'down']13_9ecbplus.xmlsent:1643
+	['Down --(compound)--> Matanuska']
+	['Down --(compound)--> Maid']
+	['Down --(compound)--> Building']

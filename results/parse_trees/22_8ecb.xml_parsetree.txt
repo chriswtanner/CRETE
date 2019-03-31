@@ -1,0 +1,34 @@
+
+-----------------------------------------
+docid:22_8ecb.xml
+-----------------------------------------
+
+sentence #:the staunton police department will hold a press conference this afternoon to address its investigation into a double murder back in 1967 . 
+	[events]:[['murder']]
+	[entities]:[['staunton', 'police', 'department'], ['1967']]
+hold
+|--(nsubj)--> R633[department]
+|                |--(det)--> the
+|                |--(compou)--> R633[staunton]
+|                |--(compou)--> R633[police]
+|--(aux)--> will
+|--(dobj)--> conference
+|                |--(det)--> a
+|                |--(compou)--> press
+|--(nmod:t)--> afternoon
+|                |--(det)--> this
+|--(advcl)--> address
+|                |--(mark)--> to
+|                |--(dobj)--> investigation
+|                |                |--(nmod:p)--> its
+|                |--(nmod)--> *R619[murder]
+|                                 |--(case)--> into
+|                                 |--(det)--> a
+|                                 |--(amod)--> double
+|                                 |--(advmod)--> back
+|                                                  |--(nmod)--> R622[1967]
+|                                                                   |--(case)--> in
+|--(punct)--> .
+
+	* entity-paths for event['murder']22_8ecb.xmlsent:4550
+	['murder --(advmod)--> back', 'back --(nmod)--> 1967']

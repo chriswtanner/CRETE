@@ -1,0 +1,45 @@
+
+-----------------------------------------
+docid:25_10ecbplus.xml
+-----------------------------------------
+
+sentence #:the injury woes continued wednesday for the defending super bowl champion new orleans saints , who have placed veteran running back pierre thomas on season - ending reserve . 
+	[events]:[['injury'], ['on', 'reserve'], ['placed']]
+	[entities]:[['new', 'orleans', 'saints'], ['wednesday'], ['who'], ['pierre', 'thomas']]
+continued
+|--(nsubj)--> woes
+|                |--(det)--> the
+|                |--(compou)--> *R713[injury]
+|--(nmod:t)--> R714[wednesday]
+|--(nmod)--> champion
+|                |--(case)--> for
+|                |--(det)--> the
+|                |--(amod)--> defending
+|                |--(compou)--> super
+|                |--(compou)--> bowl
+|                |--(nmod:t)--> R706[saints]
+|                                 |--(compou)--> R706[new]
+|                                 |--(compou)--> R706[orleans]
+|                                 |--(punct)--> ,
+|                                 |--(acl:re)--> *R715[placed]
+|                                                  |--(nsubj)--> R706[who]
+|                                                  |--(aux)--> have
+|                                                  |--(dobj)--> veteran
+|                                                                   |--(acl)--> running
+|                                                                                    |--(compou)--> back
+|                                                                                    |--(dobj)--> R716[thomas]
+|                                                                                                     |--(compou)--> R716[pierre]
+|                                                                                                     |--(nmod)--> season
+|                                                                                                                      |--(case)--> *R717[on]
+|--(punct)--> -
+|--(parata)--> ending
+|                |--(dobj)--> *R717[reserve]
+|--(punct)--> .
+
+	* entity-paths for event['injury']25_10ecbplus.xmlsent:4945
+
+	* entity-paths for event['on', 'reserve']25_10ecbplus.xmlsent:4945
+
+	* entity-paths for event['placed']25_10ecbplus.xmlsent:4945
+	['placed --(nsubj)--> who']
+	['placed --(dobj)--> veteran', 'veteran --(acl)--> running', 'running --(dobj)--> Thomas']

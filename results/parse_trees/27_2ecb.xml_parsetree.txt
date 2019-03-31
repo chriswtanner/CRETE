@@ -1,0 +1,38 @@
+
+-----------------------------------------
+docid:27_2ecb.xml
+-----------------------------------------
+
+sentence #:microsoft today released a patch for the latest internet explorer ( ie ) browser vulnerability that has been in the news since last week . 
+	[events]:[['released']]
+	[entities]:[['today'], ['patch'], ['vulnerability'], ['microsoft'], ['that'], ['internet', 'explorer']]
+*R763[released]
+|--(nsubj)--> R764[microsoft]
+|--(nmod:t)--> R766[today]
+|--(dobj)--> R765[patch]
+|                |--(det)--> a
+|                |--(nmod)--> R768[internet]
+|                |                |--(case)--> for
+|                |                |--(det)--> the
+|                |                |--(amod)--> latest
+|                |                |--(appos)--> R768[explorer]
+|                |--(dep)--> ie
+|                |                |--(punct)--> (
+|                |                |--(punct)--> )
+|                |--(dep)--> R767[vulnerability]
+|                                 |--(compou)--> browser
+|                                 |--(acl:re)--> news
+|                                                  |--(nsubj)--> R767[that]
+|                                                  |--(aux)--> has
+|                                                  |--(cop)--> been
+|                                                  |--(case)--> in
+|                                                  |--(det)--> the
+|                                                  |--(nmod)--> week
+|                                                                   |--(case)--> since
+|                                                                   |--(amod)--> last
+|--(punct)--> .
+
+	* entity-paths for event['released']27_2ecb.xmlsent:5798
+	['released --(nsubj)--> Microsoft']
+	['released --(nmod:tmod)--> today']
+	['released --(dobj)--> patch']

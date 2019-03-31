@@ -1,0 +1,121 @@
+
+-----------------------------------------
+docid:41_6ecbplus.xml
+-----------------------------------------
+
+sentence #:south sudan accuses sudan of bombing civilian camp amid fears of war 
+	[events]:[['accuses'], ['war'], ['fears'], ['bombing']]
+	[entities]:[['civilian', 'camp'], ['south', 'sudan'], ['sudan']]
+*R1506[accuses]
+|--(nsubj)--> R1440[sudan]
+|                |--(compou)--> R1440[south]
+|--(xcomp)--> R1443[sudan]
+                 |--(nmod)--> R1444[camp]
+                 |                |--(case)--> of
+                 |                |--(compou)--> *R1442[bombing]
+                 |                |--(compou)--> R1444[civilian]
+                 |--(dep)--> *R1439[fears]
+                                  |--(case)--> amid
+                                  |--(nmod)--> *R1441[war]
+                                                   |--(case)--> of
+
+	* entity-paths for event['accuses']41_6ecbplus.xmlsent:12369
+	['Accuses --(nsubj)--> Sudan']
+	['Accuses --(xcomp)--> Sudan']
+
+	* entity-paths for event['war']41_6ecbplus.xmlsent:12369
+
+	* entity-paths for event['fears']41_6ecbplus.xmlsent:12369
+
+	* entity-paths for event['bombing']41_6ecbplus.xmlsent:12369
+
+sentence #:sudan has denied striking south sudanese territory . 
+	[events]:[['denied'], ['striking']]
+	[entities]:[['sudan'], ['south', 'sudanese', 'territory']]
+*R1507[denied]
+|--(nsubj)--> R1443[sudan]
+|--(aux)--> has
+|--(dobj)--> R1460[territory]
+|                |--(amod)--> *R1442[striking]
+|                |--(compou)--> R1460[south]
+|                |--(compou)--> R1460[sudanese]
+|--(punct)--> .
+
+	* entity-paths for event['denied']41_6ecbplus.xmlsent:12377
+	['denied --(nsubj)--> Sudan']
+	['denied --(dobj)--> territory']
+
+	* entity-paths for event['striking']41_6ecbplus.xmlsent:12377
+
+sentence #:nevertheless , on thursday afternoon an antonov bomber dropped four bombs on the south sudanese area of yida , hitting a refugee camp of roughly 21 , 000 people , some of them northern sudanese who had crossed the border since the rebellion in sudan began . 
+	[events]:[['rebellion'], ['crossed'], ['hitting'], ['dropped']]
+	[entities]:[['on', 'the', 'south', 'sudanese', 'area', 'of', 'yida'], ['on', 'thursday', 'afternoon'], ['four', 'bombs'], ['border'], ['antonov', 'bomber'], ['21', ',', '000', 'people'], ['a', 'refugee', 'camp'], ['in', 'sudan'], ['them']]
+*R1442[dropped]
+|--(advmod)--> nevertheless
+|--(punct)--> ,
+|--(nmod)--> R1469[thursday]
+|                |--(case)--> R1469[on]
+|--(nmod:t)--> R1469[afternoon]
+|--(nsubj)--> R1509[bomber]
+|                |--(det)--> an
+|                |--(compou)--> R1509[antonov]
+|--(dobj)--> R1455[bombs]
+|                |--(nummod)--> R1455[four]
+|--(nmod)--> R1444[area]
+|                |--(case)--> R1444[on]
+|                |--(det)--> R1444[the]
+|                |--(compou)--> R1444[south]
+|                |--(compou)--> R1444[sudanese]
+|                |--(nmod)--> R1444[yida]
+|                                 |--(case)--> R1444[of]
+|--(punct)--> ,
+|--(advcl)--> *R1508[hitting]
+|                |--(dobj)--> R1444[camp]
+|                |                |--(det)--> R1444[a]
+|                |                |--(compou)--> R1444[refugee]
+|                |                |--(nmod)--> R1457[21]
+|                |                                 |--(case)--> of
+|                |                                 |--(advmod)--> roughly
+|                |                                 |--(punct)--> R1457[,]
+|                |                                 |--(appos)--> R1457[people]
+|                |                                                  |--(nummod)--> R1457[000]
+|                |                                                  |--(punct)--> ,
+|                |                                                  |--(appos)--> some
+|                |                                                                   |--(nmod)--> R1457[them]
+|                |                                                                                    |--(case)--> of
+|                |--(nmod:t)--> sudanese
+|                                 |--(amod)--> northern
+|                                 |--(acl:re)--> *R1510[crossed]
+|                                                  |--(nsubj)--> who
+|                                                  |--(aux)--> had
+|                                                  |--(dobj)--> R1505[border]
+|                                                  |                |--(det)--> the
+|                                                  |--(advcl)--> began
+|                                                                   |--(mark)--> since
+|                                                                   |--(nsubj)--> *R1511[rebellion]
+|                                                                                    |--(det)--> the
+|                                                                                    |--(nmod)--> R1512[sudan]
+|                                                                                                     |--(case)--> R1512[in]
+|--(punct)--> .
+
+	* entity-paths for event['rebellion']41_6ecbplus.xmlsent:12378
+	['rebellion --(nmod)--> Sudan']
+
+	* entity-paths for event['crossed']41_6ecbplus.xmlsent:12378
+	['crossed --(dobj)--> border']
+	['crossed --(advcl)--> began', 'began --(nsubj)--> rebellion', 'rebellion --(nmod)--> Sudan']
+
+	* entity-paths for event['hitting']41_6ecbplus.xmlsent:12378
+	['hitting --(dobj)--> camp']
+	['hitting --(nmod:tmod)--> Sudanese', 'Sudanese --(acl:relcl)--> crossed', 'crossed --(dobj)--> border']
+	['hitting --(nmod:tmod)--> Sudanese', 'Sudanese --(acl:relcl)--> crossed', 'crossed --(advcl)--> began', 'began --(nsubj)--> rebellion', 'rebellion --(nmod)--> Sudan']
+
+	* entity-paths for event['dropped']41_6ecbplus.xmlsent:12378
+	['dropped --(nmod)--> Thursday']
+	['dropped --(nmod:tmod)--> afternoon']
+	['dropped --(nsubj)--> bomber']
+	['dropped --(dobj)--> bombs']
+	['dropped --(nmod)--> area']
+	['dropped --(advcl)--> hitting', 'hitting --(dobj)--> camp']
+	['dropped --(advcl)--> hitting', 'hitting --(nmod:tmod)--> Sudanese', 'Sudanese --(acl:relcl)--> crossed', 'crossed --(dobj)--> border']
+	['dropped --(advcl)--> hitting', 'hitting --(nmod:tmod)--> Sudanese', 'Sudanese --(acl:relcl)--> crossed', 'crossed --(advcl)--> began', 'began --(nsubj)--> rebellion', 'rebellion --(nmod)--> Sudan']

@@ -1,0 +1,41 @@
+
+-----------------------------------------
+docid:40_10ecbplus.xml
+-----------------------------------------
+
+sentence #:following a refresh to the macbook air lineup , apple's phil schiller unveiled a revamped macbook pro today at wwdc12 . 
+	[events]:[['unveiled'], ['refresh'], ['wwdc12']]
+	[entities]:[["apple's"], ['phil', 'schiller'], ['today'], ['macbook', 'air', 'lineup'], ['macbook', 'pro']]
+*R1410[unveiled]
+|--(nmod)--> *R1411[refresh]
+|                |--(case)--> following
+|                |--(det)--> a
+|                |--(nmod)--> R1412[lineup]
+|                                 |--(case)--> to
+|                                 |--(det)--> the
+|                                 |--(compou)--> R1412[macbook]
+|                                 |--(compou)--> R1412[air]
+|--(punct)--> ,
+|--(nsubj)--> R1413[schiller]
+|                |--(nmod:p)--> R1405[apple's]
+|                |                |--(case)--> R1405[apple's]
+|                |--(compou)--> R1413[phil]
+|--(xcomp)--> R1414[pro]
+|                |--(nsubj)--> R1414[macbook]
+|                                 |--(det)--> a
+|                                 |--(amod)--> revamped
+|--(nmod:t)--> R1415[today]
+|--(nmod)--> *R1416[wwdc12]
+|                |--(case)--> at
+|--(punct)--> .
+
+	* entity-paths for event['unveiled']40_10ecbplus.xmlsent:11654
+	['unveiled --(nmod)--> refresh', 'refresh --(nmod)--> lineup']
+	['unveiled --(nsubj)--> Schiller']
+	['unveiled --(xcomp)--> Pro']
+	['unveiled --(nmod:tmod)--> today']
+
+	* entity-paths for event['refresh']40_10ecbplus.xmlsent:11654
+	['refresh --(nmod)--> lineup']
+
+	* entity-paths for event['wwdc12']40_10ecbplus.xmlsent:11654

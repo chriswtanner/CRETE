@@ -1,0 +1,25 @@
+
+-----------------------------------------
+docid:35_3ecbplus.xml
+-----------------------------------------
+
+sentence #:williams' dui arrest just the latest for chargers 
+	[events]:[['latest'], ['dui'], ['arrest']]
+	[entities]:[["williams'"], ['chargers']]
+*R1161[arrest]
+|--(nmod:p)--> R1160[williams']
+|                |--(case)--> R1160[williams']
+|--(compou)--> *R1163[dui]
+|--(dep)--> *R1161[latest]
+|                |--(advmod)--> just
+|                |--(det)--> the
+|--(nmod)--> R1157[chargers]
+                 |--(case)--> for
+
+	* entity-paths for event['latest']35_3ecbplus.xmlsent:9703
+
+	* entity-paths for event['dui']35_3ecbplus.xmlsent:9703
+
+	* entity-paths for event['arrest']35_3ecbplus.xmlsent:9703
+	['arrest --(nmod:poss)--> Williams']
+	['arrest --(nmod)--> Chargers']

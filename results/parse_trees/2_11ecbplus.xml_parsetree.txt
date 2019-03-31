@@ -1,0 +1,79 @@
+
+-----------------------------------------
+docid:2_11ecbplus.xml
+-----------------------------------------
+
+sentence #:the academy of motion pictures arts and sciences announced this morning that ellen degeneres would return to the academy awards as emcee , marking her second hosting stint . 
+	[events]:[['hosting'], ['stint'], ['return'], ['announced'], ['academy', 'awards']]
+	[entities]:[['ellen', 'degeneres'], ['this', 'morning'], ['emcee'], ['her'], ['academy'], ['second']]
+*R464[announced]
+|--(nsubj)--> R459[academy]
+|                |--(det)--> the
+|                |--(nmod)--> arts
+|                                 |--(case)--> of
+|                                 |--(compou)--> motion
+|                                 |--(compou)--> pictures
+|                                 |--(cc)--> and
+|                                 |--(conj)--> sciences
+|--(nmod:t)--> R465[morning]
+|                |--(det)--> R465[this]
+|--(ccomp)--> *R457[return]
+|                |--(nsubj)--> R454[degeneres]
+|                |                |--(compou)--> R454[ellen]
+|                |--(aux)--> would
+|                |--(nmod)--> *R455[awards]
+|                |                |--(case)--> to
+|                |                |--(det)--> the
+|                |                |--(compou)--> *R455[academy]
+|                |--(nmod)--> R454[emcee]
+|                |                |--(case)--> as
+|                |--(punct)--> ,
+|                |--(xcomp)--> marking
+|                                 |--(dobj)--> that
+|                                 |--(dobj)--> *R456[stint]
+|                                                  |--(nmod:p)--> R454[her]
+|                                                  |--(amod)--> R466[second]
+|                                                  |--(amod)--> *R467[hosting]
+|--(punct)--> .
+
+	* entity-paths for event['hosting']2_11ecbplus.xmlsent:3469
+
+	* entity-paths for event['stint']2_11ecbplus.xmlsent:3469
+	['stint --(nmod:poss)--> her']
+	['stint --(amod)--> second']
+
+	* entity-paths for event['return']2_11ecbplus.xmlsent:3469
+	['return --(nsubj)--> DeGeneres']
+	['return --(nmod)--> emcee']
+	['return --(xcomp)--> marking', 'marking --(dobj)--> stint', 'stint --(nmod:poss)--> her']
+	['return --(xcomp)--> marking', 'marking --(dobj)--> stint', 'stint --(amod)--> second']
+
+	* entity-paths for event['announced']2_11ecbplus.xmlsent:3469
+	['announced --(nsubj)--> Academy']
+	['announced --(nmod:tmod)--> morning']
+	['announced --(ccomp)--> return', 'return --(nsubj)--> DeGeneres']
+	['announced --(ccomp)--> return', 'return --(nmod)--> emcee']
+	['announced --(ccomp)--> return', 'return --(xcomp)--> marking', 'marking --(dobj)--> stint', 'stint --(nmod:poss)--> her']
+	['announced --(ccomp)--> return', 'return --(xcomp)--> marking', 'marking --(dobj)--> stint', 'stint --(amod)--> second']
+
+	* entity-paths for event['academy', 'awards']2_11ecbplus.xmlsent:3469
+
+sentence #:5 thoughts on why the academy picked ellen degeneres as oscar host 
+	[events]:[['oscar'], ['picked']]
+	[entities]:[['academy'], ['host'], ['ellen', 'degeneres']]
+thoughts
+|--(nummod)--> 5
+|--(nmod)--> why
+|                |--(case)--> on
+|--(dep)--> R454[degeneres]
+                 |--(det)--> the
+                 |--(compou)--> R459[academy]
+                 |--(compou)--> *R468[picked]
+                 |--(compou)--> R454[ellen]
+                 |--(acl:re)--> R454[host]
+                                  |--(case)--> as
+                                  |--(compou)--> *R455[oscar]
+
+	* entity-paths for event['oscar']2_11ecbplus.xmlsent:3467
+
+	* entity-paths for event['picked']2_11ecbplus.xmlsent:3467

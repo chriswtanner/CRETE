@@ -1,0 +1,99 @@
+
+-----------------------------------------
+docid:32_8ecbplus.xml
+-----------------------------------------
+
+sentence #:john jenkin , 23 and from cumbria , has been charged with the murder of his mother and sister . 
+	[events]:[['charged'], ['murder']]
+	[entities]:[['sister'], ['john', 'jenkin'], ['mother']]
+*R1034[charged]
+|--(nsubjp)--> R1033[jenkin]
+|                |--(compou)--> R1033[john]
+|                |--(punct)--> ,
+|                |--(appos)--> 23
+|                |                |--(cc)--> and
+|                |                |--(conj)--> cumbria
+|                |                                 |--(case)--> from
+|                |--(punct)--> ,
+|--(aux)--> has
+|--(auxpas)--> been
+|--(nmod)--> *R1031[murder]
+|                |--(case)--> with
+|                |--(det)--> the
+|                |--(nmod)--> R1035[mother]
+|                                 |--(case)--> of
+|                                 |--(nmod:p)--> his
+|                                 |--(cc)--> and
+|                                 |--(conj)--> R1036[sister]
+|--(punct)--> .
+
+	* entity-paths for event['charged']32_8ecbplus.xmlsent:8928
+	['charged --(nsubjpass)--> Jenkin']
+	['charged --(nmod)--> murder', 'murder --(nmod)--> mother']
+
+	* entity-paths for event['murder']32_8ecbplus.xmlsent:8928
+	['murder --(nmod)--> mother']
+
+sentence #:brother double - murder charge 
+	[events]:[['charge'], ['double', '-', 'murder']]
+	[entities]:[['brother']]
+R1033[brother]
+|--(advmod)--> *R1031[double]
+|--(punct)--> *R1031[-]
+|--(dep)--> *R1034[charge]
+                 |--(compou)--> *R1031[murder]
+
+	* entity-paths for event['charge']32_8ecbplus.xmlsent:8927
+
+	* entity-paths for event['double', '-', 'murder']32_8ecbplus.xmlsent:8927
+
+sentence #:23 - year - old john jenkin , of millom , has been charged with the murder of his 58 - year - old mother , alice mcmeekin , and sister , kathryn jenkin , 20 , who is from aberdare . 
+	[events]:[['charged'], ['murder']]
+	[entities]:[['john', 'jenkin'], ['alice', 'mcmeekin'], ['kathryn', 'jenkin']]
+23
+|--(punct)--> -
+|--(dep)--> year
+|                |--(punct)--> -
+|                |--(appos)--> *R1034[charged]
+|                                 |--(nsubjp)--> R1033[jenkin]
+|                                 |                |--(amod)--> old
+|                                 |                |--(compou)--> R1033[john]
+|                                 |                |--(punct)--> ,
+|                                 |                |--(nmod)--> millom
+|                                 |                |                |--(case)--> of
+|                                 |                |--(punct)--> ,
+|                                 |--(aux)--> has
+|                                 |--(auxpas)--> been
+|                                 |--(nmod)--> *R1031[murder]
+|                                                  |--(case)--> with
+|                                                  |--(det)--> the
+|                                                  |--(nmod)--> 58
+|                                                                   |--(case)--> of
+|                                                                   |--(nmod:p)--> his
+|--(punct)--> -
+|--(dep)--> year
+|                |--(punct)--> -
+|                |--(dep)--> mother
+|                                 |--(amod)--> old
+|                                 |--(punct)--> ,
+|                                 |--(conj)--> R1035[mcmeekin]
+|                                 |                |--(compou)--> R1035[alice]
+|                                 |--(punct)--> ,
+|                                 |--(cc)--> and
+|                                 |--(conj)--> sister
+|--(punct)--> ,
+|--(appos)--> R1036[jenkin]
+|                |--(compou)--> R1036[kathryn]
+|--(punct)--> ,
+|--(appos)--> 20
+|                |--(punct)--> ,
+|                |--(acl:re)--> aberdare
+|                                 |--(nsubj)--> who
+|                                 |--(cop)--> is
+|                                 |--(case)--> from
+|--(punct)--> .
+
+	* entity-paths for event['charged']32_8ecbplus.xmlsent:8932
+	['charged --(nsubjpass)--> Jenkin']
+
+	* entity-paths for event['murder']32_8ecbplus.xmlsent:8932

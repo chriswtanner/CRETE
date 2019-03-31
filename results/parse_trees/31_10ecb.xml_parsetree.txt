@@ -1,0 +1,33 @@
+
+-----------------------------------------
+docid:31_10ecb.xml
+-----------------------------------------
+
+sentence #:reigning national player of the year tyler hansbrough has broken the career scoring record at north carolina . 
+	[events]:[['scoring', 'record'], ['broken']]
+	[entities]:[['tyler', 'hansbrough'], ['north', 'carolina']]
+*R996[broken]
+|--(dep)--> reigning
+|                |--(dobj)--> player
+|                                 |--(amod)--> national
+|                                 |--(nmod)--> year
+|                                                  |--(case)--> of
+|                                                  |--(det)--> the
+|--(nsubj)--> R997[hansbrough]
+|                |--(compou)--> R997[tyler]
+|--(aux)--> has
+|--(dobj)--> *R998[record]
+|                |--(det)--> the
+|                |--(compou)--> career
+|                |--(amod)--> *R998[scoring]
+|                |--(nmod)--> R999[carolina]
+|                                 |--(case)--> at
+|                                 |--(compou)--> R999[north]
+|--(punct)--> .
+
+	* entity-paths for event['scoring', 'record']31_10ecb.xmlsent:8028
+	['record --(nmod)--> Carolina']
+
+	* entity-paths for event['broken']31_10ecb.xmlsent:8028
+	['broken --(nsubj)--> Hansbrough']
+	['broken --(dobj)--> record', 'record --(nmod)--> Carolina']

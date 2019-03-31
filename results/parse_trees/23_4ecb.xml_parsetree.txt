@@ -1,0 +1,43 @@
+
+-----------------------------------------
+docid:23_4ecb.xml
+-----------------------------------------
+
+sentence #:mark vinar , an australian climber from perth , has been presumed dead after falling over half a kilometre from new zealand 's highest peak , mount cook . 
+	[events]:[['dead'], ['falling']]
+	[entities]:[['mark', 'vinar'], ['perth'], ['new', 'zealand', "'s", 'highest', 'peak', ',', 'mount', 'cook']]
+presumed
+|--(nsubjp)--> R638[vinar]
+|                |--(compou)--> R638[mark]
+|                |--(punct)--> ,
+|                |--(appos)--> climber
+|                |                |--(det)--> an
+|                |                |--(amod)--> australian
+|                |                |--(nmod)--> R635[perth]
+|                |                                 |--(case)--> from
+|                |--(punct)--> ,
+|--(aux)--> has
+|--(auxpas)--> been
+|--(xcomp)--> *R654[dead]
+|                |--(advcl)--> *R637[falling]
+|                                 |--(mark)--> after
+|                                 |--(nmod)--> kilometre
+|                                 |                |--(case)--> over
+|                                 |                |--(det:pr)--> half
+|                                 |                |--(det)--> a
+|                                 |--(nmod)--> R639[peak]
+|                                                  |--(case)--> from
+|                                                  |--(nmod:p)--> R639[zealand]
+|                                                  |                |--(compou)--> R639[new]
+|                                                  |                |--(case)--> R639['s]
+|                                                  |--(amod)--> R639[highest]
+|                                                  |--(punct)--> R639[,]
+|                                                  |--(appos)--> R639[cook]
+|                                                                   |--(compou)--> R639[mount]
+|--(punct)--> .
+
+	* entity-paths for event['dead']23_4ecb.xmlsent:4703
+	['dead --(advcl)--> falling', 'falling --(nmod)--> peak']
+
+	* entity-paths for event['falling']23_4ecb.xmlsent:4703
+	['falling --(nmod)--> peak']

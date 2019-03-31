@@ -1,0 +1,43 @@
+
+-----------------------------------------
+docid:5_11ecb.xml
+-----------------------------------------
+
+sentence #:maurice cheeks has been fired as head coach of the philadelphia 76ers following the club 's disappointing 9-14 start to the season . 
+	[events]:[['start'], ['fired']]
+	[entities]:[['the', 'philadelphia', '76ers'], ['season'], ['club'], ['maurice', 'cheeks'], ['9-14']]
+*R1672[fired]
+|--(nsubjp)--> R1674[cheeks]
+|                |--(compou)--> R1674[maurice]
+|--(aux)--> has
+|--(auxpas)--> been
+|--(nmod)--> coach
+|                |--(case)--> as
+|                |--(compou)--> head
+|                |--(nmod)--> R1673[76ers]
+|                                 |--(case)--> of
+|                                 |--(det)--> R1673[the]
+|                                 |--(compou)--> R1673[philadelphia]
+|--(nmod)--> *R1676[start]
+|                |--(case)--> following
+|                |--(nmod:p)--> R1673[club]
+|                |                |--(det)--> the
+|                |                |--(case)--> 's
+|                |--(amod)--> disappointing
+|                |                |--(nmod:t)--> R1678[9-14]
+|                |--(nmod)--> R1679[season]
+|                                 |--(case)--> to
+|                                 |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['start']5_11ecb.xmlsent:13932
+	['start --(nmod:poss)--> club']
+	['start --(amod)--> disappointing', 'disappointing --(nmod:tmod)--> 9-14']
+	['start --(nmod)--> season']
+
+	* entity-paths for event['fired']5_11ecb.xmlsent:13932
+	['fired --(nsubjpass)--> Cheeks']
+	['fired --(nmod)--> coach', 'coach --(nmod)--> 76ers']
+	['fired --(nmod)--> start', 'start --(nmod:poss)--> club']
+	['fired --(nmod)--> start', 'start --(amod)--> disappointing', 'disappointing --(nmod:tmod)--> 9-14']
+	['fired --(nmod)--> start', 'start --(nmod)--> season']

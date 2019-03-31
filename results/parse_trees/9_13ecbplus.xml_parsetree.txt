@@ -1,0 +1,42 @@
+
+-----------------------------------------
+docid:9_13ecbplus.xml
+-----------------------------------------
+
+sentence #:on march 3 , obama overturned another 11th hour bush regulation that weakened the endangered species act and pitted federal agencies against each other . 
+	[events]:[['overturned'], ['weakened']]
+	[entities]:[['regulation'], ['endangered', 'species', 'act'], ['obama'], ['bush'], ['agencies'], ['march', '3']]
+*R1798[overturned]
+|--(nmod)--> R1807[march]
+|                |--(case)--> on
+|                |--(nummod)--> R1807[3]
+|--(punct)--> ,
+|--(nsubj)--> R1136[obama]
+|--(dobj)--> R1802[regulation]
+|                |--(det)--> another
+|                |--(amod)--> 11th
+|                |--(compou)--> hour
+|                |--(compou)--> R1803[bush]
+|                |--(acl:re)--> *R1808[weakened]
+|                                 |--(nsubj)--> that
+|                                 |--(dobj)--> R1800[act]
+|                                 |                |--(det)--> the
+|                                 |                |--(compou)--> R1800[endangered]
+|                                 |                |--(compou)--> R1800[species]
+|                                 |--(cc)--> and
+|                                 |--(conj)--> pitted
+|                                                  |--(dobj)--> R1809[agencies]
+|                                                  |                |--(amod)--> federal
+|                                                  |--(nmod)--> other
+|                                                                   |--(case)--> against
+|                                                                   |--(det)--> each
+|--(punct)--> .
+
+	* entity-paths for event['overturned']9_13ecbplus.xmlsent:15373
+	['overturned --(nmod)--> March']
+	['overturned --(nsubj)--> Obama']
+	['overturned --(dobj)--> regulation']
+
+	* entity-paths for event['weakened']9_13ecbplus.xmlsent:15373
+	['weakened --(dobj)--> Act']
+	['weakened --(conj)--> pitted', 'pitted --(dobj)--> agencies']

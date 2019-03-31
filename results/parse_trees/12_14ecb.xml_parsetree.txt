@@ -1,0 +1,38 @@
+
+-----------------------------------------
+docid:12_14ecb.xml
+-----------------------------------------
+
+sentence #:the indian navy has captured 23 pirates who threatened a merchant vessel in the lawless waters of the gulf of aden . 
+	[events]:[['captured'], ['threatened']]
+	[entities]:[['vessel'], ['the', 'gulf', 'of', 'aden'], ['pirates'], ['navy']]
+*R214[captured]
+|--(nsubj)--> R215[navy]
+|                |--(det)--> the
+|                |--(amod)--> indian
+|--(aux)--> has
+|--(dobj)--> R216[pirates]
+|                |--(nummod)--> 23
+|                |--(acl:re)--> *R227[threatened]
+|                                 |--(nsubj)--> who
+|                                 |--(dobj)--> R228[vessel]
+|                                 |                |--(det)--> a
+|                                 |                |--(compou)--> merchant
+|                                 |--(nmod)--> waters
+|                                                  |--(case)--> in
+|                                                  |--(det)--> the
+|                                                  |--(amod)--> lawless
+|                                                  |--(nmod)--> R229[gulf]
+|                                                                   |--(case)--> of
+|                                                                   |--(det)--> R229[the]
+|                                                                   |--(nmod)--> R229[aden]
+|                                                                                    |--(case)--> R229[of]
+|--(punct)--> .
+
+	* entity-paths for event['captured']12_14ecb.xmlsent:820
+	['captured --(nsubj)--> navy']
+	['captured --(dobj)--> pirates']
+
+	* entity-paths for event['threatened']12_14ecb.xmlsent:820
+	['threatened --(dobj)--> vessel']
+	['threatened --(nmod)--> waters', 'waters --(nmod)--> Gulf']

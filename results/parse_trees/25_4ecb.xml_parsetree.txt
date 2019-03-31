@@ -1,0 +1,90 @@
+
+-----------------------------------------
+docid:25_4ecb.xml
+-----------------------------------------
+
+sentence #:the saints placed bush on the injured reserve list wednesday with a sprained left knee , meaning he will miss the team 's final two games against detroit and carolina . 
+	[events]:[['miss'], ['placed'], ['sprained'], ['list'], ['games']]
+	[entities]:[['saints'], ['knee'], ['bush'], ['wednesday'], ['he']]
+*R711[placed]
+|--(nsubj)--> R706[saints]
+|                |--(det)--> the
+|--(dobj)--> R707[bush]
+|--(nmod)--> *R712[list]
+|                |--(case)--> on
+|                |--(det)--> the
+|                |--(amod)--> injured
+|                |--(compou)--> reserve
+|                |--(nmod:t)--> R721[wednesday]
+|--(nmod)--> R719[knee]
+|                |--(case)--> with
+|                |--(det)--> a
+|                |--(amod)--> *R720[sprained]
+|                |--(amod)--> left
+|--(punct)--> ,
+|--(advcl)--> meaning
+|                |--(ccomp)--> *R705[miss]
+|                                 |--(nsubj)--> R707[he]
+|                                 |--(aux)--> will
+|                                 |--(dobj)--> *R718[games]
+|                                 |                |--(nmod:p)--> team
+|                                 |                |                |--(det)--> the
+|                                 |                |                |--(case)--> 's
+|                                 |                |--(amod)--> final
+|                                 |                |--(nummod)--> two
+|                                 |--(nmod)--> detroit
+|                                                  |--(case)--> against
+|                                                  |--(cc)--> and
+|                                                  |--(conj)--> carolina
+|--(punct)--> .
+
+	* entity-paths for event['miss']25_4ecb.xmlsent:5120
+	['miss --(nsubj)--> he']
+
+	* entity-paths for event['placed']25_4ecb.xmlsent:5120
+	['placed --(nsubj)--> Saints']
+	['placed --(dobj)--> Bush']
+	['placed --(nmod)--> list', 'list --(nmod:tmod)--> Wednesday']
+	['placed --(nmod)--> knee']
+	['placed --(advcl)--> meaning', 'meaning --(ccomp)--> miss', 'miss --(nsubj)--> he']
+
+	* entity-paths for event['sprained']25_4ecb.xmlsent:5120
+
+	* entity-paths for event['list']25_4ecb.xmlsent:5120
+	['list --(nmod:tmod)--> Wednesday']
+
+	* entity-paths for event['games']25_4ecb.xmlsent:5120
+
+sentence #:however , given his limited effectiveness last week , the saints decided to shut him down for the remainder of the season . 
+	[events]:[['shut', 'down'], ['decided']]
+	[entities]:[['season'], ['saints'], ['him']]
+*R709[decided]
+|--(advmod)--> however
+|--(punct)--> ,
+|--(nmod)--> effectiveness
+|                |--(case)--> given
+|                |--(nmod:p)--> his
+|                |--(amod)--> limited
+|                |--(nmod:t)--> week
+|                                 |--(amod)--> last
+|--(punct)--> ,
+|--(nsubj)--> R706[saints]
+|                |--(det)--> the
+|--(xcomp)--> *R722[shut]
+|                |--(mark)--> to
+|                |--(dobj)--> R707[him]
+|                |--(compou)--> *R722[down]
+|                |--(nmod)--> remainder
+|                                 |--(case)--> for
+|                                 |--(det)--> the
+|                                 |--(nmod)--> R708[season]
+|                                                  |--(case)--> of
+|                                                  |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['shut', 'down']25_4ecb.xmlsent:5121
+
+	* entity-paths for event['decided']25_4ecb.xmlsent:5121
+	['decided --(nsubj)--> Saints']
+	['decided --(xcomp)--> shut', 'shut --(dobj)--> him']
+	['decided --(xcomp)--> shut', 'shut --(nmod)--> remainder', 'remainder --(nmod)--> season']

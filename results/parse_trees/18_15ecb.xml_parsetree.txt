@@ -1,0 +1,52 @@
+
+-----------------------------------------
+docid:18_15ecb.xml
+-----------------------------------------
+
+sentence #:a former employee walked into a staff christmas party at an east vancouver health products business friday and shot and killed a man , according to police . 
+	[events]:[['according', 'to'], ['killed'], ['shot'], ['party'], ['walked']]
+	[entities]:[['employee'], ['police'], ['an', 'east', 'vancouver', 'health', 'products', 'business'], ['friday'], ['man']]
+*R385[walked]
+|--(nsubj)--> R356[employee]
+|                |--(det)--> a
+|                |--(amod)--> former
+|--(nmod)--> *R359[party]
+|                |--(case)--> into
+|                |--(det)--> a
+|                |--(compou)--> staff
+|                |--(compou)--> christmas
+|                |--(nmod)--> R383[business]
+|                |                |--(case)--> at
+|                |                |--(det)--> R383[an]
+|                |                |--(amod)--> R383[east]
+|                |                |--(compou)--> R383[vancouver]
+|                |                |--(compou)--> R383[health]
+|                |                |--(compou)--> R383[products]
+|                |                |--(nmod:t)--> R368[friday]
+|                |--(cc)--> and
+|                |--(conj)--> *R366[shot]
+|--(cc)--> and
+|--(conj)--> *R358[killed]
+|                |--(dobj)--> R369[man]
+|                                 |--(det)--> a
+|--(punct)--> ,
+|--(nmod)--> R386[police]
+|                |--(case)--> *R387[according]
+|                                 |--(mwe)--> *R387[to]
+|--(punct)--> .
+
+	* entity-paths for event['according', 'to']18_15ecb.xmlsent:2343
+
+	* entity-paths for event['killed']18_15ecb.xmlsent:2343
+	['killed --(dobj)--> man']
+
+	* entity-paths for event['shot']18_15ecb.xmlsent:2343
+
+	* entity-paths for event['party']18_15ecb.xmlsent:2343
+	['party --(nmod)--> business']
+
+	* entity-paths for event['walked']18_15ecb.xmlsent:2343
+	['walked --(nsubj)--> employee']
+	['walked --(nmod)--> party', 'party --(nmod)--> business']
+	['walked --(conj)--> killed', 'killed --(dobj)--> man']
+	['walked --(nmod)--> police']

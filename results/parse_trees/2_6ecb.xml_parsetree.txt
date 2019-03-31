@@ -1,0 +1,53 @@
+
+-----------------------------------------
+docid:2_6ecb.xml
+-----------------------------------------
+
+sentence #:as word got out friday that hugh jackman will be this year 's oscar host , a clip from the 2004 tony telecast of his performance from " the boy from oz " made the rounds . 
+	[events]:[['word'], ['got', 'out'], ['oscar'], ['made', 'the', 'rounds']]
+	[entities]:[['host'], ['hugh', 'jackman'], ['his'], ['friday']]
+*R492[made]
+|--(advcl)--> *R493[got]
+|                |--(mark)--> as
+|                |--(nsubj)--> *R494[word]
+|                |--(compou)--> *R493[out]
+|                |--(nmod:t)--> R461[friday]
+|                |--(ccomp)--> R462[host]
+|                                 |--(mark)--> that
+|                                 |--(nsubj)--> R462[jackman]
+|                                 |                |--(compou)--> R462[hugh]
+|                                 |--(aux)--> will
+|                                 |--(cop)--> be
+|                                 |--(nmod:p)--> year
+|                                 |                |--(det)--> this
+|                                 |                |--(case)--> 's
+|                                 |--(compou)--> *R460[oscar]
+|--(punct)--> ,
+|--(nsubj)--> clip
+|                |--(det)--> a
+|                |--(nmod)--> telecast
+|                                 |--(case)--> from
+|                                 |--(det)--> the
+|                                 |--(nummod)--> 2004
+|                                 |--(compou)--> tony
+|                                 |--(nmod)--> performance
+|                                                  |--(case)--> of
+|                                                  |--(nmod:p)--> R462[his]
+|                                                  |--(nmod)--> boy
+|                                                  |                |--(case)--> from
+|                                                  |                |--(punct)--> "
+|                                                  |                |--(det)--> the
+|                                                  |--(nmod)--> oz
+|                                                                   |--(case)--> from
+|--(punct)--> "
+|--(dobj)--> *R492[rounds]
+|                |--(det)--> *R492[the]
+|--(punct)--> .
+
+	* entity-paths for event['word']2_6ecb.xmlsent:3640
+
+	* entity-paths for event['got', 'out']2_6ecb.xmlsent:3640
+
+	* entity-paths for event['oscar']2_6ecb.xmlsent:3640
+
+	* entity-paths for event['made', 'the', 'rounds']2_6ecb.xmlsent:3640

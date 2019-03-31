@@ -1,0 +1,93 @@
+
+-----------------------------------------
+docid:26_8ecb.xml
+-----------------------------------------
+
+sentence #:a suspected mafia leader committed suicide overnight after being arrested in a major police sweep , police in palermo , sicily , said on wednesday . 
+	[events]:[['arrested'], ['sweep'], ['suicide'], ['said']]
+	[entities]:[['mafia', 'leader'], ['wednesday'], ['police']]
+*R751[said]
+|--(nsubj)--> R733[leader]
+|                |--(det)--> a
+|                |--(amod)--> suspected
+|                |--(compou)--> R733[mafia]
+|                |--(acl)--> committed
+|                |                |--(dobj)--> *R732[suicide]
+|                |                |--(advmod)--> overnight
+|                |                |--(advcl)--> *R736[arrested]
+|                |                                 |--(mark)--> after
+|                |                                 |--(auxpas)--> being
+|                |                                 |--(nmod)--> *R737[sweep]
+|                |                                                  |--(case)--> in
+|                |                                                  |--(det)--> a
+|                |                                                  |--(amod)--> major
+|                |                                                  |--(compou)--> police
+|                |--(punct)--> ,
+|                |--(appos)--> R738[police]
+|                |                |--(nmod)--> sicily
+|                |                                 |--(case)--> in
+|                |                                 |--(compou)--> palermo
+|                |                                 |--(punct)--> ,
+|                |--(punct)--> ,
+|--(nmod)--> R752[wednesday]
+|                |--(case)--> on
+|--(punct)--> .
+
+	* entity-paths for event['arrested']26_8ecb.xmlsent:5540
+
+	* entity-paths for event['sweep']26_8ecb.xmlsent:5540
+
+	* entity-paths for event['suicide']26_8ecb.xmlsent:5540
+
+	* entity-paths for event['said']26_8ecb.xmlsent:5540
+	['said --(nsubj)--> leader']
+	['said --(nmod)--> Wednesday']
+
+sentence #:he may have been driven to suicide because wiretapped conversations between him and other mafia bosses helped lead to the police sweep on tuesday in which 89 people were arrested following a nine-month probe , the ansa news agency reported . 
+	[events]:[['sweep'], ['suicide']]
+	[entities]:[['tuesday'], ['him'], ['he']]
+reported
+|--(ccomp)--> driven
+|                |--(nsubjp)--> R733[he]
+|                |--(aux)--> may
+|                |--(aux)--> have
+|                |--(auxpas)--> been
+|                |--(nmod)--> *R732[suicide]
+|                |                |--(case)--> to
+|                |--(nmod)--> conversations
+|                |                |--(case)--> because
+|                |                |--(amod)--> wiretapped
+|                |                |--(nmod)--> R733[him]
+|                |                                 |--(case)--> between
+|                |--(cc)--> and
+|                |--(conj)--> helped
+|                                 |--(nsubj)--> bosses
+|                                 |                |--(amod)--> other
+|                                 |                |--(compou)--> mafia
+|                                 |--(xcomp)--> lead
+|                                                  |--(nmod)--> *R737[sweep]
+|                                                  |                |--(case)--> to
+|                                                  |                |--(det)--> the
+|                                                  |                |--(compou)--> police
+|                                                  |--(nmod)--> R746[tuesday]
+|                                                                   |--(case)--> on
+|                                                                   |--(acl:re)--> arrested
+|                                                                                    |--(nmod)--> which
+|                                                                                    |                |--(case)--> in
+|                                                                                    |--(nsubjp)--> people
+|                                                                                    |                |--(nummod)--> 89
+|                                                                                    |--(auxpas)--> were
+|                                                                                    |--(nmod)--> probe
+|                                                                                                     |--(case)--> following
+|                                                                                                     |--(det)--> a
+|                                                                                                     |--(amod)--> nine-month
+|--(punct)--> ,
+|--(nsubj)--> agency
+|                |--(det)--> the
+|                |--(compou)--> ansa
+|                |--(compou)--> news
+|--(punct)--> .
+
+	* entity-paths for event['sweep']26_8ecb.xmlsent:5541
+
+	* entity-paths for event['suicide']26_8ecb.xmlsent:5541

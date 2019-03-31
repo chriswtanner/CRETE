@@ -1,0 +1,102 @@
+
+-----------------------------------------
+docid:27_13ecb.xml
+-----------------------------------------
+
+sentence #:the patch , which microsoft dubbed ms08-078 , fixes a security vulnerability that microsoft says already has been used to attack more than 2 million windows users . 
+	[events]:[['attack'], ['fixes'], ['used']]
+	[entities]:[['microsoft'], ['users'], ['windows'], ['patch'], ['ms08-078'], ['vulnerability'], ['microsoft'], ['that']]
+*R786[used]
+|--(nsubjp)--> R765[patch]
+|                |--(det)--> the
+|                |--(punct)--> ,
+|                |--(acl:re)--> dubbed
+|                                 |--(dobj)--> which
+|                                 |--(nsubj)--> R764[microsoft]
+|                                 |--(dobj)--> R765[ms08-078]
+|                                 |                |--(punct)--> ,
+|                                 |                |--(appos)--> *R782[fixes]
+|                                 |                                 |--(dep)--> R767[vulnerability]
+|                                 |                                                  |--(det)--> a
+|                                 |                                                  |--(compou)--> security
+|                                 |--(dep)--> says
+|                                                  |--(dobj)--> R767[that]
+|                                                  |--(nsubj)--> R764[microsoft]
+|--(advmod)--> already
+|--(aux)--> has
+|--(auxpas)--> been
+|--(xcomp)--> *R790[attack]
+|                |--(mark)--> to
+|                |--(dobj)--> R789[users]
+|                                 |--(nummod)--> million
+|                                 |                |--(advmod)--> more
+|                                 |                |                |--(mwe)--> than
+|                                 |                |--(compou)--> 2
+|                                 |--(compou)--> R791[windows]
+|--(punct)--> .
+
+	* entity-paths for event['attack']27_13ecb.xmlsent:5690
+	['attack --(dobj)--> users']
+
+	* entity-paths for event['fixes']27_13ecb.xmlsent:5690
+	['fixes --(dep)--> vulnerability']
+
+	* entity-paths for event['used']27_13ecb.xmlsent:5690
+	['used --(nsubjpass)--> patch']
+	['used --(xcomp)--> attack', 'attack --(dobj)--> users']
+
+sentence #:microsoft today issued an emergency update to plug a critical security hole present in all versions of its internet explorer web browser , a flaw that hackers have been leveraging to steal data from millions of windows users . 
+	[events]:[['plug'], ['leveraging'], ['issued']]
+	[entities]:[['windows'], ['flaw'], ['today'], ['versions'], ['users'], ['its'], ['microsoft'], ['update'], ['hole'], ['internet', 'explorer'], ['hackers']]
+*R763[issued]
+|--(nsubj)--> R764[microsoft]
+|--(nmod:t)--> R766[today]
+|--(ccomp)--> R765[update]
+|                |--(nsubj)--> emergency
+|                |                |--(det)--> an
+|                |--(xcomp)--> *R782[plug]
+|                |                |--(mark)--> to
+|                |                |--(xcomp)--> present
+|                |                                 |--(nsubj)--> R767[hole]
+|                |                                 |                |--(det)--> a
+|                |                                 |                |--(amod)--> critical
+|                |                                 |                |--(compou)--> security
+|                |                                 |--(nmod)--> R792[versions]
+|                |                                                  |--(case)--> in
+|                |                                                  |--(det)--> all
+|                |                                                  |--(nmod)--> R768[internet]
+|                |                                                                   |--(case)--> of
+|                |                                                                   |--(nmod:p)--> R764[its]
+|                |--(nmod:t)--> browser
+|                                 |--(compou)--> R768[explorer]
+|                                 |--(compou)--> web
+|                                 |--(punct)--> ,
+|                                 |--(appos)--> R767[flaw]
+|                                                  |--(det)--> a
+|                                                  |--(acl:re)--> *R786[leveraging]
+|                                                                   |--(nsubj)--> R770[hackers]
+|                                                                   |--(aux)--> have
+|                                                                   |--(aux)--> been
+|                                                                   |--(xcomp)--> steal
+|                                                                                    |--(dobj)--> that
+|                                                                                    |--(mark)--> to
+|                                                                                    |--(dobj)--> data
+|                                                                                    |--(nmod)--> millions
+|                                                                                                     |--(case)--> from
+|                                                                                                     |--(nmod)--> R789[users]
+|                                                                                                                      |--(case)--> of
+|                                                                                                                      |--(compou)--> R791[windows]
+|--(punct)--> .
+
+	* entity-paths for event['plug']27_13ecb.xmlsent:5689
+	['plug --(xcomp)--> present', 'present --(nsubj)--> hole']
+	['plug --(xcomp)--> present', 'present --(nmod)--> versions']
+
+	* entity-paths for event['leveraging']27_13ecb.xmlsent:5689
+	['leveraging --(nsubj)--> hackers']
+	['leveraging --(xcomp)--> steal', 'steal --(nmod)--> millions', 'millions --(nmod)--> users']
+
+	* entity-paths for event['issued']27_13ecb.xmlsent:5689
+	['issued --(nsubj)--> Microsoft']
+	['issued --(nmod:tmod)--> today']
+	['issued --(ccomp)--> update']

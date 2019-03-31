@@ -1,0 +1,68 @@
+
+-----------------------------------------
+docid:13_1ecb.xml
+-----------------------------------------
+
+sentence #:an arsonist has badly damaged the church attended by the governor of alaska , sarah palin , and she has apologised if the fire was connected to " undeserved negative attention " from her failed campaign as the republican vice-presidential nominee . 
+	[events]:[['campaign'], ['apologised'], ['damaged'], ['fire'], ['attended']]
+	[entities]:[['sarah', 'palin'], ['her'], ['she'], ['arsonist'], ['church']]
+*R278[damaged]
+|--(nsubj)--> R281[arsonist]
+|                |--(det)--> an
+|--(aux)--> has
+|--(advmod)--> badly
+|--(dobj)--> R260[church]
+|                |--(det)--> the
+|                |--(acl)--> *R273[attended]
+|                                 |--(nmod)--> governor
+|                                                  |--(case)--> by
+|                                                  |--(det)--> the
+|                                                  |--(nmod)--> R262[palin]
+|                                                                   |--(case)--> of
+|                                                                   |--(compou)--> alaska
+|                                                                   |--(punct)--> ,
+|                                                                   |--(appos)--> R262[sarah]
+|--(punct)--> ,
+|--(cc)--> and
+|--(conj)--> *R284[apologised]
+|                |--(nsubj)--> R262[she]
+|                |--(aux)--> has
+|                |--(advcl)--> connected
+|                |                |--(mark)--> if
+|                |                |--(nsubjp)--> *R261[fire]
+|                |                |                |--(det)--> the
+|                |                |--(auxpas)--> was
+|                |                |--(xcomp)--> to
+|                |                                 |--(nmod:t)--> attention
+|                |                                                  |--(punct)--> "
+|                |                                                  |--(amod)--> undeserved
+|                |                                                  |--(amod)--> negative
+|                |--(punct)--> "
+|                |--(nmod)--> *R285[campaign]
+|                                 |--(case)--> from
+|                                 |--(nmod:p)--> R262[her]
+|                                 |--(amod)--> failed
+|                                 |--(nmod)--> nominee
+|                                                  |--(case)--> as
+|                                                  |--(det)--> the
+|                                                  |--(amod)--> republican
+|                                                  |--(amod)--> vice-presidential
+|--(punct)--> .
+
+	* entity-paths for event['campaign']13_1ecb.xmlsent:1327
+	['campaign --(nmod:poss)--> her']
+
+	* entity-paths for event['apologised']13_1ecb.xmlsent:1327
+	['apologised --(nsubj)--> she']
+	['apologised --(nmod)--> campaign', 'campaign --(nmod:poss)--> her']
+
+	* entity-paths for event['damaged']13_1ecb.xmlsent:1327
+	['damaged --(nsubj)--> arsonist']
+	['damaged --(dobj)--> church']
+	['damaged --(conj)--> apologised', 'apologised --(nsubj)--> she']
+	['damaged --(conj)--> apologised', 'apologised --(nmod)--> campaign', 'campaign --(nmod:poss)--> her']
+
+	* entity-paths for event['fire']13_1ecb.xmlsent:1327
+
+	* entity-paths for event['attended']13_1ecb.xmlsent:1327
+	['attended --(nmod)--> Governor', 'Governor --(nmod)--> Palin']

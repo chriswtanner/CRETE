@@ -1,0 +1,44 @@
+
+-----------------------------------------
+docid:39_2ecb.xml
+-----------------------------------------
+
+sentence #:with young british actor matt smith stepping into doctor who 's title role , wired.com takes a look back at the 10 actors who have previously portrayed sci-fi tv 's most enduring hero . 
+	[events]:[['stepping', 'into']]
+	[entities]:[['hero'], ['matt', 'smith'], ['role'], ['tv'], ['doctor', 'who']]
+takes
+|--(nmod)--> R1328[smith]
+|                |--(case)--> with
+|                |--(amod)--> young
+|                |--(amod)--> british
+|                |--(compou)--> actor
+|                |--(compou)--> R1328[matt]
+|                |--(acl)--> *R1344[stepping]
+|                                 |--(nmod)--> R1336[doctor]
+|                                                  |--(case)--> *R1344[into]
+|                                                  |--(acl:re)--> R1329[role]
+|                                                                   |--(nsubj)--> R1336[who]
+|                                                                   |--(cop)--> 's
+|                                                                   |--(compou)--> title
+|--(punct)--> ,
+|--(nsubj)--> wired.com
+|--(nmod)--> actors
+|                |--(advmod)--> back
+|                |                |--(nmod:n)--> look
+|                |                                 |--(det)--> a
+|                |--(case)--> at
+|                |--(det)--> the
+|                |--(nummod)--> 10
+|                |--(acl:re)--> portrayed
+|                                 |--(nsubj)--> who
+|                                 |--(aux)--> have
+|                                 |--(advmod)--> previously
+|                                 |--(dobj)--> R1329[hero]
+|                                                  |--(nmod:p)--> R1339[tv]
+|                                                  |                |--(amod)--> sci-fi
+|                                                  |                |--(case)--> 's
+|                                                  |--(amod)--> enduring
+|                                                                   |--(advmod)--> most
+|--(punct)--> .
+
+	* entity-paths for event['stepping', 'into']39_2ecb.xmlsent:10937

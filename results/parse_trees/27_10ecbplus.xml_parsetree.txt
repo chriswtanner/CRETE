@@ -1,0 +1,122 @@
+
+-----------------------------------------
+docid:27_10ecbplus.xml
+-----------------------------------------
+
+sentence #:while microsoft claims that it has received reports of attacks aimed at internet explorer 8 and 9 , it appears that the security flaw affects all the other versions of the browser . 
+	[events]:[['affects'], ['attacks'], ['claims']]
+	[entities]:[['browser'], ['it'], ['9'], ['versions'], ['security', 'flaw'], ['internet', 'explorer', '8'], ['microsoft']]
+appears
+|--(advcl)--> *R772[claims]
+|                |--(mark)--> while
+|                |--(nsubj)--> R764[microsoft]
+|                |--(ccomp)--> received
+|                                 |--(mark)--> that
+|                                 |--(nsubj)--> R764[it]
+|                                 |--(aux)--> has
+|                                 |--(dobj)--> reports
+|                                                  |--(nmod)--> *R773[attacks]
+|                                                                   |--(case)--> of
+|                                                                   |--(acl)--> aimed
+|                                                                                    |--(nmod)--> R774[explorer]
+|                                                                                                     |--(case)--> at
+|                                                                                                     |--(compou)--> R774[internet]
+|                                                                                                     |--(dep)--> R774[8]
+|                                                                                                                      |--(cc)--> and
+|                                                                                                                      |--(conj)--> R775[9]
+|--(punct)--> ,
+|--(nsubj)--> it
+|--(ccomp)--> *R776[affects]
+|                |--(mark)--> that
+|                |--(nsubj)--> R777[flaw]
+|                |                |--(det)--> the
+|                |                |--(compou)--> R777[security]
+|                |--(dobj)--> R778[versions]
+|                                 |--(det:pr)--> all
+|                                 |--(det)--> the
+|                                 |--(amod)--> other
+|                                 |--(nmod)--> R768[browser]
+|                                                  |--(case)--> of
+|                                                  |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['affects']27_10ecbplus.xmlsent:5635
+	['affects --(nsubj)--> flaw']
+	['affects --(dobj)--> versions']
+
+	* entity-paths for event['attacks']27_10ecbplus.xmlsent:5635
+	['attacks --(acl)--> aimed', 'aimed --(nmod)--> Explorer']
+
+	* entity-paths for event['claims']27_10ecbplus.xmlsent:5635
+	['claims --(nsubj)--> Microsoft']
+	['claims --(ccomp)--> received', 'received --(nsubj)--> it']
+	['claims --(ccomp)--> received', 'received --(dobj)--> reports', 'reports --(nmod)--> attacks', 'attacks --(acl)--> aimed', 'aimed --(nmod)--> Explorer']
+
+sentence #:microsoft launches emergency patch for internet explorer 
+	[events]:[['launches']]
+	[entities]:[['emergency', 'patch'], ['internet', 'explorer'], ['microsoft']]
+*R779[launches]
+|--(compou)--> R764[microsoft]
+|--(dep)--> R780[patch]
+                 |--(compou)--> R780[emergency]
+                 |--(nmod)--> R768[explorer]
+                                  |--(case)--> for
+                                  |--(compou)--> R768[internet]
+
+	* entity-paths for event['launches']27_10ecbplus.xmlsent:5633
+	['Launches --(compound)--> Microsoft']
+	['Launches --(dep)--> Patch']
+
+sentence #:microsoft has just released a new security update for internet explorer in order to patch a flaw affecting all versions of the company " s in - house browser , including ie11 on windows 8 . 1 rtm . 
+	[events]:[['affecting'], ['patch'], ['released']]
+	[entities]:[['internet', 'explorer'], ['versions'], ['microsoft'], ['flaw'], ['security', 'update'], ['browser'], ['company']]
+*R779[released]
+|--(nsubj)--> R764[microsoft]
+|--(aux)--> has
+|--(advmod)--> just
+|--(ccomp)--> R780[update]
+|                |--(nsubj)--> R780[security]
+|                |                |--(det)--> a
+|                |                |--(amod)--> new
+|                |--(nmod)--> R768[explorer]
+|                |                |--(case)--> for
+|                |                |--(compou)--> R768[internet]
+|                |                |--(acl)--> in
+|                |                                 |--(mwe)--> order
+|                |--(nmod)--> *R781[patch]
+|                                 |--(case)--> to
+|                                 |--(dep)--> R777[flaw]
+|                                                  |--(det)--> a
+|                                                  |--(acl)--> *R776[affecting]
+|                                                  |                |--(dobj)--> R778[versions]
+|                                                  |                |                |--(det)--> all
+|                                                  |                |                |--(nmod)--> s
+|                                                  |                |                                 |--(case)--> of
+|                                                  |                |                                 |--(det)--> the
+|                                                  |                |                                 |--(compou)--> R764[company]
+|                                                  |                |                                 |--(punct)--> "
+|                                                  |                |--(nmod)--> R768[browser]
+|                                                  |                                 |--(case)--> in
+|                                                  |                                 |--(punct)--> -
+|                                                  |                                 |--(compou)--> house
+|                                                  |                                 |--(punct)--> ,
+|                                                  |                                 |--(nmod)--> ie11
+|                                                  |                                                  |--(case)--> including
+|                                                  |                                                  |--(nmod)--> windows
+|                                                  |                                                                   |--(case)--> on
+|                                                  |                                                                   |--(nummod)--> 8
+|                                                  |--(punct)--> .
+|                                                  |--(dep)--> 1
+|                                                                   |--(dep)--> rtm
+|--(punct)--> .
+
+	* entity-paths for event['affecting']27_10ecbplus.xmlsent:5634
+	['affecting --(dobj)--> versions']
+	['affecting --(nmod)--> browser']
+
+	* entity-paths for event['patch']27_10ecbplus.xmlsent:5634
+	['patch --(dep)--> flaw']
+
+	* entity-paths for event['released']27_10ecbplus.xmlsent:5634
+	['released --(nsubj)--> Microsoft']
+	['released --(ccomp)--> update']

@@ -1,0 +1,54 @@
+
+-----------------------------------------
+docid:9_8ecb.xml
+-----------------------------------------
+
+sentence #:the bush administration on thursday eliminated 35-year-old regulations in the endangered species act that required an independent scientific review of proposed federal projects to determine whether they imperil protected plants and animals . 
+	[events]:[['eliminated'], ['determine'], ['review']]
+	[entities]:[['animals'], ['projects'], ['thursday'], ['they'], ['regulations'], ['endangered', 'species', 'act'], ['bush', 'administration'], ['plants']]
+*R1812[eliminated]
+|--(nsubj)--> R1795[administration]
+|                |--(det)--> the
+|                |--(compou)--> R1795[bush]
+|                |--(nmod)--> R1810[thursday]
+|                                 |--(case)--> on
+|--(dobj)--> R1802[regulations]
+|                |--(amod)--> 35-year-old
+|                |--(nmod)--> R1800[act]
+|                |                |--(case)--> in
+|                |                |--(det)--> the
+|                |                |--(compou)--> R1800[endangered]
+|                |                |--(compou)--> R1800[species]
+|                |--(acl:re)--> required
+|                                 |--(nsubj)--> that
+|                                 |--(dobj)--> *R1801[review]
+|                                                  |--(det)--> an
+|                                                  |--(amod)--> independent
+|                                                  |--(amod)--> scientific
+|                                                  |--(nmod)--> R1814[projects]
+|                                                                   |--(case)--> of
+|                                                                   |--(amod)--> proposed
+|                                                                   |--(amod)--> federal
+|--(advcl)--> *R1815[determine]
+|                |--(mark)--> to
+|                |--(ccomp)--> imperil
+|                                 |--(mark)--> whether
+|                                 |--(nsubj)--> R1814[they]
+|                                 |--(dobj)--> R1797[plants]
+|                                                  |--(amod)--> protected
+|                                                  |--(cc)--> and
+|                                                  |--(conj)--> R1796[animals]
+|--(punct)--> .
+
+	* entity-paths for event['eliminated']9_8ecb.xmlsent:15729
+	['eliminated --(nsubj)--> administration']
+	['eliminated --(dobj)--> regulations']
+	['eliminated --(advcl)--> determine', 'determine --(ccomp)--> imperil', 'imperil --(nsubj)--> they']
+	['eliminated --(advcl)--> determine', 'determine --(ccomp)--> imperil', 'imperil --(dobj)--> plants']
+
+	* entity-paths for event['determine']9_8ecb.xmlsent:15729
+	['determine --(ccomp)--> imperil', 'imperil --(nsubj)--> they']
+	['determine --(ccomp)--> imperil', 'imperil --(dobj)--> plants']
+
+	* entity-paths for event['review']9_8ecb.xmlsent:15729
+	['review --(nmod)--> projects']

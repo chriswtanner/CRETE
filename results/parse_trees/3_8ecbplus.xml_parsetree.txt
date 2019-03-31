@@ -1,0 +1,142 @@
+
+-----------------------------------------
+docid:3_8ecbplus.xml
+-----------------------------------------
+
+sentence #:tdcj officials could answer few questions about how convicted rapist arcade joseph comeaux jr . , 49 , escaped monday from a prison van in baytown after pulling a gun and handcuffing two transport officers , stealing their three guns and walking away . 
+	[events]:[['convicted'], ['escaped'], ['pulling'], ['handcuffing'], ['stealing'], ['walking']]
+	[entities]:[['officers'], ['arcade', 'joseph', 'comeaux', 'jr'], ['guns'], ['a', 'prison', 'van'], ['monday'], ['gun'], ['officials']]
+answer
+|--(nsubj)--> R917[officials]
+|                |--(compou)--> tdcj
+|--(aux)--> could
+|--(dobj)--> questions
+|                |--(amod)--> few
+|--(advcl)--> *R911[convicted]
+|                |--(mark)--> about
+|                |--(advmod)--> how
+|                |--(dobj)--> rapist
+|                                 |--(acl:re)--> *R893[escaped]
+|                                                  |--(nsubj)--> R890[jr]
+|                                                  |                |--(compou)--> R890[arcade]
+|                                                  |                |--(compou)--> R890[joseph]
+|                                                  |                |--(compou)--> R890[comeaux]
+|                                                  |                |--(punct)--> .
+|                                                  |                |--(punct)--> ,
+|                                                  |                |--(amod)--> 49
+|                                                  |                |--(punct)--> ,
+|                                                  |--(nmod:t)--> R914[monday]
+|                                                  |--(nmod)--> R921[van]
+|                                                  |                |--(case)--> from
+|                                                  |                |--(det)--> R921[a]
+|                                                  |                |--(compou)--> R921[prison]
+|                                                  |--(nmod)--> baytown
+|                                                  |                |--(case)--> in
+|                                                  |--(advcl)--> *R898[pulling]
+|                                                                   |--(mark)--> after
+|                                                                   |--(dobj)--> R899[gun]
+|                                                                   |                |--(det)--> a
+|                                                                   |--(cc)--> and
+|                                                                   |--(conj)--> *R920[handcuffing]
+|                                                                   |                |--(dobj)--> R900[officers]
+|                                                                   |                                 |--(nummod)--> two
+|                                                                   |                                 |--(compou)--> transport
+|                                                                   |--(punct)--> ,
+|                                                                   |--(conj)--> *R918[stealing]
+|                                                                   |                |--(dobj)--> R919[guns]
+|                                                                   |                                 |--(nmod:p)--> their
+|                                                                   |                                 |--(nummod)--> three
+|                                                                   |--(cc)--> and
+|                                                                   |--(conj)--> *R893[walking]
+|                                                                                    |--(advmod)--> away
+|--(punct)--> .
+
+	* entity-paths for event['convicted']3_8ecbplus.xmlsent:7617
+	['convicted --(dobj)--> rapist', 'rapist --(acl:relcl)--> escaped', 'escaped --(nsubj)--> Jr']
+	['convicted --(dobj)--> rapist', 'rapist --(acl:relcl)--> escaped', 'escaped --(nmod:tmod)--> Monday']
+	['convicted --(dobj)--> rapist', 'rapist --(acl:relcl)--> escaped', 'escaped --(nmod)--> van']
+	['convicted --(dobj)--> rapist', 'rapist --(acl:relcl)--> escaped', 'escaped --(advcl)--> pulling', 'pulling --(dobj)--> gun']
+	['convicted --(dobj)--> rapist', 'rapist --(acl:relcl)--> escaped', 'escaped --(advcl)--> pulling', 'pulling --(conj)--> handcuffing', 'handcuffing --(dobj)--> officers']
+	['convicted --(dobj)--> rapist', 'rapist --(acl:relcl)--> escaped', 'escaped --(advcl)--> pulling', 'pulling --(conj)--> stealing', 'stealing --(dobj)--> guns']
+
+	* entity-paths for event['escaped']3_8ecbplus.xmlsent:7617
+	['escaped --(nsubj)--> Jr']
+	['escaped --(nmod:tmod)--> Monday']
+	['escaped --(nmod)--> van']
+	['escaped --(advcl)--> pulling', 'pulling --(dobj)--> gun']
+	['escaped --(advcl)--> pulling', 'pulling --(conj)--> handcuffing', 'handcuffing --(dobj)--> officers']
+	['escaped --(advcl)--> pulling', 'pulling --(conj)--> stealing', 'stealing --(dobj)--> guns']
+
+	* entity-paths for event['pulling']3_8ecbplus.xmlsent:7617
+	['pulling --(dobj)--> gun']
+	['pulling --(conj)--> handcuffing', 'handcuffing --(dobj)--> officers']
+	['pulling --(conj)--> stealing', 'stealing --(dobj)--> guns']
+
+	* entity-paths for event['handcuffing']3_8ecbplus.xmlsent:7617
+	['handcuffing --(dobj)--> officers']
+
+	* entity-paths for event['stealing']3_8ecbplus.xmlsent:7617
+	['stealing --(dobj)--> guns']
+
+	* entity-paths for event['walking']3_8ecbplus.xmlsent:7617
+
+sentence #:comeaux escaped monday morning as transport officers tried to move him in a tdcj van from the estelle prison unit in huntsville to the stiles unit in beaumont . 
+	[events]:[['move'], ['escaped']]
+	[entities]:[['officers'], ['the', 'estelle', 'prison', 'unit', 'in', 'huntsville'], ['the', 'stiles', 'unit', 'in', 'beaumont'], ['van'], ['comeaux'], ['monday', 'morning'], ['him']]
+*R893[escaped]
+|--(nsubj)--> R890[comeaux]
+|--(nmod:t)--> R914[morning]
+|                |--(compou)--> R914[monday]
+|--(advcl)--> tried
+|                |--(mark)--> as
+|                |--(nsubj)--> R900[officers]
+|                |                |--(compou)--> transport
+|                |--(xcomp)--> *R894[move]
+|                                 |--(mark)--> to
+|                                 |--(dobj)--> R890[him]
+|                                 |--(nmod)--> R921[van]
+|                                 |                |--(case)--> in
+|                                 |                |--(det)--> a
+|                                 |                |--(compou)--> tdcj
+|                                 |                |--(nmod)--> R927[unit]
+|                                 |                                 |--(case)--> from
+|                                 |                                 |--(det)--> R927[the]
+|                                 |                                 |--(compou)--> R927[estelle]
+|                                 |                                 |--(compou)--> R927[prison]
+|                                 |                                 |--(nmod)--> R927[huntsville]
+|                                 |                                                  |--(case)--> R927[in]
+|                                 |--(nmod)--> R901[unit]
+|                                                  |--(case)--> to
+|                                                  |--(det)--> R901[the]
+|                                                  |--(compou)--> R901[stiles]
+|                                                  |--(nmod)--> R901[beaumont]
+|                                                                   |--(case)--> R901[in]
+|--(punct)--> .
+
+	* entity-paths for event['move']3_8ecbplus.xmlsent:7619
+	['move --(dobj)--> him']
+	['move --(nmod)--> van']
+	['move --(nmod)--> Unit']
+
+	* entity-paths for event['escaped']3_8ecbplus.xmlsent:7619
+	['escaped --(nsubj)--> Comeaux']
+	['escaped --(nmod:tmod)--> morning']
+	['escaped --(advcl)--> tried', 'tried --(nsubj)--> officers']
+	['escaped --(advcl)--> tried', 'tried --(xcomp)--> move', 'move --(dobj)--> him']
+	['escaped --(advcl)--> tried', 'tried --(xcomp)--> move', 'move --(nmod)--> van']
+	['escaped --(advcl)--> tried', 'tried --(xcomp)--> move', 'move --(nmod)--> Unit']
+
+sentence #:escape renews calls for prison agency shake - up 
+	[events]:[['escape']]
+	[entities]:[['agency']]
+renews
+|--(nsubj)--> *R893[escape]
+|--(dobj)--> calls
+|--(nmod)--> shake
+|                |--(case)--> for
+|                |--(compou)--> prison
+|                |--(compou)--> R902[agency]
+|--(punct)--> -
+|--(advmod)--> up
+
+	* entity-paths for event['escape']3_8ecbplus.xmlsent:7614

@@ -1,0 +1,72 @@
+
+-----------------------------------------
+docid:41_11ecbplus.xml
+-----------------------------------------
+
+sentence #:a refugee camp was the target of an air strike in south sudan's unity state on thursday , less than 50 km ( 30 miles ) from the tense border with sudan , a reuters witness said . 
+	[events]:[['said'], ['air', 'strike']]
+	[entities]:[['refugee', 'camp'], ['on', 'thursday'], ['reuters', 'witness'], ['in', 'south', "sudan's", 'unity', 'state']]
+*R1459[said]
+|--(ccomp)--> target
+|                |--(nsubj)--> R1444[camp]
+|                |                |--(det)--> a
+|                |                |--(compou)--> R1444[refugee]
+|                |--(cop)--> was
+|                |--(det)--> the
+|                |--(nmod)--> *R1442[strike]
+|                |                |--(case)--> of
+|                |                |--(det)--> an
+|                |                |--(compou)--> *R1442[air]
+|                |                |--(nmod)--> R1460[state]
+|                |                                 |--(case)--> R1460[in]
+|                |                                 |--(nmod:p)--> R1460[sudan's]
+|                |                                 |                |--(compou)--> R1460[south]
+|                |                                 |                |--(case)--> R1460[sudan's]
+|                |                                 |--(compou)--> R1460[unity]
+|                |--(nmod)--> R1456[thursday]
+|                |                |--(case)--> R1456[on]
+|                |--(punct)--> ,
+|                |--(dep)--> km
+|                                 |--(nummod)--> 50
+|                                 |                |--(advmod)--> less
+|                                 |                                 |--(mwe)--> than
+|                                 |--(appos)--> miles
+|                                 |                |--(punct)--> (
+|                                 |                |--(nummod)--> 30
+|                                 |                |--(punct)--> )
+|                                 |--(nmod)--> border
+|                                                  |--(case)--> from
+|                                                  |--(det)--> the
+|                                                  |--(amod)--> tense
+|                                                  |--(nmod)--> sudan
+|                                                                   |--(case)--> with
+|--(punct)--> ,
+|--(nsubj)--> R1461[witness]
+|                |--(det)--> a
+|                |--(compou)--> R1461[reuters]
+|--(punct)--> .
+
+	* entity-paths for event['said']41_11ecbplus.xmlsent:12103
+	['said --(ccomp)--> target', 'target --(nsubj)--> camp']
+	['said --(ccomp)--> target', 'target --(nmod)--> strike', 'strike --(nmod)--> state']
+	['said --(ccomp)--> target', 'target --(nmod)--> Thursday']
+	['said --(nsubj)--> witness']
+
+	* entity-paths for event['air', 'strike']41_11ecbplus.xmlsent:12103
+	['strike --(nmod)--> state']
+
+sentence #:plane bombs south sudan refugee camp - witness 
+	[events]:[['bombs']]
+	[entities]:[['witness'], ['plane'], ['south', 'sudan', 'refugee', 'camp']]
+*R1442[bombs]
+|--(compou)--> R1454[plane]
+|--(dep)--> R1444[camp]
+                 |--(compou)--> R1444[south]
+                 |--(compou)--> R1444[sudan]
+                 |--(compou)--> R1444[refugee]
+                 |--(punct)--> -
+                 |--(dep)--> R1461[witness]
+
+	* entity-paths for event['bombs']41_11ecbplus.xmlsent:12101
+	['bombs --(compound)--> Plane']
+	['bombs --(dep)--> camp']

@@ -1,0 +1,38 @@
+
+-----------------------------------------
+docid:39_9ecbplus.xml
+-----------------------------------------
+
+sentence #:peter capaldi , the bookmakers' choice by a wide margin , will take over for the retiring matt smith , the doctor since 2010 . 
+	[events]:[['retiring'], ['take', 'over']]
+	[entities]:[['matt', 'smith', ',', 'the', 'doctor'], ["bookmakers'"], ['peter', 'capaldi'], ['choice']]
+*R1334[take]
+|--(nsubj)--> R1331[capaldi]
+|                |--(compou)--> R1331[peter]
+|                |--(punct)--> ,
+|                |--(appos)--> R1331[choice]
+|                |                |--(nmod:p)--> R1361[bookmakers']
+|                |                |                |--(det)--> the
+|                |                |                |--(case)--> R1361[bookmakers']
+|                |                |--(nmod)--> margin
+|                |                                 |--(case)--> by
+|                |                                 |--(det)--> a
+|                |                                 |--(amod)--> wide
+|                |--(punct)--> ,
+|--(aux)--> will
+|--(compou)--> *R1334[over]
+|--(nmod)--> R1328[smith]
+|                |--(case)--> for
+|                |--(det)--> the
+|                |--(amod)--> *R1341[retiring]
+|                |--(compou)--> R1328[matt]
+|--(punct)--> R1328[,]
+|--(parata)--> R1328[doctor]
+|                |--(det)--> R1328[the]
+|                |--(dep)--> 2010
+|                                 |--(case)--> since
+|--(punct)--> .
+
+	* entity-paths for event['retiring']39_9ecbplus.xmlsent:11137
+
+	* entity-paths for event['take', 'over']39_9ecbplus.xmlsent:11137

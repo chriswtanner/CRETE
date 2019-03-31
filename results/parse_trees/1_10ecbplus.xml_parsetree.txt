@@ -1,0 +1,93 @@
+
+-----------------------------------------
+docid:1_10ecbplus.xml
+-----------------------------------------
+
+sentence #:after skipping out on entering a newport beach rehabilitation facility and facing the prospect of arrest for violating her probation , lindsay lohan has checked into the betty ford center to begin a 90 - day court - mandated stay in her reckless driving conviction . 
+	[events]:[['entering'], ['stay'], ['probation'], ['facing'], ['conviction'], ['checked', 'into'], ['driving'], ['violating'], ['arrest'], ['begin']]
+	[entities]:[['90', '-', 'day'], ['a', 'newport', 'beach', 'rehabilitation', 'facility'], ['her'], ['the', 'betty', 'ford', 'center'], ['lindsay', 'lohan']]
+*R8[checked]
+|--(advcl)--> skipping
+|                |--(mark)--> after
+|                |--(compou)--> out
+|                |--(advcl)--> *R9[entering]
+|                                 |--(mark)--> on
+|                                 |--(dobj)--> R10[facility]
+|                                 |                |--(det)--> R10[a]
+|                                 |                |--(compou)--> R10[newport]
+|                                 |                |--(compou)--> R10[beach]
+|                                 |                |--(compou)--> R10[rehabilitation]
+|                                 |--(cc)--> and
+|                                 |--(conj)--> *R11[facing]
+|                                                  |--(dobj)--> prospect
+|                                                  |                |--(det)--> the
+|                                                  |                |--(nmod)--> *R12[arrest]
+|                                                  |                                 |--(case)--> of
+|                                                  |--(advcl)--> *R13[violating]
+|                                                                   |--(mark)--> for
+|                                                                   |--(dobj)--> *R14[probation]
+|                                                                                    |--(nmod:p)--> R15[her]
+|--(punct)--> ,
+|--(nsubj)--> R15[lohan]
+|                |--(compou)--> R15[lindsay]
+|--(aux)--> has
+|--(nmod)--> R16[center]
+|                |--(case)--> *R8[into]
+|                |--(det)--> R16[the]
+|                |--(compou)--> R16[betty]
+|                |--(compou)--> R16[ford]
+|--(xcomp)--> *R17[begin]
+|                |--(mark)--> to
+|                |--(dobj)--> R18[90]
+|                                 |--(det)--> a
+|                                 |--(punct)--> R18[-]
+|                                 |--(dep)--> court
+|                                                  |--(compou)--> R18[day]
+|                                                  |--(punct)--> -
+|                                                  |--(dep)--> *R19[stay]
+|                                                                   |--(amod)--> mandated
+|                                                                   |--(nmod)--> *R20[conviction]
+|                                                                                    |--(case)--> in
+|                                                                                    |--(nmod:p)--> her
+|                                                                                    |--(amod)--> reckless
+|                                                                                    |--(amod)--> *R21[driving]
+|--(punct)--> .
+
+	* entity-paths for event['entering']1_10ecbplus.xmlsent:7
+	['entering --(dobj)--> facility']
+	['entering --(conj)--> facing', 'facing --(advcl)--> violating', 'violating --(dobj)--> probation', 'probation --(nmod:poss)--> her']
+
+	* entity-paths for event['stay']1_10ecbplus.xmlsent:7
+
+	* entity-paths for event['probation']1_10ecbplus.xmlsent:7
+	['probation --(nmod:poss)--> her']
+
+	* entity-paths for event['facing']1_10ecbplus.xmlsent:7
+	['facing --(advcl)--> violating', 'violating --(dobj)--> probation', 'probation --(nmod:poss)--> her']
+
+	* entity-paths for event['conviction']1_10ecbplus.xmlsent:7
+
+	* entity-paths for event['checked', 'into']1_10ecbplus.xmlsent:7
+
+	* entity-paths for event['driving']1_10ecbplus.xmlsent:7
+
+	* entity-paths for event['violating']1_10ecbplus.xmlsent:7
+	['violating --(dobj)--> probation', 'probation --(nmod:poss)--> her']
+
+	* entity-paths for event['arrest']1_10ecbplus.xmlsent:7
+
+	* entity-paths for event['begin']1_10ecbplus.xmlsent:7
+	['begin --(dobj)--> 90']
+
+sentence #:lindsay lohan checks into betty ford center 
+	[events]:[['checks', 'into']]
+	[entities]:[['betty', 'ford', 'center'], ['lindsay', 'lohan']]
+R15[lohan]
+|--(compou)--> R15[lindsay]
+|--(dep)--> *R8[checks]
+                 |--(nmod)--> R16[center]
+                                  |--(case)--> *R8[into]
+                                  |--(compou)--> R16[betty]
+                                  |--(compou)--> R16[ford]
+
+	* entity-paths for event['checks', 'into']1_10ecbplus.xmlsent:5

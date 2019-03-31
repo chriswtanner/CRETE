@@ -1,0 +1,122 @@
+
+-----------------------------------------
+docid:20_6ecbplus.xml
+-----------------------------------------
+
+sentence #:a powerful earthquake has hit southern iran , destroying several villages and killing at least three people and injuring others , according to reports . 
+	[events]:[['earthquake'], ['hit'], ['destroying'], ['killing'], ['injuring']]
+	[entities]:[['several', 'villages'], ['people'], ['others'], ['southern', 'iran']]
+*R524[hit]
+|--(nsubj)--> *R509[earthquake]
+|                |--(det)--> a
+|                |--(amod)--> powerful
+|--(aux)--> has
+|--(dobj)--> R525[iran]
+|                |--(amod)--> R525[southern]
+|--(punct)--> ,
+|--(dep)--> *R508[destroying]
+|                |--(dobj)--> R510[villages]
+|                |                |--(amod)--> R510[several]
+|                |--(cc)--> and
+|                |--(conj)--> *R504[killing]
+|                                 |--(dobj)--> R505[people]
+|                                 |                |--(nummod)--> three
+|                                 |                                 |--(nmod:n)--> least
+|                                 |                                                  |--(case)--> at
+|                                 |--(cc)--> and
+|                                 |--(conj)--> *R506[injuring]
+|                                                  |--(dobj)--> R507[others]
+|                                                  |--(punct)--> ,
+|                                                  |--(nmod)--> reports
+|                                                                   |--(case)--> according
+|                                                                                    |--(mwe)--> to
+|--(punct)--> .
+
+	* entity-paths for event['earthquake']20_6ecbplus.xmlsent:3959
+
+	* entity-paths for event['hit']20_6ecbplus.xmlsent:3959
+	['hit --(dobj)--> Iran']
+	['hit --(dep)--> destroying', 'destroying --(dobj)--> villages']
+	['hit --(dep)--> destroying', 'destroying --(conj)--> killing', 'killing --(dobj)--> people']
+	['hit --(dep)--> destroying', 'destroying --(conj)--> killing', 'killing --(conj)--> injuring', 'injuring --(dobj)--> others']
+
+	* entity-paths for event['destroying']20_6ecbplus.xmlsent:3959
+	['destroying --(dobj)--> villages']
+	['destroying --(conj)--> killing', 'killing --(dobj)--> people']
+	['destroying --(conj)--> killing', 'killing --(conj)--> injuring', 'injuring --(dobj)--> others']
+
+	* entity-paths for event['killing']20_6ecbplus.xmlsent:3959
+	['killing --(dobj)--> people']
+	['killing --(conj)--> injuring', 'injuring --(dobj)--> others']
+
+	* entity-paths for event['injuring']20_6ecbplus.xmlsent:3959
+	['injuring --(dobj)--> others']
+
+sentence #:the 5 . 9 - magnitude quake struck qeshm island , home to 120 , 000 people , and the city of bandar abbas , state media said . 
+	[events]:[['said'], ['quake'], ['struck']]
+	[entities]:[['state', 'media'], ['5', '.', '9'], ['the', 'city', 'of', 'bandar', 'abbas'], ['qeshm', 'island']]
+*R509[quake]
+|--(dep)--> R534[9]
+|                |--(dep)--> R534[5]
+|                                 |--(dep)--> the
+|                                 |--(punct)--> R534[.]
+|--(punct)--> -
+|--(compou)--> magnitude
+|--(acl:re)--> *R524[struck]
+|                |--(ccomp)--> *R503[said]
+|                                 |--(nsubj)--> R515[qeshm]
+|                                                  |--(dep)--> R515[island]
+|                                                  |--(punct)--> ,
+|                                                  |--(advmod)--> home
+|                                                  |                |--(nmod)--> 120
+|                                                  |                                 |--(case)--> to
+|                                                  |--(punct)--> ,
+|                                                  |--(conj)--> people
+|                                                  |                |--(nummod)--> 000
+|                                                  |--(punct)--> ,
+|                                                  |--(cc)--> and
+|                                                  |--(conj)--> R526[city]
+|                                                                   |--(det)--> R526[the]
+|                                                                   |--(nmod)--> R526[abbas]
+|                                                                                    |--(case)--> R526[of]
+|                                                                                    |--(compou)--> R526[bandar]
+|                                                                                    |--(punct)--> ,
+|                                                                                    |--(appos)--> R514[media]
+|                                                                                                     |--(compou)--> R514[state]
+|--(punct)--> .
+
+	* entity-paths for event['said']20_6ecbplus.xmlsent:3960
+	['said --(nsubj)--> Qeshm']
+
+	* entity-paths for event['quake']20_6ecbplus.xmlsent:3960
+	['quake --(dep)--> 9']
+	['quake --(acl:relcl)--> struck', 'struck --(ccomp)--> said', 'said --(nsubj)--> Qeshm']
+
+	* entity-paths for event['struck']20_6ecbplus.xmlsent:3960
+	['struck --(ccomp)--> said', 'said --(nsubj)--> Qeshm']
+
+sentence #:'several die' in south iran quake 
+	[events]:[['quake'], ["die'"]]
+	[entities]:[["'several"], ['south', 'iran']]
+*R504[die']
+|--(punct)--> R505['several]
+|--(amod)--> R505['several]
+|--(punct)--> *R504[die']
+|--(nmod)--> *R509[quake]
+                 |--(case)--> in
+                 |--(amod)--> R525[south]
+                 |--(compou)--> R525[iran]
+
+	* entity-paths for event['quake']20_6ecbplus.xmlsent:3957
+	['quake --(amod)--> south']
+	['quake --(compound)--> Iran']
+
+	* entity-paths for event["die'"]20_6ecbplus.xmlsent:3957
+	["die --(punct)--> '"]
+	['die --(amod)--> Several']
+	["die --(punct)--> '", "die --(punct)--> '"]
+	["die --(punct)--> '", 'die --(amod)--> Several']
+	["die --(punct)--> '", 'die --(nmod)--> quake', 'quake --(amod)--> south']
+	["die --(punct)--> '", 'die --(nmod)--> quake', 'quake --(compound)--> Iran']
+	['die --(nmod)--> quake', 'quake --(amod)--> south']
+	['die --(nmod)--> quake', 'quake --(compound)--> Iran']

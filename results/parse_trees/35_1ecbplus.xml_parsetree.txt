@@ -1,0 +1,109 @@
+
+-----------------------------------------
+docid:35_1ecbplus.xml
+-----------------------------------------
+
+sentence #:williams was pulled over for speeding early sunday on a freeway outside downtown , the california highway patrol said . 
+	[events]:[['said'], ['speeding'], ['pulled', 'over']]
+	[entities]:[['on', 'a', 'freeway', 'outside', 'downtown'], ['early', 'sunday'], ['california', 'highway', 'patrol'], ['williams']]
+*R1165[said]
+|--(ccomp)--> *R1166[pulled]
+|                |--(nsubjp)--> R1160[williams]
+|                |--(auxpas)--> was
+|                |--(compou)--> *R1166[over]
+|                |--(advcl)--> *R1167[speeding]
+|                                 |--(mark)--> for
+|                                 |--(nmod:t)--> R1168[sunday]
+|                                 |                |--(amod)--> R1168[early]
+|                                 |--(nmod)--> R1169[freeway]
+|                                                  |--(case)--> R1169[on]
+|                                                  |--(det)--> R1169[a]
+|                                                  |--(nmod)--> R1169[downtown]
+|                                                                   |--(case)--> R1169[outside]
+|--(punct)--> ,
+|--(nsubj)--> R1158[patrol]
+|                |--(det)--> the
+|                |--(compou)--> R1158[california]
+|                |--(compou)--> R1158[highway]
+|--(punct)--> .
+
+	* entity-paths for event['said']35_1ecbplus.xmlsent:9624
+	['said --(ccomp)--> pulled', 'pulled --(nsubjpass)--> Williams']
+	['said --(ccomp)--> pulled', 'pulled --(advcl)--> speeding', 'speeding --(nmod:tmod)--> Sunday']
+	['said --(ccomp)--> pulled', 'pulled --(advcl)--> speeding', 'speeding --(nmod)--> freeway']
+	['said --(nsubj)--> Patrol']
+
+	* entity-paths for event['speeding']35_1ecbplus.xmlsent:9624
+	['speeding --(nmod:tmod)--> Sunday']
+	['speeding --(nmod)--> freeway']
+
+	* entity-paths for event['pulled', 'over']35_1ecbplus.xmlsent:9624
+
+sentence #:chargers' jamal williams arrested on dui suspicion 
+	[events]:[['arrested'], ['dui'], ['suspicion']]
+	[entities]:[["chargers'"], ['jamal', 'williams']]
+R1160[williams]
+|--(nmod:p)--> R1157[chargers']
+|                |--(case)--> R1157[chargers']
+|--(compou)--> R1160[jamal]
+|--(acl)--> *R1161[arrested]
+                 |--(nmod)--> *R1162[suspicion]
+                                  |--(case)--> on
+                                  |--(compou)--> *R1163[dui]
+
+	* entity-paths for event['arrested']35_1ecbplus.xmlsent:9621
+
+	* entity-paths for event['dui']35_1ecbplus.xmlsent:9621
+
+	* entity-paths for event['suspicion']35_1ecbplus.xmlsent:9621
+
+sentence #:chargers defensive tackle jamal williams was arrested on suspicion of drunken driving , the team's second such arrest in less than a month . 
+	[events]:[['arrested'], ['drunken', 'driving'], ['arrest'], ['on', 'suspicion']]
+	[entities]:[['second'], ['defensive', 'tackle', 'jamal', 'williams'], ['less', 'than', 'a', 'month'], ["team's"], ['chargers']]
+R1160[tackle]
+|--(nsubj)--> R1157[chargers]
+|                |--(amod)--> R1160[defensive]
+|--(ccomp)--> *R1161[arrested]
+|                |--(nsubjp)--> R1160[williams]
+|                |                |--(compou)--> R1160[jamal]
+|                |--(auxpas)--> was
+|                |--(nmod)--> *R1162[suspicion]
+|                |                |--(case)--> *R1162[on]
+|                |                |--(nmod)--> *R1163[driving]
+|                |                                 |--(case)--> of
+|                |                                 |--(amod)--> *R1163[drunken]
+|                |                                 |--(punct)--> ,
+|                |                                 |--(appos)--> *R1161[arrest]
+|                |                                                  |--(nmod:p)--> R1157[team's]
+|                |                                                  |                |--(det)--> the
+|                |                                                  |                |--(case)--> R1157[team's]
+|                |                                                  |--(amod)--> R1177[second]
+|                |                                                  |--(amod)--> such
+|                |                                                  |--(nmod)--> R1164[a]
+|                |                                                                   |--(case)--> in
+|                |                                                                   |--(advmod)--> R1164[less]
+|                |                                                                                    |--(mwe)--> R1164[than]
+|                |--(nmod:t)--> R1164[month]
+|--(punct)--> .
+
+	* entity-paths for event['arrested']35_1ecbplus.xmlsent:9623
+	['arrested --(nsubjpass)--> Williams']
+	['arrested --(nmod)--> suspicion', 'suspicion --(nmod)--> driving', 'driving --(appos)--> arrest', 'arrest --(nmod:poss)--> team']
+	['arrested --(nmod)--> suspicion', 'suspicion --(nmod)--> driving', 'driving --(appos)--> arrest', 'arrest --(amod)--> second']
+	['arrested --(nmod)--> suspicion', 'suspicion --(nmod)--> driving', 'driving --(appos)--> arrest', 'arrest --(nmod)--> a']
+	['arrested --(nmod:tmod)--> month']
+
+	* entity-paths for event['drunken', 'driving']35_1ecbplus.xmlsent:9623
+	['driving --(appos)--> arrest', 'arrest --(nmod:poss)--> team']
+	['driving --(appos)--> arrest', 'arrest --(amod)--> second']
+	['driving --(appos)--> arrest', 'arrest --(nmod)--> a']
+
+	* entity-paths for event['arrest']35_1ecbplus.xmlsent:9623
+	['arrest --(nmod:poss)--> team']
+	['arrest --(amod)--> second']
+	['arrest --(nmod)--> a']
+
+	* entity-paths for event['on', 'suspicion']35_1ecbplus.xmlsent:9623
+	['suspicion --(nmod)--> driving', 'driving --(appos)--> arrest', 'arrest --(nmod:poss)--> team']
+	['suspicion --(nmod)--> driving', 'driving --(appos)--> arrest', 'arrest --(amod)--> second']
+	['suspicion --(nmod)--> driving', 'driving --(appos)--> arrest', 'arrest --(nmod)--> a']

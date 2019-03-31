@@ -1,0 +1,70 @@
+
+-----------------------------------------
+docid:38_6ecbplus.xml
+-----------------------------------------
+
+sentence #:the napa valley was shaken at 2 : 09 a . m . thursday by a magnitude 4 . 6 earthquake located near clearlake in lake county , the u . s . geological survey reported . 
+	[events]:[['shaken'], ['reported'], ['earthquake']]
+	[entities]:[['u', '.', 's', '.', 'geological', 'survey'], ['at', '2', ':', '09', 'a', '.', 'm', '.', 'thursday'], ['magnitude', '4', '.', '6'], ['located', 'near', 'clearlake', 'in', 'lake', 'county']]
+*R1304[shaken]
+|--(nsubjp)--> valley
+|                |--(det)--> the
+|                |--(compou)--> napa
+|--(auxpas)--> was
+|--(advcl)--> R1299[09]
+|                |--(case)--> R1299[at]
+|                |--(nummod)--> R1299[2]
+|                |--(punct)--> R1299[:]
+|                |--(dep)--> R1299[a]
+|                |                |--(punct)--> R1299[.]
+|                |                |--(dep)--> R1299[m]
+|                |                |--(punct)--> R1299[.]
+|                |--(dep)--> R1299[thursday]
+|                |--(nmod)--> R1301[magnitude]
+|                |                |--(case)--> by
+|                |                |--(det)--> a
+|                |                |--(nummod)--> R1301[4]
+|                |--(punct)--> R1301[.]
+|--(dobj)--> *R1296[earthquake]
+|                |--(nummod)--> R1301[6]
+|                |--(amod)--> R1325[located]
+|                                 |--(nmod)--> R1325[clearlake]
+|                                                  |--(case)--> R1325[near]
+|                                                  |--(nmod)--> R1325[county]
+|                                                  |                |--(case)--> R1325[in]
+|                                                  |                |--(compou)--> R1325[lake]
+|                                                  |--(punct)--> ,
+|                                                  |--(appos)--> R1243[u]
+|                                                  |                |--(det)--> the
+|                                                  |--(punct)--> R1243[.]
+|                                                  |--(dep)--> R1243[s]
+|                                                  |--(punct)--> R1243[.]
+|                                                  |--(acl:re)--> *R1303[reported]
+|                                                                   |--(nsubj)--> R1243[survey]
+|                                                                                    |--(compou)--> R1243[geological]
+|--(punct)--> .
+
+	* entity-paths for event['shaken']38_6ecbplus.xmlsent:10805
+	['shaken --(advcl)--> 09']
+	['shaken --(dobj)--> earthquake', 'earthquake --(nummod)--> 6']
+	['shaken --(dobj)--> earthquake', 'earthquake --(amod)--> located']
+
+	* entity-paths for event['reported']38_6ecbplus.xmlsent:10805
+	['reported --(nsubj)--> Survey']
+
+	* entity-paths for event['earthquake']38_6ecbplus.xmlsent:10805
+	['earthquake --(nummod)--> 6']
+	['earthquake --(amod)--> located']
+
+sentence #:lake county earthquake shakes napa 
+	[events]:[['shakes'], ['lake', 'county', 'earthquake']]
+	[entities]:[]
+*R1304[shakes]
+|--(nsubj)--> *R1296[earthquake]
+|                |--(compou)--> *R1296[lake]
+|                |--(compou)--> *R1296[county]
+|--(dobj)--> napa
+
+	* entity-paths for event['shakes']38_6ecbplus.xmlsent:10803
+
+	* entity-paths for event['lake', 'county', 'earthquake']38_6ecbplus.xmlsent:10803

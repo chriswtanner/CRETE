@@ -1,0 +1,82 @@
+
+-----------------------------------------
+docid:28_13ecb.xml
+-----------------------------------------
+
+sentence #:we 're all learning this morning of the death , at age 95 , of w. mark felt , who as a senior federal bureau of investigation official , served as the shadowy source known as " deep throat " to reporter bob woodward in his investigation of the watergate scandal that led to president nixon 's resignation . 
+	[events]:[['served'], ['death'], ['watergate'], ['resignation'], ['known']]
+	[entities]:[['bob', 'woodward'], ['source'], ['his'], ['deep', 'throat'], ['w.', 'mark', 'felt'], ['official'], ['president', 'nixon']]
+learning
+|--(nsubj)--> we
+|--(aux)--> 're
+|--(advmod)--> all
+|--(dobj)--> morning
+|                |--(det)--> this
+|                |--(nmod)--> *R808[death]
+|                                 |--(case)--> of
+|                                 |--(det)--> the
+|--(punct)--> ,
+|--(nmod)--> age
+|                |--(case)--> at
+|                |--(nummod)--> 95
+|                |--(punct)--> ,
+|                |--(nmod)--> R809[felt]
+|                                 |--(case)--> of
+|                                 |--(compou)--> R809[w.]
+|                                 |--(compou)--> R809[mark]
+|                                 |--(punct)--> ,
+|                                 |--(acl:re)--> *R834[served]
+|                                                  |--(nsubj)--> who
+|                                                  |--(nmod)--> bureau
+|                                                  |                |--(case)--> as
+|                                                  |                |--(det)--> a
+|                                                  |                |--(amod)--> senior
+|                                                  |                |--(compou)--> federal
+|                                                  |                |--(nmod)--> R809[official]
+|                                                  |                                 |--(case)--> of
+|                                                  |                                 |--(compou)--> investigation
+|                                                  |--(punct)--> ,
+|                                                  |--(nmod)--> R811[source]
+|                                                                   |--(case)--> as
+|                                                                   |--(det)--> the
+|                                                                   |--(amod)--> shadowy
+|                                                                   |--(acl)--> *R810[known]
+|                                                                                    |--(nmod)--> R811[throat]
+|                                                                                    |                |--(case)--> as
+|                                                                                    |                |--(punct)--> "
+|                                                                                    |                |--(compou)--> R811[deep]
+|                                                                                    |--(punct)--> "
+|                                                                                    |--(nmod)--> R835[woodward]
+|                                                                                                     |--(case)--> to
+|                                                                                                     |--(compou)--> reporter
+|                                                                                                     |--(compou)--> R835[bob]
+|                                                                                                     |--(nmod)--> investigation
+|                                                                                                     |                |--(case)--> in
+|                                                                                                     |                |--(nmod:p)--> R835[his]
+|                                                                                                     |                |--(nmod)--> scandal
+|                                                                                                     |                                 |--(case)--> of
+|                                                                                                     |                                 |--(det)--> the
+|                                                                                                     |                                 |--(compou)--> *R812[watergate]
+|                                                                                                     |--(acl:re)--> led
+|                                                                                                                      |--(nsubj)--> that
+|                                                                                                                      |--(nmod)--> *R836[resignation]
+|                                                                                                                                       |--(case)--> to
+|                                                                                                                                       |--(nmod:p)--> R837[nixon]
+|                                                                                                                                                        |--(compou)--> R837[president]
+|                                                                                                                                                        |--(case)--> 's
+|--(punct)--> .
+
+	* entity-paths for event['served']28_13ecb.xmlsent:6160
+	['served --(nmod)--> Bureau', 'Bureau --(nmod)--> official']
+	['served --(nmod)--> source']
+
+	* entity-paths for event['death']28_13ecb.xmlsent:6160
+
+	* entity-paths for event['watergate']28_13ecb.xmlsent:6160
+
+	* entity-paths for event['resignation']28_13ecb.xmlsent:6160
+	['resignation --(nmod:poss)--> Nixon']
+
+	* entity-paths for event['known']28_13ecb.xmlsent:6160
+	['known --(nmod)--> Throat']
+	['known --(nmod)--> Woodward']

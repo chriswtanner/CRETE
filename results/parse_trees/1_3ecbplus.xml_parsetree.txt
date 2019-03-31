@@ -1,0 +1,53 @@
+
+-----------------------------------------
+docid:1_3ecbplus.xml
+-----------------------------------------
+
+sentence #:lindsay lohan checks out of rehab . . . to check into different rehab centre 
+	[events]:[['check', 'into'], ['checks', 'out']]
+	[entities]:[['lindsay', 'lohan'], ['rehab'], ['rehab', 'centre']]
+*R107[checks]
+|--(compou)--> R15[lindsay]
+|--(compou)--> R15[lohan]
+|--(nmod)--> R16[rehab]
+                 |--(case)--> *R107[out]
+                 |--(case)--> of
+                 |--(punct)--> .
+                 |--(acl)--> *R101[check]
+                                  |--(mark)--> to
+                                  |--(nmod)--> R102[centre]
+                                                   |--(dep)--> *R101[into]
+                                                   |--(compou)--> different
+                                                   |--(compou)--> R102[rehab]
+
+	* entity-paths for event['check', 'into']1_3ecbplus.xmlsent:219
+
+	* entity-paths for event['checks', 'out']1_3ecbplus.xmlsent:219
+
+sentence #:the actress has left the betty ford centre and gone to malibu's cliffside resort . 
+	[events]:[['gone'], ['left']]
+	[entities]:[['actress'], ['to', "malibu's", 'cliffside', 'resort'], ['the', 'betty', 'ford', 'centre']]
+*R105[left]
+|--(nsubj)--> R15[actress]
+|                |--(det)--> the
+|--(aux)--> has
+|--(dobj)--> R16[centre]
+|                |--(det)--> R16[the]
+|                |--(compou)--> R16[betty]
+|                |--(compou)--> R16[ford]
+|--(cc)--> and
+|--(conj)--> *R101[gone]
+|                |--(nmod)--> R102[resort]
+|                                 |--(case)--> R102[to]
+|                                 |--(nmod:p)--> R102[malibu's]
+|                                 |                |--(case)--> R102[malibu's]
+|                                 |--(compou)--> R102[cliffside]
+|--(punct)--> .
+
+	* entity-paths for event['gone']1_3ecbplus.xmlsent:221
+	['gone --(nmod)--> resort']
+
+	* entity-paths for event['left']1_3ecbplus.xmlsent:221
+	['left --(nsubj)--> actress']
+	['left --(dobj)--> Centre']
+	['left --(conj)--> gone', 'gone --(nmod)--> resort']

@@ -1,0 +1,87 @@
+
+-----------------------------------------
+docid:23_8ecbplus.xml
+-----------------------------------------
+
+sentence #:a 36 - year - old man died about 11am on friday after he slipped and fell about 200m down a steep icy gully . 
+	[events]:[['fell'], ['died'], ['slipped']]
+	[entities]:[['man'], ['about', '11am', 'on', 'friday'], ['he']]
+36
+|--(det)--> a
+|--(punct)--> -
+|--(dep)--> year
+|--(punct)--> -
+|--(parata)--> *R640[died]
+|                |--(nsubj)--> R644[man]
+|                |                |--(amod)--> old
+|                |--(ccomp)--> R641[friday]
+|                                 |--(nsubj)--> R641[11am]
+|                                 |                |--(advmod)--> R641[about]
+|                                 |--(cop)--> R641[11am]
+|                                 |--(case)--> R641[on]
+|                                 |--(advcl)--> *R645[slipped]
+|                                                  |--(mark)--> after
+|                                                  |--(nsubj)--> R644[he]
+|                                                  |--(cc)--> and
+|                                                  |--(conj)--> *R646[fell]
+|                                                                   |--(advmod)--> about
+|                                                                   |--(nmod)--> gully
+|                                                                                    |--(advmod)--> 200m
+|                                                                                    |--(case)--> down
+|                                                                                    |--(det)--> a
+|                                                                                    |--(amod)--> steep
+|                                                                                    |--(compou)--> icy
+|--(punct)--> .
+
+	* entity-paths for event['fell']23_8ecbplus.xmlsent:4773
+
+	* entity-paths for event['died']23_8ecbplus.xmlsent:4773
+	['died --(nsubj)--> man']
+	['died --(ccomp)--> Friday']
+
+	* entity-paths for event['slipped']23_8ecbplus.xmlsent:4773
+	['slipped --(nsubj)--> he']
+
+sentence #:a second man has fallen to his death in aoraki mount cook national park . 
+	[events]:[['death'], ['fallen']]
+	[entities]:[['his'], ['man'], ['in', 'aoraki', 'mount', 'cook', 'national', 'park']]
+*R649[fallen]
+|--(nsubj)--> R643[man]
+|                |--(det)--> a
+|                |--(amod)--> second
+|--(aux)--> has
+|--(nmod)--> *R642[death]
+|                |--(case)--> to
+|                |--(nmod:p)--> R643[his]
+|                |--(nmod)--> R639[park]
+|                                 |--(case)--> R639[in]
+|                                 |--(compou)--> R639[aoraki]
+|                                 |--(compou)--> R639[mount]
+|                                 |--(compou)--> R639[cook]
+|                                 |--(compou)--> R639[national]
+|--(punct)--> .
+
+	* entity-paths for event['death']23_8ecbplus.xmlsent:4766
+	['death --(nmod:poss)--> his']
+	['death --(nmod)--> Park']
+
+	* entity-paths for event['fallen']23_8ecbplus.xmlsent:4766
+	['fallen --(nsubj)--> man']
+	['fallen --(nmod)--> death', 'death --(nmod:poss)--> his']
+	['fallen --(nmod)--> death', 'death --(nmod)--> Park']
+
+sentence #:second man dies in mt cook national park 
+	[events]:[['dies']]
+	[entities]:[['in', 'mt', 'cook', 'national', 'park'], ['man']]
+*R642[dies]
+|--(nsubj)--> R643[man]
+|                |--(amod)--> second
+|--(nmod)--> R639[park]
+                 |--(case)--> R639[in]
+                 |--(compou)--> R639[mt]
+                 |--(compou)--> R639[cook]
+                 |--(compou)--> R639[national]
+
+	* entity-paths for event['dies']23_8ecbplus.xmlsent:4764
+	['dies --(nsubj)--> man']
+	['dies --(nmod)--> Park']

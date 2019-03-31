@@ -1,0 +1,190 @@
+
+-----------------------------------------
+docid:21_13ecbplus.xml
+-----------------------------------------
+
+sentence #:man charged with dwi , leaving scene after s . rich hill mother killed in crash : nypd 
+	[events]:[['leaving'], ['crash'], ['dwi'], ['charged'], ['killed']]
+	[entities]:[['scene'], ['mother'], ['nypd'], ['man']]
+R548[man]
+|--(acl:re)--> *R557[charged]
+|                |--(nmod)--> *R558[dwi]
+|                |                |--(case)--> with
+|                |--(punct)--> ,
+|                |--(xcomp)--> *R570[leaving]
+|                                 |--(dobj)--> R571[scene]
+|--(dep)--> R545[mother]
+                 |--(dep)--> s
+                 |                |--(dep)--> after
+                 |                |--(punct)--> .
+                 |--(compou)--> rich
+                 |--(compou)--> hill
+                 |--(acl)--> *R546[killed]
+                                  |--(nmod)--> *R547[crash]
+                                                   |--(case)--> in
+                                                   |--(punct)--> :
+                                                   |--(dep)--> R561[nypd]
+
+	* entity-paths for event['leaving']21_13ecbplus.xmlsent:4087
+	['leaving --(dobj)--> scene']
+
+	* entity-paths for event['crash']21_13ecbplus.xmlsent:4087
+	['crash --(dep)--> NYPD']
+
+	* entity-paths for event['dwi']21_13ecbplus.xmlsent:4087
+
+	* entity-paths for event['charged']21_13ecbplus.xmlsent:4087
+	['charged --(xcomp)--> leaving', 'leaving --(dobj)--> scene']
+
+	* entity-paths for event['killed']21_13ecbplus.xmlsent:4087
+	['killed --(nmod)--> crash', 'crash --(dep)--> NYPD']
+
+sentence #:a 59 - year - old woman was killed in a hit - and - run crash while visiting a former neighbor to welcome his new daughter - in - law to the family friday evening , and the man allegedly behind the wheel of the car that hit her was charged with driving drunk , police and the woman " s friend said . 
+	[events]:[['driving'], ['hit'], ['killed'], ['charged'], ['drunk'], ['crash']]
+	[entities]:[['police'], ['car'], ['man'], ['friday', 'evening'], ['her'], ['woman']]
+59
+|--(det)--> a
+|--(punct)--> -
+|--(dep)--> year
+|--(punct)--> -
+|--(parata)--> *R546[killed]
+|                |--(nsubjp)--> R545[woman]
+|                |                |--(amod)--> old
+|                |--(auxpas)--> was
+|                |--(compou)--> in
+|                |--(dobj)--> hit
+|                |                |--(det)--> a
+|                |                |--(punct)--> -
+|                |                |--(cc)--> and
+|                |                |--(conj)--> run
+|                |                                 |--(punct)--> -
+|                |                                 |--(dobj)--> *R547[crash]
+|                |                                 |--(advcl)--> visiting
+|                |                                 |                |--(mark)--> while
+|                |                                 |                |--(dobj)--> neighbor
+|                |                                 |                |                |--(det)--> a
+|                |                                 |                |                |--(amod)--> former
+|                |                                 |                |--(advcl)--> welcome
+|                |                                 |                                 |--(mark)--> to
+|                |                                 |                                 |--(dobj)--> daughter
+|                |                                 |                                                  |--(nmod:p)--> his
+|                |                                 |                                                  |--(amod)--> new
+|                |                                 |--(punct)--> -
+|                |                                 |--(nmod)--> law
+|                |                                                  |--(case)--> in
+|                |                                                  |--(punct)--> -
+|                |                                                  |--(nmod)--> family
+|                |                                                  |                |--(case)--> to
+|                |                                                  |                |--(det)--> the
+|                |                                                  |                |--(nmod:t)--> R550[friday]
+|                |                                                  |--(nmod:t)--> R550[evening]
+|                |--(punct)--> ,
+|                |--(cc)--> and
+|                |--(conj)--> said
+|                                 |--(nsubj)--> friend
+|                                                  |--(det)--> the
+|                                                  |--(compou)--> R548[man]
+|                                                  |--(amod)--> allegedly
+|                                                  |                |--(nmod)--> wheel
+|                                                  |                                 |--(case)--> behind
+|                                                  |                                 |--(det)--> the
+|                                                  |                                 |--(nmod)--> R569[car]
+|                                                  |                                 |                |--(case)--> of
+|                                                  |                                 |                |--(det)--> the
+|                                                  |                                 |                |--(acl:re)--> *R556[hit]
+|                                                  |                                 |                                 |--(nsubj)--> that
+|                                                  |                                 |                                 |--(ccomp)--> *R557[charged]
+|                                                  |                                 |                                                  |--(nsubjp)--> R545[her]
+|                                                  |                                 |                                                  |--(auxpas)--> was
+|                                                  |                                 |                                                  |--(advcl)--> *R572[driving]
+|                                                  |                                 |                                                                   |--(mark)--> with
+|                                                  |                                 |                                                                   |--(dobj)--> *R573[drunk]
+|                                                  |                                 |                                                                                    |--(punct)--> ,
+|                                                  |                                 |                                                                                    |--(conj)--> R561[police]
+|                                                  |                                 |                                                                                    |--(cc)--> and
+|                                                  |                                 |                                                                                    |--(conj)--> woman
+|                                                  |                                 |                                                                                                     |--(det)--> the
+|                                                  |                                 |--(punct)--> "
+|                                                  |--(compou)--> s
+|--(punct)--> .
+
+	* entity-paths for event['driving']21_13ecbplus.xmlsent:4088
+	['driving --(dobj)--> drunk', 'drunk --(conj)--> police']
+
+	* entity-paths for event['hit']21_13ecbplus.xmlsent:4088
+	['hit --(ccomp)--> charged', 'charged --(nsubjpass)--> her']
+	['hit --(ccomp)--> charged', 'charged --(advcl)--> driving', 'driving --(dobj)--> drunk', 'drunk --(conj)--> police']
+
+	* entity-paths for event['killed']21_13ecbplus.xmlsent:4088
+	['killed --(nsubjpass)--> woman']
+	['killed --(dobj)--> hit', 'hit --(conj)--> run', 'run --(nmod)--> law', 'law --(nmod)--> family', 'family --(nmod:tmod)--> Friday']
+	['killed --(dobj)--> hit', 'hit --(conj)--> run', 'run --(nmod)--> law', 'law --(nmod:tmod)--> evening']
+	['killed --(conj)--> said', 'said --(nsubj)--> friend', 'friend --(compound)--> man']
+	['killed --(conj)--> said', 'said --(nsubj)--> friend', 'friend --(amod)--> allegedly', 'allegedly --(nmod)--> wheel', 'wheel --(nmod)--> car']
+
+	* entity-paths for event['charged']21_13ecbplus.xmlsent:4088
+	['charged --(nsubjpass)--> her']
+	['charged --(advcl)--> driving', 'driving --(dobj)--> drunk', 'drunk --(conj)--> police']
+
+	* entity-paths for event['drunk']21_13ecbplus.xmlsent:4088
+	['drunk --(conj)--> police']
+
+	* entity-paths for event['crash']21_13ecbplus.xmlsent:4088
+
+sentence #:raj k . chohan was walking alongside parked cars on 117th street and 97th avenue at about 7 p . m . when she was struck by a gray 2013 toyota camry , which then sped off , according to cops . 
+	[events]:[['sped', 'off'], ['struck'], ['walking'], ['according', 'to']]
+	[entities]:[['raj', 'k', '.', 'chohan'], ['she'], ['toyota', 'camry'], ['which'], ['at', 'about', '7', 'p', '.', 'm'], ['cops'], ['alongside', 'parked', 'cars', 'on', '117th', 'street', 'and', '97th', 'avenue']]
+R552[parked]
+|--(nsubj)--> R545[raj]
+|                |--(acl:re)--> *R565[walking]
+|                                 |--(nsubj)--> R545[chohan]
+|                                 |                |--(compou)--> R545[k]
+|                                 |                |--(punct)--> R545[.]
+|                                 |--(aux)--> was
+|                                 |--(nmod)--> R552[alongside]
+|--(dobj)--> R552[cars]
+|--(nmod)--> R552[street]
+|                |--(case)--> R552[on]
+|                |--(compou)--> R552[117th]
+|                |--(cc)--> R552[and]
+|                |--(conj)--> R552[avenue]
+|                                 |--(amod)--> R552[97th]
+|--(dep)--> R550[p]
+|                |--(case)--> R550[at]
+|                |--(case)--> R550[about]
+|                |--(nummod)--> R550[7]
+|                |--(punct)--> R550[.]
+|                |--(dep)--> R550[m]
+|                |--(punct)--> .
+|--(advcl)--> *R556[struck]
+|                |--(advmod)--> when
+|                |--(nsubjp)--> R545[she]
+|                |--(auxpas)--> was
+|                |--(nmod)--> R569[camry]
+|                                 |--(case)--> by
+|                                 |--(det)--> a
+|                                 |--(amod)--> gray
+|                                 |--(nummod)--> 2013
+|                                 |--(compou)--> R569[toyota]
+|                                 |--(punct)--> ,
+|                                 |--(acl:re)--> *R551[sped]
+|                                                  |--(nsubj)--> R569[which]
+|                                                  |--(advmod)--> then
+|                                                  |--(compou)--> *R551[off]
+|                                                  |--(punct)--> ,
+|                                                  |--(nmod)--> R561[cops]
+|                                                                   |--(case)--> *R560[according]
+|                                                                                    |--(mwe)--> *R560[to]
+|--(punct)--> .
+
+	* entity-paths for event['sped', 'off']21_13ecbplus.xmlsent:4089
+
+	* entity-paths for event['struck']21_13ecbplus.xmlsent:4089
+	['struck --(nsubjpass)--> she']
+	['struck --(nmod)--> Camry']
+
+	* entity-paths for event['walking']21_13ecbplus.xmlsent:4089
+	['walking --(nsubj)--> Chohan']
+	['walking --(nmod)--> alongside']
+
+	* entity-paths for event['according', 'to']21_13ecbplus.xmlsent:4089

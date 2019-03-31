@@ -1,0 +1,67 @@
+
+-----------------------------------------
+docid:26_1ecbplus.xml
+-----------------------------------------
+
+sentence #:officials at the prison medical center where he died did not provide the cause of death but noted that he suffered from heart disease . 
+	[events]:[['suffered'], ['death'], ['died'], ['heart', 'disease']]
+	[entities]:[['he'], ['the', 'prison', 'medical', 'center'], ['where'], ['he']]
+provide
+|--(nsubj)--> officials
+|                |--(nmod)--> R743[center]
+|                                 |--(case)--> at
+|                                 |--(det)--> R743[the]
+|                                 |--(compou)--> R743[prison]
+|                                 |--(amod)--> R743[medical]
+|                                 |--(acl:re)--> *R739[died]
+|                                                  |--(advmod)--> R743[where]
+|                                                  |--(nsubj)--> R740[he]
+|--(aux)--> did
+|--(neg)--> not
+|--(dobj)--> cause
+|                |--(det)--> the
+|                |--(nmod)--> *R739[death]
+|                                 |--(case)--> of
+|--(cc)--> but
+|--(conj)--> noted
+|                |--(ccomp)--> *R748[suffered]
+|                                 |--(mark)--> that
+|                                 |--(nsubj)--> R740[he]
+|                                 |--(nmod)--> *R749[disease]
+|                                                  |--(case)--> from
+|                                                  |--(compou)--> *R749[heart]
+|--(punct)--> .
+
+	* entity-paths for event['suffered']26_1ecbplus.xmlsent:5308
+	['suffered --(nsubj)--> he']
+
+	* entity-paths for event['death']26_1ecbplus.xmlsent:5308
+
+	* entity-paths for event['died']26_1ecbplus.xmlsent:5308
+	['died --(advmod)--> where']
+	['died --(nsubj)--> he']
+
+	* entity-paths for event['heart', 'disease']26_1ecbplus.xmlsent:5308
+
+sentence #:vincent gigante , mafia leader who feigned insanity , dies at 77 
+	[events]:[['feigned'], ['insanity'], ['dies']]
+	[entities]:[['vincent', 'gigante'], ['mafia', 'leader']]
+*R739[dies]
+|--(nsubj)--> R740[gigante]
+|                |--(compou)--> R740[vincent]
+|                |--(punct)--> ,
+|                |--(appos)--> R740[leader]
+|                |                |--(compou)--> R740[mafia]
+|                |                |--(acl:re)--> *R741[feigned]
+|                |                                 |--(nsubj)--> who
+|                |                                 |--(dobj)--> *R742[insanity]
+|                |--(punct)--> ,
+|--(nmod)--> 77
+                 |--(case)--> at
+
+	* entity-paths for event['feigned']26_1ecbplus.xmlsent:5303
+
+	* entity-paths for event['insanity']26_1ecbplus.xmlsent:5303
+
+	* entity-paths for event['dies']26_1ecbplus.xmlsent:5303
+	['Dies --(nsubj)--> Gigante']

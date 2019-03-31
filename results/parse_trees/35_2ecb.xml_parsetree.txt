@@ -1,0 +1,110 @@
+
+-----------------------------------------
+docid:35_2ecb.xml
+-----------------------------------------
+
+sentence #:despite his arrest on suspicion of driving under the influence early yesterday , chargers receiver vincent jackson will play in sunday 's afc divisional playoff game at pittsburgh . 
+	[events]:[['suspicion'], ['play'], ['arrest'], ['game'], ['driving', 'under', 'the', 'influence']]
+	[entities]:[['at', 'pittsburgh'], ['sunday'], ['early', 'yesterday'], ['vincent', 'jackson']]
+*R1173[play]
+|--(nmod)--> *R1153[arrest]
+|                |--(case)--> despite
+|                |--(nmod:p)--> his
+|                |--(nmod)--> *R1155[suspicion]
+|                                 |--(case)--> on
+|                                 |--(acl)--> *R1154[driving]
+|                                                  |--(mark)--> of
+|                                                  |--(nmod)--> *R1154[influence]
+|                                                                   |--(case)--> *R1154[under]
+|                                                                   |--(det)--> *R1154[the]
+|--(nmod:t)--> R1159[yesterday]
+|                |--(advmod)--> R1159[early]
+|--(punct)--> ,
+|--(nsubj)--> R1156[jackson]
+|                |--(compou)--> chargers
+|                |--(compou)--> receiver
+|                |--(compou)--> R1156[vincent]
+|--(aux)--> will
+|--(nmod)--> *R1174[game]
+|                |--(case)--> in
+|                |--(nmod:p)--> R1178[sunday]
+|                |                |--(case)--> 's
+|                |--(compou)--> afc
+|                |--(amod)--> divisional
+|                |--(compou)--> playoff
+|--(nmod)--> R1175[pittsburgh]
+|                |--(case)--> R1175[at]
+|--(punct)--> .
+
+	* entity-paths for event['suspicion']35_2ecb.xmlsent:9645
+
+	* entity-paths for event['play']35_2ecb.xmlsent:9645
+	['play --(nmod:tmod)--> yesterday']
+	['play --(nsubj)--> Jackson']
+	['play --(nmod)--> game', 'game --(nmod:poss)--> Sunday']
+	['play --(nmod)--> Pittsburgh']
+
+	* entity-paths for event['arrest']35_2ecb.xmlsent:9645
+
+	* entity-paths for event['game']35_2ecb.xmlsent:9645
+	['game --(nmod:poss)--> Sunday']
+
+	* entity-paths for event['driving', 'under', 'the', 'influence']35_2ecb.xmlsent:9645
+
+sentence #:the arrest will not affect jackson 's status for sunday 's game . 
+	[events]:[['affect'], ['game'], ['arrest']]
+	[entities]:[['jackson']]
+*R1172[affect]
+|--(nsubj)--> *R1153[arrest]
+|                |--(det)--> the
+|--(aux)--> will
+|--(neg)--> not
+|--(dobj)--> status
+|                |--(nmod:p)--> R1156[jackson]
+|                |                |--(case)--> 's
+|                |--(nmod)--> *R1174[game]
+|                                 |--(case)--> for
+|                                 |--(nmod:p)--> sunday
+|                                                  |--(case)--> 's
+|--(punct)--> .
+
+	* entity-paths for event['affect']35_2ecb.xmlsent:9653
+	['affect --(dobj)--> status', 'status --(nmod:poss)--> Jackson']
+
+	* entity-paths for event['game']35_2ecb.xmlsent:9653
+
+	* entity-paths for event['arrest']35_2ecb.xmlsent:9653
+
+sentence #:general manager a.j. smith issued the following statement on jackson 's arrest . 
+	[events]:[['arrest']]
+	[entities]:[['jackson']]
+issued
+|--(nsubj)--> smith
+|                |--(compou)--> general
+|                |--(compou)--> manager
+|                |--(compou)--> a.j.
+|--(dobj)--> statement
+|                |--(det)--> the
+|                |--(amod)--> following
+|                |--(nmod)--> *R1153[arrest]
+|                                 |--(case)--> on
+|                                 |--(nmod:p)--> R1156[jackson]
+|                                                  |--(case)--> 's
+|--(punct)--> .
+
+	* entity-paths for event['arrest']35_2ecb.xmlsent:9661
+	['arrest --(nmod:poss)--> Jackson']
+
+sentence #:jackson arrested on dui charge 
+	[events]:[['arrested'], ['dui']]
+	[entities]:[['jackson']]
+*R1153[arrested]
+|--(nsubj)--> R1156[jackson]
+|--(nmod)--> charge
+                 |--(case)--> on
+                 |--(compou)--> *R1154[dui]
+
+	* entity-paths for event['arrested']35_2ecb.xmlsent:9644
+	['arrested --(nsubj)--> Jackson']
+
+	* entity-paths for event['dui']35_2ecb.xmlsent:9644

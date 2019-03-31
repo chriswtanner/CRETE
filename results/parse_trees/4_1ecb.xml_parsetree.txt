@@ -1,0 +1,37 @@
+
+-----------------------------------------
+docid:4_1ecb.xml
+-----------------------------------------
+
+sentence #:bettie page , the pin-up model whose seductive photographs in magazines titillated and outraged americans in the 1950s , has died , her agent said . 
+	[events]:[['died']]
+	[entities]:[['agent'], ['photographs'], ['the', '1950s'], ['bettie', 'page']]
+said
+|--(ccomp)--> *R1363[died]
+|                |--(nsubj)--> R1364[page]
+|                |                |--(compou)--> R1364[bettie]
+|                |                |--(punct)--> ,
+|                |                |--(appos)--> model
+|                |                |                |--(det)--> the
+|                |                |                |--(amod)--> pin-up
+|                |                |                |--(acl:re)--> titillated
+|                |                |                                 |--(nsubj)--> R1384[photographs]
+|                |                |                                 |                |--(nmod:p)--> whose
+|                |                |                                 |                |--(amod)--> seductive
+|                |                |                                 |                |--(nmod)--> magazines
+|                |                |                                 |                                 |--(case)--> in
+|                |                |                                 |--(cc)--> and
+|                |                |                                 |--(conj)--> americans
+|                |                |                                                  |--(amod)--> outraged
+|                |                |                                                  |--(nmod)--> R1365[1950s]
+|                |                |                                                                   |--(case)--> in
+|                |                |                                                                   |--(det)--> R1365[the]
+|                |                |--(punct)--> ,
+|                |--(aux)--> has
+|--(punct)--> ,
+|--(nsubj)--> R1385[agent]
+|                |--(nmod:p)--> her
+|--(punct)--> .
+
+	* entity-paths for event['died']4_1ecb.xmlsent:11321
+	['died --(nsubj)--> Page']

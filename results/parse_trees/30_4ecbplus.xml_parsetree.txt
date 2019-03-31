@@ -1,0 +1,118 @@
+
+-----------------------------------------
+docid:30_4ecbplus.xml
+-----------------------------------------
+
+sentence #:itnewsafrica that "a telecom egypt fiber line near alexandria has been damaged resulting in loss of telecommunications for all three mobile operators . " 
+	[events]:[['resulting'], ['damaged'], ['loss'], ['telecommunications']]
+	[entities]:[['near', 'alexandria'], ['telecom', 'egypt'], ['three', 'mobile', 'operators'], ['fiber', 'line']]
+itnewsafrica
+|--(dep)--> *R988[damaged]
+|                |--(mark)--> that
+|                |--(punct)--> "a
+|                |--(nsubjp)--> R987[line]
+|                |                |--(det)--> "a
+|                |                |--(compou)--> R994[telecom]
+|                |                |--(compou)--> R994[egypt]
+|                |                |--(compou)--> R987[fiber]
+|                |                |--(nmod)--> R993[alexandria]
+|                |                                 |--(case)--> R993[near]
+|                |--(aux)--> has
+|                |--(auxpas)--> been
+|                |--(xcomp)--> *R986[resulting]
+|                                 |--(nmod)--> *R990[loss]
+|                                                  |--(case)--> in
+|                                                  |--(nmod)--> *R991[telecommunications]
+|                                                                   |--(case)--> of
+|                                                                   |--(nmod)--> R995[operators]
+|                                                                                    |--(case)--> for
+|                                                                                    |--(det)--> all
+|                                                                                    |--(nummod)--> R995[three]
+|                                                                                    |--(amod)--> R995[mobile]
+|--(punct)--> .
+|--(punct)--> "
+
+	* entity-paths for event['resulting']30_4ecbplus.xmlsent:7900
+	['resulting --(nmod)--> loss', 'loss --(nmod)--> telecommunications', 'telecommunications --(nmod)--> operators']
+
+	* entity-paths for event['damaged']30_4ecbplus.xmlsent:7900
+	['damaged --(nsubjpass)--> line']
+	['damaged --(xcomp)--> resulting', 'resulting --(nmod)--> loss', 'loss --(nmod)--> telecommunications', 'telecommunications --(nmod)--> operators']
+
+	* entity-paths for event['loss']30_4ecbplus.xmlsent:7900
+	['loss --(nmod)--> telecommunications', 'telecommunications --(nmod)--> operators']
+
+	* entity-paths for event['telecommunications']30_4ecbplus.xmlsent:7900
+	['telecommunications --(nmod)--> operators']
+
+sentence #:reports on tuesday morning indicated that a fiber optic cable in the northern part of egypt had been damaged , resulting in the loss of all telecommunications in egypt's second largest city of alexandria and parts of the nile delta region . 
+	[events]:[['loss'], ['damaged'], ['telecommunications'], ['resulting']]
+	[entities]:[['in', 'the', 'northern', 'part', 'of', 'egypt'], ['in', "egypt's", 'second', 'largest', 'city', 'of', 'alexandria', 'and', 'parts', 'of', 'the', 'nile', 'delta', 'region'], ['fiber', 'optic', 'cable'], ['on', 'tuesday', 'morning']]
+indicated
+|--(nsubj)--> reports
+|                |--(nmod)--> R989[tuesday]
+|                                 |--(case)--> R989[on]
+|--(nmod:t)--> R989[morning]
+|--(ccomp)--> *R988[damaged]
+|                |--(mark)--> that
+|                |--(nsubjp)--> R987[cable]
+|                |                |--(det)--> a
+|                |                |--(compou)--> R987[fiber]
+|                |                |--(amod)--> R987[optic]
+|                |                |--(nmod)--> R993[part]
+|                |                                 |--(case)--> R993[in]
+|                |                                 |--(det)--> R993[the]
+|                |                                 |--(amod)--> R993[northern]
+|                |                                 |--(nmod)--> R993[egypt]
+|                |                                                  |--(case)--> R993[of]
+|                |--(aux)--> had
+|                |--(auxpas)--> been
+|--(punct)--> ,
+|--(xcomp)--> *R986[resulting]
+|                |--(nmod)--> *R990[loss]
+|                                 |--(case)--> in
+|                                 |--(det)--> the
+|                                 |--(nmod)--> *R991[telecommunications]
+|                                                  |--(case)--> of
+|                                                  |--(det)--> all
+|                                                  |--(nmod)--> R992[city]
+|                                                                   |--(case)--> R992[in]
+|                                                                   |--(nmod:p)--> R992[egypt's]
+|                                                                   |                |--(case)--> R992[egypt's]
+|                                                                   |--(amod)--> R992[second]
+|                                                                   |--(amod)--> R992[largest]
+|                                                                   |--(nmod)--> R992[alexandria]
+|                                                                   |                |--(case)--> R992[of]
+|                                                                   |--(cc)--> R992[and]
+|                                                                   |--(conj)--> R992[parts]
+|                                                                                    |--(nmod)--> R992[region]
+|                                                                                                     |--(case)--> R992[of]
+|                                                                                                     |--(det)--> R992[the]
+|                                                                                                     |--(compou)--> R992[nile]
+|                                                                                                     |--(compou)--> R992[delta]
+|--(punct)--> .
+
+	* entity-paths for event['loss']30_4ecbplus.xmlsent:7899
+	['loss --(nmod)--> telecommunications', 'telecommunications --(nmod)--> city']
+
+	* entity-paths for event['damaged']30_4ecbplus.xmlsent:7899
+	['damaged --(nsubjpass)--> cable']
+
+	* entity-paths for event['telecommunications']30_4ecbplus.xmlsent:7899
+	['telecommunications --(nmod)--> city']
+
+	* entity-paths for event['resulting']30_4ecbplus.xmlsent:7899
+	['resulting --(nmod)--> loss', 'loss --(nmod)--> telecommunications', 'telecommunications --(nmod)--> city']
+
+sentence #:fiber cable cut in egypt 
+	[events]:[['cut']]
+	[entities]:[['in', 'egypt'], ['fiber', 'cable']]
+R987[fiber]
+|--(dep)--> *R988[cut]
+                 |--(compou)--> R987[cable]
+                 |--(nmod)--> R993[egypt]
+                                  |--(case)--> R993[in]
+
+	* entity-paths for event['cut']30_4ecbplus.xmlsent:7897
+	['cut --(compound)--> cable']
+	['cut --(nmod)--> Egypt']

@@ -1,0 +1,21 @@
+
+-----------------------------------------
+docid:9_6ecbplus.xml
+-----------------------------------------
+
+sentence #:obama administration flips bush endangered species ruling 
+	[events]:[['flips'], ['endangered']]
+	[entities]:[['bush'], ['species'], ['administration'], ['ruling']]
+*R1798[flips]
+|--(nsubj)--> R1133[administration]
+|                |--(compou)--> obama
+|--(dobj)--> R1802[ruling]
+                 |--(compou)--> R1803[bush]
+                 |--(compou)--> *R1806[endangered]
+                 |--(compou)--> R1805[species]
+
+	* entity-paths for event['flips']9_6ecbplus.xmlsent:15655
+	['Flips --(nsubj)--> Administration']
+	['Flips --(dobj)--> Ruling']
+
+	* entity-paths for event['endangered']9_6ecbplus.xmlsent:15655

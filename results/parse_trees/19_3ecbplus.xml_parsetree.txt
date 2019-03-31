@@ -1,0 +1,48 @@
+
+-----------------------------------------
+docid:19_3ecbplus.xml
+-----------------------------------------
+
+sentence #:enraged protesters battle cops in brooklyn streets during third night of rioting after it's revealed that 16 - year - old kimani gray was shot in the back 
+	[events]:[['shot'], ['rioting'], ['battle'], ['enraged']]
+	[entities]:[['cops'], ['third', 'night'], ['in', 'brooklyn', 'streets'], ['protesters'], ['kimani', 'gray']]
+*R420[battle]
+|--(nsubj)--> R419[protesters]
+|                |--(amod)--> *R441[enraged]
+|--(dobj)--> R411[cops]
+                 |--(nmod)--> R416[streets]
+                 |                |--(case)--> R416[in]
+                 |                |--(compou)--> R416[brooklyn]
+                 |                |--(nmod)--> R442[night]
+                 |                                 |--(case)--> during
+                 |                                 |--(amod)--> R442[third]
+                 |                                 |--(nmod)--> *R420[rioting]
+                 |                                                  |--(case)--> of
+                 |--(acl)--> revealed
+                                  |--(mark)--> after
+                                  |--(nsubjp)--> it's
+                                  |--(auxpas)--> it's
+                                  |--(ccomp)--> *R412[shot]
+                                                   |--(mark)--> that
+                                                   |--(nsubjp)--> 16
+                                                   |                |--(dep)--> year
+                                                   |                                 |--(punct)--> -
+                                                   |                                 |--(punct)--> -
+                                                   |                                 |--(dep)--> R415[gray]
+                                                   |                                                  |--(amod)--> old
+                                                   |                                                  |--(compou)--> R415[kimani]
+                                                   |--(auxpas)--> was
+                                                   |--(nmod)--> back
+                                                                    |--(case)--> in
+                                                                    |--(det)--> the
+
+	* entity-paths for event['shot']19_3ecbplus.xmlsent:2973
+	['shot --(nsubjpass)--> 16', '16 --(dep)--> year', 'year --(dep)--> Gray']
+
+	* entity-paths for event['rioting']19_3ecbplus.xmlsent:2973
+
+	* entity-paths for event['battle']19_3ecbplus.xmlsent:2973
+	['battle --(nsubj)--> protesters']
+	['battle --(dobj)--> cops']
+
+	* entity-paths for event['enraged']19_3ecbplus.xmlsent:2973

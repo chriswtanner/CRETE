@@ -1,0 +1,34 @@
+
+-----------------------------------------
+docid:10_6ecbplus.xml
+-----------------------------------------
+
+sentence #:red sox owner john henry has said , in so many words , that his team will not sign mark teixeira . 
+	[events]:[['sign']]
+	[entities]:[['mark', 'teixeira'], ['john', 'henry'], ['team']]
+said
+|--(nsubj)--> R184[henry]
+|                |--(compou)--> red
+|                |--(compou)--> sox
+|                |--(compou)--> owner
+|                |--(compou)--> R184[john]
+|--(aux)--> has
+|--(punct)--> ,
+|--(nmod)--> words
+|                |--(case)--> in
+|                |--(amod)--> many
+|                                 |--(advmod)--> so
+|--(punct)--> ,
+|--(ccomp)--> *R186[sign]
+|                |--(mark)--> that
+|                |--(nsubj)--> R162[team]
+|                |                |--(nmod:p)--> his
+|                |--(aux)--> will
+|                |--(neg)--> not
+|                |--(dobj)--> R163[teixeira]
+|                                 |--(compou)--> R163[mark]
+|--(punct)--> .
+
+	* entity-paths for event['sign']10_6ecbplus.xmlsent:545
+	['sign --(nsubj)--> team']
+	['sign --(dobj)--> Teixeira']

@@ -1,0 +1,59 @@
+
+-----------------------------------------
+docid:9_3ecb.xml
+-----------------------------------------
+
+sentence #:interior secretary dirk kempthorne announced major changes thursday to the endangered species act , causing environmental groups to charge that the " midnight rules " set to go into effect before president-elect barack obama takes office are intended to eviscerate the nation 's premier wildlife-protection law . 
+	[events]:[['changes'], ['takes', 'office']]
+	[entities]:[['law'], ['environmental', 'groups'], ['midnight', 'rules'], ['dirk', 'kempthorne'], ['barack', 'obama'], ['thursday'], ['endangered', 'species', 'act']]
+announced
+|--(nsubj)--> R1817[kempthorne]
+|                |--(compou)--> interior
+|                |--(compou)--> secretary
+|                |--(compou)--> R1817[dirk]
+|--(dobj)--> *R1812[changes]
+|                |--(amod)--> major
+|--(nmod:t)--> R1810[thursday]
+|--(nmod)--> R1800[act]
+|                |--(case)--> to
+|                |--(det)--> the
+|                |--(compou)--> R1800[endangered]
+|                |--(compou)--> R1800[species]
+|--(punct)--> ,
+|--(advcl)--> causing
+|                |--(dobj)--> R1818[groups]
+|                |                |--(amod)--> R1818[environmental]
+|                |--(advcl)--> charge
+|                                 |--(mark)--> to
+|                                 |--(advmod)--> the
+|                                 |                |--(case)--> that
+|                                 |--(punct)--> "
+|                                 |--(dobj)--> R1802[rules]
+|                                                  |--(compou)--> R1802[midnight]
+|                                                  |--(punct)--> "
+|                                                  |--(acl)--> set
+|                                                                   |--(xcomp)--> go
+|                                                                                    |--(mark)--> to
+|                                                                                    |--(nmod)--> effect
+|                                                                                    |                |--(case)--> into
+|                                                                                    |--(advcl)--> *R1819[takes]
+|                                                                                                     |--(mark)--> before
+|                                                                                                     |--(nsubj)--> R1136[obama]
+|                                                                                                     |                |--(compou)--> president-elect
+|                                                                                                     |                |--(compou)--> R1136[barack]
+|                                                                                                     |--(ccomp)--> intended
+|                                                                                                                      |--(nsubjp)--> *R1819[office]
+|                                                                                                                      |--(auxpas)--> are
+|                                                                                                                      |--(xcomp)--> eviscerate
+|                                                                                                                                       |--(mark)--> to
+|                                                                                                                                       |--(dobj)--> R1800[law]
+|                                                                                                                                                        |--(nmod:p)--> nation
+|                                                                                                                                                        |                |--(det)--> the
+|                                                                                                                                                        |                |--(case)--> 's
+|                                                                                                                                                        |--(compou)--> premier
+|                                                                                                                                                        |--(compou)--> wildlife-protection
+|--(punct)--> .
+
+	* entity-paths for event['changes']9_3ecb.xmlsent:15466
+
+	* entity-paths for event['takes', 'office']9_3ecb.xmlsent:15466

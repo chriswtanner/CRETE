@@ -1,0 +1,29 @@
+
+-----------------------------------------
+docid:9_4ecbplus.xml
+-----------------------------------------
+
+sentence #:interior , commerce departments overturn rule that cut science out of endangered species act 
+	[events]:[['science'], ['cut', 'out'], ['overturn']]
+	[entities]:[['rule'], ['that'], ['departments'], ['endangered', 'species', 'act']]
+R1802[rule]
+|--(compou)--> interior
+|--(punct)--> ,
+|--(appos)--> commerce
+|--(compou)--> R1811[departments]
+|--(compou)--> *R1798[overturn]
+|--(acl:re)--> R1802[that]
+|--(dep)--> *R1801[science]
+                 |--(dep)--> *R1820[cut]
+                 |--(acl)--> *R1820[out]
+                 |--(nmod)--> R1800[act]
+                                  |--(case)--> of
+                                  |--(compou)--> R1800[endangered]
+                                  |--(compou)--> R1800[species]
+
+	* entity-paths for event['science']9_4ecbplus.xmlsent:15551
+	['Science --(nmod)--> Act']
+
+	* entity-paths for event['cut', 'out']9_4ecbplus.xmlsent:15551
+
+	* entity-paths for event['overturn']9_4ecbplus.xmlsent:15551

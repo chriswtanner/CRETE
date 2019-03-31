@@ -1,0 +1,84 @@
+
+-----------------------------------------
+docid:28_3ecbplus.xml
+-----------------------------------------
+
+sentence #:frederick c . larue , a top nixon campaign official who passed money from a secret white house fund to buy the silence of the watergate burglars , died saturday at a hotel in biloxi , miss . 
+	[events]:[['watergate'], ['buy'], ['silence'], ['died'], ['money'], ['passed']]
+	[entities]:[['who'], ['at', 'a', 'hotel', 'in', 'biloxi', ',', 'miss', '.'], ['saturday'], ['frederick', 'c', '.', 'larue'], ['burglars']]
+*R814[died]
+|--(nsubj)--> R815[larue]
+|                |--(compou)--> R815[frederick]
+|                |--(compou)--> R815[c]
+|                |--(punct)--> R815[.]
+|                |--(punct)--> ,
+|                |--(appos)--> official
+|                |                |--(det)--> a
+|                |                |--(amod)--> top
+|                |                |--(compou)--> nixon
+|                |                |--(compou)--> campaign
+|                |                |--(acl:re)--> *R838[passed]
+|                |                                 |--(nsubj)--> R815[who]
+|                |                                 |--(dobj)--> *R839[money]
+|                |                                 |--(nmod)--> fund
+|                |                                 |                |--(case)--> from
+|                |                                 |                |--(det)--> a
+|                |                                 |                |--(amod)--> secret
+|                |                                 |                |--(compou)--> white
+|                |                                 |                |--(compou)--> house
+|                |                                 |--(advcl)--> *R840[buy]
+|                |                                                  |--(mark)--> to
+|                |                                                  |--(dobj)--> *R841[silence]
+|                |                                                                   |--(det)--> the
+|                |                                                                   |--(nmod)--> R842[burglars]
+|                |                                                                                    |--(case)--> of
+|                |                                                                                    |--(det)--> the
+|                |                                                                                    |--(compou)--> *R812[watergate]
+|                |--(punct)--> ,
+|--(nmod:t)--> R833[saturday]
+|--(nmod)--> R825[hotel]
+|                |--(case)--> R825[at]
+|                |--(det)--> R825[a]
+|                |--(nmod)--> R825[miss]
+|                                 |--(case)--> R825[in]
+|                                 |--(compou)--> R825[biloxi]
+|                                 |--(punct)--> R825[,]
+|--(punct)--> R825[.]
+
+	* entity-paths for event['watergate']28_3ecbplus.xmlsent:6324
+
+	* entity-paths for event['buy']28_3ecbplus.xmlsent:6324
+	['buy --(dobj)--> silence', 'silence --(nmod)--> burglars']
+
+	* entity-paths for event['silence']28_3ecbplus.xmlsent:6324
+	['silence --(nmod)--> burglars']
+
+	* entity-paths for event['died']28_3ecbplus.xmlsent:6324
+	['died --(nsubj)--> LaRue']
+	['died --(nmod:tmod)--> Saturday']
+	['died --(nmod)--> hotel']
+	['died --(punct)--> .']
+
+	* entity-paths for event['money']28_3ecbplus.xmlsent:6324
+
+	* entity-paths for event['passed']28_3ecbplus.xmlsent:6324
+	['passed --(nsubj)--> who']
+	['passed --(advcl)--> buy', 'buy --(dobj)--> silence', 'silence --(nmod)--> burglars']
+
+sentence #:fred larue , watergate figure , dies at 75 
+	[events]:[['dies'], ['watergate']]
+	[entities]:[['fred', 'larue']]
+*R814[dies]
+|--(nsubj)--> R815[larue]
+|                |--(compou)--> R815[fred]
+|                |--(punct)--> ,
+|                |--(appos)--> figure
+|                |                |--(compou)--> *R812[watergate]
+|                |--(punct)--> ,
+|--(nmod)--> 75
+                 |--(case)--> at
+
+	* entity-paths for event['dies']28_3ecbplus.xmlsent:6322
+	['Dies --(nsubj)--> LaRue']
+
+	* entity-paths for event['watergate']28_3ecbplus.xmlsent:6322

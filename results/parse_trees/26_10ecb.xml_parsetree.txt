@@ -1,0 +1,43 @@
+
+-----------------------------------------
+docid:26_10ecb.xml
+-----------------------------------------
+
+sentence #:a mafia boss in palermo hanged himself in jail after hours before he was arrested in a police 's raid . 
+	[events]:[['hanged'], ['arrested'], ['raid']]
+	[entities]:[['mafia', 'boss'], ['himself'], ['hours'], ['he'], ['jail'], ['police']]
+*R732[hanged]
+|--(nsubj)--> R733[boss]
+|                |--(det)--> a
+|                |--(compou)--> R733[mafia]
+|                |--(nmod)--> palermo
+|                                 |--(case)--> in
+|--(dobj)--> R733[himself]
+|--(nmod)--> R734[jail]
+|                |--(case)--> in
+|                |--(nmod)--> R735[hours]
+|                                 |--(case)--> after
+|--(advcl)--> *R736[arrested]
+|                |--(mark)--> before
+|                |--(nsubjp)--> R733[he]
+|                |--(auxpas)--> was
+|                |--(nmod)--> *R737[raid]
+|                                 |--(case)--> in
+|                                 |--(nmod:p)--> R738[police]
+|                                                  |--(det)--> a
+|                                                  |--(case)--> 's
+|--(punct)--> .
+
+	* entity-paths for event['hanged']26_10ecb.xmlsent:5273
+	['hanged --(nsubj)--> boss']
+	['hanged --(dobj)--> himself']
+	['hanged --(nmod)--> jail']
+	['hanged --(advcl)--> arrested', 'arrested --(nsubjpass)--> he']
+	['hanged --(advcl)--> arrested', 'arrested --(nmod)--> raid', 'raid --(nmod:poss)--> police']
+
+	* entity-paths for event['arrested']26_10ecb.xmlsent:5273
+	['arrested --(nsubjpass)--> he']
+	['arrested --(nmod)--> raid', 'raid --(nmod:poss)--> police']
+
+	* entity-paths for event['raid']26_10ecb.xmlsent:5273
+	['raid --(nmod:poss)--> police']

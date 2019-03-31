@@ -1,0 +1,77 @@
+
+-----------------------------------------
+docid:42_9ecbplus.xml
+-----------------------------------------
+
+sentence #:blackberry's ( nasdaq : bbry ) new q10 smartphone will be available for preorder for business customers on t - mobile's website april 29 , according to an online statement by the carrier . 
+	[events]:[['statement'], ['preorder'], ['available']]
+	[entities]:[['t', '-', "mobile's", 'website'], ['carrier'], ['april', '29'], ['business', 'customers'], ["blackberry's"], ['q10', 'smartphone']]
+R1525[q10]
+|--(nmod:p)--> R1540[blackberry's]
+|                |--(case)--> R1540[blackberry's]
+|--(appos)--> nasdaq
+|                |--(punct)--> (
+|                |--(punct)--> :
+|                |--(dep)--> bbry
+|                |--(punct)--> )
+|--(amod)--> new
+|--(dep)--> R1525[smartphone]
+|                |--(acl:re)--> *R1529[available]
+|                                 |--(aux)--> will
+|                                 |--(cop)--> be
+|                                 |--(nmod)--> *R1544[preorder]
+|                                 |                |--(case)--> for
+|                                 |--(nmod)--> R1528[customers]
+|                                 |                |--(case)--> for
+|                                 |                |--(compou)--> R1528[business]
+|                                 |                |--(nmod)--> R1545[t]
+|                                 |                |                |--(case)--> on
+|                                 |                |--(punct)--> R1545[-]
+|                                 |                |--(dep)--> R1545[website]
+|                                 |                                 |--(nmod:p)--> R1545[mobile's]
+|                                 |                                 |                |--(case)--> R1545[mobile's]
+|                                 |                                 |--(nmod:t)--> R1526[april]
+|                                 |                                                  |--(nummod)--> R1526[29]
+|                                 |--(punct)--> ,
+|                                 |--(nmod)--> *R1527[statement]
+|                                                  |--(case)--> according
+|                                                  |                |--(mwe)--> to
+|                                                  |--(det)--> an
+|                                                  |--(amod)--> online
+|                                                  |--(nmod)--> R1517[carrier]
+|                                                                   |--(case)--> by
+|                                                                   |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['statement']42_9ecbplus.xmlsent:12850
+	['statement --(nmod)--> carrier']
+
+	* entity-paths for event['preorder']42_9ecbplus.xmlsent:12850
+
+	* entity-paths for event['available']42_9ecbplus.xmlsent:12850
+	['available --(nmod)--> customers']
+	['available --(nmod)--> statement', 'statement --(nmod)--> carrier']
+
+sentence #:blackberry q10 preorders launch on t - mobile april 29 
+	[events]:[['launch'], ['preorders']]
+	[entities]:[['t', '-', 'mobile'], ['blackberry', 'q10'], ['april', '29']]
+*R1544[preorders]
+|--(compou)--> R1525[blackberry]
+|--(compou)--> R1525[q10]
+|--(dep)--> *R1523[launch]
+                 |--(nmod)--> R1545[t]
+                 |                |--(case)--> on
+                 |                |--(punct)--> R1545[-]
+                 |                |--(dep)--> R1545[mobile]
+                 |--(nmod:t)--> R1526[april]
+                                  |--(nummod)--> R1526[29]
+
+	* entity-paths for event['launch']42_9ecbplus.xmlsent:12848
+	['Launch --(nmod)--> T']
+	['Launch --(nmod:tmod)--> April']
+
+	* entity-paths for event['preorders']42_9ecbplus.xmlsent:12848
+	['Preorders --(compound)--> BlackBerry']
+	['Preorders --(compound)--> Q10']
+	['Preorders --(dep)--> Launch', 'Launch --(nmod)--> T']
+	['Preorders --(dep)--> Launch', 'Launch --(nmod:tmod)--> April']

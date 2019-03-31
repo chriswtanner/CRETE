@@ -1,0 +1,118 @@
+
+-----------------------------------------
+docid:27_9ecb.xml
+-----------------------------------------
+
+sentence #:the security update for ie , dubbed ms08-078 , resolves a publicly disclosed vulnerability that " could allow remote code execution if a user views a specially crafted web page using internet explorer , " the software giant said in a statement . 
+	[events]:[['resolves'], ['remote', 'code', 'execution'], ['said'], ['allow']]
+	[entities]:[['ie'], ['update'], ['user'], ['vulnerability'], ['software', 'giant'], ['that'], ['ms08-078'], ['internet', 'explorer']]
+*R785[said]
+|--(ccomp)--> R765[update]
+|                |--(nsubj)--> security
+|                |                |--(det)--> the
+|                |--(advcl)--> *R782[resolves]
+|                                 |--(mark)--> for
+|                                 |--(nsubj)--> R768[ie]
+|                                 |                |--(punct)--> ,
+|                                 |                |--(acl)--> dubbed
+|                                 |                |                |--(dobj)--> R765[ms08-078]
+|                                 |                |--(punct)--> ,
+|                                 |--(dobj)--> R767[vulnerability]
+|                                                  |--(det)--> a
+|                                                  |--(amod)--> disclosed
+|                                                  |                |--(advmod)--> publicly
+|                                                  |--(acl:re)--> *R769[allow]
+|                                                                   |--(nsubj)--> R767[that]
+|                                                                   |--(punct)--> "
+|                                                                   |--(aux)--> could
+|                                                                   |--(dobj)--> *R784[execution]
+|                                                                   |                |--(amod)--> *R784[remote]
+|                                                                   |                |--(compou)--> *R784[code]
+|                                                                   |--(advcl)--> views
+|                                                                                    |--(mark)--> if
+|                                                                                    |--(nsubj)--> R789[user]
+|                                                                                    |                |--(det)--> a
+|                                                                                    |--(dobj)--> page
+|                                                                                                     |--(det)--> a
+|                                                                                                     |--(amod)--> crafted
+|                                                                                                     |                |--(advmod)--> specially
+|                                                                                                     |--(compou)--> web
+|                                                                                                     |--(acl)--> using
+|                                                                                                                      |--(dobj)--> R768[explorer]
+|                                                                                                                                       |--(compou)--> R768[internet]
+|--(punct)--> ,
+|--(punct)--> "
+|--(nsubj)--> R764[giant]
+|                |--(det)--> the
+|                |--(compou)--> R764[software]
+|--(nmod)--> statement
+|                |--(case)--> in
+|                |--(det)--> a
+|--(punct)--> .
+
+	* entity-paths for event['resolves']27_9ecb.xmlsent:6028
+	['resolves --(nsubj)--> IE']
+	['resolves --(dobj)--> vulnerability']
+
+	* entity-paths for event['remote', 'code', 'execution']27_9ecb.xmlsent:6028
+
+	* entity-paths for event['said']27_9ecb.xmlsent:6028
+	['said --(ccomp)--> update']
+	['said --(nsubj)--> giant']
+
+	* entity-paths for event['allow']27_9ecb.xmlsent:6028
+	['allow --(nsubj)--> that']
+	['allow --(advcl)--> views', 'views --(nsubj)--> user']
+	['allow --(advcl)--> views', 'views --(dobj)--> page', 'page --(acl)--> using', 'using --(dobj)--> Explorer']
+
+sentence #:microsoft on wednesday issued an urgent patch to fix an internet explorer ( ie ) web browser flaw that may have been used by hackers to attack millions of computer users . 
+	[events]:[['fix'], ['used'], ['attack'], ['issued']]
+	[entities]:[['users'], ['flaw'], ['microsoft'], ['that'], ['internet', 'explorer'], ['hackers'], ['on', 'wednesday'], ['patch']]
+*R763[issued]
+|--(nsubj)--> R764[microsoft]
+|                |--(nmod)--> R766[wednesday]
+|                                 |--(case)--> R766[on]
+|--(dobj)--> R765[patch]
+|                |--(det)--> an
+|                |--(amod)--> urgent
+|--(advcl)--> *R782[fix]
+|                |--(mark)--> to
+|                |--(dobj)--> R768[internet]
+|                                 |--(det)--> an
+|                                 |--(nmod)--> web
+|                                                  |--(compou)--> R768[explorer]
+|                                                  |--(dep)--> ie
+|                                                  |                |--(punct)--> (
+|                                                  |                |--(punct)--> )
+|                                                  |--(dep)--> R767[flaw]
+|                                                                   |--(compou)--> browser
+|                                                                   |--(acl:re)--> *R786[used]
+|                                                                                    |--(nsubjp)--> R767[that]
+|                                                                                    |--(aux)--> may
+|                                                                                    |--(aux)--> have
+|                                                                                    |--(auxpas)--> been
+|                                                                                    |--(nmod)--> R770[hackers]
+|                                                                                    |                |--(case)--> by
+|                                                                                    |--(xcomp)--> *R790[attack]
+|                                                                                                     |--(mark)--> to
+|                                                                                                     |--(dobj)--> millions
+|                                                                                                                      |--(nmod)--> R789[users]
+|                                                                                                                                       |--(case)--> of
+|                                                                                                                                       |--(compou)--> computer
+|--(punct)--> .
+
+	* entity-paths for event['fix']27_9ecb.xmlsent:6027
+	['fix --(dobj)--> Internet']
+
+	* entity-paths for event['used']27_9ecb.xmlsent:6027
+	['used --(nsubjpass)--> that']
+	['used --(nmod)--> hackers']
+	['used --(xcomp)--> attack', 'attack --(dobj)--> millions', 'millions --(nmod)--> users']
+
+	* entity-paths for event['attack']27_9ecb.xmlsent:6027
+	['attack --(dobj)--> millions', 'millions --(nmod)--> users']
+
+	* entity-paths for event['issued']27_9ecb.xmlsent:6027
+	['issued --(nsubj)--> Microsoft']
+	['issued --(dobj)--> patch']
+	['issued --(advcl)--> fix', 'fix --(dobj)--> Internet']

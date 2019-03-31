@@ -1,0 +1,41 @@
+
+-----------------------------------------
+docid:5_10ecbplus.xml
+-----------------------------------------
+
+sentence #:sixers hire maurice cheeks as head coach 
+	[events]:[['hire']]
+	[entities]:[['sixers'], ['coach'], ['maurice', 'cheeks']]
+*R1677[hire]
+|--(nsubj)--> R1673[sixers]
+|--(ccomp)--> R1674[coach]
+                 |--(nsubj)--> R1674[cheeks]
+                                  |--(compou)--> R1674[maurice]
+                                  |--(nmod)--> head
+                                                   |--(case)--> as
+
+	* entity-paths for event['hire']5_10ecbplus.xmlsent:13929
+	['Hire --(nsubj)--> Sixers']
+	['Hire --(ccomp)--> Coach']
+
+sentence #:maurice cheeks was officially introduced as the 21st head coach of the 76ers . 
+	[events]:[['introduced']]
+	[entities]:[['maurice', 'cheeks'], ['coach'], ['76ers']]
+*R1677[introduced]
+|--(nsubjp)--> R1674[cheeks]
+|                |--(compou)--> R1674[maurice]
+|--(auxpas)--> was
+|--(advmod)--> officially
+|--(nmod)--> R1674[coach]
+|                |--(case)--> as
+|                |--(det)--> the
+|                |--(amod)--> 21st
+|                |--(compou)--> head
+|                |--(nmod)--> R1673[76ers]
+|                                 |--(case)--> of
+|                                 |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['introduced']5_10ecbplus.xmlsent:13930
+	['introduced --(nsubjpass)--> Cheeks']
+	['introduced --(nmod)--> coach']

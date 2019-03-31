@@ -1,0 +1,63 @@
+
+-----------------------------------------
+docid:42_2ecbplus.xml
+-----------------------------------------
+
+sentence #:t - mobile usa announces blackberry q10 availability 
+	[events]:[['announces'], ['availability']]
+	[entities]:[['blackberry', 'q10'], ['t', '-', 'mobile', 'usa']]
+R1517[t]
+|--(punct)--> R1517[-]
+|--(appos)--> *R1542[announces]
+                 |--(nsubj)--> R1517[usa]
+                 |                |--(compou)--> R1517[mobile]
+                 |--(dobj)--> *R1529[availability]
+                                  |--(compou)--> R1525[blackberry]
+                                  |--(compou)--> R1525[q10]
+
+	* entity-paths for event['announces']42_2ecbplus.xmlsent:12721
+	['Announces --(nsubj)--> USA']
+	['Announces --(dobj)--> Availability', 'Availability --(compound)--> BlackBerry']
+	['Announces --(dobj)--> Availability', 'Availability --(compound)--> Q10']
+
+	* entity-paths for event['availability']42_2ecbplus.xmlsent:12721
+	['Availability --(compound)--> BlackBerry']
+	['Availability --(compound)--> Q10']
+
+sentence #:t - mobile announced today that the blackberry q10 smartphone device will be added to its growing 4g lte smartphone portfolio . 
+	[events]:[['announced'], ['added'], ['growing']]
+	[entities]:[['portfolio'], ['blackberry', 'q10', 'smartphone', 'device'], ['4g', 'lte', 'smartphone'], ['its'], ['today'], ['t', '-', 'mobile']]
+R1517[t]
+|--(punct)--> R1517[-]
+|--(appos)--> *R1542[announced]
+|                |--(nsubj)--> R1517[mobile]
+|                |--(nmod:t)--> R1543[today]
+|                |--(ccomp)--> *R1537[added]
+|                                 |--(mark)--> that
+|                                 |--(nsubjp)--> R1525[device]
+|                                 |                |--(det)--> the
+|                                 |                |--(compou)--> R1525[blackberry]
+|                                 |                |--(compou)--> R1525[q10]
+|                                 |                |--(compou)--> R1525[smartphone]
+|                                 |--(aux)--> will
+|                                 |--(auxpas)--> be
+|                                 |--(nmod)--> R1534[portfolio]
+|                                                  |--(case)--> to
+|                                                  |--(nmod:p)--> R1517[its]
+|                                                  |--(amod)--> *R1538[growing]
+|                                                  |--(compou)--> R1535[4g]
+|                                                  |--(compou)--> R1535[lte]
+|                                                  |--(compou)--> R1535[smartphone]
+|--(punct)--> .
+
+	* entity-paths for event['announced']42_2ecbplus.xmlsent:12723
+	['announced --(nsubj)--> Mobile']
+	['announced --(nmod:tmod)--> today']
+	['announced --(ccomp)--> added', 'added --(nsubjpass)--> device']
+	['announced --(ccomp)--> added', 'added --(nmod)--> portfolio']
+
+	* entity-paths for event['added']42_2ecbplus.xmlsent:12723
+	['added --(nsubjpass)--> device']
+	['added --(nmod)--> portfolio']
+
+	* entity-paths for event['growing']42_2ecbplus.xmlsent:12723

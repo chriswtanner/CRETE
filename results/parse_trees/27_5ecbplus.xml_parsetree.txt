@@ -1,0 +1,54 @@
+
+-----------------------------------------
+docid:27_5ecbplus.xml
+-----------------------------------------
+
+sentence #:microsoft issues patch to fix ie bug 
+	[events]:[['issues'], ['fix']]
+	[entities]:[['patch'], ['bug'], ['ie'], ['microsoft']]
+R780[patch]
+|--(nsubj)--> *R779[issues]
+|                |--(compou)--> R764[microsoft]
+|--(xcomp)--> *R781[fix]
+                 |--(mark)--> to
+                 |--(dobj)--> R777[bug]
+                                  |--(amod)--> R768[ie]
+
+	* entity-paths for event['issues']27_5ecbplus.xmlsent:5926
+	['issues --(compound)--> Microsoft']
+
+	* entity-paths for event['fix']27_5ecbplus.xmlsent:5926
+	['fix --(dobj)--> bug']
+
+sentence #:microsoft has reportedly issued a patch to fix a previously unknown vulnerability in its internet explorer ( ie ) web browser . 
+	[events]:[['fix'], ['issued']]
+	[entities]:[['microsoft'], ['internet', 'explorer'], ['patch'], ['vulnerability']]
+*R779[issued]
+|--(nsubj)--> R764[microsoft]
+|--(aux)--> has
+|--(advmod)--> reportedly
+|--(dobj)--> R780[patch]
+|                |--(det)--> a
+|                |--(acl)--> *R781[fix]
+|                                 |--(mark)--> to
+|                                 |--(dobj)--> R777[vulnerability]
+|                                 |                |--(det)--> a
+|                                 |                |--(amod)--> unknown
+|                                 |                |                |--(advmod)--> previously
+|                                 |                |--(nmod)--> web
+|                                 |                                 |--(case)--> in
+|                                 |                                 |--(nmod:p)--> its
+|                                 |                                 |--(compou)--> R768[internet]
+|                                 |                                 |--(compou)--> R768[explorer]
+|                                 |                                 |--(dep)--> ie
+|                                 |                                                  |--(punct)--> (
+|                                 |                                                  |--(punct)--> )
+|                                 |--(nmod:t)--> browser
+|--(punct)--> .
+
+	* entity-paths for event['fix']27_5ecbplus.xmlsent:5928
+	['fix --(dobj)--> vulnerability']
+
+	* entity-paths for event['issued']27_5ecbplus.xmlsent:5928
+	['issued --(nsubj)--> Microsoft']
+	['issued --(dobj)--> patch']

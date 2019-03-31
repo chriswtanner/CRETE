@@ -1,0 +1,87 @@
+
+-----------------------------------------
+docid:42_6ecb.xml
+-----------------------------------------
+
+sentence #:t-mobile has announced it will be carrying the blackberry curve 8900 smartphone this february ... although it will not offer 3g data service . 
+	[events]:[['carrying'], ['announced']]
+	[entities]:[['it'], ['it'], ['blackberry', 'curve', '8900'], ['t-mobile'], ['this', 'february']]
+*R1518[announced]
+|--(nsubj)--> R1517[t-mobile]
+|--(aux)--> has
+|--(ccomp)--> *R1519[carrying]
+|                |--(nsubj)--> R1517[it]
+|                |--(aux)--> will
+|                |--(aux)--> be
+|                |--(dobj)--> smartphone
+|                |                |--(det)--> the
+|                |                |--(compou)--> R1520[blackberry]
+|                |                |--(compou)--> R1520[curve]
+|                |                |--(nummod)--> R1520[8900]
+|                |--(nmod:t)--> R1521[february]
+|                |                |--(det)--> R1521[this]
+|                |--(punct)--> ...
+|                |--(parata)--> offer
+|                                 |--(mark)--> although
+|                                 |--(nsubj)--> R1517[it]
+|                                 |--(aux)--> will
+|                                 |--(neg)--> not
+|                                 |--(iobj)--> data
+|                                 |                |--(compou)--> 3g
+|                                 |--(dobj)--> service
+|--(punct)--> .
+
+	* entity-paths for event['carrying']42_6ecb.xmlsent:12795
+	['carrying --(nsubj)--> it']
+	['carrying --(dobj)--> smartphone', 'smartphone --(compound)--> BlackBerry']
+	['carrying --(dobj)--> smartphone', 'smartphone --(compound)--> Curve']
+	['carrying --(dobj)--> smartphone', 'smartphone --(nummod)--> 8900']
+	['carrying --(nmod:tmod)--> February']
+	['carrying --(parataxis)--> offer', 'offer --(nsubj)--> it']
+
+	* entity-paths for event['announced']42_6ecb.xmlsent:12795
+	['announced --(nsubj)--> T-Mobile']
+	['announced --(ccomp)--> carrying', 'carrying --(nsubj)--> it']
+	['announced --(ccomp)--> carrying', 'carrying --(dobj)--> smartphone', 'smartphone --(compound)--> BlackBerry']
+	['announced --(ccomp)--> carrying', 'carrying --(dobj)--> smartphone', 'smartphone --(compound)--> Curve']
+	['announced --(ccomp)--> carrying', 'carrying --(dobj)--> smartphone', 'smartphone --(nummod)--> 8900']
+	['announced --(ccomp)--> carrying', 'carrying --(nmod:tmod)--> February']
+	['announced --(ccomp)--> carrying', 'carrying --(parataxis)--> offer', 'offer --(nsubj)--> it']
+
+sentence #:u.s. mobile operator t-mobile has officially announced it will be offering the blackberry curve 8900 smartphone this february . 
+	[events]:[['announced'], ['offering']]
+	[entities]:[['blackberry', 'curve', '8900'], ['this', 'february'], ['t-mobile'], ['it']]
+*R1518[announced]
+|--(nsubj)--> R1517[t-mobile]
+|                |--(amod)--> mobile
+|                |                |--(amod)--> u.s.
+|                |--(compou)--> operator
+|--(aux)--> has
+|--(advmod)--> officially
+|--(ccomp)--> *R1519[offering]
+|                |--(nsubj)--> R1517[it]
+|                |--(aux)--> will
+|                |--(aux)--> be
+|                |--(dobj)--> smartphone
+|                |                |--(det)--> the
+|                |                |--(compou)--> R1520[blackberry]
+|                |                |--(compou)--> R1520[curve]
+|                |                |--(nummod)--> R1520[8900]
+|                |--(nmod:t)--> R1521[february]
+|                                 |--(det)--> R1521[this]
+|--(punct)--> .
+
+	* entity-paths for event['announced']42_6ecb.xmlsent:12796
+	['announced --(nsubj)--> T-Mobile']
+	['announced --(ccomp)--> offering', 'offering --(nsubj)--> it']
+	['announced --(ccomp)--> offering', 'offering --(dobj)--> smartphone', 'smartphone --(compound)--> BlackBerry']
+	['announced --(ccomp)--> offering', 'offering --(dobj)--> smartphone', 'smartphone --(compound)--> Curve']
+	['announced --(ccomp)--> offering', 'offering --(dobj)--> smartphone', 'smartphone --(nummod)--> 8900']
+	['announced --(ccomp)--> offering', 'offering --(nmod:tmod)--> February']
+
+	* entity-paths for event['offering']42_6ecb.xmlsent:12796
+	['offering --(nsubj)--> it']
+	['offering --(dobj)--> smartphone', 'smartphone --(compound)--> BlackBerry']
+	['offering --(dobj)--> smartphone', 'smartphone --(compound)--> Curve']
+	['offering --(dobj)--> smartphone', 'smartphone --(nummod)--> 8900']
+	['offering --(nmod:tmod)--> February']

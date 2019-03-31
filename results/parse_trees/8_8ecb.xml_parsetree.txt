@@ -1,0 +1,54 @@
+
+-----------------------------------------
+docid:8_8ecb.xml
+-----------------------------------------
+
+sentence #:senior trooper william hakim , a bomb squad technician with the oregon state police , and capt. tom tennant of the woodburn police department were killed when a bomb exploded at a west coast bank branch . 
+	[events]:[['exploded'], ['killed']]
+	[entities]:[['william', 'hakim'], ['tom', 'tennant'], ['a', 'west', 'coast', 'bank', 'branch'], ['the', 'oregon', 'state', 'police'], ['bomb']]
+*R1763[killed]
+|--(nsubjp)--> R1767[hakim]
+|                |--(amod)--> senior
+|                |--(compou)--> trooper
+|                |--(compou)--> R1767[william]
+|                |--(punct)--> ,
+|                |--(appos)--> technician
+|                                 |--(det)--> a
+|                                 |--(compou)--> bomb
+|                                 |--(compou)--> squad
+|                                 |--(nmod)--> R1768[police]
+|                                 |                |--(case)--> with
+|                                 |                |--(det)--> R1768[the]
+|                                 |                |--(compou)--> R1768[oregon]
+|                                 |                |--(compou)--> R1768[state]
+|                                 |--(punct)--> ,
+|                                 |--(cc)--> and
+|                                 |--(conj)--> R1787[tennant]
+|                                                  |--(compou)--> capt.
+|                                                  |--(compou)--> R1787[tom]
+|                                                  |--(nmod)--> department
+|                                                                   |--(case)--> of
+|                                                                   |--(det)--> the
+|                                                                   |--(compou)--> woodburn
+|                                                                   |--(compou)--> police
+|--(auxpas)--> were
+|--(advcl)--> *R1764[exploded]
+|                |--(advmod)--> when
+|                |--(nsubj)--> R1788[bomb]
+|                |                |--(det)--> a
+|                |--(nmod)--> R1765[branch]
+|                                 |--(case)--> at
+|                                 |--(det)--> R1765[a]
+|                                 |--(compou)--> R1765[west]
+|                                 |--(compou)--> R1765[coast]
+|                                 |--(compou)--> R1765[bank]
+|--(punct)--> .
+
+	* entity-paths for event['exploded']8_8ecb.xmlsent:15194
+	['exploded --(nsubj)--> bomb']
+	['exploded --(nmod)--> branch']
+
+	* entity-paths for event['killed']8_8ecb.xmlsent:15194
+	['killed --(nsubjpass)--> Hakim']
+	['killed --(advcl)--> exploded', 'exploded --(nsubj)--> bomb']
+	['killed --(advcl)--> exploded', 'exploded --(nmod)--> branch']

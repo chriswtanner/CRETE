@@ -1,0 +1,38 @@
+
+-----------------------------------------
+docid:13_10ecb.xml
+-----------------------------------------
+
+sentence #:the wasilla bible church , the alaskan church made famous as being the religious outpost for failed vp candidate and alaska governor sarah palin has caught fire . 
+	[events]:[['caught', 'fire']]
+	[entities]:[['sarah', 'palin'], ['wasilla', 'bible', 'church']]
+made
+|--(nsubj)--> R260[church]
+|                |--(det)--> the
+|                |--(compou)--> R260[wasilla]
+|                |--(compou)--> R260[bible]
+|                |--(punct)--> ,
+|                |--(appos)--> church
+|                                 |--(det)--> the
+|                                 |--(amod)--> alaskan
+|--(xcomp)--> famous
+|                |--(advcl)--> outpost
+|                                 |--(mark)--> as
+|                                 |--(cop)--> being
+|                                 |--(det)--> the
+|                                 |--(amod)--> religious
+|                                 |--(nmod)--> candidate
+|                                                  |--(case)--> for
+|                                                  |--(amod)--> failed
+|                                                  |--(compou)--> vp
+|--(cc)--> and
+|--(conj)--> *R261[caught]
+|                |--(nsubj)--> R262[palin]
+|                |                |--(compou)--> alaska
+|                |                |--(compou)--> governor
+|                |                |--(compou)--> R262[sarah]
+|                |--(aux)--> has
+|                |--(dobj)--> *R261[fire]
+|--(punct)--> .
+
+	* entity-paths for event['caught', 'fire']13_10ecb.xmlsent:1154

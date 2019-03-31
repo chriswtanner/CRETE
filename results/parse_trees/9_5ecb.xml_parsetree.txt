@@ -1,0 +1,44 @@
+
+-----------------------------------------
+docid:9_5ecb.xml
+-----------------------------------------
+
+sentence #:the us interior and commerce departments reported dec. 11 final proposed changes to the endangered species act , which interior secretary dirk a. kempthorne said were not as extensive as originally planned . 
+	[events]:[['changes']]
+	[entities]:[['dirk', 'a.', 'kempthorne'], ['departments'], ['endangered', 'species', 'act']]
+extensive
+|--(nsubj)--> interior
+|                |--(det)--> the
+|                |--(compou)--> us
+|                |--(cc)--> and
+|                |--(conj)--> R1811[departments]
+|                |                |--(compou)--> commerce
+|                |--(acl)--> reported
+|                                 |--(nmod:t)--> dec.
+|                                 |                |--(nummod)--> 11
+|                                 |--(xcomp)--> *R1812[changes]
+|                                                  |--(amod)--> final
+|                                                  |--(amod)--> proposed
+|                                                  |--(nmod)--> R1800[act]
+|                                                                   |--(case)--> to
+|                                                                   |--(det)--> the
+|                                                                   |--(compou)--> R1800[endangered]
+|                                                                   |--(compou)--> R1800[species]
+|                                                                   |--(punct)--> ,
+|                                                                   |--(acl:re)--> said
+|                                                                                    |--(dobj)--> which
+|                                                                                    |--(nsubj)--> R1817[kempthorne]
+|                                                                                                     |--(compou)--> interior
+|                                                                                                     |--(compou)--> secretary
+|                                                                                                     |--(compou)--> R1817[dirk]
+|                                                                                                     |--(compou)--> R1817[a.]
+|--(cop)--> were
+|--(neg)--> not
+|--(dep)--> as
+|--(cc)--> as
+|--(conj)--> planned
+|                |--(advmod)--> originally
+|--(punct)--> .
+
+	* entity-paths for event['changes']9_5ecb.xmlsent:15564
+	['changes --(nmod)--> Act']

@@ -1,0 +1,39 @@
+
+-----------------------------------------
+docid:45_5ecb.xml
+-----------------------------------------
+
+sentence #:peterson , 32 , was convicted of two counts of murder in the deaths of his wife , laci , and her fetus . 
+	[events]:[['murder'], ['convicted']]
+	[entities]:[['fetus'], ['peterson'], ['laci']]
+*R1627[convicted]
+|--(nsubjp)--> R1628[peterson]
+|                |--(punct)--> ,
+|                |--(amod)--> 32
+|                |--(punct)--> ,
+|--(auxpas)--> was
+|--(nmod)--> counts
+|                |--(case)--> of
+|                |--(nummod)--> two
+|                |--(nmod)--> *R1630[murder]
+|                                 |--(case)--> of
+|--(nmod)--> deaths
+|                |--(case)--> in
+|                |--(det)--> the
+|                |--(nmod)--> wife
+|                                 |--(case)--> of
+|                                 |--(nmod:p)--> his
+|                                 |--(punct)--> ,
+|                                 |--(conj)--> R1634[laci]
+|                                 |--(punct)--> ,
+|                                 |--(cc)--> and
+|                                 |--(conj)--> R1640[fetus]
+|                                                  |--(nmod:p)--> her
+|--(punct)--> .
+
+	* entity-paths for event['murder']45_5ecb.xmlsent:13848
+
+	* entity-paths for event['convicted']45_5ecb.xmlsent:13848
+	['convicted --(nsubjpass)--> Peterson']
+	['convicted --(nmod)--> deaths', 'deaths --(nmod)--> wife', 'wife --(conj)--> Laci']
+	['convicted --(nmod)--> deaths', 'deaths --(nmod)--> wife', 'wife --(conj)--> fetus']

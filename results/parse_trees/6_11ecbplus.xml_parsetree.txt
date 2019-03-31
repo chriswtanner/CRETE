@@ -1,0 +1,73 @@
+
+-----------------------------------------
+docid:6_11ecbplus.xml
+-----------------------------------------
+
+sentence #:according to "the hollywood reporter" , director of "the hunger games" , gary ross is currently in the negotiation stages to direct the sequel to "the hunger games" . 
+	[events]:[['according'], ['negotiation'], ['sequel'], ['direct']]
+	[entities]:[['gary', 'ross'], ['"the', 'hunger', 'games"'], ['"the', 'hollywood', 'reporter"']]
+stages
+|--(nmod)--> R1694[reporter"]
+|                |--(case)--> *R1695[according]
+|                |                |--(mwe)--> to
+|                |--(punct)--> R1694["the]
+|                |--(det)--> R1694["the]
+|                |--(compou)--> R1694[hollywood]
+|                |--(punct)--> R1694[reporter"]
+|--(punct)--> ,
+|--(nsubj)--> director
+|                |--(nmod)--> games"
+|                |                |--(case)--> of
+|                |                |--(punct)--> "the
+|                |                |--(det)--> "the
+|                |                |--(compou)--> hunger
+|                |                |--(punct)--> games"
+|                |--(punct)--> ,
+|                |--(appos)--> R1692[ross]
+|                                 |--(compou)--> R1692[gary]
+|--(cop)--> is
+|--(advmod)--> currently
+|--(case)--> in
+|--(det)--> the
+|--(compou)--> *R1696[negotiation]
+|--(xcomp)--> *R1699[direct]
+|                |--(mark)--> to
+|                |--(dobj)--> *R1701[sequel]
+|                |                |--(det)--> the
+|                |--(nmod)--> R1700[games"]
+|                                 |--(case)--> to
+|                                 |--(punct)--> R1700["the]
+|                                 |--(det)--> R1700["the]
+|                                 |--(compou)--> R1700[hunger]
+|                                 |--(punct)--> R1700[games"]
+|--(punct)--> .
+
+	* entity-paths for event['according']6_11ecbplus.xmlsent:14327
+
+	* entity-paths for event['negotiation']6_11ecbplus.xmlsent:14327
+
+	* entity-paths for event['sequel']6_11ecbplus.xmlsent:14327
+
+	* entity-paths for event['direct']6_11ecbplus.xmlsent:14327
+	['direct --(nmod)--> Games']
+
+sentence #:'the hunger games' sequel is in negotiations . 
+	[events]:[['sequel'], ['negotiations']]
+	[entities]:[["'the", 'hunger', "games'"]]
+*R1696[negotiations]
+|--(punct)--> R1700['the]
+|--(nsubj)--> *R1701[sequel]
+|                |--(nmod:p)--> R1700[games']
+|                                 |--(det)--> R1700['the]
+|                                 |--(compou)--> R1700[hunger]
+|                                 |--(case)--> R1700[games']
+|--(cop)--> is
+|--(case)--> in
+|--(punct)--> .
+
+	* entity-paths for event['sequel']6_11ecbplus.xmlsent:14325
+	['sequel --(nmod:poss)--> Games']
+
+	* entity-paths for event['negotiations']6_11ecbplus.xmlsent:14325
+	["negotiations --(punct)--> '"]
+	['negotiations --(nsubj)--> sequel', 'sequel --(nmod:poss)--> Games']

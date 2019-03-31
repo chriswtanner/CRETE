@@ -1,0 +1,71 @@
+
+-----------------------------------------
+docid:7_11ecbplus.xml
+-----------------------------------------
+
+sentence #:wladimir klitschko stopped tony thompson in the sixth round to keep a comfortable hold on his wba , ibf and wbo heavyweight titles saturday night . 
+	[events]:[['keep', 'a', 'hold', 'on'], ['stopped'], ['round']]
+	[entities]:[['wladimir', 'klitschko'], ['tony', 'thompson'], ['saturday', 'night'], ['titles']]
+*R1724[stopped]
+|--(nsubj)--> R1716[klitschko]
+|                |--(compou)--> R1716[wladimir]
+|--(dobj)--> R1725[thompson]
+|                |--(compou)--> R1725[tony]
+|                |--(nmod)--> *R1726[round]
+|                                 |--(case)--> in
+|                                 |--(det)--> the
+|                                 |--(amod)--> sixth
+|--(advcl)--> *R1727[keep]
+|                |--(mark)--> to
+|                |--(dobj)--> *R1727[hold]
+|                |                |--(det)--> *R1727[a]
+|                |                |--(amod)--> comfortable
+|                |--(nmod)--> wba
+|                |                |--(case)--> *R1727[on]
+|                |                |--(nmod:p)--> his
+|                |                |--(punct)--> ,
+|                |                |--(conj)--> ibf
+|                |                |--(cc)--> and
+|                |                |--(conj)--> R1728[titles]
+|                |                                 |--(compou)--> wbo
+|                |                                 |--(amod)--> heavyweight
+|                |--(nmod:t)--> R1729[night]
+|                                 |--(compou)--> R1729[saturday]
+|--(punct)--> .
+
+	* entity-paths for event['keep', 'a', 'hold', 'on']7_11ecbplus.xmlsent:14626
+
+	* entity-paths for event['stopped']7_11ecbplus.xmlsent:14626
+	['stopped --(nsubj)--> Klitschko']
+	['stopped --(dobj)--> Thompson']
+	['stopped --(advcl)--> keep', 'keep --(nmod)--> WBA', 'WBA --(conj)--> titles']
+	['stopped --(advcl)--> keep', 'keep --(nmod:tmod)--> night']
+
+	* entity-paths for event['round']7_11ecbplus.xmlsent:14626
+
+sentence #:wladimir klitschko stops tony thompson in 6th round to retain world heavyweight belts 
+	[events]:[['retain'], ['stops'], ['round']]
+	[entities]:[['tony', 'thompson'], ['wladimir', 'klitschko'], ['belts']]
+*R1724[stops]
+|--(nsubj)--> R1716[klitschko]
+|                |--(compou)--> R1716[wladimir]
+|--(dobj)--> R1725[thompson]
+|                |--(compou)--> R1725[tony]
+|                |--(nmod)--> *R1726[round]
+|                                 |--(case)--> in
+|                                 |--(amod)--> 6th
+|--(xcomp)--> *R1727[retain]
+                 |--(mark)--> to
+                 |--(dobj)--> R1728[belts]
+                                  |--(compou)--> world
+                                  |--(amod)--> heavyweight
+
+	* entity-paths for event['retain']7_11ecbplus.xmlsent:14624
+	['retain --(dobj)--> belts']
+
+	* entity-paths for event['stops']7_11ecbplus.xmlsent:14624
+	['stops --(nsubj)--> Klitschko']
+	['stops --(dobj)--> Thompson']
+	['stops --(xcomp)--> retain', 'retain --(dobj)--> belts']
+
+	* entity-paths for event['round']7_11ecbplus.xmlsent:14624

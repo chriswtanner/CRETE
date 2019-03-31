@@ -1,0 +1,59 @@
+
+-----------------------------------------
+docid:19_6ecb.xml
+-----------------------------------------
+
+sentence #:for more than a week , athenian streets have been a battleground between police and protesters , whose anger was sparked by the fatal shooting of a 15-year-old boy by a policeman . 
+	[events]:[['shooting'], ['sparked'], ['battleground'], ['anger']]
+	[entities]:[['whose'], ['policeman'], ['athenian', 'streets'], ['protesters'], ['police'], ['boy']]
+*R433[battleground]
+|--(nmod)--> a
+|                |--(case)--> for
+|                |--(advmod)--> more
+|                                 |--(mwe)--> than
+|--(nmod:t)--> week
+|--(punct)--> ,
+|--(nsubj)--> R405[streets]
+|                |--(amod)--> R405[athenian]
+|--(aux)--> have
+|--(cop)--> been
+|--(det)--> a
+|--(nmod)--> R437[police]
+|                |--(case)--> between
+|                |--(cc)--> and
+|                |--(conj)--> R445[protesters]
+|--(punct)--> ,
+|--(acl:re)--> *R407[sparked]
+|                |--(nsubjp)--> *R446[anger]
+|                |                |--(nmod:p)--> R445[whose]
+|                |--(auxpas)--> was
+|                |--(nmod)--> *R401[shooting]
+|                |                |--(case)--> by
+|                |                |--(det)--> the
+|                |                |--(amod)--> fatal
+|                |                |--(nmod)--> R402[boy]
+|                |                                 |--(case)--> of
+|                |                                 |--(det)--> a
+|                |                                 |--(amod)--> 15-year-old
+|                |--(nmod)--> R404[policeman]
+|                                 |--(case)--> by
+|                                 |--(det)--> a
+|--(punct)--> .
+
+	* entity-paths for event['shooting']19_6ecb.xmlsent:3159
+	['shooting --(nmod)--> boy']
+
+	* entity-paths for event['sparked']19_6ecb.xmlsent:3159
+	['sparked --(nsubjpass)--> anger', 'anger --(nmod:poss)--> whose']
+	['sparked --(nmod)--> shooting', 'shooting --(nmod)--> boy']
+	['sparked --(nmod)--> policeman']
+
+	* entity-paths for event['battleground']19_6ecb.xmlsent:3159
+	['battleground --(nsubj)--> streets']
+	['battleground --(nmod)--> police']
+	['battleground --(acl:relcl)--> sparked', 'sparked --(nsubjpass)--> anger', 'anger --(nmod:poss)--> whose']
+	['battleground --(acl:relcl)--> sparked', 'sparked --(nmod)--> shooting', 'shooting --(nmod)--> boy']
+	['battleground --(acl:relcl)--> sparked', 'sparked --(nmod)--> policeman']
+
+	* entity-paths for event['anger']19_6ecb.xmlsent:3159
+	['anger --(nmod:poss)--> whose']

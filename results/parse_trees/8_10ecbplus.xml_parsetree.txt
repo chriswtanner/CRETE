@@ -1,0 +1,85 @@
+
+-----------------------------------------
+docid:8_10ecbplus.xml
+-----------------------------------------
+
+sentence #:the fire started when demonstrators hurled molotov cocktail fire bombs at the bank . 
+	[events]:[['fire'], ['hurled']]
+	[entities]:[['demonstrators'], ['bombs'], ['bank']]
+started
+|--(nsubj)--> *R1748[fire]
+|                |--(det)--> the
+|--(advcl)--> *R1749[hurled]
+|                |--(advmod)--> when
+|                |--(nsubj)--> R1750[demonstrators]
+|                |--(dobj)--> R1751[bombs]
+|                |                |--(compou)--> molotov
+|                |                |--(compou)--> cocktail
+|                |                |--(compou)--> fire
+|                |--(nmod)--> R1752[bank]
+|                                 |--(case)--> at
+|                                 |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['fire']8_10ecbplus.xmlsent:14863
+
+	* entity-paths for event['hurled']8_10ecbplus.xmlsent:14863
+	['hurled --(nsubj)--> demonstrators']
+	['hurled --(dobj)--> bombs']
+	['hurled --(nmod)--> Bank']
+
+sentence #:three people have died in a blaze that broke out at marfin egnatia bank , on stadiou street , downtown athens . 
+	[events]:[['died'], ['blaze']]
+	[entities]:[['people'], ['marfin', 'egnatia', 'bank', ',', 'on', 'stadiou', 'street', ',', 'downtown', 'athens']]
+*R1753[died]
+|--(nsubj)--> three
+|                |--(dep)--> have
+|                                 |--(compou)--> R1754[people]
+|--(nmod)--> *R1748[blaze]
+|                |--(case)--> in
+|                |--(det)--> a
+|                |--(acl:re)--> broke
+|                                 |--(nsubj)--> that
+|                                 |--(compou)--> out
+|                                 |--(nmod)--> R1752[bank]
+|                                 |                |--(case)--> at
+|                                 |                |--(compou)--> R1752[marfin]
+|                                 |                |--(compou)--> R1752[egnatia]
+|                                 |--(punct)--> R1752[,]
+|                                 |--(nmod)--> R1752[street]
+|                                                  |--(case)--> R1752[on]
+|                                                  |--(compou)--> R1752[stadiou]
+|                                                  |--(punct)--> R1752[,]
+|                                                  |--(appos)--> R1752[athens]
+|                                                                   |--(compou)--> R1752[downtown]
+|--(punct)--> .
+
+	* entity-paths for event['died']8_10ecbplus.xmlsent:14862
+	['DIED --(nsubj)--> THREE', 'THREE --(dep)--> HAVE', 'HAVE --(compound)--> PEOPLE']
+	['DIED --(nmod)--> BLAZE', 'BLAZE --(acl:relcl)--> broke', 'broke --(nmod)--> BANK']
+	['DIED --(nmod)--> BLAZE', 'BLAZE --(acl:relcl)--> broke', 'broke --(punct)--> ,']
+	['DIED --(nmod)--> BLAZE', 'BLAZE --(acl:relcl)--> broke', 'broke --(nmod)--> Street']
+
+	* entity-paths for event['blaze']8_10ecbplus.xmlsent:14862
+	['BLAZE --(acl:relcl)--> broke', 'broke --(nmod)--> BANK']
+	['BLAZE --(acl:relcl)--> broke', 'broke --(punct)--> ,']
+	['BLAZE --(acl:relcl)--> broke', 'broke --(nmod)--> Street']
+
+sentence #:breaking news - 3 dead due to molotov cocktail at bank 
+	[events]:[['dead']]
+	[entities]:[['molotov', 'cocktail'], ['bank'], ['3']]
+breaking
+|--(dobj)--> news
+|                |--(punct)--> -
+|                |--(dep)--> *R1755[dead]
+|                                 |--(nummod)--> R1754[3]
+|                                 |--(amod)--> due
+|                                                  |--(nmod)--> R1751[cocktail]
+|                                                                   |--(case)--> to
+|                                                                   |--(compou)--> R1751[molotov]
+|--(nmod)--> R1752[bank]
+                 |--(case)--> at
+
+	* entity-paths for event['dead']8_10ecbplus.xmlsent:14860
+	['DEAD --(nummod)--> 3']
+	['DEAD --(amod)--> due', 'due --(nmod)--> cocktail']

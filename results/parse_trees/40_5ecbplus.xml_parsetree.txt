@@ -1,0 +1,53 @@
+
+-----------------------------------------
+docid:40_5ecbplus.xml
+-----------------------------------------
+
+sentence #:apple unveils cheaper ivy bridge - powered macbook air 
+	[events]:[['unveils'], ['powered']]
+	[entities]:[['macbook', 'air'], ['apple'], ['ivy', 'bridge']]
+*R1410[unveils]
+|--(nsubj)--> R1405[apple]
+|--(xcomp)--> cheaper
+                 |--(ccomp)--> *R1424[powered]
+                                  |--(nsubj)--> R1420[bridge]
+                                  |                |--(compou)--> R1420[ivy]
+                                  |--(punct)--> -
+                                  |--(dobj)--> R1412[air]
+                                                   |--(compou)--> R1412[macbook]
+
+	* entity-paths for event['unveils']40_5ecbplus.xmlsent:11899
+	['unveils --(nsubj)--> Apple']
+	['unveils --(xcomp)--> cheaper', 'cheaper --(ccomp)--> powered', 'powered --(nsubj)--> Bridge']
+	['unveils --(xcomp)--> cheaper', 'cheaper --(ccomp)--> powered', 'powered --(dobj)--> Air']
+
+	* entity-paths for event['powered']40_5ecbplus.xmlsent:11899
+	['powered --(nsubj)--> Bridge']
+	['powered --(dobj)--> Air']
+
+sentence #:apple has chosen wwdc week to announce an update to its macbook air line . 
+	[events]:[['update'], ['announce'], ['wwdc']]
+	[entities]:[['macbook', 'air', 'line'], ['its'], ['apple']]
+chosen
+|--(nsubj)--> R1405[apple]
+|--(aux)--> has
+|--(nmod:t)--> week
+|                |--(compou)--> *R1416[wwdc]
+|--(xcomp)--> *R1410[announce]
+|                |--(mark)--> to
+|                |--(ccomp)--> *R1411[update]
+|                                 |--(nsubj)--> an
+|                                 |--(nmod)--> R1412[line]
+|                                                  |--(case)--> to
+|                                                  |--(nmod:p)--> R1405[its]
+|                                                  |--(compou)--> R1412[macbook]
+|                                                  |--(compou)--> R1412[air]
+|--(punct)--> .
+
+	* entity-paths for event['update']40_5ecbplus.xmlsent:11901
+	['update --(nmod)--> line']
+
+	* entity-paths for event['announce']40_5ecbplus.xmlsent:11901
+	['announce --(ccomp)--> update', 'update --(nmod)--> line']
+
+	* entity-paths for event['wwdc']40_5ecbplus.xmlsent:11901

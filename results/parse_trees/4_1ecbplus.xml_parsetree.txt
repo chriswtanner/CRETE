@@ -1,0 +1,98 @@
+
+-----------------------------------------
+docid:4_1ecbplus.xml
+-----------------------------------------
+
+sentence #:esther williams , the swimming champion turned actress who starred in glittering and aquatic technicolour musicals of the 1940s and 1950s , has died . 
+	[events]:[['died'], ['musicals'], ['turned'], ['starred']]
+	[entities]:[['champion'], ['of', 'the', '1940s', 'and', '1950s'], ['esther', 'williams'], ['actress'], ['who']]
+*R1369[died]
+|--(nsubj)--> R1370[williams]
+|                |--(compou)--> R1370[esther]
+|--(parata)--> *R1371[turned]
+|                |--(punct)--> ,
+|                |--(nsubj)--> R1370[champion]
+|                |                |--(det)--> the
+|                |                |--(compou)--> swimming
+|                |--(dobj)--> R1370[actress]
+|                |                |--(acl:re)--> *R1386[starred]
+|                |                                 |--(nsubj)--> R1370[who]
+|                |                                 |--(nmod)--> *R1374[musicals]
+|                |                                                  |--(case)--> in
+|                |                                                  |--(compou)--> glittering
+|                |                                                  |                |--(cc)--> and
+|                |                                                  |                |--(conj)--> aquatic
+|                |                                                  |--(compou)--> technicolour
+|                |                                                  |--(nmod)--> R1375[1940s]
+|                |                                                                   |--(case)--> R1375[of]
+|                |                                                                   |--(dep)--> R1375[the]
+|                |                                                                   |--(cc)--> R1375[and]
+|                |                                                                   |--(conj)--> R1375[1950s]
+|                |--(punct)--> ,
+|--(aux)--> has
+|--(punct)--> .
+
+	* entity-paths for event['died']4_1ecbplus.xmlsent:11360
+	['died --(nsubj)--> Williams']
+	['died --(parataxis)--> turned', 'turned --(nsubj)--> champion']
+	['died --(parataxis)--> turned', 'turned --(dobj)--> actress']
+
+	* entity-paths for event['musicals']4_1ecbplus.xmlsent:11360
+	['musicals --(nmod)--> 1940s']
+
+	* entity-paths for event['turned']4_1ecbplus.xmlsent:11360
+	['turned --(nsubj)--> champion']
+	['turned --(dobj)--> actress']
+
+	* entity-paths for event['starred']4_1ecbplus.xmlsent:11360
+	['starred --(nsubj)--> who']
+	['starred --(nmod)--> musicals', 'musicals --(nmod)--> 1940s']
+
+sentence #:hollywood " s mermaid esther williams dies 
+	[events]:[['dies']]
+	[entities]:[['hollywood'], ['esther', 'williams']]
+s
+|--(nsubj)--> R463[hollywood]
+|--(punct)--> "
+|--(dep)--> mermaid
+|--(parata)--> *R1369[dies]
+                 |--(nsubj)--> R1370[williams]
+                                  |--(compou)--> R1370[esther]
+
+	* entity-paths for event['dies']4_1ecbplus.xmlsent:11358
+	['dies --(nsubj)--> Williams']
+
+sentence #:she died peacefully in her sleep and had been in declining health due to old age , spokesman harlan boll said . 
+	[events]:[['sleep'], ['said'], ['died']]
+	[entities]:[['she'], ['harlan', 'boll']]
+*R1379[said]
+|--(ccomp)--> *R1369[died]
+|                |--(nsubj)--> R1370[she]
+|                |--(advmod)--> peacefully
+|                |--(nmod)--> *R1377[sleep]
+|                |                |--(case)--> in
+|                |                |--(nmod:p)--> her
+|                |--(cc)--> and
+|                |--(conj)--> health
+|                                 |--(aux)--> had
+|                                 |--(cop)--> been
+|                                 |--(case)--> in
+|                                 |--(amod)--> declining
+|                                 |--(amod)--> due
+|                                                  |--(nmod)--> age
+|                                                                   |--(case)--> to
+|                                                                   |--(amod)--> old
+|--(punct)--> ,
+|--(nsubj)--> R1378[boll]
+|                |--(compou)--> spokesman
+|                |--(compou)--> R1378[harlan]
+|--(punct)--> .
+
+	* entity-paths for event['sleep']4_1ecbplus.xmlsent:11363
+
+	* entity-paths for event['said']4_1ecbplus.xmlsent:11363
+	['said --(ccomp)--> died', 'died --(nsubj)--> She']
+	['said --(nsubj)--> Boll']
+
+	* entity-paths for event['died']4_1ecbplus.xmlsent:11363
+	['died --(nsubj)--> She']

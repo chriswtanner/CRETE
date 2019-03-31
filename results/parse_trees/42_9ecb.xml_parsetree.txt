@@ -1,0 +1,35 @@
+
+-----------------------------------------
+docid:42_9ecb.xml
+-----------------------------------------
+
+sentence #:research in motion today announced that t-mobile usa will start selling the new blackberry curve 8900 smartphone to its customers . 
+	[events]:[['selling']]
+	[entities]:[['t-mobile', 'usa'], ['customers'], ['blackberry', 'curve', '8900'], ['today'], ['its'], ['research', 'in', 'motion']]
+announced
+|--(nsubj)--> R1532[research]
+|                |--(nmod)--> R1532[motion]
+|                                 |--(case)--> R1532[in]
+|--(nmod:t)--> R1531[today]
+|--(ccomp)--> start
+|                |--(mark)--> that
+|                |--(nsubj)--> R1517[usa]
+|                |                |--(compou)--> R1517[t-mobile]
+|                |--(aux)--> will
+|                |--(xcomp)--> *R1519[selling]
+|                                 |--(dobj)--> smartphone
+|                                 |                |--(det)--> the
+|                                 |                |--(amod)--> new
+|                                 |                |--(compou)--> R1520[blackberry]
+|                                 |                |--(compou)--> R1520[curve]
+|                                 |                |--(nummod)--> R1520[8900]
+|                                 |--(nmod)--> R1541[customers]
+|                                                  |--(case)--> to
+|                                                  |--(nmod:p)--> R1517[its]
+|--(punct)--> .
+
+	* entity-paths for event['selling']42_9ecb.xmlsent:12843
+	['selling --(dobj)--> smartphone', 'smartphone --(compound)--> BlackBerry']
+	['selling --(dobj)--> smartphone', 'smartphone --(compound)--> Curve']
+	['selling --(dobj)--> smartphone', 'smartphone --(nummod)--> 8900']
+	['selling --(nmod)--> customers']

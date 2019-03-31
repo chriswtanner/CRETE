@@ -1,0 +1,52 @@
+
+-----------------------------------------
+docid:45_3ecb.xml
+-----------------------------------------
+
+sentence #:dozens of people in laci peterson 's hometown who were donating blood in her memory applauded when they heard a jury 's decision to execute scott peterson for the murder of his pregnant wife 
+	[events]:[['murder'], ['execute'], ['decision']]
+	[entities]:[['scott', 'peterson'], ['jury'], ['wife'], ['her'], ['laci', 'peterson']]
+applauded
+|--(nsubj)--> dozens
+|                |--(nmod)--> people
+|                                 |--(case)--> of
+|                                 |--(nmod)--> hometown
+|                                 |                |--(case)--> in
+|                                 |                |--(nmod:p)--> R1634[peterson]
+|                                 |                                 |--(compou)--> R1634[laci]
+|                                 |                                 |--(case)--> 's
+|                                 |--(acl:re)--> donating
+|                                                  |--(nsubj)--> who
+|                                                  |--(aux)--> were
+|                                                  |--(dobj)--> blood
+|                                                                   |--(nmod)--> memory
+|                                                                                    |--(case)--> in
+|                                                                                    |--(nmod:p)--> R1634[her]
+|--(advcl)--> heard
+                 |--(advmod)--> when
+                 |--(nsubj)--> they
+                 |--(dobj)--> *R1627[decision]
+                                  |--(nmod:p)--> R1632[jury]
+                                  |                |--(det)--> a
+                                  |                |--(case)--> 's
+                                  |--(acl)--> *R1631[execute]
+                                                   |--(mark)--> to
+                                                   |--(dobj)--> R1628[peterson]
+                                                                    |--(compou)--> R1628[scott]
+                                                                    |--(nmod)--> *R1635[murder]
+                                                                                     |--(case)--> for
+                                                                                     |--(det)--> the
+                                                                                     |--(nmod)--> R1634[wife]
+                                                                                                      |--(case)--> of
+                                                                                                      |--(nmod:p)--> his
+                                                                                                      |--(amod)--> pregnant
+
+	* entity-paths for event['murder']45_3ecb.xmlsent:13830
+	['murder --(nmod)--> wife']
+
+	* entity-paths for event['execute']45_3ecb.xmlsent:13830
+	['execute --(dobj)--> Peterson']
+
+	* entity-paths for event['decision']45_3ecb.xmlsent:13830
+	['decision --(nmod:poss)--> jury']
+	['decision --(acl)--> execute', 'execute --(dobj)--> Peterson']

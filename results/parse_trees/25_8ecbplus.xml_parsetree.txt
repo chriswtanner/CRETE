@@ -1,0 +1,70 @@
+
+-----------------------------------------
+docid:25_8ecbplus.xml
+-----------------------------------------
+
+sentence #:the new orleans saints have placed running back pierre thomas on the injured reserve list a day after their leading rusher , chris ivory , was shut down for the season . 
+	[events]:[['injured', 'reserve'], ['placed'], ['shut', 'down'], ['season']]
+	[entities]:[['pierre', 'thomas'], ['chris', 'ivory'], ['list'], ['new', 'orleans', 'saints'], ['a', 'day', 'after']]
+*R715[placed]
+|--(nsubj)--> R706[saints]
+|                |--(det)--> the
+|                |--(compou)--> R706[new]
+|                |--(compou)--> R706[orleans]
+|--(aux)--> have
+|--(xcomp)--> running
+|                |--(compou)--> back
+|                |--(dobj)--> R716[thomas]
+|                |                |--(compou)--> R716[pierre]
+|                |                |--(nmod)--> R731[list]
+|                |                                 |--(case)--> on
+|                |                                 |--(det)--> the
+|                |                                 |--(amod)--> *R717[injured]
+|                |                                 |--(compou)--> *R717[reserve]
+|                |                                 |--(dep)--> R714[day]
+|                |                                                  |--(det)--> R714[a]
+|                |--(advcl)--> *R724[shut]
+|                                 |--(mark)--> R714[after]
+|                                 |--(nsubjp)--> rusher
+|                                 |                |--(nmod:p)--> their
+|                                 |                |--(amod)--> leading
+|                                 |                |--(punct)--> ,
+|                                 |                |--(appos)--> R725[ivory]
+|                                 |                |                |--(compou)--> R725[chris]
+|                                 |                |--(punct)--> ,
+|                                 |--(auxpas)--> was
+|                                 |--(compou)--> *R724[down]
+|                                 |--(nmod)--> *R726[season]
+|                                                  |--(case)--> for
+|                                                  |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['injured', 'reserve']25_8ecbplus.xmlsent:5238
+
+	* entity-paths for event['placed']25_8ecbplus.xmlsent:5238
+	['placed --(nsubj)--> Saints']
+	['placed --(xcomp)--> running', 'running --(dobj)--> Thomas']
+	['placed --(xcomp)--> running', 'running --(advcl)--> shut', 'shut --(mark)--> after']
+	['placed --(xcomp)--> running', 'running --(advcl)--> shut', 'shut --(nsubjpass)--> rusher', 'rusher --(appos)--> Ivory']
+
+	* entity-paths for event['shut', 'down']25_8ecbplus.xmlsent:5238
+
+	* entity-paths for event['season']25_8ecbplus.xmlsent:5238
+
+sentence #:new orleans saints place pierre thomas on injured reserve list 
+	[events]:[['injured', 'reserve'], ['place']]
+	[entities]:[['pierre', 'thomas'], ['new', 'orleans', 'saints'], ['list']]
+R706[orleans]
+|--(compou)--> R706[new]
+|--(dep)--> R716[thomas]
+                 |--(compou)--> R706[saints]
+                 |--(compou)--> *R715[place]
+                 |--(compou)--> R716[pierre]
+                 |--(nmod)--> R731[list]
+                                  |--(case)--> on
+                                  |--(amod)--> *R717[injured]
+                                  |--(compou)--> *R717[reserve]
+
+	* entity-paths for event['injured', 'reserve']25_8ecbplus.xmlsent:5237
+
+	* entity-paths for event['place']25_8ecbplus.xmlsent:5237

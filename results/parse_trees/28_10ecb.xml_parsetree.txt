@@ -1,0 +1,37 @@
+
+-----------------------------------------
+docid:28_10ecb.xml
+-----------------------------------------
+
+sentence #:mark felt , who was known as watergate scandal informant 'deep throat , ' died on friday . 
+	[events]:[['known'], ['watergate', 'scandal'], ['died']]
+	[entities]:[['who'], ['on', 'friday'], ["'deep", 'throat'], ['mark', 'felt']]
+*R808[died]
+|--(nsubj)--> R809[felt]
+|                |--(compou)--> R809[mark]
+|                |--(punct)--> ,
+|                |--(acl:re)--> *R810[known]
+|                |                |--(nsubjp)--> R809[who]
+|                |                |--(auxpas)--> was
+|                |                |--(nmod)--> R811[throat]
+|                |                                 |--(case)--> as
+|                |                                 |--(compou)--> *R812[watergate]
+|                |                                 |--(compou)--> *R812[scandal]
+|                |                                 |--(compou)--> informant
+|                |                                 |--(punct)--> R811['deep]
+|                |                                 |--(compou)--> R811['deep]
+|                |--(punct)--> ,
+|                |--(punct)--> '
+|--(nmod)--> R813[friday]
+|                |--(case)--> R813[on]
+|--(punct)--> .
+
+	* entity-paths for event['known']28_10ecb.xmlsent:6058
+	['known --(nsubjpass)--> who']
+	['known --(nmod)--> Throat']
+
+	* entity-paths for event['watergate', 'scandal']28_10ecb.xmlsent:6058
+
+	* entity-paths for event['died']28_10ecb.xmlsent:6058
+	['died --(nsubj)--> Felt']
+	['died --(nmod)--> Friday']

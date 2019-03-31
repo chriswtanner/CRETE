@@ -1,0 +1,93 @@
+
+-----------------------------------------
+docid:9_1ecb.xml
+-----------------------------------------
+
+sentence #:with just over a month remaining in office , the bush administration loosened federal protection of plant and animal species threatened with extinction . 
+	[events]:[['loosened']]
+	[entities]:[['bush', 'administration'], ['species']]
+*R1794[loosened]
+|--(advcl)--> remaining
+|                |--(mark)--> with
+|                |--(advmod)--> just
+|                |                |--(nmod)--> month
+|                |                                 |--(case)--> over
+|                |                                 |--(det)--> a
+|                |--(nmod)--> office
+|                                 |--(case)--> in
+|--(punct)--> ,
+|--(nsubj)--> R1795[administration]
+|                |--(det)--> the
+|                |--(compou)--> R1795[bush]
+|--(dobj)--> protection
+|                |--(amod)--> federal
+|                |--(nmod)--> R1805[species]
+|                                 |--(case)--> of
+|                                 |--(compou)--> plant
+|                                 |                |--(cc)--> and
+|                                 |                |--(conj)--> animal
+|                                 |--(acl)--> threatened
+|                                                  |--(nmod)--> extinction
+|                                                                   |--(case)--> with
+|--(punct)--> .
+
+	* entity-paths for event['loosened']9_1ecb.xmlsent:15385
+	['loosened --(nsubj)--> administration']
+	['loosened --(dobj)--> protection', 'protection --(nmod)--> species']
+
+sentence #:on thursday , the interior department announced a change to section 7 of the endangered species act , which required federal agencies to consult with scientists at the fish and wildlife service or the national marine fisheries service to determine whether a project is likely to affect any listed species . 
+	[events]:[['change']]
+	[entities]:[['interior', 'department'], ['scientists'], ['federal', 'agencies'], ['thursday'], ['section', '7', 'of', 'the', 'endangered', 'species', 'act'], ['project']]
+announced
+|--(nmod)--> R1810[thursday]
+|                |--(case)--> on
+|--(punct)--> ,
+|--(nsubj)--> R1811[department]
+|                |--(det)--> the
+|                |--(compou)--> R1811[interior]
+|--(dobj)--> *R1812[change]
+|                |--(det)--> a
+|--(nmod)--> R1800[section]
+|                |--(case)--> to
+|                |--(nummod)--> R1800[7]
+|                |--(nmod)--> R1800[act]
+|                                 |--(case)--> R1800[of]
+|                                 |--(det)--> R1800[the]
+|                                 |--(compou)--> R1800[endangered]
+|                                 |--(compou)--> R1800[species]
+|                                 |--(punct)--> ,
+|                                 |--(acl:re)--> required
+|                                                  |--(nsubj)--> which
+|                                                  |--(dobj)--> R1809[agencies]
+|                                                  |                |--(amod)--> R1809[federal]
+|                                                  |--(xcomp)--> consult
+|                                                                   |--(mark)--> to
+|                                                                   |--(nmod)--> R1813[scientists]
+|                                                                   |                |--(case)--> with
+|                                                                   |                |--(nmod)--> fish
+|                                                                   |                |                |--(case)--> at
+|                                                                   |                |                |--(det)--> the
+|                                                                   |                |--(cc)--> and
+|                                                                   |                |--(conj)--> service
+|                                                                   |                                 |--(compou)--> wildlife
+|                                                                   |                                 |--(cc)--> or
+|                                                                   |                                 |--(conj)--> service
+|                                                                   |                                                  |--(det)--> the
+|                                                                   |                                                  |--(compou)--> national
+|                                                                   |                                                  |--(compou)--> marine
+|                                                                   |                                                  |--(compou)--> fisheries
+|                                                                   |--(xcomp)--> determine
+|                                                                                    |--(mark)--> to
+|                                                                                    |--(ccomp)--> likely
+|                                                                                                     |--(mark)--> whether
+|                                                                                                     |--(nsubj)--> R1814[project]
+|                                                                                                     |                |--(det)--> a
+|                                                                                                     |--(cop)--> is
+|                                                                                                     |--(xcomp)--> affect
+|                                                                                                                      |--(mark)--> to
+|                                                                                                                      |--(dobj)--> species
+|                                                                                                                                       |--(det)--> any
+|                                                                                                                                       |--(amod)--> listed
+|--(punct)--> .
+
+	* entity-paths for event['change']9_1ecb.xmlsent:15386

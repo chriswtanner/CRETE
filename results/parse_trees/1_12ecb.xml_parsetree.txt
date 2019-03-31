@@ -1,0 +1,27 @@
+
+-----------------------------------------
+docid:1_12ecb.xml
+-----------------------------------------
+
+sentence #:tara reid has checked into promises treatment center , a prominent rehab clinic in los angeles . 
+	[events]:[['checked', 'into']]
+	[entities]:[['tara', 'reid'], ['promises', 'treatment', 'center']]
+*R1[checked]
+|--(nsubj)--> R2[reid]
+|                |--(compou)--> R2[tara]
+|--(aux)--> has
+|--(nmod)--> *R1[into]
+|--(advcl)--> R3[promises]
+|                |--(nsubj)--> R3[center]
+|                                 |--(compou)--> R3[treatment]
+|                                 |--(punct)--> ,
+|                                 |--(appos)--> clinic
+|                                                  |--(det)--> a
+|                                                  |--(amod)--> prominent
+|                                                  |--(compou)--> rehab
+|                                                  |--(nmod)--> angeles
+|                                                                   |--(case)--> in
+|                                                                   |--(compou)--> los
+|--(punct)--> .
+
+	* entity-paths for event['checked', 'into']1_12ecb.xmlsent:41

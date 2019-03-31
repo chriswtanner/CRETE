@@ -1,0 +1,88 @@
+
+-----------------------------------------
+docid:40_3ecbplus.xml
+-----------------------------------------
+
+sentence #:? apple is certainly making wwdc a hardware conference this year - - it just unveiled a new macbook pro running intel's newer ivy bridge processors on the san francisco gathering's opening day . ? 
+	[events]:[['san', 'francisco', "gathering's"], ['unveiled'], ['running'], ['conference'], ['making'], ['wwdc']]
+	[entities]:[['opening', 'day'], ['hardware'], ['apple'], ['it'], ['macbook', 'pro'], ["intel's"], ['ivy', 'bridge', 'processors']]
+*R1421[making]
+|--(nsubj)--> R1405[apple]
+|                |--(punct)--> ?
+|--(aux)--> is
+|--(advmod)--> certainly
+|--(dobj)--> *R1416[wwdc]
+|                |--(dep)--> *R1416[conference]
+|                |                |--(det)--> a
+|                |                |--(compou)--> R1422[hardware]
+|                |                |--(dep)--> year
+|                |                                 |--(det)--> this
+|                |--(punct)--> -
+|                |--(dep)--> *R1410[unveiled]
+|                                 |--(punct)--> -
+|                                 |--(nsubj)--> R1405[it]
+|                                 |--(advmod)--> just
+|                                 |--(xcomp)--> R1414[pro]
+|                                 |                |--(nsubj)--> R1414[macbook]
+|                                 |                |                |--(det)--> a
+|                                 |                |                |--(amod)--> new
+|                                 |                |--(acl)--> *R1424[running]
+|                                 |                                 |--(dobj)--> R1420[processors]
+|                                 |                                                  |--(nmod:p)--> R1426[intel's]
+|                                 |                                                  |                |--(case)--> R1426[intel's]
+|                                 |                                                  |--(amod)--> newer
+|                                 |                                                  |--(compou)--> R1420[ivy]
+|                                 |                                                  |--(compou)--> R1420[bridge]
+|                                 |                                                  |--(nmod)--> R1415[day]
+|                                 |                                                                   |--(case)--> on
+|                                 |                                                                   |--(nmod:p)--> *R1416[gathering's]
+|                                 |                                                                   |                |--(det)--> the
+|                                 |                                                                   |                |--(compou)--> *R1416[san]
+|                                 |                                                                   |                |--(compou)--> *R1416[francisco]
+|                                 |                                                                   |                |--(case)--> *R1416[gathering's]
+|                                 |                                                                   |--(compou)--> R1415[opening]
+|                                 |--(punct)--> .
+|--(punct)--> ?
+
+	* entity-paths for event['san', 'francisco', "gathering's"]40_3ecbplus.xmlsent:11794
+
+	* entity-paths for event['unveiled']40_3ecbplus.xmlsent:11794
+	['unveiled --(nsubj)--> it']
+	['unveiled --(xcomp)--> Pro']
+
+	* entity-paths for event['running']40_3ecbplus.xmlsent:11794
+	['running --(dobj)--> processors']
+
+	* entity-paths for event['conference']40_3ecbplus.xmlsent:11794
+	['conference --(compound)--> hardware']
+
+	* entity-paths for event['making']40_3ecbplus.xmlsent:11794
+	['making --(nsubj)--> Apple']
+	['making --(dobj)--> WWDC', 'WWDC --(dep)--> conference', 'conference --(compound)--> hardware']
+	['making --(dobj)--> WWDC', 'WWDC --(dep)--> unveiled', 'unveiled --(nsubj)--> it']
+	['making --(dobj)--> WWDC', 'WWDC --(dep)--> unveiled', 'unveiled --(xcomp)--> Pro']
+
+	* entity-paths for event['wwdc']40_3ecbplus.xmlsent:11794
+	['WWDC --(dep)--> conference', 'conference --(compound)--> hardware']
+	['WWDC --(dep)--> unveiled', 'unveiled --(nsubj)--> it']
+	['WWDC --(dep)--> unveiled', 'unveiled --(xcomp)--> Pro']
+
+sentence #:apple unveils new macbook pro with ivy bridge at wwdc 
+	[events]:[['wwdc'], ['unveils']]
+	[entities]:[['ivy', 'bridge'], ['macbook', 'pro'], ['apple']]
+*R1410[unveils]
+|--(nsubj)--> R1405[apple]
+|--(xcomp)--> R1414[pro]
+                 |--(nsubj)--> R1414[macbook]
+                 |                |--(amod)--> new
+                 |--(nmod)--> R1420[bridge]
+                                  |--(case)--> with
+                                  |--(compou)--> R1420[ivy]
+                                  |--(nmod)--> *R1416[wwdc]
+                                                   |--(case)--> at
+
+	* entity-paths for event['wwdc']40_3ecbplus.xmlsent:11793
+
+	* entity-paths for event['unveils']40_3ecbplus.xmlsent:11793
+	['unveils --(nsubj)--> Apple']
+	['unveils --(xcomp)--> Pro']

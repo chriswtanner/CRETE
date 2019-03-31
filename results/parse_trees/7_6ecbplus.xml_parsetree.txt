@@ -1,0 +1,58 @@
+
+-----------------------------------------
+docid:7_6ecbplus.xml
+-----------------------------------------
+
+sentence #:klitschko stops thompson in regulation win 
+	[events]:[['stops'], ['win']]
+	[entities]:[['thompson'], ['klitschko']]
+*R1724[stops]
+|--(nsubj)--> R1716[klitschko]
+|--(ccomp)--> *R1746[win]
+                 |--(nsubj)--> R1725[thompson]
+                                  |--(nmod)--> regulation
+                                                   |--(case)--> in
+
+	* entity-paths for event['stops']7_6ecbplus.xmlsent:14758
+	['stops --(nsubj)--> Klitschko']
+	['stops --(ccomp)--> win', 'win --(nsubj)--> Thompson']
+
+	* entity-paths for event['win']7_6ecbplus.xmlsent:14758
+	['win --(nsubj)--> Thompson']
+
+sentence #:wladimir klitschko retained his ibf , wbo , wba & ibo heavyweight world titles with a second professional victory over tony thompson on saturday . 
+	[events]:[['retained'], ['victory']]
+	[entities]:[['on', 'saturday'], ['wladimir', 'klitschko'], ['titles'], ['tony', 'thompson']]
+*R1727[retained]
+|--(nsubj)--> R1716[klitschko]
+|                |--(compou)--> R1716[wladimir]
+|--(dobj)--> ibf
+|                |--(nmod:p)--> his
+|                |--(punct)--> ,
+|                |--(appos)--> wbo
+|                                 |--(punct)--> ,
+|                                 |--(conj)--> wba
+|                                 |--(cc)--> &
+|                                 |--(conj)--> ibo
+|                                 |--(dep)--> R1728[titles]
+|                                                  |--(amod)--> heavyweight
+|                                                  |--(compou)--> world
+|--(nmod)--> *R1746[victory]
+|                |--(case)--> with
+|                |--(det)--> a
+|                |--(amod)--> second
+|                |--(amod)--> professional
+|                |--(nmod)--> R1725[thompson]
+|                                 |--(case)--> over
+|                                 |--(compou)--> R1725[tony]
+|                                 |--(nmod)--> R1729[saturday]
+|                                                  |--(case)--> R1729[on]
+|--(punct)--> .
+
+	* entity-paths for event['retained']7_6ecbplus.xmlsent:14760
+	['retained --(nsubj)--> Klitschko']
+	['retained --(dobj)--> IBF', 'IBF --(appos)--> WBO', 'WBO --(dep)--> titles']
+	['retained --(nmod)--> victory', 'victory --(nmod)--> Thompson']
+
+	* entity-paths for event['victory']7_6ecbplus.xmlsent:14760
+	['victory --(nmod)--> Thompson']

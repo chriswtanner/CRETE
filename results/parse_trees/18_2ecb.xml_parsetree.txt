@@ -1,0 +1,43 @@
+
+-----------------------------------------
+docid:18_2ecb.xml
+-----------------------------------------
+
+sentence #:a 61-year-old vancouver man was charged yesterday in connection with the fatal shooting of his former boss at an office christmas party . 
+	[events]:[['shooting'], ['charged'], ['party']]
+	[entities]:[['yesterday'], ['man'], ['an', 'office'], ['boss']]
+*R355[charged]
+|--(nsubjp)--> R356[man]
+|                |--(det)--> a
+|                |--(amod)--> 61-year-old
+|                |--(compou)--> vancouver
+|--(auxpas)--> was
+|--(nmod:t)--> R368[yesterday]
+|--(nmod)--> connection
+|                |--(case)--> in
+|--(nmod)--> *R366[shooting]
+|                |--(case)--> with
+|                |--(det)--> the
+|                |--(amod)--> fatal
+|                |--(nmod)--> R369[boss]
+|                                 |--(case)--> of
+|                                 |--(nmod:p)--> his
+|                                 |--(amod)--> former
+|                                 |--(nmod)--> *R359[party]
+|                                                  |--(case)--> at
+|                                                  |--(det)--> R383[an]
+|                                                  |--(compou)--> R383[office]
+|                                                  |--(compou)--> christmas
+|--(punct)--> .
+
+	* entity-paths for event['shooting']18_2ecb.xmlsent:2400
+	['shooting --(nmod)--> boss']
+
+	* entity-paths for event['charged']18_2ecb.xmlsent:2400
+	['charged --(nsubjpass)--> man']
+	['charged --(nmod:tmod)--> yesterday']
+	['charged --(nmod)--> shooting', 'shooting --(nmod)--> boss']
+
+	* entity-paths for event['party']18_2ecb.xmlsent:2400
+	['party --(det)--> an']
+	['party --(compound)--> office']

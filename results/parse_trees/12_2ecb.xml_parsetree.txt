@@ -1,0 +1,55 @@
+
+-----------------------------------------
+docid:12_2ecb.xml
+-----------------------------------------
+
+sentence #:indian naval forces came to the rescue of a merchant vessel under attack by pirates in the gulf of aden on saturday , capturing 23 of the raiders , india said . 
+	[events]:[['said'], ['attack'], ['capturing'], ['rescue']]
+	[entities]:[['saturday'], ['pirates'], ['india'], ['vessel'], ['naval', 'forces'], ['raiders'], ['the', 'gulf', 'of', 'aden']]
+*R248[said]
+|--(ccomp)--> came
+|                |--(nsubj)--> R215[forces]
+|                |                |--(amod)--> indian
+|                |                |--(amod)--> R215[naval]
+|                |--(nmod)--> *R236[rescue]
+|                |                |--(case)--> to
+|                |                |--(det)--> the
+|                |                |--(nmod)--> R228[vessel]
+|                |                                 |--(case)--> of
+|                |                                 |--(det)--> a
+|                |                                 |--(compou)--> merchant
+|                |--(nmod)--> *R235[attack]
+|                |                |--(case)--> under
+|                |--(nmod)--> R216[pirates]
+|                |                |--(case)--> by
+|                |                |--(nmod)--> R229[gulf]
+|                |                                 |--(case)--> in
+|                |                                 |--(det)--> R229[the]
+|                |                                 |--(nmod)--> R229[aden]
+|                |                                                  |--(case)--> R229[of]
+|                |                                                  |--(nmod)--> R230[saturday]
+|                |                                                                   |--(case)--> on
+|                |--(punct)--> ,
+|                |--(xcomp)--> *R214[capturing]
+|                                 |--(dobj)--> 23
+|                                                  |--(nmod)--> R216[raiders]
+|                                                                   |--(case)--> of
+|                                                                   |--(det)--> the
+|--(punct)--> ,
+|--(nsubj)--> R249[india]
+|--(punct)--> .
+
+	* entity-paths for event['said']12_2ecb.xmlsent:903
+	['said --(ccomp)--> came', 'came --(nsubj)--> forces']
+	['said --(ccomp)--> came', 'came --(nmod)--> rescue', 'rescue --(nmod)--> vessel']
+	['said --(ccomp)--> came', 'came --(nmod)--> pirates']
+	['said --(ccomp)--> came', 'came --(xcomp)--> capturing', 'capturing --(dobj)--> 23', '23 --(nmod)--> raiders']
+	['said --(nsubj)--> India']
+
+	* entity-paths for event['attack']12_2ecb.xmlsent:903
+
+	* entity-paths for event['capturing']12_2ecb.xmlsent:903
+	['capturing --(dobj)--> 23', '23 --(nmod)--> raiders']
+
+	* entity-paths for event['rescue']12_2ecb.xmlsent:903
+	['rescue --(nmod)--> vessel']

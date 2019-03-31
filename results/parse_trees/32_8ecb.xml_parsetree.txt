@@ -1,0 +1,54 @@
+
+-----------------------------------------
+docid:32_8ecb.xml
+-----------------------------------------
+
+sentence #:a new bedford man has been arrested in the slayings of two women whose bodies were found in an apartment after the building 's landlord smelled natural gas . 
+	[events]:[['arrested'], ['found'], ['slayings'], ['smelled']]
+	[entities]:[['building'], ['natural', 'gas'], ['landlord'], ['man'], ['in', 'an', 'apartment'], ['two', 'women'], ['bodies']]
+*R1058[arrested]
+|--(nsubjp)--> R1045[man]
+|                |--(det)--> a
+|                |--(compou)--> new
+|                |--(compou)--> bedford
+|--(aux)--> has
+|--(auxpas)--> been
+|--(nmod)--> *R1044[slayings]
+|                |--(case)--> in
+|                |--(det)--> the
+|                |--(nmod)--> R1050[women]
+|                                 |--(case)--> of
+|                                 |--(nummod)--> R1050[two]
+|                                 |--(acl:re)--> *R1061[found]
+|                                                  |--(nsubjp)--> R1050[bodies]
+|                                                  |                |--(nmod:p)--> whose
+|                                                  |--(auxpas)--> were
+|                                                  |--(nmod)--> R1048[apartment]
+|                                                  |                |--(case)--> R1048[in]
+|                                                  |                |--(det)--> R1048[an]
+|                                                  |--(advcl)--> *R1072[smelled]
+|                                                                   |--(mark)--> after
+|                                                                   |--(nsubj)--> R1073[landlord]
+|                                                                   |                |--(nmod:p)--> R1048[building]
+|                                                                   |                                 |--(det)--> the
+|                                                                   |                                 |--(case)--> 's
+|                                                                   |--(dobj)--> R1074[gas]
+|                                                                                    |--(amod)--> R1074[natural]
+|--(punct)--> .
+
+	* entity-paths for event['arrested']32_8ecb.xmlsent:8921
+	['arrested --(nsubjpass)--> man']
+	['arrested --(nmod)--> slayings', 'slayings --(nmod)--> women']
+
+	* entity-paths for event['found']32_8ecb.xmlsent:8921
+	['found --(nsubjpass)--> bodies']
+	['found --(nmod)--> apartment']
+	['found --(advcl)--> smelled', 'smelled --(nsubj)--> landlord']
+	['found --(advcl)--> smelled', 'smelled --(dobj)--> gas']
+
+	* entity-paths for event['slayings']32_8ecb.xmlsent:8921
+	['slayings --(nmod)--> women']
+
+	* entity-paths for event['smelled']32_8ecb.xmlsent:8921
+	['smelled --(nsubj)--> landlord']
+	['smelled --(dobj)--> gas']

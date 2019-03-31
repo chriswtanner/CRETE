@@ -1,0 +1,74 @@
+
+-----------------------------------------
+docid:8_1ecbplus.xml
+-----------------------------------------
+
+sentence #:three killed as rioters bomb greek bank 
+	[events]:[['killed'], ['bomb']]
+	[entities]:[['rioters'], ['three'], ['greek', 'bank']]
+*R1753[killed]
+|--(nsubj)--> R1754[three]
+|--(nmod)--> R1750[rioters]
+                 |--(case)--> as
+                 |--(dep)--> R1752[bank]
+                                  |--(compou)--> *R1757[bomb]
+                                  |--(amod)--> R1752[greek]
+
+	* entity-paths for event['killed']8_1ecbplus.xmlsent:14897
+	['killed --(nsubj)--> Three']
+	['killed --(nmod)--> rioters']
+
+	* entity-paths for event['bomb']8_1ecbplus.xmlsent:14897
+
+sentence #:police said two women and one man died at a branch of the marfin bank which caught fire after hooded youths broke a window and hurled petrol bombs inside . 
+	[events]:[['said'], ['caught', 'fire'], ['broke'], ['died'], ['hurled']]
+	[entities]:[['window'], ['women'], ['a', 'branch', 'of', 'the', 'marfin', 'bank'], ['man'], ['youths'], ['bombs'], ['police']]
+*R1771[said]
+|--(nsubj)--> R1772[police]
+|--(ccomp)--> *R1753[died]
+|                |--(nsubj)--> R1773[women]
+|                |                |--(nummod)--> two
+|                |                |--(cc)--> and
+|                |                |--(conj)--> R1774[man]
+|                |                                 |--(nummod)--> one
+|                |--(nmod)--> R1752[branch]
+|                                 |--(case)--> at
+|                                 |--(det)--> R1752[a]
+|                                 |--(nmod)--> R1752[bank]
+|                                 |                |--(case)--> R1752[of]
+|                                 |                |--(det)--> R1752[the]
+|                                 |                |--(compou)--> R1752[marfin]
+|                                 |--(acl:re)--> *R1748[caught]
+|                                                  |--(nsubj)--> which
+|                                                  |--(dobj)--> *R1748[fire]
+|                                                  |--(advcl)--> *R1775[broke]
+|                                                                   |--(mark)--> after
+|                                                                   |--(nsubj)--> R1776[youths]
+|                                                                   |                |--(amod)--> hooded
+|                                                                   |--(dobj)--> R1777[window]
+|                                                                   |                |--(det)--> a
+|                                                                   |--(cc)--> and
+|                                                                   |--(conj)--> *R1749[hurled]
+|                                                                                    |--(dobj)--> R1751[bombs]
+|                                                                                    |                |--(compou)--> petrol
+|                                                                                    |--(nmod)--> inside
+|--(punct)--> .
+
+	* entity-paths for event['said']8_1ecbplus.xmlsent:14901
+	['said --(nsubj)--> Police']
+	['said --(ccomp)--> died', 'died --(nsubj)--> women']
+	['said --(ccomp)--> died', 'died --(nmod)--> branch']
+
+	* entity-paths for event['caught', 'fire']8_1ecbplus.xmlsent:14901
+
+	* entity-paths for event['broke']8_1ecbplus.xmlsent:14901
+	['broke --(nsubj)--> youths']
+	['broke --(dobj)--> window']
+	['broke --(conj)--> hurled', 'hurled --(dobj)--> bombs']
+
+	* entity-paths for event['died']8_1ecbplus.xmlsent:14901
+	['died --(nsubj)--> women']
+	['died --(nmod)--> branch']
+
+	* entity-paths for event['hurled']8_1ecbplus.xmlsent:14901
+	['hurled --(dobj)--> bombs']

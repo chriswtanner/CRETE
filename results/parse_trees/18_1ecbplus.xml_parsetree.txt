@@ -1,0 +1,80 @@
+
+-----------------------------------------
+docid:18_1ecbplus.xml
+-----------------------------------------
+
+sentence #:a michigan man shot to death one person and injured two others monday at the suburban detroit accounting firm from which he was fired last week , police said . 
+	[events]:[['fired'], ['said'], ['shot'], ['death'], ['injured']]
+	[entities]:[['man'], ['last', 'week'], ['person'], ['monday'], ['others'], ['he'], ['at', 'the', 'suburban', 'detroit', 'accounting', 'firm'], ['police']]
+*R390[said]
+|--(advcl)--> *R361[shot]
+|                |--(nsubj)--> R360[man]
+|                |                |--(det)--> a
+|                |                |--(compou)--> michigan
+|                |--(nmod)--> R374[person]
+|                |                |--(case)--> to
+|                |                |--(compou)--> *R373[death]
+|                |                |--(nummod)--> one
+|                |                |--(cc)--> and
+|                |                |--(conj)--> *R391[injured]
+|                |                |--(dep)--> R392[others]
+|                |                |                |--(nummod)--> two
+|                |                |--(nmod:t)--> R379[monday]
+|                |--(nmod)--> R375[firm]
+|                                 |--(case)--> R375[at]
+|                                 |--(det)--> R375[the]
+|                                 |--(amod)--> R375[suburban]
+|                                 |--(compou)--> R375[detroit]
+|                                 |--(compou)--> R375[accounting]
+|                                 |--(acl:re)--> *R363[fired]
+|                                                  |--(nmod)--> which
+|                                                  |                |--(case)--> from
+|                                                  |--(nsubjp)--> R360[he]
+|                                                  |--(auxpas)--> was
+|                                                  |--(nmod:t)--> R364[week]
+|                                                                   |--(amod)--> R364[last]
+|--(punct)--> ,
+|--(nsubj)--> R393[police]
+|--(punct)--> .
+
+	* entity-paths for event['fired']18_1ecbplus.xmlsent:2378
+	['fired --(nsubjpass)--> he']
+	['fired --(nmod:tmod)--> week']
+
+	* entity-paths for event['said']18_1ecbplus.xmlsent:2378
+	['said --(advcl)--> shot', 'shot --(nsubj)--> man']
+	['said --(advcl)--> shot', 'shot --(nmod)--> person']
+	['said --(advcl)--> shot', 'shot --(nmod)--> firm']
+	['said --(nsubj)--> police']
+
+	* entity-paths for event['shot']18_1ecbplus.xmlsent:2378
+	['shot --(nsubj)--> man']
+	['shot --(nmod)--> person']
+	['shot --(nmod)--> firm']
+
+	* entity-paths for event['death']18_1ecbplus.xmlsent:2378
+
+	* entity-paths for event['injured']18_1ecbplus.xmlsent:2378
+
+sentence #:sheriff : michigan office shooting kills 1 , injures 2 
+	[events]:[['kills'], ['shooting'], ['injures']]
+	[entities]:[['2'], ['1']]
+*R391[injures]
+|--(ccomp)--> *R373[kills]
+|                |--(dep)--> sheriff
+|                |--(punct)--> :
+|                |--(nsubj)--> *R361[shooting]
+|                |                |--(compou)--> michigan
+|                |                |--(compou)--> office
+|                |--(dobj)--> R374[1]
+|--(punct)--> ,
+|--(nsubj)--> R392[2]
+
+	* entity-paths for event['kills']18_1ecbplus.xmlsent:2376
+	['kills --(dobj)--> 1']
+
+	* entity-paths for event['shooting']18_1ecbplus.xmlsent:2376
+
+	* entity-paths for event['injures']18_1ecbplus.xmlsent:2376
+	['injures --(ccomp)--> kills', 'kills --(dobj)--> 1']
+	['injures --(nsubj)--> 2']

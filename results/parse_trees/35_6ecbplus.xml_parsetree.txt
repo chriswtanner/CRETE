@@ -1,0 +1,112 @@
+
+-----------------------------------------
+docid:35_6ecbplus.xml
+-----------------------------------------
+
+sentence #:city attorney weighs filing dui charges against chargers' jamal williams 
+	[events]:[['charges'], ['dui'], ['filing'], ['weighs']]
+	[entities]:[['jamal', 'williams'], ["chargers'"], ['city', 'attorney']]
+*R1179[weighs]
+|--(nsubj)--> R1180[attorney]
+|                |--(compou)--> R1180[city]
+|--(xcomp)--> *R1181[filing]
+                 |--(dobj)--> *R1171[charges]
+                                  |--(compou)--> *R1163[dui]
+                                  |--(nmod)--> R1160[williams]
+                                                   |--(case)--> against
+                                                   |--(nmod:p)--> R1157[chargers']
+                                                   |                |--(case)--> R1157[chargers']
+                                                   |--(compou)--> R1160[jamal]
+
+	* entity-paths for event['charges']35_6ecbplus.xmlsent:9790
+	['Charges --(nmod)--> Williams']
+
+	* entity-paths for event['dui']35_6ecbplus.xmlsent:9790
+
+	* entity-paths for event['filing']35_6ecbplus.xmlsent:9790
+	['Filing --(dobj)--> Charges', 'Charges --(nmod)--> Williams']
+
+	* entity-paths for event['weighs']35_6ecbplus.xmlsent:9790
+	['Weighs --(nsubj)--> Attorney']
+	['Weighs --(xcomp)--> Filing', 'Filing --(dobj)--> Charges', 'Charges --(nmod)--> Williams']
+
+sentence #:the city attorney's office was considering today whether to file misdemeanor drunken - driving charges against chargers defensive lineman jamal williams . 
+	[events]:[['misdemeanor', 'drunken', '-', 'driving'], ['charges'], ['file'], ['considering']]
+	[entities]:[['defensive', 'lineman', 'jamal', 'williams'], ['city', "attorney's", 'office'], ['chargers']]
+*R1179[considering]
+|--(nsubj)--> R1180[office]
+|                |--(nmod:p)--> R1180[attorney's]
+|                                 |--(det)--> the
+|                                 |--(compou)--> R1180[city]
+|                                 |--(case)--> R1180[attorney's]
+|--(aux)--> was
+|--(nmod:t)--> today
+|--(ccomp)--> *R1181[file]
+|                |--(mark)--> whether
+|                |--(mark)--> to
+|                |--(dobj)--> *R1163[drunken]
+|                |                |--(compou)--> *R1163[misdemeanor]
+|                |--(dep)--> *R1171[charges]
+|                |                |--(punct)--> *R1163[-]
+|                |                |--(amod)--> *R1163[driving]
+|                |                |--(nmod)--> R1157[chargers]
+|                |                                 |--(case)--> against
+|                |--(dobj)--> R1160[williams]
+|                                 |--(amod)--> R1160[defensive]
+|                                 |--(compou)--> R1160[lineman]
+|                                 |--(compou)--> R1160[jamal]
+|--(punct)--> .
+
+	* entity-paths for event['misdemeanor', 'drunken', '-', 'driving']35_6ecbplus.xmlsent:9793
+
+	* entity-paths for event['charges']35_6ecbplus.xmlsent:9793
+	['charges --(nmod)--> Chargers']
+
+	* entity-paths for event['file']35_6ecbplus.xmlsent:9793
+	['file --(dep)--> charges', 'charges --(nmod)--> Chargers']
+	['file --(dobj)--> Williams']
+
+	* entity-paths for event['considering']35_6ecbplus.xmlsent:9793
+	['considering --(nsubj)--> Office']
+	['considering --(ccomp)--> file', 'file --(dep)--> charges', 'charges --(nmod)--> Chargers']
+	['considering --(ccomp)--> file', 'file --(dobj)--> Williams']
+
+sentence #:williams , 32 , was arrested around 1 : 30 a . m . feb . 1 on state route 94 on suspicion of drunken driving . 
+	[events]:[['arrested'], ['drunken', 'driving'], ['on', 'suspicion']]
+	[entities]:[['around', '1', ':', '30', 'a', '.', 'm', '.', 'feb', '.', '1'], ['on', 'state', 'route', '94'], ['williams']]
+*R1161[arrested]
+|--(nsubjp)--> R1160[williams]
+|                |--(punct)--> ,
+|                |--(amod)--> 32
+|                |--(punct)--> ,
+|--(auxpas)--> was
+|--(nmod)--> R1168[30]
+|                |--(case)--> R1168[around]
+|                |--(nummod)--> R1168[1]
+|                |--(punct)--> R1168[:]
+|                |--(dep)--> R1168[a]
+|                                 |--(punct)--> R1168[.]
+|                                 |--(dep)--> R1168[m]
+|                                 |--(punct)--> R1168[.]
+|                                 |--(dep)--> R1168[feb]
+|                                 |--(punct)--> R1168[.]
+|                                 |--(dep)--> R1168[1]
+|--(nmod)--> R1169[route]
+|                |--(case)--> R1169[on]
+|                |--(compou)--> R1169[state]
+|                |--(nummod)--> R1169[94]
+|--(nmod)--> *R1162[suspicion]
+|                |--(case)--> *R1162[on]
+|                |--(nmod)--> *R1163[driving]
+|                                 |--(case)--> of
+|                                 |--(amod)--> *R1163[drunken]
+|--(punct)--> .
+
+	* entity-paths for event['arrested']35_6ecbplus.xmlsent:9794
+	['arrested --(nsubjpass)--> Williams']
+	['arrested --(nmod)--> 30']
+	['arrested --(nmod)--> Route']
+
+	* entity-paths for event['drunken', 'driving']35_6ecbplus.xmlsent:9794
+
+	* entity-paths for event['on', 'suspicion']35_6ecbplus.xmlsent:9794

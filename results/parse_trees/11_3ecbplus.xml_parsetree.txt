@@ -1,0 +1,77 @@
+
+-----------------------------------------
+docid:11_3ecbplus.xml
+-----------------------------------------
+
+sentence #:for the first time in post - soviet turkmenistan's history , its parliamentary elections will have two parties , itar - tass reported september 26 , citing the country's central election and referendum commission ( tskvpr ) . 
+	[events]:[['have'], ['elections'], ['history']]
+	[entities]:[["turkmenistan's"], ['parties'], ['parliamentary'], ["country's"], ['central', 'election', 'and', 'referendum', 'commission']]
+*R203[have]
+|--(nmod)--> time
+|                |--(case)--> for
+|                |--(det)--> the
+|                |--(amod)--> first
+|                |--(nmod)--> post
+|                                 |--(case)--> in
+|                                 |--(punct)--> -
+|                                 |--(dep)--> *R209[history]
+|                                                  |--(nmod:p)--> R207[turkmenistan's]
+|                                                                   |--(amod)--> soviet
+|                                                                   |--(case)--> R207[turkmenistan's]
+|--(punct)--> ,
+|--(nsubj)--> *R200[elections]
+|                |--(nmod:p)--> its
+|                |--(amod)--> R188[parliamentary]
+|--(aux)--> will
+|--(ccomp)--> reported
+|                |--(nsubj)--> R204[parties]
+|                |                |--(nummod)--> two
+|                |                |--(punct)--> ,
+|                |                |--(dep)--> tass
+|                |                                 |--(dep)--> itar
+|                |                                 |--(punct)--> -
+|                |--(nmod:t)--> september
+|                |                |--(nummod)--> 26
+|                |--(punct)--> ,
+|                |--(advcl)--> citing
+|                                 |--(dobj)--> R206[election]
+|                                                  |--(nmod:p)--> R207[country's]
+|                                                  |                |--(det)--> the
+|                                                  |                |--(case)--> R207[country's]
+|                                                  |--(compou)--> R206[central]
+|                                                  |--(cc)--> R206[and]
+|                                                  |--(conj)--> R206[commission]
+|                                                  |                |--(compou)--> R206[referendum]
+|                                                  |--(appos)--> tskvpr
+|                                                                   |--(punct)--> (
+|                                                                   |--(punct)--> )
+|--(punct)--> .
+
+	* entity-paths for event['have']11_3ecbplus.xmlsent:664
+	['have --(nmod)--> time', 'time --(nmod)--> post', 'post --(dep)--> history', 'history --(nmod:poss)--> Turkmenistan']
+	['have --(nsubj)--> elections', 'elections --(amod)--> parliamentary']
+	['have --(ccomp)--> reported', 'reported --(nsubj)--> parties']
+	['have --(ccomp)--> reported', 'reported --(advcl)--> citing', 'citing --(dobj)--> Election']
+
+	* entity-paths for event['elections']11_3ecbplus.xmlsent:664
+	['elections --(amod)--> parliamentary']
+
+	* entity-paths for event['history']11_3ecbplus.xmlsent:664
+	['history --(nmod:poss)--> Turkmenistan']
+
+sentence #:turkmen election to have 2 parties for 1st time 
+	[events]:[['election']]
+	[entities]:[['turkmen'], ['parties']]
+*R200[election]
+|--(amod)--> R207[turkmen]
+|--(dep)--> have
+                 |--(mark)--> to
+                 |--(dobj)--> R204[parties]
+                                  |--(nummod)--> 2
+                                  |--(nmod)--> time
+                                                   |--(case)--> for
+                                                   |--(amod)--> 1st
+
+	* entity-paths for event['election']11_3ecbplus.xmlsent:662
+	['election --(amod)--> Turkmen']
+	['election --(dep)--> have', 'have --(dobj)--> parties']

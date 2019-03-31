@@ -1,0 +1,79 @@
+
+-----------------------------------------
+docid:10_18ecbplus.xml
+-----------------------------------------
+
+sentence #:the boston red sox have made the biggest offer in club history to mark teixeira . 
+	[events]:[['made'], ['history'], ['offer']]
+	[entities]:[['red', 'sox'], ['mark', 'teixeira'], ['club']]
+*R161[made]
+|--(nsubj)--> R162[sox]
+|                |--(det)--> the
+|                |--(compou)--> boston
+|                |--(compou)--> R162[red]
+|--(aux)--> have
+|--(dobj)--> *R165[offer]
+|                |--(det)--> the
+|                |--(amod)--> biggest
+|                |--(nmod)--> *R168[history]
+|                                 |--(case)--> in
+|                                 |--(compou)--> R162[club]
+|--(nmod)--> R163[teixeira]
+|                |--(case)--> to
+|                |--(compou)--> R163[mark]
+|--(punct)--> .
+
+	* entity-paths for event['made']10_18ecbplus.xmlsent:341
+	['made --(nsubj)--> Sox']
+	['made --(dobj)--> offer', 'offer --(nmod)--> history', 'history --(compound)--> club']
+	['made --(nmod)--> Teixeira']
+
+	* entity-paths for event['history']10_18ecbplus.xmlsent:341
+	['history --(compound)--> club']
+
+	* entity-paths for event['offer']10_18ecbplus.xmlsent:341
+	['offer --(nmod)--> history', 'history --(compound)--> club']
+
+sentence #:report : red sox make huge offer to teixeira 
+	[events]:[['make'], ['offer']]
+	[entities]:[['red', 'sox'], ['teixeira']]
+report
+|--(punct)--> :
+|--(appos)--> *R161[make]
+                 |--(nsubj)--> R162[sox]
+                 |                |--(compou)--> R162[red]
+                 |--(dobj)--> *R165[offer]
+                                  |--(amod)--> huge
+                                  |--(dep)--> to
+                                                   |--(dobj)--> R163[teixeira]
+
+	* entity-paths for event['make']10_18ecbplus.xmlsent:339
+	['MAKE --(nsubj)--> SOX']
+	['MAKE --(dobj)--> OFFER', 'OFFER --(dep)--> TO', 'TO --(dobj)--> TEIXEIRA']
+
+	* entity-paths for event['offer']10_18ecbplus.xmlsent:339
+	['OFFER --(dep)--> TO', 'TO --(dobj)--> TEIXEIRA']
+
+sentence #:the deal is said to be for 8 year and could be up to $180 million . 
+	[events]:[['deal']]
+	[entities]:[['8', 'year'], ['$180', 'million']]
+said
+|--(nsubjp)--> *R165[deal]
+|                |--(det)--> the
+|--(auxpas)--> is
+|--(xcomp)--> R164[8]
+|                |--(mark)--> to
+|                |--(cop)--> be
+|                |--(case)--> for
+|                |--(nmod:t)--> R164[year]
+|--(cc)--> and
+|--(conj)--> be
+|                |--(aux)--> could
+|                |--(advmod)--> up
+|                                 |--(nmod)--> R170[$180]
+|                                                  |--(case)--> to
+|                                                  |--(nummod)--> R170[million]
+|                                                                   |--(compou)--> R170[$180]
+|--(punct)--> .
+
+	* entity-paths for event['deal']10_18ecbplus.xmlsent:342

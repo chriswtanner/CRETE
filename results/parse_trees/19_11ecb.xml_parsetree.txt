@@ -1,0 +1,38 @@
+
+-----------------------------------------
+docid:19_11ecb.xml
+-----------------------------------------
+
+sentence #:the officer who fired the shot says he killed the boy accidentally in self-defence due to a bullet ricochet . 
+	[events]:[['killed'], ['fired'], ['ricochet']]
+	[entities]:[['boy'], ['he'], ['officer'], ['bullet']]
+says
+|--(nsubj)--> R404[officer]
+|                |--(det)--> the
+|                |--(acl:re)--> *R401[fired]
+|                                 |--(nsubj)--> who
+|                                 |--(dobj)--> shot
+|                                                  |--(det)--> the
+|--(ccomp)--> *R403[killed]
+|                |--(nsubj)--> R404[he]
+|                |--(dobj)--> R402[boy]
+|                |                |--(det)--> the
+|                |--(advmod)--> accidentally
+|                |--(nmod)--> self-defence
+|                                 |--(case)--> in
+|                                 |--(amod)--> due
+|                                                  |--(nmod)--> *R421[ricochet]
+|                                                                   |--(case)--> to
+|                                                                   |--(det)--> a
+|                                                                   |--(compou)--> R422[bullet]
+|--(punct)--> .
+
+	* entity-paths for event['killed']19_11ecb.xmlsent:2807
+	['killed --(nsubj)--> he']
+	['killed --(dobj)--> boy']
+	['killed --(nmod)--> self-defence', 'self-defence --(amod)--> due', 'due --(nmod)--> ricochet', 'ricochet --(compound)--> bullet']
+
+	* entity-paths for event['fired']19_11ecb.xmlsent:2807
+
+	* entity-paths for event['ricochet']19_11ecb.xmlsent:2807
+	['ricochet --(compound)--> bullet']

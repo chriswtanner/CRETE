@@ -1,0 +1,62 @@
+
+-----------------------------------------
+docid:1_15ecb.xml
+-----------------------------------------
+
+sentence #:yesterday , on friday , reid apparently felt she needed to be checked in without really saying why she was going in . 
+	[events]:[['saying'], ['going', 'in'], ['checked', 'in']]
+	[entities]:[['she'], ['on', 'friday'], ['reid'], ['yesterday'], ['she']]
+felt
+|--(nmod:t)--> R6[yesterday]
+|--(punct)--> ,
+|--(nmod)--> R6[friday]
+|                |--(case)--> R6[on]
+|--(punct)--> ,
+|--(nsubj)--> R2[reid]
+|--(advmod)--> apparently
+|--(ccomp)--> needed
+|                |--(nsubj)--> R2[she]
+|                |--(xcomp)--> *R1[checked]
+|                                 |--(mark)--> to
+|                                 |--(auxpas)--> be
+|                                 |--(dep)--> *R49[saying]
+|                                                  |--(case)--> *R1[in]
+|                                                  |--(mark)--> without
+|                                                  |--(advmod)--> really
+|                                                  |--(advcl)--> *R1[going]
+|                                                                   |--(advmod)--> why
+|                                                                   |--(nsubj)--> R2[she]
+|                                                                   |--(aux)--> was
+|                                                                   |--(nmod)--> *R1[in]
+|--(punct)--> .
+
+	* entity-paths for event['saying']1_15ecb.xmlsent:105
+	['saying --(advcl)--> going', 'going --(nsubj)--> she']
+
+	* entity-paths for event['going', 'in']1_15ecb.xmlsent:105
+
+	* entity-paths for event['checked', 'in']1_15ecb.xmlsent:105
+
+sentence #:the beautiful party girl tara reid is taking the time this season and checking herself into rehab . 
+	[events]:[['checking', 'into']]
+	[entities]:[['rehab'], ['tara', 'reid'], ['herself']]
+taking
+|--(nsubj)--> R2[reid]
+|                |--(det)--> the
+|                |--(amod)--> beautiful
+|                |--(compou)--> party
+|                |--(compou)--> girl
+|                |--(compou)--> R2[tara]
+|--(aux)--> is
+|--(dobj)--> time
+|                |--(det)--> the
+|--(nmod:t)--> season
+|                |--(det)--> this
+|--(cc)--> and
+|--(conj)--> *R1[checking]
+|                |--(dobj)--> R2[herself]
+|                |--(nmod)--> R3[rehab]
+|                                 |--(case)--> *R1[into]
+|--(punct)--> .
+
+	* entity-paths for event['checking', 'into']1_15ecb.xmlsent:104

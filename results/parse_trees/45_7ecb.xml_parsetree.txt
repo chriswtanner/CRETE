@@ -1,0 +1,123 @@
+
+-----------------------------------------
+docid:45_7ecb.xml
+-----------------------------------------
+
+sentence #:peterson , a 32-year-old fertilizer salesman from modesto , showed no emotion , staring stonily at the jury box as the foreman announced a finding of first-degree murder in the death of laci and second-degree murder in the death of their near-term son , whom the couple had named conner . 
+	[events]:[['first-degree', 'murder'], ['death'], ['second-degree', 'murder'], ['finding'], ['death']]
+	[entities]:[['laci'], ['peterson'], ['whom'], ['son'], ['couple'], ['modesto']]
+showed
+|--(nsubj)--> R1628[peterson]
+|                |--(punct)--> ,
+|                |--(appos)--> salesman
+|                |                |--(det)--> a
+|                |                |--(amod)--> 32-year-old
+|                |                |--(compou)--> fertilizer
+|                |                |--(nmod)--> R1654[modesto]
+|                |                                 |--(case)--> from
+|                |--(punct)--> ,
+|--(dobj)--> emotion
+|                |--(neg)--> no
+|--(punct)--> ,
+|--(advcl)--> staring
+|                |--(advmod)--> stonily
+|                |--(nmod)--> box
+|                |                |--(case)--> at
+|                |                |--(det)--> the
+|                |                |--(compou)--> jury
+|                |--(advcl)--> announced
+|                                 |--(mark)--> as
+|                                 |--(nsubj)--> foreman
+|                                 |                |--(det)--> the
+|                                 |--(dobj)--> *R1627[finding]
+|                                 |                |--(det)--> a
+|                                 |                |--(nmod)--> *R1648[murder]
+|                                 |                                 |--(case)--> of
+|                                 |                                 |--(amod)--> *R1648[first-degree]
+|                                 |--(nmod)--> *R1635[death]
+|                                                  |--(case)--> in
+|                                                  |--(det)--> the
+|                                                  |--(nmod)--> R1634[laci]
+|                                                  |                |--(case)--> of
+|                                                  |--(cc)--> and
+|                                                  |--(conj)--> *R1649[murder]
+|                                                                   |--(amod)--> *R1649[second-degree]
+|                                                                   |--(nmod)--> *R1650[death]
+|                                                                                    |--(case)--> in
+|                                                                                    |--(det)--> the
+|                                                                                    |--(nmod)--> R1640[son]
+|                                                                                                     |--(case)--> of
+|                                                                                                     |--(nmod:p)--> their
+|                                                                                                     |--(amod)--> near-term
+|--(punct)--> ,
+|--(dep)--> named
+|                |--(dobj)--> R1640[whom]
+|                |--(nsubj)--> R1652[couple]
+|                |                |--(det)--> the
+|                |--(aux)--> had
+|                |--(dobj)--> conner
+|--(punct)--> .
+
+	* entity-paths for event['first-degree', 'murder']45_7ecb.xmlsent:13891
+
+	* entity-paths for event['death']45_7ecb.xmlsent:13891
+	['death --(nmod)--> Laci']
+	['death --(conj)--> murder', 'murder --(nmod)--> death', 'death --(nmod)--> son']
+
+	* entity-paths for event['second-degree', 'murder']45_7ecb.xmlsent:13891
+	['murder --(nmod)--> death', 'death --(nmod)--> son']
+
+	* entity-paths for event['finding']45_7ecb.xmlsent:13891
+
+	* entity-paths for event['death']45_7ecb.xmlsent:13891
+	['death --(nmod)--> son']
+
+sentence #:a jury found scott peterson guilty friday of killing his pregnant wife , laci , and their unborn child in the saga of suburban adultery and betrayal that transfixed much of the nation for nearly two years . 
+	[events]:[['killing'], ['found'], ['unborn']]
+	[entities]:[['jury'], ['scott', 'peterson'], ['child'], ['friday'], ['laci']]
+*R1627[found]
+|--(nsubj)--> R1632[jury]
+|                |--(det)--> a
+|--(dobj)--> R1628[peterson]
+|                |--(compou)--> R1628[scott]
+|                |--(nmod:t)--> R1646[friday]
+|                |                |--(amod)--> guilty
+|                |--(acl)--> *R1648[killing]
+|                |                |--(mark)--> of
+|                |                |--(dobj)--> wife
+|                |                                 |--(nmod:p)--> his
+|                |                                 |--(amod)--> pregnant
+|                |--(punct)--> ,
+|                |--(appos)--> R1634[laci]
+|                |--(punct)--> ,
+|                |--(cc)--> and
+|                |--(conj)--> R1640[child]
+|                                 |--(nmod:p)--> their
+|                                 |--(amod)--> *R1651[unborn]
+|                                 |--(nmod)--> saga
+|                                 |                |--(case)--> in
+|                                 |                |--(det)--> the
+|                                 |                |--(nmod)--> adultery
+|                                 |                                 |--(case)--> of
+|                                 |                                 |--(amod)--> suburban
+|                                 |                                 |--(cc)--> and
+|                                 |                                 |--(conj)--> betrayal
+|                                 |--(acl:re)--> transfixed
+|                                                  |--(nsubj)--> that
+|                                                  |--(dobj)--> much
+|                                                                   |--(nmod)--> nation
+|                                                                                    |--(case)--> of
+|                                                                                    |--(det)--> the
+|                                                                                    |--(nmod)--> years
+|                                                                                                     |--(case)--> for
+|                                                                                                     |--(nummod)--> two
+|                                                                                                                      |--(advmod)--> nearly
+|--(punct)--> .
+
+	* entity-paths for event['killing']45_7ecb.xmlsent:13890
+
+	* entity-paths for event['found']45_7ecb.xmlsent:13890
+	['found --(nsubj)--> jury']
+	['found --(dobj)--> Peterson']
+
+	* entity-paths for event['unborn']45_7ecb.xmlsent:13890

@@ -1,0 +1,22 @@
+
+-----------------------------------------
+docid:39_10ecb.xml
+-----------------------------------------
+
+sentence #:smith will play the time lord in 2010 . 
+	[events]:[['play']]
+	[entities]:[['in', '2010'], ['smith'], ['time', 'lord']]
+*R1327[play]
+|--(nsubj)--> R1328[smith]
+|--(aux)--> will
+|--(dobj)--> R1329[lord]
+|                |--(det)--> the
+|                |--(compou)--> R1329[time]
+|--(nmod)--> R1330[2010]
+|                |--(case)--> R1330[in]
+|--(punct)--> .
+
+	* entity-paths for event['play']39_10ecb.xmlsent:10841
+	['play --(nsubj)--> Smith']
+	['play --(dobj)--> lord']
+	['play --(nmod)--> 2010']

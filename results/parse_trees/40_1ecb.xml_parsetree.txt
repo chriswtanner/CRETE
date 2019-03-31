@@ -1,0 +1,50 @@
+
+-----------------------------------------
+docid:40_1ecb.xml
+-----------------------------------------
+
+sentence #:after weeks of speculation about what would be introduced at macworld , apple inc. took the wraps off of updated itunes and ilife software and unveiled a 17-inch macbook pro on tuesday . 
+	[events]:[['took', 'the', 'wraps', 'off'], ['unveiled'], ['updated'], ['macworld']]
+	[entities]:[['macbook', 'pro'], ['on', 'tuesday'], ['apple', 'inc.']]
+*R1404[took]
+|--(nmod)--> weeks
+|                |--(case)--> after
+|                |--(nmod)--> speculation
+|                                 |--(case)--> of
+|                                 |--(acl)--> introduced
+|                                                  |--(mark)--> about
+|                                                  |--(nsubjp)--> what
+|                                                  |--(aux)--> would
+|                                                  |--(auxpas)--> be
+|                                                  |--(nmod)--> *R1406[macworld]
+|                                                                   |--(case)--> at
+|--(punct)--> ,
+|--(nsubj)--> R1405[inc.]
+|                |--(compou)--> R1405[apple]
+|--(ccomp)--> *R1404[wraps]
+|                |--(nsubj)--> *R1404[the]
+|                |--(compou)--> *R1404[off]
+|                |--(nmod)--> itunes
+|                                 |--(case)--> of
+|                                 |--(amod)--> *R1408[updated]
+|                                 |--(cc)--> and
+|                                 |--(conj)--> software
+|                                                  |--(compou)--> ilife
+|--(cc)--> and
+|--(conj)--> *R1404[unveiled]
+|                |--(xcomp)--> R1409[pro]
+|                                 |--(nsubj)--> R1409[macbook]
+|                                 |                |--(det)--> a
+|                                 |                |--(amod)--> 17-inch
+|                                 |--(nmod)--> R1419[tuesday]
+|                                                  |--(case)--> R1419[on]
+|--(punct)--> .
+
+	* entity-paths for event['took', 'the', 'wraps', 'off']40_1ecb.xmlsent:11731
+
+	* entity-paths for event['unveiled']40_1ecb.xmlsent:11731
+	['unveiled --(xcomp)--> Pro']
+
+	* entity-paths for event['updated']40_1ecb.xmlsent:11731
+
+	* entity-paths for event['macworld']40_1ecb.xmlsent:11731

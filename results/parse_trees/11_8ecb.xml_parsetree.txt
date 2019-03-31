@@ -1,0 +1,43 @@
+
+-----------------------------------------
+docid:11_8ecb.xml
+-----------------------------------------
+
+sentence #:turkmenistan 's voters are going to the polls in parliamentary elections portrayed by the government as a step towards democracy in the gas-rich central asian nation . 
+	[events]:[['elections'], ['are', 'going', 'to', 'the', 'polls'], ['democracy']]
+	[entities]:[['government'], ['voters'], ['nation']]
+*R187[going]
+|--(nsubj)--> R191[voters]
+|                |--(nmod:p)--> turkmenistan
+|                                 |--(case)--> 's
+|--(aux)--> *R187[are]
+|--(nmod)--> *R187[polls]
+|                |--(case)--> *R187[to]
+|                |--(det)--> *R187[the]
+|--(nmod)--> *R193[elections]
+|                |--(case)--> in
+|                |--(amod)--> parliamentary
+|                |--(acl)--> portrayed
+|                                 |--(nmod)--> R210[government]
+|                                                  |--(case)--> by
+|                                                  |--(det)--> the
+|                                                  |--(nmod)--> step
+|                                                                   |--(case)--> as
+|                                                                   |--(det)--> a
+|                                                                   |--(nmod)--> *R211[democracy]
+|                                                                                    |--(case)--> towards
+|                                                                                    |--(nmod)--> R189[nation]
+|                                                                                                     |--(case)--> in
+|                                                                                                     |--(det)--> the
+|                                                                                                     |--(amod)--> gas-rich
+|                                                                                                     |--(amod)--> asian
+|                                                                                                                      |--(amod)--> central
+|--(punct)--> .
+
+	* entity-paths for event['elections']11_8ecb.xmlsent:735
+	['elections --(acl)--> portrayed', 'portrayed --(nmod)--> government']
+
+	* entity-paths for event['are', 'going', 'to', 'the', 'polls']11_8ecb.xmlsent:735
+
+	* entity-paths for event['democracy']11_8ecb.xmlsent:735
+	['democracy --(nmod)--> nation']

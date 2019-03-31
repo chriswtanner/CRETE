@@ -1,0 +1,32 @@
+
+-----------------------------------------
+docid:35_4ecb.xml
+-----------------------------------------
+
+sentence #:san diego chargers wide receiver vincent jackson was arrested yesterday on suspicion of drunken driving . 
+	[events]:[['suspicion'], ['drunken', 'driving'], ['arrested']]
+	[entities]:[['vincent', 'jackson'], ['yesterday']]
+*R1153[arrested]
+|--(nsubjp)--> chargers
+|                |--(compou)--> san
+|                |--(compou)--> diego
+|                |--(dep)--> R1156[jackson]
+|                                 |--(amod)--> wide
+|                                 |--(compou)--> receiver
+|                                 |--(compou)--> R1156[vincent]
+|--(auxpas)--> was
+|--(nmod:t)--> R1159[yesterday]
+|--(nmod)--> *R1155[suspicion]
+|                |--(case)--> on
+|                |--(nmod)--> *R1154[driving]
+|                                 |--(case)--> of
+|                                 |--(amod)--> *R1154[drunken]
+|--(punct)--> .
+
+	* entity-paths for event['suspicion']35_4ecb.xmlsent:9734
+
+	* entity-paths for event['drunken', 'driving']35_4ecb.xmlsent:9734
+
+	* entity-paths for event['arrested']35_4ecb.xmlsent:9734
+	['arrested --(nsubjpass)--> Chargers', 'Chargers --(dep)--> Jackson']
+	['arrested --(nmod:tmod)--> yesterday']

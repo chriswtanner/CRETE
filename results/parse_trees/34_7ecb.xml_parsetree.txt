@@ -1,0 +1,42 @@
+
+-----------------------------------------
+docid:34_7ecb.xml
+-----------------------------------------
+
+sentence #:u.s. president-elect barack obama has asked neurosurgeon sanjay gupta , cnn 's chief medical correspondent , to serve as the country 's surgeon general , cnn reported tuesday . 
+	[events]:[['asked']]
+	[entities]:[['sanjay', 'gupta'], ['tuesday'], ['barack', 'obama'], ['cnn'], ['surgeon', 'general']]
+reported
+|--(ccomp)--> *R1132[asked]
+|                |--(nsubj)--> R1136[obama]
+|                |                |--(compou)--> u.s.
+|                |                |--(compou)--> president-elect
+|                |                |--(compou)--> R1136[barack]
+|                |--(aux)--> has
+|                |--(dobj)--> R1130[gupta]
+|                |                |--(compou)--> neurosurgeon
+|                |                |--(compou)--> R1130[sanjay]
+|                |                |--(punct)--> ,
+|                |                |--(appos)--> correspondent
+|                |                |                |--(nmod:p)--> cnn
+|                |                |                |                |--(case)--> 's
+|                |                |                |--(amod)--> chief
+|                |                |                |--(amod)--> medical
+|                |                |--(punct)--> ,
+|                |--(xcomp)--> serve
+|                                 |--(mark)--> to
+|                                 |--(nmod)--> R1135[general]
+|                                                  |--(case)--> as
+|                                                  |--(nmod:p)--> country
+|                                                  |                |--(det)--> the
+|                                                  |                |--(case)--> 's
+|                                                  |--(compou)--> R1135[surgeon]
+|--(punct)--> ,
+|--(nsubj)--> R1144[cnn]
+|--(nmod:t)--> R1146[tuesday]
+|--(punct)--> .
+
+	* entity-paths for event['asked']34_7ecb.xmlsent:9488
+	['asked --(nsubj)--> Obama']
+	['asked --(dobj)--> Gupta']
+	['asked --(xcomp)--> serve', 'serve --(nmod)--> general']

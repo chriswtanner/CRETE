@@ -1,0 +1,28 @@
+
+-----------------------------------------
+docid:18_9ecbplus.xml
+-----------------------------------------
+
+sentence #:shooting at accounting firm leaves woman dead and 2 hurt 
+	[events]:[['shooting'], ['dead'], ['hurt']]
+	[entities]:[['woman'], ['2'], ['accounting', 'firm']]
+leaves
+|--(nsubj)--> *R361[shooting]
+|                |--(nmod)--> R375[firm]
+|                                 |--(case)--> at
+|                                 |--(compou)--> R375[accounting]
+|--(dobj)--> *R373[dead]
+                 |--(compou)--> R374[woman]
+                 |--(cc)--> and
+                 |--(conj)--> *R391[hurt]
+                                  |--(nummod)--> R392[2]
+
+	* entity-paths for event['shooting']18_9ecbplus.xmlsent:2747
+	['Shooting --(nmod)--> Firm']
+
+	* entity-paths for event['dead']18_9ecbplus.xmlsent:2747
+	['Dead --(compound)--> Woman']
+	['Dead --(conj)--> Hurt', 'Hurt --(nummod)--> 2']
+
+	* entity-paths for event['hurt']18_9ecbplus.xmlsent:2747
+	['Hurt --(nummod)--> 2']

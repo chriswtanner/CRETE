@@ -1,0 +1,42 @@
+
+-----------------------------------------
+docid:6_4ecb.xml
+-----------------------------------------
+
+sentence #:chris weitz , who directed " the golden compass , " is negotiating to direct the cinematic sequel to " twilight , " industry sources say . 
+	[events]:[['negotiating'], ['direct']]
+	[entities]:[['chris', 'weitz'], ['twilight']]
+*R1705[negotiating]
+|--(nsubj)--> R1704[weitz]
+|                |--(compou)--> R1704[chris]
+|                |--(punct)--> ,
+|                |--(acl:re)--> directed
+|                                 |--(nsubj)--> who
+|                                 |--(punct)--> "
+|                                 |--(dobj)--> compass
+|                                 |                |--(det)--> the
+|                                 |                |--(compou)--> golden
+|                                 |--(punct)--> ,
+|                                 |--(punct)--> "
+|--(aux)--> is
+|--(xcomp)--> *R1706[direct]
+|                |--(mark)--> to
+|                |--(dobj)--> sequel
+|                |                |--(det)--> the
+|                |                |--(amod)--> cinematic
+|                |--(nmod)--> to
+|                |--(punct)--> "
+|                |--(dobj)--> R1707[twilight]
+|                                 |--(punct)--> ,
+|                                 |--(punct)--> "
+|                                 |--(acl:re)--> say
+|                                                  |--(nsubj)--> sources
+|                                                                   |--(compou)--> industry
+|--(punct)--> .
+
+	* entity-paths for event['negotiating']6_4ecb.xmlsent:14447
+	['negotiating --(nsubj)--> Weitz']
+	['negotiating --(xcomp)--> direct', 'direct --(dobj)--> Twilight']
+
+	* entity-paths for event['direct']6_4ecb.xmlsent:14447
+	['direct --(dobj)--> Twilight']

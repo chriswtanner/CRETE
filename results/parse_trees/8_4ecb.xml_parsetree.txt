@@ -1,0 +1,37 @@
+
+-----------------------------------------
+docid:8_4ecb.xml
+-----------------------------------------
+
+sentence #:a bomb exploded at an oregon bank in woodburn late friday killing a police officer and a bomb technician . 
+	[events]:[['killing'], ['exploded']]
+	[entities]:[['bomb'], ['officer'], ['technician'], ['late', 'friday'], ['an', 'oregon', 'bank', 'in', 'woodburn']]
+*R1764[exploded]
+|--(nsubj)--> R1788[bomb]
+|                |--(det)--> a
+|--(nmod)--> R1765[bank]
+|                |--(case)--> at
+|                |--(det)--> R1765[an]
+|                |--(compou)--> R1765[oregon]
+|                |--(nmod)--> R1765[woodburn]
+|                                 |--(case)--> R1765[in]
+|--(nmod:t)--> R1789[friday]
+|                |--(amod)--> R1789[late]
+|--(xcomp)--> *R1763[killing]
+|                |--(dobj)--> R1766[officer]
+|                                 |--(det)--> a
+|                                 |--(compou)--> police
+|                                 |--(cc)--> and
+|                                 |--(conj)--> R1767[technician]
+|                                                  |--(det)--> a
+|                                                  |--(compou)--> bomb
+|--(punct)--> .
+
+	* entity-paths for event['killing']8_4ecb.xmlsent:15038
+	['killing --(dobj)--> officer']
+
+	* entity-paths for event['exploded']8_4ecb.xmlsent:15038
+	['exploded --(nsubj)--> bomb']
+	['exploded --(nmod)--> bank']
+	['exploded --(nmod:tmod)--> Friday']
+	['exploded --(xcomp)--> killing', 'killing --(dobj)--> officer']

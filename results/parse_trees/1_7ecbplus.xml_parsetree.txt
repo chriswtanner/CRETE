@@ -1,0 +1,125 @@
+
+-----------------------------------------
+docid:1_7ecbplus.xml
+-----------------------------------------
+
+sentence #:attorney mark jay heller told la superior court judge james r . dabney that lohan , 26 , had checked into morningside recovery in newport beach , ca , according to the associated press . 
+	[events]:[['told'], ['checked', 'into']]
+	[entities]:[['james', 'r', '.', 'dabney'], ['attorney', 'mark', 'jay', 'heller'], ['lohan'], ['morningside', 'recovery', 'in', 'newport', 'beach', ',', 'ca'], ['associated', 'press']]
+*R146[told]
+|--(nsubj)--> R37[heller]
+|                |--(compou)--> R37[attorney]
+|                |--(compou)--> R37[mark]
+|                |--(compou)--> R37[jay]
+|--(dobj)--> R35[dabney]
+|                |--(compou)--> la
+|                |--(compou)--> superior
+|                |--(compou)--> court
+|                |--(compou)--> judge
+|                |--(compou)--> R35[james]
+|                |--(compou)--> R35[r]
+|                |--(punct)--> R35[.]
+|                |--(acl:re)--> *R9[checked]
+|                                 |--(dobj)--> that
+|                                 |--(nsubj)--> R15[lohan]
+|                                 |                |--(punct)--> ,
+|                                 |                |--(amod)--> 26
+|                                 |                |--(punct)--> ,
+|                                 |--(aux)--> had
+|                                 |--(nmod)--> R10[recovery]
+|                                 |                |--(case)--> *R9[into]
+|                                 |                |--(compou)--> R10[morningside]
+|                                 |                |--(nmod)--> R10[beach]
+|                                 |                                 |--(case)--> R10[in]
+|                                 |                                 |--(compou)--> R10[newport]
+|                                 |                                 |--(punct)--> R10[,]
+|                                 |                                 |--(appos)--> R10[ca]
+|                                 |                                 |--(punct)--> ,
+|                                 |--(nmod)--> R81[press]
+|                                                  |--(case)--> according
+|                                                  |                |--(mwe)--> to
+|                                                  |--(det)--> the
+|                                                  |--(compou)--> R81[associated]
+|--(punct)--> .
+
+	* entity-paths for event['told']1_7ecbplus.xmlsent:282
+	['told --(nsubj)--> Heller']
+	['told --(dobj)--> Dabney']
+
+	* entity-paths for event['checked', 'into']1_7ecbplus.xmlsent:282
+
+sentence #:lindsay lohan checks into court - ordered rehab 
+	[events]:[['checks', 'into'], ['ordered'], ['rehab']]
+	[entities]:[['lindsay', 'lohan'], ['court']]
+R147[court]
+|--(compou)--> R15[lindsay]
+|--(compou)--> R15[lohan]
+|--(compou)--> *R9[checks]
+|--(compou)--> *R9[into]
+|--(punct)--> -
+|--(parata)--> *R148[ordered]
+                 |--(dobj)--> *R19[rehab]
+
+	* entity-paths for event['checks', 'into']1_7ecbplus.xmlsent:279
+
+	* entity-paths for event['ordered']1_7ecbplus.xmlsent:279
+
+	* entity-paths for event['rehab']1_7ecbplus.xmlsent:279
+
+sentence #:lindsay lohan's lawyer says the actress checked into rehab on thursday , but the facility has not been officially sanctioned by the court that ordered her to serve 90 days of treatment . 
+	[events]:[['says'], ['checked', 'into'], ['ordered'], ['sanctioned'], ['treatment']]
+	[entities]:[['lindsay', "lohan's"], ['facility'], ['her'], ['court'], ['thursday'], ['actress'], ['lawyer'], ['rehab'], ['90', 'days']]
+*R124[says]
+|--(nsubj)--> R37[lawyer]
+|                |--(nmod:p)--> R15[lohan's]
+|                                 |--(compou)--> R15[lindsay]
+|                                 |--(case)--> R15[lohan's]
+|--(ccomp)--> *R9[checked]
+|                |--(nsubj)--> R15[actress]
+|                |                |--(det)--> the
+|                |--(nmod)--> R10[rehab]
+|                |                |--(case)--> *R9[into]
+|                |--(nmod)--> R58[thursday]
+|                                 |--(case)--> on
+|--(punct)--> ,
+|--(cc)--> but
+|--(conj)--> *R149[sanctioned]
+|                |--(nsubjp)--> R10[facility]
+|                |                |--(det)--> the
+|                |--(aux)--> has
+|                |--(neg)--> not
+|                |--(auxpas)--> been
+|                |--(advmod)--> officially
+|                |--(nmod)--> R150[court]
+|                                 |--(case)--> by
+|                                 |--(det)--> the
+|                                 |--(acl:re)--> *R148[ordered]
+|                                                  |--(nsubj)--> that
+|                                                  |--(dobj)--> R15[her]
+|                                                  |--(xcomp)--> serve
+|                                                                   |--(mark)--> to
+|                                                                   |--(dobj)--> R18[days]
+|                                                                                    |--(nummod)--> R18[90]
+|                                                                                    |--(nmod)--> *R19[treatment]
+|                                                                                                     |--(case)--> of
+|--(punct)--> .
+
+	* entity-paths for event['says']1_7ecbplus.xmlsent:281
+	['says --(nsubj)--> lawyer']
+	['says --(ccomp)--> checked', 'checked --(nsubj)--> actress']
+	['says --(ccomp)--> checked', 'checked --(nmod)--> rehab']
+	['says --(ccomp)--> checked', 'checked --(nmod)--> Thursday']
+	['says --(conj)--> sanctioned', 'sanctioned --(nsubjpass)--> facility']
+	['says --(conj)--> sanctioned', 'sanctioned --(nmod)--> court']
+
+	* entity-paths for event['checked', 'into']1_7ecbplus.xmlsent:281
+
+	* entity-paths for event['ordered']1_7ecbplus.xmlsent:281
+	['ordered --(dobj)--> her']
+	['ordered --(xcomp)--> serve', 'serve --(dobj)--> days']
+
+	* entity-paths for event['sanctioned']1_7ecbplus.xmlsent:281
+	['sanctioned --(nsubjpass)--> facility']
+	['sanctioned --(nmod)--> court']
+
+	* entity-paths for event['treatment']1_7ecbplus.xmlsent:281

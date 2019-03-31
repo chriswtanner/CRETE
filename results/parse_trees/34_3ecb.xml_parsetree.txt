@@ -1,0 +1,39 @@
+
+-----------------------------------------
+docid:34_3ecb.xml
+-----------------------------------------
+
+sentence #:news that barack obama may name dr. sanjay gupta of emory university and cnn as his surgeon general has caused a spasm of celebrity reporting . 
+	[events]:[['name']]
+	[entities]:[['cnn'], ['surgeon', 'general'], ['barack', 'obama'], ['dr.', 'sanjay', 'gupta']]
+caused
+|--(nsubj)--> news
+|                |--(acl:re)--> *R1132[name]
+|                                 |--(dobj)--> that
+|                                 |--(nsubj)--> R1136[obama]
+|                                 |                |--(compou)--> R1136[barack]
+|                                 |--(aux)--> may
+|                                 |--(dobj)--> R1130[gupta]
+|                                 |                |--(compou)--> R1130[dr.]
+|                                 |                |--(compou)--> R1130[sanjay]
+|                                 |                |--(nmod)--> university
+|                                 |                                 |--(case)--> of
+|                                 |                                 |--(compou)--> emory
+|                                 |                                 |--(cc)--> and
+|                                 |                                 |--(conj)--> R1144[cnn]
+|                                 |--(nmod)--> R1135[general]
+|                                                  |--(case)--> as
+|                                                  |--(nmod:p)--> his
+|                                                  |--(compou)--> R1135[surgeon]
+|--(aux)--> has
+|--(dobj)--> spasm
+|                |--(det)--> a
+|                |--(nmod)--> reporting
+|                                 |--(case)--> of
+|                                 |--(compou)--> celebrity
+|--(punct)--> .
+
+	* entity-paths for event['name']34_3ecb.xmlsent:9425
+	['name --(nsubj)--> Obama']
+	['name --(dobj)--> Gupta']
+	['name --(nmod)--> General']

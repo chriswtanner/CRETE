@@ -1,0 +1,44 @@
+
+-----------------------------------------
+docid:30_6ecb.xml
+-----------------------------------------
+
+sentence #:internet links between europe , the middle east and south asia have been disrupted after undersea cables failed in the mediterranean . 
+	[events]:[['failed'], ['disrupted'], ['links']]
+	[entities]:[['cables'], ['between', 'europe', ',', 'the', 'middle', 'east', 'and', 'south'], ['in', 'the', 'mediterranean'], ['internet']]
+*R982[disrupted]
+|--(nsubjp)--> *R966[links]
+|                |--(compou)--> R950[internet]
+|                |--(nmod)--> R965[europe]
+|                                 |--(case)--> R965[between]
+|                                 |--(punct)--> R965[,]
+|                                 |--(conj)--> R965[east]
+|                                 |                |--(det)--> R965[the]
+|                                 |                |--(compou)--> R965[middle]
+|                                 |--(cc)--> R965[and]
+|                                 |--(conj)--> asia
+|                                                  |--(compou)--> R965[south]
+|--(aux)--> have
+|--(auxpas)--> been
+|--(advcl)--> *R953[failed]
+|                |--(mark)--> after
+|                |--(nsubj)--> R951[cables]
+|                |                |--(compou)--> undersea
+|                |--(nmod)--> R952[mediterranean]
+|                                 |--(case)--> R952[in]
+|                                 |--(det)--> R952[the]
+|--(punct)--> .
+
+	* entity-paths for event['failed']30_6ecb.xmlsent:7936
+	['failed --(nsubj)--> cables']
+	['failed --(nmod)--> Mediterranean']
+
+	* entity-paths for event['disrupted']30_6ecb.xmlsent:7936
+	['disrupted --(nsubjpass)--> links', 'links --(compound)--> Internet']
+	['disrupted --(nsubjpass)--> links', 'links --(nmod)--> Europe']
+	['disrupted --(advcl)--> failed', 'failed --(nsubj)--> cables']
+	['disrupted --(advcl)--> failed', 'failed --(nmod)--> Mediterranean']
+
+	* entity-paths for event['links']30_6ecb.xmlsent:7936
+	['links --(compound)--> Internet']
+	['links --(nmod)--> Europe']

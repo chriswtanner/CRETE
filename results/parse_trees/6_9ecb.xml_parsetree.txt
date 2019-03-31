@@ -1,0 +1,33 @@
+
+-----------------------------------------
+docid:6_9ecb.xml
+-----------------------------------------
+
+sentence #:the golden compass director chris weitz is expected to direct new moon , the sequel to the hugely successful film twilight . 
+	[events]:[['direct']]
+	[entities]:[['new', 'moon'], ['chris', 'weitz'], ['twilight']]
+expected
+|--(nsubjp)--> R1704[weitz]
+|                |--(det)--> the
+|                |--(compou)--> golden
+|                |--(compou)--> compass
+|                |--(compou)--> director
+|                |--(compou)--> R1704[chris]
+|--(auxpas)--> is
+|--(xcomp)--> *R1706[direct]
+|                |--(mark)--> to
+|                |--(dobj)--> R1703[moon]
+|                                 |--(compou)--> R1703[new]
+|                                 |--(punct)--> ,
+|                                 |--(appos)--> sequel
+|                                                  |--(det)--> the
+|                                                  |--(nmod)--> film
+|                                                                   |--(case)--> to
+|                                                                   |--(det)--> the
+|                                                                   |--(amod)--> successful
+|                                                                   |                |--(advmod)--> hugely
+|                                                                   |--(appos)--> R1707[twilight]
+|--(punct)--> .
+
+	* entity-paths for event['direct']6_9ecb.xmlsent:14576
+	['direct --(dobj)--> Moon']

@@ -1,0 +1,26 @@
+
+-----------------------------------------
+docid:11_10ecb.xml
+-----------------------------------------
+
+sentence #:voting for mps to majlis ( parliament ) began in turkmenistan on dec.14 . 
+	[events]:[['voting']]
+	[entities]:[['majlis'], ['turkmenistan'], ['dec.14']]
+began
+|--(nsubj)--> *R187[voting]
+|                |--(nmod)--> mps
+|                |                |--(case)--> for
+|                |                |--(nmod)--> R188[majlis]
+|                |                                 |--(case)--> to
+|                |--(appos)--> parliament
+|                                 |--(punct)--> (
+|                                 |--(punct)--> )
+|--(nmod)--> R189[turkmenistan]
+|                |--(case)--> in
+|--(nmod)--> R190[dec.14]
+|                |--(case)--> on
+|                |--(nummod)--> R190[dec.14]
+|--(punct)--> .
+
+	* entity-paths for event['voting']11_10ecb.xmlsent:586
+	['Voting --(nmod)--> MPs', 'MPs --(nmod)--> Majlis']

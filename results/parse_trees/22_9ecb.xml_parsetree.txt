@@ -1,0 +1,45 @@
+
+-----------------------------------------
+docid:22_9ecb.xml
+-----------------------------------------
+
+sentence #:this morning , 41 years later , staunton police have arrested and charged sharron diane crawford smith , age 61 , with two counts of first-degree murder . 
+	[events]:[['murder'], ['charged'], ['arrested']]
+	[entities]:[['this', 'morning'], ['staunton', 'police'], ['sharron', 'diane', 'crawford', 'smith']]
+*R628[arrested]
+|--(nmod:t)--> R629[morning]
+|                |--(det)--> R629[this]
+|--(punct)--> ,
+|--(advmod)--> later
+|                |--(nmod:n)--> years
+|                                 |--(nummod)--> 41
+|--(punct)--> ,
+|--(nsubj)--> R633[police]
+|                |--(compou)--> R633[staunton]
+|--(aux)--> have
+|--(cc)--> and
+|--(conj)--> *R624[charged]
+|--(dobj)--> R618[smith]
+|                |--(compou)--> R618[sharron]
+|                |--(compou)--> R618[diane]
+|                |--(compou)--> R618[crawford]
+|                |--(punct)--> ,
+|                |--(appos)--> age
+|                |                |--(nummod)--> 61
+|                |--(punct)--> ,
+|--(nmod)--> counts
+|                |--(case)--> with
+|                |--(nummod)--> two
+|                |--(nmod)--> *R619[murder]
+|                                 |--(case)--> of
+|                                 |--(amod)--> first-degree
+|--(punct)--> .
+
+	* entity-paths for event['murder']22_9ecb.xmlsent:4580
+
+	* entity-paths for event['charged']22_9ecb.xmlsent:4580
+
+	* entity-paths for event['arrested']22_9ecb.xmlsent:4580
+	['arrested --(nmod:tmod)--> morning']
+	['arrested --(nsubj)--> police']
+	['arrested --(dobj)--> Smith']

@@ -1,0 +1,51 @@
+
+-----------------------------------------
+docid:8_11ecbplus.xml
+-----------------------------------------
+
+sentence #:it comes a day after three bank workers died in a petrol bomb attack as demonstrations over the planned austerity measures turned violent . 
+	[events]:[['attack'], ['measures'], ['demonstrations'], ['comes'], ['turned'], ['violent'], ['died']]
+	[entities]:[['workers'], ['bomb']]
+*R1756[comes]
+|--(nsubj)--> it
+|--(advcl)--> *R1753[died]
+|                |--(dep)--> day
+|                |                |--(det)--> a
+|                |--(mark)--> after
+|                |--(nsubj)--> R1754[workers]
+|                |                |--(nummod)--> three
+|                |                |--(compou)--> bank
+|                |--(nmod)--> *R1757[attack]
+|                |                |--(case)--> in
+|                |                |--(det)--> a
+|                |                |--(compou)--> petrol
+|                |                |--(compou)--> R1751[bomb]
+|                |--(advcl)--> *R1758[turned]
+|                                 |--(mark)--> as
+|                                 |--(nsubj)--> *R1759[demonstrations]
+|                                 |                |--(nmod)--> *R1760[measures]
+|                                 |                                 |--(case)--> over
+|                                 |                                 |--(det)--> the
+|                                 |                                 |--(amod)--> planned
+|                                 |                                 |--(compou)--> austerity
+|                                 |--(xcomp)--> *R1761[violent]
+|--(punct)--> .
+
+	* entity-paths for event['attack']8_11ecbplus.xmlsent:14880
+	['attack --(compound)--> bomb']
+
+	* entity-paths for event['measures']8_11ecbplus.xmlsent:14880
+
+	* entity-paths for event['demonstrations']8_11ecbplus.xmlsent:14880
+
+	* entity-paths for event['comes']8_11ecbplus.xmlsent:14880
+	['comes --(advcl)--> died', 'died --(nsubj)--> workers']
+	['comes --(advcl)--> died', 'died --(nmod)--> attack', 'attack --(compound)--> bomb']
+
+	* entity-paths for event['turned']8_11ecbplus.xmlsent:14880
+
+	* entity-paths for event['violent']8_11ecbplus.xmlsent:14880
+
+	* entity-paths for event['died']8_11ecbplus.xmlsent:14880
+	['died --(nsubj)--> workers']
+	['died --(nmod)--> attack', 'attack --(compound)--> bomb']

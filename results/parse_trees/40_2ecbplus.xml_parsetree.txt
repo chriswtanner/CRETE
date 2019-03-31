@@ -1,0 +1,28 @@
+
+-----------------------------------------
+docid:40_2ecbplus.xml
+-----------------------------------------
+
+sentence #:new macbook air models officially unveiled with ivy bridge upgrade 
+	[events]:[['upgrade'], ['unveiled']]
+	[entities]:[['macbook', 'air'], ['ivy', 'bridge']]
+*R1410[unveiled]
+|--(nsubj)--> models
+|                |--(compou)--> new
+|                |--(compou)--> R1412[macbook]
+|                |--(compou)--> R1412[air]
+|--(advmod)--> officially
+|--(nmod)--> *R1411[upgrade]
+                 |--(case)--> with
+                 |--(compou)--> R1420[ivy]
+                 |--(compou)--> R1420[bridge]
+
+	* entity-paths for event['upgrade']40_2ecbplus.xmlsent:11768
+	['upgrade --(compound)--> Ivy']
+	['upgrade --(compound)--> Bridge']
+
+	* entity-paths for event['unveiled']40_2ecbplus.xmlsent:11768
+	['unveiled --(nsubj)--> models', 'models --(compound)--> MacBook']
+	['unveiled --(nsubj)--> models', 'models --(compound)--> Air']
+	['unveiled --(nmod)--> upgrade', 'upgrade --(compound)--> Ivy']
+	['unveiled --(nmod)--> upgrade', 'upgrade --(compound)--> Bridge']

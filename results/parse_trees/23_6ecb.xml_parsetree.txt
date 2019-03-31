@@ -1,0 +1,55 @@
+
+-----------------------------------------
+docid:23_6ecb.xml
+-----------------------------------------
+
+sentence #:miles vinar spoke to one news about seeing his brother plunge to his death on thursday , and about his own desperate battle to stay alive on the mountain . 
+	[events]:[['stay', 'alive'], ['plunge'], ['seeing'], ['death']]
+	[entities]:[['miles', 'vinar'], ['on', 'the', 'mountain'], ['thursday'], ['brother'], ['his'], ['his']]
+spoke
+|--(nsubj)--> R634[vinar]
+|                |--(compou)--> R634[miles]
+|--(nmod)--> one
+|                |--(case)--> to
+|--(dobj)--> news
+|                |--(acl)--> *R636[seeing]
+|                                 |--(mark)--> about
+|                                 |--(dobj)--> *R637[plunge]
+|                                 |                |--(nmod:p)--> his
+|                                 |                |--(compou)--> R638[brother]
+|                                 |--(nmod)--> *R654[death]
+|                                 |                |--(case)--> to
+|                                 |                |--(nmod:p)--> R638[his]
+|                                 |                |--(nmod)--> R658[thursday]
+|                                 |                |                |--(case)--> on
+|                                 |                |--(punct)--> ,
+|                                 |                |--(cc)--> and
+|                                 |                |--(conj)--> battle
+|                                 |                                 |--(case)--> about
+|                                 |                                 |--(nmod:p)--> R634[his]
+|                                 |                                 |--(amod)--> own
+|                                 |                                 |--(amod)--> desperate
+|                                 |--(advcl)--> *R652[stay]
+|                                                  |--(mark)--> to
+|                                                  |--(xcomp)--> *R652[alive]
+|                                                  |--(nmod)--> R639[mountain]
+|                                                                   |--(case)--> R639[on]
+|                                                                   |--(det)--> R639[the]
+|--(punct)--> .
+
+	* entity-paths for event['stay', 'alive']23_6ecb.xmlsent:4731
+
+	* entity-paths for event['plunge']23_6ecb.xmlsent:4731
+	['plunge --(compound)--> brother']
+
+	* entity-paths for event['seeing']23_6ecb.xmlsent:4731
+	['seeing --(dobj)--> plunge', 'plunge --(compound)--> brother']
+	['seeing --(nmod)--> death', 'death --(nmod:poss)--> his']
+	['seeing --(nmod)--> death', 'death --(nmod)--> Thursday']
+	['seeing --(nmod)--> death', 'death --(conj)--> battle', 'battle --(nmod:poss)--> his']
+	['seeing --(advcl)--> stay', 'stay --(nmod)--> mountain']
+
+	* entity-paths for event['death']23_6ecb.xmlsent:4731
+	['death --(nmod:poss)--> his']
+	['death --(nmod)--> Thursday']
+	['death --(conj)--> battle', 'battle --(nmod:poss)--> his']

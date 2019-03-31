@@ -1,0 +1,110 @@
+
+-----------------------------------------
+docid:20_11ecbplus.xml
+-----------------------------------------
+
+sentence #:ten people were killed and at least 50 injured when an earthquake razed mud - brick villages on the persian gulf island of qeshm off iran's southern coast sunday , officials and state media said . 
+	[events]:[['razed'], ['said'], ['injured'], ['earthquake'], ['killed']]
+	[entities]:[['state', 'media'], ['on', 'the', 'persian', 'gulf', 'island', 'of', 'qeshm', 'off', "iran's", 'southern', 'coast'], ['people'], ['50'], ['villages'], ['officials'], ['sunday']]
+*R503[said]
+|--(ccomp)--> *R504[killed]
+|                |--(nsubjp)--> R505[people]
+|                |                |--(nummod)--> ten
+|                |--(auxpas)--> were
+|                |--(cc)--> and
+|                |--(conj)--> *R506[injured]
+|                                 |--(advmod)--> R507[50]
+|                                 |                |--(advmod)--> at
+|                                 |                                 |--(mwe)--> least
+|                                 |--(advcl)--> *R508[razed]
+|                                                  |--(advmod)--> when
+|                                                  |--(nsubj)--> *R509[earthquake]
+|                                                  |                |--(det)--> an
+|                                                  |--(dobj)--> mud
+|                                                  |                |--(punct)--> -
+|                                                  |                |--(dep)--> R510[villages]
+|                                                  |                                 |--(compou)--> brick
+|                                                  |                                 |--(nmod)--> R511[island]
+|                                                  |                                                  |--(case)--> R511[on]
+|                                                  |                                                  |--(det)--> R511[the]
+|                                                  |                                                  |--(compou)--> R511[persian]
+|                                                  |                                                  |--(compou)--> R511[gulf]
+|                                                  |                                                  |--(nmod)--> R511[qeshm]
+|                                                  |                                                                   |--(case)--> R511[of]
+|                                                  |--(nmod)--> R511[coast]
+|                                                  |                |--(case)--> R511[off]
+|                                                  |                |--(nmod:p)--> R511[iran's]
+|                                                  |                |                |--(case)--> R511[iran's]
+|                                                  |                |--(amod)--> R511[southern]
+|                                                  |--(nmod:t)--> R512[sunday]
+|--(punct)--> ,
+|--(nsubj)--> R513[officials]
+|                |--(cc)--> and
+|                |--(conj)--> R514[media]
+|                                 |--(compou)--> R514[state]
+|--(punct)--> .
+
+	* entity-paths for event['razed']20_11ecbplus.xmlsent:3801
+	['razed --(dobj)--> mud', 'mud --(dep)--> villages']
+	['razed --(nmod)--> coast']
+	['razed --(nmod:tmod)--> Sunday']
+
+	* entity-paths for event['said']20_11ecbplus.xmlsent:3801
+	['said --(ccomp)--> killed', 'killed --(nsubjpass)--> people']
+	['said --(ccomp)--> killed', 'killed --(conj)--> injured', 'injured --(advmod)--> 50']
+	['said --(ccomp)--> killed', 'killed --(conj)--> injured', 'injured --(advcl)--> razed', 'razed --(dobj)--> mud', 'mud --(dep)--> villages']
+	['said --(ccomp)--> killed', 'killed --(conj)--> injured', 'injured --(advcl)--> razed', 'razed --(nmod)--> coast']
+	['said --(ccomp)--> killed', 'killed --(conj)--> injured', 'injured --(advcl)--> razed', 'razed --(nmod:tmod)--> Sunday']
+	['said --(nsubj)--> officials']
+
+	* entity-paths for event['injured']20_11ecbplus.xmlsent:3801
+	['injured --(advmod)--> 50']
+	['injured --(advcl)--> razed', 'razed --(dobj)--> mud', 'mud --(dep)--> villages']
+	['injured --(advcl)--> razed', 'razed --(nmod)--> coast']
+	['injured --(advcl)--> razed', 'razed --(nmod:tmod)--> Sunday']
+
+	* entity-paths for event['earthquake']20_11ecbplus.xmlsent:3801
+
+	* entity-paths for event['killed']20_11ecbplus.xmlsent:3801
+	['killed --(nsubjpass)--> people']
+	['killed --(conj)--> injured', 'injured --(advmod)--> 50']
+	['killed --(conj)--> injured', 'injured --(advcl)--> razed', 'razed --(dobj)--> mud', 'mud --(dep)--> villages']
+	['killed --(conj)--> injured', 'injured --(advcl)--> razed', 'razed --(nmod)--> coast']
+	['killed --(conj)--> injured', 'injured --(advcl)--> razed', 'razed --(nmod:tmod)--> Sunday']
+
+sentence #:earthquake levels villages on iranian island of qeshm 
+	[events]:[['levels'], ['earthquake']]
+	[entities]:[['villages'], ['on', 'iranian', 'island', 'of', 'qeshm']]
+*R508[levels]
+|--(compou)--> *R509[earthquake]
+|--(dep)--> R510[villages]
+                 |--(nmod)--> R515[island]
+                                  |--(case)--> R515[on]
+                                  |--(amod)--> R515[iranian]
+                                  |--(nmod)--> R515[qeshm]
+                                                   |--(case)--> R515[of]
+
+	* entity-paths for event['levels']20_11ecbplus.xmlsent:3797
+	['Levels --(dep)--> Villages']
+
+	* entity-paths for event['earthquake']20_11ecbplus.xmlsent:3797
+
+sentence #:ten people are killed and about 50 hurt . 
+	[events]:[['killed'], ['hurt']]
+	[entities]:[['people'], ['50']]
+*R504[killed]
+|--(nsubjp)--> R505[people]
+|                |--(nummod)--> ten
+|--(auxpas)--> are
+|--(cc)--> and
+|--(conj)--> *R506[hurt]
+|                |--(dep)--> about
+|                |--(nummod)--> R507[50]
+|--(punct)--> .
+
+	* entity-paths for event['killed']20_11ecbplus.xmlsent:3798
+	['killed --(nsubjpass)--> people']
+	['killed --(conj)--> hurt', 'hurt --(nummod)--> 50']
+
+	* entity-paths for event['hurt']20_11ecbplus.xmlsent:3798
+	['hurt --(nummod)--> 50']

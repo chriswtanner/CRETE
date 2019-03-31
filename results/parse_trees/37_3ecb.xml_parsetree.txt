@@ -1,0 +1,143 @@
+
+-----------------------------------------
+docid:37_3ecb.xml
+-----------------------------------------
+
+sentence #:thousands of frightened residents flooded makeshift refugee camps in indonesia 's west papua province today after two powerful earthquakes flattened buildings and killed at least one person . 
+	[events]:[['killed'], ['flattened'], ['earthquakes']]
+	[entities]:[['in', 'indonesia', "'s", 'west', 'papua', 'province'], ['makeshift', 'refugee', 'camps'], ['residents'], ['one', 'person']]
+flooded
+|--(nsubj)--> thousands
+|                |--(nmod)--> R1285[residents]
+|                                 |--(case)--> of
+|                                 |--(amod)--> frightened
+|--(dobj)--> R1286[camps]
+|                |--(amod)--> R1286[makeshift]
+|                |--(compou)--> R1286[refugee]
+|--(nmod)--> R1267[province]
+|                |--(case)--> R1267[in]
+|                |--(nmod:p)--> R1267[indonesia]
+|                |                |--(case)--> R1267['s]
+|                |--(compou)--> R1267[west]
+|                |--(compou)--> R1267[papua]
+|--(nmod:t)--> today
+|--(advcl)--> *R1287[flattened]
+|                |--(mark)--> after
+|                |--(nsubj)--> *R1277[earthquakes]
+|                |                |--(nummod)--> two
+|                |                |--(amod)--> powerful
+|                |--(dobj)--> buildings
+|                |--(cc)--> and
+|                |--(conj)--> *R1283[killed]
+|                                 |--(dobj)--> R1284[person]
+|                                                  |--(nummod)--> R1284[one]
+|                                                                   |--(nmod:n)--> least
+|                                                                                    |--(case)--> at
+|--(punct)--> .
+
+	* entity-paths for event['killed']37_3ecb.xmlsent:10538
+	['killed --(dobj)--> person']
+
+	* entity-paths for event['flattened']37_3ecb.xmlsent:10538
+	['flattened --(conj)--> killed', 'killed --(dobj)--> person']
+
+	* entity-paths for event['earthquakes']37_3ecb.xmlsent:10538
+
+sentence #:as aid started to arrive , hundreds of aftershocks continued to rattle the coastal city which was hit by the 7.6 and 7.5 magnitude quakes early on sunday , cutting power and prompting a brief tsunami warning . 
+	[events]:[['hit'], ['7.6'], ['quakes'], ['7.5', 'magnitude']]
+	[entities]:[['early', 'on', 'sunday'], ['city']]
+continued
+|--(advcl)--> started
+|                |--(mark)--> as
+|                |--(nsubj)--> aid
+|                |--(xcomp)--> arrive
+|                                 |--(mark)--> to
+|--(punct)--> ,
+|--(nsubj)--> hundreds
+|                |--(nmod)--> aftershocks
+|                                 |--(case)--> of
+|--(xcomp)--> rattle
+|                |--(mark)--> to
+|                |--(dobj)--> R1267[city]
+|                                 |--(det)--> the
+|                                 |--(amod)--> coastal
+|                                 |--(acl:re)--> *R1280[hit]
+|                                                  |--(nsubjp)--> which
+|                                                  |--(auxpas)--> was
+|                                                  |--(nmod)--> *R1278[7.6]
+|                                                                   |--(case)--> by
+|                                                                   |--(det)--> the
+|                                                                   |--(cc)--> and
+|                                                                   |--(conj)--> *R1277[quakes]
+|                                                                   |                |--(nummod)--> *R1279[7.5]
+|                                                                   |                |--(compou)--> *R1279[magnitude]
+|                                                                   |--(advmod)--> R1268[early]
+|                                                                                    |--(nmod)--> R1268[sunday]
+|                                                                                                     |--(case)--> R1268[on]
+|--(punct)--> ,
+|--(ccomp)--> cutting
+|                |--(dobj)--> power
+|                |--(cc)--> and
+|                |--(conj)--> prompting
+|                                 |--(dobj)--> warning
+|                                                  |--(det)--> a
+|                                                  |--(amod)--> brief
+|                                                  |--(compou)--> tsunami
+|--(punct)--> .
+
+	* entity-paths for event['hit']37_3ecb.xmlsent:10541
+	['hit --(nmod)--> 7.6', '7.6 --(advmod)--> early']
+
+	* entity-paths for event['7.6']37_3ecb.xmlsent:10541
+	['7.6 --(advmod)--> early']
+
+	* entity-paths for event['quakes']37_3ecb.xmlsent:10541
+
+	* entity-paths for event['7.5', 'magnitude']37_3ecb.xmlsent:10541
+
+sentence #:atururi said a 10-year-old girl was killed and at least 40 people were injured in the earthquakes , which rekindled bitter memories of similar deadly quakes that hit the town in 2002 . 
+	[events]:[['killed'], ['injured'], ['earthquakes']]
+	[entities]:[['town'], ['girl'], ['40', 'people']]
+said
+|--(nsubj)--> atururi
+|--(ccomp)--> *R1283[killed]
+|                |--(nsubjp)--> R1284[girl]
+|                |                |--(det)--> a
+|                |                |--(amod)--> 10-year-old
+|                |--(auxpas)--> was
+|--(cc)--> and
+|--(conj)--> *R1288[injured]
+|                |--(nsubjp)--> R1289[people]
+|                |                |--(nummod)--> R1289[40]
+|                |                                 |--(nmod:n)--> least
+|                |                                                  |--(case)--> at
+|                |--(auxpas)--> were
+|                |--(nmod)--> *R1277[earthquakes]
+|                                 |--(case)--> in
+|                                 |--(det)--> the
+|                                 |--(punct)--> ,
+|                                 |--(acl:re)--> rekindled
+|                                                  |--(nsubj)--> which
+|                                                  |--(dobj)--> memories
+|                                                                   |--(amod)--> bitter
+|                                                                   |--(nmod)--> quakes
+|                                                                   |                |--(case)--> of
+|                                                                   |                |--(amod)--> similar
+|                                                                   |                |--(amod)--> deadly
+|                                                                   |--(acl:re)--> hit
+|                                                                                    |--(nsubj)--> that
+|                                                                                    |--(dobj)--> R1267[town]
+|                                                                                                     |--(det)--> the
+|                                                                                                     |--(nmod)--> 2002
+|                                                                                                                      |--(case)--> in
+|--(punct)--> .
+
+	* entity-paths for event['killed']37_3ecb.xmlsent:10542
+	['killed --(nsubjpass)--> girl']
+
+	* entity-paths for event['injured']37_3ecb.xmlsent:10542
+	['injured --(nsubjpass)--> people']
+	['injured --(nmod)--> earthquakes', 'earthquakes --(acl:relcl)--> rekindled', 'rekindled --(dobj)--> memories', 'memories --(acl:relcl)--> hit', 'hit --(dobj)--> town']
+
+	* entity-paths for event['earthquakes']37_3ecb.xmlsent:10542
+	['earthquakes --(acl:relcl)--> rekindled', 'rekindled --(dobj)--> memories', 'memories --(acl:relcl)--> hit', 'hit --(dobj)--> town']

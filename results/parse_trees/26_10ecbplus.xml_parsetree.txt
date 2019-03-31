@@ -1,0 +1,65 @@
+
+-----------------------------------------
+docid:26_10ecbplus.xml
+-----------------------------------------
+
+sentence #:vincent "the chin" gigante , the new york mob boss whose crazy act earned him the nickname "the oddfather , " died in prison monday . 
+	[events]:[['crazy'], ['died'], ['act']]
+	[entities]:[['monday'], ['vincent', '"the', 'chin"', 'gigante'], ['in', 'prison'], ['him'], ['mob', 'boss']]
+*R739[died]
+|--(nsubj)--> R740[vincent]
+|--(punct)--> R740["the]
+|--(nsubj)--> R740[gigante]
+|                |--(det)--> R740["the]
+|                |--(compou)--> R740[chin"]
+|                |--(punct)--> R740[chin"]
+|                |--(punct)--> ,
+|                |--(appos)--> R740[boss]
+|                |                |--(det)--> the
+|                |                |--(compou)--> new
+|                |                |--(compou)--> york
+|                |                |--(compou)--> R740[mob]
+|                |                |--(acl:re)--> earned
+|                |                                 |--(nsubj)--> *R741[act]
+|                |                                 |                |--(nmod:p)--> whose
+|                |                                 |                |--(amod)--> *R742[crazy]
+|                |                                 |--(iobj)--> R740[him]
+|                |                                 |--(dobj)--> nickname
+|                |                                                  |--(det)--> the
+|                |                                                  |--(punct)--> "the
+|                |                                                  |--(dep)--> oddfather
+|                |                                                                   |--(det)--> "the
+|                |--(punct)--> ,
+|                |--(punct)--> "
+|--(nmod)--> R743[prison]
+|                |--(case)--> R743[in]
+|--(nmod:t)--> R744[monday]
+|--(punct)--> .
+
+	* entity-paths for event['crazy']26_10ecbplus.xmlsent:5276
+
+	* entity-paths for event['died']26_10ecbplus.xmlsent:5276
+	['died --(nsubj)--> Vincent']
+	['died --(punct)--> "']
+	['died --(nsubj)--> Gigante']
+	['died --(nmod)--> prison']
+	['died --(nmod:tmod)--> Monday']
+
+	* entity-paths for event['act']26_10ecbplus.xmlsent:5276
+
+sentence #:vincent 'the chin' gigante dies in prison 
+	[events]:[['dies']]
+	[entities]:[['in', 'prison'], ['vincent', "'the", "chin'", 'gigante']]
+*R739[dies]
+|--(nsubj)--> R740[vincent]
+|                |--(dep)--> R740['the]
+|                                 |--(punct)--> R740['the]
+|                                 |--(dep)--> R740[gigante]
+|                                                  |--(nmod:p)--> R740[chin']
+|                                                                   |--(case)--> R740[chin']
+|--(nmod)--> R743[prison]
+                 |--(case)--> R743[in]
+
+	* entity-paths for event['dies']26_10ecbplus.xmlsent:5274
+	['dies --(nsubj)--> Vincent']
+	['dies --(nmod)--> prison']

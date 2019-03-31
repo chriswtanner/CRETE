@@ -1,0 +1,36 @@
+
+-----------------------------------------
+docid:21_4ecb.xml
+-----------------------------------------
+
+sentence #:a man has been charged in a hit and run accident that killed a 66-year-old burnsville woman . 
+	[events]:[['charged'], ['killed'], ['accident']]
+	[entities]:[['man'], ['woman']]
+*R538[charged]
+|--(nsubjp)--> R539[man]
+|                |--(det)--> a
+|--(aux)--> has
+|--(auxpas)--> been
+|--(nmod)--> hit
+|                |--(case)--> in
+|                |--(det)--> a
+|--(cc)--> and
+|--(conj)--> run
+|                |--(dobj)--> *R586[accident]
+|                                 |--(acl:re)--> *R542[killed]
+|                                                  |--(nsubj)--> that
+|                                                  |--(dobj)--> R543[woman]
+|                                                                   |--(det)--> a
+|                                                                   |--(amod)--> 66-year-old
+|                                                                   |--(compou)--> burnsville
+|--(punct)--> .
+
+	* entity-paths for event['charged']21_4ecb.xmlsent:4210
+	['charged --(nsubjpass)--> man']
+	['charged --(conj)--> run', 'run --(dobj)--> accident', 'accident --(acl:relcl)--> killed', 'killed --(dobj)--> woman']
+
+	* entity-paths for event['killed']21_4ecb.xmlsent:4210
+	['killed --(dobj)--> woman']
+
+	* entity-paths for event['accident']21_4ecb.xmlsent:4210
+	['accident --(acl:relcl)--> killed', 'killed --(dobj)--> woman']

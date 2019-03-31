@@ -1,0 +1,119 @@
+
+-----------------------------------------
+docid:44_6ecbplus.xml
+-----------------------------------------
+
+sentence #:financial details of the acquisition , announced nov . 12 , were not disclosed . 
+	[events]:[['announced'], ['acquisition'], ['financial', 'details'], ['disclosed']]
+	[entities]:[['nov', '.', '12']]
+*R1593[disclosed]
+|--(nsubjp)--> *R1594[details]
+|                |--(compou)--> *R1594[financial]
+|                |--(nmod)--> *R1582[acquisition]
+|                                 |--(case)--> of
+|                                 |--(det)--> the
+|--(parata)--> *R1578[announced]
+|                |--(punct)--> ,
+|                |--(nmod:t)--> R1579[nov]
+|                |                |--(punct)--> R1579[.]
+|                |--(nsubj)--> R1579[12]
+|                |--(punct)--> ,
+|--(auxpas)--> were
+|--(neg)--> not
+|--(punct)--> .
+
+	* entity-paths for event['announced']44_6ecbplus.xmlsent:13684
+	['announced --(nmod:tmod)--> Nov']
+	['announced --(nsubj)--> 12']
+
+	* entity-paths for event['acquisition']44_6ecbplus.xmlsent:13684
+
+	* entity-paths for event['financial', 'details']44_6ecbplus.xmlsent:13684
+
+	* entity-paths for event['disclosed']44_6ecbplus.xmlsent:13684
+	['disclosed --(parataxis)--> announced', 'announced --(nmod:tmod)--> Nov']
+	['disclosed --(parataxis)--> announced', 'announced --(nsubj)--> 12']
+
+sentence #:hp snaps up data center consulting firm 
+	[events]:[['consulting'], ['snaps', 'up']]
+	[entities]:[['firm'], ['hp'], ['data', 'center']]
+*R1582[snaps]
+|--(nsubj)--> R1577[hp]
+|--(compou)--> *R1582[up]
+|--(dobj)--> R1583[firm]
+                 |--(compou)--> R1590[data]
+                 |--(compou)--> R1590[center]
+                 |--(compou)--> *R1584[consulting]
+
+	* entity-paths for event['consulting']44_6ecbplus.xmlsent:13680
+
+	* entity-paths for event['snaps', 'up']44_6ecbplus.xmlsent:13680
+
+sentence #:in a move that will expand its services division , hewlett - packard will acquire eyp mission critical facilities , a new york company that offers data center consulting services . 
+	[events]:[['acquire'], ['move'], ['consulting', 'services']]
+	[entities]:[['eyp', 'mission', 'critical', 'facilities'], ['new', 'york', 'company'], ['hewlett', '-', 'packard'], ['that'], ['data', 'center'], ['its']]
+*R1582[acquire]
+|--(nmod)--> *R1582[move]
+|                |--(case)--> in
+|                |--(det)--> a
+|                |--(acl:re)--> expand
+|                                 |--(nsubj)--> that
+|                                 |--(aux)--> will
+|                                 |--(dobj)--> division
+|                                                  |--(nmod:p)--> R1577[its]
+|                                                  |--(compou)--> services
+|--(punct)--> ,
+|--(nsubj)--> R1577[hewlett]
+|                |--(punct)--> R1577[-]
+|                |--(dep)--> R1577[packard]
+|--(aux)--> will
+|--(dobj)--> R1583[mission]
+|                |--(compou)--> R1583[eyp]
+|                |--(dep)--> R1583[facilities]
+|                |                |--(amod)--> R1583[critical]
+|                |--(punct)--> ,
+|                |--(appos)--> R1583[company]
+|                                 |--(det)--> a
+|                                 |--(compou)--> R1583[new]
+|                                 |--(compou)--> R1583[york]
+|                                 |--(acl:re)--> offers
+|                                                  |--(nsubj)--> R1583[that]
+|                                                  |--(iobj)--> R1590[data]
+|                                                  |--(dobj)--> *R1584[services]
+|                                                                   |--(compou)--> R1590[center]
+|                                                                   |--(compou)--> *R1584[consulting]
+|--(punct)--> .
+
+	* entity-paths for event['acquire']44_6ecbplus.xmlsent:13683
+	['acquire --(nmod)--> move', 'move --(acl:relcl)--> expand', 'expand --(dobj)--> division', 'division --(nmod:poss)--> its']
+	['acquire --(nsubj)--> Hewlett']
+	['acquire --(dobj)--> Mission']
+
+	* entity-paths for event['move']44_6ecbplus.xmlsent:13683
+	['move --(acl:relcl)--> expand', 'expand --(dobj)--> division', 'division --(nmod:poss)--> its']
+
+	* entity-paths for event['consulting', 'services']44_6ecbplus.xmlsent:13683
+	['services --(compound)--> center']
+
+sentence #:the acquisition of eyp mission critical facilities will help the oem expand its services division . 
+	[events]:[['acquisition']]
+	[entities]:[['its'], ['oem'], ['eyp', 'mission', 'critical', 'facilities']]
+help
+|--(nsubj)--> *R1582[acquisition]
+|                |--(det)--> the
+|                |--(nmod)--> R1583[mission]
+|                                 |--(case)--> of
+|                                 |--(compou)--> R1583[eyp]
+|                                 |--(dep)--> R1583[facilities]
+|                                                  |--(amod)--> R1583[critical]
+|--(aux)--> will
+|--(ccomp)--> expand
+|                |--(nsubj)--> R1577[oem]
+|                |                |--(det)--> the
+|                |--(dobj)--> division
+|                                 |--(nmod:p)--> R1577[its]
+|                                 |--(compou)--> services
+|--(punct)--> .
+
+	* entity-paths for event['acquisition']44_6ecbplus.xmlsent:13682
+	['acquisition --(nmod)--> Mission']

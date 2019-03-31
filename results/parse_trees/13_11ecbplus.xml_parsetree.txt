@@ -1,0 +1,51 @@
+
+-----------------------------------------
+docid:13_11ecbplus.xml
+-----------------------------------------
+
+sentence #:the fire was reported at 3 : 33 a . m . and is under investigation by the palmer police and the state fire marshal . 
+	[events]:[['reported'], ['fire']]
+	[entities]:[['3', ':', '33', 'a', '.', 'm']]
+*R275[reported]
+|--(nsubjp)--> *R263[fire]
+|                |--(det)--> the
+|--(auxpas)--> was
+|--(nmod)--> R276[3]
+|                |--(case)--> at
+|                |--(punct)--> R276[:]
+|                |--(dep)--> R276[33]
+|                                 |--(dep)--> R276[a]
+|                                                  |--(punct)--> R276[.]
+|                                                  |--(dep)--> R276[m]
+|                                                  |--(punct)--> .
+|--(cc)--> and
+|--(conj)--> investigation
+|                |--(cop)--> is
+|                |--(case)--> under
+|                |--(nmod)--> police
+|                                 |--(case)--> by
+|                                 |--(det)--> the
+|                                 |--(compou)--> palmer
+|                                 |--(cc)--> and
+|                                 |--(conj)--> marshal
+|                                                  |--(det)--> the
+|                                                  |--(compou)--> state
+|                                                  |--(compou)--> fire
+|--(punct)--> .
+
+	* entity-paths for event['reported']13_11ecbplus.xmlsent:1192
+	['reported --(nmod)--> 3']
+
+	* entity-paths for event['fire']13_11ecbplus.xmlsent:1192
+
+sentence #:historic mat maid warehouse burns 
+	[events]:[['burns']]
+	[entities]:[['historic', 'mat', 'maid', 'warehouse']]
+R265[maid]
+|--(amod)--> R265[historic]
+|--(compou)--> R265[mat]
+|--(dep)--> *R277[burns]
+                 |--(compou)--> R265[warehouse]
+
+	* entity-paths for event['burns']13_11ecbplus.xmlsent:1189
+	['burns --(compound)--> warehouse']

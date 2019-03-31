@@ -1,0 +1,54 @@
+
+-----------------------------------------
+docid:1_8ecb.xml
+-----------------------------------------
+
+sentence #:after telling people in october that she did n't " need to do any of that anymore , " " american pie " actress and former travel reporter tara reid checked into promises treatment center on friday for an unspecified problem . 
+	[events]:[['checked', 'into'], ['problem']]
+	[entities]:[['people'], ['american', 'pie'], ['tara', 'reid'], ['promises', 'treatment', 'center'], ['on', 'friday'], ['she']]
+R3[promises]
+|--(advcl)--> telling
+|                |--(mark)--> after
+|                |--(dobj)--> R5[people]
+|                |--(nmod)--> october
+|                |                |--(case)--> in
+|                |--(ccomp)--> need
+|                                 |--(mark)--> that
+|                                 |--(nsubj)--> R2[she]
+|                                 |--(aux)--> did
+|                                 |--(neg)--> n't
+|                                 |                |--(punct)--> "
+|                                 |--(xcomp)--> do
+|                                                  |--(mark)--> to
+|                                                  |--(dobj)--> any
+|                                                  |                |--(nmod)--> that
+|                                                  |                |                |--(case)--> of
+|                                                  |                |                |--(advmod)--> anymore
+|                                                  |                |--(punct)--> ,
+|                                                  |                |--(punct)--> "
+|                                                  |--(punct)--> "
+|                                                  |--(dobj)--> R84[pie]
+|                                                  |                |--(amod)--> R84[american]
+|                                                  |--(punct)--> "
+|--(nsubj)--> reporter
+|                |--(compou)--> actress
+|                |                |--(cc)--> and
+|                |                |--(conj)--> former
+|                |--(compou)--> travel
+|                |--(acl:re)--> *R1[checked]
+|                                 |--(nsubj)--> R2[reid]
+|                                 |                |--(compou)--> R2[tara]
+|                                 |--(nmod)--> *R1[into]
+|--(dobj)--> R3[center]
+|                |--(compou)--> R3[treatment]
+|--(nmod)--> R6[friday]
+|                |--(case)--> R6[on]
+|                |--(nmod)--> *R50[problem]
+|                                 |--(case)--> for
+|                                 |--(det)--> an
+|                                 |--(amod)--> unspecified
+|--(punct)--> .
+
+	* entity-paths for event['checked', 'into']1_8ecb.xmlsent:284
+
+	* entity-paths for event['problem']1_8ecb.xmlsent:284

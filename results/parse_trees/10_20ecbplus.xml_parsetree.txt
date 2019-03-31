@@ -1,0 +1,34 @@
+
+-----------------------------------------
+docid:10_20ecbplus.xml
+-----------------------------------------
+
+sentence #:according to michael silverman of the boston herald , the red sox made an offer to mark teixeira . 
+	[events]:[['offer'], ['made']]
+	[entities]:[['mark', 'teixeira'], ['red', 'sox'], ['boston', 'herald']]
+*R161[made]
+|--(nmod)--> silverman
+|                |--(case)--> according
+|                |                |--(mwe)--> to
+|                |--(compou)--> michael
+|                |--(nmod)--> R169[herald]
+|                                 |--(case)--> of
+|                                 |--(det)--> the
+|                                 |--(compou)--> R169[boston]
+|--(punct)--> ,
+|--(nsubj)--> R162[sox]
+|                |--(det)--> the
+|                |--(compou)--> R162[red]
+|--(dobj)--> *R165[offer]
+|                |--(det)--> an
+|--(nmod)--> R163[teixeira]
+|                |--(case)--> to
+|                |--(compou)--> R163[mark]
+|--(punct)--> .
+
+	* entity-paths for event['offer']10_20ecbplus.xmlsent:427
+
+	* entity-paths for event['made']10_20ecbplus.xmlsent:427
+	['made --(nmod)--> Silverman', 'Silverman --(nmod)--> Herald']
+	['made --(nsubj)--> Sox']
+	['made --(nmod)--> Teixeira']

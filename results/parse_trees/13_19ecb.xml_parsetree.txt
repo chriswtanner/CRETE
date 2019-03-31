@@ -1,0 +1,47 @@
+
+-----------------------------------------
+docid:13_19ecb.xml
+-----------------------------------------
+
+sentence #:an overnight fire friday at alaska gov. sarah palin 's home church caused an estimated $ 1 million in damage , and investigators say it could be the work of an arsonist . 
+	[events]:[['fire'], ['damage']]
+	[entities]:[['friday'], ['church'], ['arsonist']]
+caused
+|--(nsubj)--> *R261[fire]
+|                |--(det)--> an
+|                |--(amod)--> overnight
+|                |--(nmod:t)--> R271[friday]
+|                |--(nmod)--> R272[church]
+|                                 |--(case)--> at
+|                                 |--(nmod:p)--> palin
+|                                 |                |--(compou)--> alaska
+|                                 |                |--(compou)--> gov.
+|                                 |                |--(compou)--> sarah
+|                                 |                |--(case)--> 's
+|                                 |--(compou)--> home
+|--(dobj)--> $
+|                |--(det)--> an
+|                |--(dep)--> estimated
+|                |--(nummod)--> million
+|                                 |--(compou)--> 1
+|--(nmod)--> *R278[damage]
+|                |--(case)--> in
+|--(punct)--> ,
+|--(cc)--> and
+|--(conj)--> say
+|                |--(nsubj)--> investigators
+|                |--(ccomp)--> work
+|                                 |--(nsubj)--> it
+|                                 |--(aux)--> could
+|                                 |--(cop)--> be
+|                                 |--(det)--> the
+|                                 |--(nmod)--> R281[arsonist]
+|                                                  |--(case)--> of
+|                                                  |--(det)--> an
+|--(punct)--> .
+
+	* entity-paths for event['fire']13_19ecb.xmlsent:1325
+	['fire --(nmod:tmod)--> Friday']
+	['fire --(nmod)--> church']
+
+	* entity-paths for event['damage']13_19ecb.xmlsent:1325

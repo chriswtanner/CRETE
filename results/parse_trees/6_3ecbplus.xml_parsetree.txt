@@ -1,0 +1,96 @@
+
+-----------------------------------------
+docid:6_3ecbplus.xml
+-----------------------------------------
+
+sentence #:gary ross in negotiations to direct 'the hunger games' sequel 'catching fire' 
+	[events]:[['direct'], ['negotiations'], ['sequel']]
+	[entities]:[['gary', 'ross'], ["'the", 'hunger', "games'"], ["'catching", "fire'"]]
+R1692[ross]
+|--(compou)--> R1692[gary]
+|--(nmod)--> *R1696[negotiations]
+                 |--(case)--> in
+                 |--(acl)--> *R1699[direct]
+                                  |--(mark)--> to
+                                  |--(punct)--> R1700['the]
+                                  |--(dobj)--> *R1701[sequel]
+                                  |                |--(nmod:p)--> R1700[games']
+                                  |                |                |--(det)--> R1700['the]
+                                  |                |                |--(compou)--> R1700[hunger]
+                                  |                |                |--(case)--> R1700[games']
+                                  |                |--(acl)--> R1702['catching]
+                                  |                                 |--(punct)--> R1702['catching]
+                                  |                                 |--(dobj)--> R1702[fire']
+                                  |--(punct)--> R1702[fire']
+
+	* entity-paths for event['direct']6_3ecbplus.xmlsent:14439
+	["direct --(punct)--> '"]
+	['direct --(dobj)--> sequel', 'sequel --(nmod:poss)--> Games']
+	['direct --(dobj)--> sequel', 'sequel --(acl)--> Catching']
+	["direct --(punct)--> '"]
+
+	* entity-paths for event['negotiations']6_3ecbplus.xmlsent:14439
+	['negotiations --(acl)--> direct', "direct --(punct)--> '"]
+	['negotiations --(acl)--> direct', 'direct --(dobj)--> sequel', 'sequel --(nmod:poss)--> Games']
+	['negotiations --(acl)--> direct', 'direct --(dobj)--> sequel', 'sequel --(acl)--> Catching']
+	['negotiations --(acl)--> direct', "direct --(punct)--> '"]
+
+	* entity-paths for event['sequel']6_3ecbplus.xmlsent:14439
+	['sequel --(nmod:poss)--> Games']
+	['sequel --(acl)--> Catching']
+
+sentence #:the hollywood reporter says ross is in negotiations with lionsgate to return as director for the sequel , catching fire - - and the deal likely hinges on money . 
+	[events]:[['negotiations'], ['deal'], ['sequel'], ['says'], ['return']]
+	[entities]:[['lionsgate'], ['the', 'hollywood', 'reporter'], ['catching', 'fire'], ['director'], ['money'], ['ross']]
+*R1695[says]
+|--(nsubj)--> R1694[reporter]
+|                |--(det)--> R1694[the]
+|                |--(compou)--> R1694[hollywood]
+|--(ccomp)--> *R1696[negotiations]
+|                |--(nsubj)--> R1692[ross]
+|                |--(cop)--> is
+|                |--(case)--> in
+|                |--(nmod)--> R1697[lionsgate]
+|                |                |--(case)--> with
+|                |--(xcomp)--> *R1698[return]
+|                                 |--(mark)--> to
+|                                 |--(nmod)--> R1692[director]
+|                                 |                |--(case)--> as
+|                                 |                |--(nmod)--> *R1701[sequel]
+|                                 |                                 |--(case)--> for
+|                                 |                                 |--(det)--> the
+|                                 |--(punct)--> ,
+|                                 |--(xcomp)--> R1702[catching]
+|                                                  |--(dobj)--> R1702[fire]
+|--(punct)--> -
+|--(punct)--> -
+|--(cc)--> and
+|--(conj)--> hinges
+|                |--(dep)--> *R1693[deal]
+|                |                |--(det)--> the
+|                |--(amod)--> likely
+|                |--(nmod)--> R1712[money]
+|                                 |--(case)--> on
+|--(punct)--> .
+
+	* entity-paths for event['negotiations']6_3ecbplus.xmlsent:14442
+	['negotiations --(nsubj)--> Ross']
+	['negotiations --(nmod)--> Lionsgate']
+	['negotiations --(xcomp)--> return', 'return --(nmod)--> director']
+	['negotiations --(xcomp)--> return', 'return --(xcomp)--> Catching']
+
+	* entity-paths for event['deal']6_3ecbplus.xmlsent:14442
+
+	* entity-paths for event['sequel']6_3ecbplus.xmlsent:14442
+
+	* entity-paths for event['says']6_3ecbplus.xmlsent:14442
+	['says --(nsubj)--> Reporter']
+	['says --(ccomp)--> negotiations', 'negotiations --(nsubj)--> Ross']
+	['says --(ccomp)--> negotiations', 'negotiations --(nmod)--> Lionsgate']
+	['says --(ccomp)--> negotiations', 'negotiations --(xcomp)--> return', 'return --(nmod)--> director']
+	['says --(ccomp)--> negotiations', 'negotiations --(xcomp)--> return', 'return --(xcomp)--> Catching']
+	['says --(conj)--> hinges', 'hinges --(nmod)--> money']
+
+	* entity-paths for event['return']6_3ecbplus.xmlsent:14442
+	['return --(nmod)--> director']
+	['return --(xcomp)--> Catching']

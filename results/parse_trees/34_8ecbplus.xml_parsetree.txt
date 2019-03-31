@@ -1,0 +1,17 @@
+
+-----------------------------------------
+docid:34_8ecbplus.xml
+-----------------------------------------
+
+sentence #:surgeon general nominee dr . regina benjamin 
+	[events]:[['nominee']]
+	[entities]:[['surgeon', 'general'], ['dr', '.', 'regina', 'benjamin']]
+R1139[dr]
+|--(compou)--> R1135[surgeon]
+|--(compou)--> R1135[general]
+|--(compou)--> *R1138[nominee]
+|--(punct)--> R1139[.]
+|--(dep)--> R1139[benjamin]
+                 |--(compou)--> R1139[regina]
+
+	* entity-paths for event['nominee']34_8ecbplus.xmlsent:9497

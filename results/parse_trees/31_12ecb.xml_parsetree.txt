@@ -1,0 +1,32 @@
+
+-----------------------------------------
+docid:31_12ecb.xml
+-----------------------------------------
+
+sentence #:that basket broke the mark of 2,290 that point guard phil ford set from 1974 to 1978 . 
+	[events]:[['broke'], ['mark']]
+	[entities]:[['phil', 'ford']]
+*R996[broke]
+|--(nsubj)--> basket
+|                |--(det)--> that
+|--(dobj)--> *R998[mark]
+|                |--(det)--> the
+|                |--(nmod)--> 2,290
+|                |                |--(case)--> of
+|                |--(acl:re)--> point
+|                                 |--(nsubj)--> that
+|                                 |--(ccomp)--> set
+|                                                  |--(nsubj)--> R1005[ford]
+|                                                  |                |--(compou)--> guard
+|                                                  |                |--(compou)--> R1005[phil]
+|                                                  |--(nmod)--> 1974
+|                                                  |                |--(case)--> from
+|                                                  |--(nmod)--> 1978
+|                                                                   |--(case)--> to
+|--(punct)--> .
+
+	* entity-paths for event['broke']31_12ecb.xmlsent:8118
+	['broke --(dobj)--> mark', 'mark --(acl:relcl)--> point', 'point --(ccomp)--> set', 'set --(nsubj)--> Ford']
+
+	* entity-paths for event['mark']31_12ecb.xmlsent:8118
+	['mark --(acl:relcl)--> point', 'point --(ccomp)--> set', 'set --(nsubj)--> Ford']

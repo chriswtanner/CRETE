@@ -1,0 +1,36 @@
+
+-----------------------------------------
+docid:24_1ecb.xml
+-----------------------------------------
+
+sentence #:four armed robbers -- two dressed as women -- made off with $ 137-million of diamonds and jewels from a famed paris store . 
+	[events]:[['made', 'off'], ['dressed']]
+	[entities]:[['diamonds'], ['a', 'famed', 'paris', 'store'], ['jewels'], ['robbers']]
+*R694[made]
+|--(nsubj)--> R664[robbers]
+|                |--(nummod)--> four
+|                |--(amod)--> armed
+|                |--(dep)--> two
+|                                 |--(punct)--> --
+|                                 |--(acl)--> *R682[dressed]
+|                                 |                |--(nmod)--> women
+|                                 |                                 |--(case)--> as
+|                                 |--(punct)--> --
+|--(compou)--> *R694[off]
+|--(nmod)--> 137-million
+|                |--(case)--> with
+|                |--(dep)--> $
+|                |--(nmod)--> R695[diamonds]
+|                                 |--(case)--> of
+|                                 |--(cc)--> and
+|                                 |--(conj)--> R683[jewels]
+|--(nmod)--> R665[store]
+|                |--(case)--> from
+|                |--(det)--> R665[a]
+|                |--(amod)--> R665[famed]
+|                |--(compou)--> R665[paris]
+|--(punct)--> .
+
+	* entity-paths for event['made', 'off']24_1ecb.xmlsent:4821
+
+	* entity-paths for event['dressed']24_1ecb.xmlsent:4821

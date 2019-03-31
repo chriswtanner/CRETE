@@ -1,0 +1,54 @@
+
+-----------------------------------------
+docid:40_4ecb.xml
+-----------------------------------------
+
+sentence #:with a 17-inch macbook pro update unveiled at today 's macworld 2009 keynote , apple has finally brought an entire line of mac portables into view . 
+	[events]:[['update'], ['macworld', '2009', 'keynote'], ['unveiled'], ['brought', 'into', 'view']]
+	[entities]:[['macbook', 'pro'], ['today'], ['line'], ['apple']]
+*R1408[update]
+|--(nmod)--> R1409[macbook]
+|                |--(case)--> with
+|                |--(det)--> a
+|                |--(amod)--> 17-inch
+|--(nsubj)--> R1409[pro]
+|--(ccomp)--> portables
+|                |--(csubj)--> *R1404[unveiled]
+|                |                |--(nmod)--> *R1406[keynote]
+|                |                                 |--(case)--> at
+|                |                                 |--(nmod:p)--> R1419[today]
+|                |                                 |                |--(case)--> 's
+|                |                                 |--(compou)--> *R1406[macworld]
+|                |                                 |--(nummod)--> *R1406[2009]
+|                |                                 |--(punct)--> ,
+|                |                                 |--(acl:re)--> *R1404[brought]
+|                |                                                  |--(nsubj)--> R1405[apple]
+|                |                                                  |--(aux)--> has
+|                |                                                  |--(advmod)--> finally
+|                |                                                  |--(dobj)--> R1432[line]
+|                |                                                                   |--(det)--> an
+|                |                                                                   |--(amod)--> entire
+|                |                                                                   |--(nmod)--> mac
+|                |                                                                                    |--(case)--> of
+|                |--(nmod)--> *R1404[view]
+|                                 |--(case)--> *R1404[into]
+|--(punct)--> .
+
+	* entity-paths for event['update']40_4ecb.xmlsent:11797
+	['update --(nmod)--> MacBook']
+	['update --(nsubj)--> Pro']
+	['update --(ccomp)--> portables', 'portables --(csubj)--> unveiled', 'unveiled --(nmod)--> keynote', 'keynote --(nmod:poss)--> today']
+	['update --(ccomp)--> portables', 'portables --(csubj)--> unveiled', 'unveiled --(nmod)--> keynote', 'keynote --(acl:relcl)--> brought', 'brought --(nsubj)--> Apple']
+	['update --(ccomp)--> portables', 'portables --(csubj)--> unveiled', 'unveiled --(nmod)--> keynote', 'keynote --(acl:relcl)--> brought', 'brought --(dobj)--> line']
+
+	* entity-paths for event['macworld', '2009', 'keynote']40_4ecb.xmlsent:11797
+	['keynote --(nmod:poss)--> today']
+	['keynote --(acl:relcl)--> brought', 'brought --(nsubj)--> Apple']
+	['keynote --(acl:relcl)--> brought', 'brought --(dobj)--> line']
+
+	* entity-paths for event['unveiled']40_4ecb.xmlsent:11797
+	['unveiled --(nmod)--> keynote', 'keynote --(nmod:poss)--> today']
+	['unveiled --(nmod)--> keynote', 'keynote --(acl:relcl)--> brought', 'brought --(nsubj)--> Apple']
+	['unveiled --(nmod)--> keynote', 'keynote --(acl:relcl)--> brought', 'brought --(dobj)--> line']
+
+	* entity-paths for event['brought', 'into', 'view']40_4ecb.xmlsent:11797

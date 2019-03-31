@@ -1,0 +1,34 @@
+
+-----------------------------------------
+docid:5_3ecb.xml
+-----------------------------------------
+
+sentence #:philadelphia 76ers president and general manager ed stefanski announced that the team has relieved maurice cheeks of his head coaching responsibilities . 
+	[events]:[['relieved']]
+	[entities]:[['team'], ['maurice', 'cheeks']]
+announced
+|--(nsubj)--> 76ers
+|                |--(compou)--> philadelphia
+|--(nsubj)--> stefanski
+|                |--(compou)--> president
+|                |                |--(cc)--> and
+|                |                |--(conj)--> general
+|                |--(compou)--> manager
+|                |--(compou)--> ed
+|--(ccomp)--> *R1672[relieved]
+|                |--(mark)--> that
+|                |--(nsubj)--> R1673[team]
+|                |                |--(det)--> the
+|                |--(aux)--> has
+|                |--(dobj)--> R1674[cheeks]
+|                                 |--(compou)--> R1674[maurice]
+|                                 |--(nmod)--> responsibilities
+|                                                  |--(case)--> of
+|                                                  |--(nmod:p)--> his
+|                                                  |--(compou)--> head
+|                                                  |--(compou)--> coaching
+|--(punct)--> .
+
+	* entity-paths for event['relieved']5_3ecb.xmlsent:14125
+	['relieved --(nsubj)--> team']
+	['relieved --(dobj)--> Cheeks']

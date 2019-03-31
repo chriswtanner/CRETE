@@ -1,0 +1,46 @@
+
+-----------------------------------------
+docid:25_5ecb.xml
+-----------------------------------------
+
+sentence #:after spraining his knee last week at chicago , bush has been placed on the injured reserve list ending his season . 
+	[events]:[['spraining'], ['ending'], ['placed'], ['list']]
+	[entities]:[['season'], ['knee'], ['bush'], ['chicago']]
+*R711[placed]
+|--(advcl)--> *R720[spraining]
+|                |--(mark)--> after
+|                |--(dobj)--> R719[knee]
+|                |                |--(nmod:p)--> his
+|                |--(nmod:t)--> week
+|                |                |--(amod)--> last
+|                |--(nmod)--> R729[chicago]
+|                                 |--(case)--> at
+|--(punct)--> ,
+|--(nsubjp)--> R707[bush]
+|--(aux)--> has
+|--(auxpas)--> been
+|--(nmod)--> *R712[list]
+|                |--(case)--> on
+|                |--(det)--> the
+|                |--(amod)--> injured
+|                |--(compou)--> reserve
+|                |--(acl)--> *R722[ending]
+|                                 |--(dobj)--> R708[season]
+|                                                  |--(nmod:p)--> his
+|--(punct)--> .
+
+	* entity-paths for event['spraining']25_5ecb.xmlsent:5131
+	['spraining --(dobj)--> knee']
+	['spraining --(nmod)--> Chicago']
+
+	* entity-paths for event['ending']25_5ecb.xmlsent:5131
+	['ending --(dobj)--> season']
+
+	* entity-paths for event['placed']25_5ecb.xmlsent:5131
+	['placed --(advcl)--> spraining', 'spraining --(dobj)--> knee']
+	['placed --(advcl)--> spraining', 'spraining --(nmod)--> Chicago']
+	['placed --(nsubjpass)--> Bush']
+	['placed --(nmod)--> list', 'list --(acl)--> ending', 'ending --(dobj)--> season']
+
+	* entity-paths for event['list']25_5ecb.xmlsent:5131
+	['list --(acl)--> ending', 'ending --(dobj)--> season']

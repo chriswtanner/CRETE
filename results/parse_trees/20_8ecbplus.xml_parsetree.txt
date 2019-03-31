@@ -1,0 +1,108 @@
+
+-----------------------------------------
+docid:20_8ecbplus.xml
+-----------------------------------------
+
+sentence #:powerful quake in iran kills 10 ; 80 hurt and 7 villages damaged 
+	[events]:[['damaged'], ['hurt'], ['kills'], ['quake']]
+	[entities]:[['80'], ['in', 'iran'], ['10'], ['7', 'villages']]
+*R504[kills]
+|--(nsubj)--> *R509[quake]
+|                |--(amod)--> powerful
+|                |--(nmod)--> R525[iran]
+|                                 |--(case)--> R525[in]
+|--(dobj)--> R507[80]
+                 |--(nummod)--> R505[10]
+                 |--(punct)--> ;
+                 |--(appos)--> *R506[hurt]
+                 |--(cc)--> and
+                 |--(conj)--> R510[villages]
+                                  |--(nummod)--> R510[7]
+                                  |--(acl)--> *R508[damaged]
+
+	* entity-paths for event['damaged']20_8ecbplus.xmlsent:3974
+
+	* entity-paths for event['hurt']20_8ecbplus.xmlsent:3974
+
+	* entity-paths for event['kills']20_8ecbplus.xmlsent:3974
+	['Kills --(nsubj)--> Quake', 'Quake --(nmod)--> Iran']
+	['Kills --(dobj)--> 80']
+
+	* entity-paths for event['quake']20_8ecbplus.xmlsent:3974
+	['Quake --(nmod)--> Iran']
+
+sentence #:a powerful earthquake hit southern iran on sunday , causing major destruction in seven villages and killing 10 people and injuring 80 . 
+	[events]:[['earthquake'], ['hit'], ['destruction'], ['killing'], ['injuring']]
+	[entities]:[['on', 'sunday'], ['people'], ['in', 'seven', 'villages'], ['80'], ['southern', 'iran']]
+*R524[hit]
+|--(nsubj)--> *R509[earthquake]
+|                |--(det)--> a
+|                |--(amod)--> powerful
+|--(dobj)--> R525[iran]
+|                |--(amod)--> R525[southern]
+|--(nmod)--> R512[sunday]
+|                |--(case)--> R512[on]
+|--(punct)--> ,
+|--(dep)--> causing
+|                |--(dobj)--> *R508[destruction]
+|                |                |--(amod)--> major
+|                |--(nmod)--> R510[villages]
+|                |                |--(case)--> R510[in]
+|                |                |--(nummod)--> R510[seven]
+|                |--(cc)--> and
+|                |--(conj)--> *R504[killing]
+|                                 |--(dobj)--> R505[people]
+|                                 |                |--(nummod)--> 10
+|                                 |--(cc)--> and
+|                                 |--(conj)--> *R506[injuring]
+|                                                  |--(dobj)--> R507[80]
+|--(punct)--> .
+
+	* entity-paths for event['earthquake']20_8ecbplus.xmlsent:3976
+
+	* entity-paths for event['hit']20_8ecbplus.xmlsent:3976
+	['hit --(dobj)--> Iran']
+	['hit --(nmod)--> Sunday']
+	['hit --(dep)--> causing', 'causing --(nmod)--> villages']
+	['hit --(dep)--> causing', 'causing --(conj)--> killing', 'killing --(dobj)--> people']
+	['hit --(dep)--> causing', 'causing --(conj)--> killing', 'killing --(conj)--> injuring', 'injuring --(dobj)--> 80']
+
+	* entity-paths for event['destruction']20_8ecbplus.xmlsent:3976
+
+	* entity-paths for event['killing']20_8ecbplus.xmlsent:3976
+	['killing --(dobj)--> people']
+	['killing --(conj)--> injuring', 'injuring --(dobj)--> 80']
+
+	* entity-paths for event['injuring']20_8ecbplus.xmlsent:3976
+	['injuring --(dobj)--> 80']
+
+sentence #:the tourist island of qeshm on the persian gulf and seven of its villages were most strongly affected by the quake . 
+	[events]:[['quake'], ['affected']]
+	[entities]:[['the', 'tourist', 'island', 'of', 'qeshm', 'on', 'the', 'persian', 'gulf'], ['seven', 'of', 'its', 'villages']]
+*R508[affected]
+|--(nsubjp)--> R515[island]
+|                |--(det)--> R515[the]
+|                |--(compou)--> R515[tourist]
+|                |--(nmod)--> R515[qeshm]
+|                                 |--(case)--> R515[of]
+|                                 |--(nmod)--> R515[gulf]
+|                                 |                |--(case)--> R515[on]
+|                                 |                |--(det)--> R515[the]
+|                                 |                |--(compou)--> R515[persian]
+|                                 |--(cc)--> and
+|                                 |--(conj)--> R510[seven]
+|                                                  |--(nmod)--> R510[villages]
+|                                                                   |--(case)--> R510[of]
+|                                                                   |--(nmod:p)--> R510[its]
+|--(auxpas)--> were
+|--(advmod)--> strongly
+|                |--(advmod)--> most
+|--(nmod)--> *R509[quake]
+|                |--(case)--> by
+|                |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['quake']20_8ecbplus.xmlsent:3982
+
+	* entity-paths for event['affected']20_8ecbplus.xmlsent:3982
+	['affected --(nsubjpass)--> Island']

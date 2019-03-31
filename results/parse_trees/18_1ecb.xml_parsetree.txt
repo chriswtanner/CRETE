@@ -1,0 +1,62 @@
+
+-----------------------------------------
+docid:18_1ecb.xml
+-----------------------------------------
+
+sentence #:a 61-year-old man was charged with first-degree murder saturday after allegedly opening fire at his former employers ' office christmas party in vancouver , killing one man , police said . 
+	[events]:[['said'], ['murder'], ['killing'], ['opening', 'fire'], ['party'], ['charged']]
+	[entities]:[['vancouver'], ['man'], ['saturday'], ['police'], ['office'], ['man']]
+*R387[said]
+|--(ccomp)--> *R355[charged]
+|                |--(nsubjp)--> R356[man]
+|                |                |--(det)--> a
+|                |                |--(amod)--> 61-year-old
+|                |--(auxpas)--> was
+|                |--(nmod)--> *R357[murder]
+|                |                |--(case)--> with
+|                |                |--(amod)--> first-degree
+|                |--(nmod:t)--> R384[saturday]
+|                |--(advcl)--> *R366[opening]
+|                                 |--(mark)--> after
+|                                 |--(advmod)--> allegedly
+|                                 |--(dobj)--> *R366[fire]
+|                                 |--(nmod)--> R383[office]
+|                                 |                |--(case)--> at
+|                                 |                |--(nmod:p)--> employers
+|                                 |                |                |--(nmod:p)--> his
+|                                 |                |                |--(amod)--> former
+|                                 |                |                |--(case)--> '
+|                                 |                |--(dep)--> *R359[party]
+|                                 |                                 |--(compou)--> christmas
+|                                 |                                 |--(nmod)--> R389[vancouver]
+|                                 |                                                  |--(case)--> in
+|                                 |--(punct)--> ,
+|                                 |--(advcl)--> *R358[killing]
+|                                                  |--(dobj)--> R369[man]
+|                                                                   |--(nummod)--> one
+|--(punct)--> ,
+|--(nsubj)--> R386[police]
+|--(punct)--> .
+
+	* entity-paths for event['said']18_1ecb.xmlsent:2370
+	['said --(ccomp)--> charged', 'charged --(nsubjpass)--> man']
+	['said --(ccomp)--> charged', 'charged --(nmod:tmod)--> Saturday']
+	['said --(ccomp)--> charged', 'charged --(advcl)--> opening', 'opening --(nmod)--> office']
+	['said --(ccomp)--> charged', 'charged --(advcl)--> opening', 'opening --(advcl)--> killing', 'killing --(dobj)--> man']
+	['said --(nsubj)--> police']
+
+	* entity-paths for event['murder']18_1ecb.xmlsent:2370
+
+	* entity-paths for event['killing']18_1ecb.xmlsent:2370
+	['killing --(dobj)--> man']
+
+	* entity-paths for event['opening', 'fire']18_1ecb.xmlsent:2370
+
+	* entity-paths for event['party']18_1ecb.xmlsent:2370
+	['party --(nmod)--> Vancouver']
+
+	* entity-paths for event['charged']18_1ecb.xmlsent:2370
+	['charged --(nsubjpass)--> man']
+	['charged --(nmod:tmod)--> Saturday']
+	['charged --(advcl)--> opening', 'opening --(nmod)--> office']
+	['charged --(advcl)--> opening', 'opening --(advcl)--> killing', 'killing --(dobj)--> man']

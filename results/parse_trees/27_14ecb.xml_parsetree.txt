@@ -1,0 +1,57 @@
+
+-----------------------------------------
+docid:27_14ecb.xml
+-----------------------------------------
+
+sentence #:" microsoft 's latest ie out-of-band patch release needs to be installed right away , " said shavlik technologies in a statement . 
+	[events]:[['release']]
+	[entities]:[['ie'], ['microsoft'], ['patch']]
+said
+|--(punct)--> "
+|--(ccomp)--> needs
+|                |--(nsubj)--> out-of-band
+|                |                |--(nmod:p)--> R764[microsoft]
+|                |                |                |--(case)--> 's
+|                |                |--(amod)--> latest
+|                |                |--(amod)--> R768[ie]
+|                |                |--(nmod)--> *R763[release]
+|                |                                 |--(dep)--> R765[patch]
+|                |--(xcomp)--> installed
+|                                 |--(mark)--> to
+|                                 |--(auxpas)--> be
+|                                 |--(advmod)--> away
+|                                                  |--(advmod)--> right
+|--(punct)--> ,
+|--(punct)--> "
+|--(dep)--> technologies
+|                |--(compou)--> shavlik
+|                |--(nmod)--> statement
+|                                 |--(case)--> in
+|                                 |--(det)--> a
+|--(punct)--> .
+
+	* entity-paths for event['release']27_14ecb.xmlsent:5712
+	['release --(dep)--> patch']
+
+sentence #:with web attacks increasing , microsoft fixes ie bug 
+	[events]:[['attacks'], ['increasing'], ['fixes']]
+	[entities]:[['ie'], ['microsoft'], ['bug']]
+*R790[attacks]
+|--(case)--> with
+|--(compou)--> web
+|--(acl)--> *R793[increasing]
+|--(punct)--> ,
+|--(appos)--> *R782[fixes]
+                 |--(compou)--> R764[microsoft]
+                 |--(dep)--> R767[bug]
+                                  |--(amod)--> R768[ie]
+
+	* entity-paths for event['attacks']27_14ecb.xmlsent:5699
+	['attacks --(appos)--> fixes', 'fixes --(compound)--> Microsoft']
+	['attacks --(appos)--> fixes', 'fixes --(dep)--> bug']
+
+	* entity-paths for event['increasing']27_14ecb.xmlsent:5699
+
+	* entity-paths for event['fixes']27_14ecb.xmlsent:5699
+	['fixes --(compound)--> Microsoft']
+	['fixes --(dep)--> bug']

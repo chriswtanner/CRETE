@@ -1,0 +1,74 @@
+
+-----------------------------------------
+docid:2_6ecbplus.xml
+-----------------------------------------
+
+sentence #:reaching back to television for a comedy star , the producers of the academy awards telecast announced friday that ellen degeneres would return next year to host the annual oscar ceremony . 
+	[events]:[['academy', 'awards'], ['return'], ['announced'], ['ceremony'], ['host']]
+	[entities]:[['producers'], ['ellen', 'degeneres'], ['star'], ['friday'], ['next', 'year']]
+*R464[announced]
+|--(advcl)--> reaching
+|                |--(advmod)--> back
+|                |--(nmod)--> television
+|                                 |--(case)--> to
+|                                 |--(nmod)--> R454[star]
+|                                                  |--(case)--> for
+|                                                  |--(det)--> a
+|                                                  |--(compou)--> comedy
+|--(punct)--> ,
+|--(nsubj)--> R483[producers]
+|                |--(det)--> the
+|                |--(nmod)--> telecast
+|                                 |--(case)--> of
+|                                 |--(det)--> the
+|                                 |--(compou)--> *R455[academy]
+|                                 |--(compou)--> *R455[awards]
+|--(nmod:t)--> R481[friday]
+|--(ccomp)--> *R457[return]
+|                |--(mark)--> that
+|                |--(nsubj)--> R454[degeneres]
+|                |                |--(compou)--> R454[ellen]
+|                |--(aux)--> would
+|                |--(nmod:t)--> R475[year]
+|                |                |--(amod)--> R475[next]
+|                |--(xcomp)--> *R456[host]
+|                                 |--(mark)--> to
+|                                 |--(dobj)--> *R455[ceremony]
+|                                                  |--(det)--> the
+|                                                  |--(amod)--> annual
+|                                                  |--(compou)--> oscar
+|--(punct)--> .
+
+	* entity-paths for event['academy', 'awards']2_6ecbplus.xmlsent:3666
+
+	* entity-paths for event['return']2_6ecbplus.xmlsent:3666
+	['return --(nsubj)--> DeGeneres']
+	['return --(nmod:tmod)--> year']
+
+	* entity-paths for event['announced']2_6ecbplus.xmlsent:3666
+	['announced --(advcl)--> Reaching', 'Reaching --(nmod)--> television', 'television --(nmod)--> star']
+	['announced --(nsubj)--> producers']
+	['announced --(nmod:tmod)--> Friday']
+	['announced --(ccomp)--> return', 'return --(nsubj)--> DeGeneres']
+	['announced --(ccomp)--> return', 'return --(nmod:tmod)--> year']
+
+	* entity-paths for event['ceremony']2_6ecbplus.xmlsent:3666
+
+	* entity-paths for event['host']2_6ecbplus.xmlsent:3666
+
+sentence #:ellen degeneres to host next year " s oscars 
+	[events]:[['host'], ['oscars']]
+	[entities]:[['next', 'year', '"', 's'], ['ellen', 'degeneres']]
+R454[degeneres]
+|--(compou)--> R454[ellen]
+|--(nmod)--> R475[s]
+|                |--(case)--> to
+|                |--(compou)--> *R456[host]
+|                |--(compou)--> R475[next]
+|                |--(compou)--> R475[year]
+|                |--(punct)--> R475["]
+|--(dep)--> *R455[oscars]
+
+	* entity-paths for event['host']2_6ecbplus.xmlsent:3664
+
+	* entity-paths for event['oscars']2_6ecbplus.xmlsent:3664

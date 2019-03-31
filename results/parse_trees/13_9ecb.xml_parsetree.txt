@@ -1,0 +1,40 @@
+
+-----------------------------------------
+docid:13_9ecb.xml
+-----------------------------------------
+
+sentence #:the church alaska gov.sarah palin attends was badly damaged by fire friday night , and investigators suspect arson . 
+	[events]:[['attends'], ['arson'], ['damaged'], ['fire'], ['suspect']]
+	[entities]:[['the', 'church'], ['friday', 'night'], ['gov.sarah', 'palin']]
+*R278[damaged]
+|--(nsubjp)--> R260[church]
+|                |--(det)--> R260[the]
+|                |--(acl:re)--> *R273[attends]
+|                                 |--(nsubj)--> R262[palin]
+|                                                  |--(compou)--> alaska
+|                                                  |--(compou)--> R262[gov.sarah]
+|--(auxpas)--> was
+|--(advmod)--> badly
+|--(nmod)--> *R261[fire]
+|                |--(case)--> by
+|--(nmod:t)--> R271[night]
+|                |--(compou)--> R271[friday]
+|--(punct)--> ,
+|--(cc)--> and
+|--(conj)--> *R269[suspect]
+|                |--(nsubj)--> investigators
+|                |--(dobj)--> *R270[arson]
+|--(punct)--> .
+
+	* entity-paths for event['attends']13_9ecb.xmlsent:1635
+	['attends --(nsubj)--> Palin']
+
+	* entity-paths for event['arson']13_9ecb.xmlsent:1635
+
+	* entity-paths for event['damaged']13_9ecb.xmlsent:1635
+	['damaged --(nsubjpass)--> church']
+	['damaged --(nmod:tmod)--> night']
+
+	* entity-paths for event['fire']13_9ecb.xmlsent:1635
+
+	* entity-paths for event['suspect']13_9ecb.xmlsent:1635

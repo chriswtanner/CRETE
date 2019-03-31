@@ -1,0 +1,105 @@
+
+-----------------------------------------
+docid:4_10ecbplus.xml
+-----------------------------------------
+
+sentence #:esther williams , olympic swimmer turned actress and pinup girl , dies at 91 
+	[events]:[['dies'], ['turned']]
+	[entities]:[['pinup'], ['swimmer'], ['esther', 'williams'], ['actress']]
+*R1369[dies]
+|--(nsubj)--> R1370[williams]
+|                |--(compou)--> R1370[esther]
+|                |--(dep)--> *R1371[turned]
+|                                 |--(punct)--> ,
+|                                 |--(nsubj)--> R1370[swimmer]
+|                                 |                |--(compou)--> olympic
+|                                 |--(dobj)--> girl
+|                                 |                |--(compou)--> R1370[actress]
+|                                 |                                 |--(cc)--> and
+|                                 |                                 |--(conj)--> R1370[pinup]
+|                                 |--(punct)--> ,
+|--(nmod)--> 91
+                 |--(case)--> at
+
+	* entity-paths for event['dies']4_10ecbplus.xmlsent:11196
+	['dies --(nsubj)--> Williams']
+
+	* entity-paths for event['turned']4_10ecbplus.xmlsent:11196
+	['turned --(nsubj)--> swimmer']
+	['turned --(dobj)--> girl', 'girl --(compound)--> actress']
+
+sentence #:esther williams , the swimming champion turned actress who starred in glittering and aquatic technicolor musicals of the 1940s and 1950s , has died . 
+	[events]:[['turned'], ['swimming'], ['musicals'], ['starred'], ['died']]
+	[entities]:[['champion'], ['actress'], ['who'], ['esther', 'williams'], ['the', '1940s', 'and', '1950s']]
+*R1369[died]
+|--(nsubj)--> R1370[williams]
+|                |--(compou)--> R1370[esther]
+|--(parata)--> *R1371[turned]
+|                |--(punct)--> ,
+|                |--(nsubj)--> R1370[champion]
+|                |                |--(det)--> the
+|                |                |--(compou)--> *R1372[swimming]
+|                |--(dobj)--> R1370[actress]
+|                |                |--(acl:re)--> *R1373[starred]
+|                |                                 |--(nsubj)--> R1370[who]
+|                |                                 |--(nmod)--> *R1374[musicals]
+|                |                                                  |--(case)--> in
+|                |                                                  |--(compou)--> glittering
+|                |                                                  |                |--(cc)--> and
+|                |                                                  |                |--(conj)--> aquatic
+|                |                                                  |--(compou)--> technicolor
+|                |                                                  |--(nmod)--> R1375[1940s]
+|                |                                                                   |--(case)--> of
+|                |                                                                   |--(dep)--> R1375[the]
+|                |                                                                   |--(cc)--> R1375[and]
+|                |                                                                   |--(conj)--> R1375[1950s]
+|                |--(punct)--> ,
+|--(aux)--> has
+|--(punct)--> .
+
+	* entity-paths for event['turned']4_10ecbplus.xmlsent:11197
+	['turned --(nsubj)--> champion']
+	['turned --(dobj)--> actress']
+
+	* entity-paths for event['swimming']4_10ecbplus.xmlsent:11197
+
+	* entity-paths for event['musicals']4_10ecbplus.xmlsent:11197
+	['musicals --(nmod)--> 1940s']
+
+	* entity-paths for event['starred']4_10ecbplus.xmlsent:11197
+	['starred --(nsubj)--> who']
+	['starred --(nmod)--> musicals', 'musicals --(nmod)--> 1940s']
+
+	* entity-paths for event['died']4_10ecbplus.xmlsent:11197
+	['died --(nsubj)--> Williams']
+	['died --(parataxis)--> turned', 'turned --(nsubj)--> champion']
+	['died --(parataxis)--> turned', 'turned --(dobj)--> actress']
+
+sentence #:williams died early thursday in her sleep , according to her longtime publicist harlan boll . 
+	[events]:[['according'], ['died'], ['sleep']]
+	[entities]:[['williams'], ['early', 'thursday'], ['harlan', 'boll']]
+*R1369[died]
+|--(nsubj)--> R1370[williams]
+|--(nmod:t)--> R1376[thursday]
+|                |--(amod)--> R1376[early]
+|--(nmod)--> *R1377[sleep]
+|                |--(case)--> in
+|                |--(nmod:p)--> her
+|--(punct)--> ,
+|--(nmod)--> R1378[boll]
+|                |--(case)--> *R1379[according]
+|                |                |--(mwe)--> to
+|                |--(nmod:p)--> her
+|                |--(amod)--> longtime
+|                |--(compou)--> publicist
+|                |--(compou)--> R1378[harlan]
+|--(punct)--> .
+
+	* entity-paths for event['according']4_10ecbplus.xmlsent:11199
+
+	* entity-paths for event['died']4_10ecbplus.xmlsent:11199
+	['died --(nsubj)--> Williams']
+	['died --(nmod:tmod)--> Thursday']
+	['died --(nmod)--> Boll']
+
+	* entity-paths for event['sleep']4_10ecbplus.xmlsent:11199

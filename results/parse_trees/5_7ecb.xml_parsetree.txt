@@ -1,0 +1,38 @@
+
+-----------------------------------------
+docid:5_7ecb.xml
+-----------------------------------------
+
+sentence #:the eastern conference standings have claimed another coach , with philadelphia 76ers head man maurice cheeks joining the ever-growing list of coaches who are no longer employed . 
+	[events]:[['no', 'longer', 'employed']]
+	[entities]:[['maurice', 'cheeks'], ['coach']]
+claimed
+|--(nsubj)--> standings
+|                |--(det)--> the
+|                |--(compou)--> eastern
+|                |--(compou)--> conference
+|--(aux)--> have
+|--(dobj)--> R1674[coach]
+|                |--(det)--> another
+|--(punct)--> ,
+|--(advcl)--> head
+|                |--(mark)--> with
+|                |--(nsubj)--> 76ers
+|                |                |--(compou)--> philadelphia
+|                |--(dep)--> joining
+|                                 |--(nsubj)--> R1674[cheeks]
+|                                 |                |--(compou)--> man
+|                                 |                |--(compou)--> R1674[maurice]
+|                                 |--(dobj)--> list
+|                                                  |--(det)--> the
+|                                                  |--(amod)--> ever-growing
+|                                                  |--(nmod)--> coaches
+|                                                                   |--(case)--> of
+|                                                                   |--(acl:re)--> *R1672[employed]
+|                                                                                    |--(nsubjp)--> who
+|                                                                                    |--(auxpas)--> are
+|                                                                                    |--(advmod)--> *R1672[longer]
+|                                                                                                     |--(neg)--> *R1672[no]
+|--(punct)--> .
+
+	* entity-paths for event['no', 'longer', 'employed']5_7ecb.xmlsent:14272

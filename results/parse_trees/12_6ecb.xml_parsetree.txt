@@ -1,0 +1,45 @@
+
+-----------------------------------------
+docid:12_6ecb.xml
+-----------------------------------------
+
+sentence #:the indian navy on saturday foiled a hijack attempt in the notorious gulf of aden and arrested 23 heavily armed somalian and yemeni pirates . 
+	[events]:[['arrested'], ['foiled'], ['attempt']]
+	[entities]:[['saturday'], ['the', 'notorious', 'gulf', 'of', 'aden'], ['pirates'], ['navy']]
+*R232[foiled]
+|--(nsubj)--> R215[navy]
+|                |--(det)--> the
+|                |--(amod)--> indian
+|                |--(nmod)--> R230[saturday]
+|                                 |--(case)--> on
+|--(dobj)--> *R235[attempt]
+|                |--(det)--> a
+|                |--(compou)--> hijack
+|                |--(nmod)--> R229[gulf]
+|                |                |--(case)--> in
+|                |                |--(det)--> R229[the]
+|                |                |--(amod)--> R229[notorious]
+|                |--(nmod)--> R229[aden]
+|                                 |--(case)--> R229[of]
+|                                 |--(cc)--> and
+|                                 |--(conj)--> *R214[arrested]
+|                                                  |--(advmod)--> heavily
+|                                                  |                |--(nmod:n)--> 23
+|                                                  |--(dobj)--> somalian
+|                                                                   |--(amod)--> armed
+|                                                                   |--(cc)--> and
+|                                                                   |--(conj)--> R216[pirates]
+|                                                                                    |--(amod)--> yemeni
+|--(punct)--> .
+
+	* entity-paths for event['arrested']12_6ecb.xmlsent:1035
+	['arrested --(dobj)--> Somalian', 'Somalian --(conj)--> pirates']
+
+	* entity-paths for event['foiled']12_6ecb.xmlsent:1035
+	['foiled --(nsubj)--> Navy']
+	['foiled --(dobj)--> attempt', 'attempt --(nmod)--> Gulf']
+	['foiled --(dobj)--> attempt', 'attempt --(nmod)--> Aden']
+
+	* entity-paths for event['attempt']12_6ecb.xmlsent:1035
+	['attempt --(nmod)--> Gulf']
+	['attempt --(nmod)--> Aden']

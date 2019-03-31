@@ -1,0 +1,59 @@
+
+-----------------------------------------
+docid:25_13ecbplus.xml
+-----------------------------------------
+
+sentence #:one day after chris ivory was surprisingly lost for the season , the saints placed thomas on injured reserve . 
+	[events]:[['placed'], ['injured', 'reserve'], ['lost'], ['season']]
+	[entities]:[['chris', 'ivory'], ['thomas'], ['saints'], ['one', 'day', 'after']]
+*R715[placed]
+|--(nmod:t)--> R714[day]
+|                |--(nummod)--> R714[one]
+|--(advcl)--> *R724[lost]
+|                |--(mark)--> R714[after]
+|                |--(nsubjp)--> R725[ivory]
+|                |                |--(compou)--> R725[chris]
+|                |--(auxpas)--> was
+|                |--(advmod)--> surprisingly
+|                |--(nmod)--> *R726[season]
+|                                 |--(case)--> for
+|                                 |--(det)--> the
+|--(punct)--> ,
+|--(nsubj)--> R706[saints]
+|                |--(det)--> the
+|--(dobj)--> R716[thomas]
+|                |--(nmod)--> *R717[reserve]
+|                                 |--(case)--> on
+|                                 |--(amod)--> *R717[injured]
+|--(punct)--> .
+
+	* entity-paths for event['placed']25_13ecbplus.xmlsent:5019
+	['placed --(nmod:tmod)--> day']
+	['placed --(advcl)--> lost', 'lost --(mark)--> after']
+	['placed --(advcl)--> lost', 'lost --(nsubjpass)--> Ivory']
+	['placed --(nsubj)--> Saints']
+	['placed --(dobj)--> Thomas']
+
+	* entity-paths for event['injured', 'reserve']25_13ecbplus.xmlsent:5019
+
+	* entity-paths for event['lost']25_13ecbplus.xmlsent:5019
+	['lost --(mark)--> after']
+	['lost --(nsubjpass)--> Ivory']
+
+	* entity-paths for event['season']25_13ecbplus.xmlsent:5019
+
+sentence #:pierre thomas is headed to injured reserve 
+	[events]:[['injured', 'reserve'], ['headed']]
+	[entities]:[['pierre', 'thomas']]
+*R715[headed]
+|--(nsubjp)--> R716[thomas]
+|                |--(compou)--> R716[pierre]
+|--(auxpas)--> is
+|--(nmod)--> *R717[reserve]
+                 |--(case)--> to
+                 |--(amod)--> *R717[injured]
+
+	* entity-paths for event['injured', 'reserve']25_13ecbplus.xmlsent:5014
+
+	* entity-paths for event['headed']25_13ecbplus.xmlsent:5014
+	['headed --(nsubjpass)--> Thomas']

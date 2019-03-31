@@ -1,0 +1,62 @@
+
+-----------------------------------------
+docid:22_2ecb.xml
+-----------------------------------------
+
+sentence #:a 60-year-old woman charged with killing two young women in a staunton ice cream shop 41 years ago was released without bail , authorities said friday , because she is dying from kidney and heart disease and living in a hospice facility . 
+	[events]:[['charged'], ['killing'], ['dying']]
+	[entities]:[['41', 'years', 'ago'], ['she'], ['woman'], ['women'], ['in', 'a', 'staunton', 'ice', 'cream', 'shop'], ['authorities']]
+said
+|--(ccomp)--> released
+|                |--(nsubjp)--> R618[woman]
+|                |                |--(det)--> a
+|                |                |--(amod)--> 60-year-old
+|                |                |--(acl)--> *R624[charged]
+|                |                                 |--(advcl)--> *R619[killing]
+|                |                                                  |--(mark)--> with
+|                |                                                  |--(dobj)--> R620[women]
+|                |                                                  |                |--(nummod)--> two
+|                |                                                  |                |--(amod)--> young
+|                |                                                  |--(nmod)--> R621[shop]
+|                |                                                                   |--(case)--> R621[in]
+|                |                                                                   |--(det)--> R621[a]
+|                |                                                                   |--(compou)--> R621[staunton]
+|                |                                                                   |--(compou)--> R621[ice]
+|                |                                                                   |--(compou)--> R621[cream]
+|                |--(advmod)--> R622[ago]
+|                |                |--(nmod:n)--> R622[years]
+|                |                                 |--(nummod)--> R622[41]
+|                |--(auxpas)--> was
+|                |--(nmod)--> bail
+|                                 |--(case)--> without
+|--(punct)--> ,
+|--(nsubj)--> R625[authorities]
+|--(nmod:t)--> friday
+|--(punct)--> ,
+|--(advcl)--> *R626[dying]
+|                |--(mark)--> because
+|                |--(nsubj)--> R618[she]
+|                |--(aux)--> is
+|                |--(nmod)--> disease
+|                                 |--(case)--> from
+|                                 |--(compou)--> kidney
+|                                 |                |--(cc)--> and
+|                                 |                |--(conj)--> heart
+|                                 |--(cc)--> and
+|                                 |--(conj)--> living
+|                                 |--(nmod)--> facility
+|                                                  |--(case)--> in
+|                                                  |--(det)--> a
+|                                                  |--(compou)--> hospice
+|--(punct)--> .
+
+	* entity-paths for event['charged']22_2ecb.xmlsent:4475
+	['charged --(advcl)--> killing', 'killing --(dobj)--> women']
+	['charged --(advcl)--> killing', 'killing --(nmod)--> shop']
+
+	* entity-paths for event['killing']22_2ecb.xmlsent:4475
+	['killing --(dobj)--> women']
+	['killing --(nmod)--> shop']
+
+	* entity-paths for event['dying']22_2ecb.xmlsent:4475
+	['dying --(nsubj)--> she']

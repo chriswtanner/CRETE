@@ -1,0 +1,44 @@
+
+-----------------------------------------
+docid:24_5ecb.xml
+-----------------------------------------
+
+sentence #:armed thieves have carried out another brazen and meticulously planned robbery of the harry winston store in central paris , making off with an estimated $ 102 million in jewelry . 
+	[events]:[['robbery'], ['making', 'off']]
+	[entities]:[['thieves'], ['jewelry'], ['the', 'harry', 'winston', 'store', 'in', 'central', 'paris']]
+carried
+|--(nsubj)--> R664[thieves]
+|                |--(amod)--> armed
+|--(aux)--> have
+|--(compou)--> out
+|--(dobj)--> another
+|                |--(dep)--> brazen
+|                                 |--(cc)--> and
+|                                 |--(conj)--> planned
+|                                                  |--(advmod)--> meticulously
+|                                                  |--(dobj)--> *R666[robbery]
+|                                                  |                |--(nmod)--> R665[store]
+|                                                  |                                 |--(case)--> of
+|                                                  |                                 |--(det)--> R665[the]
+|                                                  |                                 |--(compou)--> R665[harry]
+|                                                  |                                 |--(compou)--> R665[winston]
+|                                                  |--(nmod)--> R665[paris]
+|                                                  |                |--(case)--> R665[in]
+|                                                  |                |--(amod)--> R665[central]
+|                                                  |--(punct)--> ,
+|                                                  |--(advcl)--> *R694[making]
+|                                                                   |--(compou)--> *R694[off]
+|                                                                   |--(nmod)--> $
+|                                                                                    |--(case)--> with
+|                                                                                    |--(det)--> an
+|                                                                                    |--(amod)--> estimated
+|                                                                                    |--(nummod)--> million
+|                                                                                    |                |--(compou)--> 102
+|                                                                                    |--(nmod)--> R683[jewelry]
+|                                                                                                     |--(case)--> in
+|--(punct)--> .
+
+	* entity-paths for event['robbery']24_5ecb.xmlsent:4865
+	['robbery --(nmod)--> store']
+
+	* entity-paths for event['making', 'off']24_5ecb.xmlsent:4865

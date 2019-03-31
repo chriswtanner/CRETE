@@ -1,0 +1,41 @@
+
+-----------------------------------------
+docid:7_10ecb.xml
+-----------------------------------------
+
+sentence #:wladimir klitschko defended his ibf heavyweight crown by stopping hasim rahman in the seventh round at sap arena on saturday . 
+	[events]:[['round'], ['stopping'], ['defended']]
+	[entities]:[['at', 'sap', 'arena'], ['ibf'], ['crown'], ['on', 'saturday'], ['wladimir', 'klitschko'], ['hasim', 'rahman']]
+*R1715[defended]
+|--(nsubj)--> R1716[klitschko]
+|                |--(compou)--> R1716[wladimir]
+|--(dobj)--> R1717[crown]
+|                |--(nmod:p)--> his
+|                |--(compou)--> R1718[ibf]
+|                |--(amod)--> heavyweight
+|--(advcl)--> *R1719[stopping]
+|                |--(mark)--> by
+|                |--(dobj)--> R1720[rahman]
+|                |                |--(compou)--> R1720[hasim]
+|                |                |--(nmod)--> *R1721[round]
+|                |                                 |--(case)--> in
+|                |                                 |--(det)--> the
+|                |                                 |--(amod)--> seventh
+|                |--(nmod)--> R1722[arena]
+|                                 |--(case)--> R1722[at]
+|                                 |--(compou)--> R1722[sap]
+|                                 |--(nmod)--> R1723[saturday]
+|                                                  |--(case)--> R1723[on]
+|--(punct)--> .
+
+	* entity-paths for event['round']7_10ecb.xmlsent:14586
+
+	* entity-paths for event['stopping']7_10ecb.xmlsent:14586
+	['stopping --(dobj)--> Rahman']
+	['stopping --(nmod)--> Arena']
+
+	* entity-paths for event['defended']7_10ecb.xmlsent:14586
+	['defended --(nsubj)--> Klitschko']
+	['defended --(dobj)--> crown']
+	['defended --(advcl)--> stopping', 'stopping --(dobj)--> Rahman']
+	['defended --(advcl)--> stopping', 'stopping --(nmod)--> Arena']

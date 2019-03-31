@@ -1,0 +1,104 @@
+
+-----------------------------------------
+docid:22_10ecbplus.xml
+-----------------------------------------
+
+sentence #:the murder trial of a suspended female employee who allegedly shot and killed two co - workers two years ago starts monday . 
+	[events]:[['trial'], ['starts'], ['shot'], ['killed'], ['suspended']]
+	[entities]:[['co', '-', 'workers'], ['employee'], ['two', 'years', 'ago'], ['who']]
+*R588[trial]
+|--(det)--> the
+|--(compou)--> murder
+|--(nmod)--> R589[employee]
+|                |--(case)--> of
+|                |--(det)--> a
+|                |--(amod)--> *R590[suspended]
+|                |--(amod)--> female
+|                |--(acl:re)--> *R591[shot]
+|                                 |--(nsubj)--> R589[who]
+|                                 |--(advmod)--> allegedly
+|--(cc)--> and
+|--(conj)--> *R592[killed]
+|                |--(dobj)--> two
+|                                 |--(dep)--> R593[co]
+|--(punct)--> R593[-]
+|--(parata)--> monday
+|                |--(advmod)--> R593[workers]
+|                |                |--(dep)--> R594[years]
+|                |                |                |--(nummod)--> R594[two]
+|                |                |--(case)--> R594[ago]
+|                |--(dep)--> *R595[starts]
+|--(punct)--> .
+
+	* entity-paths for event['trial']22_10ecbplus.xmlsent:4357
+	['trial --(nmod)--> employee']
+	['trial --(conj)--> killed', 'killed --(dobj)--> two', 'two --(dep)--> co']
+	['trial --(punct)--> -']
+	['trial --(parataxis)--> Monday', 'Monday --(advmod)--> workers']
+
+	* entity-paths for event['starts']22_10ecbplus.xmlsent:4357
+
+	* entity-paths for event['shot']22_10ecbplus.xmlsent:4357
+	['shot --(nsubj)--> who']
+
+	* entity-paths for event['killed']22_10ecbplus.xmlsent:4357
+	['killed --(dobj)--> two', 'two --(dep)--> co']
+
+	* entity-paths for event['suspended']22_10ecbplus.xmlsent:4357
+
+sentence #:trial begins for kraft shooting suspect 
+	[events]:[['begins'], ['shooting'], ['trial']]
+	[entities]:[['suspect']]
+*R595[begins]
+|--(nsubj)--> *R588[trial]
+|--(nmod)--> R589[suspect]
+                 |--(case)--> for
+                 |--(compou)--> kraft
+                 |--(compou)--> *R591[shooting]
+
+	* entity-paths for event['begins']22_10ecbplus.xmlsent:4356
+	['Begins --(nmod)--> Suspect']
+
+	* entity-paths for event['shooting']22_10ecbplus.xmlsent:4356
+
+	* entity-paths for event['trial']22_10ecbplus.xmlsent:4356
+
+sentence #:yvonne hiller , 43 , is charged with murder for the shooting deaths of two female co - workers in september 2010 . 
+	[events]:[['deaths'], ['shooting'], ['charged'], ['murder']]
+	[entities]:[['co', '-', 'workers'], ['in', 'september', '2010', '.'], ['yvonne', 'hiller']]
+*R596[charged]
+|--(nsubjp)--> R589[hiller]
+|                |--(compou)--> R589[yvonne]
+|                |--(punct)--> ,
+|                |--(amod)--> 43
+|                |--(punct)--> ,
+|--(auxpas)--> is
+|--(nmod)--> *R597[murder]
+|                |--(case)--> with
+|                |--(nmod)--> *R592[deaths]
+|                                 |--(case)--> for
+|                                 |--(det)--> the
+|                                 |--(compou)--> *R591[shooting]
+|                                 |--(nmod)--> R593[co]
+|                                                  |--(case)--> of
+|                                                  |--(nummod)--> two
+|                                                  |--(amod)--> female
+|                                                  |--(punct)--> R593[-]
+|                                                  |--(dep)--> R593[workers]
+|                                                                   |--(nmod)--> R594[september]
+|                                                                                    |--(case)--> R594[in]
+|                                                                                    |--(nummod)--> R594[2010]
+|--(punct)--> R594[.]
+
+	* entity-paths for event['deaths']22_10ecbplus.xmlsent:4360
+	['deaths --(nmod)--> co']
+
+	* entity-paths for event['shooting']22_10ecbplus.xmlsent:4360
+
+	* entity-paths for event['charged']22_10ecbplus.xmlsent:4360
+	['charged --(nsubjpass)--> Hiller']
+	['charged --(nmod)--> murder', 'murder --(nmod)--> deaths', 'deaths --(nmod)--> co']
+	['charged --(punct)--> .']
+
+	* entity-paths for event['murder']22_10ecbplus.xmlsent:4360
+	['murder --(nmod)--> deaths', 'deaths --(nmod)--> co']

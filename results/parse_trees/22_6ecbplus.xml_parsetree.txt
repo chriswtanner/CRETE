@@ -1,0 +1,50 @@
+
+-----------------------------------------
+docid:22_6ecbplus.xml
+-----------------------------------------
+
+sentence #:the woman who allegedly shot and killed two co - workers in september at the kraft foods plant in northeast philadelphia will face trial on multiple counts of murder and attempted murder . 
+	[events]:[['shot'], ['trial'], ['killed'], ['murder']]
+	[entities]:[['at', 'the', 'kraft', 'foods', 'plant', 'in', 'northeast', 'philadelphia'], ['in', 'september'], ['counts'], ['woman'], ['co', '-', 'workers']]
+R589[woman]
+|--(det)--> the
+|--(dep)--> *R591[shot]
+                 |--(nsubj)--> who
+                 |--(advmod)--> allegedly
+                 |--(cc)--> and
+                 |--(conj)--> *R592[killed]
+                 |--(dobj)--> two
+                                  |--(dep)--> R593[workers]
+                                                   |--(dep)--> R593[co]
+                                                   |--(punct)--> R593[-]
+                                                   |--(nmod)--> R594[september]
+                                                   |                |--(case)--> R594[in]
+                                                   |                |--(nmod)--> R599[plant]
+                                                   |                                 |--(case)--> R599[at]
+                                                   |                                 |--(det)--> R599[the]
+                                                   |                                 |--(compou)--> R599[kraft]
+                                                   |                                 |--(compou)--> R599[foods]
+                                                   |--(dep)--> face
+                                                   |                |--(mark)--> R599[in]
+                                                   |                |--(nsubj)--> R599[philadelphia]
+                                                   |                |                |--(compou)--> R599[northeast]
+                                                   |                |--(aux)--> will
+                                                   |                |--(dobj)--> *R588[trial]
+                                                   |                |--(nmod)--> R617[counts]
+                                                   |                |                |--(case)--> on
+                                                   |                |                |--(amod)--> multiple
+                                                   |                |                |--(nmod)--> *R597[murder]
+                                                   |                |                                 |--(case)--> of
+                                                   |                |--(cc)--> and
+                                                   |                |--(conj)--> attempted
+                                                   |                                 |--(dobj)--> murder
+                                                   |--(punct)--> .
+
+	* entity-paths for event['shot']22_6ecbplus.xmlsent:4529
+	['shot --(dobj)--> two', 'two --(dep)--> workers']
+
+	* entity-paths for event['trial']22_6ecbplus.xmlsent:4529
+
+	* entity-paths for event['killed']22_6ecbplus.xmlsent:4529
+
+	* entity-paths for event['murder']22_6ecbplus.xmlsent:4529

@@ -1,0 +1,131 @@
+
+-----------------------------------------
+docid:21_5ecbplus.xml
+-----------------------------------------
+
+sentence #:woman killed in queens hit - and - run , police arrest allegedly drunk driver 
+	[events]:[['hit'], ['killed'], ['arrest'], ['run']]
+	[entities]:[['driver'], ['in', 'queens'], ['woman']]
+R545[woman]
+|--(acl:re)--> and
+|                |--(dep)--> *R546[killed]
+|                                 |--(nmod)--> R549[queens]
+|                                                  |--(case)--> R549[in]
+|                                                  |--(acl)--> *R556[hit]
+|                                                  |--(punct)--> -
+|--(punct)--> -
+|--(dep)--> police
+|                |--(compou)--> *R551[run]
+|                |--(punct)--> ,
+|                |--(nmod:t)--> *R553[arrest]
+|                                 |--(advmod)--> allegedly
+|--(dep)--> R548[driver]
+                 |--(compou)--> drunk
+
+	* entity-paths for event['hit']21_5ecbplus.xmlsent:4253
+
+	* entity-paths for event['killed']21_5ecbplus.xmlsent:4253
+	['Killed --(nmod)--> Queens']
+
+	* entity-paths for event['arrest']21_5ecbplus.xmlsent:4253
+
+	* entity-paths for event['run']21_5ecbplus.xmlsent:4253
+
+sentence #:an allegedly intoxicated driver who tried to flee after striking and fatally injuring a woman in queens has been charged in her murder , according to police . 
+	[events]:[['murder'], ['flee'], ['striking'], ['injuring'], ['charged']]
+	[entities]:[['her'], ['police'], ['woman'], ['in', 'queens'], ['driver']]
+*R557[charged]
+|--(nsubjp)--> R548[driver]
+|                |--(det)--> an
+|                |--(advmod)--> allegedly
+|                |--(amod)--> intoxicated
+|                |--(acl:re)--> tried
+|                                 |--(nsubj)--> who
+|                                 |--(xcomp)--> *R551[flee]
+|                                                  |--(mark)--> to
+|                                                  |--(advcl)--> *R546[injuring]
+|                                                                   |--(mark)--> after
+|                                                                   |--(xcomp)--> *R556[striking]
+|                                                                   |                |--(cc)--> and
+|                                                                   |                |--(advmod)--> fatally
+|                                                                   |--(dobj)--> R545[woman]
+|                                                                   |                |--(det)--> a
+|                                                                   |--(nmod)--> R549[queens]
+|                                                                                    |--(case)--> R549[in]
+|--(aux)--> has
+|--(auxpas)--> been
+|--(nmod)--> *R546[murder]
+|                |--(case)--> in
+|                |--(nmod:p)--> R545[her]
+|--(punct)--> ,
+|--(nmod)--> R561[police]
+|                |--(case)--> according
+|                                 |--(mwe)--> to
+|--(punct)--> .
+
+	* entity-paths for event['murder']21_5ecbplus.xmlsent:4255
+	['murder --(nmod:poss)--> her']
+
+	* entity-paths for event['flee']21_5ecbplus.xmlsent:4255
+	['flee --(advcl)--> injuring', 'injuring --(dobj)--> woman']
+	['flee --(advcl)--> injuring', 'injuring --(nmod)--> Queens']
+
+	* entity-paths for event['striking']21_5ecbplus.xmlsent:4255
+
+	* entity-paths for event['injuring']21_5ecbplus.xmlsent:4255
+	['injuring --(dobj)--> woman']
+	['injuring --(nmod)--> Queens']
+
+	* entity-paths for event['charged']21_5ecbplus.xmlsent:4255
+	['charged --(nsubjpass)--> driver']
+	['charged --(nmod)--> murder', 'murder --(nmod:poss)--> her']
+	['charged --(nmod)--> police']
+
+sentence #:an initial investigation of the scene revealed that chohan had been walking alongside the parked cars on 117th street when she was struck by a vehicle heading northbound , police said . 
+	[events]:[['walking'], ['struck'], ['said']]
+	[entities]:[['on', '117th', 'street'], ['chohan'], ['she'], ['vehicle'], ['police']]
+*R560[said]
+|--(ccomp)--> revealed
+|                |--(nsubj)--> investigation
+|                |                |--(det)--> an
+|                |                |--(amod)--> initial
+|                |                |--(nmod)--> scene
+|                |                                 |--(case)--> of
+|                |                                 |--(det)--> the
+|                |--(ccomp)--> *R565[walking]
+|                                 |--(mark)--> that
+|                                 |--(nsubj)--> R545[chohan]
+|                                 |--(aux)--> had
+|                                 |--(aux)--> been
+|                                 |--(nmod)--> cars
+|                                                  |--(case)--> alongside
+|                                                  |--(det)--> the
+|                                                  |--(amod)--> parked
+|                                                  |--(nmod)--> R552[street]
+|                                                                   |--(case)--> R552[on]
+|                                                                   |--(compou)--> R552[117th]
+|                                                                   |--(acl:re)--> *R556[struck]
+|                                                                                    |--(advmod)--> when
+|                                                                                    |--(nsubjp)--> R545[she]
+|                                                                                    |--(auxpas)--> was
+|                                                                                    |--(nmod)--> R569[vehicle]
+|                                                                                                     |--(case)--> by
+|                                                                                                     |--(det)--> a
+|                                                                                                     |--(acl)--> heading
+|                                                                                                                      |--(xcomp)--> northbound
+|--(punct)--> ,
+|--(nsubj)--> R561[police]
+|--(punct)--> .
+
+	* entity-paths for event['walking']21_5ecbplus.xmlsent:4258
+	['walking --(nsubj)--> Chohan']
+	['walking --(nmod)--> cars', 'cars --(nmod)--> Street']
+
+	* entity-paths for event['struck']21_5ecbplus.xmlsent:4258
+	['struck --(nsubjpass)--> she']
+	['struck --(nmod)--> vehicle']
+
+	* entity-paths for event['said']21_5ecbplus.xmlsent:4258
+	['said --(ccomp)--> revealed', 'revealed --(ccomp)--> walking', 'walking --(nsubj)--> Chohan']
+	['said --(ccomp)--> revealed', 'revealed --(ccomp)--> walking', 'walking --(nmod)--> cars', 'cars --(nmod)--> Street']
+	['said --(nsubj)--> police']

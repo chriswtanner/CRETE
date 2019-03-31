@@ -1,0 +1,135 @@
+
+-----------------------------------------
+docid:36_5ecbplus.xml
+-----------------------------------------
+
+sentence #:warren jeffs , leader of the polygamist flds religious sect , was sentenced to life in prison in texas , convicted of sexually assaulting two girls , aged 15 and 12 , that he claimed as his 'brides . ' 
+	[events]:[['sexually', 'assaulting'], ['claimed'], ['life', 'in', 'prison'], ['sentenced'], ['convicted']]
+	[entities]:[['that'], ['warren', 'jeffs'], ['two', 'girls'], ["'brides"], ['polygamist', 'flds', 'religious', 'sect'], ['he'], ['leader']]
+*R1218[sentenced]
+|--(nsubjp)--> R1183[jeffs]
+|                |--(compou)--> R1183[warren]
+|                |--(punct)--> ,
+|                |--(appos)--> R1183[leader]
+|                |                |--(nmod)--> R1204[sect]
+|                |                                 |--(case)--> of
+|                |                                 |--(det)--> the
+|                |                                 |--(amod)--> R1204[polygamist]
+|                |                                 |--(compou)--> R1204[flds]
+|                |                                 |--(amod)--> R1204[religious]
+|                |--(punct)--> ,
+|--(auxpas)--> was
+|--(nmod)--> *R1219[life]
+|                |--(case)--> to
+|--(nmod)--> *R1219[prison]
+|                |--(case)--> *R1219[in]
+|                |--(nmod)--> texas
+|                |                |--(case)--> in
+|                |--(punct)--> ,
+|                |--(acl)--> *R1208[convicted]
+|                |                |--(advcl)--> *R1186[assaulting]
+|                |                                 |--(mark)--> of
+|                |                                 |--(advmod)--> *R1186[sexually]
+|                |                                 |--(dobj)--> R1188[girls]
+|                |                                                  |--(nummod)--> R1188[two]
+|                |--(punct)--> ,
+|                |--(amod)--> aged
+|                |                |--(nmod:t)--> 15
+|                |                                 |--(cc)--> and
+|                |                                 |--(conj)--> 12
+|                |--(punct)--> ,
+|                |--(dep)--> *R1206[claimed]
+|                                 |--(mark)--> R1188[that]
+|                                 |--(nsubj)--> R1183[he]
+|                                 |--(nmod)--> his
+|                                                  |--(case)--> as
+|                                                  |--(punct)--> R1188['brides]
+|                                                  |--(dep)--> R1188['brides]
+|--(punct)--> .
+|--(punct)--> '
+
+	* entity-paths for event['sexually', 'assaulting']36_5ecbplus.xmlsent:10151
+	['assaulting --(dobj)--> girls']
+
+	* entity-paths for event['claimed']36_5ecbplus.xmlsent:10151
+	['claimed --(mark)--> that']
+	['claimed --(nsubj)--> he']
+	['claimed --(nmod)--> his', "his --(punct)--> '"]
+	['claimed --(nmod)--> his', 'his --(dep)--> brides']
+
+	* entity-paths for event['life', 'in', 'prison']36_5ecbplus.xmlsent:10151
+	['prison --(acl)--> convicted', 'convicted --(advcl)--> assaulting', 'assaulting --(dobj)--> girls']
+	['prison --(dep)--> claimed', 'claimed --(mark)--> that']
+	['prison --(dep)--> claimed', 'claimed --(nsubj)--> he']
+	['prison --(dep)--> claimed', 'claimed --(nmod)--> his', "his --(punct)--> '"]
+	['prison --(dep)--> claimed', 'claimed --(nmod)--> his', 'his --(dep)--> brides']
+
+	* entity-paths for event['sentenced']36_5ecbplus.xmlsent:10151
+	['sentenced --(nsubjpass)--> Jeffs']
+	['sentenced --(nmod)--> prison', 'prison --(acl)--> convicted', 'convicted --(advcl)--> assaulting', 'assaulting --(dobj)--> girls']
+	['sentenced --(nmod)--> prison', 'prison --(dep)--> claimed', 'claimed --(mark)--> that']
+	['sentenced --(nmod)--> prison', 'prison --(dep)--> claimed', 'claimed --(nsubj)--> he']
+	['sentenced --(nmod)--> prison', 'prison --(dep)--> claimed', 'claimed --(nmod)--> his', "his --(punct)--> '"]
+	['sentenced --(nmod)--> prison', 'prison --(dep)--> claimed', 'claimed --(nmod)--> his', 'his --(dep)--> brides']
+
+	* entity-paths for event['convicted']36_5ecbplus.xmlsent:10151
+	['convicted --(advcl)--> assaulting', 'assaulting --(dobj)--> girls']
+
+sentence #:they presented a dna report that showed that jeffs had fathered a child with the 15 year old . 
+	[events]:[['fathered']]
+	[entities]:[['child'], ['they'], ['15', 'year', 'old'], ['jeffs']]
+presented
+|--(nsubj)--> R1225[they]
+|--(dobj)--> report
+|                |--(det)--> a
+|                |--(compou)--> dna
+|                |--(acl:re)--> showed
+|                                 |--(nsubj)--> that
+|                                 |--(ccomp)--> *R1189[fathered]
+|                                                  |--(mark)--> that
+|                                                  |--(nsubj)--> R1183[jeffs]
+|                                                  |--(aux)--> had
+|                                                  |--(xcomp)--> R1191[old]
+|                                                                   |--(nsubj)--> R1190[child]
+|                                                                                    |--(det)--> a
+|                                                                                    |--(nmod)--> R1191[year]
+|                                                                                                     |--(case)--> with
+|                                                                                                     |--(det)--> the
+|                                                                                                     |--(nummod)--> R1191[15]
+|--(punct)--> .
+
+	* entity-paths for event['fathered']36_5ecbplus.xmlsent:10157
+	['fathered --(nsubj)--> Jeffs']
+	['fathered --(xcomp)--> old']
+
+sentence #:prosecutors also played an audio recording of jeffs allegedly engaging in sexual intercourse with the 12 - year - old . 
+	[events]:[['played'], ['engaging', 'in', 'sexual', 'intercourse']]
+	[entities]:[['audio', 'recording'], ['12', '-', 'year', '-', 'old'], ['jeffs'], ['prosecutors']]
+*R1224[played]
+|--(nsubj)--> R1225[prosecutors]
+|--(advmod)--> also
+|--(xcomp)--> R1207[old]
+|                |--(nsubj)--> R1226[recording]
+|                                 |--(det)--> an
+|                                 |--(amod)--> R1226[audio]
+|                                 |--(nmod)--> R1183[jeffs]
+|                                                  |--(case)--> of
+|                                                  |--(acl)--> *R1228[engaging]
+|                                                                   |--(advmod)--> allegedly
+|                                                                   |--(nmod)--> *R1228[intercourse]
+|                                                                                    |--(case)--> *R1228[in]
+|                                                                                    |--(amod)--> *R1228[sexual]
+|                                                                                    |--(nmod)--> R1207[12]
+|                                                                                                     |--(case)--> with
+|                                                                                                     |--(det)--> the
+|                                                                                                     |--(punct)--> R1207[-]
+|                                                                                                     |--(dep)--> R1207[year]
+|                                                                                                     |--(punct)--> R1207[-]
+|--(punct)--> .
+
+	* entity-paths for event['played']36_5ecbplus.xmlsent:10158
+	['played --(nsubj)--> Prosecutors']
+	['played --(xcomp)--> old']
+
+	* entity-paths for event['engaging', 'in', 'sexual', 'intercourse']36_5ecbplus.xmlsent:10158
+	['intercourse --(nmod)--> 12']

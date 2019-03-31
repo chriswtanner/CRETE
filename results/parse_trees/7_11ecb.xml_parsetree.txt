@@ -1,0 +1,57 @@
+
+-----------------------------------------
+docid:7_11ecb.xml
+-----------------------------------------
+
+sentence #:the 32-year-old klitschko ( 52-3 , 46 kos ) won his 10th consecutive bout by flooring rahman ( 45-7-2 ) once before referee tony weeks stopped the fight 44 seconds into the seventh round . 
+	[events]:[['fight'], ['stopped'], ['won']]
+	[entities]:[['klitschko'], ['44', 'seconds', 'into', 'the', 'seventh', 'round'], ['rahman'], ['tony', 'weeks']]
+*R1730[won]
+|--(nsubj)--> R1716[klitschko]
+|                |--(det)--> the
+|                |--(amod)--> 32-year-old
+|                |--(appos)--> 52-3
+|                                 |--(punct)--> (
+|                                 |--(punct)--> ,
+|                                 |--(dep)--> kos
+|                                 |                |--(nummod)--> 46
+|                                 |--(punct)--> )
+|--(dobj)--> bout
+|                |--(nmod:p)--> his
+|                |--(amod)--> 10th
+|                |--(amod)--> consecutive
+|--(nmod)--> R1720[rahman]
+|                |--(case)--> by
+|                |--(compou)--> flooring
+|--(dep)--> 45-7-2
+|                |--(punct)--> (
+|                |--(punct)--> )
+|--(advcl)--> *R1719[stopped]
+|                |--(advmod)--> once
+|                |--(mark)--> before
+|                |--(nsubj)--> R1731[weeks]
+|                |                |--(compou)--> referee
+|                |                |--(compou)--> R1731[tony]
+|                |--(dobj)--> R1732[seconds]
+|                |                |--(det)--> the
+|                |                |--(compou)--> *R1733[fight]
+|                |                |--(nummod)--> R1732[44]
+|                |--(nmod)--> R1732[round]
+|                                 |--(case)--> R1732[into]
+|                                 |--(det)--> R1732[the]
+|                                 |--(amod)--> R1732[seventh]
+|--(punct)--> .
+
+	* entity-paths for event['fight']7_11ecb.xmlsent:14612
+
+	* entity-paths for event['stopped']7_11ecb.xmlsent:14612
+	['stopped --(nsubj)--> Weeks']
+	['stopped --(dobj)--> seconds']
+	['stopped --(nmod)--> round']
+
+	* entity-paths for event['won']7_11ecb.xmlsent:14612
+	['won --(nsubj)--> Klitschko']
+	['won --(nmod)--> Rahman']
+	['won --(advcl)--> stopped', 'stopped --(nsubj)--> Weeks']
+	['won --(advcl)--> stopped', 'stopped --(dobj)--> seconds']
+	['won --(advcl)--> stopped', 'stopped --(nmod)--> round']

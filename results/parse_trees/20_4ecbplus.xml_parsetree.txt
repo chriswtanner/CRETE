@@ -1,0 +1,66 @@
+
+-----------------------------------------
+docid:20_4ecbplus.xml
+-----------------------------------------
+
+sentence #:iran villagers shelter in tents after killer quake 
+	[events]:[['quake']]
+	[entities]:[['villagers']]
+R535[villagers]
+|--(compou)--> iran
+|--(dep)--> shelter
+                 |--(acl:re)--> *R509[quake]
+                                  |--(nmod)--> tents
+                                  |                |--(case)--> in
+                                  |--(case)--> after
+                                  |--(compou)--> killer
+
+	* entity-paths for event['quake']20_4ecbplus.xmlsent:3920
+
+sentence #:iranian rescue workers handed out blankets , food and water monday to survivors of a powerful earthquake on a gulf island that killed 10 people and forced villagers to spend the night in tents . 
+	[events]:[['earthquake'], ['killed']]
+	[entities]:[['people'], ['villagers'], ['monday'], ['survivors'], ['on', 'a', 'gulf', 'island']]
+*R504[killed]
+|--(dep)--> handed
+|                |--(nsubj)--> workers
+|                |                |--(amod)--> iranian
+|                |                |--(compou)--> rescue
+|                |--(compou)--> out
+|                |--(dobj)--> blankets
+|                |                |--(punct)--> ,
+|                |                |--(conj)--> food
+|                |                |--(cc)--> and
+|                |                |--(conj)--> water
+|                |--(nmod:t)--> R536[monday]
+|                |--(nmod)--> R535[survivors]
+|                                 |--(case)--> to
+|                                 |--(nmod)--> *R509[earthquake]
+|                                                  |--(case)--> of
+|                                                  |--(det)--> a
+|                                                  |--(amod)--> powerful
+|                                                  |--(nmod)--> R515[island]
+|                                                                   |--(case)--> R515[on]
+|                                                                   |--(det)--> R515[a]
+|                                                                   |--(compou)--> R515[gulf]
+|--(nsubj)--> that
+|--(dobj)--> R505[people]
+|                |--(nummod)--> 10
+|--(cc)--> and
+|--(conj)--> forced
+|                |--(dobj)--> R535[villagers]
+|                |--(xcomp)--> spend
+|                                 |--(mark)--> to
+|                                 |--(dobj)--> night
+|                                                  |--(det)--> the
+|                                                  |--(nmod)--> tents
+|                                                                   |--(case)--> in
+|--(punct)--> .
+
+	* entity-paths for event['earthquake']20_4ecbplus.xmlsent:3922
+	['earthquake --(nmod)--> island']
+
+	* entity-paths for event['killed']20_4ecbplus.xmlsent:3922
+	['killed --(dep)--> handed', 'handed --(nmod:tmod)--> Monday']
+	['killed --(dep)--> handed', 'handed --(nmod)--> survivors']
+	['killed --(dobj)--> people']
+	['killed --(conj)--> forced', 'forced --(dobj)--> villagers']

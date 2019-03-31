@@ -1,0 +1,119 @@
+
+-----------------------------------------
+docid:1_19ecbplus.xml
+-----------------------------------------
+
+sentence #:the 26 - year troubled starlet narrowly avoided jail time by checking into a second rehab center following her quick exit from morningside recovery in newport beach , calif . on thursday , may 2 . 
+	[events]:[['following'], ['checking', 'into'], ['jail', 'time'], ['exit'], ['avoided']]
+	[entities]:[['starlet'], ['on', 'thursday', ',', 'may', '2'], ['her'], ['rehab', 'center'], ['second'], ['morningside', 'recovery', 'in', 'newport', 'beach', ',', 'calif']]
+troubled
+|--(dep)--> 26
+|                |--(det)--> the
+|--(punct)--> -
+|--(nsubj)--> year
+|--(ccomp)--> *R85[avoided]
+|                |--(nsubj)--> R15[starlet]
+|                |--(advmod)--> narrowly
+|                |--(dobj)--> *R86[time]
+|                |                |--(compou)--> *R86[jail]
+|                |--(advcl)--> *R8[checking]
+|                                 |--(mark)--> by
+|                                 |--(nmod)--> R16[center]
+|                                                  |--(case)--> *R8[into]
+|                                                  |--(det)--> a
+|                                                  |--(amod)--> R87[second]
+|                                                  |--(compou)--> R16[rehab]
+|                                                  |--(nmod)--> *R57[exit]
+|                                                                   |--(case)--> *R88[following]
+|                                                                   |--(nmod:p)--> R15[her]
+|                                                                   |--(amod)--> quick
+|                                                                   |--(nmod)--> R10[recovery]
+|                                                                                    |--(case)--> from
+|                                                                                    |--(compou)--> R10[morningside]
+|                                                                                    |--(nmod)--> R10[beach]
+|                                                                                    |                |--(case)--> R10[in]
+|                                                                                    |                |--(compou)--> R10[newport]
+|                                                                                    |                |--(punct)--> R10[,]
+|                                                                                    |                |--(appos)--> R10[calif]
+|                                                                                    |                |                |--(punct)--> .
+|                                                                                    |                |                |--(nmod)--> R79[thursday]
+|                                                                                    |                |                                 |--(case)--> R79[on]
+|                                                                                    |                |--(punct)--> R79[,]
+|                                                                                    |--(nmod:t)--> R79[may]
+|                                                                                                     |--(nummod)--> R79[2]
+|--(punct)--> .
+
+	* entity-paths for event['following']1_19ecbplus.xmlsent:158
+
+	* entity-paths for event['checking', 'into']1_19ecbplus.xmlsent:158
+
+	* entity-paths for event['jail', 'time']1_19ecbplus.xmlsent:158
+
+	* entity-paths for event['exit']1_19ecbplus.xmlsent:158
+	['exit --(nmod:poss)--> her']
+	['exit --(nmod)--> Recovery']
+
+	* entity-paths for event['avoided']1_19ecbplus.xmlsent:158
+	['avoided --(nsubj)--> starlet']
+	['avoided --(advcl)--> checking', 'checking --(nmod)--> center']
+
+sentence #:santa monica chief deputy city attorney terry white confirmed to the the associated press that lohan has checked into an approved rehab facility . 
+	[events]:[['checked', 'into'], ['confirmed'], ['approved']]
+	[entities]:[['terry', 'white'], ['the', 'associated', 'press'], ['lohan'], ['rehab', 'facility']]
+*R89[confirmed]
+|--(nsubj)--> R90[white]
+|                |--(compou)--> santa
+|                |--(compou)--> monica
+|                |--(compou)--> chief
+|                |--(compou)--> deputy
+|                |--(compou)--> city
+|                |--(compou)--> attorney
+|                |--(compou)--> R90[terry]
+|--(nmod)--> R81[the]
+|                |--(case)--> to
+|                |--(dep)--> the
+|--(dobj)--> R81[press]
+|                |--(compou)--> R81[associated]
+|                |--(acl:re)--> *R8[checked]
+|                                 |--(dobj)--> that
+|                                 |--(nsubj)--> R15[lohan]
+|                                 |--(aux)--> has
+|                                 |--(nmod)--> R16[facility]
+|                                                  |--(case)--> *R8[into]
+|                                                  |--(det)--> an
+|                                                  |--(amod)--> *R91[approved]
+|                                                  |--(compou)--> R16[rehab]
+|--(punct)--> .
+
+	* entity-paths for event['checked', 'into']1_19ecbplus.xmlsent:159
+
+	* entity-paths for event['confirmed']1_19ecbplus.xmlsent:159
+	['confirmed --(nsubj)--> White']
+	['confirmed --(nmod)--> The']
+	['confirmed --(dobj)--> Press']
+
+	* entity-paths for event['approved']1_19ecbplus.xmlsent:159
+
+sentence #:lindsay lohan checks into betty ford clinic , rehires attorney shawn holley 
+	[events]:[['rehires'], ['checks', 'into']]
+	[entities]:[['lindsay', 'lohan'], ['attorney', 'shawn', 'holley'], ['betty', 'ford', 'clinic']]
+*R29[rehires]
+|--(nsubj)--> *R8[checks]
+|                |--(compou)--> R15[lindsay]
+|                |--(compou)--> R15[lohan]
+|                |--(nmod)--> R16[clinic]
+|                |                |--(dep)--> *R8[into]
+|                |                |--(compou)--> R16[betty]
+|                |                |--(compou)--> R16[ford]
+|                |--(punct)--> ,
+|--(dobj)--> R30[holley]
+                 |--(compou)--> R30[attorney]
+                 |--(compou)--> R30[shawn]
+
+	* entity-paths for event['rehires']1_19ecbplus.xmlsent:156
+	['Rehires --(nsubj)--> Checks', 'Checks --(compound)--> Lindsay']
+	['Rehires --(nsubj)--> Checks', 'Checks --(compound)--> Lohan']
+	['Rehires --(nsubj)--> Checks', 'Checks --(nmod)--> Clinic']
+	['Rehires --(dobj)--> Holley']
+
+	* entity-paths for event['checks', 'into']1_19ecbplus.xmlsent:156

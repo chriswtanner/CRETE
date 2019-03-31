@@ -1,0 +1,155 @@
+
+-----------------------------------------
+docid:30_1ecb.xml
+-----------------------------------------
+
+sentence #:internet and telephone communications between europe , the middle east and asia were severely disrupted friday after three undersea cables were damaged in the mediterranean , france telecom said . 
+	[events]:[['damaged'], ['communications'], ['disrupted']]
+	[entities]:[['internet'], ['france', 'telecom'], ['friday'], ['in', 'the', 'mediterranean'], ['cables'], ['telephone']]
+said
+|--(ccomp)--> *R982[disrupted]
+|                |--(nsubjp)--> *R975[communications]
+|                |                |--(compou)--> R950[internet]
+|                |                |                |--(cc)--> and
+|                |                |                |--(conj)--> R976[telephone]
+|                |                |--(nmod)--> europe
+|                |                                 |--(case)--> between
+|                |                                 |--(punct)--> ,
+|                |                                 |--(conj)--> east
+|                |                                 |                |--(det)--> the
+|                |                                 |                |--(compou)--> middle
+|                |                                 |--(cc)--> and
+|                |                                 |--(conj)--> asia
+|                |--(auxpas)--> were
+|                |--(advmod)--> severely
+|                |--(nmod:t)--> R968[friday]
+|                |--(advcl)--> *R953[damaged]
+|                                 |--(mark)--> after
+|                                 |--(nsubjp)--> R951[cables]
+|                                 |                |--(nummod)--> three
+|                                 |                |--(compou)--> undersea
+|                                 |--(auxpas)--> were
+|                                 |--(nmod)--> R952[mediterranean]
+|                                                  |--(case)--> R952[in]
+|                                                  |--(det)--> R952[the]
+|--(punct)--> ,
+|--(nsubj)--> R983[telecom]
+|                |--(compou)--> R983[france]
+|--(punct)--> .
+
+	* entity-paths for event['damaged']30_1ecb.xmlsent:7794
+	['damaged --(nsubjpass)--> cables']
+	['damaged --(nmod)--> Mediterranean']
+
+	* entity-paths for event['communications']30_1ecb.xmlsent:7794
+	['communications --(compound)--> Internet']
+
+	* entity-paths for event['disrupted']30_1ecb.xmlsent:7794
+	['disrupted --(nsubjpass)--> communications', 'communications --(compound)--> Internet']
+	['disrupted --(nmod:tmod)--> Friday']
+	['disrupted --(advcl)--> damaged', 'damaged --(nsubjpass)--> cables']
+	['disrupted --(advcl)--> damaged', 'damaged --(nmod)--> Mediterranean']
+
+sentence #:" the causes of the cut , which is located in the mediterranean between sicily and tunisia , on sections linking sicily to egypt , remain unclear , " a statement said , while a spokesman said it was unlikely to have been an attack . 
+	[events]:[['cut']]
+	[entities]:[['in', 'the', 'mediterranean', 'between', 'sicily', 'and', 'tunisia'], ['to', 'egypt']]
+said
+|--(punct)--> "
+|--(ccomp)--> remain
+|                |--(nsubj)--> causes
+|                |                |--(det)--> the
+|                |                |--(nmod)--> *R953[cut]
+|                |                |                |--(case)--> of
+|                |                |                |--(det)--> the
+|                |                |--(punct)--> ,
+|                |                |--(acl:re)--> located
+|                |                |                |--(nsubj)--> which
+|                |                |                |--(cop)--> is
+|                |                |                |--(nmod)--> R952[mediterranean]
+|                |                |                |                |--(case)--> R952[in]
+|                |                |                |                |--(det)--> R952[the]
+|                |                |                |                |--(nmod)--> R952[sicily]
+|                |                |                |                                 |--(case)--> R952[between]
+|                |                |                |                                 |--(cc)--> R952[and]
+|                |                |                |                                 |--(conj)--> R952[tunisia]
+|                |                |                |--(punct)--> ,
+|                |                |                |--(nmod)--> sections
+|                |                |                                 |--(case)--> on
+|                |                |                                 |--(acl)--> linking
+|                |                |                                                  |--(dobj)--> sicily
+|                |                |                                                  |--(nmod)--> R984[egypt]
+|                |                |                                                                   |--(case)--> R984[to]
+|                |                |--(punct)--> ,
+|                |--(xcomp)--> unclear
+|--(punct)--> ,
+|--(punct)--> "
+|--(nsubj)--> statement
+|                |--(det)--> a
+|--(punct)--> ,
+|--(advcl)--> said
+|                |--(mark)--> while
+|                |--(nsubj)--> spokesman
+|                |                |--(det)--> a
+|                |--(ccomp)--> unlikely
+|                                 |--(nsubj)--> it
+|                                 |--(cop)--> was
+|                                 |--(xcomp)--> attack
+|                                                  |--(mark)--> to
+|                                                  |--(aux)--> have
+|                                                  |--(cop)--> been
+|                                                  |--(det)--> an
+|--(punct)--> .
+
+	* entity-paths for event['cut']30_1ecb.xmlsent:7795
+
+sentence #:egypt 's state news agency mena reported that the cuts happened off the coast of sicily at 10:00 am ( 0800 gmt ) on friday , with indian-registered reliance globalcom directing a submarine cable repair company to head to the region to fix the cables . 
+	[events]:[['cuts']]
+	[entities]:[['cables'], ['to', 'the', 'region'], ['on', 'friday']]
+reported
+|--(nsubj)--> mena
+|                |--(nmod:p)--> egypt
+|                |                |--(case)--> 's
+|                |--(compou)--> state
+|                |--(compou)--> news
+|                |--(compou)--> agency
+|--(ccomp)--> happened
+|                |--(mark)--> that
+|                |--(nsubj)--> *R953[cuts]
+|                |                |--(det)--> the
+|                |--(compou)--> off
+|                |--(dobj)--> coast
+|                |                |--(det)--> the
+|                |                |--(nmod)--> sicily
+|                |                                 |--(case)--> of
+|                |--(nmod)--> 10:00
+|                                 |--(case)--> at
+|                                 |--(dep)--> am
+|                                 |--(punct)--> (
+|                                 |--(dep)--> gmt
+|                                 |                |--(nummod)--> 0800
+|                                 |--(punct)--> )
+|                                 |--(nmod)--> R968[friday]
+|                                 |                |--(case)--> R968[on]
+|                                 |--(punct)--> ,
+|                                 |--(nmod)--> globalcom
+|                                 |                |--(case)--> with
+|                                 |                |--(amod)--> indian-registered
+|                                 |                |--(compou)--> reliance
+|                                 |--(acl)--> directing
+|                                                  |--(dobj)--> company
+|                                                  |                |--(det)--> a
+|                                                  |                |--(compou)--> submarine
+|                                                  |                |--(compou)--> cable
+|                                                  |                |--(compou)--> repair
+|                                                  |--(advcl)--> head
+|                                                                   |--(mark)--> to
+|                                                                   |--(nmod)--> R952[region]
+|                                                                                    |--(case)--> R952[to]
+|                                                                                    |--(det)--> R952[the]
+|                                                                                    |--(acl)--> fix
+|                                                                                                     |--(mark)--> to
+|                                                                                                     |--(dobj)--> R951[cables]
+|                                                                                                                      |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['cuts']30_1ecb.xmlsent:7800

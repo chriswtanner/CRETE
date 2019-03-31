@@ -1,0 +1,70 @@
+
+-----------------------------------------
+docid:24_3ecbplus.xml
+-----------------------------------------
+
+sentence #:thieves in $2 . 6 million smash - and - grab raid on paris jewelry store 
+	[events]:[['raid']]
+	[entities]:[['paris', 'jewelry', 'store'], ['thieves']]
+R669[thieves]
+|--(dep)--> grab
+                 |--(dep)--> $2
+                 |                |--(dep)--> in
+                 |                |--(dep)--> $2
+                 |                |--(punct)--> .
+                 |--(nsubj)--> smash
+                 |                |--(nummod)--> 6
+                 |                |--(nummod)--> million
+                 |                |--(punct)--> -
+                 |                |--(advmod)--> and
+                 |                |--(punct)--> -
+                 |--(dobj)--> *R684[raid]
+                 |--(nmod)--> R671[store]
+                                  |--(case)--> on
+                                  |--(compou)--> R671[paris]
+                                  |--(compou)--> R671[jewelry]
+
+	* entity-paths for event['raid']24_3ecbplus.xmlsent:4844
+
+sentence #:a smash - and - grab on a high end paris store saw four robbers make off with jewelry and watches valued at over $2 . 6 million early monday . 
+	[events]:[['make', 'off'], ['grab'], ['smash']]
+	[entities]:[['jewelry'], ['watches'], ['robbers'], ['early', 'monday'], ['over', '$2', '.', '6', 'million'], ['a', 'high', 'end', 'paris', 'store']]
+*R678[grab]
+|--(nsubj)--> *R673[smash]
+|                |--(det)--> a
+|                |--(punct)--> -
+|                |--(advmod)--> and
+|                |--(punct)--> -
+|--(nmod)--> R671[end]
+|                |--(case)--> on
+|                |--(det)--> R671[a]
+|                |--(amod)--> R671[high]
+|                |--(dep)--> R671[paris]
+|                                 |--(acl:re)--> saw
+|                                 |                |--(nsubj)--> R671[store]
+|                                 |                |--(ccomp)--> *R675[make]
+|                                 |                                 |--(nsubj)--> R669[robbers]
+|                                 |                                 |                |--(nummod)--> four
+|                                 |                                 |--(compou)--> *R675[off]
+|                                 |                                 |--(nmod)--> R679[jewelry]
+|                                 |                                 |                |--(case)--> with
+|                                 |                                 |--(cc)--> and
+|                                 |                                 |--(conj)--> R680[watches]
+|                                 |                                                  |--(dep)--> valued
+|                                 |                                                                   |--(nmod)--> R702[$2]
+|                                 |                                                                                    |--(case)--> at
+|                                 |                                                                                    |--(advmod)--> R702[over]
+|                                 |                                                                                    |--(nummod)--> R702[$2]
+|                                 |--(punct)--> R702[.]
+|                                 |--(dep)--> R702[million]
+|                                                  |--(compou)--> R702[6]
+|                                                  |--(nmod:t)--> R672[monday]
+|                                                                   |--(amod)--> R672[early]
+|--(punct)--> .
+
+	* entity-paths for event['make', 'off']24_3ecbplus.xmlsent:4845
+
+	* entity-paths for event['grab']24_3ecbplus.xmlsent:4845
+	['grab --(nmod)--> end']
+
+	* entity-paths for event['smash']24_3ecbplus.xmlsent:4845

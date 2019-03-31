@@ -1,0 +1,133 @@
+
+-----------------------------------------
+docid:1_9ecbplus.xml
+-----------------------------------------
+
+sentence #:lohan had checked into morningside recovery center thursday morning , but then left because " she was not happy with the place , " her father said . 
+	[events]:[['left'], ['checked', 'into'], ['happy'], ['said']]
+	[entities]:[['her'], ['father'], ['thursday', 'morning'], ['morningside', 'recovery', 'center'], ['the', 'place'], ['lohan'], ['she']]
+*R158[said]
+|--(ccomp)--> *R9[checked]
+|                |--(nsubj)--> R15[lohan]
+|                |--(aux)--> had
+|                |--(nmod)--> R58[morning]
+|                |                |--(case)--> *R9[into]
+|                |                |--(compou)--> R10[morningside]
+|                |                |--(compou)--> R10[recovery]
+|                |                |--(compou)--> R10[center]
+|                |                |--(compou)--> R58[thursday]
+|                |--(punct)--> ,
+|                |--(cc)--> but
+|                |--(conj)--> *R57[left]
+|                                 |--(advmod)--> then
+|                                 |--(dobj)--> because
+|                                                  |--(punct)--> "
+|                                                  |--(acl:re)--> *R159[happy]
+|                                                                   |--(nsubj)--> R15[she]
+|                                                                   |--(cop)--> was
+|                                                                   |--(neg)--> not
+|                                                                   |--(nmod)--> R10[place]
+|                                                                                    |--(case)--> with
+|                                                                                    |--(det)--> R10[the]
+|--(punct)--> ,
+|--(punct)--> "
+|--(nsubj)--> R160[father]
+|                |--(nmod:p)--> R15[her]
+|--(punct)--> .
+
+	* entity-paths for event['left']1_9ecbplus.xmlsent:312
+	['left --(dobj)--> because', 'because --(acl:relcl)--> happy', 'happy --(nsubj)--> she']
+	['left --(dobj)--> because', 'because --(acl:relcl)--> happy', 'happy --(nmod)--> place']
+
+	* entity-paths for event['checked', 'into']1_9ecbplus.xmlsent:312
+
+	* entity-paths for event['happy']1_9ecbplus.xmlsent:312
+	['happy --(nsubj)--> she']
+	['happy --(nmod)--> place']
+
+	* entity-paths for event['said']1_9ecbplus.xmlsent:312
+	['said --(ccomp)--> checked', 'checked --(nsubj)--> Lohan']
+	['said --(ccomp)--> checked', 'checked --(nmod)--> morning']
+	['said --(ccomp)--> checked', 'checked --(conj)--> left', 'left --(dobj)--> because', 'because --(acl:relcl)--> happy', 'happy --(nsubj)--> she']
+	['said --(ccomp)--> checked', 'checked --(conj)--> left', 'left --(dobj)--> because', 'because --(acl:relcl)--> happy', 'happy --(nmod)--> place']
+	['said --(nsubj)--> father']
+
+sentence #:after she abruptly left a rehab facility in newport beach on thursday , lindsay lohan has checked into the betty ford center in rancho mirage . 
+	[events]:[['checked', 'into'], ['left']]
+	[entities]:[['rehab', 'facility', 'in', 'newport', 'beach'], ['lindsay', 'lohan'], ['betty', 'ford', 'center', 'in', 'rancho', 'mirage'], ['she'], ['on', 'thursday']]
+*R8[checked]
+|--(advcl)--> *R57[left]
+|                |--(mark)--> after
+|                |--(nsubj)--> R15[she]
+|                |--(advmod)--> abruptly
+|                |--(dobj)--> R10[facility]
+|                |                |--(det)--> a
+|                |                |--(compou)--> R10[rehab]
+|                |--(nmod)--> R10[beach]
+|                |                |--(case)--> R10[in]
+|                |                |--(compou)--> R10[newport]
+|                |--(nmod)--> R58[thursday]
+|                                 |--(case)--> R58[on]
+|--(punct)--> ,
+|--(nsubj)--> R15[lohan]
+|                |--(compou)--> R15[lindsay]
+|--(aux)--> has
+|--(nmod)--> R16[center]
+|                |--(case)--> *R8[into]
+|                |--(det)--> the
+|                |--(compou)--> R16[betty]
+|                |--(compou)--> R16[ford]
+|                |--(nmod)--> R16[mirage]
+|                                 |--(case)--> R16[in]
+|                                 |--(compou)--> R16[rancho]
+|--(punct)--> .
+
+	* entity-paths for event['checked', 'into']1_9ecbplus.xmlsent:309
+
+	* entity-paths for event['left']1_9ecbplus.xmlsent:309
+	['left --(nsubj)--> she']
+	['left --(dobj)--> facility']
+	['left --(nmod)--> Beach']
+	['left --(nmod)--> Thursday']
+
+sentence #:tmz also reports that lohan has re - hired attorney shawn holley . 
+	[events]:[['reports'], ['re', '-', 'hired']]
+	[entities]:[['shawn', 'holley'], ['lohan'], ['attorney'], ['tmz']]
+*R60[reports]
+|--(nsubj)--> R59[tmz]
+|--(advmod)--> also
+|--(ccomp)--> has
+                 |--(mark)--> that
+                 |--(nsubj)--> R15[lohan]
+                 |--(dobj)--> *R29[hired]
+                                  |--(dep)--> *R29[re]
+                                  |--(punct)--> *R29[-]
+                                  |--(dobj)--> R30[holley]
+                                  |                |--(compou)--> R30[attorney]
+                                  |                |--(compou)--> R30[shawn]
+                                  |--(punct)--> .
+
+	* entity-paths for event['reports']1_9ecbplus.xmlsent:311
+	['reports --(nsubj)--> TMZ']
+	['reports --(ccomp)--> has', 'has --(nsubj)--> Lohan']
+	['reports --(ccomp)--> has', 'has --(dobj)--> hired', 'hired --(dobj)--> Holley']
+
+	* entity-paths for event['re', '-', 'hired']1_9ecbplus.xmlsent:311
+	['hired --(dobj)--> Holley']
+
+sentence #:lohan checks into betty ford , rehires attorney 
+	[events]:[['checks', 'into'], ['rehires']]
+	[entities]:[['attorney'], ['betty', 'ford'], ['lohan']]
+*R8[checks]
+|--(compou)--> R15[lohan]
+|--(nmod)--> R16[ford]
+                 |--(case)--> *R8[into]
+                 |--(compou)--> R16[betty]
+                 |--(punct)--> ,
+                 |--(dep)--> *R29[rehires]
+                                  |--(dobj)--> R30[attorney]
+
+	* entity-paths for event['checks', 'into']1_9ecbplus.xmlsent:308
+
+	* entity-paths for event['rehires']1_9ecbplus.xmlsent:308
+	['Rehires --(dobj)--> Attorney']

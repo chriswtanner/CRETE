@@ -1,0 +1,37 @@
+
+-----------------------------------------
+docid:40_9ecb.xml
+-----------------------------------------
+
+sentence #:for me the new , unibody macbook pro 17-inch ( pn mb604ll/a ) is probably the most exciting thing announced here at macworld expo . 
+	[events]:[['macworld', 'expo'], ['announced']]
+	[entities]:[['thing'], ['macbook', 'pro']]
+R1409[thing]
+|--(nmod)--> me
+|                |--(case)--> for
+|--(nsubj)--> R1409[macbook]
+|                |--(det)--> the
+|                |--(amod)--> new
+|                |--(punct)--> ,
+|                |--(amod)--> unibody
+|                |--(dep)--> R1409[pro]
+|                |--(amod)--> 17-inch
+|                |--(appos)--> mb604ll/a
+|                                 |--(punct)--> (
+|                                 |--(amod)--> pn
+|                                 |--(punct)--> )
+|--(cop)--> is
+|--(advmod)--> probably
+|--(det)--> the
+|--(amod)--> exciting
+|                |--(advmod)--> most
+|--(acl)--> *R1404[announced]
+|                |--(advmod)--> here
+|                |--(nmod)--> *R1406[expo]
+|                                 |--(case)--> at
+|                                 |--(compou)--> *R1406[macworld]
+|--(punct)--> .
+
+	* entity-paths for event['macworld', 'expo']40_9ecb.xmlsent:12024
+
+	* entity-paths for event['announced']40_9ecb.xmlsent:12024

@@ -1,0 +1,33 @@
+
+-----------------------------------------
+docid:22_1ecb.xml
+-----------------------------------------
+
+sentence #:sixty-year-old sharron diane crawford smith is now accused of murdering two women at a staunton ice cream store in 1967 . 
+	[events]:[['murdering']]
+	[entities]:[['women'], ['in', '1967'], ['a', 'staunton', 'ice', 'cream', 'store'], ['diane', 'crawford', 'smith']]
+accused
+|--(nsubjp)--> R618[smith]
+|                |--(amod)--> sixty-year-old
+|                |--(compou)--> sharron
+|                |--(compou)--> R618[diane]
+|                |--(compou)--> R618[crawford]
+|--(auxpas)--> is
+|--(advmod)--> now
+|--(advcl)--> *R619[murdering]
+|                |--(mark)--> of
+|                |--(dobj)--> R620[women]
+|                |                |--(nummod)--> two
+|                |--(nmod)--> R621[store]
+|                                 |--(case)--> at
+|                                 |--(det)--> R621[a]
+|                                 |--(compou)--> R621[staunton]
+|                                 |--(compou)--> R621[ice]
+|                                 |--(compou)--> R621[cream]
+|                                 |--(nmod)--> R622[1967]
+|                                                  |--(case)--> R622[in]
+|--(punct)--> .
+
+	* entity-paths for event['murdering']22_1ecb.xmlsent:4451
+	['murdering --(dobj)--> women']
+	['murdering --(nmod)--> store']

@@ -1,0 +1,40 @@
+
+-----------------------------------------
+docid:19_4ecb.xml
+-----------------------------------------
+
+sentence #:a deadly police shooting dec. 6 in athens of alexandros grigoropoulos , 15 , was killed touched off the first riots . 
+	[events]:[['shooting'], ['riots'], ['touched', 'off'], ['killed']]
+	[entities]:[['alexandros', 'grigoropoulos'], ['dec.', '6'], ['in', 'athens']]
+*R407[touched]
+|--(nsubj)--> *R401[shooting]
+|                |--(det)--> a
+|                |--(amod)--> deadly
+|                |--(compou)--> police
+|                |--(acl:re)--> *R403[killed]
+|                                 |--(nsubjp)--> R406[dec.]
+|                                 |                |--(nummod)--> R406[6]
+|                                 |                |--(nmod)--> R405[athens]
+|                                 |                                 |--(case)--> R405[in]
+|                                 |                                 |--(nmod)--> R402[grigoropoulos]
+|                                 |                                                  |--(case)--> of
+|                                 |                                                  |--(compou)--> R402[alexandros]
+|                                 |                                                  |--(punct)--> ,
+|                                 |                                                  |--(amod)--> 15
+|                                 |                                                  |--(punct)--> ,
+|                                 |--(auxpas)--> was
+|--(compou)--> *R407[off]
+|--(dobj)--> *R433[riots]
+|                |--(det)--> the
+|                |--(amod)--> first
+|--(punct)--> .
+
+	* entity-paths for event['shooting']19_4ecb.xmlsent:3017
+	['shooting --(acl:relcl)--> killed', 'killed --(nsubjpass)--> Dec.']
+
+	* entity-paths for event['riots']19_4ecb.xmlsent:3017
+
+	* entity-paths for event['touched', 'off']19_4ecb.xmlsent:3017
+
+	* entity-paths for event['killed']19_4ecb.xmlsent:3017
+	['killed --(nsubjpass)--> Dec.']

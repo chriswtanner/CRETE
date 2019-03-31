@@ -1,0 +1,42 @@
+
+-----------------------------------------
+docid:3_5ecb.xml
+-----------------------------------------
+
+sentence #:a judge in fulton county , ga . , sentenced brian nichols saturday to multiple life prison sentences for his deadly 2005 rampage at fulton courthouse . 
+	[events]:[['rampage'], ['sentenced']]
+	[entities]:[['in', 'fulton', 'county', ',', 'ga'], ['sentences'], ['brian', 'nichols'], ['saturday'], ['judge']]
+*R906[sentenced]
+|--(nsubj)--> R940[judge]
+|                |--(det)--> a
+|                |--(nmod)--> R941[county]
+|                                 |--(case)--> R941[in]
+|                                 |--(compou)--> R941[fulton]
+|                                 |--(punct)--> R941[,]
+|                                 |--(appos)--> R941[ga]
+|                                 |                |--(punct)--> .
+|                                 |--(punct)--> ,
+|--(nmod:t)--> R908[saturday]
+|                |--(compou)--> R903[brian]
+|                |--(compou)--> R903[nichols]
+|--(nmod)--> R909[sentences]
+|                |--(case)--> to
+|                |--(amod)--> multiple
+|                |--(compou)--> life
+|                |--(compou)--> prison
+|--(nmod)--> *R931[rampage]
+|                |--(case)--> for
+|                |--(nmod:p)--> his
+|                |--(amod)--> deadly
+|                |                |--(nmod:t)--> 2005
+|                |--(nmod)--> courthouse
+|                                 |--(case)--> at
+|                                 |--(compou)--> fulton
+|--(punct)--> .
+
+	* entity-paths for event['rampage']3_5ecb.xmlsent:7550
+
+	* entity-paths for event['sentenced']3_5ecb.xmlsent:7550
+	['sentenced --(nsubj)--> judge']
+	['sentenced --(nmod:tmod)--> Saturday']
+	['sentenced --(nmod)--> sentences']

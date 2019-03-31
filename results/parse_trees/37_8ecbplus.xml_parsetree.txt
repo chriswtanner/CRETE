@@ -1,0 +1,70 @@
+
+-----------------------------------------
+docid:37_8ecbplus.xml
+-----------------------------------------
+
+sentence #:dozens have been reported injured . 
+	[events]:[['injured'], ['reported']]
+	[entities]:[['dozens']]
+*R1295[reported]
+|--(nsubjp)--> R1235[dozens]
+|--(aux)--> have
+|--(auxpas)--> been
+|--(dep)--> *R1234[injured]
+|--(punct)--> .
+
+	* entity-paths for event['injured']37_8ecbplus.xmlsent:10693
+
+	* entity-paths for event['reported']37_8ecbplus.xmlsent:10693
+	['reported --(nsubjpass)--> Dozens']
+
+sentence #:a powerful 6 . 1 magnitude earthquake hit indonesia's northwestern aceh province , on the island of sumatra . 
+	[events]:[['hit'], ['6', '.', '1', 'magnitude', 'earthquake']]
+	[entities]:[["indonesia's", 'northwestern', 'aceh', 'province', ',', 'on', 'the', 'island', 'of', 'sumatra']]
+*R1236[hit]
+|--(nsubj)--> powerful
+|                |--(det)--> a
+|                |--(acl:re)--> *R1233[6]
+|                |                |--(punct)--> *R1233[.]
+|                |--(dep)--> *R1233[earthquake]
+|                                 |--(nummod)--> *R1233[1]
+|                                 |--(compou)--> *R1233[magnitude]
+|--(dobj)--> R1237[province]
+|                |--(nmod:p)--> R1237[indonesia's]
+|                |                |--(case)--> R1237[indonesia's]
+|                |--(amod)--> R1237[northwestern]
+|                |--(compou)--> R1237[aceh]
+|                |--(punct)--> R1237[,]
+|                |--(nmod)--> R1237[island]
+|                                 |--(case)--> R1237[on]
+|                                 |--(det)--> R1237[the]
+|                                 |--(nmod)--> R1237[sumatra]
+|                                                  |--(case)--> R1237[of]
+|--(punct)--> .
+
+	* entity-paths for event['hit']37_8ecbplus.xmlsent:10692
+	['hit --(dobj)--> province']
+
+	* entity-paths for event['6', '.', '1', 'magnitude', 'earthquake']37_8ecbplus.xmlsent:10692
+
+sentence #:powerful 6 . 1 magnitude earthquake injures dozens in indonesia's aceh province 
+	[events]:[['injures'], ['6', '.', '1', 'magnitude', 'earthquake']]
+	[entities]:[['dozens'], ['in', "indonesia's", 'aceh', 'province']]
+*R1234[injures]
+|--(nsubj)--> powerful
+|                |--(acl:re)--> *R1233[6]
+|                |                |--(punct)--> *R1233[.]
+|                |--(dep)--> *R1233[earthquake]
+|                                 |--(nummod)--> *R1233[1]
+|                                 |--(compou)--> *R1233[magnitude]
+|--(dobj)--> R1235[dozens]
+                 |--(nmod)--> R1237[province]
+                                  |--(case)--> R1237[in]
+                                  |--(nmod:p)--> R1237[indonesia's]
+                                  |                |--(case)--> R1237[indonesia's]
+                                  |--(compou)--> R1237[aceh]
+
+	* entity-paths for event['injures']37_8ecbplus.xmlsent:10690
+	['injures --(dobj)--> dozens']
+
+	* entity-paths for event['6', '.', '1', 'magnitude', 'earthquake']37_8ecbplus.xmlsent:10690

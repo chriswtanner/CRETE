@@ -1,0 +1,41 @@
+
+-----------------------------------------
+docid:5_2ecb.xml
+-----------------------------------------
+
+sentence #:maurice cheeks was fired saturday as coach of the philadelphia 76ers , who are slumping at 9-14 a year after making the playoffs . 
+	[events]:[['fired'], ['slumping']]
+	[entities]:[['9-14'], ['the', 'philadelphia', '76ers'], ['saturday'], ['maurice', 'cheeks']]
+*R1672[fired]
+|--(nsubjp)--> R1674[cheeks]
+|                |--(compou)--> R1674[maurice]
+|--(auxpas)--> was
+|--(nmod:t)--> R1675[saturday]
+|--(nmod)--> coach
+|                |--(case)--> as
+|                |--(nmod)--> R1673[76ers]
+|                |                |--(case)--> of
+|                |                |--(det)--> R1673[the]
+|                |                |--(compou)--> R1673[philadelphia]
+|                |--(punct)--> ,
+|                |--(acl:re)--> *R1676[slumping]
+|                                 |--(nsubj)--> who
+|                                 |--(aux)--> are
+|                                 |--(nmod)--> R1678[9-14]
+|                                 |                |--(case)--> at
+|                                 |--(nmod:t)--> year
+|                                 |                |--(det)--> a
+|                                 |--(advcl)--> making
+|                                                  |--(mark)--> after
+|                                                  |--(dobj)--> playoffs
+|                                                                   |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['fired']5_2ecb.xmlsent:14054
+	['fired --(nsubjpass)--> Cheeks']
+	['fired --(nmod:tmod)--> Saturday']
+	['fired --(nmod)--> coach', 'coach --(nmod)--> 76ers']
+	['fired --(nmod)--> coach', 'coach --(acl:relcl)--> slumping', 'slumping --(nmod)--> 9-14']
+
+	* entity-paths for event['slumping']5_2ecb.xmlsent:14054
+	['slumping --(nmod)--> 9-14']

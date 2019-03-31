@@ -1,0 +1,154 @@
+
+-----------------------------------------
+docid:1_21ecbplus.xml
+-----------------------------------------
+
+sentence #:white said he was "completely blindsided" by lohan's placement at morningside because heller had previously agreed to send the actress to a different facility that had been vetted . 
+	[events]:[['placement'], ['vetted'], ['said'], ['blindsided"'], ['agreed'], ['send']]
+	[entities]:[["lohan's"], ['white'], ['actress'], ['heller'], ['morningside'], ['previously'], ['he'], ['facility']]
+*R113[said]
+|--(nsubj)--> R90[white]
+|--(ccomp)--> "completely
+|                |--(nsubj)--> R90[he]
+|                |--(cop)--> was
+|                |--(punct)--> "completely
+|                |--(ccomp)--> *R114[blindsided"]
+|                |--(punct)--> *R114[blindsided"]
+|                |--(nmod)--> *R9[placement]
+|                |                |--(case)--> by
+|                |                |--(nmod:p)--> R15[lohan's]
+|                |                |                |--(case)--> R15[lohan's]
+|                |                |--(nmod)--> R10[morningside]
+|                |                                 |--(case)--> at
+|                |--(advcl)--> *R115[agreed]
+|                                 |--(mark)--> because
+|                                 |--(nsubj)--> R37[heller]
+|                                 |--(aux)--> had
+|                                 |--(advmod)--> R116[previously]
+|                                 |--(xcomp)--> *R117[send]
+|                                                  |--(mark)--> to
+|                                                  |--(dobj)--> R15[actress]
+|                                                  |                |--(det)--> the
+|                                                  |--(nmod)--> R118[facility]
+|                                                                   |--(case)--> to
+|                                                                   |--(det)--> a
+|                                                                   |--(amod)--> different
+|                                                                   |--(acl:re)--> *R119[vetted]
+|                                                                                    |--(nsubjp)--> that
+|                                                                                    |--(aux)--> had
+|                                                                                    |--(auxpas)--> been
+|--(punct)--> .
+
+	* entity-paths for event['placement']1_21ecbplus.xmlsent:185
+	['placement --(nmod:poss)--> Lohan']
+	['placement --(nmod)--> Morningside']
+
+	* entity-paths for event['vetted']1_21ecbplus.xmlsent:185
+
+	* entity-paths for event['said']1_21ecbplus.xmlsent:185
+	['said --(nsubj)--> White']
+	['said --(ccomp)--> completely', 'completely --(nsubj)--> he']
+	['said --(ccomp)--> completely', 'completely --(punct)--> "', 'completely --(nsubj)--> he']
+	['said --(ccomp)--> completely', 'completely --(punct)--> "', 'completely --(nmod)--> placement', 'placement --(nmod:poss)--> Lohan']
+	['said --(ccomp)--> completely', 'completely --(punct)--> "', 'completely --(nmod)--> placement', 'placement --(nmod)--> Morningside']
+	['said --(ccomp)--> completely', 'completely --(punct)--> "', 'completely --(advcl)--> agreed', 'agreed --(nsubj)--> Heller']
+	['said --(ccomp)--> completely', 'completely --(punct)--> "', 'completely --(advcl)--> agreed', 'agreed --(advmod)--> previously']
+	['said --(ccomp)--> completely', 'completely --(punct)--> "', 'completely --(advcl)--> agreed', 'agreed --(xcomp)--> send', 'send --(dobj)--> actress']
+	['said --(ccomp)--> completely', 'completely --(punct)--> "', 'completely --(advcl)--> agreed', 'agreed --(xcomp)--> send', 'send --(nmod)--> facility']
+	['said --(ccomp)--> completely', 'completely --(nmod)--> placement', 'placement --(nmod:poss)--> Lohan']
+	['said --(ccomp)--> completely', 'completely --(nmod)--> placement', 'placement --(nmod)--> Morningside']
+	['said --(ccomp)--> completely', 'completely --(advcl)--> agreed', 'agreed --(nsubj)--> Heller']
+	['said --(ccomp)--> completely', 'completely --(advcl)--> agreed', 'agreed --(advmod)--> previously']
+	['said --(ccomp)--> completely', 'completely --(advcl)--> agreed', 'agreed --(xcomp)--> send', 'send --(dobj)--> actress']
+	['said --(ccomp)--> completely', 'completely --(advcl)--> agreed', 'agreed --(xcomp)--> send', 'send --(nmod)--> facility']
+
+	* entity-paths for event['blindsided"']1_21ecbplus.xmlsent:185
+
+	* entity-paths for event['agreed']1_21ecbplus.xmlsent:185
+	['agreed --(nsubj)--> Heller']
+	['agreed --(advmod)--> previously']
+	['agreed --(xcomp)--> send', 'send --(dobj)--> actress']
+	['agreed --(xcomp)--> send', 'send --(nmod)--> facility']
+
+	* entity-paths for event['send']1_21ecbplus.xmlsent:185
+	['send --(dobj)--> actress']
+	['send --(nmod)--> facility']
+
+sentence #:lindsay lohan has checked into a rehab facility to comply with her sentence in a misdemeanor driving case , but her arrival there was not without drama . 
+	[events]:[['case'], ['driving'], ['arrival'], ['checked', 'into'], ['comply'], ['sentence'], ['drama']]
+	[entities]:[['her'], ['lindsay', 'lohan'], ['there'], ['her'], ['rehab', 'facility']]
+*R9[checked]
+|--(nsubj)--> R15[lohan]
+|                |--(compou)--> R15[lindsay]
+|--(aux)--> has
+|--(nmod)--> R10[facility]
+|                |--(case)--> *R9[into]
+|                |--(det)--> a
+|                |--(compou)--> R10[rehab]
+|--(xcomp)--> *R120[comply]
+|                |--(mark)--> to
+|                |--(nmod)--> *R42[sentence]
+|                                 |--(case)--> with
+|                                 |--(nmod:p)--> R15[her]
+|                                 |--(nmod)--> *R43[case]
+|                                                  |--(case)--> in
+|                                                  |--(det)--> a
+|                                                  |--(compou)--> misdemeanor
+|                                                  |--(amod)--> *R21[driving]
+|--(punct)--> ,
+|--(cc)--> but
+|--(conj)--> *R121[arrival]
+|                |--(nmod:p)--> R15[her]
+|                |--(acl:re)--> was
+|                                 |--(expl)--> R10[there]
+|                                 |--(neg)--> not
+|                                 |--(nmod)--> *R122[drama]
+|                                                  |--(case)--> without
+|--(punct)--> .
+
+	* entity-paths for event['case']1_21ecbplus.xmlsent:181
+
+	* entity-paths for event['driving']1_21ecbplus.xmlsent:181
+
+	* entity-paths for event['arrival']1_21ecbplus.xmlsent:181
+	['arrival --(nmod:poss)--> her']
+	['arrival --(acl:relcl)--> was', 'was --(expl)--> there']
+
+	* entity-paths for event['checked', 'into']1_21ecbplus.xmlsent:181
+
+	* entity-paths for event['comply']1_21ecbplus.xmlsent:181
+	['comply --(nmod)--> sentence', 'sentence --(nmod:poss)--> her']
+
+	* entity-paths for event['sentence']1_21ecbplus.xmlsent:181
+	['sentence --(nmod:poss)--> her']
+
+	* entity-paths for event['drama']1_21ecbplus.xmlsent:181
+
+sentence #:lawyer : lindsay lohan checks into rehab facility 
+	[events]:[['checks', 'into']]
+	[entities]:[['lindsay', 'lohan'], ['rehab', 'facility'], ['lawyer']]
+R37[lawyer]
+|--(punct)--> :
+|--(dep)--> *R9[checks]
+                 |--(compou)--> R15[lindsay]
+                 |--(compou)--> R15[lohan]
+                 |--(nmod)--> R10[facility]
+                                  |--(case)--> *R9[into]
+                                  |--(compou)--> R10[rehab]
+
+	* entity-paths for event['checks', 'into']1_21ecbplus.xmlsent:179
+
+sentence #:she's in rehab right now . 
+	[events]:[['rehab']]
+	[entities]:[["she's"]]
+*R19[rehab]
+|--(nsubj)--> R15[she's]
+|--(cop)--> R15[she's]
+|--(case)--> in
+|--(advmod)--> now
+|                |--(advmod)--> right
+|--(punct)--> .
+
+	* entity-paths for event['rehab']1_21ecbplus.xmlsent:183
+	['rehab --(nsubj)--> She']
+	["rehab --(cop)--> 's"]

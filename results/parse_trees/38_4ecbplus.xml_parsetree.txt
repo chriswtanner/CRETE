@@ -1,0 +1,53 @@
+
+-----------------------------------------
+docid:38_4ecbplus.xml
+-----------------------------------------
+
+sentence #:a 4 . 4 quake is on the large size for the geysers . 
+	[events]:[['4', '.', '4', 'quake']]
+	[entities]:[['geysers']]
+a
+|--(dep)--> size
+|                |--(nsubj)--> *R1296[4]
+|                |                |--(punct)--> *R1296[.]
+|                |--(advmod)--> *R1296[quake]
+|                |                |--(advmod)--> *R1296[4]
+|                |--(cop)--> is
+|                |--(case)--> on
+|                |--(det)--> the
+|                |--(amod)--> large
+|                |--(nmod)--> R1316[geysers]
+|                                 |--(case)--> for
+|                                 |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['4', '.', '4', 'quake']38_4ecbplus.xmlsent:10794
+
+sentence #:good sized quake at the california geysers 
+	[events]:[['quake']]
+	[entities]:[['at', 'the', 'california', 'geysers']]
+*R1296[quake]
+|--(amod)--> good
+|--(amod)--> sized
+|--(nmod)--> R1316[geysers]
+                 |--(case)--> R1316[at]
+                 |--(det)--> R1316[the]
+                 |--(compou)--> R1316[california]
+
+	* entity-paths for event['quake']38_4ecbplus.xmlsent:10788
+	['quake --(nmod)--> Geysers']
+
+sentence #:this one is pretty rare for the geysers . 
+	[events]:[['this', 'one']]
+	[entities]:[['geysers']]
+rare
+|--(nsubj)--> *R1296[one]
+|                |--(det)--> *R1296[this]
+|--(cop)--> is
+|--(advmod)--> pretty
+|--(nmod)--> R1316[geysers]
+|                |--(case)--> for
+|                |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['this', 'one']38_4ecbplus.xmlsent:10792

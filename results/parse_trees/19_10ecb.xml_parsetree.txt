@@ -1,0 +1,45 @@
+
+-----------------------------------------
+docid:19_10ecb.xml
+-----------------------------------------
+
+sentence #:the teenager was shot and killed by police in athens eight days ago , triggering violent protests which have spread across the country . 
+	[events]:[['triggering'], ['shot'], ['protests'], ['killed']]
+	[entities]:[['eight', 'days', 'ago'], ['the', 'country'], ['in', 'athens'], ['police'], ['teenager']]
+*R401[shot]
+|--(nsubjp)--> R402[teenager]
+|                |--(det)--> the
+|--(auxpas)--> was
+|--(cc)--> and
+|--(conj)--> *R403[killed]
+|--(nmod)--> R404[police]
+|                |--(case)--> by
+|                |--(nmod)--> R405[athens]
+|                |                |--(case)--> R405[in]
+|                |--(advmod)--> R406[ago]
+|                                 |--(nmod:n)--> R406[days]
+|                                                  |--(nummod)--> R406[eight]
+|--(punct)--> ,
+|--(xcomp)--> *R407[triggering]
+|                |--(dobj)--> *R408[protests]
+|                                 |--(amod)--> violent
+|                                 |--(acl:re)--> spread
+|                                                  |--(nsubj)--> which
+|                                                  |--(aux)--> have
+|                                                  |--(nmod)--> R409[country]
+|                                                                   |--(case)--> across
+|                                                                   |--(det)--> R409[the]
+|--(punct)--> .
+
+	* entity-paths for event['triggering']19_10ecb.xmlsent:2768
+	['triggering --(dobj)--> protests', 'protests --(acl:relcl)--> spread', 'spread --(nmod)--> country']
+
+	* entity-paths for event['shot']19_10ecb.xmlsent:2768
+	['shot --(nsubjpass)--> teenager']
+	['shot --(nmod)--> police']
+	['shot --(xcomp)--> triggering', 'triggering --(dobj)--> protests', 'protests --(acl:relcl)--> spread', 'spread --(nmod)--> country']
+
+	* entity-paths for event['protests']19_10ecb.xmlsent:2768
+	['protests --(acl:relcl)--> spread', 'spread --(nmod)--> country']
+
+	* entity-paths for event['killed']19_10ecb.xmlsent:2768

@@ -1,0 +1,34 @@
+
+-----------------------------------------
+docid:9_3ecbplus.xml
+-----------------------------------------
+
+sentence #:biologists call on obama administration to overturn bush rules that cut science out of endangered species legislation 
+	[events]:[['cut', 'out'], ['science'], ['overturn']]
+	[entities]:[['administration'], ['biologists'], ['that'], ['rules'], ['endangered', 'species', 'legislation'], ['bush']]
+R1813[biologists]
+|--(dep)--> call
+                 |--(nmod)--> R1133[administration]
+                 |                |--(case)--> on
+                 |                |--(compou)--> obama
+                 |--(xcomp)--> *R1798[overturn]
+                                  |--(mark)--> to
+                                  |--(dobj)--> R1802[rules]
+                                                   |--(compou)--> R1803[bush]
+                                                   |--(acl:re)--> *R1801[science]
+                                                                    |--(dep)--> R1802[that]
+                                                                    |--(compou)--> *R1820[cut]
+                                                                    |--(dep)--> R1800[legislation]
+                                                                                     |--(case)--> *R1820[out]
+                                                                                     |--(case)--> of
+                                                                                     |--(compou)--> R1800[endangered]
+                                                                                     |--(compou)--> R1800[species]
+
+	* entity-paths for event['cut', 'out']9_3ecbplus.xmlsent:15498
+
+	* entity-paths for event['science']9_3ecbplus.xmlsent:15498
+	['Science --(dep)--> that']
+	['Science --(dep)--> Legislation']
+
+	* entity-paths for event['overturn']9_3ecbplus.xmlsent:15498
+	['Overturn --(dobj)--> Rules']

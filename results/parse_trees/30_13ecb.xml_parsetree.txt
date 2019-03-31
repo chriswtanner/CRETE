@@ -1,0 +1,27 @@
+
+-----------------------------------------
+docid:30_13ecb.xml
+-----------------------------------------
+
+sentence #:the cause - three international underwater cables in the mediterranean sea that were damaged friday . 
+	[events]:[['damaged']]
+	[entities]:[['friday'], ['in', 'the', 'mediterranean', 'sea'], ['cables']]
+cause
+|--(det)--> the
+|--(punct)--> -
+|--(dep)--> R951[cables]
+|                |--(nummod)--> three
+|                |--(amod)--> international
+|                |--(amod)--> underwater
+|                |--(nmod)--> R952[sea]
+|                |                |--(case)--> R952[in]
+|                |                |--(det)--> R952[the]
+|                |                |--(compou)--> R952[mediterranean]
+|                |--(acl:re)--> *R953[damaged]
+|                                 |--(nsubjp)--> that
+|                                 |--(auxpas)--> were
+|                                 |--(nmod:t)--> R968[friday]
+|--(punct)--> .
+
+	* entity-paths for event['damaged']30_13ecb.xmlsent:7768
+	['damaged --(nmod:tmod)--> Friday']

@@ -1,0 +1,22 @@
+
+-----------------------------------------
+docid:4_6ecbplus.xml
+-----------------------------------------
+
+sentence #:esther williams , swimming star , dies at 91 
+	[events]:[['dies'], ['swimming']]
+	[entities]:[['esther', 'williams'], ['star']]
+*R1369[dies]
+|--(nsubj)--> R1370[williams]
+|                |--(compou)--> R1370[esther]
+|                |--(punct)--> ,
+|                |--(appos)--> R1370[star]
+|                |                |--(amod)--> *R1372[swimming]
+|                |--(punct)--> ,
+|--(nmod)--> 91
+                 |--(case)--> at
+
+	* entity-paths for event['dies']4_6ecbplus.xmlsent:11526
+	['dies --(nsubj)--> Williams']
+
+	* entity-paths for event['swimming']4_6ecbplus.xmlsent:11526

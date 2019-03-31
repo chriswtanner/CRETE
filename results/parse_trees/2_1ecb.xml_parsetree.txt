@@ -1,0 +1,35 @@
+
+-----------------------------------------
+docid:2_1ecb.xml
+-----------------------------------------
+
+sentence #:world 's sexiest man ' hugh jackman has been roped in to host the 81st annual academy awards ceremony 
+	[events]:[['host'], ['academy', 'awards', 'ceremony']]
+	[entities]:[['hugh', 'jackman'], ['81st', 'annual']]
+roped
+|--(nsubjp)--> world
+|                |--(case)--> 's
+|                |--(amod)--> sexiest
+|                |--(dep)--> man
+|                |                |--(punct)--> '
+|                |--(dep)--> R462[jackman]
+|                                 |--(compou)--> R462[hugh]
+|--(aux)--> has
+|--(auxpas)--> been
+|--(nmod)--> in
+|--(xcomp)--> *R469[host]
+                 |--(mark)--> to
+                 |--(dobj)--> *R460[ceremony]
+                                  |--(det)--> the
+                                  |--(amod)--> R470[81st]
+                                  |--(amod)--> R470[annual]
+                                  |--(compou)--> *R460[academy]
+                                  |--(compou)--> *R460[awards]
+
+	* entity-paths for event['host']2_1ecb.xmlsent:3471
+	['host --(dobj)--> ceremony', 'ceremony --(amod)--> 81st']
+	['host --(dobj)--> ceremony', 'ceremony --(amod)--> annual']
+
+	* entity-paths for event['academy', 'awards', 'ceremony']2_1ecb.xmlsent:3471
+	['ceremony --(amod)--> 81st']
+	['ceremony --(amod)--> annual']

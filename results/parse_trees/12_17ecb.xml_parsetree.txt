@@ -1,0 +1,45 @@
+
+-----------------------------------------
+docid:12_17ecb.xml
+-----------------------------------------
+
+sentence #:for the fourth time in two months , the indian navy on saturday took the bandits head on foiling a piracy attempt and putting 23 pirates out of business . 
+	[events]:[['attempt'], ['putting', 'out', 'of', 'business'], ['foiling']]
+	[entities]:[['navy'], ['bandits'], ['pirates'], ['saturday']]
+took
+|--(nmod)--> time
+|                |--(case)--> for
+|                |--(det)--> the
+|                |--(amod)--> fourth
+|                |--(nmod)--> months
+|                                 |--(case)--> in
+|                                 |--(nummod)--> two
+|--(punct)--> ,
+|--(nsubj)--> R215[navy]
+|                |--(det)--> the
+|                |--(amod)--> indian
+|                |--(nmod)--> R230[saturday]
+|                                 |--(case)--> on
+|--(ccomp)--> head
+|                |--(nsubj)--> R216[bandits]
+|                |                |--(det)--> the
+|                |--(advcl)--> *R232[foiling]
+|                                 |--(mark)--> on
+|                                 |--(dobj)--> *R235[attempt]
+|                                 |                |--(det)--> a
+|                                 |                |--(compou)--> piracy
+|                                 |--(cc)--> and
+|                                 |--(conj)--> *R214[putting]
+|                                                  |--(advmod)--> R216[pirates]
+|                                                  |                |--(nummod)--> 23
+|                                                  |                |--(case)--> *R214[out]
+|                                                  |--(nmod)--> *R214[business]
+|                                                                   |--(case)--> *R214[of]
+|--(punct)--> .
+
+	* entity-paths for event['attempt']12_17ecb.xmlsent:845
+
+	* entity-paths for event['putting', 'out', 'of', 'business']12_17ecb.xmlsent:845
+
+	* entity-paths for event['foiling']12_17ecb.xmlsent:845
+	['foiling --(conj)--> putting', 'putting --(advmod)--> pirates']

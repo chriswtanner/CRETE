@@ -1,0 +1,53 @@
+
+-----------------------------------------
+docid:25_6ecbplus.xml
+-----------------------------------------
+
+sentence #:the new orleans saints placed pierre thomas on injured reserve wednesday because of an ankle injury . 
+	[events]:[['placed'], ['injury'], ['injured', 'reserve']]
+	[entities]:[['pierre', 'thomas'], ['new', 'orleans', 'saints'], ['ankle'], ['wednesday']]
+*R715[placed]
+|--(nsubj)--> R706[saints]
+|                |--(det)--> the
+|                |--(compou)--> R706[new]
+|                |--(compou)--> R706[orleans]
+|--(dobj)--> R716[thomas]
+|                |--(compou)--> R716[pierre]
+|                |--(nmod)--> *R717[reserve]
+|                                 |--(case)--> on
+|                                 |--(amod)--> *R717[injured]
+|--(nmod:t)--> R714[wednesday]
+|--(nmod)--> *R713[injury]
+|                |--(case)--> because
+|                |--(case)--> of
+|                |--(det)--> an
+|                |--(compou)--> R723[ankle]
+|--(punct)--> .
+
+	* entity-paths for event['placed']25_6ecbplus.xmlsent:5169
+	['placed --(nsubj)--> Saints']
+	['placed --(dobj)--> Thomas']
+	['placed --(nmod:tmod)--> Wednesday']
+	['placed --(nmod)--> injury', 'injury --(compound)--> ankle']
+
+	* entity-paths for event['injury']25_6ecbplus.xmlsent:5169
+	['injury --(compound)--> ankle']
+
+	* entity-paths for event['injured', 'reserve']25_6ecbplus.xmlsent:5169
+
+sentence #:saints rb pierre thomas placed on injured reserve 
+	[events]:[['injured', 'reserve'], ['placed']]
+	[entities]:[['pierre', 'thomas'], ['saints']]
+*R715[placed]
+|--(nsubj)--> R716[thomas]
+|                |--(compou)--> R706[saints]
+|                |--(compou)--> rb
+|                |--(compou)--> R716[pierre]
+|--(nmod)--> *R717[reserve]
+                 |--(case)--> on
+                 |--(amod)--> *R717[injured]
+
+	* entity-paths for event['injured', 'reserve']25_6ecbplus.xmlsent:5168
+
+	* entity-paths for event['placed']25_6ecbplus.xmlsent:5168
+	['placed --(nsubj)--> Thomas']

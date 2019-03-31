@@ -1,0 +1,100 @@
+
+-----------------------------------------
+docid:32_10ecbplus.xml
+-----------------------------------------
+
+sentence #:millom double murder : man charged with killing mother and sister 
+	[events]:[['killing'], ['charged'], ['double', 'murder']]
+	[entities]:[['sister'], ['man'], ['millom'], ['mother']]
+*R1031[murder]
+|--(compou)--> R1032[millom]
+|--(amod)--> *R1031[double]
+|--(punct)--> :
+|--(dep)--> R1033[man]
+                 |--(acl)--> *R1034[charged]
+                                  |--(advcl)--> *R1031[killing]
+                                                   |--(mark)--> with
+                                                   |--(dobj)--> R1035[mother]
+                                                                    |--(cc)--> and
+                                                                    |--(conj)--> R1036[sister]
+
+	* entity-paths for event['killing']32_10ecbplus.xmlsent:8686
+	['killing --(dobj)--> mother']
+
+	* entity-paths for event['charged']32_10ecbplus.xmlsent:8686
+	['charged --(advcl)--> killing', 'killing --(dobj)--> mother']
+
+	* entity-paths for event['double', 'murder']32_10ecbplus.xmlsent:8686
+	['murder --(compound)--> Millom']
+	['murder --(dep)--> Man']
+
+sentence #:john jenkin , 23 , of newton street , millom was arrested saturday morning after police found two women dead in a house . 
+	[events]:[['found'], ['dead'], ['arrested']]
+	[entities]:[['saturday', 'morning'], ['police'], ['of', 'newton', 'street', ',', 'millom'], ['john', 'jenkin'], ['two', 'women'], ['in', 'a', 'house']]
+*R1037[arrested]
+|--(nsubjp)--> R1033[jenkin]
+|                |--(compou)--> R1033[john]
+|                |--(punct)--> ,
+|                |--(amod)--> 23
+|                |--(punct)--> ,
+|                |--(nmod)--> R1032[street]
+|                                 |--(case)--> R1032[of]
+|                                 |--(compou)--> R1032[newton]
+|                                 |--(punct)--> R1032[,]
+|                                 |--(appos)--> R1032[millom]
+|--(auxpas)--> was
+|--(nmod:t)--> R1038[morning]
+|                |--(compou)--> R1038[saturday]
+|--(advcl)--> *R1039[found]
+|                |--(mark)--> after
+|                |--(nsubj)--> R1040[police]
+|                |--(xcomp)--> *R1031[dead]
+|                |                |--(nmod:n)--> R1041[women]
+|                |                                 |--(nummod)--> R1041[two]
+|                |--(nmod)--> R1042[house]
+|                                 |--(case)--> R1042[in]
+|                                 |--(det)--> R1042[a]
+|--(punct)--> .
+
+	* entity-paths for event['found']32_10ecbplus.xmlsent:8689
+	['found --(nsubj)--> police']
+	['found --(xcomp)--> dead', 'dead --(nmod:npmod)--> women']
+	['found --(nmod)--> house']
+
+	* entity-paths for event['dead']32_10ecbplus.xmlsent:8689
+	['dead --(nmod:npmod)--> women']
+
+	* entity-paths for event['arrested']32_10ecbplus.xmlsent:8689
+	['arrested --(nsubjpass)--> Jenkin']
+	['arrested --(nmod:tmod)--> morning']
+	['arrested --(advcl)--> found', 'found --(nsubj)--> police']
+	['arrested --(advcl)--> found', 'found --(xcomp)--> dead', 'dead --(nmod:npmod)--> women']
+	['arrested --(advcl)--> found', 'found --(nmod)--> house']
+
+sentence #:a man has been charged with the murder of his mother and sister in millom . 
+	[events]:[['murder'], ['charged']]
+	[entities]:[['in', 'millom'], ['sister'], ['mother'], ['man']]
+*R1034[charged]
+|--(nsubjp)--> R1033[man]
+|                |--(det)--> a
+|--(aux)--> has
+|--(auxpas)--> been
+|--(nmod)--> *R1031[murder]
+|                |--(case)--> with
+|                |--(det)--> the
+|                |--(nmod)--> R1035[mother]
+|                                 |--(case)--> of
+|                                 |--(nmod:p)--> his
+|                                 |--(cc)--> and
+|                                 |--(conj)--> R1036[sister]
+|--(nmod)--> R1032[millom]
+|                |--(case)--> R1032[in]
+|--(punct)--> .
+
+	* entity-paths for event['murder']32_10ecbplus.xmlsent:8688
+	['murder --(nmod)--> mother']
+
+	* entity-paths for event['charged']32_10ecbplus.xmlsent:8688
+	['charged --(nsubjpass)--> MAN']
+	['charged --(nmod)--> murder', 'murder --(nmod)--> mother']
+	['charged --(nmod)--> Millom']

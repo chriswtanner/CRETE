@@ -1,0 +1,46 @@
+
+-----------------------------------------
+docid:41_3ecb.xml
+-----------------------------------------
+
+sentence #:the united nations on wednesday denied israel defense forces claims that there were palestinian militants in the gaza school bombed by israel on tuesday . 
+	[events]:[['bombed'], ['claims'], ['denied']]
+	[entities]:[['militants'], ['israel', 'defense', 'forces'], ['in', 'the', 'gaza', 'school'], ['united', 'nations'], ['on', 'wednesday'], ['israel'], ['on', 'tuesday']]
+*R1484[denied]
+|--(nsubj)--> R1473[nations]
+|                |--(det)--> the
+|                |--(compou)--> R1473[united]
+|                |--(nmod)--> R1485[wednesday]
+|                                 |--(case)--> R1485[on]
+|--(ccomp)--> *R1486[claims]
+|                |--(nsubj)--> R1462[forces]
+|                |                |--(compou)--> R1462[israel]
+|                |                |--(compou)--> R1462[defense]
+|                |--(ccomp)--> were
+|                                 |--(mark)--> that
+|                                 |--(expl)--> there
+|                                 |--(nsubj)--> R1471[militants]
+|                                                  |--(amod)--> palestinian
+|                                                  |--(nmod)--> R1466[school]
+|                                                                   |--(case)--> R1466[in]
+|                                                                   |--(det)--> R1466[the]
+|                                                                   |--(compou)--> R1466[gaza]
+|                                                                   |--(acl)--> *R1465[bombed]
+|                                                                                    |--(nmod)--> R1462[israel]
+|                                                                                    |                |--(case)--> by
+|                                                                                    |--(nmod)--> R1487[tuesday]
+|                                                                                                     |--(case)--> R1487[on]
+|--(punct)--> .
+
+	* entity-paths for event['bombed']41_3ecb.xmlsent:12203
+	['bombed --(nmod)--> Israel']
+	['bombed --(nmod)--> Tuesday']
+
+	* entity-paths for event['claims']41_3ecb.xmlsent:12203
+	['claims --(nsubj)--> Forces']
+	['claims --(ccomp)--> were', 'were --(nsubj)--> militants']
+
+	* entity-paths for event['denied']41_3ecb.xmlsent:12203
+	['denied --(nsubj)--> Nations']
+	['denied --(ccomp)--> claims', 'claims --(nsubj)--> Forces']
+	['denied --(ccomp)--> claims', 'claims --(ccomp)--> were', 'were --(nsubj)--> militants']

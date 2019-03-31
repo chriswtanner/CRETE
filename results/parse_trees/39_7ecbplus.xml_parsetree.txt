@@ -1,0 +1,54 @@
+
+-----------------------------------------
+docid:39_7ecbplus.xml
+-----------------------------------------
+
+sentence #:he will take over for matt smith , the 12th doctor , who is leaving during the 2013 christmas special . 
+	[events]:[['take', 'over'], ['leaving']]
+	[entities]:[['2013', 'christmas', 'special'], ['matt', 'smith'], ['12th', 'doctor'], ['who'], ['he']]
+*R1334[take]
+|--(nsubj)--> R1331[he]
+|--(aux)--> will
+|--(compou)--> *R1334[over]
+|--(nmod)--> R1328[smith]
+|                |--(case)--> for
+|                |--(compou)--> R1328[matt]
+|                |--(punct)--> ,
+|                |--(appos)--> R1328[doctor]
+|                |                |--(det)--> the
+|                |                |--(amod)--> R1328[12th]
+|                |--(punct)--> ,
+|                |--(acl:re)--> *R1341[leaving]
+|                                 |--(nsubj)--> R1328[who]
+|                                 |--(aux)--> is
+|                                 |--(nmod)--> R1359[christmas]
+|                                                  |--(case)--> during
+|                                                  |--(det)--> the
+|                                                  |--(nummod)--> R1359[2013]
+|                                                  |--(amod)--> R1359[special]
+|--(punct)--> .
+
+	* entity-paths for event['take', 'over']39_7ecbplus.xmlsent:11103
+
+	* entity-paths for event['leaving']39_7ecbplus.xmlsent:11103
+	['leaving --(nsubj)--> who']
+	['leaving --(nmod)--> Christmas']
+
+sentence #:'doctor who' : peter capaldi announced as the new doctor 
+	[events]:[['announced']]
+	[entities]:[['doctor'], ['peter', 'capaldi'], ["'doctor", "who'"]]
+R1336[who']
+|--(punct)--> R1336['doctor]
+|--(dep)--> R1336['doctor]
+|--(punct)--> R1336[who']
+|--(punct)--> :
+|--(dep)--> R1331[capaldi]
+                 |--(compou)--> R1331[peter]
+                 |--(acl:re)--> *R1342[announced]
+                                  |--(nmod)--> R1333[doctor]
+                                                   |--(case)--> as
+                                                   |--(det)--> the
+                                                   |--(amod)--> new
+
+	* entity-paths for event['announced']39_7ecbplus.xmlsent:11100
+	['announced --(nmod)--> Doctor']

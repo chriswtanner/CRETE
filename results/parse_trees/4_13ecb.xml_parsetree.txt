@@ -1,0 +1,30 @@
+
+-----------------------------------------
+docid:4_13ecb.xml
+-----------------------------------------
+
+sentence #:bettie page , the notorious southern gal-turned-dominatrix-turned pin-up-queen-turned born again christian , died thursday at age 85 . 
+	[events]:[['died']]
+	[entities]:[['thursday'], ['bettie', 'page']]
+*R1363[died]
+|--(nsubj)--> R1364[page]
+|                |--(compou)--> R1364[bettie]
+|                |--(punct)--> ,
+|                |--(appos)--> southern
+|                |                |--(det)--> the
+|                |                |--(amod)--> notorious
+|                |                |--(amod)--> pin-up-queen-turned
+|                |                |                |--(amod)--> gal-turned-dominatrix-turned
+|                |                |--(acl)--> born
+|                |                                 |--(dobj)--> christian
+|                |                                                  |--(advmod)--> again
+|                |--(punct)--> ,
+|--(nmod:t)--> R1367[thursday]
+|--(nmod)--> age
+|                |--(case)--> at
+|                |--(nummod)--> 85
+|--(punct)--> .
+
+	* entity-paths for event['died']4_13ecb.xmlsent:11259
+	['died --(nsubj)--> Page']
+	['died --(nmod:tmod)--> Thursday']

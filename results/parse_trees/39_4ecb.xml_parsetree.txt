@@ -1,0 +1,38 @@
+
+-----------------------------------------
+docid:39_4ecb.xml
+-----------------------------------------
+
+sentence #:when matt smith stepped into doctor who 's title role as the 11th doctor this weekend , he went from british character actor to potential entertainment legend . 
+	[events]:[['stepped', 'into']]
+	[entities]:[['doctor', 'who'], ['this', 'weekend'], ['actor'], ['role'], ['he'], ['entertainment'], ['11th', 'doctor'], ['legend'], ['matt', 'smith']]
+went
+|--(advcl)--> *R1344[stepped]
+|                |--(advmod)--> when
+|                |--(nsubj)--> R1328[smith]
+|                |                |--(compou)--> R1328[matt]
+|                |--(nmod)--> R1336[doctor]
+|                                 |--(case)--> *R1344[into]
+|                                 |--(acl:re)--> R1329[role]
+|                                                  |--(nsubj)--> R1336[who]
+|                                                  |--(cop)--> 's
+|                                                  |--(compou)--> title
+|                                                  |--(nmod)--> R1338[doctor]
+|                                                  |                |--(case)--> as
+|                                                  |                |--(det)--> the
+|                                                  |                |--(amod)--> R1338[11th]
+|                                                  |--(nmod:t)--> R1343[weekend]
+|                                                                   |--(det)--> R1343[this]
+|--(punct)--> ,
+|--(nsubj)--> R1328[he]
+|--(nmod)--> R1328[actor]
+|                |--(case)--> from
+|                |--(amod)--> british
+|                |--(compou)--> character
+|--(nmod)--> R1328[legend]
+|                |--(case)--> to
+|                |--(amod)--> potential
+|                |--(compou)--> R1339[entertainment]
+|--(punct)--> .
+
+	* entity-paths for event['stepped', 'into']39_4ecb.xmlsent:11014

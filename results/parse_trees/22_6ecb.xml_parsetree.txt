@@ -1,0 +1,53 @@
+
+-----------------------------------------
+docid:22_6ecb.xml
+-----------------------------------------
+
+sentence #:staunton police this morning arrested sharron diane crawford smith , of staunton , on first-degree murder charges in the 1967 slayings of two women at high 's ice cream shop . 
+	[events]:[['slayings'], ['murder'], ['arrested'], ['charges']]
+	[entities]:[['women'], ['high', "'s", 'ice', 'cream', 'shop'], ['staunton', 'police'], ['sharron', 'diane', 'crawford', 'smith'], ['1967']]
+*R628[arrested]
+|--(nsubj)--> R633[police]
+|                |--(compou)--> R633[staunton]
+|                |--(nmod:t)--> morning
+|                                 |--(det)--> this
+|--(dobj)--> R618[smith]
+|                |--(compou)--> R618[sharron]
+|                |--(compou)--> R618[diane]
+|                |--(compou)--> R618[crawford]
+|                |--(punct)--> ,
+|                |--(nmod)--> staunton
+|                |                |--(case)--> of
+|                |--(punct)--> ,
+|--(nmod)--> *R624[charges]
+|                |--(case)--> on
+|                |--(amod)--> first-degree
+|                |--(compou)--> *R619[murder]
+|--(nmod)--> *R619[slayings]
+|                |--(case)--> in
+|                |--(det)--> the
+|                |--(nummod)--> R622[1967]
+|                |--(nmod)--> R621[shop]
+|                                 |--(case)--> of
+|                                 |--(compou)--> R620[women]
+|                                                  |--(nummod)--> two
+|                                                  |--(nmod)--> R621[cream]
+|                                                                   |--(case)--> at
+|                                                                   |--(nmod:p)--> R621[high]
+|                                                                   |                |--(case)--> R621['s]
+|                                                                   |--(compou)--> R621[ice]
+|--(punct)--> .
+
+	* entity-paths for event['slayings']22_6ecb.xmlsent:4526
+	['slayings --(nummod)--> 1967']
+	['slayings --(nmod)--> Shop']
+
+	* entity-paths for event['murder']22_6ecb.xmlsent:4526
+
+	* entity-paths for event['arrested']22_6ecb.xmlsent:4526
+	['arrested --(nsubj)--> Police']
+	['arrested --(dobj)--> Smith']
+	['arrested --(nmod)--> slayings', 'slayings --(nummod)--> 1967']
+	['arrested --(nmod)--> slayings', 'slayings --(nmod)--> Shop']
+
+	* entity-paths for event['charges']22_6ecb.xmlsent:4526

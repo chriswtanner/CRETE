@@ -1,0 +1,42 @@
+
+-----------------------------------------
+docid:5_5ecb.xml
+-----------------------------------------
+
+sentence #:maurice cheeks became the fifth nba head coach to be fired this season , after the philadelphia 76ers notified the former point guard of his dismissal saturday morning . 
+	[events]:[['fired'], ['dismissal']]
+	[entities]:[['philadelphia', '76ers'], ['season'], ['maurice', 'cheeks'], ['point', 'guard'], ['saturday', 'morning']]
+became
+|--(nsubj)--> R1674[cheeks]
+|                |--(compou)--> R1674[maurice]
+|--(xcomp)--> coach
+|                |--(det)--> the
+|                |--(amod)--> fifth
+|                |--(compou)--> nba
+|                |--(compou)--> head
+|--(advcl)--> *R1672[fired]
+|                |--(mark)--> to
+|                |--(auxpas)--> be
+|                |--(nmod:t)--> R1679[season]
+|                                 |--(det)--> this
+|--(punct)--> ,
+|--(advcl)--> notified
+|                |--(mark)--> after
+|                |--(nsubj)--> R1673[76ers]
+|                |                |--(det)--> the
+|                |                |--(compou)--> R1673[philadelphia]
+|                |--(dobj)--> R1674[guard]
+|                |                |--(det)--> the
+|                |                |--(amod)--> former
+|                |                |--(compou)--> R1674[point]
+|                |                |--(nmod)--> *R1672[dismissal]
+|                |                                 |--(case)--> of
+|                |                                 |--(nmod:p)--> his
+|                |--(nmod:t)--> R1675[morning]
+|                                 |--(compou)--> R1675[saturday]
+|--(punct)--> .
+
+	* entity-paths for event['fired']5_5ecb.xmlsent:14221
+	['fired --(nmod:tmod)--> season']
+
+	* entity-paths for event['dismissal']5_5ecb.xmlsent:14221

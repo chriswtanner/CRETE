@@ -1,0 +1,147 @@
+
+-----------------------------------------
+docid:1_14ecb.xml
+-----------------------------------------
+
+sentence #:the 33-year-old hard partying actress finally decided to put an end to her drinking days and get help for her addictions , although her publicist refused to disclose the real reason why reid checked into rehab . 
+	[events]:[['addictions'], ['decided'], ['checked', 'into'], ['reason'], ['get'], ['disclose'], ['help']]
+	[entities]:[['rehab'], ['actress'], ['reid'], ['her'], ['publicist'], ['her']]
+*R39[decided]
+|--(nsubj)--> R2[actress]
+|                |--(det)--> the
+|                |--(amod)--> 33-year-old
+|                |--(amod)--> hard
+|                |--(amod)--> partying
+|--(advmod)--> finally
+|--(xcomp)--> put
+|                |--(mark)--> to
+|                |--(dobj)--> end
+|                |                |--(det)--> an
+|                |--(nmod)--> days
+|                |                |--(case)--> to
+|                |                |--(nmod:p)--> R2[her]
+|                |                |--(compou)--> drinking
+|                |--(cc)--> and
+|                |--(conj)--> *R46[help]
+|                                 |--(aux)--> *R47[get]
+|                                 |--(nmod)--> *R48[addictions]
+|                                                  |--(case)--> for
+|                                                  |--(nmod:p)--> R2[her]
+|--(punct)--> ,
+|--(advcl)--> refused
+|                |--(mark)--> although
+|                |--(nsubj)--> R4[publicist]
+|                |                |--(nmod:p)--> her
+|                |--(xcomp)--> *R49[disclose]
+|                                 |--(mark)--> to
+|                                 |--(dobj)--> *R50[reason]
+|                                 |                |--(det)--> the
+|                                 |                |--(amod)--> real
+|                                 |--(advcl)--> *R1[checked]
+|                                                  |--(advmod)--> why
+|                                                  |--(nsubj)--> R2[reid]
+|                                                  |--(nmod)--> R3[rehab]
+|                                                                   |--(case)--> *R1[into]
+|--(punct)--> .
+
+	* entity-paths for event['addictions']1_14ecb.xmlsent:80
+	['addictions --(nmod:poss)--> her']
+
+	* entity-paths for event['decided']1_14ecb.xmlsent:80
+	['decided --(nsubj)--> actress']
+	['decided --(xcomp)--> put', 'put --(nmod)--> days', 'days --(nmod:poss)--> her']
+	['decided --(xcomp)--> put', 'put --(conj)--> help', 'help --(nmod)--> addictions', 'addictions --(nmod:poss)--> her']
+	['decided --(advcl)--> refused', 'refused --(nsubj)--> publicist']
+	['decided --(advcl)--> refused', 'refused --(xcomp)--> disclose', 'disclose --(advcl)--> checked', 'checked --(nsubj)--> Reid']
+	['decided --(advcl)--> refused', 'refused --(xcomp)--> disclose', 'disclose --(advcl)--> checked', 'checked --(nmod)--> rehab']
+
+	* entity-paths for event['checked', 'into']1_14ecb.xmlsent:80
+
+	* entity-paths for event['reason']1_14ecb.xmlsent:80
+
+	* entity-paths for event['get']1_14ecb.xmlsent:80
+
+	* entity-paths for event['disclose']1_14ecb.xmlsent:80
+	['disclose --(advcl)--> checked', 'checked --(nsubj)--> Reid']
+	['disclose --(advcl)--> checked', 'checked --(nmod)--> rehab']
+
+	* entity-paths for event['help']1_14ecb.xmlsent:80
+	['help --(nmod)--> addictions', 'addictions --(nmod:poss)--> her']
+
+sentence #:" she checked in herself - it was her decision . " 
+	[events]:[['decision'], ['checked', 'in']]
+	[entities]:[['herself'], ['her'], ['she']]
+*R1[checked]
+|--(punct)--> "
+|--(nsubj)--> R2[she]
+|--(nmod)--> R2[herself]
+|                |--(case)--> *R1[in]
+|--(punct)--> -
+|--(ccomp)--> *R39[decision]
+|                |--(nsubj)--> it
+|                |--(cop)--> was
+|                |--(nmod:p)--> R2[her]
+|--(punct)--> .
+|--(punct)--> "
+
+	* entity-paths for event['decision']1_14ecb.xmlsent:83
+	['decision --(nmod:poss)--> her']
+
+	* entity-paths for event['checked', 'in']1_14ecb.xmlsent:83
+
+sentence #:tara reid finally checks into rehab for undisclosed reasons 
+	[events]:[['undisclosed'], ['checks', 'into']]
+	[entities]:[['rehab'], ['tara', 'reid']]
+R2[reid]
+|--(compou)--> R2[tara]
+|--(dep)--> R3[rehab]
+                 |--(advmod)--> finally
+                 |--(compou)--> *R1[checks]
+                 |--(compou)--> *R1[into]
+                 |--(nmod)--> reasons
+                                  |--(case)--> for
+                                  |--(amod)--> *R48[undisclosed]
+
+	* entity-paths for event['undisclosed']1_14ecb.xmlsent:78
+
+	* entity-paths for event['checks', 'into']1_14ecb.xmlsent:78
+
+sentence #:it 's been a long time coming , but tara reid has finally entered malibu promises treatment center on tuesday , her rep told people.com . 
+	[events]:[['told'], ['entered']]
+	[entities]:[['tara', 'reid'], ['rep'], ['people.com'], ['malibu', 'promises', 'treatment', 'center'], ['on', 'tuesday']]
+*R0[told]
+|--(ccomp)--> time
+|                |--(nsubjp)--> it
+|                |--(auxpas)--> 's
+|                |--(cop)--> been
+|                |--(det)--> a
+|                |--(amod)--> long
+|                |--(acl)--> coming
+|                |--(punct)--> ,
+|                |--(cc)--> but
+|                |--(conj)--> *R1[entered]
+|                                 |--(nsubj)--> R2[reid]
+|                                 |                |--(compou)--> R2[tara]
+|                                 |--(aux)--> has
+|                                 |--(advmod)--> finally
+|                                 |--(ccomp)--> R3[promises]
+|                                                  |--(nsubj)--> R3[malibu]
+|                                                  |--(dobj)--> R3[center]
+|                                                                   |--(compou)--> R3[treatment]
+|                                                                   |--(nmod)--> R6[tuesday]
+|                                                                                    |--(case)--> R6[on]
+|--(punct)--> ,
+|--(nsubj)--> R4[rep]
+|                |--(nmod:p)--> her
+|--(dobj)--> R5[people.com]
+|--(punct)--> .
+
+	* entity-paths for event['told']1_14ecb.xmlsent:79
+	['told --(ccomp)--> time', 'time --(conj)--> entered', 'entered --(nsubj)--> Reid']
+	['told --(ccomp)--> time', 'time --(conj)--> entered', 'entered --(ccomp)--> Promises']
+	['told --(nsubj)--> rep']
+	['told --(dobj)--> People.com']
+
+	* entity-paths for event['entered']1_14ecb.xmlsent:79
+	['entered --(nsubj)--> Reid']
+	['entered --(ccomp)--> Promises']

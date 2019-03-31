@@ -1,0 +1,123 @@
+
+-----------------------------------------
+docid:26_3ecb.xml
+-----------------------------------------
+
+sentence #:he was found dead in a cell in palermo 's pagliarelli prison late on tuesday night , just hours after being picked up during raids by 1,200 police backed up by helicopters and sniffer dogs . 
+	[events]:[['raids'], ['found'], ['dead'], ['picked', 'up']]
+	[entities]:[['tuesday', 'night'], ['he'], ['a', 'cell', 'in', 'palermo', "'s", 'pagliarelli', 'prison'], ['hours'], ['police']]
+*R745[found]
+|--(nsubjp)--> R733[he]
+|--(auxpas)--> was
+|--(dobj)--> R734[prison]
+|                |--(amod)--> *R732[dead]
+|                                 |--(nmod)--> R734[cell]
+|                                                  |--(case)--> in
+|                                                  |--(det)--> R734[a]
+|                                                  |--(nmod)--> R734[pagliarelli]
+|                                                                   |--(case)--> R734[in]
+|                                                                   |--(nmod:p)--> R734[palermo]
+|                                                                                    |--(case)--> R734['s]
+|--(nmod:t)--> R746[night]
+|                |--(advmod)--> late
+|                                 |--(nmod)--> R746[tuesday]
+|                                                  |--(case)--> on
+|--(punct)--> ,
+|--(advcl)--> backed
+|                |--(dep)--> R735[hours]
+|                |                |--(advmod)--> just
+|                |--(mark)--> after
+|                |--(csubj)--> *R736[picked]
+|                |                |--(auxpas)--> being
+|                |                |--(compou)--> *R736[up]
+|                |                |--(nmod)--> *R737[raids]
+|                |                |                |--(case)--> during
+|                |                |--(nmod)--> R738[police]
+|                |                                 |--(case)--> by
+|                |                                 |--(nummod)--> 1,200
+|                |--(compou)--> up
+|                |--(nmod)--> helicopters
+|                                 |--(case)--> by
+|                                 |--(cc)--> and
+|                                 |--(conj)--> dogs
+|                                                  |--(compou)--> sniffer
+|--(punct)--> .
+
+	* entity-paths for event['raids']26_3ecb.xmlsent:5422
+
+	* entity-paths for event['found']26_3ecb.xmlsent:5422
+	['found --(nsubjpass)--> He']
+	['found --(dobj)--> prison']
+	['found --(nmod:tmod)--> night']
+	['found --(advcl)--> backed', 'backed --(dep)--> hours']
+	['found --(advcl)--> backed', 'backed --(csubj)--> picked', 'picked --(nmod)--> police']
+
+	* entity-paths for event['dead']26_3ecb.xmlsent:5422
+	['dead --(nmod)--> cell']
+
+	* entity-paths for event['picked', 'up']26_3ecb.xmlsent:5422
+
+sentence #:an alleged mafia boss who was arrested in a massive sweep by italian police hanged himself in a prison cell within hours of being detained . 
+	[events]:[['hanged'], ['detained'], ['sweep'], ['arrested']]
+	[entities]:[['hours'], ['mafia', 'boss'], ['police'], ['himself'], ['in', 'a', 'prison', 'cell']]
+*R732[hanged]
+|--(nsubj)--> R733[boss]
+|                |--(det)--> an
+|                |--(amod)--> alleged
+|                |--(compou)--> R733[mafia]
+|                |--(acl:re)--> *R736[arrested]
+|                                 |--(nsubjp)--> who
+|                                 |--(auxpas)--> was
+|                                 |--(nmod)--> *R737[sweep]
+|                                 |                |--(case)--> in
+|                                 |                |--(det)--> a
+|                                 |                |--(amod)--> massive
+|                                 |--(nmod)--> R738[police]
+|                                                  |--(case)--> by
+|                                                  |--(amod)--> italian
+|--(dobj)--> R733[himself]
+|--(nmod)--> R734[cell]
+|                |--(case)--> R734[in]
+|                |--(det)--> R734[a]
+|                |--(compou)--> R734[prison]
+|--(nmod)--> R735[hours]
+|                |--(case)--> within
+|                |--(acl)--> *R736[detained]
+|                                 |--(mark)--> of
+|                                 |--(auxpas)--> being
+|--(punct)--> .
+
+	* entity-paths for event['hanged']26_3ecb.xmlsent:5420
+	['hanged --(nsubj)--> boss']
+	['hanged --(dobj)--> himself']
+	['hanged --(nmod)--> cell']
+	['hanged --(nmod)--> hours']
+
+	* entity-paths for event['detained']26_3ecb.xmlsent:5420
+
+	* entity-paths for event['sweep']26_3ecb.xmlsent:5420
+
+	* entity-paths for event['arrested']26_3ecb.xmlsent:5420
+	['arrested --(nmod)--> police']
+
+sentence #:police have launched an investigation into how gaetano lo presti was able to commit suicide . 
+	[events]:[['suicide']]
+	[entities]:[['gaetano', 'lo', 'presti'], ['police']]
+launched
+|--(nsubj)--> R738[police]
+|--(aux)--> have
+|--(dobj)--> investigation
+|                |--(det)--> an
+|--(advcl)--> able
+|                |--(mark)--> into
+|                |--(advmod)--> how
+|                |--(nsubj)--> R733[presti]
+|                |                |--(compou)--> R733[gaetano]
+|                |                |--(compou)--> R733[lo]
+|                |--(cop)--> was
+|                |--(xcomp)--> commit
+|                                 |--(mark)--> to
+|                                 |--(dobj)--> *R732[suicide]
+|--(punct)--> .
+
+	* entity-paths for event['suicide']26_3ecb.xmlsent:5421

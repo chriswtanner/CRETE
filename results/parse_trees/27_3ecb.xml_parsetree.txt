@@ -1,0 +1,59 @@
+
+-----------------------------------------
+docid:27_3ecb.xml
+-----------------------------------------
+
+sentence #:as it promised [ tuesday ] , microsoft corp. today issued an emergency patch to plug a critical hole in internet explorer ( ie ) that attackers have been increasingly exploiting from hacked web sites . 
+	[events]:[['plug'], ['issued'], ['exploiting']]
+	[entities]:[['it'], ['today'], ['patch'], ['microsoft', 'corp.'], ['hole'], ['internet', 'explorer'], ['attackers']]
+*R763[issued]
+|--(advcl)--> promised
+|                |--(mark)--> as
+|                |--(nsubj)--> R764[it]
+|                |--(advmod)--> [
+|                |--(nmod:t)--> tuesday
+|                                 |--(punct)--> ]
+|--(punct)--> ,
+|--(nsubj)--> R764[corp.]
+|                |--(compou)--> R764[microsoft]
+|--(nmod:t)--> R766[today]
+|--(dobj)--> R765[patch]
+|                |--(det)--> an
+|                |--(compou)--> emergency
+|--(advcl)--> *R782[plug]
+|                |--(mark)--> to
+|                |--(dobj)--> R767[hole]
+|                |                |--(det)--> a
+|                |                |--(amod)--> critical
+|                |--(nmod)--> R768[explorer]
+|                                 |--(case)--> in
+|                                 |--(compou)--> R768[internet]
+|                                 |--(dep)--> ie
+|                                 |                |--(punct)--> (
+|                                 |                |--(punct)--> )
+|                                 |--(acl:re)--> *R786[exploiting]
+|                                                  |--(dobj)--> that
+|                                                  |--(nsubj)--> R770[attackers]
+|                                                  |--(aux)--> have
+|                                                  |--(aux)--> been
+|                                                  |--(advmod)--> increasingly
+|                                                  |--(nmod)--> sites
+|                                                                   |--(case)--> from
+|                                                                   |--(amod)--> hacked
+|                                                                   |--(compou)--> web
+|--(punct)--> .
+
+	* entity-paths for event['plug']27_3ecb.xmlsent:5834
+	['plug --(dobj)--> hole']
+	['plug --(nmod)--> Explorer']
+
+	* entity-paths for event['issued']27_3ecb.xmlsent:5834
+	['issued --(advcl)--> promised', 'promised --(nsubj)--> it']
+	['issued --(nsubj)--> Corp.']
+	['issued --(nmod:tmod)--> today']
+	['issued --(dobj)--> patch']
+	['issued --(advcl)--> plug', 'plug --(dobj)--> hole']
+	['issued --(advcl)--> plug', 'plug --(nmod)--> Explorer']
+
+	* entity-paths for event['exploiting']27_3ecb.xmlsent:5834
+	['exploiting --(nsubj)--> attackers']

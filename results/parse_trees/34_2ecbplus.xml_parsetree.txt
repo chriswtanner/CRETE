@@ -1,0 +1,58 @@
+
+-----------------------------------------
+docid:34_2ecbplus.xml
+-----------------------------------------
+
+sentence #:the president announced his nominee for the u . s . surgeon general , dr . regina benjamin , today at the white house . 
+	[events]:[['nominee'], ['announced']]
+	[entities]:[['dr', '.', 'regina', 'benjamin'], ['u', '.', 's', '.', 'surgeon', 'general'], ['his'], ['at', 'the', 'white', 'house'], ['president'], ['today']]
+*R1142[announced]
+|--(nsubj)--> R1136[president]
+|                |--(det)--> the
+|--(dobj)--> *R1138[nominee]
+|                |--(nmod:p)--> R1136[his]
+|--(nmod)--> R1135[u]
+|                |--(case)--> for
+|                |--(det)--> the
+|                |--(punct)--> R1135[.]
+|                |--(dep)--> R1135[s]
+|                |--(punct)--> R1135[.]
+|                |--(dep)--> R1135[general]
+|                |                |--(compou)--> R1135[surgeon]
+|                |--(punct)--> ,
+|                |--(appos)--> R1139[dr]
+|                |--(punct)--> R1139[.]
+|                |--(dep)--> R1139[benjamin]
+|                |                |--(compou)--> R1139[regina]
+|                |--(punct)--> ,
+|                |--(nmod:t)--> R1141[today]
+|--(nmod)--> R1147[house]
+|                |--(case)--> R1147[at]
+|                |--(det)--> R1147[the]
+|                |--(compou)--> R1147[white]
+|--(punct)--> .
+
+	* entity-paths for event['nominee']34_2ecbplus.xmlsent:9396
+	['nominee --(nmod:poss)--> his']
+
+	* entity-paths for event['announced']34_2ecbplus.xmlsent:9396
+	['announced --(nsubj)--> President']
+	['announced --(dobj)--> nominee', 'nominee --(nmod:poss)--> his']
+	['announced --(nmod)--> U']
+	['announced --(nmod)--> House']
+
+sentence #:dr . regina benjamin : nominee for surgeon general 
+	[events]:[['nominee']]
+	[entities]:[['dr', '.', 'regina', 'benjamin'], ['surgeon', 'general']]
+R1139[benjamin]
+|--(compou)--> R1139[dr]
+|--(punct)--> R1139[.]
+|--(compou)--> R1139[regina]
+|--(punct)--> :
+|--(dep)--> *R1138[nominee]
+                 |--(nmod)--> R1135[general]
+                                  |--(case)--> for
+                                  |--(compou)--> R1135[surgeon]
+
+	* entity-paths for event['nominee']34_2ecbplus.xmlsent:9394
+	['Nominee --(nmod)--> General']

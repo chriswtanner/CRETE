@@ -1,0 +1,71 @@
+
+-----------------------------------------
+docid:18_4ecbplus.xml
+-----------------------------------------
+
+sentence #:breaking news - three people shot in office shooting in suburban detroit 
+	[events]:[['shot'], ['shooting']]
+	[entities]:[['people']]
+breaking
+|--(dobj)--> news
+                 |--(punct)--> -
+                 |--(dep)--> R362[people]
+                                  |--(nummod)--> three
+                                  |--(acl)--> *R361[shot]
+                                                   |--(nmod)--> *R361[shooting]
+                                                   |                |--(case)--> in
+                                                   |                |--(compou)--> office
+                                                   |--(nmod)--> detroit
+                                                                    |--(case)--> in
+                                                                    |--(compou)--> suburban
+
+	* entity-paths for event['shot']18_4ecbplus.xmlsent:2503
+
+	* entity-paths for event['shooting']18_4ecbplus.xmlsent:2503
+
+sentence #:"a gunman shot three people at a suburban detroit office building monday morning , and officers were searching for the shooter , police said . 
+	[events]:[['shot'], ['said']]
+	[entities]:[['monday', 'morning'], ['people'], ['officers'], ['at', 'a', 'suburban', 'detroit', 'office', 'building'], ['shooter'], ['police'], ['gunman']]
+*R390[said]
+|--(punct)--> "a
+|--(ccomp)--> *R361[shot]
+|                |--(nsubj)--> R360[gunman]
+|                |                |--(det)--> "a
+|                |--(dobj)--> R362[people]
+|                |                |--(nummod)--> three
+|                |--(nmod)--> R375[building]
+|                |                |--(case)--> R375[at]
+|                |                |--(det)--> R375[a]
+|                |                |--(amod)--> R375[suburban]
+|                |                |--(compou)--> R375[detroit]
+|                |                |--(compou)--> R375[office]
+|                |--(nmod:t)--> R379[morning]
+|                |                |--(compou)--> R379[monday]
+|                |--(punct)--> ,
+|                |--(cc)--> and
+|                |--(conj)--> searching
+|                                 |--(nsubj)--> R396[officers]
+|                                 |--(aux)--> were
+|                                 |--(nmod)--> R360[shooter]
+|                                                  |--(case)--> for
+|                                                  |--(det)--> the
+|--(punct)--> ,
+|--(nsubj)--> R393[police]
+|--(punct)--> .
+
+	* entity-paths for event['shot']18_4ecbplus.xmlsent:2506
+	['shot --(nsubj)--> gunman']
+	['shot --(dobj)--> people']
+	['shot --(nmod)--> building']
+	['shot --(nmod:tmod)--> morning']
+	['shot --(conj)--> searching', 'searching --(nsubj)--> officers']
+	['shot --(conj)--> searching', 'searching --(nmod)--> shooter']
+
+	* entity-paths for event['said']18_4ecbplus.xmlsent:2506
+	['said --(ccomp)--> shot', 'shot --(nsubj)--> gunman']
+	['said --(ccomp)--> shot', 'shot --(dobj)--> people']
+	['said --(ccomp)--> shot', 'shot --(nmod)--> building']
+	['said --(ccomp)--> shot', 'shot --(nmod:tmod)--> morning']
+	['said --(ccomp)--> shot', 'shot --(conj)--> searching', 'searching --(nsubj)--> officers']
+	['said --(ccomp)--> shot', 'shot --(conj)--> searching', 'searching --(nmod)--> shooter']
+	['said --(nsubj)--> police']

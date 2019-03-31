@@ -1,0 +1,45 @@
+
+-----------------------------------------
+docid:10_1ecb.xml
+-----------------------------------------
+
+sentence #:according to this l.a. times story ( which credits the team-owned flagship radio station ) , the angels have made an eight-year offer to free agent first baseman mark teixeira . 
+	[events]:[['made'], ['offer']]
+	[entities]:[['mark', 'teixeira'], ['the', 'angels']]
+*R174[made]
+|--(nmod)--> story
+|                |--(case)--> according
+|                |                |--(mwe)--> to
+|                |--(det)--> this
+|                |--(compou)--> l.a.
+|                |--(compou)--> times
+|                |--(dep)--> credits
+|                                 |--(punct)--> (
+|                                 |--(dep)--> which
+|                                 |--(dep)--> station
+|                                 |                |--(det)--> the
+|                                 |                |--(amod)--> team-owned
+|                                 |                |--(compou)--> flagship
+|                                 |                |--(compou)--> radio
+|                                 |--(punct)--> )
+|--(punct)--> ,
+|--(nsubj)--> R175[angels]
+|                |--(det)--> R175[the]
+|--(aux)--> have
+|--(dobj)--> *R176[offer]
+|                |--(det)--> an
+|                |--(amod)--> eight-year
+|--(nmod)--> R163[teixeira]
+|                |--(case)--> to
+|                |--(amod)--> free
+|                |--(compou)--> agent
+|                |--(amod)--> first
+|                |--(compou)--> baseman
+|                |--(compou)--> R163[mark]
+|--(punct)--> .
+
+	* entity-paths for event['made']10_1ecb.xmlsent:383
+	['made --(nsubj)--> Angels']
+	['made --(nmod)--> Teixeira']
+
+	* entity-paths for event['offer']10_1ecb.xmlsent:383

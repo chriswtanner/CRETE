@@ -1,0 +1,51 @@
+
+-----------------------------------------
+docid:16_1ecb.xml
+-----------------------------------------
+
+sentence #:two possible gang members are under arrest for the assassination-style murder of a los angeles county sheriff 's deputy outside his house in a gang-plagued section of the city last summer , police said saturday . 
+	[events]:[['arrest'], ['murder']]
+	[entities]:[['last', 'summer'], ['gang', 'members'], ['deputy'], ['outside', 'his', 'house', 'in', 'a', 'gang-plagued', 'section', 'of', 'the', 'city'], ['saturday']]
+said
+|--(ccomp)--> *R326[arrest]
+|                |--(nsubj)--> R327[members]
+|                |                |--(nummod)--> two
+|                |                |--(amod)--> possible
+|                |                |--(compou)--> R327[gang]
+|                |--(cop)--> are
+|                |--(case)--> under
+|                |--(nmod)--> *R328[murder]
+|                                 |--(case)--> for
+|                                 |--(det)--> the
+|                                 |--(amod)--> assassination-style
+|                                 |--(nmod)--> R329[deputy]
+|                                                  |--(case)--> of
+|                                                  |--(nmod:p)--> sheriff
+|                                                  |                |--(det)--> a
+|                                                  |                |--(compou)--> los
+|                                                  |                |--(compou)--> angeles
+|                                                  |                |--(compou)--> county
+|                                                  |                |--(case)--> 's
+|                                                  |--(nmod)--> R330[house]
+|                                                  |                |--(case)--> R330[outside]
+|                                                  |                |--(nmod:p)--> R330[his]
+|                                                  |--(nmod)--> R330[section]
+|                                                  |                |--(case)--> R330[in]
+|                                                  |                |--(det)--> R330[a]
+|                                                  |                |--(amod)--> R330[gang-plagued]
+|                                                  |                |--(nmod)--> R330[city]
+|                                                  |                                 |--(case)--> R330[of]
+|                                                  |                                 |--(det)--> R330[the]
+|                                                  |--(nmod:t)--> R331[summer]
+|                                                                   |--(amod)--> R331[last]
+|--(punct)--> ,
+|--(nsubj)--> police
+|--(nmod:t)--> R332[saturday]
+|--(punct)--> .
+
+	* entity-paths for event['arrest']16_1ecb.xmlsent:1899
+	['arrest --(nsubj)--> members']
+	['arrest --(nmod)--> murder', 'murder --(nmod)--> deputy']
+
+	* entity-paths for event['murder']16_1ecb.xmlsent:1899
+	['murder --(nmod)--> deputy']

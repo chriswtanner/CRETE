@@ -1,0 +1,88 @@
+
+-----------------------------------------
+docid:35_11ecbplus.xml
+-----------------------------------------
+
+sentence #:williams was initially pulled over for speeding on a freeway outside downtown . 
+	[events]:[['pulled', 'over'], ['speeding']]
+	[entities]:[['on', 'a', 'freeway', 'outside', 'downtown'], ['williams']]
+*R1166[pulled]
+|--(nsubjp)--> R1160[williams]
+|--(auxpas)--> was
+|--(advmod)--> initially
+|--(compou)--> *R1166[over]
+|--(advcl)--> *R1167[speeding]
+|                |--(mark)--> for
+|                |--(nmod)--> R1169[freeway]
+|                                 |--(case)--> R1169[on]
+|                                 |--(det)--> R1169[a]
+|                                 |--(nmod)--> R1169[downtown]
+|                                                  |--(case)--> R1169[outside]
+|--(punct)--> .
+
+	* entity-paths for event['pulled', 'over']35_11ecbplus.xmlsent:9592
+
+	* entity-paths for event['speeding']35_11ecbplus.xmlsent:9592
+	['speeding --(nmod)--> freeway']
+
+sentence #:jamal williams , the defensive tackle for the san diego chargers was arrested on suspicion of drunk driving early morning on sunday , february 1 , 2009 . 
+	[events]:[['drunk', 'driving'], ['arrested'], ['on', 'suspicion']]
+	[entities]:[['defensive', 'tackle'], ['jamal', 'williams'], ['san', 'diego', 'chargers'], ['early', 'morning', 'on', 'sunday', ',', 'february', '1', ',', '2009']]
+R1160[williams]
+|--(compou)--> R1160[jamal]
+|--(punct)--> ,
+|--(dep)--> R1160[tackle]
+|                |--(nsubj)--> R1160[defensive]
+|                |                |--(det)--> the
+|                |--(advcl)--> *R1161[arrested]
+|                                 |--(mark)--> for
+|                                 |--(nsubjp)--> R1157[chargers]
+|                                 |                |--(det)--> the
+|                                 |                |--(compou)--> R1157[san]
+|                                 |                |--(compou)--> R1157[diego]
+|                                 |--(auxpas)--> was
+|                                 |--(nmod)--> *R1162[suspicion]
+|                                                  |--(case)--> *R1162[on]
+|                                                  |--(nmod)--> *R1163[drunk]
+|                                                                   |--(case)--> of
+|                                                                   |--(amod)--> *R1163[driving]
+|                                                                   |--(nmod:t)--> R1168[morning]
+|                                                                   |                |--(amod)--> R1168[early]
+|                                                                   |--(nmod)--> R1168[sunday]
+|                                                                                    |--(case)--> R1168[on]
+|--(punct)--> R1168[,]
+|--(appos)--> R1168[february]
+|                |--(nummod)--> R1168[1]
+|                |--(punct)--> R1168[,]
+|                |--(nummod)--> R1168[2009]
+|--(punct)--> .
+
+	* entity-paths for event['drunk', 'driving']35_11ecbplus.xmlsent:9590
+
+	* entity-paths for event['arrested']35_11ecbplus.xmlsent:9590
+	['arrested --(nsubjpass)--> Chargers']
+	['arrested --(nmod)--> suspicion', 'suspicion --(nmod)--> drunk', 'drunk --(nmod:tmod)--> morning']
+	['arrested --(nmod)--> suspicion', 'suspicion --(nmod)--> drunk', 'drunk --(nmod)--> Sunday']
+
+	* entity-paths for event['on', 'suspicion']35_11ecbplus.xmlsent:9590
+	['suspicion --(nmod)--> drunk', 'drunk --(nmod:tmod)--> morning']
+	['suspicion --(nmod)--> drunk', 'drunk --(nmod)--> Sunday']
+
+sentence #:san diego chargers defensive tackle faces dui charges 
+	[events]:[['charges'], ['dui'], ['faces']]
+	[entities]:[['defensive', 'tackle'], ['san', 'diego', 'chargers']]
+*R1170[faces]
+|--(nsubj)--> R1160[tackle]
+|                |--(compou)--> R1157[san]
+|                |--(compou)--> R1157[diego]
+|                |--(compou)--> R1157[chargers]
+|                |--(compou)--> R1160[defensive]
+|--(dobj)--> *R1171[charges]
+                 |--(compou)--> *R1163[dui]
+
+	* entity-paths for event['charges']35_11ecbplus.xmlsent:9589
+
+	* entity-paths for event['dui']35_11ecbplus.xmlsent:9589
+
+	* entity-paths for event['faces']35_11ecbplus.xmlsent:9589
+	['Faces --(nsubj)--> Tackle']

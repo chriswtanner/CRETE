@@ -1,0 +1,102 @@
+
+-----------------------------------------
+docid:37_1ecbplus.xml
+-----------------------------------------
+
+sentence #:a powerful earthquake in indonesia's aceh province flattened buildings and sparked landslides tuesday , killing at least five people and injuring dozens in a region devastated by the quake - triggered tsunami of 2004 . 
+	[events]:[['flattened'], ['earthquake'], ['killing'], ['sparked'], ['injuring'], ['quake'], ['devastated'], ['triggered'], ['landslides'], ['tsunami']]
+	[entities]:[['five', 'people'], ['in', 'a', 'region'], ['tuesday'], ['of', '2004'], ['buildings'], ['in', "indonesia's", 'aceh', 'province'], ['dozens']]
+*R1272[flattened]
+|--(nsubj)--> *R1233[earthquake]
+|                |--(det)--> a
+|                |--(amod)--> powerful
+|                |--(nmod)--> R1237[province]
+|                                 |--(case)--> R1237[in]
+|                                 |--(nmod:p)--> R1237[indonesia's]
+|                                 |                |--(case)--> R1237[indonesia's]
+|                                 |--(compou)--> R1237[aceh]
+|--(dobj)--> R1257[buildings]
+|--(cc)--> and
+|--(conj)--> *R1273[sparked]
+|                |--(dobj)--> *R1274[landslides]
+|                |--(nmod:t)--> R1245[tuesday]
+|                |--(punct)--> ,
+|                |--(dep)--> *R1275[killing]
+|                                 |--(dobj)--> R1276[people]
+|                                 |                |--(nummod)--> R1276[five]
+|                                 |                                 |--(nmod:n)--> least
+|                                 |                                                  |--(case)--> at
+|                                 |--(cc)--> and
+|                                 |--(conj)--> *R1234[injuring]
+|                                                  |--(dobj)--> R1235[dozens]
+|                                                  |--(nmod)--> R1237[region]
+|                                                                   |--(case)--> R1237[in]
+|                                                                   |--(det)--> R1237[a]
+|                                                                   |--(acl)--> *R1238[devastated]
+|                                                                                    |--(nmod)--> *R1239[quake]
+|                                                                                                     |--(case)--> by
+|                                                                                                     |--(det)--> the
+|                                                                                                     |--(punct)--> -
+|                                                                                                     |--(acl)--> *R1240[triggered]
+|                                                                                                                      |--(dobj)--> *R1241[tsunami]
+|                                                                                                                                       |--(nmod)--> R1242[2004]
+|                                                                                                                                                        |--(case)--> R1242[of]
+|--(punct)--> .
+
+	* entity-paths for event['flattened']37_1ecbplus.xmlsent:10490
+	['flattened --(nsubj)--> earthquake', 'earthquake --(nmod)--> province']
+	['flattened --(dobj)--> buildings']
+	['flattened --(conj)--> sparked', 'sparked --(nmod:tmod)--> Tuesday']
+	['flattened --(conj)--> sparked', 'sparked --(dep)--> killing', 'killing --(dobj)--> people']
+	['flattened --(conj)--> sparked', 'sparked --(dep)--> killing', 'killing --(conj)--> injuring', 'injuring --(dobj)--> dozens']
+	['flattened --(conj)--> sparked', 'sparked --(dep)--> killing', 'killing --(conj)--> injuring', 'injuring --(nmod)--> region']
+
+	* entity-paths for event['earthquake']37_1ecbplus.xmlsent:10490
+	['earthquake --(nmod)--> province']
+
+	* entity-paths for event['killing']37_1ecbplus.xmlsent:10490
+	['killing --(dobj)--> people']
+	['killing --(conj)--> injuring', 'injuring --(dobj)--> dozens']
+	['killing --(conj)--> injuring', 'injuring --(nmod)--> region']
+
+	* entity-paths for event['sparked']37_1ecbplus.xmlsent:10490
+	['sparked --(nmod:tmod)--> Tuesday']
+	['sparked --(dep)--> killing', 'killing --(dobj)--> people']
+	['sparked --(dep)--> killing', 'killing --(conj)--> injuring', 'injuring --(dobj)--> dozens']
+	['sparked --(dep)--> killing', 'killing --(conj)--> injuring', 'injuring --(nmod)--> region']
+
+	* entity-paths for event['injuring']37_1ecbplus.xmlsent:10490
+	['injuring --(dobj)--> dozens']
+	['injuring --(nmod)--> region']
+
+	* entity-paths for event['quake']37_1ecbplus.xmlsent:10490
+	['quake --(acl)--> triggered', 'triggered --(dobj)--> tsunami', 'tsunami --(nmod)--> 2004']
+
+	* entity-paths for event['devastated']37_1ecbplus.xmlsent:10490
+	['devastated --(nmod)--> quake', 'quake --(acl)--> triggered', 'triggered --(dobj)--> tsunami', 'tsunami --(nmod)--> 2004']
+
+	* entity-paths for event['triggered']37_1ecbplus.xmlsent:10490
+	['triggered --(dobj)--> tsunami', 'tsunami --(nmod)--> 2004']
+
+	* entity-paths for event['landslides']37_1ecbplus.xmlsent:10490
+
+	* entity-paths for event['tsunami']37_1ecbplus.xmlsent:10490
+	['tsunami --(nmod)--> 2004']
+
+sentence #:five dead , dozens injured in indonesia quake 
+	[events]:[['injured'], ['dead'], ['indonesia', 'quake']]
+	[entities]:[['five'], ['dozens']]
+R1276[five]
+|--(amod)--> *R1275[dead]
+|--(punct)--> ,
+|--(appos)--> R1235[dozens]
+                 |--(acl)--> *R1234[injured]
+                                  |--(nmod)--> *R1233[quake]
+                                                   |--(case)--> in
+                                                   |--(compou)--> *R1233[indonesia]
+
+	* entity-paths for event['injured']37_1ecbplus.xmlsent:10488
+
+	* entity-paths for event['dead']37_1ecbplus.xmlsent:10488
+
+	* entity-paths for event['indonesia', 'quake']37_1ecbplus.xmlsent:10488

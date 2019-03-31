@@ -1,0 +1,107 @@
+
+-----------------------------------------
+docid:6_4ecbplus.xml
+-----------------------------------------
+
+sentence #:despite reports last week that said gary ross would definitely not be returning to direct the hunger games sequel , catching fire , it seems he will be back at the negotiating table with lionsgate this week . 
+	[events]:[['back'], ['returning'], ['at', 'the', 'negotiating', 'table'], ['sequel'], ['direct']]
+	[entities]:[['gary', 'ross'], ['catching', 'fire'], ['lionsgate'], ['he'], ['the', 'hunger', 'games']]
+seems
+|--(nmod)--> reports
+|                |--(case)--> despite
+|                |--(nmod:t)--> week
+|                |                |--(amod)--> last
+|                |--(acl:re)--> said
+|                                 |--(nsubj)--> that
+|                                 |--(ccomp)--> *R1698[returning]
+|                                 |                |--(nsubj)--> R1692[ross]
+|                                 |                |                |--(compou)--> R1692[gary]
+|                                 |                |--(aux)--> would
+|                                 |                |--(advmod)--> definitely
+|                                 |                |--(neg)--> not
+|                                 |                |--(aux)--> be
+|                                 |                |--(xcomp)--> *R1699[direct]
+|                                 |                                 |--(mark)--> to
+|                                 |                                 |--(dobj)--> *R1701[sequel]
+|                                 |                                                  |--(det)--> R1700[the]
+|                                 |                                                  |--(compou)--> R1700[hunger]
+|                                 |                                                  |--(compou)--> R1700[games]
+|                                 |--(punct)--> ,
+|                                 |--(xcomp)--> R1702[catching]
+|                                                  |--(dobj)--> R1702[fire]
+|--(punct)--> ,
+|--(nsubj)--> it
+|--(ccomp)--> *R1696[table]
+|                |--(nsubj)--> R1692[he]
+|                |--(aux)--> will
+|                |--(cop)--> be
+|                |--(advmod)--> *R1713[back]
+|                |--(case)--> *R1696[at]
+|                |--(det)--> *R1696[the]
+|                |--(compou)--> *R1696[negotiating]
+|                |--(nmod)--> R1697[lionsgate]
+|                |                |--(case)--> with
+|                |--(nmod:t)--> week
+|                                 |--(det)--> this
+|--(punct)--> .
+
+	* entity-paths for event['back']6_4ecbplus.xmlsent:14456
+
+	* entity-paths for event['returning']6_4ecbplus.xmlsent:14456
+	['returning --(nsubj)--> Ross']
+	['returning --(xcomp)--> direct', 'direct --(dobj)--> sequel', 'sequel --(det)--> The']
+	['returning --(xcomp)--> direct', 'direct --(dobj)--> sequel', 'sequel --(compound)--> Hunger']
+	['returning --(xcomp)--> direct', 'direct --(dobj)--> sequel', 'sequel --(compound)--> Games']
+
+	* entity-paths for event['at', 'the', 'negotiating', 'table']6_4ecbplus.xmlsent:14456
+	['table --(nsubj)--> he']
+	['table --(nmod)--> Lionsgate']
+
+	* entity-paths for event['sequel']6_4ecbplus.xmlsent:14456
+	['sequel --(det)--> The']
+	['sequel --(compound)--> Hunger']
+	['sequel --(compound)--> Games']
+
+	* entity-paths for event['direct']6_4ecbplus.xmlsent:14456
+	['direct --(dobj)--> sequel', 'sequel --(det)--> The']
+	['direct --(dobj)--> sequel', 'sequel --(compound)--> Hunger']
+	['direct --(dobj)--> sequel', 'sequel --(compound)--> Games']
+
+sentence #:gary ross back in talks to direct 'the hunger games' sequel 'catching fire' 
+	[events]:[['talks'], ['sequel'], ['direct'], ['back']]
+	[entities]:[["'catching", "fire'"], ['gary', 'ross'], ["'the", 'hunger', "games'"]]
+R1692[ross]
+|--(compou)--> R1692[gary]
+|--(nmod)--> *R1696[talks]
+                 |--(advmod)--> *R1713[back]
+                 |--(case)--> in
+                 |--(acl)--> *R1699[direct]
+                                  |--(mark)--> to
+                                  |--(punct)--> R1700['the]
+                                  |--(dobj)--> *R1701[sequel]
+                                  |                |--(nmod:p)--> R1700[games']
+                                  |                |                |--(det)--> R1700['the]
+                                  |                |                |--(compou)--> R1700[hunger]
+                                  |                |                |--(case)--> R1700[games']
+                                  |                |--(acl)--> R1702['catching]
+                                  |                                 |--(punct)--> R1702['catching]
+                                  |                                 |--(dobj)--> R1702[fire']
+                                  |--(punct)--> R1702[fire']
+
+	* entity-paths for event['talks']6_4ecbplus.xmlsent:14454
+	['talks --(acl)--> direct', "direct --(punct)--> '"]
+	['talks --(acl)--> direct', 'direct --(dobj)--> sequel', 'sequel --(nmod:poss)--> Games']
+	['talks --(acl)--> direct', 'direct --(dobj)--> sequel', 'sequel --(acl)--> Catching']
+	['talks --(acl)--> direct', "direct --(punct)--> '"]
+
+	* entity-paths for event['sequel']6_4ecbplus.xmlsent:14454
+	['sequel --(nmod:poss)--> Games']
+	['sequel --(acl)--> Catching']
+
+	* entity-paths for event['direct']6_4ecbplus.xmlsent:14454
+	["direct --(punct)--> '"]
+	['direct --(dobj)--> sequel', 'sequel --(nmod:poss)--> Games']
+	['direct --(dobj)--> sequel', 'sequel --(acl)--> Catching']
+	["direct --(punct)--> '"]
+
+	* entity-paths for event['back']6_4ecbplus.xmlsent:14454

@@ -1,0 +1,95 @@
+
+-----------------------------------------
+docid:24_11ecbplus.xml
+-----------------------------------------
+
+sentence #:four men drove a 4x4 through the front window of the store on rue de castiglione , before making off with the jewellery and watches . 
+	[events]:[['making', 'off'], ['drove']]
+	[entities]:[['men'], ['4x4'], ['jewellery'], ['watches'], ['through', 'the', 'front', 'window', 'of', 'the', 'store', 'on', 'rue', 'de', 'castiglione']]
+*R668[drove]
+|--(nsubj)--> R669[men]
+|                |--(nummod)--> four
+|--(dobj)--> R670[4x4]
+|                |--(det)--> a
+|--(nmod)--> R674[window]
+|                |--(case)--> R674[through]
+|                |--(det)--> R674[the]
+|                |--(compou)--> R674[front]
+|                |--(nmod)--> R674[store]
+|                                 |--(case)--> R674[of]
+|                                 |--(det)--> R674[the]
+|--(nmod)--> R674[castiglione]
+|                |--(case)--> R674[on]
+|                |--(compou)--> R674[rue]
+|                |--(amod)--> R674[de]
+|                |--(punct)--> ,
+|                |--(acl)--> *R675[making]
+|                                 |--(mark)--> before
+|                                 |--(compou)--> *R675[off]
+|                                 |--(nmod)--> R679[jewellery]
+|                                                  |--(case)--> with
+|                                                  |--(det)--> the
+|                                                  |--(cc)--> and
+|                                                  |--(conj)--> R680[watches]
+|--(punct)--> .
+
+	* entity-paths for event['making', 'off']24_11ecbplus.xmlsent:4807
+
+	* entity-paths for event['drove']24_11ecbplus.xmlsent:4807
+	['drove --(nsubj)--> men']
+	['drove --(dobj)--> 4x4']
+	['drove --(nmod)--> window']
+	['drove --(nmod)--> Castiglione']
+
+sentence #:jewellery and watches worth #1 . 7m have been stolen during a heist in an upmarket central paris shop . 
+	[events]:[['heist'], ['stolen']]
+	[entities]:[['watches'], ['jewellery'], ['in', 'an', 'upmarket', 'central', 'paris', 'shop']]
+*R678[stolen]
+|--(ccomp)--> R679[jewellery]
+|                |--(cc)--> and
+|                |--(conj)--> R680[watches]
+|                                 |--(nmod)--> #1
+|                                                  |--(case)--> worth
+|                                                  |--(dep)--> #1
+|--(punct)--> .
+|--(nsubjp)--> 7m
+|--(aux)--> have
+|--(auxpas)--> been
+|--(nmod)--> *R684[heist]
+|                |--(case)--> during
+|                |--(det)--> a
+|                |--(nmod)--> R671[shop]
+|                                 |--(case)--> R671[in]
+|                                 |--(det)--> R671[an]
+|                                 |--(amod)--> R671[upmarket]
+|                                 |--(amod)--> R671[central]
+|                                 |--(compou)--> R671[paris]
+|--(punct)--> .
+
+	* entity-paths for event['heist']24_11ecbplus.xmlsent:4806
+	['heist --(nmod)--> shop']
+
+	* entity-paths for event['stolen']24_11ecbplus.xmlsent:4806
+	['stolen --(ccomp)--> Jewellery']
+	['stolen --(nmod)--> heist', 'heist --(nmod)--> shop']
+
+sentence #:paris : jewellery stolen in casty shop raid 
+	[events]:[['stolen'], ['raid']]
+	[entities]:[['paris'], ['casty', 'shop'], ['jewellery']]
+R685[paris]
+|--(punct)--> :
+|--(dep)--> *R678[stolen]
+                 |--(compou)--> R679[jewellery]
+                 |--(nmod)--> *R684[raid]
+                                  |--(case)--> in
+                                  |--(compou)--> R671[casty]
+                                  |--(compou)--> R671[shop]
+
+	* entity-paths for event['stolen']24_11ecbplus.xmlsent:4805
+	['Stolen --(compound)--> Jewellery']
+	['Stolen --(nmod)--> Raid', 'Raid --(compound)--> Casty']
+	['Stolen --(nmod)--> Raid', 'Raid --(compound)--> Shop']
+
+	* entity-paths for event['raid']24_11ecbplus.xmlsent:4805
+	['Raid --(compound)--> Casty']
+	['Raid --(compound)--> Shop']

@@ -1,0 +1,76 @@
+
+-----------------------------------------
+docid:31_1ecb.xml
+-----------------------------------------
+
+sentence #:hansbrough needed just nine points in the game to eclipse phil ford for the top spot . 
+	[events]:[['eclipse'], ['game']]
+	[entities]:[['phil', 'ford'], ['hansbrough']]
+needed
+|--(nsubj)--> R997[hansbrough]
+|--(nmod)--> points
+|                |--(advmod)--> just
+|                |--(nummod)--> nine
+|                |--(case)--> in
+|                |--(dep)--> *R1010[game]
+|                                 |--(det)--> the
+|--(xcomp)--> *R996[eclipse]
+|                |--(mark)--> to
+|                |--(dobj)--> R1005[ford]
+|                                 |--(compou)--> R1005[phil]
+|                                 |--(nmod)--> spot
+|                                                  |--(case)--> for
+|                                                  |--(det)--> the
+|                                                  |--(amod)--> top
+|--(punct)--> .
+
+	* entity-paths for event['eclipse']31_1ecb.xmlsent:8244
+	['eclipse --(dobj)--> Ford']
+
+	* entity-paths for event['game']31_1ecb.xmlsent:8244
+
+sentence #:in front of his home fans and a national television audience , tyler hansbrough became the all-time leading scorer for north carolina basketball on thursday in his team 's win over evansville . 
+	[events]:[['became'], ['win']]
+	[entities]:[['on', 'thursday'], ['tyler', 'hansbrough'], ['north', 'carolina'], ['team'], ['scorer'], ['evansville']]
+*R996[became]
+|--(nmod)--> front
+|                |--(case)--> in
+|                |--(nmod)--> fans
+|                                 |--(case)--> of
+|                                 |--(nmod:p)--> his
+|                                 |--(compou)--> home
+|                                 |--(cc)--> and
+|                                 |--(conj)--> audience
+|                                                  |--(det)--> a
+|                                                  |--(amod)--> national
+|                                                  |--(compou)--> television
+|--(punct)--> ,
+|--(nsubj)--> R997[hansbrough]
+|                |--(compou)--> R997[tyler]
+|--(xcomp)--> R1018[scorer]
+|                |--(det)--> the
+|                |--(amod)--> all-time
+|                |--(amod)--> leading
+|                |--(nmod)--> basketball
+|                                 |--(case)--> for
+|                                 |--(compou)--> R999[north]
+|                                 |--(compou)--> R999[carolina]
+|--(nmod)--> R1006[thursday]
+|                |--(case)--> R1006[on]
+|--(nmod)--> R999[team]
+|                |--(case)--> in
+|                |--(nmod:p)--> his
+|                |--(case)--> 's
+|                |--(acl:re)--> *R1007[win]
+|                                 |--(nmod)--> R1008[evansville]
+|                                                  |--(case)--> over
+|--(punct)--> .
+
+	* entity-paths for event['became']31_1ecb.xmlsent:8243
+	['became --(nsubj)--> Hansbrough']
+	['became --(xcomp)--> scorer']
+	['became --(nmod)--> Thursday']
+	['became --(nmod)--> team']
+
+	* entity-paths for event['win']31_1ecb.xmlsent:8243
+	['win --(nmod)--> Evansville']

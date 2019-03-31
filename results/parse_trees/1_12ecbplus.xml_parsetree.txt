@@ -1,0 +1,96 @@
+
+-----------------------------------------
+docid:1_12ecbplus.xml
+-----------------------------------------
+
+sentence #:lindsay lohan is mia after pretending to check into unlicensed calif . rehab center 
+	[events]:[['check', 'into'], ['pretending'], ['mia']]
+	[entities]:[['unlicensed', 'calif', '.', 'rehab', 'center'], ['lindsay', 'lohan']]
+*R32[mia]
+|--(nsubj)--> R15[lohan]
+|                |--(compou)--> R15[lindsay]
+|--(cop)--> is
+|--(acl)--> *R33[pretending]
+                 |--(mark)--> after
+                 |--(xcomp)--> *R9[check]
+                                  |--(mark)--> to
+                                  |--(nmod)--> R10[unlicensed]
+                                  |                |--(case)--> *R9[into]
+                                  |--(nmod:t)--> R10[calif]
+                                                   |--(punct)--> R10[.]
+                                                   |--(dep)--> R10[center]
+                                                                    |--(compou)--> R10[rehab]
+
+	* entity-paths for event['check', 'into']1_12ecbplus.xmlsent:58
+
+	* entity-paths for event['pretending']1_12ecbplus.xmlsent:58
+	['pretending --(xcomp)--> check', 'check --(nmod)--> unlicensed']
+	['pretending --(xcomp)--> check', 'check --(nmod:tmod)--> Calif']
+
+	* entity-paths for event['mia']1_12ecbplus.xmlsent:58
+	['MIA --(nsubj)--> Lohan']
+	['MIA --(acl)--> pretending', 'pretending --(xcomp)--> check', 'check --(nmod)--> unlicensed']
+	['MIA --(acl)--> pretending', 'pretending --(xcomp)--> check', 'check --(nmod:tmod)--> Calif']
+
+sentence #:" the " mean girls " star fooled an l . a superior court judge , a santa monica prosecutor and apparently her own lawyer , by pretending to check into a rehabilitation facility , but chickening out when she got there . 
+	[events]:[['fooled'], ['pretending'], ['chickening', 'out'], ['check', 'into']]
+	[entities]:[['a', 'rehabilitation', 'facility'], ['star'], ['prosecutor'], ['there'], ['judge'], ['lawyer'], ['she'], ['her']]
+*R34[fooled]
+|--(punct)--> "
+|--(nsubj)--> the
+|--(punct)--> "
+|--(nmod)--> mean
+|                |--(dep)--> girls
+|                                 |--(dep)--> R15[star]
+|                                                  |--(punct)--> "
+|--(dobj)--> l
+|                |--(det)--> an
+|                |--(punct)--> .
+|                |--(dep)--> R35[judge]
+|                |                |--(det)--> a
+|                |                |--(compou)--> superior
+|                |                |--(compou)--> court
+|                |--(punct)--> ,
+|                |--(dep)--> R36[prosecutor]
+|                                 |--(det)--> a
+|                                 |--(compou)--> santa
+|                                 |--(compou)--> monica
+|--(cc)--> and
+|--(conj)--> R37[lawyer]
+|                |--(advmod)--> apparently
+|                |--(nmod:p)--> R15[her]
+|                |--(amod)--> own
+|--(punct)--> ,
+|--(nmod)--> *R33[pretending]
+|                |--(mark)--> by
+|                |--(xcomp)--> *R9[check]
+|                                 |--(mark)--> to
+|                                 |--(nmod)--> R10[facility]
+|                                                  |--(case)--> *R9[into]
+|                                                  |--(det)--> R10[a]
+|                                                  |--(compou)--> R10[rehabilitation]
+|--(punct)--> ,
+|--(cc)--> but
+|--(conj)--> got
+|                |--(dep)--> *R38[chickening]
+|                |                |--(compou)--> *R38[out]
+|                |                |--(dobj)--> when
+|                |--(nsubj)--> R15[she]
+|                |--(advmod)--> R10[there]
+|--(punct)--> .
+
+	* entity-paths for event['fooled']1_12ecbplus.xmlsent:60
+	['fooled --(nmod)--> Mean', 'Mean --(dep)--> Girls', 'Girls --(dep)--> star']
+	['fooled --(dobj)--> L', 'L --(dep)--> judge']
+	['fooled --(dobj)--> L', 'L --(dep)--> prosecutor']
+	['fooled --(conj)--> lawyer']
+	['fooled --(nmod)--> pretending', 'pretending --(xcomp)--> check', 'check --(nmod)--> facility']
+	['fooled --(conj)--> got', 'got --(nsubj)--> she']
+	['fooled --(conj)--> got', 'got --(advmod)--> there']
+
+	* entity-paths for event['pretending']1_12ecbplus.xmlsent:60
+	['pretending --(xcomp)--> check', 'check --(nmod)--> facility']
+
+	* entity-paths for event['chickening', 'out']1_12ecbplus.xmlsent:60
+
+	* entity-paths for event['check', 'into']1_12ecbplus.xmlsent:60

@@ -1,0 +1,53 @@
+
+-----------------------------------------
+docid:26_12ecb.xml
+-----------------------------------------
+
+sentence #:an alleged mafia boss who was caught on wiretaps purportedly discussing cosa nostra 's new hierarchy hanged himself in a sicilian jail hours after his arrest , police said wednesday . 
+	[events]:[['arrest'], ['hanged'], ['said']]
+	[entities]:[['himself'], ['a', 'sicilian', 'jail'], ['police'], ['wednesday'], ['mafia', 'boss'], ['hours']]
+*R751[said]
+|--(ccomp)--> *R732[hanged]
+|                |--(nsubj)--> R733[boss]
+|                |                |--(det)--> an
+|                |                |--(amod)--> alleged
+|                |                |--(compou)--> R733[mafia]
+|                |                |--(acl:re)--> caught
+|                |                                 |--(nsubjp)--> who
+|                |                                 |--(auxpas)--> was
+|                |                                 |--(nmod)--> wiretaps
+|                |                                                  |--(case)--> on
+|                |                                                  |--(acl)--> discussing
+|                |                                                                   |--(advmod)--> purportedly
+|                |                                                                   |--(dobj)--> hierarchy
+|                |                                                                                    |--(nmod:p)--> nostra
+|                |                                                                                    |                |--(compou)--> cosa
+|                |                                                                                    |                |--(case)--> 's
+|                |                                                                                    |--(amod)--> new
+|                |--(dobj)--> R733[himself]
+|                |--(nmod)--> R735[hours]
+|                |                |--(case)--> in
+|                |                |--(det)--> R734[a]
+|                |                |--(compou)--> R734[sicilian]
+|                |                |--(compou)--> R734[jail]
+|                |--(nmod)--> *R736[arrest]
+|                                 |--(case)--> after
+|                                 |--(nmod:p)--> his
+|--(punct)--> ,
+|--(nsubj)--> R738[police]
+|--(nmod:t)--> R752[wednesday]
+|--(punct)--> .
+
+	* entity-paths for event['arrest']26_12ecb.xmlsent:5297
+
+	* entity-paths for event['hanged']26_12ecb.xmlsent:5297
+	['hanged --(nsubj)--> boss']
+	['hanged --(dobj)--> himself']
+	['hanged --(nmod)--> hours']
+
+	* entity-paths for event['said']26_12ecb.xmlsent:5297
+	['said --(ccomp)--> hanged', 'hanged --(nsubj)--> boss']
+	['said --(ccomp)--> hanged', 'hanged --(dobj)--> himself']
+	['said --(ccomp)--> hanged', 'hanged --(nmod)--> hours']
+	['said --(nsubj)--> police']
+	['said --(nmod:tmod)--> Wednesday']

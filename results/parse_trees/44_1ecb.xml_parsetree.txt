@@ -1,0 +1,151 @@
+
+-----------------------------------------
+docid:44_1ecb.xml
+-----------------------------------------
+
+sentence #:at least initially , sturm said , there will be little noticeable impact on customers from the deal . 
+	[events]:[['deal']]
+	[entities]:[]
+impact
+|--(advmod)--> initially
+|                |--(dep)--> at
+|                                 |--(mwe)--> least
+|--(parata)--> said
+|                |--(punct)--> ,
+|                |--(nsubj)--> sturm
+|                |--(punct)--> ,
+|--(expl)--> there
+|--(aux)--> will
+|--(cop)--> be
+|--(amod)--> little
+|--(amod)--> noticeable
+|--(nmod)--> customers
+|                |--(case)--> on
+|                |--(nmod)--> *R1599[deal]
+|                                 |--(case)--> from
+|                                 |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['deal']44_1ecb.xmlsent:13514
+
+sentence #:industry analysts contacted by eweek generally say they believe that hewlett-packard 's forthcoming $ 13.9 billion acquisition of electronic data systems ? announced officially on may 13 is a good move for both companies , although there will be the usual integration snafus over vendor neutrality issues , business lines , culture shock and layoffs . 
+	[events]:[['acquisition'], ['move'], ['announced']]
+	[entities]:[['hewlett-packard'], ['electronic', 'data', 'systems'], ['may', '13']]
+say
+|--(nsubj)--> analysts
+|                |--(compou)--> industry
+|                |--(acl)--> contacted
+|                                 |--(nmod)--> eweek
+|                                                  |--(case)--> by
+|--(advmod)--> generally
+|--(ccomp)--> believe
+|                |--(nsubj)--> they
+|                |--(ccomp)--> *R1599[move]
+|                                 |--(mark)--> that
+|                                 |--(nsubj)--> *R1599[acquisition]
+|                                 |                |--(nmod:p)--> R1577[hewlett-packard]
+|                                 |                |                |--(case)--> 's
+|                                 |                |--(amod)--> forthcoming
+|                                 |                |--(amod)--> $
+|                                 |                |                |--(nummod)--> billion
+|                                 |                |                                 |--(compou)--> 13.9
+|                                 |                |--(acl)--> R1600[systems]
+|                                 |                |                |--(case)--> of
+|                                 |                |                |--(compou)--> R1600[electronic]
+|                                 |                |                |--(compou)--> R1600[data]
+|                                 |                |                |--(punct)--> ?
+|                                 |                |--(acl)--> *R1601[announced]
+|                                 |                                 |--(advmod)--> officially
+|                                 |                                 |--(nmod)--> R1602[may]
+|                                 |                                                  |--(case)--> on
+|                                 |                                                  |--(nummod)--> R1602[13]
+|                                 |--(cop)--> is
+|                                 |--(det)--> a
+|                                 |--(amod)--> good
+|                                 |--(nmod)--> companies
+|                                 |                |--(case)--> for
+|                                 |                |--(det)--> both
+|                                 |--(punct)--> ,
+|                                 |--(advcl)--> snafus
+|                                                  |--(mark)--> although
+|                                                  |--(expl)--> there
+|                                                  |--(aux)--> will
+|                                                  |--(cop)--> be
+|                                                  |--(det)--> the
+|                                                  |--(amod)--> usual
+|                                                  |--(compou)--> integration
+|                                                  |--(nmod)--> issues
+|                                                                   |--(case)--> over
+|                                                                   |--(compou)--> vendor
+|                                                                   |--(compou)--> neutrality
+|                                                                   |--(punct)--> ,
+|                                                                   |--(conj)--> lines
+|                                                                   |                |--(compou)--> business
+|                                                                   |--(punct)--> ,
+|                                                                   |--(conj)--> shock
+|                                                                   |                |--(compou)--> culture
+|                                                                   |--(cc)--> and
+|                                                                   |--(conj)--> layoffs
+|--(punct)--> .
+
+	* entity-paths for event['acquisition']44_1ecb.xmlsent:13495
+	['acquisition --(nmod:poss)--> Hewlett-Packard']
+	['acquisition --(acl)--> Systems']
+	['acquisition --(acl)--> announced', 'announced --(nmod)--> May']
+
+	* entity-paths for event['move']44_1ecb.xmlsent:13495
+	['move --(nsubj)--> acquisition', 'acquisition --(nmod:poss)--> Hewlett-Packard']
+	['move --(nsubj)--> acquisition', 'acquisition --(acl)--> Systems']
+	['move --(nsubj)--> acquisition', 'acquisition --(acl)--> announced', 'announced --(nmod)--> May']
+
+	* entity-paths for event['announced']44_1ecb.xmlsent:13495
+	['announced --(nmod)--> May']
+
+sentence #:overall , my take is that this transaction sounds great in theory , but there many potential pitfalls . 
+	[events]:[['transaction']]
+	[entities]:[]
+is
+|--(advmod)--> overall
+|--(punct)--> ,
+|--(nsubj)--> take
+|                |--(nmod:p)--> my
+|--(ccomp)--> sounds
+|                |--(mark)--> that
+|                |--(nsubj)--> *R1599[transaction]
+|                |                |--(det)--> this
+|                |--(dobj)--> pitfalls
+|                                 |--(amod)--> great
+|                                 |                |--(nmod)--> theory
+|                                 |                |                |--(case)--> in
+|                                 |                |--(punct)--> ,
+|                                 |                |--(cc)--> but
+|                                 |                |--(conj)--> many
+|                                 |                                 |--(advmod)--> there
+|                                 |--(amod)--> potential
+|--(punct)--> .
+
+	* entity-paths for event['transaction']44_1ecb.xmlsent:13505
+
+sentence #:for high-end enterprise it services before this merger , the market consisted of ibm and everybody else . 
+	[events]:[['merger']]
+	[entities]:[]
+consisted
+|--(nmod)--> enterprise
+|                |--(case)--> for
+|                |--(amod)--> high-end
+|                |--(dep)--> services
+|                                 |--(dep)--> it
+|                                 |--(nmod)--> *R1599[merger]
+|                                                  |--(case)--> before
+|                                                  |--(det)--> this
+|--(punct)--> ,
+|--(nsubj)--> market
+|                |--(det)--> the
+|--(nmod)--> ibm
+|                |--(case)--> of
+|                |--(cc)--> and
+|                |--(conj)--> everybody
+|                                 |--(advmod)--> else
+|--(punct)--> .
+
+	* entity-paths for event['merger']44_1ecb.xmlsent:13499

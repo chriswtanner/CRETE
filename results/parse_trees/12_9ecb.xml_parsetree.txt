@@ -1,0 +1,53 @@
+
+-----------------------------------------
+docid:12_9ecb.xml
+-----------------------------------------
+
+sentence #:the indian navy says it has arrested 23 somali and yemeni pirates who tried to storm a ship in the gulf of aden . 
+	[events]:[['storm'], ['tried'], ['says'], ['arrested']]
+	[entities]:[['the', 'gulf', 'of', 'aden'], ['it'], ['ship'], ['pirates'], ['navy']]
+*R226[says]
+|--(nsubj)--> R215[navy]
+|                |--(det)--> the
+|                |--(amod)--> indian
+|--(ccomp)--> *R214[arrested]
+|                |--(nsubj)--> R215[it]
+|                |--(aux)--> has
+|                |--(dobj)--> somali
+|                |                |--(nummod)--> 23
+|                |                |--(cc)--> and
+|                |                |--(conj)--> R216[pirates]
+|                |                                 |--(compou)--> yemeni
+|                |--(dep)--> *R239[tried]
+|                                 |--(nsubj)--> who
+|                                 |--(xcomp)--> *R235[storm]
+|                                                  |--(mark)--> to
+|                                                  |--(dobj)--> R228[ship]
+|                                                  |                |--(det)--> a
+|                                                  |--(nmod)--> R229[gulf]
+|                                                                   |--(case)--> in
+|                                                                   |--(det)--> R229[the]
+|                                                                   |--(nmod)--> R229[aden]
+|                                                                                    |--(case)--> R229[of]
+|--(punct)--> .
+
+	* entity-paths for event['storm']12_9ecb.xmlsent:1125
+	['storm --(dobj)--> ship']
+	['storm --(nmod)--> Gulf']
+
+	* entity-paths for event['tried']12_9ecb.xmlsent:1125
+	['tried --(xcomp)--> storm', 'storm --(dobj)--> ship']
+	['tried --(xcomp)--> storm', 'storm --(nmod)--> Gulf']
+
+	* entity-paths for event['says']12_9ecb.xmlsent:1125
+	['says --(nsubj)--> navy']
+	['says --(ccomp)--> arrested', 'arrested --(nsubj)--> it']
+	['says --(ccomp)--> arrested', 'arrested --(dobj)--> Somali', 'Somali --(conj)--> pirates']
+	['says --(ccomp)--> arrested', 'arrested --(dep)--> tried', 'tried --(xcomp)--> storm', 'storm --(dobj)--> ship']
+	['says --(ccomp)--> arrested', 'arrested --(dep)--> tried', 'tried --(xcomp)--> storm', 'storm --(nmod)--> Gulf']
+
+	* entity-paths for event['arrested']12_9ecb.xmlsent:1125
+	['arrested --(nsubj)--> it']
+	['arrested --(dobj)--> Somali', 'Somali --(conj)--> pirates']
+	['arrested --(dep)--> tried', 'tried --(xcomp)--> storm', 'storm --(dobj)--> ship']
+	['arrested --(dep)--> tried', 'tried --(xcomp)--> storm', 'storm --(nmod)--> Gulf']

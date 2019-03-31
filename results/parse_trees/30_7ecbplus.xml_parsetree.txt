@@ -1,0 +1,37 @@
+
+-----------------------------------------
+docid:30_7ecbplus.xml
+-----------------------------------------
+
+sentence #:according to information from seacom the outage was caused by a terrestrial break in the fibre in egypt on the smw4 cable system . 
+	[events]:[['terrestrial', 'break'], ['outage']]
+	[entities]:[['in', 'egypt'], ['seacom'], ['fibre']]
+caused
+|--(nmod)--> information
+|                |--(case)--> according
+|                |                |--(mwe)--> to
+|                |--(nmod)--> R956[seacom]
+|                                 |--(case)--> from
+|--(nsubjp)--> *R990[outage]
+|                |--(det)--> the
+|--(auxpas)--> was
+|--(nmod)--> *R988[break]
+|                |--(case)--> by
+|                |--(det)--> a
+|                |--(amod)--> *R988[terrestrial]
+|                |--(nmod)--> R987[fibre]
+|                                 |--(case)--> in
+|                                 |--(det)--> the
+|                                 |--(nmod)--> R993[egypt]
+|                                                  |--(case)--> R993[in]
+|--(nmod)--> system
+|                |--(case)--> on
+|                |--(det)--> the
+|                |--(compou)--> smw4
+|                |--(compou)--> cable
+|--(punct)--> .
+
+	* entity-paths for event['terrestrial', 'break']30_7ecbplus.xmlsent:7980
+	['break --(nmod)--> fibre']
+
+	* entity-paths for event['outage']30_7ecbplus.xmlsent:7980

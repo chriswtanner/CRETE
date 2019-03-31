@@ -1,0 +1,96 @@
+
+-----------------------------------------
+docid:41_7ecbplus.xml
+-----------------------------------------
+
+sentence #:a refugee camp in south sudan's unity state was bombed on thursday , south sudan officials and witnesses said , threatening to raise tensions with sudan . 
+	[events]:[['said'], ['raise'], ['bombed'], ['tensions'], ['threatening']]
+	[entities]:[['sudan'], ['a', 'refugee', 'camp', 'in', 'south', "sudan's", 'unity', 'state'], ['witnesses'], ['south', 'sudan', 'officials'], ['on', 'thursday']]
+*R1452[said]
+|--(ccomp)--> *R1442[bombed]
+|                |--(nsubjp)--> R1444[camp]
+|                |                |--(det)--> R1444[a]
+|                |                |--(compou)--> R1444[refugee]
+|                |                |--(nmod)--> R1444[state]
+|                |                                 |--(case)--> R1444[in]
+|                |                                 |--(nmod:p)--> R1444[sudan's]
+|                |                                 |                |--(compou)--> R1444[south]
+|                |                                 |                |--(case)--> R1444[sudan's]
+|                |                                 |--(compou)--> R1444[unity]
+|                |--(auxpas)--> was
+|                |--(nmod)--> R1456[thursday]
+|                                 |--(case)--> R1456[on]
+|--(punct)--> ,
+|--(nsubj)--> R1458[officials]
+|                |--(compou)--> R1458[south]
+|                |--(compou)--> R1458[sudan]
+|                |--(cc)--> and
+|                |--(conj)--> R1501[witnesses]
+|--(punct)--> ,
+|--(xcomp)--> *R1502[threatening]
+|                |--(xcomp)--> *R1503[raise]
+|                                 |--(mark)--> to
+|                                 |--(dobj)--> *R1504[tensions]
+|                                 |--(nmod)--> R1443[sudan]
+|                                                  |--(case)--> with
+|--(punct)--> .
+
+	* entity-paths for event['said']41_7ecbplus.xmlsent:12438
+	['said --(ccomp)--> bombed', 'bombed --(nsubjpass)--> camp']
+	['said --(ccomp)--> bombed', 'bombed --(nmod)--> Thursday']
+	['said --(nsubj)--> officials']
+	['said --(xcomp)--> threatening', 'threatening --(xcomp)--> raise', 'raise --(nmod)--> Sudan']
+
+	* entity-paths for event['raise']41_7ecbplus.xmlsent:12438
+	['raise --(nmod)--> Sudan']
+
+	* entity-paths for event['bombed']41_7ecbplus.xmlsent:12438
+	['bombed --(nsubjpass)--> camp']
+	['bombed --(nmod)--> Thursday']
+
+	* entity-paths for event['tensions']41_7ecbplus.xmlsent:12438
+
+	* entity-paths for event['threatening']41_7ecbplus.xmlsent:12438
+	['threatening --(xcomp)--> raise', 'raise --(nmod)--> Sudan']
+
+sentence #:sudan's armed forces denied they carried out the strike . 
+	[events]:[['strike'], ['denied'], ['carried', 'out']]
+	[entities]:[['they'], ["sudan's", 'armed', 'forces']]
+*R1507[denied]
+|--(nsubj)--> R1443[forces]
+|                |--(nmod:p)--> R1443[sudan's]
+|                |                |--(case)--> R1443[sudan's]
+|                |--(amod)--> R1443[armed]
+|--(ccomp)--> *R1508[carried]
+|                |--(nsubj)--> R1443[they]
+|                |--(compou)--> *R1508[out]
+|                |--(dobj)--> *R1442[strike]
+|                                 |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['strike']41_7ecbplus.xmlsent:12439
+
+	* entity-paths for event['denied']41_7ecbplus.xmlsent:12439
+	['denied --(nsubj)--> forces']
+	['denied --(ccomp)--> carried', 'carried --(nsubj)--> they']
+
+	* entity-paths for event['carried', 'out']41_7ecbplus.xmlsent:12439
+
+sentence #:south sudan : "sudan bombed refugee camp" 
+	[events]:[['bombed']]
+	[entities]:[['"sudan'], ['refugee', 'camp"']]
+sudan
+|--(compou)--> south
+|--(punct)--> :
+|--(parata)--> *R1442[bombed]
+                 |--(punct)--> R1443["sudan]
+                 |--(nsubj)--> R1443["sudan]
+                 |--(dobj)--> R1444[camp"]
+                 |                |--(compou)--> R1444[refugee]
+                 |--(punct)--> R1444[camp"]
+
+	* entity-paths for event['bombed']41_7ecbplus.xmlsent:12436
+	['bombed --(punct)--> "']
+	['bombed --(nsubj)--> Sudan']
+	['bombed --(dobj)--> camp']
+	['bombed --(punct)--> "']

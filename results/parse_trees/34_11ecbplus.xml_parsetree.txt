@@ -1,0 +1,55 @@
+
+-----------------------------------------
+docid:34_11ecbplus.xml
+-----------------------------------------
+
+sentence #:regina benjamin u . s . surgeon general nominee 
+	[events]:[['nominee']]
+	[entities]:[['regina', 'benjamin'], ['u', '.', 's', '.', 'surgeon', 'general']]
+R1135[u]
+|--(compou)--> R1139[regina]
+|--(compou)--> R1139[benjamin]
+|--(punct)--> R1135[.]
+|--(dep)--> R1135[s]
+|--(punct)--> R1135[.]
+|--(dep)--> R1135[general]
+|                |--(compou)--> R1135[surgeon]
+|--(dep)--> *R1138[nominee]
+
+	* entity-paths for event['nominee']34_11ecbplus.xmlsent:9258
+
+sentence #:president barack obama held a press conference , july 13 , 2009 to announce his nominee for u . s . surgeon general , regina benjamin . 
+	[events]:[['nominee'], ['announce']]
+	[entities]:[['regina', 'benjamin'], ['july', '13', ',', '2009'], ['u', '.', 's', '.', 'surgeon', 'general'], ['barack', 'obama']]
+held
+|--(nsubj)--> R1136[obama]
+|                |--(compou)--> president
+|                |--(compou)--> R1136[barack]
+|--(dobj)--> conference
+|                |--(det)--> a
+|                |--(compou)--> press
+|                |--(punct)--> ,
+|                |--(dep)--> R1141[july]
+|                                 |--(nummod)--> R1141[13]
+|                                 |--(punct)--> R1141[,]
+|                                 |--(nummod)--> R1141[2009]
+|                                 |--(xcomp)--> *R1142[announce]
+|                                                  |--(mark)--> to
+|                                                  |--(dobj)--> *R1138[nominee]
+|                                                  |                |--(nmod:p)--> his
+|                                                  |--(nmod)--> R1135[u]
+|                                                                   |--(case)--> for
+|                                                                   |--(punct)--> R1135[.]
+|                                                                   |--(dep)--> R1135[s]
+|                                                                   |--(punct)--> R1135[.]
+|                                                                   |--(dep)--> R1135[general]
+|                                                                   |                |--(compou)--> R1135[surgeon]
+|                                                                   |--(punct)--> ,
+|                                                                   |--(dep)--> R1139[benjamin]
+|                                                                                    |--(compou)--> R1139[regina]
+|--(punct)--> .
+
+	* entity-paths for event['nominee']34_11ecbplus.xmlsent:9260
+
+	* entity-paths for event['announce']34_11ecbplus.xmlsent:9260
+	['announce --(nmod)--> U']

@@ -1,0 +1,58 @@
+
+-----------------------------------------
+docid:8_2ecb.xml
+-----------------------------------------
+
+sentence #:an explosion at a bank killed a police officer and a state bomb disposal technician , officials said saturday , offering a $ 35,000 reward for information leading to an arrest and conviction in the case . 
+	[events]:[['killed'], ['said'], ['explosion']]
+	[entities]:[['officials'], ['officer'], ['a', 'bank'], ['technician'], ['saturday']]
+*R1762[said]
+|--(ccomp)--> *R1763[killed]
+|                |--(nsubj)--> *R1764[explosion]
+|                |                |--(det)--> an
+|                |                |--(nmod)--> R1765[bank]
+|                |                                 |--(case)--> at
+|                |                                 |--(det)--> R1765[a]
+|                |--(dobj)--> R1766[officer]
+|                                 |--(det)--> a
+|                                 |--(compou)--> police
+|                                 |--(cc)--> and
+|                                 |--(conj)--> R1767[technician]
+|                                                  |--(det)--> a
+|                                                  |--(compou)--> state
+|                                                  |--(compou)--> bomb
+|                                                  |--(compou)--> disposal
+|--(punct)--> ,
+|--(nsubj)--> R1769[officials]
+|--(nmod:t)--> R1770[saturday]
+|--(punct)--> ,
+|--(advcl)--> offering
+|                |--(dobj)--> reward
+|                                 |--(det)--> a
+|                                 |--(amod)--> $
+|                                 |                |--(compou)--> 35,000
+|                                 |--(nmod)--> information
+|                                                  |--(case)--> for
+|                                                  |--(acl)--> leading
+|                                                                   |--(nmod)--> arrest
+|                                                                                    |--(case)--> to
+|                                                                                    |--(det)--> an
+|                                                                                    |--(cc)--> and
+|                                                                                    |--(conj)--> conviction
+|                                                                                    |--(nmod)--> case
+|                                                                                                     |--(case)--> in
+|                                                                                                     |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['killed']8_2ecb.xmlsent:14924
+	['killed --(nsubj)--> explosion', 'explosion --(nmod)--> bank']
+	['killed --(dobj)--> officer']
+
+	* entity-paths for event['said']8_2ecb.xmlsent:14924
+	['said --(ccomp)--> killed', 'killed --(nsubj)--> explosion', 'explosion --(nmod)--> bank']
+	['said --(ccomp)--> killed', 'killed --(dobj)--> officer']
+	['said --(nsubj)--> officials']
+	['said --(nmod:tmod)--> Saturday']
+
+	* entity-paths for event['explosion']8_2ecb.xmlsent:14924
+	['explosion --(nmod)--> bank']

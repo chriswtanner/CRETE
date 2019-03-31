@@ -1,0 +1,47 @@
+
+-----------------------------------------
+docid:39_8ecb.xml
+-----------------------------------------
+
+sentence #:just hours after little-known actor matt smith was named as the new doctor in the bbc wales hit show , speculation mounted that a star name would accompany him on his time-travelling adventures . 
+	[events]:[['named']]
+	[entities]:[['him'], ['doctor'], ['show'], ['his'], ['star'], ['bbc', 'wales'], ['matt', 'smith']]
+mounted
+|--(advcl)--> *R1337[named]
+|                |--(dep)--> hours
+|                |                |--(advmod)--> just
+|                |--(mark)--> after
+|                |--(nsubjp)--> R1328[smith]
+|                |                |--(amod)--> little-known
+|                |                |--(compou)--> actor
+|                |                |--(compou)--> R1328[matt]
+|                |--(auxpas)--> was
+|                |--(advcl)--> hit
+|                                 |--(mark)--> as
+|                                 |--(nsubj)--> R1338[doctor]
+|                                 |                |--(det)--> the
+|                                 |                |--(amod)--> new
+|                                 |                |--(nmod)--> R1335[wales]
+|                                 |                                 |--(case)--> in
+|                                 |                                 |--(det)--> the
+|                                 |                                 |--(compou)--> R1335[bbc]
+|                                 |--(dobj)--> R1336[show]
+|--(punct)--> ,
+|--(nsubj)--> speculation
+|--(ccomp)--> accompany
+|                |--(mark)--> that
+|                |--(nsubj)--> name
+|                |                |--(det)--> a
+|                |                |--(compou)--> R1360[star]
+|                |--(aux)--> would
+|                |--(dobj)--> R1328[him]
+|                |--(nmod)--> adventures
+|                                 |--(case)--> on
+|                                 |--(nmod:p)--> R1328[his]
+|                                 |--(amod)--> time-travelling
+|--(punct)--> .
+
+	* entity-paths for event['named']39_8ecb.xmlsent:11119
+	['named --(nsubjpass)--> Smith']
+	['named --(advcl)--> hit', 'hit --(nsubj)--> Doctor']
+	['named --(advcl)--> hit', 'hit --(dobj)--> show']

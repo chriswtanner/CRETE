@@ -1,0 +1,42 @@
+
+-----------------------------------------
+docid:7_7ecb.xml
+-----------------------------------------
+
+sentence #:wladimir klitschko easily set aside the challenge of substitute hasim rahman , stopping the former heavyweight champion in seven rounds on saturday in mannheim , germany . 
+	[events]:[['stopping'], ['set', 'aside']]
+	[entities]:[['hasim', 'rahman'], ['in', 'mannheim', ',', 'germany'], ['saturday'], ['wladimir', 'klitschko'], ['champion']]
+*R1719[set]
+|--(nsubj)--> R1716[klitschko]
+|                |--(compou)--> R1716[wladimir]
+|--(advmod)--> easily
+|--(advmod)--> *R1719[aside]
+|--(dobj)--> challenge
+|                |--(det)--> the
+|                |--(nmod)--> R1720[rahman]
+|                                 |--(case)--> of
+|                                 |--(compou)--> substitute
+|                                 |--(compou)--> R1720[hasim]
+|--(punct)--> ,
+|--(advcl)--> *R1719[stopping]
+|                |--(dobj)--> R1720[champion]
+|                |                |--(det)--> the
+|                |                |--(amod)--> former
+|                |                |--(amod)--> heavyweight
+|                |--(nmod)--> rounds
+|                |                |--(case)--> in
+|                |                |--(nummod)--> seven
+|                |                |--(nmod)--> R1723[saturday]
+|                |                                 |--(case)--> on
+|                |--(nmod)--> R1734[germany]
+|                                 |--(case)--> R1734[in]
+|                                 |--(compou)--> R1734[mannheim]
+|                                 |--(punct)--> R1734[,]
+|--(punct)--> .
+
+	* entity-paths for event['stopping']7_7ecb.xmlsent:14766
+	['stopping --(dobj)--> champion']
+	['stopping --(nmod)--> rounds', 'rounds --(nmod)--> Saturday']
+	['stopping --(nmod)--> Germany']
+
+	* entity-paths for event['set', 'aside']7_7ecb.xmlsent:14766

@@ -1,0 +1,20 @@
+
+-----------------------------------------
+docid:31_9ecbplus.xml
+-----------------------------------------
+
+sentence #:mcdermott sets cu scoring record 
+	[events]:[['sets'], ['scoring', 'record']]
+	[entities]:[['mcdermott'], ['cu']]
+*R1023[sets]
+|--(nsubj)--> R1001[mcdermott]
+|--(xcomp)--> *R1024[record]
+                 |--(nsubj)--> R1003[cu]
+                 |--(amod)--> *R1024[scoring]
+
+	* entity-paths for event['sets']31_9ecbplus.xmlsent:8660
+	['sets --(nsubj)--> McDermott']
+	['sets --(xcomp)--> record', 'record --(nsubj)--> CU']
+
+	* entity-paths for event['scoring', 'record']31_9ecbplus.xmlsent:8660
+	['record --(nsubj)--> CU']

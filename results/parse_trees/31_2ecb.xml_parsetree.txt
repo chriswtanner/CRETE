@@ -1,0 +1,84 @@
+
+-----------------------------------------
+docid:31_2ecb.xml
+-----------------------------------------
+
+sentence #:the reigning national player of the year passed phil ford for the record midway through the first half . 
+	[events]:[['passed'], ['record']]
+	[entities]:[['phil', 'ford'], ['national', 'player', 'of', 'the', 'year']]
+*R996[passed]
+|--(nsubj)--> R997[player]
+|                |--(det)--> the
+|                |--(amod)--> reigning
+|                |--(compou)--> R997[national]
+|--(nmod)--> R997[year]
+|                |--(case)--> R997[of]
+|                |--(det)--> R997[the]
+|--(dobj)--> R1005[ford]
+|                |--(compou)--> R1005[phil]
+|                |--(nmod)--> *R998[record]
+|                                 |--(case)--> for
+|                                 |--(det)--> the
+|--(nmod)--> half
+|                |--(advmod)--> midway
+|                |--(case)--> through
+|                |--(det)--> the
+|                |--(amod)--> first
+|--(punct)--> .
+
+	* entity-paths for event['passed']31_2ecb.xmlsent:8282
+	['passed --(nsubj)--> Player']
+	['passed --(nmod)--> Year']
+	['passed --(dobj)--> Ford']
+
+	* entity-paths for event['record']31_2ecb.xmlsent:8282
+
+sentence #:hansbrough scored 20 points last night to break the storied program 's career scoring record and help the tar heels ( 10-0 ) remain unbeaten with a 91-73 victory over visiting evansville ( 7-2 ) . 
+	[events]:[['break'], ['victory'], ['scoring', 'record']]
+	[entities]:[['91-73'], ['hansbrough'], ['tar', 'heels'], ['evansville'], ['last', 'night']]
+scored
+|--(nsubj)--> R997[hansbrough]
+|--(dobj)--> points
+|                |--(nummod)--> 20
+|--(nmod:t)--> R1006[night]
+|                |--(amod)--> R1006[last]
+|--(advcl)--> *R996[break]
+|                |--(mark)--> to
+|                |--(dobj)--> *R998[record]
+|                |                |--(nmod:p)--> program
+|                |                |                |--(det)--> the
+|                |                |                |--(amod)--> storied
+|                |                |                |--(case)--> 's
+|                |                |--(compou)--> career
+|                |                |--(amod)--> *R998[scoring]
+|                |--(cc)--> and
+|                |--(conj)--> help
+|                                 |--(ccomp)--> remain
+|                                                  |--(nsubj)--> R999[heels]
+|                                                  |                |--(det)--> the
+|                                                  |                |--(compou)--> R999[tar]
+|                                                  |                |--(appos)--> 10-0
+|                                                  |                                 |--(punct)--> (
+|                                                  |                                 |--(punct)--> )
+|                                                  |--(xcomp)--> unbeaten
+|                                                  |                |--(nmod)--> *R1007[victory]
+|                                                  |                                 |--(case)--> with
+|                                                  |                                 |--(det)--> a
+|                                                  |                                 |--(nummod)--> R1009[91-73]
+|                                                  |--(advcl)--> visiting
+|                                                                   |--(mark)--> over
+|                                                                   |--(dobj)--> R1008[evansville]
+|                                                                                    |--(appos)--> 7-2
+|                                                                                                     |--(punct)--> (
+|                                                                                                     |--(punct)--> )
+|--(punct)--> .
+
+	* entity-paths for event['break']31_2ecb.xmlsent:8281
+	['break --(conj)--> help', 'help --(ccomp)--> remain', 'remain --(nsubj)--> Heels']
+	['break --(conj)--> help', 'help --(ccomp)--> remain', 'remain --(xcomp)--> unbeaten', 'unbeaten --(nmod)--> victory', 'victory --(nummod)--> 91-73']
+	['break --(conj)--> help', 'help --(ccomp)--> remain', 'remain --(advcl)--> visiting', 'visiting --(dobj)--> Evansville']
+
+	* entity-paths for event['victory']31_2ecb.xmlsent:8281
+	['victory --(nummod)--> 91-73']
+
+	* entity-paths for event['scoring', 'record']31_2ecb.xmlsent:8281

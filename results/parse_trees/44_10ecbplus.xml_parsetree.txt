@@ -1,0 +1,142 @@
+
+-----------------------------------------
+docid:44_10ecbplus.xml
+-----------------------------------------
+
+sentence #:electronics manufacturer hewlett - packard ( hp . com ) announced on tuesday that it has signed a definitive agreement to acquire eyp mission critical facilities ( eypmcf . com ) , a consulting company that specializes in strategic technology planning , design and operations support for large - scale data centers . 
+	[events]:[['announced'], ['design'], ['definitive', 'agreement'], ['signed'], ['planning'], ['specializes'], ['consulting'], ['operations', 'support'], ['acquire']]
+	[entities]:[['data', 'centers'], ['it'], ['tuesday'], ['eyp', 'mission', 'critical', 'facilities'], ['company'], ['hewlett', '-', 'packard'], ['technology']]
+R1577[hewlett]
+|--(compou)--> electronics
+|--(compou)--> manufacturer
+|--(punct)--> R1577[-]
+|--(dep)--> R1577[packard]
+|                |--(punct)--> (
+|                |--(dep)--> hp
+|                |                |--(punct)--> .
+|                |                |--(dep)--> com
+|                |                |--(punct)--> )
+|                |                |--(acl:re)--> *R1578[announced]
+|                |                                 |--(nmod)--> R1579[tuesday]
+|                |                                 |                |--(case)--> on
+|                |                                 |--(ccomp)--> *R1580[signed]
+|                |                                                  |--(mark)--> that
+|                |                                                  |--(nsubj)--> R1577[it]
+|                |                                                  |--(aux)--> has
+|                |                                                  |--(dobj)--> *R1581[agreement]
+|                |                                                  |                |--(det)--> a
+|                |                                                  |                |--(amod)--> *R1581[definitive]
+|                |                                                  |--(advcl)--> *R1582[acquire]
+|                |                                                                   |--(mark)--> to
+|                |                                                                   |--(iobj)--> R1583[mission]
+|                |                                                                   |                |--(compou)--> R1583[eyp]
+|                |                                                                   |--(dobj)--> R1583[facilities]
+|                |                                                                                    |--(amod)--> R1583[critical]
+|                |                                                                                    |--(punct)--> (
+|                |                                                                                    |--(dep)--> eypmcf
+|                |                                                                                    |                |--(punct)--> .
+|                |                                                                                    |                |--(dep)--> com
+|                |                                                                                    |                |--(punct)--> )
+|                |                                                                                    |                |--(punct)--> ,
+|                |                                                                                    |                |--(appos)--> R1583[company]
+|                |                                                                                    |                                 |--(det)--> a
+|                |                                                                                    |                                 |--(amod)--> *R1584[consulting]
+|                |                                                                                    |                                 |--(acl:re)--> *R1585[specializes]
+|                |                                                                                    |                                                  |--(nsubj)--> that
+|                |                                                                                    |                                                  |--(nmod)--> *R1586[planning]
+|                |                                                                                    |                                                                   |--(case)--> in
+|                |                                                                                    |                                                                   |--(amod)--> strategic
+|                |                                                                                    |                                                                   |--(compou)--> R1587[technology]
+|                |                                                                                    |--(punct)--> ,
+|                |                                                                                    |--(acl:re)--> *R1588[support]
+|                |                                                                                                     |--(nsubj)--> *R1589[design]
+|                |                                                                                                     |                |--(cc)--> and
+|                |                                                                                                     |                |--(conj)--> *R1588[operations]
+|                |                                                                                                     |--(advcl)--> large
+|                |                                                                                                                      |--(case)--> for
+|                |--(punct)--> -
+|                |--(nmod)--> R1590[centers]
+|                                 |--(dep)--> scale
+|                                 |--(compou)--> R1590[data]
+|--(punct)--> .
+
+	* entity-paths for event['announced']44_10ecbplus.xmlsent:13418
+	['announced --(nmod)--> Tuesday']
+	['announced --(ccomp)--> signed', 'signed --(nsubj)--> it']
+	['announced --(ccomp)--> signed', 'signed --(advcl)--> acquire', 'acquire --(iobj)--> Mission']
+	['announced --(ccomp)--> signed', 'signed --(advcl)--> acquire', 'acquire --(dobj)--> Facilities']
+
+	* entity-paths for event['design']44_10ecbplus.xmlsent:13418
+
+	* entity-paths for event['definitive', 'agreement']44_10ecbplus.xmlsent:13418
+
+	* entity-paths for event['signed']44_10ecbplus.xmlsent:13418
+	['signed --(nsubj)--> it']
+	['signed --(advcl)--> acquire', 'acquire --(iobj)--> Mission']
+	['signed --(advcl)--> acquire', 'acquire --(dobj)--> Facilities']
+
+	* entity-paths for event['planning']44_10ecbplus.xmlsent:13418
+	['planning --(compound)--> technology']
+
+	* entity-paths for event['specializes']44_10ecbplus.xmlsent:13418
+	['specializes --(nmod)--> planning', 'planning --(compound)--> technology']
+
+	* entity-paths for event['consulting']44_10ecbplus.xmlsent:13418
+
+	* entity-paths for event['operations', 'support']44_10ecbplus.xmlsent:13418
+
+	* entity-paths for event['acquire']44_10ecbplus.xmlsent:13418
+	['acquire --(iobj)--> Mission']
+	['acquire --(dobj)--> Facilities']
+
+sentence #:hp to acquire data center consultants 
+	[events]:[['acquire']]
+	[entities]:[['consultants'], ['data', 'center'], ['hp']]
+R1577[hp]
+|--(nmod)--> R1583[consultants]
+                 |--(case)--> to
+                 |--(compou)--> *R1582[acquire]
+                 |--(compou)--> R1590[data]
+                 |--(compou)--> R1590[center]
+
+	* entity-paths for event['acquire']44_10ecbplus.xmlsent:13416
+
+sentence #:although no financial terms of the transaction were disclosed , it is expected to be completed within hp " s first fiscal quarter . 
+	[events]:[['completed'], ['expected'], ['disclosed'], ['transaction'], ['financial', 'terms']]
+	[entities]:[['fiscal', 'quarter'], ['hp']]
+R1591[quarter]
+|--(ccomp)--> *R1592[expected]
+|                |--(advcl)--> *R1593[disclosed]
+|                |                |--(mark)--> although
+|                |                |--(nsubjp)--> *R1594[terms]
+|                |                |                |--(neg)--> no
+|                |                |                |--(amod)--> *R1594[financial]
+|                |                |                |--(nmod)--> *R1581[transaction]
+|                |                |                                 |--(case)--> of
+|                |                |                                 |--(det)--> the
+|                |                |--(auxpas)--> were
+|                |--(punct)--> ,
+|                |--(nsubjp)--> it
+|                |--(auxpas)--> is
+|                |--(xcomp)--> *R1595[completed]
+|                                 |--(mark)--> to
+|                                 |--(auxpas)--> be
+|                                 |--(nmod)--> R1577[hp]
+|                                                  |--(case)--> within
+|--(punct)--> "
+|--(cop)--> s
+|--(amod)--> first
+|--(amod)--> R1591[fiscal]
+|--(punct)--> .
+
+	* entity-paths for event['completed']44_10ecbplus.xmlsent:13419
+	['completed --(nmod)--> HP']
+
+	* entity-paths for event['expected']44_10ecbplus.xmlsent:13419
+	['expected --(xcomp)--> completed', 'completed --(nmod)--> HP']
+
+	* entity-paths for event['disclosed']44_10ecbplus.xmlsent:13419
+
+	* entity-paths for event['transaction']44_10ecbplus.xmlsent:13419
+
+	* entity-paths for event['financial', 'terms']44_10ecbplus.xmlsent:13419

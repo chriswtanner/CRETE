@@ -1,0 +1,55 @@
+
+-----------------------------------------
+docid:22_4ecbplus.xml
+-----------------------------------------
+
+sentence #:' very spiritual " muslim woman shoots co - workers 
+	[events]:[['shoots']]
+	[entities]:[['woman'], ['co', '-', 'workers']]
+spiritual
+|--(punct)--> '
+|--(advmod)--> very
+|--(punct)--> "
+|--(dobj)--> R593[co]
+                 |--(amod)--> muslim
+                 |--(compou)--> R589[woman]
+                 |--(compou)--> *R591[shoots]
+                 |--(punct)--> R593[-]
+                 |--(dep)--> R593[workers]
+
+	* entity-paths for event['shoots']22_4ecbplus.xmlsent:4514
+
+sentence #:according to reports , a muslim woman named yvonne hiller shot and killed two co - workers at a kraft plant in philadelphia . 
+	[events]:[['killed'], ['shot']]
+	[entities]:[['yvonne', 'hiller'], ['woman'], ['at', 'a', 'kraft', 'plant', 'in', 'philadelphia'], ['co', '-', 'workers']]
+reports
+|--(case)--> according
+|                |--(mwe)--> to
+|--(punct)--> ,
+|--(appos)--> R589[woman]
+                 |--(det)--> a
+                 |--(amod)--> muslim
+                 |--(dep)--> named
+                                  |--(dobj)--> *R591[shot]
+                                  |                |--(compou)--> R632[yvonne]
+                                  |                |--(compou)--> R632[hiller]
+                                  |--(cc)--> and
+                                  |--(conj)--> *R592[killed]
+                                                   |--(dobj)--> two
+                                                                    |--(acl)--> R593[workers]
+                                                                                     |--(dep)--> R593[co]
+                                                                                     |--(punct)--> R593[-]
+                                                                                     |--(case)--> R599[at]
+                                                                                     |--(dep)--> R599[plant]
+                                                                                     |                |--(det)--> R599[a]
+                                                                                     |                |--(compou)--> R599[kraft]
+                                                                                     |                |--(nmod)--> R599[philadelphia]
+                                                                                     |                                 |--(case)--> R599[in]
+                                                                                     |--(punct)--> .
+
+	* entity-paths for event['killed']22_4ecbplus.xmlsent:4516
+	['killed --(dobj)--> two', 'two --(acl)--> workers']
+
+	* entity-paths for event['shot']22_4ecbplus.xmlsent:4516
+	['shot --(compound)--> Yvonne']
+	['shot --(compound)--> Hiller']

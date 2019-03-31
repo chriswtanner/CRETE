@@ -1,0 +1,89 @@
+
+-----------------------------------------
+docid:44_11ecbplus.xml
+-----------------------------------------
+
+sentence #:hewlett - packard makes another acquisition , chases ibm 
+	[events]:[['acquisition']]
+	[entities]:[['hewlett', '-', 'packard']]
+chases
+|--(ccomp)--> makes
+|                |--(dep)--> R1577[hewlett]
+|                |--(punct)--> R1577[-]
+|                |--(nsubj)--> R1577[packard]
+|                |--(dobj)--> *R1582[acquisition]
+|                                 |--(det)--> another
+|--(punct)--> ,
+|--(nsubj)--> ibm
+
+	* entity-paths for event['acquisition']44_11ecbplus.xmlsent:13426
+
+sentence #:this time , the world's largest tech company by sales announced that it will be buying eyp mission critical facilities inc . 
+	[events]:[['buying'], ['announced']]
+	[entities]:[['it'], ['tech', 'company'], ['eyp', 'mission', 'critical', 'facilities', 'inc']]
+*R1578[announced]
+|--(nmod:t)--> time
+|                |--(det)--> this
+|--(punct)--> ,
+|--(nsubj)--> R1577[company]
+|                |--(nmod:p)--> world's
+|                |                |--(det)--> the
+|                |                |--(case)--> world's
+|                |--(amod)--> largest
+|                |--(compou)--> R1577[tech]
+|                |--(nmod)--> sales
+|                                 |--(case)--> by
+|--(ccomp)--> *R1582[buying]
+|                |--(mark)--> that
+|                |--(nsubj)--> R1577[it]
+|                |--(aux)--> will
+|                |--(aux)--> be
+|                |--(xcomp)--> R1583[facilities]
+|                                 |--(nsubj)--> R1583[mission]
+|                                 |                |--(compou)--> R1583[eyp]
+|                                 |--(amod)--> R1583[critical]
+|                                 |--(appos)--> R1583[inc]
+|--(punct)--> .
+
+	* entity-paths for event['buying']44_11ecbplus.xmlsent:13429
+	['buying --(nsubj)--> it']
+	['buying --(xcomp)--> Facilities']
+
+	* entity-paths for event['announced']44_11ecbplus.xmlsent:13429
+	['announced --(nsubj)--> company']
+	['announced --(ccomp)--> buying', 'buying --(nsubj)--> it']
+	['announced --(ccomp)--> buying', 'buying --(xcomp)--> Facilities']
+
+sentence #:that company , which provides data center consulting services , will become a division of hp for an undisclosed sum , according to sources . 
+	[events]:[['undisclosed'], ['consulting', 'services']]
+	[entities]:[['data', 'center'], ['which'], ['company'], ['division'], ['sum'], ['hp']]
+become
+|--(nsubj)--> R1583[company]
+|                |--(det)--> that
+|                |--(punct)--> ,
+|                |--(acl:re)--> provides
+|                |                |--(nsubj)--> R1583[which]
+|                |                |--(iobj)--> R1590[data]
+|                |                |--(dobj)--> *R1584[services]
+|                |                                 |--(compou)--> R1590[center]
+|                |                                 |--(compou)--> *R1584[consulting]
+|                |--(punct)--> ,
+|--(aux)--> will
+|--(xcomp)--> R1583[division]
+|                |--(det)--> a
+|                |--(nmod)--> R1577[hp]
+|                                 |--(case)--> of
+|--(nmod)--> R1596[sum]
+|                |--(case)--> for
+|                |--(det)--> an
+|                |--(amod)--> *R1593[undisclosed]
+|--(punct)--> ,
+|--(nmod)--> sources
+|                |--(case)--> according
+|                                 |--(mwe)--> to
+|--(punct)--> .
+
+	* entity-paths for event['undisclosed']44_11ecbplus.xmlsent:13430
+
+	* entity-paths for event['consulting', 'services']44_11ecbplus.xmlsent:13430
+	['services --(compound)--> center']

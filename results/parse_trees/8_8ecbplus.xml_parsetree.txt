@@ -1,0 +1,57 @@
+
+-----------------------------------------
+docid:8_8ecbplus.xml
+-----------------------------------------
+
+sentence #:three people , one of them a pregnant woman , were killed when greeks protesting against government austerity measures threw petrol bombs at a bank in athens on wednesday . 
+	[events]:[['threw'], ['pregnant'], ['measures'], ['killed'], ['protesting']]
+	[entities]:[['bombs'], ['a', 'bank', 'in', 'athens'], ['people'], ['woman'], ['on', 'wednesday'], ['greeks']]
+*R1753[killed]
+|--(nsubjp)--> R1754[people]
+|                |--(nummod)--> three
+|                |--(punct)--> ,
+|                |--(appos)--> one
+|                |                |--(nmod)--> them
+|                |                |                |--(case)--> of
+|                |                |--(dep)--> R1773[woman]
+|                |                                 |--(det)--> a
+|                |                                 |--(amod)--> *R1793[pregnant]
+|                |--(punct)--> ,
+|--(auxpas)--> were
+|--(advcl)--> *R1749[threw]
+|                |--(advmod)--> when
+|                |--(nsubj)--> R1750[greeks]
+|                |                |--(acl)--> *R1759[protesting]
+|                |                                 |--(nmod)--> *R1760[measures]
+|                |                                                  |--(case)--> against
+|                |                                                  |--(compou)--> government
+|                |                                                  |--(compou)--> austerity
+|                |--(dobj)--> R1751[bombs]
+|                |                |--(compou)--> petrol
+|                |--(nmod)--> R1752[bank]
+|                |                |--(case)--> at
+|                |                |--(det)--> R1752[a]
+|                |                |--(nmod)--> R1752[athens]
+|                |                                 |--(case)--> R1752[in]
+|                |--(nmod)--> R1778[wednesday]
+|                                 |--(case)--> R1778[on]
+|--(punct)--> .
+
+	* entity-paths for event['threw']8_8ecbplus.xmlsent:15197
+	['threw --(nsubj)--> Greeks']
+	['threw --(dobj)--> bombs']
+	['threw --(nmod)--> bank']
+	['threw --(nmod)--> Wednesday']
+
+	* entity-paths for event['pregnant']8_8ecbplus.xmlsent:15197
+
+	* entity-paths for event['measures']8_8ecbplus.xmlsent:15197
+
+	* entity-paths for event['killed']8_8ecbplus.xmlsent:15197
+	['killed --(nsubjpass)--> people']
+	['killed --(advcl)--> threw', 'threw --(nsubj)--> Greeks']
+	['killed --(advcl)--> threw', 'threw --(dobj)--> bombs']
+	['killed --(advcl)--> threw', 'threw --(nmod)--> bank']
+	['killed --(advcl)--> threw', 'threw --(nmod)--> Wednesday']
+
+	* entity-paths for event['protesting']8_8ecbplus.xmlsent:15197

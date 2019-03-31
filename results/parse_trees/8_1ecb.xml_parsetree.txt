@@ -1,0 +1,53 @@
+
+-----------------------------------------
+docid:8_1ecb.xml
+-----------------------------------------
+
+sentence #:a bomb explosion at a bank killed a police officer and a state bomb disposal technician , and state police did not have any suspects , officials said saturday . 
+	[events]:[['explosion'], ['killed'], ['said']]
+	[entities]:[['saturday'], ['officer'], ['a', 'bank'], ['police'], ['technician'], ['officials']]
+*R1762[said]
+|--(ccomp)--> *R1763[killed]
+|                |--(nsubj)--> *R1764[explosion]
+|                |                |--(det)--> a
+|                |                |--(compou)--> bomb
+|                |                |--(nmod)--> R1765[bank]
+|                |                                 |--(case)--> at
+|                |                                 |--(det)--> R1765[a]
+|                |--(dobj)--> R1766[officer]
+|                |                |--(det)--> a
+|                |                |--(compou)--> police
+|                |                |--(cc)--> and
+|                |                |--(conj)--> R1767[technician]
+|                |                                 |--(det)--> a
+|                |                                 |--(compou)--> state
+|                |                                 |--(compou)--> bomb
+|                |                                 |--(compou)--> disposal
+|                |--(punct)--> ,
+|                |--(cc)--> and
+|                |--(conj)--> have
+|                                 |--(nsubj)--> R1768[police]
+|                                 |                |--(compou)--> state
+|                                 |--(aux)--> did
+|                                 |--(neg)--> not
+|                                 |--(dobj)--> suspects
+|                                                  |--(det)--> any
+|--(punct)--> ,
+|--(nsubj)--> R1769[officials]
+|--(nmod:t)--> R1770[saturday]
+|--(punct)--> .
+
+	* entity-paths for event['explosion']8_1ecb.xmlsent:14881
+	['explosion --(nmod)--> bank']
+
+	* entity-paths for event['killed']8_1ecb.xmlsent:14881
+	['killed --(nsubj)--> explosion', 'explosion --(nmod)--> bank']
+	['killed --(dobj)--> officer']
+	['killed --(conj)--> have', 'have --(nsubj)--> police']
+
+	* entity-paths for event['said']8_1ecb.xmlsent:14881
+	['said --(ccomp)--> killed', 'killed --(nsubj)--> explosion', 'explosion --(nmod)--> bank']
+	['said --(ccomp)--> killed', 'killed --(dobj)--> officer']
+	['said --(ccomp)--> killed', 'killed --(conj)--> have', 'have --(nsubj)--> police']
+	['said --(nsubj)--> officials']
+	['said --(nmod:tmod)--> Saturday']

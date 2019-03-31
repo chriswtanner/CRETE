@@ -1,0 +1,25 @@
+
+-----------------------------------------
+docid:13_6ecb.xml
+-----------------------------------------
+
+sentence #:sarah palin 's church in wasilla , alaska went up in flames this weekend . 
+	[events]:[['went', 'up', 'in', 'flames']]
+	[entities]:[['church'], ['in', 'wasilla', ',', 'alaska'], ['sarah', 'palin'], ['this', 'weekend']]
+*R278[went]
+|--(nsubj)--> R260[church]
+|                |--(nmod:p)--> R262[palin]
+|                |                |--(compou)--> R262[sarah]
+|                |                |--(case)--> 's
+|                |--(nmod)--> R279[alaska]
+|                                 |--(case)--> R279[in]
+|                                 |--(compou)--> R279[wasilla]
+|                                 |--(punct)--> R279[,]
+|--(advmod)--> *R278[up]
+|                |--(nmod)--> *R278[flames]
+|                                 |--(case)--> *R278[in]
+|--(nmod:t)--> R287[weekend]
+|                |--(det)--> R287[this]
+|--(punct)--> .
+
+	* entity-paths for event['went', 'up', 'in', 'flames']13_6ecb.xmlsent:1531

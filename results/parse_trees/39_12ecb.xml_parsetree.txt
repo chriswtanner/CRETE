@@ -1,0 +1,36 @@
+
+-----------------------------------------
+docid:39_12ecb.xml
+-----------------------------------------
+
+sentence #:on saturday it was announced that the actor to play the eleventh doctor was none other than matt smith . 
+	[events]:[['announced'], ['play']]
+	[entities]:[['matt', 'smith'], ['eleventh', 'doctor'], ['on', 'saturday'], ['actor']]
+*R1337[announced]
+|--(nmod)--> R1343[saturday]
+|                |--(case)--> R1343[on]
+|--(nsubjp)--> it
+|--(auxpas)--> was
+|--(ccomp)--> none
+|                |--(mark)--> that
+|                |--(nsubj)--> R1328[actor]
+|                |                |--(det)--> the
+|                |                |--(acl)--> *R1327[play]
+|                |                                 |--(mark)--> to
+|                |                                 |--(dobj)--> R1338[doctor]
+|                |                                                  |--(det)--> the
+|                |                                                  |--(amod)--> R1338[eleventh]
+|                |--(cop)--> was
+|                |--(amod)--> other
+|                |--(nmod)--> R1328[smith]
+|                                 |--(case)--> than
+|                                 |--(compou)--> R1328[matt]
+|--(punct)--> .
+
+	* entity-paths for event['announced']39_12ecb.xmlsent:10894
+	['announced --(nmod)--> Saturday']
+	['announced --(ccomp)--> none', 'none --(nsubj)--> actor']
+	['announced --(ccomp)--> none', 'none --(nmod)--> Smith']
+
+	* entity-paths for event['play']39_12ecb.xmlsent:10894
+	['play --(dobj)--> Doctor']

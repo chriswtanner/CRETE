@@ -1,0 +1,76 @@
+
+-----------------------------------------
+docid:12_8ecbplus.xml
+-----------------------------------------
+
+sentence #:a five - boat pirate attack on merchant vessels transiting the gulf of aden was foiled by an indian warship that was on escort duty , capturing 26 somani brigands on three of the skiffs and confiscating their weapons , a naval officer said here friday . 
+	[events]:[['foiled'], ['on', 'escort', 'duty'], ['capturing'], ['confiscating'], ['attack']]
+	[entities]:[['weapons'], ['vessels'], ['the', 'gulf', 'of', 'aden'], ['skiffs'], ['warship'], ['brigands'], ['that'], ['friday']]
+said
+|--(ccomp)--> *R217[foiled]
+|                |--(nsubj)--> five
+|                |                |--(det)--> a
+|                |                |--(punct)--> -
+|                |                |--(dep)--> *R218[attack]
+|                |                                 |--(compou)--> boat
+|                |                                 |--(compou)--> pirate
+|                |                                 |--(nmod)--> R220[vessels]
+|                |                                                  |--(case)--> on
+|                |                                                  |--(compou)--> merchant
+|                |                                                  |--(acl)--> transiting
+|                |                                                                   |--(dobj)--> R229[gulf]
+|                |                                                                                    |--(det)--> R229[the]
+|                |                                                                                    |--(nmod)--> R229[aden]
+|                |                                                                                                     |--(case)--> R229[of]
+|                |--(aux)--> was
+|                |--(nmod)--> R222[warship]
+|                                 |--(case)--> by
+|                                 |--(det)--> an
+|                                 |--(amod)--> indian
+|                                 |--(acl:re)--> *R250[duty]
+|                                                  |--(nsubj)--> R222[that]
+|                                                  |--(cop)--> was
+|                                                  |--(case)--> *R250[on]
+|                                                  |--(compou)--> *R250[escort]
+|                                                  |--(punct)--> ,
+|                                                  |--(ccomp)--> *R244[capturing]
+|                                                                   |--(dobj)--> R242[brigands]
+|                                                                   |                |--(nummod)--> 26
+|                                                                   |                |--(amod)--> somani
+|                                                                   |--(nmod)--> three
+|                                                                   |                |--(case)--> on
+|                                                                   |                |--(nmod)--> R224[skiffs]
+|                                                                   |                                 |--(case)--> of
+|                                                                   |                                 |--(det)--> the
+|                                                                   |--(cc)--> and
+|                                                                   |--(conj)--> *R223[confiscating]
+|                                                                                    |--(dobj)--> R225[weapons]
+|                                                                                                     |--(nmod:p)--> their
+|--(punct)--> ,
+|--(nsubj)--> officer
+|                |--(det)--> a
+|                |--(amod)--> naval
+|--(advmod)--> here
+|--(nmod:t)--> R252[friday]
+|--(punct)--> .
+
+	* entity-paths for event['foiled']12_8ecbplus.xmlsent:1116
+	['foiled --(nsubj)--> five', 'five --(dep)--> attack', 'attack --(nmod)--> vessels']
+	['foiled --(nmod)--> warship']
+
+	* entity-paths for event['on', 'escort', 'duty']12_8ecbplus.xmlsent:1116
+	['duty --(nsubj)--> that']
+	['duty --(ccomp)--> capturing', 'capturing --(dobj)--> brigands']
+	['duty --(ccomp)--> capturing', 'capturing --(nmod)--> three', 'three --(nmod)--> skiffs']
+	['duty --(ccomp)--> capturing', 'capturing --(conj)--> confiscating', 'confiscating --(dobj)--> weapons']
+
+	* entity-paths for event['capturing']12_8ecbplus.xmlsent:1116
+	['capturing --(dobj)--> brigands']
+	['capturing --(nmod)--> three', 'three --(nmod)--> skiffs']
+	['capturing --(conj)--> confiscating', 'confiscating --(dobj)--> weapons']
+
+	* entity-paths for event['confiscating']12_8ecbplus.xmlsent:1116
+	['confiscating --(dobj)--> weapons']
+
+	* entity-paths for event['attack']12_8ecbplus.xmlsent:1116
+	['attack --(nmod)--> vessels']

@@ -1,0 +1,93 @@
+
+-----------------------------------------
+docid:29_3ecbplus.xml
+-----------------------------------------
+
+sentence #:andrew luck wielded his fourth quarter magic wand yet again , willing colts to victory over hapless chiefs and into the 2012 playoffs ! 
+	[events]:[['2012', 'playoffs'], ['victory'], ['willing']]
+	[entities]:[['andrew', 'luck'], ['chiefs'], ['colts']]
+wielded
+|--(nsubj)--> R878[luck]
+|                |--(compou)--> R878[andrew]
+|--(dobj)--> wand
+|                |--(nmod:p)--> his
+|                |--(amod)--> fourth
+|                |--(compou)--> quarter
+|                |--(amod)--> magic
+|--(advmod)--> again
+|                |--(advmod)--> yet
+|--(punct)--> ,
+|--(nmod)--> R852[colts]
+|                |--(amod)--> *R885[willing]
+|                |--(nmod)--> *R859[victory]
+|                |                |--(case)--> to
+|                |--(case)--> over
+|                |--(dep)--> R858[chiefs]
+|                |                |--(amod)--> hapless
+|                |--(cc)--> and
+|                |--(conj)--> *R861[playoffs]
+|                                 |--(case)--> into
+|                                 |--(det)--> the
+|                                 |--(nummod)--> *R861[2012]
+|--(punct)--> !
+
+	* entity-paths for event['2012', 'playoffs']29_3ecbplus.xmlsent:6943
+
+	* entity-paths for event['victory']29_3ecbplus.xmlsent:6943
+
+	* entity-paths for event['willing']29_3ecbplus.xmlsent:6943
+
+sentence #:too bad the game that put the 2012 indianapolis colts into the playoffs was such a dud . 
+	[events]:[['playoffs'], ['game']]
+	[entities]:[['indianapolis', 'colts']]
+dud
+|--(nsubj)--> *R871[game]
+|                |--(amod)--> bad
+|                |                |--(advmod)--> too
+|                |--(det)--> the
+|                |--(acl:re)--> put
+|                                 |--(nsubj)--> that
+|                                 |--(dobj)--> R852[colts]
+|                                                  |--(det)--> the
+|                                                  |--(nummod)--> 2012
+|                                                  |--(compou)--> R852[indianapolis]
+|                                                  |--(nmod)--> *R861[playoffs]
+|                                                                   |--(case)--> into
+|                                                                   |--(det)--> the
+|--(cop)--> was
+|--(case)--> such
+|--(det)--> a
+|--(punct)--> .
+
+	* entity-paths for event['playoffs']29_3ecbplus.xmlsent:6945
+
+	* entity-paths for event['game']29_3ecbplus.xmlsent:6945
+	['game --(acl:relcl)--> put', 'put --(dobj)--> Colts']
+
+sentence #:colts beat chiefs 20 - 13 , clinch 5th seed in afc playoffs 
+	[events]:[['afc', 'playoffs'], ['clinch'], ['beat']]
+	[entities]:[['20', '-', '13'], ['colts'], ['chiefs'], ['5th', 'seed']]
+*R859[beat]
+|--(nsubj)--> R852[colts]
+|--(ccomp)--> *R862[clinch]
+                 |--(nsubj)--> R858[chiefs]
+                 |                |--(dep)--> R860[20]
+                 |                |--(punct)--> R860[-]
+                 |                |--(dep)--> R860[13]
+                 |                |--(punct)--> ,
+                 |--(xcomp)--> R866[seed]
+                                  |--(amod)--> R866[5th]
+                                  |--(dep)--> *R861[playoffs]
+                                                   |--(case)--> in
+                                                   |--(compou)--> *R861[afc]
+
+	* entity-paths for event['afc', 'playoffs']29_3ecbplus.xmlsent:6941
+
+	* entity-paths for event['clinch']29_3ecbplus.xmlsent:6941
+	['Clinch --(nsubj)--> Chiefs']
+	['Clinch --(xcomp)--> Seed']
+
+	* entity-paths for event['beat']29_3ecbplus.xmlsent:6941
+	['Beat --(nsubj)--> Colts']
+	['Beat --(ccomp)--> Clinch', 'Clinch --(nsubj)--> Chiefs']
+	['Beat --(ccomp)--> Clinch', 'Clinch --(xcomp)--> Seed']

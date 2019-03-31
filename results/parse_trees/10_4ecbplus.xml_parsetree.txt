@@ -1,0 +1,53 @@
+
+-----------------------------------------
+docid:10_4ecbplus.xml
+-----------------------------------------
+
+sentence #:lynch reported the red sox team of owner john henry , coo larry lucchino and general manager theo epstein offered teixeira , 28 , an eight - year deal worth $184 million or $23 million per season . 
+	[events]:[['offered']]
+	[entities]:[['season'], ['$184', 'million'], ['john', 'henry'], ['eight', '-', 'year'], ['teixeira'], ['deal']]
+*R165[offered]
+|--(ccomp)--> reported
+|                |--(nsubj)--> lynch
+|                |--(dobj)--> team
+|                                 |--(det)--> the
+|                                 |--(compou)--> red
+|                                 |--(compou)--> sox
+|                                 |--(nmod)--> R184[henry]
+|                                                  |--(case)--> of
+|                                                  |--(compou)--> owner
+|                                                  |--(compou)--> R184[john]
+|--(punct)--> ,
+|--(nsubj)--> lucchino
+|                |--(compou)--> coo
+|                |--(compou)--> larry
+|                |--(cc)--> and
+|                |--(conj)--> epstein
+|                                 |--(compou)--> general
+|                                 |--(compou)--> manager
+|                                 |--(compou)--> theo
+|--(iobj)--> R163[teixeira]
+|                |--(punct)--> ,
+|                |--(amod)--> 28
+|                |--(punct)--> ,
+|                |--(appos)--> R164[eight]
+|                |                |--(det)--> an
+|                |--(punct)--> R164[-]
+|--(dobj)--> R167[deal]
+|                |--(compou)--> R164[year]
+|                |--(amod)--> worth
+|                                 |--(dep)--> R170[$184]
+|                                                  |--(nummod)--> R170[million]
+|                                                  |                |--(compou)--> R170[$184]
+|                                                  |--(cc)--> or
+|                                                  |--(conj)--> $23
+|                                                  |                |--(nummod)--> million
+|                                                  |                                 |--(compou)--> $23
+|                                                  |--(nmod)--> R185[season]
+|                                                                   |--(case)--> per
+|--(punct)--> .
+
+	* entity-paths for event['offered']10_4ecbplus.xmlsent:506
+	['offered --(ccomp)--> reported', 'reported --(dobj)--> team', 'team --(nmod)--> Henry']
+	['offered --(iobj)--> Teixeira']
+	['offered --(dobj)--> deal']

@@ -1,0 +1,33 @@
+
+-----------------------------------------
+docid:3_8ecb.xml
+-----------------------------------------
+
+sentence #:a georgia judge handed brian nichols today four consecutive life sentences without the possibility for parole sentence today . 
+	[events]:[['handed']]
+	[entities]:[['brian', 'nichols'], ['sentences'], ['today'], ['judge'], ['today']]
+*R906[handed]
+|--(nsubj)--> R940[judge]
+|                |--(det)--> a
+|                |--(compou)--> georgia
+|--(nmod:t)--> R908[today]
+|                |--(compou)--> R903[brian]
+|                |--(compou)--> R903[nichols]
+|--(dobj)--> R909[sentences]
+|                |--(nummod)--> four
+|                |--(amod)--> consecutive
+|                |--(compou)--> life
+|--(nmod)--> possibility
+|                |--(case)--> without
+|                |--(det)--> the
+|                |--(nmod)--> sentence
+|                                 |--(case)--> for
+|                                 |--(amod)--> parole
+|--(nmod:t)--> R908[today]
+|--(punct)--> .
+
+	* entity-paths for event['handed']3_8ecb.xmlsent:7603
+	['handed --(nsubj)--> judge']
+	['handed --(nmod:tmod)--> today']
+	['handed --(dobj)--> sentences']
+	['handed --(nmod:tmod)--> today']

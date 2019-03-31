@@ -1,0 +1,55 @@
+
+-----------------------------------------
+docid:34_4ecb.xml
+-----------------------------------------
+
+sentence #:reports that president-elect barack obama had approached cnn 's medical correspondent , dr. sanjay gupta , to be the next surgeon general inspired a parlor game among people who have too much free time ( a k a media types ) . 
+	[events]:[['approached']]
+	[entities]:[['dr.', 'sanjay', 'gupta'], ['surgeon', 'general'], ['barack', 'obama']]
+inspired
+|--(nsubj)--> reports
+|                |--(acl:re)--> president-elect
+|                                 |--(nsubj)--> that
+|                                 |--(ccomp)--> *R1132[approached]
+|                                                  |--(nsubj)--> R1136[obama]
+|                                                  |                |--(compou)--> R1136[barack]
+|                                                  |--(aux)--> had
+|                                                  |--(dobj)--> correspondent
+|                                                  |                |--(nmod:p)--> cnn
+|                                                  |                |                |--(case)--> 's
+|                                                  |                |--(amod)--> medical
+|                                                  |                |--(punct)--> ,
+|                                                  |                |--(appos)--> R1130[gupta]
+|                                                  |                |                |--(compou)--> R1130[dr.]
+|                                                  |                |                |--(compou)--> R1130[sanjay]
+|                                                  |                |--(punct)--> ,
+|                                                  |--(xcomp)--> R1135[general]
+|                                                                   |--(mark)--> to
+|                                                                   |--(cop)--> be
+|                                                                   |--(det)--> the
+|                                                                   |--(amod)--> next
+|                                                                   |--(compou)--> R1135[surgeon]
+|--(dobj)--> game
+|                |--(det)--> a
+|                |--(compou)--> parlor
+|--(nmod)--> people
+|                |--(case)--> among
+|                |--(acl:re)--> have
+|                                 |--(nsubj)--> who
+|                                 |--(dobj)--> time
+|                                                  |--(amod)--> much
+|                                                  |                |--(advmod)--> too
+|                                                  |--(amod)--> free
+|                                                  |--(dep)--> k
+|                                                                   |--(punct)--> (
+|                                                                   |--(det)--> a
+|                                                                   |--(dep)--> types
+|                                                                   |                |--(det)--> a
+|                                                                   |                |--(compou)--> media
+|                                                                   |--(punct)--> )
+|--(punct)--> .
+
+	* entity-paths for event['approached']34_4ecb.xmlsent:9429
+	['approached --(nsubj)--> Obama']
+	['approached --(dobj)--> correspondent', 'correspondent --(appos)--> Gupta']
+	['approached --(xcomp)--> General']

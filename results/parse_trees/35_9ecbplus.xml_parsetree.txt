@@ -1,0 +1,55 @@
+
+-----------------------------------------
+docid:35_9ecbplus.xml
+-----------------------------------------
+
+sentence #:williams , 32 , was pulled over for speeding in his bentley on state route 94 around 1 : 30 a . m . on february 1 , but was arrested on suspicion of drunk driving . 
+	[events]:[['speeding'], ['pulled', 'over'], ['arrested'], ['on', 'suspicion'], ['drunk', 'driving']]
+	[entities]:[['around', '1', ':', '30', 'a', '.', 'm', '.', 'on', 'february', '1'], ['williams'], ['on', 'state', 'route', '94']]
+*R1166[pulled]
+|--(nsubjp)--> R1160[williams]
+|                |--(punct)--> ,
+|                |--(amod)--> 32
+|                |--(punct)--> ,
+|--(auxpas)--> was
+|--(compou)--> *R1166[over]
+|--(nmod)--> *R1167[speeding]
+|                |--(case)--> for
+|--(nmod)--> bentley
+|                |--(case)--> in
+|                |--(nmod:p)--> his
+|                |--(nmod)--> R1169[route]
+|                |                |--(case)--> R1169[on]
+|                |                |--(compou)--> R1169[state]
+|                |                |--(dep)--> R1168[1]
+|                |                |                |--(compou)--> R1169[94]
+|                |                |                |--(advmod)--> R1168[around]
+|                |                |--(punct)--> R1168[:]
+|                |                |--(dep)--> R1168[30]
+|                |                                 |--(dep)--> R1168[a]
+|                |--(punct)--> R1168[.]
+|                |--(dep)--> R1168[m]
+|                |--(punct)--> R1168[.]
+|                |--(nmod)--> R1168[february]
+|                                 |--(case)--> R1168[on]
+|                                 |--(nummod)--> R1168[1]
+|--(punct)--> ,
+|--(cc)--> but
+|--(conj)--> *R1161[arrested]
+|                |--(auxpas)--> was
+|                |--(nmod)--> *R1162[suspicion]
+|                                 |--(case)--> *R1162[on]
+|                                 |--(nmod)--> *R1163[driving]
+|                                                  |--(case)--> of
+|                                                  |--(amod)--> *R1163[drunk]
+|--(punct)--> .
+
+	* entity-paths for event['speeding']35_9ecbplus.xmlsent:9851
+
+	* entity-paths for event['pulled', 'over']35_9ecbplus.xmlsent:9851
+
+	* entity-paths for event['arrested']35_9ecbplus.xmlsent:9851
+
+	* entity-paths for event['on', 'suspicion']35_9ecbplus.xmlsent:9851
+
+	* entity-paths for event['drunk', 'driving']35_9ecbplus.xmlsent:9851

@@ -1,0 +1,23 @@
+
+-----------------------------------------
+docid:25_13ecb.xml
+-----------------------------------------
+
+sentence #:reggie bush is done , for the season at least . 
+	[events]:[['done']]
+	[entities]:[['season'], ['reggie', 'bush']]
+*R722[done]
+|--(nsubjp)--> R707[bush]
+|                |--(compou)--> R707[reggie]
+|--(auxpas)--> is
+|--(punct)--> ,
+|--(nmod)--> R708[season]
+|                |--(case)--> for
+|                |--(det)--> the
+|                |--(advmod)--> least
+|                                 |--(case)--> at
+|--(punct)--> .
+
+	* entity-paths for event['done']25_13ecb.xmlsent:5004
+	['done --(nsubjpass)--> Bush']
+	['done --(nmod)--> season']

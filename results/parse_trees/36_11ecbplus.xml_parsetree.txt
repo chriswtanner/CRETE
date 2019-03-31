@@ -1,0 +1,79 @@
+
+-----------------------------------------
+docid:36_11ecbplus.xml
+-----------------------------------------
+
+sentence #:jeffs is charged with two counts of sexual assault for raping two under - aged girls and fathering a child with one of the girls . 
+	[events]:[['sexual', 'assault'], ['charged'], ['raping'], ['fathering']]
+	[entities]:[['child'], ['two', 'counts'], ['one'], ['jeffs'], ['girls'], ['two', 'under', '-', 'aged', 'girls']]
+*R1184[charged]
+|--(nsubjp)--> R1183[jeffs]
+|--(auxpas)--> is
+|--(nmod)--> R1185[counts]
+|                |--(case)--> with
+|                |--(nummod)--> R1185[two]
+|                |--(nmod)--> *R1186[assault]
+|                                 |--(case)--> of
+|                                 |--(amod)--> *R1186[sexual]
+|--(advcl)--> *R1187[raping]
+|                |--(mark)--> for
+|                |--(advmod)--> R1188[two]
+|                |                |--(case)--> R1188[under]
+|                |--(punct)--> R1188[-]
+|                |--(parata)--> R1188[girls]
+|                |                |--(amod)--> R1188[aged]
+|                |--(cc)--> and
+|                |--(conj)--> *R1189[fathering]
+|                                 |--(dobj)--> R1190[child]
+|                                 |                |--(det)--> a
+|                                 |--(nmod)--> R1191[one]
+|                                                  |--(case)--> with
+|                                                  |--(nmod)--> R1188[girls]
+|                                                                   |--(case)--> of
+|                                                                   |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['sexual', 'assault']36_11ecbplus.xmlsent:9874
+
+	* entity-paths for event['charged']36_11ecbplus.xmlsent:9874
+	['charged --(nsubjpass)--> Jeffs']
+	['charged --(nmod)--> counts']
+	['charged --(advcl)--> raping', 'raping --(advmod)--> two']
+	['charged --(advcl)--> raping', 'raping --(punct)--> -']
+	['charged --(advcl)--> raping', 'raping --(parataxis)--> girls']
+	['charged --(advcl)--> raping', 'raping --(conj)--> fathering', 'fathering --(dobj)--> child']
+	['charged --(advcl)--> raping', 'raping --(conj)--> fathering', 'fathering --(nmod)--> one']
+
+	* entity-paths for event['raping']36_11ecbplus.xmlsent:9874
+	['raping --(advmod)--> two']
+	['raping --(punct)--> -']
+	['raping --(parataxis)--> girls']
+	['raping --(conj)--> fathering', 'fathering --(dobj)--> child']
+	['raping --(conj)--> fathering', 'fathering --(nmod)--> one']
+
+	* entity-paths for event['fathering']36_11ecbplus.xmlsent:9874
+	['fathering --(dobj)--> child']
+	['fathering --(nmod)--> one']
+
+sentence #:warren jeffs trial : defends 'spiritual' marriage , polygamy 
+	[events]:[['trial'], ['polygamy'], ['marriage']]
+	[entities]:[['warren', 'jeffs']]
+*R1192[trial]
+|--(compou)--> R1183[warren]
+|--(compou)--> R1183[jeffs]
+|--(punct)--> :
+|--(parata)--> defends
+                 |--(dobj)--> *R1193[marriage]
+                                  |--(punct)--> 'spiritual'
+                                  |--(amod)--> 'spiritual'
+                                  |--(punct)--> 'spiritual'
+                                  |--(punct)--> ,
+                                  |--(appos)--> *R1194[polygamy]
+
+	* entity-paths for event['trial']36_11ecbplus.xmlsent:9871
+	['Trial --(compound)--> Warren']
+	['Trial --(compound)--> Jeffs']
+
+	* entity-paths for event['polygamy']36_11ecbplus.xmlsent:9871
+
+	* entity-paths for event['marriage']36_11ecbplus.xmlsent:9871

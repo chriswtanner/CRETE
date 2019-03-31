@@ -1,0 +1,188 @@
+
+-----------------------------------------
+docid:41_6ecb.xml
+-----------------------------------------
+
+sentence #:pressure to obtain a ceasefire in gaza has been mounting , with the eu warning israel it was " destroying " its image , while israeli forces on tuesday ( 6 january ) killed at least 40 people during an attack on a united nations-run school in gaza . 
+	[events]:[['attack'], ['killed']]
+	[entities]:[['it'], ['in', 'gaza'], ['school'], ['40', 'people'], ['its'], ['on', 'tuesday', '(', '6', 'january'], ['in', 'gaza'], ['israeli', 'forces'], ['israel']]
+mounting
+|--(nsubj)--> pressure
+|                |--(acl)--> obtain
+|                                 |--(mark)--> to
+|                                 |--(dobj)--> ceasefire
+|                                                  |--(det)--> a
+|                                                  |--(nmod)--> R1463[gaza]
+|                                                                   |--(case)--> R1463[in]
+|--(aux)--> has
+|--(aux)--> been
+|--(punct)--> ,
+|--(nmod)--> R1462[israel]
+|                |--(case)--> with
+|                |--(det)--> the
+|                |--(compou)--> eu
+|                |--(compou)--> warning
+|                |--(acl:re)--> was
+|                                 |--(nsubj)--> R1462[it]
+|                                 |--(punct)--> "
+|                                 |--(xcomp)--> destroying
+|                                 |                |--(punct)--> "
+|                                 |                |--(dobj)--> image
+|                                 |                                 |--(nmod:p)--> R1462[its]
+|                                 |--(punct)--> ,
+|                                 |--(advcl)--> *R1464[killed]
+|                                                  |--(mark)--> while
+|                                                  |--(nsubj)--> R1462[forces]
+|                                                  |                |--(amod)--> R1462[israeli]
+|                                                  |                |--(nmod)--> R1487[tuesday]
+|                                                  |                |                |--(case)--> R1487[on]
+|                                                  |                |--(dep)--> R1487[6]
+|                                                  |                                 |--(punct)--> R1487[(]
+|                                                  |                                 |--(nmod:t)--> R1487[january]
+|                                                  |                                 |--(punct)--> )
+|                                                  |--(dobj)--> R1467[people]
+|                                                  |                |--(nummod)--> R1467[40]
+|                                                  |                                 |--(nmod:n)--> least
+|                                                  |                                                  |--(case)--> at
+|                                                  |--(nmod)--> *R1465[attack]
+|                                                  |                |--(case)--> during
+|                                                  |                |--(det)--> an
+|                                                  |                |--(nmod)--> R1466[school]
+|                                                  |                                 |--(case)--> on
+|                                                  |                                 |--(det)--> a
+|                                                  |                                 |--(compou)--> united
+|                                                  |                                 |--(compou)--> nations-run
+|                                                  |--(nmod)--> R1463[gaza]
+|                                                                   |--(case)--> R1463[in]
+|--(punct)--> .
+
+	* entity-paths for event['attack']41_6ecb.xmlsent:12330
+	['attack --(nmod)--> school']
+
+	* entity-paths for event['killed']41_6ecb.xmlsent:12330
+	['killed --(nsubj)--> forces']
+	['killed --(dobj)--> people']
+	['killed --(nmod)--> attack', 'attack --(nmod)--> school']
+	['killed --(nmod)--> Gaza']
+
+sentence #:the israeli attack on the fakhora school in the northern town of jabaliya , which also wounded around 100 people , was the deadliest single strike of the offensive so far and the third un school to come under fire within 24 hours . 
+	[events]:[['strike'], ['attack']]
+	[entities]:[['on', 'the', 'fakhora', 'school'], ['third', 'un', 'school']]
+*R1465[strike]
+|--(nsubj)--> *R1465[attack]
+|                |--(det)--> the
+|                |--(amod)--> israeli
+|                |--(nmod)--> R1466[school]
+|                |                |--(case)--> R1466[on]
+|                |                |--(det)--> R1466[the]
+|                |                |--(compou)--> R1466[fakhora]
+|                |                |--(nmod)--> town
+|                |                                 |--(case)--> in
+|                |                                 |--(det)--> the
+|                |                                 |--(amod)--> northern
+|                |                                 |--(nmod)--> jabaliya
+|                |                                                  |--(case)--> of
+|                |--(punct)--> ,
+|                |--(acl:re)--> wounded
+|                |                |--(nsubj)--> which
+|                |                |--(advmod)--> also
+|                |                |--(nmod)--> people
+|                |                                 |--(case)--> around
+|                |                                 |--(nummod)--> 100
+|                |--(punct)--> ,
+|--(cop)--> was
+|--(det)--> the
+|--(amod)--> deadliest
+|--(amod)--> single
+|--(nmod)--> offensive
+|                |--(case)--> of
+|                |--(det)--> the
+|                |--(advmod)--> far
+|                                 |--(advmod)--> so
+|--(cc)--> and
+|--(conj)--> R1466[school]
+|                |--(det)--> the
+|                |--(amod)--> R1466[third]
+|                |--(compou)--> R1466[un]
+|                |--(acl)--> come
+|                                 |--(mark)--> to
+|                                 |--(nmod)--> fire
+|                                 |                |--(case)--> under
+|                                 |--(nmod)--> hours
+|                                                  |--(case)--> within
+|                                                  |--(nummod)--> 24
+|--(punct)--> .
+
+	* entity-paths for event['strike']41_6ecb.xmlsent:12331
+	['strike --(nsubj)--> attack', 'attack --(nmod)--> school']
+	['strike --(conj)--> school']
+
+	* entity-paths for event['attack']41_6ecb.xmlsent:12331
+	['attack --(nmod)--> school']
+
+sentence #:" we think the attack is completely unacceptable and strongly condemn the fact that civilians were hit while sheltering themselves from the violence , " said cristina gallach , spokesperson of eu foreign policy chief javier solana . 
+	[events]:[['attack']]
+	[entities]:[]
+said
+|--(punct)--> "
+|--(ccomp)--> think
+|                |--(nsubj)--> we
+|                |--(dep)--> unacceptable
+|                                 |--(nsubj)--> *R1465[attack]
+|                                 |                |--(det)--> the
+|                                 |--(cop)--> is
+|                                 |--(advmod)--> completely
+|                                 |--(cc)--> and
+|                                 |--(conj)--> condemn
+|                                                  |--(advmod)--> strongly
+|                                                  |--(dobj)--> fact
+|                                                  |                |--(det)--> the
+|                                                  |--(ccomp)--> hit
+|                                                                   |--(mark)--> that
+|                                                                   |--(nsubjp)--> civilians
+|                                                                   |--(auxpas)--> were
+|                                                                   |--(advcl)--> sheltering
+|                                                                                    |--(mark)--> while
+|                                                                                    |--(dobj)--> themselves
+|                                                                                    |--(nmod)--> violence
+|                                                                                                     |--(case)--> from
+|                                                                                                     |--(det)--> the
+|--(punct)--> ,
+|--(punct)--> "
+|--(dobj)--> gallach
+|                |--(compou)--> cristina
+|                |--(punct)--> ,
+|                |--(appos)--> spokesperson
+|                                 |--(nmod)--> chief
+|                                                  |--(case)--> of
+|                                                  |--(compou)--> eu
+|                                                  |--(amod)--> foreign
+|                                                  |--(compou)--> policy
+|--(dep)--> solana
+|                |--(compou)--> javier
+|--(punct)--> .
+
+	* entity-paths for event['attack']41_6ecb.xmlsent:12333
+
+sentence #:the bombing has drawn international condemnation , with the eu calling it " completely unacceptable . " 
+	[events]:[['bombing']]
+	[entities]:[]
+drawn
+|--(nsubj)--> *R1465[bombing]
+|                |--(det)--> the
+|--(aux)--> has
+|--(dobj)--> condemnation
+|                |--(amod)--> international
+|--(punct)--> ,
+|--(advcl)--> calling
+|                |--(mark)--> with
+|                |--(nsubj)--> eu
+|                |                |--(det)--> the
+|                |--(dobj)--> it
+|                |                |--(punct)--> "
+|                |--(xcomp)--> unacceptable
+|                                 |--(advmod)--> completely
+|--(punct)--> .
+|--(punct)--> "
+
+	* entity-paths for event['bombing']41_6ecb.xmlsent:12332

@@ -1,0 +1,120 @@
+
+-----------------------------------------
+docid:41_8ecb.xml
+-----------------------------------------
+
+sentence #:majed hamdan , an ap photographer , who rushed to the scene shortly after the attacks , said many children were among the dead . 
+	[events]:[['attacks']]
+	[entities]:[['dead'], ['to', 'the', 'scene']]
+said
+|--(nsubj)--> hamdan
+|                |--(compou)--> majed
+|                |--(punct)--> ,
+|                |--(appos)--> photographer
+|                |                |--(det)--> an
+|                |                |--(compou)--> ap
+|                |--(punct)--> ,
+|                |--(acl:re)--> rushed
+|                |                |--(nsubj)--> who
+|                |                |--(nmod)--> R1466[scene]
+|                |                |                |--(case)--> R1466[to]
+|                |                |                |--(det)--> R1466[the]
+|                |                |--(nmod)--> *R1465[attacks]
+|                |                                 |--(advmod)--> shortly
+|                |                                 |--(case)--> after
+|                |                                 |--(det)--> the
+|                |--(punct)--> ,
+|--(ccomp)--> R1467[dead]
+|                |--(nsubj)--> children
+|                |                |--(amod)--> many
+|                |--(cop)--> were
+|                |--(case)--> among
+|                |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['attacks']41_8ecb.xmlsent:12485
+
+sentence #:the civilian death toll in gaza increased dramatically today , with reports of more than 40 palestinians killed after missiles exploded outside a un school where hundreds of people were sheltering from the continuing israeli offensive . 
+	[events]:[['exploded'], ['killed']]
+	[entities]:[['today'], ['missiles'], ['outside', 'a', 'un', 'school'], ['in', 'gaza'], ['40', 'palestinians']]
+increased
+|--(nsubj)--> toll
+|                |--(det)--> the
+|                |--(amod)--> civilian
+|                |--(compou)--> death
+|                |--(nmod)--> R1463[gaza]
+|                                 |--(case)--> R1463[in]
+|--(advmod)--> dramatically
+|--(nmod:t)--> R1487[today]
+|--(punct)--> ,
+|--(nmod)--> reports
+|                |--(case)--> with
+|                |--(nmod)--> R1467[palestinians]
+|                                 |--(case)--> of
+|                                 |--(nummod)--> R1467[40]
+|                                 |                |--(advmod)--> more
+|                                 |                                 |--(mwe)--> than
+|                                 |--(acl)--> *R1464[killed]
+|                                                  |--(advcl)--> *R1465[exploded]
+|                                                                   |--(mark)--> after
+|                                                                   |--(nsubj)--> R1500[missiles]
+|                                                                   |--(nmod)--> R1466[school]
+|                                                                   |                |--(case)--> R1466[outside]
+|                                                                   |                |--(det)--> R1466[a]
+|                                                                   |                |--(compou)--> R1466[un]
+|                                                                   |--(advcl)--> sheltering
+|                                                                                    |--(advmod)--> where
+|                                                                                    |--(nsubj)--> hundreds
+|                                                                                    |                |--(nmod)--> people
+|                                                                                    |                                 |--(case)--> of
+|                                                                                    |--(cop)--> were
+|                                                                                    |--(nmod)--> offensive
+|                                                                                                     |--(case)--> from
+|                                                                                                     |--(det)--> the
+|                                                                                                     |--(amod)--> continuing
+|                                                                                                     |--(amod)--> israeli
+|--(punct)--> .
+
+	* entity-paths for event['exploded']41_8ecb.xmlsent:12471
+	['exploded --(nsubj)--> missiles']
+	['exploded --(nmod)--> school']
+
+	* entity-paths for event['killed']41_8ecb.xmlsent:12471
+	['killed --(advcl)--> exploded', 'exploded --(nsubj)--> missiles']
+	['killed --(advcl)--> exploded', 'exploded --(nmod)--> school']
+
+sentence #:two israeli tank shells struck the school in jabaliya refugee camp , spraying shrapnel on people inside and outside the building , according to news agency reports . 
+	[events]:[['struck']]
+	[entities]:[['school', 'in', 'jabaliya', 'refugee', 'camp'], ['inside', 'and', 'outside', 'the', 'building']]
+*R1465[struck]
+|--(nsubj)--> shells
+|                |--(nummod)--> two
+|                |--(amod)--> israeli
+|                |--(compou)--> tank
+|--(dobj)--> R1466[school]
+|                |--(det)--> the
+|                |--(nmod)--> R1466[camp]
+|                                 |--(case)--> R1466[in]
+|                                 |--(compou)--> R1466[jabaliya]
+|                                 |--(compou)--> R1466[refugee]
+|--(punct)--> ,
+|--(advcl)--> spraying
+|                |--(dobj)--> shrapnel
+|                |--(nmod)--> people
+|                                 |--(case)--> on
+|                                 |--(nmod)--> R1466[building]
+|                                                  |--(case)--> R1466[inside]
+|                                                  |                |--(cc)--> R1466[and]
+|                                                  |                |--(conj)--> R1466[outside]
+|                                                  |--(det)--> R1466[the]
+|--(punct)--> ,
+|--(nmod)--> reports
+|                |--(case)--> according
+|                |                |--(mwe)--> to
+|                |--(compou)--> news
+|                |--(compou)--> agency
+|--(punct)--> .
+
+	* entity-paths for event['struck']41_8ecb.xmlsent:12472
+	['struck --(dobj)--> school']
+	['struck --(advcl)--> spraying', 'spraying --(nmod)--> people', 'people --(nmod)--> building']

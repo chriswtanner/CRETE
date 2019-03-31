@@ -1,0 +1,20 @@
+
+-----------------------------------------
+docid:13_16ecb.xml
+-----------------------------------------
+
+sentence #:palin 's church damaged in suspicious fire 
+	[events]:[['fire'], ['damaged']]
+	[entities]:[['church']]
+*R278[damaged]
+|--(nmod:p)--> palin
+|                |--(case)--> 's
+|--(compou)--> R260[church]
+|--(nmod)--> *R261[fire]
+                 |--(case)--> in
+                 |--(compou)--> suspicious
+
+	* entity-paths for event['fire']13_16ecb.xmlsent:1301
+
+	* entity-paths for event['damaged']13_16ecb.xmlsent:1301
+	['Damaged --(compound)--> Church']

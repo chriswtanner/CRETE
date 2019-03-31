@@ -1,0 +1,112 @@
+
+-----------------------------------------
+docid:20_1ecbplus.xml
+-----------------------------------------
+
+sentence #:a powerful earthquake has hit southern iran , killing at least 10 people , injuring dozens more and damaging several villages , officials say . 
+	[events]:[['earthquake'], ['killing'], ['injuring'], ['damaging'], ['hit']]
+	[entities]:[['southern', 'iran', ','], ['officials'], ['people'], ['several', 'villages'], ['dozens']]
+say
+|--(ccomp)--> *R524[hit]
+|                |--(nsubj)--> *R509[earthquake]
+|                |                |--(det)--> a
+|                |                |--(amod)--> powerful
+|                |--(aux)--> has
+|                |--(dobj)--> R525[iran]
+|                |                |--(amod)--> R525[southern]
+|                |--(punct)--> R525[,]
+|                |--(dep)--> *R504[killing]
+|                                 |--(dobj)--> R505[people]
+|                                 |                |--(nummod)--> 10
+|                                 |                                 |--(nmod:n)--> least
+|                                 |                                                  |--(case)--> at
+|                                 |--(punct)--> ,
+|                                 |--(dep)--> *R506[injuring]
+|                                                  |--(dobj)--> R510[villages]
+|                                                                   |--(amod)--> more
+|                                                                   |                |--(nmod:n)--> R507[dozens]
+|                                                                   |                |--(cc)--> and
+|                                                                   |                |--(conj)--> *R508[damaging]
+|                                                                   |--(amod)--> R510[several]
+|--(punct)--> ,
+|--(nsubj)--> R513[officials]
+|--(punct)--> .
+
+	* entity-paths for event['earthquake']20_1ecbplus.xmlsent:3825
+
+	* entity-paths for event['killing']20_1ecbplus.xmlsent:3825
+	['killing --(dobj)--> people']
+	['killing --(dep)--> injuring', 'injuring --(dobj)--> villages']
+
+	* entity-paths for event['injuring']20_1ecbplus.xmlsent:3825
+	['injuring --(dobj)--> villages']
+
+	* entity-paths for event['damaging']20_1ecbplus.xmlsent:3825
+
+	* entity-paths for event['hit']20_1ecbplus.xmlsent:3825
+	['hit --(dobj)--> Iran']
+	['hit --(punct)--> ,']
+	['hit --(dep)--> killing', 'killing --(dobj)--> people']
+	['hit --(dep)--> killing', 'killing --(dep)--> injuring', 'injuring --(dobj)--> villages']
+
+sentence #:ten dead in southern iran quake 
+	[events]:[['dead'], ['quake']]
+	[entities]:[['ten'], ['in', 'southern', 'iran']]
+*R504[dead]
+|--(nmod:n)--> R505[ten]
+|--(nmod)--> *R509[quake]
+                 |--(case)--> R525[in]
+                 |--(amod)--> R525[southern]
+                 |--(compou)--> R525[iran]
+
+	* entity-paths for event['dead']20_1ecbplus.xmlsent:3824
+	['dead --(nmod:npmod)--> Ten']
+	['dead --(nmod)--> quake', 'quake --(case)--> in']
+	['dead --(nmod)--> quake', 'quake --(amod)--> southern']
+	['dead --(nmod)--> quake', 'quake --(compound)--> Iran']
+
+	* entity-paths for event['quake']20_1ecbplus.xmlsent:3824
+	['quake --(case)--> in']
+	['quake --(amod)--> southern']
+	['quake --(compound)--> Iran']
+
+sentence #:the 6 . 1 - magnitude quake struck qeshm island , home to 120 , 000 people , and the city of bandar abbas , state media said . 
+	[events]:[['said'], ['struck'], ['quake']]
+	[entities]:[['state', 'media'], ['qeshm', 'island'], ['the', 'city', 'of', 'bandar', 'abbas']]
+*R503[said]
+|--(nsubj)--> the
+|                |--(dep)--> 1
+|                                 |--(nsubj)--> 6
+|                                 |                |--(punct)--> .
+|                                 |--(punct)--> -
+|                                 |--(parata)--> *R524[struck]
+|                                                  |--(nsubj)--> *R509[quake]
+|                                                  |                |--(compou)--> magnitude
+|                                                  |--(dobj)--> R515[qeshm]
+|                                                                   |--(dep)--> R515[island]
+|                                                                   |--(punct)--> ,
+|                                                                   |--(advmod)--> home
+|                                                                   |                |--(nmod)--> 120
+|                                                                   |                                 |--(case)--> to
+|                                                                   |                                 |--(punct)--> ,
+|                                                                   |                                 |--(appos)--> people
+|                                                                   |                                 |                |--(nummod)--> 000
+|                                                                   |                                 |--(punct)--> ,
+|                                                                   |--(cc)--> and
+|                                                                   |--(conj)--> R526[city]
+|                                                                                    |--(det)--> R526[the]
+|                                                                                    |--(nmod)--> R526[abbas]
+|                                                                                                     |--(case)--> R526[of]
+|                                                                                                     |--(compou)--> R526[bandar]
+|                                                                                                     |--(punct)--> ,
+|                                                                                                     |--(appos)--> R514[media]
+|                                                                                                                      |--(compou)--> R514[state]
+|--(punct)--> .
+
+	* entity-paths for event['said']20_1ecbplus.xmlsent:3826
+	['said --(nsubj)--> The', 'The --(dep)--> 1', '1 --(parataxis)--> struck', 'struck --(dobj)--> Qeshm']
+
+	* entity-paths for event['struck']20_1ecbplus.xmlsent:3826
+	['struck --(dobj)--> Qeshm']
+
+	* entity-paths for event['quake']20_1ecbplus.xmlsent:3826

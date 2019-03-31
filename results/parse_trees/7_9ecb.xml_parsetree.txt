@@ -1,0 +1,50 @@
+
+-----------------------------------------
+docid:7_9ecb.xml
+-----------------------------------------
+
+sentence #:wladimir klitschko defended his wbo and ibf heavyweight titles in germany today with a lopsided victory over the american hasim rahman , winning by tko in the seventh round . 
+	[events]:[['defended'], ['victory'], ['round'], ['winning']]
+	[entities]:[['in', 'germany'], ['wbo'], ['titles'], ['ibf'], ['wladimir', 'klitschko'], ['hasim', 'rahman']]
+*R1715[defended]
+|--(nsubj)--> R1716[klitschko]
+|                |--(compou)--> R1716[wladimir]
+|--(dobj)--> R1736[wbo]
+|                |--(nmod:p)--> his
+|                |--(cc)--> and
+|                |--(conj)--> R1735[titles]
+|                                 |--(compou)--> R1718[ibf]
+|                                 |--(amod)--> heavyweight
+|--(nmod)--> R1747[germany]
+|                |--(case)--> R1747[in]
+|                |--(nmod:t)--> today
+|                |--(nmod)--> *R1730[victory]
+|                |                |--(case)--> with
+|                |                |--(det)--> a
+|                |                |--(amod)--> lopsided
+|                |                |--(nmod)--> R1720[rahman]
+|                |                                 |--(case)--> over
+|                |                                 |--(det)--> the
+|                |                                 |--(amod)--> american
+|                |                                 |--(compou)--> R1720[hasim]
+|                |--(punct)--> ,
+|                |--(acl)--> *R1730[winning]
+|                |                |--(nmod)--> tko
+|                |                                 |--(case)--> by
+|                |--(nmod)--> *R1721[round]
+|                                 |--(case)--> in
+|                                 |--(det)--> the
+|                                 |--(amod)--> seventh
+|--(punct)--> .
+
+	* entity-paths for event['defended']7_9ecb.xmlsent:14844
+	['defended --(nsubj)--> Klitschko']
+	['defended --(dobj)--> WBO']
+	['defended --(nmod)--> Germany']
+
+	* entity-paths for event['victory']7_9ecb.xmlsent:14844
+	['victory --(nmod)--> Rahman']
+
+	* entity-paths for event['round']7_9ecb.xmlsent:14844
+
+	* entity-paths for event['winning']7_9ecb.xmlsent:14844

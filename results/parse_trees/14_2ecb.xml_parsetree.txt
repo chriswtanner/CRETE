@@ -1,0 +1,38 @@
+
+-----------------------------------------
+docid:14_2ecb.xml
+-----------------------------------------
+
+sentence #:a waitrose store was reduced to ruins after a blaze being treated by police as " potentially suspicious " . 
+	[events]:[['blaze'], ['treated'], ['reduced']]
+	[entities]:[['police'], ['a', 'waitrose', 'store']]
+*R297[reduced]
+|--(nsubjp)--> R298[store]
+|                |--(det)--> R298[a]
+|                |--(compou)--> R298[waitrose]
+|--(auxpas)--> was
+|--(nmod)--> ruins
+|                |--(case)--> to
+|--(nmod)--> *R296[blaze]
+|                |--(case)--> after
+|                |--(det)--> a
+|                |--(acl)--> *R295[treated]
+|                |                |--(auxpas)--> being
+|                |                |--(nmod)--> R300[police]
+|                |                |                |--(case)--> by
+|                |                |--(advmod)--> as
+|                |                |--(punct)--> "
+|                |--(amod)--> suspicious
+|                                 |--(advmod)--> potentially
+|--(punct)--> "
+|--(punct)--> .
+
+	* entity-paths for event['blaze']14_2ecb.xmlsent:1702
+	['blaze --(acl)--> treated', 'treated --(nmod)--> police']
+
+	* entity-paths for event['treated']14_2ecb.xmlsent:1702
+	['treated --(nmod)--> police']
+
+	* entity-paths for event['reduced']14_2ecb.xmlsent:1702
+	['reduced --(nsubjpass)--> store']
+	['reduced --(nmod)--> blaze', 'blaze --(acl)--> treated', 'treated --(nmod)--> police']

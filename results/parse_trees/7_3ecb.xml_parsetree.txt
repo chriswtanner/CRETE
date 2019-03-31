@@ -1,0 +1,47 @@
+
+-----------------------------------------
+docid:7_3ecb.xml
+-----------------------------------------
+
+sentence #:heavyweight champion , wladimir klitschko , 53-3 , 47 ko 's , easily dismantled former 2-time heavyweight champion , hasim rahman , 45-7-2 , 36 ko 's , in the seventh round . 
+	[events]:[['round'], ['dismantled']]
+	[entities]:[['wladimir', 'klitschko'], ['hasim', 'rahman']]
+*R1719[dismantled]
+|--(nsubj)--> champion
+|                |--(amod)--> heavyweight
+|                |--(punct)--> ,
+|                |--(appos)--> R1716[klitschko]
+|                |                |--(compou)--> R1716[wladimir]
+|                |--(punct)--> ,
+|                |--(amod)--> 53-3
+|                |--(punct)--> ,
+|                |--(appos)--> 47
+|                |                |--(nmod:p)--> ko
+|                |                                 |--(case)--> 's
+|                |--(punct)--> ,
+|--(advmod)--> easily
+|--(nmod)--> 2-time
+|                |--(amod)--> former
+|                |--(dep)--> champion
+|                                 |--(compou)--> heavyweight
+|                                 |--(punct)--> ,
+|                                 |--(appos)--> R1720[rahman]
+|                                 |                |--(compou)--> R1720[hasim]
+|                                 |--(punct)--> ,
+|                                 |--(amod)--> 45-7-2
+|                                 |--(punct)--> ,
+|                                 |--(appos)--> ko
+|                                 |                |--(nummod)--> 36
+|                                 |                |--(case)--> 's
+|                                 |--(punct)--> ,
+|                                 |--(nmod)--> *R1721[round]
+|                                                  |--(case)--> in
+|                                                  |--(det)--> the
+|                                                  |--(amod)--> seventh
+|--(punct)--> .
+
+	* entity-paths for event['round']7_3ecb.xmlsent:14667
+
+	* entity-paths for event['dismantled']7_3ecb.xmlsent:14667
+	['dismantled --(nsubj)--> Champion', 'Champion --(appos)--> Klitschko']
+	['dismantled --(nmod)--> 2-Time', '2-Time --(dep)--> Champion', 'Champion --(appos)--> Rahman']

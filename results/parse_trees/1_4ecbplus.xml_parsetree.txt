@@ -1,0 +1,140 @@
+
+-----------------------------------------
+docid:1_4ecbplus.xml
+-----------------------------------------
+
+sentence #:lindsay lohan checks into rehab , checks out two minutes later 
+	[events]:[['checks', 'into'], ['checks', 'out']]
+	[entities]:[['lindsay', 'lohan'], ['rehab'], ['two', 'minutes', 'later']]
+*R9[checks]
+|--(compou)--> R15[lindsay]
+|--(compou)--> R15[lohan]
+|--(nmod)--> *R57[checks]
+|                |--(dep)--> *R9[into]
+|                |--(compou)--> R10[rehab]
+|                |--(punct)--> ,
+|--(dep)--> *R57[out]
+                 |--(nmod:t)--> R132[minutes]
+                                  |--(nummod)--> R132[two]
+                                  |--(advmod)--> R132[later]
+
+	* entity-paths for event['checks', 'into']1_4ecbplus.xmlsent:231
+
+	* entity-paths for event['checks', 'out']1_4ecbplus.xmlsent:231
+	['Out --(nmod:tmod)--> Minutes']
+
+sentence #:the nydn says that lilo eventually made it to morningside recovery in newport beach , but two minutes after she walked through the door , she walked back through it and left . 
+	[events]:[['left'], ['walked'], ['made'], ['says']]
+	[entities]:[['she'], ['two', 'minutes'], ['it'], ['lilo'], ['nydn'], ['door'], ['she'], ['morningside', 'recovery', 'in', 'newport', 'beach']]
+walked
+|--(ccomp)--> *R133[says]
+|                |--(nsubj)--> R134[nydn]
+|                |                |--(det)--> the
+|                |--(advcl)--> *R135[made]
+|                                 |--(mark)--> that
+|                                 |--(nsubj)--> R15[lilo]
+|                                 |--(advmod)--> eventually
+|                                 |--(dobj)--> it
+|                                 |--(nmod)--> R10[recovery]
+|                                 |                |--(case)--> to
+|                                 |                |--(compou)--> R10[morningside]
+|                                 |--(nmod)--> R10[beach]
+|                                 |                |--(case)--> R10[in]
+|                                 |                |--(compou)--> R10[newport]
+|                                 |--(punct)--> ,
+|                                 |--(cc)--> but
+|                                 |--(conj)--> *R136[walked]
+|                                                  |--(dep)--> R132[minutes]
+|                                                  |                |--(nummod)--> R132[two]
+|                                                  |--(mark)--> after
+|                                                  |--(nsubj)--> R15[she]
+|                                                  |--(nmod)--> R137[door]
+|                                                                   |--(case)--> through
+|                                                                   |--(det)--> the
+|--(punct)--> ,
+|--(nsubj)--> R15[she]
+|--(advmod)--> back
+|--(nmod)--> R137[it]
+|                |--(case)--> through
+|--(cc)--> and
+|--(conj)--> *R57[left]
+|--(punct)--> .
+
+	* entity-paths for event['left']1_4ecbplus.xmlsent:236
+
+	* entity-paths for event['walked']1_4ecbplus.xmlsent:236
+	['walked --(dep)--> minutes']
+	['walked --(nsubj)--> she']
+	['walked --(nmod)--> door']
+
+	* entity-paths for event['made']1_4ecbplus.xmlsent:236
+	['made --(nsubj)--> LiLo']
+	['made --(nmod)--> Recovery']
+	['made --(nmod)--> Beach']
+	['made --(conj)--> walked', 'walked --(dep)--> minutes']
+	['made --(conj)--> walked', 'walked --(nsubj)--> she']
+	['made --(conj)--> walked', 'walked --(nmod)--> door']
+
+	* entity-paths for event['says']1_4ecbplus.xmlsent:236
+	['says --(nsubj)--> NYDN']
+	['says --(advcl)--> made', 'made --(nsubj)--> LiLo']
+	['says --(advcl)--> made', 'made --(nmod)--> Recovery']
+	['says --(advcl)--> made', 'made --(nmod)--> Beach']
+	['says --(advcl)--> made', 'made --(conj)--> walked', 'walked --(dep)--> minutes']
+	['says --(advcl)--> made', 'made --(conj)--> walked', 'walked --(nsubj)--> she']
+	['says --(advcl)--> made', 'made --(conj)--> walked', 'walked --(nmod)--> door']
+
+sentence #:according to the nydn , lilo showed up to morningside at around noon , spent a couple of minutes there , got spooked by the paparazzi ( uh huh ) and then jumped back into her suv . 
+	[events]:[['showed', 'up'], ['spooked'], ['jumped'], ['spent']]
+	[entities]:[['paparazzi'], ['suv'], ['morningside'], ['a', 'couple', 'of', 'minutes'], ['around', 'noon'], ['there'], ['lilo'], ['her'], ['nydn']]
+*R135[showed]
+|--(nmod)--> R134[nydn]
+|                |--(case)--> according
+|                |                |--(mwe)--> to
+|                |--(det)--> the
+|--(punct)--> ,
+|--(nsubj)--> R15[lilo]
+|--(advmod)--> *R135[up]
+|                |--(nmod)--> R10[morningside]
+|                                 |--(case)--> to
+|--(nmod)--> R138[noon]
+|                |--(case)--> at
+|                |--(case)--> R138[around]
+|--(punct)--> ,
+|--(conj)--> *R139[spent]
+|                |--(dobj)--> R132[couple]
+|                |                |--(det)--> R132[a]
+|                |                |--(nmod)--> R132[minutes]
+|                |                                 |--(case)--> R132[of]
+|                |--(nmod:t)--> R10[there]
+|--(punct)--> ,
+|--(conj)--> *R140[spooked]
+|                |--(auxpas)--> got
+|                |--(nmod)--> R141[paparazzi]
+|                                 |--(case)--> by
+|                                 |--(det)--> the
+|                                 |--(dep)--> uh
+|                                                  |--(punct)--> (
+|                                                  |--(dep)--> huh
+|                                                  |--(punct)--> )
+|--(cc)--> and
+|--(conj)--> *R142[jumped]
+|                |--(advmod)--> then
+|                |--(compou)--> back
+|                |--(nmod)--> R143[suv]
+|                                 |--(case)--> into
+|                                 |--(nmod:p)--> R15[her]
+|--(punct)--> .
+
+	* entity-paths for event['showed', 'up']1_4ecbplus.xmlsent:237
+	['up --(nmod)--> Morningside']
+
+	* entity-paths for event['spooked']1_4ecbplus.xmlsent:237
+	['spooked --(nmod)--> paparazzi']
+
+	* entity-paths for event['jumped']1_4ecbplus.xmlsent:237
+	['jumped --(nmod)--> SUV']
+
+	* entity-paths for event['spent']1_4ecbplus.xmlsent:237
+	['spent --(dobj)--> couple']
+	['spent --(nmod:tmod)--> there']

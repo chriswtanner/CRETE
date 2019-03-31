@@ -1,0 +1,29 @@
+
+-----------------------------------------
+docid:4_5ecb.xml
+-----------------------------------------
+
+sentence #:famous 1950s pin up star betty page has died in los angeles , aged 85 . 
+	[events]:[['died']]
+	[entities]:[['betty', 'page'], ['1950s'], ['los', 'angeles']]
+*R1363[died]
+|--(dep)--> pin
+|                |--(nsubj)--> famous
+|                |                |--(nummod)--> R1365[1950s]
+|                |--(compou)--> up
+|                |--(dobj)--> star
+|--(nsubj)--> R1364[page]
+|                |--(compou)--> R1364[betty]
+|--(aux)--> has
+|--(nmod)--> R1368[angeles]
+|                |--(case)--> in
+|                |--(compou)--> R1368[los]
+|                |--(punct)--> ,
+|                |--(amod)--> aged
+|                                 |--(nmod:t)--> 85
+|--(punct)--> .
+
+	* entity-paths for event['died']4_5ecb.xmlsent:11462
+	['died --(dep)--> pin', 'pin --(nsubj)--> Famous', 'Famous --(nummod)--> 1950s']
+	['died --(nsubj)--> Page']
+	['died --(nmod)--> Angeles']

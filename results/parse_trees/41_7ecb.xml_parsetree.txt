@@ -1,0 +1,144 @@
+
+-----------------------------------------
+docid:41_7ecb.xml
+-----------------------------------------
+
+sentence #:the mortar strike in jabaliya was the second attack on a school run by the un relief and works agency , or unrwa . 
+	[events]:[['mortar', 'strike'], ['attack']]
+	[entities]:[['school'], ['in', 'jabaliya']]
+*R1465[attack]
+|--(nsubj)--> *R1465[strike]
+|                |--(det)--> the
+|                |--(amod)--> *R1465[mortar]
+|                |--(nmod)--> R1468[jabaliya]
+|                                 |--(case)--> R1468[in]
+|--(cop)--> was
+|--(det)--> the
+|--(amod)--> second
+|--(nmod)--> R1466[school]
+|                |--(case)--> on
+|                |--(det)--> a
+|                |--(acl)--> run
+|                                 |--(nmod)--> relief
+|                                                  |--(case)--> by
+|                                                  |--(det)--> the
+|                                                  |--(compou)--> un
+|                                                  |--(cc)--> and
+|                                                  |--(conj)--> agency
+|                                                                   |--(compou)--> works
+|--(punct)--> ,
+|--(cc)--> or
+|--(conj)--> unrwa
+|--(punct)--> .
+
+	* entity-paths for event['mortar', 'strike']41_7ecb.xmlsent:12413
+	['strike --(nmod)--> Jabaliya']
+
+	* entity-paths for event['attack']41_7ecb.xmlsent:12413
+	['attack --(nsubj)--> strike', 'strike --(nmod)--> Jabaliya']
+	['attack --(nmod)--> school']
+
+sentence #:the israeli army said the un school in the jabaliya refugee camp was hit when troops responded to a mortar attack from the grounds and that the dead included a number of hamas militants . 
+	[events]:[['hit'], ['said']]
+	[entities]:[['un'], ['school'], ['israeli', 'army'], ['hamas'], ['dead'], ['troops'], ['in', 'the', 'jabaliya', 'refugee', 'camp'], ['militants']]
+*R1486[said]
+|--(nsubj)--> R1462[army]
+|                |--(det)--> the
+|                |--(amod)--> R1462[israeli]
+|--(ccomp)--> *R1465[hit]
+|                |--(nsubjp)--> R1466[school]
+|                |                |--(det)--> the
+|                |                |--(compou)--> R1473[un]
+|                |                |--(nmod)--> R1468[camp]
+|                |                                 |--(case)--> R1468[in]
+|                |                                 |--(det)--> R1468[the]
+|                |                                 |--(compou)--> R1468[jabaliya]
+|                |                                 |--(compou)--> R1468[refugee]
+|                |--(auxpas)--> was
+|                |--(advcl)--> responded
+|                                 |--(advmod)--> when
+|                                 |--(nsubj)--> R1462[troops]
+|                                 |--(nmod)--> attack
+|                                 |                |--(case)--> to
+|                                 |                |--(det)--> a
+|                                 |                |--(amod)--> mortar
+|                                 |--(nmod)--> grounds
+|                                 |                |--(case)--> from
+|                                 |                |--(det)--> the
+|                                 |--(cc)--> and
+|                                 |--(conj)--> included
+|                                                  |--(mark)--> that
+|                                                  |--(nsubj)--> R1467[dead]
+|                                                  |                |--(det)--> the
+|                                                  |--(dobj)--> number
+|                                                                   |--(det)--> a
+|                                                                   |--(nmod)--> R1471[militants]
+|                                                                                    |--(case)--> of
+|                                                                                    |--(compou)--> R1492[hamas]
+|--(punct)--> .
+
+	* entity-paths for event['hit']41_7ecb.xmlsent:12406
+	['hit --(nsubjpass)--> school']
+	['hit --(advcl)--> responded', 'responded --(nsubj)--> troops']
+	['hit --(advcl)--> responded', 'responded --(conj)--> included', 'included --(nsubj)--> dead']
+	['hit --(advcl)--> responded', 'responded --(conj)--> included', 'included --(dobj)--> number', 'number --(nmod)--> militants']
+
+	* entity-paths for event['said']41_7ecb.xmlsent:12406
+	['said --(nsubj)--> army']
+	['said --(ccomp)--> hit', 'hit --(nsubjpass)--> school']
+	['said --(ccomp)--> hit', 'hit --(advcl)--> responded', 'responded --(nsubj)--> troops']
+	['said --(ccomp)--> hit', 'hit --(advcl)--> responded', 'responded --(conj)--> included', 'included --(nsubj)--> dead']
+	['said --(ccomp)--> hit', 'hit --(advcl)--> responded', 'responded --(conj)--> included', 'included --(dobj)--> number', 'number --(nmod)--> militants']
+
+sentence #:an israeli mortar strike that killed about 40 palestinians sheltering in a un school tuesday brought new urgency to diplomatic efforts to end israel 's military onslaught in the gaza strip , as the un security council met to discuss the crisis . 
+	[events]:[['mortar', 'strike'], ['killed']]
+	[entities]:[['israel'], ['tuesday'], ['in', 'the', 'gaza', 'strip'], ['40', 'palestinians'], ['school'], ['un']]
+brought
+|--(nsubj)--> *R1465[strike]
+|                |--(det)--> an
+|                |--(amod)--> israeli
+|                |--(amod)--> *R1465[mortar]
+|                |--(acl:re)--> *R1464[killed]
+|                                 |--(nsubj)--> that
+|                                 |--(nmod)--> R1467[palestinians]
+|                                                  |--(case)--> about
+|                                                  |--(nummod)--> R1467[40]
+|                                                  |--(acl)--> sheltering
+|                                                                   |--(nmod)--> R1466[school]
+|                                                                   |                |--(case)--> in
+|                                                                   |                |--(det)--> a
+|                                                                   |                |--(compou)--> R1473[un]
+|                                                                   |--(nmod:t)--> R1487[tuesday]
+|--(dobj)--> urgency
+|                |--(amod)--> new
+|--(nmod)--> efforts
+|                |--(case)--> to
+|                |--(amod)--> diplomatic
+|--(advcl)--> end
+|                |--(mark)--> to
+|                |--(dobj)--> onslaught
+|                                 |--(nmod:p)--> R1462[israel]
+|                                 |                |--(case)--> 's
+|                                 |--(amod)--> military
+|                                 |--(nmod)--> R1463[strip]
+|                                                  |--(case)--> R1463[in]
+|                                                  |--(det)--> R1463[the]
+|                                                  |--(compou)--> R1463[gaza]
+|--(punct)--> ,
+|--(advcl)--> met
+|                |--(mark)--> as
+|                |--(nsubj)--> council
+|                |                |--(det)--> the
+|                |                |--(compou)--> un
+|                |                |--(compou)--> security
+|                |--(xcomp)--> discuss
+|                                 |--(mark)--> to
+|                                 |--(dobj)--> crisis
+|                                                  |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['mortar', 'strike']41_7ecb.xmlsent:12403
+	['strike --(acl:relcl)--> killed', 'killed --(nmod)--> Palestinians']
+
+	* entity-paths for event['killed']41_7ecb.xmlsent:12403
+	['killed --(nmod)--> Palestinians']

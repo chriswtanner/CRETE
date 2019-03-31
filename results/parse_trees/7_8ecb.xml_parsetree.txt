@@ -1,0 +1,47 @@
+
+-----------------------------------------
+docid:7_8ecb.xml
+-----------------------------------------
+
+sentence #:wladimir klitschko stopped hasim rahman in the seventh round to retain his ibf , ibo and wbo heavyweight titles at the sap-arena in mannheim , germany . 
+	[events]:[['retain'], ['stopped'], ['round']]
+	[entities]:[['titles'], ['wbo'], ['wladimir', 'klitschko'], ['hasim', 'rahman'], ['ibf'], ['the', 'sap-arena', 'in', 'mannheim', ',', 'germany'], ['ibo']]
+*R1719[stopped]
+|--(nsubj)--> R1716[klitschko]
+|                |--(compou)--> R1716[wladimir]
+|--(dobj)--> R1720[rahman]
+|                |--(compou)--> R1720[hasim]
+|                |--(nmod)--> *R1721[round]
+|                                 |--(case)--> in
+|                                 |--(det)--> the
+|                                 |--(amod)--> seventh
+|--(advcl)--> *R1715[retain]
+|                |--(mark)--> to
+|                |--(dobj)--> R1735[titles]
+|                |                |--(nmod:p)--> his
+|                |                |--(compou)--> R1718[ibf]
+|                |                |                |--(punct)--> ,
+|                |                |                |--(conj)--> R1737[ibo]
+|                |                |                |--(cc)--> and
+|                |                |                |--(conj)--> R1736[wbo]
+|                |                |--(amod)--> heavyweight
+|                |--(nmod)--> R1722[sap-arena]
+|                                 |--(case)--> at
+|                                 |--(det)--> R1722[the]
+|                                 |--(nmod)--> R1722[germany]
+|                                                  |--(case)--> R1722[in]
+|                                                  |--(compou)--> R1722[mannheim]
+|                                                  |--(punct)--> R1722[,]
+|--(punct)--> .
+
+	* entity-paths for event['retain']7_8ecb.xmlsent:14826
+	['retain --(dobj)--> titles']
+	['retain --(nmod)--> SAP-Arena']
+
+	* entity-paths for event['stopped']7_8ecb.xmlsent:14826
+	['stopped --(nsubj)--> Klitschko']
+	['stopped --(dobj)--> Rahman']
+	['stopped --(advcl)--> retain', 'retain --(dobj)--> titles']
+	['stopped --(advcl)--> retain', 'retain --(nmod)--> SAP-Arena']
+
+	* entity-paths for event['round']7_8ecb.xmlsent:14826

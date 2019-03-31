@@ -1,0 +1,137 @@
+
+-----------------------------------------
+docid:44_3ecb.xml
+-----------------------------------------
+
+sentence #:hp estimates that the deal , when completed , will give it about 7 percent of the technology services market , compared with ibm 's 10 percent share . 
+	[events]:[['deal']]
+	[entities]:[['hp'], ['it']]
+estimates
+|--(nsubj)--> R1577[hp]
+|--(ccomp)--> give
+|                |--(mark)--> that
+|                |--(nsubj)--> *R1599[deal]
+|                |                |--(det)--> the
+|                |                |--(punct)--> ,
+|                |                |--(acl:re)--> completed
+|                |                |                |--(advmod)--> when
+|                |                |--(punct)--> ,
+|                |--(aux)--> will
+|                |--(dobj)--> R1577[it]
+|                |--(nmod)--> percent
+|                |                |--(case)--> about
+|                |                |--(nummod)--> 7
+|                |                |--(nmod)--> market
+|                |                                 |--(case)--> of
+|                |                                 |--(det)--> the
+|                |                                 |--(compou)--> technology
+|                |                                 |--(compou)--> services
+|                |--(punct)--> ,
+|                |--(advcl)--> share
+|                                 |--(case)--> compared
+|                                 |--(case)--> with
+|                                 |--(nmod:p)--> ibm
+|                                 |                |--(case)--> 's
+|                                 |--(nummod)--> 10
+|                                 |--(compou)--> percent
+|--(punct)--> .
+
+	* entity-paths for event['deal']44_3ecb.xmlsent:13597
+
+sentence #:hewlett-packard 's purchase of electronic data systems could mean tougher competition for ibm and its 10,500 triangle employees . 
+	[events]:[['purchase']]
+	[entities]:[['hewlett-packard'], ['electronic', 'data', 'systems']]
+mean
+|--(nsubj)--> *R1599[purchase]
+|                |--(nmod:p)--> R1577[hewlett-packard]
+|                |                |--(case)--> 's
+|                |--(nmod)--> R1600[systems]
+|                                 |--(case)--> of
+|                                 |--(compou)--> R1600[electronic]
+|                                 |--(compou)--> R1600[data]
+|--(aux)--> could
+|--(dobj)--> competition
+|                |--(amod)--> tougher
+|--(nmod)--> ibm
+|                |--(case)--> for
+|                |--(cc)--> and
+|                |--(conj)--> employees
+|                                 |--(nmod:p)--> its
+|                                 |--(nummod)--> 10,500
+|                                 |--(compou)--> triangle
+|--(punct)--> .
+
+	* entity-paths for event['purchase']44_3ecb.xmlsent:13596
+	['purchase --(nmod:poss)--> Hewlett-Packard']
+	['purchase --(nmod)--> Systems']
+
+sentence #:" it appears to be a very daunting deal , " said american technology research analyst shaw wu . 
+	[events]:[['deal']]
+	[entities]:[]
+said
+|--(punct)--> "
+|--(ccomp)--> appears
+|                |--(nsubj)--> it
+|                |--(xcomp)--> *R1599[deal]
+|                                 |--(mark)--> to
+|                                 |--(cop)--> be
+|                                 |--(det)--> a
+|                                 |--(amod)--> daunting
+|                                                  |--(advmod)--> very
+|--(punct)--> ,
+|--(punct)--> "
+|--(dep)--> wu
+|                |--(compou)--> american
+|                |--(compou)--> technology
+|                |--(compou)--> research
+|                |--(compou)--> analyst
+|                |--(compou)--> shaw
+|--(punct)--> .
+
+	* entity-paths for event['deal']44_3ecb.xmlsent:13604
+
+sentence #:the all-cash deal , announced tuesday , represents hp 's biggest gamble under the leadership of mark hurd , who was hired as chief executive in march 2005 to turn around the maker of personal computers and printers . 
+	[events]:[['deal']]
+	[entities]:[['tuesday'], ['hp'], ['maker']]
+represents
+|--(nsubj)--> *R1599[deal]
+|                |--(det)--> the
+|                |--(amod)--> all-cash
+|                |--(punct)--> ,
+|                |--(acl)--> announced
+|                |                |--(nmod:t)--> R1602[tuesday]
+|                |--(punct)--> ,
+|--(dobj)--> gamble
+|                |--(nmod:p)--> R1577[hp]
+|                |                |--(case)--> 's
+|                |--(amod)--> biggest
+|--(nmod)--> leadership
+|                |--(case)--> under
+|                |--(det)--> the
+|                |--(nmod)--> hurd
+|                                 |--(case)--> of
+|                                 |--(compou)--> mark
+|                                 |--(punct)--> ,
+|                                 |--(acl:re)--> hired
+|                                                  |--(nsubjp)--> who
+|                                                  |--(auxpas)--> was
+|                                                  |--(nmod)--> executive
+|                                                  |                |--(case)--> as
+|                                                  |                |--(amod)--> chief
+|                                                  |                |--(nmod)--> march
+|                                                  |                                 |--(case)--> in
+|                                                  |                                 |--(nummod)--> 2005
+|                                                  |--(xcomp)--> turn
+|                                                                   |--(mark)--> to
+|                                                                   |--(compou)--> around
+|                                                                   |--(dobj)--> R1577[maker]
+|                                                                                    |--(det)--> the
+|                                                                                    |--(nmod)--> computers
+|                                                                                                     |--(case)--> of
+|                                                                                                     |--(amod)--> personal
+|                                                                                                     |--(cc)--> and
+|                                                                                                     |--(conj)--> printers
+|--(punct)--> .
+
+	* entity-paths for event['deal']44_3ecb.xmlsent:13593
+	['deal --(acl)--> announced', 'announced --(nmod:tmod)--> Tuesday']

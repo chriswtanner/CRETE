@@ -1,0 +1,154 @@
+
+-----------------------------------------
+docid:45_2ecb.xml
+-----------------------------------------
+
+sentence #:the bodies of laci and conner later washed up in the san francisco bay , near where scott told police he had gone fishing the day his wife disappeared . 
+	[events]:[['gone'], ['disappeared'], ['washed', 'up'], ['told']]
+	[entities]:[['he'], ['day'], ['police'], ['laci'], ['in', 'the', 'san', 'francisco', 'bay'], ['wife'], ['conner'], ['bodies'], ['scott']]
+*R1633[disappeared]
+|--(dep)--> *R1638[washed]
+|                |--(nsubj)--> R1639[bodies]
+|                |                |--(det)--> the
+|                |                |--(nmod)--> R1634[laci]
+|                |                                 |--(case)--> of
+|                |                                 |--(cc)--> and
+|                |                                 |--(conj)--> R1640[conner]
+|                |--(advmod)--> later
+|                |--(compou)--> *R1638[up]
+|                |--(nmod)--> R1641[bay]
+|                |                |--(case)--> R1641[in]
+|                |                |--(det)--> R1641[the]
+|                |                |--(compou)--> R1641[san]
+|                |                |--(compou)--> R1641[francisco]
+|                |--(punct)--> ,
+|                |--(advcl)--> *R1642[told]
+|                                 |--(mark)--> near
+|                                 |--(advmod)--> where
+|                                 |--(nsubj)--> R1628[scott]
+|                                 |--(dobj)--> R1643[police]
+|                                                  |--(acl:re)--> *R1644[gone]
+|                                                                   |--(nsubj)--> R1628[he]
+|                                                                   |--(aux)--> had
+|                                                                   |--(nmod)--> R1645[day]
+|                                                                                    |--(dep)--> fishing
+|                                                                                    |--(det)--> the
+|--(nsubj)--> R1634[wife]
+|                |--(nmod:p)--> his
+|--(punct)--> .
+
+	* entity-paths for event['gone']45_2ecb.xmlsent:13821
+	['gone --(nsubj)--> he']
+	['gone --(nmod)--> day']
+
+	* entity-paths for event['disappeared']45_2ecb.xmlsent:13821
+	['disappeared --(dep)--> washed', 'washed --(nsubj)--> bodies']
+	['disappeared --(dep)--> washed', 'washed --(nmod)--> Bay']
+	['disappeared --(dep)--> washed', 'washed --(advcl)--> told', 'told --(nsubj)--> Scott']
+	['disappeared --(dep)--> washed', 'washed --(advcl)--> told', 'told --(dobj)--> police']
+	['disappeared --(nsubj)--> wife']
+
+	* entity-paths for event['washed', 'up']45_2ecb.xmlsent:13821
+
+	* entity-paths for event['told']45_2ecb.xmlsent:13821
+	['told --(nsubj)--> Scott']
+	['told --(dobj)--> police']
+
+sentence #:on november 12 , a jury in redwood city , california , convicted scott peterson of first-degree murder in the death of his wife , 23-year-old laci , and second-degree murder in the death of his 8-month-old unborn son , whom the couple were planning to name conner . 
+	[events]:[['death'], ['convicted'], ['death'], ['second-degree', 'murder'], ['unborn'], ['first-degree', 'murder']]
+	[entities]:[['couple'], ['scott', 'peterson'], ['son'], ['jury'], ['wife'], ['whom'], ['laci'], ['on', 'november', '12'], ['in', 'redwood', 'city', ',', 'california']]
+*R1627[convicted]
+|--(nmod)--> R1646[november]
+|                |--(case)--> R1646[on]
+|                |--(nummod)--> R1646[12]
+|--(punct)--> ,
+|--(nsubj)--> R1632[jury]
+|                |--(det)--> a
+|                |--(nmod)--> R1647[city]
+|                                 |--(case)--> R1647[in]
+|                                 |--(compou)--> R1647[redwood]
+|                                 |--(punct)--> R1647[,]
+|                                 |--(appos)--> R1647[california]
+|                                 |--(punct)--> ,
+|--(dobj)--> R1628[peterson]
+|                |--(compou)--> R1628[scott]
+|                |--(nmod)--> *R1648[murder]
+|                                 |--(case)--> of
+|                                 |--(amod)--> *R1648[first-degree]
+|                                 |--(nmod)--> *R1635[death]
+|                                                  |--(case)--> in
+|                                                  |--(det)--> the
+|                                                  |--(nmod)--> R1634[wife]
+|                                                                   |--(case)--> of
+|                                                                   |--(nmod:p)--> his
+|                                                                   |--(punct)--> ,
+|                                                                   |--(conj)--> R1634[laci]
+|                                                                   |                |--(amod)--> 23-year-old
+|                                                                   |--(punct)--> ,
+|                                                                   |--(cc)--> and
+|                                                                   |--(conj)--> *R1649[murder]
+|                                                                                    |--(amod)--> *R1649[second-degree]
+|--(nmod)--> *R1650[death]
+|                |--(case)--> in
+|                |--(det)--> the
+|                |--(nmod)--> R1640[son]
+|                                 |--(case)--> of
+|                                 |--(nmod:p)--> his
+|                                 |--(amod)--> 8-month-old
+|                                 |--(amod)--> *R1651[unborn]
+|--(punct)--> ,
+|--(dep)--> planning
+|                |--(nsubj)--> R1652[couple]
+|                |                |--(det)--> the
+|                |--(aux)--> were
+|                |--(xcomp)--> name
+|                                 |--(dobj)--> R1640[whom]
+|                                 |--(mark)--> to
+|                                 |--(dobj)--> conner
+|--(punct)--> .
+
+	* entity-paths for event['death']45_2ecb.xmlsent:13819
+	['death --(nmod)--> wife']
+
+	* entity-paths for event['convicted']45_2ecb.xmlsent:13819
+	['convicted --(nmod)--> November']
+	['convicted --(nsubj)--> jury']
+	['convicted --(dobj)--> Peterson']
+	['convicted --(nmod)--> death', 'death --(nmod)--> son']
+	['convicted --(dep)--> planning', 'planning --(nsubj)--> couple']
+	['convicted --(dep)--> planning', 'planning --(xcomp)--> name', 'name --(dobj)--> whom']
+
+	* entity-paths for event['death']45_2ecb.xmlsent:13819
+	['death --(nmod)--> son']
+
+	* entity-paths for event['second-degree', 'murder']45_2ecb.xmlsent:13819
+
+	* entity-paths for event['unborn']45_2ecb.xmlsent:13819
+
+	* entity-paths for event['first-degree', 'murder']45_2ecb.xmlsent:13819
+	['murder --(nmod)--> death', 'death --(nmod)--> wife']
+
+sentence #:laci disappeared from the couple 's home in modesto , california , 23 months ago . 
+	[events]:[['disappeared']]
+	[entities]:[['23', 'months', 'ago'], ['from', 'home'], ['couple'], ['laci'], ['in', 'modesto', ',', 'california']]
+*R1633[disappeared]
+|--(nsubj)--> R1634[laci]
+|--(nmod)--> R1653[home]
+|                |--(case)--> R1653[from]
+|                |--(nmod:p)--> R1652[couple]
+|                |                |--(det)--> the
+|                |                |--(case)--> 's
+|                |--(nmod)--> R1654[california]
+|                                 |--(case)--> R1654[in]
+|                                 |--(compou)--> R1654[modesto]
+|                                 |--(punct)--> R1654[,]
+|--(punct)--> ,
+|--(advmod)--> R1645[ago]
+|                |--(nmod:n)--> R1645[months]
+|                                 |--(nummod)--> R1645[23]
+|--(punct)--> .
+
+	* entity-paths for event['disappeared']45_2ecb.xmlsent:13820
+	['disappeared --(nsubj)--> Laci']
+	['disappeared --(nmod)--> home']
+	['disappeared --(advmod)--> ago']

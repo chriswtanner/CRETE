@@ -1,0 +1,87 @@
+
+-----------------------------------------
+docid:34_11ecb.xml
+-----------------------------------------
+
+sentence #:gupta , 39 , has reportedly accepted the job , according to the washington post , and is already working out the details of moving his family from atlanta to washington . 
+	[events]:[['job'], ['accepted']]
+	[entities]:[['gupta']]
+*R1140[accepted]
+|--(nsubj)--> R1130[gupta]
+|                |--(punct)--> ,
+|                |--(amod)--> 39
+|                |--(punct)--> ,
+|--(aux)--> has
+|--(advmod)--> reportedly
+|--(dobj)--> *R1134[job]
+|                |--(det)--> the
+|--(punct)--> ,
+|--(nmod)--> post
+|                |--(case)--> according
+|                |                |--(mwe)--> to
+|                |--(det)--> the
+|                |--(compou)--> washington
+|--(punct)--> ,
+|--(cc)--> and
+|--(conj)--> working
+|                |--(aux)--> is
+|                |--(advmod)--> already
+|                |--(compou)--> out
+|                |--(dobj)--> details
+|                                 |--(det)--> the
+|                                 |--(acl)--> moving
+|                                                  |--(mark)--> of
+|                                                  |--(dobj)--> family
+|                                                  |                |--(nmod:p)--> his
+|                                                  |--(nmod)--> atlanta
+|                                                  |                |--(case)--> from
+|                                                  |--(nmod)--> washington
+|                                                                   |--(case)--> to
+|--(punct)--> .
+
+	* entity-paths for event['job']34_11ecb.xmlsent:9257
+
+	* entity-paths for event['accepted']34_11ecb.xmlsent:9257
+	['accepted --(nsubj)--> Gupta']
+
+sentence #:dr. sanjay gupta , a neurosurgeon and chief medical correspondent for cnn , has been offered the post of surgeon general by president-elect barack obama , according to sources . 
+	[events]:[['offered'], ['post']]
+	[entities]:[['dr.', 'sanjay', 'gupta'], ['barack', 'obama'], ['surgeon', 'general']]
+*R1132[offered]
+|--(nsubjp)--> R1130[gupta]
+|                |--(compou)--> R1130[dr.]
+|                |--(compou)--> R1130[sanjay]
+|                |--(punct)--> ,
+|                |--(appos)--> neurosurgeon
+|                |                |--(det)--> a
+|                |                |--(cc)--> and
+|                |                |--(conj)--> correspondent
+|                |                |                |--(amod)--> chief
+|                |                |                |--(amod)--> medical
+|                |                |--(nmod)--> cnn
+|                |                                 |--(case)--> for
+|                |--(punct)--> ,
+|--(aux)--> has
+|--(auxpas)--> been
+|--(dobj)--> *R1134[post]
+|                |--(det)--> the
+|                |--(nmod)--> R1135[general]
+|                                 |--(case)--> of
+|                                 |--(compou)--> R1135[surgeon]
+|--(nmod)--> R1136[obama]
+|                |--(case)--> by
+|                |--(compou)--> president-elect
+|                |--(compou)--> R1136[barack]
+|--(punct)--> ,
+|--(nmod)--> sources
+|                |--(case)--> according
+|                                 |--(mwe)--> to
+|--(punct)--> .
+
+	* entity-paths for event['offered']34_11ecb.xmlsent:9256
+	['offered --(nsubjpass)--> Gupta']
+	['offered --(dobj)--> post', 'post --(nmod)--> General']
+	['offered --(nmod)--> Obama']
+
+	* entity-paths for event['post']34_11ecb.xmlsent:9256
+	['post --(nmod)--> General']

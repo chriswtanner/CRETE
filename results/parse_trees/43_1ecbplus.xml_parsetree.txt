@@ -1,0 +1,37 @@
+
+-----------------------------------------
+docid:43_1ecbplus.xml
+-----------------------------------------
+
+sentence #:amd announces strategic investment to accelerate cloud server strategy 
+	[events]:[['announces']]
+	[entities]:[['amd']]
+*R1550[announces]
+|--(nsubj)--> R1547[amd]
+|--(dobj)--> investment
+|                |--(compou)--> strategic
+|--(xcomp)--> accelerate
+                 |--(mark)--> to
+                 |--(dobj)--> strategy
+                                  |--(compou)--> cloud
+                                  |--(compou)--> server
+
+	* entity-paths for event['announces']43_1ecbplus.xmlsent:13042
+	['Announces --(nsubj)--> AMD']
+
+sentence #:we are excited to have seamicro join amd . 
+	[events]:[['join']]
+	[entities]:[['amd'], ['we'], ['seamicro']]
+excited
+|--(nsubjp)--> R1547[we]
+|--(auxpas)--> are
+|--(xcomp)--> have
+|                |--(mark)--> to
+|                |--(ccomp)--> *R1546[join]
+|                                 |--(nsubj)--> R1549[seamicro]
+|                                 |--(dobj)--> R1547[amd]
+|--(punct)--> .
+
+	* entity-paths for event['join']43_1ecbplus.xmlsent:13047
+	['join --(nsubj)--> SeaMicro']
+	['join --(dobj)--> AMD']

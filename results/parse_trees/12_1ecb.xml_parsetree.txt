@@ -1,0 +1,51 @@
+
+-----------------------------------------
+docid:12_1ecb.xml
+-----------------------------------------
+
+sentence #:the indian navy on saturday prevented pirates from attacking a merchant vessel flying an ethiopian flag in the gulf of aden and took 23 into custody . 
+	[events]:[['custody'], ['took'], ['prevented'], ['attacking']]
+	[entities]:[['vessel'], ['saturday'], ['navy'], ['23'], ['the', 'gulf', 'of', 'aden'], ['pirates']]
+*R232[prevented]
+|--(nsubj)--> R215[navy]
+|                |--(det)--> the
+|                |--(amod)--> indian
+|                |--(nmod)--> R230[saturday]
+|                                 |--(case)--> on
+|--(dobj)--> R242[pirates]
+|--(advcl)--> *R235[attacking]
+|                |--(mark)--> from
+|                |--(dobj)--> R228[vessel]
+|                |                |--(det)--> a
+|                |                |--(compou)--> merchant
+|                |--(advcl)--> flying
+|                                 |--(dobj)--> flag
+|                                 |                |--(det)--> an
+|                                 |                |--(amod)--> ethiopian
+|                                 |--(nmod)--> R229[gulf]
+|                                                  |--(case)--> in
+|                                                  |--(det)--> R229[the]
+|                                                  |--(nmod)--> R229[aden]
+|                                                                   |--(case)--> R229[of]
+|--(cc)--> and
+|--(conj)--> *R214[took]
+|                |--(dobj)--> R242[23]
+|                |--(nmod)--> *R238[custody]
+|                                 |--(case)--> into
+|--(punct)--> .
+
+	* entity-paths for event['custody']12_1ecb.xmlsent:876
+
+	* entity-paths for event['took']12_1ecb.xmlsent:876
+	['took --(dobj)--> 23']
+
+	* entity-paths for event['prevented']12_1ecb.xmlsent:876
+	['prevented --(nsubj)--> Navy']
+	['prevented --(dobj)--> pirates']
+	['prevented --(advcl)--> attacking', 'attacking --(dobj)--> vessel']
+	['prevented --(advcl)--> attacking', 'attacking --(advcl)--> flying', 'flying --(nmod)--> Gulf']
+	['prevented --(conj)--> took', 'took --(dobj)--> 23']
+
+	* entity-paths for event['attacking']12_1ecb.xmlsent:876
+	['attacking --(dobj)--> vessel']
+	['attacking --(advcl)--> flying', 'flying --(nmod)--> Gulf']

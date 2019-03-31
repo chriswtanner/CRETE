@@ -1,0 +1,80 @@
+
+-----------------------------------------
+docid:26_5ecb.xml
+-----------------------------------------
+
+sentence #:police said lo presti , alleged boss of a sicilian mafia clan in a district of palermo , hanged himself in his cell . 
+	[events]:[['hanged'], ['said']]
+	[entities]:[['in', 'a', 'district', 'of', 'palermo'], ['police'], ['lo', 'presti'], ['in', 'his', 'cell'], ['himself']]
+*R751[said]
+|--(nsubj)--> R738[police]
+|--(ccomp)--> *R732[hanged]
+|                |--(nsubj)--> R733[presti]
+|                |                |--(compou)--> R733[lo]
+|                |                |--(punct)--> ,
+|                |                |--(acl)--> alleged
+|                |                |                |--(dobj)--> boss
+|                |                |                |                |--(nmod)--> clan
+|                |                |                |                                 |--(case)--> of
+|                |                |                |                                 |--(det)--> a
+|                |                |                |                                 |--(compou)--> sicilian
+|                |                |                |                                 |--(compou)--> mafia
+|                |                |                |--(nmod)--> R755[district]
+|                |                |                                 |--(case)--> R755[in]
+|                |                |                                 |--(det)--> R755[a]
+|                |                |                                 |--(nmod)--> R755[palermo]
+|                |                |                                                  |--(case)--> R755[of]
+|                |                |--(punct)--> ,
+|                |--(dobj)--> R733[himself]
+|                |--(nmod)--> R734[cell]
+|                                 |--(case)--> R734[in]
+|                                 |--(nmod:p)--> R734[his]
+|--(punct)--> .
+
+	* entity-paths for event['hanged']26_5ecb.xmlsent:5468
+	['hanged --(nsubj)--> Presti']
+	['hanged --(dobj)--> himself']
+	['hanged --(nmod)--> cell']
+
+	* entity-paths for event['said']26_5ecb.xmlsent:5468
+	['said --(nsubj)--> Police']
+	['said --(ccomp)--> hanged', 'hanged --(nsubj)--> Presti']
+	['said --(ccomp)--> hanged', 'hanged --(dobj)--> himself']
+	['said --(ccomp)--> hanged', 'hanged --(nmod)--> cell']
+
+sentence #:a suspected mafia leader has hanged himself in prison in sicily hours after being arrested , italian police say . 
+	[events]:[['say'], ['hanged'], ['arrested']]
+	[entities]:[['mafia', 'leader'], ['hours'], ['himself'], ['in', 'prison', 'in', 'sicily'], ['police']]
+*R751[say]
+|--(ccomp)--> *R732[hanged]
+|                |--(nsubj)--> R733[leader]
+|                |                |--(det)--> a
+|                |                |--(amod)--> suspected
+|                |                |--(compou)--> R733[mafia]
+|                |--(aux)--> has
+|                |--(dobj)--> R733[himself]
+|                |--(nmod)--> R734[prison]
+|                |                |--(case)--> R734[in]
+|                |                |--(nmod)--> R735[hours]
+|                |                                 |--(case)--> R734[in]
+|                |                                 |--(compou)--> R734[sicily]
+|                |--(advcl)--> *R736[arrested]
+|                                 |--(mark)--> after
+|                                 |--(auxpas)--> being
+|--(punct)--> ,
+|--(nsubj)--> R738[police]
+|                |--(amod)--> italian
+|--(punct)--> .
+
+	* entity-paths for event['say']26_5ecb.xmlsent:5467
+	['say --(ccomp)--> hanged', 'hanged --(nsubj)--> leader']
+	['say --(ccomp)--> hanged', 'hanged --(dobj)--> himself']
+	['say --(ccomp)--> hanged', 'hanged --(nmod)--> prison']
+	['say --(nsubj)--> police']
+
+	* entity-paths for event['hanged']26_5ecb.xmlsent:5467
+	['hanged --(nsubj)--> leader']
+	['hanged --(dobj)--> himself']
+	['hanged --(nmod)--> prison']
+
+	* entity-paths for event['arrested']26_5ecb.xmlsent:5467

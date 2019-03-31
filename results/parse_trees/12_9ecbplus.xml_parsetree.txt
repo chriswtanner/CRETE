@@ -1,0 +1,76 @@
+
+-----------------------------------------
+docid:12_9ecbplus.xml
+-----------------------------------------
+
+sentence #:indian naval ship sukanya , presently deployed on anti - piracy patrols in the gulf of aden under the operational control of the western naval command , found herself once again in the thick of things , thwarting a multiple - boat piracy attack on 10 nov 11 . 
+	[events]:[['thwarting'], ['piracy'], ['attack'], ['under', 'control'], ['deployed'], ['patrols']]
+	[entities]:[['sukanya'], ['herself'], ['western', 'naval', 'command'], ['in', 'the', 'gulf', 'of', 'aden'], ['on', '10', 'nov', '11']]
+found
+|--(nsubj)--> R222[sukanya]
+|                |--(amod)--> indian
+|                |--(compou)--> naval
+|                |--(compou)--> ship
+|                |--(punct)--> ,
+|                |--(acl)--> *R255[deployed]
+|                |                |--(advmod)--> presently
+|                |                |--(nmod)--> anti
+|                |                |                |--(case)--> on
+|                |                |                |--(punct)--> -
+|                |                |                |--(dep)--> *R243[patrols]
+|                |                |                                 |--(compou)--> piracy
+|                |                |                                 |--(nmod)--> R229[gulf]
+|                |                |                                                  |--(case)--> R229[in]
+|                |                |                                                  |--(det)--> R229[the]
+|                |                |                                                  |--(nmod)--> R229[aden]
+|                |                |                                                                   |--(case)--> R229[of]
+|                |                |--(nmod)--> *R256[control]
+|                |                                 |--(case)--> *R256[under]
+|                |                                 |--(det)--> the
+|                |                                 |--(amod)--> operational
+|                |                                 |--(nmod)--> R257[command]
+|                |                                                  |--(case)--> of
+|                |                                                  |--(det)--> the
+|                |                                                  |--(amod)--> R257[western]
+|                |                                                  |--(compou)--> R257[naval]
+|                |--(punct)--> ,
+|--(dobj)--> R222[herself]
+|--(nmod)--> thick
+|                |--(advmod)--> again
+|                |                |--(advmod)--> once
+|                |--(case)--> in
+|                |--(det)--> the
+|                |--(nmod)--> things
+|                                 |--(case)--> of
+|--(punct)--> ,
+|--(advcl)--> *R217[thwarting]
+|                |--(dobj)--> multiple
+|                |                |--(det)--> a
+|                |                |--(punct)--> -
+|                |                |--(dep)--> *R218[attack]
+|                |                                 |--(compou)--> boat
+|                |                                 |--(compou)--> *R219[piracy]
+|                |                                 |--(nmod)--> R231[10]
+|                |                                                  |--(case)--> R231[on]
+|                |--(nmod:t)--> R231[nov]
+|                                 |--(nummod)--> R231[11]
+|--(punct)--> .
+
+	* entity-paths for event['thwarting']12_9ecbplus.xmlsent:1143
+	['thwarting --(dobj)--> multiple', 'multiple --(dep)--> attack', 'attack --(nmod)--> 10']
+	['thwarting --(nmod:tmod)--> Nov']
+
+	* entity-paths for event['piracy']12_9ecbplus.xmlsent:1143
+
+	* entity-paths for event['attack']12_9ecbplus.xmlsent:1143
+	['attack --(nmod)--> 10']
+
+	* entity-paths for event['under', 'control']12_9ecbplus.xmlsent:1143
+	['control --(nmod)--> Command']
+
+	* entity-paths for event['deployed']12_9ecbplus.xmlsent:1143
+	['deployed --(nmod)--> anti', 'anti --(dep)--> patrols', 'patrols --(nmod)--> Gulf']
+	['deployed --(nmod)--> control', 'control --(nmod)--> Command']
+
+	* entity-paths for event['patrols']12_9ecbplus.xmlsent:1143
+	['patrols --(nmod)--> Gulf']

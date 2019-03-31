@@ -1,0 +1,94 @@
+
+-----------------------------------------
+docid:1_13ecbplus.xml
+-----------------------------------------
+
+sentence #:lindsay lohan checks into rehab to begin 90 - day stint , lawyer says 
+	[events]:[['says'], ['checks', 'into'], ['stint'], ['begin']]
+	[entities]:[['lawyer'], ['90', '-', 'day'], ['rehab'], ['lindsay', 'lohan']]
+*R40[says]
+|--(nsubj)--> *R9[checks]
+                 |--(compou)--> R15[lindsay]
+                 |--(compou)--> R15[lohan]
+                 |--(nmod)--> R10[rehab]
+                                  |--(case)--> *R9[into]
+                                  |--(acl)--> *R17[begin]
+                                                   |--(mark)--> to
+                                                   |--(dobj)--> R18[90]
+                                                                    |--(punct)--> R18[-]
+                                                                    |--(dep)--> *R19[stint]
+                                                                                     |--(compou)--> R18[day]
+                                                                                     |--(punct)--> ,
+                                                                                     |--(appos)--> R37[lawyer]
+
+	* entity-paths for event['says']1_13ecbplus.xmlsent:73
+	['says --(nsubj)--> checks', 'checks --(compound)--> Lindsay']
+	['says --(nsubj)--> checks', 'checks --(compound)--> Lohan']
+	['says --(nsubj)--> checks', 'checks --(nmod)--> rehab']
+
+	* entity-paths for event['checks', 'into']1_13ecbplus.xmlsent:73
+
+	* entity-paths for event['stint']1_13ecbplus.xmlsent:73
+	['stint --(compound)--> day']
+	['stint --(appos)--> lawyer']
+
+	* entity-paths for event['begin']1_13ecbplus.xmlsent:73
+	['begin --(dobj)--> 90']
+
+sentence #:lindsay lohan has checked into a rehab facility to begin a 90 - day court - ordered stint , handed down as part of a sentence for a 2012 car crash case . 
+	[events]:[['checked', 'into'], ['stint'], ['handed', 'down'], ['crash'], ['begin'], ['case'], ['sentence']]
+	[entities]:[['a', '90', '-', 'day'], ['lindsay', 'lohan'], ['a', '2012'], ['a', 'rehab', 'facility']]
+*R9[checked]
+|--(nsubj)--> R15[lohan]
+|                |--(compou)--> R15[lindsay]
+|--(aux)--> has
+|--(nmod)--> R10[facility]
+|                |--(case)--> *R9[into]
+|                |--(det)--> R10[a]
+|                |--(compou)--> R10[rehab]
+|--(xcomp)--> *R17[begin]
+|                |--(mark)--> to
+|                |--(dobj)--> R18[90]
+|                                 |--(det)--> R18[a]
+|                                 |--(dep)--> court
+|                                 |                |--(punct)--> R18[-]
+|                                 |                |--(compou)--> R18[day]
+|                                 |                |--(punct)--> -
+|                                 |--(acl)--> ordered
+|                                                  |--(dobj)--> *R19[stint]
+|                                                                   |--(punct)--> ,
+|                                                                   |--(acl)--> *R41[handed]
+|                                                                                    |--(compou)--> *R41[down]
+|                                                                                    |--(nmod)--> part
+|                                                                                                     |--(case)--> as
+|                                                                                                     |--(nmod)--> *R42[sentence]
+|                                                                                                                      |--(case)--> of
+|                                                                                                                      |--(det)--> a
+|                                                                                                                      |--(nmod)--> *R43[case]
+|                                                                                                                                       |--(case)--> for
+|                                                                                                                                       |--(det)--> R44[a]
+|                                                                                                                                       |--(nummod)--> R44[2012]
+|                                                                                                                                       |--(compou)--> car
+|                                                                                                                                       |--(compou)--> *R45[crash]
+|--(punct)--> .
+
+	* entity-paths for event['checked', 'into']1_13ecbplus.xmlsent:75
+
+	* entity-paths for event['stint']1_13ecbplus.xmlsent:75
+	['stint --(acl)--> handed', 'handed --(nmod)--> part', 'part --(nmod)--> sentence', 'sentence --(nmod)--> case', 'case --(det)--> a']
+	['stint --(acl)--> handed', 'handed --(nmod)--> part', 'part --(nmod)--> sentence', 'sentence --(nmod)--> case', 'case --(nummod)--> 2012']
+
+	* entity-paths for event['handed', 'down']1_13ecbplus.xmlsent:75
+
+	* entity-paths for event['crash']1_13ecbplus.xmlsent:75
+
+	* entity-paths for event['begin']1_13ecbplus.xmlsent:75
+	['begin --(dobj)--> 90']
+
+	* entity-paths for event['case']1_13ecbplus.xmlsent:75
+	['case --(det)--> a']
+	['case --(nummod)--> 2012']
+
+	* entity-paths for event['sentence']1_13ecbplus.xmlsent:75
+	['sentence --(nmod)--> case', 'case --(det)--> a']
+	['sentence --(nmod)--> case', 'case --(nummod)--> 2012']

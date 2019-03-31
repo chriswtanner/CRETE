@@ -1,0 +1,174 @@
+
+-----------------------------------------
+docid:43_6ecb.xml
+-----------------------------------------
+
+sentence #:addressing a deficiency of its own and further upping the competitive tension between it and chief rival intel ( nasdaq : intc - news - people ) , advanced micro devices ( nyse : amd - news - people ) intends to acquire graphics chipmaker ati technologies ( nasdaq : atyt - news - people ) in a $ 5.4 billion deal . 
+	[events]:[['deal'], ['tension'], ['acquire']]
+	[entities]:[['it'], ['ati', 'technologies'], ['its'], ['advanced', 'micro', 'devices'], ['intel']]
+intends
+|--(csubj)--> addressing
+|                |--(dobj)--> deficiency
+|                                 |--(det)--> a
+|                                 |--(nmod)--> own
+|                                 |                |--(case)--> of
+|                                 |                |--(nmod:p)--> R1547[its]
+|                                 |--(cc)--> and
+|                                 |--(conj)--> further
+|                                                  |--(acl)--> upping
+|                                                                   |--(dobj)--> *R1571[tension]
+|                                                                                    |--(det)--> the
+|                                                                                    |--(amod)--> competitive
+|                                                                                    |--(nmod)--> R1547[it]
+|                                                                                    |                |--(case)--> between
+|                                                                                    |--(cc)--> and
+|                                                                                    |--(conj)--> R1426[intel]
+|                                                                                                     |--(amod)--> chief
+|                                                                                                     |--(amod)--> rival
+|                                                                                                     |--(punct)--> (
+|                                                                                                     |--(dep)--> nasdaq
+|                                                                                                     |                |--(dep)--> news
+|                                                                                                     |                |                |--(punct)--> :
+|                                                                                                     |                |                |--(dep)--> intc
+|                                                                                                     |                |                |--(punct)--> -
+|                                                                                                     |                |--(punct)--> -
+|                                                                                                     |                |--(dep)--> people
+|                                                                                                     |--(punct)--> )
+|                                                                                                     |--(punct)--> ,
+|                                                                                                     |--(appos)--> R1547[devices]
+|                                                                                                                      |--(compou)--> R1547[advanced]
+|                                                                                                                      |--(compou)--> R1547[micro]
+|                                                                                                                      |--(punct)--> (
+|                                                                                                                      |--(dep)--> nyse
+|                                                                                                                      |                |--(dep)--> news
+|                                                                                                                      |                |                |--(punct)--> :
+|                                                                                                                      |                |                |--(dep)--> amd
+|                                                                                                                      |                |                |--(punct)--> -
+|                                                                                                                      |                |--(punct)--> -
+|                                                                                                                      |                |--(dep)--> people
+|                                                                                                                      |--(punct)--> )
+|--(xcomp)--> *R1562[acquire]
+|                |--(mark)--> to
+|                |--(iobj)--> graphics
+|                |--(dobj)--> R1563[technologies]
+|                                 |--(compou)--> chipmaker
+|                                 |--(compou)--> R1563[ati]
+|                                 |--(punct)--> (
+|                                 |--(dep)--> nasdaq
+|                                 |                |--(dep)--> news
+|                                 |                |                |--(punct)--> :
+|                                 |                |                |--(dep)--> atyt
+|                                 |                |                |--(punct)--> -
+|                                 |                |--(punct)--> -
+|                                 |                |--(dep)--> people
+|                                 |--(punct)--> )
+|                                 |--(nmod)--> *R1562[deal]
+|                                                  |--(case)--> in
+|                                                  |--(det)--> a
+|                                                  |--(amod)--> $
+|                                                                   |--(nummod)--> billion
+|                                                                                    |--(compou)--> 5.4
+|--(punct)--> .
+
+	* entity-paths for event['deal']43_6ecb.xmlsent:13289
+
+	* entity-paths for event['tension']43_6ecb.xmlsent:13289
+	['tension --(nmod)--> it']
+	['tension --(conj)--> Intel']
+
+	* entity-paths for event['acquire']43_6ecb.xmlsent:13289
+	['acquire --(dobj)--> Technologies']
+
+sentence #:we think not too much worse off than before the deal , and believe shares in the company remain a compelling way to play growth in gaming- and media-oriented computing . 
+	[events]:[['deal']]
+	[entities]:[]
+think
+|--(nsubj)--> we
+|--(xcomp)--> much
+|                |--(neg)--> not
+|                |--(advmod)--> too
+|                |--(dep)--> worse
+|--(dep)--> *R1562[deal]
+|                |--(case)--> off
+|                |--(case)--> than
+|                |--(case)--> before
+|                |--(det)--> the
+|--(punct)--> ,
+|--(cc)--> and
+|--(conj)--> remain
+|                |--(csubj)--> believe
+|                |                |--(dobj)--> shares
+|                |                |--(nmod)--> company
+|                |                                 |--(case)--> in
+|                |                                 |--(det)--> the
+|                |--(xcomp)--> way
+|                                 |--(det)--> a
+|                                 |--(amod)--> compelling
+|                                 |--(acl)--> play
+|                                                  |--(mark)--> to
+|                                                  |--(dobj)--> growth
+|                                                  |--(nmod)--> computing
+|                                                                   |--(case)--> in
+|                                                                   |--(amod)--> gaming-
+|                                                                                    |--(punct)--> gaming-
+|                                                                                    |--(cc)--> and
+|                                                                                    |--(conj)--> media-oriented
+|--(punct)--> .
+
+	* entity-paths for event['deal']43_6ecb.xmlsent:13292
+
+sentence #:our view of the advanced micro devices / ati technologies deal is that it 's the last major move amd needed to make to match intel 's breadth in the processor market ( now that intel has shed its communications processor business ) . 
+	[events]:[['move'], ['deal']]
+	[entities]:[['ati', 'technologies'], ['intel'], ['advanced', 'micro', 'devices'], ['intel'], ['its'], ['amd']]
+view
+|--(nmod:p)--> our
+|--(nmod)--> R1547[devices]
+|                |--(case)--> of
+|                |--(det)--> the
+|                |--(compou)--> R1547[advanced]
+|                |--(compou)--> R1547[micro]
+|--(punct)--> /
+|--(parata)--> is
+|                |--(nsubj)--> R1563[technologies]
+|                |                |--(compou)--> R1563[ati]
+|                |                |--(dep)--> *R1562[deal]
+|                |--(ccomp)--> *R1562[move]
+|                                 |--(mark)--> that
+|                                 |--(nsubj)--> it
+|                                 |--(cop)--> 's
+|                                 |--(det)--> the
+|                                 |--(amod)--> last
+|                                 |--(amod)--> major
+|                                 |--(acl:re)--> needed
+|                                                  |--(nsubj)--> R1547[amd]
+|                                                  |--(xcomp)--> make
+|                                                                   |--(mark)--> to
+|                                                                   |--(xcomp)--> match
+|                                                                                    |--(mark)--> to
+|                                                                                    |--(dobj)--> breadth
+|                                                                                                     |--(nmod:p)--> R1426[intel]
+|                                                                                                     |                |--(case)--> 's
+|                                                                                                     |--(nmod)--> market
+|                                                                                                     |                |--(case)--> in
+|                                                                                                     |                |--(det)--> the
+|                                                                                                     |                |--(compou)--> processor
+|                                                                                                     |--(dep)--> shed
+|                                                                                                                      |--(punct)--> (
+|                                                                                                                      |--(advmod)--> now
+|                                                                                                                      |--(mark)--> that
+|                                                                                                                      |--(nsubj)--> R1426[intel]
+|                                                                                                                      |--(aux)--> has
+|                                                                                                                      |--(xcomp)--> business
+|                                                                                                                      |                |--(nsubj)--> communications
+|                                                                                                                      |                |                |--(nmod:p)--> R1426[its]
+|                                                                                                                      |                |--(compou)--> processor
+|                                                                                                                      |--(punct)--> )
+|--(punct)--> .
+
+	* entity-paths for event['move']43_6ecb.xmlsent:13293
+	['move --(acl:relcl)--> needed', 'needed --(nsubj)--> AMD']
+	['move --(acl:relcl)--> needed', 'needed --(xcomp)--> make', 'make --(xcomp)--> match', 'match --(dobj)--> breadth', 'breadth --(nmod:poss)--> Intel']
+	['move --(acl:relcl)--> needed', 'needed --(xcomp)--> make', 'make --(xcomp)--> match', 'match --(dobj)--> breadth', 'breadth --(dep)--> shed', 'shed --(nsubj)--> Intel']
+	['move --(acl:relcl)--> needed', 'needed --(xcomp)--> make', 'make --(xcomp)--> match', 'match --(dobj)--> breadth', 'breadth --(dep)--> shed', 'shed --(xcomp)--> business', 'business --(nsubj)--> communications', 'communications --(nmod:poss)--> its']
+
+	* entity-paths for event['deal']43_6ecb.xmlsent:13293

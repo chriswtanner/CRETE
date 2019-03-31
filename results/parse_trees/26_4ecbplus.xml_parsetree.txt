@@ -1,0 +1,55 @@
+
+-----------------------------------------
+docid:26_4ecbplus.xml
+-----------------------------------------
+
+sentence #:he died in a medical prison in springfield , missouri , on monday morning , said a spokesman for the facility . 
+	[events]:[['said'], ['died']]
+	[entities]:[['medical', 'prison', 'in', 'springfield', ',', 'missouri'], ['on', 'monday', 'morning'], ['facility'], ['he']]
+*R747[said]
+|--(ccomp)--> *R739[died]
+|                |--(nsubj)--> R740[he]
+|                |--(nmod)--> R743[prison]
+|                |                |--(case)--> in
+|                |                |--(det)--> a
+|                |                |--(amod)--> R743[medical]
+|                |                |--(nmod)--> R743[missouri]
+|                |                                 |--(case)--> R743[in]
+|                |                                 |--(compou)--> R743[springfield]
+|                |                                 |--(punct)--> R743[,]
+|                |                                 |--(punct)--> ,
+|                |--(nmod)--> R744[monday]
+|                |                |--(case)--> R744[on]
+|                |--(nmod:t)--> R744[morning]
+|--(punct)--> ,
+|--(nsubj)--> spokesman
+|                |--(det)--> a
+|                |--(nmod)--> R743[facility]
+|                                 |--(case)--> for
+|                                 |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['said']26_4ecbplus.xmlsent:5452
+	['said --(ccomp)--> died', 'died --(nsubj)--> He']
+	['said --(ccomp)--> died', 'died --(nmod)--> prison']
+	['said --(ccomp)--> died', 'died --(nmod)--> Monday']
+	['said --(ccomp)--> died', 'died --(nmod:tmod)--> morning']
+	['said --(nsubj)--> spokesman', 'spokesman --(nmod)--> facility']
+
+	* entity-paths for event['died']26_4ecbplus.xmlsent:5452
+	['died --(nsubj)--> He']
+	['died --(nmod)--> prison']
+	['died --(nmod)--> Monday']
+	['died --(nmod:tmod)--> morning']
+
+sentence #:us mafia godfather gigante dies 
+	[events]:[['dies']]
+	[entities]:[['gigante']]
+godfather
+|--(compou)--> us
+|--(compou)--> mafia
+|--(acl:re)--> *R739[dies]
+                 |--(nsubj)--> R740[gigante]
+
+	* entity-paths for event['dies']26_4ecbplus.xmlsent:5444
+	['dies --(nsubj)--> Gigante']

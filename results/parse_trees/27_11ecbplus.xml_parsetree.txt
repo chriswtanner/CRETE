@@ -1,0 +1,71 @@
+
+-----------------------------------------
+docid:27_11ecbplus.xml
+-----------------------------------------
+
+sentence #:microsoft released an emergency software fix for internet explorer on tuesday after hackers exploited a security flaw in the popular web browser to attack an unknown number of users . 
+	[events]:[['exploited'], ['released'], ['attack']]
+	[entities]:[['hackers'], ['software', 'fix'], ['microsoft'], ['security', 'flaw'], ['browser'], ['users'], ['internet', 'explorer'], ['on', 'tuesday']]
+*R779[released]
+|--(nsubj)--> R764[microsoft]
+|--(dobj)--> R780[fix]
+|                |--(det)--> an
+|                |--(compou)--> emergency
+|                |--(compou)--> R780[software]
+|--(nmod)--> R768[explorer]
+|                |--(case)--> for
+|                |--(compou)--> R768[internet]
+|                |--(nmod)--> R787[tuesday]
+|                                 |--(case)--> R787[on]
+|--(advcl)--> *R788[exploited]
+|                |--(mark)--> after
+|                |--(nsubj)--> R770[hackers]
+|                |--(dobj)--> R777[flaw]
+|                |                |--(det)--> a
+|                |                |--(compou)--> R777[security]
+|                |--(nmod)--> R768[browser]
+|                |                |--(case)--> in
+|                |                |--(det)--> the
+|                |                |--(amod)--> popular
+|                |                |--(compou)--> web
+|                |--(advcl)--> *R773[attack]
+|                                 |--(mark)--> to
+|                                 |--(dobj)--> number
+|                                                  |--(det)--> an
+|                                                  |--(amod)--> unknown
+|                                                  |--(nmod)--> R789[users]
+|                                                                   |--(case)--> of
+|--(punct)--> .
+
+	* entity-paths for event['exploited']27_11ecbplus.xmlsent:5671
+	['exploited --(nsubj)--> hackers']
+	['exploited --(dobj)--> flaw']
+	['exploited --(nmod)--> browser']
+	['exploited --(advcl)--> attack', 'attack --(dobj)--> number', 'number --(nmod)--> users']
+
+	* entity-paths for event['released']27_11ecbplus.xmlsent:5671
+	['released --(nsubj)--> Microsoft']
+	['released --(dobj)--> fix']
+	['released --(nmod)--> Explorer']
+	['released --(advcl)--> exploited', 'exploited --(nsubj)--> hackers']
+	['released --(advcl)--> exploited', 'exploited --(dobj)--> flaw']
+	['released --(advcl)--> exploited', 'exploited --(nmod)--> browser']
+	['released --(advcl)--> exploited', 'exploited --(advcl)--> attack', 'attack --(dobj)--> number', 'number --(nmod)--> users']
+
+	* entity-paths for event['attack']27_11ecbplus.xmlsent:5671
+	['attack --(dobj)--> number', 'number --(nmod)--> users']
+
+sentence #:microsoft releases security patch for internet explorer 
+	[events]:[['releases']]
+	[entities]:[['security', 'patch'], ['microsoft'], ['internet', 'explorer']]
+*R779[releases]
+|--(nsubj)--> R764[microsoft]
+|--(dobj)--> R780[patch]
+                 |--(compou)--> R780[security]
+                 |--(nmod)--> R768[explorer]
+                                  |--(case)--> for
+                                  |--(compou)--> R768[internet]
+
+	* entity-paths for event['releases']27_11ecbplus.xmlsent:5669
+	['releases --(nsubj)--> Microsoft']
+	['releases --(dobj)--> patch']

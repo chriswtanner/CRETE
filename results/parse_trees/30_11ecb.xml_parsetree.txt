@@ -1,0 +1,75 @@
+
+-----------------------------------------
+docid:30_11ecb.xml
+-----------------------------------------
+
+sentence #:parts of asia , the middle east , and europe experienced internet and telephone outages friday when three undersea cables between italy and egypt in the mediterranean sea were damaged . 
+	[events]:[['internet'], ['outages'], ['damaged'], ['telephone']]
+	[entities]:[['between', 'italy', 'and', 'egypt'], ['friday'], ['parts', 'of', 'asia', ',', 'the', 'middle', 'east', ',', 'and', 'europe'], ['cables'], ['in', 'the', 'mediterranean', 'sea']]
+experienced
+|--(nsubj)--> R965[parts]
+|                |--(nmod)--> R965[asia]
+|                                 |--(case)--> R965[of]
+|                                 |--(punct)--> R965[,]
+|                                 |--(conj)--> R965[east]
+|                                 |                |--(det)--> R965[the]
+|                                 |                |--(compou)--> R965[middle]
+|                                 |--(punct)--> R965[,]
+|                                 |--(cc)--> R965[and]
+|                                 |--(conj)--> R965[europe]
+|--(dobj)--> *R949[outages]
+|                |--(compou)--> *R966[internet]
+|                                 |--(cc)--> and
+|                                 |--(conj)--> *R967[telephone]
+|--(nmod:t)--> R968[friday]
+|--(advcl)--> *R953[damaged]
+|                |--(advmod)--> when
+|                |--(nsubjp)--> R951[cables]
+|                |                |--(nummod)--> three
+|                |                |--(compou)--> undersea
+|                |                |--(nmod)--> R954[italy]
+|                |                |                |--(case)--> R954[between]
+|                |                |                |--(cc)--> R954[and]
+|                |                |                |--(conj)--> R954[egypt]
+|                |                |--(nmod)--> R952[sea]
+|                |                                 |--(case)--> R952[in]
+|                |                                 |--(det)--> R952[the]
+|                |                                 |--(compou)--> R952[mediterranean]
+|                |--(auxpas)--> were
+|--(punct)--> .
+
+	* entity-paths for event['internet']30_11ecb.xmlsent:7698
+
+	* entity-paths for event['outages']30_11ecb.xmlsent:7698
+
+	* entity-paths for event['damaged']30_11ecb.xmlsent:7698
+	['damaged --(nsubjpass)--> cables']
+
+	* entity-paths for event['telephone']30_11ecb.xmlsent:7698
+
+sentence #:the cable system that was cut is known as smw4 cable or south east asia- middle east-western europe 4 . 
+	[events]:[['cut']]
+	[entities]:[['cable', 'system']]
+known
+|--(nsubjp)--> R951[system]
+|                |--(det)--> the
+|                |--(compou)--> R951[cable]
+|                |--(acl:re)--> *R953[cut]
+|                                 |--(nsubjp)--> that
+|                                 |--(auxpas)--> was
+|--(auxpas)--> is
+|--(nmod)--> cable
+|                |--(case)--> as
+|                |--(compou)--> smw4
+|                |--(cc)--> or
+|                |--(conj)--> asia-
+|                |                |--(compou)--> south
+|                |                |--(compou)--> east
+|                |--(punct)--> asia-
+|                |--(dep)--> europe
+|                                 |--(compou)--> middle
+|                                 |--(compou)--> east-western
+|                                 |--(dep)--> 4
+|--(punct)--> .
+
+	* entity-paths for event['cut']30_11ecb.xmlsent:7703

@@ -1,0 +1,68 @@
+
+-----------------------------------------
+docid:5_4ecbplus.xml
+-----------------------------------------
+
+sentence #:philadelphia 76ers president and general manager billy king announced today that jim o'brien has been relieved of his duties as head coach of the philadelphia 76ers . 
+	[events]:[['relieved'], ['duties'], ['announced']]
+	[entities]:[['today'], ['his'], ['coach'], ['philadelphia', '76ers'], ['billy', 'king'], ['jim', "o'brien"]]
+*R1686[announced]
+|--(nsubj)--> 76ers
+|                |--(compou)--> philadelphia
+|--(nsubj)--> R1681[king]
+|                |--(compou)--> president
+|                |                |--(cc)--> and
+|                |                |--(conj)--> general
+|                |--(compou)--> manager
+|                |--(compou)--> R1681[billy]
+|--(nmod:t)--> R1682[today]
+|--(ccomp)--> *R1683[relieved]
+|                |--(dobj)--> that
+|                |--(nsubjp)--> R1684[o'brien]
+|                |                |--(compou)--> R1684[jim]
+|                |--(aux)--> has
+|                |--(auxpas)--> been
+|                |--(nmod)--> *R1687[duties]
+|                |                |--(case)--> of
+|                |                |--(nmod:p)--> R1684[his]
+|                |--(nmod)--> R1684[coach]
+|                                 |--(case)--> as
+|                                 |--(compou)--> head
+|                                 |--(nmod)--> R1673[76ers]
+|                                                  |--(case)--> of
+|                                                  |--(det)--> the
+|                                                  |--(compou)--> R1673[philadelphia]
+|--(punct)--> .
+
+	* entity-paths for event['relieved']5_4ecbplus.xmlsent:14197
+	["relieved --(nsubjpass)--> O'Brien"]
+	['relieved --(nmod)--> duties', 'duties --(nmod:poss)--> his']
+	['relieved --(nmod)--> coach']
+
+	* entity-paths for event['duties']5_4ecbplus.xmlsent:14197
+	['duties --(nmod:poss)--> his']
+
+	* entity-paths for event['announced']5_4ecbplus.xmlsent:14197
+	['announced --(nsubj)--> King']
+	['announced --(nmod:tmod)--> today']
+	['announced --(ccomp)--> relieved', "relieved --(nsubjpass)--> O'Brien"]
+	['announced --(ccomp)--> relieved', 'relieved --(nmod)--> duties', 'duties --(nmod:poss)--> his']
+	['announced --(ccomp)--> relieved', 'relieved --(nmod)--> coach']
+
+sentence #:philadelphia 76ers fire coach jim o'brien , hire maurice cheeks 
+	[events]:[['fire'], ['hire']]
+	[entities]:[['jim', "o'brien"], ['maurice', 'cheeks'], ['philadelphia', '76ers']]
+R1673[76ers]
+|--(compou)--> R1673[philadelphia]
+|--(acl:re)--> coach
+                 |--(nsubj)--> *R1683[fire]
+                 |--(dobj)--> R1684[o'brien]
+                                  |--(compou)--> R1684[jim]
+                                  |--(punct)--> ,
+                                  |--(appos)--> R1674[cheeks]
+                                                   |--(compou)--> *R1677[hire]
+                                                   |--(compou)--> R1674[maurice]
+
+	* entity-paths for event['fire']5_4ecbplus.xmlsent:14195
+
+	* entity-paths for event['hire']5_4ecbplus.xmlsent:14195

@@ -1,0 +1,53 @@
+
+-----------------------------------------
+docid:18_9ecb.xml
+-----------------------------------------
+
+sentence #:a former employee walked into a staff christmas party at an east vancouver health products business friday and allegedly shot and killed a man . 
+	[events]:[['party'], ['killed'], ['shot'], ['walked']]
+	[entities]:[['employee'], ['business', 'business'], ['man'], ['east', 'vancouver'], ['friday']]
+*R385[walked]
+|--(nsubj)--> R356[employee]
+|                |--(det)--> a
+|                |--(amod)--> former
+|--(nmod)--> *R359[party]
+|                |--(case)--> into
+|                |--(det)--> a
+|                |--(compou)--> staff
+|                |--(compou)--> christmas
+|                |--(nmod)--> *R366[shot]
+|                                 |--(case)--> at
+|                                 |--(det)--> an
+|                                 |--(amod)--> R389[vancouver]
+|                                 |                |--(amod)--> R389[east]
+|                                 |--(compou)--> health
+|                                 |--(compou)--> products
+|                                 |--(compou)--> R383[business]
+|                                 |--(compou)--> R368[friday]
+|                                                  |--(cc)--> and
+|                                                  |--(advmod)--> allegedly
+|--(cc)--> and
+|--(conj)--> *R358[killed]
+|                |--(dobj)--> R369[man]
+|                                 |--(det)--> a
+|--(punct)--> .
+
+	* entity-paths for event['party']18_9ecb.xmlsent:2712
+	['party --(nmod)--> shot', 'shot --(amod)--> Vancouver']
+	['party --(nmod)--> shot', 'shot --(compound)--> business']
+	['party --(nmod)--> shot', 'shot --(compound)--> Friday']
+
+	* entity-paths for event['killed']18_9ecb.xmlsent:2712
+	['killed --(dobj)--> man']
+
+	* entity-paths for event['shot']18_9ecb.xmlsent:2712
+	['shot --(amod)--> Vancouver']
+	['shot --(compound)--> business']
+	['shot --(compound)--> Friday']
+
+	* entity-paths for event['walked']18_9ecb.xmlsent:2712
+	['walked --(nsubj)--> employee']
+	['walked --(nmod)--> party', 'party --(nmod)--> shot', 'shot --(amod)--> Vancouver']
+	['walked --(nmod)--> party', 'party --(nmod)--> shot', 'shot --(compound)--> business']
+	['walked --(nmod)--> party', 'party --(nmod)--> shot', 'shot --(compound)--> Friday']
+	['walked --(conj)--> killed', 'killed --(dobj)--> man']

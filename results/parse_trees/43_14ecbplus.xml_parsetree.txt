@@ -1,0 +1,79 @@
+
+-----------------------------------------
+docid:43_14ecbplus.xml
+-----------------------------------------
+
+sentence #:advanced micro devices will acquire server vendor seamicro in an attempt to make a run at intel in the microserver market . 
+	[events]:[['make', 'a', 'run'], ['market'], ['acquire']]
+	[entities]:[['advanced', 'micro', 'devices'], ['microserver'], ['server'], ['vendor', 'seamicro'], ['intel']]
+*R1546[acquire]
+|--(nsubj)--> R1547[devices]
+|                |--(compou)--> R1547[advanced]
+|                |--(compou)--> R1547[micro]
+|--(aux)--> will
+|--(dobj)--> R1549[seamicro]
+|                |--(compou)--> R1548[server]
+|                |--(compou)--> R1549[vendor]
+|                |--(nmod)--> attempt
+|                                 |--(case)--> in
+|                                 |--(det)--> an
+|                                 |--(acl)--> *R1557[make]
+|                                                  |--(mark)--> to
+|                                                  |--(dobj)--> *R1557[run]
+|                                                  |                |--(det)--> *R1557[a]
+|                                                  |--(nmod)--> R1426[intel]
+|                                                                   |--(case)--> at
+|                                                                   |--(nmod)--> *R1556[market]
+|                                                                                    |--(case)--> in
+|                                                                                    |--(det)--> the
+|                                                                                    |--(compou)--> R1548[microserver]
+|--(punct)--> .
+
+	* entity-paths for event['make', 'a', 'run']43_14ecbplus.xmlsent:12951
+
+	* entity-paths for event['market']43_14ecbplus.xmlsent:12951
+	['market --(compound)--> microserver']
+
+	* entity-paths for event['acquire']43_14ecbplus.xmlsent:12951
+	['acquire --(nsubj)--> Devices']
+	['acquire --(dobj)--> SeaMicro']
+
+sentence #:advanced micro devices to acquire microserver vendor seamicro for $334 million . 
+	[events]:[['acquire']]
+	[entities]:[['vendor', 'seamicro'], ['$334', 'million'], ['advanced', 'micro', 'devices'], ['microserver']]
+R1547[devices]
+|--(compou)--> R1547[advanced]
+|--(compou)--> R1547[micro]
+|--(dep)--> *R1546[acquire]
+|                |--(mark)--> to
+|                |--(dobj)--> R1549[seamicro]
+|                                 |--(compou)--> R1548[microserver]
+|                                 |--(compou)--> R1549[vendor]
+|                                 |--(nmod)--> R1555[$334]
+|                                                  |--(case)--> for
+|                                                  |--(nummod)--> R1555[million]
+|                                                                   |--(compou)--> R1555[$334]
+|--(punct)--> .
+
+	* entity-paths for event['acquire']43_14ecbplus.xmlsent:12948
+	['acquire --(dobj)--> SeaMicro']
+
+sentence #:amd to acquire microserver vendor seamicro - - a user of intel chips 
+	[events]:[['acquire']]
+	[entities]:[['vendor', 'seamicro'], ['microserver'], ['amd'], ['user'], ['intel', 'chips']]
+R1547[amd]
+|--(dep)--> *R1546[acquire]
+                 |--(mark)--> to
+                 |--(dobj)--> R1549[seamicro]
+                                  |--(compou)--> R1548[microserver]
+                                  |--(compou)--> R1549[vendor]
+                                  |--(punct)--> -
+                                  |--(dep)--> R1558[chips]
+                                                   |--(dep)--> R1549[user]
+                                                                    |--(punct)--> -
+                                                                    |--(det)--> a
+                                                                    |--(nmod)--> R1558[intel]
+                                                                                     |--(case)--> of
+
+	* entity-paths for event['acquire']43_14ecbplus.xmlsent:12947
+	['acquire --(dobj)--> SeaMicro']

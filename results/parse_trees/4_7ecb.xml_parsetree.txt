@@ -1,0 +1,91 @@
+
+-----------------------------------------
+docid:4_7ecb.xml
+-----------------------------------------
+
+sentence #:page died late yesterday in a los angeles hospital after suffering a heart attack more than a week ago , her agent mark roesler said in a statement . 
+	[events]:[['heart', 'attack'], ['died'], ['suffering'], ['said']]
+	[entities]:[['page'], ['late', 'yesterday'], ['mark', 'roesler'], ['more', 'than', 'a', 'week', 'ago'], ['in', 'a', 'los', 'angeles', 'hospital']]
+*R1397[said]
+|--(ccomp)--> *R1363[died]
+|                |--(nsubj)--> R1364[page]
+|                |--(nmod:t)--> R1367[yesterday]
+|                |                |--(amod)--> R1367[late]
+|                |--(nmod)--> R1368[hospital]
+|                                 |--(case)--> R1368[in]
+|                                 |--(det)--> R1368[a]
+|                                 |--(compou)--> R1368[los]
+|                                 |--(compou)--> R1368[angeles]
+|                                 |--(acl)--> *R1382[suffering]
+|                                                  |--(mark)--> after
+|                                                  |--(dobj)--> *R1380[attack]
+|                                                  |                |--(det)--> a
+|                                                  |                |--(compou)--> *R1380[heart]
+|                                                  |--(advmod)--> R1381[ago]
+|                                                                   |--(nmod:n)--> R1381[week]
+|                                                                                    |--(nummod)--> R1381[a]
+|                                                                                                     |--(advmod)--> R1381[more]
+|                                                                                                                      |--(mwe)--> R1381[than]
+|--(punct)--> ,
+|--(nsubj)--> R1385[roesler]
+|                |--(nmod:p)--> her
+|                |--(compou)--> agent
+|                |--(compou)--> R1385[mark]
+|--(nmod)--> statement
+|                |--(case)--> in
+|                |--(det)--> a
+|--(punct)--> .
+
+	* entity-paths for event['heart', 'attack']4_7ecb.xmlsent:11529
+
+	* entity-paths for event['died']4_7ecb.xmlsent:11529
+	['died --(nsubj)--> Page']
+	['died --(nmod:tmod)--> yesterday']
+	['died --(nmod)--> hospital']
+
+	* entity-paths for event['suffering']4_7ecb.xmlsent:11529
+	['suffering --(advmod)--> ago']
+
+	* entity-paths for event['said']4_7ecb.xmlsent:11529
+	['said --(ccomp)--> died', 'died --(nsubj)--> Page']
+	['said --(ccomp)--> died', 'died --(nmod:tmod)--> yesterday']
+	['said --(ccomp)--> died', 'died --(nmod)--> hospital']
+	['said --(nsubj)--> Roesler']
+
+sentence #:bettie page , the 1950s pinup girl whose natural looks and risque fetish poses triggered a cult following four decades after she turned her back on modeling , has died . 
+	[events]:[['died']]
+	[entities]:[['1950s'], ['bettie', 'page'], ['she'], ['four', 'decades'], ['her']]
+*R1363[died]
+|--(nsubj)--> R1364[page]
+|                |--(compou)--> R1364[bettie]
+|                |--(punct)--> ,
+|                |--(appos)--> girl
+|                |                |--(det)--> the
+|                |                |--(nummod)--> R1365[1950s]
+|                |                |--(compou)--> pinup
+|                |                |--(acl:re)--> poses
+|                |                                 |--(nsubj)--> looks
+|                |                                 |                |--(nmod:p)--> whose
+|                |                                 |                |--(amod)--> natural
+|                |                                 |                |--(cc)--> and
+|                |                                 |                |--(conj)--> fetish
+|                |                                 |                                 |--(amod)--> risque
+|                |                                 |--(ccomp)--> triggered
+|                |                                                  |--(dobj)--> cult
+|                |                                                                   |--(det)--> a
+|                |                                                                   |--(acl)--> turned
+|                |                                                                                    |--(case)--> following
+|                |                                                                                    |--(dep)--> R1398[decades]
+|                |                                                                                    |                |--(nummod)--> R1398[four]
+|                |                                                                                    |--(mark)--> after
+|                |                                                                                    |--(nsubj)--> R1364[she]
+|                |                                                                                    |--(dobj)--> back
+|                |                                                                                    |                |--(nmod:p)--> R1364[her]
+|                |                                                                                    |--(nmod)--> modeling
+|                |                                                                                                     |--(case)--> on
+|                |--(punct)--> ,
+|--(aux)--> has
+|--(punct)--> .
+
+	* entity-paths for event['died']4_7ecb.xmlsent:11527
+	['died --(nsubj)--> Page']

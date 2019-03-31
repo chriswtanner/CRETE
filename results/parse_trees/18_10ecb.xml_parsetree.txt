@@ -1,0 +1,34 @@
+
+-----------------------------------------
+docid:18_10ecb.xml
+-----------------------------------------
+
+sentence #:a vancouver man has been charged with first-degree murder after a killing at an office party . 
+	[events]:[['killing'], ['charged'], ['murder'], ['party']]
+	[entities]:[['man']]
+*R355[charged]
+|--(nsubjp)--> R356[man]
+|                |--(det)--> a
+|                |--(compou)--> vancouver
+|--(aux)--> has
+|--(auxpas)--> been
+|--(nmod)--> *R357[murder]
+|                |--(case)--> with
+|                |--(amod)--> first-degree
+|--(nmod)--> *R358[killing]
+|                |--(case)--> after
+|                |--(det)--> a
+|                |--(nmod)--> *R359[party]
+|                                 |--(case)--> at
+|                                 |--(det)--> an
+|                                 |--(compou)--> office
+|--(punct)--> .
+
+	* entity-paths for event['killing']18_10ecb.xmlsent:2199
+
+	* entity-paths for event['charged']18_10ecb.xmlsent:2199
+	['charged --(nsubjpass)--> man']
+
+	* entity-paths for event['murder']18_10ecb.xmlsent:2199
+
+	* entity-paths for event['party']18_10ecb.xmlsent:2199

@@ -1,0 +1,65 @@
+
+-----------------------------------------
+docid:40_10ecb.xml
+-----------------------------------------
+
+sentence #:while apple 's final keynote address at the annual macworld convention in san francisco did n't contain the iphone-related announcements many had hoped for , we were given all of the details on apple 's latest revamp to their largest and most powerful macbook pro . 
+	[events]:[['macworld'], ['revamp'], ['given']]
+	[entities]:[['apple'], ['macbook', 'pro'], ['apple'], ['in', 'san', 'francisco']]
+*R1404[given]
+|--(advcl)--> contain
+|                |--(mark)--> while
+|                |--(nsubj)--> address
+|                |                |--(nmod:p)--> R1405[apple]
+|                |                |                |--(case)--> 's
+|                |                |--(amod)--> final
+|                |                |--(compou)--> keynote
+|                |                |--(nmod)--> convention
+|                |                                 |--(case)--> at
+|                |                                 |--(det)--> the
+|                |                                 |--(amod)--> annual
+|                |                                 |--(compou)--> *R1406[macworld]
+|                |                                 |--(nmod)--> R1407[francisco]
+|                |                                                  |--(case)--> R1407[in]
+|                |                                                  |--(compou)--> R1407[san]
+|                |--(aux)--> did
+|                |--(neg)--> n't
+|                |--(dobj)--> announcements
+|                                 |--(det)--> the
+|                                 |--(amod)--> iphone-related
+|                                 |--(acl:re)--> hoped
+|                                                  |--(nsubj)--> many
+|                                                  |--(aux)--> had
+|                                                  |--(nmod)--> for
+|--(punct)--> ,
+|--(nsubjp)--> we
+|--(auxpas)--> were
+|--(dobj)--> all
+|                |--(nmod)--> details
+|                                 |--(case)--> of
+|                                 |--(det)--> the
+|--(nmod)--> R1405[apple]
+|                |--(case)--> on
+|                |--(case)--> 's
+|                |--(dep)--> latest
+|                |--(dep)--> *R1408[revamp]
+|                                 |--(nmod)--> R1409[macbook]
+|                                 |                |--(case)--> to
+|                                 |                |--(nmod:p)--> their
+|                                 |                |--(amod)--> largest
+|                                 |                                 |--(cc)--> and
+|                                 |                                 |--(conj)--> powerful
+|                                 |                                                  |--(advmod)--> most
+|                                 |--(dobj)--> R1409[pro]
+|--(punct)--> .
+
+	* entity-paths for event['macworld']40_10ecb.xmlsent:11634
+
+	* entity-paths for event['revamp']40_10ecb.xmlsent:11634
+	['revamp --(nmod)--> MacBook']
+	['revamp --(dobj)--> Pro']
+
+	* entity-paths for event['given']40_10ecb.xmlsent:11634
+	['given --(advcl)--> contain', 'contain --(nsubj)--> address', 'address --(nmod:poss)--> Apple']
+	['given --(advcl)--> contain', 'contain --(nsubj)--> address', 'address --(nmod)--> convention', 'convention --(nmod)--> Francisco']
+	['given --(nmod)--> Apple']

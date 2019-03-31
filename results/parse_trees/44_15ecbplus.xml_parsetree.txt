@@ -1,0 +1,81 @@
+
+-----------------------------------------
+docid:44_15ecbplus.xml
+-----------------------------------------
+
+sentence #:technology products and services company hewlett - packard said on monday 12 november that it has agreed to buy data centre consulting company eyp mission critical facilities for an undisclosed sum . 
+	[events]:[['undisclosed'], ['agreed'], ['consulting'], ['said'], ['buy']]
+	[entities]:[['hewlett', '-', 'packard'], ['it'], ['sum'], ['on', 'monday', '12', 'november'], ['company'], ['company', 'eyp', 'mission', 'critical', 'facilities'], ['data', 'centre']]
+R1577[company]
+|--(compou)--> products
+|                |--(compou)--> technology
+|                |--(cc)--> and
+|                |--(conj)--> services
+|--(dep)--> R1577[hewlett]
+|--(punct)--> R1577[-]
+|--(parata)--> *R1578[said]
+|                |--(nsubj)--> R1577[packard]
+|                |--(nmod)--> R1579[monday]
+|                |                |--(case)--> R1579[on]
+|                |                |--(nummod)--> R1579[12]
+|                |--(nmod:t)--> R1579[november]
+|                |--(ccomp)--> *R1598[agreed]
+|                                 |--(mark)--> that
+|                                 |--(nsubj)--> R1577[it]
+|                                 |--(aux)--> has
+|                                 |--(xcomp)--> *R1582[buy]
+|                                                  |--(mark)--> to
+|                                                  |--(dobj)--> R1590[centre]
+|                                                                   |--(compou)--> R1590[data]
+|                                                                   |--(acl)--> *R1584[consulting]
+|                                                                                    |--(xcomp)--> R1583[facilities]
+|                                                                                                     |--(nsubj)--> R1583[mission]
+|                                                                                                     |                |--(compou)--> R1583[company]
+|                                                                                                     |                |--(compou)--> R1583[eyp]
+|                                                                                                     |--(amod)--> R1583[critical]
+|                                                                                                     |--(nmod)--> R1596[sum]
+|                                                                                                                      |--(case)--> for
+|                                                                                                                      |--(det)--> an
+|                                                                                                                      |--(amod)--> *R1593[undisclosed]
+|--(punct)--> .
+
+	* entity-paths for event['undisclosed']44_15ecbplus.xmlsent:13487
+
+	* entity-paths for event['agreed']44_15ecbplus.xmlsent:13487
+	['agreed --(nsubj)--> it']
+	['agreed --(xcomp)--> buy', 'buy --(dobj)--> centre']
+
+	* entity-paths for event['consulting']44_15ecbplus.xmlsent:13487
+	['consulting --(xcomp)--> Facilities']
+
+	* entity-paths for event['said']44_15ecbplus.xmlsent:13487
+	['said --(nsubj)--> Packard']
+	['said --(nmod)--> Monday']
+	['said --(nmod:tmod)--> November']
+	['said --(ccomp)--> agreed', 'agreed --(nsubj)--> it']
+	['said --(ccomp)--> agreed', 'agreed --(xcomp)--> buy', 'buy --(dobj)--> centre']
+
+	* entity-paths for event['buy']44_15ecbplus.xmlsent:13487
+	['buy --(dobj)--> centre']
+
+sentence #:hewlett - packard to buy consulting firm eyp mission critical facilities news 
+	[events]:[['consulting'], ['buy']]
+	[entities]:[['hewlett', '-', 'packard'], ['firm', 'eyp', 'mission', 'critical', 'facilities']]
+R1577[hewlett]
+|--(punct)--> R1577[-]
+|--(dep)--> R1577[packard]
+                 |--(acl)--> *R1582[buy]
+                                  |--(mark)--> to
+                                  |--(xcomp)--> *R1584[consulting]
+                                                   |--(xcomp)--> R1583[facilities]
+                                                                    |--(nsubj)--> R1583[mission]
+                                                                    |                |--(amod)--> R1583[firm]
+                                                                    |                |--(compou)--> R1583[eyp]
+                                                                    |--(amod)--> R1583[critical]
+                                                                    |--(dep)--> news
+
+	* entity-paths for event['consulting']44_15ecbplus.xmlsent:13485
+	['consulting --(xcomp)--> Facilities']
+
+	* entity-paths for event['buy']44_15ecbplus.xmlsent:13485
+	['buy --(xcomp)--> consulting', 'consulting --(xcomp)--> Facilities']

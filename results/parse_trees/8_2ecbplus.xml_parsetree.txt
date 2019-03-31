@@ -1,0 +1,92 @@
+
+-----------------------------------------
+docid:8_2ecbplus.xml
+-----------------------------------------
+
+sentence #:a fire - bomb attack on a bank in greece killed at least three people wednesday as police fought pitched battles with striking protestors furious at brutal budget cuts designed to avert national bankruptcy . 
+	[events]:[['fought'], ['battles'], ['designed'], ['avert'], ['bankruptcy'], ['furious'], ['attack'], ['cuts'], ['killed'], ['striking']]
+	[entities]:[['police'], ['a', 'bank', 'in', 'greece'], ['people'], ['wednesday'], ['protestors'], ['fire', '-', 'bomb']]
+R1751[fire]
+|--(det)--> a
+|--(punct)--> R1751[-]
+|--(parata)--> *R1753[killed]
+|                |--(nsubj)--> *R1757[attack]
+|                |                |--(compou)--> R1751[bomb]
+|                |                |--(nmod)--> R1752[bank]
+|                |                                 |--(case)--> on
+|                |                                 |--(det)--> R1752[a]
+|                |                                 |--(nmod)--> R1752[greece]
+|                |                                                  |--(case)--> R1752[in]
+|                |--(dobj)--> R1754[people]
+|                |                |--(nummod)--> three
+|                |                                 |--(nmod:n)--> least
+|                |                                                  |--(case)--> at
+|                |--(nmod:t)--> R1778[wednesday]
+|                |--(advcl)--> *R1779[fought]
+|                                 |--(mark)--> as
+|                                 |--(nsubj)--> R1772[police]
+|                                 |--(dobj)--> *R1780[battles]
+|                                 |                |--(amod)--> pitched
+|                                 |--(nmod)--> R1750[protestors]
+|                                                  |--(case)--> with
+|                                                  |--(amod)--> *R1781[striking]
+|                                                  |--(amod)--> *R1782[furious]
+|                                                                   |--(nmod)--> *R1783[cuts]
+|                                                                                    |--(case)--> at
+|                                                                                    |--(amod)--> brutal
+|                                                                                    |--(compou)--> budget
+|                                                                                    |--(acl)--> *R1784[designed]
+|                                                                                                     |--(xcomp)--> *R1785[avert]
+|                                                                                                                      |--(mark)--> to
+|                                                                                                                      |--(dobj)--> *R1786[bankruptcy]
+|                                                                                                                                       |--(amod)--> national
+|--(punct)--> .
+
+	* entity-paths for event['fought']8_2ecbplus.xmlsent:14937
+	['fought --(nsubj)--> police']
+	['fought --(nmod)--> protestors']
+
+	* entity-paths for event['battles']8_2ecbplus.xmlsent:14937
+
+	* entity-paths for event['designed']8_2ecbplus.xmlsent:14937
+
+	* entity-paths for event['avert']8_2ecbplus.xmlsent:14937
+
+	* entity-paths for event['bankruptcy']8_2ecbplus.xmlsent:14937
+
+	* entity-paths for event['furious']8_2ecbplus.xmlsent:14937
+
+	* entity-paths for event['attack']8_2ecbplus.xmlsent:14937
+	['attack --(compound)--> bomb']
+	['attack --(nmod)--> bank']
+
+	* entity-paths for event['cuts']8_2ecbplus.xmlsent:14937
+
+	* entity-paths for event['killed']8_2ecbplus.xmlsent:14937
+	['killed --(nsubj)--> attack', 'attack --(compound)--> bomb']
+	['killed --(nsubj)--> attack', 'attack --(nmod)--> bank']
+	['killed --(dobj)--> people']
+	['killed --(nmod:tmod)--> Wednesday']
+	['killed --(advcl)--> fought', 'fought --(nsubj)--> police']
+	['killed --(advcl)--> fought', 'fought --(nmod)--> protestors']
+
+	* entity-paths for event['striking']8_2ecbplus.xmlsent:14937
+
+sentence #:deadly fire - bomb hits bank during greek riots 
+	[events]:[['hits'], ['riots']]
+	[entities]:[['bomb'], ['bank']]
+fire
+|--(amod)--> deadly
+|--(punct)--> -
+|--(parata)--> *R1757[hits]
+                 |--(nsubj)--> R1751[bomb]
+                 |--(dobj)--> R1752[bank]
+                 |--(nmod)--> *R1780[riots]
+                                  |--(case)--> during
+                                  |--(amod)--> greek
+
+	* entity-paths for event['hits']8_2ecbplus.xmlsent:14935
+	['hits --(nsubj)--> bomb']
+	['hits --(dobj)--> bank']
+
+	* entity-paths for event['riots']8_2ecbplus.xmlsent:14935

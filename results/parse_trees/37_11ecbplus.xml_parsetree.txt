@@ -1,0 +1,109 @@
+
+-----------------------------------------
+docid:37_11ecbplus.xml
+-----------------------------------------
+
+sentence #:6 . 1 - magnitude quake strikes indonesia's aceh : usgs 
+	[events]:[['strikes'], ['6', '.', '1', '-', 'magnitude', 'quake']]
+	[entities]:[["indonesia's", 'aceh'], ['usgs']]
+*R1233[1]
+|--(nsubj)--> *R1233[6]
+|                |--(punct)--> *R1233[.]
+|--(punct)--> *R1233[-]
+|--(parata)--> *R1236[strikes]
+                 |--(nsubj)--> *R1233[quake]
+                 |                |--(compou)--> *R1233[magnitude]
+                 |--(dobj)--> R1237[aceh]
+                                  |--(nmod:p)--> R1237[indonesia's]
+                                  |                |--(case)--> R1237[indonesia's]
+                                  |--(punct)--> :
+                                  |--(dep)--> R1243[usgs]
+
+	* entity-paths for event['strikes']37_11ecbplus.xmlsent:10429
+	['strikes --(dobj)--> Aceh']
+
+	* entity-paths for event['6', '.', '1', '-', 'magnitude', 'quake']37_11ecbplus.xmlsent:10429
+
+sentence #:a strong 6 . 1 - magnitude earthquake struck the northwestern indonesian province of aceh on tuesday , the us geological survey said , sending people running into the streets in panic . 
+	[events]:[['said'], ['6', '.', '1', '-', 'magnitude', 'earthquake'], ['in', 'panic'], ['struck'], ['sending'], ['running']]
+	[entities]:[['people'], ['northwestern', 'indonesian', 'province', 'of', 'aceh'], ['on', 'tuesday'], ['us', 'geological', 'survey']]
+strong
+|--(det)--> a
+|--(acl:re)--> *R1233[6]
+|                |--(punct)--> *R1233[.]
+|--(acl:re)--> *R1244[said]
+|                |--(dep)--> *R1233[1]
+|                |--(advcl)--> *R1236[struck]
+|                |                |--(dep)--> *R1233[magnitude]
+|                |                |                |--(punct)--> *R1233[-]
+|                |                |                |--(dep)--> *R1233[earthquake]
+|                |                |--(dobj)--> R1237[province]
+|                |                |                |--(det)--> the
+|                |                |                |--(amod)--> R1237[northwestern]
+|                |                |                |--(amod)--> R1237[indonesian]
+|                |                |                |--(nmod)--> R1237[aceh]
+|                |                |                                 |--(case)--> R1237[of]
+|                |                |--(nmod)--> R1245[on]
+|                |                |--(dep)--> R1245[tuesday]
+|                |--(punct)--> ,
+|                |--(nsubj)--> R1243[survey]
+|                |                |--(det)--> the
+|                |                |--(compou)--> R1243[us]
+|                |                |--(compou)--> R1243[geological]
+|                |--(punct)--> ,
+|                |--(parata)--> *R1246[running]
+|                                 |--(nsubj)--> R1247[people]
+|                                 |                |--(amod)--> *R1248[sending]
+|                                 |--(nmod)--> streets
+|                                                  |--(case)--> into
+|                                                  |--(det)--> the
+|                                                  |--(nmod)--> *R1249[panic]
+|                                                                   |--(case)--> *R1249[in]
+|--(punct)--> .
+
+	* entity-paths for event['said']37_11ecbplus.xmlsent:10432
+	['said --(advcl)--> struck', 'struck --(dobj)--> province']
+	['said --(advcl)--> struck', 'struck --(nmod)--> on']
+	['said --(advcl)--> struck', 'struck --(dep)--> Tuesday']
+	['said --(nsubj)--> Survey']
+	['said --(parataxis)--> running', 'running --(nsubj)--> people']
+
+	* entity-paths for event['6', '.', '1', '-', 'magnitude', 'earthquake']37_11ecbplus.xmlsent:10432
+
+	* entity-paths for event['in', 'panic']37_11ecbplus.xmlsent:10432
+
+	* entity-paths for event['struck']37_11ecbplus.xmlsent:10432
+	['struck --(dobj)--> province']
+	['struck --(nmod)--> on']
+	['struck --(dep)--> Tuesday']
+
+	* entity-paths for event['sending']37_11ecbplus.xmlsent:10432
+
+	* entity-paths for event['running']37_11ecbplus.xmlsent:10432
+	['running --(nsubj)--> people']
+
+sentence #:a powerful 6 . 1 - magnitude earthquake struck the indonesian province of aceh with no tsunami warning issued 
+	[events]:[['struck']]
+	[entities]:[['indonesian', 'province', 'of', 'aceh']]
+*R1236[struck]
+|--(nsubj)--> earthquake
+|                |--(det)--> a
+|                |--(amod)--> powerful
+|                                 |--(ccomp)--> magnitude
+|                                                  |--(nsubj)--> 6
+|                                                  |                |--(punct)--> .
+|                                                  |--(dep)--> 1
+|                                                  |--(punct)--> -
+|--(dobj)--> R1237[province]
+|                |--(det)--> the
+|                |--(amod)--> R1237[indonesian]
+|                |--(nmod)--> R1237[aceh]
+|                                 |--(case)--> R1237[of]
+|--(nmod)--> tsunami
+                 |--(case)--> with
+                 |--(neg)--> no
+                 |--(acl)--> warning
+                                  |--(dep)--> issued
+
+	* entity-paths for event['struck']37_11ecbplus.xmlsent:10430
+	['struck --(dobj)--> province']

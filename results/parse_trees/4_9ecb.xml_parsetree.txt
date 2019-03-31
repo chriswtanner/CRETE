@@ -1,0 +1,52 @@
+
+-----------------------------------------
+docid:4_9ecb.xml
+-----------------------------------------
+
+sentence #:many people were shocked and saddened to learn that beloved pin-up icon bettie page passed away yesterday in los angeles after lingering in a coma for a week following a heart attack . 
+	[events]:[['heart', 'attack'], ['learn'], ['passed', 'away'], ['coma']]
+	[entities]:[['in', 'los', 'angeles'], ['bettie', 'page'], ['yesterday']]
+shocked
+|--(nsubj)--> people
+|                |--(amod)--> many
+|--(cop)--> were
+|--(cc)--> and
+|--(conj)--> saddened
+|--(xcomp)--> *R1403[learn]
+|                |--(mark)--> to
+|                |--(ccomp)--> *R1363[passed]
+|                                 |--(mark)--> that
+|                                 |--(nsubj)--> R1364[page]
+|                                 |                |--(amod)--> beloved
+|                                 |                |--(amod)--> pin-up
+|                                 |                |--(compou)--> icon
+|                                 |                |--(compou)--> R1364[bettie]
+|                                 |--(advmod)--> *R1363[away]
+|                                 |--(nmod:t)--> R1367[yesterday]
+|                                 |--(nmod)--> R1368[angeles]
+|                                 |                |--(case)--> R1368[in]
+|                                 |                |--(compou)--> R1368[los]
+|                                 |--(nmod)--> lingering
+|                                                  |--(case)--> after
+|                                                  |--(nmod)--> *R1389[coma]
+|                                                                   |--(case)--> in
+|                                                                   |--(det)--> a
+|                                                                   |--(nmod)--> week
+|                                                                                    |--(case)--> for
+|                                                                                    |--(det)--> a
+|                                                                                    |--(nmod)--> *R1380[attack]
+|                                                                                                     |--(case)--> following
+|                                                                                                     |--(det)--> a
+|                                                                                                     |--(compou)--> *R1380[heart]
+|--(punct)--> .
+
+	* entity-paths for event['heart', 'attack']4_9ecb.xmlsent:11617
+
+	* entity-paths for event['learn']4_9ecb.xmlsent:11617
+	['learn --(ccomp)--> passed', 'passed --(nsubj)--> Page']
+	['learn --(ccomp)--> passed', 'passed --(nmod:tmod)--> yesterday']
+	['learn --(ccomp)--> passed', 'passed --(nmod)--> Angeles']
+
+	* entity-paths for event['passed', 'away']4_9ecb.xmlsent:11617
+
+	* entity-paths for event['coma']4_9ecb.xmlsent:11617

@@ -1,0 +1,27 @@
+
+-----------------------------------------
+docid:10_3ecbplus.xml
+-----------------------------------------
+
+sentence #:nationals' eight - year offer to teixeira reportedly bumped as high as $184m 
+	[events]:[['offer']]
+	[entities]:[['eight', '-', 'year'], ['$184m'], ['teixeira'], ["nationals'"]]
+R172[nationals']
+|--(case)--> R172[nationals']
+|--(dep)--> R164[eight]
+|--(punct)--> R164[-]
+|--(dep)--> *R171[offer]
+|                |--(compou)--> R164[year]
+|                |--(nmod)--> bumped
+|                                 |--(case)--> to
+|                                 |--(compou)--> R163[teixeira]
+|                                 |--(compou)--> reportedly
+|--(nmod)--> high
+|                |--(case)--> as
+|--(nmod)--> R170[$184m]
+                 |--(case)--> as
+                 |--(dep)--> R170[$184m]
+
+	* entity-paths for event['offer']10_3ecbplus.xmlsent:467
+	['Offer --(compound)--> Year']
+	['Offer --(nmod)--> Bumped', 'Bumped --(compound)--> Teixeira']

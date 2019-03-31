@@ -1,0 +1,109 @@
+
+-----------------------------------------
+docid:37_6ecbplus.xml
+-----------------------------------------
+
+sentence #:officials say at least 24 people were killed and more than 200 injured by the quake , which struck the western tip of sumatra island on tuesday . 
+	[events]:[['struck'], ['injured'], ['killed'], ['quake']]
+	[entities]:[['on', 'tuesday'], ['200'], ['24', 'people']]
+say
+|--(nsubj)--> officials
+|--(dobj)--> R1276[people]
+|                |--(nummod)--> R1276[24]
+|                |                |--(nmod:n)--> least
+|                |                                 |--(case)--> at
+|                |--(acl:re)--> *R1275[killed]
+|                |                |--(auxpas)--> were
+|                |--(cc)--> and
+|                |--(conj)--> R1235[200]
+|                                 |--(advmod)--> more
+|                                 |                |--(mwe)--> than
+|                                 |--(acl)--> *R1234[injured]
+|                                                  |--(nmod)--> *R1233[quake]
+|                                                                   |--(case)--> by
+|                                                                   |--(det)--> the
+|                                                                   |--(punct)--> ,
+|                                                                   |--(acl:re)--> *R1236[struck]
+|                                                                                    |--(nsubj)--> which
+|                                                                                    |--(dobj)--> tip
+|                                                                                    |                |--(det)--> the
+|                                                                                    |                |--(amod)--> western
+|                                                                                    |                |--(nmod)--> island
+|                                                                                    |                                 |--(case)--> of
+|                                                                                    |                                 |--(compou)--> sumatra
+|                                                                                    |--(nmod)--> R1245[tuesday]
+|                                                                                                     |--(case)--> R1245[on]
+|--(punct)--> .
+
+	* entity-paths for event['struck']37_6ecbplus.xmlsent:10656
+	['struck --(nmod)--> Tuesday']
+
+	* entity-paths for event['injured']37_6ecbplus.xmlsent:10656
+	['injured --(nmod)--> quake', 'quake --(acl:relcl)--> struck', 'struck --(nmod)--> Tuesday']
+
+	* entity-paths for event['killed']37_6ecbplus.xmlsent:10656
+
+	* entity-paths for event['quake']37_6ecbplus.xmlsent:10656
+	['quake --(acl:relcl)--> struck', 'struck --(nmod)--> Tuesday']
+
+sentence #:rescue operations are under way after a 6 . 1 magnitude earthquake hit indonesia's aceh province , flattening houses and causing landslides . 
+	[events]:[['hit'], ['6', '.', '1', 'magnitude', 'earthquake'], ['rescue', 'operations'], ['under', 'way'], ['landslides'], ['flattening'], ['causing']]
+	[entities]:[["indonesia's", 'aceh', 'province'], ['houses']]
+*R1236[hit]
+|--(dep)--> *R1290[way]
+|                |--(nsubj)--> *R1291[operations]
+|                |                |--(compou)--> *R1291[rescue]
+|                |--(cop)--> are
+|                |--(case)--> *R1290[under]
+|                |--(nmod)--> *R1233[6]
+|                |                |--(case)--> after
+|                |                |--(det)--> a
+|                |--(punct)--> *R1233[.]
+|--(nsubj)--> *R1233[earthquake]
+|                |--(nummod)--> *R1233[1]
+|                |--(compou)--> *R1233[magnitude]
+|--(dobj)--> R1237[province]
+|                |--(nmod:p)--> R1237[indonesia's]
+|                |                |--(case)--> R1237[indonesia's]
+|                |--(compou)--> R1237[aceh]
+|--(punct)--> ,
+|--(dep)--> *R1272[flattening]
+|                |--(dobj)--> R1257[houses]
+|                |--(cc)--> and
+|                |--(conj)--> *R1273[causing]
+|                                 |--(dobj)--> *R1274[landslides]
+|--(punct)--> .
+
+	* entity-paths for event['hit']37_6ecbplus.xmlsent:10655
+	['hit --(dobj)--> province']
+	['hit --(dep)--> flattening', 'flattening --(dobj)--> houses']
+
+	* entity-paths for event['6', '.', '1', 'magnitude', 'earthquake']37_6ecbplus.xmlsent:10655
+
+	* entity-paths for event['rescue', 'operations']37_6ecbplus.xmlsent:10655
+
+	* entity-paths for event['under', 'way']37_6ecbplus.xmlsent:10655
+
+	* entity-paths for event['landslides']37_6ecbplus.xmlsent:10655
+
+	* entity-paths for event['flattening']37_6ecbplus.xmlsent:10655
+	['flattening --(dobj)--> houses']
+
+	* entity-paths for event['causing']37_6ecbplus.xmlsent:10655
+
+sentence #:indonesia aceh rescue operation after deadly earthquake 
+	[events]:[['earthquake'], ['rescue', 'operation']]
+	[entities]:[['indonesia', 'aceh']]
+*R1291[operation]
+|--(compou)--> R1237[indonesia]
+|--(compou)--> R1237[aceh]
+|--(compou)--> *R1291[rescue]
+|--(nmod)--> *R1233[earthquake]
+                 |--(case)--> after
+                 |--(amod)--> deadly
+
+	* entity-paths for event['earthquake']37_6ecbplus.xmlsent:10654
+
+	* entity-paths for event['rescue', 'operation']37_6ecbplus.xmlsent:10654
+	['operation --(compound)--> Indonesia']
+	['operation --(compound)--> Aceh']

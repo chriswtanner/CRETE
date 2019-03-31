@@ -1,0 +1,65 @@
+
+-----------------------------------------
+docid:1_2ecb.xml
+-----------------------------------------
+
+sentence #:a publicist says tara reid has checked herself into rehab . 
+	[events]:[['checked', 'into'], ['says'], ['checked', 'herself']]
+	[entities]:[['rehab'], ['herself'], ['tara', 'reid'], ['publicist']]
+*R0[says]
+|--(nsubj)--> R4[publicist]
+|                |--(det)--> a
+|--(ccomp)--> *R1[checked]
+|                |--(nsubj)--> R2[reid]
+|                |                |--(compou)--> R2[tara]
+|                |--(aux)--> has
+|                |--(dobj)--> *R2[herself]
+|                |--(nmod)--> R3[rehab]
+|                                 |--(case)--> *R1[into]
+|--(punct)--> .
+
+	* entity-paths for event['checked', 'into']1_2ecb.xmlsent:186
+
+	* entity-paths for event['says']1_2ecb.xmlsent:186
+	['says --(nsubj)--> publicist']
+	['says --(ccomp)--> checked', 'checked --(nsubj)--> Reid']
+	['says --(ccomp)--> checked', 'checked --(dobj)--> herself']
+	['says --(ccomp)--> checked', 'checked --(nmod)--> rehab']
+
+	* entity-paths for event['checked', 'herself']1_2ecb.xmlsent:186
+
+sentence #:he did not specify what she was being treated for or when she entered the facility . 
+	[events]:[['specify'], ['entered'], ['treated']]
+	[entities]:[['the', 'facility'], ['she'], ['he'], ['she']]
+*R49[specify]
+|--(nsubj)--> R4[he]
+|--(aux)--> did
+|--(neg)--> not
+|--(dep)--> *R123[treated]
+|                |--(nmod)--> what
+|                |                |--(case)--> for
+|                |--(nsubjp)--> R2[she]
+|                |--(aux)--> was
+|                |--(auxpas)--> being
+|                |--(cc)--> or
+|                |--(conj)--> *R1[entered]
+|                                 |--(advmod)--> when
+|                                 |--(nsubj)--> R2[she]
+|                                 |--(dobj)--> R3[facility]
+|                                                  |--(det)--> R3[the]
+|--(punct)--> .
+
+	* entity-paths for event['specify']1_2ecb.xmlsent:188
+	['specify --(nsubj)--> He']
+	['specify --(dep)--> treated', 'treated --(nsubjpass)--> she']
+	['specify --(dep)--> treated', 'treated --(conj)--> entered', 'entered --(nsubj)--> she']
+	['specify --(dep)--> treated', 'treated --(conj)--> entered', 'entered --(dobj)--> facility']
+
+	* entity-paths for event['entered']1_2ecb.xmlsent:188
+	['entered --(nsubj)--> she']
+	['entered --(dobj)--> facility']
+
+	* entity-paths for event['treated']1_2ecb.xmlsent:188
+	['treated --(nsubjpass)--> she']
+	['treated --(conj)--> entered', 'entered --(nsubj)--> she']
+	['treated --(conj)--> entered', 'entered --(dobj)--> facility']

@@ -1,0 +1,52 @@
+
+-----------------------------------------
+docid:19_5ecbplus.xml
+-----------------------------------------
+
+sentence #:'there " s a lot of anger here' : riot breaks out in brooklyn following candlelight vigil for 16 - year - old shot by cops 
+	[events]:[['shot'], ['breaks', 'out'], ['following'], ['vigil'], ['riot'], ['anger']]
+	[entities]:[['cops'], ['16', '-', 'year', '-', 'old'], ["here'"], ['in', 'brooklyn']]
+s
+|--(punct)--> 'there
+|--(expl)--> 'there
+|--(punct)--> "
+|--(nsubj)--> lot
+|                |--(det)--> a
+|                |--(nmod)--> *R441[anger]
+|                |                |--(case)--> of
+|                |                |--(advmod)--> R416[here']
+|                |--(punct)--> R416[here']
+|--(punct)--> :
+|--(parata)--> *R428[breaks]
+                 |--(nsubj)--> *R420[riot]
+                 |--(compou)--> *R428[out]
+                 |--(nmod)--> R416[brooklyn]
+                                  |--(case)--> R416[in]
+                                  |--(nmod)--> *R425[vigil]
+                                  |                |--(case)--> *R444[following]
+                                  |                |--(compou)--> candlelight
+                                  |                |--(nmod)--> R415[16]
+                                  |                                 |--(case)--> for
+                                  |--(punct)--> R415[-]
+                                  |--(dep)--> R415[year]
+                                                   |--(punct)--> R415[-]
+                                                   |--(dep)--> *R412[shot]
+                                                                    |--(amod)--> R415[old]
+                                                                    |--(nmod)--> R413[cops]
+                                                                                     |--(case)--> by
+
+	* entity-paths for event['shot']19_5ecbplus.xmlsent:3089
+	['shot --(amod)--> old']
+	['shot --(nmod)--> cops']
+
+	* entity-paths for event['breaks', 'out']19_5ecbplus.xmlsent:3089
+
+	* entity-paths for event['following']19_5ecbplus.xmlsent:3089
+
+	* entity-paths for event['vigil']19_5ecbplus.xmlsent:3089
+	['vigil --(nmod)--> 16']
+
+	* entity-paths for event['riot']19_5ecbplus.xmlsent:3089
+
+	* entity-paths for event['anger']19_5ecbplus.xmlsent:3089
+	['anger --(advmod)--> here']

@@ -1,0 +1,143 @@
+
+-----------------------------------------
+docid:28_2ecbplus.xml
+-----------------------------------------
+
+sentence #:frederick cheney larue , 75 , the shadowy nixon white house aide and "bagman" who delivered more than $300 , 000 in payoffs to watergate conspirators , died of coronary artery disease in a biloxi , miss . , motel room , where he lived . 
+	[events]:[['died'], ['delivered'], ['coronary', 'artery', 'disease'], ['payoffs'], ['watergate']]
+	[entities]:[['conspirators'], ['he'], ['who'], ['"bagman"'], ['in', 'a', 'biloxi', ',', 'miss', '.', ',', 'motel', 'room'], ['where'], ['frederick', 'cheney', 'larue']]
+*R814[died]
+|--(nsubj)--> R815[larue]
+|                |--(compou)--> R815[frederick]
+|                |--(compou)--> R815[cheney]
+|                |--(punct)--> ,
+|                |--(amod)--> 75
+|                |--(punct)--> ,
+|                |--(appos)--> aide
+|                |                |--(det)--> the
+|                |                |--(amod)--> shadowy
+|                |                |--(compou)--> nixon
+|                |                |--(compou)--> white
+|                |                |--(compou)--> house
+|                |                |--(cc)--> and
+|                |                |--(conj)--> R815["bagman"]
+|                |                |                |--(punct)--> R815["bagman"]
+|                |                |                |--(punct)--> R815["bagman"]
+|                |                |--(acl:re)--> *R838[delivered]
+|                |                                 |--(nsubj)--> R815[who]
+|                |                                 |--(dobj)--> $300
+|                |                                 |                |--(advmod)--> more
+|                |                                 |                |                |--(mwe)--> than
+|                |                                 |                |--(nummod)--> $300
+|                |                                 |                |--(punct)--> ,
+|                |                                 |                |--(appos)--> 000
+|                |                                 |                                 |--(nmod)--> *R839[payoffs]
+|                |                                 |                                                  |--(case)--> in
+|                |                                 |--(nmod)--> R842[conspirators]
+|                |                                                  |--(case)--> to
+|                |                                                  |--(compou)--> *R812[watergate]
+|                |--(punct)--> ,
+|--(nmod)--> *R817[disease]
+|                |--(case)--> of
+|                |--(amod)--> *R817[coronary]
+|                |--(compou)--> *R817[artery]
+|--(nmod)--> R825[room]
+|                |--(case)--> R825[in]
+|                |--(det)--> R825[a]
+|                |--(compou)--> R825[biloxi]
+|                |--(dep)--> R825[miss]
+|                |                |--(punct)--> R825[,]
+|                |                |--(punct)--> R825[.]
+|                |                |--(punct)--> R825[,]
+|                |--(compou)--> R825[motel]
+|                |--(punct)--> ,
+|                |--(acl:re)--> lived
+|                                 |--(advmod)--> R825[where]
+|                                 |--(nsubj)--> R815[he]
+|--(punct)--> .
+
+	* entity-paths for event['died']28_2ecbplus.xmlsent:6231
+	['died --(nsubj)--> LaRue']
+	['died --(nmod)--> room']
+
+	* entity-paths for event['delivered']28_2ecbplus.xmlsent:6231
+	['delivered --(nsubj)--> who']
+	['delivered --(nmod)--> conspirators']
+
+	* entity-paths for event['coronary', 'artery', 'disease']28_2ecbplus.xmlsent:6231
+
+	* entity-paths for event['payoffs']28_2ecbplus.xmlsent:6231
+
+	* entity-paths for event['watergate']28_2ecbplus.xmlsent:6231
+
+sentence #:his body was found by a motel maid july 27 , but harrison county , miss . , coroner gary hargrove said he believed the death occurred july 24 . 
+	[events]:[['believed'], ['found'], ['said'], ['death']]
+	[entities]:[['july', '24'], ['his', 'body'], ['maid'], ['gary', 'hargrove'], ['july', '27'], ['he']]
+*R824[found]
+|--(nsubjp)--> R815[body]
+|                |--(nmod:p)--> R815[his]
+|--(auxpas)--> was
+|--(nmod)--> R829[maid]
+|                |--(case)--> by
+|                |--(det)--> a
+|                |--(compou)--> motel
+|--(nmod:t)--> R826[july]
+|                |--(nummod)--> R826[27]
+|--(punct)--> ,
+|--(cc)--> but
+|--(conj)--> *R844[said]
+|                |--(nsubj)--> county
+|                |                |--(compou)--> harrison
+|                |                |--(punct)--> ,
+|                |                |--(appos)--> miss
+|                |                                 |--(punct)--> .
+|                |                                 |--(punct)--> ,
+|                |                                 |--(appos)--> R831[hargrove]
+|                |                                                  |--(compou)--> coroner
+|                |                                                  |--(compou)--> R831[gary]
+|                |--(ccomp)--> *R832[believed]
+|                                 |--(nsubj)--> R831[he]
+|                                 |--(ccomp)--> occurred
+|                                                  |--(nsubj)--> *R814[death]
+|                                                  |                |--(det)--> the
+|                                                  |--(nmod:t)--> R833[july]
+|                                                                   |--(nummod)--> R833[24]
+|--(punct)--> .
+
+	* entity-paths for event['believed']28_2ecbplus.xmlsent:6232
+	['believed --(nsubj)--> he']
+	['believed --(ccomp)--> occurred', 'occurred --(nmod:tmod)--> July']
+
+	* entity-paths for event['found']28_2ecbplus.xmlsent:6232
+	['found --(nsubjpass)--> body']
+	['found --(nmod)--> maid']
+	['found --(nmod:tmod)--> July']
+	['found --(conj)--> said', 'said --(nsubj)--> County', 'County --(appos)--> Miss', 'Miss --(appos)--> Hargrove']
+	['found --(conj)--> said', 'said --(ccomp)--> believed', 'believed --(nsubj)--> he']
+	['found --(conj)--> said', 'said --(ccomp)--> believed', 'believed --(ccomp)--> occurred', 'occurred --(nmod:tmod)--> July']
+
+	* entity-paths for event['said']28_2ecbplus.xmlsent:6232
+	['said --(nsubj)--> County', 'County --(appos)--> Miss', 'Miss --(appos)--> Hargrove']
+	['said --(ccomp)--> believed', 'believed --(nsubj)--> he']
+	['said --(ccomp)--> believed', 'believed --(ccomp)--> occurred', 'occurred --(nmod:tmod)--> July']
+
+	* entity-paths for event['death']28_2ecbplus.xmlsent:6232
+
+sentence #:watergate 'bagman' fred larue , 75 , dies 
+	[events]:[['dies'], ['watergate']]
+	[entities]:[['fred', 'larue']]
+*R814[dies]
+|--(nsubj)--> R815[larue]
+                 |--(compou)--> *R812[watergate]
+                 |--(punct)--> 'bagman'
+                 |--(compou)--> 'bagman'
+                 |--(punct)--> 'bagman'
+                 |--(compou)--> R815[fred]
+                 |--(punct)--> ,
+                 |--(amod)--> 75
+                 |--(punct)--> ,
+
+	* entity-paths for event['dies']28_2ecbplus.xmlsent:6229
+	['Dies --(nsubj)--> LaRue']
+
+	* entity-paths for event['watergate']28_2ecbplus.xmlsent:6229

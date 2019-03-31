@@ -1,0 +1,39 @@
+
+-----------------------------------------
+docid:14_3ecb.xml
+-----------------------------------------
+
+sentence #:police are treating a fire which has destroyed a waitrose supermarket in banstead in surrey as " potentially suspicious " . 
+	[events]:[['treating'], ['destroyed'], ['fire']]
+	[entities]:[['police'], ['a', 'waitrose', 'supermarket'], ['in', 'banstead', 'in', 'surrey']]
+*R295[treating]
+|--(nsubj)--> R300[police]
+|--(aux)--> are
+|--(dobj)--> *R296[fire]
+|                |--(det)--> a
+|                |--(acl:re)--> *R297[destroyed]
+|                                 |--(nsubj)--> which
+|                                 |--(aux)--> has
+|                                 |--(dobj)--> R298[supermarket]
+|                                                  |--(det)--> R298[a]
+|                                                  |--(compou)--> R298[waitrose]
+|                                                  |--(nmod)--> R299[banstead]
+|                                                  |                |--(case)--> R299[in]
+|                                                  |                |--(nmod)--> R299[surrey]
+|                                                  |                                 |--(case)--> R299[in]
+|                                                  |                                 |--(amod)--> as
+|                                                  |--(punct)--> "
+|                                                  |--(amod)--> suspicious
+|                                                                   |--(advmod)--> potentially
+|--(punct)--> "
+|--(punct)--> .
+
+	* entity-paths for event['treating']14_3ecb.xmlsent:1714
+	['treating --(nsubj)--> Police']
+	['treating --(dobj)--> fire', 'fire --(acl:relcl)--> destroyed', 'destroyed --(dobj)--> supermarket']
+
+	* entity-paths for event['destroyed']14_3ecb.xmlsent:1714
+	['destroyed --(dobj)--> supermarket']
+
+	* entity-paths for event['fire']14_3ecb.xmlsent:1714
+	['fire --(acl:relcl)--> destroyed', 'destroyed --(dobj)--> supermarket']

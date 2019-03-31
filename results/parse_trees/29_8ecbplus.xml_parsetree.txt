@@ -1,0 +1,119 @@
+
+-----------------------------------------
+docid:29_8ecbplus.xml
+-----------------------------------------
+
+sentence #:colts clinch playoff berth with 20 - 13 win over chiefs 
+	[events]:[['playoff'], ['win'], ['clinch']]
+	[entities]:[['chiefs'], ['20', '-', '13'], ['berth'], ['colts']]
+*R861[playoff]
+|--(compou)--> R852[colts]
+|--(compou)--> *R862[clinch]
+|--(dep)--> R866[berth]
+|                |--(nmod)--> R860[20]
+|                                 |--(case)--> with
+|--(punct)--> R860[-]
+|--(parata)--> *R859[win]
+                 |--(nummod)--> R860[13]
+                 |--(nmod)--> R858[chiefs]
+                                  |--(case)--> over
+
+	* entity-paths for event['playoff']29_8ecbplus.xmlsent:7259
+	['Playoff --(compound)--> Colts']
+	['Playoff --(dep)--> Berth']
+	['Playoff --(punct)--> -']
+	['Playoff --(parataxis)--> Win', 'Win --(nummod)--> 13']
+	['Playoff --(parataxis)--> Win', 'Win --(nmod)--> Chiefs']
+
+	* entity-paths for event['win']29_8ecbplus.xmlsent:7259
+	['Win --(nummod)--> 13']
+	['Win --(nmod)--> Chiefs']
+
+	* entity-paths for event['clinch']29_8ecbplus.xmlsent:7259
+
+sentence #:the colts ( 10 - 5 , 4 - 4 away ) owned the nfl " s worst record last year , and clinched a spot in the playoffs with sunday " s win . 
+	[events]:[['win'], ['playoffs'], ['clinched']]
+	[entities]:[['spot'], ['sunday'], ['colts']]
+*R859[win]
+|--(ccomp)--> owned
+|                |--(nsubj)--> R852[colts]
+|                |                |--(det)--> the
+|                |                |--(dep)--> 10
+|                |                                 |--(punct)--> (
+|                |                                 |--(punct)--> -
+|                |                                 |--(dep)--> 5
+|                |                                 |--(punct)--> ,
+|                |                                 |--(dep)--> 4
+|                |                                 |                |--(punct)--> -
+|                |                                 |                |--(dep)--> 4
+|                |                                 |                                 |--(advmod)--> away
+|                |                                 |--(punct)--> )
+|                |--(dobj)--> nfl
+|                |                |--(det)--> the
+|                |                |--(punct)--> "
+|                |                |--(acl:re)--> year
+|                |                                 |--(cop)--> s
+|                |                                 |--(amod)--> record
+|                |                                 |                |--(dep)--> worst
+|                |                                 |--(amod)--> last
+|                |--(punct)--> ,
+|                |--(cc)--> and
+|                |--(conj)--> *R862[clinched]
+|                                 |--(dobj)--> R866[spot]
+|                                 |                |--(det)--> a
+|                                 |--(nmod)--> *R861[playoffs]
+|                                 |                |--(case)--> in
+|                                 |                |--(det)--> the
+|                                 |--(nmod)--> R868[sunday]
+|                                                  |--(case)--> with
+|--(punct)--> "
+|--(aux)--> s
+|--(punct)--> .
+
+	* entity-paths for event['win']29_8ecbplus.xmlsent:7262
+	['win --(ccomp)--> owned', 'owned --(nsubj)--> Colts']
+	['win --(ccomp)--> owned', 'owned --(conj)--> clinched', 'clinched --(dobj)--> spot']
+	['win --(ccomp)--> owned', 'owned --(conj)--> clinched', 'clinched --(nmod)--> Sunday']
+
+	* entity-paths for event['playoffs']29_8ecbplus.xmlsent:7262
+
+	* entity-paths for event['clinched']29_8ecbplus.xmlsent:7262
+	['clinched --(dobj)--> spot']
+	['clinched --(nmod)--> Sunday']
+
+sentence #:despite rushing for 352 yards , the kansas city chiefs lost their home finale to the indianapolis colts at arrowhead stadium on sunday afternoon . 
+	[events]:[['home', 'finale'], ['lost']]
+	[entities]:[['at', 'arrowhead', 'stadium'], ['indianapolis', 'colts'], ['kansas', 'city', 'chiefs'], ['on', 'sunday', 'afternoon']]
+*R859[lost]
+|--(advcl)--> rushing
+|                |--(mark)--> despite
+|                |--(nmod)--> yards
+|                                 |--(case)--> for
+|                                 |--(nummod)--> 352
+|--(punct)--> ,
+|--(nsubj)--> R858[chiefs]
+|                |--(det)--> the
+|                |--(compou)--> R858[kansas]
+|                |--(compou)--> R858[city]
+|--(dobj)--> *R871[finale]
+|                |--(nmod:p)--> their
+|                |--(compou)--> *R871[home]
+|--(nmod)--> R852[colts]
+|                |--(case)--> to
+|                |--(det)--> the
+|                |--(compou)--> R852[indianapolis]
+|--(nmod)--> R884[stadium]
+|                |--(case)--> R884[at]
+|                |--(compou)--> R884[arrowhead]
+|                |--(nmod)--> R868[sunday]
+|                                 |--(case)--> R868[on]
+|--(nmod:t)--> R868[afternoon]
+|--(punct)--> .
+
+	* entity-paths for event['home', 'finale']29_8ecbplus.xmlsent:7261
+
+	* entity-paths for event['lost']29_8ecbplus.xmlsent:7261
+	['lost --(nsubj)--> Chiefs']
+	['lost --(nmod)--> Colts']
+	['lost --(nmod)--> Stadium']
+	['lost --(nmod:tmod)--> afternoon']

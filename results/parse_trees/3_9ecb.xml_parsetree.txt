@@ -1,0 +1,55 @@
+
+-----------------------------------------
+docid:3_9ecb.xml
+-----------------------------------------
+
+sentence #:a judge on saturday sentenced the man who killed four people in a brazen courthouse escape to multiple life sentences with no chance of parole after a deadlocked jury failed to return a death sentence . 
+	[events]:[['sentenced'], ['escape'], ['killed']]
+	[entities]:[['saturday'], ['man'], ['jury'], ['life', 'sentences'], ['people'], ['judge']]
+*R906[sentenced]
+|--(nsubj)--> R940[judge]
+|                |--(det)--> a
+|                |--(nmod)--> R908[saturday]
+|                                 |--(case)--> on
+|--(dobj)--> R903[man]
+|                |--(det)--> the
+|                |--(acl:re)--> *R904[killed]
+|                                 |--(nsubj)--> who
+|                                 |--(ccomp)--> brazen
+|                                                  |--(nsubj)--> R905[people]
+|                                                  |                |--(nummod)--> four
+|                                                  |                |--(nmod)--> a
+|                                                  |                                 |--(case)--> in
+|                                                  |--(dobj)--> *R907[escape]
+|                                                  |                |--(compou)--> courthouse
+|                                                  |--(nmod)--> R909[sentences]
+|                                                  |                |--(case)--> to
+|                                                  |                |--(amod)--> multiple
+|                                                  |                |--(compou)--> R909[life]
+|                                                  |                |--(nmod)--> chance
+|                                                  |                                 |--(case)--> with
+|                                                  |                                 |--(neg)--> no
+|                                                  |                                 |--(nmod)--> parole
+|                                                  |                                                  |--(case)--> of
+|                                                  |--(advcl)--> failed
+|                                                                   |--(mark)--> after
+|                                                                   |--(nsubj)--> R948[jury]
+|                                                                   |                |--(det)--> a
+|                                                                   |                |--(amod)--> deadlocked
+|                                                                   |--(xcomp)--> return
+|                                                                                    |--(mark)--> to
+|                                                                                    |--(dobj)--> sentence
+|                                                                                                     |--(det)--> a
+|                                                                                                     |--(compou)--> death
+|--(punct)--> .
+
+	* entity-paths for event['sentenced']3_9ecb.xmlsent:7621
+	['sentenced --(nsubj)--> judge']
+	['sentenced --(dobj)--> man']
+
+	* entity-paths for event['escape']3_9ecb.xmlsent:7621
+
+	* entity-paths for event['killed']3_9ecb.xmlsent:7621
+	['killed --(ccomp)--> brazen', 'brazen --(nsubj)--> people']
+	['killed --(ccomp)--> brazen', 'brazen --(nmod)--> sentences']
+	['killed --(ccomp)--> brazen', 'brazen --(advcl)--> failed', 'failed --(nsubj)--> jury']

@@ -1,0 +1,43 @@
+
+-----------------------------------------
+docid:4_11ecb.xml
+-----------------------------------------
+
+sentence #:bettie page , the 1950s pin-up queen and pop culture icon who died on thursday , will be remembered for her indomitable influence on style , fashion , and sexual expression . 
+	[events]:[['died']]
+	[entities]:[['thursday'], ['bettie', 'page']]
+remembered
+|--(nsubjp)--> R1364[page]
+|                |--(compou)--> R1364[bettie]
+|                |--(punct)--> ,
+|                |--(appos)--> queen
+|                |                |--(det)--> the
+|                |                |--(nummod)--> 1950s
+|                |                |--(compou)--> pin-up
+|                |                |--(cc)--> and
+|                |                |--(conj)--> icon
+|                |                                 |--(compou)--> pop
+|                |                                 |--(compou)--> culture
+|                |                                 |--(acl:re)--> *R1363[died]
+|                |                                                  |--(nsubj)--> who
+|                |                                                  |--(nmod)--> R1367[thursday]
+|                |                                                                   |--(case)--> on
+|                |--(punct)--> ,
+|--(aux)--> will
+|--(auxpas)--> be
+|--(nmod)--> influence
+|                |--(case)--> for
+|                |--(nmod:p)--> her
+|                |--(amod)--> indomitable
+|--(nmod)--> style
+|                |--(case)--> on
+|                |--(punct)--> ,
+|                |--(conj)--> fashion
+|                |--(punct)--> ,
+|                |--(cc)--> and
+|                |--(conj)--> expression
+|                                 |--(amod)--> sexual
+|--(punct)--> .
+
+	* entity-paths for event['died']4_11ecb.xmlsent:11201
+	['died --(nmod)--> Thursday']

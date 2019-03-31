@@ -1,0 +1,61 @@
+
+-----------------------------------------
+docid:28_10ecbplus.xml
+-----------------------------------------
+
+sentence #:fred larue , a watergate figure and high - ranking nixon administration official who once was rumored to be deep throat , has died of natural causes . 
+	[events]:[['natural', 'causes'], ['rumored'], ['died'], ['watergate']]
+	[entities]:[['deep', 'throat'], ['fred', 'larue'], ['figure']]
+*R814[died]
+|--(nsubj)--> R815[larue]
+|                |--(compou)--> R815[fred]
+|                |--(punct)--> ,
+|                |--(appos)--> R815[figure]
+|                |                |--(det)--> a
+|                |                |--(compou)--> *R812[watergate]
+|                |                |--(cc)--> and
+|                |                |--(conj)--> high
+|                |                |--(punct)--> -
+|                |                |--(dep)--> official
+|                |                                 |--(amod)--> ranking
+|                |                                 |--(compou)--> nixon
+|                |                                 |--(compou)--> administration
+|                |                                 |--(acl:re)--> *R816[rumored]
+|                |                                                  |--(nsubjp)--> who
+|                |                                                  |--(advmod)--> once
+|                |                                                  |--(auxpas)--> was
+|                |                                                  |--(xcomp)--> R811[throat]
+|                |                                                                   |--(mark)--> to
+|                |                                                                   |--(cop)--> be
+|                |                                                                   |--(amod)--> R811[deep]
+|                |--(punct)--> ,
+|--(aux)--> has
+|--(nmod)--> *R817[causes]
+|                |--(case)--> of
+|                |--(amod)--> *R817[natural]
+|--(punct)--> .
+
+	* entity-paths for event['natural', 'causes']28_10ecbplus.xmlsent:6070
+
+	* entity-paths for event['rumored']28_10ecbplus.xmlsent:6070
+	['rumored --(xcomp)--> Throat']
+
+	* entity-paths for event['died']28_10ecbplus.xmlsent:6070
+	['died --(nsubj)--> LaRue']
+
+	* entity-paths for event['watergate']28_10ecbplus.xmlsent:6070
+
+sentence #:fred larue , nixon administration aide , dies 
+	[events]:[['dies']]
+	[entities]:[['fred', 'larue']]
+*R814[dies]
+|--(nsubj)--> R815[larue]
+                 |--(compou)--> R815[fred]
+                 |--(punct)--> ,
+                 |--(appos)--> aide
+                 |                |--(compou)--> nixon
+                 |                |--(compou)--> administration
+                 |--(punct)--> ,
+
+	* entity-paths for event['dies']28_10ecbplus.xmlsent:6068
+	['dies --(nsubj)--> LaRue']

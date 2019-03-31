@@ -1,0 +1,21 @@
+
+-----------------------------------------
+docid:9_5ecbplus.xml
+-----------------------------------------
+
+sentence #:obama reverses bush on species protection measure 
+	[events]:[['protection'], ['reverses']]
+	[entities]:[['species'], ['bush'], ['obama'], ['measure']]
+*R1798[reverses]
+|--(nsubj)--> R1136[obama]
+|--(dobj)--> R1803[bush]
+                 |--(nmod)--> R1802[measure]
+                                  |--(case)--> on
+                                  |--(compou)--> R1805[species]
+                                  |--(compou)--> *R1804[protection]
+
+	* entity-paths for event['protection']9_5ecbplus.xmlsent:15586
+
+	* entity-paths for event['reverses']9_5ecbplus.xmlsent:15586
+	['Reverses --(nsubj)--> Obama']
+	['Reverses --(dobj)--> Bush']

@@ -1,0 +1,45 @@
+
+-----------------------------------------
+docid:18_12ecb.xml
+-----------------------------------------
+
+sentence #:employees at a vancouver wholesaler were coping saturday with the death of their boss , who was gunned down at their office christmas party . 
+	[events]:[['gunned', 'down'], ['party'], ['coping'], ['death']]
+	[entities]:[['wholesaler'], ['saturday'], ['employees'], ['boss']]
+*R381[coping]
+|--(nsubj)--> R382[employees]
+|                |--(nmod)--> R383[wholesaler]
+|                                 |--(case)--> at
+|                                 |--(det)--> a
+|                                 |--(compou)--> vancouver
+|--(aux)--> were
+|--(nmod:t)--> R384[saturday]
+|--(nmod)--> *R358[death]
+|                |--(case)--> with
+|                |--(det)--> the
+|                |--(nmod)--> R369[boss]
+|                                 |--(case)--> of
+|                                 |--(nmod:p)--> their
+|                                 |--(punct)--> ,
+|                                 |--(acl:re)--> *R366[gunned]
+|                                                  |--(nsubjp)--> who
+|                                                  |--(auxpas)--> was
+|                                                  |--(compou)--> *R366[down]
+|                                                  |--(nmod)--> office
+|                                                                   |--(case)--> at
+|                                                                   |--(nmod:p)--> their
+|                                                                   |--(dep)--> *R359[party]
+|                                                                                    |--(compou)--> christmas
+|--(punct)--> .
+
+	* entity-paths for event['gunned', 'down']18_12ecb.xmlsent:2280
+
+	* entity-paths for event['party']18_12ecb.xmlsent:2280
+
+	* entity-paths for event['coping']18_12ecb.xmlsent:2280
+	['coping --(nsubj)--> Employees']
+	['coping --(nmod:tmod)--> Saturday']
+	['coping --(nmod)--> death', 'death --(nmod)--> boss']
+
+	* entity-paths for event['death']18_12ecb.xmlsent:2280
+	['death --(nmod)--> boss']

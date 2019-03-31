@@ -1,0 +1,134 @@
+
+-----------------------------------------
+docid:44_6ecb.xml
+-----------------------------------------
+
+sentence #:bill ritz , eds spokesman , pointed out that hewlett-packard 's acquisition of eds still needs the approval of regulators and eds ' stockholders . 
+	[events]:[['acquisition']]
+	[entities]:[['eds'], ['hewlett-packard']]
+pointed
+|--(nsubj)--> ritz
+|                |--(compou)--> bill
+|                |--(punct)--> ,
+|                |--(appos)--> spokesman
+|                |                |--(compou)--> eds
+|                |--(punct)--> ,
+|--(compou)--> out
+|--(ccomp)--> needs
+|                |--(mark)--> that
+|                |--(nsubj)--> *R1599[acquisition]
+|                |                |--(nmod:p)--> R1577[hewlett-packard]
+|                |                |                |--(case)--> 's
+|                |                |--(nmod)--> R1600[eds]
+|                |                                 |--(case)--> of
+|                |--(advmod)--> still
+|                |--(dobj)--> approval
+|                                 |--(det)--> the
+|                                 |--(nmod)--> regulators
+|                                                  |--(case)--> of
+|                                                  |--(cc)--> and
+|                                                  |--(conj)--> stockholders
+|                                                                   |--(nmod:p)--> eds
+|                                                                                    |--(case)--> '
+|--(punct)--> .
+
+	* entity-paths for event['acquisition']44_6ecb.xmlsent:13673
+	['acquisition --(nmod:poss)--> Hewlett-Packard']
+	['acquisition --(nmod)--> EDS']
+
+sentence #:it 's too early to tell what impact - if any - hewlett-packard co. 's decision to acquire electronic data systems corp. will have on eds ' operations in south charleston , an eds spokesman said . 
+	[events]:[['acquire']]
+	[entities]:[['eds'], ['hewlett-packard', 'co.'], ['electronic', 'data', 'systems', 'corp.'], ['eds']]
+said
+|--(ccomp)--> early
+|                |--(nsubj)--> it
+|                |--(cop)--> 's
+|                |--(advmod)--> too
+|                |--(xcomp)--> tell
+|                                 |--(mark)--> to
+|                                 |--(ccomp)--> have
+|                                                  |--(dobj)--> impact
+|                                                  |                |--(det)--> what
+|                                                  |                |--(dep)--> any
+|                                                  |                                 |--(punct)--> -
+|                                                  |                                 |--(mark)--> if
+|                                                  |                                 |--(punct)--> -
+|                                                  |--(nsubj)--> decision
+|                                                  |                |--(nmod:p)--> R1577[co.]
+|                                                  |                |                |--(compou)--> R1577[hewlett-packard]
+|                                                  |                |                |--(case)--> 's
+|                                                  |                |--(acl)--> *R1599[acquire]
+|                                                  |                                 |--(mark)--> to
+|                                                  |                                 |--(dobj)--> R1600[corp.]
+|                                                  |                                                  |--(compou)--> R1600[electronic]
+|                                                  |                                                  |--(compou)--> R1600[data]
+|                                                  |                                                  |--(compou)--> R1600[systems]
+|                                                  |--(aux)--> will
+|                                                  |--(nmod)--> operations
+|                                                                   |--(case)--> on
+|                                                                   |--(nmod:p)--> R1600[eds]
+|                                                                   |                |--(case)--> '
+|                                                                   |--(nmod)--> charleston
+|                                                                                    |--(case)--> in
+|                                                                                    |--(compou)--> south
+|--(punct)--> ,
+|--(nsubj)--> spokesman
+|                |--(det)--> an
+|                |--(compou)--> R1600[eds]
+|--(punct)--> .
+
+	* entity-paths for event['acquire']44_6ecb.xmlsent:13668
+	['acquire --(dobj)--> Corp.']
+
+sentence #:earlier this month hewlett-packard unveiled a bid of nearly $ 14 billion bid to purchase eds . 
+	[events]:[['purchase'], ['unveiled']]
+	[entities]:[['hewlett-packard'], ['eds']]
+*R1601[unveiled]
+|--(nmod:t)--> month
+|                |--(advmod)--> earlier
+|                |--(det)--> this
+|--(nsubj)--> R1577[hewlett-packard]
+|--(dobj)--> bid
+|                |--(det)--> a
+|                |--(nmod)--> bid
+|                                 |--(case)--> of
+|                                 |--(nummod)--> $
+|                                                  |--(advmod)--> nearly
+|                                                  |--(nummod)--> billion
+|                                                                   |--(compou)--> 14
+|--(advcl)--> *R1599[purchase]
+|                |--(mark)--> to
+|                |--(dobj)--> R1600[eds]
+|--(punct)--> .
+
+	* entity-paths for event['purchase']44_6ecb.xmlsent:13669
+	['purchase --(dobj)--> EDS']
+
+	* entity-paths for event['unveiled']44_6ecb.xmlsent:13669
+	['unveiled --(nsubj)--> Hewlett-Packard']
+	['unveiled --(advcl)--> purchase', 'purchase --(dobj)--> EDS']
+
+sentence #:" the deal is supposed to close sometime in the second half of 2008 , " ritz said . 
+	[events]:[['deal']]
+	[entities]:[]
+said
+|--(punct)--> "
+|--(ccomp)--> supposed
+|                |--(nsubjp)--> *R1605[deal]
+|                |                |--(det)--> the
+|                |--(auxpas)--> is
+|                |--(xcomp)--> close
+|                                 |--(mark)--> to
+|                                 |--(advmod)--> sometime
+|                                 |--(nmod)--> half
+|                                                  |--(case)--> in
+|                                                  |--(det)--> the
+|                                                  |--(amod)--> second
+|                                                  |--(nmod)--> 2008
+|                                                                   |--(case)--> of
+|--(punct)--> ,
+|--(punct)--> "
+|--(nsubj)--> ritz
+|--(punct)--> .
+
+	* entity-paths for event['deal']44_6ecb.xmlsent:13674

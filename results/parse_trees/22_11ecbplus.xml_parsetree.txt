@@ -1,0 +1,123 @@
+
+-----------------------------------------
+docid:22_11ecbplus.xml
+-----------------------------------------
+
+sentence #:in a sad and surprising reversal of gender roles , a disgruntled woman opened fire at a kraft factory in philadelphia last night , killing two workers and wounding two others . 
+	[events]:[['wounding'], ['opened', 'fire'], ['killing']]
+	[entities]:[['last', 'night'], ['workers'], ['woman'], ['at', 'a', 'kraft', 'factory', 'in', 'philadelphia'], ['others']]
+*R598[opened]
+|--(nmod)--> reversal
+|                |--(case)--> in
+|                |--(det)--> a
+|                |--(amod)--> sad
+|                |                |--(cc)--> and
+|                |                |--(conj)--> surprising
+|                |--(nmod)--> roles
+|                                 |--(case)--> of
+|                                 |--(compou)--> gender
+|--(punct)--> ,
+|--(nsubj)--> R589[woman]
+|                |--(det)--> a
+|                |--(amod)--> disgruntled
+|--(dobj)--> *R598[fire]
+|--(nmod)--> R599[factory]
+|                |--(case)--> R599[at]
+|                |--(det)--> R599[a]
+|                |--(compou)--> R599[kraft]
+|--(nmod)--> R599[philadelphia]
+|                |--(case)--> R599[in]
+|--(nmod:t)--> R594[night]
+|                |--(amod)--> R594[last]
+|--(punct)--> ,
+|--(dep)--> *R592[killing]
+|                |--(dobj)--> R593[workers]
+|                |                |--(nummod)--> two
+|                |--(cc)--> and
+|                |--(conj)--> *R600[wounding]
+|                                 |--(dobj)--> R601[others]
+|                                                  |--(nummod)--> two
+|--(punct)--> .
+
+	* entity-paths for event['wounding']22_11ecbplus.xmlsent:4366
+	['wounding --(dobj)--> others']
+
+	* entity-paths for event['opened', 'fire']22_11ecbplus.xmlsent:4366
+
+	* entity-paths for event['killing']22_11ecbplus.xmlsent:4366
+	['killing --(dobj)--> workers']
+	['killing --(conj)--> wounding', 'wounding --(dobj)--> others']
+
+sentence #:the shooting happened moments after the employee , yvonne hiller , was suspended from her job at kraft , where she " d worked for 15 years , the daily news reports . 
+	[events]:[['worked'], ['happened'], ['job'], ['suspended'], ['shooting']]
+	[entities]:[['she'], ['her'], ['yvonne', 'hiller']]
+*R602[happened]
+|--(nsubj)--> *R591[shooting]
+|                |--(det)--> the
+|--(dobj)--> moments
+|--(advcl)--> *R590[suspended]
+|                |--(mark)--> after
+|                |--(nsubjp)--> employee
+|                |                |--(det)--> the
+|                |                |--(punct)--> ,
+|                |                |--(appos)--> R589[hiller]
+|                |                |                |--(compou)--> R589[yvonne]
+|                |                |--(punct)--> ,
+|                |--(auxpas)--> was
+|                |--(nmod)--> *R603[job]
+|                |                |--(case)--> from
+|                |                |--(nmod:p)--> R589[her]
+|                |--(nmod)--> kraft
+|                                 |--(case)--> at
+|                                 |--(punct)--> ,
+|                                 |--(acl:re)--> *R603[worked]
+|                                                  |--(advmod)--> where
+|                                                  |--(nsubj)--> R589[she]
+|                                                  |--(punct)--> "
+|                                                  |--(dep)--> d
+|                                                  |--(nmod)--> years
+|                                                                   |--(case)--> for
+|                                                                   |--(nummod)--> 15
+|                                                                   |--(punct)--> ,
+|                                                                   |--(appos)--> reports
+|                                                                                    |--(det)--> the
+|                                                                                    |--(compou)--> daily
+|                                                                                    |--(compou)--> news
+|--(punct)--> .
+
+	* entity-paths for event['worked']22_11ecbplus.xmlsent:4367
+	['worked --(nsubj)--> she']
+
+	* entity-paths for event['happened']22_11ecbplus.xmlsent:4367
+	['happened --(advcl)--> suspended', 'suspended --(nsubjpass)--> employee', 'employee --(appos)--> Hiller']
+	['happened --(advcl)--> suspended', 'suspended --(nmod)--> job', 'job --(nmod:poss)--> her']
+	['happened --(advcl)--> suspended', 'suspended --(nmod)--> Kraft', 'Kraft --(acl:relcl)--> worked', 'worked --(nsubj)--> she']
+
+	* entity-paths for event['job']22_11ecbplus.xmlsent:4367
+	['job --(nmod:poss)--> her']
+
+	* entity-paths for event['suspended']22_11ecbplus.xmlsent:4367
+	['suspended --(nsubjpass)--> employee', 'employee --(appos)--> Hiller']
+	['suspended --(nmod)--> job', 'job --(nmod:poss)--> her']
+	['suspended --(nmod)--> Kraft', 'Kraft --(acl:relcl)--> worked', 'worked --(nsubj)--> she']
+
+	* entity-paths for event['shooting']22_11ecbplus.xmlsent:4367
+
+sentence #:female employee yvonne hiller kills two in kraft shooting 
+	[events]:[['shooting'], ['kills']]
+	[entities]:[['two'], ['yvonne', 'hiller']]
+*R592[kills]
+|--(nsubj)--> R589[hiller]
+|                |--(amod)--> female
+|                |--(compou)--> employee
+|                |--(compou)--> R589[yvonne]
+|--(dobj)--> R593[two]
+|--(nmod)--> *R591[shooting]
+                 |--(case)--> in
+                 |--(compou)--> kraft
+
+	* entity-paths for event['shooting']22_11ecbplus.xmlsent:4365
+
+	* entity-paths for event['kills']22_11ecbplus.xmlsent:4365
+	['Kills --(nsubj)--> Hiller']
+	['Kills --(dobj)--> Two']

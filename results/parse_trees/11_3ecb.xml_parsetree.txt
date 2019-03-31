@@ -1,0 +1,47 @@
+
+-----------------------------------------
+docid:11_3ecb.xml
+-----------------------------------------
+
+sentence #:voters in turkmenistan cast ballots sunday in a parliamentary election hailed by the government as an exercise in democracy but dismissed by critics as a sham . 
+	[events]:[['cast'], ['democracy'], ['election']]
+	[entities]:[['voters'], ['critics'], ['government'], ['turkmenistan'], ['sunday']]
+*R187[cast]
+|--(nsubj)--> R191[voters]
+|                |--(nmod)--> R189[turkmenistan]
+|                                 |--(case)--> in
+|--(dobj)--> ballots
+|--(nmod:t)--> R208[sunday]
+|--(nmod)--> *R193[election]
+|                |--(case)--> in
+|                |--(det)--> a
+|                |--(amod)--> parliamentary
+|                |--(dep)--> hailed
+|                                 |--(nmod)--> R210[government]
+|                                 |                |--(case)--> by
+|                                 |                |--(det)--> the
+|                                 |                |--(nmod)--> exercise
+|                                 |                                 |--(case)--> as
+|                                 |                                 |--(det)--> an
+|                                 |                                 |--(nmod)--> *R211[democracy]
+|                                 |                                                  |--(case)--> in
+|                                 |--(cc)--> but
+|                                 |--(conj)--> dismissed
+|                                                  |--(nmod)--> R212[critics]
+|                                                                   |--(case)--> by
+|                                                                   |--(nmod)--> sham
+|                                                                                    |--(case)--> as
+|                                                                                    |--(det)--> a
+|--(punct)--> .
+
+	* entity-paths for event['cast']11_3ecb.xmlsent:657
+	['cast --(nsubj)--> Voters']
+	['cast --(nmod:tmod)--> Sunday']
+	['cast --(nmod)--> election', 'election --(dep)--> hailed', 'hailed --(nmod)--> government']
+	['cast --(nmod)--> election', 'election --(dep)--> hailed', 'hailed --(conj)--> dismissed', 'dismissed --(nmod)--> critics']
+
+	* entity-paths for event['democracy']11_3ecb.xmlsent:657
+
+	* entity-paths for event['election']11_3ecb.xmlsent:657
+	['election --(dep)--> hailed', 'hailed --(nmod)--> government']
+	['election --(dep)--> hailed', 'hailed --(conj)--> dismissed', 'dismissed --(nmod)--> critics']

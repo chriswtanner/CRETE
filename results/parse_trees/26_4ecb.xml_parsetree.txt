@@ -1,0 +1,118 @@
+
+-----------------------------------------
+docid:26_4ecb.xml
+-----------------------------------------
+
+sentence #:carabinieri paramilitary police in palermo said gaetano lo presti , 52 , hanged himself in his cell in a palermo jail tuesday evening , hours after he was arrested in the raid . 
+	[events]:[['arrested'], ['raid'], ['said'], ['hanged']]
+	[entities]:[['in', 'his', 'cell', 'in', 'a', 'palermo', 'jail'], ['gaetano', 'lo', 'presti'], ['hours'], ['himself'], ['police'], ['he'], ['tuesday', 'evening']]
+*R751[said]
+|--(nsubj)--> R738[police]
+|                |--(compou)--> carabinieri
+|                |--(amod)--> paramilitary
+|                |--(nmod)--> palermo
+|                                 |--(case)--> in
+|--(ccomp)--> *R732[hanged]
+|                |--(nsubj)--> R733[presti]
+|                |                |--(compou)--> R733[gaetano]
+|                |                |--(compou)--> R733[lo]
+|                |                |--(punct)--> ,
+|                |                |--(amod)--> 52
+|                |                |--(punct)--> ,
+|                |--(dobj)--> R733[himself]
+|                |--(nmod)--> R734[cell]
+|                |                |--(case)--> R734[in]
+|                |                |--(nmod:p)--> R734[his]
+|                |                |--(nmod)--> R734[jail]
+|                |                |                |--(case)--> R734[in]
+|                |                |                |--(det)--> R734[a]
+|                |                |                |--(compou)--> R734[palermo]
+|                |                |--(nmod:t)--> R753[tuesday]
+|                |--(nmod:t)--> R753[evening]
+|                |--(punct)--> ,
+|                |--(advcl)--> *R736[arrested]
+|                                 |--(dep)--> R735[hours]
+|                                 |--(mark)--> after
+|                                 |--(nsubjp)--> R733[he]
+|                                 |--(auxpas)--> was
+|                                 |--(nmod)--> *R737[raid]
+|                                                  |--(case)--> in
+|                                                  |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['arrested']26_4ecb.xmlsent:5442
+	['arrested --(dep)--> hours']
+	['arrested --(nsubjpass)--> he']
+
+	* entity-paths for event['raid']26_4ecb.xmlsent:5442
+
+	* entity-paths for event['said']26_4ecb.xmlsent:5442
+	['said --(nsubj)--> police']
+	['said --(ccomp)--> hanged', 'hanged --(nsubj)--> Presti']
+	['said --(ccomp)--> hanged', 'hanged --(dobj)--> himself']
+	['said --(ccomp)--> hanged', 'hanged --(nmod)--> cell']
+	['said --(ccomp)--> hanged', 'hanged --(nmod:tmod)--> evening']
+	['said --(ccomp)--> hanged', 'hanged --(advcl)--> arrested', 'arrested --(dep)--> hours']
+	['said --(ccomp)--> hanged', 'hanged --(advcl)--> arrested', 'arrested --(nsubjpass)--> he']
+
+	* entity-paths for event['hanged']26_4ecb.xmlsent:5442
+	['hanged --(nsubj)--> Presti']
+	['hanged --(dobj)--> himself']
+	['hanged --(nmod)--> cell']
+	['hanged --(nmod:tmod)--> evening']
+	['hanged --(advcl)--> arrested', 'arrested --(dep)--> hours']
+	['hanged --(advcl)--> arrested', 'arrested --(nsubjpass)--> he']
+
+sentence #:the alleged mafia boss of a palermo neighborhood hanged himself in jail , hours after he was arrested in a blitz against cosa nostra , police in sicily said wednesday . 
+	[events]:[['said'], ['arrested'], ['hanged'], ['blitz']]
+	[entities]:[['mafia', 'boss'], ['himself'], ['jail'], ['hours'], ['police'], ['a', 'palermo', 'neighborhood'], ['he'], ['wednesday']]
+*R751[said]
+|--(ccomp)--> *R732[hanged]
+|                |--(nsubj)--> R733[boss]
+|                |                |--(det)--> the
+|                |                |--(amod)--> alleged
+|                |                |--(compou)--> R733[mafia]
+|                |                |--(nmod)--> R755[neighborhood]
+|                |                                 |--(case)--> of
+|                |                                 |--(det)--> R755[a]
+|                |                                 |--(compou)--> R755[palermo]
+|                |--(dobj)--> R733[himself]
+|                |--(nmod)--> R734[jail]
+|                |                |--(case)--> in
+|                |                |--(punct)--> ,
+|                |                |--(appos)--> R735[hours]
+|                |--(advcl)--> *R736[arrested]
+|                                 |--(mark)--> after
+|                                 |--(nsubjp)--> R733[he]
+|                                 |--(auxpas)--> was
+|                                 |--(nmod)--> *R737[blitz]
+|                                                  |--(case)--> in
+|                                                  |--(det)--> a
+|                                                  |--(nmod)--> nostra
+|                                                                   |--(case)--> against
+|                                                                   |--(compou)--> cosa
+|--(punct)--> ,
+|--(nsubj)--> R738[police]
+|                |--(nmod)--> sicily
+|                                 |--(case)--> in
+|--(nmod:t)--> R752[wednesday]
+|--(punct)--> .
+
+	* entity-paths for event['said']26_4ecb.xmlsent:5441
+	['said --(ccomp)--> hanged', 'hanged --(nsubj)--> boss']
+	['said --(ccomp)--> hanged', 'hanged --(dobj)--> himself']
+	['said --(ccomp)--> hanged', 'hanged --(nmod)--> jail']
+	['said --(ccomp)--> hanged', 'hanged --(advcl)--> arrested', 'arrested --(nsubjpass)--> he']
+	['said --(nsubj)--> police']
+	['said --(nmod:tmod)--> Wednesday']
+
+	* entity-paths for event['arrested']26_4ecb.xmlsent:5441
+	['arrested --(nsubjpass)--> he']
+
+	* entity-paths for event['hanged']26_4ecb.xmlsent:5441
+	['hanged --(nsubj)--> boss']
+	['hanged --(dobj)--> himself']
+	['hanged --(nmod)--> jail']
+	['hanged --(advcl)--> arrested', 'arrested --(nsubjpass)--> he']
+
+	* entity-paths for event['blitz']26_4ecb.xmlsent:5441

@@ -1,0 +1,22 @@
+
+-----------------------------------------
+docid:6_7ecb.xml
+-----------------------------------------
+
+sentence #:chris weitz will take on the sequel to " twilight " . 
+	[events]:[['take', 'on']]
+	[entities]:[['twilight'], ['sequel'], ['chris', 'weitz']]
+*R1706[take]
+|--(nsubj)--> R1704[weitz]
+|                |--(compou)--> R1704[chris]
+|--(aux)--> will
+|--(advmod)--> R1703[sequel]
+|                |--(dep)--> *R1706[on]
+|                |--(det)--> the
+|                |--(dep)--> to
+|--(punct)--> "
+|--(dobj)--> R1707[twilight]
+|--(punct)--> "
+|--(punct)--> .
+
+	* entity-paths for event['take', 'on']6_7ecb.xmlsent:14519

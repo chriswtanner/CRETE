@@ -1,0 +1,38 @@
+
+-----------------------------------------
+docid:10_6ecb.xml
+-----------------------------------------
+
+sentence #:the los angeles angels made an eight-year offer to first baseman mark teixeira during winter meetings in las vegas . 
+	[events]:[['made'], ['offer'], ['winter', 'meetings']]
+	[entities]:[['mark', 'teixeira'], ['los', 'angeles', 'angels'], ['las', 'vegas']]
+*R174[made]
+|--(nsubj)--> R175[angels]
+|                |--(det)--> the
+|                |--(compou)--> R175[los]
+|                |--(compou)--> R175[angeles]
+|--(dobj)--> *R176[offer]
+|                |--(det)--> an
+|                |--(amod)--> eight-year
+|--(nmod)--> R163[teixeira]
+|                |--(case)--> to
+|                |--(amod)--> first
+|                |--(compou)--> baseman
+|                |--(compou)--> R163[mark]
+|--(nmod)--> *R182[meetings]
+|                |--(case)--> during
+|                |--(compou)--> *R182[winter]
+|                |--(nmod)--> R183[vegas]
+|                                 |--(case)--> in
+|                                 |--(compou)--> R183[las]
+|--(punct)--> .
+
+	* entity-paths for event['made']10_6ecb.xmlsent:534
+	['made --(nsubj)--> Angels']
+	['made --(nmod)--> Teixeira']
+	['made --(nmod)--> meetings', 'meetings --(nmod)--> Vegas']
+
+	* entity-paths for event['offer']10_6ecb.xmlsent:534
+
+	* entity-paths for event['winter', 'meetings']10_6ecb.xmlsent:534
+	['meetings --(nmod)--> Vegas']

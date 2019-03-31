@@ -1,0 +1,71 @@
+
+-----------------------------------------
+docid:23_9ecbplus.xml
+-----------------------------------------
+
+sentence #:australian ski mountaineer dies in fall in new zealand 
+	[events]:[['fall'], ['dies']]
+	[entities]:[['in', 'new', 'zealand'], ['mountaineer']]
+*R640[dies]
+|--(nsubj)--> R644[mountaineer]
+|                |--(amod)--> australian
+|                |--(compou)--> ski
+|--(nmod)--> *R646[fall]
+                 |--(case)--> in
+                 |--(nmod)--> R650[zealand]
+                                  |--(case)--> R650[in]
+                                  |--(compou)--> R650[new]
+
+	* entity-paths for event['fall']23_9ecbplus.xmlsent:4781
+	['Fall --(nmod)--> Zealand']
+
+	* entity-paths for event['dies']23_9ecbplus.xmlsent:4781
+	['Dies --(nsubj)--> Mountaineer']
+	['Dies --(nmod)--> Fall', 'Fall --(nmod)--> Zealand']
+
+sentence #:a 36 - year - old australian man died on friday after falling 150 meters from a ridge in aoraki / mt . cook national park on new zealand " s south island . 
+	[events]:[['falling'], ['died']]
+	[entities]:[['on', 'friday'], ['a', 'ridge', 'in', 'aoraki', '/', 'mt', '.', 'cook', 'national', 'park', 'on', 'new', 'zealand', '"', 's', 'south', 'island'], ['man']]
+36
+|--(det)--> a
+|--(punct)--> -
+|--(dep)--> year
+|                |--(dep)--> *R640[died]
+|                |                |--(punct)--> -
+|                |                |--(nsubj)--> R644[man]
+|                |                |                |--(amod)--> old
+|                |                |                |--(amod)--> australian
+|                |                |--(nmod)--> R641[friday]
+|                |                |                |--(case)--> R641[on]
+|                |                |--(advcl)--> *R646[falling]
+|                |                |                |--(mark)--> after
+|                |                |                |--(dobj)--> meters
+|                |                |                |                |--(nummod)--> 150
+|                |                |                |--(nmod)--> R647[ridge]
+|                |                |                                 |--(case)--> from
+|                |                |                                 |--(det)--> R647[a]
+|                |                |                                 |--(nmod)--> R647[aoraki]
+|                |                |                                                  |--(case)--> R647[in]
+|                |                |--(punct)--> R647[/]
+|                |--(dep)--> R647[park]
+|                                 |--(compou)--> R647[mt]
+|                                 |--(punct)--> R647[.]
+|                                 |--(compou)--> R647[cook]
+|                                 |--(compou)--> R647[national]
+|                                 |--(nmod)--> R647[zealand]
+|                                                  |--(case)--> R647[on]
+|                                                  |--(compou)--> R647[new]
+|                                                  |--(punct)--> R647["]
+|                                                  |--(acl:re)--> R647[island]
+|                                                                   |--(cop)--> R647[s]
+|                                                                   |--(compou)--> R647[south]
+|--(punct)--> .
+
+	* entity-paths for event['falling']23_9ecbplus.xmlsent:4783
+	['falling --(nmod)--> ridge']
+
+	* entity-paths for event['died']23_9ecbplus.xmlsent:4783
+	['died --(nsubj)--> man']
+	['died --(nmod)--> Friday']
+	['died --(advcl)--> falling', 'falling --(nmod)--> ridge']
+	['died --(punct)--> /']

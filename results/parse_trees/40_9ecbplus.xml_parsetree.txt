@@ -1,0 +1,41 @@
+
+-----------------------------------------
+docid:40_9ecbplus.xml
+-----------------------------------------
+
+sentence #:apple has unveiled its new flagship laptop : the next generation macbook pro . 
+	[events]:[['unveiled']]
+	[entities]:[['its'], ['laptop'], ['next', 'generation', 'macbook', 'pro'], ['apple']]
+*R1410[unveiled]
+|--(nsubj)--> R1405[apple]
+|--(aux)--> has
+|--(dobj)--> R1414[laptop]
+|                |--(nmod:p)--> R1405[its]
+|                |--(amod)--> new
+|                |--(compou)--> flagship
+|                |--(punct)--> :
+|                |--(dep)--> R1414[macbook]
+|                                 |--(det)--> the
+|                                 |--(amod)--> R1414[next]
+|                                 |--(compou)--> R1414[generation]
+|                                 |--(dep)--> R1414[pro]
+|--(punct)--> .
+
+	* entity-paths for event['unveiled']40_9ecbplus.xmlsent:12057
+	['unveiled --(nsubj)--> Apple']
+	['unveiled --(dobj)--> laptop']
+
+sentence #:apple unveils new flagship macbook pro 
+	[events]:[['unveils']]
+	[entities]:[['macbook', 'pro'], ['apple']]
+*R1410[unveils]
+|--(compou)--> R1405[apple]
+|--(dep)--> R1414[macbook]
+|                |--(compou)--> new
+|                |--(compou)--> flagship
+|--(dep)--> R1414[pro]
+
+	* entity-paths for event['unveils']40_9ecbplus.xmlsent:12054
+	['Unveils --(compound)--> Apple']
+	['Unveils --(dep)--> Macbook']
+	['Unveils --(dep)--> Pro']

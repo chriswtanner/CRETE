@@ -1,0 +1,50 @@
+
+-----------------------------------------
+docid:16_2ecb.xml
+-----------------------------------------
+
+sentence #:two possible gang members were arrested in the fatal shooting of a sheriff 's deputy who was murdered as he was gettingready to go to work , officials announced saturday . 
+	[events]:[['arrested'], ['murdered'], ['gettingready']]
+	[entities]:[['he'], ['saturday'], ['deputy'], ['gang', 'members']]
+announced
+|--(ccomp)--> *R326[arrested]
+|                |--(nsubjp)--> R327[members]
+|                |                |--(nummod)--> two
+|                |                |--(amod)--> possible
+|                |                |--(compou)--> R327[gang]
+|                |--(auxpas)--> were
+|                |--(nmod)--> shooting
+|                                 |--(case)--> in
+|                                 |--(det)--> the
+|                                 |--(amod)--> fatal
+|                                 |--(nmod)--> R329[deputy]
+|                                 |                |--(case)--> of
+|                                 |                |--(nmod:p)--> sheriff
+|                                 |                                 |--(det)--> a
+|                                 |                                 |--(case)--> 's
+|                                 |--(acl:re)--> *R328[murdered]
+|                                                  |--(nsubjp)--> who
+|                                                  |--(auxpas)--> was
+|                                                  |--(advcl)--> *R340[gettingready]
+|                                                                   |--(mark)--> as
+|                                                                   |--(nsubj)--> R329[he]
+|                                                                   |--(cop)--> was
+|                                                                   |--(xcomp)--> go
+|                                                                                    |--(mark)--> to
+|                                                                                    |--(xcomp)--> work
+|                                                                                                     |--(mark)--> to
+|--(punct)--> ,
+|--(nsubj)--> officials
+|--(nmod:t)--> R332[saturday]
+|--(punct)--> .
+
+	* entity-paths for event['arrested']16_2ecb.xmlsent:1946
+	['arrested --(nsubjpass)--> members']
+	['arrested --(nmod)--> shooting', 'shooting --(nmod)--> deputy']
+	['arrested --(nmod)--> shooting', 'shooting --(acl:relcl)--> murdered', 'murdered --(advcl)--> gettingready', 'gettingready --(nsubj)--> he']
+
+	* entity-paths for event['murdered']16_2ecb.xmlsent:1946
+	['murdered --(advcl)--> gettingready', 'gettingready --(nsubj)--> he']
+
+	* entity-paths for event['gettingready']16_2ecb.xmlsent:1946
+	['gettingready --(nsubj)--> he']

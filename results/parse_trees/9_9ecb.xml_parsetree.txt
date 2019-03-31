@@ -1,0 +1,76 @@
+
+-----------------------------------------
+docid:9_9ecb.xml
+-----------------------------------------
+
+sentence #:in a move environmental groups says strikes at the heart of the endangered species act , the bush administration on thursday announced a new rule that would let federal agencies decide on their own whether their projects harm endangered species , instead of requiring them in many cases to get a second opinion from federal wildlife experts . 
+	[events]:[['announced']]
+	[entities]:[['experts'], ['them'], ['projects'], ['endangered', 'species', 'act'], ['environmental', 'groups'], ['bush', 'administration'], ['thursday'], ['rule'], ['federal', 'agencies'], ['species']]
+*R1821[announced]
+|--(nmod)--> move
+|                |--(case)--> in
+|                |--(det)--> a
+|                |--(acl:re)--> says
+|                                 |--(nsubj)--> R1818[groups]
+|                                 |                |--(amod)--> R1818[environmental]
+|                                 |--(dobj)--> strikes
+|                                 |--(nmod)--> heart
+|                                                  |--(case)--> at
+|                                                  |--(det)--> the
+|                                                  |--(nmod)--> R1800[act]
+|                                                                   |--(case)--> of
+|                                                                   |--(det)--> the
+|                                                                   |--(compou)--> R1800[endangered]
+|                                                                   |--(compou)--> R1800[species]
+|--(punct)--> ,
+|--(nsubj)--> R1795[administration]
+|                |--(det)--> the
+|                |--(compou)--> R1795[bush]
+|                |--(nmod)--> R1810[thursday]
+|                                 |--(case)--> on
+|--(ccomp)--> decide
+|                |--(nsubj)--> R1802[rule]
+|                |                |--(det)--> a
+|                |                |--(amod)--> new
+|                |                |--(acl:re)--> let
+|                |                                 |--(nsubj)--> that
+|                |                                 |--(aux)--> would
+|                |                                 |--(dobj)--> R1809[agencies]
+|                |                                                  |--(amod)--> R1809[federal]
+|                |--(nmod)--> own
+|                |                |--(case)--> on
+|                |                |--(nmod:p)--> their
+|                |--(ccomp)--> harm
+|                                 |--(mark)--> whether
+|                                 |--(nsubj)--> R1814[projects]
+|                                 |                |--(nmod:p)--> their
+|                                 |--(dobj)--> R1805[species]
+|                                 |                |--(amod)--> endangered
+|                                 |--(punct)--> ,
+|                                 |--(advcl)--> requiring
+|                                                  |--(mark)--> instead
+|                                                  |                |--(mwe)--> of
+|                                                  |--(dobj)--> R1809[them]
+|                                                  |--(nmod)--> cases
+|                                                  |                |--(case)--> in
+|                                                  |                |--(amod)--> many
+|                                                  |--(xcomp)--> get
+|                                                                   |--(mark)--> to
+|                                                                   |--(dobj)--> opinion
+|                                                                   |                |--(det)--> a
+|                                                                   |                |--(amod)--> second
+|                                                                   |--(nmod)--> R1813[experts]
+|                                                                                    |--(case)--> from
+|                                                                                    |--(amod)--> federal
+|                                                                                    |--(compou)--> wildlife
+|--(punct)--> .
+
+	* entity-paths for event['announced']9_9ecb.xmlsent:15783
+	['announced --(nmod)--> move', 'move --(acl:relcl)--> says', 'says --(nsubj)--> groups']
+	['announced --(nmod)--> move', 'move --(acl:relcl)--> says', 'says --(nmod)--> heart', 'heart --(nmod)--> Act']
+	['announced --(nsubj)--> administration']
+	['announced --(ccomp)--> decide', 'decide --(nsubj)--> rule']
+	['announced --(ccomp)--> decide', 'decide --(ccomp)--> harm', 'harm --(nsubj)--> projects']
+	['announced --(ccomp)--> decide', 'decide --(ccomp)--> harm', 'harm --(dobj)--> species']
+	['announced --(ccomp)--> decide', 'decide --(ccomp)--> harm', 'harm --(advcl)--> requiring', 'requiring --(dobj)--> them']
+	['announced --(ccomp)--> decide', 'decide --(ccomp)--> harm', 'harm --(advcl)--> requiring', 'requiring --(xcomp)--> get', 'get --(nmod)--> experts']

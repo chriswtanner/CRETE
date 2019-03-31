@@ -1,0 +1,42 @@
+
+-----------------------------------------
+docid:19_1ecb.xml
+-----------------------------------------
+
+sentence #:fresh riots were reported in greece on saturday december 13 2008 in protest at the killing by police of a 15-year-old boy , alexandros grigoropoulos , eight days ago . 
+	[events]:[['riots'], ['killing']]
+	[entities]:[['eight', 'days', 'ago'], ['in', 'greece'], ['police'], ['alexandros', 'grigoropoulos'], ['on', 'saturday', 'december', '13', '2008']]
+reported
+|--(nsubjp)--> *R433[riots]
+|                |--(amod)--> fresh
+|--(auxpas)--> were
+|--(nmod)--> R409[greece]
+|                |--(case)--> R409[in]
+|                |--(nmod)--> R436[december]
+|                                 |--(case)--> R436[on]
+|                                 |--(compou)--> R436[saturday]
+|--(nmod)--> R436[2008]
+|                |--(nummod)--> R436[13]
+|                |--(case)--> in
+|                |--(dep)--> protest
+|                                 |--(nmod)--> *R403[killing]
+|                                                  |--(case)--> at
+|                                                  |--(det)--> the
+|--(nmod)--> R404[police]
+|                |--(case)--> by
+|                |--(nmod)--> boy
+|                |                |--(case)--> of
+|                |                |--(det)--> a
+|                |                |--(amod)--> 15-year-old
+|                |                |--(punct)--> ,
+|                |                |--(appos)--> R402[grigoropoulos]
+|                |                                 |--(compou)--> R402[alexandros]
+|                |--(punct)--> ,
+|                |--(advmod)--> R406[ago]
+|                                 |--(nmod:n)--> R406[days]
+|                                                  |--(nummod)--> R406[eight]
+|--(punct)--> .
+
+	* entity-paths for event['riots']19_1ecb.xmlsent:2881
+
+	* entity-paths for event['killing']19_1ecb.xmlsent:2881

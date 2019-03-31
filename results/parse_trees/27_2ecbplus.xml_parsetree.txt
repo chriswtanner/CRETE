@@ -1,0 +1,23 @@
+
+-----------------------------------------
+docid:27_2ecbplus.xml
+-----------------------------------------
+
+sentence #:microsoft releases out - of - cycle patch for ie flaw 
+	[events]:[['releases']]
+	[entities]:[['patch'], ['microsoft'], ['ie', 'flaw']]
+*R779[releases]
+|--(nsubj)--> R764[microsoft]
+|--(compou)--> out
+|--(punct)--> -
+|--(advcl)--> R780[patch]
+                 |--(case)--> of
+                 |--(punct)--> -
+                 |--(compou)--> cycle
+                 |--(nmod)--> R777[flaw]
+                                  |--(case)--> for
+                                  |--(amod)--> R777[ie]
+
+	* entity-paths for event['releases']27_2ecbplus.xmlsent:5818
+	['releases --(nsubj)--> Microsoft']
+	['releases --(advcl)--> patch']

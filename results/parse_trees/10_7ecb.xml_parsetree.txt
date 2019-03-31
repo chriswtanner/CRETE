@@ -1,0 +1,71 @@
+
+-----------------------------------------
+docid:10_7ecb.xml
+-----------------------------------------
+
+sentence #:according to a report in the los angeles times , the angels have made an offer to the free agent first baseman that would be the biggest contract in the history of the franchise , surpassing the $ 90 million deal they gave to torii hunter last season . 
+	[events]:[['offer'], ['history'], ['made']]
+	[entities]:[['contract'], ['franchise'], ['baseman'], ['los', 'angeles', 'times'], ['the', 'angels'], ['they']]
+*R174[made]
+|--(nmod)--> report
+|                |--(case)--> according
+|                |                |--(mwe)--> to
+|                |--(det)--> a
+|                |--(nmod)--> R179[times]
+|                                 |--(case)--> in
+|                                 |--(det)--> the
+|                                 |--(compou)--> R179[los]
+|                                 |--(compou)--> R179[angeles]
+|--(punct)--> ,
+|--(nsubj)--> R175[angels]
+|                |--(det)--> R175[the]
+|--(aux)--> have
+|--(dobj)--> *R176[offer]
+|                |--(det)--> an
+|                |--(nmod)--> R163[baseman]
+|                |                |--(case)--> to
+|                |                |--(det)--> the
+|                |                |--(amod)--> free
+|                |                |--(compou)--> agent
+|                |                |--(amod)--> first
+|                |--(acl:re)--> R181[contract]
+|                                 |--(nsubj)--> that
+|                                 |--(aux)--> would
+|                                 |--(cop)--> be
+|                                 |--(det)--> the
+|                                 |--(amod)--> biggest
+|                                 |--(nmod)--> *R168[history]
+|                                                  |--(case)--> in
+|                                                  |--(det)--> the
+|                                                  |--(nmod)--> R175[franchise]
+|                                                                   |--(case)--> of
+|                                                                   |--(det)--> the
+|--(punct)--> ,
+|--(advcl)--> surpassing
+|                |--(dobj)--> deal
+|                                 |--(det)--> the
+|                                 |--(amod)--> $
+|                                 |                |--(nummod)--> million
+|                                 |                                 |--(compou)--> 90
+|                                 |--(acl:re)--> gave
+|                                                  |--(nsubj)--> R175[they]
+|                                                  |--(nmod)--> hunter
+|                                                  |                |--(case)--> to
+|                                                  |                |--(compou)--> torii
+|                                                  |--(nmod:t)--> season
+|                                                                   |--(amod)--> last
+|--(punct)--> .
+
+	* entity-paths for event['offer']10_7ecb.xmlsent:561
+	['offer --(nmod)--> baseman']
+	['offer --(acl:relcl)--> contract']
+
+	* entity-paths for event['history']10_7ecb.xmlsent:561
+	['history --(nmod)--> franchise']
+
+	* entity-paths for event['made']10_7ecb.xmlsent:561
+	['made --(nmod)--> report', 'report --(nmod)--> Times']
+	['made --(nsubj)--> Angels']
+	['made --(dobj)--> offer', 'offer --(nmod)--> baseman']
+	['made --(dobj)--> offer', 'offer --(acl:relcl)--> contract']
+	['made --(advcl)--> surpassing', 'surpassing --(dobj)--> deal', 'deal --(acl:relcl)--> gave', 'gave --(nsubj)--> they']

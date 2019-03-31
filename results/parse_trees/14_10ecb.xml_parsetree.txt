@@ -1,0 +1,42 @@
+
+-----------------------------------------
+docid:14_10ecb.xml
+-----------------------------------------
+
+sentence #:a fire that ripped through a waitrose store in surrey is being treated as " potentially suspicious " , police said . 
+	[events]:[['fire'], ['ripped'], ['treated']]
+	[entities]:[['a', 'waitrose', 'store'], ['in', 'surrey'], ['police']]
+said
+|--(ccomp)--> *R295[treated]
+|                |--(nsubjp)--> *R296[fire]
+|                |                |--(det)--> a
+|                |                |--(acl:re)--> *R297[ripped]
+|                |                                 |--(nsubj)--> that
+|                |                                 |--(nmod)--> R298[store]
+|                |                                 |                |--(case)--> through
+|                |                                 |                |--(det)--> R298[a]
+|                |                                 |                |--(compou)--> R298[waitrose]
+|                |                                 |--(nmod)--> R299[surrey]
+|                |                                                  |--(case)--> R299[in]
+|                |--(aux)--> is
+|                |--(auxpas)--> being
+|                |--(nmod)--> as
+|                |--(punct)--> "
+|                |--(advcl)--> suspicious
+|                |                |--(advmod)--> potentially
+|                |--(punct)--> "
+|--(punct)--> ,
+|--(nsubj)--> R300[police]
+|--(punct)--> .
+
+	* entity-paths for event['fire']14_10ecb.xmlsent:1671
+	['fire --(acl:relcl)--> ripped', 'ripped --(nmod)--> store']
+	['fire --(acl:relcl)--> ripped', 'ripped --(nmod)--> Surrey']
+
+	* entity-paths for event['ripped']14_10ecb.xmlsent:1671
+	['ripped --(nmod)--> store']
+	['ripped --(nmod)--> Surrey']
+
+	* entity-paths for event['treated']14_10ecb.xmlsent:1671
+	['treated --(nsubjpass)--> fire', 'fire --(acl:relcl)--> ripped', 'ripped --(nmod)--> store']
+	['treated --(nsubjpass)--> fire', 'fire --(acl:relcl)--> ripped', 'ripped --(nmod)--> Surrey']

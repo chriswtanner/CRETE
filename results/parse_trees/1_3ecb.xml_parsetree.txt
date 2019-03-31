@@ -1,0 +1,36 @@
+
+-----------------------------------------
+docid:1_3ecb.xml
+-----------------------------------------
+
+sentence #:the american pie actress and velvet-rope fixture has checked into promises treatment center in malibu , according to her publicist , jack ketsoyan . 
+	[events]:[['checked', 'into'], ['according', 'to']]
+	[entities]:[['jack', 'ketsoyan'], ['promises', 'treatment', 'center', 'in', 'malibu'], ['american', 'pie'], ['velvet-rope', 'fixture'], ['actress']]
+*R1[checked]
+|--(nsubj)--> R2[actress]
+|                |--(det)--> the
+|                |--(amod)--> R84[american]
+|                |--(compou)--> R84[pie]
+|                |--(cc)--> and
+|                |--(conj)--> R2[fixture]
+|                                 |--(amod)--> R2[velvet-rope]
+|--(aux)--> has
+|--(nmod)--> *R1[into]
+|--(parata)--> R3[promises]
+|                |--(nsubj)--> R3[center]
+|                |                |--(compou)--> R3[treatment]
+|                |                |--(nmod)--> R3[malibu]
+|                |                                 |--(case)--> R3[in]
+|                |--(punct)--> ,
+|--(nmod)--> publicist
+|                |--(case)--> *R0[according]
+|                |                |--(mwe)--> *R0[to]
+|                |--(nmod:p)--> her
+|                |--(punct)--> ,
+|                |--(appos)--> R4[ketsoyan]
+|                                 |--(compou)--> R4[jack]
+|--(punct)--> .
+
+	* entity-paths for event['checked', 'into']1_3ecb.xmlsent:204
+
+	* entity-paths for event['according', 'to']1_3ecb.xmlsent:204

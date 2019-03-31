@@ -1,0 +1,43 @@
+
+-----------------------------------------
+docid:13_10ecbplus.xml
+-----------------------------------------
+
+sentence #:the fire that destroyed the original matanuska maid dairy warehouse in palmer on tuesday took a piece of alaska " s history . 
+	[events]:[['destroyed'], ['fire'], ['history']]
+	[entities]:[['in', 'palmer'], ['matanuska', 'maid', 'dairy', 'warehouse'], ['on', 'tuesday']]
+took
+|--(nsubj)--> *R263[fire]
+|                |--(det)--> the
+|                |--(acl:re)--> *R264[destroyed]
+|                                 |--(nsubj)--> that
+|                                 |--(dobj)--> R265[warehouse]
+|                                 |                |--(det)--> the
+|                                 |                |--(amod)--> original
+|                                 |                |--(compou)--> R265[matanuska]
+|                                 |                |--(compou)--> R265[maid]
+|                                 |                |--(compou)--> R265[dairy]
+|                                 |--(nmod)--> R266[palmer]
+|                                 |                |--(case)--> R266[in]
+|                                 |--(nmod)--> R267[tuesday]
+|                                                  |--(case)--> R267[on]
+|--(ccomp)--> *R268[history]
+|                |--(nsubj)--> piece
+|                |                |--(det)--> a
+|                |                |--(nmod)--> alaska
+|                |                                 |--(case)--> of
+|                |--(punct)--> "
+|                |--(cop)--> s
+|--(punct)--> .
+
+	* entity-paths for event['destroyed']13_10ecbplus.xmlsent:1162
+	['destroyed --(dobj)--> warehouse']
+	['destroyed --(nmod)--> Palmer']
+	['destroyed --(nmod)--> Tuesday']
+
+	* entity-paths for event['fire']13_10ecbplus.xmlsent:1162
+	['fire --(acl:relcl)--> destroyed', 'destroyed --(dobj)--> warehouse']
+	['fire --(acl:relcl)--> destroyed', 'destroyed --(nmod)--> Palmer']
+	['fire --(acl:relcl)--> destroyed', 'destroyed --(nmod)--> Tuesday']
+
+	* entity-paths for event['history']13_10ecbplus.xmlsent:1162

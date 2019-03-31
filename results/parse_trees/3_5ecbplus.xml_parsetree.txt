@@ -1,0 +1,110 @@
+
+-----------------------------------------
+docid:3_5ecbplus.xml
+-----------------------------------------
+
+sentence #:comeaux was in a wheelchair monday when he pulled a gun on two guards during a transfer from a unit in huntsville to one in beaumont . 
+	[events]:[['pulled'], ['transfer']]
+	[entities]:[['monday'], ['guards'], ['one', 'in', 'beaumont'], ['a', 'unit', 'in', 'huntsville'], ['comeaux'], ['gun']]
+wheelchair
+|--(nsubj)--> R890[comeaux]
+|--(cop)--> was
+|--(case)--> in
+|--(det)--> a
+|--(nmod:t)--> R914[monday]
+|--(advcl)--> *R898[pulled]
+|                |--(advmod)--> when
+|                |--(nsubj)--> he
+|                |--(dobj)--> R899[gun]
+|                |                |--(det)--> a
+|                |--(nmod)--> R900[guards]
+|                |                |--(case)--> on
+|                |                |--(nummod)--> two
+|                |--(nmod)--> *R894[transfer]
+|                |                |--(case)--> during
+|                |                |--(det)--> a
+|                |                |--(nmod)--> R897[unit]
+|                |                                 |--(case)--> from
+|                |                                 |--(det)--> R897[a]
+|                |                                 |--(nmod)--> R897[huntsville]
+|                |                                                  |--(case)--> R897[in]
+|                |--(nmod)--> R901[one]
+|                                 |--(case)--> to
+|                                 |--(nmod)--> R901[beaumont]
+|                                                  |--(case)--> R901[in]
+|--(punct)--> .
+
+	* entity-paths for event['pulled']3_5ecbplus.xmlsent:7564
+	['pulled --(dobj)--> gun']
+	['pulled --(nmod)--> guards']
+	['pulled --(nmod)--> transfer', 'transfer --(nmod)--> unit']
+	['pulled --(nmod)--> one']
+
+	* entity-paths for event['transfer']3_5ecbplus.xmlsent:7564
+	['transfer --(nmod)--> unit']
+
+sentence #:texas convict arcade joseph comeaux jr . , riding in wheelchair , pulls gun on guards , escapes on foot 
+	[events]:[['escapes'], ['riding'], ['pulls']]
+	[entities]:[['guards'], ['arcade', 'joseph', 'comeaux', 'jr'], ['gun'], ['wheelchair']]
+texas
+|--(dep)--> convict
+                 |--(ccomp)--> *R898[pulls]
+                 |                |--(nsubj)--> R890[jr]
+                 |                |                |--(compou)--> R890[arcade]
+                 |                |                |--(compou)--> R890[joseph]
+                 |                |                |--(compou)--> R890[comeaux]
+                 |                |                |--(punct)--> .
+                 |                |                |--(punct)--> ,
+                 |                |                |--(acl)--> *R942[riding]
+                 |                |                |                |--(nmod)--> R929[wheelchair]
+                 |                |                |                                 |--(case)--> in
+                 |                |                |--(punct)--> ,
+                 |                |--(dobj)--> R899[gun]
+                 |                                 |--(nmod)--> R900[guards]
+                 |                                                  |--(case)--> on
+                 |--(punct)--> ,
+                 |--(dep)--> *R893[escapes]
+                 |--(nmod)--> foot
+                                  |--(case)--> on
+
+	* entity-paths for event['escapes']3_5ecbplus.xmlsent:7560
+
+	* entity-paths for event['riding']3_5ecbplus.xmlsent:7560
+	['riding --(nmod)--> wheelchair']
+
+	* entity-paths for event['pulls']3_5ecbplus.xmlsent:7560
+	['pulls --(nsubj)--> Jr']
+	['pulls --(dobj)--> gun']
+
+sentence #:both guards were released after being forced to drive to the baytown area , where comeaux ran way . 
+	[events]:[['forced'], ['ran'], ['drive']]
+	[entities]:[['to', 'the', 'baytown', 'area'], ['comeaux'], ['guards']]
+released
+|--(nsubjp)--> R900[guards]
+|                |--(det)--> both
+|--(auxpas)--> were
+|--(advcl)--> *R943[forced]
+|                |--(mark)--> after
+|                |--(auxpas)--> being
+|                |--(xcomp)--> *R944[drive]
+|                |                |--(mark)--> to
+|                |                |--(nmod)--> R945[area]
+|                |                                 |--(case)--> R945[to]
+|                |                                 |--(det)--> R945[the]
+|                |                                 |--(compou)--> R945[baytown]
+|                |--(punct)--> ,
+|                |--(advcl)--> *R893[ran]
+|                                 |--(advmod)--> where
+|                                 |--(nsubj)--> R890[comeaux]
+|                                 |--(dobj)--> way
+|--(punct)--> .
+
+	* entity-paths for event['forced']3_5ecbplus.xmlsent:7565
+	['forced --(xcomp)--> drive', 'drive --(nmod)--> area']
+	['forced --(advcl)--> ran', 'ran --(nsubj)--> Comeaux']
+
+	* entity-paths for event['ran']3_5ecbplus.xmlsent:7565
+	['ran --(nsubj)--> Comeaux']
+
+	* entity-paths for event['drive']3_5ecbplus.xmlsent:7565
+	['drive --(nmod)--> area']

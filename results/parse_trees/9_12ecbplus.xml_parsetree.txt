@@ -1,0 +1,29 @@
+
+-----------------------------------------
+docid:9_12ecbplus.xml
+-----------------------------------------
+
+sentence #:obama white house reverses bush rule on protection of endangered species 
+	[events]:[['reverses'], ['endangered'], ['protection']]
+	[entities]:[['obama', 'white', 'house'], ['rule'], ['species'], ['bush']]
+*R1798[reverses]
+|--(nsubj)--> R1133[house]
+|                |--(compou)--> R1133[obama]
+|                |--(compou)--> R1133[white]
+|--(dobj)--> R1802[rule]
+|                |--(compou)--> R1803[bush]
+|--(nmod)--> *R1804[protection]
+                 |--(case)--> on
+                 |--(nmod)--> R1805[species]
+                                  |--(case)--> of
+                                  |--(amod)--> *R1806[endangered]
+
+	* entity-paths for event['reverses']9_12ecbplus.xmlsent:15342
+	['reverses --(nsubj)--> House']
+	['reverses --(dobj)--> rule']
+	['reverses --(nmod)--> protection', 'protection --(nmod)--> species']
+
+	* entity-paths for event['endangered']9_12ecbplus.xmlsent:15342
+
+	* entity-paths for event['protection']9_12ecbplus.xmlsent:15342
+	['protection --(nmod)--> species']

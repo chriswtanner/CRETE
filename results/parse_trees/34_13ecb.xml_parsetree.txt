@@ -1,0 +1,72 @@
+
+-----------------------------------------
+docid:34_13ecb.xml
+-----------------------------------------
+
+sentence #:according to the washington post 's howard kurtz , it 's fact , and as long as the cnn doc can accustom himself to making white house money rather than cable-news money , he 's expected to accept . 
+	[events]:[['accept']]
+	[entities]:[['doc'], ['he']]
+fact
+|--(nmod)--> kurtz
+|                |--(case)--> according
+|                |                |--(mwe)--> to
+|                |--(nmod:p)--> post
+|                |                |--(det)--> the
+|                |                |--(compou)--> washington
+|                |                |--(case)--> 's
+|                |--(compou)--> howard
+|--(punct)--> ,
+|--(nsubj)--> it
+|--(cop)--> 's
+|--(punct)--> ,
+|--(cc)--> and
+|--(conj)--> expected
+|                |--(advmod)--> long
+|                |                |--(advmod)--> as
+|                |                |--(ccomp)--> accustom
+|                |                                 |--(mark)--> as
+|                |                                 |--(nsubj)--> R1130[doc]
+|                |                                 |                |--(det)--> the
+|                |                                 |                |--(compou)--> cnn
+|                |                                 |--(aux)--> can
+|                |                                 |--(dobj)--> himself
+|                |                                 |--(advcl)--> making
+|                |                                                  |--(mark)--> to
+|                |                                                  |--(dobj)--> money
+|                |                                                                   |--(compou)--> white
+|                |                                                                   |--(compou)--> house
+|                |                                                                   |--(cc)--> rather
+|                |                                                                   |                |--(mwe)--> than
+|                |                                                                   |--(conj)--> money
+|                |                                                                                    |--(amod)--> cable-news
+|                |--(punct)--> ,
+|                |--(nsubjp)--> R1130[he]
+|                |--(auxpas)--> 's
+|                |--(xcomp)--> *R1140[accept]
+|                                 |--(mark)--> to
+|--(punct)--> .
+
+	* entity-paths for event['accept']34_13ecb.xmlsent:9365
+
+sentence #:barack obama to name dr. sanjay gupta surgeon general : onion headline or actual news ? 
+	[events]:[['name']]
+	[entities]:[['surgeon', 'general'], ['barack', 'obama'], ['dr.', 'sanjay', 'gupta']]
+R1136[obama]
+|--(compou)--> R1136[barack]
+|--(acl)--> *R1132[name]
+|                |--(mark)--> to
+|                |--(dobj)--> R1135[general]
+|                                 |--(compou)--> R1130[dr.]
+|                                 |--(compou)--> R1130[sanjay]
+|                                 |--(compou)--> R1130[gupta]
+|                                 |--(compou)--> R1135[surgeon]
+|--(punct)--> :
+|--(dep)--> headline
+|                |--(compou)--> onion
+|                |--(cc)--> or
+|                |--(conj)--> news
+|                                 |--(amod)--> actual
+|--(punct)--> ?
+
+	* entity-paths for event['name']34_13ecb.xmlsent:9364
+	['Name --(dobj)--> General']

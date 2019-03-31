@@ -1,0 +1,51 @@
+
+-----------------------------------------
+docid:39_9ecb.xml
+-----------------------------------------
+
+sentence #:the guy is relatively unknown and the skeptics wondered if the right person was chosen . 
+	[events]:[['chosen'], ['unknown']]
+	[entities]:[['guy']]
+*R1362[unknown]
+|--(nsubj)--> R1328[guy]
+|                |--(det)--> the
+|--(cop)--> is
+|--(advmod)--> relatively
+|--(cc)--> and
+|--(conj)--> wondered
+|                |--(nsubj)--> skeptics
+|                |                |--(det)--> the
+|                |--(advcl)--> *R1344[chosen]
+|                                 |--(mark)--> if
+|                                 |--(nsubjp)--> person
+|                                 |                |--(det)--> the
+|                                 |                |--(amod)--> right
+|                                 |--(auxpas)--> was
+|--(punct)--> .
+
+	* entity-paths for event['chosen']39_9ecb.xmlsent:11132
+
+	* entity-paths for event['unknown']39_9ecb.xmlsent:11132
+	['unknown --(nsubj)--> guy']
+
+sentence #:26-year-old matt smith has been cast as the next incarnation of the doctor . 
+	[events]:[['cast']]
+	[entities]:[['doctor'], ['incarnation'], ['matt', 'smith']]
+*R1344[cast]
+|--(nsubjp)--> R1328[smith]
+|                |--(amod)--> 26-year-old
+|                |--(compou)--> R1328[matt]
+|--(aux)--> has
+|--(auxpas)--> been
+|--(nmod)--> R1338[incarnation]
+|                |--(case)--> as
+|                |--(det)--> the
+|                |--(amod)--> next
+|                |--(nmod)--> R1329[doctor]
+|                                 |--(case)--> of
+|                                 |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['cast']39_9ecb.xmlsent:11130
+	['cast --(nsubjpass)--> Smith']
+	['cast --(nmod)--> incarnation']

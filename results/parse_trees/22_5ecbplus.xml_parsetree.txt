@@ -1,0 +1,73 @@
+
+-----------------------------------------
+docid:22_5ecbplus.xml
+-----------------------------------------
+
+sentence #:yvonne hiller , who has been arrested and charged with the kraft shooting of her co - workers at kraft foods yesterday evening has been revealed to be a muslim who was very spiritual . 
+	[events]:[['spiritual'], ['charged'], ['shooting'], ['arrested']]
+	[entities]:[['co', '-', 'workers'], ['yvonne', 'hiller'], ['at', 'kraft', 'foods'], ['yesterday', 'evening'], ['who']]
+R589[hiller]
+|--(compou)--> R589[yvonne]
+|--(punct)--> ,
+|--(acl:re)--> *R627[arrested]
+|                |--(nsubjp)--> who
+|                |--(aux)--> has
+|                |--(auxpas)--> been
+|                |--(cc)--> and
+|                |--(conj)--> *R596[charged]
+|                |--(nmod)--> *R591[shooting]
+|                                 |--(case)--> with
+|                                 |--(det)--> the
+|                                 |--(compou)--> kraft
+|                                 |--(nmod)--> R604[co]
+|                                                  |--(case)--> of
+|                                                  |--(nmod:p)--> her
+|--(punct)--> R604[-]
+|--(parata)--> revealed
+|                |--(nsubjp)--> R604[workers]
+|                |                |--(nmod)--> R594[evening]
+|                |                                 |--(case)--> R599[at]
+|                |                                 |--(compou)--> R599[kraft]
+|                |                                 |--(compou)--> R599[foods]
+|                |                                 |--(compou)--> R594[yesterday]
+|                |--(aux)--> has
+|                |--(auxpas)--> been
+|                |--(xcomp)--> muslim
+|                                 |--(mark)--> to
+|                                 |--(cop)--> be
+|                                 |--(det)--> a
+|                                 |--(acl:re)--> *R630[spiritual]
+|                                                  |--(nsubj)--> R589[who]
+|                                                  |--(cop)--> was
+|                                                  |--(advmod)--> very
+|--(punct)--> .
+
+	* entity-paths for event['spiritual']22_5ecbplus.xmlsent:4521
+	['spiritual --(nsubj)--> who']
+
+	* entity-paths for event['charged']22_5ecbplus.xmlsent:4521
+
+	* entity-paths for event['shooting']22_5ecbplus.xmlsent:4521
+	['shooting --(nmod)--> co']
+
+	* entity-paths for event['arrested']22_5ecbplus.xmlsent:4521
+	['arrested --(nmod)--> shooting', 'shooting --(nmod)--> co']
+
+sentence #:yvonne hiller , accused in kraft shooting , is a muslim 
+	[events]:[['shooting'], ['accused']]
+	[entities]:[['yvonne', 'hiller']]
+muslim
+|--(nsubj)--> R589[hiller]
+|                |--(compou)--> R589[yvonne]
+|                |--(punct)--> ,
+|                |--(appos)--> *R623[accused]
+|                |                |--(nmod)--> *R591[shooting]
+|                |                                 |--(case)--> in
+|                |                                 |--(compou)--> kraft
+|                |--(punct)--> ,
+|--(cop)--> is
+|--(det)--> a
+
+	* entity-paths for event['shooting']22_5ecbplus.xmlsent:4519
+
+	* entity-paths for event['accused']22_5ecbplus.xmlsent:4519

@@ -1,0 +1,64 @@
+
+-----------------------------------------
+docid:34_4ecbplus.xml
+-----------------------------------------
+
+sentence #:the doctor is ( finally ) in : obama to nominate regina benjamin as surgeon general 
+	[events]:[['nominate']]
+	[entities]:[['obama'], ['surgeon', 'general'], ['regina', 'benjamin']]
+doctor
+|--(det)--> the
+|--(acl:re)--> is
+|                |--(dep)--> finally
+|                                 |--(punct)--> (
+|                                 |--(punct)--> )
+|--(nmod)--> R1136[obama]
+                 |--(case)--> in
+                 |--(punct)--> :
+                 |--(acl)--> *R1138[nominate]
+                                  |--(mark)--> to
+                                  |--(dobj)--> R1139[benjamin]
+                                                   |--(compou)--> R1139[regina]
+                                                   |--(nmod)--> R1135[general]
+                                                                    |--(case)--> as
+                                                                    |--(compou)--> R1135[surgeon]
+
+	* entity-paths for event['nominate']34_4ecbplus.xmlsent:9430
+	['Nominate --(dobj)--> Benjamin']
+
+sentence #:president obama will name dr . regina benjamin as u . s . surgeon general in a rose garden announcement late this morning . 
+	[events]:[['name'], ['announcement']]
+	[entities]:[['rose', 'garden'], ['late', 'this', 'morning'], ['u', '.', 's', '.', 'surgeon', 'general'], ['obama'], ['dr', '.', 'regina', 'benjamin']]
+*R1138[name]
+|--(nsubj)--> R1136[obama]
+|                |--(compou)--> president
+|--(aux)--> will
+|--(dobj)--> R1139[benjamin]
+|                |--(compou)--> R1139[dr]
+|                |--(punct)--> R1139[.]
+|                |--(compou)--> R1139[regina]
+|                |--(nmod)--> R1135[u]
+|                |                |--(case)--> as
+|                |--(punct)--> R1135[.]
+|                |--(dep)--> R1135[s]
+|                |--(punct)--> R1135[.]
+|                |--(dep)--> R1135[general]
+|                                 |--(compou)--> R1135[surgeon]
+|                                 |--(nmod)--> *R1142[announcement]
+|                                                  |--(case)--> in
+|                                                  |--(det)--> a
+|                                                  |--(compou)--> R1147[rose]
+|                                                  |--(compou)--> R1147[garden]
+|--(nmod:t)--> R1141[morning]
+|                |--(advmod)--> R1141[late]
+|                |--(det)--> R1141[this]
+|--(punct)--> .
+
+	* entity-paths for event['name']34_4ecbplus.xmlsent:9432
+	['name --(nsubj)--> Obama']
+	['name --(dobj)--> Benjamin']
+	['name --(nmod:tmod)--> morning']
+
+	* entity-paths for event['announcement']34_4ecbplus.xmlsent:9432
+	['announcement --(compound)--> Rose']
+	['announcement --(compound)--> Garden']

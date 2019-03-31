@@ -1,0 +1,38 @@
+
+-----------------------------------------
+docid:13_15ecb.xml
+-----------------------------------------
+
+sentence #:sarah palin 's home church has had a million dollars damage done to it as it was set alight by suspected arsonists . 
+	[events]:[['set', 'alight'], ['damage']]
+	[entities]:[['church'], ['arsonists'], ['it'], ['it']]
+had
+|--(nsubj)--> R260[church]
+|                |--(nmod:p)--> palin
+|                |                |--(compou)--> sarah
+|                |                |--(case)--> 's
+|                |--(compou)--> home
+|--(aux)--> has
+|--(dobj)--> *R278[damage]
+|                |--(det)--> a
+|                |--(nummod)--> dollars
+|                |                |--(compou)--> million
+|                |--(acl)--> done
+|                                 |--(nmod)--> R260[it]
+|                                 |                |--(case)--> to
+|                                 |--(advcl)--> *R270[set]
+|                                                  |--(mark)--> as
+|                                                  |--(nsubjp)--> R260[it]
+|                                                  |--(auxpas)--> was
+|                                                  |--(advmod)--> *R270[alight]
+|                                                  |--(nmod)--> R281[arsonists]
+|                                                                   |--(case)--> by
+|                                                                   |--(amod)--> suspected
+|--(punct)--> .
+
+	* entity-paths for event['set', 'alight']13_15ecb.xmlsent:1296
+
+	* entity-paths for event['damage']13_15ecb.xmlsent:1296
+	['damage --(acl)--> done', 'done --(nmod)--> it']
+	['damage --(acl)--> done', 'done --(advcl)--> set', 'set --(nsubjpass)--> it']
+	['damage --(acl)--> done', 'done --(advcl)--> set', 'set --(nmod)--> arsonists']

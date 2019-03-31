@@ -1,0 +1,44 @@
+
+-----------------------------------------
+docid:23_1ecb.xml
+-----------------------------------------
+
+sentence #:an australian climber who survived two nights stuck on mount cook after seeing his brother die narrowly escaped being buried alive . 
+	[events]:[['escaped'], ['die'], ['buried'], ['seeing'], ['survived']]
+	[entities]:[['two', 'nights'], ['mount', 'cook'], ['brother'], ['climber']]
+stuck
+|--(nsubj)--> R634[climber]
+|                |--(det)--> an
+|                |--(amod)--> australian
+|                |--(acl:re)--> *R652[survived]
+|                                 |--(nsubj)--> who
+|                                 |--(nmod:t)--> R653[nights]
+|                                                  |--(nummod)--> R653[two]
+|--(nmod)--> R639[cook]
+|                |--(case)--> on
+|                |--(compou)--> R639[mount]
+|--(advcl)--> *R652[escaped]
+|                |--(mark)--> after
+|                |--(csubj)--> *R636[seeing]
+|                |                |--(ccomp)--> *R654[die]
+|                |                                 |--(nsubj)--> R638[brother]
+|                |                                 |                |--(nmod:p)--> his
+|                |                                 |--(advmod)--> narrowly
+|                |--(xcomp)--> *R655[buried]
+|                                 |--(auxpas)--> being
+|                                 |--(xcomp)--> alive
+|--(punct)--> .
+
+	* entity-paths for event['escaped']23_1ecb.xmlsent:4660
+	['escaped --(csubj)--> seeing', 'seeing --(ccomp)--> die', 'die --(nsubj)--> brother']
+
+	* entity-paths for event['die']23_1ecb.xmlsent:4660
+	['die --(nsubj)--> brother']
+
+	* entity-paths for event['buried']23_1ecb.xmlsent:4660
+
+	* entity-paths for event['seeing']23_1ecb.xmlsent:4660
+	['seeing --(ccomp)--> die', 'die --(nsubj)--> brother']
+
+	* entity-paths for event['survived']23_1ecb.xmlsent:4660
+	['survived --(nmod:tmod)--> nights']

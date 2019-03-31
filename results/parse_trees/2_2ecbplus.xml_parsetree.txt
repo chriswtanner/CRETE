@@ -1,0 +1,93 @@
+
+-----------------------------------------
+docid:2_2ecbplus.xml
+-----------------------------------------
+
+sentence #:ellen degeneres was so nice as an oscars host the first time , the academy has asked her to do it twice . 
+	[events]:[['asked'], ['host'], ['nice'], ['oscars']]
+	[entities]:[['the', 'first', 'time'], ['ellen', 'degeneres'], ['her'], ['academy'], ['twice']]
+*R478[asked]
+|--(ccomp)--> *R479[nice]
+|                |--(nsubj)--> R454[degeneres]
+|                |                |--(compou)--> R454[ellen]
+|                |--(cop)--> was
+|                |--(advmod)--> so
+|                |--(nmod)--> *R471[host]
+|                |                |--(case)--> as
+|                |                |--(det)--> an
+|                |                |--(compou)--> *R455[oscars]
+|                |--(nmod:t)--> R480[time]
+|                                 |--(det)--> R480[the]
+|                                 |--(amod)--> R480[first]
+|--(punct)--> ,
+|--(nsubj)--> R459[academy]
+|                |--(det)--> the
+|--(aux)--> has
+|--(dobj)--> R454[her]
+|--(xcomp)--> do
+|                |--(mark)--> to
+|                |--(dobj)--> it
+|                |--(advmod)--> R466[twice]
+|--(punct)--> .
+
+	* entity-paths for event['asked']2_2ecbplus.xmlsent:3515
+	['asked --(ccomp)--> nice', 'nice --(nsubj)--> DeGeneres']
+	['asked --(ccomp)--> nice', 'nice --(nmod:tmod)--> time']
+	['asked --(nsubj)--> Academy']
+	['asked --(dobj)--> her']
+	['asked --(xcomp)--> do', 'do --(advmod)--> twice']
+
+	* entity-paths for event['host']2_2ecbplus.xmlsent:3515
+
+	* entity-paths for event['nice']2_2ecbplus.xmlsent:3515
+	['nice --(nsubj)--> DeGeneres']
+	['nice --(nmod:tmod)--> time']
+
+	* entity-paths for event['oscars']2_2ecbplus.xmlsent:3515
+
+sentence #:"it's official : i'm hosting the #oscars ! " degeneres tweeted friday . 
+	[events]:[['tweeted'], ['hosting'], ['#oscars']]
+	[entities]:[['degeneres'], ["i'm"], ['friday']]
+*R474[tweeted]
+|--(punct)--> "it's
+|--(ccomp)--> official
+|                |--(nsubj)--> "it's
+|                |--(cop)--> "it's
+|                |--(punct)--> :
+|                |--(parata)--> *R456[hosting]
+|                                 |--(nsubj)--> R454[i'm]
+|                                 |--(aux)--> R454[i'm]
+|                                 |--(dobj)--> *R455[#oscars]
+|                                                  |--(det)--> the
+|--(punct)--> !
+|--(punct)--> "
+|--(dep)--> R454[degeneres]
+|--(nmod:t)--> R481[friday]
+|--(punct)--> .
+
+	* entity-paths for event['tweeted']2_2ecbplus.xmlsent:3516
+	['tweeted --(ccomp)--> official', 'official --(parataxis)--> hosting', 'hosting --(nsubj)--> I']
+	['tweeted --(ccomp)--> official', 'official --(parataxis)--> hosting', "hosting --(aux)--> 'm"]
+	['tweeted --(dep)--> DeGeneres']
+	['tweeted --(nmod:tmod)--> Friday']
+
+	* entity-paths for event['hosting']2_2ecbplus.xmlsent:3516
+	['hosting --(nsubj)--> I']
+	["hosting --(aux)--> 'm"]
+
+	* entity-paths for event['#oscars']2_2ecbplus.xmlsent:3516
+
+sentence #:ellen degeneres to host 2014 oscars 
+	[events]:[['host'], ['oscars']]
+	[entities]:[['ellen', 'degeneres'], ['2014']]
+R454[degeneres]
+|--(compou)--> R454[ellen]
+|--(nmod)--> *R456[host]
+|                |--(case)--> to
+|                |--(nummod)--> R475[2014]
+|--(appos)--> *R455[oscars]
+
+	* entity-paths for event['host']2_2ecbplus.xmlsent:3513
+	['host --(nummod)--> 2014']
+
+	* entity-paths for event['oscars']2_2ecbplus.xmlsent:3513

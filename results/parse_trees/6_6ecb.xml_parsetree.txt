@@ -1,0 +1,49 @@
+
+-----------------------------------------
+docid:6_6ecb.xml
+-----------------------------------------
+
+sentence #:rumored to be the front runner earlier in the week , entertainment weekly has now confirmed that chris weitz will direct the sequel to twilight , new moon , replacing catherine hardwicke . 
+	[events]:[['direct'], ['replacing']]
+	[entities]:[['new', 'moon'], ['chris', 'weitz'], ['catherine', 'hardwicke'], ['front', 'runner'], ['twilight']]
+confirmed
+|--(advcl)--> rumored
+|                |--(xcomp)--> R1704[runner]
+|                                 |--(mark)--> to
+|                                 |--(cop)--> be
+|                                 |--(det)--> the
+|                                 |--(amod)--> R1704[front]
+|                                 |--(advmod)--> earlier
+|                                                  |--(nmod)--> week
+|                                                                   |--(case)--> in
+|                                                                   |--(det)--> the
+|--(punct)--> ,
+|--(nsubj)--> weekly
+|                |--(compou)--> entertainment
+|--(aux)--> has
+|--(advmod)--> now
+|--(ccomp)--> *R1706[direct]
+|                |--(mark)--> that
+|                |--(nsubj)--> R1704[weitz]
+|                |                |--(compou)--> R1704[chris]
+|                |--(aux)--> will
+|                |--(dobj)--> sequel
+|                |                |--(det)--> the
+|                |--(nmod)--> R1707[twilight]
+|                |                |--(case)--> to
+|                |                |--(punct)--> ,
+|                |                |--(appos)--> R1703[moon]
+|                |                |                |--(compou)--> R1703[new]
+|                |                |--(punct)--> ,
+|                |--(xcomp)--> *R1709[replacing]
+|                                 |--(dobj)--> R1714[hardwicke]
+|                                                  |--(compou)--> R1714[catherine]
+|--(punct)--> .
+
+	* entity-paths for event['direct']6_6ecb.xmlsent:14498
+	['direct --(nsubj)--> Weitz']
+	['direct --(nmod)--> Twilight']
+	['direct --(xcomp)--> replacing', 'replacing --(dobj)--> Hardwicke']
+
+	* entity-paths for event['replacing']6_6ecb.xmlsent:14498
+	['replacing --(dobj)--> Hardwicke']

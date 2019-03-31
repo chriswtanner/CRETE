@@ -1,0 +1,46 @@
+
+-----------------------------------------
+docid:14_10ecbplus.xml
+-----------------------------------------
+
+sentence #:a large fire broke out at the waitrose supermarket in wellington town centre this morning ( july 21 ) . 
+	[events]:[['fire'], ['broke', 'out']]
+	[entities]:[['this', 'morning', '(', 'july', '21', ')'], ['the', 'waitrose', 'supermarket', 'in', 'wellington', 'town', 'centre']]
+*R301[broke]
+|--(nsubj)--> *R302[fire]
+|                |--(det)--> a
+|                |--(amod)--> large
+|--(advmod)--> *R301[out]
+|--(nmod)--> R303[supermarket]
+|                |--(case)--> at
+|                |--(det)--> R303[the]
+|                |--(compou)--> R303[waitrose]
+|                |--(nmod)--> R303[centre]
+|                |                |--(case)--> R303[in]
+|                |                |--(compou)--> R303[wellington]
+|                |                |--(compou)--> R303[town]
+|                |--(nmod:t)--> R304[morning]
+|                                 |--(det)--> R304[this]
+|--(dep)--> R304[july]
+|                |--(punct)--> R304[(]
+|                |--(nummod)--> R304[21]
+|                |--(punct)--> R304[)]
+|--(punct)--> .
+
+	* entity-paths for event['fire']14_10ecbplus.xmlsent:1677
+
+	* entity-paths for event['broke', 'out']14_10ecbplus.xmlsent:1677
+
+sentence #:major fire at waitrose in wellington 
+	[events]:[['fire']]
+	[entities]:[['at', 'waitrose', 'in', 'wellington']]
+*R302[fire]
+|--(amod)--> major
+|--(nmod)--> R303[waitrose]
+|                |--(case)--> R303[at]
+|--(nmod)--> R303[wellington]
+                 |--(case)--> R303[in]
+
+	* entity-paths for event['fire']14_10ecbplus.xmlsent:1675
+	['fire --(nmod)--> Waitrose']
+	['fire --(nmod)--> Wellington']

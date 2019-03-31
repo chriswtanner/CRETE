@@ -1,0 +1,79 @@
+
+-----------------------------------------
+docid:36_2ecb.xml
+-----------------------------------------
+
+sentence #:the men were arrested this morning , said sgt. tim shields , a media relations officer for the rcmp . 
+	[events]:[['arrested'], ['said']]
+	[entities]:[['this', 'morning'], ['rcmp'], ['sgt.', 'tim', 'shields'], ['men']]
+*R1212[said]
+|--(ccomp)--> *R1195[arrested]
+|                |--(nsubjp)--> R1196[men]
+|                |                |--(det)--> the
+|                |--(auxpas)--> were
+|                |--(nmod:t)--> R1213[morning]
+|                                 |--(det)--> R1213[this]
+|--(punct)--> ,
+|--(nsubj)--> R1214[shields]
+|                |--(compou)--> R1214[sgt.]
+|                |--(compou)--> R1214[tim]
+|                |--(punct)--> ,
+|                |--(appos)--> officer
+|                                 |--(det)--> a
+|                                 |--(compou)--> media
+|                                 |--(compou)--> relations
+|                                 |--(nmod)--> R1215[rcmp]
+|                                                  |--(case)--> for
+|                                                  |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['arrested']36_2ecb.xmlsent:9926
+	['arrested --(nsubjpass)--> men']
+	['arrested --(nmod:tmod)--> morning']
+
+	* entity-paths for event['said']36_2ecb.xmlsent:9926
+	['said --(ccomp)--> arrested', 'arrested --(nsubjpass)--> men']
+	['said --(ccomp)--> arrested', 'arrested --(nmod:tmod)--> morning']
+	['said --(nsubj)--> Shields']
+
+sentence #:polygamy arrests made in canada 
+	[events]:[['polygamy'], ['arrests']]
+	[entities]:[['in', 'canada']]
+made
+|--(nsubj)--> *R1195[arrests]
+|                |--(compou)--> *R1201[polygamy]
+|--(nmod)--> R1198[canada]
+                 |--(case)--> R1198[in]
+
+	* entity-paths for event['polygamy']36_2ecb.xmlsent:9922
+
+	* entity-paths for event['arrests']36_2ecb.xmlsent:9922
+
+sentence #:two leaders of polygamous factions in bountiful , british columbia , have been arrested , canadian authorities announced . 
+	[events]:[['announced'], ['arrested']]
+	[entities]:[['factions'], ['in', 'bountiful', ',', 'british', 'columbia'], ['leaders']]
+*R1216[announced]
+|--(ccomp)--> *R1195[arrested]
+|                |--(nsubjp)--> R1196[leaders]
+|                |                |--(nummod)--> two
+|                |                |--(nmod)--> R1197[factions]
+|                |                                 |--(case)--> of
+|                |                                 |--(amod)--> polygamous
+|                |                                 |--(nmod)--> R1217[bountiful]
+|                |                                                  |--(case)--> R1217[in]
+|                |                                                  |--(punct)--> R1217[,]
+|                |                                                  |--(appos)--> R1217[columbia]
+|                |                                                  |                |--(compou)--> R1217[british]
+|                |                                                  |--(punct)--> ,
+|                |--(aux)--> have
+|                |--(auxpas)--> been
+|--(punct)--> ,
+|--(nsubj)--> authorities
+|                |--(amod)--> canadian
+|--(punct)--> .
+
+	* entity-paths for event['announced']36_2ecb.xmlsent:9923
+	['announced --(ccomp)--> arrested', 'arrested --(nsubjpass)--> leaders']
+
+	* entity-paths for event['arrested']36_2ecb.xmlsent:9923
+	['arrested --(nsubjpass)--> leaders']

@@ -1,0 +1,48 @@
+
+-----------------------------------------
+docid:19_15ecb.xml
+-----------------------------------------
+
+sentence #:epaminondas korkoneas , 37 , has also been charged with the " illegal use " of his service weapon over the killing of alexis grigoropoulos and was ordered to remain in custody by an athens magistrate . 
+	[events]:[['killing']]
+	[entities]:[['weapon'], ['alexis', 'grigoropoulos'], ['epaminondas', 'korkoneas'], ['athens']]
+charged
+|--(nsubjp)--> R404[korkoneas]
+|                |--(compou)--> R404[epaminondas]
+|                |--(punct)--> ,
+|                |--(amod)--> 37
+|                |--(punct)--> ,
+|--(aux)--> has
+|--(advmod)--> also
+|--(auxpas)--> been
+|--(nmod)--> the
+|                |--(case)--> with
+|                |--(punct)--> "
+|                |--(nmod)--> use
+|                                 |--(amod)--> illegal
+|                                 |--(punct)--> "
+|                                 |--(nmod)--> R435[weapon]
+|                                 |                |--(case)--> of
+|                                 |                |--(nmod:p)--> his
+|                                 |                |--(compou)--> service
+|                                 |--(case)--> over
+|                                 |--(dep)--> *R403[killing]
+|                                                  |--(det)--> the
+|                                                  |--(nmod)--> R402[grigoropoulos]
+|                                                                   |--(case)--> of
+|                                                                   |--(compou)--> R402[alexis]
+|--(cc)--> and
+|--(conj)--> ordered
+|                |--(auxpas)--> was
+|                |--(xcomp)--> remain
+|                                 |--(mark)--> to
+|                                 |--(nmod)--> custody
+|                                 |                |--(case)--> in
+|                                 |--(nmod)--> magistrate
+|                                                  |--(case)--> by
+|                                                  |--(det)--> an
+|                                                  |--(compou)--> R405[athens]
+|--(punct)--> .
+
+	* entity-paths for event['killing']19_15ecb.xmlsent:2871
+	['killing --(nmod)--> Grigoropoulos']

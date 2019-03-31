@@ -1,0 +1,90 @@
+
+-----------------------------------------
+docid:33_10ecbplus.xml
+-----------------------------------------
+
+sentence #:an 18 - year old male confessed to the gang related murder of a brooklyn mother who tried to protect a group of school children from harm by shielding them . 
+	[events]:[['confessed'], ['murder'], ['protect'], ['shielding'], ['tried']]
+	[entities]:[['brooklyn', 'mother'], ['gang'], ['them'], ['male'], ['who'], ['school', 'children']]
+*R1075[confessed]
+|--(dep)--> 18
+|                |--(det)--> an
+|--(punct)--> -
+|--(nsubj)--> year
+|                |--(amod)--> R1076[male]
+|                                 |--(dep)--> old
+|--(nmod)--> R1077[gang]
+|                |--(case)--> to
+|                |--(det)--> the
+|--(dobj)--> *R1078[murder]
+|                |--(amod)--> related
+|                |--(nmod)--> R1079[mother]
+|                |                |--(case)--> of
+|                |                |--(det)--> a
+|                |                |--(compou)--> R1079[brooklyn]
+|                |--(acl:re)--> *R1080[tried]
+|                                 |--(nsubj)--> R1079[who]
+|                                 |--(xcomp)--> *R1081[protect]
+|                                                  |--(mark)--> to
+|                                                  |--(dobj)--> group
+|                                                  |                |--(det)--> a
+|                                                  |                |--(nmod)--> R1082[children]
+|                                                  |                                 |--(case)--> of
+|                                                  |                                 |--(compou)--> R1082[school]
+|                                                  |--(nmod)--> harm
+|                                                                   |--(case)--> from
+|--(advcl)--> *R1081[shielding]
+|                |--(mark)--> by
+|                |--(dobj)--> R1082[them]
+|--(punct)--> .
+
+	* entity-paths for event['confessed']33_10ecbplus.xmlsent:8949
+	['confessed --(nsubj)--> year', 'year --(amod)--> male']
+	['confessed --(nmod)--> gang']
+	['confessed --(dobj)--> murder', 'murder --(nmod)--> mother']
+	['confessed --(dobj)--> murder', 'murder --(acl:relcl)--> tried', 'tried --(nsubj)--> who']
+	['confessed --(dobj)--> murder', 'murder --(acl:relcl)--> tried', 'tried --(xcomp)--> protect', 'protect --(dobj)--> group', 'group --(nmod)--> children']
+	['confessed --(advcl)--> shielding', 'shielding --(dobj)--> them']
+
+	* entity-paths for event['murder']33_10ecbplus.xmlsent:8949
+	['murder --(nmod)--> mother']
+	['murder --(acl:relcl)--> tried', 'tried --(nsubj)--> who']
+	['murder --(acl:relcl)--> tried', 'tried --(xcomp)--> protect', 'protect --(dobj)--> group', 'group --(nmod)--> children']
+
+	* entity-paths for event['protect']33_10ecbplus.xmlsent:8949
+	['protect --(dobj)--> group', 'group --(nmod)--> children']
+
+	* entity-paths for event['shielding']33_10ecbplus.xmlsent:8949
+	['shielding --(dobj)--> them']
+
+	* entity-paths for event['tried']33_10ecbplus.xmlsent:8949
+	['tried --(nsubj)--> who']
+	['tried --(xcomp)--> protect', 'protect --(dobj)--> group', 'group --(nmod)--> children']
+
+sentence #:andrew lopez confesses to murder of zurana horton in brooklyn shooting 
+	[events]:[['confesses'], ['shooting'], ['murder']]
+	[entities]:[['andrew', 'lopez'], ['zurana', 'horton'], ['brooklyn']]
+*R1075[confesses]
+|--(nsubj)--> R1076[lopez]
+|                |--(compou)--> R1076[andrew]
+|--(nmod)--> *R1083[shooting]
+                 |--(case)--> to
+                 |--(dep)--> *R1078[murder]
+                                  |--(nmod)--> R1079[horton]
+                                  |                |--(case)--> of
+                                  |                |--(compou)--> R1079[zurana]
+                                  |--(nmod)--> R1084[brooklyn]
+                                                   |--(case)--> in
+
+	* entity-paths for event['confesses']33_10ecbplus.xmlsent:8947
+	['Confesses --(nsubj)--> Lopez']
+	['Confesses --(nmod)--> Shooting', 'Shooting --(dep)--> Murder', 'Murder --(nmod)--> Horton']
+	['Confesses --(nmod)--> Shooting', 'Shooting --(dep)--> Murder', 'Murder --(nmod)--> Brooklyn']
+
+	* entity-paths for event['shooting']33_10ecbplus.xmlsent:8947
+	['Shooting --(dep)--> Murder', 'Murder --(nmod)--> Horton']
+	['Shooting --(dep)--> Murder', 'Murder --(nmod)--> Brooklyn']
+
+	* entity-paths for event['murder']33_10ecbplus.xmlsent:8947
+	['Murder --(nmod)--> Horton']
+	['Murder --(nmod)--> Brooklyn']

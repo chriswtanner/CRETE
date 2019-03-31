@@ -1,0 +1,46 @@
+
+-----------------------------------------
+docid:42_12ecb.xml
+-----------------------------------------
+
+sentence #:rumors have been floating for weeks now and we knew the 8900 would be coming sometime in early '09 and tonight t-mobile has made it official . 
+	[events]:[['rumors'], ['coming'], ['made', 'official']]
+	[entities]:[['t-mobile'], ['tonight'], ['sometime', 'in', 'early', "'09"], ['8900']]
+floating
+|--(nsubj)--> *R1530[rumors]
+|--(aux)--> have
+|--(aux)--> been
+|--(nmod)--> weeks
+|                |--(case)--> for
+|--(advmod)--> now
+|--(cc)--> and
+|--(conj)--> knew
+|                |--(nsubj)--> we
+|                |--(dep)--> *R1519[coming]
+|                                 |--(nsubj)--> R1520[8900]
+|                                 |                |--(det)--> the
+|                                 |--(aux)--> would
+|                                 |--(aux)--> be
+|                                 |--(advmod)--> R1521[sometime]
+|                                 |--(nmod)--> R1521['09]
+|                                 |                |--(case)--> R1521[in]
+|                                 |                |--(amod)--> R1521[early]
+|                                 |--(cc)--> and
+|                                 |--(conj)--> *R1518[made]
+|                                                  |--(nmod:t)--> R1531[tonight]
+|                                                  |--(nsubj)--> R1517[t-mobile]
+|                                                  |--(aux)--> has
+|                                                  |--(xcomp)--> *R1518[official]
+|                                                                   |--(nsubj)--> it
+|--(punct)--> .
+
+	* entity-paths for event['rumors']42_12ecb.xmlsent:12669
+
+	* entity-paths for event['coming']42_12ecb.xmlsent:12669
+	['coming --(nsubj)--> 8900']
+	['coming --(advmod)--> sometime']
+	["coming --(nmod)--> '09"]
+	['coming --(conj)--> made', 'made --(nmod:tmod)--> tonight']
+	['coming --(conj)--> made', 'made --(nsubj)--> T-Mobile']
+
+	* entity-paths for event['made', 'official']42_12ecb.xmlsent:12669

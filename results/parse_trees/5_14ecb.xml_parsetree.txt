@@ -1,0 +1,38 @@
+
+-----------------------------------------
+docid:5_14ecb.xml
+-----------------------------------------
+
+sentence #:the philadelphia 76ers fired coach maurice cheeks saturday morning after a disappointing 9-14 start to the 2008-09 season . 
+	[events]:[['fired'], ['start']]
+	[entities]:[['9-14'], ['saturday', 'morning'], ['2008-09'], ['the', 'philadelphia', '76ers'], ['maurice', 'cheeks']]
+*R1672[fired]
+|--(nsubj)--> R1673[76ers]
+|                |--(det)--> R1673[the]
+|                |--(compou)--> R1673[philadelphia]
+|--(xcomp)--> coach
+|                |--(dobj)--> R1675[saturday]
+|                |                |--(compou)--> R1674[maurice]
+|                |                |--(compou)--> R1674[cheeks]
+|                |--(nmod:t)--> R1675[morning]
+|                |--(nmod)--> *R1676[start]
+|                                 |--(case)--> after
+|                                 |--(det)--> a
+|                                 |--(amod)--> disappointing
+|                                 |                |--(nmod:t)--> R1678[9-14]
+|                                 |--(nmod)--> season
+|                                                  |--(case)--> to
+|                                                  |--(det)--> the
+|                                                  |--(nummod)--> R1679[2008-09]
+|--(punct)--> .
+
+	* entity-paths for event['fired']5_14ecb.xmlsent:13963
+	['fired --(nsubj)--> 76ers']
+	['fired --(xcomp)--> Coach', 'Coach --(dobj)--> Saturday']
+	['fired --(xcomp)--> Coach', 'Coach --(nmod:tmod)--> morning']
+	['fired --(xcomp)--> Coach', 'Coach --(nmod)--> start', 'start --(amod)--> disappointing', 'disappointing --(nmod:tmod)--> 9-14']
+	['fired --(xcomp)--> Coach', 'Coach --(nmod)--> start', 'start --(nmod)--> season', 'season --(nummod)--> 2008-09']
+
+	* entity-paths for event['start']5_14ecb.xmlsent:13963
+	['start --(amod)--> disappointing', 'disappointing --(nmod:tmod)--> 9-14']
+	['start --(nmod)--> season', 'season --(nummod)--> 2008-09']

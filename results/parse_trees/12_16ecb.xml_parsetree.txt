@@ -1,0 +1,50 @@
+
+-----------------------------------------
+docid:12_16ecb.xml
+-----------------------------------------
+
+sentence #:commandos from an indian warship today caught pirates in the act in the gulf of aden and took 23 of them into custody , a spokesperson at naval headquarters said . 
+	[events]:[['said'], ['custody'], ['took']]
+	[entities]:[['pirates'], ['warship'], ['them'], ['today'], ['spokesperson'], ['commandos']]
+*R226[said]
+|--(ccomp)--> caught
+|                |--(nsubj)--> R237[commandos]
+|                |                |--(nmod)--> R230[today]
+|                |                                 |--(case)--> from
+|                |                                 |--(det)--> an
+|                |                                 |--(amod)--> indian
+|                |                                 |--(compou)--> R234[warship]
+|                |--(dobj)--> R216[pirates]
+|                |--(nmod)--> act
+|                |                |--(case)--> in
+|                |                |--(det)--> the
+|                |                |--(nmod)--> gulf
+|                |                                 |--(case)--> in
+|                |                                 |--(det)--> the
+|                |                                 |--(nmod)--> aden
+|                |                                                  |--(case)--> of
+|                |--(cc)--> and
+|                |--(conj)--> *R214[took]
+|                                 |--(dobj)--> 23
+|                                 |                |--(nmod)--> R216[them]
+|                                 |                                 |--(case)--> of
+|                                 |--(nmod)--> *R238[custody]
+|                                                  |--(case)--> into
+|--(punct)--> ,
+|--(nsubj)--> R215[spokesperson]
+|                |--(det)--> a
+|                |--(nmod)--> headquarters
+|                                 |--(case)--> at
+|                                 |--(amod)--> naval
+|--(punct)--> .
+
+	* entity-paths for event['said']12_16ecb.xmlsent:831
+	['said --(ccomp)--> caught', 'caught --(nsubj)--> Commandos']
+	['said --(ccomp)--> caught', 'caught --(dobj)--> pirates']
+	['said --(ccomp)--> caught', 'caught --(conj)--> took', 'took --(dobj)--> 23', '23 --(nmod)--> them']
+	['said --(nsubj)--> spokesperson']
+
+	* entity-paths for event['custody']12_16ecb.xmlsent:831
+
+	* entity-paths for event['took']12_16ecb.xmlsent:831
+	['took --(dobj)--> 23', '23 --(nmod)--> them']

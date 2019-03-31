@@ -1,0 +1,61 @@
+
+-----------------------------------------
+docid:14_3ecbplus.xml
+-----------------------------------------
+
+sentence #:a man has been charged with arson after a fire at the waitrose supermarket in wellington , somerset . 
+	[events]:[['fire'], ['arson'], ['charged']]
+	[entities]:[['man'], ['the', 'waitrose', 'supermarket', 'in', 'wellington', ',', 'somerset']]
+*R313[charged]
+|--(nsubjp)--> R311[man]
+|                |--(det)--> a
+|--(aux)--> has
+|--(auxpas)--> been
+|--(nmod)--> *R312[arson]
+|                |--(case)--> with
+|--(nmod)--> *R302[fire]
+|                |--(case)--> after
+|                |--(det)--> a
+|                |--(nmod)--> R303[supermarket]
+|                                 |--(case)--> at
+|                                 |--(det)--> R303[the]
+|                                 |--(compou)--> R303[waitrose]
+|--(nmod)--> R303[somerset]
+|                |--(case)--> R303[in]
+|                |--(compou)--> R303[wellington]
+|                |--(punct)--> R303[,]
+|--(punct)--> .
+
+	* entity-paths for event['fire']14_3ecbplus.xmlsent:1719
+	['fire --(nmod)--> supermarket']
+
+	* entity-paths for event['arson']14_3ecbplus.xmlsent:1719
+
+	* entity-paths for event['charged']14_3ecbplus.xmlsent:1719
+	['charged --(nsubjpass)--> man']
+	['charged --(nmod)--> fire', 'fire --(nmod)--> supermarket']
+	['charged --(nmod)--> Somerset']
+
+sentence #:man charged with arson over waitrose fire in wellington 
+	[events]:[['fire'], ['charged'], ['arson']]
+	[entities]:[['man'], ['in', 'wellington'], ['waitrose']]
+*R313[charged]
+|--(nsubj)--> R311[man]
+|--(nmod)--> *R312[arson]
+|                |--(case)--> with
+|                |--(nmod)--> *R302[fire]
+|                                 |--(case)--> over
+|                                 |--(compou)--> R308[waitrose]
+|--(nmod)--> R309[wellington]
+                 |--(case)--> R309[in]
+
+	* entity-paths for event['fire']14_3ecbplus.xmlsent:1718
+	['fire --(compound)--> Waitrose']
+
+	* entity-paths for event['charged']14_3ecbplus.xmlsent:1718
+	['charged --(nsubj)--> Man']
+	['charged --(nmod)--> arson', 'arson --(nmod)--> fire', 'fire --(compound)--> Waitrose']
+	['charged --(nmod)--> Wellington']
+
+	* entity-paths for event['arson']14_3ecbplus.xmlsent:1718
+	['arson --(nmod)--> fire', 'fire --(compound)--> Waitrose']

@@ -1,0 +1,84 @@
+
+-----------------------------------------
+docid:8_7ecb.xml
+-----------------------------------------
+
+sentence #:a bomb exploded friday at a west coast bank branch in woodburn , killing a woodburn police officer and an oregon state police bomb squad technician , and critically injuring the woodburn police chief . 
+	[events]:[['injuring'], ['exploded'], ['killing']]
+	[entities]:[['police', 'chief'], ['bomb'], ['a', 'west', 'coast', 'bank', 'branch', 'in', 'woodburn'], ['officer'], ['oregon', 'state', 'police'], ['friday'], ['technician']]
+*R1764[exploded]
+|--(nsubj)--> R1788[bomb]
+|                |--(det)--> a
+|--(nmod:t)--> R1789[friday]
+|--(nmod)--> R1765[branch]
+|                |--(case)--> at
+|                |--(det)--> R1765[a]
+|                |--(compou)--> R1765[west]
+|                |--(compou)--> R1765[coast]
+|                |--(compou)--> R1765[bank]
+|                |--(nmod)--> R1765[woodburn]
+|                                 |--(case)--> R1765[in]
+|--(punct)--> ,
+|--(ccomp)--> *R1763[killing]
+|                |--(dobj)--> R1766[officer]
+|                |                |--(det)--> a
+|                |                |--(amod)--> woodburn
+|                |                |--(compou)--> police
+|                |                |--(cc)--> and
+|                |                |--(conj)--> R1767[technician]
+|                |                                 |--(det)--> an
+|                |                                 |--(compou)--> R1768[oregon]
+|                |                                 |--(compou)--> R1768[state]
+|                |                                 |--(compou)--> R1768[police]
+|                |                                 |--(compou)--> bomb
+|                |                                 |--(compou)--> squad
+|                |--(punct)--> ,
+|                |--(cc)--> and
+|                |--(conj)--> *R1791[injuring]
+|                                 |--(advmod)--> critically
+|                                 |--(dobj)--> R1787[chief]
+|                                                  |--(det)--> the
+|                                                  |--(compou)--> woodburn
+|                                                  |--(compou)--> R1787[police]
+|--(punct)--> .
+
+	* entity-paths for event['injuring']8_7ecb.xmlsent:15125
+	['injuring --(dobj)--> chief']
+
+	* entity-paths for event['exploded']8_7ecb.xmlsent:15125
+	['exploded --(nsubj)--> bomb']
+	['exploded --(nmod:tmod)--> Friday']
+	['exploded --(nmod)--> branch']
+	['exploded --(ccomp)--> killing', 'killing --(dobj)--> officer']
+	['exploded --(ccomp)--> killing', 'killing --(conj)--> injuring', 'injuring --(dobj)--> chief']
+
+	* entity-paths for event['killing']8_7ecb.xmlsent:15125
+	['killing --(dobj)--> officer']
+	['killing --(conj)--> injuring', 'injuring --(dobj)--> chief']
+
+sentence #:bomb explodes at woodburn bank , killing a police officer and osp bomb technician . 
+	[events]:[['explodes'], ['killing']]
+	[entities]:[['bomb'], ['technician'], ['woodburn', 'bank'], ['officer']]
+*R1764[explodes]
+|--(nsubj)--> R1788[bomb]
+|--(nmod)--> R1765[bank]
+|                |--(case)--> at
+|                |--(compou)--> R1765[woodburn]
+|--(punct)--> ,
+|--(xcomp)--> *R1763[killing]
+|                |--(dobj)--> R1766[officer]
+|                                 |--(det)--> a
+|                                 |--(compou)--> police
+|                                 |--(cc)--> and
+|                                 |--(conj)--> R1767[technician]
+|                                                  |--(compou)--> osp
+|                                                  |--(compou)--> bomb
+|--(punct)--> .
+
+	* entity-paths for event['explodes']8_7ecb.xmlsent:15124
+	['explodes --(nsubj)--> Bomb']
+	['explodes --(nmod)--> bank']
+	['explodes --(xcomp)--> killing', 'killing --(dobj)--> officer']
+
+	* entity-paths for event['killing']8_7ecb.xmlsent:15124
+	['killing --(dobj)--> officer']

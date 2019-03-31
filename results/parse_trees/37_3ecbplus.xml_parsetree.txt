@@ -1,0 +1,87 @@
+
+-----------------------------------------
+docid:37_3ecbplus.xml
+-----------------------------------------
+
+sentence #:indonesia earthquake : 24 dead and over 200 injured as 6 . 1 magnitude quake hits aceh province 
+	[events]:[['dead'], ['6', '.', '1', 'magnitude', 'quake'], ['hits'], ['indonesia', 'earthquake'], ['injured']]
+	[entities]:[['200'], ['24'], ['aceh', 'province']]
+*R1236[hits]
+|--(nsubj)--> *R1233[earthquake]
+|                |--(compou)--> *R1233[indonesia]
+|                |--(punct)--> :
+|                |--(dep)--> R1276[24]
+|                |                |--(amod)--> *R1275[dead]
+|                |                                 |--(cc)--> and
+|                |                                 |--(conj)--> R1235[200]
+|                |                                                  |--(case)--> over
+|                |                                                  |--(acl)--> *R1234[injured]
+|                |                                                  |                |--(nmod)--> *R1233[6]
+|                |                                                  |                                 |--(case)--> as
+|                |                                                  |--(punct)--> *R1233[.]
+|                |--(dep)--> *R1233[quake]
+|                                 |--(nummod)--> *R1233[1]
+|                                 |--(compou)--> *R1233[magnitude]
+|--(dobj)--> R1237[province]
+                 |--(compou)--> R1237[aceh]
+
+	* entity-paths for event['dead']37_3ecbplus.xmlsent:10554
+	['dead --(conj)--> 200']
+
+	* entity-paths for event['6', '.', '1', 'magnitude', 'quake']37_3ecbplus.xmlsent:10554
+
+	* entity-paths for event['hits']37_3ecbplus.xmlsent:10554
+	['hits --(nsubj)--> earthquake', 'earthquake --(dep)--> 24']
+	['hits --(dobj)--> province']
+
+	* entity-paths for event['indonesia', 'earthquake']37_3ecbplus.xmlsent:10554
+	['earthquake --(dep)--> 24']
+
+	* entity-paths for event['injured']37_3ecbplus.xmlsent:10554
+
+sentence #:soldiers and police are leading rescue operations in indonesia after a 6 . 1 magnitude earthquake hit aceh province leaving 24 dead and over 200 injured . 
+	[events]:[['dead'], ['6', '.', '1', 'magnitude', 'earthquake'], ['rescue', 'operations'], ['injured'], ['hit'], ['leading']]
+	[entities]:[['24'], ['aceh', 'province'], ['in', 'indonesia'], ['200']]
+*R1236[hit]
+|--(dep)--> *R1290[leading]
+|                |--(nsubj)--> soldiers
+|                |                |--(cc)--> and
+|                |                |--(conj)--> police
+|                |--(aux)--> are
+|                |--(dobj)--> *R1291[operations]
+|                |                |--(compou)--> *R1291[rescue]
+|                |                |--(nmod)--> R1260[indonesia]
+|                |                                 |--(case)--> R1260[in]
+|                |--(nmod)--> *R1233[6]
+|                |                |--(case)--> after
+|                |                |--(det)--> a
+|                |--(punct)--> *R1233[.]
+|--(nsubj)--> *R1233[earthquake]
+|                |--(nummod)--> *R1233[1]
+|                |--(compou)--> *R1233[magnitude]
+|--(dobj)--> R1237[province]
+|                |--(compou)--> R1237[aceh]
+|                |--(dep)--> leaving
+|                |                |--(dobj)--> R1276[24]
+|                |                |--(xcomp)--> *R1275[dead]
+|                |--(cc)--> and
+|                |--(conj)--> R1235[200]
+|                                 |--(advmod)--> over
+|                                 |--(acl)--> *R1234[injured]
+|--(punct)--> .
+
+	* entity-paths for event['dead']37_3ecbplus.xmlsent:10556
+
+	* entity-paths for event['6', '.', '1', 'magnitude', 'earthquake']37_3ecbplus.xmlsent:10556
+
+	* entity-paths for event['rescue', 'operations']37_3ecbplus.xmlsent:10556
+	['operations --(nmod)--> Indonesia']
+
+	* entity-paths for event['injured']37_3ecbplus.xmlsent:10556
+
+	* entity-paths for event['hit']37_3ecbplus.xmlsent:10556
+	['hit --(dep)--> leading', 'leading --(dobj)--> operations', 'operations --(nmod)--> Indonesia']
+	['hit --(dobj)--> province']
+
+	* entity-paths for event['leading']37_3ecbplus.xmlsent:10556
+	['leading --(dobj)--> operations', 'operations --(nmod)--> Indonesia']

@@ -1,0 +1,58 @@
+
+-----------------------------------------
+docid:19_14ecb.xml
+-----------------------------------------
+
+sentence #:the fatal shooting of alexis grigoropoulos , 15 , on saturday sparked five days of riots and demonstrations across greece after witnesses claimed that the police officer deliberately took aim at the teenager . 
+	[events]:[['shooting'], ['demonstrations'], ['sparked'], ['riots'], ['took', 'aim']]
+	[entities]:[['across', 'greece'], ['alexis', 'grigoropoulos'], ['saturday'], ['teenager'], ['officer'], ['witnesses']]
+*R407[sparked]
+|--(nsubj)--> *R401[shooting]
+|                |--(det)--> the
+|                |--(amod)--> fatal
+|                |--(nmod)--> R402[grigoropoulos]
+|                                 |--(case)--> of
+|                                 |--(compou)--> R402[alexis]
+|                                 |--(punct)--> ,
+|                                 |--(amod)--> 15
+|                                 |--(punct)--> ,
+|                                 |--(nmod)--> R406[saturday]
+|                                                  |--(case)--> on
+|--(dobj)--> days
+|                |--(nummod)--> five
+|                |--(nmod)--> *R433[riots]
+|                                 |--(case)--> of
+|                                 |--(cc)--> and
+|                                 |--(conj)--> *R408[demonstrations]
+|--(nmod)--> R409[greece]
+|                |--(case)--> R409[across]
+|--(advcl)--> claimed
+|                |--(mark)--> after
+|                |--(nsubj)--> R434[witnesses]
+|                |--(ccomp)--> *R401[took]
+|                                 |--(mark)--> that
+|                                 |--(nsubj)--> R404[officer]
+|                                 |                |--(det)--> the
+|                                 |                |--(compou)--> police
+|                                 |--(advmod)--> deliberately
+|                                 |--(dobj)--> *R401[aim]
+|                                 |--(nmod)--> R402[teenager]
+|                                                  |--(case)--> at
+|                                                  |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['shooting']19_14ecb.xmlsent:2841
+	['shooting --(nmod)--> Grigoropoulos']
+
+	* entity-paths for event['demonstrations']19_14ecb.xmlsent:2841
+
+	* entity-paths for event['sparked']19_14ecb.xmlsent:2841
+	['sparked --(nsubj)--> shooting', 'shooting --(nmod)--> Grigoropoulos']
+	['sparked --(nmod)--> Greece']
+	['sparked --(advcl)--> claimed', 'claimed --(nsubj)--> witnesses']
+	['sparked --(advcl)--> claimed', 'claimed --(ccomp)--> took', 'took --(nsubj)--> officer']
+	['sparked --(advcl)--> claimed', 'claimed --(ccomp)--> took', 'took --(nmod)--> teenager']
+
+	* entity-paths for event['riots']19_14ecb.xmlsent:2841
+
+	* entity-paths for event['took', 'aim']19_14ecb.xmlsent:2841

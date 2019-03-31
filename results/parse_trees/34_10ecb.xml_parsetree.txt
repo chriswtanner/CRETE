@@ -1,0 +1,125 @@
+
+-----------------------------------------
+docid:34_10ecb.xml
+-----------------------------------------
+
+sentence #:gupta would n't comment to me -- while not denying the story -- but confirmed on his twitter feed that he " has been approached by the obama administration about the u.s. surgeon general 's post . " 
+	[events]:[['post'], ['confirmed'], ['approached']]
+	[entities]:[['obama', 'administration'], ['he'], ['u.s.', 'surgeon', 'general'], ['gupta']]
+comment
+|--(nsubj)--> R1130[gupta]
+|--(aux)--> would
+|--(neg)--> n't
+|--(nmod)--> me
+|                |--(case)--> to
+|                |--(dep)--> denying
+|                                 |--(punct)--> --
+|                                 |--(mark)--> while
+|                                 |--(neg)--> not
+|                                 |--(dobj)--> story
+|                                 |                |--(det)--> the
+|                                 |--(punct)--> --
+|--(cc)--> but
+|--(conj)--> *R1131[confirmed]
+|                |--(nmod)--> feed
+|                |                |--(case)--> on
+|                |                |--(nmod:p)--> his
+|                |                |--(compou)--> twitter
+|                |--(ccomp)--> *R1132[approached]
+|                                 |--(mark)--> that
+|                                 |--(nsubjp)--> R1130[he]
+|                                 |--(punct)--> "
+|                                 |--(aux)--> has
+|                                 |--(auxpas)--> been
+|                                 |--(nmod)--> R1133[administration]
+|                                 |                |--(case)--> by
+|                                 |                |--(det)--> the
+|                                 |                |--(compou)--> R1133[obama]
+|                                 |--(nmod)--> *R1134[post]
+|                                                  |--(case)--> about
+|                                                  |--(nmod:p)--> R1135[general]
+|                                                                   |--(det)--> the
+|                                                                   |--(compou)--> R1135[u.s.]
+|                                                                   |--(compou)--> R1135[surgeon]
+|                                                                   |--(case)--> 's
+|--(punct)--> .
+|--(punct)--> "
+
+	* entity-paths for event['post']34_10ecb.xmlsent:9241
+	['post --(nmod:poss)--> general']
+
+	* entity-paths for event['confirmed']34_10ecb.xmlsent:9241
+	['confirmed --(ccomp)--> approached', 'approached --(nsubjpass)--> he']
+	['confirmed --(ccomp)--> approached', 'approached --(nmod)--> administration']
+	['confirmed --(ccomp)--> approached', 'approached --(nmod)--> post', 'post --(nmod:poss)--> general']
+
+	* entity-paths for event['approached']34_10ecb.xmlsent:9241
+	['approached --(nsubjpass)--> he']
+	['approached --(nmod)--> administration']
+	['approached --(nmod)--> post', 'post --(nmod:poss)--> general']
+
+sentence #:i confirmed yesterday that obama has offered the job and that gupta had all but officially accepted . 
+	[events]:[['job'], ['accepted'], ['offered']]
+	[entities]:[['obama'], ['gupta']]
+confirmed
+|--(nsubj)--> i
+|--(nmod:t)--> yesterday
+|--(ccomp)--> *R1132[offered]
+|                |--(mark)--> that
+|                |--(nsubj)--> R1136[obama]
+|                |--(aux)--> has
+|                |--(dobj)--> *R1134[job]
+|                |                |--(det)--> the
+|                |--(cc)--> and
+|                |--(conj)--> *R1137[accepted]
+|                                 |--(mark)--> that
+|                                 |--(nsubj)--> R1130[gupta]
+|                                 |--(aux)--> had
+|                                 |--(advmod)--> all
+|                                 |                |--(cc)--> but
+|                                 |--(advmod)--> officially
+|--(punct)--> .
+
+	* entity-paths for event['job']34_10ecb.xmlsent:9237
+
+	* entity-paths for event['accepted']34_10ecb.xmlsent:9237
+	['accepted --(nsubj)--> Gupta']
+
+	* entity-paths for event['offered']34_10ecb.xmlsent:9237
+	['offered --(nsubj)--> Obama']
+	['offered --(conj)--> accepted', 'accepted --(nsubj)--> Gupta']
+
+sentence #:it 's interesting that obama was so intent on recruiting him that he met with the " house call " host for 2 1/2 hours on nov. 25 . 
+	[events]:[['recruiting']]
+	[entities]:[['him'], ['host'], ['obama'], ['he']]
+interesting
+|--(nsubj)--> it
+|--(cop)--> 's
+|--(ccomp)--> intent
+|                |--(mark)--> that
+|                |--(nsubj)--> R1136[obama]
+|                |--(cop)--> was
+|                |--(advmod)--> so
+|                |--(advcl)--> *R1132[recruiting]
+|                |                |--(mark)--> on
+|                |                |--(dobj)--> R1130[him]
+|                |--(ccomp)--> met
+|                                 |--(mark)--> that
+|                                 |--(nsubj)--> R1136[he]
+|                                 |--(nmod)--> the
+|                                 |                |--(case)--> with
+|                                 |--(punct)--> "
+|                                 |--(nmod)--> R1130[host]
+|                                                  |--(compou)--> house
+|                                                  |--(compou)--> call
+|                                                  |--(punct)--> "
+|                                                  |--(case)--> for
+|                                                  |--(dep)--> hours
+|                                                                   |--(nummod)--> 1/2
+|                                                                   |--(nmod)--> nov.
+|                                                                                    |--(case)--> on
+|                                                                                    |--(nummod)--> 25
+|--(punct)--> .
+
+	* entity-paths for event['recruiting']34_10ecb.xmlsent:9243
+	['recruiting --(dobj)--> him']

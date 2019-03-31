@@ -1,0 +1,103 @@
+
+-----------------------------------------
+docid:27_17ecb.xml
+-----------------------------------------
+
+sentence #:the us software giant said on tuesday that in response to " the threat to customers " it immediately mobilized security engineering teams worldwide to deliver a software cure " in the unprecedented time of eight days . " 
+	[events]:[['threat'], ['deliver']]
+	[entities]:[['software', 'giant'], ['customers'], ['cure'], ['it']]
+said
+|--(nsubj)--> R764[giant]
+|                |--(det)--> the
+|                |--(compou)--> us
+|                |--(compou)--> R764[software]
+|--(nmod)--> tuesday
+|                |--(case)--> on
+|--(ccomp)--> mobilized
+|                |--(mark)--> that
+|                |--(nmod)--> response
+|                |                |--(case)--> in
+|                |                |--(acl)--> to
+|                |                |--(punct)--> "
+|                |                |--(dep)--> *R784[threat]
+|                |                                 |--(det)--> the
+|                |--(nmod)--> R789[customers]
+|                |                |--(case)--> to
+|                |--(punct)--> "
+|                |--(nsubj)--> R764[it]
+|                |--(advmod)--> immediately
+|                |--(xcomp)--> worldwide
+|                                 |--(nsubj)--> teams
+|                                 |                |--(compou)--> security
+|                                 |                |--(compou)--> engineering
+|                                 |--(xcomp)--> *R763[deliver]
+|                                                  |--(mark)--> to
+|                                                  |--(dobj)--> R765[cure]
+|                                                  |                |--(det)--> a
+|                                                  |                |--(compou)--> software
+|                                                  |--(punct)--> "
+|                                                  |--(nmod)--> time
+|                                                                   |--(case)--> in
+|                                                                   |--(det)--> the
+|                                                                   |--(amod)--> unprecedented
+|                                                                   |--(nmod)--> days
+|                                                                                    |--(case)--> of
+|                                                                                    |--(nummod)--> eight
+|--(punct)--> .
+|--(punct)--> "
+
+	* entity-paths for event['threat']27_17ecb.xmlsent:5754
+
+	* entity-paths for event['deliver']27_17ecb.xmlsent:5754
+	['deliver --(dobj)--> cure']
+
+sentence #:microsoft was to release an emergency patch yesterday to fix a perilous software flaw allowing hackers to hijack internet explorer ( ie ) browsers and take over computers . 
+	[events]:[['hijack'], ['allowing'], ['release'], ['fix'], ['take', 'over']]
+	[entities]:[['flaw'], ['patch'], ['computers'], ['microsoft'], ['yesterday'], ['hackers'], ['internet', 'explorer']]
+was
+|--(nsubj)--> R764[microsoft]
+|--(xcomp)--> *R763[release]
+|                |--(mark)--> to
+|                |--(dobj)--> R765[patch]
+|                |                |--(det)--> an
+|                |                |--(compou)--> emergency
+|                |--(nmod:t)--> R766[yesterday]
+|                |--(advcl)--> *R782[fix]
+|                                 |--(mark)--> to
+|                                 |--(dobj)--> R767[flaw]
+|                                 |                |--(det)--> a
+|                                 |                |--(amod)--> perilous
+|                                 |                |--(compou)--> software
+|                                 |                |--(acl)--> *R769[allowing]
+|                                 |                                 |--(iobj)--> R770[hackers]
+|                                 |                                 |                |--(acl)--> *R783[hijack]
+|                                 |                                 |                                 |--(mark)--> to
+|                                 |                                 |                                 |--(dobj)--> R768[explorer]
+|                                 |                                 |                                                  |--(compou)--> R768[internet]
+|                                 |                                 |                                                  |--(dep)--> ie
+|                                 |                                 |                                                                   |--(punct)--> (
+|                                 |                                 |                                                                   |--(punct)--> )
+|                                 |                                 |--(dobj)--> browsers
+|                                 |--(cc)--> and
+|                                 |--(conj)--> *R784[take]
+|                                                  |--(compou)--> *R784[over]
+|                                                  |--(dobj)--> R771[computers]
+|--(punct)--> .
+
+	* entity-paths for event['hijack']27_17ecb.xmlsent:5753
+	['hijack --(dobj)--> Explorer']
+
+	* entity-paths for event['allowing']27_17ecb.xmlsent:5753
+	['allowing --(iobj)--> hackers']
+
+	* entity-paths for event['release']27_17ecb.xmlsent:5753
+	['release --(dobj)--> patch']
+	['release --(nmod:tmod)--> yesterday']
+	['release --(advcl)--> fix', 'fix --(dobj)--> flaw']
+	['release --(advcl)--> fix', 'fix --(conj)--> take', 'take --(dobj)--> computers']
+
+	* entity-paths for event['fix']27_17ecb.xmlsent:5753
+	['fix --(dobj)--> flaw']
+	['fix --(conj)--> take', 'take --(dobj)--> computers']
+
+	* entity-paths for event['take', 'over']27_17ecb.xmlsent:5753

@@ -1,0 +1,69 @@
+
+-----------------------------------------
+docid:22_5ecb.xml
+-----------------------------------------
+
+sentence #:staunton police chief jim williams announced 61-year-old sharron diane crawford smith was arrested around 10:24 a.m. friday and charged with two counts of first degree murder . 
+	[events]:[['murder'], ['charged'], ['arrested']]
+	[entities]:[['jim', 'williams'], ['diane', 'crawford', 'smith'], ['10:24', 'a.m.', 'friday']]
+announced
+|--(nsubj)--> R633[williams]
+|                |--(compou)--> staunton
+|                |--(compou)--> police
+|                |--(compou)--> chief
+|                |--(compou)--> R633[jim]
+|--(ccomp)--> *R628[arrested]
+|                |--(nsubjp)--> R618[smith]
+|                |                |--(amod)--> 61-year-old
+|                |                |--(compou)--> sharron
+|                |                |--(compou)--> R618[diane]
+|                |                |--(compou)--> R618[crawford]
+|                |--(auxpas)--> was
+|                |--(nmod)--> R629[10:24]
+|                |                |--(case)--> around
+|                |                |--(nmod:t)--> R629[friday]
+|                |                                 |--(advmod)--> R629[a.m.]
+|                |--(cc)--> and
+|                |--(conj)--> *R624[charged]
+|                                 |--(nmod)--> counts
+|                                                  |--(case)--> with
+|                                                  |--(nummod)--> two
+|                                                  |--(nmod)--> *R619[murder]
+|                                                                   |--(case)--> of
+|                                                                   |--(amod)--> first
+|                                                                   |--(compou)--> degree
+|--(punct)--> .
+
+	* entity-paths for event['murder']22_5ecb.xmlsent:4518
+
+	* entity-paths for event['charged']22_5ecb.xmlsent:4518
+
+	* entity-paths for event['arrested']22_5ecb.xmlsent:4518
+	['arrested --(nsubjpass)--> Smith']
+	['arrested --(nmod)--> 10:24']
+
+sentence #:the staunton police department announced friday they have made an arrest in a 41-year-old double murder case . 
+	[events]:[['murder'], ['arrest']]
+	[entities]:[['they'], ['staunton', 'police', 'department'], ['friday']]
+announced
+|--(nsubj)--> R633[department]
+|                |--(det)--> the
+|                |--(compou)--> R633[staunton]
+|                |--(compou)--> R633[police]
+|--(nmod:t)--> R629[friday]
+|--(ccomp)--> made
+|                |--(nsubj)--> R633[they]
+|                |--(aux)--> have
+|                |--(dobj)--> *R628[arrest]
+|                                 |--(det)--> an
+|                                 |--(nmod)--> case
+|                                                  |--(case)--> in
+|                                                  |--(det)--> a
+|                                                  |--(amod)--> 41-year-old
+|                                                  |--(amod)--> double
+|                                                  |--(compou)--> *R619[murder]
+|--(punct)--> .
+
+	* entity-paths for event['murder']22_5ecb.xmlsent:4517
+
+	* entity-paths for event['arrest']22_5ecb.xmlsent:4517

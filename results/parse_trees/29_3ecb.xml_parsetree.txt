@@ -1,0 +1,50 @@
+
+-----------------------------------------
+docid:29_3ecb.xml
+-----------------------------------------
+
+sentence #:the indianapolis colts will be making their seventh straight playoff appearance after securing that spot with a 31-24 win over the jacksonville jaguars last night in jacksonville . 
+	[events]:[['playoff'], ['securing'], ['win']]
+	[entities]:[['their'], ['in', 'jacksonville'], ['spot'], ['31-24'], ['jacksonville', 'jaguars'], ['last', 'night'], ['indianapolis', 'colts']]
+making
+|--(nsubj)--> R852[colts]
+|                |--(det)--> the
+|                |--(compou)--> R852[indianapolis]
+|--(aux)--> will
+|--(aux)--> be
+|--(dobj)--> appearance
+|                |--(nmod:p)--> R852[their]
+|                |--(amod)--> seventh
+|                |--(amod)--> straight
+|                |--(compou)--> *R854[playoff]
+|--(advcl)--> *R853[securing]
+|                |--(mark)--> after
+|                |--(ccomp)--> *R856[win]
+|                                 |--(mark)--> that
+|                                 |--(nsubj)--> R883[spot]
+|                                 |                |--(nmod)--> R855[31-24]
+|                                 |                                 |--(case)--> with
+|                                 |                                 |--(det)--> a
+|                                 |--(nmod)--> R857[jaguars]
+|                                 |                |--(case)--> over
+|                                 |                |--(det)--> the
+|                                 |                |--(compou)--> R857[jacksonville]
+|                                 |--(nmod:t)--> R865[night]
+|                                 |                |--(amod)--> R865[last]
+|                                 |--(nmod)--> R873[jacksonville]
+|                                                  |--(case)--> R873[in]
+|--(punct)--> .
+
+	* entity-paths for event['playoff']29_3ecb.xmlsent:6936
+
+	* entity-paths for event['securing']29_3ecb.xmlsent:6936
+	['securing --(ccomp)--> win', 'win --(nsubj)--> spot']
+	['securing --(ccomp)--> win', 'win --(nmod)--> Jaguars']
+	['securing --(ccomp)--> win', 'win --(nmod:tmod)--> night']
+	['securing --(ccomp)--> win', 'win --(nmod)--> Jacksonville']
+
+	* entity-paths for event['win']29_3ecb.xmlsent:6936
+	['win --(nsubj)--> spot']
+	['win --(nmod)--> Jaguars']
+	['win --(nmod:tmod)--> night']
+	['win --(nmod)--> Jacksonville']

@@ -1,0 +1,33 @@
+
+-----------------------------------------
+docid:39_1ecb.xml
+-----------------------------------------
+
+sentence #:the bbc says little-known actor matt smith will take over the title role in the long-running sci-fi series " doctor who . " 
+	[events]:[['take', 'over']]
+	[entities]:[['matt', 'smith'], ['bbc'], ['role'], ['doctor', 'who']]
+says
+|--(nsubj)--> R1335[bbc]
+|                |--(det)--> the
+|--(ccomp)--> *R1346[take]
+|                |--(nsubj)--> R1328[smith]
+|                |                |--(amod)--> little-known
+|                |                |--(compou)--> actor
+|                |                |--(compou)--> R1328[matt]
+|                |--(aux)--> will
+|                |--(compou)--> *R1346[over]
+|                |--(dobj)--> R1329[role]
+|                                 |--(det)--> the
+|                                 |--(compou)--> title
+|                                 |--(nmod)--> series
+|                                 |                |--(case)--> in
+|                                 |                |--(det)--> the
+|                                 |                |--(amod)--> long-running
+|                                 |                |--(amod)--> sci-fi
+|                                 |--(punct)--> "
+|                                 |--(dep)--> R1336[doctor]
+|                                                  |--(acl:re)--> R1336[who]
+|--(punct)--> .
+|--(punct)--> "
+
+	* entity-paths for event['take', 'over']39_1ecb.xmlsent:10900

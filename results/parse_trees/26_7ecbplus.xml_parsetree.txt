@@ -1,0 +1,75 @@
+
+-----------------------------------------
+docid:26_7ecbplus.xml
+-----------------------------------------
+
+sentence #:convicted mobster vincent "chin" gigante , famed for wandering the streets of new york in a tattered bathrobe in a show of insanity , died on monday in federal prison , officials said . 
+	[events]:[['died'], ['wandering'], ['insanity'], ['show']]
+	[entities]:[['the', 'streets', 'of', 'new', 'york'], ['in', 'federal', 'prison'], ['bathrobe'], ['on', 'monday'], ['vincent', '"chin"', 'gigante']]
+said
+|--(ccomp)--> *R739[died]
+|                |--(nsubj)--> R740[gigante]
+|                |                |--(amod)--> convicted
+|                |                |--(compou)--> mobster
+|                |                |--(compou)--> R740[vincent]
+|                |                |--(punct)--> R740["chin"]
+|                |                |--(compou)--> R740["chin"]
+|                |                |--(punct)--> R740["chin"]
+|                |                |--(punct)--> ,
+|                |                |--(amod)--> famed
+|                |                |                |--(advcl)--> *R759[wandering]
+|                |                |                                 |--(mark)--> for
+|                |                |                                 |--(dobj)--> R760[streets]
+|                |                |                                                  |--(det)--> R760[the]
+|                |                |                                                  |--(nmod)--> R760[york]
+|                |                |                                                                   |--(case)--> R760[of]
+|                |                |                                                                   |--(compou)--> R760[new]
+|                |                |                                                                   |--(nmod)--> R761[bathrobe]
+|                |                |                                                                                    |--(case)--> in
+|                |                |                                                                                    |--(det)--> a
+|                |                |                                                                                    |--(amod)--> tattered
+|                |                |                                                                                    |--(nmod)--> *R741[show]
+|                |                |                                                                                                     |--(case)--> in
+|                |                |                                                                                                     |--(det)--> a
+|                |                |                                                                                                     |--(nmod)--> *R742[insanity]
+|                |                |                                                                                                                      |--(case)--> of
+|                |                |--(punct)--> ,
+|                |--(nmod)--> R744[monday]
+|                |                |--(case)--> R744[on]
+|                |--(nmod)--> R743[prison]
+|                                 |--(case)--> R743[in]
+|                                 |--(amod)--> R743[federal]
+|--(punct)--> ,
+|--(nsubj)--> officials
+|--(punct)--> .
+
+	* entity-paths for event['died']26_7ecbplus.xmlsent:5530
+	['died --(nsubj)--> Gigante']
+	['died --(nmod)--> Monday']
+	['died --(nmod)--> prison']
+
+	* entity-paths for event['wandering']26_7ecbplus.xmlsent:5530
+	['wandering --(dobj)--> streets']
+
+	* entity-paths for event['insanity']26_7ecbplus.xmlsent:5530
+
+	* entity-paths for event['show']26_7ecbplus.xmlsent:5530
+
+sentence #:ny mob don vincent 'chin' gigante dies in prison 
+	[events]:[['dies']]
+	[entities]:[['in', 'prison'], ['vincent', "'chin'", 'gigante']]
+don
+|--(nsubj)--> mob
+|                |--(compou)--> ny
+|--(ccomp)--> *R739[dies]
+                 |--(nsubj)--> R740[gigante]
+                 |                |--(compou)--> R740[vincent]
+                 |                |--(punct)--> R740['chin']
+                 |                |--(compou)--> R740['chin']
+                 |                |--(punct)--> R740['chin']
+                 |--(nmod)--> R743[prison]
+                                  |--(case)--> R743[in]
+
+	* entity-paths for event['dies']26_7ecbplus.xmlsent:5528
+	['dies --(nsubj)--> Gigante']
+	['dies --(nmod)--> prison']

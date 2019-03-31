@@ -1,0 +1,46 @@
+
+-----------------------------------------
+docid:34_8ecb.xml
+-----------------------------------------
+
+sentence #:cnn reporter sanjay gupta , a neurosurgeon who is among the nation 's best-known physicians , is under serious consideration to be the next surgeon general , democratic and network officials said tuesday . 
+	[events]:[['consideration']]
+	[entities]:[['surgeon', 'general'], ['tuesday'], ['sanjay', 'gupta']]
+said
+|--(ccomp)--> *R1132[consideration]
+|                |--(nsubj)--> R1130[gupta]
+|                |                |--(compou)--> cnn
+|                |                |--(compou)--> reporter
+|                |                |--(compou)--> R1130[sanjay]
+|                |                |--(punct)--> ,
+|                |                |--(appos)--> neurosurgeon
+|                |                |                |--(det)--> a
+|                |                |                |--(acl:re)--> physicians
+|                |                |                                 |--(nsubj)--> who
+|                |                |                                 |--(cop)--> is
+|                |                |                                 |--(case)--> among
+|                |                |                                 |--(nmod:p)--> nation
+|                |                |                                 |                |--(det)--> the
+|                |                |                                 |                |--(case)--> 's
+|                |                |                                 |--(amod)--> best-known
+|                |                |--(punct)--> ,
+|                |--(cop)--> is
+|                |--(case)--> under
+|                |--(amod)--> serious
+|                |--(xcomp)--> R1135[general]
+|                                 |--(mark)--> to
+|                                 |--(cop)--> be
+|                                 |--(nmod:n)--> R1135[surgeon]
+|                                                  |--(det)--> the
+|                                                  |--(amod)--> next
+|--(punct)--> ,
+|--(nsubj)--> officials
+|                |--(amod)--> democratic
+|                                 |--(cc)--> and
+|                                 |--(conj)--> network
+|--(nmod:t)--> R1146[tuesday]
+|--(punct)--> .
+
+	* entity-paths for event['consideration']34_8ecb.xmlsent:9495
+	['consideration --(nsubj)--> Gupta']
+	['consideration --(xcomp)--> general']

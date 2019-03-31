@@ -1,0 +1,27 @@
+
+-----------------------------------------
+docid:14_7ecb.xml
+-----------------------------------------
+
+sentence #:a huge fire has almost totally destroyed a waitrose store in banstead . 
+	[events]:[['fire'], ['destroyed']]
+	[entities]:[['in', 'banstead'], ['a', 'waitrose', 'store']]
+*R297[destroyed]
+|--(nsubj)--> *R296[fire]
+|                |--(det)--> a
+|                |--(amod)--> huge
+|--(aux)--> has
+|--(advmod)--> totally
+|                |--(advmod)--> almost
+|--(dobj)--> R298[store]
+|                |--(det)--> R298[a]
+|                |--(compou)--> R298[waitrose]
+|--(nmod)--> R299[banstead]
+|                |--(case)--> R299[in]
+|--(punct)--> .
+
+	* entity-paths for event['fire']14_7ecb.xmlsent:1771
+
+	* entity-paths for event['destroyed']14_7ecb.xmlsent:1771
+	['destroyed --(dobj)--> store']
+	['destroyed --(nmod)--> Banstead']

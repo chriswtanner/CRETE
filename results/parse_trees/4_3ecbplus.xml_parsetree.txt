@@ -1,0 +1,30 @@
+
+-----------------------------------------
+docid:4_3ecbplus.xml
+-----------------------------------------
+
+sentence #:esther williams , who swam to stardom in the 1940's , dies at 91 
+	[events]:[['swam'], ['dies']]
+	[entities]:[['esther', 'williams'], ['who'], ['in', 'the', "1940's"]]
+*R1369[dies]
+|--(nsubj)--> R1370[williams]
+|                |--(compou)--> R1370[esther]
+|                |--(punct)--> ,
+|                |--(acl:re)--> *R1372[swam]
+|                |                |--(nsubj)--> R1370[who]
+|                |                |--(nmod)--> stardom
+|                |                |                |--(case)--> to
+|                |                |--(nmod)--> R1375[the]
+|                |                                 |--(case)--> R1375[in]
+|                |                                 |--(nmod:p)--> R1375[1940's]
+|                |                                                  |--(case)--> R1375[1940's]
+|                |--(punct)--> ,
+|--(nmod)--> 91
+                 |--(case)--> at
+
+	* entity-paths for event['swam']4_3ecbplus.xmlsent:11419
+	['swam --(nsubj)--> who']
+	['swam --(nmod)--> the']
+
+	* entity-paths for event['dies']4_3ecbplus.xmlsent:11419
+	['dies --(nsubj)--> Williams']

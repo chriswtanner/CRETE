@@ -1,0 +1,144 @@
+
+-----------------------------------------
+docid:21_4ecbplus.xml
+-----------------------------------------
+
+sentence #:cops : queens woman killed in hit - and - run 
+	[events]:[['run'], ['killed'], ['hit']]
+	[entities]:[['woman'], ['cops']]
+*R556[hit]
+|--(nsubj)--> R561[cops]
+|                |--(punct)--> :
+|                |--(dep)--> *R546[killed]
+|                                 |--(compou)--> queens
+|                                 |--(compou)--> R545[woman]
+|--(advmod)--> in
+|--(punct)--> -
+|--(cc)--> and
+|--(conj)--> *R551[run]
+                 |--(punct)--> -
+
+	* entity-paths for event['run']21_4ecbplus.xmlsent:4218
+
+	* entity-paths for event['killed']21_4ecbplus.xmlsent:4218
+	['Killed --(compound)--> Woman']
+
+	* entity-paths for event['hit']21_4ecbplus.xmlsent:4218
+	['Hit --(nsubj)--> Cops']
+
+sentence #:a 59 - year - old mother of two died when a drunken driver struck her with his car and then drove off , police said . 
+	[events]:[['drove', 'off'], ['struck'], ['died'], ['said']]
+	[entities]:[['mother'], ['her'], ['police'], ['car'], ['driver']]
+59
+|--(det)--> a
+|--(punct)--> -
+|--(dep)--> year
+|--(punct)--> -
+|--(parata)--> *R546[died]
+|                |--(nsubj)--> R545[mother]
+|                |                |--(amod)--> old
+|                |                |--(nmod)--> two
+|                |                                 |--(case)--> of
+|                |--(ccomp)--> *R560[said]
+|                                 |--(advcl)--> *R556[struck]
+|                                 |                |--(advmod)--> when
+|                                 |                |--(nsubj)--> R548[driver]
+|                                 |                |                |--(det)--> a
+|                                 |                |                |--(amod)--> drunken
+|                                 |                |--(dobj)--> R545[her]
+|                                 |                |--(nmod)--> R569[car]
+|                                 |                |                |--(case)--> with
+|                                 |                |                |--(nmod:p)--> his
+|                                 |                |--(cc)--> and
+|                                 |                |--(conj)--> *R551[drove]
+|                                 |                                 |--(advmod)--> then
+|                                 |                                 |--(compou)--> *R551[off]
+|                                 |--(punct)--> ,
+|                                 |--(nsubj)--> R561[police]
+|--(punct)--> .
+
+	* entity-paths for event['drove', 'off']21_4ecbplus.xmlsent:4221
+
+	* entity-paths for event['struck']21_4ecbplus.xmlsent:4221
+	['struck --(nsubj)--> driver']
+	['struck --(dobj)--> her']
+	['struck --(nmod)--> car']
+
+	* entity-paths for event['died']21_4ecbplus.xmlsent:4221
+	['died --(nsubj)--> mother']
+	['died --(ccomp)--> said', 'said --(advcl)--> struck', 'struck --(nsubj)--> driver']
+	['died --(ccomp)--> said', 'said --(advcl)--> struck', 'struck --(dobj)--> her']
+	['died --(ccomp)--> said', 'said --(advcl)--> struck', 'struck --(nmod)--> car']
+	['died --(ccomp)--> said', 'said --(nsubj)--> police']
+
+	* entity-paths for event['said']21_4ecbplus.xmlsent:4221
+	['said --(advcl)--> struck', 'struck --(nsubj)--> driver']
+	['said --(advcl)--> struck', 'struck --(dobj)--> her']
+	['said --(advcl)--> struck', 'struck --(nmod)--> car']
+	['said --(nsubj)--> police']
+
+sentence #:raj chohan , 59 , of queens , had just parked her car around 7 p . m . friday at 97th avenue and 117th street in richmond hill when she was hit by a 2013 toyota camry , which then fled , police told 1010 wins " glenn schuck . 
+	[events]:[['hit'], ['told'], ['fled']]
+	[entities]:[['car'], ['of', 'queens'], ['around', '7', 'p', '.', 'm', '.', 'friday'], ['raj', 'chohan'], ['she'], ['toyota', 'camry'], ['which'], ['police'], ['at', '97th', 'avenue', 'and', '117th', 'street', 'in', 'richmond', 'hill']]
+parked
+|--(nsubj)--> R545[chohan]
+|                |--(compou)--> R545[raj]
+|                |--(punct)--> ,
+|                |--(amod)--> 59
+|                |--(punct)--> ,
+|                |--(nmod)--> R549[queens]
+|                |                |--(case)--> R549[of]
+|                |--(punct)--> ,
+|--(aux)--> had
+|--(advmod)--> just
+|--(dobj)--> R579[car]
+|                |--(nmod:p)--> her
+|--(nmod)--> R550[p]
+|                |--(case)--> R550[around]
+|                |--(nummod)--> R550[7]
+|                |--(punct)--> R550[.]
+|                |--(dep)--> R550[m]
+|                |--(punct)--> R550[.]
+|                |--(nmod:t)--> R550[friday]
+|--(nmod)--> R552[avenue]
+|                |--(case)--> R552[at]
+|                |--(compou)--> R552[97th]
+|                |--(cc)--> R552[and]
+|                |--(conj)--> R552[street]
+|                                 |--(compou)--> R552[117th]
+|--(nmod)--> R552[hill]
+|                |--(case)--> R552[in]
+|                |--(compou)--> R552[richmond]
+|                |--(acl:re)--> *R556[hit]
+|                                 |--(advmod)--> when
+|                                 |--(nsubjp)--> R545[she]
+|                                 |--(auxpas)--> was
+|                                 |--(nmod)--> R569[camry]
+|                                                  |--(case)--> by
+|                                                  |--(det)--> a
+|                                                  |--(nummod)--> 2013
+|                                                  |--(compou)--> R569[toyota]
+|                                                  |--(punct)--> ,
+|                                                  |--(acl:re)--> *R551[fled]
+|                                                                   |--(dep)--> R569[which]
+|                                                                   |--(advmod)--> then
+|                                                                   |--(punct)--> ,
+|                                                                   |--(ccomp)--> *R560[told]
+|                                                                   |                |--(nsubj)--> R561[police]
+|                                                                   |                |--(dobj)--> wins
+|                                                                   |                                 |--(nummod)--> 1010
+|                                                                   |--(punct)--> "
+|                                                                   |--(nsubj)--> schuck
+|                                                                                    |--(compou)--> glenn
+|--(punct)--> .
+
+	* entity-paths for event['hit']21_4ecbplus.xmlsent:4222
+	['hit --(nsubjpass)--> she']
+	['hit --(nmod)--> Camry']
+
+	* entity-paths for event['told']21_4ecbplus.xmlsent:4222
+	['told --(nsubj)--> police']
+
+	* entity-paths for event['fled']21_4ecbplus.xmlsent:4222
+	['fled --(dep)--> which']
+	['fled --(ccomp)--> told', 'told --(nsubj)--> police']

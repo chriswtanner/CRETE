@@ -1,0 +1,54 @@
+
+-----------------------------------------
+docid:22_3ecb.xml
+-----------------------------------------
+
+sentence #:staunton police on friday arrested a 60-year-old , terminally ill woman in the 1967 killings of two young women at a local ice cream stand , ending an agonizing 41-year odyssey for the victims ' families . 
+	[events]:[['killings'], ['arrested']]
+	[entities]:[['women'], ['friday'], ['woman'], ['a', 'local', 'ice', 'cream', 'stand'], ['1967']]
+*R628[arrested]
+|--(nsubj)--> police
+|                |--(compou)--> staunton
+|                |--(nmod)--> R629[friday]
+|                                 |--(case)--> on
+|--(dobj)--> R618[woman]
+|                |--(det)--> a
+|                |--(amod)--> 60-year-old
+|                |--(punct)--> ,
+|                |--(amod)--> ill
+|                |                |--(advmod)--> terminally
+|                |--(nmod)--> *R619[killings]
+|                                 |--(case)--> in
+|                                 |--(det)--> the
+|                                 |--(nummod)--> R622[1967]
+|                                 |--(nmod)--> R620[women]
+|                                                  |--(case)--> of
+|                                                  |--(nummod)--> two
+|                                                  |--(amod)--> young
+|--(nmod)--> R621[stand]
+|                |--(case)--> at
+|                |--(det)--> R621[a]
+|                |--(amod)--> R621[local]
+|                |--(compou)--> R621[ice]
+|                |--(compou)--> R621[cream]
+|--(punct)--> ,
+|--(advcl)--> ending
+|                |--(dobj)--> odyssey
+|                |                |--(det)--> an
+|                |                |--(amod)--> agonizing
+|                |                |--(amod)--> 41-year
+|                |--(nmod)--> families
+|                                 |--(case)--> for
+|                                 |--(nmod:p)--> victims
+|                                                  |--(det)--> the
+|                                                  |--(case)--> '
+|--(punct)--> .
+
+	* entity-paths for event['killings']22_3ecb.xmlsent:4496
+	['killings --(nummod)--> 1967']
+	['killings --(nmod)--> women']
+
+	* entity-paths for event['arrested']22_3ecb.xmlsent:4496
+	['arrested --(nsubj)--> police', 'police --(nmod)--> Friday']
+	['arrested --(dobj)--> woman']
+	['arrested --(nmod)--> stand']

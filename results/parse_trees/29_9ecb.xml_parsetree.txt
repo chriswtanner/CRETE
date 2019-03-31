@@ -1,0 +1,46 @@
+
+-----------------------------------------
+docid:29_9ecb.xml
+-----------------------------------------
+
+sentence #:peyton manning helped inspire the indianapolis colts to their eighth straight win of the season as they overcame jacksonville 31-24 on thursday to reach the play-offs . 
+	[events]:[['overcame'], ['play-offs'], ['win']]
+	[entities]:[['peyton', 'manning'], ['on', 'thursday'], ['31-24'], ['indianapolis', 'colts'], ['jacksonville'], ['their']]
+helped
+|--(nsubj)--> R864[manning]
+|                |--(compou)--> R864[peyton]
+|--(xcomp)--> inspire
+|                |--(ccomp)--> *R856[win]
+|                                 |--(nsubj)--> R852[colts]
+|                                 |                |--(det)--> the
+|                                 |                |--(compou)--> R852[indianapolis]
+|                                 |                |--(nmod)--> straight
+|                                 |                                 |--(case)--> to
+|                                 |                                 |--(nmod:p)--> R852[their]
+|                                 |                                 |--(amod)--> eighth
+|                                 |--(nmod)--> season
+|                                 |                |--(case)--> of
+|                                 |                |--(det)--> the
+|                                 |--(advcl)--> *R856[overcame]
+|                                                  |--(mark)--> as
+|                                                  |--(nsubj)--> they
+|                                                  |--(dobj)--> R857[jacksonville]
+|                                                  |                |--(nummod)--> R855[31-24]
+|                                                  |--(nmod)--> R865[thursday]
+|                                                  |                |--(case)--> R865[on]
+|                                                  |--(advcl)--> reach
+|                                                                   |--(mark)--> to
+|                                                                   |--(dobj)--> *R854[play-offs]
+|                                                                                    |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['overcame']29_9ecb.xmlsent:7281
+	['overcame --(dobj)--> Jacksonville']
+	['overcame --(nmod)--> Thursday']
+
+	* entity-paths for event['play-offs']29_9ecb.xmlsent:7281
+
+	* entity-paths for event['win']29_9ecb.xmlsent:7281
+	['win --(nsubj)--> Colts']
+	['win --(advcl)--> overcame', 'overcame --(dobj)--> Jacksonville']
+	['win --(advcl)--> overcame', 'overcame --(nmod)--> Thursday']

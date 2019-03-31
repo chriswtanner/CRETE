@@ -1,0 +1,75 @@
+
+-----------------------------------------
+docid:12_5ecb.xml
+-----------------------------------------
+
+sentence #:striking yet another blow at the very heart of piracy in the gulf of aden , indian warship ins mysore and its marine commandos thwarted a hijack attempt on an ethiopian merchant vessel on saturday and captured 23 pirates and a large arms cache in the operation . 
+	[events]:[['thwarted'], ['operation'], ['piracy'], ['blow'], ['striking'], ['attempt'], ['captured']]
+	[entities]:[['ins', 'mysore'], ['vessel'], ['the', 'gulf', 'of', 'aden'], ['saturday'], ['pirates']]
+*R232[thwarted]
+|--(nsubj)--> *R253[striking]
+|--(advmod)--> yet
+|                |--(nmod:n)--> *R254[blow]
+|                |                |--(det)--> another
+|                |--(nmod)--> heart
+|                                 |--(case)--> at
+|                                 |--(det)--> the
+|                                 |--(amod)--> very
+|                                 |--(nmod)--> *R241[piracy]
+|                                                  |--(case)--> of
+|                                                  |--(nmod)--> R229[gulf]
+|                                                                   |--(case)--> in
+|                                                                   |--(det)--> R229[the]
+|                                                                   |--(nmod)--> R229[aden]
+|                                                                                    |--(case)--> R229[of]
+|                                                                                    |--(punct)--> ,
+|                                                                                    |--(conj)--> R234[mysore]
+|                                                                                    |                |--(compou)--> indian
+|                                                                                    |                |--(compou)--> warship
+|                                                                                    |                |--(compou)--> R234[ins]
+|                                                                                    |--(cc)--> and
+|                                                                                    |--(conj)--> commandos
+|                                                                                                     |--(nmod:p)--> its
+|                                                                                                     |--(amod)--> marine
+|--(dobj)--> *R235[attempt]
+|                |--(det)--> a
+|                |--(compou)--> hijack
+|--(nmod)--> R228[vessel]
+|                |--(case)--> on
+|                |--(det)--> an
+|                |--(amod)--> ethiopian
+|                |--(compou)--> merchant
+|                |--(nmod)--> R230[saturday]
+|                                 |--(case)--> on
+|--(cc)--> and
+|--(conj)--> *R214[captured]
+|                |--(dobj)--> R216[pirates]
+|                |                |--(nummod)--> 23
+|                |                |--(cc)--> and
+|                |                |--(conj)--> cache
+|                |                                 |--(det)--> a
+|                |                                 |--(amod)--> large
+|                |                                 |--(compou)--> arms
+|                |--(nmod)--> *R233[operation]
+|                                 |--(case)--> in
+|                                 |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['thwarted']12_5ecb.xmlsent:994
+	['thwarted --(advmod)--> yet', 'yet --(nmod)--> heart', 'heart --(nmod)--> piracy', 'piracy --(nmod)--> Gulf']
+	['thwarted --(nmod)--> vessel']
+	['thwarted --(conj)--> captured', 'captured --(dobj)--> pirates']
+
+	* entity-paths for event['operation']12_5ecb.xmlsent:994
+
+	* entity-paths for event['piracy']12_5ecb.xmlsent:994
+	['piracy --(nmod)--> Gulf']
+
+	* entity-paths for event['blow']12_5ecb.xmlsent:994
+
+	* entity-paths for event['striking']12_5ecb.xmlsent:994
+
+	* entity-paths for event['attempt']12_5ecb.xmlsent:994
+
+	* entity-paths for event['captured']12_5ecb.xmlsent:994
+	['captured --(dobj)--> pirates']

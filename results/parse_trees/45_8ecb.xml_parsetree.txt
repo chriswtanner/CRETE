@@ -1,0 +1,44 @@
+
+-----------------------------------------
+docid:45_8ecb.xml
+-----------------------------------------
+
+sentence #:upon learning of his death sentence , scott peterson sat defiantly still and tight-jawed , the same vacant expression he wore throughout a murder trial in which he never spoke . 
+	[events]:[['murder'], ['death', 'sentence']]
+	[entities]:[['scott', 'peterson'], ['his'], ['he'], ['he']]
+sat
+|--(nmod)--> learning
+|                |--(case)--> upon
+|                |--(nmod)--> *R1631[sentence]
+|                                 |--(case)--> of
+|                                 |--(nmod:p)--> R1628[his]
+|                                 |--(compou)--> *R1631[death]
+|--(punct)--> ,
+|--(nsubj)--> R1628[peterson]
+|                |--(compou)--> R1628[scott]
+|--(advmod)--> defiantly
+|--(advmod)--> still
+|--(cc)--> and
+|--(conj)--> wore
+|                |--(dep)--> expression
+|                |                |--(dep)--> tight-jawed
+|                |                |--(punct)--> ,
+|                |                |--(det)--> the
+|                |                |--(amod)--> vacant
+|                |                                 |--(amod)--> same
+|                |--(nsubj)--> R1628[he]
+|                |--(nmod)--> trial
+|                                 |--(case)--> throughout
+|                                 |--(det)--> a
+|                                 |--(compou)--> *R1630[murder]
+|                                 |--(acl:re)--> spoke
+|                                                  |--(nmod)--> which
+|                                                  |                |--(case)--> in
+|                                                  |--(nsubj)--> R1628[he]
+|                                                  |--(neg)--> never
+|--(punct)--> .
+
+	* entity-paths for event['murder']45_8ecb.xmlsent:13898
+
+	* entity-paths for event['death', 'sentence']45_8ecb.xmlsent:13898
+	['sentence --(nmod:poss)--> his']

@@ -1,0 +1,98 @@
+
+-----------------------------------------
+docid:36_7ecb.xml
+-----------------------------------------
+
+sentence #:bc attorney general wally opal issued a statement today saying that two men , winston blackmore and james oler , had been arrested " on charges of polygamy pursuant to the criminal code . " 
+	[events]:[['charges'], ['polygamy'], ['saying'], ['arrested']]
+	[entities]:[['wally', 'opal'], ['winston', 'blackmore'], ['men'], ['today'], ['james', 'oler']]
+issued
+|--(nsubj)--> R1202[opal]
+|                |--(compou)--> bc
+|                |--(compou)--> attorney
+|                |--(compou)--> general
+|                |--(compou)--> R1202[wally]
+|--(dobj)--> R1203[today]
+|                |--(det)--> a
+|                |--(amod)--> statement
+|                |--(acl)--> *R1200[saying]
+|                |                |--(ccomp)--> *R1195[arrested]
+|                |                                 |--(nsubj)--> R1196[men]
+|                |                                 |                |--(det)--> that
+|                |                                 |                |--(nummod)--> two
+|                |                                 |--(punct)--> ,
+|                |                                 |--(nsubj)--> R1221[blackmore]
+|                |                                 |                |--(compou)--> R1221[winston]
+|                |                                 |                |--(cc)--> and
+|                |                                 |                |--(conj)--> R1222[oler]
+|                |                                 |                                 |--(compou)--> R1222[james]
+|                |                                 |--(punct)--> ,
+|                |                                 |--(nsubj)--> been
+|                |                                 |                |--(compou)--> had
+|                |                                 |--(punct)--> "
+|                |--(nmod)--> *R1199[charges]
+|                                 |--(case)--> on
+|                                 |--(nmod)--> pursuant
+|                                                  |--(case)--> of
+|                                                  |--(compou)--> *R1201[polygamy]
+|--(advcl)--> to
+|                |--(dobj)--> code
+|                                 |--(det)--> the
+|                                 |--(amod)--> criminal
+|--(punct)--> .
+|--(punct)--> "
+
+	* entity-paths for event['charges']36_7ecb.xmlsent:10251
+
+	* entity-paths for event['polygamy']36_7ecb.xmlsent:10251
+
+	* entity-paths for event['saying']36_7ecb.xmlsent:10251
+	['SAYING --(ccomp)--> ARRESTED', 'ARRESTED --(nsubj)--> MEN']
+	['SAYING --(ccomp)--> ARRESTED', 'ARRESTED --(nsubj)--> BLACKMORE']
+
+	* entity-paths for event['arrested']36_7ecb.xmlsent:10251
+	['ARRESTED --(nsubj)--> MEN']
+	['ARRESTED --(nsubj)--> BLACKMORE']
+
+sentence #:police have moved in and arrested at least two men from the religious community of bountiful in the bc interior . 
+	[events]:[['arrested']]
+	[entities]:[['men'], ['bountiful', 'in', 'the', 'bc', 'interior'], ['community']]
+police
+|--(ccomp)--> moved
+|                |--(nsubj)--> have
+|                |--(advcl)--> *R1195[arrested]
+|                                 |--(mark)--> in
+|                                 |--(nsubj)--> and
+|                                 |--(nmod)--> from
+|                                 |                |--(case)--> at
+|                                 |                |--(compou)--> least
+|                                 |                |--(nummod)--> two
+|                                 |                |--(compou)--> R1196[men]
+|                                 |--(dobj)--> R1197[community]
+|                                                  |--(det)--> the
+|                                                  |--(compou)--> religious
+|                                                  |--(nmod)--> R1217[bountiful]
+|                                                                   |--(case)--> of
+|                                                                   |--(nmod)--> R1217[interior]
+|                                                                                    |--(case)--> R1217[in]
+|                                                                                    |--(det)--> R1217[the]
+|                                                                                    |--(compou)--> R1217[bc]
+|--(punct)--> .
+
+	* entity-paths for event['arrested']36_7ecb.xmlsent:10250
+	['ARRESTED --(nmod)--> FROM', 'FROM --(compound)--> MEN']
+	['ARRESTED --(dobj)--> COMMUNITY']
+
+sentence #:rcmp make arrests in bc polygamous community 
+	[events]:[['arrests']]
+	[entities]:[['rcmp'], ['community']]
+make
+|--(nsubj)--> R1215[rcmp]
+|--(dobj)--> *R1195[arrests]
+                 |--(nmod)--> R1197[community]
+                                  |--(case)--> in
+                                  |--(compou)--> bc
+                                  |--(compou)--> polygamous
+
+	* entity-paths for event['arrests']36_7ecb.xmlsent:10249
+	['ARRESTS --(nmod)--> COMMUNITY']

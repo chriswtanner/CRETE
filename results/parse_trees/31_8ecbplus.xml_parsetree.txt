@@ -1,0 +1,21 @@
+
+-----------------------------------------
+docid:31_8ecbplus.xml
+-----------------------------------------
+
+sentence #:the bluejays will play indiana state on saturday . 
+	[events]:[['play']]
+	[entities]:[['indiana', 'state'], ['bluejays'], ['on', 'saturday']]
+*R1026[play]
+|--(nsubj)--> R1003[bluejays]
+|                |--(det)--> the
+|--(aux)--> will
+|--(dobj)--> R1028[state]
+|                |--(compou)--> R1028[indiana]
+|                |--(nmod)--> R1030[saturday]
+|                                 |--(case)--> R1030[on]
+|--(punct)--> .
+
+	* entity-paths for event['play']31_8ecbplus.xmlsent:8619
+	['play --(nsubj)--> Bluejays']
+	['play --(dobj)--> State']

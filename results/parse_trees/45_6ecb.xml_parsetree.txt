@@ -1,0 +1,208 @@
+
+-----------------------------------------
+docid:45_6ecb.xml
+-----------------------------------------
+
+sentence #:the same jury that recommended peterson 's penalty found him guilty of the first-degree murder of his wife and the second-degree murder of his unborn child . 
+	[events]:[['guilty'], ['recommended', 'penalty'], ['found'], ['first-degree', 'murder'], ['second-degree', 'murder'], ['unborn']]
+	[entities]:[['peterson'], ['jury'], ['him'], ['child'], ['wife']]
+*R1627[found]
+|--(nsubj)--> R1632[jury]
+|                |--(det)--> the
+|                |--(amod)--> same
+|                |--(acl:re)--> *R1631[recommended]
+|                                 |--(nsubj)--> that
+|                                 |--(dobj)--> *R1631[penalty]
+|                                                  |--(nmod:p)--> R1628[peterson]
+|                                                                   |--(case)--> 's
+|--(xcomp)--> *R1629[guilty]
+|                |--(nsubj)--> R1628[him]
+|                |--(nmod)--> *R1648[murder]
+|                                 |--(case)--> of
+|                                 |--(det)--> the
+|                                 |--(amod)--> *R1648[first-degree]
+|                                 |--(nmod)--> R1634[wife]
+|                                 |                |--(case)--> of
+|                                 |                |--(nmod:p)--> his
+|                                 |--(cc)--> and
+|                                 |--(conj)--> *R1630[murder]
+|                                                  |--(det)--> the
+|                                                  |--(amod)--> *R1630[second-degree]
+|                                                  |--(nmod)--> R1640[child]
+|                                                                   |--(case)--> of
+|                                                                   |--(nmod:p)--> his
+|                                                                   |--(amod)--> *R1651[unborn]
+|--(punct)--> .
+
+	* entity-paths for event['guilty']45_6ecb.xmlsent:13880
+	['guilty --(nsubj)--> him']
+	['guilty --(nmod)--> murder', 'murder --(nmod)--> wife']
+	['guilty --(nmod)--> murder', 'murder --(conj)--> murder', 'murder --(nmod)--> child']
+
+	* entity-paths for event['recommended', 'penalty']45_6ecb.xmlsent:13880
+	['penalty --(nmod:poss)--> Peterson']
+
+	* entity-paths for event['found']45_6ecb.xmlsent:13880
+	['found --(nsubj)--> jury']
+	['found --(xcomp)--> guilty', 'guilty --(nsubj)--> him']
+	['found --(xcomp)--> guilty', 'guilty --(nmod)--> murder', 'murder --(nmod)--> wife']
+	['found --(xcomp)--> guilty', 'guilty --(nmod)--> murder', 'murder --(conj)--> murder', 'murder --(nmod)--> child']
+
+	* entity-paths for event['first-degree', 'murder']45_6ecb.xmlsent:13880
+	['murder --(nmod)--> wife']
+	['murder --(conj)--> murder', 'murder --(nmod)--> child']
+
+	* entity-paths for event['second-degree', 'murder']45_6ecb.xmlsent:13880
+	['murder --(nmod)--> child']
+
+	* entity-paths for event['unborn']45_6ecb.xmlsent:13880
+
+sentence #:unlike on nov. 12 , when sobs filled the air as peterson was found guilty of murdering his wife and their unborn child , there was an almost surreal stillness in the courtroom while the death recommendation was announced . 
+	[events]:[['death', 'recommendation'], ['unborn'], ['found'], ['guilty'], ['murdering']]
+	[entities]:[['on', 'nov.', '12'], ['peterson'], ['child'], ['wife']]
+was
+|--(nmod)--> R1646[nov.]
+|                |--(case)--> unlike
+|                |--(case)--> R1646[on]
+|                |--(nummod)--> R1646[12]
+|--(punct)--> ,
+|--(advcl)--> filled
+|                |--(advmod)--> when
+|                |--(nsubj)--> sobs
+|                |--(dobj)--> air
+|                |                |--(det)--> the
+|                |--(advcl)--> *R1627[found]
+|                                 |--(mark)--> as
+|                                 |--(nsubjp)--> R1628[peterson]
+|                                 |--(auxpas)--> was
+|                                 |--(xcomp)--> *R1629[guilty]
+|                                                  |--(advcl)--> *R1648[murdering]
+|                                                                   |--(mark)--> of
+|                                                                   |--(dobj)--> R1634[wife]
+|                                                                                    |--(nmod:p)--> his
+|                                                                                    |--(cc)--> and
+|                                                                                    |--(conj)--> R1640[child]
+|                                                                                                     |--(nmod:p)--> their
+|                                                                                                     |--(amod)--> *R1651[unborn]
+|--(punct)--> ,
+|--(expl)--> there
+|--(nsubj)--> stillness
+|                |--(det)--> an
+|                |--(amod)--> surreal
+|                |                |--(advmod)--> almost
+|                |--(nmod)--> courtroom
+|                                 |--(case)--> in
+|                                 |--(det)--> the
+|--(advcl)--> announced
+|                |--(mark)--> while
+|                |--(nsubjp)--> *R1631[recommendation]
+|                |                |--(det)--> the
+|                |                |--(compou)--> *R1631[death]
+|                |--(auxpas)--> was
+|--(punct)--> .
+
+	* entity-paths for event['death', 'recommendation']45_6ecb.xmlsent:13878
+
+	* entity-paths for event['unborn']45_6ecb.xmlsent:13878
+
+	* entity-paths for event['found']45_6ecb.xmlsent:13878
+	['found --(nsubjpass)--> Peterson']
+	['found --(xcomp)--> guilty', 'guilty --(advcl)--> murdering', 'murdering --(dobj)--> wife']
+
+	* entity-paths for event['guilty']45_6ecb.xmlsent:13878
+	['guilty --(advcl)--> murdering', 'murdering --(dobj)--> wife']
+
+	* entity-paths for event['murdering']45_6ecb.xmlsent:13878
+	['murdering --(dobj)--> wife']
+
+sentence #:peterson was convicted nov. 12 of first-degree murder for the death of laci peterson and second-degree murder for the death of their unborn son just before christmas 2002 . 
+	[events]:[['death'], ['death'], ['first-degree', 'murder'], ['unborn'], ['second-degree', 'murder'], ['convicted']]
+	[entities]:[['peterson'], ['nov.', '12'], ['son'], ['laci', 'peterson']]
+*R1627[convicted]
+|--(nsubjp)--> R1628[peterson]
+|--(auxpas)--> was
+|--(nmod:t)--> R1646[nov.]
+|                |--(nummod)--> R1646[12]
+|--(nmod)--> *R1648[murder]
+|                |--(case)--> of
+|                |--(amod)--> *R1648[first-degree]
+|                |--(nmod)--> *R1635[death]
+|                                 |--(case)--> for
+|                                 |--(det)--> the
+|                                 |--(nmod)--> R1634[peterson]
+|                                 |                |--(case)--> of
+|                                 |                |--(compou)--> R1634[laci]
+|                                 |--(cc)--> and
+|                                 |--(conj)--> *R1630[murder]
+|                                                  |--(amod)--> *R1630[second-degree]
+|                                                  |--(nmod)--> *R1650[death]
+|                                                                   |--(case)--> for
+|                                                                   |--(det)--> the
+|                                                                   |--(nmod)--> R1640[son]
+|                                                                                    |--(case)--> of
+|                                                                                    |--(nmod:p)--> their
+|                                                                                    |--(amod)--> *R1651[unborn]
+|--(nmod)--> christmas
+|                |--(advmod)--> just
+|                |--(case)--> before
+|                |--(nummod)--> 2002
+|--(punct)--> .
+
+	* entity-paths for event['death']45_6ecb.xmlsent:13879
+	['death --(nmod)--> son']
+
+	* entity-paths for event['death']45_6ecb.xmlsent:13879
+	['death --(nmod)--> Peterson']
+	['death --(conj)--> murder', 'murder --(nmod)--> death', 'death --(nmod)--> son']
+
+	* entity-paths for event['first-degree', 'murder']45_6ecb.xmlsent:13879
+	['murder --(nmod)--> death', 'death --(nmod)--> Peterson']
+	['murder --(nmod)--> death', 'death --(conj)--> murder', 'murder --(nmod)--> death', 'death --(nmod)--> son']
+
+	* entity-paths for event['unborn']45_6ecb.xmlsent:13879
+
+	* entity-paths for event['second-degree', 'murder']45_6ecb.xmlsent:13879
+	['murder --(nmod)--> death', 'death --(nmod)--> son']
+
+	* entity-paths for event['convicted']45_6ecb.xmlsent:13879
+	['convicted --(nsubjpass)--> Peterson']
+	['convicted --(nmod:tmod)--> Nov.']
+	['convicted --(nmod)--> murder', 'murder --(nmod)--> death', 'death --(nmod)--> Peterson']
+	['convicted --(nmod)--> murder', 'murder --(nmod)--> death', 'death --(conj)--> murder', 'murder --(nmod)--> death', 'death --(nmod)--> son']
+
+sentence #:the case first captured the nation 's attention when laci peterson disappeared from her modesto home the day before christmas 2002 and has engrossed the country ever since . 
+	[events]:[['disappeared']]
+	[entities]:[['from', 'her', 'modesto', 'home'], ['laci', 'peterson']]
+captured
+|--(nsubj)--> case
+|                |--(det)--> the
+|--(advmod)--> first
+|--(dobj)--> attention
+|                |--(nmod:p)--> nation
+|                |                |--(det)--> the
+|                |                |--(case)--> 's
+|                |--(ccomp)--> *R1633[disappeared]
+|                                 |--(advmod)--> when
+|                                 |--(nsubj)--> R1634[peterson]
+|                                 |                |--(compou)--> R1634[laci]
+|                                 |--(nmod)--> R1653[home]
+|                                 |                |--(case)--> R1653[from]
+|                                 |                |--(nmod:p)--> R1653[her]
+|                                 |                |--(compou)--> R1653[modesto]
+|                                 |                |--(dep)--> day
+|                                 |                                 |--(det)--> the
+|                                 |--(nmod)--> christmas
+|                                 |                |--(case)--> before
+|                                 |                |--(nummod)--> 2002
+|                                 |--(cc)--> and
+|                                 |--(conj)--> engrossed
+|                                                  |--(aux)--> has
+|                                                  |--(dobj)--> country
+|                                                  |                |--(det)--> the
+|                                                  |--(advmod)--> ever
+|                                                                   |--(case)--> since
+|--(punct)--> .
+
+	* entity-paths for event['disappeared']45_6ecb.xmlsent:13877
+	['disappeared --(nsubj)--> Peterson']
+	['disappeared --(nmod)--> home']

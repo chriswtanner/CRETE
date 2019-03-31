@@ -1,0 +1,146 @@
+
+-----------------------------------------
+docid:30_5ecbplus.xml
+-----------------------------------------
+
+sentence #:services on egypt's three telecom operators were disrupted in parts of alexandria on tuesday afternoon , and some users in cairo experienced slower internet connections due to "downtime" in a submarine cable . 
+	[events]:[['services'], ['connections'], ['disrupted']]
+	[entities]:[['operators'], ['cable'], ['users'], ['in', 'parts', 'of', 'alexandria'], ['on', 'tuesday', 'afternoon']]
+*R990[disrupted]
+|--(nsubjp)--> *R991[services]
+|                |--(nmod)--> R995[operators]
+|                                 |--(case)--> on
+|                                 |--(nmod:p)--> egypt's
+|                                 |                |--(case)--> egypt's
+|                                 |--(nummod)--> three
+|                                 |--(compou)--> telecom
+|--(auxpas)--> were
+|--(nmod)--> R992[parts]
+|                |--(case)--> R992[in]
+|                |--(nmod)--> R992[alexandria]
+|                                 |--(case)--> R992[of]
+|--(nmod)--> R989[tuesday]
+|                |--(case)--> R989[on]
+|--(nmod:t)--> R989[afternoon]
+|--(punct)--> ,
+|--(cc)--> and
+|--(conj)--> experienced
+|                |--(nsubj)--> R955[users]
+|                |                |--(det)--> some
+|                |                |--(nmod)--> cairo
+|                |                                 |--(case)--> in
+|                |--(dobj)--> *R991[connections]
+|                |                |--(amod)--> slower
+|                |                |--(compou)--> internet
+|                |--(nmod)--> "downtime"
+|                                 |--(case)--> due
+|                                 |                |--(mwe)--> to
+|                                 |--(punct)--> "downtime"
+|                                 |--(punct)--> "downtime"
+|                                 |--(nmod)--> R987[cable]
+|                                                  |--(case)--> in
+|                                                  |--(det)--> a
+|                                                  |--(compou)--> submarine
+|--(punct)--> .
+
+	* entity-paths for event['services']30_5ecbplus.xmlsent:7918
+	['Services --(nmod)--> operators']
+
+	* entity-paths for event['connections']30_5ecbplus.xmlsent:7918
+
+	* entity-paths for event['disrupted']30_5ecbplus.xmlsent:7918
+	['disrupted --(nsubjpass)--> Services', 'Services --(nmod)--> operators']
+	['disrupted --(nmod)--> parts']
+	['disrupted --(nmod)--> Tuesday']
+	['disrupted --(nmod:tmod)--> afternoon']
+	['disrupted --(conj)--> experienced', 'experienced --(nsubj)--> users']
+	['disrupted --(conj)--> experienced', 'experienced --(nmod)--> downtime', 'downtime --(punct)--> "', 'downtime --(punct)--> "', 'downtime --(nmod)--> cable']
+	['disrupted --(conj)--> experienced', 'experienced --(nmod)--> downtime', 'downtime --(punct)--> "', 'downtime --(nmod)--> cable']
+	['disrupted --(conj)--> experienced', 'experienced --(nmod)--> downtime', 'downtime --(punct)--> "', 'downtime --(punct)--> "', 'downtime --(nmod)--> cable']
+	['disrupted --(conj)--> experienced', 'experienced --(nmod)--> downtime', 'downtime --(punct)--> "', 'downtime --(nmod)--> cable']
+	['disrupted --(conj)--> experienced', 'experienced --(nmod)--> downtime', 'downtime --(nmod)--> cable']
+
+sentence #:submarine cable problem disrupts telecom services in alexandria 
+	[events]:[['telecom', 'services'], ['problem'], ['disrupts']]
+	[entities]:[['cable'], ['in', 'alexandria']]
+*R990[disrupts]
+|--(nsubj)--> *R988[problem]
+|                |--(compou)--> submarine
+|                |--(compou)--> R987[cable]
+|--(dobj)--> *R991[services]
+                 |--(compou)--> *R991[telecom]
+                 |--(nmod)--> R992[alexandria]
+                                  |--(case)--> R992[in]
+
+	* entity-paths for event['telecom', 'services']30_5ecbplus.xmlsent:7916
+	['services --(nmod)--> Alexandria']
+
+	* entity-paths for event['problem']30_5ecbplus.xmlsent:7916
+	['problem --(compound)--> cable']
+
+	* entity-paths for event['disrupts']30_5ecbplus.xmlsent:7916
+	['disrupts --(nsubj)--> problem', 'problem --(compound)--> cable']
+	['disrupts --(dobj)--> services', 'services --(nmod)--> Alexandria']
+
+sentence #:"vodafone , along with the country's three telecom providers has been affected by a damage in one of telecom egypt's fiber cables in a wire going from the ramsis communications center all the way to sadat city , " said khaled hegazy , vodafone's external affairs director . 
+	[events]:[['damage'], ['affected']]
+	[entities]:[['telecom', "egypt's"], ['providers'], ['fiber', 'cables']]
+said
+|--(punct)--> "vodafone
+|--(ccomp)--> *R986[affected]
+|                |--(nsubjp)--> "vodafone
+|                |                |--(punct)--> ,
+|                |                |--(advmod)--> along
+|                |                                 |--(nmod)--> R995[providers]
+|                |                                                  |--(case)--> with
+|                |                                                  |--(nmod:p)--> country's
+|                |                                                  |                |--(det)--> the
+|                |                                                  |                |--(case)--> country's
+|                |                                                  |--(nummod)--> three
+|                |                                                  |--(compou)--> telecom
+|                |--(aux)--> has
+|                |--(auxpas)--> been
+|                |--(nmod)--> *R988[damage]
+|                |                |--(case)--> by
+|                |                |--(det)--> a
+|                |                |--(nmod)--> one
+|                |                                 |--(case)--> in
+|                |                                 |--(nmod)--> R987[cables]
+|                |                                                  |--(case)--> of
+|                |                                                  |--(nmod:p)--> R994[egypt's]
+|                |                                                  |                |--(compou)--> R994[telecom]
+|                |                                                  |                |--(case)--> R994[egypt's]
+|                |                                                  |--(compou)--> R987[fiber]
+|                |--(advcl)--> going
+|                                 |--(mark)--> in
+|                                 |--(nsubj)--> wire
+|                                 |                |--(det)--> a
+|                                 |--(nmod)--> center
+|                                 |                |--(case)--> from
+|                                 |                |--(det)--> the
+|                                 |                |--(compou)--> ramsis
+|                                 |                |--(compou)--> communications
+|                                 |--(dobj)--> way
+|                                                  |--(det:pr)--> all
+|                                                  |--(det)--> the
+|                                                  |--(nmod)--> city
+|                                                                   |--(case)--> to
+|                                                                   |--(compou)--> sadat
+|--(punct)--> ,
+|--(punct)--> "
+|--(nsubj)--> hegazy
+|                |--(compou)--> khaled
+|                |--(punct)--> ,
+|                |--(appos)--> director
+|                                 |--(nmod:p)--> vodafone's
+|                                 |                |--(case)--> vodafone's
+|                                 |--(amod)--> external
+|                                 |--(compou)--> affairs
+|--(punct)--> .
+
+	* entity-paths for event['damage']30_5ecbplus.xmlsent:7920
+	['damage --(nmod)--> one', 'one --(nmod)--> cables']
+
+	* entity-paths for event['affected']30_5ecbplus.xmlsent:7920
+	['affected --(nsubjpass)--> Vodafone', 'Vodafone --(advmod)--> along', 'along --(nmod)--> providers']
+	['affected --(nmod)--> damage', 'damage --(nmod)--> one', 'one --(nmod)--> cables']

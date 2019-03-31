@@ -1,0 +1,35 @@
+
+-----------------------------------------
+docid:1_13ecb.xml
+-----------------------------------------
+
+sentence #:perpetual mess tara reid has finally decided to try and shed her drunk-girl image and has entered rehab . 
+	[events]:[['decided'], ['entered']]
+	[entities]:[['her'], ['tara', 'reid'], ['rehab']]
+*R39[decided]
+|--(nsubj)--> R2[reid]
+|                |--(amod)--> perpetual
+|                |--(compou)--> mess
+|                |--(compou)--> R2[tara]
+|--(aux)--> has
+|--(advmod)--> finally
+|--(xcomp)--> try
+|                |--(mark)--> to
+|                |--(cc)--> and
+|                |--(conj)--> shed
+|                |--(dobj)--> image
+|                                 |--(dep)--> R2[her]
+|                                 |--(amod)--> drunk-girl
+|--(cc)--> and
+|--(conj)--> *R1[entered]
+|                |--(aux)--> has
+|                |--(dobj)--> R3[rehab]
+|--(punct)--> .
+
+	* entity-paths for event['decided']1_13ecb.xmlsent:66
+	['decided --(nsubj)--> Reid']
+	['decided --(xcomp)--> try', 'try --(dobj)--> image', 'image --(dep)--> her']
+	['decided --(conj)--> entered', 'entered --(dobj)--> rehab']
+
+	* entity-paths for event['entered']1_13ecb.xmlsent:66
+	['entered --(dobj)--> rehab']

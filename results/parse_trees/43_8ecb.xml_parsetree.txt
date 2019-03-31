@@ -1,0 +1,56 @@
+
+-----------------------------------------
+docid:43_8ecb.xml
+-----------------------------------------
+
+sentence #:amd 's ati acquisition will not affect india operations 
+	[events]:[['acquisition']]
+	[entities]:[['amd'], ['ati']]
+affect
+|--(nsubj)--> *R1562[acquisition]
+|                |--(nmod:p)--> R1547[amd]
+|                |                |--(case)--> 's
+|                |--(compou)--> R1563[ati]
+|--(aux)--> will
+|--(neg)--> not
+|--(dobj)--> operations
+                 |--(compou)--> india
+
+	* entity-paths for event['acquisition']43_8ecb.xmlsent:13366
+	['acquisition --(nmod:poss)--> AMD']
+	['acquisition --(compound)--> ATI']
+
+sentence #:the amd statement said , " we can not speculate on the implications of the merger for another 90-120 days , till the time integration is complete . " 
+	[events]:[['merger']]
+	[entities]:[['we'], ['amd']]
+said
+|--(nsubj)--> statement
+|                |--(det)--> the
+|                |--(compou)--> R1547[amd]
+|--(parata)--> speculate
+|                |--(punct)--> ,
+|                |--(punct)--> "
+|                |--(nsubj)--> R1547[we]
+|                |--(aux)--> can
+|                |--(neg)--> not
+|                |--(nmod)--> implications
+|                |                |--(case)--> on
+|                |                |--(det)--> the
+|                |                |--(nmod)--> *R1562[merger]
+|                |                                 |--(case)--> of
+|                |                                 |--(det)--> the
+|                |                                 |--(nmod)--> days
+|                |                                                  |--(case)--> for
+|                |                                                  |--(det)--> another
+|                |                                                  |--(nummod)--> 90-120
+|                |--(punct)--> ,
+|--(advcl)--> complete
+|                |--(mark)--> till
+|                |--(nsubj)--> integration
+|                |                |--(det)--> the
+|                |                |--(compou)--> time
+|                |--(cop)--> is
+|--(punct)--> .
+|--(punct)--> "
+
+	* entity-paths for event['merger']43_8ecb.xmlsent:13374

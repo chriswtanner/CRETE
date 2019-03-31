@@ -1,0 +1,62 @@
+
+-----------------------------------------
+docid:25_11ecbplus.xml
+-----------------------------------------
+
+sentence #:saints' pierre thomas placed on ir 
+	[events]:[['ir'], ['placed']]
+	[entities]:[['pierre', 'thomas'], ["saints'"]]
+*R715[placed]
+|--(nsubj)--> R716[thomas]
+|                |--(nmod:p)--> R706[saints']
+|                |                |--(case)--> R706[saints']
+|                |--(compou)--> R716[pierre]
+|--(nmod)--> *R717[ir]
+                 |--(case)--> on
+
+	* entity-paths for event['ir']25_11ecbplus.xmlsent:4957
+
+	* entity-paths for event['placed']25_11ecbplus.xmlsent:4957
+	['placed --(nsubj)--> Thomas']
+
+sentence #:pierre thomas , one of the stars of last season's super bowl run , was placed on injured reserve on wednesday because of his injured ankle . 
+	[events]:[['injured'], ['placed'], ['injured', 'reserve']]
+	[entities]:[['his'], ['on', 'wednesday'], ['pierre', 'thomas'], ['ankle']]
+*R715[placed]
+|--(nsubjp)--> R716[thomas]
+|                |--(compou)--> R716[pierre]
+|                |--(punct)--> ,
+|                |--(appos)--> one
+|                |                |--(nmod)--> stars
+|                |                |                |--(case)--> of
+|                |                |                |--(det)--> the
+|                |                |                |--(nmod)--> bowl
+|                |                |                                 |--(case)--> of
+|                |                |                                 |--(nmod:p)--> season's
+|                |                |                                 |                |--(amod)--> last
+|                |                |                                 |                |--(case)--> season's
+|                |                |                                 |--(compou)--> super
+|                |                |--(dep)--> run
+|                |--(punct)--> ,
+|--(auxpas)--> was
+|--(nmod)--> *R717[reserve]
+|                |--(case)--> on
+|                |--(amod)--> *R717[injured]
+|                |--(nmod)--> R714[wednesday]
+|                                 |--(case)--> R714[on]
+|--(nmod)--> R723[ankle]
+|                |--(case)--> because
+|                |--(case)--> of
+|                |--(nmod:p)--> R716[his]
+|                |--(amod)--> *R713[injured]
+|--(punct)--> .
+
+	* entity-paths for event['injured']25_11ecbplus.xmlsent:4960
+
+	* entity-paths for event['placed']25_11ecbplus.xmlsent:4960
+	['placed --(nsubjpass)--> Thomas']
+	['placed --(nmod)--> reserve', 'reserve --(nmod)--> Wednesday']
+	['placed --(nmod)--> ankle']
+
+	* entity-paths for event['injured', 'reserve']25_11ecbplus.xmlsent:4960
+	['reserve --(nmod)--> Wednesday']

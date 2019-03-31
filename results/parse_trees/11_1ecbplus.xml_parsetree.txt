@@ -1,0 +1,93 @@
+
+-----------------------------------------
+docid:11_1ecbplus.xml
+-----------------------------------------
+
+sentence #:parliamentary elections in turkmenistan which are planned for december 15 , 2013 , will be held on a two - party basis , a message from the central commission for elections and referenda of turkmenistan said . 
+	[events]:[['planned'], ['held'], ['message'], ['basis'], ['elections']]
+	[entities]:[['december', '15', ',', '2013'], ['turkmenistan'], ['turkmenistan'], ['party'], ['central', 'commission', 'for', 'elections', 'and', 'referenda'], ['parliamentary']]
+*R199[held]
+|--(nsubjp)--> *R200[elections]
+|                |--(amod)--> R188[parliamentary]
+|                |--(nmod)--> R189[turkmenistan]
+|                                 |--(case)--> in
+|                                 |--(acl:re)--> *R201[planned]
+|                                                  |--(nsubjp)--> which
+|                                                  |--(auxpas)--> are
+|                                                  |--(nmod)--> R202[december]
+|                                                                   |--(case)--> for
+|                                                                   |--(nummod)--> R202[15]
+|                                                                   |--(punct)--> R202[,]
+|                                                                   |--(nummod)--> R202[2013]
+|                                                                   |--(punct)--> ,
+|--(aux)--> will
+|--(auxpas)--> be
+|--(nmod)--> two
+|                |--(case)--> on
+|                |--(det)--> a
+|--(punct)--> -
+|--(parata)--> said
+|                |--(nsubj)--> *R203[basis]
+|                                 |--(compou)--> R204[party]
+|                                 |--(punct)--> ,
+|                                 |--(appos)--> *R205[message]
+|                                                  |--(det)--> a
+|                                                  |--(nmod)--> R206[commission]
+|                                                  |                |--(case)--> from
+|                                                  |                |--(det)--> the
+|                                                  |                |--(compou)--> R206[central]
+|                                                  |                |--(nmod)--> R206[elections]
+|                                                  |                                 |--(case)--> R206[for]
+|                                                  |                                 |--(cc)--> R206[and]
+|                                                  |                                 |--(conj)--> R206[referenda]
+|                                                  |--(nmod)--> R207[turkmenistan]
+|                                                                   |--(case)--> of
+|--(punct)--> .
+
+	* entity-paths for event['planned']11_1ecbplus.xmlsent:610
+	['planned --(nmod)--> December']
+
+	* entity-paths for event['held']11_1ecbplus.xmlsent:610
+	['held --(nsubjpass)--> elections', 'elections --(amod)--> Parliamentary']
+	['held --(nsubjpass)--> elections', 'elections --(nmod)--> Turkmenistan']
+	['held --(parataxis)--> said', 'said --(nsubj)--> basis', 'basis --(compound)--> party']
+	['held --(parataxis)--> said', 'said --(nsubj)--> basis', 'basis --(appos)--> message', 'message --(nmod)--> Commission']
+	['held --(parataxis)--> said', 'said --(nsubj)--> basis', 'basis --(appos)--> message', 'message --(nmod)--> Turkmenistan']
+
+	* entity-paths for event['message']11_1ecbplus.xmlsent:610
+	['message --(nmod)--> Commission']
+	['message --(nmod)--> Turkmenistan']
+
+	* entity-paths for event['basis']11_1ecbplus.xmlsent:610
+	['basis --(compound)--> party']
+	['basis --(appos)--> message', 'message --(nmod)--> Commission']
+	['basis --(appos)--> message', 'message --(nmod)--> Turkmenistan']
+
+	* entity-paths for event['elections']11_1ecbplus.xmlsent:610
+	['elections --(amod)--> Parliamentary']
+	['elections --(nmod)--> Turkmenistan']
+
+sentence #:parliamentary elections in turkmenistan to be held on two - party basis 
+	[events]:[['elections'], ['held'], ['basis']]
+	[entities]:[['turkmenistan'], ['parliamentary'], ['party']]
+*R200[elections]
+|--(amod)--> R188[parliamentary]
+|--(nmod)--> R189[turkmenistan]
+                 |--(case)--> in
+                 |--(acl)--> *R199[held]
+                 |                |--(mark)--> to
+                 |                |--(auxpas)--> be
+                 |                |--(nmod)--> two
+                 |                                 |--(case)--> on
+                 |--(punct)--> -
+                 |--(dep)--> *R203[basis]
+                                  |--(compou)--> R204[party]
+
+	* entity-paths for event['elections']11_1ecbplus.xmlsent:608
+	['elections --(amod)--> Parliamentary']
+	['elections --(nmod)--> Turkmenistan']
+
+	* entity-paths for event['held']11_1ecbplus.xmlsent:608
+
+	* entity-paths for event['basis']11_1ecbplus.xmlsent:608
+	['basis --(compound)--> party']

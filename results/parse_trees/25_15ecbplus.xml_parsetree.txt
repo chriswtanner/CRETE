@@ -1,0 +1,76 @@
+
+-----------------------------------------
+docid:25_15ecbplus.xml
+-----------------------------------------
+
+sentence #:the saints placed running back pierre thomas on ir wednesday , the second time in as many days the team has placed one of its primary running backs on the list . 
+	[events]:[['list'], ['placed'], ['ir'], ['placed']]
+	[entities]:[['team'], ['saints'], ['one', 'of', 'its', 'primary', 'running', 'backs'], ['wednesday'], ['many', 'days'], ['pierre', 'thomas']]
+*R715[placed]
+|--(nsubj)--> R706[saints]
+|                |--(det)--> the
+|--(xcomp)--> running
+|                |--(compou)--> back
+|                |--(dobj)--> R716[thomas]
+|                |                |--(compou)--> R716[pierre]
+|                |                |--(nmod)--> R714[wednesday]
+|                |                                 |--(case)--> on
+|                |                                 |--(compou)--> *R717[ir]
+|                |                                 |--(punct)--> ,
+|                |                                 |--(appos)--> time
+|                |                                                  |--(det)--> the
+|                |                                                  |--(amod)--> second
+|                |--(nmod)--> R727[days]
+|                                 |--(case)--> in
+|                                 |--(nummod)--> R727[many]
+|                                 |                |--(advmod)--> as
+|                                 |--(acl:re)--> *R715[placed]
+|                                                  |--(nsubj)--> R706[team]
+|                                                  |                |--(det)--> the
+|                                                  |--(aux)--> has
+|                                                  |--(dobj)--> R716[one]
+|                                                                   |--(nmod)--> R716[backs]
+|                                                                                    |--(case)--> R716[of]
+|                                                                                    |--(nmod:p)--> R716[its]
+|                                                                                    |--(amod)--> R716[primary]
+|                                                                                    |--(amod)--> R716[running]
+|                                                                                    |--(nmod)--> *R717[list]
+|                                                                                                     |--(case)--> on
+|                                                                                                     |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['list']25_15ecbplus.xmlsent:5051
+
+	* entity-paths for event['placed']25_15ecbplus.xmlsent:5051
+	['placed --(nsubj)--> Saints']
+	['placed --(xcomp)--> running', 'running --(dobj)--> Thomas']
+	['placed --(xcomp)--> running', 'running --(nmod)--> days']
+
+	* entity-paths for event['ir']25_15ecbplus.xmlsent:5051
+
+	* entity-paths for event['placed']25_15ecbplus.xmlsent:5051
+	['placed --(nsubj)--> team']
+	['placed --(dobj)--> one']
+
+sentence #:pierre thomas out for playoffs after saints place him on ir 
+	[events]:[['place'], ['playoffs'], ['ir']]
+	[entities]:[['pierre', 'thomas'], ['saints'], ['him']]
+R716[thomas]
+|--(compou)--> R716[pierre]
+|--(dep)--> R716[him]
+                 |--(advmod)--> out
+                 |                |--(nmod)--> *R728[playoffs]
+                 |                                 |--(case)--> for
+                 |                                 |--(nmod)--> *R715[place]
+                 |                                                  |--(case)--> after
+                 |                                                  |--(compou)--> R706[saints]
+                 |--(nmod)--> *R717[ir]
+                                  |--(case)--> on
+
+	* entity-paths for event['place']25_15ecbplus.xmlsent:5048
+	['place --(compound)--> Saints']
+
+	* entity-paths for event['playoffs']25_15ecbplus.xmlsent:5048
+	['playoffs --(nmod)--> place', 'place --(compound)--> Saints']
+
+	* entity-paths for event['ir']25_15ecbplus.xmlsent:5048

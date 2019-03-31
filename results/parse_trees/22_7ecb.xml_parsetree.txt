@@ -1,0 +1,59 @@
+
+-----------------------------------------
+docid:22_7ecb.xml
+-----------------------------------------
+
+sentence #:a onetime co-worker has been charged in the 1967 slayings of two women at an ice cream shop in staunton , but authorities said the suspect is near death with a terminal illness . 
+	[events]:[['slayings'], ['death'], ['charged']]
+	[entities]:[['illness'], ['co-worker'], ['1967'], ['women'], ['authorities'], ['suspect'], ['an', 'ice', 'cream', 'shop', 'in', 'staunton']]
+*R624[charged]
+|--(nsubjp)--> R618[co-worker]
+|                |--(det)--> a
+|                |--(amod)--> onetime
+|--(aux)--> has
+|--(auxpas)--> been
+|--(nmod)--> *R619[slayings]
+|                |--(case)--> in
+|                |--(det)--> the
+|                |--(nummod)--> R622[1967]
+|                |--(nmod)--> R620[women]
+|                                 |--(case)--> of
+|                                 |--(nummod)--> two
+|--(nmod)--> R621[shop]
+|                |--(case)--> at
+|                |--(det)--> R621[an]
+|                |--(compou)--> R621[ice]
+|                |--(compou)--> R621[cream]
+|                |--(nmod)--> R621[staunton]
+|                                 |--(case)--> R621[in]
+|--(punct)--> ,
+|--(cc)--> but
+|--(conj)--> said
+|                |--(nsubj)--> R625[authorities]
+|                |--(ccomp)--> *R626[death]
+|                                 |--(nsubj)--> R618[suspect]
+|                                 |                |--(det)--> the
+|                                 |--(cop)--> is
+|                                 |--(case)--> near
+|                                 |--(nmod)--> R631[illness]
+|                                                  |--(case)--> with
+|                                                  |--(det)--> a
+|                                                  |--(amod)--> terminal
+|--(punct)--> .
+
+	* entity-paths for event['slayings']22_7ecb.xmlsent:4538
+	['slayings --(nummod)--> 1967']
+	['slayings --(nmod)--> women']
+
+	* entity-paths for event['death']22_7ecb.xmlsent:4538
+	['death --(nsubj)--> suspect']
+	['death --(nmod)--> illness']
+
+	* entity-paths for event['charged']22_7ecb.xmlsent:4538
+	['charged --(nsubjpass)--> co-worker']
+	['charged --(nmod)--> slayings', 'slayings --(nummod)--> 1967']
+	['charged --(nmod)--> slayings', 'slayings --(nmod)--> women']
+	['charged --(nmod)--> shop']
+	['charged --(conj)--> said', 'said --(nsubj)--> authorities']
+	['charged --(conj)--> said', 'said --(ccomp)--> death', 'death --(nsubj)--> suspect']
+	['charged --(conj)--> said', 'said --(ccomp)--> death', 'death --(nmod)--> illness']

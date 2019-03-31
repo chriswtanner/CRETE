@@ -1,0 +1,47 @@
+
+-----------------------------------------
+docid:13_18ecb.xml
+-----------------------------------------
+
+sentence #:sarah palin 's family will have to attend church in a local school this morning after a fire ripped through her church on friday evening . 
+	[events]:[['fire'], ['attend'], ['ripped']]
+	[entities]:[['family'], ['a', 'local', 'school'], ['church'], ['friday', 'evening']]
+have
+|--(nsubj)--> R274[family]
+|                |--(nmod:p)--> palin
+|                                 |--(compou)--> sarah
+|                                 |--(case)--> 's
+|--(aux)--> will
+|--(xcomp)--> *R273[attend]
+|                |--(mark)--> to
+|                |--(dobj)--> church
+|                |                |--(nmod)--> R283[school]
+|                |                                 |--(case)--> in
+|                |                                 |--(det)--> R283[a]
+|                |                                 |--(amod)--> R283[local]
+|                |--(nmod:t)--> morning
+|                |                |--(det)--> this
+|                |--(nmod)--> *R261[fire]
+|                                 |--(case)--> after
+|                                 |--(det)--> a
+|                                 |--(acl)--> *R278[ripped]
+|                                                  |--(nmod)--> R260[church]
+|                                                  |                |--(case)--> through
+|                                                  |                |--(nmod:p)--> her
+|                                                  |                |--(nmod)--> R271[friday]
+|                                                  |                                 |--(case)--> on
+|                                                  |--(nmod:t)--> R271[evening]
+|--(punct)--> .
+
+	* entity-paths for event['fire']13_18ecb.xmlsent:1313
+	['fire --(acl)--> ripped', 'ripped --(nmod)--> church']
+	['fire --(acl)--> ripped', 'ripped --(nmod:tmod)--> evening']
+
+	* entity-paths for event['attend']13_18ecb.xmlsent:1313
+	['attend --(dobj)--> church', 'church --(nmod)--> school']
+	['attend --(nmod)--> fire', 'fire --(acl)--> ripped', 'ripped --(nmod)--> church']
+	['attend --(nmod)--> fire', 'fire --(acl)--> ripped', 'ripped --(nmod:tmod)--> evening']
+
+	* entity-paths for event['ripped']13_18ecb.xmlsent:1313
+	['ripped --(nmod)--> church']
+	['ripped --(nmod:tmod)--> evening']

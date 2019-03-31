@@ -1,0 +1,185 @@
+
+-----------------------------------------
+docid:45_1ecb.xml
+-----------------------------------------
+
+sentence #:scott peterson has been found guilty of first-degree murder , a verdict that means he could be executed if these same jurors vote as the " conscience of their community " that he deserves to die for his crimes . 
+	[events]:[['die'], ['murder'], ['crimes'], ['guilty'], ['found'], ['executed']]
+	[entities]:[['jurors'], ['scott', 'peterson'], ['his'], ['he'], ['he']]
+*R1627[found]
+|--(nsubjp)--> R1628[peterson]
+|                |--(compou)--> R1628[scott]
+|--(aux)--> has
+|--(auxpas)--> been
+|--(xcomp)--> *R1629[guilty]
+|--(nmod)--> *R1630[murder]
+|                |--(case)--> of
+|                |--(amod)--> first-degree
+|                |--(punct)--> ,
+|                |--(appos)--> verdict
+|                                 |--(det)--> a
+|                                 |--(acl:re)--> means
+|                                                  |--(nsubj)--> that
+|                                                  |--(ccomp)--> *R1631[executed]
+|                                                                   |--(nsubjp)--> R1628[he]
+|                                                                   |--(aux)--> could
+|                                                                   |--(auxpas)--> be
+|                                                                   |--(dobj)--> vote
+|                                                                   |                |--(cc)--> if
+|                                                                   |                |--(det)--> these
+|                                                                   |                |--(amod)--> same
+|                                                                   |                |--(compou)--> R1632[jurors]
+|                                                                   |                |--(nmod)--> the
+|                                                                   |                |                |--(case)--> as
+|                                                                   |                |--(punct)--> "
+|                                                                   |                |--(dep)--> conscience
+|                                                                   |                                 |--(nmod)--> community
+|                                                                   |                                                  |--(case)--> of
+|                                                                   |                                                  |--(nmod:p)--> their
+|                                                                   |--(punct)--> "
+|                                                                   |--(ccomp)--> deserves
+|                                                                                    |--(mark)--> that
+|                                                                                    |--(nsubj)--> R1628[he]
+|                                                                                    |--(xcomp)--> *R1631[die]
+|                                                                                                     |--(mark)--> to
+|                                                                                                     |--(nmod)--> *R1630[crimes]
+|                                                                                                                      |--(case)--> for
+|                                                                                                                      |--(nmod:p)--> R1628[his]
+|--(punct)--> .
+
+	* entity-paths for event['die']45_1ecb.xmlsent:13772
+	['die --(nmod)--> crimes', 'crimes --(nmod:poss)--> his']
+
+	* entity-paths for event['murder']45_1ecb.xmlsent:13772
+	['murder --(appos)--> verdict', 'verdict --(acl:relcl)--> means', 'means --(ccomp)--> executed', 'executed --(nsubjpass)--> he']
+	['murder --(appos)--> verdict', 'verdict --(acl:relcl)--> means', 'means --(ccomp)--> executed', 'executed --(dobj)--> vote', 'vote --(compound)--> jurors']
+	['murder --(appos)--> verdict', 'verdict --(acl:relcl)--> means', 'means --(ccomp)--> executed', 'executed --(ccomp)--> deserves', 'deserves --(nsubj)--> he']
+	['murder --(appos)--> verdict', 'verdict --(acl:relcl)--> means', 'means --(ccomp)--> executed', 'executed --(ccomp)--> deserves', 'deserves --(xcomp)--> die', 'die --(nmod)--> crimes', 'crimes --(nmod:poss)--> his']
+
+	* entity-paths for event['crimes']45_1ecb.xmlsent:13772
+	['crimes --(nmod:poss)--> his']
+
+	* entity-paths for event['guilty']45_1ecb.xmlsent:13772
+
+	* entity-paths for event['found']45_1ecb.xmlsent:13772
+	['found --(nsubjpass)--> Peterson']
+	['found --(nmod)--> murder', 'murder --(appos)--> verdict', 'verdict --(acl:relcl)--> means', 'means --(ccomp)--> executed', 'executed --(nsubjpass)--> he']
+	['found --(nmod)--> murder', 'murder --(appos)--> verdict', 'verdict --(acl:relcl)--> means', 'means --(ccomp)--> executed', 'executed --(dobj)--> vote', 'vote --(compound)--> jurors']
+	['found --(nmod)--> murder', 'murder --(appos)--> verdict', 'verdict --(acl:relcl)--> means', 'means --(ccomp)--> executed', 'executed --(ccomp)--> deserves', 'deserves --(nsubj)--> he']
+	['found --(nmod)--> murder', 'murder --(appos)--> verdict', 'verdict --(acl:relcl)--> means', 'means --(ccomp)--> executed', 'executed --(ccomp)--> deserves', 'deserves --(xcomp)--> die', 'die --(nmod)--> crimes', 'crimes --(nmod:poss)--> his']
+
+	* entity-paths for event['executed']45_1ecb.xmlsent:13772
+	['executed --(nsubjpass)--> he']
+	['executed --(dobj)--> vote', 'vote --(compound)--> jurors']
+	['executed --(ccomp)--> deserves', 'deserves --(nsubj)--> he']
+	['executed --(ccomp)--> deserves', 'deserves --(xcomp)--> die', 'die --(nmod)--> crimes', 'crimes --(nmod:poss)--> his']
+
+sentence #:in essence , the jury concluded that the circumstances surrounding laci peterson 's disappearance and death could not reasonably be explained in any other way but that scott peterson wanted her dead so he could continue and perhaps expand his secret life with amber frey . 
+	[events]:[['death'], ['disappearance']]
+	[entities]:[['he'], ['her'], ['laci', 'peterson'], ['jury'], ['scott', 'peterson']]
+concluded
+|--(nmod)--> essence
+|                |--(case)--> in
+|--(punct)--> ,
+|--(nsubj)--> R1632[jury]
+|                |--(det)--> the
+|--(ccomp)--> explained
+|                |--(mark)--> that
+|                |--(nsubjp)--> circumstances
+|                |                |--(det)--> the
+|                |                |--(acl)--> surrounding
+|                |                                 |--(dobj)--> *R1633[disappearance]
+|                |                                                  |--(nmod:p)--> R1634[peterson]
+|                |                                                  |                |--(compou)--> R1634[laci]
+|                |                                                  |                |--(case)--> 's
+|                |                                                  |--(cc)--> and
+|                |                                                  |--(conj)--> *R1635[death]
+|                |--(aux)--> could
+|                |--(neg)--> not
+|                |--(advmod)--> reasonably
+|                |--(auxpas)--> be
+|                |--(nmod)--> way
+|                |                |--(case)--> in
+|                |                |--(det)--> any
+|                |                |--(amod)--> other
+|                |--(cc)--> but
+|                |--(conj)--> wanted
+|                                 |--(mark)--> that
+|                                 |--(nsubj)--> R1628[peterson]
+|                                 |                |--(compou)--> R1628[scott]
+|                                 |--(dobj)--> dead
+|                                 |                |--(nmod:p)--> R1634[her]
+|                                 |--(advcl)--> continue
+|                                                  |--(mark)--> so
+|                                                  |--(nsubj)--> R1628[he]
+|                                                  |--(aux)--> could
+|                                                  |--(cc)--> and
+|                                                  |--(conj)--> expand
+|                                                                   |--(advmod)--> perhaps
+|                                                                   |--(dobj)--> life
+|                                                                   |                |--(nmod:p)--> his
+|                                                                   |                |--(amod)--> secret
+|                                                                   |--(nmod)--> frey
+|                                                                                    |--(case)--> with
+|                                                                                    |--(compou)--> amber
+|--(punct)--> .
+
+	* entity-paths for event['death']45_1ecb.xmlsent:13775
+
+	* entity-paths for event['disappearance']45_1ecb.xmlsent:13775
+	['disappearance --(nmod:poss)--> Peterson']
+
+sentence #:peterson was found guilty because jurors believed he had a motive to kill his wife and that peterson 's conduct -- before , during and after laci peterson 's disappearance -- was too suspicious to be purely coincidental . 
+	[events]:[['found'], ['kill'], ['guilty'], ['disappearance']]
+	[entities]:[['he'], ['peterson'], ['laci', 'peterson'], ['peterson'], ['wife'], ['jurors']]
+*R1627[found]
+|--(nsubjp)--> R1628[peterson]
+|--(auxpas)--> was
+|--(xcomp)--> *R1629[guilty]
+|--(nmod)--> R1632[jurors]
+|                |--(case)--> because
+|                |--(acl)--> believed
+|                                 |--(ccomp)--> had
+|                                                  |--(nsubj)--> R1628[he]
+|                                                  |--(dobj)--> motive
+|                                                  |                |--(det)--> a
+|                                                  |                |--(acl)--> *R1630[kill]
+|                                                  |                                 |--(mark)--> to
+|                                                  |                                 |--(dobj)--> R1634[wife]
+|                                                  |                                                  |--(nmod:p)--> his
+|                                                  |--(cc)--> and
+|                                                  |--(conj)--> suspicious
+|                                                                   |--(mark)--> that
+|                                                                   |--(nsubj)--> conduct
+|                                                                   |                |--(nmod:p)--> R1628[peterson]
+|                                                                   |                |                |--(case)--> 's
+|                                                                   |                |--(dep)--> before
+|                                                                   |                                 |--(punct)--> --
+|                                                                   |                                 |--(punct)--> ,
+|                                                                   |                                 |--(nmod)--> during
+|                                                                   |                                 |                |--(cc)--> and
+|                                                                   |                                 |                |--(conj)--> *R1633[disappearance]
+|                                                                   |                                 |                                 |--(case)--> after
+|                                                                   |                                 |                                 |--(nmod:p)--> R1634[peterson]
+|                                                                   |                                 |                                                  |--(compou)--> R1634[laci]
+|                                                                   |                                 |                                                  |--(case)--> 's
+|                                                                   |                                 |--(punct)--> --
+|                                                                   |--(cop)--> was
+|                                                                   |--(advmod)--> too
+|                                                                   |--(xcomp)--> coincidental
+|                                                                                    |--(mark)--> to
+|                                                                                    |--(cop)--> be
+|                                                                                    |--(advmod)--> purely
+|--(punct)--> .
+
+	* entity-paths for event['found']45_1ecb.xmlsent:13776
+	['found --(nsubjpass)--> Peterson']
+	['found --(nmod)--> jurors']
+
+	* entity-paths for event['kill']45_1ecb.xmlsent:13776
+	['kill --(dobj)--> wife']
+
+	* entity-paths for event['guilty']45_1ecb.xmlsent:13776
+
+	* entity-paths for event['disappearance']45_1ecb.xmlsent:13776
+	['disappearance --(nmod:poss)--> Peterson']

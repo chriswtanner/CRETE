@@ -1,0 +1,128 @@
+
+-----------------------------------------
+docid:19_11ecbplus.xml
+-----------------------------------------
+
+sentence #:police intervened when more than a hundred people joined in a candlelit vigil in the east flatbush neighborhood in brooklyn , new york , where 16 - year - old kimani gray was shot 11 times by police on saturday , according to russiatoday 
+	[events]:[['joined', 'in'], ['shot'], ['vigil'], ['intervened']]
+	[entities]:[['where'], ['people'], ['kimani', 'gray'], ['on', 'saturday'], ['police'], ['police'], ['in', 'the', 'east', 'flatbush', 'neighborhood', 'in', 'brooklyn', ',', 'new', 'york']]
+*R423[intervened]
+|--(nsubj)--> R411[police]
+|--(advcl)--> *R424[joined]
+|                |--(advmod)--> when
+|                |--(nsubj)--> R419[people]
+|                |                |--(nummod)--> hundred
+|                |                                 |--(advmod)--> more
+|                |                                 |                |--(mwe)--> than
+|                |                                 |--(advmod)--> a
+|                |--(nmod)--> *R425[vigil]
+|                |                |--(case)--> *R424[in]
+|                |                |--(det)--> a
+|                |                |--(compou)--> candlelit
+|                |                |--(nmod)--> R426[neighborhood]
+|                |                                 |--(case)--> R426[in]
+|                |                                 |--(det)--> R426[the]
+|                |                                 |--(compou)--> R426[east]
+|                |                                 |--(compou)--> R426[flatbush]
+|                |--(nmod)--> R426[brooklyn]
+|                |                |--(case)--> R426[in]
+|                |                |--(punct)--> R426[,]
+|                |                |--(appos)--> R426[york]
+|                |                                 |--(compou)--> R426[new]
+|                |--(punct)--> ,
+|                |--(advcl)--> 16
+|                                 |--(advmod)--> R426[where]
+|                                 |--(punct)--> -
+|                                 |--(dep)--> year
+|--(punct)--> -
+|--(parata)--> *R412[shot]
+                 |--(nsubjp)--> R415[gray]
+                 |                |--(amod)--> old
+                 |                |--(compou)--> R415[kimani]
+                 |--(auxpas)--> was
+                 |--(dobj)--> times
+                 |                |--(compou)--> 11
+                 |--(nmod)--> R413[police]
+                 |                |--(case)--> by
+                 |                |--(nmod)--> R427[saturday]
+                 |                                 |--(case)--> R427[on]
+                 |--(punct)--> ,
+                 |--(nmod)--> russiatoday
+                                  |--(case)--> according
+                                                   |--(mwe)--> to
+
+	* entity-paths for event['joined', 'in']19_11ecbplus.xmlsent:2815
+
+	* entity-paths for event['shot']19_11ecbplus.xmlsent:2815
+	['shot --(nsubjpass)--> Gray']
+	['shot --(nmod)--> police']
+
+	* entity-paths for event['vigil']19_11ecbplus.xmlsent:2815
+	['vigil --(nmod)--> neighborhood']
+
+	* entity-paths for event['intervened']19_11ecbplus.xmlsent:2815
+	['intervened --(nsubj)--> Police']
+	['intervened --(advcl)--> joined', 'joined --(nsubj)--> people']
+	['intervened --(advcl)--> joined', 'joined --(nmod)--> vigil', 'vigil --(nmod)--> neighborhood']
+	['intervened --(advcl)--> joined', 'joined --(nmod)--> Brooklyn']
+	['intervened --(advcl)--> joined', 'joined --(advcl)--> 16', '16 --(advmod)--> where']
+	['intervened --(parataxis)--> shot', 'shot --(nsubjpass)--> Gray']
+	['intervened --(parataxis)--> shot', 'shot --(nmod)--> police']
+
+sentence #:large riot breaks out in brooklyn during vigil for teen shot 11 times by police 
+	[events]:[['riot'], ['vigil'], ['breaks', 'out'], ['shot']]
+	[entities]:[['in', 'brooklyn'], ['police'], ['teen']]
+*R428[breaks]
+|--(nsubj)--> *R420[riot]
+|                |--(amod)--> large
+|--(nmod)--> times
+|                |--(case)--> *R428[out]
+|                |--(case)--> R416[in]
+|                |--(dep)--> R416[brooklyn]
+|                                 |--(nmod)--> *R425[vigil]
+|                                 |                |--(case)--> during
+|                                 |--(nmod)--> *R412[shot]
+|                                                  |--(case)--> for
+|                                                  |--(compou)--> R415[teen]
+|                                                  |--(nummod)--> 11
+|--(nmod)--> R413[police]
+                 |--(case)--> by
+
+	* entity-paths for event['riot']19_11ecbplus.xmlsent:2813
+
+	* entity-paths for event['vigil']19_11ecbplus.xmlsent:2813
+
+	* entity-paths for event['breaks', 'out']19_11ecbplus.xmlsent:2813
+
+	* entity-paths for event['shot']19_11ecbplus.xmlsent:2813
+	['Shot --(compound)--> Teen']
+
+sentence #:after the shooting gray was rushed to a hospital but was declared dead on arrival . 
+	[events]:[['dead'], ['rushed'], ['declared'], ['shooting']]
+	[entities]:[['gray'], ['hospital']]
+*R429[rushed]
+|--(nmod)--> *R412[shooting]
+|                |--(case)--> after
+|                |--(det)--> the
+|--(nsubjp)--> R415[gray]
+|--(auxpas)--> was
+|--(nmod)--> R430[hospital]
+|                |--(case)--> to
+|                |--(det)--> a
+|--(cc)--> but
+|--(conj)--> *R431[declared]
+|                |--(auxpas)--> was
+|                |--(xcomp)--> *R432[dead]
+|                |--(nmod)--> arrival
+|                                 |--(case)--> on
+|--(punct)--> .
+
+	* entity-paths for event['dead']19_11ecbplus.xmlsent:2825
+
+	* entity-paths for event['rushed']19_11ecbplus.xmlsent:2825
+	['rushed --(nsubjpass)--> Gray']
+	['rushed --(nmod)--> hospital']
+
+	* entity-paths for event['declared']19_11ecbplus.xmlsent:2825
+
+	* entity-paths for event['shooting']19_11ecbplus.xmlsent:2825

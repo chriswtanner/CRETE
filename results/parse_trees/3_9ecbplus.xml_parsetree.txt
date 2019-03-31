@@ -1,0 +1,61 @@
+
+-----------------------------------------
+docid:3_9ecbplus.xml
+-----------------------------------------
+
+sentence #:he escaped last week while being transported from a prison in huntsville to one in beaumont , texas . 
+	[events]:[['escaped'], ['transported']]
+	[entities]:[['last', 'week'], ['he'], ['a', 'prison', 'in', 'huntsville'], ['to', 'one', 'in', 'beaumont', ',', 'texas']]
+*R893[escaped]
+|--(nsubj)--> R890[he]
+|--(nmod:t)--> R914[week]
+|                |--(amod)--> R914[last]
+|--(advcl)--> *R894[transported]
+|                |--(mark)--> while
+|                |--(auxpas)--> being
+|                |--(nmod)--> R897[prison]
+|                |                |--(case)--> from
+|                |                |--(det)--> R897[a]
+|                |                |--(nmod)--> R897[huntsville]
+|                |                                 |--(case)--> R897[in]
+|                |--(nmod)--> R901[one]
+|                |                |--(case)--> R901[to]
+|                |--(nmod)--> R901[texas]
+|                                 |--(case)--> R901[in]
+|                                 |--(compou)--> R901[beaumont]
+|                                 |--(punct)--> R901[,]
+|--(punct)--> .
+
+	* entity-paths for event['escaped']3_9ecbplus.xmlsent:7657
+	['escaped --(nsubj)--> He']
+	['escaped --(nmod:tmod)--> week']
+	['escaped --(advcl)--> transported', 'transported --(nmod)--> prison']
+	['escaped --(advcl)--> transported', 'transported --(nmod)--> one']
+	['escaped --(advcl)--> transported', 'transported --(nmod)--> Texas']
+
+	* entity-paths for event['transported']3_9ecbplus.xmlsent:7657
+	['transported --(nmod)--> prison']
+	['transported --(nmod)--> one']
+	['transported --(nmod)--> Texas']
+
+sentence #:arcade joseph comeaux jr . is serving three life sentences . 
+	[events]:[['serving'], ['sentences']]
+	[entities]:[['life'], ['arcade', 'joseph', 'comeaux', 'jr']]
+*R923[serving]
+|--(nsubj)--> R890[jr]
+|                |--(compou)--> R890[arcade]
+|                |--(compou)--> R890[joseph]
+|                |--(compou)--> R890[comeaux]
+|                |--(punct)--> .
+|--(aux)--> is
+|--(dobj)--> *R912[sentences]
+|                |--(nummod)--> three
+|                |--(compou)--> R939[life]
+|--(punct)--> .
+
+	* entity-paths for event['serving']3_9ecbplus.xmlsent:7656
+	['serving --(nsubj)--> Jr']
+	['serving --(dobj)--> sentences', 'sentences --(compound)--> life']
+
+	* entity-paths for event['sentences']3_9ecbplus.xmlsent:7656
+	['sentences --(compound)--> life']

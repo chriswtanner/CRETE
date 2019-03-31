@@ -1,0 +1,58 @@
+
+-----------------------------------------
+docid:34_2ecb.xml
+-----------------------------------------
+
+sentence #:in a rich and symbolic recognition to india 's sterling contribution to the us health care system , the us president-elect has asked dr sanjay gupta , cnn 's well-known medical correspondent and a neuro-surgeon of repute to be the country 's surgeon general . 
+	[events]:[['asked']]
+	[entities]:[['surgeon', 'general'], ['us', 'president-elect'], ['dr', 'sanjay', 'gupta']]
+*R1132[asked]
+|--(nmod)--> recognition
+|                |--(case)--> in
+|                |--(det)--> a
+|                |--(amod)--> rich
+|                |                |--(cc)--> and
+|                |                |--(conj)--> symbolic
+|                |--(nmod)--> contribution
+|                                 |--(case)--> to
+|                                 |--(nmod:p)--> india
+|                                 |                |--(case)--> 's
+|                                 |--(compou)--> sterling
+|                                 |--(nmod)--> system
+|                                                  |--(case)--> to
+|                                                  |--(det)--> the
+|                                                  |--(compou)--> us
+|                                                  |--(compou)--> health
+|                                                  |--(compou)--> care
+|--(punct)--> ,
+|--(nsubj)--> R1136[president-elect]
+|                |--(det)--> the
+|                |--(compou)--> R1136[us]
+|--(aux)--> has
+|--(dobj)--> R1130[gupta]
+|                |--(compou)--> R1130[dr]
+|                |--(compou)--> R1130[sanjay]
+|                |--(punct)--> ,
+|                |--(appos)--> correspondent
+|                |                |--(nmod:p)--> cnn
+|                |                |                |--(case)--> 's
+|                |                |--(amod)--> well-known
+|                |                |--(amod)--> medical
+|                |--(cc)--> and
+|                |--(conj)--> neuro-surgeon
+|                                 |--(det)--> a
+|                                 |--(nmod)--> repute
+|                                                  |--(case)--> of
+|--(xcomp)--> R1135[general]
+|                |--(mark)--> to
+|                |--(cop)--> be
+|                |--(nmod:p)--> country
+|                |                |--(det)--> the
+|                |                |--(case)--> 's
+|                |--(compou)--> R1135[surgeon]
+|--(punct)--> .
+
+	* entity-paths for event['asked']34_2ecb.xmlsent:9393
+	['asked --(nsubj)--> President-elect']
+	['asked --(dobj)--> Gupta']
+	['asked --(xcomp)--> general']

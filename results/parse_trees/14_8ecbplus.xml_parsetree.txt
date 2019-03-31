@@ -1,0 +1,15 @@
+
+-----------------------------------------
+docid:14_8ecbplus.xml
+-----------------------------------------
+
+sentence #:waitrose in wellington catches fire 
+	[events]:[['fire']]
+	[entities]:[['waitrose'], ['in', 'wellington']]
+catches
+|--(nsubj)--> R308[waitrose]
+|                |--(nmod)--> R309[wellington]
+|                                 |--(case)--> R309[in]
+|--(dobj)--> *R302[fire]
+
+	* entity-paths for event['fire']14_8ecbplus.xmlsent:1809

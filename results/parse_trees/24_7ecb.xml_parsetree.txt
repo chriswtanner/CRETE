@@ -1,0 +1,56 @@
+
+-----------------------------------------
+docid:24_7ecb.xml
+-----------------------------------------
+
+sentence #:a gang of four thieves -- two of them disguised as women -- on thursday stole nearly all the jewels on display at the harry winston boutique just off the champs-elysees avenue , which attracts a wealthy international clientele . 
+	[events]:[['disguised'], ['stole']]
+	[entities]:[['jewels'], ['thursday'], ['them'], ['the', 'harry', 'winston', 'boutique', 'just', 'off', 'the', 'champs-elysees', 'avenue'], ['thieves']]
+*R663[stole]
+|--(nsubj)--> gang
+|                |--(det)--> a
+|                |--(nmod)--> R664[thieves]
+|                                 |--(case)--> of
+|                                 |--(nummod)--> four
+|                                 |--(dep)--> *R682[disguised]
+|                                 |                |--(punct)--> --
+|                                 |                |--(nsubj)--> two
+|                                 |                |                |--(nmod)--> R664[them]
+|                                 |                |                                 |--(case)--> of
+|                                 |                |--(nmod)--> women
+|                                 |                |                |--(case)--> as
+|                                 |                |--(punct)--> --
+|                                 |--(nmod)--> R690[thursday]
+|                                                  |--(case)--> on
+|--(advmod)--> nearly
+|--(dobj)--> R683[jewels]
+|                |--(det:pr)--> all
+|                |--(det)--> the
+|                |--(nmod)--> display
+|                                 |--(case)--> on
+|                                 |--(nmod)--> R665[boutique]
+|                                                  |--(case)--> at
+|                                                  |--(det)--> R665[the]
+|                                                  |--(compou)--> R665[harry]
+|                                                  |--(compou)--> R665[winston]
+|--(advmod)--> R665[just]
+|                |--(nmod)--> R665[avenue]
+|                                 |--(case)--> R665[off]
+|                                 |--(det)--> R665[the]
+|                                 |--(compou)--> R665[champs-elysees]
+|                                 |--(punct)--> ,
+|                                 |--(acl:re)--> attracts
+|                                                  |--(nsubj)--> which
+|                                                  |--(dobj)--> clientele
+|                                                                   |--(det)--> a
+|                                                                   |--(amod)--> wealthy
+|                                                                   |--(amod)--> international
+|--(punct)--> .
+
+	* entity-paths for event['disguised']24_7ecb.xmlsent:4896
+	['disguised --(nsubj)--> two', 'two --(nmod)--> them']
+
+	* entity-paths for event['stole']24_7ecb.xmlsent:4896
+	['stole --(nsubj)--> gang', 'gang --(nmod)--> thieves']
+	['stole --(dobj)--> jewels']
+	['stole --(advmod)--> just']

@@ -1,0 +1,59 @@
+
+-----------------------------------------
+docid:1_17ecbplus.xml
+-----------------------------------------
+
+sentence #:lindsay lohan checks into rehab at betty ford center 
+	[events]:[['rehab'], ['checks', 'into']]
+	[entities]:[['lindsay', 'lohan'], ['at', 'betty', 'ford', 'center']]
+R15[lohan]
+|--(compou)--> R15[lindsay]
+|--(dep)--> *R8[checks]
+                 |--(nmod)--> *R19[rehab]
+                                  |--(case)--> *R8[into]
+                                  |--(nmod)--> R16[center]
+                                                   |--(case)--> R16[at]
+                                                   |--(compou)--> R16[betty]
+                                                   |--(compou)--> R16[ford]
+
+	* entity-paths for event['rehab']1_17ecbplus.xmlsent:131
+	['rehab --(nmod)--> Center']
+
+	* entity-paths for event['checks', 'into']1_17ecbplus.xmlsent:131
+
+sentence #:early friday morning , around 1 : 30 a . m . , the 26 - year - old actress checked into betty ford center in rancho mirage , calif . 
+	[events]:[['checked', 'into']]
+	[entities]:[['actress'], ['betty', 'ford', 'center', 'in', 'rancho', 'mirage', ',', 'calif', '.'], ['early', 'friday', 'morning', ',', 'around', '1', ':', '30', 'a', '.', 'm']]
+*R8[checked]
+|--(nmod:t)--> R73[friday]
+|                |--(advmod)--> R73[early]
+|--(nsubj)--> R73[morning]
+|                |--(punct)--> R73[,]
+|                |--(dep)--> year
+|                                 |--(nmod)--> R73[30]
+|                                 |                |--(case)--> R73[around]
+|                                 |                |--(nummod)--> R73[1]
+|                                 |                |--(punct)--> R73[:]
+|                                 |                |--(dep)--> R73[a]
+|                                 |                |                |--(punct)--> R73[.]
+|                                 |                |                |--(dep)--> R73[m]
+|                                 |                |                |--(punct)--> .
+|                                 |                |--(punct)--> ,
+|                                 |                |--(appos)--> 26
+|                                 |                |                |--(det)--> the
+|                                 |                |--(punct)--> -
+|                                 |--(punct)--> -
+|--(nsubj)--> R15[actress]
+|                |--(amod)--> old
+|--(nmod)--> R16[center]
+|                |--(case)--> *R8[into]
+|                |--(compou)--> R16[betty]
+|                |--(compou)--> R16[ford]
+|--(nmod)--> R16[mirage]
+|                |--(case)--> R16[in]
+|                |--(compou)--> R16[rancho]
+|                |--(punct)--> R16[,]
+|                |--(appos)--> R16[calif]
+|--(punct)--> R16[.]
+
+	* entity-paths for event['checked', 'into']1_17ecbplus.xmlsent:134

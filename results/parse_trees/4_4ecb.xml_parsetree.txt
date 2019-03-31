@@ -1,0 +1,34 @@
+
+-----------------------------------------
+docid:4_4ecb.xml
+-----------------------------------------
+
+sentence #:bettie page , the 1950s pin-up model who helped set the stage for the 1960s sexual revolution , has died . 
+	[events]:[['died'], ['revolution']]
+	[entities]:[['bettie', 'page'], ['1950s']]
+*R1363[died]
+|--(nsubj)--> R1364[page]
+|                |--(compou)--> R1364[bettie]
+|                |--(punct)--> ,
+|                |--(appos)--> model
+|                |                |--(det)--> the
+|                |                |--(nummod)--> R1365[1950s]
+|                |                |--(compou)--> pin-up
+|                |                |--(acl:re)--> helped
+|                |                                 |--(nsubj)--> who
+|                |                                 |--(xcomp)--> set
+|                |                                                  |--(dobj)--> stage
+|                |                                                                   |--(det)--> the
+|                |                                                                   |--(nmod)--> *R1394[revolution]
+|                |                                                                                    |--(case)--> for
+|                |                                                                                    |--(det)--> the
+|                |                                                                                    |--(nummod)--> 1960s
+|                |                                                                                    |--(amod)--> sexual
+|                |--(punct)--> ,
+|--(aux)--> has
+|--(punct)--> .
+
+	* entity-paths for event['died']4_4ecb.xmlsent:11422
+	['died --(nsubj)--> Page']
+
+	* entity-paths for event['revolution']4_4ecb.xmlsent:11422

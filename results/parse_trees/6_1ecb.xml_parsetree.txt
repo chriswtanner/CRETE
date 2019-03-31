@@ -1,0 +1,36 @@
+
+-----------------------------------------
+docid:6_1ecb.xml
+-----------------------------------------
+
+sentence #:chris weitz is in negotiations to helm " new moon , " the sequel to summit entertainment 's vampire breakout " twilight . " 
+	[events]:[['negotiations'], ['helm']]
+	[entities]:[['new', 'moon'], ['twilight'], ['chris', 'weitz']]
+R1703[moon]
+|--(nsubj)--> R1704[weitz]
+|                |--(compou)--> R1704[chris]
+|--(cop)--> is
+|--(nmod)--> *R1705[negotiations]
+|                |--(case)--> in
+|                |--(nmod)--> *R1706[helm]
+|                                 |--(case)--> to
+|                                 |--(punct)--> "
+|--(compou)--> R1703[new]
+|--(punct)--> ,
+|--(punct)--> "
+|--(dep)--> sequel
+|                |--(det)--> the
+|                |--(nmod)--> breakout
+|                |                |--(case)--> to
+|                |                |--(nmod:p)--> entertainment
+|                |                |                |--(compou)--> summit
+|                |                |                |--(case)--> 's
+|                |                |--(compou)--> vampire
+|                |                |--(punct)--> "
+|                |--(appos)--> R1707[twilight]
+|--(punct)--> .
+|--(punct)--> "
+
+	* entity-paths for event['negotiations']6_1ecb.xmlsent:14334
+
+	* entity-paths for event['helm']6_1ecb.xmlsent:14334

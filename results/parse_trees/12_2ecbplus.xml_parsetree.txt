@@ -1,0 +1,106 @@
+
+-----------------------------------------
+docid:12_2ecbplus.xml
+-----------------------------------------
+
+sentence #:indian ship thwarts piracy attempt in gulf of aden , 26 pirates arrested 
+	[events]:[['arrested'], ['piracy'], ['attempt'], ['thwarts']]
+	[entities]:[['pirates'], ['gulf', 'of', 'aden'], ['ship']]
+*R217[thwarts]
+|--(nsubj)--> R222[ship]
+|                |--(amod)--> indian
+|--(dobj)--> *R218[attempt]
+|                |--(compou)--> *R219[piracy]
+|--(nmod)--> R229[gulf]
+                 |--(case)--> in
+                 |--(nmod)--> R229[aden]
+                                  |--(case)--> R229[of]
+                                  |--(punct)--> ,
+                                  |--(appos)--> R242[pirates]
+                                                   |--(nummod)--> 26
+                                                   |--(acl)--> *R244[arrested]
+
+	* entity-paths for event['arrested']12_2ecbplus.xmlsent:916
+
+	* entity-paths for event['piracy']12_2ecbplus.xmlsent:916
+
+	* entity-paths for event['attempt']12_2ecbplus.xmlsent:916
+
+	* entity-paths for event['thwarts']12_2ecbplus.xmlsent:916
+	['thwarts --(nsubj)--> ship']
+	['thwarts --(nmod)--> Gulf']
+
+sentence #:indian naval ship , ins sukanya , thwarted a piracy attack in the gulf of aden and captured three boats of the pirates . 
+	[events]:[['piracy'], ['thwarted'], ['attack'], ['captured']]
+	[entities]:[['ins', 'sukanya'], ['gulf', 'of', 'aden'], ['boats'], ['pirates']]
+*R217[thwarted]
+|--(nsubj)--> ship
+|                |--(amod)--> indian
+|                |--(compou)--> naval
+|                |--(punct)--> ,
+|                |--(appos)--> R222[sukanya]
+|                |                |--(compou)--> R222[ins]
+|                |--(punct)--> ,
+|--(dobj)--> *R218[attack]
+|                |--(det)--> a
+|                |--(compou)--> *R219[piracy]
+|--(nmod)--> R229[gulf]
+|                |--(case)--> in
+|                |--(det)--> the
+|                |--(nmod)--> R229[aden]
+|                                 |--(case)--> R229[of]
+|--(cc)--> and
+|--(conj)--> *R221[captured]
+|                |--(dobj)--> R224[boats]
+|                                 |--(nummod)--> three
+|                                 |--(nmod)--> R242[pirates]
+|                                                  |--(case)--> of
+|                                                  |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['piracy']12_2ecbplus.xmlsent:918
+
+	* entity-paths for event['thwarted']12_2ecbplus.xmlsent:918
+	['thwarted --(nsubj)--> ship', 'ship --(appos)--> Sukanya']
+	['thwarted --(nmod)--> Gulf']
+	['thwarted --(conj)--> captured', 'captured --(dobj)--> boats']
+
+	* entity-paths for event['attack']12_2ecbplus.xmlsent:918
+
+	* entity-paths for event['captured']12_2ecbplus.xmlsent:918
+	['captured --(dobj)--> boats']
+
+sentence #:a statement from the defence pro says the incident happened yesterday when ins sukanya was escorting a group of merchant vessels . 
+	[events]:[['incident'], ['escorting']]
+	[entities]:[['vessels'], ['yesterday'], ['ins', 'sukanya']]
+says
+|--(nsubj)--> statement
+|                |--(det)--> a
+|                |--(nmod)--> defence
+|                                 |--(case)--> from
+|                                 |--(det)--> the
+|                                 |--(dep)--> pro
+|--(dobj)--> *R246[incident]
+|                |--(det)--> the
+|                |--(acl)--> happened
+|                                 |--(nmod:t)--> R231[yesterday]
+|                                 |--(advcl)--> *R250[escorting]
+|                                                  |--(advmod)--> when
+|                                                  |--(nsubj)--> R222[sukanya]
+|                                                  |                |--(compou)--> R222[ins]
+|                                                  |--(aux)--> was
+|                                                  |--(dobj)--> group
+|                                                                   |--(det)--> a
+|                                                                   |--(nmod)--> R220[vessels]
+|                                                                                    |--(case)--> of
+|                                                                                    |--(compou)--> merchant
+|--(punct)--> .
+
+	* entity-paths for event['incident']12_2ecbplus.xmlsent:919
+	['incident --(acl)--> happened', 'happened --(nmod:tmod)--> yesterday']
+	['incident --(acl)--> happened', 'happened --(advcl)--> escorting', 'escorting --(nsubj)--> Sukanya']
+	['incident --(acl)--> happened', 'happened --(advcl)--> escorting', 'escorting --(dobj)--> group', 'group --(nmod)--> vessels']
+
+	* entity-paths for event['escorting']12_2ecbplus.xmlsent:919
+	['escorting --(nsubj)--> Sukanya']
+	['escorting --(dobj)--> group', 'group --(nmod)--> vessels']

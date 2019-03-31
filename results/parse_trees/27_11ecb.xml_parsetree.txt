@@ -1,0 +1,89 @@
+
+-----------------------------------------
+docid:27_11ecb.xml
+-----------------------------------------
+
+sentence #:microsoft on wednesday released an emergency patch to fix a perilous software flaw allowing hackers to hijack internet explorer browsers and take over computers . 
+	[events]:[['fix'], ['allowing'], ['released'], ['take', 'over'], ['hijack']]
+	[entities]:[['microsoft'], ['computers'], ['internet', 'explorer'], ['flaw'], ['patch'], ['wednesday'], ['hackers']]
+*R763[released]
+|--(nsubj)--> R764[microsoft]
+|                |--(nmod)--> R766[wednesday]
+|                                 |--(case)--> on
+|--(dobj)--> R765[patch]
+|                |--(det)--> an
+|                |--(compou)--> emergency
+|--(advcl)--> *R782[fix]
+|                |--(mark)--> to
+|                |--(dobj)--> R767[flaw]
+|                                 |--(det)--> a
+|                                 |--(amod)--> perilous
+|                                 |--(compou)--> software
+|                                 |--(acl)--> *R769[allowing]
+|                                                  |--(dobj)--> R770[hackers]
+|                                                  |--(xcomp)--> *R783[hijack]
+|                                                                   |--(mark)--> to
+|                                                                   |--(dobj)--> browsers
+|                                                                   |                |--(compou)--> R768[internet]
+|                                                                   |                |--(compou)--> R768[explorer]
+|                                                                   |--(cc)--> and
+|                                                                   |--(conj)--> *R784[take]
+|                                                                                    |--(compou)--> *R784[over]
+|                                                                                    |--(dobj)--> R771[computers]
+|--(punct)--> .
+
+	* entity-paths for event['fix']27_11ecb.xmlsent:5644
+	['fix --(dobj)--> flaw']
+
+	* entity-paths for event['allowing']27_11ecb.xmlsent:5644
+	['allowing --(dobj)--> hackers']
+	['allowing --(xcomp)--> hijack', 'hijack --(dobj)--> browsers', 'browsers --(compound)--> Internet']
+	['allowing --(xcomp)--> hijack', 'hijack --(dobj)--> browsers', 'browsers --(compound)--> Explorer']
+	['allowing --(xcomp)--> hijack', 'hijack --(conj)--> take', 'take --(dobj)--> computers']
+
+	* entity-paths for event['released']27_11ecb.xmlsent:5644
+	['released --(nsubj)--> Microsoft']
+	['released --(dobj)--> patch']
+	['released --(advcl)--> fix', 'fix --(dobj)--> flaw']
+
+	* entity-paths for event['take', 'over']27_11ecb.xmlsent:5644
+
+	* entity-paths for event['hijack']27_11ecb.xmlsent:5644
+	['hijack --(dobj)--> browsers', 'browsers --(compound)--> Internet']
+	['hijack --(dobj)--> browsers', 'browsers --(compound)--> Explorer']
+	['hijack --(conj)--> take', 'take --(dobj)--> computers']
+
+sentence #:the us software giant said security update ms08-078 addresses a vulnerability cyber-criminals can exploit to their advantage . 
+	[events]:[['addresses'], ['exploit'], ['said']]
+	[entities]:[['vulnerability'], ['cyber-criminals'], ['their'], ['update', 'ms08-078'], ['giant']]
+*R785[said]
+|--(nsubj)--> R764[giant]
+|                |--(det)--> the
+|                |--(compou)--> us
+|                |--(compou)--> software
+|--(ccomp)--> R765[update]
+|                |--(nsubj)--> security
+|                |--(dobj)--> *R782[addresses]
+|                                 |--(compou)--> R765[ms08-078]
+|                                 |--(acl:re)--> *R786[exploit]
+|                                                  |--(nsubj)--> R770[cyber-criminals]
+|                                                  |                |--(det)--> a
+|                                                  |                |--(compou)--> R767[vulnerability]
+|                                                  |--(aux)--> can
+|                                                  |--(nmod)--> advantage
+|                                                                   |--(case)--> to
+|                                                                   |--(nmod:p)--> R770[their]
+|--(punct)--> .
+
+	* entity-paths for event['addresses']27_11ecb.xmlsent:5645
+	['addresses --(compound)--> MS08-078']
+	['addresses --(acl:relcl)--> exploit', 'exploit --(nsubj)--> cyber-criminals']
+	['addresses --(acl:relcl)--> exploit', 'exploit --(nmod)--> advantage', 'advantage --(nmod:poss)--> their']
+
+	* entity-paths for event['exploit']27_11ecb.xmlsent:5645
+	['exploit --(nsubj)--> cyber-criminals']
+	['exploit --(nmod)--> advantage', 'advantage --(nmod:poss)--> their']
+
+	* entity-paths for event['said']27_11ecb.xmlsent:5645
+	['said --(nsubj)--> giant']
+	['said --(ccomp)--> update']

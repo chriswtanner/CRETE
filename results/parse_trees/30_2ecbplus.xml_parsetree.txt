@@ -1,0 +1,64 @@
+
+-----------------------------------------
+docid:30_2ecbplus.xml
+-----------------------------------------
+
+sentence #:it seems that another incident of an undersea telecommunications cable being severed on tuesday has resulted in partially blocking internet and mobile services in alexandria and some other governorates . 
+	[events]:[['services'], ['resulted', 'in'], ['blocking'], ['severed']]
+	[entities]:[['in', 'alexandria', 'and', 'some', 'other', 'governorates'], ['on', 'tuesday'], ['undersea', 'telecommunications', 'cable']]
+seems
+|--(nsubj)--> it
+|--(ccomp)--> *R986[resulted]
+|                |--(mark)--> that
+|                |--(nsubj)--> incident
+|                |                |--(det)--> another
+|                |                |--(nmod)--> R987[cable]
+|                |                                 |--(case)--> of
+|                |                                 |--(det)--> an
+|                |                                 |--(compou)--> R987[undersea]
+|                |                                 |--(compou)--> R987[telecommunications]
+|                |                                 |--(acl)--> *R988[severed]
+|                |                                                  |--(auxpas)--> being
+|                |                                                  |--(nmod)--> R989[tuesday]
+|                |                                                                   |--(case)--> R989[on]
+|                |--(aux)--> has
+|                |--(advcl)--> *R990[blocking]
+|                                 |--(mark)--> *R986[in]
+|                                 |--(advmod)--> partially
+|                                 |--(dobj)--> *R991[services]
+|                                 |                |--(compou)--> internet
+|                                 |                                 |--(cc)--> and
+|                                 |                                 |--(conj)--> mobile
+|                                 |--(nmod)--> R992[alexandria]
+|                                                  |--(case)--> R992[in]
+|                                                  |--(cc)--> R992[and]
+|                                                  |--(conj)--> R992[governorates]
+|                                                                   |--(det)--> R992[some]
+|                                                                   |--(amod)--> R992[other]
+|--(punct)--> .
+
+	* entity-paths for event['services']30_2ecbplus.xmlsent:7851
+
+	* entity-paths for event['resulted', 'in']30_2ecbplus.xmlsent:7851
+
+	* entity-paths for event['blocking']30_2ecbplus.xmlsent:7851
+	['blocking --(nmod)--> Alexandria']
+
+	* entity-paths for event['severed']30_2ecbplus.xmlsent:7851
+	['severed --(nmod)--> Tuesday']
+
+sentence #:undersea internet cables severed near egyptian coast line 
+	[events]:[['severed']]
+	[entities]:[['near', 'egyptian', 'coast', 'line'], ['undersea', 'internet', 'cables']]
+*R988[severed]
+|--(nsubj)--> R987[cables]
+|                |--(amod)--> R987[undersea]
+|                |--(compou)--> R987[internet]
+|--(nmod)--> R993[line]
+                 |--(case)--> R993[near]
+                 |--(amod)--> R993[egyptian]
+                 |--(compou)--> R993[coast]
+
+	* entity-paths for event['severed']30_2ecbplus.xmlsent:7849
+	['severed --(nsubj)--> cables']
+	['severed --(nmod)--> line']

@@ -1,0 +1,85 @@
+
+-----------------------------------------
+docid:21_10ecbplus.xml
+-----------------------------------------
+
+sentence #:new york woman killed in hit - and - run crash 
+	[events]:[['killed'], ['crash']]
+	[entities]:[['woman']]
+R545[woman]
+|--(nsubj)--> york
+|                |--(compou)--> new
+|--(dep)--> *R546[killed]
+                 |--(advcl)--> run
+                                  |--(mark)--> in
+                                  |--(nsubj)--> hit
+                                  |                |--(punct)--> -
+                                  |                |--(advmod)--> and
+                                  |                |--(punct)--> -
+                                  |--(dobj)--> *R547[crash]
+
+	* entity-paths for event['killed']21_10ecbplus.xmlsent:4019
+
+	* entity-paths for event['crash']21_10ecbplus.xmlsent:4019
+
+sentence #:according to investigators , a woman was killed by a hit - and - run driver in queens on the night of sept . 13 . 
+	[events]:[['killed']]
+	[entities]:[['in', 'queens'], ['driver'], ['woman'], ['on', 'the', 'night', 'of', 'sept', '.', '13']]
+*R546[killed]
+|--(nmod)--> investigators
+|                |--(case)--> according
+|                                 |--(mwe)--> to
+|--(punct)--> ,
+|--(nsubjp)--> R545[woman]
+|                |--(det)--> a
+|--(auxpas)--> was
+|--(nmod)--> hit
+|                |--(case)--> by
+|                |--(det)--> a
+|--(punct)--> -
+|--(cc)--> and
+|--(conj)--> run
+|                |--(punct)--> -
+|                |--(dobj)--> R548[driver]
+|                |--(nmod)--> R549[queens]
+|                |                |--(case)--> R549[in]
+|                |                |--(nmod)--> R550[night]
+|                |                |                |--(case)--> R550[on]
+|                |                |                |--(det)--> R550[the]
+|                |                |--(acl)--> R550[of]
+|                |                |--(dep)--> R550[sept]
+|                |--(punct)--> R550[.]
+|                |--(dobj)--> R550[13]
+|--(punct)--> .
+
+	* entity-paths for event['killed']21_10ecbplus.xmlsent:4021
+	['killed --(nsubjpass)--> woman']
+	['killed --(conj)--> run', 'run --(dobj)--> driver']
+	['killed --(conj)--> run', 'run --(nmod)--> Queens']
+	['killed --(conj)--> run', 'run --(punct)--> .']
+	['killed --(conj)--> run', 'run --(dobj)--> 13']
+
+sentence #:the driver fled the accident scene but was apprehended by police officers . 
+	[events]:[['fled'], ['accident'], ['apprehended']]
+	[entities]:[['driver'], ['scene']]
+*R551[fled]
+|--(nsubj)--> R548[driver]
+|                |--(det)--> the
+|--(dobj)--> R552[scene]
+|                |--(det)--> the
+|                |--(compou)--> *R547[accident]
+|--(cc)--> but
+|--(conj)--> *R553[apprehended]
+|                |--(auxpas)--> was
+|                |--(nmod)--> officers
+|                                 |--(case)--> by
+|                                 |--(compou)--> police
+|--(punct)--> .
+
+	* entity-paths for event['fled']21_10ecbplus.xmlsent:4024
+	['fled --(nsubj)--> driver']
+	['fled --(dobj)--> scene']
+
+	* entity-paths for event['accident']21_10ecbplus.xmlsent:4024
+
+	* entity-paths for event['apprehended']21_10ecbplus.xmlsent:4024

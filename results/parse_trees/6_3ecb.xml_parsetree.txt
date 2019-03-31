@@ -1,0 +1,35 @@
+
+-----------------------------------------
+docid:6_3ecb.xml
+-----------------------------------------
+
+sentence #:summit entertainment announced today that filmmaker chris weitz has been hired to direct the second film in the studio 's twilight film franchise . 
+	[events]:[['direct']]
+	[entities]:[['twilight'], ['film'], ['chris', 'weitz']]
+announced
+|--(nsubj)--> entertainment
+|                |--(compou)--> summit
+|--(nmod:t)--> today
+|--(ccomp)--> hired
+|                |--(mark)--> that
+|                |--(nsubjp)--> R1704[weitz]
+|                |                |--(compou)--> filmmaker
+|                |                |--(compou)--> R1704[chris]
+|                |--(aux)--> has
+|                |--(auxpas)--> been
+|                |--(xcomp)--> *R1706[direct]
+|                                 |--(mark)--> to
+|                                 |--(dobj)--> R1703[film]
+|                                                  |--(det)--> the
+|                                                  |--(amod)--> second
+|                                                  |--(nmod)--> franchise
+|                                                                   |--(case)--> in
+|                                                                   |--(nmod:p)--> studio
+|                                                                   |                |--(det)--> the
+|                                                                   |                |--(case)--> 's
+|                                                                   |--(compou)--> R1710[twilight]
+|                                                                   |--(compou)--> film
+|--(punct)--> .
+
+	* entity-paths for event['direct']6_3ecb.xmlsent:14408
+	['direct --(dobj)--> film']

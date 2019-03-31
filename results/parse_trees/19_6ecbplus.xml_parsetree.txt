@@ -1,0 +1,151 @@
+
+-----------------------------------------
+docid:19_6ecbplus.xml
+-----------------------------------------
+
+sentence #:police intervened after more than 100 people joined together for a candlelit vigil in the east flatbush neighborhood in brooklyn , new york , where 16 - year - old kimani gray was shot multiple times by police on saturday . 
+	[events]:[['joined'], ['shot'], ['vigil'], ['intervened']]
+	[entities]:[['police'], ['on', 'saturday'], ['police'], ['kimani', 'gray'], ['in', 'the', 'east', 'flatbush', 'neighborhood', 'in', 'brooklyn', ',', 'new', 'york'], ['people']]
+*R423[intervened]
+|--(nsubj)--> R411[police]
+|--(nmod)--> R419[people]
+|                |--(case)--> after
+|                |--(nummod)--> 100
+|                |                |--(advmod)--> more
+|                |                                 |--(mwe)--> than
+|                |--(acl)--> *R424[joined]
+|                                 |--(advmod)--> together
+|                                 |--(nmod)--> *R425[vigil]
+|                                                  |--(case)--> for
+|                                                  |--(det)--> a
+|                                                  |--(compou)--> candlelit
+|                                                  |--(nmod)--> R426[neighborhood]
+|                                                                   |--(case)--> R426[in]
+|                                                                   |--(det)--> R426[the]
+|                                                                   |--(compou)--> R426[east]
+|                                                                   |--(compou)--> R426[flatbush]
+|--(nmod)--> R426[brooklyn]
+|                |--(case)--> R426[in]
+|                |--(punct)--> R426[,]
+|                |--(appos)--> R426[york]
+|                                 |--(compou)--> R426[new]
+|--(punct)--> ,
+|--(advcl)--> 16
+|                |--(advmod)--> where
+|                |--(punct)--> -
+|                |--(dep)--> year
+|--(punct)--> -
+|--(parata)--> *R412[shot]
+|                |--(nsubjp)--> R415[gray]
+|                |                |--(amod)--> old
+|                |                |--(compou)--> R415[kimani]
+|                |--(auxpas)--> was
+|                |--(nmod:t)--> times
+|                |                |--(amod)--> multiple
+|                |--(nmod)--> R413[police]
+|                                 |--(case)--> by
+|                                 |--(nmod)--> R427[saturday]
+|                                                  |--(case)--> R427[on]
+|--(punct)--> .
+
+	* entity-paths for event['joined']19_6ecbplus.xmlsent:3204
+	['joined --(nmod)--> vigil', 'vigil --(nmod)--> neighborhood']
+
+	* entity-paths for event['shot']19_6ecbplus.xmlsent:3204
+	['shot --(nsubjpass)--> Gray']
+	['shot --(nmod)--> police']
+
+	* entity-paths for event['vigil']19_6ecbplus.xmlsent:3204
+	['vigil --(nmod)--> neighborhood']
+
+	* entity-paths for event['intervened']19_6ecbplus.xmlsent:3204
+	['intervened --(nsubj)--> Police']
+	['intervened --(nmod)--> people']
+	['intervened --(nmod)--> Brooklyn']
+	['intervened --(parataxis)--> shot', 'shot --(nsubjpass)--> Gray']
+	['intervened --(parataxis)--> shot', 'shot --(nmod)--> police']
+
+sentence #:" tonight was a peaceful vigil that devolved into a riot , " williams wrote . 
+	[events]:[['vigil'], ['riot'], ['devolved']]
+	[entities]:[['tonight']]
+wrote
+|--(punct)--> "
+|--(ccomp)--> *R425[vigil]
+|                |--(nsubj)--> R427[tonight]
+|                |--(cop)--> was
+|                |--(det)--> a
+|                |--(amod)--> peaceful
+|                |--(acl:re)--> *R447[devolved]
+|                                 |--(nsubj)--> that
+|                                 |--(nmod)--> *R420[riot]
+|                                                  |--(case)--> into
+|                                                  |--(det)--> a
+|--(punct)--> ,
+|--(punct)--> "
+|--(nsubj)--> williams
+|--(punct)--> .
+
+	* entity-paths for event['vigil']19_6ecbplus.xmlsent:3212
+	['vigil --(nsubj)--> Tonight']
+
+	* entity-paths for event['riot']19_6ecbplus.xmlsent:3212
+
+	* entity-paths for event['devolved']19_6ecbplus.xmlsent:3212
+
+sentence #:sixteen - year - old kimani gray was shot and killed on saturday night after pointing a gun at two plainclothes officers who approached him , police said . 
+	[events]:[['pointing'], ['killed'], ['shot'], ['said']]
+	[entities]:[['him'], ['who'], ['on', 'saturday', 'night'], ['kimani', 'gray'], ['police'], ['officers'], ['gun']]
+sixteen
+|--(punct)--> -
+|--(dep)--> year
+|--(punct)--> -
+|--(parata)--> *R410[said]
+|                |--(ccomp)--> old
+|                |                |--(ccomp)--> *R412[shot]
+|                |                                 |--(nsubjp)--> R415[gray]
+|                |                                 |                |--(compou)--> R415[kimani]
+|                |                                 |--(auxpas)--> was
+|                |                                 |--(cc)--> and
+|                |                                 |--(conj)--> *R414[killed]
+|                |                                                  |--(nmod)--> R427[saturday]
+|                |                                                  |                |--(case)--> R427[on]
+|                |                                                  |--(nmod:t)--> R427[night]
+|                |                                                  |--(advcl)--> *R417[pointing]
+|                |                                                                   |--(mark)--> after
+|                |                                                                   |--(dobj)--> R418[gun]
+|                |                                                                   |                |--(det)--> a
+|                |                                                                   |--(nmod)--> R413[officers]
+|                |                                                                                    |--(case)--> at
+|                |                                                                                    |--(nummod)--> two
+|                |                                                                                    |--(compou)--> plainclothes
+|                |                                                                                    |--(acl:re)--> approached
+|                |                                                                                                     |--(nsubj)--> R413[who]
+|                |                                                                                                     |--(dobj)--> R415[him]
+|                |--(punct)--> ,
+|                |--(nsubj)--> R411[police]
+|--(punct)--> .
+
+	* entity-paths for event['pointing']19_6ecbplus.xmlsent:3215
+	['pointing --(dobj)--> gun']
+	['pointing --(nmod)--> officers']
+
+	* entity-paths for event['killed']19_6ecbplus.xmlsent:3215
+	['killed --(nmod)--> Saturday']
+	['killed --(nmod:tmod)--> night']
+	['killed --(advcl)--> pointing', 'pointing --(dobj)--> gun']
+	['killed --(advcl)--> pointing', 'pointing --(nmod)--> officers']
+
+	* entity-paths for event['shot']19_6ecbplus.xmlsent:3215
+	['shot --(nsubjpass)--> Gray']
+	['shot --(conj)--> killed', 'killed --(nmod)--> Saturday']
+	['shot --(conj)--> killed', 'killed --(nmod:tmod)--> night']
+	['shot --(conj)--> killed', 'killed --(advcl)--> pointing', 'pointing --(dobj)--> gun']
+	['shot --(conj)--> killed', 'killed --(advcl)--> pointing', 'pointing --(nmod)--> officers']
+
+	* entity-paths for event['said']19_6ecbplus.xmlsent:3215
+	['said --(ccomp)--> old', 'old --(ccomp)--> shot', 'shot --(nsubjpass)--> Gray']
+	['said --(ccomp)--> old', 'old --(ccomp)--> shot', 'shot --(conj)--> killed', 'killed --(nmod)--> Saturday']
+	['said --(ccomp)--> old', 'old --(ccomp)--> shot', 'shot --(conj)--> killed', 'killed --(nmod:tmod)--> night']
+	['said --(ccomp)--> old', 'old --(ccomp)--> shot', 'shot --(conj)--> killed', 'killed --(advcl)--> pointing', 'pointing --(dobj)--> gun']
+	['said --(ccomp)--> old', 'old --(ccomp)--> shot', 'shot --(conj)--> killed', 'killed --(advcl)--> pointing', 'pointing --(nmod)--> officers']
+	['said --(nsubj)--> police']

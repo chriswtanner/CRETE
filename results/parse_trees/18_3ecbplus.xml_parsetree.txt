@@ -1,0 +1,127 @@
+
+-----------------------------------------
+docid:18_3ecbplus.xml
+-----------------------------------------
+
+sentence #:troy , michigan office shooting follow - up - 1 dead , 2 injured , and suspect caught 
+	[events]:[['dead'], ['shooting'], ['injured'], ['caught']]
+	[entities]:[['2'], ['1'], ['suspect']]
+*R373[dead]
+|--(nsubj)--> troy
+|--(punct)--> ,
+|--(nsubj)--> office
+|                |--(compou)--> michigan
+|                |--(acl:re)--> follow
+|                |                |--(nsubj)--> *R361[shooting]
+|                |--(nmod)--> up
+|                                 |--(punct)--> -
+|                                 |--(punct)--> -
+|--(dep)--> R374[1]
+|--(punct)--> ,
+|--(conj)--> R392[2]
+|                |--(amod)--> *R391[injured]
+|--(punct)--> ,
+|--(cc)--> and
+|--(conj)--> *R371[caught]
+                 |--(compou)--> R360[suspect]
+
+	* entity-paths for event['dead']18_3ecbplus.xmlsent:2463
+	['Dead --(dep)--> 1']
+	['Dead --(conj)--> 2']
+	['Dead --(conj)--> Caught', 'Caught --(compound)--> Suspect']
+
+	* entity-paths for event['shooting']18_3ecbplus.xmlsent:2463
+
+	* entity-paths for event['injured']18_3ecbplus.xmlsent:2463
+
+	* entity-paths for event['caught']18_3ecbplus.xmlsent:2463
+	['Caught --(compound)--> Suspect']
+
+sentence #:"a man suspected of shooting three people , killing one , at an accounting firm where was fired last week was arrested after a high - speed chase a few hours after the monday morning attack , authorities said . 
+	[events]:[['suspected'], ['arrested'], ['attack'], ['shooting'], ['chase'], ['killing'], ['said'], ['fired']]
+	[entities]:[['a', 'few', 'hours', 'after'], ['at', 'an', 'accounting', 'firm'], ['man'], ['where'], ['last', 'week'], ['people'], ['the', 'monday', 'morning'], ['authorities'], ['one']]
+*R370[said]
+|--(punct)--> "a
+|--(ccomp)--> *R371[arrested]
+|                |--(nsubjp)--> R360[man]
+|                |                |--(det)--> "a
+|                |                |--(acl)--> *R372[suspected]
+|                |                                 |--(nmod)--> R362[people]
+|                |                                 |                |--(case)--> of
+|                |                                 |                |--(amod)--> *R361[shooting]
+|                |                                 |                |--(nummod)--> three
+|                |                                 |--(punct)--> ,
+|                |                                 |--(xcomp)--> *R373[killing]
+|                |                                 |                |--(dobj)--> R374[one]
+|                |                                 |--(punct)--> ,
+|                |                                 |--(nmod)--> R375[firm]
+|                |                                                  |--(case)--> R375[at]
+|                |                                                  |--(det)--> R375[an]
+|                |                                                  |--(compou)--> R375[accounting]
+|                |                                                  |--(acl:re)--> *R363[fired]
+|                |                                                                   |--(advmod)--> R375[where]
+|                |                                                                   |--(auxpas)--> was
+|                |                                                                   |--(nmod:t)--> R364[week]
+|                |                                                                                    |--(amod)--> R364[last]
+|                |--(auxpas)--> was
+|                |--(nmod)--> high
+|                |                |--(case)--> after
+|                |                |--(det)--> a
+|                |--(punct)--> -
+|                |--(ccomp)--> *R376[chase]
+|                                 |--(nsubj)--> speed
+|                                 |--(dobj)--> R377[hours]
+|                                 |                |--(det)--> R377[a]
+|                                 |                |--(amod)--> R377[few]
+|                                 |--(nmod)--> *R378[attack]
+|                                                  |--(case)--> R377[after]
+|                                                  |--(det)--> R379[the]
+|                                                  |--(compou)--> R379[monday]
+|                                                  |--(compou)--> R379[morning]
+|--(punct)--> ,
+|--(nsubj)--> R380[authorities]
+|--(punct)--> .
+
+	* entity-paths for event['suspected']18_3ecbplus.xmlsent:2465
+	['suspected --(nmod)--> people']
+	['suspected --(xcomp)--> killing', 'killing --(dobj)--> one']
+	['suspected --(nmod)--> firm']
+
+	* entity-paths for event['arrested']18_3ecbplus.xmlsent:2465
+	['arrested --(nsubjpass)--> man']
+	['arrested --(ccomp)--> chase', 'chase --(dobj)--> hours']
+	['arrested --(ccomp)--> chase', 'chase --(nmod)--> attack', 'attack --(case)--> after']
+	['arrested --(ccomp)--> chase', 'chase --(nmod)--> attack', 'attack --(det)--> the']
+	['arrested --(ccomp)--> chase', 'chase --(nmod)--> attack', 'attack --(compound)--> Monday']
+	['arrested --(ccomp)--> chase', 'chase --(nmod)--> attack', 'attack --(compound)--> morning']
+
+	* entity-paths for event['attack']18_3ecbplus.xmlsent:2465
+	['attack --(case)--> after']
+	['attack --(det)--> the']
+	['attack --(compound)--> Monday']
+	['attack --(compound)--> morning']
+
+	* entity-paths for event['shooting']18_3ecbplus.xmlsent:2465
+
+	* entity-paths for event['chase']18_3ecbplus.xmlsent:2465
+	['chase --(dobj)--> hours']
+	['chase --(nmod)--> attack', 'attack --(case)--> after']
+	['chase --(nmod)--> attack', 'attack --(det)--> the']
+	['chase --(nmod)--> attack', 'attack --(compound)--> Monday']
+	['chase --(nmod)--> attack', 'attack --(compound)--> morning']
+
+	* entity-paths for event['killing']18_3ecbplus.xmlsent:2465
+	['killing --(dobj)--> one']
+
+	* entity-paths for event['said']18_3ecbplus.xmlsent:2465
+	['said --(ccomp)--> arrested', 'arrested --(nsubjpass)--> man']
+	['said --(ccomp)--> arrested', 'arrested --(ccomp)--> chase', 'chase --(dobj)--> hours']
+	['said --(ccomp)--> arrested', 'arrested --(ccomp)--> chase', 'chase --(nmod)--> attack', 'attack --(case)--> after']
+	['said --(ccomp)--> arrested', 'arrested --(ccomp)--> chase', 'chase --(nmod)--> attack', 'attack --(det)--> the']
+	['said --(ccomp)--> arrested', 'arrested --(ccomp)--> chase', 'chase --(nmod)--> attack', 'attack --(compound)--> Monday']
+	['said --(ccomp)--> arrested', 'arrested --(ccomp)--> chase', 'chase --(nmod)--> attack', 'attack --(compound)--> morning']
+	['said --(nsubj)--> authorities']
+
+	* entity-paths for event['fired']18_3ecbplus.xmlsent:2465
+	['fired --(advmod)--> where']
+	['fired --(nmod:tmod)--> week']

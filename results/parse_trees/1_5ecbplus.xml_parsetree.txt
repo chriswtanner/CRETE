@@ -1,0 +1,99 @@
+
+-----------------------------------------
+docid:1_5ecbplus.xml
+-----------------------------------------
+
+sentence #:lindsay lohan " s attorney said thursday the actress checked into a california rehab facility , but a state official said it is unlicensed to perform the type of restrictive in - patient treatment a judge required the actress to receive in a misdemeanor driving case . 
+	[events]:[['receive'], ['perform'], ['unlicensed'], ['case'], ['treatment'], ['said'], ['driving'], ['required'], ['checked', 'into']]
+	[entities]:[['lindsay', 'lohan'], ['california', 'rehab', 'facility'], ['actress'], ['actress'], ['official'], ['thursday'], ['attorney'], ['it'], ['judge']]
+R37[attorney]
+|--(nsubj)--> R15[lohan]
+|                |--(compou)--> R15[lindsay]
+|--(punct)--> "
+|--(cop)--> s
+|--(acl:re)--> *R124[said]
+|                |--(nmod:t)--> R58[thursday]
+|                |--(ccomp)--> *R9[checked]
+|                                 |--(nsubj)--> R15[actress]
+|                                 |                |--(det)--> the
+|                                 |--(nmod)--> R10[facility]
+|                                                  |--(case)--> *R9[into]
+|                                                  |--(det)--> a
+|                                                  |--(compou)--> R10[california]
+|                                                  |--(compou)--> R10[rehab]
+|--(punct)--> ,
+|--(cc)--> but
+|--(conj)--> said
+|                |--(nsubj)--> R144[official]
+|                |                |--(det)--> a
+|                |                |--(compou)--> state
+|                |--(ccomp)--> *R125[unlicensed]
+|                                 |--(nsubj)--> R10[it]
+|                                 |--(cop)--> is
+|                                 |--(xcomp)--> *R126[perform]
+|                                                  |--(mark)--> to
+|                                                  |--(dobj)--> type
+|                                                  |                |--(det)--> the
+|                                                  |                |--(acl)--> restrictive
+|                                                  |                                 |--(case)--> of
+|                                                  |--(nmod)--> *R19[treatment]
+|                                                                   |--(case)--> in
+|                                                                   |--(punct)--> -
+|                                                                   |--(compou)--> patient
+|                                                                   |--(acl:re)--> *R127[required]
+|                                                                                    |--(nsubj)--> R128[judge]
+|                                                                                    |                |--(det)--> a
+|                                                                                    |--(dobj)--> R15[actress]
+|                                                                                                     |--(det)--> the
+|                                                                                                     |--(acl)--> *R111[receive]
+|                                                                                                                      |--(mark)--> to
+|                                                                                                                      |--(nmod)--> *R43[case]
+|                                                                                                                                       |--(case)--> in
+|                                                                                                                                       |--(det)--> a
+|                                                                                                                                       |--(compou)--> misdemeanor
+|                                                                                                                                       |--(amod)--> *R21[driving]
+|--(punct)--> .
+
+	* entity-paths for event['receive']1_5ecbplus.xmlsent:258
+
+	* entity-paths for event['perform']1_5ecbplus.xmlsent:258
+	['perform --(nmod)--> treatment', 'treatment --(acl:relcl)--> required', 'required --(nsubj)--> judge']
+	['perform --(nmod)--> treatment', 'treatment --(acl:relcl)--> required', 'required --(dobj)--> actress']
+
+	* entity-paths for event['unlicensed']1_5ecbplus.xmlsent:258
+	['unlicensed --(nsubj)--> it']
+	['unlicensed --(xcomp)--> perform', 'perform --(nmod)--> treatment', 'treatment --(acl:relcl)--> required', 'required --(nsubj)--> judge']
+	['unlicensed --(xcomp)--> perform', 'perform --(nmod)--> treatment', 'treatment --(acl:relcl)--> required', 'required --(dobj)--> actress']
+
+	* entity-paths for event['case']1_5ecbplus.xmlsent:258
+
+	* entity-paths for event['treatment']1_5ecbplus.xmlsent:258
+	['treatment --(acl:relcl)--> required', 'required --(nsubj)--> judge']
+	['treatment --(acl:relcl)--> required', 'required --(dobj)--> actress']
+
+	* entity-paths for event['said']1_5ecbplus.xmlsent:258
+	['said --(nmod:tmod)--> Thursday']
+	['said --(ccomp)--> checked', 'checked --(nsubj)--> actress']
+	['said --(ccomp)--> checked', 'checked --(nmod)--> facility']
+
+	* entity-paths for event['driving']1_5ecbplus.xmlsent:258
+
+	* entity-paths for event['required']1_5ecbplus.xmlsent:258
+	['required --(nsubj)--> judge']
+	['required --(dobj)--> actress']
+
+	* entity-paths for event['checked', 'into']1_5ecbplus.xmlsent:258
+
+sentence #:lawyer : lindsay lohan checks into california rehab 
+	[events]:[['checks', 'into']]
+	[entities]:[['lawyer'], ['california', 'rehab'], ['lindsay', 'lohan']]
+R37[lawyer]
+|--(punct)--> :
+|--(dep)--> *R9[checks]
+                 |--(compou)--> R15[lindsay]
+                 |--(compou)--> R15[lohan]
+                 |--(nmod)--> R10[rehab]
+                                  |--(case)--> *R9[into]
+                                  |--(compou)--> R10[california]
+
+	* entity-paths for event['checks', 'into']1_5ecbplus.xmlsent:256

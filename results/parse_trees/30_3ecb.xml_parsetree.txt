@@ -1,0 +1,197 @@
+
+-----------------------------------------
+docid:30_3ecb.xml
+-----------------------------------------
+
+sentence #:jonathan wright , a director at telecoms company interoute , said that the outage could have a devastating affect on business and communication around the world . 
+	[events]:[['outage']]
+	[entities]:[]
+said
+|--(nsubj)--> wright
+|                |--(compou)--> jonathan
+|                |--(punct)--> ,
+|                |--(appos)--> director
+|                |                |--(det)--> a
+|                |                |--(nmod)--> company
+|                |                |                |--(case)--> at
+|                |                |                |--(compou)--> telecoms
+|                |                |--(appos)--> interoute
+|                |--(punct)--> ,
+|--(ccomp)--> have
+|                |--(mark)--> that
+|                |--(nsubj)--> *R949[outage]
+|                |                |--(det)--> the
+|                |--(aux)--> could
+|                |--(dobj)--> affect
+|                |                |--(det)--> a
+|                |                |--(amod)--> devastating
+|                |                |--(nmod)--> business
+|                |                                 |--(case)--> on
+|                |                                 |--(cc)--> and
+|                |                                 |--(conj)--> communication
+|                |--(nmod)--> world
+|                                 |--(case)--> around
+|                                 |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['outage']30_3ecb.xmlsent:7867
+
+sentence #:millions of web users across the middle east are struggling to get online after damage to undersea cables connecting europe , africa and asia took down a major route for internet traffic . 
+	[events]:[['damage'], ['traffic'], ['took', 'down']]
+	[entities]:[['internet'], ['route'], ['cables']]
+struggling
+|--(nsubj)--> millions
+|                |--(nmod)--> users
+|                                 |--(case)--> of
+|                                 |--(compou)--> web
+|                                 |--(nmod)--> east
+|                                                  |--(case)--> across
+|                                                  |--(det)--> the
+|                                                  |--(compou)--> middle
+|--(aux)--> are
+|--(xcomp)--> get
+|                |--(mark)--> to
+|                |--(dobj)--> online
+|                |--(nmod)--> *R953[damage]
+|                |                |--(case)--> after
+|                |--(nmod)--> R951[cables]
+|                |                |--(case)--> to
+|                |                |--(compou)--> undersea
+|                |--(xcomp)--> connecting
+|                                 |--(ccomp)--> *R949[took]
+|                                                  |--(nsubj)--> europe
+|                                                  |                |--(punct)--> ,
+|                                                  |                |--(conj)--> africa
+|                                                  |                |--(cc)--> and
+|                                                  |                |--(conj)--> asia
+|                                                  |--(compou)--> *R949[down]
+|                                                  |--(dobj)--> R951[route]
+|                                                                   |--(det)--> a
+|                                                                   |--(amod)--> major
+|                                                                   |--(nmod)--> *R975[traffic]
+|                                                                                    |--(case)--> for
+|                                                                                    |--(compou)--> R950[internet]
+|--(punct)--> .
+
+	* entity-paths for event['damage']30_3ecb.xmlsent:7862
+
+	* entity-paths for event['traffic']30_3ecb.xmlsent:7862
+	['traffic --(compound)--> internet']
+
+	* entity-paths for event['took', 'down']30_3ecb.xmlsent:7862
+
+sentence #:as much as 70 % of internet traffic and telephone communications between the continents has been affected by the outage . 
+	[events]:[['affected'], ['outage'], ['70', '%', 'of', 'communications'], ['traffic']]
+	[entities]:[['telephone'], ['internet']]
+*R982[affected]
+|--(nsubjp)--> *R975[%]
+|                |--(nummod)--> *R975[70]
+|                |                |--(advmod)--> as
+|                |                |--(advmod)--> much
+|                |                |--(advmod)--> as
+|                |--(nmod)--> *R975[traffic]
+|                |                |--(case)--> *R975[of]
+|                |                |--(compou)--> R950[internet]
+|                |                |--(cc)--> and
+|                |                |--(conj)--> *R975[communications]
+|                |                                 |--(compou)--> R976[telephone]
+|                |--(nmod)--> continents
+|                                 |--(case)--> between
+|                                 |--(det)--> the
+|--(aux)--> has
+|--(auxpas)--> been
+|--(nmod)--> *R949[outage]
+|                |--(case)--> by
+|                |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['affected']30_3ecb.xmlsent:7863
+	['affected --(nsubjpass)--> %', '% --(nmod)--> traffic', 'traffic --(compound)--> internet']
+	['affected --(nsubjpass)--> %', '% --(nmod)--> traffic', 'traffic --(conj)--> communications', 'communications --(compound)--> telephone']
+
+	* entity-paths for event['outage']30_3ecb.xmlsent:7863
+
+	* entity-paths for event['70', '%', 'of', 'communications']30_3ecb.xmlsent:7863
+	['communications --(compound)--> telephone']
+
+	* entity-paths for event['traffic']30_3ecb.xmlsent:7863
+	['traffic --(compound)--> internet']
+	['traffic --(conj)--> communications', 'communications --(compound)--> telephone']
+
+sentence #:up to 70 % of communications to the middle east have been disrupted after cables connecting region to europe were damaged 
+	[events]:[['damaged'], ['70', '%', 'of', 'communications'], ['disrupted']]
+	[entities]:[['cables']]
+*R982[disrupted]
+|--(nsubjp)--> *R975[%]
+|                |--(nummod)--> *R975[70]
+|                |                |--(dep)--> up
+|                |                                 |--(mwe)--> to
+|                |--(nmod)--> *R975[communications]
+|                                 |--(case)--> *R975[of]
+|                                 |--(nmod)--> east
+|                                                  |--(case)--> to
+|                                                  |--(det)--> the
+|                                                  |--(compou)--> middle
+|--(aux)--> have
+|--(auxpas)--> been
+|--(advcl)--> *R953[damaged]
+                 |--(mark)--> after
+                 |--(nsubjp)--> R951[cables]
+                 |                |--(acl)--> connecting
+                 |                                 |--(dobj)--> region
+                 |                                 |--(nmod)--> europe
+                 |                                                  |--(case)--> to
+                 |--(auxpas)--> were
+
+	* entity-paths for event['damaged']30_3ecb.xmlsent:7861
+	['damaged --(nsubjpass)--> cables']
+
+	* entity-paths for event['70', '%', 'of', 'communications']30_3ecb.xmlsent:7861
+
+	* entity-paths for event['disrupted']30_3ecb.xmlsent:7861
+	['disrupted --(advcl)--> damaged', 'damaged --(nsubjpass)--> cables']
+
+sentence #:it remains unclear what precisely what caused the damage , but the egyptian communications ministry said that ships have already been dispatched to look at the problem - although repairs will take " several days " . 
+	[events]:[['problem'], ['damage']]
+	[entities]:[]
+remains
+|--(nsubj)--> it
+|--(xcomp)--> unclear
+|                |--(dep)--> what
+|                                 |--(acl:re)--> caused
+|                                                  |--(nsubj)--> what
+|                                                  |                |--(advmod)--> precisely
+|                                                  |--(dobj)--> *R953[damage]
+|                                                                   |--(det)--> the
+|--(punct)--> ,
+|--(cc)--> but
+|--(conj)--> said
+|                |--(nsubj)--> ministry
+|                |                |--(det)--> the
+|                |                |--(amod)--> egyptian
+|                |                |--(compou)--> communications
+|                |--(ccomp)--> dispatched
+|                                 |--(mark)--> that
+|                                 |--(nsubjp)--> ships
+|                                 |--(aux)--> have
+|                                 |--(advmod)--> already
+|                                 |--(auxpas)--> been
+|                                 |--(xcomp)--> look
+|                                                  |--(mark)--> to
+|                                                  |--(nmod)--> *R953[problem]
+|                                                  |                |--(case)--> at
+|                                                  |                |--(det)--> the
+|                                                  |--(punct)--> -
+|                                                  |--(advcl)--> take
+|                                                  |                |--(mark)--> although
+|                                                  |                |--(nsubj)--> repairs
+|                                                  |                |--(aux)--> will
+|                                                  |                |--(punct)--> "
+|                                                  |                |--(nmod:t)--> days
+|                                                  |                                 |--(amod)--> several
+|                                                  |--(punct)--> "
+|--(punct)--> .
+
+	* entity-paths for event['problem']30_3ecb.xmlsent:7866
+
+	* entity-paths for event['damage']30_3ecb.xmlsent:7866

@@ -1,0 +1,31 @@
+
+-----------------------------------------
+docid:13_5ecbplus.xml
+-----------------------------------------
+
+sentence #:arson suspected in fire that destroyed alaska's mat - maid dairy 
+	[events]:[['destroyed'], ['arson'], ['fire']]
+	[entities]:[["alaska's"], ['mat', '-', 'maid', 'dairy']]
+*R290[arson]
+|--(acl)--> suspected
+|                |--(nmod)--> *R263[fire]
+|                                 |--(case)--> in
+|                                 |--(acl:re)--> *R264[destroyed]
+|                                                  |--(nsubj)--> that
+|                                                  |--(dobj)--> R265[mat]
+|                                                                   |--(nmod:p)--> R282[alaska's]
+|                                                                                    |--(case)--> R282[alaska's]
+|--(punct)--> R265[-]
+|--(dep)--> R265[maid]
+                 |--(dep)--> R265[dairy]
+
+	* entity-paths for event['destroyed']13_5ecbplus.xmlsent:1450
+	['destroyed --(dobj)--> Mat']
+
+	* entity-paths for event['arson']13_5ecbplus.xmlsent:1450
+	['Arson --(acl)--> suspected', 'suspected --(nmod)--> fire', 'fire --(acl:relcl)--> destroyed', 'destroyed --(dobj)--> Mat']
+	['Arson --(punct)--> -']
+	['Arson --(dep)--> Maid']
+
+	* entity-paths for event['fire']13_5ecbplus.xmlsent:1450
+	['fire --(acl:relcl)--> destroyed', 'destroyed --(dobj)--> Mat']

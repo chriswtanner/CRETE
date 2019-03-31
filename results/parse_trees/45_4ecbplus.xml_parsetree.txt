@@ -1,0 +1,110 @@
+
+-----------------------------------------
+docid:45_4ecbplus.xml
+-----------------------------------------
+
+sentence #:an oklahoma man was found guilty thursday on two first - degree murder charges for the deaths of an arkansas woman and her fetus , according to crawford county deputy prosecuting attorney jacob howell . 
+	[events]:[['guilty'], ['charges'], ['found'], ['first', '-', 'degree', 'murder'], ['deaths']]
+	[entities]:[['oklahoma', 'man'], ['oklahoma'], ['arkansas', 'woman'], ['fetus'], ['thursday']]
+*R1608[found]
+|--(nsubjp)--> R1610[man]
+|                |--(det)--> an
+|                |--(compou)--> R1617[oklahoma]
+|--(auxpas)--> was
+|--(dobj)--> *R1619[first]
+|                |--(amod)--> *R1636[guilty]
+|                |                |--(nmod:t)--> R1615[thursday]
+|                |                |--(nmod)--> two
+|                |                                 |--(case)--> on
+|                |--(punct)--> *R1619[-]
+|                |--(dep)--> *R1622[charges]
+|                |                |--(compou)--> *R1619[degree]
+|                |                |--(compou)--> *R1619[murder]
+|                |                |--(nmod)--> *R1611[deaths]
+|                |                                 |--(case)--> for
+|                |                                 |--(det)--> the
+|                |                                 |--(nmod)--> R1612[woman]
+|                |                                                  |--(case)--> of
+|                |                                                  |--(det)--> an
+|                |                                                  |--(compou)--> R1612[arkansas]
+|                |                                                  |--(cc)--> and
+|                |                                                  |--(conj)--> R1625[fetus]
+|                |                                                                   |--(nmod:p)--> her
+|                |--(punct)--> ,
+|--(nmod)--> howell
+|                |--(case)--> according
+|                |                |--(mwe)--> to
+|                |--(compou)--> crawford
+|                |--(compou)--> county
+|                |--(compou)--> deputy
+|                |--(compou)--> prosecuting
+|                |--(compou)--> attorney
+|                |--(compou)--> jacob
+|--(punct)--> .
+
+	* entity-paths for event['guilty']45_4ecbplus.xmlsent:13842
+	['guilty --(nmod:tmod)--> Thursday']
+
+	* entity-paths for event['charges']45_4ecbplus.xmlsent:13842
+	['charges --(nmod)--> deaths', 'deaths --(nmod)--> woman']
+
+	* entity-paths for event['found']45_4ecbplus.xmlsent:13842
+	['found --(nsubjpass)--> man']
+	['found --(dobj)--> first', 'first --(amod)--> guilty', 'guilty --(nmod:tmod)--> Thursday']
+	['found --(dobj)--> first', 'first --(dep)--> charges', 'charges --(nmod)--> deaths', 'deaths --(nmod)--> woman']
+
+	* entity-paths for event['first', '-', 'degree', 'murder']45_4ecbplus.xmlsent:13842
+
+	* entity-paths for event['deaths']45_4ecbplus.xmlsent:13842
+	['deaths --(nmod)--> woman']
+
+sentence #:okla . man guilty of killing pregnant girlfriend 
+	[events]:[['pregnant'], ['guilty'], ['killing']]
+	[entities]:[['okla', '.', 'man'], ['girlfriend']]
+*R1636[guilty]
+|--(dep)--> R1610[man]
+|                |--(dep)--> R1610[okla]
+|                                 |--(punct)--> R1610[.]
+|--(advcl)--> *R1637[killing]
+                 |--(mark)--> of
+                 |--(dobj)--> R1612[girlfriend]
+                                  |--(amod)--> *R1621[pregnant]
+
+	* entity-paths for event['pregnant']45_4ecbplus.xmlsent:13841
+
+	* entity-paths for event['guilty']45_4ecbplus.xmlsent:13841
+	['guilty --(dep)--> man']
+	['guilty --(advcl)--> killing', 'killing --(dobj)--> girlfriend']
+
+	* entity-paths for event['killing']45_4ecbplus.xmlsent:13841
+	['killing --(dobj)--> girlfriend']
+
+sentence #:christopher kenyon simpson of fort coffee is accused of fatally shooting ka'loni marie flynn of fort smith , ark . 
+	[events]:[['accused'], ['fatally', 'shooting']]
+	[entities]:[['christopher', 'kenyon', 'simpson'], ["ka'loni", 'marie', 'flynn'], ['of', 'fort', 'coffee'], ['of', 'fort', 'smith', ',', 'ark']]
+*R1622[accused]
+|--(nsubjp)--> R1610[simpson]
+|                |--(compou)--> R1610[christopher]
+|                |--(compou)--> R1610[kenyon]
+|                |--(nmod)--> R1656[coffee]
+|                                 |--(case)--> R1656[of]
+|                                 |--(compou)--> R1656[fort]
+|--(auxpas)--> is
+|--(nmod)--> R1612[flynn]
+|                |--(case)--> of
+|                |--(amod)--> *R1611[shooting]
+|                |                |--(advmod)--> *R1611[fatally]
+|                |--(compou)--> R1612[ka'loni]
+|                |--(compou)--> R1612[marie]
+|                |--(nmod)--> R1616[smith]
+|                                 |--(case)--> R1616[of]
+|                                 |--(compou)--> R1616[fort]
+|                                 |--(punct)--> R1616[,]
+|                                 |--(appos)--> R1616[ark]
+|--(punct)--> .
+
+	* entity-paths for event['accused']45_4ecbplus.xmlsent:13843
+	['accused --(nsubjpass)--> Simpson']
+	['accused --(nmod)--> Flynn']
+
+	* entity-paths for event['fatally', 'shooting']45_4ecbplus.xmlsent:13843

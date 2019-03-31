@@ -1,0 +1,88 @@
+
+-----------------------------------------
+docid:35_10ecb.xml
+-----------------------------------------
+
+sentence #:but after being arrested for suspicion dui earlier this week , he has bigger worries than his role in the chargers ' offense . 
+	[events]:[['suspicion'], ['dui'], ['arrested']]
+	[entities]:[['he'], ['chargers']]
+has
+|--(cc)--> but
+|--(advcl)--> *R1153[arrested]
+|                |--(mark)--> after
+|                |--(auxpas)--> being
+|                |--(nmod)--> *R1154[dui]
+|                |                |--(case)--> for
+|                |                |--(compou)--> *R1155[suspicion]
+|                |--(nmod:t)--> week
+|                                 |--(advmod)--> earlier
+|                                 |--(det)--> this
+|--(punct)--> ,
+|--(nsubj)--> R1156[he]
+|--(dobj)--> worries
+|                |--(amod)--> bigger
+|--(nmod)--> role
+|                |--(case)--> than
+|                |--(nmod:p)--> his
+|                |--(nmod)--> offense
+|                                 |--(case)--> in
+|                                 |--(nmod:p)--> R1157[chargers]
+|                                                  |--(det)--> the
+|                                                  |--(case)--> '
+|--(punct)--> .
+
+	* entity-paths for event['suspicion']35_10ecb.xmlsent:9563
+
+	* entity-paths for event['dui']35_10ecb.xmlsent:9563
+
+	* entity-paths for event['arrested']35_10ecb.xmlsent:9563
+
+sentence #:10news in san diego is reporting that jackson was arrested by the california highway patrol early tuesday morning after failing sobriety tests . 
+	[events]:[['arrested']]
+	[entities]:[['california', 'highway', 'patrol'], ['early', 'tuesday', 'morning'], ['jackson']]
+reporting
+|--(nsubj)--> 10news
+|                |--(nmod)--> diego
+|                                 |--(case)--> in
+|                                 |--(compou)--> san
+|--(aux)--> is
+|--(ccomp)--> *R1153[arrested]
+|                |--(mark)--> that
+|                |--(nsubjp)--> R1156[jackson]
+|                |--(auxpas)--> was
+|                |--(nmod)--> R1158[patrol]
+|                |                |--(case)--> by
+|                |                |--(det)--> the
+|                |                |--(compou)--> R1158[california]
+|                |                |--(compou)--> R1158[highway]
+|                |                |--(nmod:t)--> R1159[tuesday]
+|                |                                 |--(amod)--> R1159[early]
+|                |--(nmod:t)--> R1159[morning]
+|                |--(advcl)--> failing
+|                                 |--(mark)--> after
+|                                 |--(dobj)--> tests
+|                                                  |--(compou)--> sobriety
+|--(punct)--> .
+
+	* entity-paths for event['arrested']35_10ecb.xmlsent:9564
+	['arrested --(nsubjpass)--> Jackson']
+	['arrested --(nmod)--> Patrol']
+	['arrested --(nmod:tmod)--> morning']
+
+sentence #:chargers ' jackson arrested on suspicion of dui 
+	[events]:[['arrested'], ['suspicion'], ['dui']]
+	[entities]:[['jackson']]
+R1156[jackson]
+|--(nmod:p)--> chargers
+|                |--(case)--> '
+|--(acl)--> *R1153[arrested]
+|                |--(nmod)--> *R1155[suspicion]
+|                                 |--(case)--> on
+|--(nmod)--> *R1154[dui]
+                 |--(case)--> of
+
+	* entity-paths for event['arrested']35_10ecb.xmlsent:9562
+
+	* entity-paths for event['suspicion']35_10ecb.xmlsent:9562
+
+	* entity-paths for event['dui']35_10ecb.xmlsent:9562

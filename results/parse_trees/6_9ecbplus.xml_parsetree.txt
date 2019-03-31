@@ -1,0 +1,51 @@
+
+-----------------------------------------
+docid:6_9ecbplus.xml
+-----------------------------------------
+
+sentence #:gary ross won't direct hunger games sequel 
+	[events]:[['direct'], ['sequel']]
+	[entities]:[['gary', 'ross'], ['hunger', 'games']]
+R1692[ross]
+|--(compou)--> R1692[gary]
+|--(dep)--> won't
+|                |--(neg)--> won't
+|--(dep)--> *R1701[sequel]
+                 |--(amod)--> *R1699[direct]
+                 |--(compou)--> R1700[hunger]
+                 |--(compou)--> R1700[games]
+
+	* entity-paths for event['direct']6_9ecbplus.xmlsent:14581
+
+	* entity-paths for event['sequel']6_9ecbplus.xmlsent:14581
+	['Sequel --(compound)--> Hunger']
+	['Sequel --(compound)--> Games']
+
+sentence #:moviemaker gary ross has reportedly pulled out of negotiations to direct a sequel to the hunger games . 
+	[events]:[['negotiations'], ['direct'], ['sequel']]
+	[entities]:[['the', 'hunger', 'games'], ['gary', 'ross']]
+pulled
+|--(nsubj)--> R1692[ross]
+|                |--(compou)--> moviemaker
+|                |--(compou)--> R1692[gary]
+|--(aux)--> has
+|--(advmod)--> reportedly
+|--(advmod)--> out
+|--(nmod)--> *R1696[negotiations]
+|                |--(case)--> of
+|--(xcomp)--> *R1699[direct]
+|                |--(mark)--> to
+|                |--(dobj)--> *R1701[sequel]
+|                |                |--(det)--> a
+|                |--(nmod)--> R1700[games]
+|                                 |--(case)--> to
+|                                 |--(det)--> R1700[the]
+|                                 |--(compou)--> R1700[hunger]
+|--(punct)--> .
+
+	* entity-paths for event['negotiations']6_9ecbplus.xmlsent:14583
+
+	* entity-paths for event['direct']6_9ecbplus.xmlsent:14583
+	['direct --(nmod)--> Games']
+
+	* entity-paths for event['sequel']6_9ecbplus.xmlsent:14583

@@ -1,0 +1,64 @@
+
+-----------------------------------------
+docid:38_11ecbplus.xml
+-----------------------------------------
+
+sentence #:a california earthquake today 2013 has erupted outside santa rosa . 
+	[events]:[['erupted'], ['california', 'earthquake']]
+	[entities]:[['today', '2013'], ['outside', 'santa', 'rosa']]
+*R1304[erupted]
+|--(nsubj)--> R1299[today]
+|                |--(det)--> a
+|                |--(compou)--> *R1296[california]
+|                |--(compou)--> *R1296[earthquake]
+|                |--(dep)--> R1299[2013]
+|--(aux)--> has
+|--(nmod)--> R1305[rosa]
+|                |--(case)--> R1305[outside]
+|                |--(compou)--> R1305[santa]
+|--(punct)--> .
+
+	* entity-paths for event['erupted']38_11ecbplus.xmlsent:10719
+	['erupted --(nsubj)--> today']
+	['erupted --(nmod)--> Rosa']
+
+	* entity-paths for event['california', 'earthquake']38_11ecbplus.xmlsent:10719
+
+sentence #:california earthquake today 2013 erupts outside sacramento 
+	[events]:[['california', 'earthquake'], ['erupts']]
+	[entities]:[['today', '2013']]
+*R1304[erupts]
+|--(nsubj)--> *R1296[earthquake]
+|                |--(compou)--> *R1296[california]
+|                |--(dep)--> R1299[today]
+|                                 |--(nummod)--> R1299[2013]
+|--(dobj)--> sacramento
+                 |--(amod)--> outside
+
+	* entity-paths for event['california', 'earthquake']38_11ecbplus.xmlsent:10717
+	['Earthquake --(dep)--> Today']
+
+	* entity-paths for event['erupts']38_11ecbplus.xmlsent:10717
+	['Erupts --(nsubj)--> Earthquake', 'Earthquake --(dep)--> Today']
+
+sentence #:no reports of injuries have yet to be indicated by local news . 
+	[events]:[['injuries'], ['indicated']]
+	[entities]:[['news']]
+have
+|--(nsubj)--> reports
+|                |--(neg)--> no
+|                |--(nmod)--> *R1306[injuries]
+|                                 |--(case)--> of
+|--(advmod)--> yet
+|--(xcomp)--> *R1307[indicated]
+|                |--(mark)--> to
+|                |--(auxpas)--> be
+|                |--(nmod)--> R1308[news]
+|                                 |--(case)--> by
+|                                 |--(amod)--> local
+|--(punct)--> .
+
+	* entity-paths for event['injuries']38_11ecbplus.xmlsent:10721
+
+	* entity-paths for event['indicated']38_11ecbplus.xmlsent:10721
+	['indicated --(nmod)--> news']

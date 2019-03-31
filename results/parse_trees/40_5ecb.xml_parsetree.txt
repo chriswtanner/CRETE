@@ -1,0 +1,79 @@
+
+-----------------------------------------
+docid:40_5ecb.xml
+-----------------------------------------
+
+sentence #:apple 's first hardware announcement at macworld today introduced the 17 " macbook pro . 
+	[events]:[['macworld'], ['introduced']]
+	[entities]:[['apple'], ['today'], ['macbook', 'pro']]
+announcement
+|--(nmod:p)--> R1405[apple]
+|                |--(case)--> 's
+|--(amod)--> first
+|--(compou)--> hardware
+|--(acl:re)--> *R1404[introduced]
+|                |--(nmod)--> *R1406[macworld]
+|                |                |--(case)--> at
+|                |--(nsubj)--> R1419[today]
+|                |--(dobj)--> 17
+|                |                |--(det)--> the
+|                |--(punct)--> "
+|--(dep)--> R1409[macbook]
+|                |--(dep)--> R1409[pro]
+|--(punct)--> .
+
+	* entity-paths for event['macworld']40_5ecb.xmlsent:11844
+
+	* entity-paths for event['introduced']40_5ecb.xmlsent:11844
+	['introduced --(nsubj)--> today']
+
+sentence #:built on the precision unibody enclosure , the pro was launched as the " world 's thinnest 17 " notebook , " at only 0.98 inches thick , and also the " world 's lightest , " weighing in at 6.6 pounds 
+	[events]:[['launched']]
+	[entities]:[['lightest'], ['notebook'], ['pro']]
+*R1404[launched]
+|--(advcl)--> built
+|                |--(nmod)--> enclosure
+|                                 |--(case)--> on
+|                                 |--(det)--> the
+|                                 |--(compou)--> precision
+|                                 |--(amod)--> unibody
+|--(punct)--> ,
+|--(nsubjp)--> R1409[pro]
+|                |--(det)--> the
+|--(auxpas)--> was
+|--(dobj)--> world
+|                |--(nmod)--> the
+|                |                |--(case)--> as
+|                |                |--(punct)--> "
+|                |--(case)--> 's
+|                |--(amod)--> thinnest
+|                |--(dep)--> 17
+|--(punct)--> "
+|--(advcl)--> R1409[notebook]
+|--(punct)--> ,
+|--(punct)--> "
+|--(advcl)--> weighing
+                 |--(mark)--> at
+                 |--(nsubj)--> inches
+                 |                |--(advmod)--> only
+                 |                |--(nummod)--> 0.98
+                 |                |--(advmod)--> thick
+                 |                |--(punct)--> ,
+                 |                |--(cc)--> and
+                 |                |--(conj)--> the
+                 |                |                |--(advmod)--> also
+                 |                |--(punct)--> "
+                 |                |--(conj)--> world
+                 |                |                |--(case)--> 's
+                 |                |                |--(dep)--> R1409[lightest]
+                 |                |--(punct)--> ,
+                 |                |--(punct)--> "
+                 |--(nmod)--> pounds
+                                  |--(case)--> in
+                                  |--(nummod)--> 6.6
+                                                   |--(advmod)--> at
+
+	* entity-paths for event['launched']40_5ecb.xmlsent:11845
+	['launched --(nsubjpass)--> Pro']
+	['launched --(advcl)--> notebook']
+	['launched --(advcl)--> weighing', 'weighing --(nsubj)--> inches', 'inches --(conj)--> world', 'world --(dep)--> lightest']

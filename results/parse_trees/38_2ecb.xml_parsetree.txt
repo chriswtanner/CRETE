@@ -1,0 +1,101 @@
+
+-----------------------------------------
+docid:38_2ecb.xml
+-----------------------------------------
+
+sentence #:a 4.2 magnitude earthquake shook a remote area of eastern sonoma county on sunday morning , the largest in a flurry over the weekend , according to the u.s. geological survey . 
+	[events]:[['earthquake'], ['shook'], ['largest'], ['according', 'to']]
+	[entities]:[['remote', 'area', 'of', 'eastern', 'sonoma', 'county'], ['u.s.', 'geological', 'survey'], ['on', 'sunday', 'morning']]
+*R1309[shook]
+|--(nsubj)--> *R1310[earthquake]
+|                |--(det)--> a
+|                |--(nummod)--> 4.2
+|                |--(compou)--> magnitude
+|--(dobj)--> R1315[area]
+|                |--(det)--> a
+|                |--(amod)--> R1315[remote]
+|                |--(nmod)--> R1315[county]
+|                                 |--(case)--> R1315[of]
+|                                 |--(amod)--> R1315[eastern]
+|                                 |--(compou)--> R1315[sonoma]
+|--(nmod)--> R1311[morning]
+|                |--(case)--> R1311[on]
+|                |--(compou)--> R1311[sunday]
+|                |--(punct)--> ,
+|                |--(appos)--> *R1310[largest]
+|                                 |--(det)--> the
+|                                 |--(nmod)--> flurry
+|                                                  |--(case)--> in
+|                                                  |--(det)--> a
+|                                                  |--(nmod)--> weekend
+|                                                                   |--(case)--> over
+|                                                                   |--(det)--> the
+|--(punct)--> ,
+|--(nmod)--> R1243[survey]
+|                |--(case)--> *R1313[according]
+|                |                |--(mwe)--> *R1313[to]
+|                |--(det)--> the
+|                |--(compou)--> R1243[u.s.]
+|                |--(compou)--> R1243[geological]
+|--(punct)--> .
+
+	* entity-paths for event['earthquake']38_2ecb.xmlsent:10747
+
+	* entity-paths for event['shook']38_2ecb.xmlsent:10747
+	['shook --(dobj)--> area']
+	['shook --(nmod)--> morning']
+	['shook --(nmod)--> Survey']
+
+	* entity-paths for event['largest']38_2ecb.xmlsent:10747
+
+	* entity-paths for event['according', 'to']38_2ecb.xmlsent:10747
+
+sentence #:the temblor occurred at 9:27 a.m. , 13 miles east of cloverdale and 2 miles southeast of the geysers , where geothermal forces by more than 20 power plants are harnessed to provide energy for several north bay counties . 
+	[events]:[['occurred'], ['temblor']]
+	[entities]:[['13', 'miles', 'east', 'of', 'cloverdale', 'and', '2', 'miles', 'southeast', 'of', 'the', 'geysers'], ['where'], ['at', '9:27', 'a.m.']]
+*R1309[occurred]
+|--(nsubj)--> *R1310[temblor]
+|                |--(det)--> the
+|--(nmod)--> R1311[9:27]
+|                |--(case)--> R1311[at]
+|                |--(advmod)--> R1311[a.m.]
+|                |--(punct)--> ,
+|                |--(advmod)--> R1316[east]
+|                |                |--(nmod:n)--> R1316[miles]
+|                |                |                |--(nummod)--> R1316[13]
+|                |                |--(nmod)--> R1316[cloverdale]
+|                |                                 |--(case)--> R1316[of]
+|                |                                 |--(cc)--> R1316[and]
+|                |                                 |--(conj)--> R1316[miles]
+|                |                                                  |--(nummod)--> R1316[2]
+|                |--(dep)--> R1316[southeast]
+|                                 |--(nmod)--> R1316[geysers]
+|                                                  |--(case)--> R1316[of]
+|                                                  |--(det)--> R1316[the]
+|--(punct)--> ,
+|--(advcl)--> harnessed
+|                |--(advmod)--> R1316[where]
+|                |--(nsubjp)--> forces
+|                |                |--(amod)--> geothermal
+|                |                |--(nmod)--> plants
+|                |                                 |--(case)--> by
+|                |                                 |--(nummod)--> 20
+|                |                                 |                |--(advmod)--> more
+|                |                                 |                                 |--(mwe)--> than
+|                |                                 |--(compou)--> power
+|                |--(auxpas)--> are
+|                |--(xcomp)--> provide
+|                                 |--(mark)--> to
+|                                 |--(dobj)--> energy
+|                                 |--(nmod)--> counties
+|                                                  |--(case)--> for
+|                                                  |--(amod)--> several
+|                                                  |--(compou)--> north
+|                                                  |--(compou)--> bay
+|--(punct)--> .
+
+	* entity-paths for event['occurred']38_2ecb.xmlsent:10748
+	['occurred --(nmod)--> 9:27']
+	['occurred --(advcl)--> harnessed', 'harnessed --(advmod)--> where']
+
+	* entity-paths for event['temblor']38_2ecb.xmlsent:10748

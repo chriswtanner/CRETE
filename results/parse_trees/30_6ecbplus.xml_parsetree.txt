@@ -1,0 +1,80 @@
+
+-----------------------------------------
+docid:30_6ecbplus.xml
+-----------------------------------------
+
+sentence #:seacom downtime explained 
+	[events]:[['downtime']]
+	[entities]:[['seacom']]
+explained
+|--(nsubj)--> *R990[downtime]
+                 |--(compou)--> R956[seacom]
+
+	* entity-paths for event['downtime']30_6ecbplus.xmlsent:7940
+	['downtime --(compound)--> SEACOM']
+
+sentence #:seacom experienced downtime this morning ; seacom explained that the downtime was most likely caused by a problem on sea - me - we 4 
+	[events]:[['downtime'], ['downtime'], ['problem']]
+	[entities]:[['seacom'], ['on', 'sea', '-', 'me', '-', 'we', '4'], ['this', 'morning'], ['seacom']]
+experienced
+|--(nsubj)--> R956[seacom]
+|--(dobj)--> *R990[downtime]
+|--(nmod:t)--> R989[morning]
+|                |--(det)--> R989[this]
+|--(punct)--> ;
+|--(parata)--> explained
+                 |--(nsubj)--> R956[seacom]
+                 |--(ccomp)--> likely
+                                  |--(mark)--> that
+                                  |--(nsubj)--> *R990[downtime]
+                                  |                |--(det)--> the
+                                  |--(cop)--> was
+                                  |--(advmod)--> most
+                                  |--(dep)--> caused
+                                  |                |--(nmod)--> *R988[problem]
+                                  |                                 |--(case)--> by
+                                  |                                 |--(det)--> a
+                                  |                                 |--(nmod)--> R987[sea]
+                                  |                                                  |--(case)--> R987[on]
+                                  |                                                  |--(dep)--> R987[we]
+                                  |                                                                   |--(punct)--> R987[-]
+                                  |                                                                   |--(dep)--> R987[me]
+                                  |                                                                   |--(punct)--> R987[-]
+                                  |--(nmod:t)--> R987[4]
+
+	* entity-paths for event['downtime']30_6ecbplus.xmlsent:7941
+
+	* entity-paths for event['downtime']30_6ecbplus.xmlsent:7941
+
+	* entity-paths for event['problem']30_6ecbplus.xmlsent:7941
+	['problem --(nmod)--> SEA']
+
+sentence #:numerous broadband users complained about international connectivity problems this morning , caused by problems on the seacom cable . 
+	[events]:[['problems'], ['connectivity'], ['problems']]
+	[entities]:[['this', 'morning'], ['cable'], ['broadband', 'users'], ['seacom']]
+complained
+|--(nsubj)--> R955[users]
+|                |--(amod)--> numerous
+|                |--(compou)--> R955[broadband]
+|--(nmod)--> *R990[problems]
+|                |--(case)--> about
+|                |--(amod)--> international
+|                |--(compou)--> *R991[connectivity]
+|--(nmod:t)--> R989[morning]
+|                |--(det)--> R989[this]
+|--(punct)--> ,
+|--(advcl)--> caused
+|                |--(nmod)--> *R988[problems]
+|                                 |--(case)--> by
+|                                 |--(nmod)--> R987[cable]
+|                                                  |--(case)--> on
+|                                                  |--(det)--> the
+|                                                  |--(compou)--> R956[seacom]
+|--(punct)--> .
+
+	* entity-paths for event['problems']30_6ecbplus.xmlsent:7943
+	['problems --(nmod)--> cable']
+
+	* entity-paths for event['connectivity']30_6ecbplus.xmlsent:7943
+
+	* entity-paths for event['problems']30_6ecbplus.xmlsent:7943

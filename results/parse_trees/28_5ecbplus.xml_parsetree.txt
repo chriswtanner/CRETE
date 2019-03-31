@@ -1,0 +1,138 @@
+
+-----------------------------------------
+docid:28_5ecbplus.xml
+-----------------------------------------
+
+sentence #:frederick c . larue , a mississippi oil heir who became the first person found guilty of participating in the watergate coverup and was among those rumored to be the mysterious deep throat , has died at 75 . 
+	[events]:[['rumored'], ['found'], ['died'], ['participating'], ['guilty'], ['watergate'], ['coverup']]
+	[entities]:[['who'], ['person'], ['deep', 'throat'], ['frederick', 'c', '.', 'larue']]
+*R814[died]
+|--(nsubj)--> R815[larue]
+|                |--(compou)--> R815[frederick]
+|                |--(compou)--> R815[c]
+|                |--(punct)--> R815[.]
+|                |--(punct)--> ,
+|                |--(appos)--> heir
+|                |                |--(det)--> a
+|                |                |--(compou)--> mississippi
+|                |                |--(compou)--> oil
+|                |                |--(acl:re)--> became
+|                |                                 |--(nsubj)--> R815[who]
+|                |                                 |--(xcomp)--> R815[person]
+|                |                                 |                |--(det)--> the
+|                |                                 |                |--(amod)--> first
+|                |                                 |                |--(acl)--> *R845[found]
+|                |                                 |                                 |--(xcomp)--> *R828[guilty]
+|                |                                 |                                                  |--(advcl)--> *R846[participating]
+|                |                                 |                                                                   |--(mark)--> of
+|                |                                 |                                                                   |--(nmod)--> *R847[coverup]
+|                |                                 |                                                                                    |--(case)--> in
+|                |                                 |                                                                                    |--(det)--> the
+|                |                                 |                                                                                    |--(compou)--> *R812[watergate]
+|                |                                 |--(cc)--> and
+|                |                                 |--(conj)--> those
+|                |                                                  |--(cop)--> was
+|                |                                                  |--(case)--> among
+|                |                                                  |--(acl)--> *R816[rumored]
+|                |                                                                   |--(xcomp)--> R811[throat]
+|                |                                                                                    |--(mark)--> to
+|                |                                                                                    |--(cop)--> be
+|                |                                                                                    |--(det)--> the
+|                |                                                                                    |--(amod)--> mysterious
+|                |                                                                                    |--(amod)--> R811[deep]
+|                |--(punct)--> ,
+|--(aux)--> has
+|--(nmod)--> 75
+|                |--(case)--> at
+|--(punct)--> .
+
+	* entity-paths for event['rumored']28_5ecbplus.xmlsent:6418
+	['rumored --(xcomp)--> Throat']
+
+	* entity-paths for event['found']28_5ecbplus.xmlsent:6418
+
+	* entity-paths for event['died']28_5ecbplus.xmlsent:6418
+	['died --(nsubj)--> LaRue']
+
+	* entity-paths for event['participating']28_5ecbplus.xmlsent:6418
+
+	* entity-paths for event['guilty']28_5ecbplus.xmlsent:6418
+
+	* entity-paths for event['watergate']28_5ecbplus.xmlsent:6418
+
+	* entity-paths for event['coverup']28_5ecbplus.xmlsent:6418
+
+sentence #:the harrison county , miss . , coroner , gary hargrove , told the associated press that larue is believed to have died saturday of natural causes . 
+	[events]:[['died'], ['told'], ['believed'], ['natural', 'causes']]
+	[entities]:[['saturday'], ['gary', 'hargrove'], ['larue']]
+*R844[told]
+|--(nsubj)--> county
+|                |--(det)--> the
+|                |--(compou)--> harrison
+|                |--(punct)--> ,
+|                |--(appos)--> miss
+|                |                |--(punct)--> .
+|                |--(punct)--> ,
+|                |--(appos)--> coroner
+|                |--(punct)--> ,
+|                |--(appos)--> R831[hargrove]
+|                |                |--(compou)--> R831[gary]
+|                |--(punct)--> ,
+|--(dobj)--> press
+|                |--(det)--> the
+|                |--(compou)--> associated
+|--(ccomp)--> *R832[believed]
+|                |--(mark)--> that
+|                |--(nsubjp)--> R815[larue]
+|                |--(auxpas)--> is
+|                |--(xcomp)--> *R814[died]
+|                                 |--(mark)--> to
+|                                 |--(aux)--> have
+|                                 |--(dobj)--> R833[saturday]
+|                                                  |--(nmod)--> *R817[causes]
+|                                                                   |--(case)--> of
+|                                                                   |--(amod)--> *R817[natural]
+|--(punct)--> .
+
+	* entity-paths for event['died']28_5ecbplus.xmlsent:6420
+	['died --(dobj)--> Saturday']
+
+	* entity-paths for event['told']28_5ecbplus.xmlsent:6420
+	['told --(nsubj)--> County', 'County --(appos)--> Hargrove']
+	['told --(ccomp)--> believed', 'believed --(nsubjpass)--> LaRue']
+	['told --(ccomp)--> believed', 'believed --(xcomp)--> died', 'died --(dobj)--> Saturday']
+
+	* entity-paths for event['believed']28_5ecbplus.xmlsent:6420
+	['believed --(nsubjpass)--> LaRue']
+	['believed --(xcomp)--> died', 'died --(dobj)--> Saturday']
+
+	* entity-paths for event['natural', 'causes']28_5ecbplus.xmlsent:6420
+
+sentence #:larue's body was found tuesday by a maid at the biloxi hotel where he was staying . 
+	[events]:[['found']]
+	[entities]:[['tuesday'], ["larue's", 'body'], ['maid'], ['he'], ['at', 'the', 'biloxi', 'hotel'], ['where']]
+*R824[found]
+|--(nsubjp)--> R815[body]
+|                |--(nmod:p)--> R815[larue's]
+|                                 |--(case)--> R815[larue's]
+|--(auxpas)--> was
+|--(nmod:t)--> R826[tuesday]
+|--(nmod)--> R829[maid]
+|                |--(case)--> by
+|                |--(det)--> a
+|                |--(nmod)--> R825[hotel]
+|                                 |--(case)--> R825[at]
+|                                 |--(det)--> R825[the]
+|                                 |--(compou)--> R825[biloxi]
+|--(advcl)--> staying
+|                |--(advmod)--> R825[where]
+|                |--(nsubj)--> R815[he]
+|                |--(aux)--> was
+|--(punct)--> .
+
+	* entity-paths for event['found']28_5ecbplus.xmlsent:6419
+	['found --(nsubjpass)--> body']
+	['found --(nmod:tmod)--> Tuesday']
+	['found --(nmod)--> maid']
+	['found --(advcl)--> staying', 'staying --(advmod)--> where']
+	['found --(advcl)--> staying', 'staying --(nsubj)--> he']

@@ -1,0 +1,153 @@
+
+-----------------------------------------
+docid:22_2ecbplus.xml
+-----------------------------------------
+
+sentence #:minutes after a woman was suspended and escorted from her job at the kraft foods plant in northeast philadelphia , she returned with a . 357 magnum and opened fire , killing two women and critically injuring a third co - worker before being taken into custody , police said . 
+	[events]:[['said'], ['job'], ['escorted'], ['returned'], ['taken', 'into', 'custody'], ['killing'], ['injuring'], ['opened', 'fire'], ['suspended']]
+	[entities]:[['woman'], ['police'], ['at', 'the', 'kraft', 'foods', 'plant', 'in', 'northeast', 'philadelphia'], ['magnum'], ['she'], ['minutes'], ['women'], ['co', '-', 'worker']]
+*R607[said]
+|--(ccomp)--> *R590[suspended]
+|                |--(nsubjp)--> R611[minutes]
+|                |--(nmod)--> R589[woman]
+|                |                |--(case)--> after
+|                |                |--(det)--> a
+|                |--(auxpas)--> was
+|                |--(cc)--> and
+|                |--(conj)--> *R610[escorted]
+|                |                |--(nmod)--> *R603[job]
+|                |                |                |--(case)--> from
+|                |                |                |--(nmod:p)--> her
+|                |                |                |--(nmod)--> R599[plant]
+|                |                |                                 |--(case)--> R599[at]
+|                |                |                                 |--(det)--> R599[the]
+|                |                |                                 |--(compou)--> R599[kraft]
+|                |                |                                 |--(compou)--> R599[foods]
+|                |                |--(nmod)--> R599[philadelphia]
+|                |                |                |--(case)--> R599[in]
+|                |                |                |--(compou)--> R599[northeast]
+|                |                |--(punct)--> ,
+|                |                |--(dep)--> *R608[returned]
+|                |                                 |--(nsubj)--> R589[she]
+|                |                                 |--(nmod)--> a
+|                |                                 |                |--(case)--> with
+|                |                                 |--(punct)--> .
+|                |--(dobj)--> R612[magnum]
+|                |                |--(nummod)--> 357
+|                |--(cc)--> and
+|                |--(conj)--> *R598[opened]
+|                |                |--(dobj)--> *R598[fire]
+|                |--(punct)--> ,
+|                |--(ccomp)--> *R592[killing]
+|                                 |--(dobj)--> R593[women]
+|                                 |                |--(nummod)--> two
+|                                 |--(cc)--> and
+|                                 |--(conj)--> *R600[injuring]
+|                                                  |--(advmod)--> critically
+|                                                  |--(dobj)--> R601[worker]
+|                                                  |                |--(det)--> a
+|                                                  |                |--(amod)--> third
+|                                                  |                |--(compou)--> R601[co]
+|                                                  |                |--(punct)--> R601[-]
+|                                                  |--(advcl)--> *R627[taken]
+|                                                                   |--(mark)--> before
+|                                                                   |--(auxpas)--> being
+|                                                                   |--(nmod)--> *R627[custody]
+|                                                                                    |--(case)--> *R627[into]
+|--(punct)--> ,
+|--(nsubj)--> R615[police]
+|--(punct)--> .
+
+	* entity-paths for event['said']22_2ecbplus.xmlsent:4479
+	['said --(ccomp)--> suspended', 'suspended --(nsubjpass)--> Minutes']
+	['said --(ccomp)--> suspended', 'suspended --(nmod)--> woman']
+	['said --(ccomp)--> suspended', 'suspended --(conj)--> escorted', 'escorted --(nmod)--> job', 'job --(nmod)--> plant']
+	['said --(ccomp)--> suspended', 'suspended --(conj)--> escorted', 'escorted --(nmod)--> Philadelphia']
+	['said --(ccomp)--> suspended', 'suspended --(conj)--> escorted', 'escorted --(dep)--> returned', 'returned --(nsubj)--> she']
+	['said --(ccomp)--> suspended', 'suspended --(dobj)--> Magnum']
+	['said --(ccomp)--> suspended', 'suspended --(ccomp)--> killing', 'killing --(dobj)--> women']
+	['said --(ccomp)--> suspended', 'suspended --(ccomp)--> killing', 'killing --(conj)--> injuring', 'injuring --(dobj)--> worker']
+	['said --(nsubj)--> police']
+
+	* entity-paths for event['job']22_2ecbplus.xmlsent:4479
+	['job --(nmod)--> plant']
+
+	* entity-paths for event['escorted']22_2ecbplus.xmlsent:4479
+	['escorted --(nmod)--> job', 'job --(nmod)--> plant']
+	['escorted --(nmod)--> Philadelphia']
+	['escorted --(dep)--> returned', 'returned --(nsubj)--> she']
+
+	* entity-paths for event['returned']22_2ecbplus.xmlsent:4479
+	['returned --(nsubj)--> she']
+
+	* entity-paths for event['taken', 'into', 'custody']22_2ecbplus.xmlsent:4479
+
+	* entity-paths for event['killing']22_2ecbplus.xmlsent:4479
+	['killing --(dobj)--> women']
+	['killing --(conj)--> injuring', 'injuring --(dobj)--> worker']
+
+	* entity-paths for event['injuring']22_2ecbplus.xmlsent:4479
+	['injuring --(dobj)--> worker']
+
+	* entity-paths for event['opened', 'fire']22_2ecbplus.xmlsent:4479
+
+	* entity-paths for event['suspended']22_2ecbplus.xmlsent:4479
+	['suspended --(nsubjpass)--> Minutes']
+	['suspended --(nmod)--> woman']
+	['suspended --(conj)--> escorted', 'escorted --(nmod)--> job', 'job --(nmod)--> plant']
+	['suspended --(conj)--> escorted', 'escorted --(nmod)--> Philadelphia']
+	['suspended --(conj)--> escorted', 'escorted --(dep)--> returned', 'returned --(nsubj)--> she']
+	['suspended --(dobj)--> Magnum']
+	['suspended --(ccomp)--> killing', 'killing --(dobj)--> women']
+	['suspended --(ccomp)--> killing', 'killing --(conj)--> injuring', 'injuring --(dobj)--> worker']
+
+sentence #:suspended worker kills 2 women in kraft factory shooting : police 
+	[events]:[['suspended'], ['kills'], ['shooting']]
+	[entities]:[['police'], ['women'], ['worker']]
+*R590[suspended]
+|--(ccomp)--> *R592[kills]
+|                |--(nsubj)--> R589[worker]
+|                |--(dobj)--> R593[women]
+|                                 |--(nummod)--> 2
+|                                 |--(nmod)--> *R591[shooting]
+|                                                  |--(case)--> in
+|                                                  |--(compou)--> kraft
+|                                                  |--(compou)--> factory
+|--(punct)--> :
+|--(dep)--> R615[police]
+
+	* entity-paths for event['suspended']22_2ecbplus.xmlsent:4476
+	['Suspended --(ccomp)--> Kills', 'Kills --(nsubj)--> Worker']
+	['Suspended --(ccomp)--> Kills', 'Kills --(dobj)--> Women']
+	['Suspended --(dep)--> Police']
+
+	* entity-paths for event['kills']22_2ecbplus.xmlsent:4476
+	['Kills --(nsubj)--> Worker']
+	['Kills --(dobj)--> Women']
+
+	* entity-paths for event['shooting']22_2ecbplus.xmlsent:4476
+
+sentence #:the shootings happened shortly after 8 : 30 p . m . thursday . 
+	[events]:[['happened'], ['shootings']]
+	[entities]:[['shortly', 'after', '8', ':', '30', 'p', '.', 'm', '.', 'thursday']]
+*R602[happened]
+|--(nsubj)--> *R591[shootings]
+|                |--(det)--> the
+|--(advmod)--> R594[shortly]
+|--(nmod)--> R594[8]
+|                |--(case)--> R594[after]
+|                |--(punct)--> R594[:]
+|                |--(dep)--> R594[p]
+|                                 |--(nummod)--> R594[30]
+|                                 |--(punct)--> R594[.]
+|                                 |--(dep)--> R594[m]
+|                                 |--(punct)--> R594[.]
+|--(nmod:t)--> R594[thursday]
+|--(punct)--> .
+
+	* entity-paths for event['happened']22_2ecbplus.xmlsent:4480
+	['happened --(advmod)--> shortly']
+	['happened --(nmod)--> 8']
+	['happened --(nmod:tmod)--> Thursday']
+
+	* entity-paths for event['shootings']22_2ecbplus.xmlsent:4480

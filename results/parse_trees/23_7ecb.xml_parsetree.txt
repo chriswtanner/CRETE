@@ -1,0 +1,59 @@
+
+-----------------------------------------
+docid:23_7ecb.xml
+-----------------------------------------
+
+sentence #:a perth man has survived after spending up to two nights in an ice cave on new zealand 's mt cook after seeing his brother fall to his death from the country 's highest peak . 
+	[events]:[['death'], ['fall'], ['seeing'], ['survived']]
+	[entities]:[['brother'], ['the', 'country', "'s", 'highest', 'peak'], ['two', 'nights'], ['perth'], ['man']]
+*R652[survived]
+|--(nsubj)--> R634[man]
+|                |--(det)--> a
+|                |--(compou)--> R635[perth]
+|--(aux)--> has
+|--(advcl)--> spending
+|                |--(mark)--> after
+|                |--(compou)--> up
+|                |--(nmod)--> R653[nights]
+|                |                |--(case)--> to
+|                |                |--(nummod)--> R653[two]
+|                |                |--(nmod)--> cave
+|                |                                 |--(case)--> in
+|                |                                 |--(det)--> an
+|                |                                 |--(compou)--> ice
+|                |                                 |--(nmod)--> cook
+|                |                                                  |--(case)--> on
+|                |                                                  |--(nmod:p)--> zealand
+|                |                                                  |                |--(compou)--> new
+|                |                                                  |                |--(case)--> 's
+|                |                                                  |--(compou)--> mt
+|                |--(advcl)--> *R636[seeing]
+|                                 |--(mark)--> after
+|                                 |--(nmod:t)--> *R637[fall]
+|                                 |                |--(nmod:p)--> his
+|                                 |                |--(compou)--> R638[brother]
+|                                 |--(nmod)--> *R654[death]
+|                                 |                |--(case)--> to
+|                                 |                |--(nmod:p)--> his
+|                                 |--(nmod)--> R639[peak]
+|                                                  |--(case)--> from
+|                                                  |--(nmod:p)--> R639[country]
+|                                                  |                |--(det)--> R639[the]
+|                                                  |                |--(case)--> R639['s]
+|                                                  |--(amod)--> R639[highest]
+|--(punct)--> .
+
+	* entity-paths for event['death']23_7ecb.xmlsent:4743
+
+	* entity-paths for event['fall']23_7ecb.xmlsent:4743
+	['fall --(compound)--> brother']
+
+	* entity-paths for event['seeing']23_7ecb.xmlsent:4743
+	['seeing --(nmod:tmod)--> fall', 'fall --(compound)--> brother']
+	['seeing --(nmod)--> peak']
+
+	* entity-paths for event['survived']23_7ecb.xmlsent:4743
+	['survived --(nsubj)--> man']
+	['survived --(advcl)--> spending', 'spending --(nmod)--> nights']
+	['survived --(advcl)--> spending', 'spending --(advcl)--> seeing', 'seeing --(nmod:tmod)--> fall', 'fall --(compound)--> brother']
+	['survived --(advcl)--> spending', 'spending --(advcl)--> seeing', 'seeing --(nmod)--> peak']

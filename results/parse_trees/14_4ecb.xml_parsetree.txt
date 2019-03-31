@@ -1,0 +1,25 @@
+
+-----------------------------------------
+docid:14_4ecb.xml
+-----------------------------------------
+
+sentence #:a waitrose supermarket in surrey has been destroyed in a fire . 
+	[events]:[['fire'], ['destroyed']]
+	[entities]:[['in', 'surrey'], ['a', 'waitrose', 'supermarket']]
+*R297[destroyed]
+|--(nsubjp)--> R298[supermarket]
+|                |--(det)--> R298[a]
+|                |--(compou)--> R298[waitrose]
+|                |--(nmod)--> R299[surrey]
+|                                 |--(case)--> R299[in]
+|--(aux)--> has
+|--(auxpas)--> been
+|--(nmod)--> *R296[fire]
+|                |--(case)--> in
+|                |--(det)--> a
+|--(punct)--> .
+
+	* entity-paths for event['fire']14_4ecb.xmlsent:1724
+
+	* entity-paths for event['destroyed']14_4ecb.xmlsent:1724
+	['destroyed --(nsubjpass)--> supermarket']

@@ -1,0 +1,33 @@
+
+-----------------------------------------
+docid:10_19ecbplus.xml
+-----------------------------------------
+
+sentence #:espn is reporting that the nationals have offered mark teixeira an 8 - year , $160 million contract . 
+	[events]:[['offered']]
+	[entities]:[['mark', 'teixeira'], ['nationals'], ['8', '-', 'year'], ['$160', 'million'], ['contract']]
+reporting
+|--(nsubj)--> espn
+|--(aux)--> is
+|--(ccomp)--> *R171[offered]
+|                |--(mark)--> that
+|                |--(nsubj)--> R172[nationals]
+|                |                |--(det)--> the
+|                |--(aux)--> have
+|                |--(iobj)--> R163[teixeira]
+|                |                |--(compou)--> R163[mark]
+|                |--(dobj)--> R164[8]
+|                                 |--(advmod)--> an
+|                                 |--(punct)--> R164[-]
+|                                 |--(dep)--> R164[year]
+|                                                  |--(punct)--> ,
+|                                                  |--(appos)--> R167[contract]
+|                                                                   |--(nummod)--> R173[$160]
+|                                                                                    |--(nummod)--> R173[million]
+|                                                                                                     |--(compou)--> R173[$160]
+|--(punct)--> .
+
+	* entity-paths for event['offered']10_19ecbplus.xmlsent:349
+	['offered --(nsubj)--> Nationals']
+	['offered --(iobj)--> Teixeira']
+	['offered --(dobj)--> 8']

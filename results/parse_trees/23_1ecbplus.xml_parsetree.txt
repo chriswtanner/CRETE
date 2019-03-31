@@ -1,0 +1,99 @@
+
+-----------------------------------------
+docid:23_1ecbplus.xml
+-----------------------------------------
+
+sentence #:the man , from hampton east , fell in the tasman glacier area . 
+	[events]:[['fell']]
+	[entities]:[['hampton', 'east'], ['in', 'the', 'tasman', 'glacier', 'area'], ['man']]
+*R646[fell]
+|--(nsubj)--> R644[man]
+|                |--(det)--> the
+|                |--(punct)--> ,
+|                |--(nmod)--> R656[east]
+|                |                |--(case)--> from
+|                |                |--(compou)--> R656[hampton]
+|                |--(punct)--> ,
+|--(nmod)--> R657[area]
+|                |--(case)--> R657[in]
+|                |--(det)--> R657[the]
+|                |--(compou)--> R657[tasman]
+|                |--(compou)--> R657[glacier]
+|--(punct)--> .
+
+	* entity-paths for event['fell']23_1ecbplus.xmlsent:4664
+	['fell --(nsubj)--> man']
+	['fell --(nmod)--> area']
+
+sentence #:a 36 - year - old australian climber is dead after falling about 150 metres at aoraki mount cook . 
+	[events]:[['falling'], ['dead']]
+	[entities]:[['climber'], ['at', 'aoraki', 'mount', 'cook', '.']]
+36
+|--(det)--> a
+|--(punct)--> -
+|--(dep)--> year
+|--(punct)--> -
+|--(parata)--> *R640[dead]
+|                |--(nsubj)--> R644[climber]
+|                |                |--(amod)--> old
+|                |                |--(amod)--> australian
+|                |--(cop)--> is
+|                |--(advcl)--> *R646[falling]
+|                                 |--(mark)--> after
+|                                 |--(nmod)--> metres
+|                                                  |--(case)--> about
+|                                                  |--(nummod)--> 150
+|                                                  |--(nmod)--> R639[cook]
+|                                                                   |--(case)--> R639[at]
+|                                                                   |--(compou)--> R639[aoraki]
+|                                                                   |--(compou)--> R639[mount]
+|--(punct)--> R639[.]
+
+	* entity-paths for event['falling']23_1ecbplus.xmlsent:4663
+	['falling --(nmod)--> metres', 'metres --(nmod)--> Cook']
+
+	* entity-paths for event['dead']23_1ecbplus.xmlsent:4663
+	['dead --(nsubj)--> climber']
+	['dead --(advcl)--> falling', 'falling --(nmod)--> metres', 'metres --(nmod)--> Cook']
+
+sentence #:climber dead after aoraki mount cook fall 
+	[events]:[['fall'], ['dead']]
+	[entities]:[['aoraki', 'mount', 'cook'], ['climber']]
+R644[climber]
+|--(amod)--> *R640[dead]
+                 |--(nmod)--> *R646[fall]
+                                  |--(case)--> after
+                                  |--(compou)--> R639[aoraki]
+                                  |--(compou)--> R639[mount]
+                                  |--(compou)--> R639[cook]
+
+	* entity-paths for event['fall']23_1ecbplus.xmlsent:4661
+	['fall --(compound)--> Aoraki']
+	['fall --(compound)--> Mount']
+	['fall --(compound)--> Cook']
+
+	* entity-paths for event['dead']23_1ecbplus.xmlsent:4661
+	['dead --(nmod)--> fall', 'fall --(compound)--> Aoraki']
+	['dead --(nmod)--> fall', 'fall --(compound)--> Mount']
+	['dead --(nmod)--> fall', 'fall --(compound)--> Cook']
+
+sentence #:the man is thought to have fallen much earlier in the day . 
+	[events]:[['fallen']]
+	[entities]:[['man'], ['earlier', 'in', 'the', 'day']]
+thought
+|--(nsubjp)--> R644[man]
+|                |--(det)--> the
+|--(auxpas)--> is
+|--(xcomp)--> *R646[fallen]
+|                |--(mark)--> to
+|                |--(aux)--> have
+|                |--(advmod)--> R641[earlier]
+|                |                |--(advmod)--> much
+|                |--(nmod)--> R641[day]
+|                                 |--(case)--> R641[in]
+|                                 |--(det)--> R641[the]
+|--(punct)--> .
+
+	* entity-paths for event['fallen']23_1ecbplus.xmlsent:4667
+	['fallen --(advmod)--> earlier']
+	['fallen --(nmod)--> day']

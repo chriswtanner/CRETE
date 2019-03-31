@@ -1,0 +1,109 @@
+
+-----------------------------------------
+docid:28_2ecb.xml
+-----------------------------------------
+
+sentence #:felt suffered from congestive heart failure but the exact cause of his death at home on thursday was not immediately known , said the press democrat newspaper in santa rosa , california , 55 miles ( 90 km ) north of san francisco . 
+	[events]:[['known'], ['congestive', 'heart', 'failure'], ['death']]
+	[entities]:[['at', 'home'], ['his'], ['felt'], ['on', 'thursday']]
+said
+|--(ccomp)--> *R810[known]
+|                |--(csubjp)--> R809[felt]
+|                |                |--(dep)--> suffered
+|                |                                 |--(nmod)--> *R823[failure]
+|                |                                 |                |--(case)--> from
+|                |                                 |                |--(amod)--> *R823[congestive]
+|                |                                 |                |--(compou)--> *R823[heart]
+|                |                                 |                |--(nmod)--> cause
+|                |                                 |                                 |--(case)--> but
+|                |                                 |                                 |--(det)--> the
+|                |                                 |                                 |--(amod)--> exact
+|                |                                 |                                 |--(nmod)--> *R808[death]
+|                |                                 |                                                  |--(case)--> of
+|                |                                 |                                                  |--(nmod:p)--> R811[his]
+|                |                                 |--(nmod)--> R822[home]
+|                |                                 |                |--(case)--> R822[at]
+|                |                                 |--(nmod)--> R819[thursday]
+|                |                                                  |--(case)--> R819[on]
+|                |--(auxpas)--> was
+|                |--(neg)--> not
+|                |--(advmod)--> immediately
+|--(punct)--> ,
+|--(dobj)--> newspaper
+|                |--(det)--> the
+|                |--(compou)--> press
+|                |--(compou)--> democrat
+|                |--(nmod)--> rosa
+|                                 |--(case)--> in
+|                                 |--(compou)--> santa
+|                                 |--(punct)--> ,
+|                                 |--(appos)--> california
+|                                 |--(punct)--> ,
+|                                 |--(appos)--> miles
+|                                 |                |--(nummod)--> 55
+|                                 |--(appos)--> km
+|                                                  |--(punct)--> (
+|                                                  |--(nummod)--> 90
+|                                                  |--(punct)--> )
+|--(nsubj)--> north
+|                |--(nmod)--> francisco
+|                                 |--(case)--> of
+|                                 |--(compou)--> san
+|--(punct)--> .
+
+	* entity-paths for event['known']28_2ecb.xmlsent:6220
+	['known --(csubjpass)--> Felt']
+
+	* entity-paths for event['congestive', 'heart', 'failure']28_2ecb.xmlsent:6220
+	['failure --(nmod)--> cause', 'cause --(nmod)--> death', 'death --(nmod:poss)--> his']
+
+	* entity-paths for event['death']28_2ecb.xmlsent:6220
+	['death --(nmod:poss)--> his']
+
+sentence #:mark felt , the mysterious " deep throat " source who helped washington post reporters bob woodward and carl bernstein crack the watergate scandal that brought down president richard nixon , has died at age 95 . 
+	[events]:[['died'], ['watergate'], ['brought', 'down']]
+	[entities]:[['bob', 'woodward'], ['mark', 'felt'], ['richard', 'nixon'], ['deep', 'throat'], ['carl', 'bernstein']]
+*R808[died]
+|--(nsubj)--> R809[felt]
+|                |--(compou)--> R809[mark]
+|                |--(punct)--> ,
+|                |--(appos)--> mysterious
+|                |                |--(det)--> the
+|                |                |--(punct)--> "
+|                |                |--(nmod)--> source
+|                |                                 |--(case)--> R811[deep]
+|                |                                 |--(compou)--> R811[throat]
+|                |                                 |--(punct)--> "
+|                |--(acl:re)--> helped
+|                |                |--(nsubj)--> who
+|                |                |--(ccomp)--> crack
+|                |                                 |--(nsubj)--> R835[woodward]
+|                |                                 |                |--(compou)--> washington
+|                |                                 |                |--(compou)--> post
+|                |                                 |                |--(compou)--> reporters
+|                |                                 |                |--(compou)--> R835[bob]
+|                |                                 |                |--(cc)--> and
+|                |                                 |                |--(conj)--> R843[bernstein]
+|                |                                 |                                 |--(compou)--> R843[carl]
+|                |                                 |--(dobj)--> scandal
+|                |                                                  |--(det)--> the
+|                |                                                  |--(compou)--> *R812[watergate]
+|                |                                                  |--(acl:re)--> *R836[brought]
+|                |                                                                   |--(nsubj)--> that
+|                |                                                                   |--(compou)--> *R836[down]
+|                |                                                                   |--(dobj)--> R837[nixon]
+|                |                                                                                    |--(compou)--> president
+|                |                                                                                    |--(compou)--> R837[richard]
+|                |--(punct)--> ,
+|--(aux)--> has
+|--(nmod)--> age
+|                |--(case)--> at
+|                |--(nummod)--> 95
+|--(punct)--> .
+
+	* entity-paths for event['died']28_2ecb.xmlsent:6219
+	['died --(nsubj)--> Felt']
+
+	* entity-paths for event['watergate']28_2ecb.xmlsent:6219
+
+	* entity-paths for event['brought', 'down']28_2ecb.xmlsent:6219

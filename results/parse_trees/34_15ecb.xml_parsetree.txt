@@ -1,0 +1,62 @@
+
+-----------------------------------------
+docid:34_15ecb.xml
+-----------------------------------------
+
+sentence #:dr. sanjay gupta , a neurosurgeon and cnn 's chief medical reporter , is the leading contender to become the next surgeon general , a pick that will give the moribund office a higher profile but one that has received a mixed reaction among public health advocates . 
+	[events]:[['office'], ['become']]
+	[entities]:[['contender'], ['surgeon', 'general'], ['pick'], ['dr.', 'sanjay', 'gupta']]
+R1130[contender]
+|--(nsubj)--> R1130[gupta]
+|                |--(compou)--> R1130[dr.]
+|                |--(compou)--> R1130[sanjay]
+|                |--(punct)--> ,
+|                |--(appos)--> neurosurgeon
+|                |                |--(det)--> a
+|                |                |--(cc)--> and
+|                |                |--(conj)--> reporter
+|                |                                 |--(nmod:p)--> cnn
+|                |                                 |                |--(case)--> 's
+|                |                                 |--(amod)--> chief
+|                |                                 |--(amod)--> medical
+|                |--(punct)--> ,
+|--(cop)--> is
+|--(det)--> the
+|--(amod)--> leading
+|--(acl)--> *R1132[become]
+|                |--(mark)--> to
+|                |--(xcomp)--> R1135[surgeon]
+|                |                |--(det)--> the
+|                |                |--(amod)--> next
+|                |--(nmod:t)--> R1135[general]
+|                                 |--(punct)--> ,
+|                                 |--(appos)--> R1130[pick]
+|                                                  |--(det)--> a
+|                                                  |--(acl:re)--> give
+|                                                                   |--(nsubj)--> that
+|                                                                   |--(aux)--> will
+|                                                                   |--(iobj)--> *R1134[office]
+|                                                                   |                |--(det)--> the
+|                                                                   |                |--(amod)--> moribund
+|                                                                   |--(dobj)--> profile
+|                                                                                    |--(det)--> a
+|                                                                                    |--(amod)--> higher
+|                                                                                    |--(nmod)--> one
+|                                                                                    |                |--(case)--> but
+|                                                                                    |--(acl:re)--> received
+|                                                                                                     |--(nsubj)--> that
+|                                                                                                     |--(aux)--> has
+|                                                                                                     |--(dobj)--> reaction
+|                                                                                                     |                |--(det)--> a
+|                                                                                                     |                |--(amod)--> mixed
+|                                                                                                     |--(nmod)--> advocates
+|                                                                                                                      |--(case)--> among
+|                                                                                                                      |--(amod)--> public
+|                                                                                                                      |--(compou)--> health
+|--(punct)--> .
+
+	* entity-paths for event['office']34_15ecb.xmlsent:9367
+
+	* entity-paths for event['become']34_15ecb.xmlsent:9367
+	['become --(xcomp)--> surgeon']
+	['become --(nmod:tmod)--> general']

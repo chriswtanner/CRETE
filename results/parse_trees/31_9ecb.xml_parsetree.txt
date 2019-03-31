@@ -1,0 +1,111 @@
+
+-----------------------------------------
+docid:31_9ecb.xml
+-----------------------------------------
+
+sentence #:hansbrough tied ford on a jumper from the left wing with 14:05 left in the first half , then set the record by muscling in a bank shot over james haarsma and pieter van tongeren with 7:41 to go . 
+	[events]:[['record'], ['set']]
+	[entities]:[['hansbrough'], ['ford']]
+tied
+|--(nsubj)--> R997[hansbrough]
+|--(ccomp)--> *R996[set]
+|                |--(nsubj)--> R1005[ford]
+|                |                |--(nmod)--> jumper
+|                |                |                |--(case)--> on
+|                |                |                |--(det)--> a
+|                |                |                |--(nmod)--> wing
+|                |                |                                 |--(case)--> from
+|                |                |                                 |--(det)--> the
+|                |                |                                 |--(amod)--> left
+|                |                |                                 |--(nmod)--> 14:05
+|                |                |                                                  |--(case)--> with
+|                |                |--(acl)--> left
+|                |                                 |--(nmod)--> half
+|                |                                 |                |--(case)--> in
+|                |                                 |                |--(det)--> the
+|                |                                 |                |--(amod)--> first
+|                |                                 |--(punct)--> ,
+|                |                                 |--(advmod)--> then
+|                |--(dobj)--> *R998[record]
+|                |                |--(det)--> the
+|                |--(advcl)--> muscling
+|                                 |--(mark)--> by
+|                                 |--(nmod)--> shot
+|                                 |                |--(case)--> in
+|                                 |                |--(det)--> a
+|                                 |                |--(compou)--> bank
+|                                 |--(nmod)--> haarsma
+|                                 |                |--(case)--> over
+|                                 |                |--(compou)--> james
+|                                 |                |--(cc)--> and
+|                                 |                |--(conj)--> tongeren
+|                                 |                                 |--(compou)--> pieter
+|                                 |                                 |--(compou)--> van
+|                                 |--(nmod)--> 7:41
+|                                 |                |--(case)--> with
+|                                 |--(xcomp)--> go
+|                                                  |--(mark)--> to
+|--(punct)--> .
+
+	* entity-paths for event['record']31_9ecb.xmlsent:8636
+
+	* entity-paths for event['set']31_9ecb.xmlsent:8636
+	['set --(nsubj)--> Ford']
+
+sentence #:hansbrough scored 20 points thursday night to break ford 's 30-year-old mark and help top-ranked north carolina beat evansville 91-73 , a game that was completely overshadowed by the 6-foot-9 senior 's record pursuit . 
+	[events]:[['game'], ['mark'], ['record'], ['beat'], ['break']]
+	[entities]:[['senior'], ['ford'], ['north', 'carolina'], ['thursday', 'night'], ['91-73'], ['evansville'], ['hansbrough']]
+*R1007[beat]
+|--(dep)--> scored
+|                |--(nsubj)--> R997[hansbrough]
+|                |--(dobj)--> points
+|                |                |--(nummod)--> 20
+|                |--(nmod:t)--> R1006[night]
+|                |                |--(compou)--> R1006[thursday]
+|                |--(advcl)--> *R996[break]
+|                                 |--(mark)--> to
+|                                 |--(dobj)--> *R998[mark]
+|                                 |                |--(nmod:p)--> R1005[ford]
+|                                 |                |                |--(case)--> 's
+|                                 |                |--(amod)--> 30-year-old
+|                                 |--(cc)--> and
+|                                 |--(conj)--> help
+|                                                  |--(dobj)--> R999[carolina]
+|                                                                   |--(amod)--> top-ranked
+|                                                                   |--(compou)--> R999[north]
+|--(nsubj)--> R1008[evansville]
+|                |--(nummod)--> R1009[91-73]
+|                |--(punct)--> ,
+|                |--(appos)--> *R1010[game]
+|                                 |--(det)--> a
+|                                 |--(acl:re)--> overshadowed
+|                                                  |--(nsubjp)--> that
+|                                                  |--(auxpas)--> was
+|                                                  |--(advmod)--> completely
+|                                                  |--(nmod)--> pursuit
+|                                                                   |--(case)--> by
+|                                                                   |--(nmod:p)--> R997[senior]
+|                                                                   |                |--(det)--> the
+|                                                                   |                |--(amod)--> 6-foot-9
+|                                                                   |                |--(case)--> 's
+|                                                                   |--(compou)--> *R998[record]
+|--(punct)--> .
+
+	* entity-paths for event['game']31_9ecb.xmlsent:8624
+	['game --(acl:relcl)--> overshadowed', 'overshadowed --(nmod)--> pursuit', 'pursuit --(nmod:poss)--> senior']
+
+	* entity-paths for event['mark']31_9ecb.xmlsent:8624
+	['mark --(nmod:poss)--> Ford']
+
+	* entity-paths for event['record']31_9ecb.xmlsent:8624
+
+	* entity-paths for event['beat']31_9ecb.xmlsent:8624
+	['beat --(dep)--> scored', 'scored --(nsubj)--> Hansbrough']
+	['beat --(dep)--> scored', 'scored --(nmod:tmod)--> night']
+	['beat --(dep)--> scored', 'scored --(advcl)--> break', 'break --(dobj)--> mark', 'mark --(nmod:poss)--> Ford']
+	['beat --(dep)--> scored', 'scored --(advcl)--> break', 'break --(conj)--> help', 'help --(dobj)--> Carolina']
+	['beat --(nsubj)--> Evansville']
+
+	* entity-paths for event['break']31_9ecb.xmlsent:8624
+	['break --(dobj)--> mark', 'mark --(nmod:poss)--> Ford']
+	['break --(conj)--> help', 'help --(dobj)--> Carolina']

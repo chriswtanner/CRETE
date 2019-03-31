@@ -1,0 +1,50 @@
+
+-----------------------------------------
+docid:13_7ecb.xml
+-----------------------------------------
+
+sentence #:providentially , nobody was injured , but an estimated one million dollars in damage was done to wasilla bible church friday night , in a fire that began while people , including children , were inside . 
+	[events]:[['damage'], ['fire']]
+	[entities]:[['wasilla', 'bible', 'church'], ['friday', 'night'], ['inside']]
+injured
+|--(advmod)--> providentially
+|--(punct)--> ,
+|--(nsubjp)--> nobody
+|--(auxpas)--> was
+|--(punct)--> ,
+|--(cc)--> but
+|--(conj)--> done
+|                |--(nsubjp)--> dollars
+|                |                |--(det)--> an
+|                |                |--(amod)--> estimated
+|                |                |--(nummod)--> million
+|                |                |                |--(compou)--> one
+|                |                |--(nmod)--> *R278[damage]
+|                |                                 |--(case)--> in
+|                |--(auxpas)--> was
+|                |--(nmod)--> R271[friday]
+|                |                |--(case)--> to
+|                |                |--(compou)--> R260[wasilla]
+|                |                |--(compou)--> R260[bible]
+|                |                |--(compou)--> R260[church]
+|                |--(nmod:t)--> R271[night]
+|                |--(punct)--> ,
+|                |--(nmod)--> *R261[fire]
+|                                 |--(case)--> in
+|                                 |--(det)--> a
+|                                 |--(acl:re)--> began
+|                                                  |--(nsubj)--> that
+|                                                  |--(advcl)--> were
+|                                                                   |--(mark)--> while
+|                                                                   |--(nsubj)--> people
+|                                                                   |                |--(punct)--> ,
+|                                                                   |                |--(nmod)--> children
+|                                                                   |                |                |--(case)--> including
+|                                                                   |                |--(punct)--> ,
+|                                                                   |--(advmod)--> R272[inside]
+|--(punct)--> .
+
+	* entity-paths for event['damage']13_7ecb.xmlsent:1547
+
+	* entity-paths for event['fire']13_7ecb.xmlsent:1547
+	['fire --(acl:relcl)--> began', 'began --(advcl)--> were', 'were --(advmod)--> inside']

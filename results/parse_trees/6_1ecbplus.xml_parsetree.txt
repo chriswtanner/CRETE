@@ -1,0 +1,74 @@
+
+-----------------------------------------
+docid:6_1ecbplus.xml
+-----------------------------------------
+
+sentence #:while the first movie was a huge success , thr is saying that director gary ross is still in negotiations to direct the sequel , catching fire . 
+	[events]:[['sequel'], ['success'], ['direct'], ['saying'], ['negotiations']]
+	[entities]:[['gary', 'ross'], ['movie'], ['catching', 'fire'], ['thr']]
+*R1695[saying]
+|--(advcl)--> *R1708[success]
+|                |--(mark)--> while
+|                |--(nsubj)--> R1700[movie]
+|                |                |--(det)--> the
+|                |                |--(amod)--> first
+|                |--(cop)--> was
+|                |--(det)--> a
+|                |--(amod)--> huge
+|--(punct)--> ,
+|--(nsubj)--> R1694[thr]
+|--(aux)--> is
+|--(ccomp)--> *R1696[negotiations]
+|                |--(mark)--> that
+|                |--(nsubj)--> R1692[ross]
+|                |                |--(compou)--> director
+|                |                |--(compou)--> R1692[gary]
+|                |--(cop)--> is
+|                |--(advmod)--> still
+|                |--(case)--> in
+|                |--(acl)--> *R1699[direct]
+|                                 |--(mark)--> to
+|                                 |--(dobj)--> *R1701[sequel]
+|                                 |                |--(det)--> the
+|                                 |--(punct)--> ,
+|                                 |--(advcl)--> R1702[catching]
+|                                                  |--(dobj)--> R1702[fire]
+|--(punct)--> .
+
+	* entity-paths for event['sequel']6_1ecbplus.xmlsent:14360
+
+	* entity-paths for event['success']6_1ecbplus.xmlsent:14360
+	['success --(nsubj)--> movie']
+
+	* entity-paths for event['direct']6_1ecbplus.xmlsent:14360
+	['direct --(advcl)--> Catching']
+
+	* entity-paths for event['saying']6_1ecbplus.xmlsent:14360
+	['saying --(advcl)--> success', 'success --(nsubj)--> movie']
+	['saying --(nsubj)--> THR']
+	['saying --(ccomp)--> negotiations', 'negotiations --(nsubj)--> Ross']
+	['saying --(ccomp)--> negotiations', 'negotiations --(acl)--> direct', 'direct --(advcl)--> Catching']
+
+	* entity-paths for event['negotiations']6_1ecbplus.xmlsent:14360
+	['negotiations --(nsubj)--> Ross']
+	['negotiations --(acl)--> direct', 'direct --(advcl)--> Catching']
+
+sentence #:the hunger games director gary ross still in negotiations for the sequel 
+	[events]:[['sequel'], ['negotiations']]
+	[entities]:[['gary', 'ross']]
+director
+|--(det)--> the
+|--(compou)--> hunger
+|--(compou)--> games
+|--(dep)--> R1692[ross]
+|                |--(compou)--> R1692[gary]
+|                |--(advmod)--> still
+|--(nmod)--> *R1696[negotiations]
+|                |--(case)--> in
+|--(nmod)--> *R1701[sequel]
+                 |--(case)--> for
+                 |--(det)--> the
+
+	* entity-paths for event['sequel']6_1ecbplus.xmlsent:14354
+
+	* entity-paths for event['negotiations']6_1ecbplus.xmlsent:14354

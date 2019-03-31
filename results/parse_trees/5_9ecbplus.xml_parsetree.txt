@@ -1,0 +1,48 @@
+
+-----------------------------------------
+docid:5_9ecbplus.xml
+-----------------------------------------
+
+sentence #:the sixers made a power move this offseason , firing head coach jim o'brien , who wasn't a dalembert fan , and replacing him with mo cheeks , who is . 
+	[events]:[['move'], ['firing'], ['replacing']]
+	[entities]:[['him'], ['jim', "o'brien"], ['mo', 'cheeks'], ['who'], ['sixers']]
+made
+|--(nsubj)--> R1673[sixers]
+|                |--(det)--> the
+|--(iobj)--> *R1680[move]
+|                |--(det)--> a
+|                |--(compou)--> power
+|--(dobj)--> offseason
+|                |--(det)--> this
+|                |--(punct)--> ,
+|                |--(appos)--> coach
+|                |                |--(compou)--> *R1683[firing]
+|                |                |--(compou)--> head
+|                |                |--(dep)--> R1684[o'brien]
+|                |                                 |--(compou)--> R1684[jim]
+|                |--(punct)--> ,
+|                |--(acl:re)--> fan
+|                                 |--(nsubj)--> R1684[who]
+|                                 |--(cop)--> wasn't
+|                                 |--(neg)--> wasn't
+|                                 |--(det)--> a
+|                                 |--(compou)--> dalembert
+|--(punct)--> ,
+|--(cc)--> and
+|--(conj)--> *R1680[replacing]
+|                |--(dobj)--> R1684[him]
+|                |--(nmod)--> R1674[cheeks]
+|                                 |--(case)--> with
+|                                 |--(compou)--> R1674[mo]
+|                                 |--(punct)--> ,
+|                                 |--(acl:re)--> is
+|                                                  |--(nsubj)--> who
+|--(punct)--> .
+
+	* entity-paths for event['move']5_9ecbplus.xmlsent:14305
+
+	* entity-paths for event['firing']5_9ecbplus.xmlsent:14305
+
+	* entity-paths for event['replacing']5_9ecbplus.xmlsent:14305
+	['replacing --(dobj)--> him']
+	['replacing --(nmod)--> Cheeks']

@@ -1,0 +1,103 @@
+
+-----------------------------------------
+docid:30_9ecb.xml
+-----------------------------------------
+
+sentence #:up to 80 percent of internet services and call centers in egypt have been cut after the submarine cables were damaged south of italy on friday for unknown reason , said the egyptian mena news agency . 
+	[events]:[['damaged'], ['services'], ['cut']]
+	[entities]:[['cables'], ['internet'], ['in', 'egypt'], ['on', 'friday']]
+said
+|--(ccomp)--> *R949[cut]
+|                |--(nsubjp)--> percent
+|                |                |--(nummod)--> 80
+|                |                |                |--(dep)--> up
+|                |                |                                 |--(mwe)--> to
+|                |                |--(nmod)--> *R966[services]
+|                |                                 |--(case)--> of
+|                |                                 |--(compou)--> R950[internet]
+|                |                                 |--(cc)--> and
+|                |                                 |--(conj)--> centers
+|                |                                 |                |--(compou)--> call
+|                |                                 |--(nmod)--> R984[egypt]
+|                |                                                  |--(case)--> R984[in]
+|                |--(aux)--> have
+|                |--(auxpas)--> been
+|                |--(advcl)--> *R953[damaged]
+|                                 |--(mark)--> after
+|                                 |--(nsubjp)--> R951[cables]
+|                                 |                |--(det)--> the
+|                                 |                |--(compou)--> submarine
+|                                 |--(auxpas)--> were
+|                                 |--(advmod)--> south
+|                                 |                |--(nmod)--> italy
+|                                 |                                 |--(case)--> of
+|                                 |--(nmod)--> R968[friday]
+|                                                  |--(case)--> R968[on]
+|                                                  |--(nmod)--> reason
+|                                                                   |--(case)--> for
+|                                                                   |--(amod)--> unknown
+|--(punct)--> ,
+|--(nsubj)--> agency
+|                |--(det)--> the
+|                |--(amod)--> egyptian
+|                |--(compou)--> mena
+|                |--(compou)--> news
+|--(punct)--> .
+
+	* entity-paths for event['damaged']30_9ecb.xmlsent:8002
+	['damaged --(nsubjpass)--> cables']
+	['damaged --(nmod)--> Friday']
+
+	* entity-paths for event['services']30_9ecb.xmlsent:8002
+	['services --(compound)--> Internet']
+	['services --(nmod)--> Egypt']
+
+	* entity-paths for event['cut']30_9ecb.xmlsent:8002
+	['cut --(nsubjpass)--> percent', 'percent --(nmod)--> services', 'services --(compound)--> Internet']
+	['cut --(nsubjpass)--> percent', 'percent --(nmod)--> services', 'services --(nmod)--> Egypt']
+	['cut --(advcl)--> damaged', 'damaged --(nsubjpass)--> cables']
+	['cut --(advcl)--> damaged', 'damaged --(nmod)--> Friday']
+
+sentence #:internet services in egypt have been disrupted due to damage of undersea cables in the mediterranean sea , the egyptian national telecommunication regulatory authority said friday . 
+	[events]:[['damage'], ['services'], ['disrupted']]
+	[entities]:[['in', 'the', 'mediterranean', 'sea'], ['cables'], ['in', 'egypt'], ['internet'], ['friday']]
+said
+|--(ccomp)--> *R949[disrupted]
+|                |--(nsubjp)--> *R966[services]
+|                |                |--(compou)--> R950[internet]
+|                |                |--(nmod)--> R984[egypt]
+|                |                                 |--(case)--> R984[in]
+|                |--(aux)--> have
+|                |--(auxpas)--> been
+|                |--(xcomp)--> due
+|                |                |--(nmod)--> *R953[damage]
+|                |                                 |--(case)--> to
+|                |                                 |--(nmod)--> R951[cables]
+|                |                                                  |--(case)--> of
+|                |                                                  |--(compou)--> undersea
+|                |--(nmod)--> R952[sea]
+|                                 |--(case)--> R952[in]
+|                                 |--(det)--> R952[the]
+|                                 |--(compou)--> R952[mediterranean]
+|--(punct)--> ,
+|--(nsubj)--> authority
+|                |--(det)--> the
+|                |--(amod)--> egyptian
+|                |--(compou)--> national
+|                |--(compou)--> telecommunication
+|                |--(compou)--> regulatory
+|--(nmod:t)--> R968[friday]
+|--(punct)--> .
+
+	* entity-paths for event['damage']30_9ecb.xmlsent:8001
+	['damage --(nmod)--> cables']
+
+	* entity-paths for event['services']30_9ecb.xmlsent:8001
+	['services --(compound)--> Internet']
+	['services --(nmod)--> Egypt']
+
+	* entity-paths for event['disrupted']30_9ecb.xmlsent:8001
+	['disrupted --(nsubjpass)--> services', 'services --(compound)--> Internet']
+	['disrupted --(nsubjpass)--> services', 'services --(nmod)--> Egypt']
+	['disrupted --(xcomp)--> due', 'due --(nmod)--> damage', 'damage --(nmod)--> cables']
+	['disrupted --(nmod)--> Sea']

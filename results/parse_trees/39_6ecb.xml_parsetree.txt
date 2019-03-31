@@ -1,0 +1,88 @@
+
+-----------------------------------------
+docid:39_6ecb.xml
+-----------------------------------------
+
+sentence #:matt smith , 26 , will make his debut in 2010 , replacing david tennant , who leaves at the end of this year . 
+	[events]:[['debut'], ['replacing'], ['leaves']]
+	[entities]:[['his'], ['at', 'the', 'end', 'of', 'this', 'year'], ['who'], ['david', 'tennant'], ['matt', 'smith']]
+make
+|--(nsubj)--> R1328[smith]
+|                |--(compou)--> R1328[matt]
+|                |--(punct)--> ,
+|                |--(amod)--> 26
+|                |--(punct)--> ,
+|--(aux)--> will
+|--(dobj)--> *R1327[debut]
+|                |--(nmod:p)--> R1328[his]
+|--(nmod)--> 2010
+|                |--(case)--> in
+|--(punct)--> ,
+|--(advcl)--> *R1346[replacing]
+|                |--(dobj)--> R1347[tennant]
+|                                 |--(compou)--> R1347[david]
+|                                 |--(punct)--> ,
+|                                 |--(acl:re)--> *R1346[leaves]
+|                                                  |--(nsubj)--> R1347[who]
+|                                                  |--(nmod)--> R1330[end]
+|                                                                   |--(case)--> R1330[at]
+|                                                                   |--(det)--> R1330[the]
+|                                                                   |--(nmod)--> R1330[year]
+|                                                                                    |--(case)--> R1330[of]
+|                                                                                    |--(det)--> R1330[this]
+|--(punct)--> .
+
+	* entity-paths for event['debut']39_6ecb.xmlsent:11073
+	['debut --(nmod:poss)--> his']
+
+	* entity-paths for event['replacing']39_6ecb.xmlsent:11073
+	['replacing --(dobj)--> Tennant']
+
+	* entity-paths for event['leaves']39_6ecb.xmlsent:11073
+	['leaves --(nsubj)--> who']
+	['leaves --(nmod)--> end']
+
+sentence #:a relative unknown will take over the title role of doctor who in the british science fiction television show , making him the 11th time lord in 45 years to travel across the universe in the tardis time-ship . 
+	[events]:[['take', 'over']]
+	[entities]:[['unknown'], ['tardis'], ['doctor', 'who'], ['television', 'show'], ['him'], ['11th', 'time', 'lord'], ['role']]
+*R1346[take]
+|--(nsubj)--> R1328[unknown]
+|                |--(det)--> a
+|                |--(amod)--> relative
+|--(aux)--> will
+|--(compou)--> *R1346[over]
+|--(dobj)--> R1338[role]
+|                |--(det)--> the
+|                |--(compou)--> title
+|                |--(nmod)--> R1338[doctor]
+|                |                |--(case)--> of
+|                |--(acl:re)--> making
+|                                 |--(nsubj)--> R1338[who]
+|                                 |--(nmod)--> R1336[show]
+|                                 |                |--(case)--> in
+|                                 |                |--(det)--> the
+|                                 |                |--(amod)--> british
+|                                 |                |--(compou)--> science
+|                                 |                |--(compou)--> fiction
+|                                 |                |--(compou)--> R1336[television]
+|                                 |                |--(punct)--> ,
+|                                 |--(xcomp)--> R1338[lord]
+|                                                  |--(nsubj)--> R1328[him]
+|                                                  |--(det)--> the
+|                                                  |--(amod)--> R1338[11th]
+|                                                  |--(compou)--> R1338[time]
+|                                                  |--(nmod)--> years
+|                                                                   |--(case)--> in
+|                                                                   |--(nummod)--> 45
+|--(advcl)--> travel
+|                |--(mark)--> to
+|                |--(nmod)--> universe
+|                                 |--(case)--> across
+|                                 |--(det)--> the
+|                                 |--(nmod)--> time-ship
+|                                                  |--(case)--> in
+|                                                  |--(det)--> the
+|                                                  |--(compou)--> R1345[tardis]
+|--(punct)--> .
+
+	* entity-paths for event['take', 'over']39_6ecb.xmlsent:11072

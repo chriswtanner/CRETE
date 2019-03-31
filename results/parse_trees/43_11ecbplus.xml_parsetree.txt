@@ -1,0 +1,19 @@
+
+-----------------------------------------
+docid:43_11ecbplus.xml
+-----------------------------------------
+
+sentence #:amd to acquire server start - up 
+	[events]:[['acquire']]
+	[entities]:[['amd'], ['server', 'start', '-', 'up']]
+R1547[amd]
+|--(dep)--> *R1546[acquire]
+                 |--(mark)--> to
+                 |--(dobj)--> R1549[server]
+                 |--(dep)--> R1549[start]
+                                  |--(punct)--> R1549[-]
+                                  |--(dep)--> R1549[up]
+
+	* entity-paths for event['acquire']43_11ecbplus.xmlsent:12875
+	['Acquire --(dobj)--> Server']
+	['Acquire --(dep)--> Start']

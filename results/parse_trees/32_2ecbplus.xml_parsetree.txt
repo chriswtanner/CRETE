@@ -1,0 +1,90 @@
+
+-----------------------------------------
+docid:32_2ecbplus.xml
+-----------------------------------------
+
+sentence #:police not searching for any other suspects in connection with double murders 
+	[events]:[['murders']]
+	[entities]:[['police']]
+not
+|--(nsubj)--> R1040[police]
+|--(xcomp)--> searching
+                 |--(nmod)--> suspects
+                 |                |--(case)--> for
+                 |                |--(det)--> any
+                 |                |--(amod)--> other
+                 |                |--(nmod)--> connection
+                 |                                 |--(case)--> in
+                 |--(nmod)--> *R1031[murders]
+                                  |--(case)--> with
+                                  |--(amod)--> double
+
+	* entity-paths for event['murders']32_2ecbplus.xmlsent:8769
+
+sentence #:son suspected of killing mother and sister 'had begged to stay locked up in mental hospital' 
+	[events]:[['killing'], ['begged'], ['suspected'], ['locked', 'up']]
+	[entities]:[['sister'], ['mother'], ['son']]
+*R1043[suspected]
+|--(nsubj)--> R1033[son]
+|--(advcl)--> *R1031[killing]
+                 |--(mark)--> of
+                 |--(ccomp)--> *R1056[begged]
+                                  |--(nsubj)--> R1035[mother]
+                                  |                |--(cc)--> and
+                                  |                |--(conj)--> R1036[sister]
+                                  |--(punct)--> 'had
+                                  |--(aux)--> 'had
+                                  |--(xcomp)--> stay
+                                  |                |--(mark)--> to
+                                  |                |--(dep)--> *R1057[locked]
+                                  |                                 |--(compou)--> *R1057[up]
+                                  |                                 |--(nmod)--> hospital'
+                                  |                                                  |--(case)--> in
+                                  |                                                  |--(amod)--> mental
+                                  |--(punct)--> hospital'
+
+	* entity-paths for event['killing']32_2ecbplus.xmlsent:8765
+	['killing --(ccomp)--> begged', 'begged --(nsubj)--> mother']
+
+	* entity-paths for event['begged']32_2ecbplus.xmlsent:8765
+	['begged --(nsubj)--> mother']
+
+	* entity-paths for event['suspected']32_2ecbplus.xmlsent:8765
+	['suspected --(nsubj)--> Son']
+	['suspected --(advcl)--> killing', 'killing --(ccomp)--> begged', 'begged --(nsubj)--> mother']
+
+	* entity-paths for event['locked', 'up']32_2ecbplus.xmlsent:8765
+
+sentence #:his sister katie jenkin , 20 , and mother alice mcmeekin , 58 , were found dead in a home in millom , cumbria 
+	[events]:[['dead'], ['found']]
+	[entities]:[['alice', 'mcmeekin'], ['katie', 'jenkin'], ['in', 'a', 'home', 'in', 'millom', ',', 'cumbria']]
+*R1039[found]
+|--(nsubjp)--> R1036[jenkin]
+|                |--(nmod:p)--> his
+|                |--(compou)--> sister
+|                |--(compou)--> R1036[katie]
+|                |--(punct)--> ,
+|                |--(conj)--> 20
+|                |--(punct)--> ,
+|                |--(cc)--> and
+|                |--(conj)--> R1035[mcmeekin]
+|                |                |--(compou)--> mother
+|                |                |--(compou)--> R1035[alice]
+|                |--(punct)--> ,
+|                |--(amod)--> 58
+|                |--(punct)--> ,
+|--(auxpas)--> were
+|--(xcomp)--> *R1031[dead]
+|--(nmod)--> R1042[home]
+                 |--(case)--> R1042[in]
+                 |--(det)--> R1042[a]
+                 |--(nmod)--> R1042[cumbria]
+                                  |--(case)--> R1042[in]
+                                  |--(compou)--> R1042[millom]
+                                  |--(punct)--> R1042[,]
+
+	* entity-paths for event['dead']32_2ecbplus.xmlsent:8767
+
+	* entity-paths for event['found']32_2ecbplus.xmlsent:8767
+	['found --(nsubjpass)--> Jenkin']
+	['found --(nmod)--> home']

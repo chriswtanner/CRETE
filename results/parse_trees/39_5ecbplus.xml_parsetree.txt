@@ -1,0 +1,79 @@
+
+-----------------------------------------
+docid:39_5ecbplus.xml
+-----------------------------------------
+
+sentence #:yesterday evening the new tenant of the tardis was unveiled as peter capaldi stepped into matt smith's soon to be vacant doctor who shoes as the twelfth incarnation of the time lord . 
+	[events]:[['stepped', 'into'], ['unveiled']]
+	[entities]:[['doctor', 'who', 'shoes'], ['time', 'lord'], ['twelfth', 'incarnation'], ['tardis'], ['tenant'], ['yesterday', 'evening'], ['peter', 'capaldi'], ['matt', "smith's"]]
+*R1342[unveiled]
+|--(nmod:t)--> R1355[yesterday]
+|--(nmod:t)--> R1355[evening]
+|--(nsubjp)--> R1333[tenant]
+|                |--(det)--> the
+|                |--(amod)--> new
+|                |--(nmod)--> R1345[tardis]
+|                                 |--(case)--> of
+|                                 |--(det)--> the
+|--(auxpas)--> was
+|--(advcl)--> *R1334[stepped]
+|                |--(mark)--> as
+|                |--(nsubj)--> R1331[capaldi]
+|                |                |--(compou)--> R1331[peter]
+|                |--(nmod)--> R1328[smith's]
+|                |                |--(case)--> *R1334[into]
+|                |                |--(compou)--> R1328[matt]
+|                |                |--(case)--> R1328[smith's]
+|                |--(advmod)--> soon
+|                |--(xcomp)--> R1329[doctor]
+|                                 |--(mark)--> to
+|                                 |--(cop)--> be
+|                                 |--(amod)--> vacant
+|                                 |--(acl:re)--> R1329[shoes]
+|                                                  |--(dep)--> R1329[who]
+|                                                  |--(nmod)--> R1331[incarnation]
+|                                                                   |--(case)--> as
+|                                                                   |--(det)--> the
+|                                                                   |--(amod)--> R1331[twelfth]
+|                                                                   |--(nmod)--> R1329[lord]
+|                                                                                    |--(case)--> of
+|                                                                                    |--(det)--> the
+|                                                                                    |--(compou)--> R1329[time]
+|--(punct)--> .
+
+	* entity-paths for event['stepped', 'into']39_5ecbplus.xmlsent:11042
+
+	* entity-paths for event['unveiled']39_5ecbplus.xmlsent:11042
+	['unveiled --(nmod:tmod)--> Yesterday']
+	['unveiled --(nmod:tmod)--> evening']
+	['unveiled --(nsubjpass)--> tenant']
+	['unveiled --(advcl)--> stepped', 'stepped --(nsubj)--> Capaldi']
+	['unveiled --(advcl)--> stepped', 'stepped --(nmod)--> Smith']
+	['unveiled --(advcl)--> stepped', 'stepped --(xcomp)--> Doctor']
+
+sentence #:peter capaldi takes over doctor who tardis : john barrowman , stephen fry & mcfly's tom fletcher lead celeb congrats 
+	[events]:[['takes', 'over']]
+	[entities]:[['tardis'], ['doctor', 'who'], ['peter', 'capaldi']]
+R1331[capaldi]
+|--(compou)--> R1331[peter]
+|--(dep)--> *R1334[takes]
+|                |--(nmod)--> R1336[doctor]
+|                                 |--(case)--> *R1334[over]
+|                                 |--(acl:re)--> R1345[tardis]
+|                                                  |--(dep)--> R1336[who]
+|--(punct)--> :
+|--(dep)--> barrowman
+                 |--(compou)--> john
+                 |--(punct)--> ,
+                 |--(appos)--> fletcher
+                                  |--(nmod:p)--> fry
+                                  |                |--(compou)--> stephen
+                                  |                |--(cc)--> &
+                                  |                |--(conj)--> mcfly's
+                                  |                                 |--(case)--> mcfly's
+                                  |--(compou)--> tom
+                                  |--(dep)--> congrats
+                                                   |--(amod)--> lead
+                                                   |--(compou)--> celeb
+
+	* entity-paths for event['takes', 'over']39_5ecbplus.xmlsent:11039

@@ -1,0 +1,57 @@
+
+-----------------------------------------
+docid:40_2ecb.xml
+-----------------------------------------
+
+sentence #:the firm announced a widely expected refresh of its 17in macbook pro , with a battery that the firm said will offer eight hours of operation , but which is not removable from the case . 
+	[events]:[['announced'], ['refresh'], ['said']]
+	[entities]:[['firm'], ['firm'], ['macbook', 'pro'], ['case'], ['battery'], ['its'], ['eight', 'hours']]
+*R1404[announced]
+|--(nsubj)--> R1405[firm]
+|                |--(det)--> the
+|--(dobj)--> *R1408[refresh]
+|                |--(det)--> a
+|                |--(amod)--> expected
+|                |                |--(advmod)--> widely
+|                |--(nmod)--> R1409[macbook]
+|                                 |--(case)--> of
+|                                 |--(nmod:p)--> R1405[its]
+|                                 |--(amod)--> 17in
+|                                 |--(dep)--> R1409[pro]
+|--(punct)--> ,
+|--(nmod)--> R1427[battery]
+|                |--(case)--> with
+|                |--(det)--> a
+|                |--(dep)--> *R1428[said]
+|                                 |--(mark)--> that
+|                                 |--(nsubj)--> R1405[firm]
+|                                 |                |--(det)--> the
+|                                 |--(dep)--> offer
+|                                                  |--(aux)--> will
+|                                                  |--(dobj)--> R1429[hours]
+|                                                  |                |--(nummod)--> R1429[eight]
+|                                                  |                |--(nmod)--> operation
+|                                                  |                                 |--(case)--> of
+|                                                  |--(punct)--> ,
+|                                                  |--(cc)--> but
+|                                                  |--(conj)--> removable
+|                                                                   |--(nsubj)--> which
+|                                                                   |--(cop)--> is
+|                                                                   |--(neg)--> not
+|                                                                   |--(nmod)--> R1430[case]
+|                                                                                    |--(case)--> from
+|                                                                                    |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['announced']40_2ecb.xmlsent:11756
+	['announced --(nsubj)--> firm']
+	['announced --(dobj)--> refresh', 'refresh --(nmod)--> MacBook']
+	['announced --(nmod)--> battery']
+
+	* entity-paths for event['refresh']40_2ecb.xmlsent:11756
+	['refresh --(nmod)--> MacBook']
+
+	* entity-paths for event['said']40_2ecb.xmlsent:11756
+	['said --(nsubj)--> firm']
+	['said --(dep)--> offer', 'offer --(dobj)--> hours']
+	['said --(dep)--> offer', 'offer --(conj)--> removable', 'removable --(nmod)--> case']

@@ -1,0 +1,153 @@
+
+-----------------------------------------
+docid:22_14ecbplus.xml
+-----------------------------------------
+
+sentence #:a kraft foods plant worker who had been suspended for feuding with colleagues , then escorted from the building , returned minutes later with a handgun , found her foes in a break room and executed two of them with a single bullet each and critically wounded a third , police said friday . 
+	[events]:[['suspended'], ['wounded'], ['feuding'], ['said'], ['escorted'], ['returned'], ['executed']]
+	[entities]:[['foes'], ['worker'], ['in', 'a', 'break', 'room'], ['minutes', 'later'], ['police'], ['bullet'], ['third'], ['two'], ['friday'], ['handgun'], ['the', 'building'], ['colleagues']]
+*R607[said]
+|--(ccomp)--> *R608[returned]
+|                |--(nsubj)--> R589[worker]
+|                |                |--(det)--> a
+|                |                |--(compou)--> kraft
+|                |                |--(compou)--> foods
+|                |                |--(compou)--> plant
+|                |                |--(acl:re)--> *R590[suspended]
+|                |                |                |--(nsubjp)--> who
+|                |                |                |--(aux)--> had
+|                |                |                |--(auxpas)--> been
+|                |                |                |--(advcl)--> *R609[feuding]
+|                |                |                                 |--(mark)--> for
+|                |                |                                 |--(nmod)--> R604[colleagues]
+|                |                |                                                  |--(case)--> with
+|                |                |--(punct)--> ,
+|                |                |--(acl)--> *R610[escorted]
+|                |                |                |--(advmod)--> then
+|                |                |                |--(nmod)--> R599[building]
+|                |                |                                 |--(case)--> from
+|                |                |                                 |--(det)--> R599[the]
+|                |                |--(punct)--> ,
+|                |--(ccomp)--> found
+|                                 |--(nsubj)--> R611[minutes]
+|                                 |--(advmod)--> R611[later]
+|                                 |--(nmod)--> R612[handgun]
+|                                 |                |--(case)--> with
+|                                 |                |--(det)--> a
+|                                 |--(punct)--> ,
+|                                 |--(dobj)--> R604[foes]
+|                                 |                |--(nmod:p)--> her
+|                                 |--(nmod)--> R613[room]
+|                                 |                |--(case)--> R613[in]
+|                                 |                |--(det)--> R613[a]
+|                                 |                |--(compou)--> R613[break]
+|                                 |--(cc)--> and
+|                                 |--(conj)--> *R592[executed]
+|                                 |                |--(dobj)--> R593[two]
+|                                 |                |                |--(nmod)--> them
+|                                 |                |                                 |--(case)--> of
+|                                 |                |--(nmod)--> R614[bullet]
+|                                 |                                 |--(case)--> with
+|                                 |                                 |--(det)--> a
+|                                 |                                 |--(amod)--> single
+|                                 |                                 |--(dep)--> each
+|                                 |--(cc)--> and
+|                                 |--(conj)--> *R600[wounded]
+|                                                  |--(advmod)--> critically
+|                                                  |--(dobj)--> R601[third]
+|                                                                   |--(det)--> a
+|--(punct)--> ,
+|--(nsubj)--> R615[police]
+|--(nmod:t)--> R616[friday]
+|--(punct)--> .
+
+	* entity-paths for event['suspended']22_14ecbplus.xmlsent:4437
+	['suspended --(advcl)--> feuding', 'feuding --(nmod)--> colleagues']
+
+	* entity-paths for event['wounded']22_14ecbplus.xmlsent:4437
+	['wounded --(dobj)--> third']
+
+	* entity-paths for event['feuding']22_14ecbplus.xmlsent:4437
+	['feuding --(nmod)--> colleagues']
+
+	* entity-paths for event['said']22_14ecbplus.xmlsent:4437
+	['said --(ccomp)--> returned', 'returned --(nsubj)--> worker']
+	['said --(ccomp)--> returned', 'returned --(ccomp)--> found', 'found --(nsubj)--> minutes']
+	['said --(ccomp)--> returned', 'returned --(ccomp)--> found', 'found --(advmod)--> later']
+	['said --(ccomp)--> returned', 'returned --(ccomp)--> found', 'found --(nmod)--> handgun']
+	['said --(ccomp)--> returned', 'returned --(ccomp)--> found', 'found --(dobj)--> foes']
+	['said --(ccomp)--> returned', 'returned --(ccomp)--> found', 'found --(nmod)--> room']
+	['said --(ccomp)--> returned', 'returned --(ccomp)--> found', 'found --(conj)--> executed', 'executed --(dobj)--> two']
+	['said --(ccomp)--> returned', 'returned --(ccomp)--> found', 'found --(conj)--> executed', 'executed --(nmod)--> bullet']
+	['said --(ccomp)--> returned', 'returned --(ccomp)--> found', 'found --(conj)--> wounded', 'wounded --(dobj)--> third']
+	['said --(nsubj)--> police']
+	['said --(nmod:tmod)--> Friday']
+
+	* entity-paths for event['escorted']22_14ecbplus.xmlsent:4437
+	['escorted --(nmod)--> building']
+
+	* entity-paths for event['returned']22_14ecbplus.xmlsent:4437
+	['returned --(nsubj)--> worker']
+	['returned --(ccomp)--> found', 'found --(nsubj)--> minutes']
+	['returned --(ccomp)--> found', 'found --(advmod)--> later']
+	['returned --(ccomp)--> found', 'found --(nmod)--> handgun']
+	['returned --(ccomp)--> found', 'found --(dobj)--> foes']
+	['returned --(ccomp)--> found', 'found --(nmod)--> room']
+	['returned --(ccomp)--> found', 'found --(conj)--> executed', 'executed --(dobj)--> two']
+	['returned --(ccomp)--> found', 'found --(conj)--> executed', 'executed --(nmod)--> bullet']
+	['returned --(ccomp)--> found', 'found --(conj)--> wounded', 'wounded --(dobj)--> third']
+
+	* entity-paths for event['executed']22_14ecbplus.xmlsent:4437
+	['executed --(dobj)--> two']
+	['executed --(nmod)--> bullet']
+
+sentence #:kraft shooting : yvonne hiller charged with two counts of murder 
+	[events]:[['charged'], ['murder'], ['shooting']]
+	[entities]:[['counts'], ['yvonne', 'hiller']]
+*R591[shooting]
+|--(compou)--> kraft
+|--(punct)--> :
+|--(dep)--> *R596[charged]
+|                |--(compou)--> R589[yvonne]
+|                |--(compou)--> R589[hiller]
+|--(nmod)--> R617[counts]
+|                |--(case)--> with
+|                |--(nummod)--> two
+|--(nmod)--> *R597[murder]
+                 |--(case)--> of
+
+	* entity-paths for event['charged']22_14ecbplus.xmlsent:4436
+	['Charged --(compound)--> Yvonne']
+	['Charged --(compound)--> Hiller']
+
+	* entity-paths for event['murder']22_14ecbplus.xmlsent:4436
+
+	* entity-paths for event['shooting']22_14ecbplus.xmlsent:4436
+	['Shooting --(dep)--> Charged', 'Charged --(compound)--> Yvonne']
+	['Shooting --(dep)--> Charged', 'Charged --(compound)--> Hiller']
+	['Shooting --(nmod)--> Counts']
+
+sentence #:she then opened fire on the others , philadelphia homicide capt . james clark said . 
+	[events]:[['opened', 'fire'], ['said']]
+	[entities]:[['james', 'clark'], ['others'], ['she']]
+*R598[opened]
+|--(nsubj)--> R589[she]
+|--(advmod)--> then
+|--(dobj)--> *R598[fire]
+|--(nmod)--> R604[others]
+|                |--(case)--> on
+|                |--(det)--> the
+|                |--(punct)--> ,
+|                |--(appos)--> capt
+|                                 |--(compou)--> philadelphia
+|                                 |--(compou)--> homicide
+|                                 |--(punct)--> .
+|                                 |--(acl:re)--> *R605[said]
+|                                                  |--(nsubj)--> R606[clark]
+|                                                                   |--(compou)--> R606[james]
+|--(punct)--> .
+
+	* entity-paths for event['opened', 'fire']22_14ecbplus.xmlsent:4443
+
+	* entity-paths for event['said']22_14ecbplus.xmlsent:4443
+	['said --(nsubj)--> Clark']

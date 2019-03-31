@@ -1,0 +1,22 @@
+
+-----------------------------------------
+docid:43_10ecbplus.xml
+-----------------------------------------
+
+sentence #:amd buys seamicro , starts selling intel - based servers 
+	[events]:[['buys']]
+	[entities]:[['seamicro'], ['intel', '-', 'based', 'servers'], ['amd']]
+*R1546[buys]
+|--(nsubj)--> R1547[amd]
+|--(ccomp)--> R1548[based]
+                 |--(nsubj)--> R1549[seamicro]
+                 |                |--(punct)--> ,
+                 |                |--(dep)--> starts
+                 |                |                |--(xcomp)--> selling
+                 |                |                                 |--(dobj)--> R1548[intel]
+                 |                |--(punct)--> R1548[-]
+                 |--(dobj)--> R1548[servers]
+
+	* entity-paths for event['buys']43_10ecbplus.xmlsent:12857
+	['buys --(nsubj)--> AMD']
+	['buys --(ccomp)--> based']

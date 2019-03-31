@@ -1,0 +1,85 @@
+
+-----------------------------------------
+docid:25_3ecb.xml
+-----------------------------------------
+
+sentence #:the running back has been placed on injured reserve by the new orleans saints , meaning he will miss the final two games against detroit and carolina . 
+	[events]:[['miss'], ['placed'], ['games'], ['injured', 'reserve']]
+	[entities]:[['he'], ['running', 'back'], ['new', 'orleans', 'saints']]
+*R711[placed]
+|--(nsubjp)--> the
+|                |--(amod)--> R707[running]
+|--(advmod)--> R707[back]
+|--(aux)--> has
+|--(auxpas)--> been
+|--(nmod)--> *R712[reserve]
+|                |--(case)--> on
+|                |--(amod)--> *R712[injured]
+|--(nmod)--> R706[saints]
+|                |--(case)--> by
+|                |--(det)--> the
+|                |--(compou)--> R706[new]
+|                |--(compou)--> R706[orleans]
+|--(punct)--> ,
+|--(xcomp)--> meaning
+|                |--(ccomp)--> *R705[miss]
+|                                 |--(nsubj)--> R707[he]
+|                                 |--(aux)--> will
+|                                 |--(dobj)--> *R718[games]
+|                                                  |--(det)--> the
+|                                                  |--(amod)--> final
+|                                                  |--(nummod)--> two
+|                                                  |--(nmod)--> detroit
+|                                                                   |--(case)--> against
+|                                                                   |--(cc)--> and
+|                                                                   |--(conj)--> carolina
+|--(punct)--> .
+
+	* entity-paths for event['miss']25_3ecb.xmlsent:5091
+	['miss --(nsubj)--> he']
+
+	* entity-paths for event['placed']25_3ecb.xmlsent:5091
+	['placed --(nsubjpass)--> The', 'The --(amod)--> running']
+	['placed --(advmod)--> back']
+	['placed --(nmod)--> Saints']
+	['placed --(xcomp)--> meaning', 'meaning --(ccomp)--> miss', 'miss --(nsubj)--> he']
+
+	* entity-paths for event['games']25_3ecb.xmlsent:5091
+
+	* entity-paths for event['injured', 'reserve']25_3ecb.xmlsent:5091
+
+sentence #:with nothing to play for but pride in the final two weeks , new orleans have decided to rest him for the remainder of the season . 
+	[events]:[['decided']]
+	[entities]:[['new', 'orleans'], ['him'], ['season']]
+*R709[decided]
+|--(nmod)--> nothing
+|                |--(case)--> with
+|                |--(acl)--> play
+|                                 |--(mark)--> to
+|                                 |--(nmod)--> pride
+|                                                  |--(case)--> for
+|                                                  |--(cc)--> but
+|                                                  |--(nmod)--> weeks
+|                                                                   |--(case)--> in
+|                                                                   |--(det)--> the
+|                                                                   |--(amod)--> final
+|                                                                   |--(nummod)--> two
+|--(punct)--> ,
+|--(nsubj)--> R706[orleans]
+|                |--(compou)--> R706[new]
+|--(aux)--> have
+|--(xcomp)--> rest
+|                |--(mark)--> to
+|                |--(dobj)--> R707[him]
+|                |--(nmod)--> remainder
+|                                 |--(case)--> for
+|                                 |--(det)--> the
+|                                 |--(nmod)--> R708[season]
+|                                                  |--(case)--> of
+|                                                  |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['decided']25_3ecb.xmlsent:5094
+	['decided --(nsubj)--> Orleans']
+	['decided --(xcomp)--> rest', 'rest --(dobj)--> him']
+	['decided --(xcomp)--> rest', 'rest --(nmod)--> remainder', 'remainder --(nmod)--> season']

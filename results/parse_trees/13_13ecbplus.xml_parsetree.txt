@@ -1,0 +1,66 @@
+
+-----------------------------------------
+docid:13_13ecbplus.xml
+-----------------------------------------
+
+sentence #:a fire on tuesday destroyed palmer's historic matanuska maid dairy warehouse building , which was built in the 1930s when colonists arrived from the midwest to try their hand at farming in alaska . 
+	[events]:[['destroyed'], ['fire']]
+	[entities]:[['on', 'tuesday'], ['in', 'alaska'], ['matanuska', 'maid', 'dairy', 'warehouse', 'building'], ["palmer's"]]
+*R264[destroyed]
+|--(nsubj)--> *R263[fire]
+|                |--(det)--> a
+|                |--(nmod)--> R267[tuesday]
+|                                 |--(case)--> R267[on]
+|--(dobj)--> R265[maid]
+|                |--(nmod:p)--> R266[palmer's]
+|                |                |--(case)--> R266[palmer's]
+|                |--(amod)--> historic
+|                |--(compou)--> R265[matanuska]
+|--(nmod:t)--> R265[building]
+|                |--(compou)--> R265[dairy]
+|                |--(compou)--> R265[warehouse]
+|                |--(punct)--> ,
+|                |--(acl:re)--> built
+|                                 |--(nsubjp)--> which
+|                                 |--(auxpas)--> was
+|                                 |--(nmod)--> 1930s
+|                                 |                |--(case)--> in
+|                                 |                |--(det)--> the
+|                                 |--(advcl)--> arrived
+|                                                  |--(advmod)--> when
+|                                                  |--(nsubj)--> colonists
+|                                                  |--(nmod)--> midwest
+|                                                  |                |--(case)--> from
+|                                                  |                |--(det)--> the
+|                                                  |--(xcomp)--> try
+|                                                                   |--(mark)--> to
+|                                                                   |--(dobj)--> hand
+|                                                                   |                |--(nmod:p)--> their
+|                                                                   |--(advcl)--> farming
+|                                                                                    |--(mark)--> at
+|                                                                                    |--(nmod)--> R282[alaska]
+|                                                                                                     |--(case)--> R282[in]
+|--(punct)--> .
+
+	* entity-paths for event['destroyed']13_13ecbplus.xmlsent:1236
+	['destroyed --(nsubj)--> fire', 'fire --(nmod)--> Tuesday']
+	['destroyed --(dobj)--> Maid']
+	['destroyed --(nmod:tmod)--> building']
+
+	* entity-paths for event['fire']13_13ecbplus.xmlsent:1236
+	['fire --(nmod)--> Tuesday']
+
+sentence #:historic dairy building destroyed by fire 
+	[events]:[['fire'], ['destroyed']]
+	[entities]:[['historic', 'dairy', 'building']]
+*R264[destroyed]
+|--(nsubj)--> R265[building]
+|                |--(amod)--> R265[historic]
+|                |--(compou)--> R265[dairy]
+|--(nmod)--> *R263[fire]
+                 |--(case)--> by
+
+	* entity-paths for event['fire']13_13ecbplus.xmlsent:1234
+
+	* entity-paths for event['destroyed']13_13ecbplus.xmlsent:1234
+	['destroyed --(nsubj)--> building']

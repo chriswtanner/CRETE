@@ -1,0 +1,88 @@
+
+-----------------------------------------
+docid:3_4ecbplus.xml
+-----------------------------------------
+
+sentence #:texas prison escapee added to u . s . marshals '15 most wanted' list 
+	[events]:[['added']]
+	[entities]:[['prison'], ['list'], ['escapee']]
+*R937[added]
+|--(nsubj)--> R890[escapee]
+|                |--(compou)--> texas
+|                |--(compou)--> R913[prison]
+|--(nmod)--> u
+|                |--(case)--> to
+|                |--(punct)--> .
+|                |--(dep)--> s
+|                |--(punct)--> .
+|                |--(dep)--> marshals
+|--(dobj)--> '15
+                 |--(acl:re)--> wanted'
+                                  |--(nsubj)--> most
+                                  |--(punct)--> wanted'
+                                  |--(advmod)--> R938[list]
+
+	* entity-paths for event['added']3_4ecbplus.xmlsent:7543
+	['Added --(nsubj)--> Escapee']
+	["Added --(dobj)--> '15", "'15 --(acl:relcl)--> Wanted", "Wanted --(punct)--> '", 'Wanted --(advmod)--> List']
+	["Added --(dobj)--> '15", "'15 --(acl:relcl)--> Wanted", 'Wanted --(advmod)--> List']
+
+sentence #:the u . s . marshals have added to their " 15 most wanted " list of fugitives a man serving three life sentences who escaped custody during his transport from huntsville , texas , to stiles , texas . 
+	[events]:[['transport'], ['added'], ['serving'], ['escaped'], ['sentences']]
+	[entities]:[['list'], ['to', 'stiles', ',', 'texas'], ['from', 'huntsville', ',', 'texas'], ['man'], ['life']]
+wanted
+|--(dep)--> *R937[added]
+|                |--(dep)--> u
+|                |                |--(det)--> the
+|                |                |--(punct)--> .
+|                |                |--(dep)--> s
+|                |                |--(punct)--> .
+|                |--(nsubj)--> marshals
+|                |--(aux)--> have
+|                |--(nmod)--> their
+|                |                |--(case)--> to
+|                |--(punct)--> "
+|                |--(nmod:t)--> 15
+|--(nsubj)--> most
+|--(punct)--> "
+|--(dobj)--> R938[list]
+|--(advcl)--> *R923[serving]
+|                |--(mark)--> of
+|                |--(nsubj)--> fugitives
+|                |                |--(dep)--> R890[man]
+|                |                                 |--(det)--> a
+|                |--(dobj)--> *R912[sentences]
+|                                 |--(nummod)--> three
+|                                 |--(compou)--> R939[life]
+|                                 |--(acl:re)--> *R893[escaped]
+|                                                  |--(nsubj)--> who
+|                                                  |--(dobj)--> custody
+|                                                  |--(nmod)--> *R894[transport]
+|                                                  |                |--(case)--> during
+|                                                  |                |--(nmod:p)--> his
+|                                                  |--(nmod)--> R897[texas]
+|                                                                   |--(case)--> R897[from]
+|                                                                   |--(compou)--> R897[huntsville]
+|                                                                   |--(punct)--> R897[,]
+|                                                                   |--(punct)--> ,
+|--(nmod)--> R901[texas]
+|                |--(case)--> R901[to]
+|                |--(compou)--> R901[stiles]
+|                |--(punct)--> R901[,]
+|--(punct)--> .
+
+	* entity-paths for event['transport']3_4ecbplus.xmlsent:7544
+
+	* entity-paths for event['added']3_4ecbplus.xmlsent:7544
+
+	* entity-paths for event['serving']3_4ecbplus.xmlsent:7544
+	['serving --(nsubj)--> fugitives', 'fugitives --(dep)--> man']
+	['serving --(dobj)--> sentences', 'sentences --(compound)--> life']
+	['serving --(dobj)--> sentences', 'sentences --(acl:relcl)--> escaped', 'escaped --(nmod)--> Texas']
+
+	* entity-paths for event['escaped']3_4ecbplus.xmlsent:7544
+	['escaped --(nmod)--> Texas']
+
+	* entity-paths for event['sentences']3_4ecbplus.xmlsent:7544
+	['sentences --(compound)--> life']
+	['sentences --(acl:relcl)--> escaped', 'escaped --(nmod)--> Texas']

@@ -1,0 +1,56 @@
+
+-----------------------------------------
+docid:11_11ecb.xml
+-----------------------------------------
+
+sentence #:voters in turkmenistan began to cast their ballots at 8 : 00 am local time ( 0300 gmt ) on sunday in the country 's fourth parliamentary election , said reports from ashgabat , turkmenistan 's capital . 
+	[events]:[['said'], ['election'], ['cast']]
+	[entities]:[['ballots'], ['turkmenistan'], ['reports'], ['ashgabat'], ['8', ':', '00', 'am', 'local', 'time', '(', '0300', 'gmt', ')', 'on', 'sunday'], ['voters']]
+began
+|--(nsubj)--> R191[voters]
+|                |--(nmod)--> R189[turkmenistan]
+|                                 |--(case)--> in
+|--(xcomp)--> *R187[cast]
+|                |--(mark)--> to
+|                |--(dobj)--> R192[ballots]
+|                |                |--(nmod:p)--> their
+|                |--(nmod)--> R190[8]
+|                                 |--(case)--> at
+|--(punct)--> R190[:]
+|--(parata)--> R190[time]
+|                |--(nsubj)--> R190[00]
+|                |--(cop)--> R190[am]
+|                |--(amod)--> R190[local]
+|                |--(dep)--> R190[0300]
+|                |                |--(punct)--> R190[(]
+|                |                |--(appos)--> R190[gmt]
+|                |                |--(punct)--> R190[)]
+|                |--(nmod)--> R190[sunday]
+|                |                |--(case)--> R190[on]
+|                |                |--(nmod)--> *R193[election]
+|                |                                 |--(case)--> in
+|                |                                 |--(nmod:p)--> country
+|                |                                 |                |--(det)--> the
+|                |                                 |                |--(case)--> 's
+|                |                                 |--(amod)--> fourth
+|                |                                 |--(amod)--> parliamentary
+|                |--(punct)--> ,
+|                |--(acl)--> *R194[said]
+|                                 |--(dobj)--> R195[reports]
+|                                 |--(nmod)--> R196[ashgabat]
+|                                                  |--(case)--> from
+|                                                  |--(punct)--> ,
+|                                                  |--(appos)--> capital
+|                                                                   |--(nmod:p)--> turkmenistan
+|                                                                                    |--(case)--> 's
+|--(punct)--> .
+
+	* entity-paths for event['said']11_11ecb.xmlsent:593
+	['said --(dobj)--> reports']
+	['said --(nmod)--> Ashgabat']
+
+	* entity-paths for event['election']11_11ecb.xmlsent:593
+
+	* entity-paths for event['cast']11_11ecb.xmlsent:593
+	['cast --(dobj)--> ballots']
+	['cast --(nmod)--> 8']

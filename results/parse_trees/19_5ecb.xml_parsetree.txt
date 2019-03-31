@@ -1,0 +1,35 @@
+
+-----------------------------------------
+docid:19_5ecb.xml
+-----------------------------------------
+
+sentence #:the clashes late on saturday came after an evening candle-lit vigil to mark the shooting of 15-year-old alexandros grigoropoulos . 
+	[events]:[['shooting'], ['clashes'], ['vigil']]
+	[entities]:[['saturday'], ['alexandros', 'grigoropoulos']]
+came
+|--(nsubj)--> *R433[clashes]
+|                |--(det)--> the
+|--(advmod)--> late
+|                |--(nmod)--> R436[saturday]
+|                                 |--(case)--> on
+|--(nmod)--> *R443[vigil]
+|                |--(case)--> after
+|                |--(det)--> an
+|                |--(compou)--> evening
+|                |--(amod)--> candle-lit
+|--(xcomp)--> mark
+|                |--(mark)--> to
+|                |--(dobj)--> *R401[shooting]
+|                                 |--(det)--> the
+|                                 |--(nmod)--> R402[grigoropoulos]
+|                                                  |--(case)--> of
+|                                                  |--(amod)--> 15-year-old
+|                                                  |--(compou)--> R402[alexandros]
+|--(punct)--> .
+
+	* entity-paths for event['shooting']19_5ecb.xmlsent:3074
+	['shooting --(nmod)--> Grigoropoulos']
+
+	* entity-paths for event['clashes']19_5ecb.xmlsent:3074
+
+	* entity-paths for event['vigil']19_5ecb.xmlsent:3074

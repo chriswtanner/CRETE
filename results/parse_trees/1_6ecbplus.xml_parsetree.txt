@@ -1,0 +1,58 @@
+
+-----------------------------------------
+docid:1_6ecbplus.xml
+-----------------------------------------
+
+sentence #:lindsay lohan checks into rehab at betty ford center 
+	[events]:[['rehab'], ['checks', 'into']]
+	[entities]:[['at', 'betty', 'ford', 'center'], ['lindsay', 'lohan']]
+*R8[checks]
+|--(compou)--> R15[lindsay]
+|--(compou)--> R15[lohan]
+|--(nmod)--> *R19[rehab]
+|                |--(dep)--> *R8[into]
+|--(nmod)--> R16[center]
+                 |--(case)--> R16[at]
+                 |--(compou)--> R16[betty]
+                 |--(compou)--> R16[ford]
+
+	* entity-paths for event['rehab']1_6ecbplus.xmlsent:270
+
+	* entity-paths for event['checks', 'into']1_6ecbplus.xmlsent:270
+
+sentence #:early friday morning , around 1 : 30 a . m . , the 26 - year - old actress checked into betty ford center in rancho mirage , calif , 
+	[events]:[['checked', 'into']]
+	[entities]:[['early', 'friday', 'morning', ',', 'around', '1', ':', '30', 'a', '.', 'm'], ['actress'], ['betty', 'ford', 'center', 'in', 'rancho', 'mirage', ',', 'calif']]
+*R8[checked]
+|--(nsubj)--> R73[friday]
+|                |--(advmod)--> R73[early]
+|                |--(dep)--> R73[morning]
+|                |--(punct)--> R73[,]
+|                |--(advmod)--> R73[1]
+|                |                |--(case)--> R73[around]
+|                |--(punct)--> R73[:]
+|                |--(dep)--> R73[30]
+|                |                |--(dep)--> R73[a]
+|                |                |                |--(punct)--> R73[.]
+|                |                |                |--(dep)--> R73[m]
+|                |                |                |--(punct)--> .
+|                |                |--(punct)--> ,
+|                |                |--(appos)--> 26
+|                |                                 |--(det)--> the
+|                |--(punct)--> -
+|                |--(dep)--> year
+|                                 |--(punct)--> -
+|                                 |--(dep)--> R15[actress]
+|                                                  |--(amod)--> old
+|--(nmod)--> R16[center]
+                 |--(case)--> *R8[into]
+                 |--(compou)--> R16[betty]
+                 |--(compou)--> R16[ford]
+                 |--(nmod)--> R16[mirage]
+                                  |--(case)--> R16[in]
+                                  |--(compou)--> R16[rancho]
+                                  |--(punct)--> R16[,]
+                                  |--(appos)--> R16[calif]
+                                  |--(punct)--> ,
+
+	* entity-paths for event['checked', 'into']1_6ecbplus.xmlsent:272

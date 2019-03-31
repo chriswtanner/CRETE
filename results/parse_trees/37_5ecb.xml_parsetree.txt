@@ -1,0 +1,61 @@
+
+-----------------------------------------
+docid:37_5ecb.xml
+-----------------------------------------
+
+sentence #:the powerful quakes in papua in easternmost of indonesia on sunday have led over 14,000 people taking shelters in tents , destroyed hundreds of buildings , killed one person and injured dozens others , local disaster management agency said on monday . 
+	[events]:[['quakes'], ['killed'], ['injured'], ['destroyed']]
+	[entities]:[['person'], ['over', '14,000', 'people'], ['on', 'sunday'], ['buildings'], ['in', 'papua'], ['dozens', 'others'], ['indonesia']]
+said
+|--(ccomp)--> led
+|                |--(nsubj)--> *R1277[quakes]
+|                |                |--(det)--> the
+|                |                |--(amod)--> powerful
+|                |                |--(nmod)--> R1267[papua]
+|                |                                 |--(case)--> R1267[in]
+|                |                                 |--(nmod)--> easternmost
+|                |                                                  |--(case)--> in
+|                |                                                  |--(nmod)--> R1260[indonesia]
+|                |                                                                   |--(case)--> of
+|                |                                                                   |--(nmod)--> R1268[sunday]
+|                |                                                                                    |--(case)--> R1268[on]
+|                |--(aux)--> have
+|                |--(nmod)--> R1292[people]
+|                |                |--(case)--> R1292[over]
+|                |                |--(nummod)--> R1292[14,000]
+|                |                |--(acl)--> taking
+|                |                                 |--(dobj)--> shelters
+|                |                                                  |--(nmod)--> tents
+|                |                                                                   |--(case)--> in
+|                |--(punct)--> ,
+|                |--(dep)--> *R1287[destroyed]
+|                |                |--(dobj)--> hundreds
+|                |                                 |--(nmod)--> R1282[buildings]
+|                |                                                  |--(case)--> of
+|                |--(punct)--> ,
+|                |--(dep)--> *R1283[killed]
+|                                 |--(dobj)--> R1284[person]
+|                                                  |--(nummod)--> one
+|                                                  |--(cc)--> and
+|                                                  |--(conj)--> R1289[others]
+|                                                                   |--(amod)--> *R1288[injured]
+|                                                                   |--(compou)--> R1289[dozens]
+|--(punct)--> ,
+|--(nsubj)--> agency
+|                |--(amod)--> local
+|                |--(compou)--> disaster
+|                |--(compou)--> management
+|--(nmod)--> monday
+|                |--(case)--> on
+|--(punct)--> .
+
+	* entity-paths for event['quakes']37_5ecb.xmlsent:10605
+	['quakes --(nmod)--> Papua']
+
+	* entity-paths for event['killed']37_5ecb.xmlsent:10605
+	['killed --(dobj)--> person']
+
+	* entity-paths for event['injured']37_5ecb.xmlsent:10605
+
+	* entity-paths for event['destroyed']37_5ecb.xmlsent:10605
+	['destroyed --(dobj)--> hundreds', 'hundreds --(nmod)--> buildings']

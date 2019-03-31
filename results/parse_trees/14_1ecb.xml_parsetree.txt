@@ -1,0 +1,36 @@
+
+-----------------------------------------
+docid:14_1ecb.xml
+-----------------------------------------
+
+sentence #:fire and police units are still at the scene of a fire which gutted a waitrose supermarket in surrey . 
+	[events]:[['fire'], ['gutted']]
+	[entities]:[['a', 'waitrose', 'supermarket'], ['the', 'scene'], ['in', 'surrey']]
+R310[scene]
+|--(nsubj)--> units
+|                |--(compou)--> fire
+|                                 |--(cc)--> and
+|                                 |--(conj)--> police
+|--(cop)--> are
+|--(advmod)--> still
+|--(case)--> at
+|--(det)--> R310[the]
+|--(nmod)--> *R296[fire]
+|                |--(case)--> of
+|                |--(det)--> a
+|                |--(acl:re)--> *R297[gutted]
+|                                 |--(nsubj)--> which
+|                                 |--(dobj)--> R298[supermarket]
+|                                 |                |--(det)--> R298[a]
+|                                 |                |--(compou)--> R298[waitrose]
+|                                 |--(nmod)--> R299[surrey]
+|                                                  |--(case)--> R299[in]
+|--(punct)--> .
+
+	* entity-paths for event['fire']14_1ecb.xmlsent:1683
+	['fire --(acl:relcl)--> gutted', 'gutted --(dobj)--> supermarket']
+	['fire --(acl:relcl)--> gutted', 'gutted --(nmod)--> Surrey']
+
+	* entity-paths for event['gutted']14_1ecb.xmlsent:1683
+	['gutted --(dobj)--> supermarket']
+	['gutted --(nmod)--> Surrey']

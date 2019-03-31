@@ -1,0 +1,31 @@
+
+-----------------------------------------
+docid:39_11ecb.xml
+-----------------------------------------
+
+sentence #:relatively unknown actor matt smith was named as the next face of tv 's most famous time traveller . 
+	[events]:[['named']]
+	[entities]:[['matt', 'smith'], ['face'], ['tv']]
+*R1337[named]
+|--(nsubjp)--> R1328[smith]
+|                |--(amod)--> unknown
+|                |                |--(advmod)--> relatively
+|                |--(compou)--> actor
+|                |--(compou)--> R1328[matt]
+|--(auxpas)--> was
+|--(nmod)--> R1338[face]
+|                |--(case)--> as
+|                |--(det)--> the
+|                |--(amod)--> next
+|                |--(nmod)--> traveller
+|                                 |--(case)--> of
+|                                 |--(nmod:p)--> R1339[tv]
+|                                 |                |--(case)--> 's
+|                                 |--(amod)--> famous
+|                                 |                |--(advmod)--> most
+|                                 |--(compou)--> time
+|--(punct)--> .
+
+	* entity-paths for event['named']39_11ecb.xmlsent:10864
+	['named --(nsubjpass)--> Smith']
+	['named --(nmod)--> face']

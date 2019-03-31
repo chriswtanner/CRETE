@@ -1,0 +1,97 @@
+
+-----------------------------------------
+docid:42_10ecbplus.xml
+-----------------------------------------
+
+sentence #:t - mobile will carry the blackberry q10 , business registration begins april 29th 
+	[events]:[['business', 'registration'], ['carry'], ['begins']]
+	[entities]:[['blackberry', 'q10'], ['april', '29th'], ['t', '-', 'mobile']]
+R1517[t]
+|--(punct)--> R1517[-]
+|--(appos)--> *R1522[carry]
+                 |--(nsubj)--> R1517[mobile]
+                 |--(aux)--> will
+                 |--(ccomp)--> *R1523[begins]
+                                  |--(nsubj)--> *R1524[registration]
+                                  |                |--(det)--> the
+                                  |                |--(compou)--> R1525[blackberry]
+                                  |                |--(compou)--> R1525[q10]
+                                  |                |--(punct)--> ,
+                                  |                |--(dep)--> *R1524[business]
+                                  |--(xcomp)--> R1526[29th]
+                                                   |--(nsubj)--> R1526[april]
+
+	* entity-paths for event['business', 'registration']42_10ecbplus.xmlsent:12651
+	['registration --(compound)--> BlackBerry']
+	['registration --(compound)--> Q10']
+
+	* entity-paths for event['carry']42_10ecbplus.xmlsent:12651
+	['carry --(nsubj)--> Mobile']
+	['carry --(ccomp)--> begins', 'begins --(nsubj)--> registration', 'registration --(compound)--> BlackBerry']
+	['carry --(ccomp)--> begins', 'begins --(nsubj)--> registration', 'registration --(compound)--> Q10']
+	['carry --(ccomp)--> begins', 'begins --(xcomp)--> 29th']
+
+	* entity-paths for event['begins']42_10ecbplus.xmlsent:12651
+	['begins --(nsubj)--> registration', 'registration --(compound)--> BlackBerry']
+	['begins --(nsubj)--> registration', 'registration --(compound)--> Q10']
+	['begins --(xcomp)--> 29th']
+
+sentence #:t - mobile confirmed in an email that its business customers will have the opportunity to register for the device starting next week on april 29th , with availability and pricing details to follow "at a later date . " 
+	[events]:[['register'], ['starting'], ['confirmed'], ['availability']]
+	[entities]:[['device'], ['t', '-', 'mobile'], ['business', 'customers'], ['next', 'week', 'on', 'april', '29th']]
+*R1527[confirmed]
+|--(nsubj)--> R1517[t]
+|--(punct)--> R1517[-]
+|--(nsubj)--> R1517[mobile]
+|--(nmod)--> email
+|                |--(case)--> in
+|                |--(det)--> an
+|--(ccomp)--> have
+|                |--(mark)--> that
+|                |--(nsubj)--> R1528[customers]
+|                |                |--(nmod:p)--> its
+|                |                |--(compou)--> R1528[business]
+|                |--(aux)--> will
+|                |--(dobj)--> opportunity
+|                                 |--(det)--> the
+|                                 |--(acl)--> *R1524[register]
+|                                                  |--(mark)--> to
+|                                                  |--(nmod)--> R1525[device]
+|                                                                   |--(case)--> for
+|                                                                   |--(det)--> the
+|                                                                   |--(acl)--> *R1523[starting]
+|                                                                                    |--(dobj)--> R1526[week]
+|                                                                                    |                |--(amod)--> R1526[next]
+|                                                                                    |                |--(nmod)--> R1526[april]
+|                                                                                    |                                 |--(case)--> R1526[on]
+|                                                                                    |                                 |--(amod)--> R1526[29th]
+|                                                                                    |--(punct)--> ,
+|                                                                                    |--(nmod)--> details
+|                                                                                    |                |--(case)--> with
+|                                                                                    |                |--(compou)--> *R1529[availability]
+|                                                                                    |                                 |--(cc)--> and
+|                                                                                    |                                 |--(conj)--> pricing
+|                                                                                    |--(advcl)--> follow
+|                                                                                                     |--(mark)--> to
+|                                                                                                     |--(punct)--> "at
+|                                                                                                     |--(nmod)--> date
+|                                                                                                                      |--(case)--> "at
+|                                                                                                                      |--(det)--> a
+|                                                                                                                      |--(amod)--> later
+|--(punct)--> .
+|--(punct)--> "
+
+	* entity-paths for event['register']42_10ecbplus.xmlsent:12654
+	['register --(nmod)--> device']
+
+	* entity-paths for event['starting']42_10ecbplus.xmlsent:12654
+	['starting --(dobj)--> week']
+
+	* entity-paths for event['confirmed']42_10ecbplus.xmlsent:12654
+	['confirmed --(nsubj)--> T']
+	['confirmed --(punct)--> -']
+	['confirmed --(nsubj)--> Mobile']
+	['confirmed --(ccomp)--> have', 'have --(nsubj)--> customers']
+	['confirmed --(ccomp)--> have', 'have --(dobj)--> opportunity', 'opportunity --(acl)--> register', 'register --(nmod)--> device']
+
+	* entity-paths for event['availability']42_10ecbplus.xmlsent:12654

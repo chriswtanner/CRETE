@@ -1,0 +1,82 @@
+
+-----------------------------------------
+docid:18_3ecb.xml
+-----------------------------------------
+
+sentence #:police allege eric allen kirkpatrick , 61 , opened fire at the tallgrass distribution ltd christmas party , killing benjamin david banky , 40 . 
+	[events]:[['opened', 'fire'], ['party'], ['killing']]
+	[entities]:[['tallgrass', 'distribution', 'ltd'], ['eric', 'allen', 'kirkpatrick', ',', '61'], ['police'], ['benjamin', 'david', 'banky', ',', '40']]
+allege
+|--(nsubj)--> R386[police]
+|--(ccomp)--> *R366[opened]
+|                |--(nsubj)--> R356[kirkpatrick]
+|                |                |--(compou)--> R356[eric]
+|                |                |--(compou)--> R356[allen]
+|                |                |--(punct)--> R356[,]
+|                |                |--(amod)--> R356[61]
+|                |                |--(punct)--> ,
+|                |--(dobj)--> *R366[fire]
+|                |--(nmod)--> *R359[party]
+|                |                |--(case)--> at
+|                |                |--(det)--> the
+|                |                |--(compou)--> R395[tallgrass]
+|                |                |--(compou)--> R395[distribution]
+|                |                |--(compou)--> R395[ltd]
+|                |                |--(compou)--> christmas
+|                |--(punct)--> ,
+|                |--(advcl)--> *R358[killing]
+|                                 |--(dobj)--> R369[banky]
+|                                                  |--(compou)--> R369[benjamin]
+|                                                  |--(compou)--> R369[david]
+|                                                  |--(punct)--> R369[,]
+|                                                  |--(amod)--> R369[40]
+|--(punct)--> .
+
+	* entity-paths for event['opened', 'fire']18_3ecb.xmlsent:2443
+
+	* entity-paths for event['party']18_3ecb.xmlsent:2443
+	['party --(compound)--> TallGrass']
+	['party --(compound)--> Distribution']
+	['party --(compound)--> Ltd']
+
+	* entity-paths for event['killing']18_3ecb.xmlsent:2443
+	['killing --(dobj)--> Banky']
+
+sentence #:a man has been charged with first-degree murder after a shooting at an office christmas party in vancouver friday . 
+	[events]:[['first-degree', 'murder'], ['charged'], ['party'], ['shooting']]
+	[entities]:[['office'], ['a', 'man'], ['friday'], ['vancouver']]
+*R355[charged]
+|--(nsubjp)--> R356[man]
+|                |--(det)--> R356[a]
+|--(aux)--> has
+|--(auxpas)--> been
+|--(nmod)--> *R357[murder]
+|                |--(case)--> with
+|                |--(amod)--> *R357[first-degree]
+|--(nmod)--> *R366[shooting]
+|                |--(case)--> after
+|                |--(det)--> a
+|                |--(nmod)--> *R359[party]
+|                                 |--(case)--> at
+|                                 |--(det)--> an
+|                                 |--(compou)--> R395[office]
+|                                 |--(compou)--> christmas
+|                                 |--(nmod)--> R368[friday]
+|                                                  |--(case)--> in
+|                                                  |--(compou)--> R389[vancouver]
+|--(punct)--> .
+
+	* entity-paths for event['first-degree', 'murder']18_3ecb.xmlsent:2442
+
+	* entity-paths for event['charged']18_3ecb.xmlsent:2442
+	['charged --(nsubjpass)--> man']
+	['charged --(nmod)--> shooting', 'shooting --(nmod)--> party', 'party --(compound)--> office']
+	['charged --(nmod)--> shooting', 'shooting --(nmod)--> party', 'party --(nmod)--> Friday']
+
+	* entity-paths for event['party']18_3ecb.xmlsent:2442
+	['party --(compound)--> office']
+	['party --(nmod)--> Friday']
+
+	* entity-paths for event['shooting']18_3ecb.xmlsent:2442
+	['shooting --(nmod)--> party', 'party --(compound)--> office']
+	['shooting --(nmod)--> party', 'party --(nmod)--> Friday']

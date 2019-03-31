@@ -1,0 +1,49 @@
+
+-----------------------------------------
+docid:13_2ecb.xml
+-----------------------------------------
+
+sentence #:alaska gov. sarah palin , her husband todd and up to 1,000 fellow parishioners will worship in a local school this morning after a suspicious fire virtually destroyed the wasilla bible church early saturday . 
+	[events]:[['destroyed'], ['fire']]
+	[entities]:[['early', 'saturday'], ['a', 'local', 'school'], ['sarah', 'palin'], ['wasilla', 'bible', 'church']]
+worship
+|--(nsubj)--> R262[palin]
+|                |--(compou)--> alaska
+|                |--(compou)--> gov.
+|                |--(compou)--> R262[sarah]
+|                |--(punct)--> ,
+|                |--(conj)--> todd
+|                |                |--(nmod:p)--> her
+|                |                |--(compou)--> husband
+|                |--(cc)--> and
+|                |--(advmod)--> up
+|                |                |--(nmod)--> 1,000
+|                |                                 |--(case)--> to
+|                |--(conj)--> parishioners
+|                                 |--(compou)--> fellow
+|--(aux)--> will
+|--(nmod)--> R283[school]
+|                |--(case)--> in
+|                |--(det)--> R283[a]
+|                |--(amod)--> R283[local]
+|                |--(nmod:t)--> morning
+|                                 |--(det)--> this
+|--(advcl)--> *R278[destroyed]
+|                |--(mark)--> after
+|                |--(nsubj)--> *R261[fire]
+|                |                |--(det)--> a
+|                |                |--(amod)--> suspicious
+|                |--(advmod)--> virtually
+|                |--(dobj)--> R260[church]
+|                |                |--(det)--> the
+|                |                |--(compou)--> R260[wasilla]
+|                |                |--(compou)--> R260[bible]
+|                |--(nmod:t)--> R287[saturday]
+|                                 |--(advmod)--> R287[early]
+|--(punct)--> .
+
+	* entity-paths for event['destroyed']13_2ecb.xmlsent:1364
+	['destroyed --(dobj)--> Church']
+	['destroyed --(nmod:tmod)--> Saturday']
+
+	* entity-paths for event['fire']13_2ecb.xmlsent:1364

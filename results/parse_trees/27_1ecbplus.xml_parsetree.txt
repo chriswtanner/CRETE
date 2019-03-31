@@ -1,0 +1,65 @@
+
+-----------------------------------------
+docid:27_1ecbplus.xml
+-----------------------------------------
+
+sentence #:microsoft releases fix for 'zero - day' ie browser bug 
+	[events]:[['releases']]
+	[entities]:[['microsoft'], ["'zero", '-', "day'", 'ie', 'browser', 'bug'], ['fix']]
+R764[microsoft]
+|--(dep)--> *R779[releases]
+|                |--(dobj)--> R780[fix]
+|                |--(nmod)--> R777['zero]
+|                                 |--(case)--> for
+|                                 |--(punct)--> R777['zero]
+|--(punct)--> R777[-]
+|--(dep)--> R777[day']
+                 |--(punct)--> R777[day']
+                 |--(dep)--> R777[bug]
+                                  |--(amod)--> R777[ie]
+                                  |--(compou)--> R777[browser]
+
+	* entity-paths for event['releases']27_1ecbplus.xmlsent:5781
+	['releases --(dobj)--> fix']
+	['releases --(nmod)--> zero']
+
+sentence #:microsoft has released a temporary patch to fix a "zero - day" , or previously unknown , vulnerability in its internet explorer ( ie ) web browser . 
+	[events]:[['fix'], ['released']]
+	[entities]:[['"zero', '-', 'day"'], ['microsoft'], ['patch'], ['vulnerability'], ['internet', 'explorer']]
+browser
+|--(ccomp)--> *R779[released]
+|                |--(nsubj)--> R764[microsoft]
+|                |--(aux)--> has
+|                |--(dobj)--> R780[patch]
+|                                 |--(det)--> a
+|                                 |--(amod)--> temporary
+|                                 |--(acl)--> *R781[fix]
+|                                 |                |--(mark)--> to
+|                                 |                |--(xcomp)--> R777["zero]
+|                                 |                                 |--(dep)--> a
+|                                 |                                 |--(punct)--> R777["zero]
+|                                 |                                 |--(punct)--> R777[-]
+|                                 |                                 |--(dep)--> R777[day"]
+|                                 |                                 |--(punct)--> R777[day"]
+|                                 |--(punct)--> ,
+|                                 |--(cc)--> or
+|                                 |--(conj)--> unknown
+|                                                  |--(advmod)--> previously
+|--(punct)--> ,
+|--(nsubj)--> R777[vulnerability]
+|                |--(nmod)--> web
+|                                 |--(case)--> in
+|                                 |--(nmod:p)--> its
+|                                 |--(compou)--> R768[internet]
+|                                 |--(compou)--> R768[explorer]
+|                                 |--(dep)--> ie
+|                                                  |--(punct)--> (
+|                                                  |--(punct)--> )
+|--(punct)--> .
+
+	* entity-paths for event['fix']27_1ecbplus.xmlsent:5782
+	['fix --(xcomp)--> zero']
+
+	* entity-paths for event['released']27_1ecbplus.xmlsent:5782
+	['released --(nsubj)--> Microsoft']
+	['released --(dobj)--> patch']

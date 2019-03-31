@@ -1,0 +1,94 @@
+
+-----------------------------------------
+docid:26_6ecb.xml
+-----------------------------------------
+
+sentence #:a suspected mafia boss arrested tuesday in a high-profile police swoop has hanged himself in his prison cell , police sources said wednesday . 
+	[events]:[['hanged'], ['swoop'], ['arrested'], ['said']]
+	[entities]:[['wednesday'], ['in', 'his', 'prison', 'cell'], ['mafia', 'boss'], ['himself'], ['tuesday']]
+*R751[said]
+|--(ccomp)--> *R732[hanged]
+|                |--(nsubj)--> R733[boss]
+|                |                |--(det)--> a
+|                |                |--(amod)--> suspected
+|                |                |--(compou)--> R733[mafia]
+|                |                |--(acl)--> *R736[arrested]
+|                |                                 |--(nmod:t)--> R746[tuesday]
+|                |                                 |--(nmod)--> *R737[swoop]
+|                |                                                  |--(case)--> in
+|                |                                                  |--(det)--> a
+|                |                                                  |--(amod)--> high-profile
+|                |                                                  |--(compou)--> police
+|                |--(aux)--> has
+|                |--(dobj)--> R733[himself]
+|                |--(nmod)--> R734[cell]
+|                                 |--(case)--> R734[in]
+|                                 |--(nmod:p)--> R734[his]
+|                                 |--(compou)--> R734[prison]
+|--(punct)--> ,
+|--(nsubj)--> sources
+|                |--(compou)--> police
+|--(nmod:t)--> R752[wednesday]
+|--(punct)--> .
+
+	* entity-paths for event['hanged']26_6ecb.xmlsent:5470
+	['hanged --(nsubj)--> boss']
+	['hanged --(dobj)--> himself']
+	['hanged --(nmod)--> cell']
+
+	* entity-paths for event['swoop']26_6ecb.xmlsent:5470
+
+	* entity-paths for event['arrested']26_6ecb.xmlsent:5470
+	['arrested --(nmod:tmod)--> Tuesday']
+
+	* entity-paths for event['said']26_6ecb.xmlsent:5470
+	['said --(ccomp)--> hanged', 'hanged --(nsubj)--> boss']
+	['said --(ccomp)--> hanged', 'hanged --(dobj)--> himself']
+	['said --(ccomp)--> hanged', 'hanged --(nmod)--> cell']
+	['said --(nmod:tmod)--> Wednesday']
+
+sentence #:gaetano lo presti , who was already convicted of mob-related crimes prior to his latest arrest , was found dead late last night in pagliarelli prison in the sicilian capital of palermo . 
+	[events]:[['convicted'], ['found'], ['arrest']]
+	[entities]:[['in', 'pagliarelli', 'prison', 'in', 'the', 'sicilian', 'capital', 'of', 'palermo'], ['gaetano', 'lo', 'presti'], ['late', 'last', 'night']]
+*R745[found]
+|--(nsubjp)--> R733[presti]
+|                |--(compou)--> R733[gaetano]
+|                |--(compou)--> R733[lo]
+|                |--(punct)--> ,
+|                |--(acl:re)--> *R754[convicted]
+|                |                |--(nsubjp)--> who
+|                |                |--(auxpas)--> was
+|                |                |--(advmod)--> already
+|                |                |--(nmod)--> crimes
+|                |                |                |--(case)--> of
+|                |                |                |--(amod)--> mob-related
+|                |                |--(advcl)--> *R736[arrest]
+|                |                                 |--(advmod)--> prior
+|                |                                 |--(case)--> to
+|                |                                 |--(nmod:p)--> his
+|                |                                 |--(amod)--> latest
+|                |--(punct)--> ,
+|--(auxpas)--> was
+|--(xcomp)--> dead
+|--(nmod:t)--> R753[night]
+|                |--(advmod)--> R753[late]
+|                |--(amod)--> R753[last]
+|--(nmod)--> R734[prison]
+|                |--(case)--> R734[in]
+|                |--(compou)--> R734[pagliarelli]
+|                |--(nmod)--> R734[capital]
+|                                 |--(case)--> R734[in]
+|                                 |--(det)--> R734[the]
+|                                 |--(compou)--> R734[sicilian]
+|                                 |--(nmod)--> R734[palermo]
+|                                                  |--(case)--> R734[of]
+|--(punct)--> .
+
+	* entity-paths for event['convicted']26_6ecb.xmlsent:5471
+
+	* entity-paths for event['found']26_6ecb.xmlsent:5471
+	['found --(nsubjpass)--> Presti']
+	['found --(nmod:tmod)--> night']
+	['found --(nmod)--> prison']
+
+	* entity-paths for event['arrest']26_6ecb.xmlsent:5471

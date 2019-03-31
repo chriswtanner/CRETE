@@ -1,0 +1,24 @@
+
+-----------------------------------------
+docid:40_7ecbplus.xml
+-----------------------------------------
+
+sentence #:apple unveils new macbook pro with ivy bridge at wwdc 
+	[events]:[['wwdc'], ['unveils']]
+	[entities]:[['macbook', 'pro'], ['apple'], ['ivy', 'bridge']]
+*R1410[unveils]
+|--(nsubj)--> R1405[apple]
+|--(xcomp)--> R1414[pro]
+                 |--(nsubj)--> R1414[macbook]
+                 |                |--(amod)--> new
+                 |--(nmod)--> R1420[bridge]
+                                  |--(case)--> with
+                                  |--(compou)--> R1420[ivy]
+                                  |--(nmod)--> *R1416[wwdc]
+                                                   |--(case)--> at
+
+	* entity-paths for event['wwdc']40_7ecbplus.xmlsent:11987
+
+	* entity-paths for event['unveils']40_7ecbplus.xmlsent:11987
+	['unveils --(nsubj)--> Apple']
+	['unveils --(xcomp)--> Pro']

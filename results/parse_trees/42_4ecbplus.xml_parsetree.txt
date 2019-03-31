@@ -1,0 +1,94 @@
+
+-----------------------------------------
+docid:42_4ecbplus.xml
+-----------------------------------------
+
+sentence #:t - mobile usa continues to add to its growing 4g lte smartphone portfolio with the blackberry� q10 . 
+	[events]:[['continues'], ['growing'], ['add']]
+	[entities]:[['4g', 'lte', 'smartphone'], ['portfolio'], ['t', '-', 'mobile', 'usa'], ['blackberry�', 'q10'], ['its']]
+R1517[t]
+|--(punct)--> R1517[-]
+|--(appos)--> *R1536[continues]
+|                |--(nsubj)--> R1517[usa]
+|                |                |--(compou)--> R1517[mobile]
+|                |--(xcomp)--> *R1537[add]
+|                                 |--(mark)--> to
+|                                 |--(nmod)--> R1534[portfolio]
+|                                                  |--(case)--> to
+|                                                  |--(nmod:p)--> R1517[its]
+|                                                  |--(amod)--> *R1538[growing]
+|                                                  |--(compou)--> R1535[4g]
+|                                                  |--(compou)--> R1535[lte]
+|                                                  |--(compou)--> R1535[smartphone]
+|                                                  |--(nmod)--> R1525[q10]
+|                                                                   |--(case)--> with
+|                                                                   |--(det)--> the
+|                                                                   |--(compou)--> R1525[blackberry�]
+|                                                                   |--(nummod)--> R1525[blackberry�]
+|--(punct)--> .
+
+	* entity-paths for event['continues']42_4ecbplus.xmlsent:12780
+	['continues --(nsubj)--> USA']
+	['continues --(xcomp)--> add', 'add --(nmod)--> portfolio']
+
+	* entity-paths for event['growing']42_4ecbplus.xmlsent:12780
+
+	* entity-paths for event['add']42_4ecbplus.xmlsent:12780
+	['add --(nmod)--> portfolio']
+
+sentence #:they just confirmed that they will carry the device though they said nothing about availability and pricing . 
+	[events]:[['carry'], ['availability'], ['confirmed']]
+	[entities]:[['they'], ['device'], ['they'], ['they']]
+*R1527[confirmed]
+|--(nsubj)--> R1517[they]
+|--(advmod)--> just
+|--(ccomp)--> *R1522[carry]
+|                |--(mark)--> that
+|                |--(nsubj)--> R1517[they]
+|                |--(aux)--> will
+|                |--(dobj)--> R1525[device]
+|                |                |--(det)--> the
+|                |--(advcl)--> said
+|                                 |--(mark)--> though
+|                                 |--(nsubj)--> R1517[they]
+|                                 |--(dobj)--> nothing
+|                                 |--(nmod)--> *R1529[availability]
+|                                                  |--(case)--> about
+|                                                  |--(cc)--> and
+|                                                  |--(conj)--> pricing
+|--(punct)--> .
+
+	* entity-paths for event['carry']42_4ecbplus.xmlsent:12776
+	['carry --(nsubj)--> they']
+	['carry --(dobj)--> device']
+	['carry --(advcl)--> said', 'said --(nsubj)--> they']
+
+	* entity-paths for event['availability']42_4ecbplus.xmlsent:12776
+
+	* entity-paths for event['confirmed']42_4ecbplus.xmlsent:12776
+	['confirmed --(nsubj)--> They']
+	['confirmed --(ccomp)--> carry', 'carry --(nsubj)--> they']
+	['confirmed --(ccomp)--> carry', 'carry --(dobj)--> device']
+	['confirmed --(ccomp)--> carry', 'carry --(advcl)--> said', 'said --(nsubj)--> they']
+
+sentence #:t - mobile us confirms they will carry the blackberry q10 
+	[events]:[['confirms'], ['carry']]
+	[entities]:[['t', '-', 'mobile', 'us'], ['blackberry', 'q10']]
+R1517[t]
+|--(punct)--> R1517[-]
+|--(appos)--> *R1527[confirms]
+                 |--(nsubj)--> R1517[us]
+                 |                |--(compou)--> R1517[mobile]
+                 |--(ccomp)--> *R1522[carry]
+                                  |--(nsubj)--> they
+                                  |--(aux)--> will
+                                  |--(dobj)--> R1525[q10]
+                                                   |--(det)--> the
+                                                   |--(compou)--> R1525[blackberry]
+
+	* entity-paths for event['confirms']42_4ecbplus.xmlsent:12773
+	['Confirms --(nsubj)--> US']
+	['Confirms --(ccomp)--> Carry', 'Carry --(dobj)--> Q10']
+
+	* entity-paths for event['carry']42_4ecbplus.xmlsent:12773
+	['Carry --(dobj)--> Q10']

@@ -1,0 +1,66 @@
+
+-----------------------------------------
+docid:31_7ecbplus.xml
+-----------------------------------------
+
+sentence #:mcdermott broke rodney buford " s school scoring record of 2 , 116 points with a free throw with 4 : 43 to play in the first half . 
+	[events]:[['free', 'throw'], ['broke']]
+	[entities]:[['mcdermott'], ['rodney', 'buford']]
+*R1019[throw]
+|--(ccomp)--> *R1023[broke]
+|                |--(nsubj)--> R1001[mcdermott]
+|                |--(dobj)--> R1021[buford]
+|                                 |--(compou)--> R1021[rodney]
+|                                 |--(punct)--> "
+|                                 |--(acl:re)--> record
+|                                                  |--(cop)--> s
+|                                                  |--(compou)--> school
+|                                                  |--(amod)--> scoring
+|                                                  |--(nmod)--> 2
+|                                                                   |--(case)--> of
+|--(punct)--> ,
+|--(nsubj)--> points
+|                |--(nummod)--> 116
+|                |--(nmod)--> *R1019[free]
+|                                 |--(case)--> with
+|                                 |--(det)--> a
+|--(nmod)--> 43
+|                |--(case)--> with
+|                |--(nummod)--> 4
+|                |--(punct)--> :
+|                |--(acl)--> play
+|                                 |--(mark)--> to
+|                                 |--(nmod)--> half
+|                                                  |--(case)--> in
+|                                                  |--(det)--> the
+|                                                  |--(amod)--> first
+|--(punct)--> .
+
+	* entity-paths for event['free', 'throw']31_7ecbplus.xmlsent:8583
+	['throw --(ccomp)--> broke', 'broke --(nsubj)--> McDermott']
+	['throw --(ccomp)--> broke', 'broke --(dobj)--> Buford']
+
+	* entity-paths for event['broke']31_7ecbplus.xmlsent:8583
+	['broke --(nsubj)--> McDermott']
+	['broke --(dobj)--> Buford']
+
+sentence #:mcdermott fuels creighton past drake in mvc tournament opener 
+	[events]:[['opener'], ['fuels'], ['mvc', 'tournament']]
+	[entities]:[['creighton'], ['drake'], ['mcdermott']]
+*R1000[fuels]
+|--(compou)--> R1001[mcdermott]
+|--(dep)--> R1014[drake]
+                 |--(compou)--> R1003[creighton]
+                 |--(amod)--> past
+                 |--(nmod)--> *R1017[opener]
+                                  |--(case)--> in
+                                  |--(compou)--> *R1004[mvc]
+                                  |--(compou)--> *R1004[tournament]
+
+	* entity-paths for event['opener']31_7ecbplus.xmlsent:8580
+
+	* entity-paths for event['fuels']31_7ecbplus.xmlsent:8580
+	['fuels --(compound)--> McDermott']
+	['fuels --(dep)--> Drake']
+
+	* entity-paths for event['mvc', 'tournament']31_7ecbplus.xmlsent:8580

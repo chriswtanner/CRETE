@@ -1,0 +1,66 @@
+
+-----------------------------------------
+docid:35_4ecbplus.xml
+-----------------------------------------
+
+sentence #:according to the california highway patrol , defensive tackle jamal williams was arrested on suspicion of drunken driving last weekend on a freeway outside downtown . 
+	[events]:[['on', 'suspicion'], ['drunken', 'driving'], ['according', 'to'], ['arrested']]
+	[entities]:[['last', 'weekend'], ['defensive', 'tackle', 'jamal', 'williams'], ['california', 'highway', 'patrol'], ['on', 'a', 'freeway', 'outside', 'downtown']]
+R1160[tackle]
+|--(nmod)--> R1158[patrol]
+|                |--(case)--> *R1165[according]
+|                |                |--(mwe)--> *R1165[to]
+|                |--(det)--> the
+|                |--(compou)--> R1158[california]
+|                |--(compou)--> R1158[highway]
+|--(punct)--> ,
+|--(nsubj)--> R1160[defensive]
+|--(ccomp)--> *R1161[arrested]
+|                |--(nsubjp)--> R1160[williams]
+|                |                |--(compou)--> R1160[jamal]
+|                |--(auxpas)--> was
+|                |--(nmod)--> *R1162[suspicion]
+|                                 |--(case)--> *R1162[on]
+|                                 |--(nmod)--> *R1163[drunken]
+|                                                  |--(case)--> of
+|                                                  |--(amod)--> *R1163[driving]
+|                                                  |--(nmod:t)--> R1168[weekend]
+|                                                  |                |--(amod)--> R1168[last]
+|                                                  |--(nmod)--> R1169[freeway]
+|                                                                   |--(case)--> R1169[on]
+|                                                                   |--(det)--> R1169[a]
+|                                                                   |--(nmod)--> R1169[downtown]
+|                                                                                    |--(case)--> R1169[outside]
+|--(punct)--> .
+
+	* entity-paths for event['on', 'suspicion']35_4ecbplus.xmlsent:9754
+	['suspicion --(nmod)--> drunken', 'drunken --(nmod:tmod)--> weekend']
+	['suspicion --(nmod)--> drunken', 'drunken --(nmod)--> freeway']
+
+	* entity-paths for event['drunken', 'driving']35_4ecbplus.xmlsent:9754
+
+	* entity-paths for event['according', 'to']35_4ecbplus.xmlsent:9754
+
+	* entity-paths for event['arrested']35_4ecbplus.xmlsent:9754
+	['arrested --(nsubjpass)--> Williams']
+	['arrested --(nmod)--> suspicion', 'suspicion --(nmod)--> drunken', 'drunken --(nmod:tmod)--> weekend']
+	['arrested --(nmod)--> suspicion', 'suspicion --(nmod)--> drunken', 'drunken --(nmod)--> freeway']
+
+sentence #:charger jamal williams arrested on suspicion of dui 
+	[events]:[['dui'], ['on', 'suspicion'], ['arrested']]
+	[entities]:[['charger', 'jamal', 'williams']]
+*R1161[arrested]
+|--(nsubj)--> R1160[williams]
+|                |--(compou)--> R1160[charger]
+|                |--(compou)--> R1160[jamal]
+|--(nmod)--> *R1162[suspicion]
+                 |--(case)--> *R1162[on]
+                 |--(nmod)--> *R1163[dui]
+                                  |--(case)--> of
+
+	* entity-paths for event['dui']35_4ecbplus.xmlsent:9751
+
+	* entity-paths for event['on', 'suspicion']35_4ecbplus.xmlsent:9751
+
+	* entity-paths for event['arrested']35_4ecbplus.xmlsent:9751
+	['arrested --(nsubj)--> Williams']

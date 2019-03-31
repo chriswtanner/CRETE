@@ -1,0 +1,106 @@
+
+-----------------------------------------
+docid:23_2ecbplus.xml
+-----------------------------------------
+
+sentence #:the man , from hampton east , fell in the tasman glacier area . 
+	[events]:[['fell']]
+	[entities]:[['hampton', 'east'], ['in', 'the', 'tasman', 'glacier', 'area'], ['man']]
+*R646[fell]
+|--(nsubj)--> R644[man]
+|                |--(det)--> the
+|                |--(punct)--> ,
+|                |--(nmod)--> R656[east]
+|                |                |--(case)--> from
+|                |                |--(compou)--> R656[hampton]
+|                |--(punct)--> ,
+|--(nmod)--> R657[area]
+|                |--(case)--> R657[in]
+|                |--(det)--> R657[the]
+|                |--(compou)--> R657[tasman]
+|                |--(compou)--> R657[glacier]
+|--(punct)--> .
+
+	* entity-paths for event['fell']23_2ecbplus.xmlsent:4684
+	['fell --(nsubj)--> man']
+	['fell --(nmod)--> area']
+
+sentence #:yesterday , a 36 - year - old australian climber died after falling about 150 metres at mt cook . 
+	[events]:[['falling'], ['died']]
+	[entities]:[['at', 'mt', 'cook'], ['climber'], ['yesterday']]
+*R640[died]
+|--(nmod:t)--> R641[yesterday]
+|--(punct)--> ,
+|--(nsubj)--> 36
+|                |--(det)--> a
+|                |--(dep)--> year
+|                                 |--(punct)--> -
+|                                 |--(punct)--> -
+|                                 |--(dep)--> R644[climber]
+|                                                  |--(amod)--> old
+|                                                  |--(amod)--> australian
+|--(advcl)--> *R646[falling]
+|                |--(mark)--> after
+|                |--(nmod)--> metres
+|                                 |--(case)--> about
+|                                 |--(nummod)--> 150
+|                                 |--(nmod)--> R639[cook]
+|                                                  |--(case)--> R639[at]
+|                                                  |--(compou)--> R639[mt]
+|--(punct)--> .
+
+	* entity-paths for event['falling']23_2ecbplus.xmlsent:4683
+	['falling --(nmod)--> metres', 'metres --(nmod)--> Cook']
+
+	* entity-paths for event['died']23_2ecbplus.xmlsent:4683
+	['died --(nmod:tmod)--> Yesterday']
+	['died --(nsubj)--> 36', '36 --(dep)--> year', 'year --(dep)--> climber']
+	['died --(advcl)--> falling', 'falling --(nmod)--> metres', 'metres --(nmod)--> Cook']
+
+sentence #:two climbers killed in mt cook falls 
+	[events]:[['killed'], ['falls']]
+	[entities]:[['mt', 'cook'], ['climbers']]
+*R659[falls]
+|--(nsubj)--> R660[climbers]
+                 |--(nummod)--> two
+                 |--(acl)--> *R661[killed]
+                                  |--(nmod)--> R639[cook]
+                                                   |--(case)--> in
+                                                   |--(compou)--> R639[mt]
+
+	* entity-paths for event['killed']23_2ecbplus.xmlsent:4669
+	['killed --(nmod)--> Cook']
+
+	* entity-paths for event['falls']23_2ecbplus.xmlsent:4669
+	['falls --(nsubj)--> climbers']
+
+sentence #:inspector dave gaskin said the man fell around 2000ft ( 609 metres ) near the mount sefton bivvy , above the mueller glacier . 
+	[events]:[['fell']]
+	[entities]:[['man']]
+said
+|--(nsubj)--> gaskin
+|                |--(compou)--> inspector
+|                |--(compou)--> dave
+|--(ccomp)--> *R649[fell]
+|                |--(nsubj)--> R643[man]
+|                |                |--(det)--> the
+|                |--(dobj)--> 2000ft
+|                |                |--(advmod)--> around
+|                |                |--(appos)--> metres
+|                |                |                |--(punct)--> (
+|                |                |                |--(nummod)--> 609
+|                |                |                |--(punct)--> )
+|                |                |--(nmod)--> bivvy
+|                |                                 |--(case)--> near
+|                |                                 |--(det)--> the
+|                |                                 |--(compou)--> mount
+|                |                                 |--(compou)--> sefton
+|                |--(punct)--> ,
+|                |--(nmod)--> glacier
+|                                 |--(case)--> above
+|                                 |--(det)--> the
+|                                 |--(compou)--> mueller
+|--(punct)--> .
+
+	* entity-paths for event['fell']23_2ecbplus.xmlsent:4672
+	['fell --(nsubj)--> man']

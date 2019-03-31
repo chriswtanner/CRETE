@@ -1,0 +1,73 @@
+
+-----------------------------------------
+docid:1_11ecb.xml
+-----------------------------------------
+
+sentence #:tara reid has entered a rehab program , the american pie star 's rep confirmed to people and us weekly on friday . 
+	[events]:[['confirmed'], ['entered']]
+	[entities]:[['people'], ['us', 'weekly'], ['tara', 'reid'], ['on', 'friday'], ['rehab', 'program'], ['rep']]
+*R0[confirmed]
+|--(ccomp)--> *R1[entered]
+|                |--(nsubj)--> R2[reid]
+|                |                |--(compou)--> R2[tara]
+|                |--(aux)--> has
+|                |--(dobj)--> R3[program]
+|                                 |--(det)--> a
+|                                 |--(compou)--> R3[rehab]
+|--(punct)--> ,
+|--(nsubj)--> R4[rep]
+|                |--(nmod:p)--> star
+|                                 |--(det)--> the
+|                                 |--(amod)--> american
+|                                 |--(compou)--> pie
+|                                 |--(case)--> 's
+|--(nmod)--> R5[people]
+|                |--(case)--> to
+|                |--(cc)--> and
+|                |--(conj)--> R22[weekly]
+|                                 |--(compou)--> R22[us]
+|--(nmod)--> R6[friday]
+|                |--(case)--> R6[on]
+|--(punct)--> .
+
+	* entity-paths for event['confirmed']1_11ecb.xmlsent:10
+	['confirmed --(ccomp)--> entered', 'entered --(nsubj)--> Reid']
+	['confirmed --(ccomp)--> entered', 'entered --(dobj)--> program']
+	['confirmed --(nsubj)--> rep']
+	['confirmed --(nmod)--> People']
+	['confirmed --(nmod)--> Friday']
+
+	* entity-paths for event['entered']1_11ecb.xmlsent:10
+	['entered --(nsubj)--> Reid']
+	['entered --(dobj)--> program']
+
+sentence #:" tara reid has checked herself into promises treatment center , " reid 's rep told us . 
+	[events]:[['checked', 'into'], ['told']]
+	[entities]:[['rep'], ['tara', 'reid'], ['promises', 'treatment', 'center'], ['us'], ['herself']]
+*R0[told]
+|--(punct)--> "
+|--(ccomp)--> *R1[checked]
+|                |--(nsubj)--> R2[reid]
+|                |                |--(compou)--> R2[tara]
+|                |--(aux)--> has
+|                |--(dobj)--> R2[herself]
+|                |--(advcl)--> R3[promises]
+|                                 |--(mark)--> *R1[into]
+|                                 |--(dobj)--> R3[center]
+|                                                  |--(compou)--> R3[treatment]
+|--(punct)--> ,
+|--(punct)--> "
+|--(nsubj)--> R4[rep]
+|                |--(nmod:p)--> reid
+|                                 |--(case)--> 's
+|--(dobj)--> R22[us]
+|--(punct)--> .
+
+	* entity-paths for event['checked', 'into']1_11ecb.xmlsent:12
+
+	* entity-paths for event['told']1_11ecb.xmlsent:12
+	['told --(ccomp)--> checked', 'checked --(nsubj)--> Reid']
+	['told --(ccomp)--> checked', 'checked --(dobj)--> herself']
+	['told --(ccomp)--> checked', 'checked --(advcl)--> Promises']
+	['told --(nsubj)--> rep']
+	['told --(dobj)--> Us']

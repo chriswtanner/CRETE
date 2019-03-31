@@ -1,0 +1,82 @@
+
+-----------------------------------------
+docid:16_4ecbplus.xml
+-----------------------------------------
+
+sentence #:a los angeles county sheriff's department deputy -- a recently married father of two sons -- died after a shooting friday afternoon in hawaiian gardens , according to the sheriff's department . 
+	[events]:[['married'], ['according', 'to'], ['died'], ['shooting']]
+	[entities]:[['deputy'], ['in', 'hawaiian', 'gardens'], ['father'], ['friday', 'afternoon']]
+*R345[died]
+|--(nsubj)--> R319[deputy]
+|                |--(nmod:p)--> sheriff's
+|                |                |--(det)--> a
+|                |                |--(compou)--> los
+|                |                |--(compou)--> angeles
+|                |                |--(compou)--> county
+|                |                |--(case)--> sheriff's
+|                |--(compou)--> department
+|                |--(dep)--> R319[father]
+|                                 |--(punct)--> --
+|                                 |--(det)--> a
+|                                 |--(advmod)--> recently
+|                                 |--(amod)--> *R346[married]
+|                                 |--(nmod)--> sons
+|                                 |                |--(case)--> of
+|                                 |                |--(nummod)--> two
+|                                 |--(punct)--> --
+|--(nmod)--> *R324[shooting]
+|                |--(case)--> after
+|                |--(det)--> a
+|--(nmod:t)--> R347[afternoon]
+|                |--(compou)--> R347[friday]
+|--(nmod)--> R322[gardens]
+|                |--(case)--> R322[in]
+|                |--(amod)--> R322[hawaiian]
+|--(punct)--> ,
+|--(nmod)--> department
+|                |--(case)--> *R348[according]
+|                |                |--(mwe)--> *R348[to]
+|                |--(nmod:p)--> sheriff's
+|                                 |--(det)--> the
+|                                 |--(case)--> sheriff's
+|--(punct)--> .
+
+	* entity-paths for event['married']16_4ecbplus.xmlsent:1986
+
+	* entity-paths for event['according', 'to']16_4ecbplus.xmlsent:1986
+
+	* entity-paths for event['died']16_4ecbplus.xmlsent:1986
+	['died --(nsubj)--> deputy']
+	['died --(nmod:tmod)--> afternoon']
+	['died --(nmod)--> Gardens']
+
+	* entity-paths for event['shooting']16_4ecbplus.xmlsent:1986
+
+sentence #:ortiz was shot in the head , said larry waldie of the sheriff's department . 
+	[events]:[['shot'], ['said']]
+	[entities]:[['ortiz'], ['larry', 'waldie'], ['in', 'the', 'head']]
+*R348[said]
+|--(ccomp)--> *R324[shot]
+|                |--(nsubjp)--> R319[ortiz]
+|                |--(auxpas)--> was
+|                |--(nmod)--> R325[head]
+|                                 |--(case)--> R325[in]
+|                                 |--(det)--> R325[the]
+|--(punct)--> ,
+|--(nsubj)--> R349[waldie]
+|                |--(compou)--> R349[larry]
+|                |--(nmod)--> department
+|                                 |--(case)--> of
+|                                 |--(nmod:p)--> sheriff's
+|                                                  |--(det)--> the
+|                                                  |--(case)--> sheriff's
+|--(punct)--> .
+
+	* entity-paths for event['shot']16_4ecbplus.xmlsent:1990
+	['shot --(nsubjpass)--> Ortiz']
+	['shot --(nmod)--> head']
+
+	* entity-paths for event['said']16_4ecbplus.xmlsent:1990
+	['said --(ccomp)--> shot', 'shot --(nsubjpass)--> Ortiz']
+	['said --(ccomp)--> shot', 'shot --(nmod)--> head']
+	['said --(nsubj)--> Waldie']

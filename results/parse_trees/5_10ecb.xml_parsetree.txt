@@ -1,0 +1,43 @@
+
+-----------------------------------------
+docid:5_10ecb.xml
+-----------------------------------------
+
+sentence #:the philadelphia 76ers fired coach maurice cheeks on saturday , one day after the team continued its slide with a season-worst offensive effort , dpa reported . 
+	[events]:[['effort'], ['fired']]
+	[entities]:[['the', 'philadelphia', '76ers'], ['maurice', 'cheeks'], ['team'], ['saturday']]
+reported
+|--(ccomp)--> *R1672[fired]
+|                |--(nsubj)--> R1673[76ers]
+|                |                |--(det)--> R1673[the]
+|                |                |--(compou)--> R1673[philadelphia]
+|                |--(dobj)--> R1674[cheeks]
+|                |                |--(compou)--> coach
+|                |                |--(compou)--> R1674[maurice]
+|                |--(nmod)--> R1675[saturday]
+|                |                |--(case)--> on
+|                |                |--(punct)--> ,
+|                |                |--(appos)--> day
+|                |                                 |--(nummod)--> one
+|                |--(advcl)--> continued
+|                                 |--(mark)--> after
+|                                 |--(nsubj)--> R1673[team]
+|                                 |                |--(det)--> the
+|                                 |--(dobj)--> slide
+|                                 |                |--(nmod:p)--> its
+|                                 |--(nmod)--> *R1676[effort]
+|                                                  |--(case)--> with
+|                                                  |--(det)--> a
+|                                                  |--(amod)--> season-worst
+|                                                  |--(amod)--> offensive
+|--(punct)--> ,
+|--(nsubj)--> dpa
+|--(punct)--> .
+
+	* entity-paths for event['effort']5_10ecb.xmlsent:13909
+
+	* entity-paths for event['fired']5_10ecb.xmlsent:13909
+	['fired --(nsubj)--> 76ers']
+	['fired --(dobj)--> Cheeks']
+	['fired --(nmod)--> Saturday']
+	['fired --(advcl)--> continued', 'continued --(nsubj)--> team']

@@ -1,0 +1,46 @@
+
+-----------------------------------------
+docid:25_14ecbplus.xml
+-----------------------------------------
+
+sentence #:the saints have placed running back pierre thomas on injured reserve . 
+	[events]:[['injured', 'reserve'], ['placed']]
+	[entities]:[['saints'], ['pierre', 'thomas']]
+*R715[placed]
+|--(nsubj)--> R706[saints]
+|                |--(det)--> the
+|--(aux)--> have
+|--(xcomp)--> running
+|                |--(compou)--> back
+|                |--(dobj)--> R716[thomas]
+|                                 |--(compou)--> R716[pierre]
+|                                 |--(nmod)--> *R717[reserve]
+|                                                  |--(case)--> on
+|                                                  |--(amod)--> *R717[injured]
+|--(punct)--> .
+
+	* entity-paths for event['injured', 'reserve']25_14ecbplus.xmlsent:5035
+
+	* entity-paths for event['placed']25_14ecbplus.xmlsent:5035
+	['placed --(nsubj)--> Saints']
+	['placed --(xcomp)--> running', 'running --(dobj)--> Thomas']
+
+sentence #:likely foe : saints suffer major injury , thomas to ir 
+	[events]:[['injury'], ['ir']]
+	[entities]:[['thomas'], ['saints']]
+foe
+|--(amod)--> likely
+|--(punct)--> :
+|--(parata)--> suffer
+                 |--(nsubj)--> R706[saints]
+                 |--(dobj)--> *R713[injury]
+                                  |--(amod)--> major
+                                  |--(punct)--> ,
+                                  |--(appos)--> R716[thomas]
+                                                   |--(nmod)--> *R717[ir]
+                                                                    |--(case)--> to
+
+	* entity-paths for event['injury']25_14ecbplus.xmlsent:5033
+	['injury --(appos)--> Thomas']
+
+	* entity-paths for event['ir']25_14ecbplus.xmlsent:5033

@@ -1,0 +1,102 @@
+
+-----------------------------------------
+docid:4_4ecbplus.xml
+-----------------------------------------
+
+sentence #:esther williams - esther williams : "million dollar mermaid" swimmer and actress dies aged 91 . 
+	[events]:[['dies']]
+	[entities]:[['esther', 'williams'], ['actress'], ['swimmer'], ['esther', 'williams']]
+R1370[williams]
+|--(compou)--> R1370[esther]
+|--(punct)--> -
+|--(dep)--> R1370[williams]
+|                |--(compou)--> R1370[esther]
+|--(punct)--> :
+|--(punct)--> "million
+|--(dep)--> *R1369[dies]
+|                |--(nsubj)--> R1370[swimmer]
+|                |                |--(compou)--> "million
+|                |                |--(compou)--> dollar
+|                |                |--(compou)--> mermaid"
+|                |                |--(punct)--> mermaid"
+|                |                |--(cc)--> and
+|                |                |--(conj)--> R1370[actress]
+|                |--(xcomp)--> aged
+|                                 |--(nmod:t)--> 91
+|--(punct)--> .
+
+	* entity-paths for event['dies']4_4ecbplus.xmlsent:11457
+	['Dies --(nsubj)--> Swimmer']
+
+sentence #:it has been confirmed by publicist harlan boll that the 1940s hollywood actress and record - setting swimmer , esther williams , died on 6th june in her sleep . 
+	[events]:[['sleep'], ['confirmed'], ['died']]
+	[entities]:[['hollywood'], ['swimmer'], ['esther', 'williams'], ['the', '1940s'], ['on', '6th', 'june'], ['harlan', 'boll'], ['actress']]
+*R1379[confirmed]
+|--(nsubjp)--> it
+|--(aux)--> has
+|--(auxpas)--> been
+|--(nmod)--> R1378[boll]
+|                |--(case)--> by
+|                |--(compou)--> publicist
+|                |--(compou)--> R1378[harlan]
+|                |--(nmod)--> R1370[actress]
+|                                 |--(case)--> that
+|                                 |--(det)--> R1375[the]
+|                                 |--(nummod)--> R1375[1940s]
+|                                 |--(compou)--> R463[hollywood]
+|                                 |--(cc)--> and
+|                                 |--(conj)--> record
+|--(punct)--> -
+|--(parata)--> *R1369[died]
+|                |--(csubj)--> setting
+|                |                |--(dobj)--> R1370[swimmer]
+|                |                                 |--(punct)--> ,
+|                |                                 |--(appos)--> R1370[williams]
+|                |                                 |                |--(compou)--> R1370[esther]
+|                |                                 |--(punct)--> ,
+|                |--(nmod)--> R1376[june]
+|                |                |--(case)--> R1376[on]
+|                |                |--(amod)--> R1376[6th]
+|                |--(nmod)--> *R1377[sleep]
+|                                 |--(case)--> in
+|                                 |--(nmod:p)--> her
+|--(punct)--> .
+
+	* entity-paths for event['sleep']4_4ecbplus.xmlsent:11460
+
+	* entity-paths for event['confirmed']4_4ecbplus.xmlsent:11460
+	['confirmed --(nmod)--> Boll']
+	['confirmed --(parataxis)--> died', 'died --(csubj)--> setting', 'setting --(dobj)--> swimmer']
+	['confirmed --(parataxis)--> died', 'died --(nmod)--> June']
+
+	* entity-paths for event['died']4_4ecbplus.xmlsent:11460
+	['died --(csubj)--> setting', 'setting --(dobj)--> swimmer']
+	['died --(nmod)--> June']
+
+sentence #:golden girl of screen and pool , esther williams , has died peacefully in her sleep aged 91 . 
+	[events]:[['died'], ['sleep']]
+	[entities]:[['pool'], ['girl'], ['esther', 'williams']]
+*R1369[died]
+|--(nsubj)--> R1370[girl]
+|                |--(compou)--> golden
+|                |--(nmod)--> screen
+|                |                |--(case)--> of
+|                |                |--(cc)--> and
+|                |                |--(conj)--> R1395[pool]
+|                |--(punct)--> ,
+|                |--(appos)--> R1370[williams]
+|                |                |--(compou)--> R1370[esther]
+|                |--(punct)--> ,
+|--(aux)--> has
+|--(advmod)--> peacefully
+|--(nmod)--> *R1377[sleep]
+|                |--(case)--> in
+|                |--(nmod:p)--> her
+|                |--(amod)--> aged
+|                                 |--(nmod:t)--> 91
+|--(punct)--> .
+
+	* entity-paths for event['died']4_4ecbplus.xmlsent:11459
+	['died --(nsubj)--> girl']
+
+	* entity-paths for event['sleep']4_4ecbplus.xmlsent:11459

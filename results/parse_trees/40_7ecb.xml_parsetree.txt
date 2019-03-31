@@ -1,0 +1,72 @@
+
+-----------------------------------------
+docid:40_7ecb.xml
+-----------------------------------------
+
+sentence #:apple inc on tuesday ( jan 6 ) introduced what it claims to be the world 's thinnest and lightest 17-inch laptop with a new unibody aluminium enclosure and a built-in battery said to deliver up to eight hours of use and a lifespan three times longer than conventional laptop batteries . 
+	[events]:[['said'], ['introduced']]
+	[entities]:[['laptop'], ['battery'], ['apple', 'inc'], ['laptop'], ['on', 'tuesday', '(', 'jan', '6'], ['eight', 'hours'], ['it']]
+*R1404[introduced]
+|--(nsubj)--> R1405[inc]
+|                |--(compou)--> R1405[apple]
+|                |--(nmod)--> R1419[tuesday]
+|                |                |--(case)--> R1419[on]
+|                |--(dep)--> R1419[jan]
+|                                 |--(punct)--> R1419[(]
+|                                 |--(nummod)--> R1419[6]
+|                                 |--(punct)--> )
+|--(dep)--> claims
+|                |--(dep)--> what
+|                |--(nsubj)--> R1405[it]
+|                |--(xcomp)--> world
+|                |                |--(mark)--> to
+|                |                |--(cop)--> be
+|                |                |--(det)--> the
+|                |                |--(case)--> 's
+|                |                |--(amod)--> thinnest
+|                |--(cc)--> and
+|                |--(conj)--> *R1428[said]
+|                                 |--(nsubj)--> R1434[laptop]
+|                                 |                |--(amod)--> 17-inch
+|                                 |                |                |--(dep)--> lightest
+|                                 |                |--(nmod)--> enclosure
+|                                 |                                 |--(case)--> with
+|                                 |                                 |--(det)--> a
+|                                 |                                 |--(amod)--> new
+|                                 |                                 |--(amod)--> unibody
+|                                 |                                 |--(compou)--> aluminium
+|                                 |                                 |--(cc)--> and
+|                                 |                                 |--(conj)--> R1427[battery]
+|                                 |                                                  |--(det)--> a
+|                                 |                                                  |--(amod)--> built-in
+|                                 |--(xcomp)--> deliver
+|                                                  |--(mark)--> to
+|                                                  |--(compou)--> up
+|                                                  |--(nmod)--> R1429[hours]
+|                                                  |                |--(case)--> to
+|                                                  |                |--(nummod)--> R1429[eight]
+|                                                  |                |--(nmod)--> use
+|                                                  |                                 |--(case)--> of
+|                                                  |                                 |--(cc)--> and
+|                                                  |                                 |--(conj)--> lifespan
+|                                                  |                                                  |--(det)--> a
+|                                                  |--(nmod)--> batteries
+|                                                                   |--(advmod)--> longer
+|                                                                   |                |--(nmod:n)--> times
+|                                                                   |                                 |--(nummod)--> three
+|                                                                   |--(case)--> than
+|                                                                   |--(amod)--> conventional
+|                                                                   |--(compou)--> R1434[laptop]
+|--(punct)--> .
+
+	* entity-paths for event['said']40_7ecb.xmlsent:11959
+	['said --(nsubj)--> laptop']
+	['said --(xcomp)--> deliver', 'deliver --(nmod)--> hours']
+	['said --(xcomp)--> deliver', 'deliver --(nmod)--> batteries', 'batteries --(compound)--> laptop']
+
+	* entity-paths for event['introduced']40_7ecb.xmlsent:11959
+	['introduced --(nsubj)--> Inc']
+	['introduced --(dep)--> claims', 'claims --(nsubj)--> it']
+	['introduced --(dep)--> claims', 'claims --(conj)--> said', 'said --(nsubj)--> laptop']
+	['introduced --(dep)--> claims', 'claims --(conj)--> said', 'said --(xcomp)--> deliver', 'deliver --(nmod)--> hours']
+	['introduced --(dep)--> claims', 'claims --(conj)--> said', 'said --(xcomp)--> deliver', 'deliver --(nmod)--> batteries', 'batteries --(compound)--> laptop']

@@ -1,0 +1,38 @@
+
+-----------------------------------------
+docid:11_4ecb.xml
+-----------------------------------------
+
+sentence #:the people of turkmenistan have voted in the first parliamentary election held after the adoption of a new constitution earlier this year . 
+	[events]:[['voted'], ['election']]
+	[entities]:[['people'], ['turkmenistan'], ['constitution']]
+*R187[voted]
+|--(nsubj)--> R191[people]
+|                |--(det)--> the
+|                |--(nmod)--> R189[turkmenistan]
+|                                 |--(case)--> of
+|--(aux)--> have
+|--(nmod)--> *R193[election]
+|                |--(case)--> in
+|                |--(det)--> the
+|                |--(amod)--> first
+|                |--(amod)--> parliamentary
+|                |--(acl)--> held
+|                                 |--(nmod)--> adoption
+|                                 |                |--(case)--> after
+|                                 |                |--(det)--> the
+|                                 |                |--(nmod)--> R213[constitution]
+|                                 |                                 |--(case)--> of
+|                                 |                                 |--(det)--> a
+|                                 |                                 |--(amod)--> new
+|                                 |--(nmod:t)--> year
+|                                                  |--(advmod)--> earlier
+|                                                  |--(det)--> this
+|--(punct)--> .
+
+	* entity-paths for event['voted']11_4ecb.xmlsent:669
+	['voted --(nsubj)--> people']
+	['voted --(nmod)--> election', 'election --(acl)--> held', 'held --(nmod)--> adoption', 'adoption --(nmod)--> constitution']
+
+	* entity-paths for event['election']11_4ecb.xmlsent:669
+	['election --(acl)--> held', 'held --(nmod)--> adoption', 'adoption --(nmod)--> constitution']

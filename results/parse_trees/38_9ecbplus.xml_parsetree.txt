@@ -1,0 +1,105 @@
+
+-----------------------------------------
+docid:38_9ecbplus.xml
+-----------------------------------------
+
+sentence #:magnitude 4 . 6 earthquake shakes up north bay 
+	[events]:[['shakes', 'up'], ['magnitude', '4', '.', '6', 'earthquake']]
+	[entities]:[['north', 'bay']]
+*R1304[shakes]
+|--(nsubj)--> *R1296[magnitude]
+|                |--(acl:re)--> *R1296[4]
+|                |                |--(punct)--> *R1296[.]
+|                |--(dep)--> *R1296[earthquake]
+|                                 |--(nummod)--> *R1296[6]
+|--(compou)--> *R1304[up]
+|--(dobj)--> R1302[bay]
+                 |--(compou)--> R1302[north]
+
+	* entity-paths for event['shakes', 'up']38_9ecbplus.xmlsent:10834
+
+	* entity-paths for event['magnitude', '4', '.', '6', 'earthquake']38_9ecbplus.xmlsent:10834
+
+sentence #:an earthquake with a preliminary magnitude of 4 . 6 was recorded in the north bay thursday morning , according to the u . s . geological survey . 
+	[events]:[['according', 'to'], ['recorded'], ['earthquake']]
+	[entities]:[['in', 'the', 'north', 'bay'], ['magnitude', 'of', '4', '.', '6'], ['thursday', 'morning'], ['u', '.', 's', '.', 'geological', 'survey']]
+*R1297[recorded]
+|--(nsubjp)--> *R1296[earthquake]
+|                |--(det)--> an
+|                |--(acl:re)--> R1301[6]
+|                                 |--(nmod)--> R1301[magnitude]
+|                                                  |--(case)--> with
+|                                                  |--(det)--> a
+|                                                  |--(amod)--> preliminary
+|                                                  |--(nmod)--> R1301[4]
+|                                                  |                |--(case)--> R1301[of]
+|                                                  |--(punct)--> R1301[.]
+|--(auxpas)--> was
+|--(nmod)--> R1299[thursday]
+|                |--(case)--> R1302[in]
+|                |--(det)--> R1302[the]
+|                |--(compou)--> R1302[north]
+|                |--(compou)--> R1302[bay]
+|--(nmod:t)--> R1299[morning]
+|--(punct)--> ,
+|--(nmod)--> R1243[u]
+|                |--(case)--> *R1303[according]
+|                |                |--(mwe)--> *R1303[to]
+|                |--(det)--> the
+|                |--(punct)--> R1243[.]
+|                |--(dep)--> R1243[s]
+|                |--(punct)--> R1243[.]
+|                |--(dep)--> R1243[survey]
+|                                 |--(amod)--> R1243[geological]
+|--(punct)--> .
+
+	* entity-paths for event['according', 'to']38_9ecbplus.xmlsent:10836
+
+	* entity-paths for event['recorded']38_9ecbplus.xmlsent:10836
+	['recorded --(nsubjpass)--> earthquake', 'earthquake --(acl:relcl)--> 6']
+	['recorded --(nmod)--> Thursday']
+	['recorded --(nmod:tmod)--> morning']
+	['recorded --(nmod)--> U']
+
+	* entity-paths for event['earthquake']38_9ecbplus.xmlsent:10836
+	['earthquake --(acl:relcl)--> 6']
+
+sentence #:the quake occurred at 2 : 09 a . m . about 14 miles north - northeast of healdsburg and had a depth of 1 . 2 miles . 
+	[events]:[['occurred'], ['quake']]
+	[entities]:[['about', '14', 'miles', 'north', '-', 'northeast', 'of', 'healdsburg'], ['depth', 'of', '1', '.', '2', 'miles'], ['at', '2', ':', '09', 'a', '.', 'm']]
+*R1304[occurred]
+|--(nsubj)--> *R1296[quake]
+|                |--(det)--> the
+|--(nmod)--> R1299[09]
+|                |--(case)--> R1299[at]
+|                |--(nummod)--> R1299[2]
+|                |--(punct)--> R1299[:]
+|                |--(dep)--> R1299[a]
+|                                 |--(punct)--> R1299[.]
+|                                 |--(dep)--> R1299[m]
+|                                 |--(punct)--> .
+|                                 |--(acl)--> R1298[north]
+|                                 |                |--(case)--> R1298[about]
+|                                 |                |--(nmod:n)--> R1298[miles]
+|                                 |                                 |--(nummod)--> R1298[14]
+|                                 |--(punct)--> R1298[-]
+|                                 |--(dep)--> R1298[northeast]
+|                                                  |--(nmod)--> R1298[healdsburg]
+|                                                                   |--(case)--> R1298[of]
+|--(cc)--> and
+|--(conj)--> had
+|                |--(dobj)--> R1300[depth]
+|                |                |--(det)--> a
+|                |                |--(acl)--> R1300[1]
+|                |                                 |--(case)--> R1300[of]
+|                |                                 |--(punct)--> R1300[.]
+|                |--(nmod:t)--> R1300[miles]
+|                                 |--(nummod)--> R1300[2]
+|--(punct)--> .
+
+	* entity-paths for event['occurred']38_9ecbplus.xmlsent:10837
+	['occurred --(nmod)--> 09']
+	['occurred --(conj)--> had', 'had --(dobj)--> depth']
+	['occurred --(conj)--> had', 'had --(nmod:tmod)--> miles']
+
+	* entity-paths for event['quake']38_9ecbplus.xmlsent:10837

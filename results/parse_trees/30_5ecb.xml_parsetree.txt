@@ -1,0 +1,55 @@
+
+-----------------------------------------
+docid:30_5ecb.xml
+-----------------------------------------
+
+sentence #:internet and phone communications between europe , the middle east and asia were severely disrupted on friday after three undersea cables were damaged in the mediterranean between sicily and north africa . 
+	[events]:[['disrupted'], ['damaged'], ['communications']]
+	[entities]:[['between', 'europe', ',', 'the', 'middle', 'east', 'and', 'asia'], ['cables'], ['internet'], ['in', 'the', 'mediterranean', 'between', 'sicily', 'and', 'north', 'africa'], ['phone'], ['on', 'friday']]
+*R982[disrupted]
+|--(nsubjp)--> *R975[communications]
+|                |--(compou)--> R950[internet]
+|                |                |--(cc)--> and
+|                |                |--(conj)--> R976[phone]
+|                |--(nmod)--> R965[europe]
+|                                 |--(case)--> R965[between]
+|                                 |--(punct)--> R965[,]
+|                                 |--(conj)--> R965[east]
+|                                 |                |--(det)--> R965[the]
+|                                 |                |--(compou)--> R965[middle]
+|                                 |--(cc)--> R965[and]
+|                                 |--(conj)--> R965[asia]
+|--(auxpas)--> were
+|--(advmod)--> severely
+|--(nmod)--> R968[friday]
+|                |--(case)--> R968[on]
+|--(advcl)--> *R953[damaged]
+|                |--(mark)--> after
+|                |--(nsubjp)--> R951[cables]
+|                |                |--(nummod)--> three
+|                |                |--(compou)--> undersea
+|                |--(auxpas)--> were
+|                |--(nmod)--> R954[mediterranean]
+|                                 |--(case)--> R954[in]
+|                                 |--(det)--> R954[the]
+|                                 |--(nmod)--> R954[africa]
+|                                                  |--(case)--> R954[between]
+|                                                  |--(compou)--> R954[sicily]
+|                                                                   |--(cc)--> R954[and]
+|                                                                   |--(conj)--> R954[north]
+|--(punct)--> .
+
+	* entity-paths for event['disrupted']30_5ecb.xmlsent:7911
+	['disrupted --(nsubjpass)--> communications', 'communications --(compound)--> Internet']
+	['disrupted --(nsubjpass)--> communications', 'communications --(nmod)--> Europe']
+	['disrupted --(nmod)--> Friday']
+	['disrupted --(advcl)--> damaged', 'damaged --(nsubjpass)--> cables']
+	['disrupted --(advcl)--> damaged', 'damaged --(nmod)--> Mediterranean']
+
+	* entity-paths for event['damaged']30_5ecb.xmlsent:7911
+	['damaged --(nsubjpass)--> cables']
+	['damaged --(nmod)--> Mediterranean']
+
+	* entity-paths for event['communications']30_5ecb.xmlsent:7911
+	['communications --(compound)--> Internet']
+	['communications --(nmod)--> Europe']

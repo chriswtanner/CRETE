@@ -1,0 +1,51 @@
+
+-----------------------------------------
+docid:38_3ecb.xml
+-----------------------------------------
+
+sentence #:the 4.2-magnitude earthquake was recorded at approximately 9:27 a.m. sunday , according to the us geological survey , which originally had rated the quake as 4.4 in magnitude . 
+	[events]:[['quake'], ['according', 'to'], ['earthquake'], ['recorded']]
+	[entities]:[['at', 'approximately', '9:27', 'a.m.', 'sunday'], ['which'], ['us', 'geological', 'survey'], ['4.4'], ['4.2-magnitude']]
+*R1323[recorded]
+|--(nsubjp)--> *R1310[earthquake]
+|                |--(det)--> the
+|                |--(amod)--> R1324[4.2-magnitude]
+|--(auxpas)--> was
+|--(nmod)--> R1311[a.m.]
+|                |--(case)--> R1311[at]
+|                |--(nummod)--> R1311[9:27]
+|                                 |--(advmod)--> R1311[approximately]
+|--(nmod:t)--> R1311[sunday]
+|--(punct)--> ,
+|--(nmod)--> R1243[survey]
+|                |--(case)--> *R1313[according]
+|                |                |--(mwe)--> *R1313[to]
+|                |--(det)--> the
+|                |--(compou)--> R1243[us]
+|                |--(compou)--> R1243[geological]
+|                |--(punct)--> ,
+|                |--(acl:re)--> rated
+|                                 |--(nsubj)--> R1243[which]
+|                                 |--(advmod)--> originally
+|                                 |--(aux)--> had
+|                                 |--(dobj)--> *R1310[quake]
+|                                 |                |--(det)--> the
+|                                 |                |--(nmod)--> R1314[4.4]
+|                                 |                                 |--(case)--> as
+|                                 |--(nmod)--> magnitude
+|                                                  |--(case)--> in
+|--(punct)--> .
+
+	* entity-paths for event['quake']38_3ecb.xmlsent:10762
+	['quake --(nmod)--> 4.4']
+
+	* entity-paths for event['according', 'to']38_3ecb.xmlsent:10762
+
+	* entity-paths for event['earthquake']38_3ecb.xmlsent:10762
+	['earthquake --(amod)--> 4.2-magnitude']
+
+	* entity-paths for event['recorded']38_3ecb.xmlsent:10762
+	['recorded --(nsubjpass)--> earthquake', 'earthquake --(amod)--> 4.2-magnitude']
+	['recorded --(nmod)--> a.m.']
+	['recorded --(nmod:tmod)--> Sunday']
+	['recorded --(nmod)--> Survey']

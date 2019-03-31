@@ -1,0 +1,64 @@
+
+-----------------------------------------
+docid:8_9ecbplus.xml
+-----------------------------------------
+
+sentence #:the greek prime minister has denounced what he called the "murder" of three bank workers killed when the building they were in was torched during protests in athens against harsh new austerity measures . 
+	[events]:[['killed'], ['torched'], ['protests'], ['"murder"'], ['measures']]
+	[entities]:[['in', 'athens'], ['building'], ['they'], ['workers']]
+denounced
+|--(nsubj)--> minister
+|                |--(det)--> the
+|                |--(amod)--> greek
+|                |--(amod)--> prime
+|--(aux)--> has
+|--(ccomp)--> called
+|                |--(dobj)--> what
+|                |--(nsubj)--> he
+|                |--(dobj)--> *R1753["murder"]
+|                                 |--(det)--> the
+|                                 |--(punct)--> *R1753["murder"]
+|                                 |--(punct)--> *R1753["murder"]
+|                                 |--(nmod)--> R1754[workers]
+|                                                  |--(case)--> of
+|                                                  |--(nummod)--> three
+|                                                  |--(compou)--> bank
+|                                                  |--(acl)--> *R1753[killed]
+|                                                                   |--(advcl)--> *R1790[torched]
+|                                                                                    |--(advmod)--> when
+|                                                                                    |--(nsubjp)--> R1752[building]
+|                                                                                    |                |--(det)--> the
+|                                                                                    |                |--(acl:re)--> in
+|                                                                                    |                                 |--(nsubj)--> R1754[they]
+|                                                                                    |                                 |--(cop)--> were
+|                                                                                    |--(auxpas)--> was
+|                                                                                    |--(nmod)--> *R1780[protests]
+|                                                                                    |                |--(case)--> during
+|                                                                                    |                |--(nmod)--> R1792[athens]
+|                                                                                    |                                 |--(case)--> R1792[in]
+|                                                                                    |--(nmod)--> *R1760[measures]
+|                                                                                                     |--(case)--> against
+|                                                                                                     |--(amod)--> harsh
+|                                                                                                     |--(amod)--> new
+|                                                                                                     |--(compou)--> austerity
+|--(punct)--> .
+
+	* entity-paths for event['killed']8_9ecbplus.xmlsent:15237
+	['killed --(advcl)--> torched', 'torched --(nsubjpass)--> building']
+	['killed --(advcl)--> torched', 'torched --(nmod)--> protests', 'protests --(nmod)--> Athens']
+
+	* entity-paths for event['torched']8_9ecbplus.xmlsent:15237
+	['torched --(nsubjpass)--> building']
+	['torched --(nmod)--> protests', 'protests --(nmod)--> Athens']
+
+	* entity-paths for event['protests']8_9ecbplus.xmlsent:15237
+	['protests --(nmod)--> Athens']
+
+	* entity-paths for event['"murder"']8_9ecbplus.xmlsent:15237
+	['murder --(punct)--> "', 'murder --(punct)--> "', 'murder --(nmod)--> workers']
+	['murder --(punct)--> "', 'murder --(nmod)--> workers']
+	['murder --(punct)--> "', 'murder --(punct)--> "', 'murder --(nmod)--> workers']
+	['murder --(punct)--> "', 'murder --(nmod)--> workers']
+	['murder --(nmod)--> workers']
+
+	* entity-paths for event['measures']8_9ecbplus.xmlsent:15237

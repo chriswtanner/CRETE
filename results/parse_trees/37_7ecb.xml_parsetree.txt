@@ -1,0 +1,56 @@
+
+-----------------------------------------
+docid:37_7ecb.xml
+-----------------------------------------
+
+sentence #:a series of earthquakes killed a 10-year-old girl and injured dozens sunday in remote eastern indonesia and briefly triggered fears of another tsunami in a country still recovering from such a disaster in 2004 . 
+	[events]:[['killed'], ['tsunami'], ['earthquakes'], ['disaster'], ['injured']]
+	[entities]:[['in', 'remote', 'eastern', 'indonesia'], ['sunday'], ['girl'], ['dozens']]
+*R1283[killed]
+|--(nsubj)--> series
+|                |--(det)--> a
+|                |--(nmod)--> *R1277[earthquakes]
+|                                 |--(case)--> of
+|--(dobj)--> R1284[girl]
+|                |--(det)--> a
+|                |--(amod)--> 10-year-old
+|                |--(cc)--> and
+|                |--(conj)--> R1289[dozens]
+|                                 |--(amod)--> *R1288[injured]
+|--(nmod:t)--> R1268[sunday]
+|--(nmod)--> R1267[indonesia]
+|                |--(case)--> R1267[in]
+|                |--(amod)--> R1267[remote]
+|                |--(amod)--> R1267[eastern]
+|--(cc)--> and
+|--(conj)--> triggered
+|                |--(advmod)--> briefly
+|                |--(dobj)--> fears
+|                                 |--(nmod)--> *R1294[tsunami]
+|                                                  |--(case)--> of
+|                                                  |--(det)--> another
+|                                                  |--(nmod)--> country
+|                                                                   |--(case)--> in
+|                                                                   |--(det)--> a
+|                                                                   |--(acl)--> recovering
+|                                                                                    |--(advmod)--> still
+|                                                                                    |--(nmod)--> *R1241[disaster]
+|                                                                                                     |--(case)--> from
+|                                                                                                     |--(amod)--> such
+|                                                                                                     |--(det)--> a
+|                                                                                                     |--(nmod)--> 2004
+|                                                                                                                      |--(case)--> in
+|--(punct)--> .
+
+	* entity-paths for event['killed']37_7ecb.xmlsent:10669
+	['killed --(dobj)--> girl']
+	['killed --(nmod:tmod)--> Sunday']
+	['killed --(nmod)--> Indonesia']
+
+	* entity-paths for event['tsunami']37_7ecb.xmlsent:10669
+
+	* entity-paths for event['earthquakes']37_7ecb.xmlsent:10669
+
+	* entity-paths for event['disaster']37_7ecb.xmlsent:10669
+
+	* entity-paths for event['injured']37_7ecb.xmlsent:10669

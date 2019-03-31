@@ -1,0 +1,45 @@
+
+-----------------------------------------
+docid:3_3ecb.xml
+-----------------------------------------
+
+sentence #:former kutztown university football player brian nichols has received a sentence of life in prison without parole for a march 2005 shooting spree in an atlanta courthouse , according to reports . 
+	[events]:[['sentence'], ['shooting']]
+	[entities]:[['reports'], ['brian', 'nichols'], ['life', 'in', 'prison']]
+received
+|--(nsubj)--> R903[nichols]
+|                |--(amod)--> former
+|                |--(compou)--> kutztown
+|                |--(compou)--> university
+|                |--(compou)--> football
+|                |--(compou)--> player
+|                |--(compou)--> R903[brian]
+|--(aux)--> has
+|--(dobj)--> *R906[sentence]
+|                |--(det)--> a
+|                |--(nmod)--> R909[life]
+|                                 |--(case)--> of
+|                                 |--(nmod)--> R909[prison]
+|                                                  |--(case)--> R909[in]
+|--(nmod)--> parole
+|                |--(case)--> without
+|                |--(nmod)--> spree
+|                                 |--(case)--> for
+|                                 |--(det)--> a
+|                                 |--(compou)--> march
+|                                 |--(nummod)--> 2005
+|                                 |--(amod)--> *R931[shooting]
+|--(nmod)--> courthouse
+|                |--(case)--> in
+|                |--(det)--> an
+|                |--(compou)--> atlanta
+|--(punct)--> ,
+|--(nmod)--> R932[reports]
+|                |--(case)--> according
+|                                 |--(mwe)--> to
+|--(punct)--> .
+
+	* entity-paths for event['sentence']3_3ecb.xmlsent:7457
+	['sentence --(nmod)--> life']
+
+	* entity-paths for event['shooting']3_3ecb.xmlsent:7457

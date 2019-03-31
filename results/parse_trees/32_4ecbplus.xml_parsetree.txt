@@ -1,0 +1,94 @@
+
+-----------------------------------------
+docid:32_4ecbplus.xml
+-----------------------------------------
+
+sentence #:a man has been remanded in custody after being charged with the murder of his mother and sister in cumbria . 
+	[events]:[['charged'], ['murder']]
+	[entities]:[['in', 'cumbria'], ['man'], ['sister'], ['mother']]
+remanded
+|--(nsubjp)--> R1033[man]
+|                |--(det)--> a
+|--(aux)--> has
+|--(auxpas)--> been
+|--(nmod)--> custody
+|                |--(case)--> in
+|--(advcl)--> *R1034[charged]
+|                |--(mark)--> after
+|                |--(auxpas)--> being
+|                |--(nmod)--> *R1031[murder]
+|                |                |--(case)--> with
+|                |                |--(det)--> the
+|                |                |--(nmod)--> R1035[mother]
+|                |                                 |--(case)--> of
+|                |                                 |--(nmod:p)--> his
+|                |                                 |--(cc)--> and
+|                |                                 |--(conj)--> R1036[sister]
+|                |--(nmod)--> R1032[cumbria]
+|                                 |--(case)--> R1032[in]
+|--(punct)--> .
+
+	* entity-paths for event['charged']32_4ecbplus.xmlsent:8852
+	['charged --(nmod)--> murder', 'murder --(nmod)--> mother']
+	['charged --(nmod)--> Cumbria']
+
+	* entity-paths for event['murder']32_4ecbplus.xmlsent:8852
+	['murder --(nmod)--> mother']
+
+sentence #:the bodies of alice mcmeekin , 58 , and kathryn jenkin , 20 , were found at a terraced house in newton street , millom , on saturday . 
+	[events]:[['found']]
+	[entities]:[['alice', 'mcmeekin'], ['on', 'saturday'], ['at', 'a', 'terraced', 'house', 'in', 'newton', 'street', ',', 'millom'], ['kathryn', 'jenkin'], ['bodies']]
+*R1039[found]
+|--(nsubjp)--> R1041[bodies]
+|                |--(det)--> the
+|                |--(nmod)--> R1035[mcmeekin]
+|                |                |--(case)--> of
+|                |                |--(compou)--> R1035[alice]
+|                |                |--(punct)--> ,
+|                |                |--(conj)--> 58
+|                |                |--(punct)--> ,
+|                |                |--(cc)--> and
+|                |                |--(conj)--> R1036[jenkin]
+|                |                                 |--(compou)--> R1036[kathryn]
+|                |--(punct)--> ,
+|                |--(amod)--> 20
+|                |--(punct)--> ,
+|--(auxpas)--> were
+|--(nmod)--> R1042[house]
+|                |--(case)--> R1042[at]
+|                |--(det)--> R1042[a]
+|                |--(amod)--> R1042[terraced]
+|                |--(nmod)--> R1042[street]
+|                                 |--(case)--> R1042[in]
+|                                 |--(compou)--> R1042[newton]
+|                                 |--(punct)--> R1042[,]
+|                                 |--(appos)--> R1042[millom]
+|                                 |--(punct)--> ,
+|--(nmod)--> R1070[saturday]
+|                |--(case)--> R1070[on]
+|--(punct)--> .
+
+	* entity-paths for event['found']32_4ecbplus.xmlsent:8853
+	['found --(nsubjpass)--> bodies']
+	['found --(nmod)--> house']
+	['found --(nmod)--> Saturday']
+
+sentence #:john jenkin accused of millom mother and sister murder 
+	[events]:[['murder'], ['accused']]
+	[entities]:[['sister'], ['mother'], ['john', 'jenkin'], ['millom']]
+*R1034[accused]
+|--(nsubj)--> R1033[jenkin]
+|                |--(compou)--> R1033[john]
+|--(nmod)--> R1035[mother]
+                 |--(case)--> of
+                 |--(compou)--> R1032[millom]
+                 |--(cc)--> and
+                 |--(conj)--> *R1031[murder]
+                                  |--(compou)--> R1036[sister]
+
+	* entity-paths for event['murder']32_4ecbplus.xmlsent:8851
+	['murder --(compound)--> sister']
+
+	* entity-paths for event['accused']32_4ecbplus.xmlsent:8851
+	['accused --(nsubj)--> Jenkin']
+	['accused --(nmod)--> mother']

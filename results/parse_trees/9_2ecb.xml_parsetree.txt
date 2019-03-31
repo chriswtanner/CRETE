@@ -1,0 +1,62 @@
+
+-----------------------------------------
+docid:9_2ecb.xml
+-----------------------------------------
+
+sentence #:the interior department yesterday finalized rules changing the way it administers the endangered species act , enabling other government agencies to decide on their own whether a project would harm an imperiled species without an independent scientific review . 
+	[events]:[['harm'], ['decide'], ['scientific', 'review'], ['changing']]
+	[entities]:[['project'], ['their'], ['species'], ['it'], ['rules'], ['endangered', 'species', 'act'], ['interior', 'department'], ['government', 'agencies']]
+finalized
+|--(nsubj)--> yesterday
+|                |--(det)--> the
+|                |--(compou)--> R1811[interior]
+|                |--(compou)--> R1811[department]
+|--(dobj)--> R1802[rules]
+|                |--(acl)--> *R1812[changing]
+|                                 |--(dobj)--> way
+|                                                  |--(det)--> the
+|                                                  |--(acl:re)--> administers
+|                                                                   |--(nsubj)--> R1811[it]
+|                                                                   |--(dobj)--> R1800[act]
+|                                                                                    |--(det)--> the
+|                                                                                    |--(compou)--> R1800[endangered]
+|                                                                                    |--(compou)--> R1800[species]
+|--(punct)--> ,
+|--(advcl)--> enabling
+|                |--(dobj)--> R1809[agencies]
+|                |                |--(amod)--> other
+|                |                |--(compou)--> R1809[government]
+|                |--(advcl)--> *R1815[decide]
+|                                 |--(mark)--> to
+|                                 |--(nmod)--> own
+|                                 |                |--(case)--> on
+|                                 |                |--(nmod:p)--> R1809[their]
+|                                 |--(ccomp)--> *R1816[harm]
+|                                                  |--(mark)--> whether
+|                                                  |--(nsubj)--> R1814[project]
+|                                                  |                |--(det)--> a
+|                                                  |--(aux)--> would
+|                                                  |--(dobj)--> R1805[species]
+|                                                  |                |--(det)--> an
+|                                                  |                |--(amod)--> imperiled
+|                                                  |--(nmod)--> *R1801[review]
+|                                                                   |--(case)--> without
+|                                                                   |--(det)--> an
+|                                                                   |--(amod)--> independent
+|                                                                   |--(amod)--> *R1801[scientific]
+|--(punct)--> .
+
+	* entity-paths for event['harm']9_2ecb.xmlsent:15434
+	['harm --(nsubj)--> project']
+	['harm --(dobj)--> species']
+
+	* entity-paths for event['decide']9_2ecb.xmlsent:15434
+	['decide --(nmod)--> own', 'own --(nmod:poss)--> their']
+	['decide --(ccomp)--> harm', 'harm --(nsubj)--> project']
+	['decide --(ccomp)--> harm', 'harm --(dobj)--> species']
+
+	* entity-paths for event['scientific', 'review']9_2ecb.xmlsent:15434
+
+	* entity-paths for event['changing']9_2ecb.xmlsent:15434
+	['changing --(dobj)--> way', 'way --(acl:relcl)--> administers', 'administers --(nsubj)--> it']
+	['changing --(dobj)--> way', 'way --(acl:relcl)--> administers', 'administers --(dobj)--> Act']

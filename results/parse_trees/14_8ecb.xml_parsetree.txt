@@ -1,0 +1,27 @@
+
+-----------------------------------------
+docid:14_8ecb.xml
+-----------------------------------------
+
+sentence #:a huge fire has destroyed the waitrose store in banstead high street . 
+	[events]:[['destroyed'], ['fire']]
+	[entities]:[['in', 'banstead', 'high', 'street'], ['the', 'waitrose', 'store']]
+*R297[destroyed]
+|--(nsubj)--> *R296[fire]
+|                |--(det)--> a
+|                |--(amod)--> huge
+|--(aux)--> has
+|--(dobj)--> R298[store]
+|                |--(det)--> R298[the]
+|                |--(compou)--> R298[waitrose]
+|--(nmod)--> R299[street]
+|                |--(case)--> R299[in]
+|                |--(compou)--> R299[banstead]
+|                |--(compou)--> R299[high]
+|--(punct)--> .
+
+	* entity-paths for event['destroyed']14_8ecb.xmlsent:1797
+	['destroyed --(dobj)--> store']
+	['destroyed --(nmod)--> Street']
+
+	* entity-paths for event['fire']14_8ecb.xmlsent:1797

@@ -1,0 +1,80 @@
+
+-----------------------------------------
+docid:25_11ecb.xml
+-----------------------------------------
+
+sentence #:the 23-year-old bush will miss the team 's final two regular season games against detroit and carolina with a sprained left knee . 
+	[events]:[['sprained'], ['games'], ['miss']]
+	[entities]:[['knee'], ['bush']]
+*R705[miss]
+|--(nsubj)--> R707[bush]
+|                |--(det)--> the
+|                |--(amod)--> 23-year-old
+|--(aux)--> will
+|--(dobj)--> *R718[games]
+|                |--(nmod:p)--> team
+|                |                |--(det)--> the
+|                |                |--(case)--> 's
+|                |--(amod)--> final
+|                |--(nummod)--> two
+|                |--(amod)--> regular
+|                |--(compou)--> season
+|                |--(nmod)--> detroit
+|                                 |--(case)--> against
+|                                 |--(cc)--> and
+|                                 |--(conj)--> carolina
+|--(nmod)--> R719[knee]
+|                |--(case)--> with
+|                |--(det)--> a
+|                |--(amod)--> *R720[sprained]
+|                |--(amod)--> left
+|--(punct)--> .
+
+	* entity-paths for event['sprained']25_11ecb.xmlsent:4953
+
+	* entity-paths for event['games']25_11ecb.xmlsent:4953
+
+	* entity-paths for event['miss']25_11ecb.xmlsent:4953
+	['miss --(nsubj)--> Bush']
+	['miss --(nmod)--> knee']
+
+sentence #:the new orleans saints placed reggie bush on the injured list on wednesday , ending the national football league season for the star running back . 
+	[events]:[['list'], ['ending'], ['placed']]
+	[entities]:[['running', 'back'], ['season'], ['the', 'new', 'orleans', 'saints'], ['wednesday'], ['bush']]
+*R711[placed]
+|--(nsubj)--> R706[saints]
+|                |--(det)--> R706[the]
+|                |--(compou)--> R706[new]
+|                |--(compou)--> R706[orleans]
+|--(dobj)--> R707[bush]
+|                |--(compou)--> reggie
+|                |--(nmod)--> *R712[list]
+|                                 |--(case)--> on
+|                                 |--(det)--> the
+|                                 |--(amod)--> injured
+|                                 |--(nmod)--> R721[wednesday]
+|                                                  |--(case)--> on
+|--(punct)--> ,
+|--(advcl)--> *R722[ending]
+|                |--(dobj)--> R708[season]
+|                                 |--(det)--> the
+|                                 |--(compou)--> national
+|                                 |--(compou)--> football
+|                                 |--(compou)--> league
+|                                 |--(nmod)--> star
+|                                                  |--(case)--> for
+|                                                  |--(det)--> the
+|                                                  |--(acl)--> R707[running]
+|                                                                   |--(advmod)--> R707[back]
+|--(punct)--> .
+
+	* entity-paths for event['list']25_11ecb.xmlsent:4952
+	['list --(nmod)--> Wednesday']
+
+	* entity-paths for event['ending']25_11ecb.xmlsent:4952
+	['ending --(dobj)--> season']
+
+	* entity-paths for event['placed']25_11ecb.xmlsent:4952
+	['placed --(nsubj)--> Saints']
+	['placed --(dobj)--> Bush']
+	['placed --(advcl)--> ending', 'ending --(dobj)--> season']

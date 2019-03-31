@@ -1,0 +1,80 @@
+
+-----------------------------------------
+docid:1_19ecb.xml
+-----------------------------------------
+
+sentence #:the actress , who shot to fame in 1999 movie american pie , decided to check in last week . 
+	[events]:[['decided'], ['shot', 'to', 'fame'], ['check', 'in']]
+	[entities]:[['american', 'pie'], ['who'], ['actress']]
+*R39[decided]
+|--(nsubj)--> R2[actress]
+|                |--(det)--> the
+|                |--(punct)--> ,
+|                |--(acl:re)--> *R83[shot]
+|                |                |--(nsubj)--> R2[who]
+|                |                |--(nmod)--> *R83[fame]
+|                |                |                |--(case)--> *R83[to]
+|                |                |--(nmod)--> R84[pie]
+|                |                                 |--(case)--> in
+|                |                                 |--(amod)--> R84[american]
+|                |                                                  |--(nmod:n)--> movie
+|                |                                                                   |--(nummod)--> 1999
+|                |--(punct)--> ,
+|--(xcomp)--> *R1[check]
+|                |--(mark)--> to
+|                |--(nmod)--> week
+|                                 |--(case)--> *R1[in]
+|                                 |--(amod)--> last
+|--(punct)--> .
+
+	* entity-paths for event['decided']1_19ecb.xmlsent:149
+	['decided --(nsubj)--> actress']
+
+	* entity-paths for event['shot', 'to', 'fame']1_19ecb.xmlsent:149
+
+	* entity-paths for event['check', 'in']1_19ecb.xmlsent:149
+
+sentence #:'tara reid has checked herself into the promises treatment center , ' her rep says in a statement . 
+	[events]:[['statement'], ['checked', 'into']]
+	[entities]:[['the', 'promises', 'treatment', 'center'], ['rep'], ["'tara", 'reid'], ['herself']]
+says
+|--(punct)--> R2['tara]
+|--(ccomp)--> *R1[checked]
+|                |--(nsubj)--> R2[reid]
+|                |                |--(compou)--> R2['tara]
+|                |--(aux)--> has
+|                |--(dobj)--> R2[herself]
+|                |--(nmod)--> R3[the]
+|                                 |--(case)--> *R1[into]
+|                                 |--(dep)--> R3[promises]
+|                                                  |--(dobj)--> R3[center]
+|                                                                   |--(compou)--> R3[treatment]
+|--(punct)--> ,
+|--(punct)--> '
+|--(nsubj)--> R4[rep]
+|                |--(nmod:p)--> her
+|--(nmod)--> *R0[statement]
+|                |--(case)--> in
+|                |--(det)--> a
+|--(punct)--> .
+
+	* entity-paths for event['statement']1_19ecb.xmlsent:151
+
+	* entity-paths for event['checked', 'into']1_19ecb.xmlsent:151
+
+sentence #:tara reid is seeking help at rehabilitation facility in california . 
+	[events]:[['seeking', 'help']]
+	[entities]:[['at', 'rehabilitation', 'facility', 'in', 'california'], ['tara', 'reid']]
+*R1[seeking]
+|--(nsubj)--> R2[reid]
+|                |--(compou)--> R2[tara]
+|--(aux)--> is
+|--(dobj)--> *R1[help]
+|--(nmod)--> R3[facility]
+|                |--(case)--> R3[at]
+|                |--(compou)--> R3[rehabilitation]
+|                |--(nmod)--> R3[california]
+|                                 |--(case)--> R3[in]
+|--(punct)--> .
+
+	* entity-paths for event['seeking', 'help']1_19ecb.xmlsent:148

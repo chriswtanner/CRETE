@@ -1,0 +1,72 @@
+
+-----------------------------------------
+docid:25_10ecb.xml
+-----------------------------------------
+
+sentence #:the associated press reports new orleans saints running back reggie bush ( knee ) will miss the rest of the season . 
+	[events]:[['miss']]
+	[entities]:[['reggie', 'bush'], ['new', 'orleans', 'saints'], ['season']]
+reports
+|--(nsubj)--> press
+|                |--(det)--> the
+|                |--(compou)--> associated
+|--(ccomp)--> *R705[miss]
+|                |--(nsubj)--> R706[saints]
+|                |                |--(compou)--> R706[new]
+|                |                |--(compou)--> R706[orleans]
+|                |                |--(acl)--> running
+|                |                                 |--(compou)--> back
+|                |                                 |--(dobj)--> R707[bush]
+|                |                                                  |--(compou)--> R707[reggie]
+|                |                                                  |--(appos)--> knee
+|                |                                                                   |--(punct)--> (
+|                |                                                                   |--(punct)--> )
+|                |--(aux)--> will
+|                |--(dobj)--> rest
+|                                 |--(det)--> the
+|                                 |--(nmod)--> R708[season]
+|                                                  |--(case)--> of
+|                                                  |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['miss']25_10ecb.xmlsent:4926
+	['miss --(nsubj)--> Saints']
+	['miss --(dobj)--> rest', 'rest --(nmod)--> season']
+
+sentence #:bush underwent an mri earlier this week , and head coach sean payton decided the team would place bush on injured reserve . 
+	[events]:[['injured', 'reserve'], ['place'], ['decided']]
+	[entities]:[['bush'], ['sean', 'payton'], ['bush'], ['team']]
+underwent
+|--(nsubj)--> R707[bush]
+|--(dobj)--> mri
+|                |--(det)--> an
+|--(nmod:t)--> week
+|                |--(advmod)--> earlier
+|                |--(det)--> this
+|--(punct)--> ,
+|--(cc)--> and
+|--(conj)--> *R709[decided]
+|                |--(nsubj)--> R710[payton]
+|                |                |--(compou)--> head
+|                |                |--(compou)--> coach
+|                |                |--(compou)--> R710[sean]
+|                |--(ccomp)--> *R711[place]
+|                                 |--(nsubj)--> R706[team]
+|                                 |                |--(det)--> the
+|                                 |--(aux)--> would
+|                                 |--(dobj)--> R707[bush]
+|                                                  |--(nmod)--> *R712[reserve]
+|                                                                   |--(case)--> on
+|                                                                   |--(compou)--> *R712[injured]
+|--(punct)--> .
+
+	* entity-paths for event['injured', 'reserve']25_10ecb.xmlsent:4927
+
+	* entity-paths for event['place']25_10ecb.xmlsent:4927
+	['place --(nsubj)--> team']
+	['place --(dobj)--> Bush']
+
+	* entity-paths for event['decided']25_10ecb.xmlsent:4927
+	['decided --(nsubj)--> Payton']
+	['decided --(ccomp)--> place', 'place --(nsubj)--> team']
+	['decided --(ccomp)--> place', 'place --(dobj)--> Bush']

@@ -1,0 +1,75 @@
+
+-----------------------------------------
+docid:5_8ecbplus.xml
+-----------------------------------------
+
+sentence #:jim o'brien was terminated from his position as head men's basketball coach at ohio state university following the disclosure that he loaned a recruit's mother money . 
+	[events]:[['position'], ['terminated']]
+	[entities]:[['coach'], ['jim', "o'brien"], ['he']]
+*R1683[terminated]
+|--(nsubjp)--> R1684[o'brien]
+|                |--(compou)--> R1684[jim]
+|--(auxpas)--> was
+|--(nmod)--> *R1687[position]
+|                |--(case)--> from
+|                |--(nmod:p)--> his
+|                |--(nmod)--> R1684[coach]
+|                                 |--(case)--> as
+|                                 |--(nmod:p)--> men's
+|                                 |                |--(compou)--> head
+|                                 |                |--(case)--> men's
+|                                 |--(compou)--> basketball
+|--(nmod)--> university
+|                |--(case)--> at
+|                |--(compou)--> ohio
+|                |--(compou)--> state
+|                |--(nmod)--> disclosure
+|                                 |--(case)--> following
+|                                 |--(det)--> the
+|                                 |--(dep)--> loaned
+|                                                  |--(mark)--> that
+|                                                  |--(nsubj)--> R1684[he]
+|                                                  |--(ccomp)--> recruit's
+|                                                                   |--(nsubj)--> a
+|                                                                   |--(ccomp)--> mother
+|                                                                                    |--(nsubj)--> recruit's
+|                                                                                    |--(dobj)--> money
+|--(punct)--> .
+
+	* entity-paths for event['position']5_8ecbplus.xmlsent:14282
+	['position --(nmod)--> coach']
+
+	* entity-paths for event['terminated']5_8ecbplus.xmlsent:14282
+	["terminated --(nsubjpass)--> O'Brien"]
+	['terminated --(nmod)--> position', 'position --(nmod)--> coach']
+	['terminated --(nmod)--> University', 'University --(nmod)--> disclosure', 'disclosure --(dep)--> loaned', 'loaned --(nsubj)--> he']
+
+sentence #:o'brien sued , claiming he was terminated without cause , and both parties filed motions for summary judgment . 
+	[events]:[['sued'], ['terminated']]
+	[entities]:[['he'], ["o'brien"]]
+*R1691[sued]
+|--(nsubj)--> R1684[o'brien]
+|--(punct)--> ,
+|--(xcomp)--> claiming
+|                |--(ccomp)--> *R1683[terminated]
+|                                 |--(nsubjp)--> R1684[he]
+|                                 |--(auxpas)--> was
+|                                 |--(nmod)--> cause
+|                                                  |--(case)--> without
+|--(punct)--> ,
+|--(cc)--> and
+|--(conj)--> filed
+|                |--(nsubj)--> parties
+|                |                |--(det)--> both
+|                |--(dobj)--> motions
+|                |--(nmod)--> judgment
+|                                 |--(case)--> for
+|                                 |--(compou)--> summary
+|--(punct)--> .
+
+	* entity-paths for event['sued']5_8ecbplus.xmlsent:14283
+	["sued --(nsubj)--> O'Brien"]
+	['sued --(xcomp)--> claiming', 'claiming --(ccomp)--> terminated', 'terminated --(nsubjpass)--> he']
+
+	* entity-paths for event['terminated']5_8ecbplus.xmlsent:14283
+	['terminated --(nsubjpass)--> he']

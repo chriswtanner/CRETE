@@ -1,0 +1,46 @@
+
+-----------------------------------------
+docid:19_4ecbplus.xml
+-----------------------------------------
+
+sentence #:brooklyn riot over teen's death : 16 - year - old shot by cops did not have a gun , says witness 
+	[events]:[['riot'], ['shot'], ['death']]
+	[entities]:[['cops'], ["teen's"], ['16', '-', 'year', '-', 'old'], ['gun']]
+says
+|--(nsubj)--> *R420[riot]
+|                |--(compou)--> brooklyn
+|                |--(nmod)--> *R414[death]
+|                |                |--(case)--> over
+|                |                |--(nmod:p)--> R415[teen's]
+|                |                                 |--(case)--> R415[teen's]
+|                |--(punct)--> :
+|                |--(dep)--> R415[16]
+|                |                |--(punct)--> R415[-]
+|                |                |--(dep)--> R415[year]
+|                |--(punct)--> R415[-]
+|                |--(dep)--> *R412[shot]
+|                |                |--(amod)--> R415[old]
+|                |                |--(nmod)--> R413[cops]
+|                |                                 |--(case)--> by
+|                |--(acl)--> have
+|                                 |--(aux)--> did
+|                                 |--(neg)--> not
+|                                 |--(dobj)--> R418[gun]
+|                                                  |--(det)--> a
+|--(punct)--> ,
+|--(dobj)--> witness
+
+	* entity-paths for event['riot']19_4ecbplus.xmlsent:3034
+	['riot --(nmod)--> death', 'death --(nmod:poss)--> teen']
+	['riot --(dep)--> 16']
+	['riot --(punct)--> -']
+	['riot --(dep)--> shot', 'shot --(amod)--> old']
+	['riot --(dep)--> shot', 'shot --(nmod)--> cops']
+	['riot --(acl)--> have', 'have --(dobj)--> gun']
+
+	* entity-paths for event['shot']19_4ecbplus.xmlsent:3034
+	['shot --(amod)--> old']
+	['shot --(nmod)--> cops']
+
+	* entity-paths for event['death']19_4ecbplus.xmlsent:3034
+	['death --(nmod:poss)--> teen']

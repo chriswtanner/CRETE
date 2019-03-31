@@ -1,0 +1,71 @@
+
+-----------------------------------------
+docid:24_4ecb.xml
+-----------------------------------------
+
+sentence #:armed robbers - some disguised as women - snatched $ 108 million worth of diamond rings , necklaces and luxury watches from a harry winston boutique on a posh paris avenue in one of the largest jewel heists in history , officials said friday . 
+	[events]:[['snatched'], ['heists'], ['said'], ['history'], ['disguised']]
+	[entities]:[['officials'], ['necklaces'], ['a', 'harry', 'winston', 'boutique', 'on', 'a', 'posh', 'paris', 'avenue'], ['friday'], ['robbers'], ['watches'], ['rings']]
+*R688[said]
+|--(advcl)--> armed
+|                |--(ccomp)--> *R663[snatched]
+|                                 |--(nsubj)--> R664[robbers]
+|                                 |                |--(punct)--> -
+|                                 |                |--(dep)--> some
+|                                 |                |                |--(acl)--> *R682[disguised]
+|                                 |                |                                 |--(nmod)--> women
+|                                 |                |                                                  |--(case)--> as
+|                                 |                |--(punct)--> -
+|                                 |--(dobj)--> worth
+|                                 |                |--(nummod)--> $
+|                                 |                |                |--(nummod)--> million
+|                                 |                |                                 |--(compou)--> 108
+|                                 |                |--(nmod)--> R693[necklaces]
+|                                 |                                 |--(case)--> of
+|                                 |                                 |--(compou)--> diamond
+|                                 |                                 |--(compou)--> R692[rings]
+|                                 |                                 |--(punct)--> ,
+|                                 |                                 |--(cc)--> and
+|                                 |                                 |--(conj)--> R691[watches]
+|                                 |                                 |                |--(compou)--> luxury
+|                                 |                                 |--(nmod)--> R665[boutique]
+|                                 |                                                  |--(case)--> from
+|                                 |                                                  |--(det)--> R665[a]
+|                                 |                                                  |--(compou)--> R665[harry]
+|                                 |                                                  |--(compou)--> R665[winston]
+|                                 |--(nmod)--> R665[avenue]
+|                                                  |--(case)--> R665[on]
+|                                                  |--(det)--> R665[a]
+|                                                  |--(amod)--> R665[posh]
+|                                                  |--(compou)--> R665[paris]
+|                                                  |--(nmod)--> one
+|                                                                   |--(case)--> in
+|                                                                   |--(nmod)--> *R701[heists]
+|                                                                                    |--(case)--> of
+|                                                                                    |--(det)--> the
+|                                                                                    |--(amod)--> largest
+|                                                                                    |--(compou)--> jewel
+|                                                                                    |--(nmod)--> *R687[history]
+|                                                                                                     |--(case)--> in
+|--(punct)--> ,
+|--(nsubj)--> R689[officials]
+|--(nmod:t)--> R686[friday]
+|--(punct)--> .
+
+	* entity-paths for event['snatched']24_4ecb.xmlsent:4853
+	['snatched --(nsubj)--> robbers']
+	['snatched --(dobj)--> worth', 'worth --(nmod)--> necklaces']
+	['snatched --(nmod)--> avenue']
+
+	* entity-paths for event['heists']24_4ecb.xmlsent:4853
+
+	* entity-paths for event['said']24_4ecb.xmlsent:4853
+	['said --(advcl)--> Armed', 'Armed --(ccomp)--> snatched', 'snatched --(nsubj)--> robbers']
+	['said --(advcl)--> Armed', 'Armed --(ccomp)--> snatched', 'snatched --(dobj)--> worth', 'worth --(nmod)--> necklaces']
+	['said --(advcl)--> Armed', 'Armed --(ccomp)--> snatched', 'snatched --(nmod)--> avenue']
+	['said --(nsubj)--> officials']
+	['said --(nmod:tmod)--> Friday']
+
+	* entity-paths for event['history']24_4ecb.xmlsent:4853
+
+	* entity-paths for event['disguised']24_4ecb.xmlsent:4853

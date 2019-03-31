@@ -1,0 +1,95 @@
+
+-----------------------------------------
+docid:32_9ecbplus.xml
+-----------------------------------------
+
+sentence #:trial date set for man accused of double murder in millom 
+	[events]:[['double', 'murder'], ['trial'], ['set'], ['accused']]
+	[entities]:[['man'], ['in', 'millom'], ['date']]
+R1064[date]
+|--(compou)--> *R1063[trial]
+|--(dep)--> *R1062[set]
+                 |--(nmod)--> *R1034[accused]
+                 |                |--(case)--> for
+                 |                |--(compou)--> R1033[man]
+                 |                |--(nmod)--> *R1031[murder]
+                 |                                 |--(case)--> of
+                 |                                 |--(compou)--> *R1031[double]
+                 |--(nmod)--> R1032[millom]
+                                  |--(case)--> R1032[in]
+
+	* entity-paths for event['double', 'murder']32_9ecbplus.xmlsent:8939
+
+	* entity-paths for event['trial']32_9ecbplus.xmlsent:8939
+
+	* entity-paths for event['set']32_9ecbplus.xmlsent:8939
+	['SET --(nmod)--> ACCUSED', 'ACCUSED --(compound)--> MAN']
+	['SET --(nmod)--> MILLOM']
+
+	* entity-paths for event['accused']32_9ecbplus.xmlsent:8939
+	['ACCUSED --(compound)--> MAN']
+
+sentence #:a trial date's been set for a millom man accused of murdering his mother and sister . 
+	[events]:[['accused'], ['set'], ['trial'], ['murdering']]
+	[entities]:[['millom', 'man'], ["date's"], ['sister'], ['mother']]
+*R1034[accused]
+|--(nsubj)--> R1033[man]
+|                |--(nmod:p)--> R1064[date's]
+|                |                |--(det)--> a
+|                |                |--(compou)--> *R1063[trial]
+|                |                |--(case)--> R1064[date's]
+|                |--(acl)--> *R1062[set]
+|                                 |--(auxpas)--> been
+|                                 |--(nmod)--> R1033[millom]
+|                                                  |--(case)--> for
+|                                                  |--(det)--> a
+|--(advcl)--> *R1031[murdering]
+|                |--(mark)--> of
+|                |--(dobj)--> R1035[mother]
+|                                 |--(nmod:p)--> his
+|                                 |--(cc)--> and
+|                                 |--(conj)--> R1036[sister]
+|--(punct)--> .
+
+	* entity-paths for event['accused']32_9ecbplus.xmlsent:8941
+	['accused --(nsubj)--> man']
+	['accused --(advcl)--> murdering', 'murdering --(dobj)--> mother']
+
+	* entity-paths for event['set']32_9ecbplus.xmlsent:8941
+	['set --(nmod)--> Millom']
+
+	* entity-paths for event['trial']32_9ecbplus.xmlsent:8941
+
+	* entity-paths for event['murdering']32_9ecbplus.xmlsent:8941
+	['murdering --(dobj)--> mother']
+
+sentence #:the bodies of alice mcmeekin and katie jenkin were found at their newton street home in millom on saturday morning . 
+	[events]:[['found']]
+	[entities]:[['bodies'], ['at', 'their', 'newton', 'street', 'home', 'in', 'millom'], ['katie', 'jenkin'], ['on', 'saturday', 'morning'], ['alice', 'mcmeekin']]
+*R1039[found]
+|--(nsubjp)--> R1041[bodies]
+|                |--(det)--> the
+|                |--(nmod)--> R1035[mcmeekin]
+|                                 |--(case)--> of
+|                                 |--(compou)--> R1035[alice]
+|                                 |--(cc)--> and
+|                                 |--(conj)--> R1036[jenkin]
+|                                                  |--(compou)--> R1036[katie]
+|--(auxpas)--> were
+|--(nmod)--> R1042[home]
+|                |--(case)--> R1042[at]
+|                |--(nmod:p)--> R1042[their]
+|                |--(compou)--> R1042[newton]
+|                |--(compou)--> R1042[street]
+|                |--(nmod)--> R1042[millom]
+|                                 |--(case)--> R1042[in]
+|--(nmod)--> R1070[saturday]
+|                |--(case)--> R1070[on]
+|--(nmod:t)--> R1070[morning]
+|--(punct)--> .
+
+	* entity-paths for event['found']32_9ecbplus.xmlsent:8944
+	['found --(nsubjpass)--> bodies']
+	['found --(nmod)--> home']
+	['found --(nmod)--> Saturday']
+	['found --(nmod:tmod)--> morning']

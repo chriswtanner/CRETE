@@ -1,0 +1,98 @@
+
+-----------------------------------------
+docid:27_5ecb.xml
+-----------------------------------------
+
+sentence #:microsoft has issued an emergency patch for its internet explorer browser , aiming to fix a critical flaw that allowed hackers to take over computers merely by steering them to infected websites . 
+	[events]:[['issued'], ['fix'], ['take', 'over'], ['allowed']]
+	[entities]:[['that'], ['them'], ['microsoft'], ['flaw'], ['computers'], ['its'], ['patch'], ['internet', 'explorer'], ['hackers']]
+*R763[issued]
+|--(nsubj)--> R764[microsoft]
+|--(aux)--> has
+|--(dobj)--> R765[patch]
+|                |--(det)--> an
+|                |--(compou)--> emergency
+|                |--(nmod)--> R768[internet]
+|                                 |--(case)--> for
+|                                 |--(nmod:p)--> R764[its]
+|--(nmod:t)--> browser
+|                |--(compou)--> R768[explorer]
+|--(punct)--> ,
+|--(advcl)--> aiming
+|                |--(xcomp)--> *R782[fix]
+|                                 |--(mark)--> to
+|                                 |--(dobj)--> R767[flaw]
+|                                                  |--(det)--> a
+|                                                  |--(amod)--> critical
+|                                                  |--(acl:re)--> *R769[allowed]
+|                                                                   |--(nsubj)--> R767[that]
+|                                                                   |--(dobj)--> R770[hackers]
+|                                                                   |--(xcomp)--> *R784[take]
+|                                                                                    |--(mark)--> to
+|                                                                                    |--(compou)--> *R784[over]
+|                                                                                    |--(dobj)--> R771[computers]
+|                                                                                    |--(advmod)--> merely
+|                                                                                    |--(advcl)--> steering
+|                                                                                                     |--(mark)--> by
+|                                                                                                     |--(dobj)--> R771[them]
+|                                                                                                     |--(nmod)--> websites
+|                                                                                                                      |--(case)--> to
+|                                                                                                                      |--(amod)--> infected
+|--(punct)--> .
+
+	* entity-paths for event['issued']27_5ecb.xmlsent:5919
+	['issued --(nsubj)--> Microsoft']
+	['issued --(dobj)--> patch']
+	['issued --(nmod:tmod)--> browser', 'browser --(compound)--> Explorer']
+	['issued --(advcl)--> aiming', 'aiming --(xcomp)--> fix', 'fix --(dobj)--> flaw']
+
+	* entity-paths for event['fix']27_5ecb.xmlsent:5919
+	['fix --(dobj)--> flaw']
+
+	* entity-paths for event['take', 'over']27_5ecb.xmlsent:5919
+
+	* entity-paths for event['allowed']27_5ecb.xmlsent:5919
+	['allowed --(nsubj)--> that']
+	['allowed --(dobj)--> hackers']
+	['allowed --(xcomp)--> take', 'take --(dobj)--> computers']
+	['allowed --(xcomp)--> take', 'take --(advcl)--> steering', 'steering --(dobj)--> them']
+
+sentence #:microsoft wednesday took the rare step of issuing the patch after numerous security experts advised people to switch to rival browsers until microsoft fixed the problem . 
+	[events]:[['fixed'], ['issuing']]
+	[entities]:[['problem'], ['people'], ['microsoft'], ['microsoft'], ['patch'], ['browsers'], ['wednesday']]
+took
+|--(nsubj)--> R766[wednesday]
+|                |--(compou)--> R764[microsoft]
+|--(dobj)--> step
+|                |--(det)--> the
+|                |--(amod)--> rare
+|                |--(acl)--> *R763[issuing]
+|                                 |--(mark)--> of
+|                                 |--(dobj)--> R765[patch]
+|                                 |                |--(det)--> the
+|                                 |--(advcl)--> advised
+|                                                  |--(mark)--> after
+|                                                  |--(nsubj)--> experts
+|                                                  |                |--(amod)--> numerous
+|                                                  |                |--(compou)--> security
+|                                                  |--(dobj)--> R789[people]
+|                                                  |--(xcomp)--> switch
+|                                                                   |--(mark)--> to
+|                                                                   |--(nmod)--> R800[browsers]
+|                                                                   |                |--(case)--> to
+|                                                                   |                |--(amod)--> rival
+|                                                                   |--(nmod)--> R764[microsoft]
+|                                                                                    |--(case)--> until
+|                                                                                    |--(acl)--> *R782[fixed]
+|                                                                                                     |--(dobj)--> R767[problem]
+|                                                                                                                      |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['fixed']27_5ecb.xmlsent:5920
+	['fixed --(dobj)--> problem']
+
+	* entity-paths for event['issuing']27_5ecb.xmlsent:5920
+	['issuing --(dobj)--> patch']
+	['issuing --(advcl)--> advised', 'advised --(dobj)--> people']
+	['issuing --(advcl)--> advised', 'advised --(xcomp)--> switch', 'switch --(nmod)--> browsers']
+	['issuing --(advcl)--> advised', 'advised --(xcomp)--> switch', 'switch --(nmod)--> Microsoft']

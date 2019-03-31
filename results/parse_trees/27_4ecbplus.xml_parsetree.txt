@@ -1,0 +1,87 @@
+
+-----------------------------------------
+docid:27_4ecbplus.xml
+-----------------------------------------
+
+sentence #:microsoft has rushed out a temporary fix to address ongoing attacks targeting an internet explorer zero - day vulnerability . 
+	[events]:[['rushed', 'out'], ['targeting'], ['address'], ['attacks']]
+	[entities]:[['zero', '-', 'day', 'vulnerability'], ['fix'], ['microsoft'], ['internet', 'explorer']]
+*R779[rushed]
+|--(nsubj)--> R764[microsoft]
+|--(aux)--> has
+|--(compou)--> *R779[out]
+|--(dobj)--> R780[fix]
+|                |--(det)--> a
+|                |--(amod)--> temporary
+|--(advcl)--> *R798[address]
+|                |--(mark)--> to
+|                |--(dobj)--> *R773[attacks]
+|                                 |--(amod)--> ongoing
+|                                 |--(acl)--> *R799[targeting]
+|                                                  |--(dobj)--> R768[internet]
+|                                                                   |--(det)--> an
+|                                                                   |--(dep)--> R768[explorer]
+|                                                                   |                |--(nummod)--> R777[zero]
+|                                                                   |--(punct)--> R777[-]
+|                                                                   |--(dep)--> R777[vulnerability]
+|                                                                                    |--(compou)--> R777[day]
+|--(punct)--> .
+
+	* entity-paths for event['rushed', 'out']27_4ecbplus.xmlsent:5902
+
+	* entity-paths for event['targeting']27_4ecbplus.xmlsent:5902
+	['targeting --(dobj)--> Internet']
+
+	* entity-paths for event['address']27_4ecbplus.xmlsent:5902
+	['address --(dobj)--> attacks', 'attacks --(acl)--> targeting', 'targeting --(dobj)--> Internet']
+
+	* entity-paths for event['attacks']27_4ecbplus.xmlsent:5902
+	['attacks --(acl)--> targeting', 'targeting --(dobj)--> Internet']
+
+sentence #:microsoft rushes emergency fix to address internet explorer attacks 
+	[events]:[['rushes'], ['attacks'], ['address']]
+	[entities]:[['fix'], ['internet', 'explorer'], ['microsoft']]
+emergency
+|--(compou)--> R764[microsoft]
+|--(compou)--> *R779[rushes]
+|--(dep)--> R780[fix]
+                 |--(nmod)--> *R773[attacks]
+                                  |--(case)--> to
+                                  |--(compou)--> *R798[address]
+                                  |--(compou)--> R768[internet]
+                                  |--(compou)--> R768[explorer]
+
+	* entity-paths for event['rushes']27_4ecbplus.xmlsent:5900
+
+	* entity-paths for event['attacks']27_4ecbplus.xmlsent:5900
+	['Attacks --(compound)--> Internet']
+	['Attacks --(compound)--> Explorer']
+
+	* entity-paths for event['address']27_4ecbplus.xmlsent:5900
+
+sentence #:the software giant said the fix - it temporary workaround should be effective in preventing a successful attack . 
+	[events]:[['attack'], ['preventing']]
+	[entities]:[['software', 'giant'], ['fix', '-', 'it', 'temporary', 'workaround']]
+said
+|--(nsubj)--> R764[giant]
+|                |--(det)--> the
+|                |--(compou)--> R764[software]
+|--(ccomp)--> R780[fix]
+|                |--(nsubj)--> the
+|--(punct)--> R780[-]
+|--(parata)--> effective
+|                |--(nsubj)--> R780[it]
+|                |                |--(dep)--> R780[workaround]
+|                |                                 |--(amod)--> R780[temporary]
+|                |--(aux)--> should
+|                |--(cop)--> be
+|                |--(advcl)--> *R798[preventing]
+|                                 |--(mark)--> in
+|                                 |--(dobj)--> *R773[attack]
+|                                                  |--(det)--> a
+|                                                  |--(amod)--> successful
+|--(punct)--> .
+
+	* entity-paths for event['attack']27_4ecbplus.xmlsent:5903
+
+	* entity-paths for event['preventing']27_4ecbplus.xmlsent:5903

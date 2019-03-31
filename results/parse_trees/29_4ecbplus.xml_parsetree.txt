@@ -1,0 +1,105 @@
+
+-----------------------------------------
+docid:29_4ecbplus.xml
+-----------------------------------------
+
+sentence #:the indianapolis colts clinched a playoff spot and the five seed in the afc playoffs with a 20 - 13 win over the kansas city chiefs on another andrew luck game - winning drive , his seventh of the season . 
+	[events]:[['drive'], ['win'], ['clinched'], ['game'], ['playoff'], ['afc', 'playoffs'], ['winning']]
+	[entities]:[['five', 'seed'], ['spot'], ['andrew', 'luck'], ['kansas', 'city', 'chiefs'], ['20', '-', '13'], ['indianapolis', 'colts']]
+*R862[clinched]
+|--(nsubj)--> R852[colts]
+|                |--(det)--> the
+|                |--(compou)--> R852[indianapolis]
+|--(dobj)--> R866[spot]
+|                |--(det)--> a
+|                |--(compou)--> *R861[playoff]
+|                |--(cc)--> and
+|                |--(conj)--> R866[seed]
+|                                 |--(det)--> the
+|                                 |--(nummod)--> R866[five]
+|--(nmod)--> *R861[playoffs]
+|                |--(case)--> in
+|                |--(det)--> the
+|                |--(compou)--> *R861[afc]
+|--(nmod)--> R860[20]
+|                |--(case)--> with
+|                |--(det)--> a
+|--(punct)--> R860[-]
+|--(parata)--> *R859[win]
+|                |--(nsubj)--> R860[13]
+|                |--(nmod)--> R858[chiefs]
+|                |                |--(case)--> over
+|                |                |--(det)--> the
+|                |                |--(compou)--> R858[kansas]
+|                |                |--(compou)--> R858[city]
+|                |--(nmod)--> *R871[game]
+|                |                |--(case)--> on
+|                |                |--(det)--> another
+|                |                |--(compou)--> R878[andrew]
+|                |                |--(compou)--> R878[luck]
+|                |--(punct)--> -
+|                |--(parata)--> *R859[winning]
+|                                 |--(dobj)--> *R885[drive]
+|                                                  |--(punct)--> ,
+|                                                  |--(appos)--> seventh
+|                                                                   |--(nmod:p)--> his
+|                                                                   |--(nmod)--> season
+|                                                                                    |--(case)--> of
+|                                                                                    |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['drive']29_4ecbplus.xmlsent:7038
+
+	* entity-paths for event['win']29_4ecbplus.xmlsent:7038
+	['win --(nsubj)--> 13']
+	['win --(nmod)--> Chiefs']
+	['win --(nmod)--> game', 'game --(compound)--> Andrew']
+	['win --(nmod)--> game', 'game --(compound)--> Luck']
+
+	* entity-paths for event['clinched']29_4ecbplus.xmlsent:7038
+	['clinched --(nsubj)--> Colts']
+	['clinched --(dobj)--> spot']
+	['clinched --(nmod)--> 20']
+	['clinched --(punct)--> -']
+	['clinched --(parataxis)--> win', 'win --(nsubj)--> 13']
+	['clinched --(parataxis)--> win', 'win --(nmod)--> Chiefs']
+	['clinched --(parataxis)--> win', 'win --(nmod)--> game', 'game --(compound)--> Andrew']
+	['clinched --(parataxis)--> win', 'win --(nmod)--> game', 'game --(compound)--> Luck']
+
+	* entity-paths for event['game']29_4ecbplus.xmlsent:7038
+	['game --(compound)--> Andrew']
+	['game --(compound)--> Luck']
+
+	* entity-paths for event['playoff']29_4ecbplus.xmlsent:7038
+
+	* entity-paths for event['afc', 'playoffs']29_4ecbplus.xmlsent:7038
+
+	* entity-paths for event['winning']29_4ecbplus.xmlsent:7038
+
+sentence #:colts clinch playoff spot with 20 - 13 win over chiefs 
+	[events]:[['playoff'], ['clinch'], ['win']]
+	[entities]:[['chiefs'], ['colts'], ['spot'], ['20', '-', '13']]
+*R861[playoff]
+|--(compou)--> R852[colts]
+|--(compou)--> *R862[clinch]
+|--(dep)--> R866[spot]
+|                |--(nmod)--> R860[20]
+|                                 |--(case)--> with
+|--(punct)--> R860[-]
+|--(parata)--> *R859[win]
+                 |--(nummod)--> R860[13]
+                 |--(nmod)--> R858[chiefs]
+                                  |--(case)--> over
+
+	* entity-paths for event['playoff']29_4ecbplus.xmlsent:7036
+	['Playoff --(compound)--> Colts']
+	['Playoff --(dep)--> Spot']
+	['Playoff --(punct)--> -']
+	['Playoff --(parataxis)--> Win', 'Win --(nummod)--> 13']
+	['Playoff --(parataxis)--> Win', 'Win --(nmod)--> Chiefs']
+
+	* entity-paths for event['clinch']29_4ecbplus.xmlsent:7036
+
+	* entity-paths for event['win']29_4ecbplus.xmlsent:7036
+	['Win --(nummod)--> 13']
+	['Win --(nmod)--> Chiefs']

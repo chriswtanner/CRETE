@@ -1,0 +1,57 @@
+
+-----------------------------------------
+docid:9_4ecb.xml
+-----------------------------------------
+
+sentence #:the bush administration issued two late-term regulations on thursday that environmentalists say weaken federal protection for endangered species but that interior department officials defended as blocking a " back-door " attempt to regulate emissions that contribute to global warming . 
+	[events]:[['weaken'], ['issued']]
+	[entities]:[['bush', 'administration'], ['thursday'], ['regulations'], ['species']]
+*R1812[issued]
+|--(nsubj)--> R1795[administration]
+|                |--(det)--> the
+|                |--(compou)--> R1795[bush]
+|--(dobj)--> R1802[regulations]
+|                |--(nummod)--> two
+|                |--(amod)--> late-term
+|--(nmod)--> R1810[thursday]
+|                |--(case)--> on
+|--(dep)--> say
+|                |--(dobj)--> that
+|                |--(nsubj)--> environmentalists
+|                |--(ccomp)--> *R1794[weaken]
+|                                 |--(dobj)--> protection
+|                                 |                |--(amod)--> federal
+|                                 |                |--(nmod)--> R1805[species]
+|                                 |                                 |--(case)--> for
+|                                 |                                 |--(amod)--> endangered
+|                                 |--(cc)--> but
+|                                 |--(conj)--> defended
+|                                                  |--(mark)--> that
+|                                                  |--(nsubj)--> officials
+|                                                  |                |--(compou)--> interior
+|                                                  |                |--(compou)--> department
+|                                                  |--(advcl)--> blocking
+|                                                  |                |--(case)--> as
+|                                                  |                |--(dobj)--> a
+|                                                  |                |--(punct)--> "
+|                                                  |--(dobj)--> back-door
+|                                                                   |--(punct)--> "
+|                                                                   |--(dep)--> attempt
+|                                                                   |                |--(acl)--> regulate
+|                                                                   |                                 |--(mark)--> to
+|                                                                   |                                 |--(dobj)--> emissions
+|                                                                   |--(acl:re)--> contribute
+|                                                                                    |--(nsubj)--> that
+|                                                                                    |--(nmod)--> warming
+|                                                                                                     |--(case)--> to
+|                                                                                                     |--(amod)--> global
+|--(punct)--> .
+
+	* entity-paths for event['weaken']9_4ecb.xmlsent:15525
+	['weaken --(dobj)--> protection', 'protection --(nmod)--> species']
+
+	* entity-paths for event['issued']9_4ecb.xmlsent:15525
+	['issued --(nsubj)--> administration']
+	['issued --(dobj)--> regulations']
+	['issued --(nmod)--> Thursday']
+	['issued --(dep)--> say', 'say --(ccomp)--> weaken', 'weaken --(dobj)--> protection', 'protection --(nmod)--> species']

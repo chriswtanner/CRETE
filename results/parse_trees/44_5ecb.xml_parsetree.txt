@@ -1,0 +1,163 @@
+
+-----------------------------------------
+docid:44_5ecb.xml
+-----------------------------------------
+
+sentence #:industry sources have confirmed to eweek that hewlett-packard will acquire electronic data systems for about $ 13 billion . 
+	[events]:[['acquire']]
+	[entities]:[['hewlett-packard'], ['electronic', 'data', 'systems']]
+confirmed
+|--(nsubj)--> sources
+|                |--(compou)--> industry
+|--(aux)--> have
+|--(xcomp)--> eweek
+|                |--(mark)--> to
+|                |--(ccomp)--> *R1599[acquire]
+|                                 |--(mark)--> that
+|                                 |--(nsubj)--> R1577[hewlett-packard]
+|                                 |--(aux)--> will
+|                                 |--(dobj)--> R1600[systems]
+|                                                  |--(compou)--> R1600[electronic]
+|                                                  |--(compou)--> R1600[data]
+|                                                  |--(nmod)--> $
+|                                                                   |--(case)--> for
+|                                                                   |--(advmod)--> about
+|                                                                   |--(nummod)--> billion
+|                                                                                    |--(compou)--> 13
+|--(punct)--> .
+
+	* entity-paths for event['acquire']44_5ecb.xmlsent:13638
+	['acquire --(nsubj)--> Hewlett-Packard']
+	['acquire --(dobj)--> Systems']
+
+sentence #:" there can be no assurances that an agreement will be reached or that a transaction will be consummated , " hp said in a statement . 
+	[events]:[['transaction'], ['agreement']]
+	[entities]:[['hp']]
+said
+|--(punct)--> "
+|--(ccomp)--> assurances
+|                |--(expl)--> there
+|                |--(aux)--> can
+|                |--(cop)--> be
+|                |--(neg)--> no
+|                |--(ccomp)--> reached
+|                                 |--(mark)--> that
+|                                 |--(nsubjp)--> *R1605[agreement]
+|                                 |                |--(det)--> an
+|                                 |--(aux)--> will
+|                                 |--(auxpas)--> be
+|                                 |--(cc)--> or
+|                                 |--(conj)--> consummated
+|                                                  |--(mark)--> that
+|                                                  |--(nsubjp)--> *R1605[transaction]
+|                                                  |                |--(det)--> a
+|                                                  |--(aux)--> will
+|                                                  |--(auxpas)--> be
+|--(punct)--> ,
+|--(punct)--> "
+|--(nsubj)--> R1577[hp]
+|--(nmod)--> statement
+|                |--(case)--> in
+|                |--(det)--> a
+|--(punct)--> .
+
+	* entity-paths for event['transaction']44_5ecb.xmlsent:13641
+
+	* entity-paths for event['agreement']44_5ecb.xmlsent:13641
+
+sentence #:in response to market rumors , electronic data systems corporation announces that it is in advanced discussions regarding a possible business combination transaction with hewlett-packard company . 
+	[events]:[['discussions'], ['transaction']]
+	[entities]:[['electronic', 'data', 'systems', 'corporation'], ['hewlett-packard', 'company'], ['it']]
+announces
+|--(nmod)--> response
+|                |--(case)--> in
+|                |--(nmod)--> rumors
+|                                 |--(case)--> to
+|                                 |--(compou)--> market
+|--(punct)--> ,
+|--(nsubj)--> R1600[corporation]
+|                |--(compou)--> R1600[electronic]
+|                |--(compou)--> R1600[data]
+|                |--(compou)--> R1600[systems]
+|--(ccomp)--> *R1603[discussions]
+|                |--(mark)--> that
+|                |--(nsubj)--> R1600[it]
+|                |--(cop)--> is
+|                |--(case)--> in
+|                |--(amod)--> advanced
+|                |--(nmod)--> *R1605[transaction]
+|                                 |--(case)--> regarding
+|                                 |--(det)--> a
+|                                 |--(amod)--> possible
+|                                 |--(compou)--> business
+|                                 |--(compou)--> combination
+|                                 |--(nmod)--> R1577[company]
+|                                                  |--(case)--> with
+|                                                  |--(compou)--> R1577[hewlett-packard]
+|--(punct)--> .
+
+	* entity-paths for event['discussions']44_5ecb.xmlsent:13644
+	['discussions --(nsubj)--> it']
+	['discussions --(nmod)--> transaction', 'transaction --(nmod)--> Company']
+
+	* entity-paths for event['transaction']44_5ecb.xmlsent:13644
+	['transaction --(nmod)--> Company']
+
+sentence #:the impending deal would make the newly merged company worth about $ 22 billion and put it on a level with ibm , the largest it services company in the world . 
+	[events]:[['deal']]
+	[entities]:[['company'], ['it']]
+make
+|--(nsubj)--> *R1605[deal]
+|                |--(det)--> the
+|                |--(amod)--> impending
+|--(aux)--> would
+|--(dobj)--> worth
+|                |--(det)--> the
+|                |--(amod)--> merged
+|                |                |--(advmod)--> newly
+|                |--(compou)--> R1577[company]
+|                |--(nmod)--> $
+|                                 |--(case)--> about
+|                                 |--(nummod)--> billion
+|                                                  |--(compou)--> 22
+|--(cc)--> and
+|--(conj)--> put
+|                |--(dobj)--> R1577[it]
+|                |--(nmod)--> company
+|                |                |--(case)--> on
+|                |                |--(det)--> a
+|                |                |--(amod)--> level
+|                |                |                |--(nmod)--> ibm
+|                |                |                                 |--(case)--> with
+|                |                |                                 |--(punct)--> ,
+|                |                |                                 |--(appos)--> largest
+|                |                |                                                  |--(det)--> the
+|                |                |                                                  |--(dep)--> it
+|                |                |--(compou)--> services
+|                |--(nmod)--> world
+|                                 |--(case)--> in
+|                                 |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['deal']44_5ecb.xmlsent:13647
+
+sentence #:the announcement may come as early as may 14 , the source told eweek . 
+	[events]:[['announcement']]
+	[entities]:[]
+told
+|--(ccomp)--> come
+|                |--(nsubj)--> *R1601[announcement]
+|                |                |--(det)--> the
+|                |--(aux)--> may
+|                |--(advmod)--> early
+|                |                |--(advmod)--> as
+|                |--(nmod)--> may
+|                                 |--(case)--> as
+|                                 |--(nummod)--> 14
+|--(punct)--> ,
+|--(nsubj)--> source
+|                |--(det)--> the
+|--(dobj)--> eweek
+|--(punct)--> .
+
+	* entity-paths for event['announcement']44_5ecb.xmlsent:13639

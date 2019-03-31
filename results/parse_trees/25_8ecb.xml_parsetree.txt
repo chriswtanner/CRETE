@@ -1,0 +1,64 @@
+
+-----------------------------------------
+docid:25_8ecb.xml
+-----------------------------------------
+
+sentence #:the saints placed bush on the injured reserve list wednesday after he suffered a knee sprain in the team 's week 15 loss at chicago . 
+	[events]:[['list'], ['sprain'], ['placed']]
+	[entities]:[['bush'], ['chicago'], ['he'], ['knee'], ['saints'], ['team'], ['wednesday']]
+*R711[placed]
+|--(nsubj)--> R706[saints]
+|                |--(det)--> the
+|--(dobj)--> R707[bush]
+|                |--(nmod)--> *R712[list]
+|                                 |--(case)--> on
+|                                 |--(det)--> the
+|                                 |--(amod)--> injured
+|                                 |--(compou)--> reserve
+|--(nmod:t)--> R721[wednesday]
+|--(advcl)--> suffered
+|                |--(mark)--> after
+|                |--(nsubj)--> R707[he]
+|                |--(dobj)--> *R720[sprain]
+|                |                |--(det)--> a
+|                |                |--(compou)--> R719[knee]
+|                |--(nmod)--> loss
+|                                 |--(case)--> in
+|                                 |--(nmod:p)--> R706[team]
+|                                 |                |--(det)--> the
+|                                 |                |--(case)--> 's
+|                                 |--(compou)--> week
+|                                 |--(nummod)--> 15
+|                                 |--(nmod)--> R729[chicago]
+|                                                  |--(case)--> at
+|--(punct)--> .
+
+	* entity-paths for event['list']25_8ecb.xmlsent:5231
+
+	* entity-paths for event['sprain']25_8ecb.xmlsent:5231
+	['sprain --(compound)--> knee']
+
+	* entity-paths for event['placed']25_8ecb.xmlsent:5231
+	['placed --(nsubj)--> Saints']
+	['placed --(dobj)--> Bush']
+	['placed --(nmod:tmod)--> Wednesday']
+	['placed --(advcl)--> suffered', 'suffered --(nsubj)--> he']
+	['placed --(advcl)--> suffered', 'suffered --(dobj)--> sprain', 'sprain --(compound)--> knee']
+	['placed --(advcl)--> suffered', 'suffered --(nmod)--> loss', 'loss --(nmod:poss)--> team']
+	['placed --(advcl)--> suffered', 'suffered --(nmod)--> loss', 'loss --(nmod)--> Chicago']
+
+sentence #:saints put bush on i.r . 
+	[events]:[['i.r'], ['put']]
+	[entities]:[['bush'], ['saints']]
+*R711[put]
+|--(nsubj)--> R706[saints]
+|--(dobj)--> R707[bush]
+|                |--(nmod)--> *R712[i.r]
+|                                 |--(case)--> on
+|--(punct)--> .
+
+	* entity-paths for event['i.r']25_8ecb.xmlsent:5232
+
+	* entity-paths for event['put']25_8ecb.xmlsent:5232
+	['put --(nsubj)--> Saints']
+	['put --(dobj)--> Bush']

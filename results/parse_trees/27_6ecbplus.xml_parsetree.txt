@@ -1,0 +1,115 @@
+
+-----------------------------------------
+docid:27_6ecbplus.xml
+-----------------------------------------
+
+sentence #:microsoft said today that attackers are exploiting a previously unknown , unpatched vulnerability in all supported versions of its internet explorer web browser . 
+	[events]:[['unpatched'], ['said'], ['exploiting'], ['unknown']]
+	[entities]:[['internet', 'explorer'], ['attackers'], ['microsoft'], ['versions'], ['vulnerability']]
+*R794[said]
+|--(nsubj)--> R764[microsoft]
+|--(nmod:t)--> today
+|--(ccomp)--> *R788[exploiting]
+|                |--(dobj)--> that
+|                |--(nsubj)--> R770[attackers]
+|                |--(aux)--> are
+|                |--(dobj)--> R777[vulnerability]
+|                |                |--(det)--> a
+|                |                |--(amod)--> *R801[unknown]
+|                |                |                |--(advmod)--> previously
+|                |                |--(punct)--> ,
+|                |                |--(amod)--> *R795[unpatched]
+|                |--(nmod)--> all
+|                                 |--(case)--> in
+|                                 |--(acl)--> supported
+|                                                  |--(xcomp)--> browser
+|                                                                   |--(nsubj)--> R778[versions]
+|                                                                   |                |--(nmod)--> R768[internet]
+|                                                                   |                                 |--(case)--> of
+|                                                                   |                                 |--(nmod:p)--> its
+|                                                                   |--(compou)--> R768[explorer]
+|                                                                   |--(compou)--> web
+|--(punct)--> .
+
+	* entity-paths for event['unpatched']27_6ecbplus.xmlsent:5945
+
+	* entity-paths for event['said']27_6ecbplus.xmlsent:5945
+	['said --(nsubj)--> Microsoft']
+	['said --(ccomp)--> exploiting', 'exploiting --(nsubj)--> attackers']
+	['said --(ccomp)--> exploiting', 'exploiting --(dobj)--> vulnerability']
+	['said --(ccomp)--> exploiting', 'exploiting --(nmod)--> all', 'all --(acl)--> supported', 'supported --(xcomp)--> browser', 'browser --(nsubj)--> versions']
+	['said --(ccomp)--> exploiting', 'exploiting --(nmod)--> all', 'all --(acl)--> supported', 'supported --(xcomp)--> browser', 'browser --(compound)--> Explorer']
+
+	* entity-paths for event['exploiting']27_6ecbplus.xmlsent:5945
+	['exploiting --(nsubj)--> attackers']
+	['exploiting --(dobj)--> vulnerability']
+	['exploiting --(nmod)--> all', 'all --(acl)--> supported', 'supported --(xcomp)--> browser', 'browser --(nsubj)--> versions']
+	['exploiting --(nmod)--> all', 'all --(acl)--> supported', 'supported --(xcomp)--> browser', 'browser --(compound)--> Explorer']
+
+	* entity-paths for event['unknown']27_6ecbplus.xmlsent:5945
+
+sentence #:the company said it is working on an official patch to plug the security hole , but in the meantime it has released a stopgap fix to help protect affected customers . 
+	[events]:[['released'], ['working', 'on'], ['protect'], ['plug']]
+	[entities]:[['it'], ['it'], ['fix'], ['customers'], ['company'], ['hole']]
+said
+|--(nsubj)--> R764[company]
+|                |--(det)--> the
+|--(ccomp)--> *R796[working]
+|                |--(nsubj)--> R764[it]
+|                |--(aux)--> is
+|                |--(nmod)--> patch
+|                |                |--(case)--> *R796[on]
+|                |                |--(det)--> an
+|                |                |--(amod)--> official
+|                |--(xcomp)--> *R781[plug]
+|                                 |--(mark)--> to
+|                                 |--(dobj)--> R777[hole]
+|                                                  |--(det)--> the
+|                                                  |--(compou)--> security
+|--(punct)--> ,
+|--(cc)--> but
+|--(conj)--> *R779[released]
+|                |--(nmod)--> meantime
+|                |                |--(case)--> in
+|                |                |--(det)--> the
+|                |--(nsubj)--> R764[it]
+|                |--(aux)--> has
+|                |--(dobj)--> R780[fix]
+|                |                |--(det)--> a
+|                |                |--(amod)--> stopgap
+|                |--(advcl)--> help
+|                                 |--(mark)--> to
+|                                 |--(xcomp)--> *R802[protect]
+|                                                  |--(dobj)--> R789[customers]
+|                                                                   |--(amod)--> affected
+|--(punct)--> .
+
+	* entity-paths for event['released']27_6ecbplus.xmlsent:5946
+	['released --(nsubj)--> it']
+	['released --(dobj)--> fix']
+	['released --(advcl)--> help', 'help --(xcomp)--> protect', 'protect --(dobj)--> customers']
+
+	* entity-paths for event['working', 'on']27_6ecbplus.xmlsent:5946
+
+	* entity-paths for event['protect']27_6ecbplus.xmlsent:5946
+	['protect --(dobj)--> customers']
+
+	* entity-paths for event['plug']27_6ecbplus.xmlsent:5946
+	['plug --(dobj)--> hole']
+
+sentence #:microsoft : ie zero day flaw affects all versions 
+	[events]:[['affects']]
+	[entities]:[['microsoft'], ['ie'], ['versions'], ['zero', 'day', 'flaw']]
+R764[microsoft]
+|--(punct)--> :
+|--(parata)--> *R776[affects]
+                 |--(nsubj)--> R777[flaw]
+                 |                |--(amod)--> R768[ie]
+                 |                |--(compou)--> R777[zero]
+                 |                |--(compou)--> R777[day]
+                 |--(dobj)--> R778[versions]
+                                  |--(det)--> all
+
+	* entity-paths for event['affects']27_6ecbplus.xmlsent:5944
+	['Affects --(nsubj)--> Flaw']
+	['Affects --(dobj)--> Versions']

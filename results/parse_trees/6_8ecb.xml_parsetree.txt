@@ -1,0 +1,47 @@
+
+-----------------------------------------
+docid:6_8ecb.xml
+-----------------------------------------
+
+sentence #:now , it seems , a battle is going on between a studio saying there 's no news to report and an entertainment magazine claiming chris weitz is getting behind the " twilight " steering wheel . 
+	[events]:[['getting', 'behind', 'wheel']]
+	[entities]:[['chris', 'weitz'], ['twilight']]
+going
+|--(advmod)--> now
+|--(parata)--> seems
+|                |--(punct)--> ,
+|                |--(nsubj)--> it
+|                |--(punct)--> ,
+|--(nsubj)--> battle
+|                |--(det)--> a
+|--(aux)--> is
+|--(nmod)--> studio
+|                |--(case)--> on
+|                |--(case)--> between
+|                |--(det)--> a
+|                |--(acl)--> saying
+|                                 |--(dep)--> 's
+|                                 |                |--(expl)--> there
+|                                 |                |--(nsubj)--> news
+|                                 |                |                |--(neg)--> no
+|                                 |                |                |--(acl)--> report
+|                                 |                |                                 |--(mark)--> to
+|                                 |                |--(cc)--> and
+|                                 |                |--(conj)--> *R1706[getting]
+|                                 |                                 |--(nsubj)--> magazine
+|                                 |                                 |                |--(det)--> an
+|                                 |                                 |                |--(compou)--> entertainment
+|                                 |                                 |                |--(acl)--> claiming
+|                                 |                                 |                                 |--(dobj)--> R1704[weitz]
+|                                 |                                 |                                                  |--(compou)--> R1704[chris]
+|                                 |                                 |--(aux)--> is
+|                                 |                                 |--(advmod)--> the
+|                                 |                                 |                |--(case)--> *R1706[behind]
+|                                 |                                 |--(punct)--> "
+|                                 |                                 |--(dobj)--> R1710[twilight]
+|                                 |--(punct)--> "
+|                                 |--(advcl)--> steering
+|                                                  |--(dobj)--> *R1706[wheel]
+|--(punct)--> .
+
+	* entity-paths for event['getting', 'behind', 'wheel']6_8ecb.xmlsent:14554

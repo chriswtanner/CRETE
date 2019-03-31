@@ -1,0 +1,50 @@
+
+-----------------------------------------
+docid:25_9ecb.xml
+-----------------------------------------
+
+sentence #:new orleans saints running back reggie bush has been placed on injured reserve and will miss the final two games of the regular season , the team said wednesday . 
+	[events]:[['injured', 'reserve'], ['placed'], ['miss'], ['games']]
+	[entities]:[['season'], ['reggie', 'bush'], ['wednesday'], ['team']]
+said
+|--(ccomp)--> *R711[placed]
+|                |--(nsubjp)--> saints
+|                |                |--(compou)--> new
+|                |                |--(compou)--> orleans
+|                |                |--(acl)--> running
+|                |                                 |--(compou)--> back
+|                |                                 |--(dobj)--> R707[bush]
+|                |                                                  |--(compou)--> R707[reggie]
+|                |--(aux)--> has
+|                |--(auxpas)--> been
+|                |--(nmod)--> *R712[reserve]
+|                |                |--(case)--> on
+|                |                |--(amod)--> *R712[injured]
+|                |--(cc)--> and
+|                |--(conj)--> *R705[miss]
+|                                 |--(aux)--> will
+|                                 |--(dobj)--> *R718[games]
+|                                                  |--(det)--> the
+|                                                  |--(amod)--> final
+|                                                  |--(nummod)--> two
+|                                                  |--(nmod)--> R708[season]
+|                                                                   |--(case)--> of
+|                                                                   |--(det)--> the
+|                                                                   |--(amod)--> regular
+|--(punct)--> ,
+|--(nsubj)--> R706[team]
+|                |--(det)--> the
+|--(nmod:t)--> R721[wednesday]
+|--(punct)--> .
+
+	* entity-paths for event['injured', 'reserve']25_9ecb.xmlsent:5247
+
+	* entity-paths for event['placed']25_9ecb.xmlsent:5247
+	['placed --(nsubjpass)--> Saints', 'Saints --(acl)--> running', 'running --(dobj)--> Bush']
+	['placed --(conj)--> miss', 'miss --(dobj)--> games', 'games --(nmod)--> season']
+
+	* entity-paths for event['miss']25_9ecb.xmlsent:5247
+	['miss --(dobj)--> games', 'games --(nmod)--> season']
+
+	* entity-paths for event['games']25_9ecb.xmlsent:5247
+	['games --(nmod)--> season']

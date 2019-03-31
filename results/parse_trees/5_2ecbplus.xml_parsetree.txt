@@ -1,0 +1,79 @@
+
+-----------------------------------------
+docid:5_2ecbplus.xml
+-----------------------------------------
+
+sentence #:in a surprising move nearly three weeks following the end of their season , the sixers fired jim o'brien on monday after one season as coach and replaced him with cheeks , one of the most popular players in franchise history . 
+	[events]:[['move'], ['replaced'], ['fired']]
+	[entities]:[['sixers'], ['on', 'monday'], ['coach'], ['jim', "o'brien"], ['him'], ['after', 'one', 'season'], ['players'], ['cheeks']]
+*R1683[fired]
+|--(nmod)--> *R1680[move]
+|                |--(case)--> in
+|                |--(det)--> a
+|                |--(amod)--> surprising
+|                |--(nmod:t)--> weeks
+|                |                |--(nummod)--> three
+|                |                                 |--(advmod)--> nearly
+|                |--(nmod)--> end
+|                                 |--(case)--> following
+|                                 |--(det)--> the
+|                                 |--(nmod)--> season
+|                                                  |--(case)--> of
+|                                                  |--(nmod:p)--> their
+|--(punct)--> ,
+|--(nsubj)--> R1673[sixers]
+|                |--(det)--> the
+|--(dobj)--> R1684[o'brien]
+|                |--(compou)--> R1684[jim]
+|                |--(nmod)--> R1682[monday]
+|                                 |--(case)--> R1682[on]
+|--(nmod)--> R1685[one]
+|                |--(case)--> R1685[after]
+|--(nmod:t)--> R1685[season]
+|--(nmod)--> R1684[coach]
+|                |--(case)--> as
+|--(cc)--> and
+|--(conj)--> *R1677[replaced]
+|                |--(dobj)--> R1684[him]
+|                |--(nmod)--> R1674[cheeks]
+|                                 |--(case)--> with
+|                                 |--(punct)--> ,
+|                                 |--(appos)--> one
+|                                                  |--(nmod)--> R1674[players]
+|                                                                   |--(case)--> of
+|                                                                   |--(det)--> the
+|                                                                   |--(amod)--> popular
+|                                                                   |                |--(advmod)--> most
+|                                                                   |--(nmod)--> history
+|                                                                                    |--(case)--> in
+|                                                                                    |--(compou)--> franchise
+|--(punct)--> .
+
+	* entity-paths for event['move']5_2ecbplus.xmlsent:14084
+
+	* entity-paths for event['replaced']5_2ecbplus.xmlsent:14084
+	['replaced --(dobj)--> him']
+	['replaced --(nmod)--> Cheeks']
+
+	* entity-paths for event['fired']5_2ecbplus.xmlsent:14084
+	['fired --(nsubj)--> Sixers']
+	["fired --(dobj)--> O'Brien"]
+	['fired --(nmod)--> one']
+	['fired --(nmod:tmod)--> season']
+	['fired --(nmod)--> coach']
+	['fired --(conj)--> replaced', 'replaced --(dobj)--> him']
+	['fired --(conj)--> replaced', 'replaced --(nmod)--> Cheeks']
+
+sentence #:mo cheeks will take over as new coach 
+	[events]:[['take', 'over']]
+	[entities]:[['coach'], ['mo', 'cheeks']]
+*R1677[take]
+|--(nsubj)--> R1674[cheeks]
+|                |--(compou)--> R1674[mo]
+|--(aux)--> will
+|--(compou)--> *R1677[over]
+|--(nmod)--> R1674[coach]
+                 |--(case)--> as
+                 |--(amod)--> new
+
+	* entity-paths for event['take', 'over']5_2ecbplus.xmlsent:14081

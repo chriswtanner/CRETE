@@ -1,0 +1,80 @@
+
+-----------------------------------------
+docid:36_2ecbplus.xml
+-----------------------------------------
+
+sentence #:the jury sentenced jeffs to life in prison for aggravated sexual assault of a 12 - year - old girl and 20 years in prison for the sexual assault of a 15 - year - old girl . 
+	[events]:[['20', 'years', 'in', 'prison'], ['sentenced'], ['aggravated', 'sexual', 'assault'], ['life', 'in', 'prison'], ['sexual', 'assault']]
+	[entities]:[['girl'], ['jeffs'], ['girl'], ['jury']]
+*R1218[sentenced]
+|--(nsubj)--> R1209[jury]
+|                |--(det)--> the
+|--(dobj)--> R1183[jeffs]
+|--(nmod)--> *R1219[life]
+|                |--(case)--> to
+|                |--(nmod)--> *R1219[prison]
+|                                 |--(case)--> *R1219[in]
+|--(nmod)--> *R1186[assault]
+|                |--(case)--> for
+|                |--(amod)--> *R1186[aggravated]
+|                |--(amod)--> *R1186[sexual]
+|                |--(nmod)--> 12
+|                |                |--(case)--> of
+|                |                |--(det)--> a
+|                |--(punct)--> -
+|                |--(dep)--> year
+|                |--(punct)--> -
+|                |--(dep)--> R1207[girl]
+|                |                |--(amod)--> old
+|                |                |--(cc)--> and
+|                |                |--(conj)--> *R1220[years]
+|                |                                 |--(nummod)--> *R1220[20]
+|                |                                 |--(nmod)--> *R1220[prison]
+|                |                                                  |--(case)--> *R1220[in]
+|                |                                                  |--(nmod)--> *R1186[assault]
+|                |                                                                   |--(case)--> for
+|                |                                                                   |--(det)--> the
+|                |                                                                   |--(amod)--> *R1186[sexual]
+|                |                                                                   |--(nmod)--> 15
+|                |                                                                                    |--(case)--> of
+|                |                                                                                    |--(det)--> a
+|                |--(punct)--> -
+|                |--(dep)--> year
+|                |--(punct)--> -
+|                |--(dep)--> R1191[girl]
+|                                 |--(amod)--> old
+|--(punct)--> .
+
+	* entity-paths for event['20', 'years', 'in', 'prison']36_2ecbplus.xmlsent:9953
+
+	* entity-paths for event['sentenced']36_2ecbplus.xmlsent:9953
+	['sentenced --(nsubj)--> jury']
+	['sentenced --(dobj)--> Jeffs']
+	['sentenced --(nmod)--> assault', 'assault --(dep)--> girl']
+	['sentenced --(nmod)--> assault', 'assault --(dep)--> girl']
+
+	* entity-paths for event['aggravated', 'sexual', 'assault']36_2ecbplus.xmlsent:9953
+	['assault --(dep)--> girl']
+	['assault --(dep)--> girl']
+
+	* entity-paths for event['life', 'in', 'prison']36_2ecbplus.xmlsent:9953
+
+	* entity-paths for event['sexual', 'assault']36_2ecbplus.xmlsent:9953
+
+sentence #:polygamist leader warren jeffs sentenced to life in prison 
+	[events]:[['life', 'in', 'prison'], ['sentenced']]
+	[entities]:[['polygamist', 'leader', 'warren', 'jeffs']]
+*R1218[sentenced]
+|--(nsubj)--> R1183[jeffs]
+|                |--(amod)--> R1183[polygamist]
+|                |--(compou)--> R1183[leader]
+|                |--(compou)--> R1183[warren]
+|--(nmod)--> *R1219[life]
+                 |--(case)--> to
+                 |--(nmod)--> *R1219[prison]
+                                  |--(case)--> *R1219[in]
+
+	* entity-paths for event['life', 'in', 'prison']36_2ecbplus.xmlsent:9949
+
+	* entity-paths for event['sentenced']36_2ecbplus.xmlsent:9949
+	['sentenced --(nsubj)--> Jeffs']

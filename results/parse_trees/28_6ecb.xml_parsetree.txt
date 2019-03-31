@@ -1,0 +1,52 @@
+
+-----------------------------------------
+docid:28_6ecb.xml
+-----------------------------------------
+
+sentence #:the former fbi second-in-command who revealed himself as " deep throat " 30 years after he tipped off reporters to the watergate scandal that toppled a president has died . 
+	[events]:[['died'], ['toppled'], ['revealed'], ['watergate']]
+	[entities]:[['second-in-command'], ['deep', 'throat'], ['himself'], ['he'], ['president']]
+*R808[died]
+|--(nsubj)--> R809[second-in-command]
+|                |--(det)--> the
+|                |--(amod)--> former
+|                |--(compou)--> fbi
+|                |--(acl:re)--> *R827[revealed]
+|                                 |--(nsubj)--> who
+|                                 |--(xcomp)--> R809[himself]
+|                                 |--(nmod)--> R811[throat]
+|                                 |                |--(case)--> as
+|                                 |                |--(punct)--> "
+|                                 |                |--(compou)--> R811[deep]
+|                                 |--(punct)--> "
+|                                 |--(advcl)--> tipped
+|                                                  |--(dep)--> years
+|                                                  |                |--(nummod)--> 30
+|                                                  |--(mark)--> after
+|                                                  |--(nsubj)--> R809[he]
+|                                                  |--(compou)--> off
+|                                                  |--(dobj)--> reporters
+|                                                  |--(nmod)--> scandal
+|                                                                   |--(case)--> to
+|                                                                   |--(det)--> the
+|                                                                   |--(compou)--> *R812[watergate]
+|                                                                   |--(acl:re)--> *R836[toppled]
+|                                                                                    |--(nsubj)--> that
+|                                                                                    |--(dobj)--> R837[president]
+|                                                                                                     |--(det)--> a
+|--(aux)--> has
+|--(punct)--> .
+
+	* entity-paths for event['died']28_6ecb.xmlsent:6464
+	['died --(nsubj)--> second-in-command']
+
+	* entity-paths for event['toppled']28_6ecb.xmlsent:6464
+	['toppled --(dobj)--> president']
+
+	* entity-paths for event['revealed']28_6ecb.xmlsent:6464
+	['revealed --(xcomp)--> himself']
+	['revealed --(nmod)--> Throat']
+	['revealed --(advcl)--> tipped', 'tipped --(nsubj)--> he']
+	['revealed --(advcl)--> tipped', 'tipped --(nmod)--> scandal', 'scandal --(acl:relcl)--> toppled', 'toppled --(dobj)--> president']
+
+	* entity-paths for event['watergate']28_6ecb.xmlsent:6464

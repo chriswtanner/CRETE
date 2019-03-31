@@ -1,0 +1,69 @@
+
+-----------------------------------------
+docid:4_10ecb.xml
+-----------------------------------------
+
+sentence #:bettie page , the 1950s pinup and bondage model who provided more than a half-century of inspiration for everybody from madonna to the suicide girls to artist olivia de berardinis ( as well as having her image used on all sorts of merchandise ) , died yesterday in los angeles at the age of 85 . 
+	[events]:[['died']]
+	[entities]:[['yesterday'], ['the', '1950s'], ['in', 'los', 'angeles'], ['bettie', 'page'], ['madonna']]
+*R1363[died]
+|--(nsubj)--> R1364[page]
+|                |--(compou)--> R1364[bettie]
+|                |--(punct)--> ,
+|                |--(appos)--> pinup
+|                |                |--(det)--> R1365[the]
+|                |                |--(nummod)--> R1365[1950s]
+|                |                |--(cc)--> and
+|                |                |--(conj)--> model
+|                |                |                |--(compou)--> bondage
+|                |                |--(acl:re)--> provided
+|                |                                 |--(nsubj)--> who
+|                |                                 |--(dobj)--> half-century
+|                |                                 |                |--(nummod)--> a
+|                |                                 |                |                |--(advmod)--> more
+|                |                                 |                |                                 |--(mwe)--> than
+|                |                                 |                |--(nmod)--> inspiration
+|                |                                 |                                 |--(case)--> of
+|                |                                 |                                 |--(nmod)--> everybody
+|                |                                 |                                                  |--(case)--> for
+|                |                                 |                                                  |--(nmod)--> R1366[madonna]
+|                |                                 |                                                                   |--(case)--> from
+|                |                                 |--(nmod)--> girls
+|                |                                 |                |--(case)--> to
+|                |                                 |                |--(det)--> the
+|                |                                 |                |--(compou)--> suicide
+|                |                                 |--(nmod)--> berardinis
+|                |                                 |                |--(case)--> to
+|                |                                 |                |--(compou)--> artist
+|                |                                 |                |--(compou)--> olivia
+|                |                                 |                |--(compou)--> de
+|                |                                 |--(dep)--> used
+|                |                                                  |--(punct)--> (
+|                |                                                  |--(cc)--> as
+|                |                                                  |                |--(mwe)--> well
+|                |                                                  |                |--(mwe)--> as
+|                |                                                  |--(aux)--> having
+|                |                                                  |--(dobj)--> image
+|                |                                                  |                |--(nmod:p)--> her
+|                |                                                  |--(nmod)--> sorts
+|                |                                                  |                |--(case)--> on
+|                |                                                  |                |--(det)--> all
+|                |                                                  |                |--(nmod)--> merchandise
+|                |                                                  |                                 |--(case)--> of
+|                |                                                  |--(punct)--> )
+|                |--(punct)--> ,
+|--(nmod:t)--> R1367[yesterday]
+|--(nmod)--> R1368[angeles]
+|                |--(case)--> R1368[in]
+|                |--(compou)--> R1368[los]
+|                |--(nmod)--> age
+|                                 |--(case)--> at
+|                                 |--(det)--> the
+|                                 |--(nmod)--> 85
+|                                                  |--(case)--> of
+|--(punct)--> .
+
+	* entity-paths for event['died']4_10ecb.xmlsent:11179
+	['died --(nsubj)--> Page']
+	['died --(nmod:tmod)--> yesterday']
+	['died --(nmod)--> Angeles']

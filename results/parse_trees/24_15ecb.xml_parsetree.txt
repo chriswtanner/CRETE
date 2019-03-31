@@ -1,0 +1,37 @@
+
+-----------------------------------------
+docid:24_15ecb.xml
+-----------------------------------------
+
+sentence #:three or four robbers burst into the store on ritzy avenue montaigne near the champs-elysees late thursday afternoon and stole watches , rings and necklaces . 
+	[events]:[['stole']]
+	[entities]:[['necklaces'], ['late', 'thursday', 'afternoon'], ['the', 'store', 'on', 'ritzy', 'avenue', 'montaigne', 'near', 'the', 'champs-elysees'], ['watches'], ['robbers'], ['rings']]
+burst
+|--(nsubj)--> three
+|                |--(cc)--> or
+|                |--(conj)--> R664[robbers]
+|                                 |--(nummod)--> four
+|--(nmod)--> R665[store]
+|                |--(case)--> into
+|                |--(det)--> R665[the]
+|                |--(nmod)--> R665[montaigne]
+|                |                |--(case)--> R665[on]
+|                |                |--(amod)--> R665[ritzy]
+|                |                |--(compou)--> R665[avenue]
+|                |                |--(nmod)--> R665[champs-elysees]
+|                |                |                |--(case)--> R665[near]
+|                |                |                |--(det)--> R665[the]
+|                |                |--(nmod:t)--> R690[thursday]
+|                |                                 |--(amod)--> R690[late]
+|                |--(nmod:t)--> R690[afternoon]
+|--(cc)--> and
+|--(conj)--> *R663[stole]
+|                |--(dobj)--> R691[watches]
+|                                 |--(punct)--> ,
+|                                 |--(conj)--> R692[rings]
+|                                 |--(cc)--> and
+|                                 |--(conj)--> R693[necklaces]
+|--(punct)--> .
+
+	* entity-paths for event['stole']24_15ecb.xmlsent:4820
+	['stole --(dobj)--> watches']

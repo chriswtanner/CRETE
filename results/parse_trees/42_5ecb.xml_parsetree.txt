@@ -1,0 +1,39 @@
+
+-----------------------------------------
+docid:42_5ecb.xml
+-----------------------------------------
+
+sentence #:t-mobile usa will launch research in motion 's blackberry curve 8900 in february , further strengthening its smartphone lineup in 2009 . 
+	[events]:[['launch'], ['strengthening']]
+	[entities]:[['in', 'february'], ['lineup'], ['t-mobile', 'usa'], ['smartphone'], ['blackberry', 'curve', '8900']]
+*R1519[launch]
+|--(nsubj)--> R1517[usa]
+|                |--(compou)--> R1517[t-mobile]
+|--(aux)--> will
+|--(xcomp)--> research
+|                |--(dep)--> R1520[curve]
+|                                 |--(case)--> in
+|                                 |--(nmod:p)--> motion
+|                                 |                |--(case)--> 's
+|                                 |--(compou)--> R1520[blackberry]
+|--(dep)--> R1520[8900]
+|                |--(nmod)--> R1521[february]
+|                                 |--(case)--> R1521[in]
+|--(punct)--> ,
+|--(advcl)--> *R1533[strengthening]
+|                |--(advmod)--> further
+|                |--(dobj)--> R1534[lineup]
+|                |                |--(nmod:p)--> its
+|                |                |--(compou)--> R1535[smartphone]
+|                |--(nmod)--> 2009
+|                                 |--(case)--> in
+|--(punct)--> .
+
+	* entity-paths for event['launch']42_5ecb.xmlsent:12784
+	['launch --(nsubj)--> USA']
+	['launch --(xcomp)--> Research', 'Research --(dep)--> Curve']
+	['launch --(dep)--> 8900']
+	['launch --(advcl)--> strengthening', 'strengthening --(dobj)--> lineup']
+
+	* entity-paths for event['strengthening']42_5ecb.xmlsent:12784
+	['strengthening --(dobj)--> lineup']

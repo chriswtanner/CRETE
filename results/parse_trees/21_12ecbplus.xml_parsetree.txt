@@ -1,0 +1,120 @@
+
+-----------------------------------------
+docid:21_12ecbplus.xml
+-----------------------------------------
+
+sentence #:raj chohan , who lived in south ozone park , was walking towards a sikh temple for a friday evening service when vishwanand subryan , 23 , of schenectady , n . y . , allegedly mowed into the older woman with his gray 2013 toyota camry around 7 p . m . , police said . 
+	[events]:[['service'], ['walking'], ['said'], ['mowed']]
+	[entities]:[['friday', 'evening'], ['vishwanand', 'subryan'], ['around', '7', 'p', '.', 'm'], ['woman'], ['police'], ['towards', 'a', 'sikh', 'temple'], ['schenectady', ',', 'n', '.', 'y'], ['toyota', 'camry'], ['raj', 'chohan']]
+*R565[walking]
+|--(nsubj)--> R545[chohan]
+|                |--(compou)--> R545[raj]
+|                |--(punct)--> ,
+|                |--(acl:re)--> lived
+|                |                |--(nsubj)--> who
+|                |                |--(nmod)--> park
+|                |                                 |--(case)--> in
+|                |                                 |--(compou)--> south
+|                |                                 |--(compou)--> ozone
+|                |--(punct)--> ,
+|--(aux)--> was
+|--(nmod)--> R566[temple]
+|                |--(case)--> R566[towards]
+|                |--(det)--> R566[a]
+|                |--(amod)--> R566[sikh]
+|                |--(nmod)--> *R567[service]
+|                                 |--(case)--> for
+|                                 |--(det)--> a
+|                                 |--(compou)--> R550[friday]
+|                                 |--(compou)--> R550[evening]
+|--(advcl)--> *R547[mowed]
+|                |--(advmod)--> when
+|                |--(nsubj)--> R548[subryan]
+|                |                |--(compou)--> R548[vishwanand]
+|                |                |--(punct)--> ,
+|                |                |--(amod)--> 23
+|                |                |--(punct)--> ,
+|                |                |--(nmod)--> R568[schenectady]
+|                |                |                |--(case)--> of
+|                |                |--(dep)--> R568[n]
+|                |                                 |--(punct)--> R568[,]
+|                |                                 |--(punct)--> R568[.]
+|                |                                 |--(dep)--> R568[y]
+|                |                                 |--(punct)--> .
+|                |                                 |--(punct)--> ,
+|                |--(advmod)--> allegedly
+|                |--(nmod)--> R545[woman]
+|                |                |--(case)--> into
+|                |                |--(det)--> the
+|                |                |--(amod)--> older
+|                |                |--(nmod)--> gray
+|                |                                 |--(case)--> with
+|                |                                 |--(nmod:p)--> his
+|                |--(dobj)--> R569[camry]
+|                                 |--(nummod)--> 2013
+|                                 |--(compou)--> R569[toyota]
+|                                 |--(nmod)--> R550[7]
+|                                 |                |--(case)--> R550[around]
+|                                 |--(acl:re)--> *R560[said]
+|                                                  |--(dep)--> R550[p]
+|                                                  |                |--(punct)--> R550[.]
+|                                                  |                |--(dep)--> R550[m]
+|                                                  |                |--(punct)--> .
+|                                                  |--(punct)--> ,
+|                                                  |--(nsubj)--> R561[police]
+|--(punct)--> .
+
+	* entity-paths for event['service']21_12ecbplus.xmlsent:4068
+	['service --(compound)--> Friday']
+	['service --(compound)--> evening']
+
+	* entity-paths for event['walking']21_12ecbplus.xmlsent:4068
+	['walking --(nsubj)--> Chohan']
+	['walking --(nmod)--> temple']
+	['walking --(advcl)--> mowed', 'mowed --(nsubj)--> Subryan']
+	['walking --(advcl)--> mowed', 'mowed --(nmod)--> woman']
+	['walking --(advcl)--> mowed', 'mowed --(dobj)--> Camry']
+
+	* entity-paths for event['said']21_12ecbplus.xmlsent:4068
+	['said --(dep)--> p']
+	['said --(nsubj)--> police']
+
+	* entity-paths for event['mowed']21_12ecbplus.xmlsent:4068
+	['mowed --(nsubj)--> Subryan']
+	['mowed --(nmod)--> woman']
+	['mowed --(dobj)--> Camry']
+
+sentence #:grandmother killed by drunk driver in hit - and - run accident in richmond hill , queens da saysseptember 19 , 2013 
+	[events]:[['accident'], ['killed']]
+	[entities]:[['in', 'richmond', 'hill', ',', 'queens'], ['driver'], ['grandmother']]
+*R546[killed]
+|--(nsubj)--> R545[grandmother]
+|--(nmod)--> drunk
+|                |--(case)--> by
+|--(dobj)--> R548[driver]
+                 |--(nmod)--> hit
+                 |                |--(case)--> in
+                 |--(punct)--> -
+                 |--(cc)--> and
+                 |--(conj)--> *R547[accident]
+                                  |--(punct)--> -
+                                  |--(compou)--> run
+                                  |--(nmod)--> R549[hill]
+                                  |                |--(case)--> R549[in]
+                                  |                |--(compou)--> R549[richmond]
+                                  |--(punct)--> R549[,]
+                                  |--(appos)--> da
+                                                   |--(compou)--> R549[queens]
+                                                   |--(dep)--> saysseptember
+                                                                    |--(nummod)--> 19
+                                                                    |--(punct)--> ,
+                                                                    |--(nummod)--> 2013
+
+	* entity-paths for event['accident']21_12ecbplus.xmlsent:4066
+	['ACCIDENT --(nmod)--> HILL']
+	['ACCIDENT --(punct)--> ,']
+	['ACCIDENT --(appos)--> DA', 'DA --(compound)--> QUEENS']
+
+	* entity-paths for event['killed']21_12ecbplus.xmlsent:4066
+	['KILLED --(nsubj)--> GRANDMOTHER']
+	['KILLED --(dobj)--> DRIVER']

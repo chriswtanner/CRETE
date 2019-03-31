@@ -1,0 +1,27 @@
+
+-----------------------------------------
+docid:5_6ecb.xml
+-----------------------------------------
+
+sentence #:today , maurice cheeks became the fifth coach fired within the first quarter of the season . 
+	[events]:[['fired']]
+	[entities]:[['maurice', 'cheeks'], ['today']]
+became
+|--(nmod:t)--> R1675[today]
+|--(punct)--> ,
+|--(nsubj)--> R1674[cheeks]
+|                |--(compou)--> R1674[maurice]
+|--(ccomp)--> *R1672[fired]
+|                |--(nsubj)--> coach
+|                |                |--(det)--> the
+|                |                |--(amod)--> fifth
+|                |--(nmod)--> quarter
+|                                 |--(case)--> within
+|                                 |--(det)--> the
+|                                 |--(amod)--> first
+|                                 |--(nmod)--> season
+|                                                  |--(case)--> of
+|                                                  |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['fired']5_6ecb.xmlsent:14236

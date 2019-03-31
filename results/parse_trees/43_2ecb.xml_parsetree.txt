@@ -1,0 +1,125 @@
+
+-----------------------------------------
+docid:43_2ecb.xml
+-----------------------------------------
+
+sentence #:for now , arthur said amd 's takeover deal , which is expected to close in the fourth quarter , effectively offers his one-year price target of $ 21 now . 
+	[events]:[['deal'], ['takeover']]
+	[entities]:[['amd']]
+said
+|--(nmod)--> now
+|                |--(case)--> for
+|--(punct)--> ,
+|--(nsubj)--> arthur
+|--(ccomp)--> offers
+|                |--(nsubj)--> *R1564[deal]
+|                |                |--(nmod:p)--> R1547[amd]
+|                |                |                |--(case)--> 's
+|                |                |--(compou)--> *R1562[takeover]
+|                |                |--(punct)--> ,
+|                |                |--(acl:re)--> expected
+|                |                |                |--(nsubjp)--> which
+|                |                |                |--(auxpas)--> is
+|                |                |                |--(xcomp)--> close
+|                |                |                                 |--(mark)--> to
+|                |                |                                 |--(nmod)--> quarter
+|                |                |                                                  |--(case)--> in
+|                |                |                                                  |--(det)--> the
+|                |                |                                                  |--(amod)--> fourth
+|                |                |--(punct)--> ,
+|                |--(advmod)--> effectively
+|                |--(dobj)--> target
+|                |                |--(nmod:p)--> his
+|                |                |--(amod)--> one-year
+|                |                |--(compou)--> price
+|                |                |--(nmod)--> 21
+|                |                                 |--(case)--> of
+|                |                                 |--(dep)--> $
+|                |--(advmod)--> now
+|--(punct)--> .
+
+	* entity-paths for event['deal']43_2ecb.xmlsent:13051
+	['deal --(nmod:poss)--> AMD']
+
+	* entity-paths for event['takeover']43_2ecb.xmlsent:13051
+
+sentence #:rbc capital markets downgraded ati technologies to " sector perform " from " outperform " after advanced micro devices announced its intention to buy the canadian graphics chip-maker for $ 5.4 billion on monday . 
+	[events]:[['buy'], ['announced']]
+	[entities]:[['its'], ['monday'], ['ati', 'technologies'], ['chip-maker'], ['advanced', 'micro', 'devices']]
+downgraded
+|--(nsubj)--> markets
+|                |--(compou)--> rbc
+|                |--(compou)--> capital
+|--(dobj)--> R1563[technologies]
+|                |--(compou)--> R1563[ati]
+|--(xcomp)--> perform
+|                |--(mark)--> to
+|                |--(punct)--> "
+|                |--(dep)--> sector
+|                |--(punct)--> "
+|                |--(nmod)--> outperform
+|                |                |--(case)--> from
+|                |                |--(punct)--> "
+|                |                |--(punct)--> "
+|                |                |--(acl)--> *R1561[announced]
+|                |                                 |--(mark)--> after
+|                |                                 |--(nsubj)--> R1547[devices]
+|                |                                 |                |--(compou)--> R1547[advanced]
+|                |                                 |                |--(compou)--> R1547[micro]
+|                |                                 |--(dobj)--> intention
+|                |                                                  |--(nmod:p)--> R1547[its]
+|                |                                                  |--(acl)--> *R1562[buy]
+|                |                                                                   |--(mark)--> to
+|                |                                                                   |--(dobj)--> R1563[chip-maker]
+|                |                                                                                    |--(det)--> the
+|                |                                                                                    |--(amod)--> canadian
+|                |                                                                                    |--(compou)--> graphics
+|                |                                                                                    |--(nmod)--> $
+|                |                                                                                                     |--(case)--> for
+|                |                                                                                                     |--(nummod)--> billion
+|                |                                                                                                                      |--(compou)--> 5.4
+|                |--(nmod)--> R1560[monday]
+|                                 |--(case)--> on
+|--(punct)--> .
+
+	* entity-paths for event['buy']43_2ecb.xmlsent:13049
+	['buy --(dobj)--> chip-maker']
+
+	* entity-paths for event['announced']43_2ecb.xmlsent:13049
+	['announced --(nsubj)--> Devices']
+	['announced --(dobj)--> intention', 'intention --(nmod:poss)--> its']
+	['announced --(dobj)--> intention', 'intention --(acl)--> buy', 'buy --(dobj)--> chip-maker']
+
+sentence #:even though the takeover looks fairly valued , rbc analyst steve arthur said there is limited upside to the offer unless competing bids are made for ati . 
+	[events]:[['takeover']]
+	[entities]:[['ati']]
+said
+|--(advcl)--> looks
+|                |--(advmod)--> even
+|                |--(mark)--> though
+|                |--(nsubj)--> *R1562[takeover]
+|                |                |--(det)--> the
+|                |--(xcomp)--> valued
+|                                 |--(advmod)--> fairly
+|--(punct)--> ,
+|--(nsubj)--> rbc
+|                |--(dep)--> arthur
+|                                 |--(compou)--> analyst
+|                                 |--(compou)--> steve
+|--(ccomp)--> limited
+|                |--(expl)--> there
+|                |--(auxpas)--> is
+|                |--(advmod)--> upside
+|                |                |--(nmod)--> offer
+|                |                                 |--(case)--> to
+|                |                                 |--(det)--> the
+|                |--(advcl)--> made
+|                                 |--(mark)--> unless
+|                                 |--(nsubjp)--> bids
+|                                 |                |--(amod)--> competing
+|                                 |--(auxpas)--> are
+|                                 |--(nmod)--> R1563[ati]
+|                                                  |--(case)--> for
+|--(punct)--> .
+
+	* entity-paths for event['takeover']43_2ecb.xmlsent:13050

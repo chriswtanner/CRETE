@@ -1,0 +1,77 @@
+
+-----------------------------------------
+docid:16_3ecbplus.xml
+-----------------------------------------
+
+sentence #:deputy jerry ortiz was shot and killed after knocking on a door during an investigation . 
+	[events]:[['killed'], ['investigation'], ['knocking'], ['shot']]
+	[entities]:[['jerry', 'ortiz'], ['door']]
+*R324[shot]
+|--(nsubjp)--> R319[ortiz]
+|                |--(compou)--> deputy
+|                |--(compou)--> R319[jerry]
+|--(auxpas)--> was
+|--(cc)--> and
+|--(conj)--> *R336[killed]
+|--(advcl)--> *R318[knocking]
+|                |--(mark)--> after
+|                |--(nmod)--> R320[door]
+|                |                |--(case)--> on
+|                |                |--(det)--> a
+|                |--(nmod)--> *R342[investigation]
+|                                 |--(case)--> during
+|                                 |--(det)--> an
+|--(punct)--> .
+
+	* entity-paths for event['killed']16_3ecbplus.xmlsent:1975
+
+	* entity-paths for event['investigation']16_3ecbplus.xmlsent:1975
+
+	* entity-paths for event['knocking']16_3ecbplus.xmlsent:1975
+	['knocking --(nmod)--> door']
+
+	* entity-paths for event['shot']16_3ecbplus.xmlsent:1975
+	['shot --(nsubjpass)--> Ortiz']
+	['shot --(advcl)--> knocking', 'knocking --(nmod)--> door']
+
+sentence #:as he spoke to the woman at the door of the apartment , the suspect in the previous day's shooting appeared and shot him in the head . 
+	[events]:[['spoke'], ['shot']]
+	[entities]:[['suspect'], ['him'], ['in', 'the', 'head'], ['woman'], ['at', 'the', 'door', 'of', 'the', 'apartment'], ['he']]
+appeared
+|--(advcl)--> *R343[spoke]
+|                |--(mark)--> as
+|                |--(nsubj)--> R319[he]
+|                |--(nmod)--> R344[woman]
+|                |                |--(case)--> to
+|                |                |--(det)--> the
+|                |--(nmod)--> R339[door]
+|                                 |--(case)--> R339[at]
+|                                 |--(det)--> R339[the]
+|                                 |--(nmod)--> R339[apartment]
+|                                                  |--(case)--> R339[of]
+|                                                  |--(det)--> R339[the]
+|--(punct)--> ,
+|--(nsubj)--> R317[suspect]
+|                |--(det)--> the
+|                |--(nmod)--> shooting
+|                                 |--(case)--> in
+|                                 |--(nmod:p)--> day's
+|                                                  |--(det)--> the
+|                                                  |--(amod)--> previous
+|                                                  |--(case)--> day's
+|--(cc)--> and
+|--(conj)--> *R324[shot]
+|                |--(dobj)--> R319[him]
+|                |--(nmod)--> R325[head]
+|                                 |--(case)--> R325[in]
+|                                 |--(det)--> R325[the]
+|--(punct)--> .
+
+	* entity-paths for event['spoke']16_3ecbplus.xmlsent:1977
+	['spoke --(nsubj)--> he']
+	['spoke --(nmod)--> woman']
+	['spoke --(nmod)--> door']
+
+	* entity-paths for event['shot']16_3ecbplus.xmlsent:1977
+	['shot --(dobj)--> him']
+	['shot --(nmod)--> head']

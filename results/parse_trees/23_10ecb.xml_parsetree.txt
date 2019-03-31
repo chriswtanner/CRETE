@@ -1,0 +1,38 @@
+
+-----------------------------------------
+docid:23_10ecb.xml
+-----------------------------------------
+
+sentence #:police say a perth mountain climber who watched his brother fall over the edge of new zealand 's highest mountain is devastated . 
+	[events]:[['watched'], ['fall']]
+	[entities]:[['perth'], ['climber'], ['brother'], ['new', 'zealand', "'s", 'highest', 'mountain']]
+say
+|--(nsubj)--> police
+|--(ccomp)--> devastated
+|                |--(nsubjp)--> R634[climber]
+|                |                |--(det)--> a
+|                |                |--(compou)--> R635[perth]
+|                |                |--(compou)--> mountain
+|                |                |--(acl:re)--> *R636[watched]
+|                |                                 |--(nsubj)--> who
+|                |                                 |--(nmod:t)--> *R637[fall]
+|                |                                 |                |--(nmod:p)--> his
+|                |                                 |                |--(compou)--> R638[brother]
+|                |                                 |--(nmod)--> edge
+|                |                                                  |--(case)--> over
+|                |                                                  |--(det)--> the
+|                |                                                  |--(nmod)--> R639[mountain]
+|                |                                                                   |--(case)--> of
+|                |                                                                   |--(nmod:p)--> R639[zealand]
+|                |                                                                   |                |--(compou)--> R639[new]
+|                |                                                                   |                |--(case)--> R639['s]
+|                |                                                                   |--(amod)--> R639[highest]
+|                |--(auxpas)--> is
+|--(punct)--> .
+
+	* entity-paths for event['watched']23_10ecb.xmlsent:4624
+	['watched --(nmod:tmod)--> fall', 'fall --(compound)--> brother']
+	['watched --(nmod)--> edge', 'edge --(nmod)--> mountain']
+
+	* entity-paths for event['fall']23_10ecb.xmlsent:4624
+	['fall --(compound)--> brother']

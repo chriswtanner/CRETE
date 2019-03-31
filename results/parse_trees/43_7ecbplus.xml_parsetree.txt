@@ -1,0 +1,66 @@
+
+-----------------------------------------
+docid:43_7ecbplus.xml
+-----------------------------------------
+
+sentence #:advanced micro devices on wednesday announced a deal to acquire startup seamicro , a maker of microservers and data center fabric technology , for $334 million . 
+	[events]:[['deal'], ['announced'], ['acquire']]
+	[entities]:[['data', 'center', 'fabric', 'technology'], ['startup', 'seamicro'], ['for', '$334', 'million'], ['maker'], ['on', 'wednesday'], ['microservers'], ['advanced', 'micro', 'devices']]
+*R1550[announced]
+|--(nsubj)--> R1547[devices]
+|                |--(compou)--> R1547[advanced]
+|                |--(compou)--> R1547[micro]
+|                |--(nmod)--> R1565[wednesday]
+|                                 |--(case)--> R1565[on]
+|--(dobj)--> *R1554[deal]
+|                |--(det)--> a
+|                |--(acl)--> *R1546[acquire]
+|                                 |--(mark)--> to
+|                                 |--(dobj)--> R1549[seamicro]
+|                                 |                |--(compou)--> R1549[startup]
+|                                 |                |--(punct)--> ,
+|                                 |                |--(appos)--> R1549[maker]
+|                                 |                |                |--(det)--> a
+|                                 |                |                |--(nmod)--> R1548[microservers]
+|                                 |                |                |                |--(case)--> of
+|                                 |                |                |                |--(cc)--> and
+|                                 |                |                |                |--(conj)--> R1576[data]
+|                                 |                |                |--(dep)--> R1576[technology]
+|                                 |                |                                 |--(compou)--> R1576[center]
+|                                 |                |                                 |--(compou)--> R1576[fabric]
+|                                 |                |--(punct)--> ,
+|                                 |--(nmod)--> R1555[$334]
+|                                                  |--(case)--> R1555[for]
+|                                                  |--(nummod)--> R1555[million]
+|                                                                   |--(compou)--> R1555[$334]
+|--(punct)--> .
+
+	* entity-paths for event['deal']43_7ecbplus.xmlsent:13351
+	['deal --(acl)--> acquire', 'acquire --(dobj)--> SeaMicro']
+	['deal --(acl)--> acquire', 'acquire --(nmod)--> $']
+
+	* entity-paths for event['announced']43_7ecbplus.xmlsent:13351
+	['announced --(nsubj)--> Devices']
+	['announced --(dobj)--> deal', 'deal --(acl)--> acquire', 'acquire --(dobj)--> SeaMicro']
+	['announced --(dobj)--> deal', 'deal --(acl)--> acquire', 'acquire --(nmod)--> $']
+
+	* entity-paths for event['acquire']43_7ecbplus.xmlsent:13351
+	['acquire --(dobj)--> SeaMicro']
+	['acquire --(nmod)--> $']
+
+sentence #:amd to acquire microserver startup seamicro for $334 million 
+	[events]:[['acquire']]
+	[entities]:[['microserver'], ['$334', 'million'], ['amd'], ['startup', 'seamicro']]
+R1547[amd]
+|--(dep)--> *R1546[acquire]
+                 |--(mark)--> to
+                 |--(dobj)--> R1549[seamicro]
+                                  |--(compou)--> R1548[microserver]
+                                  |--(compou)--> R1549[startup]
+                                  |--(nmod)--> R1555[$334]
+                                                   |--(case)--> for
+                                                   |--(dep)--> R1555[$334]
+                                                   |--(appos)--> R1555[million]
+
+	* entity-paths for event['acquire']43_7ecbplus.xmlsent:13349
+	['Acquire --(dobj)--> SeaMicro']

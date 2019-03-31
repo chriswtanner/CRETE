@@ -1,0 +1,45 @@
+
+-----------------------------------------
+docid:11_2ecb.xml
+-----------------------------------------
+
+sentence #:turkmenistan voted sunday in a parliamentary election meant to show that the energy-rich central asian nation was shedding its autocratic past , but western observers said nothing had changed . 
+	[events]:[['voted'], ['election']]
+	[entities]:[['nation'], ['turkmenistan'], ['sunday']]
+*R187[voted]
+|--(nsubj)--> R207[turkmenistan]
+|--(ccomp)--> meant
+|                |--(nsubj)--> R208[sunday]
+|                |                |--(nmod)--> *R193[election]
+|                |                                 |--(case)--> in
+|                |                                 |--(det)--> a
+|                |                                 |--(amod)--> parliamentary
+|                |--(xcomp)--> show
+|                                 |--(mark)--> to
+|                                 |--(ccomp)--> shedding
+|                                                  |--(mark)--> that
+|                                                  |--(nsubj)--> R207[nation]
+|                                                  |                |--(det)--> the
+|                                                  |                |--(amod)--> energy-rich
+|                                                  |                |--(amod)--> central
+|                                                  |                |--(amod)--> asian
+|                                                  |--(aux)--> was
+|                                                  |--(dobj)--> past
+|                                                                   |--(nmod:p)--> its
+|                                                                   |--(amod)--> autocratic
+|--(punct)--> ,
+|--(cc)--> but
+|--(conj)--> said
+|                |--(nsubj)--> observers
+|                |                |--(amod)--> western
+|                |--(ccomp)--> changed
+|                                 |--(nsubj)--> nothing
+|                                 |--(aux)--> had
+|--(punct)--> .
+
+	* entity-paths for event['voted']11_2ecb.xmlsent:624
+	['voted --(nsubj)--> Turkmenistan']
+	['voted --(ccomp)--> meant', 'meant --(nsubj)--> Sunday']
+	['voted --(ccomp)--> meant', 'meant --(xcomp)--> show', 'show --(ccomp)--> shedding', 'shedding --(nsubj)--> nation']
+
+	* entity-paths for event['election']11_2ecb.xmlsent:624

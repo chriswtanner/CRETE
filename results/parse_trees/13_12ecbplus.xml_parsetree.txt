@@ -1,0 +1,28 @@
+
+-----------------------------------------
+docid:13_12ecbplus.xml
+-----------------------------------------
+
+sentence #:fast - moving fire destroyed the historic matanuska maid warehouse early this morning . 
+	[events]:[['fire'], ['destroyed']]
+	[entities]:[['matanuska', 'maid', 'warehouse'], ['early', 'this', 'morning']]
+*R264[destroyed]
+|--(dep)--> fast
+|--(punct)--> -
+|--(nsubj)--> *R263[fire]
+|                |--(amod)--> moving
+|--(dobj)--> R265[warehouse]
+|                |--(det)--> the
+|                |--(amod)--> historic
+|                |--(compou)--> R265[matanuska]
+|                |--(compou)--> R265[maid]
+|--(nmod:t)--> R267[morning]
+|                |--(advmod)--> R267[early]
+|                |--(det)--> R267[this]
+|--(punct)--> .
+
+	* entity-paths for event['fire']13_12ecbplus.xmlsent:1200
+
+	* entity-paths for event['destroyed']13_12ecbplus.xmlsent:1200
+	['destroyed --(dobj)--> warehouse']
+	['destroyed --(nmod:tmod)--> morning']

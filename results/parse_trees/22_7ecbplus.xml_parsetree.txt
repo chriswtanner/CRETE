@@ -1,0 +1,77 @@
+
+-----------------------------------------
+docid:22_7ecbplus.xml
+-----------------------------------------
+
+sentence #:woman convicted of double murder in 2010 kraft foods rampage in ne philadelphia 
+	[events]:[['rampage'], ['murder']]
+	[entities]:[['woman'], ['in', '2010'], ['in', 'ne', 'philadelphia']]
+convicted
+|--(compou)--> R589[woman]
+|--(nmod)--> *R597[murder]
+|                |--(case)--> of
+|                |--(amod)--> double
+|--(nmod)--> *R591[rampage]
+|                |--(case)--> R594[in]
+|                |--(nummod)--> R594[2010]
+|                |--(compou)--> kraft
+|                |--(compou)--> foods
+|--(nmod)--> R599[philadelphia]
+                 |--(case)--> R599[in]
+                 |--(compou)--> R599[ne]
+
+	* entity-paths for event['rampage']22_7ecbplus.xmlsent:4539
+	['Rampage --(case)--> In']
+	['Rampage --(nummod)--> 2010']
+
+	* entity-paths for event['murder']22_7ecbplus.xmlsent:4539
+
+sentence #:a philadelphia judge today found a former kraft foods company employee guilty of murder in a workplace rampage exactly two years ago in northeast philadelphia that left two women dead and a third employee wounded . 
+	[events]:[['dead'], ['murder'], ['wounded'], ['rampage']]
+	[entities]:[['employee'], ['in', 'northeast', 'philadelphia'], ['exactly', 'two', 'years', 'ago'], ['women'], ['employee']]
+found
+|--(nsubj)--> judge
+|                |--(det)--> a
+|                |--(compou)--> philadelphia
+|--(nmod:t)--> today
+|--(dobj)--> R589[employee]
+|                |--(det)--> a
+|                |--(amod)--> former
+|                |--(compou)--> kraft
+|                |--(compou)--> foods
+|                |--(compou)--> company
+|--(advmod)--> guilty
+|                |--(nmod)--> *R597[murder]
+|                |                |--(case)--> of
+|                |--(nmod)--> *R591[rampage]
+|                |                |--(case)--> in
+|                |                |--(det)--> a
+|                |                |--(compou)--> workplace
+|                |                |--(advmod)--> R594[ago]
+|                |                                 |--(nmod:n)--> R594[years]
+|                |                                                  |--(advmod)--> R594[exactly]
+|                |                                                  |--(nummod)--> R594[two]
+|                |--(nmod)--> R599[philadelphia]
+|                                 |--(case)--> R599[in]
+|                                 |--(compou)--> R599[northeast]
+|                                 |--(acl:re)--> left
+|                                 |                |--(nsubj)--> that
+|                                 |                |--(xcomp)--> *R592[dead]
+|                                 |                                 |--(nmod:n)--> R593[women]
+|                                 |                                                  |--(nummod)--> two
+|                                 |--(cc)--> and
+|                                 |--(conj)--> R601[employee]
+|                                                  |--(det)--> a
+|                                                  |--(amod)--> third
+|                                                  |--(acl)--> *R600[wounded]
+|--(punct)--> .
+
+	* entity-paths for event['dead']22_7ecbplus.xmlsent:4541
+	['dead --(nmod:npmod)--> women']
+
+	* entity-paths for event['murder']22_7ecbplus.xmlsent:4541
+
+	* entity-paths for event['wounded']22_7ecbplus.xmlsent:4541
+
+	* entity-paths for event['rampage']22_7ecbplus.xmlsent:4541
+	['rampage --(advmod)--> ago']

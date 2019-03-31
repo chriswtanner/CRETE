@@ -1,0 +1,73 @@
+
+-----------------------------------------
+docid:38_4ecb.xml
+-----------------------------------------
+
+sentence #:a light earthquake has struck northern california , and there are no reports of injuries or damage . 
+	[events]:[['earthquake'], ['struck']]
+	[entities]:[]
+*R1309[struck]
+|--(nsubj)--> *R1310[earthquake]
+|                |--(det)--> a
+|                |--(amod)--> light
+|--(aux)--> has
+|--(dobj)--> california
+|                |--(amod)--> northern
+|--(punct)--> ,
+|--(cc)--> and
+|--(conj)--> are
+|                |--(expl)--> there
+|                |--(nsubj)--> reports
+|                                 |--(neg)--> no
+|                                 |--(nmod)--> injuries
+|                                                  |--(case)--> of
+|                                                  |--(cc)--> or
+|                                                  |--(conj)--> damage
+|--(punct)--> .
+
+	* entity-paths for event['earthquake']38_4ecb.xmlsent:10786
+
+	* entity-paths for event['struck']38_4ecb.xmlsent:10786
+
+sentence #:the u.s. geological survey says the 4.4-magnitude temblor on sunday at 9:27 a.m. was centered 23 miles north of santa rosa , and two miles from the geysers . 
+	[events]:[['temblor'], ['says']]
+	[entities]:[['u.s.', 'geological', 'survey'], ['on', 'sunday', 'at', '9:27', 'a.m.'], ['4.4-magnitude'], ['two', 'miles', 'from', 'the', 'geysers']]
+*R1313[says]
+|--(nsubj)--> R1243[survey]
+|                |--(det)--> the
+|                |--(compou)--> R1243[u.s.]
+|                |--(compou)--> R1243[geological]
+|--(ccomp)--> centered
+|                |--(nsubj)--> *R1310[temblor]
+|                |                |--(det)--> the
+|                |                |--(amod)--> R1314[4.4-magnitude]
+|                |                |--(nmod)--> R1311[sunday]
+|                |                                 |--(case)--> R1311[on]
+|                |                                 |--(nmod)--> R1311[a.m.]
+|                |                                                  |--(case)--> R1311[at]
+|                |                                                  |--(nummod)--> R1311[9:27]
+|                |--(cop)--> was
+|                |--(nmod)--> rosa
+|                                 |--(advmod)--> north
+|                                 |                |--(nmod:n)--> miles
+|                                 |                                 |--(nummod)--> 23
+|                                 |--(case)--> of
+|                                 |--(compou)--> santa
+|                                 |--(punct)--> ,
+|                                 |--(cc)--> and
+|                                 |--(conj)--> R1316[miles]
+|                                                  |--(nummod)--> R1316[two]
+|                                                  |--(case)--> R1316[from]
+|                                                  |--(dep)--> R1316[geysers]
+|                                                                   |--(det)--> R1316[the]
+|--(punct)--> .
+
+	* entity-paths for event['temblor']38_4ecb.xmlsent:10787
+	['temblor --(amod)--> 4.4-magnitude']
+	['temblor --(nmod)--> Sunday']
+
+	* entity-paths for event['says']38_4ecb.xmlsent:10787
+	['says --(nsubj)--> Survey']
+	['says --(ccomp)--> centered', 'centered --(nsubj)--> temblor', 'temblor --(amod)--> 4.4-magnitude']
+	['says --(ccomp)--> centered', 'centered --(nsubj)--> temblor', 'temblor --(nmod)--> Sunday']
+	['says --(ccomp)--> centered', 'centered --(nmod)--> Rosa', 'Rosa --(conj)--> miles']

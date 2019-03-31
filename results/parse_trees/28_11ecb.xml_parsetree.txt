@@ -1,0 +1,126 @@
+
+-----------------------------------------
+docid:28_11ecb.xml
+-----------------------------------------
+
+sentence #:mark felt , ' deep throat ' of watergate , dead at 95 
+	[events]:[['dead'], ['watergate']]
+	[entities]:[['mark', 'felt'], ['deep', 'throat']]
+R809[mark]
+|--(appos)--> R809[felt]
+|--(punct)--> ,
+|--(punct)--> '
+|--(dep)--> R811[throat]
+|                |--(amod)--> R811[deep]
+|                |--(punct)--> '
+|--(nmod)--> *R812[watergate]
+                 |--(case)--> of
+                 |--(punct)--> ,
+                 |--(amod)--> *R808[dead]
+                                  |--(nmod)--> 95
+                                                   |--(case)--> at
+
+	* entity-paths for event['dead']28_11ecb.xmlsent:6079
+
+	* entity-paths for event['watergate']28_11ecb.xmlsent:6079
+
+sentence #:w. mark felt , who leaked information to reporters under the moniker , " deep throat , " about the watergate break-in , died thursday at the age of 95 , sources told cnn . 
+	[events]:[['watergate', 'break-in'], ['died']]
+	[entities]:[['deep', 'throat'], ['w.', 'mark', 'felt'], ['who'], ['thursday']]
+told
+|--(ccomp)--> *R808[died]
+|                |--(nsubj)--> R809[felt]
+|                |                |--(compou)--> R809[w.]
+|                |                |--(compou)--> R809[mark]
+|                |                |--(punct)--> ,
+|                |                |--(acl:re)--> leaked
+|                |                |                |--(nsubj)--> R809[who]
+|                |                |                |--(dobj)--> information
+|                |                |                |--(nmod)--> reporters
+|                |                |                |                |--(case)--> to
+|                |                |                |--(nmod)--> moniker
+|                |                |                |                |--(case)--> under
+|                |                |                |                |--(det)--> the
+|                |                |                |                |--(punct)--> ,
+|                |                |                |                |--(punct)--> "
+|                |                |                |                |--(dep)--> R811[throat]
+|                |                |                |                                 |--(compou)--> R811[deep]
+|                |                |                |--(punct)--> ,
+|                |                |                |--(punct)--> "
+|                |                |                |--(nmod)--> *R818[break-in]
+|                |                |                                 |--(case)--> about
+|                |                |                                 |--(det)--> the
+|                |                |                                 |--(compou)--> *R818[watergate]
+|                |                |--(punct)--> ,
+|                |--(nmod:t)--> R819[thursday]
+|                |--(nmod)--> age
+|                                 |--(case)--> at
+|                                 |--(det)--> the
+|                                 |--(nmod)--> 95
+|                                                  |--(case)--> of
+|--(punct)--> ,
+|--(nsubj)--> sources
+|--(dobj)--> cnn
+|--(punct)--> .
+
+	* entity-paths for event['watergate', 'break-in']28_11ecb.xmlsent:6080
+
+	* entity-paths for event['died']28_11ecb.xmlsent:6080
+	['died --(nsubj)--> Felt']
+	['died --(nmod:tmod)--> Thursday']
+
+sentence #:rob jones , felt 's grandson , said his grandfather died at his home in santa rosa , california . 
+	[events]:[['said'], ['died']]
+	[entities]:[['grandson'], ['grandfather'], ['at', 'his', 'home', 'in', 'santa', 'rosa', ',', 'california'], ['felt'], ['rob', 'jones']]
+*R820[said]
+|--(nsubj)--> R821[jones]
+|                |--(compou)--> R821[rob]
+|                |--(punct)--> ,
+|                |--(appos)--> R821[grandson]
+|                |                |--(nmod:p)--> R809[felt]
+|                |                                 |--(case)--> 's
+|                |--(punct)--> ,
+|--(ccomp)--> *R808[died]
+|                |--(nsubj)--> R809[grandfather]
+|                |                |--(nmod:p)--> his
+|                |--(nmod)--> R822[home]
+|                |                |--(case)--> R822[at]
+|                |                |--(nmod:p)--> R822[his]
+|                |--(nmod)--> R822[rosa]
+|                                 |--(case)--> R822[in]
+|                                 |--(compou)--> R822[santa]
+|                                 |--(punct)--> R822[,]
+|                                 |--(appos)--> R822[california]
+|--(punct)--> .
+
+	* entity-paths for event['said']28_11ecb.xmlsent:6082
+	['said --(nsubj)--> Jones']
+	['said --(ccomp)--> died', 'died --(nsubj)--> grandfather']
+	['said --(ccomp)--> died', 'died --(nmod)--> home']
+	['said --(ccomp)--> died', 'died --(nmod)--> Rosa']
+
+	* entity-paths for event['died']28_11ecb.xmlsent:6082
+	['died --(nsubj)--> grandfather']
+	['died --(nmod)--> home']
+	['died --(nmod)--> Rosa']
+
+sentence #:according to published reports , felt died of congestive heart failure . 
+	[events]:[['congestive', 'heart', 'failure'], ['died']]
+	[entities]:[['felt']]
+*R808[died]
+|--(nmod)--> reports
+|                |--(case)--> according
+|                |                |--(mwe)--> to
+|                |--(amod)--> published
+|--(punct)--> ,
+|--(csubj)--> R809[felt]
+|--(nmod)--> *R823[failure]
+|                |--(case)--> of
+|                |--(amod)--> *R823[congestive]
+|                |--(compou)--> *R823[heart]
+|--(punct)--> .
+
+	* entity-paths for event['congestive', 'heart', 'failure']28_11ecb.xmlsent:6083
+
+	* entity-paths for event['died']28_11ecb.xmlsent:6083
+	['died --(csubj)--> Felt']

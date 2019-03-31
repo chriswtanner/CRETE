@@ -1,0 +1,55 @@
+
+-----------------------------------------
+docid:4_14ecb.xml
+-----------------------------------------
+
+sentence #:pinup icon bettie page died thursday evening at a hospital in los angeles after having suffered a heart attack on dec. 2 and spending time on life support , according to her official site . 
+	[events]:[['suffered'], ['died'], ['heart', 'attack']]
+	[entities]:[['on', 'dec.', '2'], ['thursday', 'evening'], ['site'], ['a', 'hospital', 'in', 'los', 'angeles'], ['bettie', 'page']]
+*R1363[died]
+|--(nsubj)--> R1364[page]
+|                |--(amod)--> pinup
+|                |--(compou)--> icon
+|                |--(compou)--> R1364[bettie]
+|--(nmod:t)--> R1367[evening]
+|                |--(compou)--> R1367[thursday]
+|--(nmod)--> R1368[hospital]
+|                |--(case)--> at
+|                |--(det)--> R1368[a]
+|                |--(nmod)--> R1368[angeles]
+|                                 |--(case)--> R1368[in]
+|                                 |--(compou)--> R1368[los]
+|--(advcl)--> *R1382[suffered]
+|                |--(mark)--> after
+|                |--(aux)--> having
+|                |--(dobj)--> *R1380[attack]
+|                |                |--(det)--> a
+|                |                |--(compou)--> *R1380[heart]
+|                |--(nmod)--> R1381[dec.]
+|                |                |--(case)--> R1381[on]
+|                |                |--(nummod)--> R1381[2]
+|                |                |--(cc)--> and
+|                |                |--(conj)--> time
+|                |                                 |--(compou)--> spending
+|                |--(nmod)--> support
+|                                 |--(case)--> on
+|                                 |--(compou)--> life
+|--(punct)--> ,
+|--(nmod)--> R1383[site]
+|                |--(case)--> according
+|                |                |--(mwe)--> to
+|                |--(nmod:p)--> her
+|                |--(amod)--> official
+|--(punct)--> .
+
+	* entity-paths for event['suffered']4_14ecb.xmlsent:11300
+	['suffered --(nmod)--> Dec.']
+
+	* entity-paths for event['died']4_14ecb.xmlsent:11300
+	['died --(nsubj)--> Page']
+	['died --(nmod:tmod)--> evening']
+	['died --(nmod)--> hospital']
+	['died --(advcl)--> suffered', 'suffered --(nmod)--> Dec.']
+	['died --(nmod)--> site']
+
+	* entity-paths for event['heart', 'attack']4_14ecb.xmlsent:11300

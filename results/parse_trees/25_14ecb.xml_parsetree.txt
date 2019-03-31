@@ -1,0 +1,32 @@
+
+-----------------------------------------
+docid:25_14ecb.xml
+-----------------------------------------
+
+sentence #:the saints placed running back reggie bush on injured reserve ending his season . 
+	[events]:[['placed'], ['ending'], ['injured', 'reserve']]
+	[entities]:[['season'], ['the', 'saints'], ['his'], ['reggie', 'bush']]
+*R711[placed]
+|--(nsubj)--> R706[saints]
+|                |--(det)--> R706[the]
+|--(xcomp)--> running
+|                |--(compou)--> back
+|                |--(dobj)--> R707[bush]
+|                |                |--(compou)--> R707[reggie]
+|                |                |--(nmod)--> *R712[reserve]
+|                |                                 |--(case)--> on
+|                |                                 |--(amod)--> *R712[injured]
+|                |--(advcl)--> *R722[ending]
+|                                 |--(dobj)--> R708[season]
+|                                                  |--(nmod:p)--> R707[his]
+|--(punct)--> .
+
+	* entity-paths for event['placed']25_14ecb.xmlsent:5028
+	['placed --(nsubj)--> Saints']
+	['placed --(xcomp)--> running', 'running --(dobj)--> Bush']
+	['placed --(xcomp)--> running', 'running --(advcl)--> ending', 'ending --(dobj)--> season']
+
+	* entity-paths for event['ending']25_14ecb.xmlsent:5028
+	['ending --(dobj)--> season']
+
+	* entity-paths for event['injured', 'reserve']25_14ecb.xmlsent:5028

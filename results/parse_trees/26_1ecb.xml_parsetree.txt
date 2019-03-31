@@ -1,0 +1,83 @@
+
+-----------------------------------------
+docid:26_1ecb.xml
+-----------------------------------------
+
+sentence #:lo presti , 52 , head of mafia clans in the porta nuova area of palermo , was found dead in pagliarelli prison only hours after his arrest . 
+	[events]:[['found'], ['dead'], ['arrest']]
+	[entities]:[['hours'], ['in', 'the', 'porta', 'nuova', 'area', 'of', 'palermo'], ['lo', 'presti'], ['in', 'pagliarelli', 'prison']]
+*R745[found]
+|--(nsubjp)--> R733[presti]
+|                |--(compou)--> R733[lo]
+|                |--(punct)--> ,
+|                |--(amod)--> 52
+|                |--(punct)--> ,
+|                |--(appos)--> head
+|                |                |--(nmod)--> clans
+|                |                                 |--(case)--> of
+|                |                                 |--(compou)--> mafia
+|                |                                 |--(nmod)--> R755[area]
+|                |                                                  |--(case)--> R755[in]
+|                |                                                  |--(det)--> R755[the]
+|                |                                                  |--(compou)--> R755[porta]
+|                |                                                  |--(compou)--> R755[nuova]
+|                |                                                  |--(nmod)--> R755[palermo]
+|                |                                                                   |--(case)--> R755[of]
+|                |--(punct)--> ,
+|--(auxpas)--> was
+|--(dobj)--> R735[hours]
+|                |--(amod)--> *R732[dead]
+|                                 |--(nmod)--> R734[prison]
+|                                                  |--(case)--> R734[in]
+|                                                  |--(compou)--> R734[pagliarelli]
+|                                                  |--(advmod)--> only
+|--(nmod)--> *R736[arrest]
+|                |--(case)--> after
+|                |--(nmod:p)--> his
+|--(punct)--> .
+
+	* entity-paths for event['found']26_1ecb.xmlsent:5302
+	['found --(nsubjpass)--> Presti']
+	['found --(dobj)--> hours']
+
+	* entity-paths for event['dead']26_1ecb.xmlsent:5302
+	['dead --(nmod)--> prison']
+
+	* entity-paths for event['arrest']26_1ecb.xmlsent:5302
+
+sentence #:gaetano lo presti , one of 99 alleged sicilian mafia members seized on tuesday , has apparently hanged himself with his belt in prison . 
+	[events]:[['hanged'], ['seized']]
+	[entities]:[['one'], ['in', 'prison'], ['gaetano', 'lo', 'presti'], ['tuesday'], ['himself']]
+*R732[hanged]
+|--(nsubj)--> R733[presti]
+|                |--(compou)--> R733[gaetano]
+|                |--(compou)--> R733[lo]
+|                |--(punct)--> ,
+|                |--(appos)--> R733[one]
+|                |                |--(nmod)--> members
+|                |                                 |--(case)--> of
+|                |                                 |--(nummod)--> 99
+|                |                                 |--(amod)--> alleged
+|                |                                 |--(compou)--> sicilian
+|                |                                 |--(compou)--> mafia
+|                |                                 |--(acl)--> *R732[seized]
+|                |                                                  |--(nmod)--> R746[tuesday]
+|                |                                                                   |--(case)--> on
+|                |--(punct)--> ,
+|--(aux)--> has
+|--(advmod)--> apparently
+|--(dobj)--> R733[himself]
+|--(nmod)--> belt
+|                |--(case)--> with
+|                |--(nmod:p)--> his
+|                |--(nmod)--> R734[prison]
+|                                 |--(case)--> R734[in]
+|--(punct)--> .
+
+	* entity-paths for event['hanged']26_1ecb.xmlsent:5301
+	['hanged --(nsubj)--> Presti']
+	['hanged --(dobj)--> himself']
+	['hanged --(nmod)--> belt', 'belt --(nmod)--> prison']
+
+	* entity-paths for event['seized']26_1ecb.xmlsent:5301
+	['seized --(nmod)--> Tuesday']

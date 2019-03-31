@@ -1,0 +1,130 @@
+
+-----------------------------------------
+docid:44_4ecb.xml
+-----------------------------------------
+
+sentence #:h-p announced tuesday that it will buy the outsourcing services company for $ 13.9 billion . 
+	[events]:[['services'], ['announced'], ['buy']]
+	[entities]:[['h-p'], ['company'], ['tuesday'], ['it']]
+*R1601[announced]
+|--(nsubj)--> R1577[h-p]
+|--(nmod:t)--> R1602[tuesday]
+|--(ccomp)--> *R1599[buy]
+|                |--(mark)--> that
+|                |--(nsubj)--> R1577[it]
+|                |--(aux)--> will
+|                |--(dobj)--> R1600[company]
+|                                 |--(det)--> the
+|                                 |--(compou)--> outsourcing
+|                                 |--(compou)--> *R1604[services]
+|                                 |--(nmod)--> $
+|                                                  |--(case)--> for
+|                                                  |--(nummod)--> billion
+|                                                                   |--(compou)--> 13.9
+|--(punct)--> .
+
+	* entity-paths for event['services']44_4ecb.xmlsent:13616
+
+	* entity-paths for event['announced']44_4ecb.xmlsent:13616
+	['announced --(nsubj)--> H-P']
+	['announced --(nmod:tmod)--> Tuesday']
+	['announced --(ccomp)--> buy', 'buy --(nsubj)--> it']
+	['announced --(ccomp)--> buy', 'buy --(dobj)--> company']
+
+	* entity-paths for event['buy']44_4ecb.xmlsent:13616
+	['buy --(nsubj)--> it']
+	['buy --(dobj)--> company']
+
+sentence #:the repercussions from the merger of electronic data systems ( eds quote - cramer on eds - stock picks ) with hewlett-packard ( hpq quote - cramer on hpq - stock picks ) will ripple broadly throughout the tech industry . 
+	[events]:[['merger'], ['tech', 'industry']]
+	[entities]:[['hewlett-packard'], ['electronic', 'data', 'systems']]
+ripple
+|--(nsubj)--> repercussions
+|                |--(det)--> the
+|                |--(nmod)--> *R1599[merger]
+|                |                |--(case)--> from
+|                |                |--(det)--> the
+|                |                |--(nmod)--> R1600[systems]
+|                |                                 |--(case)--> of
+|                |                                 |--(compou)--> R1600[electronic]
+|                |                                 |--(compou)--> R1600[data]
+|                |                                 |--(appos)--> quote
+|                |                                 |                |--(punct)--> (
+|                |                                 |                |--(compou)--> eds
+|                |                                 |                |--(punct)--> -
+|                |                                 |                |--(dep)--> eds
+|                |                                 |                |                |--(compou)--> cramer
+|                |                                 |                |                |--(amod)--> on
+|                |                                 |                |                |--(punct)--> -
+|                |                                 |                |                |--(dep)--> picks
+|                |                                 |                |                                 |--(compou)--> stock
+|                |                                 |                |--(punct)--> )
+|                |                                 |--(nmod)--> R1577[hewlett-packard]
+|                |                                                  |--(case)--> with
+|                |--(appos)--> quote
+|                                 |--(punct)--> (
+|                                 |--(compou)--> hpq
+|                                 |--(punct)--> -
+|                                 |--(dep)--> hpq
+|                                 |                |--(compou)--> cramer
+|                                 |                |--(amod)--> on
+|                                 |                |--(punct)--> -
+|                                 |                |--(dep)--> picks
+|                                 |                                 |--(compou)--> stock
+|                                 |--(punct)--> )
+|--(aux)--> will
+|--(advmod)--> broadly
+|--(nmod)--> *R1606[industry]
+|                |--(case)--> throughout
+|                |--(det)--> the
+|                |--(compou)--> *R1606[tech]
+|--(punct)--> .
+
+	* entity-paths for event['merger']44_4ecb.xmlsent:13615
+	['merger --(nmod)--> Systems']
+
+	* entity-paths for event['tech', 'industry']44_4ecb.xmlsent:13615
+
+sentence #:the deal will be bad " for anyone that does n't have h-p or ibm ( ibm quote - cramer on ibm - stock picks ) on their business card , " said idc analyst bob welch . 
+	[events]:[['deal']]
+	[entities]:[['h-p']]
+said
+|--(ccomp)--> bad
+|                |--(nsubj)--> *R1605[deal]
+|                |                |--(det)--> the
+|                |--(aux)--> will
+|                |--(cop)--> be
+|                |--(punct)--> "
+|                |--(nmod)--> anyone
+|                                 |--(case)--> for
+|                                 |--(acl:re)--> have
+|                                                  |--(nsubj)--> that
+|                                                  |--(aux)--> does
+|                                                  |--(neg)--> n't
+|                                                  |--(dobj)--> R1577[h-p]
+|                                                                   |--(cc)--> or
+|                                                                   |--(conj)--> ibm
+|                                                                                    |--(appos)--> quote
+|                                                                                    |                |--(punct)--> (
+|                                                                                    |                |--(compou)--> ibm
+|                                                                                    |                |--(punct)--> -
+|                                                                                    |                |--(dep)--> ibm
+|                                                                                    |                |                |--(compou)--> cramer
+|                                                                                    |                |                |--(amod)--> on
+|                                                                                    |                |                |--(punct)--> -
+|                                                                                    |                |                |--(dep)--> picks
+|                                                                                    |                |                                 |--(compou)--> stock
+|                                                                                    |                |--(punct)--> )
+|                                                                                    |--(nmod)--> card
+|                                                                                                     |--(case)--> on
+|                                                                                                     |--(nmod:p)--> their
+|                                                                                                     |--(compou)--> business
+|--(punct)--> ,
+|--(punct)--> "
+|--(nsubj)--> welch
+|                |--(compou)--> idc
+|                |--(compou)--> analyst
+|                |--(compou)--> bob
+|--(punct)--> .
+
+	* entity-paths for event['deal']44_4ecb.xmlsent:13617

@@ -1,0 +1,96 @@
+
+-----------------------------------------
+docid:16_5ecbplus.xml
+-----------------------------------------
+
+sentence #:a los angeles county sheriff's deputy interviewing a woman and a man outside a hawaiian gardens apartment was fatally shot friday when a gunman burst out of the residence , put a handgun to the officer's face and fired , authorities said . 
+	[events]:[['fired'], ['said'], ['shot'], ['interviewing']]
+	[entities]:[['woman'], ['outside', 'a', 'hawaiian', 'gardens', 'apartment'], ['gunman'], ['friday'], ["officer's"], ['deputy'], ['authorities']]
+*R350[said]
+|--(ccomp)--> *R324[shot]
+|                |--(nsubjp)--> R319[deputy]
+|                |                |--(nmod:p)--> sheriff's
+|                |                |                |--(det)--> a
+|                |                |                |--(compou)--> los
+|                |                |                |--(compou)--> angeles
+|                |                |                |--(compou)--> county
+|                |                |                |--(case)--> sheriff's
+|                |                |--(dep)--> *R343[interviewing]
+|                |                                 |--(dobj)--> R344[woman]
+|                |                                 |                |--(det)--> a
+|                |                                 |                |--(cc)--> and
+|                |                                 |                |--(conj)--> man
+|                |                                 |                                 |--(det)--> a
+|                |                                 |--(nmod)--> R339[apartment]
+|                |                                                  |--(case)--> R339[outside]
+|                |                                                  |--(det)--> R339[a]
+|                |                                                  |--(amod)--> R339[hawaiian]
+|                |                                                  |--(compou)--> R339[gardens]
+|                |--(auxpas)--> was
+|                |--(advmod)--> fatally
+|                |--(nmod:t)--> R347[friday]
+|                |--(advcl)--> put
+|                                 |--(advmod)--> when
+|                                 |--(nsubj)--> burst
+|                                 |                |--(det)--> a
+|                                 |                |--(compou)--> R317[gunman]
+|                                 |                |--(acl:re)--> residence
+|                                 |                |                |--(advmod)--> out
+|                                 |                |                |--(case)--> of
+|                                 |                |                |--(det)--> the
+|                                 |                |--(punct)--> ,
+|                                 |--(dobj)--> handgun
+|                                 |                |--(det)--> a
+|                                 |--(nmod)--> face
+|                                 |                |--(case)--> to
+|                                 |                |--(nmod:p)--> R319[officer's]
+|                                 |                                 |--(det)--> the
+|                                 |                                 |--(case)--> R319[officer's]
+|                                 |--(cc)--> and
+|                                 |--(conj)--> *R324[fired]
+|--(punct)--> ,
+|--(nsubj)--> R351[authorities]
+|--(punct)--> .
+
+	* entity-paths for event['fired']16_5ecbplus.xmlsent:2009
+
+	* entity-paths for event['said']16_5ecbplus.xmlsent:2009
+	['said --(ccomp)--> shot', 'shot --(nsubjpass)--> deputy']
+	['said --(ccomp)--> shot', 'shot --(nmod:tmod)--> Friday']
+	['said --(ccomp)--> shot', 'shot --(advcl)--> put', 'put --(nsubj)--> burst', 'burst --(compound)--> gunman']
+	['said --(ccomp)--> shot', 'shot --(advcl)--> put', 'put --(nmod)--> face', 'face --(nmod:poss)--> officer']
+	['said --(nsubj)--> authorities']
+
+	* entity-paths for event['shot']16_5ecbplus.xmlsent:2009
+	['shot --(nsubjpass)--> deputy']
+	['shot --(nmod:tmod)--> Friday']
+	['shot --(advcl)--> put', 'put --(nsubj)--> burst', 'burst --(compound)--> gunman']
+	['shot --(advcl)--> put', 'put --(nmod)--> face', 'face --(nmod:poss)--> officer']
+
+	* entity-paths for event['interviewing']16_5ecbplus.xmlsent:2009
+	['interviewing --(dobj)--> woman']
+	['interviewing --(nmod)--> apartment']
+
+sentence #:"this was an assassination of a deputy , " sheriff lee baca said . 
+	[events]:[['"this'], ['assassination']]
+	[entities]:[['deputy']]
+said
+|--(punct)--> *R336["this]
+|--(ccomp)--> *R336[assassination]
+|                |--(nsubj)--> *R336["this]
+|                |--(cop)--> was
+|                |--(det)--> an
+|                |--(nmod)--> R319[deputy]
+|                                 |--(case)--> of
+|                                 |--(det)--> a
+|--(punct)--> ,
+|--(punct)--> "
+|--(nsubj)--> baca
+|                |--(compou)--> sheriff
+|                |--(compou)--> lee
+|--(punct)--> .
+
+	* entity-paths for event['"this']16_5ecbplus.xmlsent:2012
+
+	* entity-paths for event['assassination']16_5ecbplus.xmlsent:2012
+	['assassination --(nmod)--> deputy']

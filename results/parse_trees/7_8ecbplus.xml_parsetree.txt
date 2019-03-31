@@ -1,0 +1,56 @@
+
+-----------------------------------------
+docid:7_8ecbplus.xml
+-----------------------------------------
+
+sentence #:wladimir klitschko retained his wba , ibf and wbo heavyweight title belts by stopping american challenger tony thompson in the sixth round . 
+	[events]:[['round'], ['retained'], ['stopping']]
+	[entities]:[['belts'], ['tony', 'thompson'], ['wladimir', 'klitschko']]
+*R1727[retained]
+|--(nsubj)--> R1716[klitschko]
+|                |--(compou)--> R1716[wladimir]
+|--(xcomp)--> R1728[belts]
+|                |--(nsubj)--> wba
+|                |                |--(nmod:p)--> his
+|                |                |--(punct)--> ,
+|                |                |--(conj)--> ibf
+|                |                |--(cc)--> and
+|                |                |--(conj)--> wbo
+|                |--(amod)--> heavyweight
+|                |--(compou)--> title
+|                |--(acl)--> *R1724[stopping]
+|                                 |--(mark)--> by
+|                                 |--(dobj)--> R1725[thompson]
+|                                 |                |--(amod)--> american
+|                                 |                |--(compou)--> challenger
+|                                 |                |--(compou)--> R1725[tony]
+|                                 |--(nmod)--> *R1726[round]
+|                                                  |--(case)--> in
+|                                                  |--(det)--> the
+|                                                  |--(amod)--> sixth
+|--(punct)--> .
+
+	* entity-paths for event['round']7_8ecbplus.xmlsent:14837
+
+	* entity-paths for event['retained']7_8ecbplus.xmlsent:14837
+	['retained --(nsubj)--> Klitschko']
+	['retained --(xcomp)--> belts']
+
+	* entity-paths for event['stopping']7_8ecbplus.xmlsent:14837
+	['stopping --(dobj)--> Thompson']
+
+sentence #:wladimir klitschko defeats tony thompson in six rounds 
+	[events]:[['defeats']]
+	[entities]:[['tony', 'thompson'], ['wladimir', 'klitschko']]
+*R1746[defeats]
+|--(nsubj)--> R1716[klitschko]
+|                |--(compou)--> R1716[wladimir]
+|--(dobj)--> R1725[thompson]
+                 |--(compou)--> R1725[tony]
+                 |--(nmod)--> rounds
+                                  |--(case)--> in
+                                  |--(nummod)--> six
+
+	* entity-paths for event['defeats']7_8ecbplus.xmlsent:14834
+	['defeats --(nsubj)--> Klitschko']
+	['defeats --(dobj)--> Thompson']

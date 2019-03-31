@@ -1,0 +1,61 @@
+
+-----------------------------------------
+docid:36_8ecbplus.xml
+-----------------------------------------
+
+sentence #:five years ago , warren jeffs was charged with sex crimes resulting from the polygamous marriages he arranged for his followers in the fundamentalist church of jesus christ of latter day saints ( flds ) . 
+	[events]:[['sex', 'crimes'], ['arranged'], ['charged'], ['polygamous', 'marriages']]
+	[entities]:[['he'], ['warren', 'jeffs'], ['fundamentalist', 'church', 'of', 'jesus', 'christ', 'of', 'latter', 'day', 'saints', '(', 'flds']]
+*R1182[charged]
+|--(advmod)--> ago
+|                |--(nmod:n)--> years
+|                                 |--(nummod)--> five
+|--(punct)--> ,
+|--(nsubjp)--> R1183[jeffs]
+|                |--(compou)--> R1183[warren]
+|--(auxpas)--> was
+|--(nmod)--> *R1186[crimes]
+|                |--(case)--> with
+|                |--(compou)--> *R1186[sex]
+|                |--(acl)--> resulting
+|                                 |--(nmod)--> *R1193[marriages]
+|                                                  |--(case)--> from
+|                                                  |--(det)--> the
+|                                                  |--(amod)--> *R1193[polygamous]
+|                                                  |--(acl:re)--> *R1229[arranged]
+|                                                                   |--(nsubj)--> R1183[he]
+|                                                                   |--(nmod)--> followers
+|                                                                   |                |--(case)--> for
+|                                                                   |                |--(nmod:p)--> his
+|                                                                   |--(nmod)--> R1204[church]
+|                                                                                    |--(case)--> in
+|                                                                                    |--(det)--> the
+|                                                                                    |--(compou)--> R1204[fundamentalist]
+|                                                                                    |--(nmod)--> R1204[christ]
+|                                                                                                     |--(case)--> R1204[of]
+|                                                                                                     |--(compou)--> R1204[jesus]
+|                                                                                                     |--(nmod)--> R1204[saints]
+|                                                                                                                      |--(case)--> R1204[of]
+|                                                                                                                      |--(compou)--> R1204[latter]
+|                                                                                                                      |--(compou)--> R1204[day]
+|                                                                                                                      |--(appos)--> R1204[flds]
+|                                                                                                                                       |--(punct)--> R1204[(]
+|                                                                                                                                       |--(punct)--> )
+|--(punct)--> .
+
+	* entity-paths for event['sex', 'crimes']36_8ecbplus.xmlsent:10322
+	['crimes --(acl)--> resulting', 'resulting --(nmod)--> marriages', 'marriages --(acl:relcl)--> arranged', 'arranged --(nsubj)--> he']
+	['crimes --(acl)--> resulting', 'resulting --(nmod)--> marriages', 'marriages --(acl:relcl)--> arranged', 'arranged --(nmod)--> Church']
+
+	* entity-paths for event['arranged']36_8ecbplus.xmlsent:10322
+	['arranged --(nsubj)--> he']
+	['arranged --(nmod)--> Church']
+
+	* entity-paths for event['charged']36_8ecbplus.xmlsent:10322
+	['charged --(nsubjpass)--> Jeffs']
+	['charged --(nmod)--> crimes', 'crimes --(acl)--> resulting', 'resulting --(nmod)--> marriages', 'marriages --(acl:relcl)--> arranged', 'arranged --(nsubj)--> he']
+	['charged --(nmod)--> crimes', 'crimes --(acl)--> resulting', 'resulting --(nmod)--> marriages', 'marriages --(acl:relcl)--> arranged', 'arranged --(nmod)--> Church']
+
+	* entity-paths for event['polygamous', 'marriages']36_8ecbplus.xmlsent:10322
+	['marriages --(acl:relcl)--> arranged', 'arranged --(nsubj)--> he']
+	['marriages --(acl:relcl)--> arranged', 'arranged --(nmod)--> Church']

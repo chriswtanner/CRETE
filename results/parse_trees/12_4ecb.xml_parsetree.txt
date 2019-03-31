@@ -1,0 +1,54 @@
+
+-----------------------------------------
+docid:12_4ecb.xml
+-----------------------------------------
+
+sentence #:the indian navy captured 23 pirates who threatened a merchant vessel in the lawless waters of the gulf of aden and a german naval helicopter thwarted another attack saturday on a freighter being chased by speedboats off yemen . 
+	[events]:[['threatened'], ['captured']]
+	[entities]:[['pirates'], ['waters', 'of', 'the', 'gulf', 'of', 'aden'], ['vessel'], ['navy'], ['saturday']]
+thwarted
+|--(nsubj)--> R215[navy]
+|                |--(det)--> the
+|                |--(amod)--> indian
+|                |--(acl)--> *R214[captured]
+|                                 |--(dobj)--> R216[pirates]
+|                                                  |--(nummod)--> 23
+|                                                  |--(acl:re)--> *R227[threatened]
+|                                                                   |--(nsubj)--> who
+|                                                                   |--(dobj)--> R228[vessel]
+|                                                                   |                |--(det)--> a
+|                                                                   |                |--(compou)--> merchant
+|                                                                   |--(nmod)--> R229[waters]
+|                                                                                    |--(case)--> in
+|                                                                                    |--(det)--> the
+|                                                                                    |--(amod)--> lawless
+|                                                                                    |--(nmod)--> R229[gulf]
+|                                                                                                     |--(case)--> R229[of]
+|                                                                                                     |--(det)--> R229[the]
+|                                                                                                     |--(nmod)--> R229[aden]
+|                                                                                                                      |--(case)--> R229[of]
+|                                                                                                                      |--(cc)--> and
+|                                                                                                                      |--(conj)--> helicopter
+|                                                                                                                                       |--(det)--> a
+|                                                                                                                                       |--(amod)--> german
+|                                                                                                                                       |--(amod)--> naval
+|--(dobj)--> attack
+|                |--(det)--> another
+|--(nmod:t)--> R230[saturday]
+|--(nmod)--> freighter
+|                |--(case)--> on
+|                |--(det)--> a
+|                |--(acl)--> chased
+|                                 |--(auxpas)--> being
+|                                 |--(nmod)--> speedboats
+|                                 |                |--(case)--> by
+|                                 |--(nmod)--> yemen
+|                                                  |--(case)--> off
+|--(punct)--> .
+
+	* entity-paths for event['threatened']12_4ecb.xmlsent:957
+	['threatened --(dobj)--> vessel']
+	['threatened --(nmod)--> waters']
+
+	* entity-paths for event['captured']12_4ecb.xmlsent:957
+	['captured --(dobj)--> pirates']

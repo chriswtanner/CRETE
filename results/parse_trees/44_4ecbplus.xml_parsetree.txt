@@ -1,0 +1,94 @@
+
+-----------------------------------------
+docid:44_4ecbplus.xml
+-----------------------------------------
+
+sentence #:hp today announced that it has signed a definitive agreement to acquire eyp mission critical facilities inc . , a consulting company specializing in strategic technology planning , design , and operations support for large - scale data centers . 
+	[events]:[['specializing'], ['design'], ['announced'], ['planning'], ['operations', 'support'], ['consulting'], ['signed'], ['acquire'], ['definitive', 'agreement']]
+	[entities]:[['today'], ['it'], ['data', 'centers'], ['company'], ['technology'], ['hp'], ['eyp', 'mission', 'critical', 'facilities', 'inc']]
+*R1578[announced]
+|--(nsubj)--> R1577[hp]
+|--(nmod:t)--> R1579[today]
+|--(ccomp)--> *R1580[signed]
+|                |--(mark)--> that
+|                |--(nsubj)--> R1577[it]
+|                |--(aux)--> has
+|                |--(dobj)--> *R1581[agreement]
+|                |                |--(det)--> a
+|                |                |--(amod)--> *R1581[definitive]
+|                |--(advcl)--> *R1582[acquire]
+|                                 |--(mark)--> to
+|                                 |--(dobj)--> R1583[mission]
+|                                                  |--(compou)--> R1583[eyp]
+|                                                  |--(dep)--> R1583[facilities]
+|                                                  |                |--(amod)--> R1583[critical]
+|                                                  |--(dep)--> R1583[inc]
+|                                                                   |--(punct)--> .
+|--(punct)--> ,
+|--(conj)--> *R1585[specializing]
+|                |--(nsubj)--> R1583[company]
+|                |                |--(det)--> a
+|                |                |--(amod)--> *R1584[consulting]
+|                |--(nmod)--> *R1586[planning]
+|                                 |--(case)--> in
+|                                 |--(amod)--> strategic
+|                                 |--(compou)--> R1587[technology]
+|                                 |--(punct)--> ,
+|                                 |--(appos)--> *R1589[design]
+|--(punct)--> ,
+|--(cc)--> and
+|--(conj)--> *R1588[support]
+|                |--(nsubj)--> *R1588[operations]
+|                |--(nmod)--> R1590[centers]
+|                                 |--(case)--> for
+|                                 |--(amod)--> large
+|                                                  |--(punct)--> -
+|                                                  |--(dep)--> scale
+|                                                                   |--(dep)--> R1590[data]
+|--(punct)--> .
+
+	* entity-paths for event['specializing']44_4ecbplus.xmlsent:13624
+	['specializing --(nsubj)--> company']
+	['specializing --(nmod)--> planning', 'planning --(compound)--> technology']
+
+	* entity-paths for event['design']44_4ecbplus.xmlsent:13624
+
+	* entity-paths for event['announced']44_4ecbplus.xmlsent:13624
+	['announced --(nsubj)--> HP']
+	['announced --(nmod:tmod)--> today']
+	['announced --(ccomp)--> signed', 'signed --(nsubj)--> it']
+	['announced --(ccomp)--> signed', 'signed --(advcl)--> acquire', 'acquire --(dobj)--> Mission']
+	['announced --(conj)--> specializing', 'specializing --(nsubj)--> company']
+	['announced --(conj)--> specializing', 'specializing --(nmod)--> planning', 'planning --(compound)--> technology']
+	['announced --(conj)--> support', 'support --(nmod)--> centers']
+
+	* entity-paths for event['planning']44_4ecbplus.xmlsent:13624
+	['planning --(compound)--> technology']
+
+	* entity-paths for event['operations', 'support']44_4ecbplus.xmlsent:13624
+	['support --(nmod)--> centers']
+
+	* entity-paths for event['consulting']44_4ecbplus.xmlsent:13624
+
+	* entity-paths for event['signed']44_4ecbplus.xmlsent:13624
+	['signed --(nsubj)--> it']
+	['signed --(advcl)--> acquire', 'acquire --(dobj)--> Mission']
+
+	* entity-paths for event['acquire']44_4ecbplus.xmlsent:13624
+	['acquire --(dobj)--> Mission']
+
+	* entity-paths for event['definitive', 'agreement']44_4ecbplus.xmlsent:13624
+
+sentence #:hp acquires eyp mission critical facilities 
+	[events]:[['acquires']]
+	[entities]:[['hp'], ['eyp', 'mission', 'critical', 'facilities']]
+*R1582[acquires]
+|--(nsubj)--> R1577[hp]
+|--(xcomp)--> R1583[facilities]
+                 |--(nsubj)--> R1583[mission]
+                 |                |--(compou)--> R1583[eyp]
+                 |--(amod)--> R1583[critical]
+
+	* entity-paths for event['acquires']44_4ecbplus.xmlsent:13623
+	['acquires --(nsubj)--> HP']
+	['acquires --(xcomp)--> Facilities']

@@ -1,0 +1,160 @@
+
+-----------------------------------------
+docid:37_1ecb.xml
+-----------------------------------------
+
+sentence #:at least five people were killed , 250 others injured and more than 800 homes destroyed by those temblors , according to the un . 
+	[events]:[['destroyed'], ['injured'], ['killed']]
+	[entities]:[['250'], ['five', 'people']]
+*R1261[killed]
+|--(nsubjp)--> R1262[people]
+|                |--(nummod)--> R1262[five]
+|                                 |--(nmod:n)--> least
+|                                                  |--(case)--> at
+|--(auxpas)--> were
+|--(punct)--> ,
+|--(dobj)--> others
+|                |--(nummod)--> R1263[250]
+|                |--(acl)--> *R1264[injured]
+|                |--(cc)--> and
+|                |--(conj)--> homes
+|                                 |--(nummod)--> 800
+|                                 |                |--(advmod)--> more
+|                                 |                                 |--(mwe)--> than
+|                                 |--(acl)--> *R1265[destroyed]
+|                                                  |--(nmod)--> temblors
+|                                                  |                |--(case)--> by
+|                                                  |                |--(det)--> those
+|                                                  |--(punct)--> ,
+|                                                  |--(nmod)--> un
+|                                                                   |--(case)--> according
+|                                                                   |                |--(mwe)--> to
+|                                                                   |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['destroyed']37_1ecb.xmlsent:10481
+
+	* entity-paths for event['injured']37_1ecb.xmlsent:10481
+
+	* entity-paths for event['killed']37_1ecb.xmlsent:10481
+	['killed --(nsubjpass)--> people']
+	['killed --(dobj)--> others', 'others --(nummod)--> 250']
+
+sentence #:indonesia 's west papua province was hit by a magnitude 6.1 earthquake today , the latest powerful tremor to shake the region where five people were killed and hundreds injured at the weekend when buildings were destroyed . 
+	[events]:[['earthquake'], ['killed'], ['hit'], ['tremor'], ['injured'], ['destroyed'], ['shake']]
+	[entities]:[['five', 'people'], ['today'], ['indonesia', "'s", 'west', 'papua', 'province'], ['region'], ['hundreds']]
+*R1266[hit]
+|--(nsubjp)--> R1267[province]
+|                |--(nmod:p)--> R1267[indonesia]
+|                |                |--(case)--> R1267['s]
+|                |--(compou)--> R1267[west]
+|                |--(compou)--> R1267[papua]
+|--(auxpas)--> was
+|--(nmod)--> R1268[today]
+|                |--(case)--> by
+|                |--(det)--> a
+|                |--(compou)--> magnitude
+|                |--(nummod)--> 6.1
+|                |--(compou)--> *R1269[earthquake]
+|                |--(punct)--> ,
+|                |--(appos)--> *R1269[tremor]
+|                                 |--(det)--> the
+|                                 |--(amod)--> latest
+|                                 |--(amod)--> powerful
+|--(xcomp)--> *R1266[shake]
+|                |--(mark)--> to
+|                |--(dobj)--> R1267[region]
+|                                 |--(det)--> the
+|                                 |--(acl:re)--> *R1261[killed]
+|                                 |                |--(advmod)--> where
+|                                 |                |--(nsubjp)--> R1262[people]
+|                                 |                |                |--(nummod)--> R1262[five]
+|                                 |                |--(auxpas)--> were
+|                                 |--(cc)--> and
+|                                 |--(conj)--> R1263[hundreds]
+|                                                  |--(acl)--> *R1264[injured]
+|                                                                   |--(nmod)--> weekend
+|                                                                                    |--(case)--> at
+|                                                                                    |--(det)--> the
+|                                                                                    |--(acl:re)--> *R1265[destroyed]
+|                                                                                                     |--(advmod)--> when
+|                                                                                                     |--(nsubjp)--> buildings
+|                                                                                                     |--(auxpas)--> were
+|--(punct)--> .
+
+	* entity-paths for event['earthquake']37_1ecb.xmlsent:10477
+
+	* entity-paths for event['killed']37_1ecb.xmlsent:10477
+	['killed --(nsubjpass)--> people']
+
+	* entity-paths for event['hit']37_1ecb.xmlsent:10477
+	['hit --(nsubjpass)--> province']
+	['hit --(nmod)--> today']
+	['hit --(xcomp)--> shake', 'shake --(dobj)--> region']
+
+	* entity-paths for event['tremor']37_1ecb.xmlsent:10477
+
+	* entity-paths for event['injured']37_1ecb.xmlsent:10477
+
+	* entity-paths for event['destroyed']37_1ecb.xmlsent:10477
+
+	* entity-paths for event['shake']37_1ecb.xmlsent:10477
+	['shake --(dobj)--> region']
+
+sentence #:the quake struck off the coast at 7:48 a.m. local time , 75 kilometers ( 50 miles ) west of the region 's main city of manokwari , the u.s. geological survey said in an alert . 
+	[events]:[['quake'], ['struck'], ['said']]
+	[entities]:[['u.s.', 'geological', 'survey'], ['off', 'the', 'coast'], ['75', 'kilometers', '(', '50', 'miles', ')', 'west', 'of', 'the', 'region', "'s", 'main', 'city', 'of', 'manokwari'], ['at', '7:48', 'a.m.', 'local', 'time']]
+*R1270[said]
+|--(ccomp)--> *R1266[struck]
+|                |--(nsubj)--> *R1269[quake]
+|                |                |--(det)--> the
+|                |--(compou)--> R1267[off]
+|                |--(dobj)--> R1267[coast]
+|                |                |--(det)--> R1267[the]
+|                |--(nmod)--> R1268[time]
+|                |                |--(case)--> R1268[at]
+|                |                |--(nummod)--> R1268[7:48]
+|                |                |--(advmod)--> R1268[a.m.]
+|                |                |--(amod)--> R1268[local]
+|                |                |--(punct)--> ,
+|                |                |--(appos)--> R1271[kilometers]
+|                |                                 |--(nummod)--> R1271[75]
+|                |                                 |--(appos)--> R1271[miles]
+|                |                                                  |--(punct)--> R1271[(]
+|                |                                                  |--(nummod)--> R1271[50]
+|                |                                                  |--(punct)--> R1271[)]
+|                |--(advmod)--> R1271[west]
+|                |--(nmod)--> R1271[city]
+|                                 |--(case)--> R1271[of]
+|                                 |--(nmod:p)--> R1271[region]
+|                                 |                |--(det)--> R1271[the]
+|                                 |                |--(case)--> R1271['s]
+|                                 |--(amod)--> R1271[main]
+|                                 |--(nmod)--> R1271[manokwari]
+|                                                  |--(case)--> R1271[of]
+|--(punct)--> ,
+|--(nsubj)--> R1243[survey]
+|                |--(det)--> the
+|                |--(compou)--> R1243[u.s.]
+|                |--(compou)--> R1243[geological]
+|--(nmod)--> alert
+|                |--(case)--> in
+|                |--(det)--> an
+|--(punct)--> .
+
+	* entity-paths for event['quake']37_1ecb.xmlsent:10478
+
+	* entity-paths for event['struck']37_1ecb.xmlsent:10478
+	['struck --(compound:prt)--> off']
+	['struck --(dobj)--> coast']
+	['struck --(nmod)--> time']
+	['struck --(advmod)--> west']
+	['struck --(nmod)--> city']
+
+	* entity-paths for event['said']37_1ecb.xmlsent:10478
+	['said --(ccomp)--> struck', 'struck --(compound:prt)--> off']
+	['said --(ccomp)--> struck', 'struck --(dobj)--> coast']
+	['said --(ccomp)--> struck', 'struck --(nmod)--> time']
+	['said --(ccomp)--> struck', 'struck --(advmod)--> west']
+	['said --(ccomp)--> struck', 'struck --(nmod)--> city']
+	['said --(nsubj)--> Survey']

@@ -1,0 +1,114 @@
+
+-----------------------------------------
+docid:30_8ecbplus.xml
+-----------------------------------------
+
+sentence #:seacom started to experience problems on saturday 8 october 2011 , caused by a problem on a cable between abu talat ( egypt ) and marseilles ( france ) . 
+	[events]:[['caused'], ['problem'], ['experience'], ['problems']]
+	[entities]:[['seacom'], ['cable'], ['on', 'saturday', '8', 'october', '2011'], ['between', 'abu', 'talat', '(', 'egypt', ')', 'and', 'marseilles', '(', 'france', ')']]
+started
+|--(nsubj)--> R956[seacom]
+|--(xcomp)--> *R971[experience]
+|                |--(mark)--> to
+|                |--(dobj)--> *R963[problems]
+|                |                |--(nmod)--> R970[saturday]
+|                |                                 |--(case)--> R970[on]
+|                |                                 |--(nummod)--> R970[8]
+|                |--(nmod:t)--> R970[october]
+|                |                |--(nummod)--> R970[2011]
+|                |--(punct)--> ,
+|                |--(advcl)--> *R978[caused]
+|                                 |--(nmod)--> *R973[problem]
+|                                                  |--(case)--> by
+|                                                  |--(det)--> a
+|                                                  |--(nmod)--> R974[cable]
+|                                                                   |--(case)--> on
+|                                                                   |--(det)--> a
+|                                                                   |--(nmod)--> R979[talat]
+|                                                                                    |--(case)--> R979[between]
+|                                                                                    |--(compou)--> R979[abu]
+|                                                                                    |--(appos)--> R979[egypt]
+|                                                                                    |                |--(punct)--> R979[(]
+|                                                                                    |                |--(punct)--> R979[)]
+|                                                                                    |--(cc)--> R979[and]
+|                                                                                    |--(conj)--> R979[marseilles]
+|                                                                                    |--(appos)--> R979[france]
+|                                                                                                     |--(punct)--> R979[(]
+|                                                                                                     |--(punct)--> R979[)]
+|--(punct)--> .
+
+	* entity-paths for event['caused']30_8ecbplus.xmlsent:7994
+	['caused --(nmod)--> problem', 'problem --(nmod)--> cable']
+
+	* entity-paths for event['problem']30_8ecbplus.xmlsent:7994
+	['problem --(nmod)--> cable']
+
+	* entity-paths for event['experience']30_8ecbplus.xmlsent:7994
+	['experience --(dobj)--> problems', 'problems --(nmod)--> Saturday']
+	['experience --(nmod:tmod)--> October']
+	['experience --(advcl)--> caused', 'caused --(nmod)--> problem', 'problem --(nmod)--> cable']
+
+	* entity-paths for event['problems']30_8ecbplus.xmlsent:7994
+	['problems --(nmod)--> Saturday']
+
+sentence #:seacom problems only resolved next week 
+	[events]:[['resolved'], ['problems']]
+	[entities]:[['seacom'], ['next', 'week']]
+*R972[resolved]
+|--(nsubj)--> *R963[problems]
+|                |--(compou)--> R956[seacom]
+|--(advmod)--> only
+|--(nmod:t)--> R964[week]
+                 |--(amod)--> R964[next]
+
+	* entity-paths for event['resolved']30_8ecbplus.xmlsent:7990
+	['resolved --(nsubj)--> problems', 'problems --(compound)--> SEACOM']
+	['resolved --(nmod:tmod)--> week']
+
+	* entity-paths for event['problems']30_8ecbplus.xmlsent:7990
+	['problems --(compound)--> SEACOM']
+
+sentence #:seacom said today ( 10 october 2011 ) that the total repair time of the current problems they experience will be around twelve days depending on weather conditions . 
+	[events]:[['problems'], ['said'], ['repair'], ['experience']]
+	[entities]:[['around', 'twelve', 'days'], ['time'], ['seacom'], ['they']]
+*R960[said]
+|--(nsubj)--> R956[seacom]
+|--(dobj)--> today
+|                |--(dep)--> 10
+|                                 |--(punct)--> (
+|                                 |--(nmod:t)--> october
+|                                 |                |--(nummod)--> 2011
+|                                 |--(punct)--> )
+|--(ccomp)--> R964[days]
+|                |--(mark)--> that
+|                |--(nsubj)--> R964[time]
+|                |                |--(det)--> the
+|                |                |--(amod)--> total
+|                |                |--(compou)--> *R972[repair]
+|                |                |--(nmod)--> *R963[problems]
+|                |                                 |--(case)--> of
+|                |                                 |--(det)--> the
+|                |                                 |--(amod)--> current
+|                |                                 |--(acl:re)--> *R971[experience]
+|                |                                                  |--(nsubj)--> R956[they]
+|                |--(aux)--> will
+|                |--(cop)--> be
+|                |--(case)--> R964[around]
+|                |--(nummod)--> R964[twelve]
+|                |--(advcl)--> conditions
+|                                 |--(case)--> depending
+|                                 |--(case)--> on
+|                                 |--(compou)--> weather
+|--(punct)--> .
+
+	* entity-paths for event['problems']30_8ecbplus.xmlsent:7993
+	['problems --(acl:relcl)--> experience', 'experience --(nsubj)--> they']
+
+	* entity-paths for event['said']30_8ecbplus.xmlsent:7993
+	['said --(nsubj)--> SEACOM']
+	['said --(ccomp)--> days']
+
+	* entity-paths for event['repair']30_8ecbplus.xmlsent:7993
+
+	* entity-paths for event['experience']30_8ecbplus.xmlsent:7993
+	['experience --(nsubj)--> they']

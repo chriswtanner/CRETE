@@ -1,0 +1,43 @@
+
+-----------------------------------------
+docid:2_2ecb.xml
+-----------------------------------------
+
+sentence #:on friday , the organization behind the academy awards named australian actor hugh jackman as the host of february 's annual show . 
+	[events]:[['academy', 'awards'], ['show'], ['named']]
+	[entities]:[['hugh', 'jackman'], ['annual'], ['host'], ['on', 'friday'], ['organization'], ['february']]
+*R458[named]
+|--(nmod)--> R461[friday]
+|                |--(case)--> R461[on]
+|--(punct)--> ,
+|--(nsubj)--> R459[organization]
+|                |--(det)--> the
+|                |--(nmod)--> *R460[awards]
+|                                 |--(case)--> behind
+|                                 |--(det)--> the
+|                                 |--(compou)--> *R460[academy]
+|--(dobj)--> R462[jackman]
+|                |--(amod)--> australian
+|                |--(compou)--> actor
+|                |--(compou)--> R462[hugh]
+|--(nmod)--> R462[host]
+|                |--(case)--> as
+|                |--(det)--> the
+|                |--(nmod)--> *R460[show]
+|                                 |--(case)--> of
+|                                 |--(nmod:p)--> R476[february]
+|                                 |                |--(case)--> 's
+|                                 |--(amod)--> R477[annual]
+|--(punct)--> .
+
+	* entity-paths for event['academy', 'awards']2_2ecb.xmlsent:3504
+
+	* entity-paths for event['show']2_2ecb.xmlsent:3504
+	['show --(nmod:poss)--> February']
+	['show --(amod)--> annual']
+
+	* entity-paths for event['named']2_2ecb.xmlsent:3504
+	['named --(nmod)--> Friday']
+	['named --(nsubj)--> organization']
+	['named --(dobj)--> Jackman']
+	['named --(nmod)--> host']

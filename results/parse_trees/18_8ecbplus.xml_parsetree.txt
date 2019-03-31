@@ -1,0 +1,85 @@
+
+-----------------------------------------
+docid:18_8ecbplus.xml
+-----------------------------------------
+
+sentence #:a fired accountant bought a shotgun the day after he lost his job , then returned to the office the following week and opened fire on his bosses , wounding both and killing a receptionist , the associated press reported . 
+	[events]:[['killing'], ['returned'], ['lost'], ['opened', 'fire'], ['fired'], ['wounding']]
+	[entities]:[['to', 'the', 'office'], ['both'], ['accountant'], ['bosses'], ['the', 'following', 'week'], ['shotgun'], ['receptionist'], ['he']]
+*R399[returned]
+|--(nsubj)--> a
+|                |--(dep)--> bought
+|                                 |--(csubj)--> *R363[fired]
+|                                 |                |--(dobj)--> R360[accountant]
+|                                 |--(dobj)--> R400[shotgun]
+|                                 |                |--(det)--> a
+|                                 |--(nmod:t)--> day
+|                                 |                |--(det)--> the
+|                                 |--(advcl)--> *R363[lost]
+|                                                  |--(mark)--> after
+|                                                  |--(nsubj)--> R360[he]
+|                                                  |--(dobj)--> job
+|                                                  |                |--(nmod:p)--> his
+|                                                  |--(punct)--> ,
+|                                                  |--(advmod)--> then
+|--(nmod)--> R375[office]
+|                |--(case)--> R375[to]
+|                |--(det)--> R375[the]
+|                |--(dep)--> R379[week]
+|                                 |--(det)--> R379[the]
+|                                 |--(amod)--> R379[following]
+|                                 |--(cc)--> and
+|                                 |--(conj)--> reported
+|                                                  |--(ccomp)--> *R361[opened]
+|                                                  |                |--(dobj)--> *R361[fire]
+|                                                  |                |--(nmod)--> R392[bosses]
+|                                                  |                |                |--(case)--> on
+|                                                  |                |                |--(nmod:p)--> his
+|                                                  |                |--(punct)--> ,
+|                                                  |                |--(dep)--> *R391[wounding]
+|                                                  |                                 |--(advmod)--> R392[both]
+|                                                  |                                 |--(cc)--> and
+|                                                  |                                 |--(conj)--> *R373[killing]
+|                                                  |                                                  |--(dobj)--> R374[receptionist]
+|                                                  |                                                                   |--(det)--> a
+|                                                  |--(punct)--> ,
+|                                                  |--(nsubj)--> press
+|                                                                   |--(det)--> the
+|                                                                   |--(compou)--> associated
+|--(punct)--> .
+
+	* entity-paths for event['killing']18_8ecbplus.xmlsent:2684
+	['killing --(dobj)--> receptionist']
+
+	* entity-paths for event['returned']18_8ecbplus.xmlsent:2684
+	['returned --(nsubj)--> A', 'A --(dep)--> bought', 'bought --(csubj)--> fired', 'fired --(dobj)--> accountant']
+	['returned --(nsubj)--> A', 'A --(dep)--> bought', 'bought --(dobj)--> shotgun']
+	['returned --(nsubj)--> A', 'A --(dep)--> bought', 'bought --(advcl)--> lost', 'lost --(nsubj)--> he']
+	['returned --(nmod)--> office']
+
+	* entity-paths for event['lost']18_8ecbplus.xmlsent:2684
+	['lost --(nsubj)--> he']
+
+	* entity-paths for event['opened', 'fire']18_8ecbplus.xmlsent:2684
+
+	* entity-paths for event['fired']18_8ecbplus.xmlsent:2684
+	['fired --(dobj)--> accountant']
+
+	* entity-paths for event['wounding']18_8ecbplus.xmlsent:2684
+	['wounding --(advmod)--> both']
+	['wounding --(conj)--> killing', 'killing --(dobj)--> receptionist']
+
+sentence #:fired accountant goes on shooting spree 
+	[events]:[['shooting'], ['fired']]
+	[entities]:[['accountant']]
+*R363[fired]
+|--(ccomp)--> goes
+                 |--(nsubj)--> R360[accountant]
+                 |--(nmod)--> spree
+                                  |--(case)--> on
+                                  |--(compou)--> *R361[shooting]
+
+	* entity-paths for event['shooting']18_8ecbplus.xmlsent:2682
+
+	* entity-paths for event['fired']18_8ecbplus.xmlsent:2682
+	['Fired --(ccomp)--> Goes', 'Goes --(nsubj)--> Accountant']

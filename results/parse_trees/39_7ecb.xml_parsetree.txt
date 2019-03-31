@@ -1,0 +1,34 @@
+
+-----------------------------------------
+docid:39_7ecb.xml
+-----------------------------------------
+
+sentence #:when the 26-year-old unknown was unveiled as the 11th doctor on saturday evening , it took most viewers by surprise . 
+	[events]:[['unveiled']]
+	[entities]:[['on', 'saturday', 'evening'], ['unknown'], ['11th', 'doctor']]
+took
+|--(advcl)--> *R1337[unveiled]
+|                |--(advmod)--> when
+|                |--(nsubjp)--> R1328[unknown]
+|                |                |--(det)--> the
+|                |                |--(amod)--> 26-year-old
+|                |--(auxpas)--> was
+|                |--(nmod)--> R1338[doctor]
+|                |                |--(case)--> as
+|                |                |--(det)--> the
+|                |                |--(amod)--> R1338[11th]
+|                |                |--(nmod)--> R1343[saturday]
+|                |                                 |--(case)--> R1343[on]
+|                |--(nmod:t)--> R1343[evening]
+|--(punct)--> ,
+|--(nsubj)--> it
+|--(advmod)--> most
+|--(dobj)--> viewers
+|--(nmod)--> surprise
+|                |--(case)--> by
+|--(punct)--> .
+
+	* entity-paths for event['unveiled']39_7ecb.xmlsent:11099
+	['unveiled --(nsubjpass)--> unknown']
+	['unveiled --(nmod)--> Doctor']
+	['unveiled --(nmod:tmod)--> evening']

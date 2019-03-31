@@ -1,0 +1,22 @@
+
+-----------------------------------------
+docid:25_7ecbplus.xml
+-----------------------------------------
+
+sentence #:saints pierre thomas to injured reserve and the rest of injury report 
+	[events]:[['injured', 'reserve']]
+	[entities]:[['pierre', 'thomas']]
+R716[thomas]
+|--(compou)--> saints
+|--(compou)--> R716[pierre]
+|--(nmod)--> *R717[reserve]
+|                |--(case)--> to
+|                |--(amod)--> *R717[injured]
+|                |--(cc)--> and
+|                |--(conj)--> rest
+|                                 |--(det)--> the
+|--(nmod)--> report
+                 |--(case)--> of
+                 |--(compou)--> injury
+
+	* entity-paths for event['injured', 'reserve']25_7ecbplus.xmlsent:5211

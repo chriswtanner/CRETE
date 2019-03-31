@@ -1,0 +1,44 @@
+
+-----------------------------------------
+docid:3_2ecb.xml
+-----------------------------------------
+
+sentence #:now that fulton county courthouse killer brian nichols has been sentenced to life without parole , one of the not yet answered questions is where the 37-year-old will serve time . 
+	[events]:[['sentenced']]
+	[entities]:[['brian', 'nichols'], ['life', 'without', 'parole'], ['37-year-old']]
+is
+|--(advcl)--> *R906[sentenced]
+|                |--(advmod)--> now
+|                |--(mark)--> that
+|                |--(nsubjp)--> R903[nichols]
+|                |                |--(compou)--> fulton
+|                |                |--(compou)--> county
+|                |                |--(compou)--> courthouse
+|                |                |--(compou)--> killer
+|                |                |--(compou)--> R903[brian]
+|                |--(aux)--> has
+|                |--(auxpas)--> been
+|                |--(nmod)--> R909[life]
+|                |                |--(case)--> to
+|                |--(nmod)--> R909[parole]
+|                                 |--(case)--> R909[without]
+|--(punct)--> ,
+|--(nsubj)--> one
+|                |--(nmod)--> not
+|                                 |--(case)--> of
+|                                 |--(det)--> the
+|                                 |--(acl)--> answered
+|                                                  |--(advmod)--> yet
+|                                                  |--(dobj)--> questions
+|--(advcl)--> serve
+|                |--(advmod)--> where
+|                |--(nsubj)--> R903[37-year-old]
+|                |                |--(det)--> the
+|                |--(aux)--> will
+|                |--(dobj)--> time
+|--(punct)--> .
+
+	* entity-paths for event['sentenced']3_2ecb.xmlsent:7416
+	['sentenced --(nsubjpass)--> Nichols']
+	['sentenced --(nmod)--> life']
+	['sentenced --(nmod)--> parole']

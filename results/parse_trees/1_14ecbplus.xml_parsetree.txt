@@ -1,0 +1,84 @@
+
+-----------------------------------------
+docid:1_14ecbplus.xml
+-----------------------------------------
+
+sentence #:lindsay lohan checked into the betty ford clinic in rancho mirage , calif . , on thursday night , for what is to be a three - month stay , her rep confirms to people . 
+	[events]:[['stay'], ['confirms'], ['checked', 'into']]
+	[entities]:[['the', 'betty', 'ford', 'clinic', 'in', 'rancho', 'mirage', ',', 'calif'], ['lindsay', 'lohan'], ['rep'], ['people'], ['a', 'three', '-', 'month'], ['on', 'thursday', 'night'], ['her']]
+*R51[confirms]
+|--(ccomp)--> *R8[checked]
+|                |--(nsubj)--> R15[lohan]
+|                |                |--(compou)--> R15[lindsay]
+|                |--(nmod)--> R16[clinic]
+|                |                |--(case)--> *R8[into]
+|                |                |--(det)--> R16[the]
+|                |                |--(compou)--> R16[betty]
+|                |                |--(compou)--> R16[ford]
+|                |                |--(nmod)--> R16[mirage]
+|                |                                 |--(case)--> R16[in]
+|                |                                 |--(compou)--> R16[rancho]
+|                |                                 |--(punct)--> R16[,]
+|                |                                 |--(appos)--> R16[calif]
+|                |                                 |                |--(punct)--> .
+|                |                                 |--(punct)--> ,
+|                |--(nmod)--> R24[thursday]
+|                |                |--(case)--> R24[on]
+|                |--(nmod:t)--> R24[night]
+|                |--(punct)--> ,
+|                |--(nmod)--> *R52[stay]
+|                                 |--(case)--> for
+|                                 |--(dep)--> is
+|                                 |                |--(nsubj)--> what
+|                                 |                |--(xcomp)--> R18[three]
+|                                 |                                 |--(mark)--> to
+|                                 |                                 |--(cop)--> be
+|                                 |                                 |--(advmod)--> R18[a]
+|                                 |--(punct)--> R18[-]
+|                                 |--(compou)--> R18[month]
+|--(punct)--> ,
+|--(nsubj)--> R53[rep]
+|                |--(nmod:p)--> R15[her]
+|--(nmod)--> R54[people]
+|                |--(case)--> to
+|--(punct)--> .
+
+	* entity-paths for event['stay']1_14ecbplus.xmlsent:99
+	['stay --(dep)--> is', 'is --(xcomp)--> three']
+	['stay --(punct)--> -']
+	['stay --(compound)--> month']
+
+	* entity-paths for event['confirms']1_14ecbplus.xmlsent:99
+	['confirms --(ccomp)--> checked', 'checked --(nsubj)--> Lohan']
+	['confirms --(ccomp)--> checked', 'checked --(nmod)--> Clinic']
+	['confirms --(ccomp)--> checked', 'checked --(nmod)--> Thursday']
+	['confirms --(ccomp)--> checked', 'checked --(nmod:tmod)--> night']
+	['confirms --(ccomp)--> checked', 'checked --(nmod)--> stay', 'stay --(dep)--> is', 'is --(xcomp)--> three']
+	['confirms --(ccomp)--> checked', 'checked --(nmod)--> stay', 'stay --(punct)--> -']
+	['confirms --(ccomp)--> checked', 'checked --(nmod)--> stay', 'stay --(compound)--> month']
+	['confirms --(nsubj)--> rep']
+	['confirms --(nmod)--> PEOPLE']
+
+	* entity-paths for event['checked', 'into']1_14ecbplus.xmlsent:99
+
+sentence #:lindsay lohan checks into betty ford rehab -- where she 'knows everyone' 
+	[events]:[['checks', 'into'], ["'knows"]]
+	[entities]:[["everyone'"], ['she'], ['where'], ['lindsay', 'lohan'], ['betty', 'ford', 'rehab']]
+R15[lindsay]
+|--(dep)--> R15[lohan]
+                 |--(acl:re)--> *R8[checks]
+                                  |--(nmod)--> R16[betty]
+                                  |                |--(dep)--> *R8[into]
+                                  |--(dep)--> R16[rehab]
+                                  |                |--(compou)--> R16[ford]
+                                  |                |--(dep)--> R55[everyone']
+                                  |                                 |--(punct)--> --
+                                  |                                 |--(dep)--> R16[where]
+                                  |                                                  |--(dep)--> R15[she]
+                                  |                                                                   |--(dep)--> *R56['knows]
+                                  |                                                                                    |--(punct)--> *R56['knows]
+                                  |--(punct)--> R55[everyone']
+
+	* entity-paths for event['checks', 'into']1_14ecbplus.xmlsent:96
+
+	* entity-paths for event["'knows"]1_14ecbplus.xmlsent:96

@@ -1,0 +1,41 @@
+
+-----------------------------------------
+docid:19_7ecb.xml
+-----------------------------------------
+
+sentence #:the shooting of a 15-year-old boy by police unleashed a wave of unrest by thousands of students and anarchists across the country . 
+	[events]:[['unleashed'], ['shooting'], ['unrest']]
+	[entities]:[['anarchists'], ['police'], ['boy'], ['the', 'country']]
+*R407[unleashed]
+|--(nsubj)--> *R401[shooting]
+|                |--(det)--> the
+|                |--(nmod)--> R402[boy]
+|                                 |--(case)--> of
+|                                 |--(det)--> a
+|                                 |--(amod)--> 15-year-old
+|                                 |--(nmod)--> R404[police]
+|                                                  |--(case)--> by
+|--(dobj)--> wave
+|                |--(det)--> a
+|                |--(nmod)--> *R433[unrest]
+|                                 |--(case)--> of
+|--(nmod)--> thousands
+|                |--(case)--> by
+|                |--(nmod)--> students
+|                                 |--(case)--> of
+|                                 |--(cc)--> and
+|                                 |--(conj)--> R445[anarchists]
+|--(nmod)--> R409[country]
+|                |--(case)--> across
+|                |--(det)--> R409[the]
+|--(punct)--> .
+
+	* entity-paths for event['unleashed']19_7ecb.xmlsent:3235
+	['unleashed --(nsubj)--> shooting', 'shooting --(nmod)--> boy']
+	['unleashed --(nmod)--> thousands', 'thousands --(nmod)--> students', 'students --(conj)--> anarchists']
+	['unleashed --(nmod)--> country']
+
+	* entity-paths for event['shooting']19_7ecb.xmlsent:3235
+	['shooting --(nmod)--> boy']
+
+	* entity-paths for event['unrest']19_7ecb.xmlsent:3235

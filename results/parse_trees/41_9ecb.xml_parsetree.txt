@@ -1,0 +1,151 @@
+
+-----------------------------------------
+docid:41_9ecb.xml
+-----------------------------------------
+
+sentence #:the un has disputed claims that hamas militants fired mortars from the gaza school that has suffered the deadliest attack of the war with israel . 
+	[events]:[['claims'], ['attack'], ['disputed'], ['war']]
+	[entities]:[['from', 'the', 'gaza', 'school'], ['israel'], ['hamas'], ['militants']]
+*R1484[disputed]
+|--(nsubj)--> un
+|                |--(det)--> the
+|--(aux)--> has
+|--(dobj)--> *R1486[claims]
+|--(ccomp)--> fired
+|                |--(mark)--> that
+|                |--(nsubj)--> R1471[militants]
+|                |                |--(compou)--> R1492[hamas]
+|                |--(dobj)--> mortars
+|                |--(nmod)--> R1466[school]
+|                                 |--(case)--> R1466[from]
+|                                 |--(det)--> R1466[the]
+|                                 |--(compou)--> R1466[gaza]
+|                                 |--(acl:re)--> suffered
+|                                                  |--(nsubj)--> that
+|                                                  |--(aux)--> has
+|                                                  |--(dobj)--> *R1465[attack]
+|                                                  |                |--(det)--> the
+|                                                  |                |--(amod)--> deadliest
+|                                                  |                |--(nmod)--> *R1491[war]
+|                                                  |                                 |--(case)--> of
+|                                                  |                                 |--(det)--> the
+|                                                  |--(nmod)--> R1462[israel]
+|                                                                   |--(case)--> with
+|--(punct)--> .
+
+	* entity-paths for event['claims']41_9ecb.xmlsent:12572
+
+	* entity-paths for event['attack']41_9ecb.xmlsent:12572
+
+	* entity-paths for event['disputed']41_9ecb.xmlsent:12572
+	['disputed --(ccomp)--> fired', 'fired --(nsubj)--> militants']
+	['disputed --(ccomp)--> fired', 'fired --(nmod)--> school']
+
+	* entity-paths for event['war']41_9ecb.xmlsent:12572
+
+sentence #:israel moved quickly to explain the attack on the jabalya school , saying its forces had been fired on first . 
+	[events]:[['saying'], ['attack']]
+	[entities]:[['its'], ['jabalya', 'school'], ['forces'], ['israel']]
+moved
+|--(nsubj)--> R1462[israel]
+|--(advmod)--> quickly
+|--(xcomp)--> explain
+|                |--(mark)--> to
+|                |--(dobj)--> *R1465[attack]
+|                |                |--(det)--> the
+|                |--(nmod)--> R1466[school]
+|                                 |--(case)--> on
+|                                 |--(det)--> the
+|                                 |--(amod)--> R1466[jabalya]
+|--(punct)--> ,
+|--(xcomp)--> *R1486[saying]
+|                |--(ccomp)--> fired
+|                                 |--(nsubjp)--> R1462[forces]
+|                                 |                |--(nmod:p)--> R1462[its]
+|                                 |--(aux)--> had
+|                                 |--(auxpas)--> been
+|                                 |--(nmod)--> first
+|                                                  |--(case)--> on
+|--(punct)--> .
+
+	* entity-paths for event['saying']41_9ecb.xmlsent:12578
+	['saying --(ccomp)--> fired', 'fired --(nsubjpass)--> forces']
+
+	* entity-paths for event['attack']41_9ecb.xmlsent:12578
+
+sentence #:three shells hit fakhura , a girls elementary school in the jabalya refugee camp in northern gaza , at about 3pm on tuesday ( 12am yesterday ) , according to un relief and works agency spokesman christopher gunness . 
+	[events]:[['according', 'to'], ['hit']]
+	[entities]:[['christopher', 'gunness'], ['at', 'about', '3pm', 'on', 'tuesday', '(', '12am', 'yesterday', ')'], ['fakhura'], ['shells'], ['in', 'the', 'jabalya', 'refugee', 'camp', 'in', 'northern', 'gaza']]
+*R1465[hit]
+|--(nsubj)--> R1500[shells]
+|                |--(nummod)--> three
+|--(dobj)--> R1466[fakhura]
+|                |--(punct)--> ,
+|                |--(appos)--> girls
+|                |                |--(det)--> a
+|                |                |--(dep)--> school
+|                |                                 |--(amod)--> elementary
+|                |                                 |--(nmod)--> R1468[camp]
+|                |                                                  |--(case)--> R1468[in]
+|                |                                                  |--(det)--> R1468[the]
+|                |                                                  |--(compou)--> R1468[jabalya]
+|                |                                                  |--(compou)--> R1468[refugee]
+|                |                                                  |--(nmod)--> R1468[gaza]
+|                |                                                                   |--(case)--> R1468[in]
+|                |                                                                   |--(amod)--> R1468[northern]
+|                |--(punct)--> ,
+|--(nmod)--> R1489[3pm]
+|                |--(case)--> R1489[at]
+|                |--(case)--> R1489[about]
+|                |--(nummod)--> R1489[3pm]
+|                |--(nmod)--> R1489[tuesday]
+|                                 |--(case)--> R1489[on]
+|                                 |--(dep)--> R1489[12am]
+|                                                  |--(punct)--> R1489[(]
+|                                                  |--(nsubj)--> R1489[12am]
+|                                                  |--(nmod:t)--> R1489[yesterday]
+|                                                  |--(punct)--> R1489[)]
+|--(punct)--> ,
+|--(nmod)--> relief
+|                |--(case)--> *R1515[according]
+|                |                |--(mwe)--> *R1515[to]
+|                |--(compou)--> un
+|                |--(cc)--> and
+|                |--(conj)--> R1516[gunness]
+|                                 |--(compou)--> works
+|                                 |--(compou)--> agency
+|                                 |--(compou)--> spokesman
+|                                 |--(compou)--> R1516[christopher]
+|--(punct)--> .
+
+	* entity-paths for event['according', 'to']41_9ecb.xmlsent:12573
+
+	* entity-paths for event['hit']41_9ecb.xmlsent:12573
+	['hit --(nsubj)--> shells']
+	['hit --(dobj)--> Fakhura']
+	['hit --(nmod)--> pm']
+	['hit --(nmod)--> Relief', 'Relief --(conj)--> Gunness']
+
+sentence #:he and other men had been sitting in the schoolyard when shells hit the compound . 
+	[events]:[['hit']]
+	[entities]:[['shells'], ['compound']]
+sitting
+|--(nsubj)--> he
+|                |--(cc)--> and
+|                |--(conj)--> men
+|                                 |--(amod)--> other
+|--(aux)--> had
+|--(aux)--> been
+|--(nmod)--> schoolyard
+|                |--(case)--> in
+|                |--(det)--> the
+|--(advcl)--> *R1465[hit]
+|                |--(advmod)--> when
+|                |--(nsubj)--> R1500[shells]
+|                |--(dobj)--> R1466[compound]
+|                                 |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['hit']41_9ecb.xmlsent:12589
+	['hit --(nsubj)--> shells']
+	['hit --(dobj)--> compound']

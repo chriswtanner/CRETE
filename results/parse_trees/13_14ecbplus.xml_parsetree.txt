@@ -1,0 +1,37 @@
+
+-----------------------------------------
+docid:13_14ecbplus.xml
+-----------------------------------------
+
+sentence #:as many of you undoubtedly know there was a rather suspicious fire that burned the old matanuska maid creamery to the ground . 
+	[events]:[['burned'], ['fire']]
+	[entities]:[['matanuska', 'maid', 'creamery']]
+was
+|--(advcl)--> know
+|                |--(mark)--> as
+|                |--(nsubj)--> many
+|                |                |--(nmod)--> you
+|                |                                 |--(case)--> of
+|                |--(advmod)--> undoubtedly
+|--(expl)--> there
+|--(nsubj)--> *R263[fire]
+|                |--(det)--> a
+|                |--(amod)--> suspicious
+|                |                |--(advmod)--> rather
+|                |--(acl:re)--> *R277[burned]
+|                                 |--(nsubj)--> that
+|                                 |--(dobj)--> R265[creamery]
+|                                 |                |--(det)--> the
+|                                 |                |--(amod)--> old
+|                                 |                |--(compou)--> R265[matanuska]
+|                                 |                |--(compou)--> R265[maid]
+|                                 |--(nmod)--> ground
+|                                                  |--(case)--> to
+|                                                  |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['burned']13_14ecbplus.xmlsent:1290
+	['burned --(dobj)--> Creamery']
+
+	* entity-paths for event['fire']13_14ecbplus.xmlsent:1290
+	['fire --(acl:relcl)--> burned', 'burned --(dobj)--> Creamery']

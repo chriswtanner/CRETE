@@ -1,0 +1,109 @@
+
+-----------------------------------------
+docid:30_10ecb.xml
+-----------------------------------------
+
+sentence #:millions of people across the middle east and asia have lost access to the internet after two undersea cables in the mediterranean suffered severe damage . 
+	[events]:[['damage'], ['lost']]
+	[entities]:[['cables'], ['internet'], ['in', 'the', 'mediterranean']]
+*R949[lost]
+|--(nsubj)--> millions
+|                |--(nmod)--> people
+|                                 |--(case)--> of
+|                                 |--(nmod)--> east
+|                                                  |--(case)--> across
+|                                                  |--(det)--> the
+|                                                  |--(compou)--> middle
+|                                                  |--(cc)--> and
+|                                                  |--(conj)--> asia
+|--(aux)--> have
+|--(dobj)--> access
+|--(nmod)--> R950[internet]
+|                |--(case)--> to
+|                |--(det)--> the
+|--(advcl)--> suffered
+|                |--(mark)--> after
+|                |--(nsubj)--> R951[cables]
+|                |                |--(nummod)--> two
+|                |                |--(compou)--> undersea
+|                |                |--(nmod)--> R952[mediterranean]
+|                |                                 |--(case)--> R952[in]
+|                |                                 |--(det)--> R952[the]
+|                |--(dobj)--> *R953[damage]
+|                                 |--(amod)--> severe
+|--(punct)--> .
+
+	* entity-paths for event['damage']30_10ecb.xmlsent:7662
+
+	* entity-paths for event['lost']30_10ecb.xmlsent:7662
+	['lost --(nmod)--> internet']
+	['lost --(advcl)--> suffered', 'suffered --(nsubj)--> cables']
+
+sentence #:huge numbers in egypt and india were left struggling to get online as a result of the outage , when the major internet pipeline between egypt and italy was cut . 
+	[events]:[['outage'], ['cut']]
+	[entities]:[['internet'], ['between', 'egypt', 'and', 'italy'], ['pipeline']]
+left
+|--(nsubjp)--> numbers
+|                |--(amod)--> huge
+|                |--(nmod)--> egypt
+|                                 |--(case)--> in
+|                                 |--(cc)--> and
+|                                 |--(conj)--> india
+|--(auxpas)--> were
+|--(xcomp)--> struggling
+|                |--(xcomp)--> get
+|                                 |--(mark)--> to
+|                                 |--(dobj)--> online
+|                                 |--(nmod)--> result
+|                                                  |--(case)--> as
+|                                                  |--(det)--> a
+|                                                  |--(nmod)--> *R949[outage]
+|                                                                   |--(case)--> of
+|                                                                   |--(det)--> the
+|                                                                   |--(punct)--> ,
+|                                                                   |--(acl:re)--> *R953[cut]
+|                                                                                    |--(advmod)--> when
+|                                                                                    |--(nsubjp)--> R951[pipeline]
+|                                                                                    |                |--(det)--> the
+|                                                                                    |                |--(amod)--> major
+|                                                                                    |                |--(compou)--> R950[internet]
+|                                                                                    |                |--(nmod)--> R954[egypt]
+|                                                                                    |                                 |--(case)--> R954[between]
+|                                                                                    |                                 |--(cc)--> R954[and]
+|                                                                                    |                                 |--(conj)--> R954[italy]
+|                                                                                    |--(auxpas)--> was
+|--(punct)--> .
+
+	* entity-paths for event['outage']30_10ecb.xmlsent:7663
+	['outage --(acl:relcl)--> cut', 'cut --(nsubjpass)--> pipeline']
+
+	* entity-paths for event['cut']30_10ecb.xmlsent:7663
+	['cut --(nsubjpass)--> pipeline']
+
+sentence #:industry experts told the times that two sub-sea cables went down just off alexandra , causing the mass disruption . 
+	[events]:[['disruption'], ['went', 'down']]
+	[entities]:[['cables']]
+told
+|--(nsubj)--> experts
+|                |--(compou)--> industry
+|--(dobj)--> times
+|                |--(det)--> the
+|                |--(acl:re)--> *R949[went]
+|                                 |--(nsubj)--> R951[cables]
+|                                 |                |--(nummod)--> two
+|                                 |                |--(amod)--> sub-sea
+|                                 |--(advmod)--> just
+|                                 |                |--(advmod)--> *R949[down]
+|                                 |--(nmod)--> alexandra
+|                                 |                |--(case)--> off
+|                                 |--(punct)--> ,
+|                                 |--(xcomp)--> causing
+|                                                  |--(dobj)--> that
+|                                                  |--(dobj)--> *R949[disruption]
+|                                                                   |--(det)--> the
+|                                                                   |--(compou)--> mass
+|--(punct)--> .
+
+	* entity-paths for event['disruption']30_10ecb.xmlsent:7666
+
+	* entity-paths for event['went', 'down']30_10ecb.xmlsent:7666

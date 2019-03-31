@@ -1,0 +1,79 @@
+
+-----------------------------------------
+docid:37_5ecbplus.xml
+-----------------------------------------
+
+sentence #:a strong 6 . 1 - magnitude earthquake struck indonesia's northwestern province of aceh today , causing buildings to collapse and injuring at least 50 people . 
+	[events]:[['6', '.', '1', '-', 'magnitude', 'earthquake'], ['struck'], ['causing'], ['injuring'], ['collapse']]
+	[entities]:[['today'], ['50', 'people'], ["indonesia's", 'northwestern', 'province', 'of', 'aceh'], ['buildings']]
+strong
+|--(det)--> a
+|--(acl:re)--> *R1233[1]
+|                |--(nsubj)--> *R1233[6]
+|                                 |--(punct)--> *R1233[.]
+|--(punct)--> *R1233[-]
+|--(parata)--> *R1236[struck]
+|                |--(nsubj)--> *R1233[earthquake]
+|                |                |--(compou)--> *R1233[magnitude]
+|                |--(dobj)--> R1237[province]
+|                |                |--(nmod:p)--> R1237[indonesia's]
+|                |                |                |--(case)--> R1237[indonesia's]
+|                |                |--(amod)--> R1237[northwestern]
+|                |                |--(nmod)--> R1237[aceh]
+|                |                                 |--(case)--> R1237[of]
+|                |--(nmod:t)--> R1245[today]
+|                |--(punct)--> ,
+|                |--(dep)--> *R1293[causing]
+|                                 |--(dobj)--> R1257[buildings]
+|                                 |--(nmod)--> *R1272[collapse]
+|                                 |                |--(case)--> to
+|                                 |--(cc)--> and
+|                                 |--(conj)--> *R1234[injuring]
+|                                                  |--(dobj)--> R1235[people]
+|                                                                   |--(nummod)--> R1235[50]
+|                                                                                    |--(nmod:n)--> least
+|                                                                                                     |--(case)--> at
+|--(punct)--> .
+
+	* entity-paths for event['6', '.', '1', '-', 'magnitude', 'earthquake']37_5ecbplus.xmlsent:10622
+
+	* entity-paths for event['struck']37_5ecbplus.xmlsent:10622
+	['struck --(dobj)--> province']
+	['struck --(nmod:tmod)--> today']
+	['struck --(dep)--> causing', 'causing --(dobj)--> buildings']
+	['struck --(dep)--> causing', 'causing --(conj)--> injuring', 'injuring --(dobj)--> people']
+
+	* entity-paths for event['causing']37_5ecbplus.xmlsent:10622
+	['causing --(dobj)--> buildings']
+	['causing --(conj)--> injuring', 'injuring --(dobj)--> people']
+
+	* entity-paths for event['injuring']37_5ecbplus.xmlsent:10622
+	['injuring --(dobj)--> people']
+
+	* entity-paths for event['collapse']37_5ecbplus.xmlsent:10622
+
+sentence #:dozens injured as 6 . 1 - magnitude quake hits indonesia's aceh 
+	[events]:[['injured'], ['6', '.', '1', '-', 'magnitude', 'quake'], ['hits']]
+	[entities]:[['dozens'], ["indonesia's", 'aceh']]
+*R1234[injured]
+|--(nsubj)--> R1235[dozens]
+|--(advcl)--> *R1233[1]
+|                |--(mark)--> as
+|                |--(nsubj)--> *R1233[6]
+|                                 |--(punct)--> *R1233[.]
+|--(punct)--> *R1233[-]
+|--(parata)--> *R1236[hits]
+                 |--(nsubj)--> *R1233[quake]
+                 |                |--(compou)--> *R1233[magnitude]
+                 |--(dobj)--> R1237[aceh]
+                                  |--(nmod:p)--> R1237[indonesia's]
+                                                   |--(case)--> R1237[indonesia's]
+
+	* entity-paths for event['injured']37_5ecbplus.xmlsent:10620
+	['injured --(nsubj)--> Dozens']
+	['injured --(parataxis)--> hits', 'hits --(dobj)--> Aceh']
+
+	* entity-paths for event['6', '.', '1', '-', 'magnitude', 'quake']37_5ecbplus.xmlsent:10620
+
+	* entity-paths for event['hits']37_5ecbplus.xmlsent:10620
+	['hits --(dobj)--> Aceh']

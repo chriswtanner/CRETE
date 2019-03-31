@@ -1,0 +1,77 @@
+
+-----------------------------------------
+docid:42_1ecbplus.xml
+-----------------------------------------
+
+sentence #:t - mobile continues to add to its growing line - up of 4g lte devices by partnering with blackberry to bring customers the blackberry q10 . 
+	[events]:[['partnering'], ['bring'], ['continues'], ['add'], ['growing']]
+	[entities]:[['blackberry', 'q10'], ['customers'], ['line', '-', 'up'], ['4g', 'lte', 'devices'], ['t', '-', 'mobile'], ['blackberry']]
+R1517[t]
+|--(punct)--> R1517[-]
+|--(appos)--> *R1536[continues]
+|                |--(nsubj)--> R1517[mobile]
+|                |--(xcomp)--> *R1537[add]
+|                                 |--(mark)--> to
+|                                 |--(nmod)--> R1534[line]
+|                                 |                |--(case)--> to
+|                                 |                |--(nmod:p)--> its
+|                                 |                |--(amod)--> *R1538[growing]
+|                                 |--(punct)--> R1534[-]
+|                                 |--(dep)--> R1534[up]
+|                                                  |--(nmod)--> R1535[devices]
+|                                                  |                |--(case)--> of
+|                                                  |                |--(compou)--> R1535[4g]
+|                                                  |                |--(compou)--> R1535[lte]
+|                                                  |--(advcl)--> *R1539[partnering]
+|                                                                   |--(mark)--> by
+|                                                                   |--(nmod)--> R1540[blackberry]
+|                                                                   |                |--(case)--> with
+|                                                                   |--(xcomp)--> *R1522[bring]
+|                                                                                    |--(mark)--> to
+|                                                                                    |--(iobj)--> R1541[customers]
+|                                                                                    |--(dobj)--> R1525[q10]
+|                                                                                                     |--(det)--> the
+|                                                                                                     |--(compou)--> R1525[blackberry]
+|--(punct)--> .
+
+	* entity-paths for event['partnering']42_1ecbplus.xmlsent:12698
+	['partnering --(nmod)--> BlackBerry']
+	['partnering --(xcomp)--> bring', 'bring --(iobj)--> customers']
+	['partnering --(xcomp)--> bring', 'bring --(dobj)--> Q10']
+
+	* entity-paths for event['bring']42_1ecbplus.xmlsent:12698
+	['bring --(iobj)--> customers']
+	['bring --(dobj)--> Q10']
+
+	* entity-paths for event['continues']42_1ecbplus.xmlsent:12698
+	['continues --(nsubj)--> Mobile']
+	['continues --(xcomp)--> add', 'add --(nmod)--> line']
+	['continues --(xcomp)--> add', 'add --(punct)--> -']
+	['continues --(xcomp)--> add', 'add --(dep)--> up']
+
+	* entity-paths for event['add']42_1ecbplus.xmlsent:12698
+	['add --(nmod)--> line']
+	['add --(punct)--> -']
+	['add --(dep)--> up']
+
+	* entity-paths for event['growing']42_1ecbplus.xmlsent:12698
+
+sentence #:t - mobile adds blackberry q10 to its 4g lte smartphone portfolio 
+	[events]:[['adds']]
+	[entities]:[['portfolio'], ['t', '-', 'mobile'], ['blackberry', 'q10'], ['4g', 'lte', 'smartphone']]
+R1517[t]
+|--(punct)--> R1517[-]
+|--(appos)--> *R1537[adds]
+                 |--(nsubj)--> R1517[mobile]
+                 |--(dobj)--> R1525[q10]
+                                  |--(compou)--> R1525[blackberry]
+                                  |--(nmod)--> R1534[portfolio]
+                                                   |--(case)--> to
+                                                   |--(nmod:p)--> its
+                                                   |--(compou)--> R1535[4g]
+                                                   |--(compou)--> R1535[lte]
+                                                   |--(compou)--> R1535[smartphone]
+
+	* entity-paths for event['adds']42_1ecbplus.xmlsent:12696
+	['Adds --(nsubj)--> Mobile']
+	['Adds --(dobj)--> Q10']

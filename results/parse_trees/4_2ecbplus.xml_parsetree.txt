@@ -1,0 +1,87 @@
+
+-----------------------------------------
+docid:4_2ecbplus.xml
+-----------------------------------------
+
+sentence #:esther williams , whose experiences as a young swimming champion led to a career of hollywood "aqua - musicals" designed just for her , died on thursday in beverly hills , california , at the age of 91 , her spokesman said . 
+	[events]:[['musicals"'], ['designed'], ['swimming'], ['died'], ['experiences'], ['said']]
+	[entities]:[['her'], ['champion'], ['on', 'thursday'], ['spokesman'], ['in', 'beverly', 'hills', ',', 'california'], ['esther', 'williams'], ['hollywood']]
+*R1379[said]
+|--(ccomp)--> *R1369[died]
+|                |--(nsubj)--> R1370[williams]
+|                |                |--(compou)--> R1370[esther]
+|                |                |--(punct)--> ,
+|                |                |--(acl:re)--> led
+|                |                |                |--(nsubj)--> *R1390[experiences]
+|                |                |                |                |--(nmod:p)--> whose
+|                |                |                |                |--(nmod)--> R1370[champion]
+|                |                |                |                                 |--(case)--> as
+|                |                |                |                                 |--(det)--> a
+|                |                |                |                                 |--(amod)--> young
+|                |                |                |                                 |--(compou)--> *R1372[swimming]
+|                |                |                |--(nmod)--> career
+|                |                |                |                |--(case)--> to
+|                |                |                |                |--(det)--> a
+|                |                |                |                |--(nmod)--> R463[hollywood]
+|                |                |                |                                 |--(case)--> of
+|                |                |                |--(punct)--> "aqua
+|                |                |                |--(dep)--> *R1374[musicals"]
+|                |                |                |                |--(dep)--> "aqua
+|                |                |                |                |--(punct)--> -
+|                |                |                |--(punct)--> *R1374[musicals"]
+|                |                |                |--(dep)--> *R1391[designed]
+|                |                |                |                |--(advmod)--> just
+|                |                |                |--(nmod)--> R1370[her]
+|                |                |                                 |--(case)--> for
+|                |                |--(punct)--> ,
+|                |--(nmod)--> R1376[thursday]
+|                |                |--(case)--> R1376[on]
+|                |                |--(nmod)--> R1392[hills]
+|                |                                 |--(case)--> R1392[in]
+|                |                                 |--(compou)--> R1392[beverly]
+|                |                                 |--(punct)--> R1392[,]
+|                |                                 |--(appos)--> R1392[california]
+|                |                                 |--(punct)--> ,
+|                |--(nmod)--> age
+|                                 |--(case)--> at
+|                                 |--(det)--> the
+|                                 |--(nmod)--> 91
+|                                                  |--(case)--> of
+|--(punct)--> ,
+|--(nsubj)--> R1378[spokesman]
+|                |--(nmod:p)--> her
+|--(punct)--> .
+
+	* entity-paths for event['musicals"']4_2ecbplus.xmlsent:11399
+
+	* entity-paths for event['designed']4_2ecbplus.xmlsent:11399
+
+	* entity-paths for event['swimming']4_2ecbplus.xmlsent:11399
+
+	* entity-paths for event['died']4_2ecbplus.xmlsent:11399
+	['died --(nsubj)--> Williams']
+	['died --(nmod)--> Thursday']
+
+	* entity-paths for event['experiences']4_2ecbplus.xmlsent:11399
+	['experiences --(nmod)--> champion']
+
+	* entity-paths for event['said']4_2ecbplus.xmlsent:11399
+	['said --(ccomp)--> died', 'died --(nsubj)--> Williams']
+	['said --(ccomp)--> died', 'died --(nmod)--> Thursday']
+	['said --(nsubj)--> spokesman']
+
+sentence #:hollywood's mermaid , esther williams dies at 91 
+	[events]:[['dies']]
+	[entities]:[['esther', 'williams']]
+*R1369[dies]
+|--(nsubj)--> R1370[williams]
+|                |--(nmod:p)--> hollywood's
+|                |                |--(case)--> hollywood's
+|                |--(compou)--> mermaid
+|                |--(punct)--> ,
+|                |--(appos)--> R1370[esther]
+|--(nmod)--> 91
+                 |--(case)--> at
+
+	* entity-paths for event['dies']4_2ecbplus.xmlsent:11397
+	['dies --(nsubj)--> Williams']

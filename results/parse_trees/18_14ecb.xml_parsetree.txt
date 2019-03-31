@@ -1,0 +1,81 @@
+
+-----------------------------------------
+docid:18_14ecb.xml
+-----------------------------------------
+
+sentence #:one man is dead after being shot by a gunman who marched into a company christmas party friday night . 
+	[events]:[['party'], ['dead'], ['shot'], ['marched']]
+	[entities]:[['gunman'], ['friday', 'night'], ['man']]
+*R358[dead]
+|--(nsubj)--> R369[man]
+|                |--(nummod)--> one
+|--(cop)--> is
+|--(advcl)--> *R366[shot]
+|                |--(mark)--> after
+|                |--(auxpas)--> being
+|                |--(nmod)--> R356[gunman]
+|                                 |--(case)--> by
+|                                 |--(det)--> a
+|                                 |--(acl:re)--> *R385[marched]
+|                                                  |--(nsubj)--> who
+|                                                  |--(nmod)--> *R359[party]
+|                                                  |                |--(case)--> into
+|                                                  |                |--(det)--> a
+|                                                  |                |--(compou)--> company
+|                                                  |                |--(compou)--> christmas
+|                                                  |                |--(nmod:t)--> R368[friday]
+|                                                  |--(nmod:t)--> R368[night]
+|--(punct)--> .
+
+	* entity-paths for event['party']18_14ecb.xmlsent:2331
+	['party --(nmod:tmod)--> Friday']
+
+	* entity-paths for event['dead']18_14ecb.xmlsent:2331
+	['dead --(nsubj)--> man']
+	['dead --(advcl)--> shot', 'shot --(nmod)--> gunman']
+
+	* entity-paths for event['shot']18_14ecb.xmlsent:2331
+	['shot --(nmod)--> gunman']
+
+	* entity-paths for event['marched']18_14ecb.xmlsent:2331
+	['marched --(nmod)--> party', 'party --(nmod:tmod)--> Friday']
+	['marched --(nmod:tmod)--> night']
+
+sentence #:vancouver police have arrested a 61-year-old former employee after the shooting at tallgrass distributors ltd. , an organic supplements and health product store in the mount pleasant neighbourhood near downtown vancouver . 
+	[events]:[['shooting']]
+	[entities]:[['tallgrass', 'distributors', 'ltd.'], ['police'], ['store', 'in', 'the', 'mount', 'pleasant', 'neighbourhood', 'near', 'downtown', 'vancouver'], ['employee']]
+arrested
+|--(nsubj)--> R386[police]
+|                |--(compou)--> vancouver
+|--(aux)--> have
+|--(dobj)--> R356[employee]
+|                |--(det)--> a
+|                |--(amod)--> 61-year-old
+|                |--(amod)--> former
+|--(nmod)--> *R366[shooting]
+|                |--(case)--> after
+|                |--(det)--> the
+|                |--(nmod)--> R383[ltd.]
+|                                 |--(case)--> at
+|                                 |--(compou)--> R383[tallgrass]
+|                                 |--(compou)--> R383[distributors]
+|                                 |--(punct)--> ,
+|                                 |--(conj)--> supplements
+|                                 |                |--(det)--> an
+|                                 |                |--(amod)--> organic
+|                                 |--(cc)--> and
+|                                 |--(conj)--> R383[store]
+|                                                  |--(compou)--> health
+|                                                  |--(compou)--> product
+|--(nmod)--> R383[neighbourhood]
+|                |--(case)--> R383[in]
+|                |--(det)--> R383[the]
+|                |--(compou)--> R383[mount]
+|                |--(compou)--> R383[pleasant]
+|                |--(nmod)--> R383[vancouver]
+|                                 |--(case)--> R383[near]
+|                                 |--(compou)--> R383[downtown]
+|--(punct)--> .
+
+	* entity-paths for event['shooting']18_14ecb.xmlsent:2332
+	['shooting --(nmod)--> Ltd.']

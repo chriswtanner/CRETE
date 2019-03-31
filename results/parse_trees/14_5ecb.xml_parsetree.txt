@@ -1,0 +1,56 @@
+
+-----------------------------------------
+docid:14_5ecb.xml
+-----------------------------------------
+
+sentence #:a surrey police spokeswoman said tonight : " surrey police and surrey fire and rescue are currently at the scene of a large fir e at a waitrose store in high street , banstead , which is being treated as potentially suspicious . " 
+	[events]:[['fir'], ['treated']]
+	[entities]:[['spokeswoman'], ['surrey', 'police'], ['the', 'scene'], ['a', 'waitrose', 'store', 'in', 'high', 'street', ',', 'banstead']]
+said
+|--(nsubj)--> R300[spokeswoman]
+|                |--(det)--> a
+|                |--(compou)--> surrey
+|                |--(compou)--> police
+|--(nmod:t)--> tonight
+|--(punct)--> :
+|--(punct)--> "
+|--(parata)--> R310[banstead]
+|                |--(nsubj)--> R300[police]
+|                |                |--(compou)--> R300[surrey]
+|                |                |--(cc)--> and
+|                |                |--(conj)--> fire
+|                |                                 |--(compou)--> surrey
+|                |                                 |--(cc)--> and
+|                |                                 |--(conj)--> rescue
+|                |--(cop)--> are
+|                |--(advmod)--> currently
+|                |--(nmod)--> R310[scene]
+|                |                |--(case)--> at
+|                |                |--(det)--> R310[the]
+|                |                |--(nmod)--> *R296[fir]
+|                |                |                |--(case)--> of
+|                |                |                |--(det)--> a
+|                |                |                |--(amod)--> large
+|                |                |--(dep)--> e
+|                |                |--(nmod)--> R310[store]
+|                |                                 |--(case)--> at
+|                |                                 |--(det)--> R310[a]
+|                |                                 |--(compou)--> R310[waitrose]
+|                |                                 |--(nmod)--> R310[street]
+|                |                                                  |--(case)--> R310[in]
+|                |                                                  |--(compou)--> R310[high]
+|                |--(punct)--> R310[,]
+|                |--(punct)--> ,
+|                |--(acl:re)--> *R295[treated]
+|                                 |--(nsubjp)--> which
+|                                 |--(aux)--> is
+|                                 |--(auxpas)--> being
+|                                 |--(advcl)--> suspicious
+|                                                  |--(case)--> as
+|                                                  |--(advmod)--> potentially
+|--(punct)--> .
+|--(punct)--> "
+
+	* entity-paths for event['fir']14_5ecb.xmlsent:1743
+
+	* entity-paths for event['treated']14_5ecb.xmlsent:1743

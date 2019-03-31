@@ -1,0 +1,50 @@
+
+-----------------------------------------
+docid:13_20ecb.xml
+-----------------------------------------
+
+sentence #:authorities suspect arson is the cause of a fire that caused an estimated $ 1 million in damage to gov. sarah palin 's church , reports this morning 's anchorage daily news . 
+	[events]:[['fire'], ['suspect'], ['damage'], ['arson']]
+	[entities]:[['church']]
+cause
+|--(nsubj)--> *R270[arson]
+|                |--(amod)--> *R269[suspect]
+|                                 |--(amod)--> authorities
+|--(cop)--> is
+|--(det)--> the
+|--(nmod)--> *R261[fire]
+|                |--(case)--> of
+|                |--(det)--> a
+|                |--(acl:re)--> caused
+|                                 |--(nsubj)--> that
+|                                 |--(dobj)--> $
+|                                 |                |--(det)--> an
+|                                 |                |--(dep)--> estimated
+|                                 |                |--(nummod)--> million
+|                                 |                                 |--(compou)--> 1
+|                                 |--(nmod)--> *R278[damage]
+|                                 |                |--(case)--> in
+|                                 |--(nmod)--> R260[church]
+|                                                  |--(case)--> to
+|                                                  |--(nmod:p)--> palin
+|                                                  |                |--(compou)--> gov.
+|                                                  |                |--(compou)--> sarah
+|                                                  |                |--(case)--> 's
+|                                                  |--(punct)--> ,
+|                                                  |--(appos)--> reports
+|                                                                   |--(dep)--> news
+|                                                                                    |--(nmod:p)--> morning
+|                                                                                    |                |--(det)--> this
+|                                                                                    |                |--(case)--> 's
+|                                                                                    |--(compou)--> anchorage
+|                                                                                    |--(compou)--> daily
+|--(punct)--> .
+
+	* entity-paths for event['fire']13_20ecb.xmlsent:1347
+	['fire --(acl:relcl)--> caused', 'caused --(nmod)--> church']
+
+	* entity-paths for event['suspect']13_20ecb.xmlsent:1347
+
+	* entity-paths for event['damage']13_20ecb.xmlsent:1347
+
+	* entity-paths for event['arson']13_20ecb.xmlsent:1347

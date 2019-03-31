@@ -1,0 +1,96 @@
+
+-----------------------------------------
+docid:31_5ecbplus.xml
+-----------------------------------------
+
+sentence #:doug mcdermott scored 23 points to become creighton's all - time scoring leader and the top - seeded bluejays defeated drake 65 - 53 on friday in the quarterfinals of the missouri valley conference tournament . 
+	[events]:[['become'], ['scored'], ['defeated'], ['quarterfinals'], ['missouri', 'valley', 'conference', 'tournament']]
+	[entities]:[['doug', 'mcdermott'], ['23', 'points'], ['scoring', 'leader'], ['bluejays'], ['on', 'friday'], ['drake'], ["creighton's"], ['65', '-', '53']]
+*R1011[scored]
+|--(nsubj)--> R1001[mcdermott]
+|                |--(compou)--> R1001[doug]
+|--(dobj)--> R1012[points]
+|                |--(nummod)--> R1012[23]
+|--(advcl)--> *R1013[become]
+|                |--(mark)--> to
+|                |--(xcomp)--> R1003[creighton's]
+|                                 |--(case)--> R1003[creighton's]
+|                                 |--(dep)--> all
+|                                 |--(punct)--> -
+|                                 |--(dep)--> R1001[leader]
+|                                                  |--(compou)--> time
+|                                                  |--(amod)--> R1001[scoring]
+|                                                  |--(cc)--> and
+|                                                  |--(conj)--> top
+|                                                                   |--(det)--> the
+|--(punct)--> -
+|--(parata)--> *R1002[defeated]
+|                |--(dep)--> seeded
+|                |--(nsubj)--> R1003[bluejays]
+|                |--(dobj)--> R1014[drake]
+|                |                |--(nummod)--> R1015[65]
+|                |                |--(punct)--> R1015[-]
+|                |                |--(dep)--> R1015[53]
+|                |                                 |--(nmod)--> R1016[friday]
+|                |                                                  |--(case)--> R1016[on]
+|                |--(nmod)--> *R1017[quarterfinals]
+|                                 |--(case)--> in
+|                                 |--(det)--> the
+|                                 |--(nmod)--> *R1004[tournament]
+|                                                  |--(case)--> of
+|                                                  |--(det)--> the
+|                                                  |--(compou)--> *R1004[missouri]
+|                                                  |--(compou)--> *R1004[valley]
+|                                                  |--(compou)--> *R1004[conference]
+|--(punct)--> .
+
+	* entity-paths for event['become']31_5ecbplus.xmlsent:8512
+	['become --(xcomp)--> Creighton']
+
+	* entity-paths for event['scored']31_5ecbplus.xmlsent:8512
+	['scored --(nsubj)--> McDermott']
+	['scored --(dobj)--> points']
+	['scored --(advcl)--> become', 'become --(xcomp)--> Creighton']
+	['scored --(parataxis)--> defeated', 'defeated --(nsubj)--> Bluejays']
+	['scored --(parataxis)--> defeated', 'defeated --(dobj)--> Drake']
+
+	* entity-paths for event['defeated']31_5ecbplus.xmlsent:8512
+	['defeated --(nsubj)--> Bluejays']
+	['defeated --(dobj)--> Drake']
+
+	* entity-paths for event['quarterfinals']31_5ecbplus.xmlsent:8512
+
+	* entity-paths for event['missouri', 'valley', 'conference', 'tournament']31_5ecbplus.xmlsent:8512
+
+sentence #:creighton ( 25 - 7 ) will play the winner of friday's second semifinal between evansville and indiana state . 
+	[events]:[['second', 'semifinal'], ['play']]
+	[entities]:[["friday's"], ['creighton'], ['winner'], ['indiana', 'state'], ['evansville']]
+*R1026[play]
+|--(nsubj)--> R1003[creighton]
+|                |--(dep)--> 25
+|                                 |--(punct)--> (
+|                                 |--(punct)--> -
+|                                 |--(dep)--> 7
+|                                 |--(punct)--> )
+|--(aux)--> will
+|--(dobj)--> R1027[winner]
+|                |--(det)--> the
+|                |--(nmod)--> *R1025[semifinal]
+|                                 |--(case)--> of
+|                                 |--(nmod:p)--> R1016[friday's]
+|                                 |                |--(case)--> R1016[friday's]
+|                                 |--(amod)--> *R1025[second]
+|                                 |--(nmod)--> R1028[state]
+|                                                  |--(case)--> between
+|                                                  |--(compou)--> R1008[evansville]
+|                                                                   |--(cc)--> and
+|                                                                   |--(conj)--> R1028[indiana]
+|--(punct)--> .
+
+	* entity-paths for event['second', 'semifinal']31_5ecbplus.xmlsent:8513
+	['semifinal --(nmod:poss)--> Friday']
+	['semifinal --(nmod)--> State']
+
+	* entity-paths for event['play']31_5ecbplus.xmlsent:8513
+	['play --(nsubj)--> Creighton']
+	['play --(dobj)--> winner']

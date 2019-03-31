@@ -1,0 +1,47 @@
+
+-----------------------------------------
+docid:19_2ecb.xml
+-----------------------------------------
+
+sentence #:protests , riots and clashes with police have overtaken greece for the sixth straight day since the fatal police shooting of a teenage boy in athens saturday night . 
+	[events]:[['clashes'], ['protests'], ['riots'], ['shooting']]
+	[entities]:[['police'], ['saturday', 'night'], ['a', 'teenage', 'boy'], ['greece'], ['in', 'athens']]
+overtaken
+|--(nsubj)--> *R408[protests]
+|                |--(punct)--> ,
+|                |--(conj)--> *R433[riots]
+|                |--(cc)--> and
+|                |--(conj)--> *R408[clashes]
+|                |--(nmod)--> R437[police]
+|                                 |--(case)--> with
+|--(aux)--> have
+|--(dobj)--> R409[greece]
+|                |--(nmod)--> day
+|                                 |--(case)--> for
+|                                 |--(det)--> the
+|                                 |--(amod)--> sixth
+|                                 |--(amod)--> straight
+|--(nmod)--> *R401[shooting]
+|                |--(case)--> since
+|                |--(det)--> the
+|                |--(amod)--> fatal
+|                |--(compou)--> police
+|                |--(nmod)--> R402[boy]
+|                                 |--(case)--> of
+|                                 |--(det)--> R402[a]
+|                                 |--(amod)--> R402[teenage]
+|                                 |--(nmod)--> R406[saturday]
+|                                 |                |--(case)--> R405[in]
+|                                 |                |--(compou)--> R405[athens]
+|                                 |--(nmod:t)--> R406[night]
+|--(punct)--> .
+
+	* entity-paths for event['clashes']19_2ecb.xmlsent:2919
+
+	* entity-paths for event['protests']19_2ecb.xmlsent:2919
+	['Protests --(nmod)--> police']
+
+	* entity-paths for event['riots']19_2ecb.xmlsent:2919
+
+	* entity-paths for event['shooting']19_2ecb.xmlsent:2919
+	['shooting --(nmod)--> boy']

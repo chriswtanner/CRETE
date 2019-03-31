@@ -1,0 +1,27 @@
+
+-----------------------------------------
+docid:44_3ecbplus.xml
+-----------------------------------------
+
+sentence #:hp gets into data center design ; acquires eyp mission critical facilities 
+	[events]:[['design'], ['acquires']]
+	[entities]:[['data', 'center'], ['eyp', 'mission', 'critical', 'facilities'], ['hp']]
+gets
+|--(nsubj)--> R1577[hp]
+|--(nmod)--> R1590[data]
+                 |--(case)--> into
+                 |--(acl:re)--> *R1582[acquires]
+                                  |--(nsubj)--> *R1589[design]
+                                  |                |--(compou)--> R1590[center]
+                                  |--(punct)--> ;
+                                  |--(xcomp)--> R1583[facilities]
+                                                   |--(nsubj)--> R1583[mission]
+                                                   |                |--(compou)--> R1583[eyp]
+                                                   |--(amod)--> R1583[critical]
+
+	* entity-paths for event['design']44_3ecbplus.xmlsent:13611
+	['design --(compound)--> center']
+
+	* entity-paths for event['acquires']44_3ecbplus.xmlsent:13611
+	['acquires --(nsubj)--> design', 'design --(compound)--> center']
+	['acquires --(xcomp)--> Facilities']

@@ -1,0 +1,37 @@
+
+-----------------------------------------
+docid:25_1ecb.xml
+-----------------------------------------
+
+sentence #:the new orleans saints have placed running back reggie bush on injured reserve because of a sprained knee . 
+	[events]:[['placed'], ['injured', 'reserve'], ['sprained']]
+	[entities]:[['knee'], ['the', 'new', 'orleans', 'saints'], ['reggie', 'bush']]
+*R711[placed]
+|--(nsubj)--> R706[saints]
+|                |--(det)--> R706[the]
+|                |--(compou)--> R706[new]
+|                |--(compou)--> R706[orleans]
+|--(aux)--> have
+|--(xcomp)--> running
+|                |--(compou)--> back
+|                |--(dobj)--> R707[bush]
+|                |                |--(compou)--> R707[reggie]
+|                |                |--(nmod)--> *R712[reserve]
+|                |                                 |--(case)--> on
+|                |                                 |--(amod)--> *R712[injured]
+|                |--(nmod)--> a
+|                                 |--(case)--> because
+|                                 |--(advmod)--> of
+|                                 |--(acl)--> *R720[sprained]
+|                                                  |--(dobj)--> R719[knee]
+|--(punct)--> .
+
+	* entity-paths for event['placed']25_1ecb.xmlsent:5075
+	['placed --(nsubj)--> Saints']
+	['placed --(xcomp)--> running', 'running --(dobj)--> Bush']
+	['placed --(xcomp)--> running', 'running --(nmod)--> a', 'a --(acl)--> sprained', 'sprained --(dobj)--> knee']
+
+	* entity-paths for event['injured', 'reserve']25_1ecb.xmlsent:5075
+
+	* entity-paths for event['sprained']25_1ecb.xmlsent:5075
+	['sprained --(dobj)--> knee']

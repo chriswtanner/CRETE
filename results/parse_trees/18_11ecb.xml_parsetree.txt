@@ -1,0 +1,41 @@
+
+-----------------------------------------
+docid:18_11ecb.xml
+-----------------------------------------
+
+sentence #:a former employee recently let go from his job opened fire at an office christmas party yesterday , killing one person . 
+	[events]:[['party'], ['killing'], ['let', 'go'], ['opened', 'fire'], ['job']]
+	[entities]:[['employee'], ['yesterday'], ['person']]
+*R365[let]
+|--(nsubj)--> R356[employee]
+|                |--(det)--> a
+|                |--(amod)--> former
+|--(advmod)--> recently
+|--(ccomp)--> *R366[opened]
+|                |--(csubj)--> *R365[go]
+|                |                |--(nmod)--> *R367[job]
+|                |                                 |--(case)--> from
+|                |                                 |--(nmod:p)--> his
+|                |--(dobj)--> *R366[fire]
+|                |--(nmod)--> christmas
+|                |                |--(case)--> at
+|                |                |--(det)--> an
+|                |                |--(compou)--> office
+|                |--(nmod:t)--> R368[yesterday]
+|                |                |--(compou)--> *R359[party]
+|                |--(punct)--> ,
+|                |--(advcl)--> *R358[killing]
+|                                 |--(dobj)--> R369[person]
+|                                                  |--(nummod)--> one
+|--(punct)--> .
+
+	* entity-paths for event['party']18_11ecb.xmlsent:2246
+
+	* entity-paths for event['killing']18_11ecb.xmlsent:2246
+	['killing --(dobj)--> person']
+
+	* entity-paths for event['let', 'go']18_11ecb.xmlsent:2246
+
+	* entity-paths for event['opened', 'fire']18_11ecb.xmlsent:2246
+
+	* entity-paths for event['job']18_11ecb.xmlsent:2246

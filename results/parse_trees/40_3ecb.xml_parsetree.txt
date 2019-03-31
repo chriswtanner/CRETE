@@ -1,0 +1,58 @@
+
+-----------------------------------------
+docid:40_3ecb.xml
+-----------------------------------------
+
+sentence #:apple on tuesday launched a refresh of the 17-inch macbook pro , giving the company 's largest laptop an eight-hour battery life , a faster intel ( nsdq : intc ) processor , and better graphics capabilities . 
+	[events]:[['refresh'], ['launched'], ['battery', 'life']]
+	[entities]:[['eight-hour'], ['apple'], ['company'], ['macbook', 'pro'], ['on', 'tuesday'], ['intel']]
+*R1404[launched]
+|--(nsubj)--> R1405[apple]
+|                |--(nmod)--> R1419[tuesday]
+|                                 |--(case)--> R1419[on]
+|--(dobj)--> *R1408[refresh]
+|                |--(det)--> a
+|                |--(nmod)--> R1409[macbook]
+|                                 |--(case)--> of
+|                                 |--(det)--> the
+|                                 |--(amod)--> 17-inch
+|--(nmod:t)--> R1409[pro]
+|                |--(punct)--> ,
+|                |--(dep)--> giving
+|                |                |--(iobj)--> laptop
+|                |                |                |--(nmod:p)--> R1405[company]
+|                |                |                |                |--(det)--> the
+|                |                |                |                |--(case)--> 's
+|                |                |                |--(amod)--> largest
+|                |                |--(dobj)--> *R1431[life]
+|                |                                 |--(det)--> an
+|                |                                 |--(amod)--> R1429[eight-hour]
+|                |                                 |--(compou)--> *R1431[battery]
+|                |                                 |--(punct)--> ,
+|                |                                 |--(conj)--> processor
+|                |                                 |                |--(det)--> a
+|                |                                 |                |--(amod)--> faster
+|                |                                 |                |--(compou)--> R1426[intel]
+|                |                                 |                |--(appos)--> nsdq
+|                |                                 |                                 |--(punct)--> (
+|                |                                 |                                 |--(punct)--> :
+|                |                                 |                                 |--(dep)--> intc
+|                |                                 |                                 |--(punct)--> )
+|                |                                 |--(punct)--> ,
+|                |                                 |--(cc)--> and
+|                |                                 |--(conj)--> graphics
+|                |                                                  |--(amod)--> better
+|                |--(dep)--> capabilities
+|--(punct)--> .
+
+	* entity-paths for event['refresh']40_3ecb.xmlsent:11776
+	['refresh --(nmod)--> MacBook']
+
+	* entity-paths for event['launched']40_3ecb.xmlsent:11776
+	['launched --(nsubj)--> Apple']
+	['launched --(dobj)--> refresh', 'refresh --(nmod)--> MacBook']
+	['launched --(nmod:tmod)--> Pro']
+
+	* entity-paths for event['battery', 'life']40_3ecb.xmlsent:11776
+	['life --(amod)--> eight-hour']
+	['life --(conj)--> processor', 'processor --(compound)--> Intel']

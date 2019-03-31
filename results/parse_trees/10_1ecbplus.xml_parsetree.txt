@@ -1,0 +1,19 @@
+
+-----------------------------------------
+docid:10_1ecbplus.xml
+-----------------------------------------
+
+sentence #:red sox extend offer to teixeira 
+	[events]:[['offer'], ['extend']]
+	[entities]:[['red', 'sox'], ['teixeira']]
+R162[sox]
+|--(compou)--> R162[red]
+|--(dep)--> *R161[extend]
+                 |--(dobj)--> *R165[offer]
+                 |--(nmod)--> R163[teixeira]
+                                  |--(case)--> to
+
+	* entity-paths for event['offer']10_1ecbplus.xmlsent:389
+
+	* entity-paths for event['extend']10_1ecbplus.xmlsent:389
+	['extend --(nmod)--> Teixeira']

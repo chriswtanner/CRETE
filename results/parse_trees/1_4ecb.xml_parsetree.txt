@@ -1,0 +1,73 @@
+
+-----------------------------------------
+docid:1_4ecb.xml
+-----------------------------------------
+
+sentence #:in a statement from her people , it was confirmed , " tara reid has checked herself into promises treatment center . " 
+	[events]:[['statement'], ['checked', 'into'], ['confirmed']]
+	[entities]:[['people'], ['promises', 'treatment', 'center'], ['herself'], ['tara', 'reid']]
+R3[promises]
+|--(ccomp)--> *R0[confirmed]
+|                |--(nmod)--> *R0[statement]
+|                |                |--(case)--> in
+|                |                |--(det)--> a
+|                |                |--(nmod)--> R4[people]
+|                |                                 |--(case)--> from
+|                |                                 |--(nmod:p)--> her
+|                |--(punct)--> ,
+|                |--(nsubjp)--> it
+|                |--(auxpas)--> was
+|--(punct)--> ,
+|--(punct)--> "
+|--(parata)--> *R1[checked]
+|                |--(nsubj)--> R2[reid]
+|                |                |--(compou)--> R2[tara]
+|                |--(aux)--> has
+|                |--(dobj)--> R2[herself]
+|                |--(nmod)--> *R1[into]
+|--(dobj)--> R3[center]
+|                |--(compou)--> R3[treatment]
+|--(punct)--> .
+|--(punct)--> "
+
+	* entity-paths for event['statement']1_4ecb.xmlsent:227
+	['statement --(nmod)--> people']
+
+	* entity-paths for event['checked', 'into']1_4ecb.xmlsent:227
+
+	* entity-paths for event['confirmed']1_4ecb.xmlsent:227
+	['confirmed --(nmod)--> statement', 'statement --(nmod)--> people']
+
+sentence #:the actress who is known more for staggering around town than actually appearing on the big screen , finally checked into rehab . 
+	[events]:[['known'], ['appearing'], ['checked', 'into']]
+	[entities]:[['actress'], ['around', 'town'], ['rehab']]
+*R1[checked]
+|--(nsubj)--> R2[actress]
+|                |--(det)--> the
+|                |--(acl:re)--> *R129[known]
+|                                 |--(nsubjp)--> who
+|                                 |--(auxpas)--> is
+|                                 |--(advmod)--> more
+|                                 |--(advcl)--> staggering
+|                                                  |--(mark)--> for
+|                                                  |--(nmod)--> R130[town]
+|                                                  |                |--(case)--> R130[around]
+|                                                  |--(advcl)--> *R131[appearing]
+|                                                                   |--(mark)--> than
+|                                                                   |--(advmod)--> actually
+|                                                                   |--(nmod)--> screen
+|                                                                   |                |--(case)--> on
+|                                                                   |                |--(det)--> the
+|                                                                   |                |--(amod)--> big
+|                                                                   |--(punct)--> ,
+|                                                                   |--(advmod)--> finally
+|--(nmod)--> R3[rehab]
+|                |--(case)--> *R1[into]
+|--(punct)--> .
+
+	* entity-paths for event['known']1_4ecb.xmlsent:226
+	['known --(advcl)--> staggering', 'staggering --(nmod)--> town']
+
+	* entity-paths for event['appearing']1_4ecb.xmlsent:226
+
+	* entity-paths for event['checked', 'into']1_4ecb.xmlsent:226

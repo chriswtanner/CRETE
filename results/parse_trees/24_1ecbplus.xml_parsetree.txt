@@ -1,0 +1,141 @@
+
+-----------------------------------------
+docid:24_1ecbplus.xml
+-----------------------------------------
+
+sentence #:four men rammed their car into an upmarket jewelry store in central paris on monday , smashing the shop window and making off with a two - million - euro ( $2 . 6 - million ) booty , a police source said . 
+	[events]:[['making', 'off'], ['rammed'], ['smashing'], ['said']]
+	[entities]:[['an', 'upmarket', 'jewelry', 'store', 'in', 'central', 'paris'], ['shop', 'window'], ['booty'], ['car'], ['on', 'monday'], ['men'], ['source']]
+*R667[said]
+|--(ccomp)--> *R668[rammed]
+|                |--(nsubj)--> R669[men]
+|                |                |--(nummod)--> four
+|                |--(dobj)--> R670[car]
+|                |                |--(nmod:p)--> their
+|                |--(nmod)--> R671[store]
+|                |                |--(case)--> into
+|                |                |--(det)--> R671[an]
+|                |                |--(amod)--> R671[upmarket]
+|                |                |--(compou)--> R671[jewelry]
+|                |                |--(nmod)--> R671[paris]
+|                |                                 |--(case)--> R671[in]
+|                |                                 |--(amod)--> R671[central]
+|                |--(nmod)--> R672[monday]
+|                |                |--(case)--> R672[on]
+|                |--(punct)--> ,
+|                |--(dep)--> *R673[smashing]
+|                                 |--(dobj)--> R674[window]
+|                                 |                |--(det)--> the
+|                                 |                |--(compou)--> R674[shop]
+|                                 |--(cc)--> and
+|                                 |--(conj)--> *R675[making]
+|                                                  |--(compou)--> *R675[off]
+|                                                  |--(nmod)--> two
+|                                                                   |--(case)--> with
+|                                                                   |--(det)--> a
+|                                                                   |--(punct)--> -
+|                                                                   |--(dep)--> million
+|                                                                   |--(punct)--> -
+|                                                                   |--(dep)--> euro
+|                                                                                    |--(punct)--> (
+|                                                                                    |--(dep)--> $2
+|                                                                                                     |--(dep)--> $2
+|                                                                                                     |--(punct)--> .
+|                                                                                                     |--(dep)--> million
+|                                                                                                     |                |--(nummod)--> 6
+|                                                                                                     |                |--(punct)--> -
+|                                                                                                     |--(punct)--> )
+|                                                                                                     |--(dep)--> R676[booty]
+|--(punct)--> ,
+|--(nsubj)--> R677[source]
+|                |--(det)--> a
+|                |--(compou)--> police
+|--(punct)--> .
+
+	* entity-paths for event['making', 'off']24_1ecbplus.xmlsent:4823
+
+	* entity-paths for event['rammed']24_1ecbplus.xmlsent:4823
+	['rammed --(nsubj)--> men']
+	['rammed --(dobj)--> car']
+	['rammed --(nmod)--> store']
+	['rammed --(nmod)--> Monday']
+	['rammed --(dep)--> smashing', 'smashing --(dobj)--> window']
+	['rammed --(dep)--> smashing', 'smashing --(conj)--> making', 'making --(nmod)--> two', 'two --(dep)--> euro', 'euro --(dep)--> 2', '2 --(dep)--> $', '2 --(dep)--> booty']
+	['rammed --(dep)--> smashing', 'smashing --(conj)--> making', 'making --(nmod)--> two', 'two --(dep)--> euro', 'euro --(dep)--> 2', '2 --(dep)--> booty']
+
+	* entity-paths for event['smashing']24_1ecbplus.xmlsent:4823
+	['smashing --(dobj)--> window']
+	['smashing --(conj)--> making', 'making --(nmod)--> two', 'two --(dep)--> euro', 'euro --(dep)--> 2', '2 --(dep)--> $', '2 --(dep)--> booty']
+	['smashing --(conj)--> making', 'making --(nmod)--> two', 'two --(dep)--> euro', 'euro --(dep)--> 2', '2 --(dep)--> booty']
+
+	* entity-paths for event['said']24_1ecbplus.xmlsent:4823
+	['said --(ccomp)--> rammed', 'rammed --(nsubj)--> men']
+	['said --(ccomp)--> rammed', 'rammed --(dobj)--> car']
+	['said --(ccomp)--> rammed', 'rammed --(nmod)--> store']
+	['said --(ccomp)--> rammed', 'rammed --(nmod)--> Monday']
+	['said --(ccomp)--> rammed', 'rammed --(dep)--> smashing', 'smashing --(dobj)--> window']
+	['said --(ccomp)--> rammed', 'rammed --(dep)--> smashing', 'smashing --(conj)--> making', 'making --(nmod)--> two', 'two --(dep)--> euro', 'euro --(dep)--> 2', '2 --(dep)--> $', '2 --(dep)--> booty']
+	['said --(ccomp)--> rammed', 'rammed --(dep)--> smashing', 'smashing --(conj)--> making', 'making --(nmod)--> two', 'two --(dep)--> euro', 'euro --(dep)--> 2', '2 --(dep)--> booty']
+	['said --(nsubj)--> source']
+
+sentence #:the heist near the upscale place vendome is the latest to hit france after a spate of high - profile robberies in the southern resort of cannes . 
+	[events]:[['heist'], ['spate'], ['hit'], ['robberies']]
+	[entities]:[['in', 'the', 'southern', 'resort', 'of', 'cannes'], ['france']]
+latest
+|--(nsubj)--> *R684[heist]
+|                |--(det)--> the
+|                |--(nmod)--> vendome
+|                                 |--(case)--> near
+|                                 |--(det)--> the
+|                                 |--(amod)--> upscale
+|                                 |--(compou)--> place
+|--(cop)--> is
+|--(det)--> the
+|--(dep)--> *R696[hit]
+|                |--(mark)--> to
+|                |--(dobj)--> R697[france]
+|                |--(nmod)--> *R698[spate]
+|                                 |--(case)--> after
+|                                 |--(det)--> a
+|                                 |--(acl)--> high
+|                                 |                |--(case)--> of
+|                                 |--(punct)--> -
+|                                 |--(dep)--> *R699[robberies]
+|                                                  |--(compou)--> profile
+|                                                  |--(nmod)--> R700[resort]
+|                                                                   |--(case)--> R700[in]
+|                                                                   |--(det)--> R700[the]
+|                                                                   |--(amod)--> R700[southern]
+|                                                                   |--(nmod)--> R700[cannes]
+|                                                                                    |--(case)--> R700[of]
+|--(punct)--> .
+
+	* entity-paths for event['heist']24_1ecbplus.xmlsent:4824
+
+	* entity-paths for event['spate']24_1ecbplus.xmlsent:4824
+	['spate --(dep)--> robberies', 'robberies --(nmod)--> resort']
+
+	* entity-paths for event['hit']24_1ecbplus.xmlsent:4824
+	['hit --(dobj)--> France']
+	['hit --(nmod)--> spate', 'spate --(dep)--> robberies', 'robberies --(nmod)--> resort']
+
+	* entity-paths for event['robberies']24_1ecbplus.xmlsent:4824
+	['robberies --(nmod)--> resort']
+
+sentence #:paris hit by 2 mn - euro jewelry heist 
+	[events]:[['hit'], ['heist']]
+	[entities]:[['paris'], ['jewelry']]
+R685[paris]
+|--(acl)--> *R696[hit]
+|                |--(nmod)--> 2
+|                                 |--(case)--> by
+|                                 |--(dep)--> mn
+|--(punct)--> -
+|--(dep)--> euro
+                 |--(dep)--> *R684[heist]
+                                  |--(compou)--> R679[jewelry]
+
+	* entity-paths for event['hit']24_1ecbplus.xmlsent:4822
+
+	* entity-paths for event['heist']24_1ecbplus.xmlsent:4822
+	['heist --(compound)--> jewelry']

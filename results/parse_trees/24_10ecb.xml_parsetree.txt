@@ -1,0 +1,28 @@
+
+-----------------------------------------
+docid:24_10ecb.xml
+-----------------------------------------
+
+sentence #:robbers in drag steal e80 million from paris diamond store in biggest french heist 
+	[events]:[['steal'], ['heist']]
+	[entities]:[['store'], ['robbers']]
+*R663[steal]
+|--(nsubj)--> R664[robbers]
+|                |--(nmod)--> drag
+|                                 |--(case)--> in
+|--(dobj)--> million
+                 |--(compou)--> e80
+                 |--(nmod)--> R665[store]
+                                  |--(case)--> from
+                                  |--(compou)--> paris
+                                  |--(compou)--> diamond
+                                  |--(nmod)--> *R666[heist]
+                                                   |--(case)--> in
+                                                   |--(amod)--> french
+                                                                    |--(dep)--> biggest
+
+	* entity-paths for event['steal']24_10ecb.xmlsent:4791
+	['steal --(nsubj)--> Robbers']
+	['steal --(dobj)--> million', 'million --(nmod)--> store']
+
+	* entity-paths for event['heist']24_10ecb.xmlsent:4791

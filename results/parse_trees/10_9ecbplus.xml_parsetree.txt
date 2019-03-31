@@ -1,0 +1,44 @@
+
+-----------------------------------------
+docid:10_9ecbplus.xml
+-----------------------------------------
+
+sentence #:meanwhile , according to the newsday , teixeira still has an eight - year offer on the table from the red sox , worth roughly $22 million per season . 
+	[events]:[['offer']]
+	[entities]:[['eight', '-', 'year'], ['season'], ['teixeira'], ['red', 'sox']]
+has
+|--(advmod)--> meanwhile
+|--(punct)--> ,
+|--(nmod)--> newsday
+|                |--(case)--> according
+|                |                |--(mwe)--> to
+|                |--(det)--> the
+|--(punct)--> ,
+|--(nsubj)--> R163[teixeira]
+|--(advmod)--> still
+|--(dobj)--> R164[eight]
+|                |--(det)--> an
+|                |--(dep)--> *R165[offer]
+|                |                |--(punct)--> R164[-]
+|                |                |--(compou)--> R164[year]
+|                |                |--(nmod)--> table
+|                |                |                |--(case)--> on
+|                |                |                |--(det)--> the
+|                |                |                |--(nmod)--> R162[sox]
+|                |                |                                 |--(case)--> from
+|                |                |                                 |--(det)--> the
+|                |                |                                 |--(compou)--> R162[red]
+|                |                |--(punct)--> ,
+|                |                |--(dep)--> worth
+|                |                                 |--(dep)--> $22
+|                |                                                  |--(advmod)--> roughly
+|                |                                                  |--(nummod)--> million
+|                |                                                                   |--(compou)--> $22
+|                |--(nmod)--> R185[season]
+|                                 |--(case)--> per
+|--(punct)--> .
+
+	* entity-paths for event['offer']10_9ecbplus.xmlsent:581
+	['offer --(punct)--> -']
+	['offer --(compound)--> year']
+	['offer --(nmod)--> table', 'table --(nmod)--> Sox']

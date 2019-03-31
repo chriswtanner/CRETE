@@ -1,0 +1,107 @@
+
+-----------------------------------------
+docid:41_5ecbplus.xml
+-----------------------------------------
+
+sentence #:a refugee camp in south sudan's unity state was bombed thursday , south sudan officials and witnesses said , threatening to raise tensions with sudan in the violence - plagued border region . 
+	[events]:[['raise'], ['bombed'], ['tensions'], ['said'], ['threatening']]
+	[entities]:[['witnesses'], ['thursday'], ['border', 'region'], ['sudan'], ['south', 'sudan', 'officials'], ['a', 'refugee', 'camp', 'in', 'south', "sudan's", 'unity', 'state']]
+*R1452[said]
+|--(ccomp)--> *R1442[bombed]
+|                |--(nsubjp)--> R1444[camp]
+|                |                |--(det)--> R1444[a]
+|                |                |--(compou)--> R1444[refugee]
+|                |                |--(nmod)--> R1444[state]
+|                |                                 |--(case)--> R1444[in]
+|                |                                 |--(nmod:p)--> R1444[sudan's]
+|                |                                 |                |--(compou)--> R1444[south]
+|                |                                 |                |--(case)--> R1444[sudan's]
+|                |                                 |--(compou)--> R1444[unity]
+|                |--(auxpas)--> was
+|                |--(nmod:t)--> R1456[thursday]
+|--(punct)--> ,
+|--(nsubj)--> R1458[officials]
+|                |--(compou)--> R1458[south]
+|                |--(compou)--> R1458[sudan]
+|                |--(cc)--> and
+|                |--(conj)--> R1501[witnesses]
+|--(punct)--> ,
+|--(xcomp)--> *R1502[threatening]
+|                |--(xcomp)--> *R1503[raise]
+|                                 |--(mark)--> to
+|                                 |--(dobj)--> *R1504[tensions]
+|                                 |--(nmod)--> R1443[sudan]
+|                                 |                |--(case)--> with
+|                                 |--(nmod)--> violence
+|                                                  |--(case)--> in
+|                                                  |--(det)--> the
+|                                                  |--(punct)--> -
+|                                                  |--(acl)--> plagued
+|                                                                   |--(dobj)--> R1505[region]
+|                                                                                    |--(compou)--> R1505[border]
+|--(punct)--> .
+
+	* entity-paths for event['raise']41_5ecbplus.xmlsent:12296
+	['raise --(nmod)--> Sudan']
+	['raise --(nmod)--> violence', 'violence --(acl)--> plagued', 'plagued --(dobj)--> region']
+
+	* entity-paths for event['bombed']41_5ecbplus.xmlsent:12296
+	['bombed --(nsubjpass)--> camp']
+	['bombed --(nmod:tmod)--> Thursday']
+
+	* entity-paths for event['tensions']41_5ecbplus.xmlsent:12296
+
+	* entity-paths for event['said']41_5ecbplus.xmlsent:12296
+	['said --(ccomp)--> bombed', 'bombed --(nsubjpass)--> camp']
+	['said --(ccomp)--> bombed', 'bombed --(nmod:tmod)--> Thursday']
+	['said --(nsubj)--> officials']
+	['said --(xcomp)--> threatening', 'threatening --(xcomp)--> raise', 'raise --(nmod)--> Sudan']
+	['said --(xcomp)--> threatening', 'threatening --(xcomp)--> raise', 'raise --(nmod)--> violence', 'violence --(acl)--> plagued', 'plagued --(dobj)--> region']
+
+	* entity-paths for event['threatening']41_5ecbplus.xmlsent:12296
+	['threatening --(xcomp)--> raise', 'raise --(nmod)--> Sudan']
+	['threatening --(xcomp)--> raise', 'raise --(nmod)--> violence', 'violence --(acl)--> plagued', 'plagued --(dobj)--> region']
+
+sentence #:south sudan accuses sudan of air strike on refugee camp 
+	[events]:[['accuses'], ['air', 'strike']]
+	[entities]:[['south', 'sudan'], ['on', 'refugee', 'camp'], ['sudan']]
+*R1506[accuses]
+|--(nsubj)--> R1458[sudan]
+|                |--(compou)--> R1458[south]
+|--(dobj)--> R1443[sudan]
+                 |--(nmod)--> *R1442[strike]
+                                  |--(case)--> of
+                                  |--(compou)--> *R1442[air]
+                                  |--(nmod)--> R1444[camp]
+                                                   |--(case)--> R1444[on]
+                                                   |--(compou)--> R1444[refugee]
+
+	* entity-paths for event['accuses']41_5ecbplus.xmlsent:12294
+	['accuses --(nsubj)--> Sudan']
+	['accuses --(dobj)--> Sudan']
+
+	* entity-paths for event['air', 'strike']41_5ecbplus.xmlsent:12294
+	['strike --(nmod)--> camp']
+
+sentence #:sudan's armed forces denied they carried out the strike . 
+	[events]:[['strike'], ['denied'], ['carried', 'out']]
+	[entities]:[['they'], ["sudan's", 'armed', 'forces']]
+*R1507[denied]
+|--(nsubj)--> R1443[forces]
+|                |--(nmod:p)--> R1443[sudan's]
+|                |                |--(case)--> R1443[sudan's]
+|                |--(amod)--> R1443[armed]
+|--(ccomp)--> *R1508[carried]
+|                |--(nsubj)--> R1443[they]
+|                |--(compou)--> *R1508[out]
+|                |--(dobj)--> *R1442[strike]
+|                                 |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['strike']41_5ecbplus.xmlsent:12300
+
+	* entity-paths for event['denied']41_5ecbplus.xmlsent:12300
+	['denied --(nsubj)--> forces']
+	['denied --(ccomp)--> carried', 'carried --(nsubj)--> they']
+
+	* entity-paths for event['carried', 'out']41_5ecbplus.xmlsent:12300

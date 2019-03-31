@@ -1,0 +1,106 @@
+
+-----------------------------------------
+docid:18_11ecbplus.xml
+-----------------------------------------
+
+sentence #:a man suspected of shooting three people , killing one , at a suburban detroit accounting firm from which he was fired last week was arrested after a high - speed chase a few hours after the attack this morning , authorities said . 
+	[events]:[['attack'], ['shooting'], ['fired'], ['killing'], ['arrested'], ['chase'], ['said'], ['suspected']]
+	[entities]:[['he'], ['people'], ['this', 'morning'], ['authorities'], ['one'], ['a', 'few', 'hours', 'after'], ['last', 'week'], ['a', 'suburban', 'detroit', 'accounting', 'firm'], ['man']]
+*R370[said]
+|--(ccomp)--> *R371[arrested]
+|                |--(nsubjp)--> R360[man]
+|                |                |--(det)--> a
+|                |                |--(acl)--> *R372[suspected]
+|                |                                 |--(nmod)--> R362[people]
+|                |                                 |                |--(case)--> of
+|                |                                 |                |--(amod)--> *R361[shooting]
+|                |                                 |                |--(nummod)--> three
+|                |                                 |--(punct)--> ,
+|                |                                 |--(xcomp)--> *R373[killing]
+|                |                                 |                |--(dobj)--> R374[one]
+|                |                                 |--(punct)--> ,
+|                |                                 |--(nmod)--> R375[firm]
+|                |                                                  |--(case)--> at
+|                |                                                  |--(det)--> R375[a]
+|                |                                                  |--(amod)--> R375[suburban]
+|                |                                                  |--(compou)--> R375[detroit]
+|                |                                                  |--(compou)--> R375[accounting]
+|                |                                                  |--(acl:re)--> *R363[fired]
+|                |                                                                   |--(nmod)--> which
+|                |                                                                   |                |--(case)--> from
+|                |                                                                   |--(nsubjp)--> R360[he]
+|                |                                                                   |--(auxpas)--> was
+|                |                                                                   |--(nmod:t)--> R364[week]
+|                |                                                                                    |--(amod)--> R364[last]
+|                |--(auxpas)--> was
+|                |--(nmod)--> high
+|                |                |--(case)--> after
+|                |                |--(det)--> a
+|                |--(punct)--> -
+|                |--(ccomp)--> *R376[chase]
+|                                 |--(nsubj)--> speed
+|                                 |--(dobj)--> R377[hours]
+|                                 |                |--(det)--> R377[a]
+|                                 |                |--(amod)--> R377[few]
+|                                 |--(nmod)--> *R378[attack]
+|                                                  |--(case)--> R377[after]
+|                                                  |--(det)--> the
+|                                                  |--(nmod:t)--> R379[morning]
+|                                                                   |--(det)--> R379[this]
+|--(punct)--> ,
+|--(nsubj)--> R380[authorities]
+|--(punct)--> .
+
+	* entity-paths for event['attack']18_11ecbplus.xmlsent:2259
+	['attack --(case)--> after']
+	['attack --(nmod:tmod)--> morning']
+
+	* entity-paths for event['shooting']18_11ecbplus.xmlsent:2259
+
+	* entity-paths for event['fired']18_11ecbplus.xmlsent:2259
+	['fired --(nsubjpass)--> he']
+	['fired --(nmod:tmod)--> week']
+
+	* entity-paths for event['killing']18_11ecbplus.xmlsent:2259
+	['killing --(dobj)--> one']
+
+	* entity-paths for event['arrested']18_11ecbplus.xmlsent:2259
+	['arrested --(nsubjpass)--> man']
+	['arrested --(ccomp)--> chase', 'chase --(dobj)--> hours']
+	['arrested --(ccomp)--> chase', 'chase --(nmod)--> attack', 'attack --(case)--> after']
+	['arrested --(ccomp)--> chase', 'chase --(nmod)--> attack', 'attack --(nmod:tmod)--> morning']
+
+	* entity-paths for event['chase']18_11ecbplus.xmlsent:2259
+	['chase --(dobj)--> hours']
+	['chase --(nmod)--> attack', 'attack --(case)--> after']
+	['chase --(nmod)--> attack', 'attack --(nmod:tmod)--> morning']
+
+	* entity-paths for event['said']18_11ecbplus.xmlsent:2259
+	['said --(ccomp)--> arrested', 'arrested --(nsubjpass)--> man']
+	['said --(ccomp)--> arrested', 'arrested --(ccomp)--> chase', 'chase --(dobj)--> hours']
+	['said --(ccomp)--> arrested', 'arrested --(ccomp)--> chase', 'chase --(nmod)--> attack', 'attack --(case)--> after']
+	['said --(ccomp)--> arrested', 'arrested --(ccomp)--> chase', 'chase --(nmod)--> attack', 'attack --(nmod:tmod)--> morning']
+	['said --(nsubj)--> authorities']
+
+	* entity-paths for event['suspected']18_11ecbplus.xmlsent:2259
+	['suspected --(nmod)--> people']
+	['suspected --(xcomp)--> killing', 'killing --(dobj)--> one']
+	['suspected --(nmod)--> firm']
+
+sentence #:sacked worker shoots ex - colleagues 
+	[events]:[['sacked'], ['shoots']]
+	[entities]:[['ex', '-', 'colleagues'], ['worker']]
+*R363[sacked]
+|--(ccomp)--> *R361[shoots]
+                 |--(nsubj)--> R360[worker]
+                 |--(dobj)--> R362[ex]
+                                  |--(punct)--> R362[-]
+                                  |--(dep)--> R362[colleagues]
+
+	* entity-paths for event['sacked']18_11ecbplus.xmlsent:2257
+	['Sacked --(ccomp)--> shoots', 'shoots --(nsubj)--> worker']
+	['Sacked --(ccomp)--> shoots', 'shoots --(dobj)--> ex']
+
+	* entity-paths for event['shoots']18_11ecbplus.xmlsent:2257
+	['shoots --(nsubj)--> worker']
+	['shoots --(dobj)--> ex']

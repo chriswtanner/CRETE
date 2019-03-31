@@ -1,0 +1,82 @@
+
+-----------------------------------------
+docid:30_11ecbplus.xml
+-----------------------------------------
+
+sentence #:the cable system went down on saturday 8 october 2011 , and initial feedback suggests that the downtime may last for a few days . 
+	[events]:[['went', 'down'], ['downtime']]
+	[entities]:[['on', 'saturday', '8', 'october', '2011'], ['for', 'a', 'few', 'days'], ['cable', 'system']]
+*R963[went]
+|--(nsubj)--> R969[system]
+|                |--(det)--> the
+|                |--(compou)--> R969[cable]
+|--(advmod)--> *R963[down]
+|                |--(nmod)--> R970[saturday]
+|                                 |--(case)--> R970[on]
+|                                 |--(nummod)--> R970[8]
+|--(nmod:t)--> R970[october]
+|                |--(nummod)--> R970[2011]
+|--(punct)--> ,
+|--(cc)--> and
+|--(conj)--> suggests
+|                |--(nsubj)--> feedback
+|                |                |--(amod)--> initial
+|                |--(ccomp)--> last
+|                                 |--(mark)--> that
+|                                 |--(nsubj)--> *R963[downtime]
+|                                 |                |--(det)--> the
+|                                 |--(aux)--> may
+|                                 |--(nmod)--> R964[days]
+|                                                  |--(case)--> R964[for]
+|                                                  |--(det)--> R964[a]
+|                                                  |--(amod)--> R964[few]
+|--(punct)--> .
+
+	* entity-paths for event['went', 'down']30_11ecbplus.xmlsent:7715
+	['down --(nmod)--> Saturday']
+
+	* entity-paths for event['downtime']30_11ecbplus.xmlsent:7715
+
+sentence #:as many sa gamers may have noticed , seacom is experiencing downtime again . 
+	[events]:[['downtime'], ['experiencing']]
+	[entities]:[['seacom']]
+*R971[experiencing]
+|--(advcl)--> noticed
+|                |--(mark)--> as
+|                |--(nsubj)--> gamers
+|                |                |--(amod)--> many
+|                |                |--(compou)--> sa
+|                |--(aux)--> may
+|                |--(aux)--> have
+|--(punct)--> ,
+|--(nsubj)--> R956[seacom]
+|--(aux)--> is
+|--(dobj)--> *R963[downtime]
+|--(advmod)--> again
+|--(punct)--> .
+
+	* entity-paths for event['downtime']30_11ecbplus.xmlsent:7714
+
+	* entity-paths for event['experiencing']30_11ecbplus.xmlsent:7714
+	['experiencing --(nsubj)--> SEACOM']
+
+sentence #:seacom cable problems may only be resolved next week 
+	[events]:[['problems'], ['resolved']]
+	[entities]:[['seacom'], ['cable']]
+*R972[resolved]
+|--(nsubjp)--> *R973[problems]
+|                |--(compou)--> R956[seacom]
+|                |--(compou)--> R974[cable]
+|--(aux)--> may
+|--(advmod)--> only
+|--(auxpas)--> be
+|--(nmod:t)--> week
+                 |--(amod)--> next
+
+	* entity-paths for event['problems']30_11ecbplus.xmlsent:7711
+	['problems --(compound)--> SEACOM']
+	['problems --(compound)--> cable']
+
+	* entity-paths for event['resolved']30_11ecbplus.xmlsent:7711
+	['resolved --(nsubjpass)--> problems', 'problems --(compound)--> SEACOM']
+	['resolved --(nsubjpass)--> problems', 'problems --(compound)--> cable']

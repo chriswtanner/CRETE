@@ -1,0 +1,122 @@
+
+-----------------------------------------
+docid:33_8ecbplus.xml
+-----------------------------------------
+
+sentence #:prosecutors have released new video in the trial of two men accused of killing a brownsville mother of 12 in oct . 2011 . 
+	[events]:[['killing'], ['trial'], ['released'], ['accused']]
+	[entities]:[['in', 'oct', '.', '2011'], ['brownsville', 'mother', 'of', '12'], ['two', 'men'], ['prosecutors'], ['video']]
+*R1101[released]
+|--(nsubj)--> R1102[prosecutors]
+|--(aux)--> have
+|--(dobj)--> R1103[video]
+|                |--(amod)--> new
+|--(nmod)--> *R1104[trial]
+|                |--(case)--> in
+|                |--(det)--> the
+|                |--(nmod)--> R1105[men]
+|                                 |--(case)--> of
+|                                 |--(nummod)--> R1105[two]
+|                                 |--(acl)--> *R1106[accused]
+|                                                  |--(advcl)--> *R1078[killing]
+|                                                                   |--(mark)--> of
+|                                                                   |--(dobj)--> R1079[mother]
+|                                                                   |                |--(det)--> a
+|                                                                   |                |--(compou)--> R1079[brownsville]
+|                                                                   |                |--(nmod)--> R1079[12]
+|                                                                   |                                 |--(case)--> R1079[of]
+|                                                                   |--(nmod)--> R1086[oct]
+|                                                                                    |--(case)--> R1086[in]
+|                                                                                    |--(punct)--> R1086[.]
+|                                                                                    |--(nmod:t)--> R1086[2011]
+|--(punct)--> .
+
+	* entity-paths for event['killing']33_8ecbplus.xmlsent:9227
+	['killing --(dobj)--> mother']
+	['killing --(nmod)--> Oct']
+
+	* entity-paths for event['trial']33_8ecbplus.xmlsent:9227
+	['trial --(nmod)--> men']
+
+	* entity-paths for event['released']33_8ecbplus.xmlsent:9227
+	['released --(nsubj)--> Prosecutors']
+	['released --(dobj)--> video']
+	['released --(nmod)--> trial', 'trial --(nmod)--> men']
+
+	* entity-paths for event['accused']33_8ecbplus.xmlsent:9227
+	['accused --(advcl)--> killing', 'killing --(dobj)--> mother']
+	['accused --(advcl)--> killing', 'killing --(nmod)--> Oct']
+
+sentence #:authorities have charged andrew lopez and jonathan carrasquillo with her murder . 
+	[events]:[['murder'], ['charged']]
+	[entities]:[['andrew', 'lopez'], ['her'], ['jonathan', 'carrasquillo']]
+*R1106[charged]
+|--(nsubj)--> authorities
+|--(aux)--> have
+|--(dobj)--> R1076[lopez]
+|                |--(compou)--> R1076[andrew]
+|                |--(cc)--> and
+|                |--(conj)--> R1119[carrasquillo]
+|                                 |--(compou)--> R1119[jonathan]
+|--(nmod)--> *R1078[murder]
+|                |--(case)--> with
+|                |--(nmod:p)--> R1079[her]
+|--(punct)--> .
+
+	* entity-paths for event['murder']33_8ecbplus.xmlsent:9230
+	['murder --(nmod:poss)--> her']
+
+	* entity-paths for event['charged']33_8ecbplus.xmlsent:9230
+	['charged --(dobj)--> Lopez']
+	['charged --(nmod)--> murder', 'murder --(nmod:poss)--> her']
+
+sentence #:witnesses say horton died trying to shield several students . 
+	[events]:[['trying'], ['died'], ['shield']]
+	[entities]:[['several', 'students'], ['horton']]
+say
+|--(nsubj)--> witnesses
+|--(ccomp)--> *R1078[died]
+|                |--(nsubj)--> R1079[horton]
+|                |--(xcomp)--> *R1080[trying]
+|                                 |--(xcomp)--> *R1081[shield]
+|                                                  |--(mark)--> to
+|                                                  |--(dobj)--> R1082[students]
+|                                                                   |--(amod)--> R1082[several]
+|--(punct)--> .
+
+	* entity-paths for event['trying']33_8ecbplus.xmlsent:9229
+	['trying --(xcomp)--> shield', 'shield --(dobj)--> students']
+
+	* entity-paths for event['died']33_8ecbplus.xmlsent:9229
+	['died --(nsubj)--> Horton']
+	['died --(xcomp)--> trying', 'trying --(xcomp)--> shield', 'shield --(dobj)--> students']
+
+	* entity-paths for event['shield']33_8ecbplus.xmlsent:9229
+	['shield --(dobj)--> students']
+
+sentence #:prosecutors release new video in shooting trial of brownsville mother of 12 , zurana horton 
+	[events]:[['shooting', 'trial'], ['release']]
+	[entities]:[['zurana', 'horton'], ['video'], ['prosecutors']]
+*R1101[release]
+|--(nsubj)--> R1102[prosecutors]
+|--(dobj)--> R1103[video]
+|                |--(amod)--> new
+|--(nmod)--> *R1104[trial]
+                 |--(case)--> in
+                 |--(amod)--> *R1104[shooting]
+                 |--(nmod)--> mother
+                                  |--(case)--> of
+                                  |--(compou)--> brownsville
+                                  |--(nmod)--> 12
+                                                   |--(case)--> of
+                                                   |--(punct)--> ,
+                                                   |--(appos)--> R1079[horton]
+                                                                    |--(compou)--> R1079[zurana]
+
+	* entity-paths for event['shooting', 'trial']33_8ecbplus.xmlsent:9225
+	['trial --(nmod)--> mother', 'mother --(nmod)--> 12', '12 --(appos)--> Horton']
+
+	* entity-paths for event['release']33_8ecbplus.xmlsent:9225
+	['release --(nsubj)--> Prosecutors']
+	['release --(dobj)--> video']
+	['release --(nmod)--> trial', 'trial --(nmod)--> mother', 'mother --(nmod)--> 12', '12 --(appos)--> Horton']

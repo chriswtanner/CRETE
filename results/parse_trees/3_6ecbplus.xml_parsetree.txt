@@ -1,0 +1,104 @@
+
+-----------------------------------------
+docid:3_6ecbplus.xml
+-----------------------------------------
+
+sentence #:officials said arcade joseph comeaux jr . , 49 , took two transport officers hostage on monday morning and then escaped from the vehicle and took off on foot , myfoxhouston . com reports . 
+	[events]:[['escaped'], ['took', 'off'], ['said'], ['took', 'hostage']]
+	[entities]:[['officials'], ['arcade', 'joseph', 'comeaux', 'jr'], ['on', 'monday', 'morning'], ['vehicle'], ['officers']]
+*R910[said]
+|--(nsubj)--> R917[officials]
+|--(ccomp)--> *R915[took]
+|                |--(nsubj)--> R890[jr]
+|                |                |--(compou)--> R890[arcade]
+|                |                |--(compou)--> R890[joseph]
+|                |                |--(compou)--> R890[comeaux]
+|                |                |--(punct)--> .
+|                |                |--(punct)--> ,
+|                |                |--(amod)--> 49
+|                |                |--(punct)--> ,
+|                |--(iobj)--> R900[officers]
+|                |                |--(nummod)--> two
+|                |                |--(compou)--> transport
+|                |--(dobj)--> *R915[hostage]
+|                |--(nmod)--> R914[monday]
+|                |                |--(case)--> R914[on]
+|                |--(nmod:t)--> R914[morning]
+|--(cc)--> and
+|--(conj)--> *R893[escaped]
+|                |--(advmod)--> then
+|                |--(nmod)--> R921[vehicle]
+|                |                |--(case)--> from
+|                |                |--(det)--> the
+|                |--(cc)--> and
+|                |--(conj)--> *R893[took]
+|                |                |--(compou)--> *R893[off]
+|                |                |--(nmod)--> foot
+|                |                                 |--(case)--> on
+|                |                                 |--(punct)--> ,
+|                |                                 |--(appos)--> myfoxhouston
+|                |                                                  |--(punct)--> .
+|                |--(dobj)--> reports
+|                                 |--(compou)--> com
+|--(punct)--> .
+
+	* entity-paths for event['escaped']3_6ecbplus.xmlsent:7578
+	['escaped --(nmod)--> vehicle']
+
+	* entity-paths for event['took', 'off']3_6ecbplus.xmlsent:7578
+
+	* entity-paths for event['said']3_6ecbplus.xmlsent:7578
+	['said --(nsubj)--> Officials']
+	['said --(ccomp)--> took', 'took --(nsubj)--> Jr']
+	['said --(ccomp)--> took', 'took --(iobj)--> officers']
+	['said --(ccomp)--> took', 'took --(nmod)--> Monday']
+	['said --(ccomp)--> took', 'took --(nmod:tmod)--> morning']
+	['said --(conj)--> escaped', 'escaped --(nmod)--> vehicle']
+
+	* entity-paths for event['took', 'hostage']3_6ecbplus.xmlsent:7578
+
+sentence #:the texas department of criminal justice is searching for an escaped inmate who is considered armed and dangerous , myfoxhouston . com reports . 
+	[events]:[['escaped']]
+	[entities]:[['who'], ['inmate'], ['department', 'of', 'criminal', 'justice']]
+searching
+|--(nsubj)--> R902[department]
+|                |--(det)--> the
+|                |--(compou)--> texas
+|                |--(nmod)--> R902[justice]
+|                                 |--(case)--> R902[of]
+|                                 |--(compou)--> R902[criminal]
+|--(aux)--> is
+|--(nmod)--> R890[inmate]
+|                |--(case)--> for
+|                |--(det)--> an
+|                |--(amod)--> *R893[escaped]
+|                |--(acl:re)--> considered
+|                |                |--(nsubjp)--> R890[who]
+|                |                |--(auxpas)--> is
+|                |                |--(xcomp)--> armed
+|                |                                 |--(cc)--> and
+|                |                                 |--(conj)--> dangerous
+|                |--(punct)--> ,
+|                |--(appos)--> myfoxhouston
+|                                 |--(punct)--> .
+|                                 |--(dep)--> reports
+|                                                  |--(compou)--> com
+|--(punct)--> .
+
+	* entity-paths for event['escaped']3_6ecbplus.xmlsent:7577
+
+sentence #:'armed and dangerous' texas inmate on the loose 
+	[events]:[['on', 'the', 'loose']]
+	[entities]:[['inmate']]
+R890[inmate]
+|--(punct)--> 'armed
+|--(nmod:p)--> 'armed
+|                |--(cc)--> and
+|                |--(conj)--> dangerous'
+|                |--(case)--> dangerous'
+|--(compou)--> texas
+|--(case)--> *R893[on]
+|--(dep)--> *R893[loose]
+                 |--(det)--> *R893[the]
+
+	* entity-paths for event['on', 'the', 'loose']3_6ecbplus.xmlsent:7575

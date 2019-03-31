@@ -1,0 +1,79 @@
+
+-----------------------------------------
+docid:39_2ecbplus.xml
+-----------------------------------------
+
+sentence #:doctor who boss steven moffat has revealed that peter capaldi was the only name considered to take over from matt smith . 
+	[events]:[['considered'], ['take', 'over'], ['revealed']]
+	[entities]:[['matt', 'smith'], ['name'], ['doctor', 'who'], ['boss', 'steven', 'moffat'], ['peter', 'capaldi']]
+R1336[doctor]
+|--(acl:re)--> *R1342[revealed]
+|                |--(dobj)--> R1336[who]
+|                |--(nsubj)--> R1349[moffat]
+|                |                |--(compou)--> R1349[boss]
+|                |                |--(compou)--> R1349[steven]
+|                |--(aux)--> has
+|                |--(ccomp)--> R1331[name]
+|                                 |--(mark)--> that
+|                                 |--(nsubj)--> R1331[capaldi]
+|                                 |                |--(compou)--> R1331[peter]
+|                                 |--(cop)--> was
+|                                 |--(det)--> the
+|                                 |--(amod)--> only
+|--(acl)--> *R1350[considered]
+|                |--(xcomp)--> *R1334[take]
+|                                 |--(mark)--> to
+|                                 |--(compou)--> *R1334[over]
+|                                 |--(nmod)--> R1328[smith]
+|                                                  |--(case)--> from
+|                                                  |--(compou)--> R1328[matt]
+|--(punct)--> .
+
+	* entity-paths for event['considered']39_2ecbplus.xmlsent:10941
+	['considered --(xcomp)--> take', 'take --(nmod)--> Smith']
+
+	* entity-paths for event['take', 'over']39_2ecbplus.xmlsent:10941
+
+	* entity-paths for event['revealed']39_2ecbplus.xmlsent:10941
+	['revealed --(dobj)--> Who']
+	['revealed --(nsubj)--> Moffat']
+	['revealed --(ccomp)--> name']
+
+sentence #:peter capaldi was the only name considered to take over doctor who role from matt smith , says show boss steven moffat 
+	[events]:[['says'], ['considered'], ['role'], ['take', 'over']]
+	[entities]:[['name'], ['peter', 'capaldi'], ['matt', 'smith'], ['boss', 'steven', 'moffat'], ['show'], ['doctor', 'who']]
+*R1351[says]
+|--(ccomp)--> R1331[name]
+|                |--(nsubj)--> R1331[capaldi]
+|                |                |--(compou)--> R1331[peter]
+|                |--(cop)--> was
+|                |--(det)--> the
+|                |--(amod)--> only
+|                |--(acl)--> *R1350[considered]
+|                                 |--(xcomp)--> *R1334[take]
+|                                                  |--(mark)--> to
+|                                                  |--(compou)--> *R1334[over]
+|                                                  |--(dobj)--> R1336[doctor]
+|                                                                   |--(acl:re)--> *R1352[role]
+|                                                                                    |--(dep)--> R1336[who]
+|                                                                                    |--(nmod)--> R1328[smith]
+|                                                                                                     |--(case)--> from
+|                                                                                                     |--(compou)--> R1328[matt]
+|--(punct)--> ,
+|--(nsubj)--> R1349[moffat]
+                 |--(compou)--> R1336[show]
+                 |--(compou)--> R1349[boss]
+                 |--(compou)--> R1349[steven]
+
+	* entity-paths for event['says']39_2ecbplus.xmlsent:10938
+	['says --(ccomp)--> name']
+	['says --(nsubj)--> Moffat']
+
+	* entity-paths for event['considered']39_2ecbplus.xmlsent:10938
+	['considered --(xcomp)--> take', 'take --(dobj)--> Doctor']
+
+	* entity-paths for event['role']39_2ecbplus.xmlsent:10938
+	['role --(dep)--> Who']
+	['role --(nmod)--> Smith']
+
+	* entity-paths for event['take', 'over']39_2ecbplus.xmlsent:10938

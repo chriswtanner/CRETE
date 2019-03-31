@@ -1,0 +1,119 @@
+
+-----------------------------------------
+docid:41_2ecbplus.xml
+-----------------------------------------
+
+sentence #:"two of the bombs fell within the yida camp , including one close to the school , " said unhcr spokesman adrian edwards . 
+	[events]:[['fell'], ['said']]
+	[entities]:[['one'], ['close', 'to', 'the', 'school'], ['bombs'], ['within', 'the', 'yida', 'camp'], ['"two']]
+*R1474[said]
+|--(punct)--> R1475["two]
+|--(ccomp)--> *R1442[fell]
+|                |--(nsubj)--> R1475["two]
+|                |                |--(nmod)--> R1455[bombs]
+|                |                                 |--(case)--> of
+|                |                                 |--(det)--> the
+|                |--(nmod)--> R1444[camp]
+|                |                |--(case)--> R1444[within]
+|                |                |--(det)--> R1444[the]
+|                |                |--(compou)--> R1444[yida]
+|                |--(punct)--> ,
+|                |--(nmod)--> R1476[close]
+|                                 |--(case)--> including
+|                                 |--(nummod)--> R1477[one]
+|                                 |--(nmod)--> R1476[school]
+|                                                  |--(case)--> R1476[to]
+|                                                  |--(det)--> R1476[the]
+|--(punct)--> ,
+|--(punct)--> "
+|--(nsubj)--> edwards
+|                |--(compou)--> unhcr
+|                |--(compou)--> spokesman
+|                |--(compou)--> adrian
+|--(punct)--> .
+
+	* entity-paths for event['fell']41_2ecbplus.xmlsent:12189
+	['fell --(nsubj)--> Two']
+	['fell --(nmod)--> camp']
+	['fell --(nmod)--> close']
+
+	* entity-paths for event['said']41_2ecbplus.xmlsent:12189
+	['said --(punct)--> "']
+	['said --(ccomp)--> fell', 'fell --(nsubj)--> Two']
+	['said --(ccomp)--> fell', 'fell --(nmod)--> camp']
+	['said --(ccomp)--> fell', 'fell --(nmod)--> close']
+
+sentence #:the un refugee agency on friday strongly condemned the aerial bombing of a temporary refugee camp in south sudan sheltering more than 20 , 000 civilians fleeing from conflict in neighbouring sudan's nuba mountains . 
+	[events]:[['condemned'], ['conflict'], ['bombing'], ['sheltering'], ['fleeing']]
+	[entities]:[['un', 'refugee', 'agency'], ['on', 'friday'], ['20', ',', '000', 'civilians'], ['refugee', 'camp', 'in', 'south', 'sudan']]
+*R1478[condemned]
+|--(nsubj)--> R1479[agency]
+|                |--(det)--> the
+|                |--(compou)--> R1479[un]
+|                |--(compou)--> R1479[refugee]
+|                |--(nmod)--> R1480[friday]
+|                                 |--(case)--> R1480[on]
+|--(advmod)--> strongly
+|--(dobj)--> *R1442[bombing]
+|                |--(det)--> the
+|                |--(amod)--> aerial
+|                |--(nmod)--> R1444[camp]
+|                                 |--(case)--> of
+|                                 |--(det)--> a
+|                                 |--(amod)--> temporary
+|                                 |--(compou)--> R1444[refugee]
+|--(nmod)--> R1444[sudan]
+|                |--(case)--> R1444[in]
+|                |--(compou)--> R1444[south]
+|                |--(acl)--> *R1481[sheltering]
+|                                 |--(dobj)--> R1457[20]
+|                                                  |--(advmod)--> more
+|                                                  |                |--(mwe)--> than
+|                                                  |--(punct)--> R1457[,]
+|                                                  |--(appos)--> R1457[civilians]
+|                                                                   |--(nummod)--> R1457[000]
+|                                                                   |--(acl)--> *R1482[fleeing]
+|                                                                                    |--(nmod)--> *R1483[conflict]
+|                                                                                                     |--(case)--> from
+|                                                                                                     |--(nmod)--> mountains
+|                                                                                                                      |--(case)--> in
+|                                                                                                                      |--(nmod:p)--> sudan's
+|                                                                                                                      |                |--(amod)--> neighbouring
+|                                                                                                                      |                |--(case)--> sudan's
+|                                                                                                                      |--(compou)--> nuba
+|--(punct)--> .
+
+	* entity-paths for event['condemned']41_2ecbplus.xmlsent:12188
+	['condemned --(nsubj)--> agency']
+	['condemned --(dobj)--> bombing', 'bombing --(nmod)--> camp']
+	['condemned --(nmod)--> Sudan']
+
+	* entity-paths for event['conflict']41_2ecbplus.xmlsent:12188
+
+	* entity-paths for event['bombing']41_2ecbplus.xmlsent:12188
+	['bombing --(nmod)--> camp']
+
+	* entity-paths for event['sheltering']41_2ecbplus.xmlsent:12188
+	['sheltering --(dobj)--> 20']
+
+	* entity-paths for event['fleeing']41_2ecbplus.xmlsent:12188
+
+sentence #:unhcr condemns air attack on refugee camp in south sudan 
+	[events]:[['air', 'attack'], ['condemns']]
+	[entities]:[['on', 'refugee', 'camp', 'in', 'south', 'sudan'], ['unhcr']]
+*R1478[condemns]
+|--(nsubj)--> R1479[unhcr]
+|--(dobj)--> *R1442[attack]
+|                |--(compou)--> *R1442[air]
+|--(nmod)--> R1444[camp]
+                 |--(case)--> R1444[on]
+                 |--(compou)--> R1444[refugee]
+                 |--(nmod)--> R1444[sudan]
+                                  |--(case)--> R1444[in]
+                                  |--(compou)--> R1444[south]
+
+	* entity-paths for event['air', 'attack']41_2ecbplus.xmlsent:12186
+
+	* entity-paths for event['condemns']41_2ecbplus.xmlsent:12186
+	['condemns --(nsubj)--> UNHCR']
+	['condemns --(nmod)--> camp']

@@ -1,0 +1,41 @@
+
+-----------------------------------------
+docid:6_7ecbplus.xml
+-----------------------------------------
+
+sentence #:gary ross remains in negotiations to direct 'the hunger games' sequel 
+	[events]:[['negotiations'], ['remains'], ['direct'], ['sequel']]
+	[entities]:[['gary', 'ross'], ["'the", 'hunger', "games'"]]
+*R1713[remains]
+|--(nsubj)--> R1692[ross]
+|                |--(compou)--> R1692[gary]
+|--(nmod)--> *R1701[sequel]
+                 |--(case)--> in
+                 |--(nmod:p)--> *R1696[negotiations]
+                                  |--(acl)--> to
+                                  |--(dep)--> *R1699[direct]
+                                  |                |--(punct)--> R1702['the]
+                                  |                |--(dep)--> R1702[games']
+                                  |                                 |--(det)--> R1702['the]
+                                  |                                 |--(compou)--> R1702[hunger]
+                                  |--(case)--> R1702[games']
+
+	* entity-paths for event['negotiations']6_7ecbplus.xmlsent:14526
+	['NEGOTIATIONS --(dep)--> DIRECT', "DIRECT --(punct)--> '"]
+	['NEGOTIATIONS --(dep)--> DIRECT', 'DIRECT --(dep)--> GAMES']
+	["NEGOTIATIONS --(case)--> '"]
+
+	* entity-paths for event['remains']6_7ecbplus.xmlsent:14526
+	['REMAINS --(nsubj)--> ROSS']
+	['REMAINS --(nmod)--> SEQUEL', 'SEQUEL --(nmod:poss)--> NEGOTIATIONS', 'NEGOTIATIONS --(dep)--> DIRECT', "DIRECT --(punct)--> '"]
+	['REMAINS --(nmod)--> SEQUEL', 'SEQUEL --(nmod:poss)--> NEGOTIATIONS', 'NEGOTIATIONS --(dep)--> DIRECT', 'DIRECT --(dep)--> GAMES']
+	['REMAINS --(nmod)--> SEQUEL', 'SEQUEL --(nmod:poss)--> NEGOTIATIONS', "NEGOTIATIONS --(case)--> '"]
+
+	* entity-paths for event['direct']6_7ecbplus.xmlsent:14526
+	["DIRECT --(punct)--> '"]
+	['DIRECT --(dep)--> GAMES']
+
+	* entity-paths for event['sequel']6_7ecbplus.xmlsent:14526
+	['SEQUEL --(nmod:poss)--> NEGOTIATIONS', 'NEGOTIATIONS --(dep)--> DIRECT', "DIRECT --(punct)--> '"]
+	['SEQUEL --(nmod:poss)--> NEGOTIATIONS', 'NEGOTIATIONS --(dep)--> DIRECT', 'DIRECT --(dep)--> GAMES']
+	['SEQUEL --(nmod:poss)--> NEGOTIATIONS', "NEGOTIATIONS --(case)--> '"]

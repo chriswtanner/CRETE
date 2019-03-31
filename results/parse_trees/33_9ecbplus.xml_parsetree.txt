@@ -1,0 +1,107 @@
+
+-----------------------------------------
+docid:33_9ecbplus.xml
+-----------------------------------------
+
+sentence #:andrew lopez was found guilty of second - degree murder and two counts of first - degree assault in the death of zurana horton . 
+	[events]:[['guilty'], ['found'], ['death']]
+	[entities]:[['zurana', 'horton'], ['andrew', 'lopez']]
+*R1123[found]
+|--(nsubjp)--> R1076[lopez]
+|                |--(compou)--> R1076[andrew]
+|--(auxpas)--> was
+|--(dobj)--> assault
+|                |--(amod)--> *R1122[guilty]
+|                |                |--(nmod)--> second
+|                |                                 |--(case)--> of
+|                |                                 |--(punct)--> -
+|                |                                 |--(dep)--> murder
+|                |                                 |                |--(compou)--> degree
+|                |                                 |                |--(cc)--> and
+|                |                                 |                |--(conj)--> counts
+|                |                                 |                                 |--(nummod)--> two
+|                |                                 |                                 |--(nmod)--> first
+|                |                                 |                                                  |--(case)--> of
+|                |                                 |--(punct)--> -
+|                |--(compou)--> degree
+|--(nmod)--> *R1078[death]
+|                |--(case)--> in
+|                |--(det)--> the
+|                |--(nmod)--> R1079[horton]
+|                                 |--(case)--> of
+|                                 |--(compou)--> R1079[zurana]
+|--(punct)--> .
+
+	* entity-paths for event['guilty']33_9ecbplus.xmlsent:9234
+
+	* entity-paths for event['found']33_9ecbplus.xmlsent:9234
+	['found --(nsubjpass)--> Lopez']
+	['found --(nmod)--> death', 'death --(nmod)--> Horton']
+
+	* entity-paths for event['death']33_9ecbplus.xmlsent:9234
+	['death --(nmod)--> Horton']
+
+sentence #:a jury has handed down a guilty verdict for one of the two men accused of murdering a brownsville mother of 12 . 
+	[events]:[['handed', 'down'], ['accused'], ['verdict'], ['murdering'], ['guilty']]
+	[entities]:[['two', 'men'], ['jury'], ['one'], ['brownsville', 'mother', 'of', '12']]
+*R1125[handed]
+|--(nsubj)--> R1114[jury]
+|                |--(det)--> a
+|--(aux)--> has
+|--(compou)--> *R1125[down]
+|--(dobj)--> *R1123[verdict]
+|                |--(det)--> a
+|                |--(amod)--> *R1122[guilty]
+|--(nmod)--> R1076[one]
+|                |--(case)--> for
+|                |--(nmod)--> R1105[men]
+|                                 |--(case)--> of
+|                                 |--(det)--> the
+|                                 |--(nummod)--> R1105[two]
+|                                 |--(acl)--> *R1106[accused]
+|                                                  |--(advcl)--> *R1078[murdering]
+|                                                                   |--(mark)--> of
+|                                                                   |--(dobj)--> R1079[mother]
+|                                                                                    |--(det)--> a
+|                                                                                    |--(compou)--> R1079[brownsville]
+|                                                                                    |--(nmod)--> R1079[12]
+|                                                                                                     |--(case)--> R1079[of]
+|--(punct)--> .
+
+	* entity-paths for event['handed', 'down']33_9ecbplus.xmlsent:9233
+
+	* entity-paths for event['accused']33_9ecbplus.xmlsent:9233
+	['accused --(advcl)--> murdering', 'murdering --(dobj)--> mother']
+
+	* entity-paths for event['verdict']33_9ecbplus.xmlsent:9233
+
+	* entity-paths for event['murdering']33_9ecbplus.xmlsent:9233
+	['murdering --(dobj)--> mother']
+
+	* entity-paths for event['guilty']33_9ecbplus.xmlsent:9233
+
+sentence #:jury finds andrew lopez guilty in murder of zurana horton 
+	[events]:[['murder'], ['guilty'], ['finds']]
+	[entities]:[['jury'], ['zurana', 'horton'], ['andrew', 'lopez']]
+*R1123[finds]
+|--(nsubj)--> R1114[jury]
+|--(xcomp)--> *R1122[guilty]
+                 |--(nsubj)--> R1076[lopez]
+                 |                |--(compou)--> R1076[andrew]
+                 |--(nmod)--> *R1078[murder]
+                                  |--(case)--> in
+                                  |--(nmod)--> R1079[horton]
+                                                   |--(case)--> of
+                                                   |--(compou)--> R1079[zurana]
+
+	* entity-paths for event['murder']33_9ecbplus.xmlsent:9231
+	['murder --(nmod)--> Horton']
+
+	* entity-paths for event['guilty']33_9ecbplus.xmlsent:9231
+	['guilty --(nsubj)--> Lopez']
+	['guilty --(nmod)--> murder', 'murder --(nmod)--> Horton']
+
+	* entity-paths for event['finds']33_9ecbplus.xmlsent:9231
+	['finds --(nsubj)--> Jury']
+	['finds --(xcomp)--> guilty', 'guilty --(nsubj)--> Lopez']
+	['finds --(xcomp)--> guilty', 'guilty --(nmod)--> murder', 'murder --(nmod)--> Horton']

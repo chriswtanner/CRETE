@@ -1,0 +1,112 @@
+
+-----------------------------------------
+docid:1_1ecb.xml
+-----------------------------------------
+
+sentence #:people said reid 's representative jack ketsoyan confirmed the actress 's stay at promises . 
+	[events]:[['confirmed'], ['stay'], ['said']]
+	[entities]:[['people'], ['at', 'promises'], ['jack', 'ketsoyan'], ['actress']]
+*R92[said]
+|--(nsubj)--> R5[people]
+|--(ccomp)--> *R0[confirmed]
+|                |--(nsubj)--> R4[ketsoyan]
+|                |                |--(nmod:p)--> reid
+|                |                |                |--(case)--> 's
+|                |                |--(amod)--> representative
+|                |                |--(compou)--> R4[jack]
+|                |--(ccomp)--> R3[promises]
+|                                 |--(nsubj)--> *R1[stay]
+|                                 |                |--(nmod:p)--> R2[actress]
+|                                 |                                 |--(det)--> the
+|                                 |                                 |--(case)--> 's
+|                                 |--(advmod)--> R3[at]
+|--(punct)--> .
+
+	* entity-paths for event['confirmed']1_1ecb.xmlsent:166
+	['confirmed --(nsubj)--> Ketsoyan']
+	['confirmed --(ccomp)--> Promises']
+
+	* entity-paths for event['stay']1_1ecb.xmlsent:166
+	['stay --(nmod:poss)--> actress']
+
+	* entity-paths for event['said']1_1ecb.xmlsent:166
+	['said --(nsubj)--> People']
+	['said --(ccomp)--> confirmed', 'confirmed --(nsubj)--> Ketsoyan']
+	['said --(ccomp)--> confirmed', 'confirmed --(ccomp)--> Promises']
+
+sentence #:word comes from people magazine and other celebrity news outlets that tara reid , 33 , who starred in " american pie " and appeared on u.s. tv show " scrubs , ' ' has entered the promises treatment center in malibu , california - the same facility that in the past has been the rehab facility of choice for many a hollywood star . 
+	[events]:[['entered'], ['starred']]
+	[entities]:[['the', 'promises', 'treatment', 'center', 'in', 'malibu', ',', 'california'], ['tara', 'reid'], ['facility'], ['people', 'magazine'], ['who']]
+*R1[entered]
+|--(ccomp)--> comes
+|                |--(nsubj)--> word
+|                |--(nmod)--> R5[magazine]
+|                |                |--(case)--> from
+|                |                |--(compou)--> R5[people]
+|                |                |--(cc)--> and
+|                |                |--(conj)--> outlets
+|                |                                 |--(amod)--> other
+|                |                                 |--(compou)--> celebrity
+|                |                                 |--(compou)--> news
+|                |                                 |--(acl:re)--> that
+|                |--(dobj)--> R2[reid]
+|                |                |--(compou)--> R2[tara]
+|                |                |--(punct)--> ,
+|                |                |--(amod)--> 33
+|                |                |--(punct)--> ,
+|                |                |--(acl:re)--> *R93[starred]
+|                |                                 |--(nsubj)--> R2[who]
+|                |                                 |--(nmod)--> pie
+|                |                                                  |--(case)--> in
+|                |                                                  |--(punct)--> "
+|                |                                                  |--(amod)--> american
+|                |--(punct)--> "
+|                |--(cc)--> and
+|                |--(conj)--> appeared
+|                                 |--(nmod)--> tv
+|                                 |                |--(case)--> on
+|                                 |                |--(compou)--> u.s.
+|                                 |--(nmod:t)--> show
+|                                                  |--(punct)--> "
+|                                                  |--(appos)--> scrubs
+|--(punct)--> ,
+|--(punct)--> '
+|--(punct)--> '
+|--(aux)--> has
+|--(ccomp)--> R3[promises]
+|                |--(nsubj)--> R3[the]
+|                |--(dobj)--> R3[center]
+|                                 |--(compou)--> R3[treatment]
+|                                 |--(nmod)--> R3[california]
+|                                 |                |--(case)--> R3[in]
+|                                 |                |--(compou)--> R3[malibu]
+|                                 |                |--(punct)--> R3[,]
+|                                 |--(punct)--> -
+|                                 |--(dep)--> R3[facility]
+|                                                  |--(det)--> the
+|                                                  |--(amod)--> same
+|                                                  |--(acl:re)--> facility
+|                                                                   |--(nsubj)--> that
+|                                                                   |--(nmod)--> past
+|                                                                   |                |--(case)--> in
+|                                                                   |                |--(det)--> the
+|                                                                   |--(aux)--> has
+|                                                                   |--(cop)--> been
+|                                                                   |--(det)--> the
+|                                                                   |--(compou)--> rehab
+|                                                                   |--(nmod)--> choice
+|                                                                   |                |--(case)--> of
+|                                                                   |--(nmod)--> many
+|                                                                                    |--(case)--> for
+|--(nsubj)--> star
+|                |--(det)--> a
+|                |--(compou)--> hollywood
+|--(punct)--> .
+
+	* entity-paths for event['entered']1_1ecb.xmlsent:165
+	['entered --(ccomp)--> comes', 'comes --(nmod)--> magazine']
+	['entered --(ccomp)--> comes', 'comes --(dobj)--> Reid']
+	['entered --(ccomp)--> Promises']
+
+	* entity-paths for event['starred']1_1ecb.xmlsent:165
+	['starred --(nsubj)--> who']

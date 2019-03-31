@@ -1,0 +1,83 @@
+
+-----------------------------------------
+docid:6_6ecbplus.xml
+-----------------------------------------
+
+sentence #:according to thr , ross will resume negotiating with lionsgate about returning for the "games" sequel "catching fire" at some point on monday . 
+	[events]:[['sequel'], ['negotiating'], ['returning'], ['resume']]
+	[entities]:[['"catching', 'fire"'], ['lionsgate'], ['thr'], ['ross'], ['"games"']]
+*R1713[resume]
+|--(nmod)--> R1694[thr]
+|                |--(case)--> according
+|                                 |--(mwe)--> to
+|--(punct)--> ,
+|--(nsubj)--> R1692[ross]
+|--(aux)--> will
+|--(xcomp)--> *R1696[negotiating]
+|                |--(nmod)--> R1697[lionsgate]
+|                |                |--(case)--> with
+|                |--(advcl)--> *R1698[returning]
+|                                 |--(mark)--> about
+|                                 |--(nmod)--> *R1701[sequel]
+|                                 |                |--(case)--> for
+|                                 |                |--(det)--> the
+|                                 |                |--(punct)--> R1700["games"]
+|                                 |                |--(compou)--> R1700["games"]
+|                                 |                |--(punct)--> R1700["games"]
+|                                 |--(dobj)--> R1702[fire"]
+|                                                  |--(punct)--> R1702["catching]
+|                                                  |--(amod)--> R1702["catching]
+|                                                  |--(punct)--> R1702[fire"]
+|                                                  |--(nmod)--> point
+|                                                                   |--(case)--> at
+|                                                                   |--(det)--> some
+|                                                                   |--(nmod)--> monday
+|                                                                                    |--(case)--> on
+|--(punct)--> .
+
+	* entity-paths for event['sequel']6_6ecbplus.xmlsent:14509
+	['sequel --(punct)--> "']
+	['sequel --(compound)--> Games']
+	['sequel --(punct)--> "']
+
+	* entity-paths for event['negotiating']6_6ecbplus.xmlsent:14509
+	['negotiating --(nmod)--> Lionsgate']
+	['negotiating --(advcl)--> returning', 'returning --(nmod)--> sequel', 'sequel --(punct)--> "']
+	['negotiating --(advcl)--> returning', 'returning --(nmod)--> sequel', 'sequel --(compound)--> Games']
+	['negotiating --(advcl)--> returning', 'returning --(nmod)--> sequel', 'sequel --(punct)--> "']
+	['negotiating --(advcl)--> returning', 'returning --(dobj)--> Fire']
+
+	* entity-paths for event['returning']6_6ecbplus.xmlsent:14509
+	['returning --(nmod)--> sequel', 'sequel --(punct)--> "']
+	['returning --(nmod)--> sequel', 'sequel --(compound)--> Games']
+	['returning --(nmod)--> sequel', 'sequel --(punct)--> "']
+	['returning --(dobj)--> Fire']
+
+	* entity-paths for event['resume']6_6ecbplus.xmlsent:14509
+	['resume --(nmod)--> THR']
+	['resume --(nsubj)--> Ross']
+	['resume --(xcomp)--> negotiating', 'negotiating --(nmod)--> Lionsgate']
+	['resume --(xcomp)--> negotiating', 'negotiating --(advcl)--> returning', 'returning --(nmod)--> sequel', 'sequel --(punct)--> "']
+	['resume --(xcomp)--> negotiating', 'negotiating --(advcl)--> returning', 'returning --(nmod)--> sequel', 'sequel --(compound)--> Games']
+	['resume --(xcomp)--> negotiating', 'negotiating --(advcl)--> returning', 'returning --(nmod)--> sequel', 'sequel --(punct)--> "']
+	['resume --(xcomp)--> negotiating', 'negotiating --(advcl)--> returning', 'returning --(dobj)--> Fire']
+
+sentence #:gary ross 'catching fire' negotiations reportedly continue 
+	[events]:[['continue'], ['negotiations']]
+	[entities]:[['gary', 'ross'], ["'catching", "fire'"]]
+R1692[ross]
+|--(compou)--> R1692[gary]
+|--(acl:re)--> *R1713[continue]
+                 |--(punct)--> R1702['catching]
+                 |--(dep)--> R1702['catching]
+                 |                |--(dobj)--> R1702[fire']
+                 |--(punct)--> R1702[fire']
+                 |--(nsubj)--> *R1696[negotiations]
+                 |--(advmod)--> reportedly
+
+	* entity-paths for event['continue']6_6ecbplus.xmlsent:14506
+	["Continue --(punct)--> '"]
+	['Continue --(dep)--> Catching']
+	["Continue --(punct)--> '"]
+
+	* entity-paths for event['negotiations']6_6ecbplus.xmlsent:14506

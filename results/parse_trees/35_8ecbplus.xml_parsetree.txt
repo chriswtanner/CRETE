@@ -1,0 +1,19 @@
+
+-----------------------------------------
+docid:35_8ecbplus.xml
+-----------------------------------------
+
+sentence #:chargers jamal williams arrested for dui 
+	[events]:[['arrested'], ['dui']]
+	[entities]:[['chargers'], ['jamal', 'williams']]
+*R1161[arrested]
+|--(nsubj)--> R1160[williams]
+|                |--(compou)--> R1157[chargers]
+|                |--(compou)--> R1160[jamal]
+|--(nmod)--> *R1163[dui]
+                 |--(case)--> for
+
+	* entity-paths for event['arrested']35_8ecbplus.xmlsent:9834
+	['arrested --(nsubj)--> Williams']
+
+	* entity-paths for event['dui']35_8ecbplus.xmlsent:9834

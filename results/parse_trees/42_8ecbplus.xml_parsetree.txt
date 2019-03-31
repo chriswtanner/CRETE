@@ -1,0 +1,66 @@
+
+-----------------------------------------
+docid:42_8ecbplus.xml
+-----------------------------------------
+
+sentence #:t - mobile has announced it will carry the blackberry q10 , and business registration will begin at t - mobile . com on april 29 . 
+	[events]:[['announced'], ['carry'], ['begin'], ['business', 'registration']]
+	[entities]:[['t', '-', 'mobile'], ['it'], ['t', '-', 'mobile', '.', 'com'], ['blackberry', 'q10'], ['on', 'april', '29']]
+R1517[t]
+|--(punct)--> R1517[-]
+|--(appos)--> *R1542[announced]
+|                |--(nsubj)--> R1517[mobile]
+|                |--(aux)--> has
+|                |--(ccomp)--> *R1522[carry]
+|                |                |--(nsubj)--> R1517[it]
+|                |                |--(aux)--> will
+|                |                |--(dobj)--> R1525[q10]
+|                |                                 |--(det)--> the
+|                |                                 |--(compou)--> R1525[blackberry]
+|                |--(punct)--> ,
+|                |--(cc)--> and
+|                |--(conj)--> *R1523[begin]
+|                                 |--(nsubj)--> *R1524[registration]
+|                                 |                |--(compou)--> *R1524[business]
+|                                 |--(aux)--> will
+|                                 |--(nmod)--> R1545[t]
+|                                                  |--(case)--> at
+|                                                  |--(punct)--> R1545[-]
+|                                                  |--(dep)--> R1545[com]
+|                                                                   |--(compou)--> R1545[mobile]
+|                                                                   |--(punct)--> R1545[.]
+|                                                                   |--(nmod)--> R1526[april]
+|                                                                                    |--(case)--> R1526[on]
+|                                                                                    |--(nummod)--> R1526[29]
+|--(punct)--> .
+
+	* entity-paths for event['announced']42_8ecbplus.xmlsent:12838
+	['announced --(nsubj)--> Mobile']
+	['announced --(ccomp)--> carry', 'carry --(nsubj)--> it']
+	['announced --(ccomp)--> carry', 'carry --(dobj)--> Q10']
+	['announced --(conj)--> begin', 'begin --(nmod)--> T']
+
+	* entity-paths for event['carry']42_8ecbplus.xmlsent:12838
+	['carry --(nsubj)--> it']
+	['carry --(dobj)--> Q10']
+
+	* entity-paths for event['begin']42_8ecbplus.xmlsent:12838
+	['begin --(nmod)--> T']
+
+	* entity-paths for event['business', 'registration']42_8ecbplus.xmlsent:12838
+
+sentence #:t - mobile will carry the blackberry q10 
+	[events]:[['carry']]
+	[entities]:[['blackberry', 'q10'], ['t', '-', 'mobile']]
+R1517[t]
+|--(punct)--> R1517[-]
+|--(appos)--> *R1522[carry]
+                 |--(nsubj)--> will
+                 |                |--(compou)--> R1517[mobile]
+                 |--(dobj)--> R1525[q10]
+                                  |--(det)--> the
+                                  |--(compou)--> R1525[blackberry]
+
+	* entity-paths for event['carry']42_8ecbplus.xmlsent:12836
+	['Carry --(nsubj)--> Will', 'Will --(compound)--> Mobile']
+	['Carry --(dobj)--> Q10']

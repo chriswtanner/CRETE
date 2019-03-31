@@ -1,0 +1,59 @@
+
+-----------------------------------------
+docid:30_4ecb.xml
+-----------------------------------------
+
+sentence #:egypt 's communications ministry says internet cables in the mediterranean sea have been cut , causing massive internet outages . 
+	[events]:[['cut'], ['internet'], ['outages']]
+	[entities]:[['in', 'the', 'mediterranean', 'sea'], ['internet'], ['cables']]
+says
+|--(nsubj)--> ministry
+|                |--(nmod:p)--> egypt
+|                |                |--(case)--> 's
+|                |--(compou)--> communications
+|--(ccomp)--> *R953[cut]
+|                |--(nsubjp)--> R951[cables]
+|                |                |--(compou)--> R950[internet]
+|                |                |--(nmod)--> R952[sea]
+|                |                                 |--(case)--> R952[in]
+|                |                                 |--(det)--> R952[the]
+|                |                                 |--(compou)--> R952[mediterranean]
+|                |--(aux)--> have
+|                |--(auxpas)--> been
+|                |--(punct)--> ,
+|                |--(xcomp)--> causing
+|                                 |--(dobj)--> *R949[outages]
+|                                                  |--(amod)--> massive
+|                                                  |--(compou)--> *R966[internet]
+|--(punct)--> .
+
+	* entity-paths for event['cut']30_4ecb.xmlsent:7890
+	['cut --(nsubjpass)--> cables']
+
+	* entity-paths for event['internet']30_4ecb.xmlsent:7890
+
+	* entity-paths for event['outages']30_4ecb.xmlsent:7890
+
+sentence #:the ministry says three internet cables were cut off the coast of sicily on friday morning . 
+	[events]:[['cut']]
+	[entities]:[['cables'], ['internet']]
+says
+|--(nsubj)--> ministry
+|                |--(det)--> the
+|--(ccomp)--> *R953[cut]
+|                |--(nsubjp)--> R951[cables]
+|                |                |--(nummod)--> three
+|                |                |--(compou)--> R950[internet]
+|                |--(auxpas)--> were
+|                |--(compou)--> off
+|                |--(dobj)--> coast
+|                |                |--(det)--> the
+|                |                |--(nmod)--> sicily
+|                |                                 |--(case)--> of
+|                |--(nmod)--> friday
+|                |                |--(case)--> on
+|                |--(nmod:t)--> morning
+|--(punct)--> .
+
+	* entity-paths for event['cut']30_4ecb.xmlsent:7891
+	['cut --(nsubjpass)--> cables']

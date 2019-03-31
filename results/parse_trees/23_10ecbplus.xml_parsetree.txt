@@ -1,0 +1,119 @@
+
+-----------------------------------------
+docid:23_10ecbplus.xml
+-----------------------------------------
+
+sentence #:the day before buckley's death another climber , 36 - year - old duncan rait , died after slipping and falling about 200 feet from a ridge in the same national park . 
+	[events]:[['died'], ['slipping'], ['death'], ['falling']]
+	[entities]:[['duncan', 'rait'], ['from', 'a', 'ridge', 'in', 'the', 'same', 'national', 'park'], ["buckley's"], ['the', 'day', 'before']]
+*R640[died]
+|--(nmod)--> R641[day]
+|                |--(det)--> R641[the]
+|                |--(case)--> R641[before]
+|                |--(dep)--> *R642[death]
+|                                 |--(nmod:p)--> R643[buckley's]
+|                                                  |--(case)--> R643[buckley's]
+|--(nsubj)--> climber
+|                |--(det)--> another
+|                |--(punct)--> ,
+|                |--(appos)--> 36
+|                |                |--(punct)--> -
+|                |                |--(dep)--> year
+|                |                                 |--(punct)--> -
+|                |                                 |--(dep)--> R644[rait]
+|                |                                                  |--(amod)--> old
+|                |                                                  |--(compou)--> R644[duncan]
+|                |--(punct)--> ,
+|--(advcl)--> *R645[slipping]
+|                |--(mark)--> after
+|                |--(cc)--> and
+|                |--(conj)--> *R646[falling]
+|                |--(dobj)--> feet
+|                |                |--(nummod)--> 200
+|                |                                 |--(advmod)--> about
+|                |--(nmod)--> R647[ridge]
+|                                 |--(case)--> R647[from]
+|                                 |--(det)--> R647[a]
+|                                 |--(nmod)--> R647[park]
+|                                                  |--(case)--> R647[in]
+|                                                  |--(det)--> R647[the]
+|                                                  |--(amod)--> R647[same]
+|                                                  |--(amod)--> R647[national]
+|--(punct)--> .
+
+	* entity-paths for event['died']23_10ecbplus.xmlsent:4637
+	['died --(nmod)--> day']
+	['died --(nsubj)--> climber', 'climber --(appos)--> 36', '36 --(dep)--> year', 'year --(dep)--> Rait']
+	['died --(advcl)--> slipping', 'slipping --(nmod)--> ridge']
+
+	* entity-paths for event['slipping']23_10ecbplus.xmlsent:4637
+	['slipping --(nmod)--> ridge']
+
+	* entity-paths for event['death']23_10ecbplus.xmlsent:4637
+	['death --(nmod:poss)--> Buckley']
+
+	* entity-paths for event['falling']23_10ecbplus.xmlsent:4637
+
+sentence #:robert buckley the second climber to die in the aoraki - mount cook national park at the weekend 
+	[events]:[['die']]
+	[entities]:[['at', 'the', 'weekend'], ['the', 'aoraki', '-', 'mount', 'cook', 'national', 'park'], ['robert', 'buckley']]
+climber
+|--(nsubj)--> R643[buckley]
+|                |--(compou)--> R643[robert]
+|--(det)--> the
+|--(amod)--> second
+|--(acl)--> *R642[die]
+|                |--(mark)--> to
+|                |--(nmod)--> R639[aoraki]
+|                                 |--(case)--> in
+|                                 |--(det)--> R639[the]
+|--(parata)--> R639[park]
+                 |--(punct)--> R639[-]
+                 |--(dep)--> R639[cook]
+                 |                |--(compou)--> R639[mount]
+                 |--(amod)--> R639[national]
+                 |--(nmod)--> R648[weekend]
+                                  |--(case)--> R648[at]
+                                  |--(det)--> R648[the]
+
+	* entity-paths for event['die']23_10ecbplus.xmlsent:4626
+	['die --(nmod)--> Aoraki']
+
+sentence #:british climber dies in new zealand fall 
+	[events]:[['dies'], ['fall']]
+	[entities]:[['climber']]
+*R642[dies]
+|--(nsubj)--> R643[climber]
+|                |--(amod)--> british
+|--(nmod)--> zealand
+|                |--(case)--> in
+|                |--(compou)--> new
+|--(nmod:t)--> *R649[fall]
+
+	* entity-paths for event['dies']23_10ecbplus.xmlsent:4625
+	['dies --(nsubj)--> climber']
+
+	* entity-paths for event['fall']23_10ecbplus.xmlsent:4625
+
+sentence #:a british climber has fallen to his death in new zealand . 
+	[events]:[['death'], ['fallen']]
+	[entities]:[['in', 'new', 'zealand'], ['climber']]
+*R649[fallen]
+|--(nsubj)--> R643[climber]
+|                |--(det)--> a
+|                |--(amod)--> british
+|--(aux)--> has
+|--(nmod)--> *R642[death]
+|                |--(case)--> to
+|                |--(nmod:p)--> his
+|                |--(nmod)--> R650[zealand]
+|                                 |--(case)--> R650[in]
+|                                 |--(compou)--> R650[new]
+|--(punct)--> .
+
+	* entity-paths for event['death']23_10ecbplus.xmlsent:4628
+	['death --(nmod)--> Zealand']
+
+	* entity-paths for event['fallen']23_10ecbplus.xmlsent:4628
+	['fallen --(nsubj)--> climber']
+	['fallen --(nmod)--> death', 'death --(nmod)--> Zealand']

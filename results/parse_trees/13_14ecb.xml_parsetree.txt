@@ -1,0 +1,50 @@
+
+-----------------------------------------
+docid:13_14ecb.xml
+-----------------------------------------
+
+sentence #:wasilla bible church , the home church of alaska gov. sarah palin and her family , received an estimated $ 1 million in damage from a fire that was deliberately set friday night . 
+	[events]:[['set'], ['fire'], ['damage']]
+	[entities]:[['friday', 'night'], ['wasilla', 'bible', 'church'], ['family'], ['sarah', 'palin']]
+received
+|--(nsubj)--> R280[church]
+|                |--(compou)--> R280[wasilla]
+|                |--(compou)--> R280[bible]
+|                |--(punct)--> ,
+|                |--(appos)--> church
+|                |                |--(det)--> the
+|                |                |--(compou)--> home
+|                |                |--(nmod)--> R262[palin]
+|                |                                 |--(case)--> of
+|                |                                 |--(compou)--> alaska
+|                |                                 |--(compou)--> gov.
+|                |                                 |--(compou)--> R262[sarah]
+|                |                                 |--(cc)--> and
+|                |                                 |--(conj)--> R274[family]
+|                |                                                  |--(nmod:p)--> her
+|                |--(punct)--> ,
+|--(dobj)--> $
+|                |--(det)--> an
+|                |--(dep)--> estimated
+|                |--(nummod)--> million
+|                                 |--(compou)--> 1
+|--(nmod)--> *R278[damage]
+|                |--(case)--> in
+|--(nmod)--> *R261[fire]
+|                |--(case)--> from
+|                |--(det)--> a
+|                |--(acl:re)--> *R270[set]
+|                                 |--(nsubjp)--> that
+|                                 |--(auxpas)--> was
+|                                 |--(advmod)--> deliberately
+|                                 |--(nmod:t)--> R271[night]
+|                                                  |--(compou)--> R271[friday]
+|--(punct)--> .
+
+	* entity-paths for event['set']13_14ecb.xmlsent:1261
+	['set --(nmod:tmod)--> night']
+
+	* entity-paths for event['fire']13_14ecb.xmlsent:1261
+	['fire --(acl:relcl)--> set', 'set --(nmod:tmod)--> night']
+
+	* entity-paths for event['damage']13_14ecb.xmlsent:1261

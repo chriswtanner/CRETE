@@ -1,0 +1,122 @@
+
+-----------------------------------------
+docid:32_5ecbplus.xml
+-----------------------------------------
+
+sentence #:a preliminary hearing for john jenkin , 23 , charged with the murders of his mother alice mcmeekin , 58 , and sister katie jenkin , 20 , was heard in preston crown court this morning . 
+	[events]:[['murders'], ['hearing'], ['charged']]
+	[entities]:[['alice', 'mcmeekin'], ['this', 'morning'], ['john', 'jenkin'], ['katie', 'jenkin'], ['in', 'preston', 'crown', 'court']]
+*R1034[charged]
+|--(nsubj)--> *R1065[hearing]
+|                |--(det)--> a
+|                |--(amod)--> preliminary
+|                |--(nmod)--> R1033[jenkin]
+|                                 |--(case)--> for
+|                                 |--(compou)--> R1033[john]
+|                                 |--(punct)--> ,
+|                                 |--(amod)--> 23
+|                                 |--(punct)--> ,
+|--(nmod)--> *R1031[murders]
+|                |--(case)--> with
+|                |--(det)--> the
+|                |--(nmod)--> R1035[mcmeekin]
+|                                 |--(case)--> of
+|                                 |--(nmod:p)--> his
+|                                 |--(compou)--> mother
+|                                 |--(compou)--> R1035[alice]
+|                                 |--(punct)--> ,
+|                                 |--(amod)--> 58
+|--(punct)--> ,
+|--(cc)--> and
+|--(conj)--> heard
+|                |--(nsubjp)--> R1036[jenkin]
+|                |                |--(compou)--> sister
+|                |                |--(compou)--> R1036[katie]
+|                |                |--(punct)--> ,
+|                |                |--(amod)--> 20
+|                |                |--(punct)--> ,
+|                |--(auxpas)--> was
+|                |--(nmod)--> R1066[court]
+|                |                |--(case)--> R1066[in]
+|                |                |--(compou)--> R1066[preston]
+|                |                |--(compou)--> R1066[crown]
+|                |--(nmod:t)--> R1067[morning]
+|                                 |--(det)--> R1067[this]
+|--(punct)--> .
+
+	* entity-paths for event['murders']32_5ecbplus.xmlsent:8876
+	['murders --(nmod)--> McMeekin']
+
+	* entity-paths for event['hearing']32_5ecbplus.xmlsent:8876
+	['hearing --(nmod)--> Jenkin']
+
+	* entity-paths for event['charged']32_5ecbplus.xmlsent:8876
+	['charged --(nsubj)--> hearing', 'hearing --(nmod)--> Jenkin']
+	['charged --(nmod)--> murders', 'murders --(nmod)--> McMeekin']
+	['charged --(conj)--> heard', 'heard --(nsubjpass)--> Jenkin']
+	['charged --(conj)--> heard', 'heard --(nmod)--> Court']
+	['charged --(conj)--> heard', 'heard --(nmod:tmod)--> morning']
+
+sentence #:provisional trial date set for millom double murder accused 
+	[events]:[['set'], ['double', 'murder'], ['trial']]
+	[entities]:[['accused'], ['date'], ['millom']]
+R1033[accused]
+|--(nsubj)--> *R1062[set]
+                 |--(amod)--> provisional
+                 |--(compou)--> *R1063[trial]
+                 |--(compou)--> R1064[date]
+                 |--(nmod)--> *R1031[murder]
+                                  |--(case)--> for
+                                  |--(compou)--> R1032[millom]
+                                  |--(compou)--> *R1031[double]
+
+	* entity-paths for event['set']32_5ecbplus.xmlsent:8873
+	['SET --(compound)--> DATE']
+	['SET --(nmod)--> MURDER', 'MURDER --(compound)--> MILLOM']
+
+	* entity-paths for event['double', 'murder']32_5ecbplus.xmlsent:8873
+	['MURDER --(compound)--> MILLOM']
+
+	* entity-paths for event['trial']32_5ecbplus.xmlsent:8873
+
+sentence #:a provisional trial date has been set in the case of a son accused of killing his mother , sister and pet dog in millom . 
+	[events]:[['accused'], ['trial'], ['killing'], ['set']]
+	[entities]:[['mother'], ['date'], ['sister'], ['son'], ['case'], ['dog'], ['in', 'millom']]
+*R1062[set]
+|--(nsubjp)--> R1064[date]
+|                |--(det)--> a
+|                |--(amod)--> provisional
+|                |--(compou)--> *R1063[trial]
+|--(aux)--> has
+|--(auxpas)--> been
+|--(nmod)--> R1068[case]
+|                |--(case)--> in
+|                |--(det)--> the
+|                |--(nmod)--> R1033[son]
+|                                 |--(case)--> of
+|                                 |--(det)--> a
+|                                 |--(acl)--> *R1034[accused]
+|                                                  |--(advcl)--> *R1031[killing]
+|                                                                   |--(mark)--> of
+|                                                                   |--(dobj)--> R1053[dog]
+|                                                                                    |--(nmod:p)--> his
+|                                                                                    |--(compou)--> R1035[mother]
+|                                                                                    |                |--(punct)--> ,
+|                                                                                    |                |--(conj)--> R1036[sister]
+|                                                                                    |                |--(cc)--> and
+|                                                                                    |                |--(conj)--> pet
+|                                                                                    |--(nmod)--> R1032[millom]
+|                                                                                                     |--(case)--> R1032[in]
+|--(punct)--> .
+
+	* entity-paths for event['accused']32_5ecbplus.xmlsent:8875
+	['accused --(advcl)--> killing', 'killing --(dobj)--> dog']
+
+	* entity-paths for event['trial']32_5ecbplus.xmlsent:8875
+
+	* entity-paths for event['killing']32_5ecbplus.xmlsent:8875
+	['killing --(dobj)--> dog']
+
+	* entity-paths for event['set']32_5ecbplus.xmlsent:8875
+	['set --(nsubjpass)--> date']
+	['set --(nmod)--> case']

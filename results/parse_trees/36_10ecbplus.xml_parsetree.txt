@@ -1,0 +1,25 @@
+
+-----------------------------------------
+docid:36_10ecbplus.xml
+-----------------------------------------
+
+sentence #:polygamist prophet warren jeffs charged againjuly 23 , 2008 . 4 : 49 pm 
+	[events]:[['charged']]
+	[entities]:[['polygamist', 'prophet', 'warren', 'jeffs']]
+*R1182[charged]
+|--(nsubj)--> R1183[jeffs]
+|                |--(compou)--> R1183[polygamist]
+|                |--(compou)--> R1183[prophet]
+|                |--(compou)--> R1183[warren]
+|--(dobj)--> againjuly
+                 |--(dep)--> 23
+                 |--(punct)--> ,
+                 |--(amod)--> 2008
+                 |--(punct)--> .
+                 |--(dep)--> 4
+                 |--(punct)--> :
+                 |--(dep)--> pm
+                                  |--(nummod)--> 49
+
+	* entity-paths for event['charged']36_10ecbplus.xmlsent:9856
+	['charged --(nsubj)--> Jeffs']

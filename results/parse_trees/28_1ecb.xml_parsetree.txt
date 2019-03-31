@@ -1,0 +1,79 @@
+
+-----------------------------------------
+docid:28_1ecb.xml
+-----------------------------------------
+
+sentence #:w. mark felt sr. , the associate director of the fbi during the watergate scandal who , better known as " deep throat , " became the most famous anonymous source in american history , died yesterday . 
+	[events]:[['watergate', 'scandal'], ['known'], ['died']]
+	[entities]:[['deep', 'throat'], ['w.', 'mark', 'felt', 'sr.'], ['director'], ['who'], ['yesterday'], ['source']]
+*R808[died]
+|--(nsubj)--> R809[sr.]
+|                |--(compou)--> R809[w.]
+|                |--(compou)--> R809[mark]
+|                |--(compou)--> R809[felt]
+|                |--(punct)--> ,
+|                |--(appos)--> R809[director]
+|                |                |--(det)--> the
+|                |                |--(amod)--> associate
+|                |                |--(nmod)--> fbi
+|                |                |                |--(case)--> of
+|                |                |                |--(det)--> the
+|                |                |                |--(nmod)--> *R812[scandal]
+|                |                |                                 |--(case)--> during
+|                |                |                                 |--(det)--> the
+|                |                |                                 |--(compou)--> *R812[watergate]
+|                |                |--(acl:re)--> became
+|                |                                 |--(nsubj)--> R809[who]
+|                |                                 |                |--(punct)--> ,
+|                |                                 |                |--(acl)--> *R810[known]
+|                |                                 |                |                |--(advmod)--> better
+|                |                                 |                |                |--(nmod)--> R811[throat]
+|                |                                 |                |                                 |--(case)--> as
+|                |                                 |                |                                 |--(punct)--> "
+|                |                                 |                |                                 |--(compou)--> R811[deep]
+|                |                                 |                |--(punct)--> ,
+|                |                                 |                |--(punct)--> "
+|                |                                 |--(xcomp)--> R809[source]
+|                |                                 |                |--(det)--> the
+|                |                                 |                |--(amod)--> famous
+|                |                                 |                |                |--(advmod)--> most
+|                |                                 |                |--(amod)--> anonymous
+|                |                                 |--(nmod)--> history
+|                |                                                  |--(case)--> in
+|                |                                                  |--(amod)--> american
+|                |--(punct)--> ,
+|--(nmod:t)--> R813[yesterday]
+|--(punct)--> .
+
+	* entity-paths for event['watergate', 'scandal']28_1ecb.xmlsent:6175
+
+	* entity-paths for event['known']28_1ecb.xmlsent:6175
+	['known --(nmod)--> Throat']
+
+	* entity-paths for event['died']28_1ecb.xmlsent:6175
+	['died --(nsubj)--> Sr.']
+	['died --(nmod:tmod)--> yesterday']
+
+sentence #:felt died at 12:45 p.m . at his home in santa rosa , calif . 
+	[events]:[['died']]
+	[entities]:[['at', 'his', 'home', 'in', 'santa', 'rosa', ',', 'calif', '.'], ['felt']]
+*R808[died]
+|--(csubj)--> R809[felt]
+|--(advcl)--> 12:45
+|                |--(case)--> at
+|                |--(dep)--> p.m
+|                |--(punct)--> .
+|--(nmod)--> R822[home]
+|                |--(case)--> R822[at]
+|                |--(nmod:p)--> R822[his]
+|                |--(nmod)--> R822[rosa]
+|                                 |--(case)--> R822[in]
+|                                 |--(compou)--> R822[santa]
+|                                 |--(punct)--> R822[,]
+|                                 |--(appos)--> R822[calif]
+|--(punct)--> R822[.]
+
+	* entity-paths for event['died']28_1ecb.xmlsent:6176
+	['died --(csubj)--> Felt']
+	['died --(nmod)--> home']
+	['died --(punct)--> .']

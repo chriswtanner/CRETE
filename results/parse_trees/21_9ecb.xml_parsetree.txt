@@ -1,0 +1,43 @@
+
+-----------------------------------------
+docid:21_9ecb.xml
+-----------------------------------------
+
+sentence #:police arrested a man they believe to be the hit and run driver who killed a 66-year-old woman outside the sam 's club in bloomington . 
+	[events]:[['arrested'], ['killed']]
+	[entities]:[['woman'], ['police'], ['man'], ['they'], ['driver'], ['outside', 'the', 'sam', "'s", 'club', 'in', 'bloomington']]
+*R587[arrested]
+|--(nsubj)--> R563[police]
+|--(dobj)--> R539[man]
+|                |--(det)--> a
+|                |--(acl:re)--> believe
+|                                 |--(nsubj)--> R563[they]
+|                                 |--(xcomp)--> hit
+|                                                  |--(mark)--> to
+|                                                  |--(cop)--> be
+|                                                  |--(det)--> the
+|                                                  |--(cc)--> and
+|                                                  |--(conj)--> run
+|                                                                   |--(dobj)--> R539[driver]
+|                                                                                    |--(acl:re)--> *R542[killed]
+|                                                                                                     |--(nsubj)--> who
+|                                                                                                     |--(dobj)--> R543[woman]
+|                                                                                                     |                |--(det)--> a
+|                                                                                                     |                |--(amod)--> 66-year-old
+|                                                                                                     |--(nmod)--> R544[club]
+|                                                                                                     |                |--(case)--> R544[outside]
+|                                                                                                     |                |--(nmod:p)--> R544[sam]
+|                                                                                                     |                                 |--(det)--> R544[the]
+|                                                                                                     |                                 |--(case)--> R544['s]
+|                                                                                                     |--(nmod)--> R544[bloomington]
+|                                                                                                                      |--(case)--> R544[in]
+|--(punct)--> .
+
+	* entity-paths for event['arrested']21_9ecb.xmlsent:4340
+	['arrested --(nsubj)--> Police']
+	['arrested --(dobj)--> man']
+
+	* entity-paths for event['killed']21_9ecb.xmlsent:4340
+	['killed --(dobj)--> woman']
+	['killed --(nmod)--> Club']
+	['killed --(nmod)--> Bloomington']

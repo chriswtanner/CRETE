@@ -1,0 +1,84 @@
+
+-----------------------------------------
+docid:38_7ecbplus.xml
+-----------------------------------------
+
+sentence #:a 4 . 6 - magnitude earthquake rattled northern california overnight thursday , shaking residents from san francisco to north of sacramento . 
+	[events]:[['rattled'], ['4', '.', '6', '-', 'magnitude', 'earthquake']]
+	[entities]:[['northern', 'california'], ['overnight', 'thursday']]
+*R1296[4]
+|--(det)--> a
+|--(punct)--> *R1296[.]
+|--(dep)--> *R1304[rattled]
+                 |--(dobj)--> *R1296[6]
+                 |                |--(dep)--> *R1296[earthquake]
+                 |                                 |--(punct)--> *R1296[-]
+                 |                                 |--(compou)--> *R1296[magnitude]
+                 |--(nmod)--> R1326[northern]
+                 |                |--(dep)--> R1326[california]
+                 |                                 |--(nmod:t)--> R1299[thursday]
+                 |                                                  |--(amod)--> R1299[overnight]
+                 |--(punct)--> ,
+                 |--(dobj)--> residents
+                                  |--(amod)--> shaking
+                                  |--(acl)--> francisco
+                                                   |--(case)--> from
+                                                   |--(amod)--> san
+                                                   |--(nmod)--> north
+                                                   |                |--(case)--> to
+                                                   |                |--(nmod)--> sacramento
+                                                   |                                 |--(case)--> of
+                                                   |--(punct)--> .
+
+	* entity-paths for event['rattled']38_7ecbplus.xmlsent:10810
+	['rattled --(nmod)--> Northern']
+
+	* entity-paths for event['4', '.', '6', '-', 'magnitude', 'earthquake']38_7ecbplus.xmlsent:10810
+
+sentence #:the temblor struck at 2 : 09 a . m . and was centered in geyserville , about 20 miles north of santa rosa , according to the u . s . geological survey . 
+	[events]:[['temblor'], ['struck'], ['according', 'to']]
+	[entities]:[['in', 'geyserville', ',', 'about', '20', 'miles', 'north', 'of', 'santa', 'rosa'], ['at', '2', ':', '09', 'a', '.', 'm'], ['u', '.', 's', '.', 'geological', 'survey']]
+*R1304[struck]
+|--(nsubj)--> *R1296[temblor]
+|                |--(det)--> the
+|--(nmod)--> R1299[2]
+|                |--(case)--> R1299[at]
+|                |--(punct)--> R1299[:]
+|                |--(dep)--> R1299[09]
+|                                 |--(dep)--> R1299[a]
+|                                                  |--(punct)--> R1299[.]
+|                                                  |--(dep)--> R1299[m]
+|                                                  |--(punct)--> .
+|--(cc)--> and
+|--(conj)--> centered
+|                |--(auxpas)--> was
+|                |--(advcl)--> R1316[geyserville]
+|                                 |--(case)--> R1316[in]
+|                                 |--(punct)--> R1316[,]
+|                                 |--(nmod)--> R1316[north]
+|                                                  |--(case)--> R1316[about]
+|                                                  |--(nmod:n)--> R1316[miles]
+|                                                  |                |--(nummod)--> R1316[20]
+|                                                  |--(nmod)--> R1316[rosa]
+|                                                  |                |--(case)--> R1316[of]
+|                                                  |                |--(compou)--> R1316[santa]
+|                                                  |--(punct)--> ,
+|                                                  |--(nmod)--> R1243[s]
+|                                                  |                |--(case)--> *R1303[according]
+|                                                  |                |                |--(mwe)--> *R1303[to]
+|                                                  |                |--(det)--> the
+|                                                  |                |--(compou)--> R1243[u]
+|                                                  |                |--(punct)--> R1243[.]
+|                                                  |--(punct)--> R1243[.]
+|--(dobj)--> R1243[survey]
+|                |--(amod)--> R1243[geological]
+|--(punct)--> .
+
+	* entity-paths for event['temblor']38_7ecbplus.xmlsent:10811
+
+	* entity-paths for event['struck']38_7ecbplus.xmlsent:10811
+	['struck --(nmod)--> 2']
+	['struck --(conj)--> centered', 'centered --(advcl)--> Geyserville']
+	['struck --(dobj)--> Survey']
+
+	* entity-paths for event['according', 'to']38_7ecbplus.xmlsent:10811

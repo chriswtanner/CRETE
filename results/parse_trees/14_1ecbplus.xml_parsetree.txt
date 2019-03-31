@@ -1,0 +1,53 @@
+
+-----------------------------------------
+docid:14_1ecbplus.xml
+-----------------------------------------
+
+sentence #:crews from devon and somerset fire and rescue have tackled a blaze at a supermarket in a somerset town . 
+	[events]:[['tackled'], ['blaze']]
+	[entities]:[['crews'], ['a', 'supermarket', 'in', 'a', 'somerset', 'town']]
+*R305[tackled]
+|--(nsubj)--> R306[crews]
+|                |--(nmod)--> fire
+|                                 |--(case)--> from
+|                                 |--(compou)--> devon
+|                                 |                |--(cc)--> and
+|                                 |                |--(conj)--> somerset
+|                                 |--(cc)--> and
+|                                 |--(conj)--> rescue
+|--(aux)--> have
+|--(dobj)--> *R302[blaze]
+|                |--(det)--> a
+|--(nmod)--> R303[supermarket]
+|                |--(case)--> at
+|                |--(det)--> R303[a]
+|                |--(nmod)--> R303[town]
+|                                 |--(case)--> R303[in]
+|                                 |--(det)--> R303[a]
+|                                 |--(compou)--> R303[somerset]
+|--(punct)--> .
+
+	* entity-paths for event['tackled']14_1ecbplus.xmlsent:1693
+	['tackled --(nsubj)--> Crews']
+	['tackled --(nmod)--> supermarket']
+
+	* entity-paths for event['blaze']14_1ecbplus.xmlsent:1693
+
+sentence #:waitrose fire in wellington town centre tackled 
+	[events]:[['tackled'], ['fire']]
+	[entities]:[['wellington', 'town', 'centre'], ['waitrose']]
+*R305[tackled]
+|--(nsubj)--> *R302[fire]
+                 |--(compou)--> R308[waitrose]
+                 |--(nmod)--> R309[centre]
+                                  |--(case)--> in
+                                  |--(compou)--> R309[wellington]
+                                  |--(compou)--> R309[town]
+
+	* entity-paths for event['tackled']14_1ecbplus.xmlsent:1692
+	['tackled --(nsubj)--> fire', 'fire --(compound)--> Waitrose']
+	['tackled --(nsubj)--> fire', 'fire --(nmod)--> centre']
+
+	* entity-paths for event['fire']14_1ecbplus.xmlsent:1692
+	['fire --(compound)--> Waitrose']
+	['fire --(nmod)--> centre']

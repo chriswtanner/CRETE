@@ -1,0 +1,61 @@
+
+-----------------------------------------
+docid:29_10ecb.xml
+-----------------------------------------
+
+sentence #:colts clinch playoff berth with 31-24 victory against jaguars 
+	[events]:[['victory'], ['clinch'], ['playoff']]
+	[entities]:[['jaguars'], ['31-24'], ['berth'], ['colts']]
+R851[berth]
+|--(compou)--> R852[colts]
+|--(compou)--> *R853[clinch]
+|--(compou)--> *R854[playoff]
+|--(nmod)--> R855[31-24]
+|                |--(case)--> with
+|--(dep)--> *R856[victory]
+                 |--(nmod)--> R857[jaguars]
+                                  |--(case)--> against
+
+	* entity-paths for event['victory']29_10ecb.xmlsent:6660
+	['Victory --(nmod)--> Jaguars']
+
+	* entity-paths for event['clinch']29_10ecb.xmlsent:6660
+
+	* entity-paths for event['playoff']29_10ecb.xmlsent:6660
+
+sentence #:the colts , trailing 14-0 at the start of the second quarter , scored 17 unanswered points in the fourth quarter to clinch their eighth straight win . 
+	[events]:[['clinch'], ['win']]
+	[entities]:[['their'], ['colts']]
+scored
+|--(nsubj)--> R852[colts]
+|                |--(det)--> the
+|--(punct)--> ,
+|--(advcl)--> trailing
+|                |--(dobj)--> 14-0
+|                |--(nmod)--> start
+|                                 |--(case)--> at
+|                                 |--(det)--> the
+|                                 |--(nmod)--> quarter
+|                                                  |--(case)--> of
+|                                                  |--(det)--> the
+|                                                  |--(amod)--> second
+|--(punct)--> ,
+|--(dobj)--> points
+|                |--(nummod)--> 17
+|                |--(amod)--> unanswered
+|--(nmod)--> quarter
+|                |--(case)--> in
+|                |--(det)--> the
+|                |--(amod)--> fourth
+|--(advcl)--> *R853[clinch]
+|                |--(mark)--> to
+|                |--(dobj)--> straight
+|                                 |--(nmod:p)--> R852[their]
+|                                 |--(amod)--> eighth
+|                                 |--(acl:re)--> *R856[win]
+|--(punct)--> .
+
+	* entity-paths for event['clinch']29_10ecb.xmlsent:6662
+	['clinch --(dobj)--> straight', 'straight --(nmod:poss)--> their']
+
+	* entity-paths for event['win']29_10ecb.xmlsent:6662

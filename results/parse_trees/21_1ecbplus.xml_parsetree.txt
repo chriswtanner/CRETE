@@ -1,0 +1,137 @@
+
+-----------------------------------------
+docid:21_1ecbplus.xml
+-----------------------------------------
+
+sentence #:woman killed in queens hit - and - run , driver charged 
+	[events]:[['run'], ['hit'], ['charged'], ['killed']]
+	[entities]:[['in', 'queens'], ['driver'], ['woman']]
+R545[woman]
+|--(acl:re)--> and
+|                |--(dep)--> *R546[killed]
+|                                 |--(nmod)--> R549[queens]
+|                                                  |--(case)--> R549[in]
+|                                                  |--(acl)--> *R556[hit]
+|                                                  |--(punct)--> -
+|--(punct)--> -
+|--(parata)--> *R551[run]
+                 |--(punct)--> ,
+                 |--(appos)--> R548[driver]
+                                  |--(acl)--> *R557[charged]
+
+	* entity-paths for event['run']21_1ecbplus.xmlsent:4135
+	['Run --(appos)--> Driver']
+
+	* entity-paths for event['hit']21_1ecbplus.xmlsent:4135
+
+	* entity-paths for event['charged']21_1ecbplus.xmlsent:4135
+
+	* entity-paths for event['killed']21_1ecbplus.xmlsent:4135
+	['Killed --(nmod)--> Queens']
+
+sentence #:a woman has died after being hit by a car that fled the scene in queens , and now , the driver is facing manslaughter charges . 
+	[events]:[['charges'], ['facing'], ['died'], ['hit'], ['manslaughter'], ['fled']]
+	[entities]:[['woman'], ['driver'], ['the', 'scene', 'in', 'queens'], ['car']]
+*R546[died]
+|--(nsubj)--> R545[woman]
+|                |--(det)--> a
+|--(aux)--> has
+|--(advcl)--> *R556[hit]
+|                |--(mark)--> after
+|                |--(auxpas)--> being
+|                |--(nmod)--> R569[car]
+|                                 |--(case)--> by
+|                                 |--(det)--> a
+|                                 |--(acl:re)--> *R551[fled]
+|                                                  |--(nsubj)--> that
+|                                                  |--(dobj)--> R552[scene]
+|                                                  |                |--(det)--> R552[the]
+|                                                  |--(nmod)--> R552[queens]
+|                                                                   |--(case)--> R552[in]
+|--(punct)--> ,
+|--(cc)--> and
+|--(conj)--> *R575[facing]
+|                |--(advmod)--> now
+|                |--(punct)--> ,
+|                |--(nsubj)--> R548[driver]
+|                |                |--(det)--> the
+|                |--(aux)--> is
+|                |--(dobj)--> *R557[charges]
+|                                 |--(compou)--> *R576[manslaughter]
+|--(punct)--> .
+
+	* entity-paths for event['charges']21_1ecbplus.xmlsent:4137
+
+	* entity-paths for event['facing']21_1ecbplus.xmlsent:4137
+	['facing --(nsubj)--> driver']
+
+	* entity-paths for event['died']21_1ecbplus.xmlsent:4137
+	['died --(nsubj)--> woman']
+	['died --(advcl)--> hit', 'hit --(nmod)--> car']
+	['died --(conj)--> facing', 'facing --(nsubj)--> driver']
+
+	* entity-paths for event['hit']21_1ecbplus.xmlsent:4137
+	['hit --(nmod)--> car']
+
+	* entity-paths for event['manslaughter']21_1ecbplus.xmlsent:4137
+
+	* entity-paths for event['fled']21_1ecbplus.xmlsent:4137
+	['fled --(dobj)--> scene']
+	['fled --(nmod)--> Queens']
+
+sentence #:witnesses say 59 - year - old raj chohan was leaving her car on 117th street in south richmond hill friday when she was hit by a silver toyota camry and sent flying into the air . 
+	[events]:[['flying'], ['sent'], ['hit'], ['leaving']]
+	[entities]:[['raj', 'chohan'], ['117th', 'street', 'in', 'south', 'richmond', 'hill'], ['car'], ['witnesses'], ['she'], ['toyota', 'camry'], ['her'], ['friday'], ['into', 'the', 'air']]
+say
+|--(nsubj)--> R577[witnesses]
+|--(dobj)--> 59
+|--(punct)--> -
+|--(nmod:t)--> year
+|--(punct)--> -
+|--(parata)--> *R578[leaving]
+|                |--(nsubj)--> R545[chohan]
+|                |                |--(amod)--> old
+|                |                |--(compou)--> R545[raj]
+|                |--(aux)--> was
+|                |--(dobj)--> R579[car]
+|                |                |--(nmod:p)--> R545[her]
+|                |--(nmod)--> R552[street]
+|                                 |--(case)--> on
+|                                 |--(compou)--> R552[117th]
+|                                 |--(nmod)--> R550[friday]
+|                                                  |--(case)--> R552[in]
+|                                                  |--(compou)--> R552[south]
+|                                                  |--(compou)--> R552[richmond]
+|                                                  |--(compou)--> R552[hill]
+|                                                  |--(acl:re)--> *R556[hit]
+|                                                                   |--(advmod)--> when
+|                                                                   |--(nsubjp)--> R545[she]
+|                                                                   |--(auxpas)--> was
+|                                                                   |--(nmod)--> R569[camry]
+|                                                                   |                |--(case)--> by
+|                                                                   |                |--(det)--> a
+|                                                                   |                |--(compou)--> silver
+|                                                                   |                |--(compou)--> R569[toyota]
+|                                                                   |--(cc)--> and
+|                                                                   |--(conj)--> *R580[sent]
+|                                                                                    |--(xcomp)--> *R581[flying]
+|                                                                                                     |--(nmod)--> R582[air]
+|                                                                                                                      |--(case)--> R582[into]
+|                                                                                                                      |--(det)--> R582[the]
+|--(punct)--> .
+
+	* entity-paths for event['flying']21_1ecbplus.xmlsent:4138
+	['flying --(nmod)--> air']
+
+	* entity-paths for event['sent']21_1ecbplus.xmlsent:4138
+	['sent --(xcomp)--> flying', 'flying --(nmod)--> air']
+
+	* entity-paths for event['hit']21_1ecbplus.xmlsent:4138
+	['hit --(nsubjpass)--> she']
+	['hit --(nmod)--> Camry']
+	['hit --(conj)--> sent', 'sent --(xcomp)--> flying', 'flying --(nmod)--> air']
+
+	* entity-paths for event['leaving']21_1ecbplus.xmlsent:4138
+	['leaving --(nsubj)--> Chohan']
+	['leaving --(dobj)--> car']
+	['leaving --(nmod)--> Street']

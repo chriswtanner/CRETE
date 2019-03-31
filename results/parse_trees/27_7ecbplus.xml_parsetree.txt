@@ -1,0 +1,94 @@
+
+-----------------------------------------
+docid:27_7ecbplus.xml
+-----------------------------------------
+
+sentence #:'the fix' will remedy a vulnerability that allows an attacker to gain remote control of a windows machine . . 
+	[events]:[['gain'], ['control'], ['remedy']]
+	[entities]:[['machine'], ['attacker'], ["'the", "fix'"], ['vulnerability']]
+*R781[remedy]
+|--(punct)--> R780['the]
+|--(ccomp)--> R780[fix']
+|                |--(nsubj)--> R780['the]
+|--(punct)--> R780[fix']
+|--(aux)--> will
+|--(dobj)--> R777[vulnerability]
+|                |--(det)--> a
+|                |--(acl:re)--> allows
+|                                 |--(nsubj)--> that
+|                                 |--(dobj)--> R770[attacker]
+|                                                  |--(det)--> an
+|                                                  |--(acl)--> *R803[gain]
+|                                                                   |--(mark)--> to
+|                                                                   |--(dobj)--> *R804[control]
+|                                                                                    |--(amod)--> remote
+|                                                                                    |--(nmod)--> R805[machine]
+|                                                                                                     |--(case)--> of
+|                                                                                                     |--(det)--> a
+|                                                                                                     |--(compou)--> windows
+|--(punct)--> .
+|--(punct)--> .
+
+	* entity-paths for event['gain']27_7ecbplus.xmlsent:5982
+	['gain --(dobj)--> control', 'control --(nmod)--> machine']
+
+	* entity-paths for event['control']27_7ecbplus.xmlsent:5982
+	['control --(nmod)--> machine']
+
+	* entity-paths for event['remedy']27_7ecbplus.xmlsent:5982
+	["remedy --(punct)--> '"]
+	['remedy --(ccomp)--> Fix']
+	["remedy --(punct)--> '"]
+	['remedy --(dobj)--> vulnerability']
+
+sentence #:microsoft to release patch for internet explorer 
+	[events]:[['release']]
+	[entities]:[['patch'], ['internet', 'explorer'], ['microsoft']]
+R764[microsoft]
+|--(dep)--> *R779[release]
+                 |--(mark)--> to
+                 |--(dobj)--> R780[patch]
+                 |--(nmod)--> R768[explorer]
+                                  |--(case)--> for
+                                  |--(compou)--> R768[internet]
+
+	* entity-paths for event['release']27_7ecbplus.xmlsent:5981
+	['release --(dobj)--> patch']
+	['release --(nmod)--> Explorer']
+
+sentence #:microsoft will push out an out - of - cycle windows patch to temporarily fix the critical internet explorer flaw revealed earlier this week . 
+	[events]:[['revealed'], ['fix'], ['push', 'out']]
+	[entities]:[['flaw'], ['patch'], ['microsoft'], ['internet', 'explorer']]
+*R779[push]
+|--(nsubj)--> R764[microsoft]
+|--(aux)--> will
+|--(compou)--> *R779[out]
+|--(dobj)--> cycle
+|                |--(det)--> an
+|                |--(amod)--> out
+|                |--(nmod)--> of
+|                |                |--(punct)--> -
+|                |                |--(punct)--> -
+|                |--(nmod)--> R780[patch]
+|                                 |--(dep)--> windows
+|--(advcl)--> *R781[fix]
+|                |--(mark)--> to
+|                |--(advmod)--> temporarily
+|                |--(dobj)--> R768[internet]
+|                                 |--(det)--> the
+|                                 |--(amod)--> critical
+|                                 |--(acl:re)--> *R806[revealed]
+|                                                  |--(nsubj)--> R777[flaw]
+|                                                  |                |--(compou)--> R768[explorer]
+|                                                  |--(nmod:t)--> week
+|                                                                   |--(advmod)--> earlier
+|                                                                   |--(det)--> this
+|--(punct)--> .
+
+	* entity-paths for event['revealed']27_7ecbplus.xmlsent:5984
+	['revealed --(nsubj)--> flaw']
+
+	* entity-paths for event['fix']27_7ecbplus.xmlsent:5984
+	['fix --(dobj)--> Internet']
+
+	* entity-paths for event['push', 'out']27_7ecbplus.xmlsent:5984

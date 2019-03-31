@@ -1,0 +1,90 @@
+
+-----------------------------------------
+docid:2_1ecbplus.xml
+-----------------------------------------
+
+sentence #:it will be her second stint in the job , after hosting the 2007 ceremony and earning an emmy nomination for it . 
+	[events]:[['hosting'], ['ceremony'], ['nomination'], ['job'], ['stint']]
+	[entities]:[['the', '2007'], ['second']]
+*R456[stint]
+|--(nsubj)--> it
+|--(aux)--> will
+|--(cop)--> be
+|--(nmod:p)--> her
+|--(amod)--> R466[second]
+|--(nmod)--> *R467[job]
+|                |--(case)--> in
+|                |--(det)--> the
+|--(punct)--> ,
+|--(advcl)--> *R471[hosting]
+|                |--(mark)--> after
+|                |--(dobj)--> *R455[ceremony]
+|                |                |--(det)--> R472[the]
+|                |                |--(nummod)--> R472[2007]
+|                |--(cc)--> and
+|                |--(conj)--> earning
+|                                 |--(dobj)--> *R473[nomination]
+|                                 |                |--(det)--> an
+|                                 |                |--(compou)--> emmy
+|                                 |--(nmod)--> it
+|                                                  |--(case)--> for
+|--(punct)--> .
+
+	* entity-paths for event['hosting']2_1ecbplus.xmlsent:3482
+	['hosting --(dobj)--> ceremony', 'ceremony --(det)--> the']
+	['hosting --(dobj)--> ceremony', 'ceremony --(nummod)--> 2007']
+
+	* entity-paths for event['ceremony']2_1ecbplus.xmlsent:3482
+	['ceremony --(det)--> the']
+	['ceremony --(nummod)--> 2007']
+
+	* entity-paths for event['nomination']2_1ecbplus.xmlsent:3482
+
+	* entity-paths for event['job']2_1ecbplus.xmlsent:3482
+
+	* entity-paths for event['stint']2_1ecbplus.xmlsent:3482
+	['stint --(amod)--> second']
+	['stint --(advcl)--> hosting', 'hosting --(dobj)--> ceremony', 'ceremony --(det)--> the']
+	['stint --(advcl)--> hosting', 'hosting --(dobj)--> ceremony', 'ceremony --(nummod)--> 2007']
+
+sentence #:ellen degeneres just tweeted she will be hosting the oscars this year . 
+	[events]:[['hosting'], ['oscars'], ['tweeted']]
+	[entities]:[['she'], ['this', 'year'], ['ellen', 'degeneres']]
+*R474[tweeted]
+|--(nsubj)--> R454[degeneres]
+|                |--(compou)--> R454[ellen]
+|--(advmod)--> just
+|--(ccomp)--> *R456[hosting]
+|                |--(nsubj)--> R454[she]
+|                |--(aux)--> will
+|                |--(aux)--> be
+|                |--(dobj)--> *R455[oscars]
+|                |                |--(det)--> the
+|                |--(nmod:t)--> R475[year]
+|                                 |--(det)--> R475[this]
+|--(punct)--> .
+
+	* entity-paths for event['hosting']2_1ecbplus.xmlsent:3481
+	['hosting --(nsubj)--> she']
+	['hosting --(nmod:tmod)--> year']
+
+	* entity-paths for event['oscars']2_1ecbplus.xmlsent:3481
+
+	* entity-paths for event['tweeted']2_1ecbplus.xmlsent:3481
+	['tweeted --(nsubj)--> DeGeneres']
+	['tweeted --(ccomp)--> hosting', 'hosting --(nsubj)--> she']
+	['tweeted --(ccomp)--> hosting', 'hosting --(nmod:tmod)--> year']
+
+sentence #:ellen degeneres to host 86th oscars 
+	[events]:[['oscars'], ['host']]
+	[entities]:[['ellen', 'degeneres']]
+R454[degeneres]
+|--(compou)--> R454[ellen]
+|--(nmod)--> *R456[host]
+|                |--(case)--> to
+|--(dep)--> *R455[oscars]
+                 |--(amod)--> 86th
+
+	* entity-paths for event['oscars']2_1ecbplus.xmlsent:3479
+
+	* entity-paths for event['host']2_1ecbplus.xmlsent:3479

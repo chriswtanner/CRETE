@@ -1,0 +1,187 @@
+
+-----------------------------------------
+docid:44_2ecb.xml
+-----------------------------------------
+
+sentence #:acquiring eds also could yield more government work for hp , which had about $ 500 million in prime federal contracts in fiscal 2007 . 
+	[events]:[['acquiring']]
+	[entities]:[['hp'], ['eds']]
+*R1599[acquiring]
+|--(dobj)--> R1600[eds]
+|--(advmod)--> also
+|--(dep)--> yield
+|                |--(aux)--> could
+|                |--(dobj)--> more
+|--(nsubj)--> work
+|                |--(compou)--> government
+|                |--(nmod)--> R1577[hp]
+|                |                |--(case)--> for
+|                |--(punct)--> ,
+|                |--(acl:re)--> $
+|                                 |--(nsubj)--> which
+|                                 |--(aux)--> had
+|                                 |--(dep)--> about
+|                                 |--(nummod)--> million
+|                                 |                |--(compou)--> 500
+|                                 |--(nmod)--> contracts
+|                                                  |--(case)--> in
+|                                                  |--(amod)--> prime
+|                                                  |--(amod)--> federal
+|                                                  |--(nmod)--> 2007
+|                                                                   |--(case)--> in
+|                                                                   |--(amod)--> fiscal
+|--(punct)--> .
+
+	* entity-paths for event['acquiring']44_2ecb.xmlsent:13551
+	['Acquiring --(dobj)--> EDS']
+	['Acquiring --(nsubj)--> work', 'work --(nmod)--> HP']
+
+sentence #:with a market value of about $ 115 billion , hp could easily use its own stock to finance the purchase . 
+	[events]:[['purchase']]
+	[entities]:[['its'], ['hp']]
+use
+|--(nmod)--> value
+|                |--(case)--> with
+|                |--(det)--> a
+|                |--(compou)--> market
+|                |--(nmod)--> $
+|                                 |--(case)--> of
+|                                 |--(case)--> about
+|                                 |--(nummod)--> billion
+|                                                  |--(compou)--> 115
+|--(punct)--> ,
+|--(nsubj)--> R1577[hp]
+|--(aux)--> could
+|--(advmod)--> easily
+|--(dobj)--> stock
+|                |--(nmod:p)--> R1577[its]
+|                |--(amod)--> own
+|--(advcl)--> finance
+|                |--(mark)--> to
+|                |--(dobj)--> *R1599[purchase]
+|                                 |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['purchase']44_2ecb.xmlsent:13541
+
+sentence #:hewlett-packard is negotiating to buy technology services provider electronic data systems in a deal that could help the world 's largest personal computer maker snap up more data management and consulting contracts . 
+	[events]:[['buy'], ['technology', 'services'], ['deal'], ['negotiating']]
+	[entities]:[['electronic', 'data', 'systems'], ['hewlett-packard'], ['personal', 'computer', 'maker']]
+*R1603[negotiating]
+|--(nsubj)--> R1577[hewlett-packard]
+|--(aux)--> is
+|--(xcomp)--> *R1599[buy]
+|                |--(mark)--> to
+|                |--(iobj)--> provider
+|                |                |--(compou)--> *R1604[technology]
+|                |                |--(compou)--> *R1604[services]
+|                |--(dobj)--> R1600[systems]
+|                                 |--(compou)--> R1600[electronic]
+|                                 |--(compou)--> R1600[data]
+|                                 |--(nmod)--> *R1605[deal]
+|                                                  |--(case)--> in
+|                                                  |--(det)--> a
+|                                                  |--(acl:re)--> help
+|                                                                   |--(nsubj)--> that
+|                                                                   |--(aux)--> could
+|                                                                   |--(dobj)--> R1577[maker]
+|                                                                   |                |--(nmod:p)--> world
+|                                                                   |                |                |--(det)--> the
+|                                                                   |                |                |--(case)--> 's
+|                                                                   |                |--(amod)--> largest
+|                                                                   |                |--(amod)--> R1577[personal]
+|                                                                   |                |--(compou)--> R1577[computer]
+|                                                                   |--(dep)--> snap
+|                                                                                    |--(advmod)--> more
+|                                                                                    |                |--(advmod)--> up
+|                                                                                    |--(dobj)--> management
+|                                                                                                     |--(compou)--> data
+|                                                                                                     |--(cc)--> and
+|                                                                                                     |--(conj)--> contracts
+|                                                                                                                      |--(amod)--> consulting
+|--(punct)--> .
+
+	* entity-paths for event['buy']44_2ecb.xmlsent:13534
+	['buy --(dobj)--> Systems']
+
+	* entity-paths for event['technology', 'services']44_2ecb.xmlsent:13534
+
+	* entity-paths for event['deal']44_2ecb.xmlsent:13534
+	['deal --(acl:relcl)--> help', 'help --(dobj)--> maker']
+
+	* entity-paths for event['negotiating']44_2ecb.xmlsent:13534
+	['negotiating --(nsubj)--> Hewlett-Packard']
+	['negotiating --(xcomp)--> buy', 'buy --(dobj)--> Systems']
+
+sentence #:if the deal is completed , it would be hp 's biggest acquisition since it bought compaq computer corp. for $ 19 billion in 2002 . 
+	[events]:[['acquisition'], ['deal']]
+	[entities]:[['hp'], ['it']]
+*R1599[acquisition]
+|--(advcl)--> completed
+|                |--(mark)--> if
+|                |--(nsubjp)--> *R1605[deal]
+|                |                |--(det)--> the
+|                |--(auxpas)--> is
+|--(punct)--> ,
+|--(nsubj)--> it
+|--(aux)--> would
+|--(cop)--> be
+|--(nmod:p)--> R1577[hp]
+|                |--(case)--> 's
+|--(amod)--> biggest
+|--(advcl)--> bought
+|                |--(mark)--> since
+|                |--(nsubj)--> R1577[it]
+|                |--(dobj)--> corp.
+|                |                |--(compou)--> compaq
+|                |                |--(compou)--> computer
+|                |                |--(nmod)--> $
+|                |                                 |--(case)--> for
+|                |                                 |--(nummod)--> billion
+|                |                                                  |--(compou)--> 19
+|                |--(nmod)--> 2002
+|                                 |--(case)--> in
+|--(punct)--> .
+
+	* entity-paths for event['acquisition']44_2ecb.xmlsent:13544
+	['acquisition --(nmod:poss)--> HP']
+	['acquisition --(advcl)--> bought', 'bought --(nsubj)--> it']
+
+	* entity-paths for event['deal']44_2ecb.xmlsent:13544
+
+sentence #:palo alto-based hp and plano , texas-based eds confirmed the talks yesterday shortly after the wall street journal reported a deal could be reached as early as today . 
+	[events]:[['talks'], ['deal']]
+	[entities]:[['eds'], ['hp']]
+confirmed
+|--(nsubj)--> R1577[hp]
+|                |--(compou)--> palo
+|                |--(amod)--> alto-based
+|                |--(cc)--> and
+|                |--(conj)--> plano
+|                |--(punct)--> ,
+|                |--(appos)--> R1600[eds]
+|                                 |--(amod)--> texas-based
+|--(dobj)--> *R1603[talks]
+|                |--(det)--> the
+|--(nmod:t)--> yesterday
+|--(advcl)--> reported
+|                |--(advmod)--> shortly
+|                |--(mark)--> after
+|                |--(nsubj)--> journal
+|                |                |--(det)--> the
+|                |                |--(compou)--> wall
+|                |                |--(compou)--> street
+|                |--(ccomp)--> reached
+|                                 |--(nsubjp)--> *R1605[deal]
+|                                 |                |--(det)--> a
+|                                 |--(aux)--> could
+|                                 |--(auxpas)--> be
+|                                 |--(advmod)--> early
+|                                 |                |--(advmod)--> as
+|                                 |--(nmod)--> today
+|                                                  |--(case)--> as
+|--(punct)--> .
+
+	* entity-paths for event['talks']44_2ecb.xmlsent:13535
+
+	* entity-paths for event['deal']44_2ecb.xmlsent:13535

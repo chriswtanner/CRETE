@@ -1,0 +1,193 @@
+
+-----------------------------------------
+docid:33_5ecbplus.xml
+-----------------------------------------
+
+sentence #:horton was struck by a stray bullet as lopez targeted rival gang members . 
+	[events]:[['targeted'], ['struck']]
+	[entities]:[['lopez'], ['gang', 'members'], ['horton']]
+*R1078[struck]
+|--(nsubjp)--> R1079[horton]
+|--(auxpas)--> was
+|--(nmod)--> bullet
+|                |--(case)--> by
+|                |--(det)--> a
+|                |--(amod)--> stray
+|--(advcl)--> *R1120[targeted]
+|                |--(mark)--> as
+|                |--(nsubj)--> R1076[lopez]
+|                |--(dobj)--> R1121[members]
+|                                 |--(amod)--> rival
+|                                 |--(compou)--> R1121[gang]
+|--(punct)--> .
+
+	* entity-paths for event['targeted']33_5ecbplus.xmlsent:9175
+	['targeted --(nsubj)--> Lopez']
+	['targeted --(dobj)--> members']
+
+	* entity-paths for event['struck']33_5ecbplus.xmlsent:9175
+	['struck --(nsubjpass)--> Horton']
+	['struck --(advcl)--> targeted', 'targeted --(nsubj)--> Lopez']
+	['struck --(advcl)--> targeted', 'targeted --(dobj)--> members']
+
+sentence #:gang member guilty in slay of brooklyn mom of 12 
+	[events]:[['slay'], ['guilty']]
+	[entities]:[['gang', 'member'], ['brooklyn', 'mom', 'of', '12']]
+R1076[member]
+|--(compou)--> R1076[gang]
+|--(dep)--> R1079[mom]
+                 |--(amod)--> *R1122[guilty]
+                 |                |--(nmod)--> *R1078[slay]
+                 |                                 |--(case)--> in
+                 |                                 |--(nmod)--> R1079[brooklyn]
+                 |                                                  |--(case)--> of
+                 |--(nmod)--> R1079[12]
+                                  |--(case)--> R1079[of]
+
+	* entity-paths for event['slay']33_5ecbplus.xmlsent:9173
+	['slay --(nmod)--> Brooklyn']
+
+	* entity-paths for event['guilty']33_5ecbplus.xmlsent:9173
+	['guilty --(nmod)--> slay', 'slay --(nmod)--> Brooklyn']
+
+sentence #:a gang member was convicted tuesday for claiming the life of a mother of 12 when he sprayed 13 bullets from a brooklyn rooftop in broad daylight . 
+	[events]:[['sprayed'], ['convicted'], ['claiming', 'the', 'life']]
+	[entities]:[['he'], ['bullets'], ['gang', 'member'], ['from', 'a', 'brooklyn', 'rooftop'], ['mother']]
+*R1123[convicted]
+|--(nsubjp)--> R1076[member]
+|                |--(det)--> a
+|                |--(compou)--> R1076[gang]
+|--(auxpas)--> was
+|--(nmod:t)--> tuesday
+|--(advcl)--> *R1078[claiming]
+|                |--(mark)--> for
+|                |--(dobj)--> *R1078[life]
+|                                 |--(det)--> *R1078[the]
+|                                 |--(nmod)--> R1079[mother]
+|                                 |                |--(case)--> of
+|                                 |                |--(det)--> a
+|                                 |                |--(nmod)--> 12
+|                                 |                                 |--(case)--> of
+|                                 |--(acl:re)--> *R1118[sprayed]
+|                                                  |--(advmod)--> when
+|                                                  |--(nsubj)--> R1076[he]
+|                                                  |--(dobj)--> R1087[bullets]
+|                                                  |                |--(nummod)--> 13
+|                                                  |--(nmod)--> R1110[rooftop]
+|                                                  |                |--(case)--> R1110[from]
+|                                                  |                |--(det)--> R1110[a]
+|                                                  |                |--(compou)--> R1110[brooklyn]
+|                                                  |--(nmod)--> daylight
+|                                                                   |--(case)--> in
+|                                                                   |--(amod)--> broad
+|--(punct)--> .
+
+	* entity-paths for event['sprayed']33_5ecbplus.xmlsent:9178
+	['sprayed --(nsubj)--> he']
+	['sprayed --(dobj)--> bullets']
+	['sprayed --(nmod)--> rooftop']
+
+	* entity-paths for event['convicted']33_5ecbplus.xmlsent:9178
+	['convicted --(nsubjpass)--> member']
+	['convicted --(advcl)--> claiming', 'claiming --(dobj)--> life', 'life --(nmod)--> mother']
+	['convicted --(advcl)--> claiming', 'claiming --(dobj)--> life', 'life --(acl:relcl)--> sprayed', 'sprayed --(nsubj)--> he']
+	['convicted --(advcl)--> claiming', 'claiming --(dobj)--> life', 'life --(acl:relcl)--> sprayed', 'sprayed --(dobj)--> bullets']
+	['convicted --(advcl)--> claiming', 'claiming --(dobj)--> life', 'life --(acl:relcl)--> sprayed', 'sprayed --(nmod)--> rooftop']
+
+	* entity-paths for event['claiming', 'the', 'life']33_5ecbplus.xmlsent:9178
+	['life --(nmod)--> mother']
+	['life --(acl:relcl)--> sprayed', 'sprayed --(nsubj)--> he']
+	['life --(acl:relcl)--> sprayed', 'sprayed --(dobj)--> bullets']
+	['life --(acl:relcl)--> sprayed', 'sprayed --(nmod)--> rooftop']
+
+sentence #:andrew lopez , 20 , was found guilty of slaying zurana horton , 34 , and wounding unique armstead , 32 , and cheanne mcknight , 11 , in october 2011 as he targeted rival gang members . 
+	[events]:[['found'], ['slaying'], ['targeted'], ['guilty'], ['wounding']]
+	[entities]:[['gang', 'members'], ['andrew', 'lopez'], ['zurana', 'horton'], ['unique', 'armstead'], ['in', 'october', '2011'], ['cheanne', 'mcknight'], ['he']]
+*R1123[found]
+|--(nsubjp)--> R1076[lopez]
+|                |--(compou)--> R1076[andrew]
+|                |--(punct)--> ,
+|                |--(amod)--> 20
+|                |--(punct)--> ,
+|--(auxpas)--> was
+|--(xcomp)--> *R1122[guilty]
+|                |--(nmod)--> R1079[horton]
+|                |                |--(case)--> of
+|                |                |--(compou)--> *R1078[slaying]
+|                |                |--(compou)--> R1079[zurana]
+|                |                |--(punct)--> ,
+|                |                |--(amod)--> 34
+|                |                |--(punct)--> ,
+|                |--(cc)--> and
+|                |--(conj)--> *R1111[wounding]
+|                                 |--(dobj)--> R1124[armstead]
+|                                 |                |--(amod)--> R1124[unique]
+|                                 |                |--(punct)--> ,
+|                                 |                |--(conj)--> 32
+|                                 |                |--(punct)--> ,
+|                                 |                |--(cc)--> and
+|                                 |                |--(conj)--> R1113[mcknight]
+|                                 |                                 |--(compou)--> R1113[cheanne]
+|                                 |                                 |--(punct)--> ,
+|                                 |                                 |--(amod)--> 11
+|                                 |                                 |--(punct)--> ,
+|                                 |                                 |--(nmod)--> R1086[october]
+|                                 |                                                  |--(case)--> R1086[in]
+|                                 |                                                  |--(nummod)--> R1086[2011]
+|                                 |--(advcl)--> *R1120[targeted]
+|                                                  |--(mark)--> as
+|                                                  |--(nsubj)--> R1076[he]
+|                                                  |--(dobj)--> R1121[members]
+|                                                                   |--(amod)--> rival
+|                                                                   |--(compou)--> R1121[gang]
+|--(punct)--> .
+
+	* entity-paths for event['found']33_5ecbplus.xmlsent:9179
+	['found --(nsubjpass)--> Lopez']
+	['found --(xcomp)--> guilty', 'guilty --(nmod)--> Horton']
+	['found --(xcomp)--> guilty', 'guilty --(conj)--> wounding', 'wounding --(dobj)--> Armstead']
+	['found --(xcomp)--> guilty', 'guilty --(conj)--> wounding', 'wounding --(advcl)--> targeted', 'targeted --(nsubj)--> he']
+	['found --(xcomp)--> guilty', 'guilty --(conj)--> wounding', 'wounding --(advcl)--> targeted', 'targeted --(dobj)--> members']
+
+	* entity-paths for event['slaying']33_5ecbplus.xmlsent:9179
+
+	* entity-paths for event['targeted']33_5ecbplus.xmlsent:9179
+	['targeted --(nsubj)--> he']
+	['targeted --(dobj)--> members']
+
+	* entity-paths for event['guilty']33_5ecbplus.xmlsent:9179
+	['guilty --(nmod)--> Horton']
+	['guilty --(conj)--> wounding', 'wounding --(dobj)--> Armstead']
+	['guilty --(conj)--> wounding', 'wounding --(advcl)--> targeted', 'targeted --(nsubj)--> he']
+	['guilty --(conj)--> wounding', 'wounding --(advcl)--> targeted', 'targeted --(dobj)--> members']
+
+	* entity-paths for event['wounding']33_5ecbplus.xmlsent:9179
+	['wounding --(dobj)--> Armstead']
+	['wounding --(advcl)--> targeted', 'targeted --(nsubj)--> he']
+	['wounding --(advcl)--> targeted', 'targeted --(dobj)--> members']
+
+sentence #:andrew lopez , 20 was found guilty in murder of zurana horton . 
+	[events]:[['murder'], ['found'], ['guilty']]
+	[entities]:[['andrew', 'lopez'], ['zurana', 'horton']]
+*R1123[found]
+|--(nsubjp)--> R1076[lopez]
+|                |--(compou)--> R1076[andrew]
+|                |--(punct)--> ,
+|                |--(amod)--> 20
+|--(auxpas)--> was
+|--(xcomp)--> *R1122[guilty]
+|--(nmod)--> *R1078[murder]
+|                |--(case)--> in
+|                |--(nmod)--> R1079[horton]
+|                                 |--(case)--> of
+|                                 |--(compou)--> R1079[zurana]
+|--(punct)--> .
+
+	* entity-paths for event['murder']33_5ecbplus.xmlsent:9174
+	['murder --(nmod)--> Horton']
+
+	* entity-paths for event['found']33_5ecbplus.xmlsent:9174
+	['found --(nsubjpass)--> Lopez']
+	['found --(nmod)--> murder', 'murder --(nmod)--> Horton']
+
+	* entity-paths for event['guilty']33_5ecbplus.xmlsent:9174

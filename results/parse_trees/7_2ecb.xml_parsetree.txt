@@ -1,0 +1,55 @@
+
+-----------------------------------------
+docid:7_2ecb.xml
+-----------------------------------------
+
+sentence #:wladimir klitschko defended his ibf heavyweight crown with ease after stopping american hasim rahman after 44 seconds of the seventh round of their contest at the sap arena in germany . 
+	[events]:[['contest'], ['round'], ['stopping'], ['defended']]
+	[entities]:[['hasim', 'rahman'], ['wladimir', 'klitschko'], ['crown'], ['ibf'], ['the', 'sap', 'arena', 'in', 'germany'], ['44', 'seconds']]
+*R1715[defended]
+|--(nsubj)--> R1716[klitschko]
+|                |--(compou)--> R1716[wladimir]
+|--(dobj)--> R1717[crown]
+|                |--(nmod:p)--> his
+|                |--(compou)--> R1718[ibf]
+|                |--(amod)--> heavyweight
+|--(nmod)--> ease
+|                |--(case)--> with
+|--(advcl)--> *R1719[stopping]
+|                |--(mark)--> after
+|                |--(dobj)--> R1720[rahman]
+|                |                |--(amod)--> american
+|                |                |--(compou)--> R1720[hasim]
+|                |--(nmod)--> R1732[seconds]
+|                |                |--(case)--> after
+|                |                |--(nummod)--> R1732[44]
+|                |                |--(nmod)--> *R1738[round]
+|                |                                 |--(case)--> of
+|                |                                 |--(det)--> the
+|                |                                 |--(amod)--> seventh
+|                |                                 |--(nmod)--> *R1733[contest]
+|                |                                                  |--(case)--> of
+|                |                                                  |--(nmod:p)--> their
+|                |--(nmod)--> R1722[arena]
+|                                 |--(case)--> at
+|                                 |--(det)--> R1722[the]
+|                                 |--(compou)--> R1722[sap]
+|                                 |--(nmod)--> R1722[germany]
+|                                                  |--(case)--> R1722[in]
+|--(punct)--> .
+
+	* entity-paths for event['contest']7_2ecb.xmlsent:14657
+
+	* entity-paths for event['round']7_2ecb.xmlsent:14657
+
+	* entity-paths for event['stopping']7_2ecb.xmlsent:14657
+	['stopping --(dobj)--> Rahman']
+	['stopping --(nmod)--> seconds']
+	['stopping --(nmod)--> Arena']
+
+	* entity-paths for event['defended']7_2ecb.xmlsent:14657
+	['defended --(nsubj)--> Klitschko']
+	['defended --(dobj)--> crown']
+	['defended --(advcl)--> stopping', 'stopping --(dobj)--> Rahman']
+	['defended --(advcl)--> stopping', 'stopping --(nmod)--> seconds']
+	['defended --(advcl)--> stopping', 'stopping --(nmod)--> Arena']

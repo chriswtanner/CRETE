@@ -1,0 +1,57 @@
+
+-----------------------------------------
+docid:41_1ecbplus.xml
+-----------------------------------------
+
+sentence #:breaking news : sudan bombs yida refugee camp in south sudan 
+	[events]:[['bombs']]
+	[entities]:[['sudan'], ['yida', 'refugee', 'camp', 'in', 'south', 'sudan']]
+breaking
+|--(dobj)--> news
+                 |--(punct)--> :
+                 |--(dep)--> R1444[camp]
+                                  |--(compou)--> R1443[sudan]
+                                  |--(compou)--> *R1442[bombs]
+                                  |--(compou)--> R1444[yida]
+                                  |--(compou)--> R1444[refugee]
+                                  |--(nmod)--> R1444[sudan]
+                                                   |--(case)--> R1444[in]
+                                                   |--(compou)--> R1444[south]
+
+	* entity-paths for event['bombs']41_1ecbplus.xmlsent:12155
+
+sentence #:the sudan armed forces , or saf , attacked a refugee camp in south sudan at 2 : 53 p . m . local time today . 
+	[events]:[['attacked']]
+	[entities]:[['refugee', 'camp', 'in', 'south', 'sudan'], ['sudan', 'armed', 'forces'], ['at', '2', ':', '53', 'p', '.', 'm', '.', 'local', 'time', 'today'], ['saf']]
+*R1442[attacked]
+|--(nsubj)--> R1443[forces]
+|                |--(det)--> the
+|                |--(compou)--> R1443[sudan]
+|                |--(compou)--> R1443[armed]
+|                |--(punct)--> ,
+|                |--(cc)--> or
+|                |--(conj)--> R1443[saf]
+|                |--(punct)--> ,
+|--(dobj)--> R1444[camp]
+|                |--(det)--> a
+|                |--(compou)--> R1444[refugee]
+|                |--(nmod)--> R1444[sudan]
+|                |                |--(case)--> R1444[in]
+|                |                |--(compou)--> R1444[south]
+|                |                |--(nmod)--> R1469[2]
+|                |                                 |--(case)--> R1469[at]
+|                |--(punct)--> R1469[:]
+|                |--(dep)--> R1469[p]
+|                                 |--(nummod)--> R1469[53]
+|                                 |--(punct)--> R1469[.]
+|                                 |--(dep)--> R1469[m]
+|                                 |--(punct)--> R1469[.]
+|                                 |--(nmod:t)--> R1469[time]
+|                                                  |--(amod)--> R1469[local]
+|--(nmod:t)--> R1469[today]
+|--(punct)--> .
+
+	* entity-paths for event['attacked']41_1ecbplus.xmlsent:12157
+	['attacked --(nsubj)--> Forces']
+	['attacked --(dobj)--> camp']
+	['attacked --(nmod:tmod)--> today']

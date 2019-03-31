@@ -1,0 +1,78 @@
+
+-----------------------------------------
+docid:20_7ecbplus.xml
+-----------------------------------------
+
+sentence #:the quake was centred near qeshm island , home to 200 , 000 people , the u . s . geological survey said . 
+	[events]:[['quake']]
+	[entities]:[['centred', 'near', 'qeshm', 'island']]
+R515[centred]
+|--(nsubjp)--> *R509[quake]
+|                |--(det)--> the
+|--(auxpas)--> was
+|--(nmod)--> R515[island]
+|                |--(case)--> R515[near]
+|                |--(compou)--> R515[qeshm]
+|                |--(punct)--> ,
+|                |--(appos)--> home
+|                |                |--(nmod)--> 200
+|                |                                 |--(case)--> to
+|                |--(punct)--> ,
+|                |--(appos)--> people
+|                |                |--(nummod)--> 000
+|                |--(punct)--> ,
+|                |--(appos)--> u
+|                |                |--(det)--> the
+|                |--(punct)--> .
+|                |--(dep)--> s
+|                |--(punct)--> .
+|                |--(acl:re)--> said
+|                                 |--(nsubj)--> survey
+|                                                  |--(compou)--> geological
+|--(punct)--> .
+
+	* entity-paths for event['quake']20_7ecbplus.xmlsent:3965
+
+sentence #:an earthquake with a magnitude of at least 5 . 9 hit southern iran on sunday , killing at least 10 people and injuring many others . 
+	[events]:[['hit'], ['killing'], ['earthquake'], ['injuring']]
+	[entities]:[['others'], ['on', 'sunday'], ['southern', 'iran'], ['people'], ['5', '.', '9']]
+*R504[killing]
+|--(nsubj)--> *R509[earthquake]
+|                |--(det)--> an
+|                |--(nmod)--> magnitude
+|                                 |--(case)--> with
+|                                 |--(det)--> a
+|                                 |--(acl)--> R525[iran]
+|                                                  |--(case)--> of
+|                                                  |--(dep)--> R534[5]
+|                                                  |                |--(dep)--> least
+|                                                  |                |                |--(case)--> at
+|                                                  |                |--(punct)--> R534[.]
+|                                                  |--(amod)--> R525[southern]
+|                                                  |                |--(compou)--> R534[9]
+|                                                  |                |--(nmod:n)--> *R524[hit]
+|                                                  |--(nmod)--> R512[sunday]
+|                                                                   |--(case)--> R512[on]
+|--(punct)--> ,
+|--(dobj)--> R505[people]
+|                |--(nummod)--> 10
+|                                 |--(nmod:n)--> least
+|                                                  |--(case)--> at
+|--(cc)--> and
+|--(conj)--> *R506[injuring]
+|                |--(dobj)--> R507[others]
+|                                 |--(amod)--> many
+|--(punct)--> .
+
+	* entity-paths for event['hit']20_7ecbplus.xmlsent:3964
+
+	* entity-paths for event['killing']20_7ecbplus.xmlsent:3964
+	['killing --(nsubj)--> earthquake', 'earthquake --(nmod)--> magnitude', 'magnitude --(acl)--> Iran']
+	['killing --(dobj)--> people']
+	['killing --(conj)--> injuring', 'injuring --(dobj)--> others']
+
+	* entity-paths for event['earthquake']20_7ecbplus.xmlsent:3964
+	['earthquake --(nmod)--> magnitude', 'magnitude --(acl)--> Iran']
+
+	* entity-paths for event['injuring']20_7ecbplus.xmlsent:3964
+	['injuring --(dobj)--> others']

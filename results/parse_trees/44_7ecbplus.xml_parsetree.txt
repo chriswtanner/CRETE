@@ -1,0 +1,82 @@
+
+-----------------------------------------
+docid:44_7ecbplus.xml
+-----------------------------------------
+
+sentence #:as part of its efforts to support energy - efficient computing , hp monday announced it has signed an agreement to acquire facilities consulting firm eyp mission critical facilities for an undisclosed sum . 
+	[events]:[['agreement'], ['undisclosed'], ['acquire'], ['announced'], ['signed'], ['consulting']]
+	[entities]:[['facilities'], ['sum'], ['it'], ['eyp', 'mission', 'critical', 'facilities'], ['monday'], ['hp'], ['its']]
+*R1578[announced]
+|--(nmod)--> part
+|                |--(case)--> as
+|                |--(nmod)--> efforts
+|                                 |--(case)--> of
+|                                 |--(nmod:p)--> R1577[its]
+|                                 |--(acl)--> support
+|                                                  |--(mark)--> to
+|                                                  |--(dobj)--> energy
+|                                                                   |--(punct)--> -
+|                                                                   |--(dep)--> computing
+|                                                                                    |--(amod)--> efficient
+|--(punct)--> ,
+|--(nsubj)--> R1579[monday]
+|                |--(compou)--> R1577[hp]
+|--(ccomp)--> *R1580[signed]
+|                |--(nsubj)--> R1577[it]
+|                |--(aux)--> has
+|                |--(dobj)--> *R1581[agreement]
+|                                 |--(det)--> an
+|                                 |--(acl)--> *R1582[acquire]
+|                                                  |--(mark)--> to
+|                                                  |--(dobj)--> R1590[facilities]
+|                                                  |--(xcomp)--> *R1584[consulting]
+|                                                                   |--(xcomp)--> R1583[facilities]
+|                                                                                    |--(nsubj)--> R1583[mission]
+|                                                                                    |                |--(amod)--> firm
+|                                                                                    |                |--(compou)--> R1583[eyp]
+|                                                                                    |--(amod)--> R1583[critical]
+|                                                                                    |--(nmod)--> R1596[sum]
+|                                                                                                     |--(case)--> for
+|                                                                                                     |--(det)--> an
+|                                                                                                     |--(amod)--> *R1593[undisclosed]
+|--(punct)--> .
+
+	* entity-paths for event['agreement']44_7ecbplus.xmlsent:13702
+	['agreement --(acl)--> acquire', 'acquire --(dobj)--> facilities']
+	['agreement --(acl)--> acquire', 'acquire --(xcomp)--> consulting', 'consulting --(xcomp)--> Facilities']
+
+	* entity-paths for event['undisclosed']44_7ecbplus.xmlsent:13702
+
+	* entity-paths for event['acquire']44_7ecbplus.xmlsent:13702
+	['acquire --(dobj)--> facilities']
+	['acquire --(xcomp)--> consulting', 'consulting --(xcomp)--> Facilities']
+
+	* entity-paths for event['announced']44_7ecbplus.xmlsent:13702
+	['announced --(nmod)--> part', 'part --(nmod)--> efforts', 'efforts --(nmod:poss)--> its']
+	['announced --(nsubj)--> Monday']
+	['announced --(ccomp)--> signed', 'signed --(nsubj)--> it']
+	['announced --(ccomp)--> signed', 'signed --(dobj)--> agreement', 'agreement --(acl)--> acquire', 'acquire --(dobj)--> facilities']
+	['announced --(ccomp)--> signed', 'signed --(dobj)--> agreement', 'agreement --(acl)--> acquire', 'acquire --(xcomp)--> consulting', 'consulting --(xcomp)--> Facilities']
+
+	* entity-paths for event['signed']44_7ecbplus.xmlsent:13702
+	['signed --(nsubj)--> it']
+	['signed --(dobj)--> agreement', 'agreement --(acl)--> acquire', 'acquire --(dobj)--> facilities']
+	['signed --(dobj)--> agreement', 'agreement --(acl)--> acquire', 'acquire --(xcomp)--> consulting', 'consulting --(xcomp)--> Facilities']
+
+	* entity-paths for event['consulting']44_7ecbplus.xmlsent:13702
+	['consulting --(xcomp)--> Facilities']
+
+sentence #:hp to acquire green consultancy eyp 
+	[events]:[['green', 'consultancy'], ['acquire']]
+	[entities]:[['hp'], ['eyp']]
+R1577[hp]
+|--(dep)--> *R1582[acquire]
+                 |--(mark)--> to
+                 |--(dobj)--> R1583[eyp]
+                                  |--(amod)--> *R1584[green]
+                                  |--(compou)--> *R1584[consultancy]
+
+	* entity-paths for event['green', 'consultancy']44_7ecbplus.xmlsent:13699
+
+	* entity-paths for event['acquire']44_7ecbplus.xmlsent:13699
+	['acquire --(dobj)--> EYP']

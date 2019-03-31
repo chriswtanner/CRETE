@@ -1,0 +1,55 @@
+
+-----------------------------------------
+docid:3_4ecb.xml
+-----------------------------------------
+
+sentence #:fulton courthouse killer brian nichols was sentenced saturday morning to seven life sentences and four sentences of life without parole plus 485 years for the crimes he committed on march 11 , 2005 , that stunned metro atlanta and the nation . 
+	[events]:[['sentenced']]
+	[entities]:[['saturday', 'morning'], ['sentences'], ['he'], ['brian', 'nichols'], ['sentences']]
+committed
+|--(dep)--> *R906[sentenced]
+|                |--(nsubjp)--> R903[nichols]
+|                |                |--(compou)--> fulton
+|                |                |--(compou)--> courthouse
+|                |                |--(compou)--> killer
+|                |                |--(compou)--> R903[brian]
+|                |--(auxpas)--> was
+|                |--(nmod:t)--> R936[morning]
+|                |                |--(compou)--> R936[saturday]
+|                |--(nmod)--> R909[sentences]
+|                                 |--(case)--> to
+|                                 |--(nummod)--> seven
+|                                 |--(compou)--> life
+|                                 |--(cc)--> and
+|                                 |--(conj)--> R909[sentences]
+|                                                  |--(nummod)--> four
+|                                                  |--(nmod)--> life
+|                                                                   |--(case)--> of
+|                                                                   |--(nmod)--> parole
+|                                                                                    |--(case)--> without
+|                                                                                    |--(cc)--> plus
+|                                                                                    |--(conj)--> years
+|                                                                                                     |--(nummod)--> 485
+|                                                                                                     |--(case)--> for
+|                                                                                                     |--(dep)--> crimes
+|                                                                                                                      |--(det)--> the
+|--(nsubj)--> R903[he]
+|--(nmod)--> march
+|                |--(case)--> on
+|                |--(nummod)--> 11
+|                |--(punct)--> ,
+|                |--(nummod)--> 2005
+|                |--(punct)--> ,
+|                |--(acl:re)--> stunned
+|                                 |--(nsubj)--> that
+|                                 |--(dobj)--> atlanta
+|                                                  |--(compou)--> metro
+|                                                  |--(cc)--> and
+|                                                  |--(conj)--> nation
+|                                                                   |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['sentenced']3_4ecb.xmlsent:7472
+	['sentenced --(nsubjpass)--> Nichols']
+	['sentenced --(nmod:tmod)--> morning']
+	['sentenced --(nmod)--> sentences']

@@ -1,0 +1,75 @@
+
+-----------------------------------------
+docid:21_6ecb.xml
+-----------------------------------------
+
+sentence #:police have arrested a man in the hit -and-run death of a woman in the parking lot crosswalk at sam 's club in bloomington . 
+	[events]:[['death'], ['arrested']]
+	[entities]:[['woman'], ['in', 'the', 'parking', 'lot', 'crosswalk', 'at', 'sam', "'s", 'club', 'in', 'bloomington'], ['police'], ['man']]
+*R587[arrested]
+|--(nsubj)--> R563[police]
+|--(aux)--> have
+|--(dobj)--> R539[man]
+|                |--(det)--> a
+|                |--(nmod)--> hit
+|                |                |--(case)--> in
+|                |                |--(det)--> the
+|                |--(punct)--> -and-run
+|                |--(dep)--> *R542[death]
+|                                 |--(amod)--> -and-run
+|                                 |--(nmod)--> R543[woman]
+|                                                  |--(case)--> of
+|                                                  |--(det)--> a
+|                                                  |--(nmod)--> R544[crosswalk]
+|                                                                   |--(case)--> R544[in]
+|                                                                   |--(det)--> R544[the]
+|                                                                   |--(compou)--> R544[parking]
+|                                                                   |--(compou)--> R544[lot]
+|--(nmod)--> R544[club]
+|                |--(case)--> R544[at]
+|                |--(nmod:p)--> R544[sam]
+|                |                |--(case)--> R544['s]
+|                |--(nmod)--> R544[bloomington]
+|                                 |--(case)--> R544[in]
+|--(punct)--> .
+
+	* entity-paths for event['death']21_6ecb.xmlsent:4264
+	['death --(nmod)--> woman']
+
+	* entity-paths for event['arrested']21_6ecb.xmlsent:4264
+	['arrested --(nsubj)--> Police']
+	['arrested --(dobj)--> man']
+	['arrested --(nmod)--> Club']
+
+sentence #:66-year-old luann johnson , of burnsville , was hit while walking in the crosswalk around 7 p.m. wednesday night . 
+	[events]:[['hit'], ['walking']]
+	[entities]:[['luann', 'johnson'], ['around', '7', 'p.m.', 'wednesday', 'night'], ['in', 'the', 'crosswalk']]
+*R541[hit]
+|--(nsubjp)--> R543[johnson]
+|                |--(amod)--> 66-year-old
+|                |--(compou)--> R543[luann]
+|                |--(punct)--> ,
+|                |--(nmod)--> burnsville
+|                |                |--(case)--> of
+|                |--(punct)--> ,
+|--(auxpas)--> was
+|--(advcl)--> *R564[walking]
+|                |--(mark)--> while
+|                |--(nmod)--> R544[crosswalk]
+|                |                |--(case)--> R544[in]
+|                |                |--(det)--> R544[the]
+|                |                |--(nmod)--> R574[p.m.]
+|                |                |                |--(case)--> R574[around]
+|                |                |                |--(nummod)--> R574[7]
+|                |                |--(nmod:t)--> R574[wednesday]
+|                |--(nmod:t)--> R574[night]
+|--(punct)--> .
+
+	* entity-paths for event['hit']21_6ecb.xmlsent:4265
+	['hit --(nsubjpass)--> Johnson']
+	['hit --(advcl)--> walking', 'walking --(nmod)--> crosswalk']
+	['hit --(advcl)--> walking', 'walking --(nmod:tmod)--> night']
+
+	* entity-paths for event['walking']21_6ecb.xmlsent:4265
+	['walking --(nmod)--> crosswalk']
+	['walking --(nmod:tmod)--> night']

@@ -1,0 +1,153 @@
+
+-----------------------------------------
+docid:3_2ecbplus.xml
+-----------------------------------------
+
+sentence #:arcade joseph comeaux jr . , 49 , is serving a life sentence for several charges -- including indecency with a child -- and was en route from the estelle unit in huntsville , texas , to the stiles unit in beaumont , texas , when he escaped just after 9 a . m . 
+	[events]:[['escaped'], ['indecency'], ['charges'], ['sentence'], ['serving']]
+	[entities]:[['child'], ['he'], ['just', 'after', '9', 'a', '.', 'm'], ['the', 'stiles', 'unit', 'in', 'beaumont', ',', 'texas'], ['the', 'estelle', 'unit', 'in', 'huntsville', ',', 'texas'], ['arcade', 'joseph', 'comeaux', 'jr']]
+*R923[serving]
+|--(nsubj)--> R890[jr]
+|                |--(compou)--> R890[arcade]
+|                |--(compou)--> R890[joseph]
+|                |--(compou)--> R890[comeaux]
+|                |--(punct)--> .
+|                |--(punct)--> ,
+|                |--(amod)--> 49
+|                |--(punct)--> ,
+|--(aux)--> is
+|--(dobj)--> *R912[sentence]
+|                |--(det)--> a
+|                |--(compou)--> life
+|                |--(nmod)--> *R924[charges]
+|                                 |--(case)--> for
+|                                 |--(amod)--> several
+|                                 |--(nmod)--> *R925[indecency]
+|                                                  |--(punct)--> --
+|                                                  |--(case)--> including
+|                                                  |--(nmod)--> R926[child]
+|                                                  |                |--(case)--> with
+|                                                  |                |--(det)--> a
+|                                                  |--(punct)--> --
+|--(cc)--> and
+|--(conj)--> R901[unit]
+|                |--(cop)--> was
+|                |--(advmod)--> route
+|                |                |--(case)--> en
+|                |                |--(nmod)--> R927[unit]
+|                |                                 |--(case)--> from
+|                |                                 |--(det)--> R927[the]
+|                |                                 |--(compou)--> R927[estelle]
+|                |                                 |--(nmod)--> R927[texas]
+|                |                                                  |--(case)--> R927[in]
+|                |                                                  |--(compou)--> R927[huntsville]
+|                |                                                  |--(punct)--> R927[,]
+|                |                                                  |--(punct)--> ,
+|                |--(case)--> to
+|                |--(det)--> R901[the]
+|                |--(compou)--> R901[stiles]
+|                |--(nmod)--> R901[texas]
+|                |                |--(case)--> R901[in]
+|                |                |--(compou)--> R901[beaumont]
+|                |                |--(punct)--> R901[,]
+|                |--(punct)--> ,
+|                |--(acl:re)--> *R893[escaped]
+|                |                |--(advmod)--> when
+|                |                |--(nsubj)--> R890[he]
+|                |                |--(advmod)--> R914[just]
+|                |                |--(nmod)--> R914[9]
+|                |                                 |--(case)--> R914[after]
+|                |                                 |--(dep)--> R914[a]
+|                |--(punct)--> R914[.]
+|--(dobj)--> R914[m]
+|--(punct)--> .
+
+	* entity-paths for event['escaped']3_2ecbplus.xmlsent:7449
+	['escaped --(nsubj)--> he']
+	['escaped --(advmod)--> just']
+	['escaped --(nmod)--> 9']
+
+	* entity-paths for event['indecency']3_2ecbplus.xmlsent:7449
+	['indecency --(nmod)--> child']
+
+	* entity-paths for event['charges']3_2ecbplus.xmlsent:7449
+	['charges --(nmod)--> indecency', 'indecency --(nmod)--> child']
+
+	* entity-paths for event['sentence']3_2ecbplus.xmlsent:7449
+	['sentence --(nmod)--> charges', 'charges --(nmod)--> indecency', 'indecency --(nmod)--> child']
+
+	* entity-paths for event['serving']3_2ecbplus.xmlsent:7449
+	['serving --(nsubj)--> Jr']
+	['serving --(dobj)--> sentence', 'sentence --(nmod)--> charges', 'charges --(nmod)--> indecency', 'indecency --(nmod)--> child']
+	['serving --(conj)--> Unit']
+	['serving --(dobj)--> m']
+
+sentence #:a convicted child molester who was supposedly confined to a wheelchair overpowered two prison guards today , handcuffed them , stole their weapons and walked off wearing one of their uniforms . 
+	[events]:[['wearing'], ['stole'], ['confined'], ['walked'], ['handcuffed']]
+	[entities]:[['today'], ['weapons'], ['them'], ['guards'], ['molester'], ['uniforms'], ['wheelchair']]
+overpowered
+|--(nsubj)--> R890[molester]
+|                |--(det)--> a
+|                |--(amod)--> convicted
+|                |--(compou)--> child
+|                |--(acl:re)--> *R928[confined]
+|                                 |--(nsubjp)--> who
+|                                 |--(auxpas)--> was
+|                                 |--(advmod)--> supposedly
+|                                 |--(nmod)--> R929[wheelchair]
+|                                                  |--(case)--> to
+|                                                  |--(det)--> a
+|--(dobj)--> R900[guards]
+|                |--(nummod)--> two
+|                |--(compou)--> prison
+|--(nmod:t)--> R914[today]
+|--(punct)--> ,
+|--(conj)--> *R920[handcuffed]
+|                |--(dobj)--> R900[them]
+|--(punct)--> ,
+|--(conj)--> *R918[stole]
+|                |--(dobj)--> R919[weapons]
+|                                 |--(nmod:p)--> their
+|--(cc)--> and
+|--(conj)--> *R893[walked]
+|                |--(compou)--> off
+|                |--(xcomp)--> *R930[wearing]
+|                                 |--(dobj)--> one
+|                                                  |--(nmod)--> R916[uniforms]
+|                                                                   |--(case)--> of
+|                                                                   |--(nmod:p)--> their
+|--(punct)--> .
+
+	* entity-paths for event['wearing']3_2ecbplus.xmlsent:7448
+	['wearing --(dobj)--> one', 'one --(nmod)--> uniforms']
+
+	* entity-paths for event['stole']3_2ecbplus.xmlsent:7448
+	['stole --(dobj)--> weapons']
+
+	* entity-paths for event['confined']3_2ecbplus.xmlsent:7448
+	['confined --(nmod)--> wheelchair']
+
+	* entity-paths for event['walked']3_2ecbplus.xmlsent:7448
+	['walked --(xcomp)--> wearing', 'wearing --(dobj)--> one', 'one --(nmod)--> uniforms']
+
+	* entity-paths for event['handcuffed']3_2ecbplus.xmlsent:7448
+	['handcuffed --(dobj)--> them']
+
+sentence #:convicted child molestor arcade joseph comeaux jr . on the lam in texas 
+	[events]:[['on', 'the', 'lam']]
+	[entities]:[['arcade', 'joseph', 'comeaux', 'jr']]
+molestor
+|--(amod)--> convicted
+|--(compou)--> child
+|--(dep)--> R890[jr]
+                 |--(compou)--> R890[arcade]
+                 |--(compou)--> R890[joseph]
+                 |--(compou)--> R890[comeaux]
+                 |--(punct)--> .
+                 |--(acl:re)--> texas
+                                  |--(nmod)--> *R893[lam]
+                                  |                |--(case)--> *R893[on]
+                                  |                |--(det)--> *R893[the]
+                                  |--(case)--> in
+
+	* entity-paths for event['on', 'the', 'lam']3_2ecbplus.xmlsent:7446

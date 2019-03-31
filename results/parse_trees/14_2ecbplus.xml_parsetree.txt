@@ -1,0 +1,48 @@
+
+-----------------------------------------
+docid:14_2ecbplus.xml
+-----------------------------------------
+
+sentence #:waitrose wellington fire : man denies arson 
+	[events]:[['arson'], ['fire']]
+	[entities]:[['waitrose', 'wellington'], ['man']]
+*R302[fire]
+|--(compou)--> R303[waitrose]
+|--(compou)--> R303[wellington]
+|--(punct)--> :
+|--(dep)--> R311[man]
+                 |--(acl:re)--> denies
+                                  |--(dobj)--> *R312[arson]
+
+	* entity-paths for event['arson']14_2ecbplus.xmlsent:1709
+
+	* entity-paths for event['fire']14_2ecbplus.xmlsent:1709
+	['fire --(compound)--> Waitrose']
+	['fire --(compound)--> Wellington']
+	['fire --(dep)--> Man']
+
+sentence #:a man has denied arson following a fire at a somerset supermarket early on sunday . 
+	[events]:[['arson'], ['fire']]
+	[entities]:[['man'], ['a', 'somerset', 'supermarket'], ['early', 'on', 'sunday']]
+denied
+|--(nsubj)--> R311[man]
+|                |--(det)--> a
+|--(aux)--> has
+|--(dobj)--> *R312[arson]
+|                |--(nmod)--> *R302[fire]
+|                                 |--(case)--> following
+|                                 |--(det)--> a
+|                                 |--(nmod)--> R303[supermarket]
+|                                                  |--(case)--> at
+|                                                  |--(det)--> R303[a]
+|                                                  |--(compou)--> R303[somerset]
+|                                                  |--(advmod)--> R304[early]
+|                                                                   |--(nmod)--> R304[sunday]
+|                                                                                    |--(case)--> R304[on]
+|--(punct)--> .
+
+	* entity-paths for event['arson']14_2ecbplus.xmlsent:1710
+	['arson --(nmod)--> fire', 'fire --(nmod)--> supermarket']
+
+	* entity-paths for event['fire']14_2ecbplus.xmlsent:1710
+	['fire --(nmod)--> supermarket']

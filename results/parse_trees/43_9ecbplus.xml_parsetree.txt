@@ -1,0 +1,82 @@
+
+-----------------------------------------
+docid:43_9ecbplus.xml
+-----------------------------------------
+
+sentence #:amd has completed its acquisition of seamicro as part of its strategy to regain lost server market share from intel and better position itself against future competition from arm - based players such as nvidia . 
+	[events]:[['strategy'], ['regain', 'share'], ['acquisition'], ['market']]
+	[entities]:[['itself'], ['its'], ['amd'], ['its'], ['server'], ['seamicro'], ['intel']]
+completed
+|--(nsubj)--> R1547[amd]
+|--(aux)--> has
+|--(dobj)--> *R1546[acquisition]
+|                |--(nmod:p)--> R1547[its]
+|                |--(nmod)--> R1549[seamicro]
+|                                 |--(case)--> of
+|--(nmod)--> part
+|                |--(case)--> as
+|                |--(nmod)--> *R1570[strategy]
+|                                 |--(case)--> of
+|                                 |--(nmod:p)--> R1547[its]
+|                                 |--(acl)--> *R1557[regain]
+|                                                  |--(mark)--> to
+|                                                  |--(dobj)--> *R1557[share]
+|                                                                   |--(amod)--> lost
+|                                                                   |--(compou)--> R1559[server]
+|                                                                   |--(compou)--> *R1556[market]
+|                                                                   |--(nmod)--> R1426[intel]
+|                                                                   |                |--(case)--> from
+|                                                                   |--(cc)--> and
+|                                                                   |--(conj)--> position
+|                                                                                    |--(amod)--> better
+|                                                                                    |--(advmod)--> R1547[itself]
+|                                                                                    |--(nmod)--> competition
+|                                                                                    |                |--(case)--> against
+|                                                                                    |                |--(amod)--> future
+|                                                                                    |                |--(nmod)--> arm
+|                                                                                    |                                 |--(case)--> from
+|                                                                                    |--(punct)--> -
+|                                                                                    |--(dep)--> players
+|                                                                                                     |--(amod)--> based
+|                                                                                                     |--(nmod)--> nvidia
+|                                                                                                                      |--(case)--> such
+|                                                                                                                                       |--(mwe)--> as
+|--(punct)--> .
+
+	* entity-paths for event['strategy']43_9ecbplus.xmlsent:13404
+	['strategy --(nmod:poss)--> its']
+	['strategy --(acl)--> regain', 'regain --(dobj)--> share', 'share --(compound)--> server']
+	['strategy --(acl)--> regain', 'regain --(dobj)--> share', 'share --(nmod)--> Intel']
+	['strategy --(acl)--> regain', 'regain --(dobj)--> share', 'share --(conj)--> position', 'position --(advmod)--> itself']
+
+	* entity-paths for event['regain', 'share']43_9ecbplus.xmlsent:13404
+	['share --(compound)--> server']
+	['share --(nmod)--> Intel']
+	['share --(conj)--> position', 'position --(advmod)--> itself']
+
+	* entity-paths for event['acquisition']43_9ecbplus.xmlsent:13404
+	['acquisition --(nmod:poss)--> its']
+	['acquisition --(nmod)--> SeaMicro']
+
+	* entity-paths for event['market']43_9ecbplus.xmlsent:13404
+
+sentence #:amd shelled out $334 million for the acquisition of seamicro . 
+	[events]:[['shelled', 'out'], ['acquisition']]
+	[entities]:[['amd'], ['seamicro'], ['$334', 'million']]
+*R1567[shelled]
+|--(nsubj)--> R1547[amd]
+|--(compou)--> *R1567[out]
+|--(dobj)--> R1555[$334]
+|                |--(nummod)--> R1555[million]
+|                                 |--(compou)--> R1555[$334]
+|--(nmod)--> *R1546[acquisition]
+|                |--(case)--> for
+|                |--(det)--> the
+|                |--(nmod)--> R1549[seamicro]
+|                                 |--(case)--> of
+|--(punct)--> .
+
+	* entity-paths for event['shelled', 'out']43_9ecbplus.xmlsent:13407
+
+	* entity-paths for event['acquisition']43_9ecbplus.xmlsent:13407
+	['acquisition --(nmod)--> SeaMicro']

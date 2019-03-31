@@ -1,0 +1,51 @@
+
+-----------------------------------------
+docid:25_9ecbplus.xml
+-----------------------------------------
+
+sentence #:pierre thomas , the saints' leading rusher in 2009 , was put on injured reserve , the team announced wednesday . 
+	[events]:[['injured', 'reserve'], ['put']]
+	[entities]:[['pierre', 'thomas'], ["saints'"], ['team'], ['wednesday'], ['rusher']]
+announced
+|--(ccomp)--> *R715[put]
+|                |--(nsubjp)--> R716[thomas]
+|                |                |--(compou)--> R716[pierre]
+|                |                |--(punct)--> ,
+|                |                |--(appos)--> R716[rusher]
+|                |                |                |--(nmod:p)--> R706[saints']
+|                |                |                |                |--(det)--> the
+|                |                |                |                |--(case)--> R706[saints']
+|                |                |                |--(amod)--> leading
+|                |                |                |--(nmod)--> 2009
+|                |                |                                 |--(case)--> in
+|                |                |--(punct)--> ,
+|                |--(auxpas)--> was
+|                |--(nmod)--> *R717[reserve]
+|                                 |--(case)--> on
+|                                 |--(amod)--> *R717[injured]
+|--(punct)--> ,
+|--(nsubj)--> R706[team]
+|                |--(det)--> the
+|--(nmod:t)--> R714[wednesday]
+|--(punct)--> .
+
+	* entity-paths for event['injured', 'reserve']25_9ecbplus.xmlsent:5256
+
+	* entity-paths for event['put']25_9ecbplus.xmlsent:5256
+	['put --(nsubjpass)--> Thomas']
+
+sentence #:pierre thomas placed on injured reserve 
+	[events]:[['injured', 'reserve'], ['placed']]
+	[entities]:[['pierre', 'thomas']]
+*R715[placed]
+|--(compou)--> R716[pierre]
+|--(compou)--> R716[thomas]
+|--(nmod)--> *R717[reserve]
+                 |--(case)--> on
+                 |--(compou)--> *R717[injured]
+
+	* entity-paths for event['injured', 'reserve']25_9ecbplus.xmlsent:5254
+
+	* entity-paths for event['placed']25_9ecbplus.xmlsent:5254
+	['Placed --(compound)--> Pierre']
+	['Placed --(compound)--> Thomas']

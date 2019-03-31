@@ -1,0 +1,79 @@
+
+-----------------------------------------
+docid:21_11ecbplus.xml
+-----------------------------------------
+
+sentence #:driver charged in fatal queens hit & run 
+	[events]:[['hit'], ['charged'], ['run']]
+	[entities]:[['driver'], ['queens']]
+*R556[hit]
+|--(nsubj)--> R548[driver]
+|                |--(amod)--> *R557[charged]
+|                                 |--(nmod)--> R549[queens]
+|                                                  |--(case)--> in
+|                                                  |--(amod)--> fatal
+|--(xcomp)--> *R551[run]
+                 |--(nsubj)--> &
+
+	* entity-paths for event['hit']21_11ecbplus.xmlsent:4051
+	['Hit --(nsubj)--> Driver']
+
+	* entity-paths for event['charged']21_11ecbplus.xmlsent:4051
+	['Charged --(nmod)--> Queens']
+
+	* entity-paths for event['run']21_11ecbplus.xmlsent:4051
+
+sentence #:a driver has been charged with dwi and criminally negligent homicide after police say he struck and killed a woman in queens last night . 
+	[events]:[['say'], ['charged'], ['struck'], ['homicide'], ['killed'], ['dwi']]
+	[entities]:[['last', 'night'], ['woman'], ['in', 'queens'], ['police'], ['driver'], ['he']]
+*R557[charged]
+|--(nsubjp)--> R548[driver]
+|                |--(det)--> a
+|--(aux)--> has
+|--(auxpas)--> been
+|--(nmod)--> *R558[dwi]
+|                |--(case)--> with
+|                |--(cc)--> and
+|                |--(conj)--> *R559[homicide]
+|                                 |--(amod)--> negligent
+|                                                  |--(advmod)--> criminally
+|--(advcl)--> *R560[say]
+|                |--(mark)--> after
+|                |--(nsubj)--> R561[police]
+|                |--(ccomp)--> *R556[struck]
+|                                 |--(nsubj)--> R548[he]
+|                                 |--(cc)--> and
+|                                 |--(conj)--> *R546[killed]
+|                                                  |--(dobj)--> R545[woman]
+|                                                  |                |--(det)--> a
+|                                                  |                |--(nmod)--> R549[queens]
+|                                                  |                                 |--(case)--> R549[in]
+|                                                  |--(nmod:t)--> R550[night]
+|                                                                   |--(amod)--> R550[last]
+|--(punct)--> .
+
+	* entity-paths for event['say']21_11ecbplus.xmlsent:4052
+	['say --(nsubj)--> police']
+	['say --(ccomp)--> struck', 'struck --(nsubj)--> he']
+	['say --(ccomp)--> struck', 'struck --(conj)--> killed', 'killed --(dobj)--> woman']
+	['say --(ccomp)--> struck', 'struck --(conj)--> killed', 'killed --(nmod:tmod)--> night']
+
+	* entity-paths for event['charged']21_11ecbplus.xmlsent:4052
+	['charged --(nsubjpass)--> driver']
+	['charged --(advcl)--> say', 'say --(nsubj)--> police']
+	['charged --(advcl)--> say', 'say --(ccomp)--> struck', 'struck --(nsubj)--> he']
+	['charged --(advcl)--> say', 'say --(ccomp)--> struck', 'struck --(conj)--> killed', 'killed --(dobj)--> woman']
+	['charged --(advcl)--> say', 'say --(ccomp)--> struck', 'struck --(conj)--> killed', 'killed --(nmod:tmod)--> night']
+
+	* entity-paths for event['struck']21_11ecbplus.xmlsent:4052
+	['struck --(nsubj)--> he']
+	['struck --(conj)--> killed', 'killed --(dobj)--> woman']
+	['struck --(conj)--> killed', 'killed --(nmod:tmod)--> night']
+
+	* entity-paths for event['homicide']21_11ecbplus.xmlsent:4052
+
+	* entity-paths for event['killed']21_11ecbplus.xmlsent:4052
+	['killed --(dobj)--> woman']
+	['killed --(nmod:tmod)--> night']
+
+	* entity-paths for event['dwi']21_11ecbplus.xmlsent:4052

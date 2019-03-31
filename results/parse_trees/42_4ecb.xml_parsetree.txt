@@ -1,0 +1,46 @@
+
+-----------------------------------------
+docid:42_4ecb.xml
+-----------------------------------------
+
+sentence #:t-mobile usa , inc. and research in motion today announced that t-mobile will offer the blackberry curve 8900 to customers in february . 
+	[events]:[['offer'], ['announced']]
+	[entities]:[['research', 'in', 'motion'], ['t-mobile'], ['blackberry', 'curve', '8900'], ['in', 'february'], ['today'], ['t-mobile', 'usa', ',', 'inc.'], ['customers']]
+*R1518[announced]
+|--(nsubj)--> R1517[usa]
+|                |--(compou)--> R1517[t-mobile]
+|                |--(punct)--> R1517[,]
+|                |--(conj)--> R1517[inc.]
+|                |--(cc)--> and
+|                |--(conj)--> R1532[research]
+|--(nmod)--> R1532[motion]
+|                |--(case)--> R1532[in]
+|--(nmod:t)--> R1531[today]
+|--(ccomp)--> *R1519[offer]
+|                |--(mark)--> that
+|                |--(nsubj)--> R1517[t-mobile]
+|                |--(aux)--> will
+|                |--(iobj)--> R1520[curve]
+|                |                |--(det)--> the
+|                |                |--(compou)--> R1520[blackberry]
+|                |--(dobj)--> R1520[8900]
+|                |--(nmod)--> R1541[customers]
+|                                 |--(case)--> to
+|                                 |--(nmod)--> R1521[february]
+|                                                  |--(case)--> R1521[in]
+|--(punct)--> .
+
+	* entity-paths for event['offer']42_4ecb.xmlsent:12763
+	['offer --(nsubj)--> T-Mobile']
+	['offer --(iobj)--> Curve']
+	['offer --(dobj)--> 8900']
+	['offer --(nmod)--> customers']
+
+	* entity-paths for event['announced']42_4ecb.xmlsent:12763
+	['announced --(nsubj)--> USA']
+	['announced --(nmod)--> Motion']
+	['announced --(nmod:tmod)--> today']
+	['announced --(ccomp)--> offer', 'offer --(nsubj)--> T-Mobile']
+	['announced --(ccomp)--> offer', 'offer --(iobj)--> Curve']
+	['announced --(ccomp)--> offer', 'offer --(dobj)--> 8900']
+	['announced --(ccomp)--> offer', 'offer --(nmod)--> customers']

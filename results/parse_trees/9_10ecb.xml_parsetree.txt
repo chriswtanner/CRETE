@@ -1,0 +1,24 @@
+
+-----------------------------------------
+docid:9_10ecb.xml
+-----------------------------------------
+
+sentence #:the bush administration is reducing protections for endangered animals and plants . 
+	[events]:[['reducing']]
+	[entities]:[['animals'], ['bush', 'administration'], ['plants']]
+*R1794[reducing]
+|--(nsubj)--> R1795[administration]
+|                |--(det)--> the
+|                |--(compou)--> R1795[bush]
+|--(aux)--> is
+|--(dobj)--> protections
+|                |--(nmod)--> R1796[animals]
+|                                 |--(case)--> for
+|                                 |--(amod)--> endangered
+|                                 |--(cc)--> and
+|                                 |--(conj)--> R1797[plants]
+|--(punct)--> .
+
+	* entity-paths for event['reducing']9_10ecb.xmlsent:15278
+	['reducing --(nsubj)--> administration']
+	['reducing --(dobj)--> protections', 'protections --(nmod)--> animals']

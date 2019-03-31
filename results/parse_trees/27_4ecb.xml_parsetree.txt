@@ -1,0 +1,45 @@
+
+-----------------------------------------
+docid:27_4ecb.xml
+-----------------------------------------
+
+sentence #:microsoft has released an emergency security update to fix the vulnerability in internet explorer that has seen the computers of at least two million users hacked . 
+	[events]:[['released'], ['hacked'], ['fix']]
+	[entities]:[['users'], ['internet', 'explorer'], ['update'], ['that'], ['computers'], ['vulnerability'], ['microsoft']]
+*R763[released]
+|--(nsubj)--> R764[microsoft]
+|--(aux)--> has
+|--(ccomp)--> R765[update]
+|                |--(nsubj)--> security
+|                |                |--(det)--> an
+|                |                |--(compou)--> emergency
+|                |--(xcomp)--> *R782[fix]
+|                                 |--(mark)--> to
+|                                 |--(dobj)--> R767[vulnerability]
+|                                 |                |--(det)--> the
+|                                 |--(nmod)--> R768[explorer]
+|                                                  |--(case)--> in
+|                                                  |--(compou)--> R768[internet]
+|                                                  |--(acl:re)--> seen
+|                                                                   |--(nsubj)--> R767[that]
+|                                                                   |--(aux)--> has
+|                                                                   |--(dobj)--> R771[computers]
+|                                                                                    |--(det)--> the
+|                                                                                    |--(nmod)--> R789[users]
+|                                                                                                     |--(case)--> of
+|                                                                                                     |--(nummod)--> million
+|                                                                                                     |                |--(nmod:n)--> least
+|                                                                                                     |                |                |--(case)--> at
+|                                                                                                     |                |--(compou)--> two
+|                                                                                                     |--(acl)--> *R784[hacked]
+|--(punct)--> .
+
+	* entity-paths for event['released']27_4ecb.xmlsent:5889
+	['released --(nsubj)--> Microsoft']
+	['released --(ccomp)--> update']
+
+	* entity-paths for event['hacked']27_4ecb.xmlsent:5889
+
+	* entity-paths for event['fix']27_4ecb.xmlsent:5889
+	['fix --(dobj)--> vulnerability']
+	['fix --(nmod)--> Explorer']

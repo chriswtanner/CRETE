@@ -1,0 +1,54 @@
+
+-----------------------------------------
+docid:13_6ecbplus.xml
+-----------------------------------------
+
+sentence #:the old matanuska maid dairy building in palmer was nearly destroyed by a fire early tuesday morning , according to palmer officials . 
+	[events]:[['according', 'to'], ['fire'], ['destroyed']]
+	[entities]:[['matanuska', 'maid', 'dairy', 'building'], ['palmer'], ['officials'], ['early', 'tuesday', 'morning'], ['in', 'palmer']]
+*R264[destroyed]
+|--(nsubjp)--> R265[building]
+|                |--(det)--> the
+|                |--(amod)--> old
+|                |--(compou)--> R265[matanuska]
+|                |--(compou)--> R265[maid]
+|                |--(compou)--> R265[dairy]
+|                |--(nmod)--> R266[palmer]
+|                                 |--(case)--> R266[in]
+|--(auxpas)--> was
+|--(advmod)--> nearly
+|--(nmod)--> *R263[fire]
+|                |--(case)--> by
+|                |--(det)--> a
+|                |--(nmod:t)--> R267[tuesday]
+|                                 |--(amod)--> R267[early]
+|--(nmod:t)--> R267[morning]
+|--(punct)--> ,
+|--(nmod)--> R291[officials]
+|                |--(case)--> *R292[according]
+|                |                |--(mwe)--> *R292[to]
+|                |--(compou)--> R266[palmer]
+|--(punct)--> .
+
+	* entity-paths for event['according', 'to']13_6ecbplus.xmlsent:1540
+
+	* entity-paths for event['fire']13_6ecbplus.xmlsent:1540
+	['fire --(nmod:tmod)--> Tuesday']
+
+	* entity-paths for event['destroyed']13_6ecbplus.xmlsent:1540
+	['destroyed --(nsubjpass)--> building']
+	['destroyed --(nmod)--> fire', 'fire --(nmod:tmod)--> Tuesday']
+	['destroyed --(nmod:tmod)--> morning']
+	['destroyed --(nmod)--> officials']
+
+sentence #:matanuska maid dairy building burns down 
+	[events]:[['burns', 'down']]
+	[entities]:[['matanuska', 'maid', 'dairy', 'building']]
+R265[maid]
+|--(compou)--> R265[matanuska]
+|--(dep)--> R265[building]
+|                |--(compou)--> R265[dairy]
+|--(dep)--> *R264[down]
+                 |--(compou)--> *R264[burns]
+
+	* entity-paths for event['burns', 'down']13_6ecbplus.xmlsent:1538

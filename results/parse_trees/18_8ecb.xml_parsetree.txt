@@ -1,0 +1,44 @@
+
+-----------------------------------------
+docid:18_8ecb.xml
+-----------------------------------------
+
+sentence #:one man is dead after an ex-employee opened fire at his company 's christmas party at a vancouver , b.c. business friday night . 
+	[events]:[['party'], ['dead'], ['opened', 'fire']]
+	[entities]:[['friday', 'night'], ['man'], ['ex-employee'], ['company'], ['vancouver'], ['business']]
+*R358[dead]
+|--(nsubj)--> R369[man]
+|                |--(nummod)--> one
+|--(cop)--> is
+|--(advcl)--> *R366[opened]
+|                |--(mark)--> after
+|                |--(nsubj)--> R356[ex-employee]
+|                |                |--(det)--> an
+|                |--(dobj)--> *R366[fire]
+|                |--(nmod)--> *R359[party]
+|                |                |--(case)--> at
+|                |                |--(nmod:p)--> R395[company]
+|                |                |                |--(nmod:p)--> his
+|                |                |                |--(case)--> 's
+|                |                |--(compou)--> christmas
+|                |--(nmod)--> R389[vancouver]
+|                |                |--(case)--> at
+|                |                |--(det)--> a
+|                |                |--(punct)--> ,
+|                |                |--(appos)--> R368[friday]
+|                |                                 |--(compou)--> b.c.
+|                |                                 |--(compou)--> R383[business]
+|                |--(nmod:t)--> R368[night]
+|--(punct)--> .
+
+	* entity-paths for event['party']18_8ecb.xmlsent:2672
+	['party --(nmod:poss)--> company']
+
+	* entity-paths for event['dead']18_8ecb.xmlsent:2672
+	['dead --(nsubj)--> man']
+	['dead --(advcl)--> opened', 'opened --(nsubj)--> ex-employee']
+	['dead --(advcl)--> opened', 'opened --(nmod)--> party', 'party --(nmod:poss)--> company']
+	['dead --(advcl)--> opened', 'opened --(nmod)--> Vancouver']
+	['dead --(advcl)--> opened', 'opened --(nmod:tmod)--> night']
+
+	* entity-paths for event['opened', 'fire']18_8ecb.xmlsent:2672

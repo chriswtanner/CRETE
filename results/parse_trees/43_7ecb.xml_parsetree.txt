@@ -1,0 +1,154 @@
+
+-----------------------------------------
+docid:43_7ecb.xml
+-----------------------------------------
+
+sentence #:in a news conference announcing the merger held in taipei yesterday , henri richard , executive vice president of amd , urged investors not to worry as ati 's relations with tsmc and its rival united microelectronics corp. would not change . 
+	[events]:[['merger'], ['announcing']]
+	[entities]:[['ati'], ['yesterday'], ['amd']]
+urged
+|--(advcl)--> *R1561[announcing]
+|                |--(mark)--> in
+|                |--(nsubj)--> conference
+|                |                |--(det)--> a
+|                |                |--(compou)--> news
+|                |--(dobj)--> *R1562[merger]
+|                                 |--(det)--> the
+|                                 |--(acl)--> held
+|                                                  |--(nmod)--> taipei
+|                                                  |                |--(case)--> in
+|                                                  |--(nmod:t)--> R1560[yesterday]
+|--(punct)--> ,
+|--(nsubj)--> richard
+|                |--(compou)--> henri
+|                |--(punct)--> ,
+|                |--(appos)--> president
+|                |                |--(amod)--> executive
+|                |                |--(compou)--> vice
+|                |                |--(nmod)--> R1547[amd]
+|                |                                 |--(case)--> of
+|                |--(punct)--> ,
+|--(dobj)--> investors
+|--(xcomp)--> worry
+|                |--(neg)--> not
+|                |--(mark)--> to
+|                |--(advcl)--> change
+|                                 |--(mark)--> as
+|                                 |--(nsubj)--> relations
+|                                 |                |--(nmod:p)--> R1563[ati]
+|                                 |                |                |--(case)--> 's
+|                                 |                |--(nmod)--> tsmc
+|                                 |                                 |--(case)--> with
+|                                 |                                 |--(cc)--> and
+|                                 |                                 |--(conj)--> corp.
+|                                 |                                                  |--(nmod:p)--> its
+|                                 |                                                  |--(amod)--> rival
+|                                 |                                                  |--(compou)--> united
+|                                 |                                                  |--(compou)--> microelectronics
+|                                 |--(aux)--> would
+|                                 |--(neg)--> not
+|--(punct)--> .
+
+	* entity-paths for event['merger']43_7ecb.xmlsent:13339
+	['merger --(acl)--> held', 'held --(nmod:tmod)--> yesterday']
+
+	* entity-paths for event['announcing']43_7ecb.xmlsent:13339
+	['announcing --(dobj)--> merger', 'merger --(acl)--> held', 'held --(nmod:tmod)--> yesterday']
+
+sentence #:yesterday advanced micro devices inc. ( amd ) , a leading global cpu maker , announced its purchase of canada-based graphics chips maker ati technologies inc. in a us $ 5.4 billion deal that many said would help amd compete more effectively with intel corp. , its largest-in-the-world rival . 
+	[events]:[['deal'], ['purchase'], ['announced'], ['compete']]
+	[entities]:[['its'], ['amd'], ['ati', 'technologies', 'inc.'], ['advanced', 'micro', 'devices', 'inc.'], ['intel', 'corp.'], ['yesterday'], ['its']]
+*R1561[announced]
+|--(nmod:t)--> R1560[yesterday]
+|--(nsubj)--> R1547[inc.]
+|                |--(compou)--> R1547[advanced]
+|                |--(compou)--> R1547[micro]
+|                |--(compou)--> R1547[devices]
+|                |--(appos)--> amd
+|                |                |--(punct)--> (
+|                |                |--(punct)--> )
+|                |--(dep)--> a
+|                                 |--(punct)--> ,
+|                                 |--(dep)--> leading
+|                                 |                |--(dobj)--> maker
+|                                 |                                 |--(amod)--> global
+|                                 |                                 |--(compou)--> cpu
+|                                 |--(punct)--> ,
+|--(dobj)--> *R1562[purchase]
+|                |--(nmod:p)--> R1547[its]
+|                |--(nmod)--> graphics
+|                |                |--(case)--> of
+|                |                |--(amod)--> canada-based
+|                |--(acl:re)--> help
+|                                 |--(nsubj)--> R1563[inc.]
+|                                 |                |--(compou)--> chips
+|                                 |                |--(compou)--> maker
+|                                 |                |--(compou)--> R1563[ati]
+|                                 |                |--(compou)--> R1563[technologies]
+|                                 |                |--(nmod)--> us
+|                                 |                                 |--(case)--> in
+|                                 |                                 |--(det)--> a
+|                                 |                                 |--(dep)--> *R1562[deal]
+|                                 |                                 |                |--(nummod)--> $
+|                                 |                                 |                                 |--(nummod)--> billion
+|                                 |                                 |                                                  |--(compou)--> 5.4
+|                                 |                                 |--(acl:re)--> said
+|                                 |                                                  |--(dobj)--> that
+|                                 |                                                  |--(nsubj)--> many
+|                                 |--(aux)--> would
+|                                 |--(ccomp)--> *R1571[compete]
+|                                                  |--(nsubj)--> R1547[amd]
+|                                                  |--(advmod)--> effectively
+|                                                  |                |--(advmod)--> more
+|                                                  |--(nmod)--> R1426[corp.]
+|                                                                   |--(case)--> with
+|                                                                   |--(compou)--> R1426[intel]
+|                                                                   |--(punct)--> ,
+|                                                                   |--(appos)--> rival
+|                                                                                    |--(nmod:p)--> R1547[its]
+|                                                                                    |--(amod)--> largest-in-the-world
+|--(punct)--> .
+
+	* entity-paths for event['deal']43_7ecb.xmlsent:13336
+
+	* entity-paths for event['purchase']43_7ecb.xmlsent:13336
+	['purchase --(nmod:poss)--> its']
+	['purchase --(acl:relcl)--> help', 'help --(nsubj)--> Inc.']
+	['purchase --(acl:relcl)--> help', 'help --(ccomp)--> compete', 'compete --(nsubj)--> AMD']
+	['purchase --(acl:relcl)--> help', 'help --(ccomp)--> compete', 'compete --(nmod)--> Corp.']
+
+	* entity-paths for event['announced']43_7ecb.xmlsent:13336
+	['announced --(nmod:tmod)--> Yesterday']
+	['announced --(nsubj)--> Inc.']
+	['announced --(dobj)--> purchase', 'purchase --(nmod:poss)--> its']
+	['announced --(dobj)--> purchase', 'purchase --(acl:relcl)--> help', 'help --(nsubj)--> Inc.']
+	['announced --(dobj)--> purchase', 'purchase --(acl:relcl)--> help', 'help --(ccomp)--> compete', 'compete --(nsubj)--> AMD']
+	['announced --(dobj)--> purchase', 'purchase --(acl:relcl)--> help', 'help --(ccomp)--> compete', 'compete --(nmod)--> Corp.']
+
+	* entity-paths for event['compete']43_7ecb.xmlsent:13336
+	['compete --(nsubj)--> AMD']
+	['compete --(nmod)--> Corp.']
+
+sentence #:the merger , meanwhile , is also expected to create an impact on taiwan 's chipset manufacturers . 
+	[events]:[['merger']]
+	[entities]:[]
+expected
+|--(nsubjp)--> *R1562[merger]
+|                |--(det)--> the
+|--(punct)--> ,
+|--(advmod)--> meanwhile
+|--(punct)--> ,
+|--(auxpas)--> is
+|--(advmod)--> also
+|--(xcomp)--> create
+|                |--(mark)--> to
+|                |--(dobj)--> impact
+|                |                |--(det)--> an
+|                |--(nmod)--> manufacturers
+|                                 |--(case)--> on
+|                                 |--(nmod:p)--> taiwan
+|                                 |                |--(case)--> 's
+|                                 |--(compou)--> chipset
+|--(punct)--> .
+
+	* entity-paths for event['merger']43_7ecb.xmlsent:13346

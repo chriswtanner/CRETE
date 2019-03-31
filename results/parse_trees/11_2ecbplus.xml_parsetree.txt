@@ -1,0 +1,108 @@
+
+-----------------------------------------
+docid:11_2ecbplus.xml
+-----------------------------------------
+
+sentence #:27 / 09 / 2013 - turkmenistan to hold first - ever parliamentary elections on a two - party basis 
+	[events]:[['basis'], ['hold'], ['elections']]
+	[entities]:[['party'], ['turkmenistan'], ['parliamentary']]
+27
+|--(dep)--> 09
+|                |--(punct)--> /
+|                |--(punct)--> /
+|--(dep)--> 2013
+|--(dep)--> R207[turkmenistan]
+|                |--(punct)--> -
+|                |--(acl)--> *R199[hold]
+|                |                |--(mark)--> to
+|                |                |--(dobj)--> first
+|                |                                 |--(punct)--> -
+|                |                                 |--(dep)--> *R200[elections]
+|                |                                                  |--(advmod)--> ever
+|                |                                                  |--(amod)--> R188[parliamentary]
+|                |                                                  |--(nmod)--> two
+|                |                                                                   |--(case)--> on
+|                |                                                                   |--(det)--> a
+|                |--(punct)--> -
+|--(dep)--> *R203[basis]
+                 |--(compou)--> R204[party]
+
+	* entity-paths for event['basis']11_2ecbplus.xmlsent:654
+	['basis --(compound)--> party']
+
+	* entity-paths for event['hold']11_2ecbplus.xmlsent:654
+	['hold --(dobj)--> first', 'first --(dep)--> elections', 'elections --(amod)--> parliamentary']
+
+	* entity-paths for event['elections']11_2ecbplus.xmlsent:654
+	['elections --(amod)--> parliamentary']
+
+sentence #:parliamentary elections in turkmenistan that are scheduled for december 15 of this year will be held on a two - party basis , for the first time in the country " s history , according to the central elections commission of turkmenistan . 
+	[events]:[['according'], ['elections'], ['scheduled'], ['basis'], ['held'], ['history']]
+	[entities]:[['turkmenistan'], ['party'], ['parliamentary'], ['december', '15', 'of', 'this', 'year'], ['central', 'elections', 'commission'], ['country'], ['turkmenistan']]
+*R199[held]
+|--(nsubjp)--> *R200[elections]
+|                |--(amod)--> R188[parliamentary]
+|                |--(nmod)--> R189[turkmenistan]
+|                                 |--(case)--> in
+|                                 |--(acl:re)--> *R201[scheduled]
+|                                                  |--(nsubjp)--> that
+|                                                  |--(auxpas)--> are
+|                                                  |--(nmod)--> R202[december]
+|                                                                   |--(case)--> for
+|                                                                   |--(nummod)--> R202[15]
+|                                                                   |--(nmod)--> R202[year]
+|                                                                                    |--(case)--> R202[of]
+|                                                                                    |--(det)--> R202[this]
+|--(aux)--> will
+|--(auxpas)--> be
+|--(nmod)--> *R209[history]
+|                |--(case)--> on
+|                |--(det)--> a
+|                |--(compou)--> two
+|                                 |--(punct)--> -
+|                                 |--(dep)--> *R203[basis]
+|                                                  |--(compou)--> R204[party]
+|                                                  |--(punct)--> ,
+|                                                  |--(nmod)--> time
+|                                                                   |--(case)--> for
+|                                                                   |--(det)--> the
+|                                                                   |--(amod)--> first
+|                                                                   |--(nmod)--> s
+|                                                                                    |--(case)--> in
+|                                                                                    |--(det)--> the
+|                                                                                    |--(compou)--> R207[country]
+|                                                                                    |--(punct)--> "
+|--(punct)--> ,
+|--(nmod)--> R206[commission]
+|                |--(case)--> *R205[according]
+|                |                |--(mwe)--> to
+|                |--(det)--> the
+|                |--(compou)--> R206[central]
+|                |--(compou)--> R206[elections]
+|                |--(nmod)--> R207[turkmenistan]
+|                                 |--(case)--> of
+|--(punct)--> .
+
+	* entity-paths for event['according']11_2ecbplus.xmlsent:656
+
+	* entity-paths for event['elections']11_2ecbplus.xmlsent:656
+	['elections --(amod)--> Parliamentary']
+	['elections --(nmod)--> Turkmenistan']
+
+	* entity-paths for event['scheduled']11_2ecbplus.xmlsent:656
+	['scheduled --(nmod)--> December']
+
+	* entity-paths for event['basis']11_2ecbplus.xmlsent:656
+	['basis --(compound)--> party']
+	['basis --(nmod)--> time', 'time --(nmod)--> s', 's --(compound)--> country']
+
+	* entity-paths for event['held']11_2ecbplus.xmlsent:656
+	['held --(nsubjpass)--> elections', 'elections --(amod)--> Parliamentary']
+	['held --(nsubjpass)--> elections', 'elections --(nmod)--> Turkmenistan']
+	['held --(nmod)--> history', 'history --(compound)--> two', 'two --(dep)--> basis', 'basis --(compound)--> party']
+	['held --(nmod)--> history', 'history --(compound)--> two', 'two --(dep)--> basis', 'basis --(nmod)--> time', 'time --(nmod)--> s', 's --(compound)--> country']
+	['held --(nmod)--> Commission']
+
+	* entity-paths for event['history']11_2ecbplus.xmlsent:656
+	['history --(compound)--> two', 'two --(dep)--> basis', 'basis --(compound)--> party']
+	['history --(compound)--> two', 'two --(dep)--> basis', 'basis --(nmod)--> time', 'time --(nmod)--> s', 's --(compound)--> country']

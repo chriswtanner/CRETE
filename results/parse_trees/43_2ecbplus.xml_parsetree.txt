@@ -1,0 +1,95 @@
+
+-----------------------------------------
+docid:43_2ecbplus.xml
+-----------------------------------------
+
+sentence #:amd ( nyse : amd ) today announced it has signed a definitive agreement to acquire seamicro , a pioneer in energy - efficient , high - bandwidth microservers , for approximately $334 million , of which approximately $281 million will be paid in cash . 
+	[events]:[['acquire'], ['agreement'], ['paid'], ['announced'], ['signed']]
+	[entities]:[['$334', 'million'], ['amd'], ['$281', 'million'], ['today'], ['it'], ['microservers'], ['seamicro'], ['pioneer'], ['cash']]
+*R1550[announced]
+|--(nsubj)--> R1547[amd]
+|                |--(appos)--> nyse
+|                                 |--(punct)--> (
+|                                 |--(punct)--> :
+|                                 |--(dep)--> amd
+|                                 |--(punct)--> )
+|--(nmod:t)--> R1565[today]
+|--(ccomp)--> *R1566[signed]
+|                |--(nsubj)--> R1547[it]
+|                |--(aux)--> has
+|                |--(dobj)--> *R1554[agreement]
+|                |                |--(det)--> a
+|                |                |--(amod)--> definitive
+|                |--(advcl)--> *R1546[acquire]
+|                                 |--(mark)--> to
+|                                 |--(dobj)--> R1549[seamicro]
+|                                                  |--(punct)--> ,
+|                                                  |--(appos)--> R1549[pioneer]
+|                                                  |                |--(det)--> a
+|                                                  |                |--(nmod)--> energy
+|                                                  |                |                |--(case)--> in
+|                                                  |                |--(punct)--> -
+|                                                  |                |--(dep)--> R1548[microservers]
+|                                                  |                                 |--(amod)--> efficient
+|                                                  |                                 |                |--(punct)--> ,
+|                                                  |                                 |                |--(dep)--> high
+|                                                  |                                 |                |--(punct)--> -
+|                                                  |                                 |--(compou)--> bandwidth
+|                                                  |                                 |--(punct)--> ,
+|                                                  |                                 |--(nmod)--> R1555[$334]
+|                                                  |                                                  |--(case)--> for
+|                                                  |                                                  |--(advmod)--> approximately
+|                                                  |                                                  |--(nummod)--> R1555[million]
+|                                                  |                                                                   |--(compou)--> R1555[$334]
+|                                                  |--(punct)--> ,
+|                                                  |--(acl:re)--> *R1567[paid]
+|                                                                   |--(nmod)--> which
+|                                                                   |                |--(case)--> of
+|                                                                   |--(nsubjp)--> R1568[$281]
+|                                                                   |                |--(advmod)--> approximately
+|                                                                   |                |--(nummod)--> R1568[million]
+|                                                                   |                                 |--(compou)--> R1568[$281]
+|                                                                   |--(aux)--> will
+|                                                                   |--(auxpas)--> be
+|                                                                   |--(nmod)--> R1569[cash]
+|                                                                                    |--(case)--> in
+|--(punct)--> .
+
+	* entity-paths for event['acquire']43_2ecbplus.xmlsent:13059
+	['acquire --(dobj)--> SeaMicro']
+
+	* entity-paths for event['agreement']43_2ecbplus.xmlsent:13059
+
+	* entity-paths for event['paid']43_2ecbplus.xmlsent:13059
+	['paid --(nsubjpass)--> $']
+	['paid --(nmod)--> cash']
+
+	* entity-paths for event['announced']43_2ecbplus.xmlsent:13059
+	['announced --(nsubj)--> AMD']
+	['announced --(nmod:tmod)--> today']
+	['announced --(ccomp)--> signed', 'signed --(nsubj)--> it']
+	['announced --(ccomp)--> signed', 'signed --(advcl)--> acquire', 'acquire --(dobj)--> SeaMicro']
+
+	* entity-paths for event['signed']43_2ecbplus.xmlsent:13059
+	['signed --(nsubj)--> it']
+	['signed --(advcl)--> acquire', 'acquire --(dobj)--> SeaMicro']
+
+sentence #:amd to acquire seamicro : accelerates disruptive server strategy 
+	[events]:[['acquire'], ['strategy']]
+	[entities]:[['seamicro'], ['server'], ['amd']]
+R1547[amd]
+|--(dep)--> *R1546[acquire]
+                 |--(mark)--> to
+                 |--(ccomp)--> accelerates
+                                  |--(nsubj)--> R1549[seamicro]
+                                  |--(punct)--> :
+                                  |--(dobj)--> *R1570[strategy]
+                                                   |--(amod)--> disruptive
+                                                   |--(compou)--> R1559[server]
+
+	* entity-paths for event['acquire']43_2ecbplus.xmlsent:13056
+	['Acquire --(ccomp)--> Accelerates', 'Accelerates --(nsubj)--> SeaMicro']
+	['Acquire --(ccomp)--> Accelerates', 'Accelerates --(dobj)--> Strategy', 'Strategy --(compound)--> Server']
+
+	* entity-paths for event['strategy']43_2ecbplus.xmlsent:13056
+	['Strategy --(compound)--> Server']

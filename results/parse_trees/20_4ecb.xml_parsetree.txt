@@ -1,0 +1,60 @@
+
+-----------------------------------------
+docid:20_4ecb.xml
+-----------------------------------------
+
+sentence #:an earthquake with a magnitude of 5.6 on the richter scale shook the southern iranian island of qeshm and caused damage to residential buildings in villages on sunday , isna news agency reported . 
+	[events]:[['shook'], ['reported'], ['earthquake'], ['damage']]
+	[entities]:[['buildings'], ['sunday'], ['isna'], ['5.6'], ['the', 'southern', 'iranian', 'island', 'of', 'qeshm'], ['richter', 'scale']]
+*R530[reported]
+|--(ccomp)--> *R516[shook]
+|                |--(nsubj)--> *R517[earthquake]
+|                |                |--(det)--> an
+|                |                |--(nmod)--> magnitude
+|                |                                 |--(case)--> with
+|                |                                 |--(det)--> a
+|                |                                 |--(nmod)--> R518[5.6]
+|                |                                                  |--(case)--> of
+|                |                                                  |--(nmod)--> R527[scale]
+|                |                                                                   |--(case)--> on
+|                |                                                                   |--(det)--> the
+|                |                                                                   |--(compou)--> R527[richter]
+|                |--(dobj)--> R515[island]
+|                |                |--(det)--> R515[the]
+|                |                |--(amod)--> R515[southern]
+|                |                |--(amod)--> R515[iranian]
+|                |                |--(nmod)--> R515[qeshm]
+|                |                                 |--(case)--> R515[of]
+|                |--(cc)--> and
+|                |--(conj)--> caused
+|                                 |--(dobj)--> *R523[damage]
+|                                 |--(nmod)--> R522[buildings]
+|                                 |                |--(case)--> to
+|                                 |                |--(amod)--> residential
+|                                 |--(nmod)--> villages
+|                                                  |--(case)--> in
+|                                                  |--(nmod)--> R519[sunday]
+|                                                                   |--(case)--> on
+|--(punct)--> ,
+|--(nsubj)--> agency
+|                |--(compou)--> R531[isna]
+|                |--(compou)--> news
+|--(punct)--> .
+
+	* entity-paths for event['shook']20_4ecb.xmlsent:3915
+	['shook --(nsubj)--> earthquake', 'earthquake --(nmod)--> magnitude', 'magnitude --(nmod)--> 5.6']
+	['shook --(dobj)--> island']
+	['shook --(conj)--> caused', 'caused --(nmod)--> buildings']
+	['shook --(conj)--> caused', 'caused --(nmod)--> villages', 'villages --(nmod)--> Sunday']
+
+	* entity-paths for event['reported']20_4ecb.xmlsent:3915
+	['reported --(ccomp)--> shook', 'shook --(nsubj)--> earthquake', 'earthquake --(nmod)--> magnitude', 'magnitude --(nmod)--> 5.6']
+	['reported --(ccomp)--> shook', 'shook --(dobj)--> island']
+	['reported --(ccomp)--> shook', 'shook --(conj)--> caused', 'caused --(nmod)--> buildings']
+	['reported --(ccomp)--> shook', 'shook --(conj)--> caused', 'caused --(nmod)--> villages', 'villages --(nmod)--> Sunday']
+	['reported --(nsubj)--> agency', 'agency --(compound)--> ISNA']
+
+	* entity-paths for event['earthquake']20_4ecb.xmlsent:3915
+	['earthquake --(nmod)--> magnitude', 'magnitude --(nmod)--> 5.6']
+
+	* entity-paths for event['damage']20_4ecb.xmlsent:3915

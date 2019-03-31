@@ -1,0 +1,58 @@
+
+-----------------------------------------
+docid:3_1ecb.xml
+-----------------------------------------
+
+sentence #:after more than three years and a tangled trail of frustrating legal delays , the man who killed four people in a brazen courthouse escape was sentenced saturday to prison for life without parole and hundreds of years more . 
+	[events]:[['escape'], ['sentenced'], ['killed']]
+	[entities]:[['saturday'], ['life', 'without', 'parole'], ['man'], ['people']]
+brazen
+|--(nmod)--> years
+|                |--(case)--> after
+|                |--(nummod)--> three
+|                |                |--(advmod)--> more
+|                |                                 |--(mwe)--> than
+|                |--(cc)--> and
+|                |--(conj)--> trail
+|                                 |--(det)--> a
+|                                 |--(amod)--> tangled
+|                                 |--(nmod)--> delays
+|                                                  |--(case)--> of
+|                                                  |--(amod)--> frustrating
+|                                                  |--(amod)--> legal
+|--(punct)--> ,
+|--(nsubj)--> R903[man]
+|                |--(det)--> the
+|                |--(acl:re)--> *R904[killed]
+|                                 |--(nsubj)--> who
+|                                 |--(dobj)--> R905[people]
+|                                 |                |--(nummod)--> four
+|                                 |--(advmod)--> a
+|                                                  |--(case)--> in
+|--(ccomp)--> *R906[sentenced]
+|                |--(nsubjp)--> *R907[escape]
+|                |                |--(compou)--> courthouse
+|                |--(auxpas)--> was
+|                |--(nmod:t)--> R908[saturday]
+|                |--(nmod)--> prison
+|                |                |--(case)--> to
+|                |                |--(nmod)--> R909[life]
+|                |                                 |--(case)--> for
+|                |--(nmod)--> R909[parole]
+|                |                |--(case)--> R909[without]
+|                |                |--(cc)--> and
+|                |                |--(conj)--> hundreds
+|                |                |--(nmod)--> years
+|                |                                 |--(case)--> of
+|                |--(advmod)--> more
+|--(punct)--> .
+
+	* entity-paths for event['escape']3_1ecb.xmlsent:7365
+
+	* entity-paths for event['sentenced']3_1ecb.xmlsent:7365
+	['sentenced --(nmod:tmod)--> Saturday']
+	['sentenced --(nmod)--> prison', 'prison --(nmod)--> life']
+	['sentenced --(nmod)--> parole']
+
+	* entity-paths for event['killed']3_1ecb.xmlsent:7365
+	['killed --(dobj)--> people']

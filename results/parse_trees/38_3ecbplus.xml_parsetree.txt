@@ -1,0 +1,62 @@
+
+-----------------------------------------
+docid:38_3ecbplus.xml
+-----------------------------------------
+
+sentence #:lake county's cobb mountain community was shaken awake early thursday morning by a magnitude 4 . 6 earthquake that startled even folks accustomed to seismic activity because of its size . 
+	[events]:[['shaken', 'awake'], ['magnitude', '4', '.', '6', 'earthquake']]
+	[entities]:[['lake', "county's"], ['early', 'thursday', 'morning']]
+R1325[lake]
+|--(acl:re)--> *R1304[shaken]
+|                |--(nsubjp)--> community
+|                |                |--(nmod:p)--> R1325[county's]
+|                |                |                |--(case)--> R1325[county's]
+|                |                |--(compou)--> cobb
+|                |                |--(compou)--> mountain
+|                |--(auxpas)--> was
+|                |--(xcomp)--> *R1304[awake]
+|                |--(nmod:t)--> R1299[morning]
+|                |                |--(amod)--> R1299[early]
+|                |                |--(compou)--> R1299[thursday]
+|                |--(nmod)--> *R1296[magnitude]
+|                                 |--(case)--> by
+|                                 |--(det)--> a
+|                                 |--(nummod)--> *R1296[4]
+|--(punct)--> *R1296[.]
+|--(dep)--> *R1296[earthquake]
+                 |--(nummod)--> *R1296[6]
+                 |--(dep)--> startled
+                                  |--(nsubj)--> that
+                                  |--(dobj)--> folks
+                                  |                |--(advmod)--> even
+                                  |                |--(acl)--> accustomed
+                                  |                                 |--(nmod)--> activity
+                                  |                                 |                |--(case)--> to
+                                  |                                 |                |--(amod)--> seismic
+                                  |                                 |--(nmod)--> size
+                                  |                                                  |--(case)--> because
+                                  |                                                  |--(case)--> of
+                                  |                                                  |--(nmod:p)--> its
+                                  |--(punct)--> .
+
+	* entity-paths for event['shaken', 'awake']38_3ecbplus.xmlsent:10779
+
+	* entity-paths for event['magnitude', '4', '.', '6', 'earthquake']38_3ecbplus.xmlsent:10779
+
+sentence #:4 . 6 - magnitude earthquake shakes lake county 
+	[events]:[['shakes'], ['4', '.', '6', '-', 'magnitude', 'earthquake']]
+	[entities]:[['lake', 'county']]
+*R1304[shakes]
+|--(dep)--> *R1296[4]
+|                |--(punct)--> *R1296[.]
+|--(nsubj)--> *R1296[6]
+|--(punct)--> *R1296[-]
+|--(nsubj)--> *R1296[magnitude]
+|                |--(dep)--> *R1296[earthquake]
+|--(dobj)--> R1325[county]
+                 |--(compou)--> R1325[lake]
+
+	* entity-paths for event['shakes']38_3ecbplus.xmlsent:10777
+	['shakes --(dobj)--> County']
+
+	* entity-paths for event['4', '.', '6', '-', 'magnitude', 'earthquake']38_3ecbplus.xmlsent:10777

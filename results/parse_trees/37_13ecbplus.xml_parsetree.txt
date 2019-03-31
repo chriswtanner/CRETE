@@ -1,0 +1,56 @@
+
+-----------------------------------------
+docid:37_13ecbplus.xml
+-----------------------------------------
+
+sentence #:strong earthquake hits indonesia's aceh province 
+	[events]:[['earthquake'], ['hits']]
+	[entities]:[["indonesia's", 'aceh', 'province']]
+*R1236[hits]
+|--(nsubj)--> *R1233[earthquake]
+|                |--(amod)--> strong
+|--(dobj)--> R1237[province]
+                 |--(nmod:p)--> R1237[indonesia's]
+                 |                |--(case)--> R1237[indonesia's]
+                 |--(compou)--> R1237[aceh]
+
+	* entity-paths for event['earthquake']37_13ecbplus.xmlsent:10450
+
+	* entity-paths for event['hits']37_13ecbplus.xmlsent:10450
+	['hits --(dobj)--> province']
+
+sentence #:a strong earthquake struck off indonesia's aceh province on tuesday , damaging houses and injuring at least five people . 
+	[events]:[['earthquake'], ['injuring'], ['damaging'], ['struck']]
+	[entities]:[['on', 'tuesday'], ['houses'], ['five', 'people'], ['off', "indonesia's", 'aceh', 'province']]
+*R1236[struck]
+|--(nsubj)--> *R1233[earthquake]
+|                |--(det)--> a
+|                |--(amod)--> strong
+|--(compou)--> R1237[off]
+|--(dobj)--> R1237[province]
+|                |--(nmod:p)--> R1237[indonesia's]
+|                |                |--(case)--> R1237[indonesia's]
+|                |--(compou)--> R1237[aceh]
+|                |--(nmod)--> R1245[tuesday]
+|                |                |--(case)--> R1245[on]
+|                |--(punct)--> ,
+|                |--(appos)--> R1257[houses]
+|                                 |--(amod)--> *R1258[damaging]
+|                                 |--(cc)--> and
+|                                 |--(acl)--> *R1234[injuring]
+|                                                  |--(dobj)--> R1235[people]
+|                                                                   |--(nummod)--> R1235[five]
+|                                                                                    |--(nmod:n)--> least
+|                                                                                                     |--(case)--> at
+|--(punct)--> .
+
+	* entity-paths for event['earthquake']37_13ecbplus.xmlsent:10451
+
+	* entity-paths for event['injuring']37_13ecbplus.xmlsent:10451
+	['injuring --(dobj)--> people']
+
+	* entity-paths for event['damaging']37_13ecbplus.xmlsent:10451
+
+	* entity-paths for event['struck']37_13ecbplus.xmlsent:10451
+	['struck --(compound:prt)--> off']
+	['struck --(dobj)--> province']

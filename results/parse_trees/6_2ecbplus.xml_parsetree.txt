@@ -1,0 +1,85 @@
+
+-----------------------------------------
+docid:6_2ecbplus.xml
+-----------------------------------------
+
+sentence #:director gary ross still in negotiations for hunger games sequel , catching fire ; release date may be in jeopardy 
+	[events]:[['negotiations'], ['sequel']]
+	[entities]:[['hunger', 'games'], ['release', 'date'], ['catching', 'fire'], ['gary', 'ross']]
+R1692[ross]
+|--(compou)--> director
+|--(compou)--> R1692[gary]
+|--(nmod)--> *R1696[negotiations]
+                 |--(advmod)--> still
+                 |--(case)--> in
+                 |--(nmod)--> *R1701[sequel]
+                                  |--(case)--> for
+                                  |--(compou)--> R1700[hunger]
+                                  |--(compou)--> R1700[games]
+                                  |--(punct)--> ,
+                                  |--(appos)--> R1702[fire]
+                                                   |--(compou)--> R1702[catching]
+                                                   |--(punct)--> ;
+                                                   |--(parata)--> jeopardy
+                                                                    |--(nsubj)--> may
+                                                                    |                |--(compou)--> R1711[release]
+                                                                    |                |--(compou)--> R1711[date]
+                                                                    |--(cop)--> be
+                                                                    |--(case)--> in
+
+	* entity-paths for event['negotiations']6_2ecbplus.xmlsent:14376
+	['Negotiations --(nmod)--> Sequel', 'Sequel --(compound)--> HUNGER']
+	['Negotiations --(nmod)--> Sequel', 'Sequel --(compound)--> GAMES']
+	['Negotiations --(nmod)--> Sequel', 'Sequel --(appos)--> FIRE']
+
+	* entity-paths for event['sequel']6_2ecbplus.xmlsent:14376
+	['Sequel --(compound)--> HUNGER']
+	['Sequel --(compound)--> GAMES']
+	['Sequel --(appos)--> FIRE']
+
+sentence #:now , thr is reporting that ross and the studio are locked in tense negotiations over his return to direct the sequel , catching fire . 
+	[events]:[['sequel'], ['return'], ['negotiations'], ['reporting'], ['direct']]
+	[entities]:[['studio'], ['ross'], ['his'], ['thr'], ['catching', 'fire']]
+*R1695[reporting]
+|--(advmod)--> now
+|--(punct)--> ,
+|--(nsubj)--> R1694[thr]
+|--(aux)--> is
+|--(ccomp)--> locked
+|                |--(mark)--> that
+|                |--(nsubjp)--> R1692[ross]
+|                |                |--(cc)--> and
+|                |                |--(conj)--> R1697[studio]
+|                |                                 |--(det)--> the
+|                |--(auxpas)--> are
+|                |--(nmod)--> *R1696[negotiations]
+|                |                |--(case)--> in
+|                |                |--(amod)--> tense
+|                |--(nmod)--> *R1698[return]
+|                                 |--(case)--> over
+|                                 |--(nmod:p)--> R1692[his]
+|                                 |--(acl)--> *R1699[direct]
+|                                                  |--(mark)--> to
+|                                                  |--(dobj)--> *R1701[sequel]
+|                                                  |                |--(det)--> the
+|                                                  |--(punct)--> ,
+|                                                  |--(advcl)--> R1702[catching]
+|                                                                   |--(dobj)--> R1702[fire]
+|--(punct)--> .
+
+	* entity-paths for event['sequel']6_2ecbplus.xmlsent:14380
+
+	* entity-paths for event['return']6_2ecbplus.xmlsent:14380
+	['return --(nmod:poss)--> his']
+	['return --(acl)--> direct', 'direct --(advcl)--> Catching']
+
+	* entity-paths for event['negotiations']6_2ecbplus.xmlsent:14380
+
+	* entity-paths for event['reporting']6_2ecbplus.xmlsent:14380
+	['reporting --(nsubj)--> THR']
+	['reporting --(ccomp)--> locked', 'locked --(nsubjpass)--> Ross']
+	['reporting --(ccomp)--> locked', 'locked --(nmod)--> return', 'return --(nmod:poss)--> his']
+	['reporting --(ccomp)--> locked', 'locked --(nmod)--> return', 'return --(acl)--> direct', 'direct --(advcl)--> Catching']
+
+	* entity-paths for event['direct']6_2ecbplus.xmlsent:14380
+	['direct --(advcl)--> Catching']

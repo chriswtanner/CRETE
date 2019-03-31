@@ -1,0 +1,41 @@
+
+-----------------------------------------
+docid:7_5ecb.xml
+-----------------------------------------
+
+sentence #:wladimir klitschko retained his ibf , ibo and wbo heavyweight titles with a one-sided seventh-round stoppage of hasim rahman in mannheim , germany . 
+	[events]:[['stoppage'], ['retained']]
+	[entities]:[['in', 'mannheim', ',', 'germany'], ['ibf'], ['ibo'], ['titles'], ['wladimir', 'klitschko'], ['hasim', 'rahman'], ['wbo']]
+*R1715[retained]
+|--(nsubj)--> R1716[klitschko]
+|                |--(compou)--> R1716[wladimir]
+|--(dobj)--> R1735[titles]
+|                |--(nmod:p)--> his
+|                |--(compou)--> R1718[ibf]
+|                |                |--(punct)--> ,
+|                |                |--(conj)--> R1737[ibo]
+|                |                |--(cc)--> and
+|                |                |--(conj)--> R1736[wbo]
+|                |--(amod)--> heavyweight
+|--(nmod)--> *R1719[stoppage]
+|                |--(case)--> with
+|                |--(det)--> a
+|                |--(amod)--> one-sided
+|                |--(amod)--> seventh-round
+|                |--(nmod)--> R1720[rahman]
+|                                 |--(case)--> of
+|                                 |--(compou)--> R1720[hasim]
+|--(nmod)--> R1734[germany]
+|                |--(case)--> R1734[in]
+|                |--(compou)--> R1734[mannheim]
+|                |--(punct)--> R1734[,]
+|--(punct)--> .
+
+	* entity-paths for event['stoppage']7_5ecb.xmlsent:14710
+	['stoppage --(nmod)--> Rahman']
+
+	* entity-paths for event['retained']7_5ecb.xmlsent:14710
+	['retained --(nsubj)--> Klitschko']
+	['retained --(dobj)--> titles']
+	['retained --(nmod)--> stoppage', 'stoppage --(nmod)--> Rahman']
+	['retained --(nmod)--> Germany']

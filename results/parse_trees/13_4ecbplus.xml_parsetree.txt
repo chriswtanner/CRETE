@@ -1,0 +1,65 @@
+
+-----------------------------------------
+docid:13_4ecbplus.xml
+-----------------------------------------
+
+sentence #:no arrests were made in that fire . 
+	[events]:[['fire'], ['arrests']]
+	[entities]:[]
+made
+|--(nsubjp)--> *R288[arrests]
+|                |--(neg)--> no
+|--(auxpas)--> were
+|--(nmod)--> *R261[fire]
+|                |--(case)--> in
+|                |--(det)--> that
+|--(punct)--> .
+
+	* entity-paths for event['fire']13_4ecbplus.xmlsent:1411
+
+	* entity-paths for event['arrests']13_4ecbplus.xmlsent:1411
+
+sentence #:it was probably " chance " when the wasilla bible church was burned , and arson was suspected . 
+	[events]:[['burned'], ['arson']]
+	[entities]:[['wasilla', 'bible', 'church']]
+chance
+|--(nsubj)--> it
+|--(cop)--> was
+|--(advmod)--> probably
+|                |--(punct)--> "
+|--(punct)--> "
+|--(acl:re)--> *R261[burned]
+|                |--(advmod)--> when
+|                |--(nsubjp)--> R260[church]
+|                |                |--(det)--> the
+|                |                |--(compou)--> R260[wasilla]
+|                |                |--(compou)--> R260[bible]
+|                |--(auxpas)--> was
+|--(punct)--> ,
+|--(cc)--> and
+|--(conj)--> suspected
+|                |--(nsubjp)--> *R270[arson]
+|                |--(auxpas)--> was
+|--(punct)--> .
+
+	* entity-paths for event['burned']13_4ecbplus.xmlsent:1409
+	['burned --(nsubjpass)--> Church']
+
+	* entity-paths for event['arson']13_4ecbplus.xmlsent:1409
+
+sentence #:this time the fire occurred at the matanuska maid creamery . 
+	[events]:[['fire']]
+	[entities]:[['matanuska', 'maid', 'creamery']]
+occurred
+|--(nmod:t)--> time
+|                |--(det)--> this
+|--(nsubj)--> *R263[fire]
+|                |--(det)--> the
+|--(nmod)--> R289[creamery]
+|                |--(case)--> at
+|                |--(det)--> the
+|                |--(compou)--> R289[matanuska]
+|                |--(compou)--> R289[maid]
+|--(punct)--> .
+
+	* entity-paths for event['fire']13_4ecbplus.xmlsent:1428

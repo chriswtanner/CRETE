@@ -1,0 +1,89 @@
+
+-----------------------------------------
+docid:37_14ecbplus.xml
+-----------------------------------------
+
+sentence #:many houses were damaged and dozens of villagers were injured . 
+	[events]:[['damaged'], ['injured']]
+	[entities]:[['dozens', 'of', 'villagers'], ['houses']]
+*R1258[damaged]
+|--(nsubjp)--> R1259[houses]
+|                |--(amod)--> many
+|--(auxpas)--> were
+|--(cc)--> and
+|--(conj)--> *R1234[injured]
+|                |--(nsubjp)--> R1235[dozens]
+|                |                |--(nmod)--> R1235[villagers]
+|                |                                 |--(case)--> R1235[of]
+|                |--(auxpas)--> were
+|--(punct)--> .
+
+	* entity-paths for event['damaged']37_14ecbplus.xmlsent:10463
+	['damaged --(nsubjpass)--> houses']
+	['damaged --(conj)--> injured', 'injured --(nsubjpass)--> dozens']
+
+	* entity-paths for event['injured']37_14ecbplus.xmlsent:10463
+	['injured --(nsubjpass)--> dozens']
+
+sentence #:a strong earthquake struck indonesia's aceh province on tuesday , killing at least one person and leaving two others missing . 
+	[events]:[['missing'], ['killing'], ['earthquake'], ['struck']]
+	[entities]:[['one', 'person'], ['on', 'tuesday'], ['two', 'others'], ["indonesia's", 'aceh', 'province']]
+*R1236[struck]
+|--(nsubj)--> *R1233[earthquake]
+|                |--(det)--> a
+|                |--(amod)--> strong
+|--(dobj)--> R1237[province]
+|                |--(nmod:p)--> R1237[indonesia's]
+|                |                |--(case)--> R1237[indonesia's]
+|                |--(compou)--> R1237[aceh]
+|--(nmod)--> R1245[tuesday]
+|                |--(case)--> R1245[on]
+|--(punct)--> ,
+|--(dep)--> *R1251[killing]
+|                |--(dobj)--> R1252[person]
+|                |                |--(nummod)--> R1252[one]
+|                |                                 |--(nmod:n)--> least
+|                |                                                  |--(case)--> at
+|                |--(cc)--> and
+|                |--(conj)--> leaving
+|                                 |--(dobj)--> R1255[others]
+|                                                  |--(nummod)--> R1255[two]
+|                                                  |--(amod)--> *R1256[missing]
+|--(punct)--> .
+
+	* entity-paths for event['missing']37_14ecbplus.xmlsent:10462
+
+	* entity-paths for event['killing']37_14ecbplus.xmlsent:10462
+	['killing --(dobj)--> person']
+	['killing --(conj)--> leaving', 'leaving --(dobj)--> others']
+
+	* entity-paths for event['earthquake']37_14ecbplus.xmlsent:10462
+
+	* entity-paths for event['struck']37_14ecbplus.xmlsent:10462
+	['struck --(dobj)--> province']
+	['struck --(nmod)--> Tuesday']
+	['struck --(dep)--> killing', 'killing --(dobj)--> person']
+	['struck --(dep)--> killing', 'killing --(conj)--> leaving', 'leaving --(dobj)--> others']
+
+sentence #:magnitude - 6 . 1 quake hits indonesia ; 1 dead 
+	[events]:[['hits'], ['magnitude', '-', '6', '.', '1', 'quake'], ['dead']]
+	[entities]:[['indonesia'], ['1']]
+*R1236[hits]
+|--(nsubj)--> *R1233[magnitude]
+|                |--(dep)--> *R1233[1]
+|                                 |--(punct)--> *R1233[-]
+|                                 |--(dep)--> *R1233[6]
+|                                 |                |--(punct)--> *R1233[.]
+|                                 |--(dep)--> *R1233[quake]
+|--(dobj)--> R1260[indonesia]
+                 |--(punct)--> ;
+                 |--(amod)--> *R1251[dead]
+                                  |--(compou)--> R1252[1]
+
+	* entity-paths for event['hits']37_14ecbplus.xmlsent:10460
+	['hits --(dobj)--> Indonesia']
+
+	* entity-paths for event['magnitude', '-', '6', '.', '1', 'quake']37_14ecbplus.xmlsent:10460
+
+	* entity-paths for event['dead']37_14ecbplus.xmlsent:10460
+	['dead --(compound)--> 1']

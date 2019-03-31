@@ -1,0 +1,50 @@
+
+-----------------------------------------
+docid:18_13ecb.xml
+-----------------------------------------
+
+sentence #:constable tim fanning allege the recently- fired man , eric allen kirkpatrick , 61 , opened fire at a vancouver office friday , killing benjamin david banky , 40 . 
+	[events]:[['killing'], ['opened', 'fire'], ['fired']]
+	[entities]:[['eric', 'allen', 'kirkpatrick'], ['benjamin', 'david', 'banky'], ['man'], ['a', 'vancouver', 'office'], ['friday']]
+fanning
+|--(compou)--> constable
+|--(compou)--> tim
+|--(acl:re)--> allege
+|                |--(dobj)--> recently-
+|                                 |--(det)--> the
+|--(punct)--> recently-
+|--(dep)--> *R365[fired]
+|                |--(ccomp)--> *R366[opened]
+|                                 |--(nsubj)--> R356[man]
+|                                 |                |--(punct)--> ,
+|                                 |                |--(appos)--> R356[kirkpatrick]
+|                                 |                |                |--(compou)--> R356[eric]
+|                                 |                |                |--(compou)--> R356[allen]
+|                                 |                |                |--(punct)--> ,
+|                                 |                |                |--(amod)--> 61
+|                                 |                |--(punct)--> ,
+|                                 |--(dobj)--> *R366[fire]
+|                                 |--(nmod)--> R383[office]
+|                                 |                |--(case)--> at
+|                                 |                |--(det)--> R383[a]
+|                                 |                |--(compou)--> R383[vancouver]
+|                                 |--(nmod:t)--> R368[friday]
+|                                 |--(punct)--> ,
+|                                 |--(advcl)--> *R358[killing]
+|                                                  |--(dobj)--> R369[banky]
+|                                                                   |--(compou)--> R369[benjamin]
+|                                                                   |--(compou)--> R369[david]
+|                                                                   |--(punct)--> ,
+|                                                                   |--(amod)--> 40
+|--(punct)--> .
+
+	* entity-paths for event['killing']18_13ecb.xmlsent:2320
+	['killing --(dobj)--> Banky']
+
+	* entity-paths for event['opened', 'fire']18_13ecb.xmlsent:2320
+
+	* entity-paths for event['fired']18_13ecb.xmlsent:2320
+	['fired --(ccomp)--> opened', 'opened --(nsubj)--> man']
+	['fired --(ccomp)--> opened', 'opened --(nmod)--> office']
+	['fired --(ccomp)--> opened', 'opened --(nmod:tmod)--> Friday']
+	['fired --(ccomp)--> opened', 'opened --(advcl)--> killing', 'killing --(dobj)--> Banky']

@@ -1,0 +1,120 @@
+
+-----------------------------------------
+docid:33_4ecb.xml
+-----------------------------------------
+
+sentence #:emotional testimony and at times lies are what jurors heard tuesday in the trial of jermayne timmons , the teen accused of shooting and killing 10-year-old kathina thomas last may in albany . 
+	[events]:[['killing'], ['shooting'], ['trial'], ['accused'], ['testimony']]
+	[entities]:[['in', 'albany'], ['jermayne', 'timmons'], ['last', 'may'], ['kathina', 'thomas']]
+are
+|--(nsubj)--> lies
+|                |--(amod)--> emotional
+|                |--(compou)--> *R1107[testimony]
+|                                 |--(cc)--> and
+|                                 |--(conj)--> times
+|                                                  |--(case)--> at
+|--(ccomp)--> heard
+|                |--(dobj)--> what
+|                |--(nsubj)--> jurors
+|                |--(nmod:t)--> tuesday
+|                |--(nmod)--> *R1090[trial]
+|                |                |--(case)--> in
+|                |                |--(det)--> the
+|                |                |--(nmod)--> R1091[timmons]
+|                |                                 |--(case)--> of
+|                |                                 |--(compou)--> R1091[jermayne]
+|                |--(punct)--> ,
+|                |--(ccomp)--> *R1108[accused]
+|                                 |--(nsubj)--> teen
+|                                 |                |--(det)--> the
+|                                 |--(nmod)--> *R1092[shooting]
+|                                 |                |--(case)--> of
+|                                 |--(cc)--> and
+|                                 |--(conj)--> *R1098[killing]
+|                                                  |--(dobj)--> R1097[thomas]
+|                                                  |                |--(amod)--> 10-year-old
+|                                                  |                |--(compou)--> R1097[kathina]
+|                                                  |--(nmod:t)--> R1099[may]
+|                                                  |                |--(amod)--> R1099[last]
+|                                                  |--(nmod)--> R1117[albany]
+|                                                                   |--(case)--> R1117[in]
+|--(punct)--> .
+
+	* entity-paths for event['killing']33_4ecb.xmlsent:9129
+	['killing --(dobj)--> Thomas']
+	['killing --(nmod:tmod)--> May']
+	['killing --(nmod)--> Albany']
+
+	* entity-paths for event['shooting']33_4ecb.xmlsent:9129
+
+	* entity-paths for event['trial']33_4ecb.xmlsent:9129
+	['trial --(nmod)--> Timmons']
+
+	* entity-paths for event['accused']33_4ecb.xmlsent:9129
+	['accused --(conj)--> killing', 'killing --(dobj)--> Thomas']
+	['accused --(conj)--> killing', 'killing --(nmod:tmod)--> May']
+	['accused --(conj)--> killing', 'killing --(nmod)--> Albany']
+
+	* entity-paths for event['testimony']33_4ecb.xmlsent:9129
+
+sentence #:prosecutor david rossi began opening statements , talking about what allegedly led jermayne timmons to the west hill neighborhood on may 29 and what led him to allegedly fire the bullet that struck kathina thomas seconds after it was fired from more than a block away . 
+	[events]:[['fire'], ['struck'], ['fired']]
+	[entities]:[['bullet'], ['him'], ['kathina', 'thomas'], ['on', 'may', '29'], ['jermayne', 'timmons'], ['it']]
+began
+|--(nsubj)--> rossi
+|                |--(compou)--> prosecutor
+|                |--(compou)--> david
+|--(xcomp)--> opening
+|                |--(dobj)--> statements
+|--(punct)--> ,
+|--(xcomp)--> talking
+|                |--(nmod)--> led
+|                                 |--(case)--> about
+|                                 |--(nsubj)--> what
+|                                 |--(advmod)--> allegedly
+|                                 |--(dobj)--> R1091[timmons]
+|                                 |                |--(compou)--> R1091[jermayne]
+|                                 |--(nmod)--> neighborhood
+|                                 |                |--(case)--> to
+|                                 |                |--(det)--> the
+|                                 |                |--(compou)--> west
+|                                 |                |--(compou)--> hill
+|                                 |--(nmod)--> R1099[may]
+|                                 |                |--(case)--> R1099[on]
+|                                 |                |--(nummod)--> R1099[29]
+|                                 |--(cc)--> and
+|                                 |--(conj)--> led
+|                                                  |--(nsubj)--> what
+|                                                  |--(dobj)--> R1091[him]
+|                                                  |--(xcomp)--> *R1092[fire]
+|                                                                   |--(mark)--> to
+|                                                                   |--(advmod)--> allegedly
+|                                                                   |--(dobj)--> R1093[bullet]
+|                                                                                    |--(det)--> the
+|                                                                                    |--(acl:re)--> *R1100[struck]
+|                                                                                                     |--(nsubj)--> that
+|                                                                                                     |--(dobj)--> seconds
+|                                                                                                     |                |--(compou)--> R1097[kathina]
+|                                                                                                     |                |--(compou)--> R1097[thomas]
+|                                                                                                     |--(advcl)--> *R1092[fired]
+|                                                                                                                      |--(mark)--> after
+|                                                                                                                      |--(nsubjp)--> R1093[it]
+|                                                                                                                      |--(auxpas)--> was
+|                                                                                                                      |--(nmod)--> block
+|                                                                                                                                       |--(case)--> from
+|                                                                                                                                       |--(nummod)--> a
+|                                                                                                                                       |                |--(advmod)--> more
+|                                                                                                                                       |                                 |--(mwe)--> than
+|                                                                                                                                       |--(advmod)--> away
+|--(punct)--> .
+
+	* entity-paths for event['fire']33_4ecb.xmlsent:9130
+	['fire --(dobj)--> bullet']
+
+	* entity-paths for event['struck']33_4ecb.xmlsent:9130
+	['struck --(dobj)--> seconds', 'seconds --(compound)--> Kathina']
+	['struck --(dobj)--> seconds', 'seconds --(compound)--> Thomas']
+	['struck --(advcl)--> fired', 'fired --(nsubjpass)--> it']
+
+	* entity-paths for event['fired']33_4ecb.xmlsent:9130
+	['fired --(nsubjpass)--> it']

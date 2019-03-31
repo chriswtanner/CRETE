@@ -1,0 +1,63 @@
+
+-----------------------------------------
+docid:36_1ecb.xml
+-----------------------------------------
+
+sentence #:two top leaders of a polygamous community in western canada have been arrested and charged with practicing polygamy , british columbia 's attorney general said wednesday 
+	[events]:[['arrested'], ['said'], ['charged'], ['polygamy']]
+	[entities]:[['in', 'western', 'canada'], ['leaders'], ['wednesday'], ['community'], ['attorney', 'general']]
+*R1195[arrested]
+|--(nsubjp)--> R1196[leaders]
+|                |--(nummod)--> two
+|                |--(amod)--> top
+|                |--(nmod)--> R1197[community]
+|                                 |--(case)--> of
+|                                 |--(det)--> a
+|                                 |--(amod)--> polygamous
+|                                 |--(nmod)--> R1198[canada]
+|                                                  |--(case)--> R1198[in]
+|                                                  |--(amod)--> R1198[western]
+|--(aux)--> have
+|--(auxpas)--> been
+|--(cc)--> and
+|--(conj)--> *R1199[charged]
+|--(advcl)--> practicing
+                 |--(mark)--> with
+                 |--(ccomp)--> *R1200[said]
+                                  |--(nsubj)--> *R1201[polygamy]
+                                  |                |--(punct)--> ,
+                                  |                |--(appos)--> R1202[general]
+                                  |                                 |--(nmod:p)--> columbia
+                                  |                                 |                |--(compou)--> british
+                                  |                                 |                |--(case)--> 's
+                                  |                                 |--(compou)--> R1202[attorney]
+                                  |--(nmod:t)--> R1203[wednesday]
+
+	* entity-paths for event['arrested']36_1ecb.xmlsent:9895
+	['arrested --(nsubjpass)--> leaders']
+	['arrested --(advcl)--> practicing', 'practicing --(ccomp)--> said', 'said --(nsubj)--> polygamy', 'polygamy --(appos)--> general']
+	['arrested --(advcl)--> practicing', 'practicing --(ccomp)--> said', 'said --(nmod:tmod)--> Wednesday']
+
+	* entity-paths for event['said']36_1ecb.xmlsent:9895
+	['said --(nsubj)--> polygamy', 'polygamy --(appos)--> general']
+	['said --(nmod:tmod)--> Wednesday']
+
+	* entity-paths for event['charged']36_1ecb.xmlsent:9895
+
+	* entity-paths for event['polygamy']36_1ecb.xmlsent:9895
+	['polygamy --(appos)--> general']
+
+sentence #:2 leaders of polygamist group arrested in canada 
+	[events]:[['arrested']]
+	[entities]:[['leaders'], ['polygamist', 'group'], ['in', 'canada']]
+R1196[leaders]
+|--(nummod)--> 2
+|--(nmod)--> R1197[group]
+                 |--(case)--> of
+                 |--(compou)--> R1197[polygamist]
+                 |--(acl)--> *R1195[arrested]
+                                  |--(nmod)--> R1198[canada]
+                                                   |--(case)--> R1198[in]
+
+	* entity-paths for event['arrested']36_1ecb.xmlsent:9894
+	['arrested --(nmod)--> Canada']

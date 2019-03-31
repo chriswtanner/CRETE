@@ -1,0 +1,53 @@
+
+-----------------------------------------
+docid:7_7ecbplus.xml
+-----------------------------------------
+
+sentence #:wladimir klitschko stops tony thompson in 6 with efficient execution 
+	[events]:[['stops'], ['6']]
+	[entities]:[['tony', 'thompson'], ['wladimir', 'klitschko']]
+*R1724[stops]
+|--(nsubj)--> R1716[klitschko]
+|                |--(compou)--> R1716[wladimir]
+|--(dobj)--> R1725[thompson]
+|                |--(compou)--> R1725[tony]
+|                |--(nmod)--> *R1726[6]
+|                                 |--(case)--> in
+|--(nmod)--> execution
+                 |--(case)--> with
+                 |--(amod)--> efficient
+
+	* entity-paths for event['stops']7_7ecbplus.xmlsent:14779
+	['stops --(nsubj)--> Klitschko']
+	['stops --(dobj)--> Thompson']
+
+	* entity-paths for event['6']7_7ecbplus.xmlsent:14779
+
+sentence #:heavyweight champion wladimir klitschko once again displayed his dominance by scoring a sixth round stoppage against american contender tony thompson . 
+	[events]:[['round'], ['stoppage']]
+	[entities]:[['wladimir', 'klitschko'], ['tony', 'thompson']]
+displayed
+|--(nsubj)--> R1716[klitschko]
+|                |--(amod)--> heavyweight
+|                |--(compou)--> champion
+|                |--(compou)--> R1716[wladimir]
+|--(advmod)--> again
+|                |--(advmod)--> once
+|--(dobj)--> dominance
+|                |--(nmod:p)--> his
+|--(advcl)--> scoring
+|                |--(mark)--> by
+|                |--(dobj)--> *R1724[stoppage]
+|                |                |--(det)--> a
+|                |                |--(amod)--> sixth
+|                |                |--(compou)--> *R1726[round]
+|                |--(nmod)--> R1725[thompson]
+|                                 |--(case)--> against
+|                                 |--(amod)--> american
+|                                 |--(compou)--> contender
+|                                 |--(compou)--> R1725[tony]
+|--(punct)--> .
+
+	* entity-paths for event['round']7_7ecbplus.xmlsent:14780
+
+	* entity-paths for event['stoppage']7_7ecbplus.xmlsent:14780

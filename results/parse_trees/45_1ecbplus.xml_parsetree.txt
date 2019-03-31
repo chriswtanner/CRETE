@@ -1,0 +1,137 @@
+
+-----------------------------------------
+docid:45_1ecbplus.xml
+-----------------------------------------
+
+sentence #:a spiro man was found guilty of two counts of first - degree murder thursday evening in the 2012 shooting death of a fort smith woman and the subsequent death of her 8 - to 12 - week - old fetus . 
+	[events]:[['guilty'], ['shooting', 'death'], ['found'], ['first', '-', 'degree', 'murder'], ['death']]
+	[entities]:[['woman'], ['fetus'], ['spiro', 'man'], ['fort', 'smith'], ['thursday', 'evening'], ['2012'], ['two', 'counts']]
+*R1608[found]
+|--(nsubjp)--> R1610[man]
+|                |--(det)--> a
+|                |--(compou)--> R1610[spiro]
+|--(auxpas)--> was
+|--(nmod:t)--> R1615[evening]
+|                |--(amod)--> *R1636[guilty]
+|                                 |--(nmod)--> R1618[counts]
+|                                                  |--(case)--> of
+|                                                  |--(nummod)--> R1618[two]
+|                                                  |--(nmod)--> *R1619[first]
+|                                                                   |--(case)--> of
+|                                                                   |--(punct)--> *R1619[-]
+|                                                                   |--(dep)--> *R1619[murder]
+|                                                                                    |--(compou)--> *R1619[degree]
+|                                                                                    |--(nmod:t)--> R1615[thursday]
+|--(nmod)--> *R1611[death]
+|                |--(case)--> in
+|                |--(det)--> the
+|                |--(nummod)--> R1620[2012]
+|                |--(compou)--> *R1611[shooting]
+|                |--(nmod)--> R1612[woman]
+|                |                |--(case)--> of
+|                |                |--(det)--> a
+|                |                |--(compou)--> R1616[fort]
+|                |                |--(compou)--> R1616[smith]
+|                |--(cc)--> and
+|                |--(conj)--> *R1624[death]
+|                                 |--(det)--> the
+|                                 |--(amod)--> subsequent
+|                                 |--(nmod)--> week
+|                                                  |--(case)--> of
+|                                                  |--(nmod:p)--> her
+|                                                  |--(compou)--> 8
+|                                                                   |--(nmod)--> 12
+|                                                                                    |--(punct)--> -
+|                                                                                    |--(case)--> to
+|                                                                                    |--(punct)--> -
+|--(punct)--> -
+|--(parata)--> R1625[fetus]
+|                |--(amod)--> old
+|--(punct)--> .
+
+	* entity-paths for event['guilty']45_1ecbplus.xmlsent:13779
+	['guilty --(nmod)--> counts']
+
+	* entity-paths for event['shooting', 'death']45_1ecbplus.xmlsent:13779
+	['death --(nummod)--> 2012']
+	['death --(nmod)--> woman']
+
+	* entity-paths for event['found']45_1ecbplus.xmlsent:13779
+	['found --(nsubjpass)--> man']
+	['found --(nmod:tmod)--> evening']
+	['found --(nmod)--> death', 'death --(nummod)--> 2012']
+	['found --(nmod)--> death', 'death --(nmod)--> woman']
+	['found --(parataxis)--> fetus']
+
+	* entity-paths for event['first', '-', 'degree', 'murder']45_1ecbplus.xmlsent:13779
+	['murder --(nmod:tmod)--> Thursday']
+
+	* entity-paths for event['death']45_1ecbplus.xmlsent:13779
+
+sentence #:a nine - woman , three - man leflore county jury deliberated almost seven hours before finding christopher kenyon simpson , 27 , guilty of two counts of first - degree murder . 
+	[events]:[['deliberated'], ['guilty'], ['first', '-', 'degree', 'murder'], ['finding']]
+	[entities]:[['leflore', 'county', 'jury'], ['two', 'counts'], ['christopher', 'kenyon', 'simpson'], ['almost', 'seven', 'hours']]
+*R1613[deliberated]
+|--(nsubj)--> R1609[jury]
+|                |--(det)--> a
+|                |--(compou)--> R1609[county]
+|                                 |--(compou)--> nine
+|                                 |                |--(dep)--> woman
+|                                 |                                 |--(punct)--> -
+|                                 |                                 |--(punct)--> ,
+|                                 |                                 |--(amod)--> three
+|                                 |                                 |--(punct)--> -
+|                                 |--(compou)--> man
+|                                 |--(compou)--> R1609[leflore]
+|--(nmod)--> R1614[hours]
+|                |--(advmod)--> R1614[almost]
+|                |--(nummod)--> R1614[seven]
+|                |--(mark)--> before
+|                |--(dep)--> *R1608[finding]
+|                                 |--(xcomp)--> *R1636[guilty]
+|                                                  |--(nsubj)--> R1610[simpson]
+|                                                  |                |--(compou)--> R1610[christopher]
+|                                                  |                |--(compou)--> R1610[kenyon]
+|                                                  |                |--(punct)--> ,
+|                                                  |                |--(amod)--> 27
+|                                                  |                |--(punct)--> ,
+|                                                  |--(nmod)--> R1618[counts]
+|                                                                   |--(case)--> of
+|                                                                   |--(nummod)--> R1618[two]
+|                                                                   |--(nmod)--> *R1619[first]
+|                                                                                    |--(case)--> of
+|                                                                                    |--(punct)--> *R1619[-]
+|                                                                                    |--(dep)--> *R1619[murder]
+|                                                                                                     |--(compou)--> *R1619[degree]
+|--(punct)--> .
+
+	* entity-paths for event['deliberated']45_1ecbplus.xmlsent:13780
+	['deliberated --(nsubj)--> jury']
+	['deliberated --(nmod)--> hours']
+
+	* entity-paths for event['guilty']45_1ecbplus.xmlsent:13780
+	['guilty --(nsubj)--> Simpson']
+	['guilty --(nmod)--> counts']
+
+	* entity-paths for event['first', '-', 'degree', 'murder']45_1ecbplus.xmlsent:13780
+
+	* entity-paths for event['finding']45_1ecbplus.xmlsent:13780
+	['finding --(xcomp)--> guilty', 'guilty --(nsubj)--> Simpson']
+	['finding --(xcomp)--> guilty', 'guilty --(nmod)--> counts']
+
+sentence #:leflore jury : simpson guilty of killing pregnant girlfriend 
+	[events]:[['killing'], ['pregnant']]
+	[entities]:[['girlfriend'], ['simpson'], ['leflore', 'jury']]
+R1609[jury]
+|--(compou)--> R1609[leflore]
+|--(punct)--> :
+|--(dep)--> guilty
+                 |--(compou)--> R1610[simpson]
+                 |--(nmod)--> R1612[girlfriend]
+                                  |--(case)--> of
+                                  |--(compou)--> *R1637[killing]
+                                  |--(compou)--> *R1621[pregnant]
+
+	* entity-paths for event['killing']45_1ecbplus.xmlsent:13778
+
+	* entity-paths for event['pregnant']45_1ecbplus.xmlsent:13778

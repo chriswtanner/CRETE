@@ -1,0 +1,31 @@
+
+-----------------------------------------
+docid:11_5ecbplus.xml
+-----------------------------------------
+
+sentence #:turkeminstan's cec plans to hold elections on december 15 2013 . 
+	[events]:[['elections'], ['hold'], ['plans']]
+	[entities]:[['cec'], ["turkeminstan's"], ['on', 'december', '15', '2013']]
+*R201[plans]
+|--(nsubj)--> R206[cec]
+|                |--(nmod:p)--> R207[turkeminstan's]
+|                                 |--(case)--> R207[turkeminstan's]
+|--(xcomp)--> *R199[hold]
+|                |--(mark)--> to
+|                |--(dobj)--> *R200[elections]
+|                |--(nmod)--> R202[december]
+|                |                |--(case)--> R202[on]
+|                |                |--(nummod)--> R202[15]
+|                |--(nmod:t)--> R202[2013]
+|--(punct)--> .
+
+	* entity-paths for event['elections']11_5ecbplus.xmlsent:726
+
+	* entity-paths for event['hold']11_5ecbplus.xmlsent:726
+	['hold --(nmod)--> December']
+	['hold --(nmod:tmod)--> 2013']
+
+	* entity-paths for event['plans']11_5ecbplus.xmlsent:726
+	['plans --(nsubj)--> CEC']
+	['plans --(xcomp)--> hold', 'hold --(nmod)--> December']
+	['plans --(xcomp)--> hold', 'hold --(nmod:tmod)--> 2013']

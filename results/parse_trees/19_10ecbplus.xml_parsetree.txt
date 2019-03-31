@@ -1,0 +1,114 @@
+
+-----------------------------------------
+docid:19_10ecbplus.xml
+-----------------------------------------
+
+sentence #:yesterday , the police explained that officers shot and killed a 16 - year - old kimani gray in brooklyn because he allegedly pointed a gun at the cops . 
+	[events]:[['pointed'], ['killed'], ['shot'], ['explained']]
+	[entities]:[['gun'], ['kimani', 'gray'], ['in', 'brooklyn'], ['cops'], ['he'], ['police'], ['officers']]
+*R410[explained]
+|--(nmod:t)--> yesterday
+|--(punct)--> ,
+|--(nsubj)--> R411[police]
+|                |--(det)--> the
+|--(ccomp)--> *R412[shot]
+|                |--(mark)--> that
+|                |--(nsubj)--> R413[officers]
+|                |--(cc)--> and
+|                |--(conj)--> *R414[killed]
+|                                 |--(dobj)--> 16
+|                                 |                |--(det)--> a
+|                                 |                |--(punct)--> -
+|                                 |                |--(dep)--> year
+|                                 |                |--(punct)--> -
+|                                 |                |--(dep)--> R415[gray]
+|                                 |                                 |--(amod)--> old
+|                                 |                                 |--(compou)--> R415[kimani]
+|                                 |                                 |--(nmod)--> R416[brooklyn]
+|                                 |                                                  |--(case)--> R416[in]
+|                                 |--(advcl)--> *R417[pointed]
+|                                                  |--(mark)--> because
+|                                                  |--(nsubj)--> R415[he]
+|                                                  |--(advmod)--> allegedly
+|                                                  |--(dobj)--> R418[gun]
+|                                                  |                |--(det)--> a
+|                                                  |--(nmod)--> R413[cops]
+|                                                                   |--(case)--> at
+|                                                                   |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['pointed']19_10ecbplus.xmlsent:2777
+	['pointed --(nsubj)--> he']
+	['pointed --(dobj)--> gun']
+	['pointed --(nmod)--> cops']
+
+	* entity-paths for event['killed']19_10ecbplus.xmlsent:2777
+	['killed --(dobj)--> 16', '16 --(dep)--> Gray']
+	['killed --(advcl)--> pointed', 'pointed --(nsubj)--> he']
+	['killed --(advcl)--> pointed', 'pointed --(dobj)--> gun']
+	['killed --(advcl)--> pointed', 'pointed --(nmod)--> cops']
+
+	* entity-paths for event['shot']19_10ecbplus.xmlsent:2777
+	['shot --(nsubj)--> officers']
+	['shot --(conj)--> killed', 'killed --(dobj)--> 16', '16 --(dep)--> Gray']
+	['shot --(conj)--> killed', 'killed --(advcl)--> pointed', 'pointed --(nsubj)--> he']
+	['shot --(conj)--> killed', 'killed --(advcl)--> pointed', 'pointed --(dobj)--> gun']
+	['shot --(conj)--> killed', 'killed --(advcl)--> pointed', 'pointed --(nmod)--> cops']
+
+	* entity-paths for event['explained']19_10ecbplus.xmlsent:2777
+	['explained --(nsubj)--> police']
+	['explained --(ccomp)--> shot', 'shot --(nsubj)--> officers']
+	['explained --(ccomp)--> shot', 'shot --(conj)--> killed', 'killed --(dobj)--> 16', '16 --(dep)--> Gray']
+	['explained --(ccomp)--> shot', 'shot --(conj)--> killed', 'killed --(advcl)--> pointed', 'pointed --(nsubj)--> he']
+	['explained --(ccomp)--> shot', 'shot --(conj)--> killed', 'killed --(advcl)--> pointed', 'pointed --(dobj)--> gun']
+	['explained --(ccomp)--> shot', 'shot --(conj)--> killed', 'killed --(advcl)--> pointed', 'pointed --(nmod)--> cops']
+
+sentence #:they killed my little brother for no reason . " 
+	[events]:[['killed']]
+	[entities]:[['they'], ['brother']]
+*R414[killed]
+|--(nsubj)--> R413[they]
+|--(dobj)--> R415[brother]
+|                |--(nmod:p)--> my
+|                |--(amod)--> little
+|--(nmod)--> reason
+|                |--(case)--> for
+|                |--(neg)--> no
+|--(punct)--> .
+|--(punct)--> "
+
+	* entity-paths for event['killed']19_10ecbplus.xmlsent:2779
+	['killed --(nsubj)--> They']
+	['killed --(dobj)--> brother']
+
+sentence #:dozens "riot" over nypd's fatal shooting of brooklyn teen 
+	[events]:[['shooting'], ['"riot"']]
+	[entities]:[["nypd's"], ['dozens'], ['teen']]
+R419[dozens]
+|--(dep)--> *R420["riot"]
+                 |--(punct)--> *R420["riot"]
+                 |--(punct)--> *R420["riot"]
+                 |--(nmod)--> *R412[shooting]
+                                  |--(case)--> over
+                                  |--(nmod:p)--> R413[nypd's]
+                                  |                |--(case)--> R413[nypd's]
+                                  |--(amod)--> fatal
+                                  |--(nmod)--> R415[teen]
+                                                   |--(case)--> of
+                                                   |--(compou)--> brooklyn
+
+	* entity-paths for event['shooting']19_10ecbplus.xmlsent:2776
+	['Shooting --(nmod:poss)--> NYPD']
+	['Shooting --(nmod)--> Teen']
+
+	* entity-paths for event['"riot"']19_10ecbplus.xmlsent:2776
+	['Riot --(punct)--> "', 'Riot --(punct)--> "', 'Riot --(nmod)--> Shooting', 'Shooting --(nmod:poss)--> NYPD']
+	['Riot --(punct)--> "', 'Riot --(punct)--> "', 'Riot --(nmod)--> Shooting', 'Shooting --(nmod)--> Teen']
+	['Riot --(punct)--> "', 'Riot --(nmod)--> Shooting', 'Shooting --(nmod:poss)--> NYPD']
+	['Riot --(punct)--> "', 'Riot --(nmod)--> Shooting', 'Shooting --(nmod)--> Teen']
+	['Riot --(punct)--> "', 'Riot --(punct)--> "', 'Riot --(nmod)--> Shooting', 'Shooting --(nmod:poss)--> NYPD']
+	['Riot --(punct)--> "', 'Riot --(punct)--> "', 'Riot --(nmod)--> Shooting', 'Shooting --(nmod)--> Teen']
+	['Riot --(punct)--> "', 'Riot --(nmod)--> Shooting', 'Shooting --(nmod:poss)--> NYPD']
+	['Riot --(punct)--> "', 'Riot --(nmod)--> Shooting', 'Shooting --(nmod)--> Teen']
+	['Riot --(nmod)--> Shooting', 'Shooting --(nmod:poss)--> NYPD']
+	['Riot --(nmod)--> Shooting', 'Shooting --(nmod)--> Teen']

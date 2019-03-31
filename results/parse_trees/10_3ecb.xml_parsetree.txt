@@ -1,0 +1,39 @@
+
+-----------------------------------------
+docid:10_3ecb.xml
+-----------------------------------------
+
+sentence #:the los angeles angels of anaheim offered free-agent first baseman mark teixeira an eight-year contract at the winter meetings in las vegas . 
+	[events]:[['winter', 'meetings'], ['offered']]
+	[entities]:[['las', 'vegas'], ['contract'], ['los', 'angeles', 'angels'], ['mark', 'teixeira']]
+*R176[offered]
+|--(nsubj)--> R175[angels]
+|                |--(det)--> the
+|                |--(compou)--> R175[los]
+|                |--(compou)--> R175[angeles]
+|                |--(nmod)--> anaheim
+|                                 |--(case)--> of
+|--(iobj)--> R163[teixeira]
+|                |--(amod)--> free-agent
+|                |--(amod)--> first
+|                |--(compou)--> baseman
+|                |--(compou)--> R163[mark]
+|--(dobj)--> R181[contract]
+|                |--(det)--> an
+|                |--(amod)--> eight-year
+|                |--(nmod)--> *R182[meetings]
+|                                 |--(case)--> at
+|                                 |--(det)--> the
+|                                 |--(compou)--> *R182[winter]
+|--(nmod)--> R183[vegas]
+|                |--(case)--> in
+|                |--(compou)--> R183[las]
+|--(punct)--> .
+
+	* entity-paths for event['winter', 'meetings']10_3ecb.xmlsent:457
+
+	* entity-paths for event['offered']10_3ecb.xmlsent:457
+	['offered --(nsubj)--> Angels']
+	['offered --(iobj)--> Teixeira']
+	['offered --(dobj)--> contract']
+	['offered --(nmod)--> Vegas']

@@ -1,0 +1,63 @@
+
+-----------------------------------------
+docid:12_7ecbplus.xml
+-----------------------------------------
+
+sentence #:somali pirate attack foiled in gulf of aden 
+	[events]:[['attack'], ['foiled']]
+	[entities]:[['in', 'gulf', 'of', 'aden']]
+*R218[attack]
+|--(amod)--> somali
+|--(compou)--> pirate
+|--(dep)--> *R217[foiled]
+|                |--(nmod)--> R229[gulf]
+|                                 |--(case)--> R229[in]
+|--(nmod)--> R229[aden]
+                 |--(case)--> R229[of]
+
+	* entity-paths for event['attack']12_7ecbplus.xmlsent:1077
+	['attack --(dep)--> foiled', 'foiled --(nmod)--> Gulf']
+	['attack --(nmod)--> Aden']
+
+	* entity-paths for event['foiled']12_7ecbplus.xmlsent:1077
+	['foiled --(nmod)--> Gulf']
+
+sentence #:an indian warship on thursday intercepted three boats with 26 somali pirates in the gulf of aden and foiled an attack on merchant vessels . 
+	[events]:[['attack'], ['intercepted'], ['foiled']]
+	[entities]:[['pirates'], ['on', 'thursday'], ['warship'], ['boats'], ['vessels'], ['in', 'the', 'gulf', 'of', 'aden']]
+*R221[intercepted]
+|--(nsubj)--> R222[warship]
+|                |--(det)--> an
+|                |--(amod)--> indian
+|                |--(nmod)--> R231[thursday]
+|                                 |--(case)--> R231[on]
+|--(dobj)--> R224[boats]
+|                |--(nummod)--> three
+|--(nmod)--> R242[pirates]
+|                |--(case)--> with
+|                |--(nummod)--> 26
+|                |--(amod)--> somali
+|                |--(nmod)--> R229[gulf]
+|                                 |--(case)--> R229[in]
+|                                 |--(det)--> R229[the]
+|                                 |--(nmod)--> R229[aden]
+|                                                  |--(case)--> R229[of]
+|--(cc)--> and
+|--(conj)--> *R217[foiled]
+|                |--(dobj)--> *R218[attack]
+|                |                |--(det)--> an
+|                |--(nmod)--> R220[vessels]
+|                                 |--(case)--> on
+|                                 |--(compou)--> merchant
+|--(punct)--> .
+
+	* entity-paths for event['attack']12_7ecbplus.xmlsent:1079
+
+	* entity-paths for event['intercepted']12_7ecbplus.xmlsent:1079
+	['intercepted --(nsubj)--> warship']
+	['intercepted --(dobj)--> boats']
+	['intercepted --(nmod)--> pirates']
+	['intercepted --(conj)--> foiled', 'foiled --(nmod)--> vessels']
+
+	* entity-paths for event['foiled']12_7ecbplus.xmlsent:1079
+	['foiled --(nmod)--> vessels']

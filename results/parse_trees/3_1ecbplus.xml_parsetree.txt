@@ -1,0 +1,153 @@
+
+-----------------------------------------
+docid:3_1ecbplus.xml
+-----------------------------------------
+
+sentence #:a convicted sex offender sentenced to life in prison pulled a gun on two guards during a prison transfer monday and held them hostage temporarily before fleeing on foot in one of the guard's uniforms , authorities said . 
+	[events]:[['pulled', 'on'], ['held', 'hostage'], ['transfer'], ['said'], ['fleeing'], ['sentenced'], ['life', 'in', 'prison']]
+	[entities]:[['uniforms'], ["guard's"], ['in', 'prison'], ['authorities'], ['them'], ['offender'], ['monday'], ['gun'], ['guards']]
+*R910[said]
+|--(ccomp)--> *R898[pulled]
+|                |--(nsubj)--> R890[offender]
+|                |                |--(det)--> a
+|                |                |--(amod)--> convicted
+|                |                |--(compou)--> sex
+|                |                |--(acl)--> *R911[sentenced]
+|                |                                 |--(nmod)--> *R912[life]
+|                |                                                  |--(case)--> to
+|                |                                                  |--(nmod)--> *R913[prison]
+|                |                                                                   |--(case)--> *R913[in]
+|                |--(dobj)--> R899[gun]
+|                |                |--(det)--> a
+|                |                |--(nmod)--> R900[guards]
+|                |                                 |--(case)--> *R898[on]
+|                |                                 |--(nummod)--> two
+|                |--(nmod)--> *R894[transfer]
+|                |                |--(case)--> during
+|                |                |--(det)--> a
+|                |                |--(compou)--> prison
+|                |--(nmod:t)--> R914[monday]
+|                |--(cc)--> and
+|                |--(conj)--> *R915[held]
+|                                 |--(dobj)--> *R915[hostage]
+|                                 |                |--(dep)--> R900[them]
+|                                 |--(advmod)--> temporarily
+|                                 |--(advcl)--> *R893[fleeing]
+|                                                  |--(mark)--> before
+|                                                  |--(nmod)--> foot
+|                                                  |                |--(case)--> on
+|                                                  |--(nmod)--> one
+|                                                                   |--(case)--> in
+|                                                                   |--(nmod)--> R916[uniforms]
+|                                                                                    |--(case)--> of
+|                                                                                    |--(nmod:p)--> R900[guard's]
+|                                                                                                     |--(det)--> the
+|                                                                                                     |--(case)--> R900[guard's]
+|--(punct)--> ,
+|--(nsubj)--> R917[authorities]
+|--(punct)--> .
+
+	* entity-paths for event['pulled', 'on']3_1ecbplus.xmlsent:7408
+
+	* entity-paths for event['held', 'hostage']3_1ecbplus.xmlsent:7408
+	['hostage --(dep)--> them']
+
+	* entity-paths for event['transfer']3_1ecbplus.xmlsent:7408
+
+	* entity-paths for event['said']3_1ecbplus.xmlsent:7408
+	['said --(ccomp)--> pulled', 'pulled --(nsubj)--> offender']
+	['said --(ccomp)--> pulled', 'pulled --(dobj)--> gun']
+	['said --(ccomp)--> pulled', 'pulled --(nmod:tmod)--> Monday']
+	['said --(ccomp)--> pulled', 'pulled --(conj)--> held', 'held --(dobj)--> hostage', 'hostage --(dep)--> them']
+	['said --(ccomp)--> pulled', 'pulled --(conj)--> held', 'held --(advcl)--> fleeing', 'fleeing --(nmod)--> one', 'one --(nmod)--> uniforms']
+	['said --(nsubj)--> authorities']
+
+	* entity-paths for event['fleeing']3_1ecbplus.xmlsent:7408
+	['fleeing --(nmod)--> one', 'one --(nmod)--> uniforms']
+
+	* entity-paths for event['sentenced']3_1ecbplus.xmlsent:7408
+	['sentenced --(nmod)--> life', 'life --(nmod)--> prison']
+
+	* entity-paths for event['life', 'in', 'prison']3_1ecbplus.xmlsent:7408
+
+sentence #:comeaux , 49 , took the officers' weapons and handcuffed them together in the back of the vehicle before fleeing on foot at around 9 a . m . , lyons said . 
+	[events]:[['fleeing'], ['handcuffed'], ['took']]
+	[entities]:[['lyons'], ['in', 'the', 'back', 'of', 'the', 'vehicle'], ['weapons'], ['at', 'around', '9', 'a', '.', 'm'], ['vehicle'], ['comeaux'], ['them']]
+*R918[took]
+|--(nsubj)--> R890[comeaux]
+|                |--(punct)--> ,
+|                |--(amod)--> 49
+|                |--(punct)--> ,
+|--(dobj)--> R919[weapons]
+|                |--(nmod:p)--> officers'
+|                                 |--(det)--> the
+|                                 |--(case)--> officers'
+|--(cc)--> and
+|--(conj)--> *R920[handcuffed]
+|                |--(dobj)--> R900[them]
+|                |--(advmod)--> together
+|                |--(nmod)--> R921[back]
+|                                 |--(case)--> R921[in]
+|                                 |--(det)--> R921[the]
+|                                 |--(nmod)--> R921[vehicle]
+|                                                  |--(case)--> R921[of]
+|                                                  |--(det)--> R921[the]
+|                                                  |--(acl)--> *R893[fleeing]
+|                                                                   |--(mark)--> before
+|                                                                   |--(nmod)--> foot
+|                                                                                    |--(case)--> on
+|                                                                                    |--(nmod)--> R914[9]
+|                                                                                    |                |--(case)--> R914[at]
+|                                                                                    |                |--(advmod)--> R914[around]
+|                                                                                    |                |--(dep)--> R914[a]
+|                                                                                    |--(punct)--> R914[.]
+|                                                                                    |--(dep)--> R914[m]
+|                                                                                    |--(punct)--> .
+|                                                                                    |--(punct)--> ,
+|                                                                                    |--(acl:re)--> said
+|                                                                                                     |--(nsubj)--> R922[lyons]
+|--(punct)--> .
+
+	* entity-paths for event['fleeing']3_1ecbplus.xmlsent:7410
+	['fleeing --(nmod)--> foot', 'foot --(nmod)--> 9']
+	['fleeing --(nmod)--> foot', 'foot --(punct)--> .']
+	['fleeing --(nmod)--> foot', 'foot --(dep)--> m']
+	['fleeing --(nmod)--> foot', 'foot --(acl:relcl)--> said', 'said --(nsubj)--> Lyons']
+
+	* entity-paths for event['handcuffed']3_1ecbplus.xmlsent:7410
+	['handcuffed --(dobj)--> them']
+	['handcuffed --(nmod)--> back']
+
+	* entity-paths for event['took']3_1ecbplus.xmlsent:7410
+	['took --(nsubj)--> Comeaux']
+	['took --(dobj)--> weapons']
+	['took --(conj)--> handcuffed', 'handcuffed --(dobj)--> them']
+	['took --(conj)--> handcuffed', 'handcuffed --(nmod)--> back']
+
+sentence #:arcade joseph comeaux jr , prison inmate , pulls gun on and handcuffs guards , runs away 
+	[events]:[['pulls', 'on'], ['handcuffs'], ['runs']]
+	[entities]:[['guards'], ['arcade', 'joseph', 'comeaux', 'jr'], ['gun']]
+R890[jr]
+|--(compou)--> R890[arcade]
+|--(compou)--> R890[joseph]
+|--(compou)--> R890[comeaux]
+|--(punct)--> ,
+|--(appos)--> inmate
+|                |--(compou)--> prison
+|--(punct)--> ,
+|--(appos)--> R899[gun]
+|                |--(compou)--> *R898[pulls]
+|--(dep)--> *R893[runs]
+                 |--(mark)--> *R898[on]
+                 |--(cc)--> and
+                 |--(nsubj)--> R900[guards]
+                 |                |--(compou)--> *R920[handcuffs]
+                 |--(punct)--> ,
+                 |--(advmod)--> away
+
+	* entity-paths for event['pulls', 'on']3_1ecbplus.xmlsent:7406
+
+	* entity-paths for event['handcuffs']3_1ecbplus.xmlsent:7406
+
+	* entity-paths for event['runs']3_1ecbplus.xmlsent:7406
+	['Runs --(nsubj)--> Guards']

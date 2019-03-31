@@ -1,0 +1,77 @@
+
+-----------------------------------------
+docid:31_13ecb.xml
+-----------------------------------------
+
+sentence #:the historical record will show that with 7:42 remaining in the first half against evansville 's purple aces , tyler hansbrough became unc 's all-time leading scorer , slipping a screen , fighting through a double-team , and banking in a two-pointer for his tenth point of the game and the 2,292nd point of his career . 
+	[events]:[['became'], ['record'], ['game']]
+	[entities]:[['his'], ['tyler', 'hansbrough'], ['scorer'], ['purple', 'aces'], ['his']]
+show
+|--(nsubj)--> *R998[record]
+|                |--(det)--> the
+|                |--(amod)--> historical
+|--(aux)--> will
+|--(ccomp)--> *R996[became]
+|                |--(mark)--> that
+|                |--(nmod)--> 7:42
+|                |                |--(case)--> with
+|                |                |--(acl)--> remaining
+|                |                                 |--(nmod)--> half
+|                |                                                  |--(case)--> in
+|                |                                                  |--(det)--> the
+|                |                                                  |--(amod)--> first
+|                |                                                  |--(nmod)--> R1008[aces]
+|                |                                                                   |--(case)--> against
+|                |                                                                   |--(nmod:p)--> evansville
+|                |                                                                   |                |--(case)--> 's
+|                |                                                                   |--(compou)--> R1008[purple]
+|                |--(punct)--> ,
+|                |--(nsubj)--> R997[hansbrough]
+|                |                |--(compou)--> R997[tyler]
+|                |--(xcomp)--> R997[scorer]
+|                |                |--(nmod:p)--> unc
+|                |                |                |--(case)--> 's
+|                |                |--(amod)--> all-time
+|                |                |--(amod)--> leading
+|                |--(punct)--> ,
+|                |--(advcl)--> slipping
+|                |                |--(dobj)--> screen
+|                |                                 |--(det)--> a
+|                |--(punct)--> ,
+|                |--(xcomp)--> fighting
+|                                 |--(nmod)--> double-team
+|                                                  |--(case)--> through
+|                                                  |--(det)--> a
+|                                                  |--(punct)--> ,
+|                                                  |--(cc)--> and
+|                                                  |--(conj)--> banking
+|                                                  |--(nmod)--> two-pointer
+|                                                                   |--(case)--> in
+|                                                                   |--(det)--> a
+|                                                                   |--(nmod)--> point
+|                                                                                    |--(case)--> for
+|                                                                                    |--(nmod:p)--> R997[his]
+|                                                                                    |--(compou)--> tenth
+|                                                                                    |--(nmod)--> *R1010[game]
+|                                                                                    |                |--(case)--> of
+|                                                                                    |                |--(det)--> the
+|                                                                                    |--(cc)--> and
+|                                                                                    |--(conj)--> point
+|                                                                                                     |--(det)--> the
+|                                                                                                     |--(nummod)--> 2,292nd
+|                                                                                                     |--(compou)--> 2,292nd
+|                                                                                                     |--(nmod)--> career
+|                                                                                                                      |--(case)--> of
+|                                                                                                                      |--(nmod:p)--> R997[his]
+|--(punct)--> .
+
+	* entity-paths for event['became']31_13ecb.xmlsent:8145
+	['became --(nmod)--> 7:42', '7:42 --(acl)--> remaining', 'remaining --(nmod)--> half', 'half --(nmod)--> Aces']
+	['became --(nsubj)--> Hansbrough']
+	['became --(xcomp)--> scorer']
+	['became --(xcomp)--> fighting', 'fighting --(nmod)--> double-team', 'double-team --(nmod)--> two-pointer', 'two-pointer --(nmod)--> point', 'point --(nmod:poss)--> his']
+	['became --(xcomp)--> fighting', 'fighting --(nmod)--> double-team', 'double-team --(nmod)--> two-pointer', 'two-pointer --(nmod)--> point', 'point --(conj)--> point', 'point --(nmod)--> career', 'career --(nmod:poss)--> his']
+
+	* entity-paths for event['record']31_13ecb.xmlsent:8145
+
+	* entity-paths for event['game']31_13ecb.xmlsent:8145

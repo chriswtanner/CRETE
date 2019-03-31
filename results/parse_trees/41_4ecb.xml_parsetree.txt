@@ -1,0 +1,215 @@
+
+-----------------------------------------
+docid:41_4ecb.xml
+-----------------------------------------
+
+sentence #:when the israeli attack came on the prep c girls school in the jabaliya camp at 3.45pm on tuesday , mr ging said about 350 palestinians were inside , using the school as a shelter . 
+	[events]:[['attack']]
+	[entities]:[['school'], ['shelter'], ['jabaliya', 'camp'], ['at', '3.45pm', 'on', 'tuesday']]
+said
+|--(advcl)--> came
+|                |--(advmod)--> when
+|                |--(nsubj)--> *R1465[attack]
+|                |                |--(det)--> the
+|                |                |--(amod)--> israeli
+|                |--(nmod)--> school
+|                |                |--(case)--> on
+|                |                |--(det)--> the
+|                |                |--(compou)--> prep
+|                |                |--(compou)--> c
+|                |                |--(compou)--> girls
+|                |                |--(nmod)--> R1468[camp]
+|                |                                 |--(case)--> in
+|                |                                 |--(det)--> the
+|                |                                 |--(compou)--> R1468[jabaliya]
+|                |--(nmod)--> R1489[3.45pm]
+|                                 |--(case)--> R1489[at]
+|                                 |--(nummod)--> R1489[3.45pm]
+|                                 |--(nmod)--> R1489[tuesday]
+|                                                  |--(case)--> R1489[on]
+|--(punct)--> ,
+|--(nsubj)--> ging
+|                |--(compou)--> mr
+|--(nmod)--> palestinians
+|                |--(case)--> about
+|                |--(nummod)--> 350
+|                |--(acl)--> were
+|                                 |--(advmod)--> inside
+|--(punct)--> ,
+|--(xcomp)--> using
+|                |--(dobj)--> R1466[school]
+|                |                |--(det)--> the
+|                |--(nmod)--> R1466[shelter]
+|                                 |--(case)--> as
+|                                 |--(det)--> a
+|--(punct)--> .
+
+	* entity-paths for event['attack']41_4ecb.xmlsent:12241
+
+sentence #:the attack on the school has caused widespread shock across israel , intensifying pressure on prime minister ehud olmert to reach a ceasefire . 
+	[events]:[['attack']]
+	[entities]:[['israel'], ['on', 'the', 'school']]
+caused
+|--(nsubj)--> *R1465[attack]
+|                |--(det)--> the
+|                |--(nmod)--> R1466[school]
+|                                 |--(case)--> R1466[on]
+|                                 |--(det)--> R1466[the]
+|--(aux)--> has
+|--(dobj)--> shock
+|                |--(amod)--> widespread
+|                |--(nmod)--> R1490[israel]
+|                                 |--(case)--> across
+|--(punct)--> ,
+|--(advcl)--> intensifying
+|                |--(dobj)--> pressure
+|                |--(nmod)--> olmert
+|                |                |--(case)--> on
+|                |                |--(compou)--> prime
+|                |                |--(compou)--> minister
+|                |                |--(compou)--> ehud
+|                |--(advcl)--> reach
+|                                 |--(mark)--> to
+|                                 |--(dobj)--> ceasefire
+|                                                  |--(det)--> a
+|--(punct)--> .
+
+	* entity-paths for event['attack']41_4ecb.xmlsent:12257
+	['attack --(nmod)--> school']
+
+sentence #:seventeen hours after the attack on one of his schools killed 40 palestinians seeking shelter from israel 's war on hamas , the united nations ' director of operations in gaza , john ging , was certain of at least one thing " we have established beyond any doubt that the school was not being used by any militants , " mr ging told the age last night . 
+	[events]:[['attack'], ['killed'], ['used'], ['war']]
+	[entities]:[['israel'], ['40', 'palestinians'], ['militants'], ['one', 'of'], ['school'], ['in', 'gaza'], ['hamas']]
+told
+|--(ccomp)--> certain
+|                |--(advcl)--> *R1464[killed]
+|                |                |--(dep)--> hours
+|                |                |                |--(nummod)--> seventeen
+|                |                |--(mark)--> after
+|                |                |--(nsubj)--> *R1465[attack]
+|                |                |                |--(det)--> the
+|                |                |                |--(nmod)--> R1466[one]
+|                |                |                                 |--(case)--> on
+|                |                |                                 |--(nmod)--> schools
+|                |                |                                                  |--(case)--> R1466[of]
+|                |                |                                                  |--(nmod:p)--> his
+|                |                |--(dobj)--> R1467[palestinians]
+|                |                |                |--(nummod)--> R1467[40]
+|                |                |--(xcomp)--> seeking
+|                |                                 |--(dobj)--> shelter
+|                |                                 |--(nmod)--> *R1491[war]
+|                |                                                  |--(case)--> from
+|                |                                                  |--(nmod:p)--> R1462[israel]
+|                |                                                  |                |--(case)--> 's
+|                |                                                  |--(nmod)--> R1492[hamas]
+|                |                                                                   |--(case)--> on
+|                |--(punct)--> ,
+|                |--(nsubj)--> director
+|                |                |--(nmod:p)--> nations
+|                |                |                |--(det)--> the
+|                |                |                |--(compou)--> united
+|                |                |                |--(case)--> '
+|                |                |--(nmod)--> operations
+|                |                                 |--(case)--> of
+|                |                                 |--(nmod)--> R1463[gaza]
+|                |                                                  |--(case)--> R1463[in]
+|                |                                                  |--(punct)--> ,
+|                |                                                  |--(appos)--> ging
+|                |                                                  |                |--(compou)--> john
+|                |                                                  |--(punct)--> ,
+|                |--(cop)--> was
+|                |--(nmod)--> thing
+|                                 |--(case)--> of
+|                                 |--(nummod)--> one
+|                                 |                |--(nmod:n)--> least
+|                                 |                                 |--(case)--> at
+|                                 |--(punct)--> "
+|                                 |--(dep)--> established
+|                                                  |--(nsubj)--> we
+|                                                  |--(aux)--> have
+|                                                  |--(nmod)--> doubt
+|                                                  |                |--(case)--> beyond
+|                                                  |                |--(det)--> any
+|                                                  |--(dep)--> *R1472[used]
+|                                                                   |--(mark)--> that
+|                                                                   |--(nsubjp)--> R1466[school]
+|                                                                   |                |--(det)--> the
+|                                                                   |--(aux)--> was
+|                                                                   |--(neg)--> not
+|                                                                   |--(auxpas)--> being
+|                                                                   |--(nmod)--> R1471[militants]
+|                                                                                    |--(case)--> by
+|                                                                                    |--(det)--> any
+|--(punct)--> ,
+|--(punct)--> "
+|--(nsubj)--> ging
+|                |--(compou)--> mr
+|--(dobj)--> age
+|                |--(det)--> the
+|--(nmod:t)--> night
+|                |--(amod)--> last
+|--(punct)--> .
+
+	* entity-paths for event['attack']41_4ecb.xmlsent:12237
+	['attack --(nmod)--> one']
+
+	* entity-paths for event['killed']41_4ecb.xmlsent:12237
+	['killed --(nsubj)--> attack', 'attack --(nmod)--> one']
+	['killed --(dobj)--> Palestinians']
+	['killed --(xcomp)--> seeking', 'seeking --(nmod)--> war', 'war --(nmod:poss)--> Israel']
+	['killed --(xcomp)--> seeking', 'seeking --(nmod)--> war', 'war --(nmod)--> Hamas']
+
+	* entity-paths for event['used']41_4ecb.xmlsent:12237
+	['used --(nsubjpass)--> school']
+	['used --(nmod)--> militants']
+
+	* entity-paths for event['war']41_4ecb.xmlsent:12237
+	['war --(nmod:poss)--> Israel']
+	['war --(nmod)--> Hamas']
+
+sentence #:speaking by phone from the un 's relief and works agency in gaza , mr ging struggled to contain his anger at the attack that has also left more 50 people with serious injuries , 10 of whom remain critical . 
+	[events]:[['attack']]
+	[entities]:[['in', 'gaza']]
+struggled
+|--(advcl)--> speaking
+|                |--(nmod)--> phone
+|                |                |--(case)--> by
+|                |--(nmod)--> relief
+|                                 |--(case)--> from
+|                                 |--(nmod:p)--> un
+|                                 |                |--(det)--> the
+|                                 |                |--(case)--> 's
+|                                 |--(cc)--> and
+|                                 |--(conj)--> agency
+|                                 |                |--(compou)--> works
+|                                 |--(nmod)--> R1463[gaza]
+|                                                  |--(case)--> R1463[in]
+|--(punct)--> ,
+|--(nsubj)--> ging
+|                |--(compou)--> mr
+|--(xcomp)--> contain
+|                |--(mark)--> to
+|                |--(dobj)--> anger
+|                |                |--(nmod:p)--> his
+|                |--(nmod)--> *R1465[attack]
+|                                 |--(case)--> at
+|                                 |--(det)--> the
+|                                 |--(acl:re)--> left
+|                                                  |--(nsubj)--> that
+|                                                  |--(aux)--> has
+|                                                  |--(advmod)--> also
+|                                                  |--(advmod)--> more
+|                                                  |                |--(nmod:n)--> people
+|                                                  |                                 |--(nummod)--> 50
+|                                                  |--(nmod)--> injuries
+|                                                                   |--(case)--> with
+|                                                                   |--(amod)--> serious
+|                                                                   |--(punct)--> ,
+|                                                                   |--(acl:re)--> remain
+|                                                                                    |--(nsubj)--> 10
+|                                                                                    |                |--(nmod)--> whom
+|                                                                                    |                                 |--(case)--> of
+|                                                                                    |--(xcomp)--> critical
+|--(punct)--> .
+
+	* entity-paths for event['attack']41_4ecb.xmlsent:12239

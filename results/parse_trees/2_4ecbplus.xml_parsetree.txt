@@ -1,0 +1,73 @@
+
+-----------------------------------------
+docid:2_4ecbplus.xml
+-----------------------------------------
+
+sentence #:ellen degeneres will host this year's oscars . 
+	[events]:[['host'], ['oscars']]
+	[entities]:[['ellen', 'degeneres'], ['this', "year's"]]
+*R456[host]
+|--(nsubj)--> R454[degeneres]
+|                |--(compou)--> R454[ellen]
+|--(aux)--> will
+|--(dobj)--> *R455[oscars]
+|                |--(nmod:p)--> R475[year's]
+|                                 |--(det)--> R475[this]
+|                                 |--(case)--> R475[year's]
+|--(punct)--> .
+
+	* entity-paths for event['host']2_4ecbplus.xmlsent:3603
+	['host --(nsubj)--> DeGeneres']
+	['host --(dobj)--> Oscars', 'Oscars --(nmod:poss)--> year']
+
+	* entity-paths for event['oscars']2_4ecbplus.xmlsent:3603
+	['Oscars --(nmod:poss)--> year']
+
+sentence #:she will make her second appearance as the show's emcee on the march 2 broadcast . 
+	[events]:[['broadcast'], ['make'], ["show's"], ['appearance']]
+	[entities]:[['the', 'march', '2'], ['she'], ['emcee'], ['second']]
+*R488[make]
+|--(nsubj)--> R454[she]
+|--(aux)--> will
+|--(dobj)--> *R456[appearance]
+|                |--(nmod:p)--> her
+|                |--(amod)--> R466[second]
+|--(nmod)--> R454[emcee]
+|                |--(case)--> as
+|                |--(nmod:p)--> *R455[show's]
+|                |                |--(det)--> the
+|                |                |--(case)--> *R455[show's]
+|                |--(nmod)--> *R455[broadcast]
+|                                 |--(case)--> on
+|                                 |--(det)--> R489[the]
+|                                 |--(compou)--> R489[march]
+|                                 |--(nummod)--> R489[2]
+|--(punct)--> .
+
+	* entity-paths for event['broadcast']2_4ecbplus.xmlsent:3602
+	['broadcast --(det)--> the']
+	['broadcast --(compound)--> March']
+	['broadcast --(nummod)--> 2']
+
+	* entity-paths for event['make']2_4ecbplus.xmlsent:3602
+	['make --(nsubj)--> She']
+	['make --(dobj)--> appearance', 'appearance --(amod)--> second']
+	['make --(nmod)--> emcee']
+
+	* entity-paths for event["show's"]2_4ecbplus.xmlsent:3602
+
+	* entity-paths for event['appearance']2_4ecbplus.xmlsent:3602
+	['appearance --(amod)--> second']
+
+sentence #:ellen degeneres to host oscars 
+	[events]:[['host'], ['oscars']]
+	[entities]:[['ellen', 'degeneres']]
+R454[degeneres]
+|--(compou)--> R454[ellen]
+|--(nmod)--> *R455[oscars]
+                 |--(case)--> to
+                 |--(compou)--> *R456[host]
+
+	* entity-paths for event['host']2_4ecbplus.xmlsent:3600
+
+	* entity-paths for event['oscars']2_4ecbplus.xmlsent:3600

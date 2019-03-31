@@ -1,0 +1,58 @@
+
+-----------------------------------------
+docid:39_10ecbplus.xml
+-----------------------------------------
+
+sentence #:the thick of it actor will play the 12th doctor , replacing matt smith on bbc one's hit sci - fi drama . 
+	[events]:[['replacing'], ['play']]
+	[entities]:[['actor'], ['on', 'bbc', "one's"], ['matt', 'smith'], ['12th', 'doctor'], ['sci', '-', 'fi', 'drama']]
+the
+|--(dep)--> R1331[actor]
+|                |--(dobj)--> thick
+|                |                |--(nmod)--> it
+|                |                                 |--(case)--> of
+|                |--(ccomp)--> *R1332[play]
+|                                 |--(aux)--> will
+|                                 |--(dobj)--> R1333[doctor]
+|                                 |                |--(det)--> the
+|                                 |                |--(amod)--> R1333[12th]
+|                                 |--(punct)--> ,
+|                                 |--(advcl)--> *R1334[replacing]
+|                                                  |--(dobj)--> R1328[smith]
+|                                                                   |--(compou)--> R1328[matt]
+|                                                                   |--(nmod)--> R1335[bbc]
+|                                                                                    |--(case)--> R1335[on]
+|                                                                                    |--(nummod)--> R1335[one's]
+|                                                                                    |--(case)--> R1335[one's]
+|                                                                                    |--(amod)--> hit
+|--(dep)--> R1336[drama]
+                 |--(dep)--> R1336[sci]
+                 |--(punct)--> R1336[-]
+                 |--(compou)--> R1336[fi]
+                 |--(punct)--> .
+
+	* entity-paths for event['replacing']39_10ecbplus.xmlsent:10846
+	['replacing --(dobj)--> Smith']
+
+	* entity-paths for event['play']39_10ecbplus.xmlsent:10846
+	['play --(dobj)--> Doctor']
+	['play --(advcl)--> replacing', 'replacing --(dobj)--> Smith']
+
+sentence #:peter capaldi to replace matt smith on 'doctor who' 
+	[events]:[['replace']]
+	[entities]:[['matt', 'smith'], ["'doctor", "who'"], ['peter', 'capaldi']]
+*R1334[replace]
+|--(nsubj)--> R1331[capaldi]
+|                |--(compou)--> R1331[peter]
+|--(mark)--> to
+|--(dobj)--> R1328[smith]
+                 |--(compou)--> R1328[matt]
+                 |--(nmod)--> R1336['doctor]
+                                  |--(case)--> on
+                                  |--(punct)--> R1336['doctor]
+                                  |--(acl:re)--> R1336[who']
+                                  |--(punct)--> R1336[who']
+
+	* entity-paths for event['replace']39_10ecbplus.xmlsent:10843
+	['replace --(nsubj)--> Capaldi']
+	['replace --(dobj)--> Smith']

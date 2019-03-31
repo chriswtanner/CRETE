@@ -1,0 +1,105 @@
+
+-----------------------------------------
+docid:16_7ecbplus.xml
+-----------------------------------------
+
+sentence #:a 27 - year - old parolee is found 'cowering in a bathtub' near the house where jerry ortiz had been shot in the head a few hours earlier . 
+	[events]:[['shot']]
+	[entities]:[['jerry', 'ortiz'], ['in', 'the', 'head'], ['parolee'], ['a', 'few', 'hours', 'earlier']]
+27
+|--(det)--> a
+|--(punct)--> -
+|--(dep)--> year
+|--(punct)--> -
+|--(parata)--> found
+|                |--(nsubjp)--> R317[parolee]
+|                |                |--(amod)--> old
+|                |--(auxpas)--> is
+|                |--(ccomp)--> 'cowering
+|                |                |--(punct)--> 'cowering
+|                |                |--(nmod)--> bathtub'
+|                |                                 |--(case)--> in
+|                |                                 |--(det)--> a
+|                |                                 |--(punct)--> bathtub'
+|                |                                 |--(nmod)--> house
+|                |                                                  |--(case)--> near
+|                |                                                  |--(det)--> the
+|                |--(advcl)--> *R324[shot]
+|                                 |--(advmod)--> where
+|                                 |--(nsubjp)--> R319[ortiz]
+|                                 |                |--(compou)--> R319[jerry]
+|                                 |--(aux)--> had
+|                                 |--(auxpas)--> been
+|                                 |--(nmod)--> R325[head]
+|                                                  |--(case)--> R325[in]
+|                                                  |--(det)--> R325[the]
+|                                                  |--(advmod)--> R347[earlier]
+|                                                                   |--(nmod:n)--> R347[hours]
+|                                                                                    |--(det)--> R347[a]
+|                                                                                    |--(amod)--> R347[few]
+|--(punct)--> .
+
+	* entity-paths for event['shot']16_7ecbplus.xmlsent:2057
+	['shot --(nsubjpass)--> Ortiz']
+	['shot --(nmod)--> head']
+
+sentence #:before he was fatally shot , los angeles county sheriff's deputy jerry ortiz was looking for a man considered to be a "career criminal" and was hoping to arrest him on suspicion of attempted murder , officials said saturday . 
+	[events]:[['arrest'], ['murder'], ['said'], ['shot']]
+	[entities]:[['man'], ['he'], ['criminal"'], ['officials'], ['him'], ['jerry', 'ortiz']]
+*R350[said]
+|--(ccomp)--> looking
+|                |--(advcl)--> *R324[shot]
+|                |                |--(mark)--> before
+|                |                |--(nsubjp)--> R319[he]
+|                |                |--(auxpas)--> was
+|                |                |--(advmod)--> fatally
+|                |--(punct)--> ,
+|                |--(nsubj)--> R319[ortiz]
+|                |                |--(nmod:p)--> sheriff's
+|                |                |                |--(compou)--> los
+|                |                |                |--(compou)--> angeles
+|                |                |                |--(compou)--> county
+|                |                |                |--(case)--> sheriff's
+|                |                |--(compou)--> deputy
+|                |                |--(compou)--> R319[jerry]
+|                |--(aux)--> was
+|                |--(nmod)--> R317[man]
+|                                 |--(case)--> for
+|                                 |--(det)--> a
+|                                 |--(acl)--> considered
+|                                                  |--(xcomp)--> "career
+|                                                                   |--(mark)--> to
+|                                                                   |--(cop)--> be
+|                                                                   |--(det)--> a
+|                                                                   |--(punct)--> "career
+|                                                                   |--(amod)--> R317[criminal"]
+|                                                                   |--(punct)--> R317[criminal"]
+|                                                                   |--(cc)--> and
+|                                                                   |--(conj)--> hoping
+|                                                                                    |--(aux)--> was
+|                                                                                    |--(xcomp)--> *R352[arrest]
+|                                                                                                     |--(mark)--> to
+|                                                                                                     |--(dobj)--> R317[him]
+|                                                                                                     |--(nmod)--> suspicion
+|                                                                                                                      |--(case)--> on
+|                                                                                                                      |--(nmod)--> *R353[murder]
+|                                                                                                                                       |--(case)--> of
+|                                                                                                                                       |--(amod)--> attempted
+|--(punct)--> ,
+|--(nsubj)--> R351[officials]
+|--(nmod:t)--> saturday
+|--(punct)--> .
+
+	* entity-paths for event['arrest']16_7ecbplus.xmlsent:2059
+	['arrest --(dobj)--> him']
+
+	* entity-paths for event['murder']16_7ecbplus.xmlsent:2059
+
+	* entity-paths for event['said']16_7ecbplus.xmlsent:2059
+	['said --(ccomp)--> looking', 'looking --(advcl)--> shot', 'shot --(nsubjpass)--> he']
+	['said --(ccomp)--> looking', 'looking --(nsubj)--> Ortiz']
+	['said --(ccomp)--> looking', 'looking --(nmod)--> man']
+	['said --(nsubj)--> officials']
+
+	* entity-paths for event['shot']16_7ecbplus.xmlsent:2059
+	['shot --(nsubjpass)--> he']

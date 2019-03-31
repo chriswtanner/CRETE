@@ -1,0 +1,56 @@
+
+-----------------------------------------
+docid:40_11ecbplus.xml
+-----------------------------------------
+
+sentence #:next , global marketing vp phil schiller announced updates to the macbook line . 
+	[events]:[['updates']]
+	[entities]:[['macbook', 'line'], ['phil', 'schiller']]
+announced
+|--(advmod)--> next
+|--(punct)--> ,
+|--(nsubj)--> R1413[schiller]
+|                |--(amod)--> global
+|                |--(compou)--> marketing
+|                |--(compou)--> vp
+|                |--(compou)--> R1413[phil]
+|--(dobj)--> *R1411[updates]
+|--(nmod)--> R1417[line]
+|                |--(case)--> to
+|                |--(det)--> the
+|                |--(compou)--> R1417[macbook]
+|--(punct)--> .
+
+	* entity-paths for event['updates']40_11ecbplus.xmlsent:11670
+
+sentence #:after a witty intro by siri herself , apple ceo tim cook took the stage in san francisco to welcome developers and announce new stuff . 
+	[events]:[['announce']]
+	[entities]:[['apple', 'ceo', 'tim', 'cook'], ['the', 'stage', 'in', 'san', 'francisco']]
+took
+|--(nmod)--> intro
+|                |--(case)--> after
+|                |--(det)--> a
+|                |--(amod)--> witty
+|                |--(nmod)--> siri
+|                                 |--(case)--> by
+|--(nsubj)--> herself
+|--(punct)--> ,
+|--(nsubj)--> R1418[cook]
+|                |--(compou)--> R1418[apple]
+|                |--(compou)--> R1418[ceo]
+|                |--(compou)--> R1418[tim]
+|--(dobj)--> R1407[stage]
+|                |--(det)--> R1407[the]
+|--(nmod)--> R1407[francisco]
+|                |--(case)--> R1407[in]
+|                |--(compou)--> R1407[san]
+|--(advcl)--> welcome
+|                |--(mark)--> to
+|                |--(dobj)--> developers
+|                |--(cc)--> and
+|                |--(conj)--> *R1410[announce]
+|                                 |--(dobj)--> stuff
+|                                                  |--(amod)--> new
+|--(punct)--> .
+
+	* entity-paths for event['announce']40_11ecbplus.xmlsent:11663

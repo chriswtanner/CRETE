@@ -1,0 +1,73 @@
+
+-----------------------------------------
+docid:30_8ecb.xml
+-----------------------------------------
+
+sentence #:more telecoms disruption between europe and asia follows another brak in underwater telephone lines . 
+	[events]:[['disruption'], ['telecoms'], ['brak']]
+	[entities]:[['lines'], ['between', 'europe', 'and', 'asia']]
+follows
+|--(nsubj)--> *R949[disruption]
+|                |--(amod)--> *R975[telecoms]
+|                |                |--(advmod)--> more
+|                |--(nmod)--> R952[europe]
+|                                 |--(case)--> R952[between]
+|                                 |--(cc)--> R952[and]
+|                                 |--(conj)--> R952[asia]
+|--(dobj)--> *R953[brak]
+|                |--(det)--> another
+|                |--(nmod)--> R951[lines]
+|                                 |--(case)--> in
+|                                 |--(amod)--> underwater
+|                                 |--(compou)--> telephone
+|--(punct)--> .
+
+	* entity-paths for event['disruption']30_8ecb.xmlsent:7983
+	['disruption --(nmod)--> Europe']
+
+	* entity-paths for event['telecoms']30_8ecb.xmlsent:7983
+
+	* entity-paths for event['brak']30_8ecb.xmlsent:7983
+	['brak --(nmod)--> lines']
+
+sentence #:10 months after the last event which blocked lines between the two continents , 3 underwater cables were severed on the bottom of the sea " for unknown reasons " between sicily and tunisia . 
+	[events]:[['severed']]
+	[entities]:[['cables'], ['between', 'the', 'two', 'continents']]
+*R953[severed]
+|--(nsubjp)--> months
+|                |--(nummod)--> 10
+|                |--(nmod)--> event
+|                                 |--(case)--> after
+|                                 |--(det)--> the
+|                                 |--(amod)--> last
+|                                 |--(acl:re)--> blocked
+|                                                  |--(nsubj)--> which
+|                                                  |--(dobj)--> lines
+|                                                                   |--(nmod)--> R952[continents]
+|                                                                                    |--(case)--> R952[between]
+|                                                                                    |--(det)--> R952[the]
+|                                                                                    |--(nummod)--> R952[two]
+|                                                                                    |--(punct)--> ,
+|                                                                                    |--(appos)--> R951[cables]
+|                                                                                                     |--(nummod)--> 3
+|                                                                                                     |--(amod)--> underwater
+|--(auxpas)--> were
+|--(nmod)--> bottom
+|                |--(case)--> on
+|                |--(det)--> the
+|                |--(nmod)--> sea
+|                                 |--(case)--> of
+|                                 |--(det)--> the
+|--(punct)--> "
+|--(nmod)--> reasons
+|                |--(case)--> for
+|                |--(amod)--> unknown
+|--(punct)--> "
+|--(nmod)--> sicily
+|                |--(case)--> between
+|                |--(cc)--> and
+|                |--(conj)--> tunisia
+|--(punct)--> .
+
+	* entity-paths for event['severed']30_8ecb.xmlsent:7984
+	['severed --(nsubjpass)--> months', 'months --(nmod)--> event', 'event --(acl:relcl)--> blocked', 'blocked --(dobj)--> lines', 'lines --(nmod)--> continents']

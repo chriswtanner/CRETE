@@ -1,0 +1,110 @@
+
+-----------------------------------------
+docid:3_11ecbplus.xml
+-----------------------------------------
+
+sentence #:fallout continues after brazen escape 
+	[events]:[['fallout'], ['escape']]
+	[entities]:[]
+continues
+|--(nsubj)--> *R896[fallout]
+|--(nmod)--> *R893[escape]
+                 |--(case)--> after
+                 |--(amod)--> brazen
+
+	* entity-paths for event['fallout']3_11ecbplus.xmlsent:7356
+
+	* entity-paths for event['escape']3_11ecbplus.xmlsent:7356
+
+sentence #:comeaux , 49 , escaped from a prison van in baytown after he pulled a gun on two tdcj officers driving him to another prison in beaumont . 
+	[events]:[['driving'], ['pulled'], ['escaped']]
+	[entities]:[['another', 'prison', 'in', 'beaumont'], ['he'], ['comeaux'], ['him'], ['gun'], ['officers'], ['a', 'prison', 'van', 'in', 'baytown']]
+*R893[escaped]
+|--(nsubj)--> R890[comeaux]
+|                |--(punct)--> ,
+|                |--(amod)--> 49
+|                |--(punct)--> ,
+|--(nmod)--> R897[van]
+|                |--(case)--> from
+|                |--(det)--> R897[a]
+|                |--(compou)--> R897[prison]
+|                |--(nmod)--> R897[baytown]
+|                                 |--(case)--> R897[in]
+|--(advcl)--> *R898[pulled]
+|                |--(mark)--> after
+|                |--(nsubj)--> R890[he]
+|                |--(dobj)--> R899[gun]
+|                |                |--(det)--> a
+|                |--(nmod)--> R900[officers]
+|                |                |--(case)--> on
+|                |                |--(nummod)--> two
+|                |                |--(compou)--> tdcj
+|                |--(xcomp)--> *R894[driving]
+|                                 |--(dobj)--> R890[him]
+|                                 |--(nmod)--> R901[prison]
+|                                                  |--(case)--> to
+|                                                  |--(det)--> R901[another]
+|                                                  |--(nmod)--> R901[beaumont]
+|                                                                   |--(case)--> R901[in]
+|--(punct)--> .
+
+	* entity-paths for event['driving']3_11ecbplus.xmlsent:7359
+	['driving --(dobj)--> him']
+	['driving --(nmod)--> prison']
+
+	* entity-paths for event['pulled']3_11ecbplus.xmlsent:7359
+	['pulled --(nsubj)--> he']
+	['pulled --(dobj)--> gun']
+	['pulled --(nmod)--> officers']
+	['pulled --(xcomp)--> driving', 'driving --(dobj)--> him']
+	['pulled --(xcomp)--> driving', 'driving --(nmod)--> prison']
+
+	* entity-paths for event['escaped']3_11ecbplus.xmlsent:7359
+	['escaped --(nsubj)--> Comeaux']
+	['escaped --(nmod)--> van']
+	['escaped --(advcl)--> pulled', 'pulled --(nsubj)--> he']
+	['escaped --(advcl)--> pulled', 'pulled --(dobj)--> gun']
+	['escaped --(advcl)--> pulled', 'pulled --(nmod)--> officers']
+	['escaped --(advcl)--> pulled', 'pulled --(xcomp)--> driving', 'driving --(dobj)--> him']
+	['escaped --(advcl)--> pulled', 'pulled --(xcomp)--> driving', 'driving --(nmod)--> prison']
+
+sentence #:the texas department of criminal justice has made sweeping leadership changes at a huntsville prison where an inmate managed to get a gun that he later used to escape , the agency announced tuesday . 
+	[events]:[['escape']]
+	[entities]:[['inmate'], ['a', 'huntsville', 'prison'], ['he'], ['where'], ['gun'], ['department', 'of', 'criminal', 'justice']]
+announced
+|--(ccomp)--> made
+|                |--(nsubj)--> R902[department]
+|                |                |--(det)--> the
+|                |                |--(compou)--> texas
+|                |                |--(nmod)--> R902[justice]
+|                |                                 |--(case)--> R902[of]
+|                |                                 |--(compou)--> R902[criminal]
+|                |--(aux)--> has
+|                |--(dobj)--> changes
+|                |                |--(amod)--> sweeping
+|                |                |--(compou)--> leadership
+|                |--(nmod)--> R897[prison]
+|                |                |--(case)--> at
+|                |                |--(det)--> R897[a]
+|                |                |--(compou)--> R897[huntsville]
+|                |--(advcl)--> managed
+|                                 |--(advmod)--> R897[where]
+|                                 |--(nsubj)--> R890[inmate]
+|                                 |                |--(det)--> an
+|                                 |--(xcomp)--> get
+|                                                  |--(mark)--> to
+|                                                  |--(dobj)--> R899[gun]
+|                                                  |                |--(det)--> a
+|                                                  |--(ccomp)--> used
+|                                                                   |--(mark)--> that
+|                                                                   |--(nsubj)--> R890[he]
+|                                                                   |--(advmod)--> later
+|                                                                   |--(xcomp)--> *R893[escape]
+|                                                                                    |--(mark)--> to
+|--(punct)--> ,
+|--(nsubj)--> agency
+|                |--(det)--> the
+|--(nmod:t)--> tuesday
+|--(punct)--> .
+
+	* entity-paths for event['escape']3_11ecbplus.xmlsent:7357

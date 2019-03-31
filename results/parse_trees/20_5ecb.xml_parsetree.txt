@@ -1,0 +1,36 @@
+
+-----------------------------------------
+docid:20_5ecb.xml
+-----------------------------------------
+
+sentence #:earlier on sunday a 5.6 quake jolted the island , some 930 miles south of the capital , tehran . 
+	[events]:[['jolted'], ['quake']]
+	[entities]:[['5.6'], ['sunday'], ['the', 'island', ',', 'some', '930', 'miles', 'south', 'of', 'the', 'capital', ',', 'tehran']]
+*R516[jolted]
+|--(advmod)--> earlier
+|                |--(nmod)--> R519[sunday]
+|                                 |--(case)--> on
+|--(nsubj)--> *R517[quake]
+|                |--(det)--> a
+|                |--(nummod)--> R518[5.6]
+|--(dobj)--> R515[island]
+|                |--(det)--> R515[the]
+|                |--(punct)--> R515[,]
+|                |--(appos)--> R515[some]
+|                                 |--(nmod)--> R515[capital]
+|                                                  |--(advmod)--> R515[south]
+|                                                  |                |--(nmod:n)--> R515[miles]
+|                                                  |                                 |--(nummod)--> R515[930]
+|                                                  |--(case)--> R515[of]
+|                                                  |--(det)--> R515[the]
+|                                                  |--(punct)--> R515[,]
+|                                                  |--(appos)--> R515[tehran]
+|--(punct)--> .
+
+	* entity-paths for event['jolted']20_5ecb.xmlsent:3947
+	['jolted --(advmod)--> Earlier', 'Earlier --(nmod)--> Sunday']
+	['jolted --(nsubj)--> quake', 'quake --(nummod)--> 5.6']
+	['jolted --(dobj)--> island']
+
+	* entity-paths for event['quake']20_5ecb.xmlsent:3947
+	['quake --(nummod)--> 5.6']

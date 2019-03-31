@@ -1,0 +1,60 @@
+
+-----------------------------------------
+docid:43_4ecbplus.xml
+-----------------------------------------
+
+sentence #:amd buys sea micro for $334m to get into energy - efficient " microservers " 
+	[events]:[['microservers'], ['get', 'into'], ['buys']]
+	[entities]:[['amd'], ['sea', 'micro'], ['$334m']]
+*R1546[buys]
+|--(nsubj)--> R1547[amd]
+|--(dobj)--> R1549[micro]
+|                |--(compou)--> R1549[sea]
+|                |--(nmod)--> R1555[$334m]
+|                                 |--(case)--> for
+|                                 |--(dep)--> R1555[$334m]
+|--(xcomp)--> *R1557[get]
+                 |--(mark)--> to
+                 |--(nmod)--> energy
+                                  |--(case)--> *R1557[into]
+                                  |--(punct)--> -
+                                  |--(dep)--> *R1556[microservers]
+                                  |                |--(amod)--> efficient
+                                  |                |--(punct)--> "
+                                  |--(punct)--> "
+
+	* entity-paths for event['microservers']43_4ecbplus.xmlsent:13187
+
+	* entity-paths for event['get', 'into']43_4ecbplus.xmlsent:13187
+
+	* entity-paths for event['buys']43_4ecbplus.xmlsent:13187
+	['buys --(nsubj)--> AMD']
+	['buys --(dobj)--> Micro']
+
+sentence #:advanced micro devices is acquiring sea micro today for $334 million , including $281 million in cash . 
+	[events]:[['acquiring']]
+	[entities]:[['today'], ['$281', 'million'], ['cash'], ['sea', 'micro'], ['advanced', 'micro', 'devices'], ['$334', 'million']]
+*R1546[acquiring]
+|--(nsubj)--> R1547[devices]
+|                |--(compou)--> R1547[advanced]
+|                |--(compou)--> R1547[micro]
+|--(aux)--> is
+|--(dobj)--> R1549[micro]
+|                |--(compou)--> R1549[sea]
+|                |--(nmod:t)--> R1565[today]
+|                |--(nmod)--> R1555[$334]
+|                |                |--(case)--> for
+|                |                |--(nummod)--> R1555[million]
+|                |                                 |--(compou)--> R1555[$334]
+|                |--(punct)--> ,
+|                |--(nmod)--> R1568[$281]
+|                                 |--(case)--> including
+|                                 |--(nummod)--> R1568[million]
+|                                 |                |--(compou)--> R1568[$281]
+|                                 |--(nmod)--> R1569[cash]
+|                                                  |--(case)--> in
+|--(punct)--> .
+
+	* entity-paths for event['acquiring']43_4ecbplus.xmlsent:13191
+	['acquiring --(nsubj)--> Devices']
+	['acquiring --(dobj)--> Micro']

@@ -1,0 +1,64 @@
+
+-----------------------------------------
+docid:30_14ecb.xml
+-----------------------------------------
+
+sentence #:a total of three cables linking italy and egypt went down . 
+	[events]:[['went', 'down']]
+	[entities]:[['italy', 'and', 'egypt'], ['cables']]
+*R949[went]
+|--(nsubj)--> total
+|                |--(det)--> a
+|                |--(nmod)--> R951[cables]
+|                                 |--(case)--> of
+|                                 |--(nummod)--> three
+|                                 |--(acl)--> linking
+|                                                  |--(dobj)--> R954[italy]
+|                                                                   |--(cc)--> R954[and]
+|                                                                   |--(conj)--> R954[egypt]
+|--(advmod)--> *R949[down]
+|--(punct)--> .
+
+	* entity-paths for event['went', 'down']30_14ecb.xmlsent:7786
+
+sentence #:internet service in egypt , the uae , india and other counties in the region was interrupted today when submarine cables in the mediterranean sea failed . 
+	[events]:[['failed'], ['service'], ['interrupted']]
+	[entities]:[['cables'], ['in', 'the', 'mediterranean', 'sea'], ['today'], ['internet']]
+*R982[interrupted]
+|--(nsubj)--> *R966[service]
+|                |--(compou)--> R950[internet]
+|                |--(nmod)--> egypt
+|                                 |--(case)--> in
+|                                 |--(punct)--> ,
+|                                 |--(conj)--> uae
+|                                 |                |--(det)--> the
+|                                 |--(punct)--> ,
+|                                 |--(conj)--> india
+|                                 |--(cc)--> and
+|                                 |--(conj)--> counties
+|                                                  |--(amod)--> other
+|                                                  |--(nmod)--> region
+|                                                                   |--(case)--> in
+|                                                                   |--(det)--> the
+|--(cop)--> was
+|--(nmod:t)--> R968[today]
+|--(advcl)--> *R949[failed]
+|                |--(advmod)--> when
+|                |--(nsubj)--> R951[cables]
+|                                 |--(compou)--> submarine
+|                                 |--(nmod)--> R952[sea]
+|                                                  |--(case)--> R952[in]
+|                                                  |--(det)--> R952[the]
+|                                                  |--(compou)--> R952[mediterranean]
+|--(punct)--> .
+
+	* entity-paths for event['failed']30_14ecb.xmlsent:7784
+	['failed --(nsubj)--> cables']
+
+	* entity-paths for event['service']30_14ecb.xmlsent:7784
+	['service --(compound)--> Internet']
+
+	* entity-paths for event['interrupted']30_14ecb.xmlsent:7784
+	['interrupted --(nsubj)--> service', 'service --(compound)--> Internet']
+	['interrupted --(nmod:tmod)--> today']
+	['interrupted --(advcl)--> failed', 'failed --(nsubj)--> cables']

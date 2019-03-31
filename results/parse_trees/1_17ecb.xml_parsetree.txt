@@ -1,0 +1,107 @@
+
+-----------------------------------------
+docid:1_17ecb.xml
+-----------------------------------------
+
+sentence #:the good news is that tara reid is getting help , according to people magazine , for boozing it up too much . 
+	[events]:[['news'], ['according', 'to'], ['help'], ['getting']]
+	[entities]:[['tara', 'reid'], ['people', 'magazine']]
+is
+|--(nsubj)--> *R65[news]
+|                |--(det)--> the
+|                |--(amod)--> good
+|--(ccomp)--> *R47[getting]
+|                |--(mark)--> that
+|                |--(nsubj)--> R2[reid]
+|                |                |--(compou)--> R2[tara]
+|                |--(aux)--> is
+|                |--(dobj)--> *R46[help]
+|                |--(punct)--> ,
+|                |--(nmod)--> R66[magazine]
+|                                 |--(case)--> *R67[according]
+|                                 |                |--(mwe)--> *R67[to]
+|                                 |--(compou)--> R66[people]
+|                                 |--(punct)--> ,
+|                                 |--(acl)--> boozing
+|                                                  |--(mark)--> for
+|                                                  |--(dobj)--> it
+|                                                  |--(compou)--> up
+|--(advmod)--> much
+|                |--(advmod)--> too
+|--(punct)--> .
+
+	* entity-paths for event['news']1_17ecb.xmlsent:120
+
+	* entity-paths for event['according', 'to']1_17ecb.xmlsent:120
+
+	* entity-paths for event['help']1_17ecb.xmlsent:120
+
+	* entity-paths for event['getting']1_17ecb.xmlsent:120
+	['getting --(nsubj)--> Reid']
+	['getting --(nmod)--> Magazine']
+
+sentence #:" tara reid has checked herself into promises treatment center . 
+	[events]:[['checked', 'into']]
+	[entities]:[['promises', 'treatment', 'center'], ['tara', 'reid']]
+*R1[checked]
+|--(punct)--> "
+|--(nsubj)--> R2[reid]
+|                |--(compou)--> R2[tara]
+|--(aux)--> has
+|--(dobj)--> herself
+|--(advcl)--> R3[promises]
+|                |--(mark)--> *R1[into]
+|                |--(dobj)--> R3[center]
+|                                 |--(compou)--> R3[treatment]
+|--(punct)--> .
+
+	* entity-paths for event['checked', 'into']1_17ecb.xmlsent:121
+
+sentence #:we appreciate your respect to her and her family 's privacy at this time , " the actress 's rep jack ketsoyan tells people . 
+	[events]:[['appreciate'], ['tells'], ['privacy'], ['respect']]
+	[entities]:[['we'], ['people'], ['her'], ['jack', 'ketsoyan'], ['your'], ['family']]
+*R0[tells]
+|--(ccomp)--> *R68[appreciate]
+|                |--(nsubj)--> R69[we]
+|                |--(dobj)--> *R70[privacy]
+|                                 |--(nmod:p)--> *R71[respect]
+|                                 |                |--(nmod:p)--> R72[your]
+|                                 |                |--(nmod)--> R7[family]
+|                                 |                |                |--(case)--> to
+|                                 |                |                |--(amod)--> R2[her]
+|                                 |                |                                 |--(cc)--> and
+|                                 |                |                                 |--(conj)--> her
+|                                 |                |--(case)--> 's
+|                                 |--(nmod)--> time
+|                                                  |--(case)--> at
+|                                                  |--(det)--> this
+|--(punct)--> ,
+|--(punct)--> "
+|--(nsubj)--> R4[ketsoyan]
+|                |--(nmod:p)--> actress
+|                |                |--(det)--> the
+|                |                |--(case)--> 's
+|                |--(compou)--> rep
+|                |--(compou)--> R4[jack]
+|--(dobj)--> R66[people]
+|--(punct)--> .
+
+	* entity-paths for event['appreciate']1_17ecb.xmlsent:122
+	['appreciate --(nsubj)--> We']
+	['appreciate --(dobj)--> privacy', 'privacy --(nmod:poss)--> respect', 'respect --(nmod:poss)--> your']
+	['appreciate --(dobj)--> privacy', 'privacy --(nmod:poss)--> respect', 'respect --(nmod)--> family']
+
+	* entity-paths for event['tells']1_17ecb.xmlsent:122
+	['tells --(ccomp)--> appreciate', 'appreciate --(nsubj)--> We']
+	['tells --(ccomp)--> appreciate', 'appreciate --(dobj)--> privacy', 'privacy --(nmod:poss)--> respect', 'respect --(nmod:poss)--> your']
+	['tells --(ccomp)--> appreciate', 'appreciate --(dobj)--> privacy', 'privacy --(nmod:poss)--> respect', 'respect --(nmod)--> family']
+	['tells --(nsubj)--> Ketsoyan']
+	['tells --(dobj)--> PEOPLE']
+
+	* entity-paths for event['privacy']1_17ecb.xmlsent:122
+	['privacy --(nmod:poss)--> respect', 'respect --(nmod:poss)--> your']
+	['privacy --(nmod:poss)--> respect', 'respect --(nmod)--> family']
+
+	* entity-paths for event['respect']1_17ecb.xmlsent:122
+	['respect --(nmod:poss)--> your']
+	['respect --(nmod)--> family']

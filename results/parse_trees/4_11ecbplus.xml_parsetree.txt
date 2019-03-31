@@ -1,0 +1,75 @@
+
+-----------------------------------------
+docid:4_11ecbplus.xml
+-----------------------------------------
+
+sentence #:championship swimmer - turned - legendary hollywood actress esther williams has died . 
+	[events]:[['turned'], ['died']]
+	[entities]:[['actress'], ['esther', 'williams'], ['swimmer']]
+*R1369[died]
+|--(nsubj)--> championship
+|                |--(dep)--> R1370[swimmer]
+|                |--(dep)--> *R1371[turned]
+|                |                |--(punct)--> -
+|                |                |--(punct)--> -
+|                |--(dep)--> R1370[williams]
+|                                 |--(amod)--> legendary
+|                                 |--(compou)--> hollywood
+|                                 |--(compou)--> R1370[actress]
+|                                 |--(compou)--> R1370[esther]
+|--(aux)--> has
+|--(punct)--> .
+
+	* entity-paths for event['turned']4_11ecbplus.xmlsent:11245
+
+	* entity-paths for event['died']4_11ecbplus.xmlsent:11245
+	['died --(nsubj)--> Championship', 'Championship --(dep)--> swimmer']
+	['died --(nsubj)--> Championship', 'Championship --(dep)--> Williams']
+
+sentence #:legendary aquatic musical star esther williams dies at 91 
+	[events]:[['musical'], ['dies']]
+	[entities]:[['esther', 'williams'], ['star']]
+R1370[star]
+|--(amod)--> legendary
+|--(amod)--> aquatic
+|--(amod)--> *R1374[musical]
+|--(acl:re)--> *R1369[dies]
+                 |--(nsubj)--> R1370[williams]
+                 |                |--(compou)--> R1370[esther]
+                 |--(nmod)--> 91
+                                  |--(case)--> at
+
+	* entity-paths for event['musical']4_11ecbplus.xmlsent:11243
+
+	* entity-paths for event['dies']4_11ecbplus.xmlsent:11243
+	['Dies --(nsubj)--> Williams']
+
+sentence #:williams' publicist , harlan boll , confirmed her death to the associated press on thursday . 
+	[events]:[['confirmed'], ['death']]
+	[entities]:[["williams'"], ['on', 'thursday'], ['harlan', 'boll'], ['her']]
+*R1379[confirmed]
+|--(nsubj)--> publicist
+|                |--(nmod:p)--> R1370[williams']
+|                |                |--(case)--> R1370[williams']
+|                |--(punct)--> ,
+|                |--(appos)--> R1378[boll]
+|                |                |--(compou)--> R1378[harlan]
+|                |--(punct)--> ,
+|--(dobj)--> *R1369[death]
+|                |--(nmod:p)--> R1370[her]
+|--(nmod)--> press
+|                |--(case)--> to
+|                |--(det)--> the
+|                |--(compou)--> associated
+|--(nmod)--> R1376[thursday]
+|                |--(case)--> R1376[on]
+|--(punct)--> .
+
+	* entity-paths for event['confirmed']4_11ecbplus.xmlsent:11248
+	['confirmed --(nsubj)--> publicist', 'publicist --(nmod:poss)--> Williams']
+	['confirmed --(nsubj)--> publicist', 'publicist --(appos)--> Boll']
+	['confirmed --(dobj)--> death', 'death --(nmod:poss)--> her']
+	['confirmed --(nmod)--> Thursday']
+
+	* entity-paths for event['death']4_11ecbplus.xmlsent:11248
+	['death --(nmod:poss)--> her']

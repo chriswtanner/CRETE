@@ -1,0 +1,53 @@
+
+-----------------------------------------
+docid:12_7ecb.xml
+-----------------------------------------
+
+sentence #:the indian navy said it has captured 23 somali and yemeni pirates who attacked a merchant vessel in the gulf of aden on saturday . 
+	[events]:[['said'], ['attacked'], ['captured']]
+	[entities]:[['pirates'], ['vessel'], ['the', 'gulf', 'of', 'aden'], ['saturday'], ['it'], ['navy']]
+*R226[said]
+|--(nsubj)--> R215[navy]
+|                |--(det)--> the
+|                |--(amod)--> indian
+|--(ccomp)--> *R214[captured]
+|                |--(nsubj)--> R215[it]
+|                |--(aux)--> has
+|                |--(dobj)--> somali
+|                |                |--(nummod)--> 23
+|                |                |--(cc)--> and
+|                |                |--(conj)--> R216[pirates]
+|                |                                 |--(compou)--> yemeni
+|                |--(dep)--> *R235[attacked]
+|                                 |--(nsubj)--> who
+|                                 |--(dobj)--> R228[vessel]
+|                                 |                |--(det)--> a
+|                                 |                |--(compou)--> merchant
+|                                 |--(nmod)--> R229[gulf]
+|                                 |                |--(case)--> in
+|                                 |                |--(det)--> R229[the]
+|                                 |                |--(nmod)--> R229[aden]
+|                                 |                                 |--(case)--> R229[of]
+|                                 |--(nmod)--> R230[saturday]
+|                                                  |--(case)--> on
+|--(punct)--> .
+
+	* entity-paths for event['said']12_7ecb.xmlsent:1068
+	['said --(nsubj)--> navy']
+	['said --(ccomp)--> captured', 'captured --(nsubj)--> it']
+	['said --(ccomp)--> captured', 'captured --(dobj)--> Somali', 'Somali --(conj)--> pirates']
+	['said --(ccomp)--> captured', 'captured --(dep)--> attacked', 'attacked --(dobj)--> vessel']
+	['said --(ccomp)--> captured', 'captured --(dep)--> attacked', 'attacked --(nmod)--> Gulf']
+	['said --(ccomp)--> captured', 'captured --(dep)--> attacked', 'attacked --(nmod)--> Saturday']
+
+	* entity-paths for event['attacked']12_7ecb.xmlsent:1068
+	['attacked --(dobj)--> vessel']
+	['attacked --(nmod)--> Gulf']
+	['attacked --(nmod)--> Saturday']
+
+	* entity-paths for event['captured']12_7ecb.xmlsent:1068
+	['captured --(nsubj)--> it']
+	['captured --(dobj)--> Somali', 'Somali --(conj)--> pirates']
+	['captured --(dep)--> attacked', 'attacked --(dobj)--> vessel']
+	['captured --(dep)--> attacked', 'attacked --(nmod)--> Gulf']
+	['captured --(dep)--> attacked', 'attacked --(nmod)--> Saturday']

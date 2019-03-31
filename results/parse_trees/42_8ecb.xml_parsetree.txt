@@ -1,0 +1,29 @@
+
+-----------------------------------------
+docid:42_8ecb.xml
+-----------------------------------------
+
+sentence #:t-mobile today announced the blackberry curve 8900 , the thinnest and lightest full-qwerty blackberry smartphone . 
+	[events]:[['announced']]
+	[entities]:[['t-mobile'], ['today'], ['blackberry', 'curve', '8900']]
+*R1518[announced]
+|--(nsubj)--> R1517[t-mobile]
+|--(nmod:t)--> R1531[today]
+|--(dobj)--> R1520[curve]
+|                |--(det)--> the
+|                |--(compou)--> R1520[blackberry]
+|                |--(nummod)--> R1520[8900]
+|                |--(punct)--> ,
+|                |--(conj)--> thinnest
+|                |                |--(det)--> the
+|                |--(cc)--> and
+|                |--(conj)--> smartphone
+|                                 |--(amod)--> full-qwerty
+|                                 |                |--(dep)--> lightest
+|                                 |--(compou)--> blackberry
+|--(punct)--> .
+
+	* entity-paths for event['announced']42_8ecb.xmlsent:12825
+	['announced --(nsubj)--> T-Mobile']
+	['announced --(nmod:tmod)--> today']
+	['announced --(dobj)--> Curve']

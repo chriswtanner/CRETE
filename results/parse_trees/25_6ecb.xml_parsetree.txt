@@ -1,0 +1,102 @@
+
+-----------------------------------------
+docid:25_6ecb.xml
+-----------------------------------------
+
+sentence #:bush tweaked his left knee last thursday and coach sean payton said the saints decided to put the running back on ir after determining that he would be unavailable for the team 's final two games . 
+	[events]:[['decided'], ['games'], ['tweaked'], ['ir'], ['put']]
+	[entities]:[['he'], ['knee'], ['saints'], ['bush'], ['sean', 'payton'], ['last', 'thursday'], ['running', 'back'], ['team']]
+*R720[tweaked]
+|--(nsubj)--> R707[bush]
+|--(dobj)--> R719[knee]
+|                |--(nmod:p)--> his
+|                |--(amod)--> left
+|--(nmod:t)--> R730[thursday]
+|                |--(amod)--> R730[last]
+|--(cc)--> and
+|--(conj)--> said
+|                |--(nsubj)--> R710[payton]
+|                |                |--(compou)--> coach
+|                |                |--(compou)--> R710[sean]
+|                |--(ccomp)--> *R709[decided]
+|                                 |--(nsubj)--> R706[saints]
+|                                 |                |--(det)--> the
+|                                 |--(xcomp)--> *R711[put]
+|                                                  |--(mark)--> to
+|                                                  |--(dobj)--> the
+|                                                  |                |--(amod)--> R707[running]
+|                                                  |--(advmod)--> R707[back]
+|                                                  |--(nmod)--> *R712[ir]
+|                                                  |                |--(case)--> on
+|                                                  |--(advcl)--> determining
+|                                                                   |--(mark)--> after
+|                                                                   |--(ccomp)--> unavailable
+|                                                                                    |--(mark)--> that
+|                                                                                    |--(nsubj)--> R707[he]
+|                                                                                    |--(aux)--> would
+|                                                                                    |--(cop)--> be
+|                                                                                    |--(nmod)--> *R718[games]
+|                                                                                                     |--(case)--> for
+|                                                                                                     |--(nmod:p)--> R706[team]
+|                                                                                                     |                |--(det)--> the
+|                                                                                                     |                |--(case)--> 's
+|                                                                                                     |--(amod)--> final
+|                                                                                                     |--(nummod)--> two
+|--(punct)--> .
+
+	* entity-paths for event['decided']25_6ecb.xmlsent:5164
+	['decided --(nsubj)--> Saints']
+	['decided --(xcomp)--> put', 'put --(dobj)--> the', 'the --(amod)--> running']
+	['decided --(xcomp)--> put', 'put --(advmod)--> back']
+	['decided --(xcomp)--> put', 'put --(advcl)--> determining', 'determining --(ccomp)--> unavailable', 'unavailable --(nsubj)--> he']
+	['decided --(xcomp)--> put', 'put --(advcl)--> determining', 'determining --(ccomp)--> unavailable', 'unavailable --(nmod)--> games', 'games --(nmod:poss)--> team']
+
+	* entity-paths for event['games']25_6ecb.xmlsent:5164
+	['games --(nmod:poss)--> team']
+
+	* entity-paths for event['tweaked']25_6ecb.xmlsent:5164
+	['tweaked --(nsubj)--> Bush']
+	['tweaked --(dobj)--> knee']
+	['tweaked --(nmod:tmod)--> Thursday']
+	['tweaked --(conj)--> said', 'said --(nsubj)--> Payton']
+	['tweaked --(conj)--> said', 'said --(ccomp)--> decided', 'decided --(nsubj)--> Saints']
+	['tweaked --(conj)--> said', 'said --(ccomp)--> decided', 'decided --(xcomp)--> put', 'put --(dobj)--> the', 'the --(amod)--> running']
+	['tweaked --(conj)--> said', 'said --(ccomp)--> decided', 'decided --(xcomp)--> put', 'put --(advmod)--> back']
+	['tweaked --(conj)--> said', 'said --(ccomp)--> decided', 'decided --(xcomp)--> put', 'put --(advcl)--> determining', 'determining --(ccomp)--> unavailable', 'unavailable --(nsubj)--> he']
+	['tweaked --(conj)--> said', 'said --(ccomp)--> decided', 'decided --(xcomp)--> put', 'put --(advcl)--> determining', 'determining --(ccomp)--> unavailable', 'unavailable --(nmod)--> games', 'games --(nmod:poss)--> team']
+
+	* entity-paths for event['ir']25_6ecb.xmlsent:5164
+
+	* entity-paths for event['put']25_6ecb.xmlsent:5164
+	['put --(dobj)--> the', 'the --(amod)--> running']
+	['put --(advmod)--> back']
+	['put --(advcl)--> determining', 'determining --(ccomp)--> unavailable', 'unavailable --(nsubj)--> he']
+	['put --(advcl)--> determining', 'determining --(ccomp)--> unavailable', 'unavailable --(nmod)--> games', 'games --(nmod:poss)--> team']
+
+sentence #:the saints have placed bush ( knee ) on injured reserve , the baton rouge advocate reports . 
+	[events]:[['injured', 'reserve'], ['placed']]
+	[entities]:[['bush'], ['saints'], ['knee']]
+*R711[placed]
+|--(nsubj)--> R706[saints]
+|                |--(det)--> the
+|--(aux)--> have
+|--(dobj)--> R707[bush]
+|                |--(appos)--> R719[knee]
+|                                 |--(punct)--> (
+|                                 |--(punct)--> )
+|--(nmod)--> *R712[reserve]
+|                |--(case)--> on
+|                |--(amod)--> *R712[injured]
+|                |--(punct)--> ,
+|                |--(appos)--> reports
+|                                 |--(det)--> the
+|                                 |--(compou)--> baton
+|                                 |--(compou)--> rouge
+|                                 |--(compou)--> advocate
+|--(punct)--> .
+
+	* entity-paths for event['injured', 'reserve']25_6ecb.xmlsent:5163
+
+	* entity-paths for event['placed']25_6ecb.xmlsent:5163
+	['placed --(nsubj)--> Saints']
+	['placed --(dobj)--> Bush']

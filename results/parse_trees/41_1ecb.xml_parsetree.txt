@@ -1,0 +1,127 @@
+
+-----------------------------------------
+docid:41_1ecb.xml
+-----------------------------------------
+
+sentence #:israel 's assault on gaza has exacted the bloodiest toll of civilian lives yet , when the bombing of un schools being used as refugee centres and of housing killed more than 50 people , including an entire family of seven young children . 
+	[events]:[['bombing'], ['killed']]
+	[entities]:[['50', 'people'], ['gaza'], ['un', 'schools'], ['israel']]
+exacted
+|--(nsubj)--> assault
+|                |--(nmod:p)--> R1462[israel]
+|                |                |--(case)--> 's
+|                |--(nmod)--> R1463[gaza]
+|                                 |--(case)--> on
+|--(aux)--> has
+|--(dobj)--> toll
+|                |--(det)--> the
+|                |--(amod)--> bloodiest
+|                |--(nmod)--> lives
+|                                 |--(case)--> of
+|                                 |--(amod)--> civilian
+|--(advmod)--> yet
+|--(punct)--> ,
+|--(advcl)--> *R1464[killed]
+|                |--(advmod)--> when
+|                |--(nsubj)--> *R1465[bombing]
+|                |                |--(det)--> the
+|                |                |--(nmod)--> R1466[schools]
+|                |                                 |--(case)--> of
+|                |                                 |--(compou)--> R1466[un]
+|                |                                 |--(acl)--> used
+|                |                                                  |--(auxpas)--> being
+|                |                                                  |--(nmod)--> centres
+|                |                                                                   |--(case)--> as
+|                |                                                                   |--(compou)--> refugee
+|                |                                                                   |--(cc)--> and
+|                |                                                                   |--(conj)--> housing
+|                |                                                                                    |--(case)--> of
+|                |--(dobj)--> R1467[people]
+|                                 |--(nummod)--> R1467[50]
+|                                 |                |--(advmod)--> more
+|                                 |                                 |--(mwe)--> than
+|                                 |--(punct)--> ,
+|                                 |--(nmod)--> family
+|                                                  |--(case)--> including
+|                                                  |--(det)--> an
+|                                                  |--(amod)--> entire
+|                                                  |--(nmod)--> children
+|                                                                   |--(case)--> of
+|                                                                   |--(nummod)--> seven
+|                                                                   |--(amod)--> young
+|--(punct)--> .
+
+	* entity-paths for event['bombing']41_1ecb.xmlsent:12107
+	['bombing --(nmod)--> schools']
+
+	* entity-paths for event['killed']41_1ecb.xmlsent:12107
+	['killed --(nsubj)--> bombing', 'bombing --(nmod)--> schools']
+	['killed --(dobj)--> people']
+
+sentence #:doctors in gaza said more than 40 people died , including children , in what appears to be the biggest single loss of life of the campaign when israeli bombs hit al-fakhora school , in jabaliya refugee camp , while it was packed with hundreds of people who had fled the fighting . 
+	[events]:[['died'], ['hit']]
+	[entities]:[['more', 'than', '40', 'people'], ['al-fakhora', 'school'], ['in', 'gaza'], ['it'], ['in', 'jabaliya', 'refugee', 'camp']]
+said
+|--(nsubj)--> doctors
+|                |--(nmod)--> R1463[gaza]
+|                                 |--(case)--> R1463[in]
+|--(ccomp)--> *R1464[died]
+|                |--(nsubj)--> R1467[people]
+|                |                |--(nummod)--> R1467[40]
+|                |                                 |--(advmod)--> R1467[more]
+|                |                                                  |--(mwe)--> R1467[than]
+|                |--(punct)--> ,
+|                |--(nmod)--> children
+|                                 |--(case)--> including
+|                                 |--(punct)--> ,
+|                                 |--(acl:re)--> appears
+|                                                  |--(nmod)--> what
+|                                                  |                |--(case)--> in
+|                                                  |--(xcomp)--> loss
+|                                                                   |--(mark)--> to
+|                                                                   |--(cop)--> be
+|                                                                   |--(det)--> the
+|                                                                   |--(amod)--> biggest
+|                                                                   |--(amod)--> single
+|                                                                   |--(nmod)--> life
+|                                                                   |                |--(case)--> of
+|                                                                   |                |--(nmod)--> campaign
+|                                                                   |                                 |--(case)--> of
+|                                                                   |                                 |--(det)--> the
+|                                                                   |--(advcl)--> *R1465[hit]
+|                                                                                    |--(advmod)--> when
+|                                                                                    |--(nsubj)--> bombs
+|                                                                                    |                |--(compou)--> israeli
+|                                                                                    |--(dobj)--> R1466[school]
+|                                                                                    |                |--(amod)--> R1466[al-fakhora]
+|                                                                                    |--(punct)--> ,
+|                                                                                    |--(nmod)--> R1468[camp]
+|                                                                                    |                |--(case)--> R1468[in]
+|                                                                                    |                |--(compou)--> R1468[jabaliya]
+|                                                                                    |                |--(compou)--> R1468[refugee]
+|                                                                                    |--(punct)--> ,
+|                                                                                    |--(advcl)--> packed
+|                                                                                                     |--(mark)--> while
+|                                                                                                     |--(nsubjp)--> R1466[it]
+|                                                                                                     |--(auxpas)--> was
+|                                                                                                     |--(nmod)--> hundreds
+|                                                                                                                      |--(case)--> with
+|                                                                                                                      |--(nmod)--> people
+|                                                                                                                                       |--(case)--> of
+|                                                                                                                                       |--(acl:re)--> fled
+|                                                                                                                                                        |--(nsubj)--> who
+|                                                                                                                                                        |--(aux)--> had
+|                                                                                                                                                        |--(dobj)--> fighting
+|                                                                                                                                                                         |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['died']41_1ecb.xmlsent:12109
+	['died --(nsubj)--> people']
+	['died --(nmod)--> children', 'children --(acl:relcl)--> appears', 'appears --(xcomp)--> loss', 'loss --(advcl)--> hit', 'hit --(dobj)--> school']
+	['died --(nmod)--> children', 'children --(acl:relcl)--> appears', 'appears --(xcomp)--> loss', 'loss --(advcl)--> hit', 'hit --(nmod)--> camp']
+	['died --(nmod)--> children', 'children --(acl:relcl)--> appears', 'appears --(xcomp)--> loss', 'loss --(advcl)--> hit', 'hit --(advcl)--> packed', 'packed --(nsubjpass)--> it']
+
+	* entity-paths for event['hit']41_1ecb.xmlsent:12109
+	['hit --(dobj)--> school']
+	['hit --(nmod)--> camp']
+	['hit --(advcl)--> packed', 'packed --(nsubjpass)--> it']

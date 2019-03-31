@@ -1,0 +1,146 @@
+
+-----------------------------------------
+docid:29_5ecbplus.xml
+-----------------------------------------
+
+sentence #:now , after guiding the colts back to the playoffs -- and breaking cam newton's single - season passing record for a first - year player -- it's safe to say luck exceeded just about all of them . 
+	[events]:[['breaking'], ['record'], ['guiding'], ['exceeded'], ['playoffs']]
+	[entities]:[['luck'], ['colts'], ['cam', "newton's"], ['first', '-', 'year', 'player']]
+now
+|--(punct)--> ,
+|--(dep)--> *R885[guiding]
+|                |--(mark)--> after
+|                |--(dobj)--> R852[colts]
+|                |                |--(det)--> the
+|                |--(advmod)--> back
+|                |--(nmod)--> *R861[playoffs]
+|                |                |--(case)--> to
+|                |                |--(det)--> the
+|                |--(punct)--> --
+|                |--(cc)--> and
+|                |--(conj)--> *R874[breaking]
+|                                 |--(dobj)--> R875[player]
+|                                                  |--(nmod:p)--> R886[newton's]
+|                                                  |                |--(compou)--> R886[cam]
+|                                                  |                |--(case)--> R886[newton's]
+|                                                  |--(amod)--> single
+|                                                  |--(dep)--> *R876[record]
+|                                                  |                |--(punct)--> -
+|                                                  |                |--(compou)--> season
+|                                                  |                |--(amod)--> passing
+|                                                  |                |--(nmod)--> R875[first]
+|                                                  |                |                |--(case)--> for
+|                                                  |                |                |--(det)--> a
+|                                                  |                |--(punct)--> R875[-]
+|                                                  |--(compou)--> R875[year]
+|--(punct)--> --
+|--(parata)--> safe
+|                |--(nsubj)--> it's
+|                |--(cop)--> it's
+|                |--(xcomp)--> say
+|                                 |--(mark)--> to
+|                                 |--(ccomp)--> *R877[exceeded]
+|                                                  |--(nsubj)--> R878[luck]
+|                                                  |--(advmod)--> just
+|                                                  |--(nmod)--> all
+|                                                                   |--(case)--> about
+|                                                                   |--(nmod)--> them
+|                                                                                    |--(case)--> of
+|--(punct)--> .
+
+	* entity-paths for event['breaking']29_5ecbplus.xmlsent:7100
+	['breaking --(dobj)--> player']
+
+	* entity-paths for event['record']29_5ecbplus.xmlsent:7100
+	['record --(nmod)--> first']
+	['record --(punct)--> -']
+
+	* entity-paths for event['guiding']29_5ecbplus.xmlsent:7100
+	['guiding --(dobj)--> Colts']
+	['guiding --(conj)--> breaking', 'breaking --(dobj)--> player']
+
+	* entity-paths for event['exceeded']29_5ecbplus.xmlsent:7100
+	['exceeded --(nsubj)--> Luck']
+
+	* entity-paths for event['playoffs']29_5ecbplus.xmlsent:7100
+
+sentence #:colts beat chiefs 20 - 13 to clinch playoff berth 
+	[events]:[['playoff'], ['clinch'], ['beat']]
+	[entities]:[['20', '-', '13'], ['colts'], ['chiefs'], ['berth']]
+*R859[beat]
+|--(nsubj)--> R852[colts]
+|--(dobj)--> R858[chiefs]
+|                |--(dep)--> R860[13]
+|                                 |--(nummod)--> R860[20]
+|                                 |--(punct)--> R860[-]
+|--(advcl)--> *R862[clinch]
+                 |--(mark)--> to
+                 |--(dobj)--> R866[berth]
+                                  |--(compou)--> *R861[playoff]
+
+	* entity-paths for event['playoff']29_5ecbplus.xmlsent:7096
+
+	* entity-paths for event['clinch']29_5ecbplus.xmlsent:7096
+	['Clinch --(dobj)--> Berth']
+
+	* entity-paths for event['beat']29_5ecbplus.xmlsent:7096
+	['Beat --(nsubj)--> Colts']
+	['Beat --(dobj)--> Chiefs']
+	['Beat --(advcl)--> Clinch', 'Clinch --(dobj)--> Berth']
+
+sentence #:luck threw for 205 yards sunday , and his 7 - yard touchdown pass to reggie wayne on third - and - goal late in the fourth quarter gave the colts a 20 - 13 victory over the kansas city chiefs . 
+	[events]:[['touchdown', 'pass'], ['threw'], ['victory']]
+	[entities]:[['205', 'yards'], ['reggie', 'wayne'], ['colts'], ['kansas', 'city', 'chiefs'], ['20', '-', '13'], ['luck']]
+*R879[threw]
+|--(nsubj)--> R878[luck]
+|--(nmod)--> R880[yards]
+|                |--(case)--> for
+|                |--(nummod)--> R880[205]
+|                |--(nmod:t)--> sunday
+|                |--(punct)--> ,
+|                |--(cc)--> and
+|                |--(conj)--> 7
+|                |                |--(nmod:p)--> his
+|                |                |--(dep)--> *R881[pass]
+|                |                                 |--(punct)--> -
+|                |                                 |--(compou)--> yard
+|                |                                 |--(compou)--> *R881[touchdown]
+|                |                                 |--(nmod)--> R882[wayne]
+|                |                                 |                |--(case)--> to
+|                |                                 |                |--(compou)--> R882[reggie]
+|                |                                 |                |--(nmod)--> third
+|                |                                 |                                 |--(case)--> on
+|                |                                 |--(punct)--> -
+|                |--(cc)--> and
+|                |--(conj)--> goal
+|                                 |--(punct)--> -
+|                                 |--(advmod)--> late
+|                                 |--(nmod)--> quarter
+|                                 |                |--(case)--> in
+|                                 |                |--(det)--> the
+|                                 |                |--(amod)--> fourth
+|                                 |                |--(acl)--> gave
+|                                 |                                 |--(iobj)--> R852[colts]
+|                                 |                                 |                |--(det)--> the
+|                                 |                                 |--(dobj)--> R860[20]
+|                                 |                                                  |--(advmod)--> a
+|                                 |--(punct)--> R860[-]
+|                                 |--(dep)--> *R859[victory]
+|                                                  |--(nummod)--> R860[13]
+|                                                  |--(nmod)--> R858[chiefs]
+|                                                                   |--(case)--> over
+|                                                                   |--(det)--> the
+|                                                                   |--(compou)--> R858[kansas]
+|                                                                   |--(compou)--> R858[city]
+|--(punct)--> .
+
+	* entity-paths for event['touchdown', 'pass']29_5ecbplus.xmlsent:7101
+	['pass --(nmod)--> Wayne']
+
+	* entity-paths for event['threw']29_5ecbplus.xmlsent:7101
+	['threw --(nsubj)--> Luck']
+	['threw --(nmod)--> yards']
+
+	* entity-paths for event['victory']29_5ecbplus.xmlsent:7101
+	['victory --(nummod)--> 13']
+	['victory --(nmod)--> Chiefs']

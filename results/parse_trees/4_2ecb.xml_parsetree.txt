@@ -1,0 +1,69 @@
+
+-----------------------------------------
+docid:4_2ecb.xml
+-----------------------------------------
+
+sentence #:bettie page , the raven-haired pin-up whose naughty-but-nice romps with whips , garters and high heels titillated a generation of young men in the post-war years , has died at the age of 85 after suffering a heart attack earlier this month and slipping into a coma . 
+	[events]:[['heart', 'attack'], ['suffering'], ['romps'], ['coma'], ['died']]
+	[entities]:[['earlier', 'this', 'month'], ['the', 'post-war', 'years'], ['bettie', 'page']]
+*R1363[died]
+|--(nsubj)--> R1364[page]
+|                |--(compou)--> R1364[bettie]
+|                |--(punct)--> ,
+|                |--(appos)--> pin-up
+|                |                |--(det)--> the
+|                |                |--(amod)--> raven-haired
+|                |                |--(acl:re)--> titillated
+|                |                                 |--(dobj)--> naughty-but-nice
+|                |                                 |                |--(nmod:p)--> whose
+|                |                                 |                |--(dep)--> *R1387[romps]
+|                |                                 |--(advcl)--> whips
+|                |                                 |                |--(mark)--> with
+|                |                                 |--(punct)--> ,
+|                |                                 |--(nsubj)--> garters
+|                |                                 |                |--(cc)--> and
+|                |                                 |                |--(conj)--> heels
+|                |                                 |                                 |--(amod)--> high
+|                |                                 |--(dobj)--> generation
+|                |                                 |                |--(det)--> a
+|                |                                 |                |--(nmod)--> men
+|                |                                 |                                 |--(case)--> of
+|                |                                 |                                 |--(amod)--> young
+|                |                                 |--(nmod)--> R1388[years]
+|                |                                                  |--(case)--> in
+|                |                                                  |--(det)--> R1388[the]
+|                |                                                  |--(amod)--> R1388[post-war]
+|                |--(punct)--> ,
+|--(aux)--> has
+|--(nmod)--> age
+|                |--(case)--> at
+|                |--(det)--> the
+|                |--(nmod)--> 85
+|                                 |--(case)--> of
+|--(advcl)--> *R1382[suffering]
+|                |--(mark)--> after
+|                |--(dobj)--> *R1380[attack]
+|                |                |--(det)--> a
+|                |                |--(compou)--> *R1380[heart]
+|                |--(nmod:t)--> R1381[month]
+|                |                |--(advmod)--> R1381[earlier]
+|                |                |--(det)--> R1381[this]
+|                |--(cc)--> and
+|                |--(conj)--> slipping
+|                                 |--(nmod)--> *R1389[coma]
+|                                                  |--(case)--> into
+|                                                  |--(det)--> a
+|--(punct)--> .
+
+	* entity-paths for event['heart', 'attack']4_2ecb.xmlsent:11366
+
+	* entity-paths for event['suffering']4_2ecb.xmlsent:11366
+	['suffering --(nmod:tmod)--> month']
+
+	* entity-paths for event['romps']4_2ecb.xmlsent:11366
+
+	* entity-paths for event['coma']4_2ecb.xmlsent:11366
+
+	* entity-paths for event['died']4_2ecb.xmlsent:11366
+	['died --(nsubj)--> Page']
+	['died --(advcl)--> suffering', 'suffering --(nmod:tmod)--> month']

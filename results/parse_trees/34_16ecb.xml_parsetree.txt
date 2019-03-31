@@ -1,0 +1,127 @@
+
+-----------------------------------------
+docid:34_16ecb.xml
+-----------------------------------------
+
+sentence #:gupta has been " the obama team 's first choice " for the job , which would make the tv personality america 's top doctor , said the democrat who is familiar with efforts by obama to staff his pending administration . 
+	[events]:[['job']]
+	[entities]:[['administration'], ['america', "'s", 'top', 'doctor'], ['personality'], ['gupta'], ['obama', 'team'], ['obama'], ['choice']]
+R1130[choice]
+|--(nsubj)--> R1130[gupta]
+|--(aux)--> has
+|--(cop)--> been
+|--(punct)--> "
+|--(nmod:p)--> R1133[team]
+|                |--(det)--> the
+|                |--(compou)--> R1133[obama]
+|                |--(case)--> 's
+|--(amod)--> first
+|--(punct)--> "
+|--(nmod)--> *R1134[job]
+|                |--(case)--> for
+|                |--(det)--> the
+|                |--(punct)--> ,
+|                |--(acl:re)--> make
+|                                 |--(nsubj)--> which
+|                                 |--(aux)--> would
+|                                 |--(dobj)--> R1130[personality]
+|                                                  |--(det)--> the
+|                                                  |--(compou)--> tv
+|                                                  |--(acl:re)--> said
+|                                                                   |--(nsubj)--> R1135[doctor]
+|                                                                   |                |--(nmod:p)--> R1135[america]
+|                                                                   |                |                |--(case)--> R1135['s]
+|                                                                   |                |--(amod)--> R1135[top]
+|                                                                   |--(punct)--> ,
+|                                                                   |--(dobj)--> democrat
+|                                                                                    |--(det)--> the
+|                                                                                    |--(acl:re)--> familiar
+|                                                                                                     |--(nsubj)--> who
+|                                                                                                     |--(cop)--> is
+|                                                                                                     |--(nmod)--> efforts
+|                                                                                                                      |--(case)--> with
+|--(nmod)--> R1136[obama]
+|                |--(case)--> by
+|--(advcl)--> staff
+|                |--(mark)--> to
+|                |--(dobj)--> R1133[administration]
+|                                 |--(nmod:p)--> his
+|                                 |--(amod)--> pending
+|--(punct)--> .
+
+	* entity-paths for event['job']34_16ecb.xmlsent:9369
+	['job --(acl:relcl)--> make', 'make --(dobj)--> personality']
+
+sentence #:the washington post 's online service , washingtonpost.com , first reported that gupta had been offered the job , traditionally the u.s. top spokesman on matters of public health . 
+	[events]:[['job'], ['offered']]
+	[entities]:[['gupta']]
+reported
+|--(nsubj)--> service
+|                |--(nmod:p)--> post
+|                |                |--(det)--> the
+|                |                |--(compou)--> washington
+|                |                |--(case)--> 's
+|                |--(amod)--> online
+|                |--(punct)--> ,
+|                |--(appos)--> washingtonpost.com
+|                |--(punct)--> ,
+|--(advmod)--> first
+|--(ccomp)--> *R1132[offered]
+|                |--(mark)--> that
+|                |--(nsubjp)--> R1130[gupta]
+|                |--(aux)--> had
+|                |--(auxpas)--> been
+|                |--(dobj)--> *R1134[job]
+|                |                |--(det)--> the
+|                |                |--(punct)--> ,
+|                |                |--(advmod)--> traditionally
+|                |                |--(dep)--> spokesman
+|                |                                 |--(det)--> the
+|                |                                 |--(compou)--> u.s.
+|                |                                 |--(amod)--> top
+|                |--(nmod)--> matters
+|                                 |--(case)--> on
+|                                 |--(nmod)--> health
+|                                                  |--(case)--> of
+|                                                  |--(amod)--> public
+|--(punct)--> .
+
+	* entity-paths for event['job']34_16ecb.xmlsent:9370
+
+	* entity-paths for event['offered']34_16ecb.xmlsent:9370
+	['offered --(nsubjpass)--> Gupta']
+
+sentence #:president-elect barack obama has asked neurosurgeon and cnn medical correspondent dr. sanjay gupta to be u.s. surgeon general , a senior democrat said on tuesday . 
+	[events]:[['asked']]
+	[entities]:[['barack', 'obama'], ['dr.', 'sanjay', 'gupta'], ['on', 'tuesday'], ['u.s.', 'surgeon', 'general']]
+said
+|--(ccomp)--> *R1132[asked]
+|                |--(nsubj)--> R1136[obama]
+|                |                |--(compou)--> president-elect
+|                |                |--(compou)--> R1136[barack]
+|                |--(aux)--> has
+|                |--(dobj)--> neurosurgeon
+|                |                |--(cc)--> and
+|                |                |--(conj)--> R1130[gupta]
+|                |                                 |--(compou)--> cnn
+|                |                                 |--(amod)--> medical
+|                |                                 |--(compou)--> correspondent
+|                |                                 |--(compou)--> R1130[dr.]
+|                |                                 |--(compou)--> R1130[sanjay]
+|                |--(xcomp)--> R1135[general]
+|                                 |--(mark)--> to
+|                                 |--(cop)--> be
+|                                 |--(compou)--> R1135[u.s.]
+|                                 |--(compou)--> R1135[surgeon]
+|--(punct)--> ,
+|--(nsubj)--> democrat
+|                |--(det)--> a
+|                |--(amod)--> senior
+|--(nmod)--> R1146[tuesday]
+|                |--(case)--> R1146[on]
+|--(punct)--> .
+
+	* entity-paths for event['asked']34_16ecb.xmlsent:9368
+	['asked --(nsubj)--> Obama']
+	['asked --(dobj)--> neurosurgeon', 'neurosurgeon --(conj)--> Gupta']
+	['asked --(xcomp)--> general']

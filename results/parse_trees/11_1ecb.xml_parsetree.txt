@@ -1,0 +1,42 @@
+
+-----------------------------------------
+docid:11_1ecb.xml
+-----------------------------------------
+
+sentence #:the 4th parliamentary election of turkmenistan ended sunday evening as scheduled , said reports from ashgabat , turkmenistan 's capital . 
+	[events]:[['ended'], ['election'], ['said']]
+	[entities]:[['sunday', 'evening'], ['ashgabat'], ['turkmenistan'], ['reports']]
+*R197[ended]
+|--(nsubj)--> *R193[election]
+|                |--(det)--> the
+|                |--(amod)--> 4th
+|                |--(amod)--> parliamentary
+|                |--(nmod)--> R189[turkmenistan]
+|                                 |--(case)--> of
+|--(nmod:t)--> R198[evening]
+|                |--(compou)--> R198[sunday]
+|--(advcl)--> *R194[said]
+|                |--(mark)--> as
+|                |--(dep)--> scheduled
+|                |--(punct)--> ,
+|                |--(dobj)--> R195[reports]
+|                |--(nmod)--> R196[ashgabat]
+|                                 |--(case)--> from
+|                                 |--(punct)--> ,
+|                                 |--(appos)--> capital
+|                                                  |--(nmod:p)--> turkmenistan
+|                                                                   |--(case)--> 's
+|--(punct)--> .
+
+	* entity-paths for event['ended']11_1ecb.xmlsent:598
+	['ended --(nsubj)--> election', 'election --(nmod)--> Turkmenistan']
+	['ended --(nmod:tmod)--> evening']
+	['ended --(advcl)--> said', 'said --(dobj)--> reports']
+	['ended --(advcl)--> said', 'said --(nmod)--> Ashgabat']
+
+	* entity-paths for event['election']11_1ecb.xmlsent:598
+	['election --(nmod)--> Turkmenistan']
+
+	* entity-paths for event['said']11_1ecb.xmlsent:598
+	['said --(dobj)--> reports']
+	['said --(nmod)--> Ashgabat']

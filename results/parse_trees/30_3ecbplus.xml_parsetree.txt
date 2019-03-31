@@ -1,0 +1,64 @@
+
+-----------------------------------------
+docid:30_3ecbplus.xml
+-----------------------------------------
+
+sentence #:cable cuts partially block internet , mobile services in some areas 
+	[events]:[['block'], ['cuts'], ['services']]
+	[entities]:[['cable'], ['in', 'some', 'areas']]
+*R988[cuts]
+|--(nsubj)--> R987[cable]
+|--(advmod)--> partially
+|--(dep)--> *R990[block]
+                 |--(dobj)--> internet
+                                  |--(punct)--> ,
+                                  |--(appos)--> *R991[services]
+                                                   |--(amod)--> mobile
+                                                   |--(nmod)--> R992[areas]
+                                                                    |--(case)--> R992[in]
+                                                                    |--(det)--> R992[some]
+
+	* entity-paths for event['block']30_3ecbplus.xmlsent:7879
+	['block --(dobj)--> internet', 'internet --(appos)--> services', 'services --(nmod)--> areas']
+
+	* entity-paths for event['cuts']30_3ecbplus.xmlsent:7879
+	['cuts --(nsubj)--> Cable']
+	['cuts --(dep)--> block', 'block --(dobj)--> internet', 'internet --(appos)--> services', 'services --(nmod)--> areas']
+
+	* entity-paths for event['services']30_3ecbplus.xmlsent:7879
+	['services --(nmod)--> areas']
+
+sentence #:an undersea telecommunications cable cut on tuesday partially blocked internet and mobile services in alexandria and some other governorates . 
+	[events]:[['blocked'], ['services'], ['cut']]
+	[entities]:[['in', 'alexandria', 'and', 'some', 'other', 'governorates'], ['on', 'tuesday'], ['cable']]
+*R990[blocked]
+|--(nsubj)--> *R988[cut]
+|                |--(det)--> an
+|                |--(compou)--> undersea
+|                |--(compou)--> telecommunications
+|                |--(compou)--> R987[cable]
+|                |--(nmod)--> R989[tuesday]
+|                                 |--(case)--> R989[on]
+|--(advmod)--> partially
+|--(dobj)--> *R991[services]
+|                |--(compou)--> internet
+|                                 |--(cc)--> and
+|                                 |--(conj)--> mobile
+|--(nmod)--> R992[alexandria]
+|                |--(case)--> R992[in]
+|                |--(cc)--> R992[and]
+|                |--(conj)--> R992[governorates]
+|                                 |--(det)--> R992[some]
+|                                 |--(amod)--> R992[other]
+|--(punct)--> .
+
+	* entity-paths for event['blocked']30_3ecbplus.xmlsent:7881
+	['blocked --(nsubj)--> cut', 'cut --(compound)--> cable']
+	['blocked --(nsubj)--> cut', 'cut --(nmod)--> Tuesday']
+	['blocked --(nmod)--> Alexandria']
+
+	* entity-paths for event['services']30_3ecbplus.xmlsent:7881
+
+	* entity-paths for event['cut']30_3ecbplus.xmlsent:7881
+	['cut --(compound)--> cable']
+	['cut --(nmod)--> Tuesday']

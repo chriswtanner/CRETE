@@ -1,0 +1,153 @@
+
+-----------------------------------------
+docid:29_7ecbplus.xml
+-----------------------------------------
+
+sentence #:andrew luck threw for 205 yards to break the single - season rookie record , and his touchdown pass to reggie wayne late in the fourth quarter sunday gave the indianapolis colts a 20 - 13 win over the kansas city chiefs and a berth in the playoffs . 
+	[events]:[['record'], ['playoffs'], ['touchdown', 'pass'], ['threw'], ['break'], ['win']]
+	[entities]:[['sunday'], ['kansas', 'city', 'chiefs'], ['andrew', 'luck'], ['reggie', 'wayne'], ['205', 'yards'], ['berth'], ['indianapolis', 'colts'], ['rookie'], ['20', '-', '13'], ['his']]
+*R879[threw]
+|--(nsubj)--> R878[luck]
+|                |--(compou)--> R878[andrew]
+|--(nmod)--> R880[yards]
+|                |--(case)--> for
+|                |--(nummod)--> R880[205]
+|--(xcomp)--> *R874[break]
+|                |--(mark)--> to
+|                |--(dobj)--> single
+|                                 |--(det)--> the
+|--(punct)--> -
+|--(conj)--> gave
+|                |--(nsubj)--> *R876[record]
+|                |                |--(compou)--> season
+|                |                |--(compou)--> R875[rookie]
+|                |                |--(punct)--> ,
+|                |                |--(cc)--> and
+|                |                |--(conj)--> *R881[pass]
+|                |                                 |--(nmod:p)--> R878[his]
+|                |                                 |--(compou)--> *R881[touchdown]
+|                |                                 |--(nmod)--> R882[wayne]
+|                |                                                  |--(case)--> to
+|                |                                                  |--(compou)--> R882[reggie]
+|                |                                                  |--(advmod)--> late
+|                |                                                                   |--(nmod)--> quarter
+|                |                                                                                    |--(case)--> in
+|                |                                                                                    |--(det)--> the
+|                |                                                                                    |--(amod)--> fourth
+|                |                                                                                    |--(nmod:t)--> R868[sunday]
+|                |--(iobj)--> R852[colts]
+|                |                |--(det)--> the
+|                |                |--(compou)--> R852[indianapolis]
+|                |--(dobj)--> R860[20]
+|                                 |--(advmod)--> a
+|--(punct)--> R860[-]
+|--(conj)--> *R859[win]
+|                |--(nsubj)--> R860[13]
+|                |--(nmod)--> R858[chiefs]
+|                                 |--(case)--> over
+|                                 |--(det)--> the
+|                                 |--(compou)--> R858[kansas]
+|                                 |--(compou)--> R858[city]
+|--(cc)--> and
+|--(conj)--> R866[berth]
+|                |--(nsubj)--> a
+|                |--(nmod)--> *R861[playoffs]
+|                                 |--(case)--> in
+|                                 |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['record']29_7ecbplus.xmlsent:7209
+	['record --(compound)--> rookie']
+	['record --(conj)--> pass', 'pass --(nmod:poss)--> his']
+	['record --(conj)--> pass', 'pass --(nmod)--> Wayne']
+
+	* entity-paths for event['playoffs']29_7ecbplus.xmlsent:7209
+
+	* entity-paths for event['touchdown', 'pass']29_7ecbplus.xmlsent:7209
+	['pass --(nmod:poss)--> his']
+	['pass --(nmod)--> Wayne']
+
+	* entity-paths for event['threw']29_7ecbplus.xmlsent:7209
+	['threw --(nsubj)--> Luck']
+	['threw --(nmod)--> yards']
+	['threw --(conj)--> gave', 'gave --(nsubj)--> record', 'record --(compound)--> rookie']
+	['threw --(conj)--> gave', 'gave --(nsubj)--> record', 'record --(conj)--> pass', 'pass --(nmod:poss)--> his']
+	['threw --(conj)--> gave', 'gave --(nsubj)--> record', 'record --(conj)--> pass', 'pass --(nmod)--> Wayne']
+	['threw --(conj)--> gave', 'gave --(iobj)--> Colts']
+	['threw --(conj)--> gave', 'gave --(dobj)--> 20']
+	['threw --(punct)--> -']
+	['threw --(conj)--> win', 'win --(nsubj)--> 13']
+	['threw --(conj)--> win', 'win --(nmod)--> Chiefs']
+	['threw --(conj)--> berth']
+
+	* entity-paths for event['break']29_7ecbplus.xmlsent:7209
+
+	* entity-paths for event['win']29_7ecbplus.xmlsent:7209
+	['win --(nsubj)--> 13']
+	['win --(nmod)--> Chiefs']
+
+sentence #:luck throws for 205 yards , 4th - quarter td as colts beat chiefs 20 - 13 to clinch playoff spot 
+	[events]:[['clinch'], ['playoff'], ['beat'], ['throws']]
+	[entities]:[['205', 'yards'], ['chiefs'], ['20', '-', '13'], ['colts'], ['spot'], ['luck']]
+*R879[throws]
+|--(nsubj)--> R878[luck]
+|--(nmod)--> R880[yards]
+                 |--(case)--> for
+                 |--(nummod)--> R880[205]
+                 |--(punct)--> ,
+                 |--(amod)--> 4th
+                                  |--(punct)--> -
+                                  |--(dep)--> td
+                                                   |--(compou)--> quarter
+                                                   |--(acl:re)--> *R859[beat]
+                                                                    |--(mark)--> as
+                                                                    |--(nsubj)--> R852[colts]
+                                                                    |--(dobj)--> R858[chiefs]
+                                                                    |                |--(dep)--> R860[13]
+                                                                    |                                 |--(nummod)--> R860[20]
+                                                                    |                                 |--(punct)--> R860[-]
+                                                                    |--(xcomp)--> *R862[clinch]
+                                                                                     |--(mark)--> to
+                                                                                     |--(dobj)--> R866[spot]
+                                                                                                      |--(compou)--> *R861[playoff]
+
+	* entity-paths for event['clinch']29_7ecbplus.xmlsent:7207
+	['clinch --(dobj)--> spot']
+
+	* entity-paths for event['playoff']29_7ecbplus.xmlsent:7207
+
+	* entity-paths for event['beat']29_7ecbplus.xmlsent:7207
+	['beat --(nsubj)--> Colts']
+	['beat --(dobj)--> Chiefs']
+	['beat --(xcomp)--> clinch', 'clinch --(dobj)--> spot']
+
+	* entity-paths for event['throws']29_7ecbplus.xmlsent:7207
+	['throws --(nsubj)--> Luck']
+	['throws --(nmod)--> yards']
+
+sentence #:it was the seventh time luck has rallied his team to victory in the fourth quarter . 
+	[events]:[['victory'], ['rallied']]
+	[entities]:[['luck'], ['team']]
+time
+|--(nsubj)--> it
+|--(cop)--> was
+|--(det)--> the
+|--(amod)--> seventh
+|--(acl:re)--> *R885[rallied]
+|                |--(nsubj)--> R878[luck]
+|                |--(aux)--> has
+|                |--(dobj)--> R852[team]
+|                |                |--(nmod:p)--> his
+|                |--(nmod)--> *R859[victory]
+|                                 |--(case)--> to
+|                                 |--(nmod)--> quarter
+|                                                  |--(case)--> in
+|                                                  |--(det)--> the
+|                                                  |--(amod)--> fourth
+|--(punct)--> .
+
+	* entity-paths for event['victory']29_7ecbplus.xmlsent:7212
+
+	* entity-paths for event['rallied']29_7ecbplus.xmlsent:7212
+	['rallied --(nsubj)--> Luck']
+	['rallied --(dobj)--> team']

@@ -1,0 +1,68 @@
+
+-----------------------------------------
+docid:40_4ecbplus.xml
+-----------------------------------------
+
+sentence #:apple launches new macbook pros with ivy bridge , from $1 , 199 
+	[events]:[['launches']]
+	[entities]:[['ivy', 'bridge'], ['apple'], ['macbook', 'pros']]
+*R1410[launches]
+|--(nsubj)--> R1405[apple]
+|--(dobj)--> R1417[pros]
+|                |--(amod)--> new
+|                |--(compou)--> R1417[macbook]
+|--(nmod)--> R1420[bridge]
+|                |--(case)--> with
+|                |--(compou)--> R1420[ivy]
+|--(punct)--> ,
+|--(nmod)--> $1
+                 |--(case)--> from
+                 |--(dep)--> $1
+                 |--(punct)--> ,
+                 |--(amod)--> 199
+
+	* entity-paths for event['launches']40_4ecbplus.xmlsent:11827
+	['launches --(nsubj)--> Apple']
+	['launches --(dobj)--> Pros']
+	['launches --(nmod)--> Bridge']
+
+sentence #:apple today launch its new macbook pro line . 
+	[events]:[['launch']]
+	[entities]:[['apple'], ['today'], ['macbook', 'pro', 'line']]
+R1405[apple]
+|--(nmod:t)--> R1415[today]
+|--(nmod)--> R1417[line]
+|                |--(dep)--> *R1410[launch]
+|                |--(nmod:p)--> its
+|                |--(amod)--> new
+|                |--(compou)--> R1417[macbook]
+|                |--(compou)--> R1417[pro]
+|--(punct)--> .
+
+	* entity-paths for event['launch']40_4ecbplus.xmlsent:11830
+
+sentence #:apple's new macbook pros come with ivy bridge processors and the nvidia geforce gt650m graphics card . 
+	[events]:[['come']]
+	[entities]:[['ivy', 'bridge', 'processors'], ["apple's"], ['macbook', 'pros']]
+*R1424[come]
+|--(nsubj)--> R1417[pros]
+|                |--(nmod:p)--> R1405[apple's]
+|                |                |--(case)--> R1405[apple's]
+|                |--(amod)--> new
+|                |--(compou)--> R1417[macbook]
+|--(nmod)--> R1420[processors]
+|                |--(case)--> with
+|                |--(compou)--> R1420[ivy]
+|                |--(compou)--> R1420[bridge]
+|                |--(cc)--> and
+|                |--(conj)--> card
+|                                 |--(det)--> the
+|                                 |--(compou)--> nvidia
+|                                 |--(compou)--> geforce
+|                                 |--(compou)--> gt650m
+|                                 |--(compou)--> graphics
+|--(punct)--> .
+
+	* entity-paths for event['come']40_4ecbplus.xmlsent:11828
+	['come --(nsubj)--> Pros']
+	['come --(nmod)--> processors']

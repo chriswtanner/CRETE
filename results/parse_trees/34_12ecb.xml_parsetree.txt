@@ -1,0 +1,97 @@
+
+-----------------------------------------
+docid:34_12ecb.xml
+-----------------------------------------
+
+sentence #:cnn has confirmed gupta has been approached by the president-elect 's transition team . 
+	[events]:[['confirmed'], ['approached']]
+	[entities]:[['gupta'], ['cnn']]
+*R1143[confirmed]
+|--(nsubj)--> R1144[cnn]
+|--(aux)--> has
+|--(ccomp)--> *R1132[approached]
+|                |--(nsubjp)--> R1130[gupta]
+|                |--(aux)--> has
+|                |--(auxpas)--> been
+|                |--(nmod)--> team
+|                                 |--(case)--> by
+|                                 |--(nmod:p)--> president-elect
+|                                 |                |--(det)--> the
+|                                 |                |--(case)--> 's
+|                                 |--(compou)--> transition
+|--(punct)--> .
+
+	* entity-paths for event['confirmed']34_12ecb.xmlsent:9308
+	['confirmed --(nsubj)--> CNN']
+	['confirmed --(ccomp)--> approached', 'approached --(nsubjpass)--> Gupta']
+
+	* entity-paths for event['approached']34_12ecb.xmlsent:9308
+	['approached --(nsubjpass)--> Gupta']
+
+sentence #:although gupta has not commented on the matter , the post claims that he wants the job and is undergoing final vetting . 
+	[events]:[['job'], ['wants']]
+	[entities]:[['he'], ['gupta']]
+claims
+|--(advcl)--> commented
+|                |--(mark)--> although
+|                |--(nsubj)--> R1130[gupta]
+|                |--(aux)--> has
+|                |--(neg)--> not
+|                |--(nmod)--> matter
+|                                 |--(case)--> on
+|                                 |--(det)--> the
+|--(punct)--> ,
+|--(nsubj)--> post
+|                |--(det)--> the
+|--(ccomp)--> *R1140[wants]
+|                |--(mark)--> that
+|                |--(nsubj)--> R1130[he]
+|                |--(dobj)--> *R1134[job]
+|                |                |--(det)--> the
+|                |--(cc)--> and
+|                |--(conj)--> undergoing
+|                                 |--(aux)--> is
+|                                 |--(dobj)--> vetting
+|                                                  |--(amod)--> final
+|--(punct)--> .
+
+	* entity-paths for event['job']34_12ecb.xmlsent:9307
+
+	* entity-paths for event['wants']34_12ecb.xmlsent:9307
+	['wants --(nsubj)--> he']
+
+sentence #:barack obama has asked the cnn medical correspondent dr sanjay gupta to join his fledgling administration as the us surgeon general , according to reports . 
+	[events]:[['asked']]
+	[entities]:[['dr', 'sanjay', 'gupta'], ['surgeon', 'general'], ['barack', 'obama'], ['administration']]
+*R1132[asked]
+|--(nsubj)--> R1136[obama]
+|                |--(compou)--> R1136[barack]
+|--(aux)--> has
+|--(dobj)--> R1130[gupta]
+|                |--(det)--> the
+|                |--(compou)--> cnn
+|                |--(amod)--> medical
+|                |--(compou)--> correspondent
+|                |--(compou)--> R1130[dr]
+|                |--(compou)--> R1130[sanjay]
+|--(xcomp)--> join
+|                |--(mark)--> to
+|                |--(dobj)--> R1133[administration]
+|                |                |--(nmod:p)--> his
+|                |                |--(compou)--> fledgling
+|                |--(nmod)--> R1135[general]
+|                                 |--(case)--> as
+|                                 |--(det)--> the
+|                                 |--(compou)--> us
+|                                 |--(compou)--> R1135[surgeon]
+|--(punct)--> ,
+|--(nmod)--> reports
+|                |--(case)--> according
+|                                 |--(mwe)--> to
+|--(punct)--> .
+
+	* entity-paths for event['asked']34_12ecb.xmlsent:9305
+	['asked --(nsubj)--> Obama']
+	['asked --(dobj)--> Gupta']
+	['asked --(xcomp)--> join', 'join --(dobj)--> administration']
+	['asked --(xcomp)--> join', 'join --(nmod)--> general']

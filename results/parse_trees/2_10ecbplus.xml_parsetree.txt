@@ -1,0 +1,54 @@
+
+-----------------------------------------
+docid:2_10ecbplus.xml
+-----------------------------------------
+
+sentence #:ellen degeneres to host oscars 
+	[events]:[['oscars'], ['host']]
+	[entities]:[['ellen', 'degeneres']]
+R454[degeneres]
+|--(compou)--> R454[ellen]
+|--(nmod)--> *R455[oscars]
+                 |--(case)--> to
+                 |--(compou)--> *R456[host]
+
+	* entity-paths for event['oscars']2_10ecbplus.xmlsent:3432
+
+	* entity-paths for event['host']2_10ecbplus.xmlsent:3432
+
+sentence #:and the next host of the academy awards is ... ellen degeneres . 
+	[events]:[['academy', 'awards']]
+	[entities]:[['host'], ['ellen', 'degeneres']]
+is
+|--(cc)--> and
+|--(nsubj)--> R454[host]
+|                |--(det)--> the
+|                |--(amod)--> next
+|                |--(nmod)--> *R455[awards]
+|                                 |--(case)--> of
+|                                 |--(det)--> the
+|                                 |--(compou)--> *R455[academy]
+|--(punct)--> ...
+|--(parata)--> R454[degeneres]
+|                |--(dep)--> R454[ellen]
+|--(punct)--> .
+
+	* entity-paths for event['academy', 'awards']2_10ecbplus.xmlsent:3435
+
+sentence #:talkshow host returns for second oscar tour 
+	[events]:[['returns'], ['oscar'], ['tour']]
+	[entities]:[['host']]
+talkshow
+|--(dep)--> *R457[returns]
+                 |--(compou)--> R454[host]
+                 |--(nmod)--> *R456[tour]
+                                  |--(case)--> for
+                                  |--(amod)--> second
+                                  |--(compou)--> *R455[oscar]
+
+	* entity-paths for event['returns']2_10ecbplus.xmlsent:3434
+	['returns --(compound)--> host']
+
+	* entity-paths for event['oscar']2_10ecbplus.xmlsent:3434
+
+	* entity-paths for event['tour']2_10ecbplus.xmlsent:3434

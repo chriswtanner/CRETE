@@ -1,0 +1,46 @@
+
+-----------------------------------------
+docid:10_2ecb.xml
+-----------------------------------------
+
+sentence #:angels general manager tony reagins confirmed to the los angeles times that he has made an eight-year offer to free agent first baseman mark teixeira . 
+	[events]:[['confirmed'], ['offer'], ['made']]
+	[entities]:[['he'], ['los', 'angeles', 'times'], ['tony', 'reagins'], ['mark', 'teixeira']]
+*R177[confirmed]
+|--(nsubj)--> angels
+|                |--(dep)--> R178[reagins]
+|                                 |--(amod)--> general
+|                                 |--(compou)--> manager
+|                                 |--(compou)--> R178[tony]
+|--(nmod)--> R179[times]
+|                |--(case)--> to
+|                |--(det)--> the
+|                |--(compou)--> R179[los]
+|                |--(compou)--> R179[angeles]
+|--(ccomp)--> *R174[made]
+|                |--(mark)--> that
+|                |--(nsubj)--> R178[he]
+|                |--(aux)--> has
+|                |--(dobj)--> *R176[offer]
+|                |                |--(det)--> an
+|                |                |--(amod)--> eight-year
+|                |--(nmod)--> R163[teixeira]
+|                                 |--(case)--> to
+|                                 |--(amod)--> free
+|                                 |--(compou)--> agent
+|                                 |--(amod)--> first
+|                                 |--(compou)--> baseman
+|                                 |--(compou)--> R163[mark]
+|--(punct)--> .
+
+	* entity-paths for event['confirmed']10_2ecb.xmlsent:436
+	['confirmed --(nsubj)--> Angels', 'Angels --(dep)--> Reagins']
+	['confirmed --(nmod)--> Times']
+	['confirmed --(ccomp)--> made', 'made --(nsubj)--> he']
+	['confirmed --(ccomp)--> made', 'made --(nmod)--> Teixeira']
+
+	* entity-paths for event['offer']10_2ecb.xmlsent:436
+
+	* entity-paths for event['made']10_2ecb.xmlsent:436
+	['made --(nsubj)--> he']
+	['made --(nmod)--> Teixeira']

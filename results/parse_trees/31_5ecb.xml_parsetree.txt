@@ -1,0 +1,153 @@
+
+-----------------------------------------
+docid:31_5ecb.xml
+-----------------------------------------
+
+sentence #:hansbrough , the reigning national player of the year , passed phil ford for the record midway through the first half . 
+	[events]:[['passed'], ['record']]
+	[entities]:[['hansbrough'], ['phil', 'ford'], ['national', 'player', 'of', 'the', 'year']]
+*R996[passed]
+|--(nsubj)--> R997[hansbrough]
+|                |--(punct)--> ,
+|                |--(appos)--> R997[player]
+|                |                |--(det)--> the
+|                |                |--(amod)--> reigning
+|                |                |--(amod)--> R997[national]
+|                |                |--(nmod)--> R997[year]
+|                |                                 |--(case)--> R997[of]
+|                |                                 |--(det)--> R997[the]
+|                |--(punct)--> ,
+|--(dobj)--> R1005[ford]
+|                |--(compou)--> R1005[phil]
+|                |--(nmod)--> *R998[record]
+|                                 |--(case)--> for
+|                                 |--(det)--> the
+|--(nmod)--> half
+|                |--(advmod)--> midway
+|                |--(case)--> through
+|                |--(det)--> the
+|                |--(amod)--> first
+|--(punct)--> .
+
+	* entity-paths for event['passed']31_5ecb.xmlsent:8501
+	['passed --(nsubj)--> Hansbrough']
+	['passed --(dobj)--> Ford']
+
+	* entity-paths for event['record']31_5ecb.xmlsent:8501
+
+sentence #:hansbrough needed 9 points coming in and set the record with a bank shot over two defenders with 7 minutes 41 seconds to go . 
+	[events]:[['record'], ['set']]
+	[entities]:[['hansbrough']]
+needed
+|--(nsubj)--> R997[hansbrough]
+|--(dobj)--> points
+|                |--(nummod)--> 9
+|--(xcomp)--> coming
+|                |--(nmod)--> in
+|--(cc)--> and
+|--(conj)--> *R996[set]
+|                |--(dobj)--> *R998[record]
+|                |                |--(det)--> the
+|                |                |--(nmod)--> shot
+|                |                                 |--(case)--> with
+|                |                                 |--(det)--> a
+|                |                                 |--(compou)--> bank
+|                |--(nmod)--> defenders
+|                |                |--(case)--> over
+|                |                |--(nummod)--> two
+|                |--(nmod)--> minutes
+|                |                |--(case)--> with
+|                |                |--(nummod)--> 7
+|                |                |--(dep)--> seconds
+|                |                                 |--(nummod)--> 41
+|                |--(advcl)--> go
+|                                 |--(mark)--> to
+|--(punct)--> .
+
+	* entity-paths for event['record']31_5ecb.xmlsent:8504
+
+	* entity-paths for event['set']31_5ecb.xmlsent:8504
+
+sentence #:hansbrough scored 20 points thursday night , breaking north carolina 's career scoring record , and the tar heels beat visiting evansville , 91-73 . 
+	[events]:[['beat'], ['scoring', 'record'], ['breaking']]
+	[entities]:[['91-73'], ['tar', 'heels'], ['evansville'], ['thursday', 'night'], ['hansbrough'], ['north', 'carolina']]
+scored
+|--(nsubj)--> R997[hansbrough]
+|--(dobj)--> points
+|                |--(nummod)--> 20
+|--(nmod:t)--> R1006[night]
+|                |--(compou)--> R1006[thursday]
+|--(punct)--> ,
+|--(advcl)--> *R996[breaking]
+|                |--(dobj)--> *R998[record]
+|                                 |--(nmod:p)--> R999[carolina]
+|                                 |                |--(compou)--> R999[north]
+|                                 |                |--(case)--> 's
+|                                 |--(compou)--> career
+|                                 |--(amod)--> *R998[scoring]
+|--(punct)--> ,
+|--(cc)--> and
+|--(conj)--> *R1007[beat]
+|                |--(nsubj)--> R999[heels]
+|                |                |--(det)--> the
+|                |                |--(compou)--> R999[tar]
+|                |--(xcomp)--> visiting
+|                                 |--(dobj)--> R1008[evansville]
+|                                                  |--(punct)--> ,
+|                                                  |--(amod)--> R1009[91-73]
+|--(punct)--> .
+
+	* entity-paths for event['beat']31_5ecb.xmlsent:8500
+	['beat --(nsubj)--> Heels']
+	['beat --(xcomp)--> visiting', 'visiting --(dobj)--> Evansville']
+
+	* entity-paths for event['scoring', 'record']31_5ecb.xmlsent:8500
+	['record --(nmod:poss)--> Carolina']
+
+	* entity-paths for event['breaking']31_5ecb.xmlsent:8500
+	['breaking --(dobj)--> record', 'record --(nmod:poss)--> Carolina']
+
+sentence #:hansbrough sets scoring record in victory 
+	[events]:[['victory'], ['sets'], ['record']]
+	[entities]:[['hansbrough']]
+*R996[sets]
+|--(nsubj)--> R997[hansbrough]
+|--(dobj)--> *R998[record]
+                 |--(compou)--> scoring
+                 |--(nmod)--> *R1007[victory]
+                                  |--(case)--> in
+
+	* entity-paths for event['victory']31_5ecb.xmlsent:8498
+
+	* entity-paths for event['sets']31_5ecb.xmlsent:8498
+	['Sets --(nsubj)--> Hansbrough']
+
+	* entity-paths for event['record']31_5ecb.xmlsent:8498
+
+sentence #:top-ranked north carolina waited for tyler hansbrough to make history , then cruised to its latest lopsided victory . 
+	[events]:[['make'], ['victory']]
+	[entities]:[['north', 'carolina'], ['tyler', 'hansbrough'], ['its']]
+cruised
+|--(ccomp)--> waited
+|                |--(nsubj)--> R999[carolina]
+|                |                |--(amod)--> top-ranked
+|                |                |--(compou)--> R999[north]
+|                |--(nmod)--> R997[hansbrough]
+|                |                |--(case)--> for
+|                |                |--(compou)--> R997[tyler]
+|                |--(xcomp)--> *R996[make]
+|                                 |--(mark)--> to
+|                                 |--(dobj)--> history
+|--(punct)--> ,
+|--(nsubj)--> then
+|--(nmod)--> *R1007[victory]
+|                |--(case)--> to
+|                |--(nmod:p)--> R999[its]
+|                |--(amod)--> latest
+|                |--(amod)--> lopsided
+|--(punct)--> .
+
+	* entity-paths for event['make']31_5ecb.xmlsent:8499
+
+	* entity-paths for event['victory']31_5ecb.xmlsent:8499
+	['victory --(nmod:poss)--> its']

@@ -1,0 +1,58 @@
+
+-----------------------------------------
+docid:9_7ecb.xml
+-----------------------------------------
+
+sentence #:just six weeks before president-elect barack obama takes office , the bush administration issued revised endangered species regulations thursday to reduce the input of federal scientists and to block the law from being used to fight global warming 
+	[events]:[['issued'], ['reduce'], ['takes', 'office']]
+	[entities]:[['scientists'], ['bush', 'administration'], ['regulations'], ['thursday'], ['barack', 'obama']]
+*R1812[issued]
+|--(advcl)--> *R1819[takes]
+|                |--(dep)--> weeks
+|                |                |--(advmod)--> just
+|                |                |--(nummod)--> six
+|                |--(mark)--> before
+|                |--(nsubj)--> R1136[obama]
+|                |                |--(compou)--> president-elect
+|                |                |--(compou)--> R1136[barack]
+|                |--(dobj)--> *R1819[office]
+|--(punct)--> ,
+|--(nsubj)--> R1795[administration]
+|                |--(det)--> the
+|                |--(compou)--> R1795[bush]
+|--(dobj)--> revised
+                 |--(acl)--> endangered
+                                  |--(dobj)--> R1802[regulations]
+                                  |                |--(compou)--> species
+                                  |--(nmod:t)--> R1810[thursday]
+                                  |--(dep)--> *R1794[reduce]
+                                                   |--(mark)--> to
+                                                   |--(dobj)--> input
+                                                   |                |--(det)--> the
+                                                   |                |--(nmod)--> R1813[scientists]
+                                                   |                                 |--(case)--> of
+                                                   |                                 |--(amod)--> federal
+                                                   |--(cc)--> and
+                                                   |--(conj)--> block
+                                                                    |--(mark)--> to
+                                                                    |--(dobj)--> law
+                                                                    |                |--(det)--> the
+                                                                    |--(advcl)--> used
+                                                                                     |--(mark)--> from
+                                                                                     |--(auxpas)--> being
+                                                                                     |--(xcomp)--> fight
+                                                                                                      |--(mark)--> to
+                                                                                                      |--(dobj)--> warming
+                                                                                                                       |--(amod)--> global
+
+	* entity-paths for event['issued']9_7ecb.xmlsent:15681
+	['issued --(advcl)--> takes', 'takes --(nsubj)--> Obama']
+	['issued --(nsubj)--> administration']
+	['issued --(dobj)--> revised', 'revised --(acl)--> endangered', 'endangered --(dobj)--> regulations']
+	['issued --(dobj)--> revised', 'revised --(acl)--> endangered', 'endangered --(nmod:tmod)--> Thursday']
+	['issued --(dobj)--> revised', 'revised --(acl)--> endangered', 'endangered --(dep)--> reduce', 'reduce --(dobj)--> input', 'input --(nmod)--> scientists']
+
+	* entity-paths for event['reduce']9_7ecb.xmlsent:15681
+	['reduce --(dobj)--> input', 'input --(nmod)--> scientists']
+
+	* entity-paths for event['takes', 'office']9_7ecb.xmlsent:15681

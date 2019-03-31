@@ -1,0 +1,27 @@
+
+-----------------------------------------
+docid:5_9ecb.xml
+-----------------------------------------
+
+sentence #:stephen a. smith has reported that the philadelphia 76ers have parted ways with coach maurice cheeks . 
+	[events]:[['parted', 'ways']]
+	[entities]:[['maurice', 'cheeks'], ['the', 'philadelphia', '76ers']]
+reported
+|--(nsubj)--> smith
+|                |--(compou)--> stephen
+|                |--(compou)--> a.
+|--(aux)--> has
+|--(ccomp)--> *R1672[parted]
+|                |--(mark)--> that
+|                |--(nsubj)--> R1673[76ers]
+|                |                |--(det)--> R1673[the]
+|                |                |--(compou)--> R1673[philadelphia]
+|                |--(aux)--> have
+|                |--(dobj)--> *R1672[ways]
+|                |--(nmod)--> R1674[cheeks]
+|                                 |--(case)--> with
+|                                 |--(compou)--> coach
+|                                 |--(compou)--> R1674[maurice]
+|--(punct)--> .
+
+	* entity-paths for event['parted', 'ways']5_9ecb.xmlsent:14285

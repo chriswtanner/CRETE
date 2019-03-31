@@ -1,0 +1,94 @@
+
+-----------------------------------------
+docid:20_2ecb.xml
+-----------------------------------------
+
+sentence #:the tremor struck an area around the town of dargahan on qeshm island , at the entrance to the persian gulf , injuring five people and damaging buildings . 
+	[events]:[['injuring'], ['tremor'], ['damaging'], ['struck']]
+	[entities]:[['five', 'people'], ['an', 'area', 'around', 'the', 'town', 'of', 'dargahan', 'on', 'qeshm', 'island', ',', 'at', 'the', 'entrance', 'to', 'the', 'persian', 'gulf'], ['buildings']]
+*R516[struck]
+|--(nsubj)--> *R517[tremor]
+|                |--(det)--> the
+|--(dobj)--> R515[area]
+|                |--(det)--> R515[an]
+|--(nmod)--> R515[town]
+|                |--(case)--> R515[around]
+|                |--(det)--> R515[the]
+|                |--(nmod)--> R515[dargahan]
+|                                 |--(case)--> R515[of]
+|--(nmod)--> R515[island]
+|                |--(case)--> R515[on]
+|                |--(compou)--> R515[qeshm]
+|--(punct)--> R515[,]
+|--(nmod)--> R515[entrance]
+|                |--(case)--> R515[at]
+|                |--(det)--> R515[the]
+|                |--(nmod)--> R515[gulf]
+|                                 |--(case)--> R515[to]
+|                                 |--(det)--> R515[the]
+|                                 |--(compou)--> R515[persian]
+|--(punct)--> ,
+|--(advcl)--> *R520[injuring]
+|                |--(dobj)--> R521[people]
+|                                 |--(nummod)--> R521[five]
+|                                 |--(cc)--> and
+|                                 |--(conj)--> R522[buildings]
+|                                                  |--(amod)--> *R523[damaging]
+|--(punct)--> .
+
+	* entity-paths for event['injuring']20_2ecb.xmlsent:3848
+	['injuring --(dobj)--> people']
+
+	* entity-paths for event['tremor']20_2ecb.xmlsent:3848
+
+	* entity-paths for event['damaging']20_2ecb.xmlsent:3848
+
+	* entity-paths for event['struck']20_2ecb.xmlsent:3848
+	['struck --(dobj)--> area']
+	['struck --(nmod)--> town']
+	['struck --(nmod)--> island']
+	['struck --(punct)--> ,']
+	['struck --(nmod)--> entrance']
+	['struck --(advcl)--> injuring', 'injuring --(dobj)--> people']
+
+sentence #:an earthquake measuring 5.6 on the richter scale jolted qeshm island off iran 's southern coast on sunday , followed by several aftershocks on monday . 
+	[events]:[['jolted'], ['earthquake']]
+	[entities]:[['sunday'], ['monday'], ['qeshm', 'island', 'off', 'iran', "'s", 'southern', 'coast'], ['5.6'], ['richter', 'scale']]
+*R516[jolted]
+|--(nsubj)--> *R517[earthquake]
+|                |--(det)--> an
+|                |--(acl)--> measuring
+|                                 |--(dobj)--> R518[5.6]
+|                                 |--(nmod)--> R527[scale]
+|                                                  |--(case)--> on
+|                                                  |--(det)--> the
+|                                                  |--(compou)--> R527[richter]
+|--(dobj)--> R515[island]
+|                |--(compou)--> R515[qeshm]
+|--(nmod)--> R515[coast]
+|                |--(case)--> R515[off]
+|                |--(nmod:p)--> R515[iran]
+|                |                |--(case)--> R515['s]
+|                |--(amod)--> R515[southern]
+|--(nmod)--> R519[sunday]
+|                |--(case)--> on
+|--(punct)--> ,
+|--(advcl)--> aftershocks
+|                |--(case)--> followed
+|                |--(case)--> by
+|                |--(amod)--> several
+|                |--(nmod)--> R528[monday]
+|                                 |--(case)--> on
+|--(punct)--> .
+
+	* entity-paths for event['jolted']20_2ecb.xmlsent:3847
+	['jolted --(nsubj)--> earthquake', 'earthquake --(acl)--> measuring', 'measuring --(dobj)--> 5.6']
+	['jolted --(nsubj)--> earthquake', 'earthquake --(acl)--> measuring', 'measuring --(nmod)--> scale']
+	['jolted --(dobj)--> island']
+	['jolted --(nmod)--> coast']
+	['jolted --(nmod)--> Sunday']
+	['jolted --(advcl)--> aftershocks', 'aftershocks --(nmod)--> Monday']
+
+	* entity-paths for event['earthquake']20_2ecb.xmlsent:3847
+	['earthquake --(acl)--> measuring', 'measuring --(dobj)--> 5.6']
+	['earthquake --(acl)--> measuring', 'measuring --(nmod)--> scale']

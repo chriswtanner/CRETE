@@ -1,0 +1,48 @@
+
+-----------------------------------------
+docid:32_7ecbplus.xml
+-----------------------------------------
+
+sentence #:a man was last night being quizzed by cops over the double murders of his mum and sister . 
+	[events]:[['murders']]
+	[entities]:[['mum'], ['man'], ['sister'], ['cops']]
+night
+|--(nsubj)--> R1033[man]
+|                |--(det)--> a
+|--(cop)--> was
+|--(amod)--> last
+|--(acl)--> quizzed
+|                |--(auxpas)--> being
+|                |--(nmod)--> R1040[cops]
+|                                 |--(case)--> by
+|                                 |--(nmod)--> *R1031[murders]
+|                                                  |--(case)--> over
+|                                                  |--(det)--> the
+|                                                  |--(amod)--> double
+|                                                  |--(nmod)--> R1035[mum]
+|                                                                   |--(case)--> of
+|                                                                   |--(nmod:p)--> his
+|                                                                   |--(cc)--> and
+|                                                                   |--(conj)--> R1036[sister]
+|--(punct)--> .
+
+	* entity-paths for event['murders']32_7ecbplus.xmlsent:8919
+	['murders --(nmod)--> mum']
+
+sentence #:man held after sis and mum murdered 
+	[events]:[['murdered'], ['held']]
+	[entities]:[['sis'], ['mum'], ['man']]
+*R1037[held]
+|--(nsubj)--> R1033[man]
+|--(advcl)--> *R1031[murdered]
+                 |--(mark)--> after
+                 |--(nsubj)--> R1036[sis]
+                                  |--(cc)--> and
+                                  |--(conj)--> R1035[mum]
+
+	* entity-paths for event['murdered']32_7ecbplus.xmlsent:8917
+	['murdered --(nsubj)--> sis']
+
+	* entity-paths for event['held']32_7ecbplus.xmlsent:8917
+	['held --(nsubj)--> Man']
+	['held --(advcl)--> murdered', 'murdered --(nsubj)--> sis']

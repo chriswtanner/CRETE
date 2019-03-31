@@ -1,0 +1,44 @@
+
+-----------------------------------------
+docid:19_3ecb.xml
+-----------------------------------------
+
+sentence #:athens was calm sunday after eight days of the worst riots greece has seen in decades , sparked by the police killing of a teenager . 
+	[events]:[['riots'], ['killing'], ['sparked']]
+	[entities]:[['sunday'], ['greece'], ['athens'], ['teenager']]
+calm
+|--(nsubj)--> R405[athens]
+|--(cop)--> was
+|--(nmod:t)--> R440[sunday]
+|--(nmod)--> days
+|                |--(case)--> after
+|                |--(nummod)--> eight
+|                |--(nmod)--> *R433[riots]
+|                                 |--(case)--> of
+|                                 |--(det)--> the
+|                                 |--(amod)--> worst
+|                                 |--(acl:re)--> seen
+|                                                  |--(nsubj)--> R409[greece]
+|                                                  |--(aux)--> has
+|                                                  |--(nmod)--> decades
+|                                                                   |--(case)--> in
+|                                                                   |--(punct)--> ,
+|                                                                   |--(acl)--> *R407[sparked]
+|                                                                                    |--(nmod)--> *R403[killing]
+|                                                                                                     |--(case)--> by
+|                                                                                                     |--(det)--> the
+|                                                                                                     |--(compou)--> police
+|                                                                                                     |--(nmod)--> R402[teenager]
+|                                                                                                                      |--(case)--> of
+|                                                                                                                      |--(det)--> a
+|--(punct)--> .
+
+	* entity-paths for event['riots']19_3ecb.xmlsent:2950
+	['riots --(acl:relcl)--> seen', 'seen --(nsubj)--> Greece']
+	['riots --(acl:relcl)--> seen', 'seen --(nmod)--> decades', 'decades --(acl)--> sparked', 'sparked --(nmod)--> killing', 'killing --(nmod)--> teenager']
+
+	* entity-paths for event['killing']19_3ecb.xmlsent:2950
+	['killing --(nmod)--> teenager']
+
+	* entity-paths for event['sparked']19_3ecb.xmlsent:2950
+	['sparked --(nmod)--> killing', 'killing --(nmod)--> teenager']

@@ -1,0 +1,76 @@
+
+-----------------------------------------
+docid:12_19ecb.xml
+-----------------------------------------
+
+sentence #:an indian warship , ins mysore deployed in the gulf of aden attacked two boats of pirates after receiving signals from a ship that the pirates were trying to hijack . 
+	[events]:[['hijack'], ['deployed'], ['trying']]
+	[entities]:[['boats'], ['pirates'], ['the', 'gulf', 'of', 'aden'], ['ship'], ['warship']]
+attacked
+|--(nsubj)--> R234[warship]
+|                |--(det)--> an
+|                |--(amod)--> indian
+|                |--(punct)--> ,
+|                |--(appos)--> mysore
+|                                 |--(compou)--> ins
+|                                 |--(acl)--> *R240[deployed]
+|                                                  |--(nmod)--> R229[gulf]
+|                                                                   |--(case)--> in
+|                                                                   |--(det)--> R229[the]
+|                                                                   |--(nmod)--> R229[aden]
+|                                                                                    |--(case)--> R229[of]
+|--(dobj)--> R216[boats]
+|                |--(nummod)--> two
+|                |--(nmod)--> pirates
+|                                 |--(case)--> of
+|--(advcl)--> receiving
+|                |--(mark)--> after
+|                |--(dobj)--> signals
+|                |--(nmod)--> R228[ship]
+|                |                |--(case)--> from
+|                |                |--(det)--> a
+|                |--(ccomp)--> *R239[trying]
+|                                 |--(mark)--> that
+|                                 |--(nsubj)--> R216[pirates]
+|                                 |                |--(det)--> the
+|                                 |--(aux)--> were
+|                                 |--(xcomp)--> *R235[hijack]
+|                                                  |--(mark)--> to
+|--(punct)--> .
+
+	* entity-paths for event['hijack']12_19ecb.xmlsent:867
+
+	* entity-paths for event['deployed']12_19ecb.xmlsent:867
+	['deployed --(nmod)--> Gulf']
+
+	* entity-paths for event['trying']12_19ecb.xmlsent:867
+	['trying --(nsubj)--> pirates']
+
+sentence #:taking the lead in the fight against piracy , the indian navy on saturday arrested 23 somali pirates . 
+	[events]:[['arrested'], ['piracy']]
+	[entities]:[['navy'], ['pirates'], ['saturday']]
+*R214[arrested]
+|--(advcl)--> taking
+|                |--(dobj)--> lead
+|                |                |--(det)--> the
+|                |--(nmod)--> fight
+|                                 |--(case)--> in
+|                                 |--(det)--> the
+|                                 |--(nmod)--> *R241[piracy]
+|                                                  |--(case)--> against
+|--(punct)--> ,
+|--(nsubj)--> R215[navy]
+|                |--(det)--> the
+|                |--(amod)--> indian
+|                |--(nmod)--> R230[saturday]
+|                                 |--(case)--> on
+|--(dobj)--> R216[pirates]
+|                |--(nummod)--> 23
+|                |--(amod)--> somali
+|--(punct)--> .
+
+	* entity-paths for event['arrested']12_19ecb.xmlsent:866
+	['arrested --(nsubj)--> Navy']
+	['arrested --(dobj)--> pirates']
+
+	* entity-paths for event['piracy']12_19ecb.xmlsent:866

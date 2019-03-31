@@ -1,0 +1,62 @@
+
+-----------------------------------------
+docid:34_1ecbplus.xml
+-----------------------------------------
+
+sentence #:president obama announces nominee for surgeon general 
+	[events]:[['announces'], ['nominee']]
+	[entities]:[['obama'], ['surgeon', 'general']]
+*R1142[announces]
+|--(nsubj)--> R1136[obama]
+|                |--(compou)--> president
+|--(dobj)--> *R1138[nominee]
+                 |--(nmod)--> R1135[general]
+                                  |--(case)--> for
+                                  |--(compou)--> R1135[surgeon]
+
+	* entity-paths for event['announces']34_1ecbplus.xmlsent:9375
+	['Announces --(nsubj)--> Obama']
+	['Announces --(dobj)--> Nominee', 'Nominee --(nmod)--> General']
+
+	* entity-paths for event['nominee']34_1ecbplus.xmlsent:9375
+	['Nominee --(nmod)--> General']
+
+sentence #:today , president barack obama announced his intent to nominate regina m . benjamin as surgeon general , department of health and human services . 
+	[events]:[['nominate'], ['announced']]
+	[entities]:[['surgeon', 'general'], ['his'], ['barack', 'obama'], ['today'], ['regina', 'm', '.', 'benjamin']]
+*R1142[announced]
+|--(nmod:t)--> R1141[today]
+|--(punct)--> ,
+|--(nsubj)--> R1136[obama]
+|                |--(compou)--> president
+|                |--(compou)--> R1136[barack]
+|--(dobj)--> intent
+|                |--(nmod:p)--> R1136[his]
+|                |--(acl)--> *R1138[nominate]
+|                                 |--(mark)--> to
+|                                 |--(xcomp)--> R1139[benjamin]
+|                                 |                |--(nsubj)--> R1139[regina]
+|                                 |                |--(compou)--> R1139[m]
+|                                 |                |--(punct)--> R1139[.]
+|                                 |--(nmod)--> R1135[general]
+|                                                  |--(case)--> as
+|                                                  |--(compou)--> R1135[surgeon]
+|                                                  |--(punct)--> ,
+|                                                  |--(appos)--> department
+|                                                                   |--(nmod)--> services
+|                                                                                    |--(case)--> of
+|                                                                                    |--(compou)--> health
+|                                                                                                     |--(cc)--> and
+|                                                                                                     |--(conj)--> human
+|--(punct)--> .
+
+	* entity-paths for event['nominate']34_1ecbplus.xmlsent:9376
+	['nominate --(xcomp)--> Benjamin']
+	['nominate --(nmod)--> General']
+
+	* entity-paths for event['announced']34_1ecbplus.xmlsent:9376
+	['announced --(nmod:tmod)--> Today']
+	['announced --(nsubj)--> Obama']
+	['announced --(dobj)--> intent', 'intent --(nmod:poss)--> his']
+	['announced --(dobj)--> intent', 'intent --(acl)--> nominate', 'nominate --(xcomp)--> Benjamin']
+	['announced --(dobj)--> intent', 'intent --(acl)--> nominate', 'nominate --(nmod)--> General']

@@ -1,0 +1,80 @@
+
+-----------------------------------------
+docid:31_6ecb.xml
+-----------------------------------------
+
+sentence #:he set the record by muscling in a bank shot over two defenders with 7:41 to go . 
+	[events]:[['set'], ['record']]
+	[entities]:[['he']]
+*R996[set]
+|--(nsubj)--> R997[he]
+|--(dobj)--> *R998[record]
+|                |--(det)--> the
+|--(advcl)--> muscling
+|                |--(mark)--> by
+|                |--(nmod)--> shot
+|                |                |--(case)--> in
+|                |                |--(det)--> a
+|                |                |--(compou)--> bank
+|                |                |--(nmod)--> defenders
+|                |                                 |--(case)--> over
+|                |                                 |--(nummod)--> two
+|                |                                 |--(nmod)--> 7:41
+|                |                                                  |--(case)--> with
+|                |--(xcomp)--> go
+|                                 |--(mark)--> to
+|--(punct)--> .
+
+	* entity-paths for event['set']31_6ecb.xmlsent:8523
+	['set --(nsubj)--> He']
+
+	* entity-paths for event['record']31_6ecb.xmlsent:8523
+
+sentence #:tyler hansbrough scored 20 points to break north carolina 's career scoring record and help the top-ranked tar heels remain unbeaten with a 91-73 victory over evansville on thursday night . 
+	[events]:[['victory'], ['break'], ['scoring', 'record']]
+	[entities]:[['evansville'], ['91-73'], ['tyler', 'hansbrough'], ['north', 'carolina'], ['tar', 'heels'], ['on', 'thursday', 'night']]
+scored
+|--(nsubj)--> R997[hansbrough]
+|                |--(compou)--> R997[tyler]
+|--(dobj)--> points
+|                |--(nummod)--> 20
+|--(advcl)--> *R996[break]
+|                |--(mark)--> to
+|                |--(dobj)--> *R998[record]
+|                |                |--(nmod:p)--> R999[carolina]
+|                |                |                |--(amod)--> R999[north]
+|                |                |                |--(case)--> 's
+|                |                |--(compou)--> career
+|                |                |--(amod)--> *R998[scoring]
+|                |--(cc)--> and
+|                |--(conj)--> help
+|                                 |--(ccomp)--> remain
+|                                                  |--(nsubj)--> R999[heels]
+|                                                  |                |--(det)--> the
+|                                                  |                |--(amod)--> top-ranked
+|                                                  |                |--(compou)--> R999[tar]
+|                                                  |--(xcomp)--> unbeaten
+|                                                  |                |--(nmod)--> *R1007[victory]
+|                                                  |                                 |--(case)--> with
+|                                                  |                                 |--(det)--> a
+|                                                  |                                 |--(nummod)--> R1009[91-73]
+|                                                  |--(nmod)--> R1008[evansville]
+|                                                  |                |--(case)--> over
+|                                                  |--(nmod)--> R1006[thursday]
+|                                                  |                |--(case)--> R1006[on]
+|                                                  |--(nmod:t)--> R1006[night]
+|--(punct)--> .
+
+	* entity-paths for event['victory']31_6ecb.xmlsent:8519
+	['victory --(nummod)--> 91-73']
+
+	* entity-paths for event['break']31_6ecb.xmlsent:8519
+	['break --(dobj)--> record', 'record --(nmod:poss)--> Carolina']
+	['break --(conj)--> help', 'help --(ccomp)--> remain', 'remain --(nsubj)--> Heels']
+	['break --(conj)--> help', 'help --(ccomp)--> remain', 'remain --(xcomp)--> unbeaten', 'unbeaten --(nmod)--> victory', 'victory --(nummod)--> 91-73']
+	['break --(conj)--> help', 'help --(ccomp)--> remain', 'remain --(nmod)--> Evansville']
+	['break --(conj)--> help', 'help --(ccomp)--> remain', 'remain --(nmod)--> Thursday']
+	['break --(conj)--> help', 'help --(ccomp)--> remain', 'remain --(nmod:tmod)--> night']
+
+	* entity-paths for event['scoring', 'record']31_6ecb.xmlsent:8519
+	['record --(nmod:poss)--> Carolina']

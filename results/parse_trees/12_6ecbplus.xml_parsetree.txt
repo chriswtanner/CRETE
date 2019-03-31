@@ -1,0 +1,97 @@
+
+-----------------------------------------
+docid:12_6ecbplus.xml
+-----------------------------------------
+
+sentence #:indian naval ship interdicts three pirate vessels in a single operation 
+	[events]:[['interdicts'], ['operation']]
+	[entities]:[['vessels'], ['ship']]
+*R217[interdicts]
+|--(amod)--> indian
+|--(compou)--> naval
+|--(compou)--> R222[ship]
+|--(dep)--> R259[vessels]
+                 |--(nummod)--> three
+                 |--(compou)--> pirate
+                 |--(nmod)--> *R246[operation]
+                                  |--(case)--> in
+                                  |--(det)--> a
+                                  |--(amod)--> single
+
+	* entity-paths for event['interdicts']12_6ecbplus.xmlsent:1055
+	['Interdicts --(compound)--> Ship']
+	['Interdicts --(dep)--> Vessels']
+
+	* entity-paths for event['operation']12_6ecbplus.xmlsent:1055
+
+sentence #:indian naval ship sukanya , presently deployed on anti - piracy patrols in the gulf of aden under the operational control of the western naval command , found herself once again in the thick of things , thwarting a multiple - boat piracy attack on 10 nov 11 . 
+	[events]:[['patrols'], ['thwarting'], ['under', 'control'], ['attack'], ['piracy'], ['deployed']]
+	[entities]:[['western', 'naval', 'command'], ['herself'], ['on', '10', 'nov', '11'], ['sukanya'], ['in', 'the', 'gulf', 'of', 'aden']]
+found
+|--(nsubj)--> R222[sukanya]
+|                |--(amod)--> indian
+|                |--(compou)--> naval
+|                |--(compou)--> ship
+|                |--(punct)--> ,
+|                |--(acl)--> *R255[deployed]
+|                |                |--(advmod)--> presently
+|                |                |--(nmod)--> anti
+|                |                |                |--(case)--> on
+|                |                |                |--(punct)--> -
+|                |                |                |--(dep)--> *R243[patrols]
+|                |                |                                 |--(compou)--> piracy
+|                |                |                                 |--(nmod)--> R229[gulf]
+|                |                |                                                  |--(case)--> R229[in]
+|                |                |                                                  |--(det)--> R229[the]
+|                |                |                                                  |--(nmod)--> R229[aden]
+|                |                |                                                                   |--(case)--> R229[of]
+|                |                |--(nmod)--> *R256[control]
+|                |                                 |--(case)--> *R256[under]
+|                |                                 |--(det)--> the
+|                |                                 |--(amod)--> operational
+|                |                                 |--(nmod)--> R257[command]
+|                |                                                  |--(case)--> of
+|                |                                                  |--(det)--> the
+|                |                                                  |--(amod)--> R257[western]
+|                |                                                  |--(compou)--> R257[naval]
+|                |--(punct)--> ,
+|--(dobj)--> R222[herself]
+|--(nmod)--> thick
+|                |--(advmod)--> again
+|                |                |--(advmod)--> once
+|                |--(case)--> in
+|                |--(det)--> the
+|                |--(nmod)--> things
+|                                 |--(case)--> of
+|--(punct)--> ,
+|--(advcl)--> *R217[thwarting]
+|                |--(dobj)--> multiple
+|                |                |--(det)--> a
+|                |                |--(punct)--> -
+|                |                |--(dep)--> *R218[attack]
+|                |                                 |--(compou)--> boat
+|                |                                 |--(compou)--> *R219[piracy]
+|                |                                 |--(nmod)--> R231[10]
+|                |                                                  |--(case)--> R231[on]
+|                |--(nmod:t)--> R231[nov]
+|                                 |--(nummod)--> R231[11]
+|--(punct)--> .
+
+	* entity-paths for event['patrols']12_6ecbplus.xmlsent:1057
+	['patrols --(nmod)--> Gulf']
+
+	* entity-paths for event['thwarting']12_6ecbplus.xmlsent:1057
+	['thwarting --(dobj)--> multiple', 'multiple --(dep)--> attack', 'attack --(nmod)--> 10']
+	['thwarting --(nmod:tmod)--> Nov']
+
+	* entity-paths for event['under', 'control']12_6ecbplus.xmlsent:1057
+	['control --(nmod)--> Command']
+
+	* entity-paths for event['attack']12_6ecbplus.xmlsent:1057
+	['attack --(nmod)--> 10']
+
+	* entity-paths for event['piracy']12_6ecbplus.xmlsent:1057
+
+	* entity-paths for event['deployed']12_6ecbplus.xmlsent:1057
+	['deployed --(nmod)--> anti', 'anti --(dep)--> patrols', 'patrols --(nmod)--> Gulf']
+	['deployed --(nmod)--> control', 'control --(nmod)--> Command']

@@ -1,0 +1,107 @@
+
+-----------------------------------------
+docid:33_11ecbplus.xml
+-----------------------------------------
+
+sentence #:teen arrested in shooting of hero brooklyn mom 
+	[events]:[['shooting'], ['arrested']]
+	[entities]:[['teen'], ['hero', 'brooklyn', 'mom']]
+*R1085[arrested]
+|--(nsubj)--> R1076[teen]
+|--(nmod)--> *R1083[shooting]
+                 |--(case)--> in
+                 |--(nmod)--> R1079[mom]
+                                  |--(case)--> of
+                                  |--(compou)--> R1079[hero]
+                                  |--(compou)--> R1079[brooklyn]
+
+	* entity-paths for event['shooting']33_11ecbplus.xmlsent:8960
+	['Shooting --(nmod)--> Mom']
+
+	* entity-paths for event['arrested']33_11ecbplus.xmlsent:8960
+	['Arrested --(nsubj)--> Teen']
+	['Arrested --(nmod)--> Shooting', 'Shooting --(nmod)--> Mom']
+
+sentence #:an 18 - year - old gang member has confessed to killing a pregnant mom , who died on friday as she shielded a group of children from bullets , but insisted he "did not mean to shoot the ladies , " sources tell the new york daily news . 
+	[events]:[['killing'], ['shielded'], ['mean'], ['died'], ['insisted'], ['shoot'], ['confessed']]
+	[entities]:[['gang', 'member'], ['mom'], ['bullets'], ['she'], ['on', 'friday'], ['who'], ['children'], ['he']]
+tell
+|--(ccomp)--> *R1075[confessed]
+|                |--(nsubj)--> 18
+|                |                |--(det)--> an
+|                |                |--(dep)--> year
+|                |                                 |--(punct)--> -
+|                |                                 |--(punct)--> -
+|                |                                 |--(dep)--> R1076[member]
+|                |                                                  |--(amod)--> old
+|                |                                                  |--(compou)--> R1076[gang]
+|                |--(aux)--> has
+|                |--(advcl)--> *R1083[killing]
+|                                 |--(mark)--> to
+|                                 |--(dobj)--> R1079[mom]
+|                                                  |--(det)--> a
+|                                                  |--(amod)--> pregnant
+|                                                  |--(punct)--> ,
+|                                                  |--(acl:re)--> *R1078[died]
+|                                                                   |--(nsubj)--> R1079[who]
+|                                                                   |--(nmod)--> R1086[friday]
+|                                                                   |                |--(case)--> R1086[on]
+|                                                                   |--(advcl)--> *R1081[shielded]
+|                                                                                    |--(mark)--> as
+|                                                                                    |--(nsubj)--> R1079[she]
+|                                                                                    |--(dobj)--> group
+|                                                                                    |                |--(det)--> a
+|                                                                                    |                |--(nmod)--> R1082[children]
+|                                                                                    |                                 |--(case)--> of
+|                                                                                    |--(nmod)--> R1087[bullets]
+|                                                                                    |                |--(case)--> from
+|                                                                                    |--(punct)--> ,
+|                                                                                    |--(cc)--> but
+|                                                                                    |--(conj)--> *R1088[insisted]
+|                                                                                                     |--(ccomp)--> *R1089[mean]
+|                                                                                                                      |--(nsubj)--> R1076[he]
+|                                                                                                                      |--(punct)--> "did
+|                                                                                                                      |--(aux)--> "did
+|                                                                                                                      |--(neg)--> not
+|                                                                                                                      |--(xcomp)--> *R1083[shoot]
+|                                                                                                                                       |--(mark)--> to
+|                                                                                                                                       |--(dobj)--> ladies
+|                                                                                                                                                        |--(det)--> the
+|--(punct)--> ,
+|--(punct)--> "
+|--(nsubj)--> sources
+|--(dobj)--> news
+|                |--(det)--> the
+|                |--(compou)--> new
+|                |--(compou)--> york
+|                |--(compou)--> daily
+|--(punct)--> .
+
+	* entity-paths for event['killing']33_11ecbplus.xmlsent:8962
+	['killing --(dobj)--> mom']
+
+	* entity-paths for event['shielded']33_11ecbplus.xmlsent:8962
+	['shielded --(nsubj)--> she']
+	['shielded --(dobj)--> group', 'group --(nmod)--> children']
+	['shielded --(nmod)--> bullets']
+	['shielded --(conj)--> insisted', 'insisted --(ccomp)--> mean', 'mean --(nsubj)--> he']
+
+	* entity-paths for event['mean']33_11ecbplus.xmlsent:8962
+	['mean --(nsubj)--> he']
+
+	* entity-paths for event['died']33_11ecbplus.xmlsent:8962
+	['died --(nsubj)--> who']
+	['died --(nmod)--> Friday']
+	['died --(advcl)--> shielded', 'shielded --(nsubj)--> she']
+	['died --(advcl)--> shielded', 'shielded --(dobj)--> group', 'group --(nmod)--> children']
+	['died --(advcl)--> shielded', 'shielded --(nmod)--> bullets']
+	['died --(advcl)--> shielded', 'shielded --(conj)--> insisted', 'insisted --(ccomp)--> mean', 'mean --(nsubj)--> he']
+
+	* entity-paths for event['insisted']33_11ecbplus.xmlsent:8962
+	['insisted --(ccomp)--> mean', 'mean --(nsubj)--> he']
+
+	* entity-paths for event['shoot']33_11ecbplus.xmlsent:8962
+
+	* entity-paths for event['confessed']33_11ecbplus.xmlsent:8962
+	['confessed --(nsubj)--> 18', '18 --(dep)--> year', 'year --(dep)--> member']
+	['confessed --(advcl)--> killing', 'killing --(dobj)--> mom']

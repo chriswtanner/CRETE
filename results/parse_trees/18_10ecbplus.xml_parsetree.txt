@@ -1,0 +1,47 @@
+
+-----------------------------------------
+docid:18_10ecbplus.xml
+-----------------------------------------
+
+sentence #:the man accused of shooting his three former co - workers is anthony lacalamita iii , a 38 - year - old troy resident who was fired from gordon advisors on thursday . 
+	[events]:[['fired'], ['shooting']]
+	[entities]:[['on', 'thursday'], ['man'], ['co', '-', 'workers'], ['resident'], ['anthony', 'lacalamita', 'iii']]
+accused
+|--(nsubj)--> R360[man]
+|                |--(det)--> the
+|--(advcl)--> *R361[shooting]
+|                |--(mark)--> of
+|                |--(dobj)--> R362[co]
+|                                 |--(nmod:p)--> his
+|                                 |--(nummod)--> three
+|                                 |--(amod)--> former
+|--(punct)--> R362[-]
+|--(parata)--> R360[iii]
+|                |--(nsubj)--> R362[workers]
+|                |--(cop)--> is
+|                |--(compou)--> R360[anthony]
+|                |--(compou)--> R360[lacalamita]
+|                |--(punct)--> ,
+|                |--(appos)--> 38
+|                |                |--(det)--> a
+|                |--(punct)--> -
+|                |--(dep)--> year
+|                                 |--(punct)--> -
+|                                 |--(dep)--> R360[resident]
+|                                                  |--(amod)--> old
+|                                                  |--(compou)--> troy
+|                                                  |--(acl:re)--> *R363[fired]
+|                                                                   |--(nsubjp)--> who
+|                                                                   |--(auxpas)--> was
+|                                                                   |--(nmod)--> advisors
+|                                                                                    |--(case)--> from
+|                                                                                    |--(compou)--> gordon
+|                                                                                    |--(nmod)--> R364[thursday]
+|                                                                                                     |--(case)--> R364[on]
+|--(punct)--> .
+
+	* entity-paths for event['fired']18_10ecbplus.xmlsent:2210
+	['fired --(nmod)--> Advisors', 'Advisors --(nmod)--> Thursday']
+
+	* entity-paths for event['shooting']18_10ecbplus.xmlsent:2210
+	['shooting --(dobj)--> co']

@@ -1,0 +1,83 @@
+
+-----------------------------------------
+docid:4_8ecbplus.xml
+-----------------------------------------
+
+sentence #:lamas' son , actor lorenzo lamas , tweeted thursday : "my stepmom esther williams passed peacefully this morning . 
+	[events]:[['passed'], ['tweeted']]
+	[entities]:[['stepmom', 'esther', 'williams'], ['this', 'morning'], ['thursday'], ['lorenzo', 'lamas']]
+*R1400[tweeted]
+|--(nsubj)--> son
+|                |--(nmod:p)--> lamas'
+|                |                |--(case)--> lamas'
+|                |--(punct)--> ,
+|                |--(appos)--> R1401[lamas]
+|                |                |--(compou)--> actor
+|                |                |--(compou)--> R1401[lorenzo]
+|                |--(punct)--> ,
+|--(nmod:t)--> R1376[thursday]
+|--(punct)--> :
+|--(punct)--> "my
+|--(parata)--> *R1369[passed]
+|                |--(nsubj)--> R1370[williams]
+|                |                |--(nmod:p)--> "my
+|                |                |--(compou)--> R1370[stepmom]
+|                |                |--(compou)--> R1370[esther]
+|                |--(advmod)--> peacefully
+|                |--(nmod:t)--> R1376[morning]
+|                                 |--(det)--> R1376[this]
+|--(punct)--> .
+
+	* entity-paths for event['passed']4_8ecbplus.xmlsent:11616
+	['passed --(nsubj)--> Williams']
+	['passed --(nmod:tmod)--> morning']
+
+	* entity-paths for event['tweeted']4_8ecbplus.xmlsent:11616
+	['tweeted --(nsubj)--> son', 'son --(appos)--> Lamas']
+	['tweeted --(nmod:tmod)--> Thursday']
+	['tweeted --(parataxis)--> passed', 'passed --(nsubj)--> Williams']
+	['tweeted --(parataxis)--> passed', 'passed --(nmod:tmod)--> morning']
+
+sentence #:esther williams dead : technicolor star dies at age 91 
+	[events]:[['dies'], ['dead']]
+	[entities]:[['esther', 'williams'], ['star']]
+*R1369[dead]
+|--(compou)--> R1370[esther]
+|--(compou)--> R1370[williams]
+|--(punct)--> :
+|--(parata)--> *R1369[dies]
+                 |--(nsubj)--> R1370[star]
+                 |                |--(compou)--> technicolor
+                 |--(nmod)--> age
+                                  |--(case)--> at
+                                  |--(nummod)--> 91
+
+	* entity-paths for event['dies']4_8ecbplus.xmlsent:11611
+	['Dies --(nsubj)--> Star']
+
+	* entity-paths for event['dead']4_8ecbplus.xmlsent:11611
+	['Dead --(compound)--> Esther']
+	['Dead --(compound)--> Williams']
+	['Dead --(parataxis)--> Dies', 'Dies --(nsubj)--> Star']
+
+sentence #:as news of her death spread thursday , pinup shots of her circulated on twitter . 
+	[events]:[['death']]
+	[entities]:[['shots'], ['her'], ['thursday'], ['her']]
+circulated
+|--(nmod)--> news
+|                |--(case)--> as
+|                |--(nmod)--> spread
+|                |                |--(case)--> of
+|                |                |--(nmod:p)--> R1370[her]
+|                |                |--(compou)--> *R1369[death]
+|                |--(nmod:t)--> R1376[thursday]
+|--(punct)--> ,
+|--(nsubj)--> R1402[shots]
+|                |--(compou)--> pinup
+|                |--(nmod)--> R1370[her]
+|                                 |--(case)--> of
+|--(nmod)--> twitter
+|                |--(case)--> on
+|--(punct)--> .
+
+	* entity-paths for event['death']4_8ecbplus.xmlsent:11615

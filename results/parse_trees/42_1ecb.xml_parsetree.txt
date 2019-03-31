@@ -1,0 +1,38 @@
+
+-----------------------------------------
+docid:42_1ecb.xml
+-----------------------------------------
+
+sentence #:t-mobile is bolstering its smartphone portfolio by picking up research in motion ( nsdq : rimm ) 's next-generation blackberry curve . 
+	[events]:[['picking', 'up'], ['bolstering']]
+	[entities]:[['t-mobile'], ['portfolio'], ['its'], ['research', 'in', 'motion'], ['smartphone'], ['blackberry', 'curve']]
+*R1533[bolstering]
+|--(nsubj)--> R1517[t-mobile]
+|--(aux)--> is
+|--(dobj)--> R1534[portfolio]
+|                |--(nmod:p)--> R1517[its]
+|                |--(compou)--> R1535[smartphone]
+|--(advcl)--> *R1519[picking]
+|                |--(mark)--> by
+|                |--(compou)--> *R1519[up]
+|                |--(dobj)--> R1532[research]
+|                |--(nmod)--> R1520[curve]
+|                                 |--(case)--> R1532[in]
+|                                 |--(nmod:p)--> R1532[motion]
+|                                 |                |--(appos)--> nsdq
+|                                 |                |                |--(punct)--> (
+|                                 |                |                |--(punct)--> :
+|                                 |                |                |--(dep)--> rimm
+|                                 |                |                |--(punct)--> )
+|                                 |                |--(case)--> 's
+|                                 |--(amod)--> next-generation
+|                                 |--(compou)--> R1520[blackberry]
+|--(punct)--> .
+
+	* entity-paths for event['picking', 'up']42_1ecb.xmlsent:12681
+
+	* entity-paths for event['bolstering']42_1ecb.xmlsent:12681
+	['bolstering --(nsubj)--> T-Mobile']
+	['bolstering --(dobj)--> portfolio']
+	['bolstering --(advcl)--> picking', 'picking --(dobj)--> Research']
+	['bolstering --(advcl)--> picking', 'picking --(nmod)--> Curve']

@@ -1,0 +1,84 @@
+
+-----------------------------------------
+docid:44_5ecbplus.xml
+-----------------------------------------
+
+sentence #:hewlett - packard on monday said it has agreed to buy eyp mission critical facilities , a consulting company that specializes in data center cooling and energy efficiency . 
+	[events]:[['buy'], ['agreed'], ['cooling'], ['specializes'], ['consulting'], ['said']]
+	[entities]:[['on', 'monday'], ['hewlett', '-', 'packard'], ['it'], ['that'], ['company'], ['data', 'center'], ['eyp', 'mission', 'critical', 'facilities']]
+R1577[hewlett]
+|--(punct)--> R1577[-]
+|--(parata)--> *R1578[said]
+|                |--(nsubj)--> R1577[packard]
+|                |                |--(nmod)--> R1579[monday]
+|                |                                 |--(case)--> R1579[on]
+|                |--(ccomp)--> *R1598[agreed]
+|                                 |--(nsubj)--> R1577[it]
+|                                 |--(aux)--> has
+|                                 |--(xcomp)--> *R1582[buy]
+|                                                  |--(mark)--> to
+|                                                  |--(dobj)--> R1583[mission]
+|                                                                   |--(compou)--> R1583[eyp]
+|                                                                   |--(dep)--> R1583[facilities]
+|                                                                   |                |--(amod)--> R1583[critical]
+|                                                                   |--(punct)--> ,
+|                                                                   |--(appos)--> R1583[company]
+|                                                                                    |--(det)--> a
+|                                                                                    |--(amod)--> *R1584[consulting]
+|                                                                                    |--(acl:re)--> *R1585[specializes]
+|                                                                                                     |--(nsubj)--> R1583[that]
+|                                                                                                     |--(nmod)--> *R1607[cooling]
+|                                                                                                                      |--(case)--> in
+|                                                                                                                      |--(compou)--> R1590[data]
+|                                                                                                                      |--(compou)--> R1590[center]
+|                                                                                                                      |--(cc)--> and
+|                                                                                                                      |--(conj)--> efficiency
+|                                                                                                                                       |--(compou)--> energy
+|--(punct)--> .
+
+	* entity-paths for event['buy']44_5ecbplus.xmlsent:13652
+	['buy --(dobj)--> Mission']
+
+	* entity-paths for event['agreed']44_5ecbplus.xmlsent:13652
+	['agreed --(nsubj)--> it']
+	['agreed --(xcomp)--> buy', 'buy --(dobj)--> Mission']
+
+	* entity-paths for event['cooling']44_5ecbplus.xmlsent:13652
+	['cooling --(compound)--> data']
+	['cooling --(compound)--> center']
+
+	* entity-paths for event['specializes']44_5ecbplus.xmlsent:13652
+	['specializes --(nsubj)--> that']
+	['specializes --(nmod)--> cooling', 'cooling --(compound)--> data']
+	['specializes --(nmod)--> cooling', 'cooling --(compound)--> center']
+
+	* entity-paths for event['consulting']44_5ecbplus.xmlsent:13652
+
+	* entity-paths for event['said']44_5ecbplus.xmlsent:13652
+	['said --(nsubj)--> Packard']
+	['said --(ccomp)--> agreed', 'agreed --(nsubj)--> it']
+	['said --(ccomp)--> agreed', 'agreed --(xcomp)--> buy', 'buy --(dobj)--> Mission']
+
+sentence #:hp to acquire data center cooling , energy specialist eyp 
+	[events]:[['cooling'], ['acquire']]
+	[entities]:[['data', 'center'], ['energy', 'specialist', 'eyp'], ['hp']]
+R1577[hp]
+|--(dep)--> *R1582[acquire]
+                 |--(mark)--> to
+                 |--(dobj)--> *R1607[cooling]
+                                  |--(compou)--> R1590[data]
+                                  |--(compou)--> R1590[center]
+                                  |--(punct)--> ,
+                                  |--(appos)--> R1583[eyp]
+                                                   |--(compou)--> R1583[energy]
+                                                   |--(compou)--> R1583[specialist]
+
+	* entity-paths for event['cooling']44_5ecbplus.xmlsent:13650
+	['Cooling --(compound)--> Data']
+	['Cooling --(compound)--> Center']
+	['Cooling --(appos)--> EYP']
+
+	* entity-paths for event['acquire']44_5ecbplus.xmlsent:13650
+	['Acquire --(dobj)--> Cooling', 'Cooling --(compound)--> Data']
+	['Acquire --(dobj)--> Cooling', 'Cooling --(compound)--> Center']
+	['Acquire --(dobj)--> Cooling', 'Cooling --(appos)--> EYP']

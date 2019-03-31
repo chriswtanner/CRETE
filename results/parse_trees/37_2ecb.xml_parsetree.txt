@@ -1,0 +1,156 @@
+
+-----------------------------------------
+docid:37_2ecb.xml
+-----------------------------------------
+
+sentence #:the 6.1-magnitude quake was the latest in a series of dozens of powerful tremors to have hit the region since 7.6 and 7.5 magnitude quakes that struck off the provincial capital manokwari on sunday . 
+	[events]:[['7.6'], ['hit'], ['struck'], ['quakes'], ['7.5'], ['quake']]
+	[entities]:[['on', 'sunday'], ['region']]
+latest
+|--(nsubj)--> *R1269[quake]
+|                |--(det)--> the
+|                |--(amod)--> 6.1-magnitude
+|--(cop)--> was
+|--(det)--> the
+|--(nmod)--> series
+|                |--(case)--> in
+|                |--(det)--> a
+|                |--(nmod)--> dozens
+|                                 |--(case)--> of
+|                                 |--(nmod)--> tremors
+|                                                  |--(case)--> of
+|                                                  |--(amod)--> powerful
+|--(acl)--> *R1266[hit]
+|                |--(mark)--> to
+|                |--(aux)--> have
+|                |--(dobj)--> R1267[region]
+|                |                |--(det)--> the
+|                |--(nmod)--> *R1277[quakes]
+|                                 |--(case)--> since
+|                                 |--(compou)--> *R1278[7.6]
+|                                 |                |--(cc)--> and
+|                                 |                |--(conj)--> *R1279[7.5]
+|                                 |--(compou)--> magnitude
+|                                 |--(acl:re)--> *R1280[struck]
+|                                                  |--(nsubj)--> that
+|                                                  |--(compou)--> off
+|                                                  |--(dobj)--> manokwari
+|                                                  |                |--(det)--> the
+|                                                  |                |--(amod)--> provincial
+|                                                  |                |--(compou)--> capital
+|                                                  |--(nmod)--> R1268[sunday]
+|                                                                   |--(case)--> R1268[on]
+|--(punct)--> .
+
+	* entity-paths for event['7.6']37_2ecb.xmlsent:10516
+
+	* entity-paths for event['hit']37_2ecb.xmlsent:10516
+	['hit --(dobj)--> region']
+	['hit --(nmod)--> quakes', 'quakes --(acl:relcl)--> struck', 'struck --(nmod)--> Sunday']
+
+	* entity-paths for event['struck']37_2ecb.xmlsent:10516
+	['struck --(nmod)--> Sunday']
+
+	* entity-paths for event['quakes']37_2ecb.xmlsent:10516
+	['quakes --(acl:relcl)--> struck', 'struck --(nmod)--> Sunday']
+
+	* entity-paths for event['7.5']37_2ecb.xmlsent:10516
+
+	* entity-paths for event['quake']37_2ecb.xmlsent:10516
+
+sentence #:a strong earthquake rattled indonesia 's west papua province wednesday just days after a powerful quake levelled buildings and killed one person , the united states geological survey said . 
+	[events]:[['killed'], ['rattled'], ['earthquake'], ['said'], ['levelled']]
+	[entities]:[['one', 'person'], ['wednesday'], ['indonesia', "'s", 'west', 'papua', 'province'], ['buildings'], ['united', 'states', 'geological', 'survey']]
+*R1270[said]
+|--(ccomp)--> *R1266[rattled]
+|                |--(nsubj)--> *R1269[earthquake]
+|                |                |--(det)--> a
+|                |                |--(amod)--> strong
+|                |--(dobj)--> R1267[province]
+|                |                |--(nmod:p)--> R1267[indonesia]
+|                |                |                |--(case)--> R1267['s]
+|                |                |--(compou)--> R1267[west]
+|                |                |--(compou)--> R1267[papua]
+|                |--(nmod:t)--> R1281[wednesday]
+|                |--(advcl)--> *R1265[levelled]
+|                                 |--(dep)--> days
+|                                 |                |--(advmod)--> just
+|                                 |--(mark)--> after
+|                                 |--(nsubj)--> quake
+|                                 |                |--(det)--> a
+|                                 |                |--(amod)--> powerful
+|                                 |--(dobj)--> R1282[buildings]
+|                                 |--(cc)--> and
+|                                 |--(conj)--> *R1283[killed]
+|                                                  |--(dobj)--> R1284[person]
+|                                                                   |--(nummod)--> R1284[one]
+|--(punct)--> ,
+|--(nsubj)--> R1243[survey]
+|                |--(det)--> the
+|                |--(compou)--> R1243[united]
+|                |--(compou)--> R1243[states]
+|                |--(compou)--> R1243[geological]
+|--(punct)--> .
+
+	* entity-paths for event['killed']37_2ecb.xmlsent:10515
+	['killed --(dobj)--> person']
+
+	* entity-paths for event['rattled']37_2ecb.xmlsent:10515
+	['rattled --(dobj)--> province']
+	['rattled --(nmod:tmod)--> Wednesday']
+	['rattled --(advcl)--> levelled', 'levelled --(dobj)--> buildings']
+	['rattled --(advcl)--> levelled', 'levelled --(conj)--> killed', 'killed --(dobj)--> person']
+
+	* entity-paths for event['earthquake']37_2ecb.xmlsent:10515
+
+	* entity-paths for event['said']37_2ecb.xmlsent:10515
+	['said --(ccomp)--> rattled', 'rattled --(dobj)--> province']
+	['said --(ccomp)--> rattled', 'rattled --(nmod:tmod)--> Wednesday']
+	['said --(ccomp)--> rattled', 'rattled --(advcl)--> levelled', 'levelled --(dobj)--> buildings']
+	['said --(ccomp)--> rattled', 'rattled --(advcl)--> levelled', 'levelled --(conj)--> killed', 'killed --(dobj)--> person']
+	['said --(nsubj)--> Survey']
+
+	* entity-paths for event['levelled']37_2ecb.xmlsent:10515
+	['levelled --(dobj)--> buildings']
+	['levelled --(conj)--> killed', 'killed --(dobj)--> person']
+
+sentence #:wednesday 's shallow quake hit at 7 : 48 am ( 2248 gmt tuesday ) just off the coast , some 75 kilometres ( 50 miles ) west of manokwari . 
+	[events]:[['hit'], ['quake']]
+	[entities]:[['wednesday']]
+*R1266[hit]
+|--(nsubj)--> *R1269[quake]
+|                |--(nmod:p)--> R1281[wednesday]
+|                |                |--(case)--> 's
+|                |--(amod)--> shallow
+|--(nmod)--> 48
+|                |--(case)--> at
+|                |--(nummod)--> 7
+|                |--(punct)--> :
+|                |--(dep)--> am
+|                |--(punct)--> (
+|                |--(dep)--> tuesday
+|                |                |--(nummod)--> 2248
+|                |                |--(compou)--> gmt
+|                |--(punct)--> )
+|                |--(advmod)--> just
+|                |                |--(nmod)--> coast
+|                |                                 |--(case)--> off
+|                |                                 |--(det)--> the
+|                |                                 |--(punct)--> ,
+|                |                                 |--(appos)--> kilometres
+|                |                                 |                |--(det)--> some
+|                |                                 |                |--(nummod)--> 75
+|                |                                 |--(appos)--> miles
+|                |                                 |                |--(punct)--> (
+|                |                                 |                |--(nummod)--> 50
+|                |                                 |                |--(punct)--> )
+|                |                                 |--(advmod)--> west
+|                |--(nmod)--> manokwari
+|                                 |--(case)--> of
+|--(punct)--> .
+
+	* entity-paths for event['hit']37_2ecb.xmlsent:10517
+	['hit --(nsubj)--> quake', 'quake --(nmod:poss)--> Wednesday']
+
+	* entity-paths for event['quake']37_2ecb.xmlsent:10517
+	['quake --(nmod:poss)--> Wednesday']

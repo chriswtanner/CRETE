@@ -1,0 +1,99 @@
+
+-----------------------------------------
+docid:19_8ecbplus.xml
+-----------------------------------------
+
+sentence #:peaceful protest for kimani gray turned chaotic tonight as 100 people rioted and threw bottles at officers 
+	[events]:[['turned'], ['protest'], ['rioted'], ['threw'], ['chaotic']]
+	[entities]:[['bottles'], ['officers'], ['kimani', 'gray'], ['people']]
+*R447[turned]
+|--(nsubj)--> *R425[protest]
+|                |--(amod)--> peaceful
+|                |--(nmod)--> R415[gray]
+|                                 |--(case)--> for
+|                                 |--(compou)--> R415[kimani]
+|--(nmod:t)--> tonight
+|                |--(amod)--> *R448[chaotic]
+|--(advcl)--> *R420[rioted]
+                 |--(mark)--> as
+                 |--(nsubj)--> R419[people]
+                 |                |--(nummod)--> 100
+                 |--(cc)--> and
+                 |--(conj)--> *R449[threw]
+                                  |--(dobj)--> R450[bottles]
+                                  |--(nmod)--> R411[officers]
+                                                   |--(case)--> at
+
+	* entity-paths for event['turned']19_8ecbplus.xmlsent:3343
+	['turned --(nsubj)--> protest', 'protest --(nmod)--> Gray']
+	['turned --(advcl)--> rioted', 'rioted --(nsubj)--> people']
+	['turned --(advcl)--> rioted', 'rioted --(conj)--> threw', 'threw --(dobj)--> bottles']
+	['turned --(advcl)--> rioted', 'rioted --(conj)--> threw', 'threw --(nmod)--> officers']
+
+	* entity-paths for event['protest']19_8ecbplus.xmlsent:3343
+	['protest --(nmod)--> Gray']
+
+	* entity-paths for event['rioted']19_8ecbplus.xmlsent:3343
+	['rioted --(nsubj)--> people']
+	['rioted --(conj)--> threw', 'threw --(dobj)--> bottles']
+	['rioted --(conj)--> threw', 'threw --(nmod)--> officers']
+
+	* entity-paths for event['threw']19_8ecbplus.xmlsent:3343
+	['threw --(dobj)--> bottles']
+	['threw --(nmod)--> officers']
+
+	* entity-paths for event['chaotic']19_8ecbplus.xmlsent:3343
+
+sentence #:two plainclothes nypd officers shot and killed a 16 - year - old brooklyn resident after police say he pointed a gun at officers on saturday 
+	[events]:[['killed'], ['pointed'], ['shot'], ['say']]
+	[entities]:[['on', 'saturday'], ['he'], ['officers'], ['gun'], ['police'], ['officers'], ['resident']]
+*R451[say]
+|--(nsubj)--> plainclothes
+|                |--(nummod)--> two
+|                |--(acl:re)--> *R412[shot]
+|                                 |--(nsubj)--> R413[officers]
+|                                 |                |--(compou)--> nypd
+|                                 |--(cc)--> and
+|                                 |--(conj)--> *R414[killed]
+|                                                  |--(dobj)--> 16
+|                                                  |                |--(det)--> a
+|                                                  |                |--(punct)--> -
+|                                                  |                |--(dep)--> year
+|                                                  |                |--(punct)--> -
+|                                                  |                |--(dep)--> R415[resident]
+|                                                  |                                 |--(amod)--> old
+|                                                  |                                 |--(compou)--> brooklyn
+|                                                  |--(nmod)--> R411[police]
+|                                                                   |--(case)--> after
+|--(ccomp)--> *R417[pointed]
+                 |--(nsubj)--> R415[he]
+                 |--(dobj)--> R418[gun]
+                 |                |--(det)--> a
+                 |--(nmod)--> R413[officers]
+                 |                |--(case)--> at
+                 |--(nmod)--> R427[saturday]
+                                  |--(case)--> R427[on]
+
+	* entity-paths for event['killed']19_8ecbplus.xmlsent:3341
+	['killed --(dobj)--> 16', '16 --(dep)--> resident']
+	['killed --(nmod)--> police']
+
+	* entity-paths for event['pointed']19_8ecbplus.xmlsent:3341
+	['pointed --(nsubj)--> he']
+	['pointed --(dobj)--> gun']
+	['pointed --(nmod)--> officers']
+	['pointed --(nmod)--> Saturday']
+
+	* entity-paths for event['shot']19_8ecbplus.xmlsent:3341
+	['shot --(nsubj)--> officers']
+	['shot --(conj)--> killed', 'killed --(dobj)--> 16', '16 --(dep)--> resident']
+	['shot --(conj)--> killed', 'killed --(nmod)--> police']
+
+	* entity-paths for event['say']19_8ecbplus.xmlsent:3341
+	['say --(nsubj)--> plainclothes', 'plainclothes --(acl:relcl)--> shot', 'shot --(nsubj)--> officers']
+	['say --(nsubj)--> plainclothes', 'plainclothes --(acl:relcl)--> shot', 'shot --(conj)--> killed', 'killed --(dobj)--> 16', '16 --(dep)--> resident']
+	['say --(nsubj)--> plainclothes', 'plainclothes --(acl:relcl)--> shot', 'shot --(conj)--> killed', 'killed --(nmod)--> police']
+	['say --(ccomp)--> pointed', 'pointed --(nsubj)--> he']
+	['say --(ccomp)--> pointed', 'pointed --(dobj)--> gun']
+	['say --(ccomp)--> pointed', 'pointed --(nmod)--> officers']
+	['say --(ccomp)--> pointed', 'pointed --(nmod)--> Saturday']

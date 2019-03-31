@@ -1,0 +1,98 @@
+
+-----------------------------------------
+docid:26_2ecb.xml
+-----------------------------------------
+
+sentence #:one of the key suspected mafia bosses arrested yesterday in one of sicily 's biggest police operations has hanged himself in his prison cell , police said . 
+	[events]:[['hanged'], ['operations'], ['said'], ['arrested']]
+	[entities]:[['police'], ['yesterday'], ['in', 'his', 'prison', 'cell'], ['mafia', 'bosses'], ['himself']]
+*R751[said]
+|--(advcl)--> *R736[arrested]
+|                |--(nsubj)--> one
+|                |                |--(nmod)--> R733[bosses]
+|                |                                 |--(case)--> of
+|                |                                 |--(det)--> the
+|                |                                 |--(amod)--> key
+|                |                                 |--(amod)--> suspected
+|                |                                 |--(compou)--> R733[mafia]
+|                |--(nmod:t)--> R746[yesterday]
+|                |--(advcl)--> *R732[hanged]
+|                                 |--(mark)--> in
+|                                 |--(nsubj)--> one
+|                                 |                |--(nmod)--> *R737[operations]
+|                                 |                                 |--(case)--> of
+|                                 |                                 |--(nmod:p)--> sicily
+|                                 |                                 |                |--(case)--> 's
+|                                 |                                 |--(amod)--> biggest
+|                                 |                                 |--(compou)--> police
+|                                 |--(aux)--> has
+|                                 |--(dobj)--> R733[himself]
+|                                 |--(nmod)--> R734[cell]
+|                                                  |--(case)--> R734[in]
+|                                                  |--(nmod:p)--> R734[his]
+|                                                  |--(compou)--> R734[prison]
+|--(punct)--> ,
+|--(nsubj)--> R738[police]
+|--(punct)--> .
+
+	* entity-paths for event['hanged']26_2ecb.xmlsent:5392
+	['hanged --(dobj)--> himself']
+	['hanged --(nmod)--> cell']
+
+	* entity-paths for event['operations']26_2ecb.xmlsent:5392
+
+	* entity-paths for event['said']26_2ecb.xmlsent:5392
+	['said --(advcl)--> arrested', 'arrested --(nsubj)--> One', 'One --(nmod)--> bosses']
+	['said --(advcl)--> arrested', 'arrested --(nmod:tmod)--> yesterday']
+	['said --(advcl)--> arrested', 'arrested --(advcl)--> hanged', 'hanged --(dobj)--> himself']
+	['said --(advcl)--> arrested', 'arrested --(advcl)--> hanged', 'hanged --(nmod)--> cell']
+	['said --(nsubj)--> police']
+
+	* entity-paths for event['arrested']26_2ecb.xmlsent:5392
+	['arrested --(nsubj)--> One', 'One --(nmod)--> bosses']
+	['arrested --(nmod:tmod)--> yesterday']
+	['arrested --(advcl)--> hanged', 'hanged --(dobj)--> himself']
+	['arrested --(advcl)--> hanged', 'hanged --(nmod)--> cell']
+
+sentence #:gaetano lo presti , the " godfather " of the palermo district of porta nuova , was found dead late last night in pagliarelli prison in the sicilian capital of palermo . 
+	[events]:[['found'], ['dead']]
+	[entities]:[['in', 'pagliarelli', 'prison', 'in', 'the', 'sicilian', 'capital', 'of', 'palermo'], ['the', 'palermo', 'district', 'of', 'porta', 'nuova'], ['gaetano', 'lo', 'presti'], ['late', 'last', 'night']]
+*R745[found]
+|--(nsubjp)--> R733[presti]
+|                |--(compou)--> R733[gaetano]
+|                |--(compou)--> R733[lo]
+|                |--(punct)--> ,
+|                |--(appos)--> the
+|                |                |--(punct)--> "
+|                |                |--(nmod)--> godfather
+|                |                                 |--(punct)--> "
+|                |                                 |--(nmod)--> R755[district]
+|                |                                 |                |--(case)--> of
+|                |                                 |                |--(det)--> R755[the]
+|                |                                 |                |--(compou)--> R755[palermo]
+|                |                                 |--(case)--> R755[of]
+|                |                                 |--(dep)--> R755[nuova]
+|                |                                                  |--(compou)--> R755[porta]
+|                |--(punct)--> ,
+|--(auxpas)--> was
+|--(xcomp)--> *R732[dead]
+|--(nmod:t)--> R753[night]
+|                |--(advmod)--> R753[late]
+|                |--(amod)--> R753[last]
+|--(nmod)--> R734[prison]
+|                |--(case)--> R734[in]
+|                |--(compou)--> R734[pagliarelli]
+|                |--(nmod)--> R734[capital]
+|                                 |--(case)--> R734[in]
+|                                 |--(det)--> R734[the]
+|                                 |--(compou)--> R734[sicilian]
+|                                 |--(nmod)--> R734[palermo]
+|                                                  |--(case)--> R734[of]
+|--(punct)--> .
+
+	* entity-paths for event['found']26_2ecb.xmlsent:5393
+	['found --(nsubjpass)--> Presti']
+	['found --(nmod:tmod)--> night']
+	['found --(nmod)--> prison']
+
+	* entity-paths for event['dead']26_2ecb.xmlsent:5393

@@ -1,0 +1,17 @@
+
+-----------------------------------------
+docid:43_12ecbplus.xml
+-----------------------------------------
+
+sentence #:amd to acquire server innovator seamicro 
+	[events]:[['acquire']]
+	[entities]:[['server', 'innovator', 'seamicro'], ['amd']]
+R1547[amd]
+|--(dep)--> *R1546[acquire]
+                 |--(mark)--> to
+                 |--(dobj)--> R1549[seamicro]
+                                  |--(compou)--> R1549[server]
+                                  |--(compou)--> R1549[innovator]
+
+	* entity-paths for event['acquire']43_12ecbplus.xmlsent:12910
+	['Acquire --(dobj)--> SeaMicro']

@@ -1,0 +1,120 @@
+
+-----------------------------------------
+docid:22_8ecbplus.xml
+-----------------------------------------
+
+sentence #:2 dead , 1 wounded in shooting at ne phila . kraft plant 
+	[events]:[['wounded'], ['dead'], ['shooting']]
+	[entities]:[['1'], ['at', 'ne', 'phila', '.', 'kraft', 'plant'], ['2']]
+R593[2]
+|--(dep)--> *R592[dead]
+|--(punct)--> ,
+|--(appos)--> R601[1]
+                 |--(acl)--> *R600[wounded]
+                                  |--(nmod)--> *R591[shooting]
+                                  |                |--(case)--> in
+                                  |--(nmod)--> R599[ne]
+                                                   |--(case)--> R599[at]
+                                                   |--(dep)--> R599[plant]
+                                                                    |--(compou)--> R599[phila]
+                                                                    |--(punct)--> R599[.]
+                                                                    |--(compou)--> R599[kraft]
+
+	* entity-paths for event['wounded']22_8ecbplus.xmlsent:4551
+	['Wounded --(nmod)--> NE']
+
+	* entity-paths for event['dead']22_8ecbplus.xmlsent:4551
+
+	* entity-paths for event['shooting']22_8ecbplus.xmlsent:4551
+
+sentence #:police say two people have been killed and another wounded in a shooting at the kraft foods plant in northeast philadelphia . 
+	[events]:[['shooting'], ['killed'], ['wounded'], ['say']]
+	[entities]:[['people'], ['another'], ['police'], ['at', 'the', 'kraft', 'foods', 'plant', 'in', 'northeast', 'philadelphia']]
+*R607[say]
+|--(nsubj)--> R615[police]
+|--(ccomp)--> *R592[killed]
+|                |--(nsubjp)--> R593[people]
+|                |                |--(nummod)--> two
+|                |--(aux)--> have
+|                |--(auxpas)--> been
+|--(cc)--> and
+|--(conj)--> *R600[wounded]
+|                |--(nsubj)--> R601[another]
+|                |--(nmod)--> *R591[shooting]
+|                |                |--(case)--> in
+|                |                |--(det)--> a
+|                |--(nmod)--> R599[plant]
+|                |                |--(case)--> R599[at]
+|                |                |--(det)--> R599[the]
+|                |                |--(compou)--> R599[kraft]
+|                |                |--(compou)--> R599[foods]
+|                |--(nmod)--> R599[philadelphia]
+|                                 |--(case)--> R599[in]
+|                                 |--(compou)--> R599[northeast]
+|--(punct)--> .
+
+	* entity-paths for event['shooting']22_8ecbplus.xmlsent:4553
+
+	* entity-paths for event['killed']22_8ecbplus.xmlsent:4553
+	['killed --(nsubjpass)--> people']
+
+	* entity-paths for event['wounded']22_8ecbplus.xmlsent:4553
+	['wounded --(nsubj)--> another']
+	['wounded --(nmod)--> plant']
+	['wounded --(nmod)--> Philadelphia']
+
+	* entity-paths for event['say']22_8ecbplus.xmlsent:4553
+	['say --(nsubj)--> Police']
+	['say --(ccomp)--> killed', 'killed --(nsubjpass)--> people']
+	['say --(conj)--> wounded', 'wounded --(nsubj)--> another']
+	['say --(conj)--> wounded', 'wounded --(nmod)--> plant']
+	['say --(conj)--> wounded', 'wounded --(nmod)--> Philadelphia']
+
+sentence #:kyw " s pat loeb reports that the shooting took place just after 8 : 30pm thursday night inside the old nabisco factory , along the 12000 block of roosevelt boulevard , at woodhaven road . 
+	[events]:[['took', 'place'], ['shooting']]
+	[entities]:[['just', 'after', '8', ':', '30pm', 'thursday', 'night'], ['inside', 'the', 'old', 'nabisco', 'factory', ',', 'along', 'the', '12000', 'block', 'of', 'roosevelt', 'boulevard', ',', 'at', 'woodhaven', 'road']]
+reports
+|--(dep)--> s
+|                |--(nsubj)--> kyw
+|                |--(punct)--> "
+|--(nsubj)--> loeb
+|                |--(compou)--> pat
+|--(ccomp)--> *R602[took]
+|                |--(mark)--> that
+|                |--(nsubj)--> *R591[shooting]
+|                |                |--(det)--> the
+|                |--(dobj)--> *R602[place]
+|                |                |--(advmod)--> R594[just]
+|                |                |--(nmod)--> R594[8]
+|                |                |                |--(case)--> R594[after]
+|                |                |--(punct)--> R594[:]
+|                |                |--(dep)--> R594[30pm]
+|                |                                 |--(nummod)--> R594[30pm]
+|                |                                 |--(nmod:t)--> R594[thursday]
+|                |--(nmod:t)--> R594[night]
+|                |--(nmod)--> R599[factory]
+|                |                |--(case)--> R599[inside]
+|                |                |--(det)--> R599[the]
+|                |                |--(amod)--> R599[old]
+|                |                |--(compou)--> R599[nabisco]
+|                |--(punct)--> R599[,]
+|                |--(nmod)--> R599[block]
+|                |                |--(case)--> R599[along]
+|                |                |--(det)--> R599[the]
+|                |                |--(nummod)--> R599[12000]
+|                |                |--(nmod)--> R599[boulevard]
+|                |                                 |--(case)--> R599[of]
+|                |                                 |--(compou)--> R599[roosevelt]
+|                |--(punct)--> R599[,]
+|                |--(nmod)--> R599[road]
+|                                 |--(case)--> R599[at]
+|                                 |--(compou)--> R599[woodhaven]
+|--(punct)--> .
+
+	* entity-paths for event['took', 'place']22_8ecbplus.xmlsent:4555
+	['place --(advmod)--> just']
+	['place --(nmod)--> 8']
+	['place --(punct)--> :']
+	['place --(dep)--> pm']
+
+	* entity-paths for event['shooting']22_8ecbplus.xmlsent:4555

@@ -1,0 +1,38 @@
+
+-----------------------------------------
+docid:14_6ecb.xml
+-----------------------------------------
+
+sentence #:residents evacuated from their homes after a huge fire at a waitrose store in banstead on friday night have been allowed to return to their homes . 
+	[events]:[['fire']]
+	[entities]:[['a', 'waitrose', 'store', 'in', 'banstead'], ['friday', 'night']]
+evacuated
+|--(nsubj)--> residents
+|--(nmod)--> homes
+|                |--(case)--> from
+|                |--(nmod:p)--> their
+|--(advcl)--> allowed
+|                |--(mark)--> after
+|                |--(nsubjp)--> *R296[fire]
+|                |                |--(det)--> a
+|                |                |--(amod)--> huge
+|                |                |--(nmod)--> R310[store]
+|                |                                 |--(case)--> at
+|                |                                 |--(det)--> R310[a]
+|                |                                 |--(compou)--> R310[waitrose]
+|                |                                 |--(nmod)--> R310[banstead]
+|                |                                                  |--(case)--> R310[in]
+|                |                                                  |--(nmod)--> R314[friday]
+|                |                                                                   |--(case)--> on
+|                |--(nmod:t)--> R314[night]
+|                |--(aux)--> have
+|                |--(auxpas)--> been
+|                |--(xcomp)--> return
+|                                 |--(mark)--> to
+|                                 |--(nmod)--> homes
+|                                                  |--(case)--> to
+|                                                  |--(nmod:p)--> their
+|--(punct)--> .
+
+	* entity-paths for event['fire']14_6ecb.xmlsent:1754
+	['fire --(nmod)--> store']

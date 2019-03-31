@@ -1,0 +1,60 @@
+
+-----------------------------------------
+docid:42_3ecb.xml
+-----------------------------------------
+
+sentence #:on monday , we reported on rumors that t-mobile would release the rim blackberry curve 8900 on february 11 , and while the date has not been confirmed , the carrier did go ahead and make the official product announcement on tuesday . 
+	[events]:[['rumors'], ['announcement'], ['release']]
+	[entities]:[['blackberry', 'curve', '8900'], ['carrier'], ['t-mobile'], ['on', 'february', '11', ','], ['product'], ['on', 'tuesday']]
+reported
+|--(nmod)--> monday
+|                |--(case)--> on
+|--(punct)--> ,
+|--(nsubj)--> we
+|--(nmod)--> *R1530[rumors]
+|                |--(case)--> on
+|--(ccomp)--> *R1519[release]
+|                |--(mark)--> that
+|                |--(nsubj)--> R1517[t-mobile]
+|                |--(aux)--> would
+|                |--(dobj)--> R1520[curve]
+|                                 |--(det)--> the
+|                                 |--(compou)--> rim
+|                                 |--(compou)--> R1520[blackberry]
+|                                 |--(nummod)--> R1520[8900]
+|                                 |--(nmod)--> R1521[february]
+|                                                  |--(case)--> R1521[on]
+|                                                  |--(nummod)--> R1521[11]
+|--(punct)--> R1521[,]
+|--(cc)--> and
+|--(conj)--> go
+|                |--(advcl)--> confirmed
+|                |                |--(mark)--> while
+|                |                |--(nsubjp)--> date
+|                |                |                |--(det)--> the
+|                |                |--(aux)--> has
+|                |                |--(neg)--> not
+|                |                |--(auxpas)--> been
+|                |--(punct)--> ,
+|                |--(nsubj)--> R1517[carrier]
+|                |                |--(det)--> the
+|                |--(aux)--> did
+|                |--(advmod)--> ahead
+|                |--(cc)--> and
+|                |--(conj)--> make
+|                                 |--(dobj)--> *R1518[announcement]
+|                                 |                |--(det)--> the
+|                                 |                |--(amod)--> official
+|                                 |                |--(compou)--> R1520[product]
+|                                 |--(nmod)--> R1531[tuesday]
+|                                                  |--(case)--> R1531[on]
+|--(punct)--> .
+
+	* entity-paths for event['rumors']42_3ecb.xmlsent:12733
+
+	* entity-paths for event['announcement']42_3ecb.xmlsent:12733
+	['announcement --(compound)--> product']
+
+	* entity-paths for event['release']42_3ecb.xmlsent:12733
+	['release --(nsubj)--> T-Mobile']
+	['release --(dobj)--> Curve']

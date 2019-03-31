@@ -1,0 +1,28 @@
+
+-----------------------------------------
+docid:9_10ecbplus.xml
+-----------------------------------------
+
+sentence #:president barack obama overturns bush administration ruling on endangered species act 
+	[events]:[['ruling'], ['overturns']]
+	[entities]:[['endangered', 'species', 'act'], ['administration'], ['barack', 'obama']]
+*R1798[overturns]
+|--(nsubj)--> R1136[obama]
+|                |--(compou)--> president
+|                |--(compou)--> R1136[barack]
+|--(dobj)--> *R1799[ruling]
+                 |--(compou)--> bush
+                 |--(compou)--> R1795[administration]
+                 |--(nmod)--> R1800[act]
+                                  |--(case)--> on
+                                  |--(compou)--> R1800[endangered]
+                                  |--(compou)--> R1800[species]
+
+	* entity-paths for event['ruling']9_10ecbplus.xmlsent:15286
+	['ruling --(compound)--> administration']
+	['ruling --(nmod)--> Act']
+
+	* entity-paths for event['overturns']9_10ecbplus.xmlsent:15286
+	['overturns --(nsubj)--> Obama']
+	['overturns --(dobj)--> ruling', 'ruling --(compound)--> administration']
+	['overturns --(dobj)--> ruling', 'ruling --(nmod)--> Act']

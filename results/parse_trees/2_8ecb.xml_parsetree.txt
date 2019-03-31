@@ -1,0 +1,71 @@
+
+-----------------------------------------
+docid:2_8ecb.xml
+-----------------------------------------
+
+sentence #:now that it 's been confirmed that hugh jackman will be hosting the 81st annual academy awards , instantly upping the annual ceremony 's overall attractiveness , the ampersand would like to offer some heartfelt advice to the first-time oscar host . 
+	[events]:[['hosting'], ['ceremony'], ['confirmed'], ['academy', 'awards'], ['oscar']]
+	[entities]:[['first-time'], ['host'], ['hugh', 'jackman'], ['annual'], ['81st', 'annual']]
+like
+|--(advcl)--> *R458[confirmed]
+|                |--(advmod)--> now
+|                |--(mark)--> that
+|                |--(nsubjp)--> it
+|                |--(auxpas)--> 's
+|                |--(auxpas)--> been
+|                |--(ccomp)--> *R469[hosting]
+|                                 |--(mark)--> that
+|                                 |--(nsubj)--> R462[jackman]
+|                                 |                |--(compou)--> R462[hugh]
+|                                 |--(aux)--> will
+|                                 |--(aux)--> be
+|                                 |--(dobj)--> *R460[awards]
+|                                 |                |--(det)--> the
+|                                 |                |--(amod)--> R470[81st]
+|                                 |                |--(amod)--> R470[annual]
+|                                 |                |--(compou)--> *R460[academy]
+|                                 |--(punct)--> ,
+|                                 |--(advcl)--> upping
+|                                                  |--(advmod)--> instantly
+|                                                  |--(dobj)--> attractiveness
+|                                                                   |--(nmod:p)--> *R460[ceremony]
+|                                                                   |                |--(det)--> the
+|                                                                   |                |--(amod)--> R477[annual]
+|                                                                   |                |--(case)--> 's
+|                                                                   |--(amod)--> overall
+|--(punct)--> ,
+|--(nsubj)--> ampersand
+|                |--(det)--> the
+|--(aux)--> would
+|--(xcomp)--> offer
+|                |--(mark)--> to
+|                |--(dobj)--> advice
+|                |                |--(det)--> some
+|                |                |--(amod)--> heartfelt
+|                |--(nmod)--> R462[host]
+|                                 |--(case)--> to
+|                                 |--(det)--> the
+|                                 |--(amod)--> R491[first-time]
+|                                 |--(compou)--> *R460[oscar]
+|--(punct)--> .
+
+	* entity-paths for event['hosting']2_8ecb.xmlsent:3709
+	['hosting --(nsubj)--> Jackman']
+	['hosting --(dobj)--> Awards', 'Awards --(amod)--> 81st']
+	['hosting --(dobj)--> Awards', 'Awards --(amod)--> Annual']
+	['hosting --(advcl)--> upping', 'upping --(dobj)--> attractiveness', 'attractiveness --(nmod:poss)--> ceremony', 'ceremony --(amod)--> annual']
+
+	* entity-paths for event['ceremony']2_8ecb.xmlsent:3709
+	['ceremony --(amod)--> annual']
+
+	* entity-paths for event['confirmed']2_8ecb.xmlsent:3709
+	['confirmed --(ccomp)--> hosting', 'hosting --(nsubj)--> Jackman']
+	['confirmed --(ccomp)--> hosting', 'hosting --(dobj)--> Awards', 'Awards --(amod)--> 81st']
+	['confirmed --(ccomp)--> hosting', 'hosting --(dobj)--> Awards', 'Awards --(amod)--> Annual']
+	['confirmed --(ccomp)--> hosting', 'hosting --(advcl)--> upping', 'upping --(dobj)--> attractiveness', 'attractiveness --(nmod:poss)--> ceremony', 'ceremony --(amod)--> annual']
+
+	* entity-paths for event['academy', 'awards']2_8ecb.xmlsent:3709
+	['Awards --(amod)--> 81st']
+	['Awards --(amod)--> Annual']
+
+	* entity-paths for event['oscar']2_8ecb.xmlsent:3709

@@ -1,0 +1,101 @@
+
+-----------------------------------------
+docid:43_4ecb.xml
+-----------------------------------------
+
+sentence #:the deal , which had been anticipated for over a year , gives amd high-end graphics technology and bolsters the company 's strategy to overtake intel as the dominant supplier of chips that power personal computers and other devices . 
+	[events]:[['deal']]
+	[entities]:[['company'], ['amd'], ['supplier'], ['intel']]
+gives
+|--(nsubj)--> *R1564[deal]
+|                |--(det)--> the
+|                |--(punct)--> ,
+|                |--(acl:re)--> anticipated
+|                |                |--(nsubjp)--> which
+|                |                |--(aux)--> had
+|                |                |--(auxpas)--> been
+|                |                |--(nmod)--> year
+|                |                                 |--(case)--> for
+|                |                                 |--(case)--> over
+|                |                                 |--(det)--> a
+|                |--(punct)--> ,
+|--(iobj)--> graphics
+|                |--(compou)--> R1547[amd]
+|                |--(amod)--> high-end
+|--(dobj)--> technology
+|--(cc)--> and
+|--(conj)--> bolsters
+|                |--(dobj)--> strategy
+|                                 |--(nmod:p)--> R1547[company]
+|                                 |                |--(det)--> the
+|                                 |                |--(case)--> 's
+|                                 |--(acl)--> overtake
+|                                                  |--(mark)--> to
+|                                                  |--(dobj)--> R1426[intel]
+|                                                  |--(nmod)--> R1426[supplier]
+|                                                                   |--(case)--> as
+|                                                                   |--(det)--> the
+|                                                                   |--(amod)--> dominant
+|                                                                   |--(nmod)--> chips
+|                                                                   |                |--(case)--> of
+|                                                                   |--(acl:re)--> computers
+|                                                                                    |--(dep)--> that
+|                                                                                    |--(compou)--> power
+|                                                                                    |--(amod)--> personal
+|                                                                                    |--(cc)--> and
+|                                                                                    |--(conj)--> devices
+|                                                                                                     |--(amod)--> other
+|--(punct)--> .
+
+	* entity-paths for event['deal']43_4ecb.xmlsent:13184
+
+sentence #:advanced micro devices inc. shook up the personal computer industry by buying ati technologies inc. for us $ 5.4-billion yesterday , opening up a new front in the battle with intel corp. to control the computer chip market . 
+	[events]:[['battle'], ['buying'], ['chip', 'market']]
+	[entities]:[['intel', 'corp.'], ['ati', 'technologies', 'inc.'], ['advanced', 'micro', 'devices', 'inc.']]
+shook
+|--(nsubj)--> R1547[inc.]
+|                |--(compou)--> R1547[advanced]
+|                |--(compou)--> R1547[micro]
+|                |--(compou)--> R1547[devices]
+|--(compou)--> up
+|--(dobj)--> industry
+|                |--(det)--> the
+|                |--(amod)--> personal
+|                |--(compou)--> computer
+|--(advcl)--> *R1562[buying]
+|                |--(mark)--> by
+|                |--(dobj)--> R1563[inc.]
+|                                 |--(compou)--> R1563[ati]
+|                                 |--(compou)--> R1563[technologies]
+|                                 |--(nmod)--> us
+|                                                  |--(case)--> for
+|--(dep)--> 5.4-billion
+|                |--(dep)--> $
+|                |--(nmod:t)--> yesterday
+|--(punct)--> ,
+|--(advcl)--> opening
+|                |--(compou)--> up
+|                |--(dobj)--> front
+|                |                |--(det)--> a
+|                |                |--(amod)--> new
+|                |                |--(nmod)--> *R1571[battle]
+|                |                                 |--(case)--> in
+|                |                                 |--(det)--> the
+|                |                                 |--(nmod)--> R1426[corp.]
+|                |                                                  |--(case)--> with
+|                |                                                  |--(compou)--> R1426[intel]
+|                |--(advcl)--> control
+|                                 |--(mark)--> to
+|                                 |--(dobj)--> *R1572[market]
+|                                                  |--(det)--> the
+|                                                  |--(compou)--> computer
+|                                                  |--(compou)--> *R1572[chip]
+|--(punct)--> .
+
+	* entity-paths for event['battle']43_4ecb.xmlsent:13183
+	['battle --(nmod)--> Corp.']
+
+	* entity-paths for event['buying']43_4ecb.xmlsent:13183
+	['buying --(dobj)--> Inc.']
+
+	* entity-paths for event['chip', 'market']43_4ecb.xmlsent:13183

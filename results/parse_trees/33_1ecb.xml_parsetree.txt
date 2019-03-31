@@ -1,0 +1,175 @@
+
+-----------------------------------------
+docid:33_1ecb.xml
+-----------------------------------------
+
+sentence #:mcallister was the first witness called in the trial of 16-year-old jermayne timmons , who is accused of firing the deadly shot from an intersection down the street . 
+	[events]:[['firing'], ['trial']]
+	[entities]:[['jermayne', 'timmons'], ['shot']]
+witness
+|--(nsubj)--> mcallister
+|--(cop)--> was
+|--(det)--> the
+|--(amod)--> first
+|--(acl)--> called
+|                |--(nmod)--> *R1090[trial]
+|                                 |--(case)--> in
+|                                 |--(det)--> the
+|                                 |--(nmod)--> R1091[timmons]
+|                                 |                |--(case)--> of
+|                                 |                |--(amod)--> 16-year-old
+|                                 |                |--(compou)--> R1091[jermayne]
+|                                 |--(punct)--> ,
+|                                 |--(acl:re)--> accused
+|                                                  |--(nsubjp)--> who
+|                                                  |--(auxpas)--> is
+|                                                  |--(nmod)--> *R1092[firing]
+|                                                  |                |--(case)--> of
+|                                                  |                |--(dep)--> R1093[shot]
+|                                                  |                                 |--(det)--> the
+|                                                  |                                 |--(amod)--> deadly
+|                                                  |--(nmod)--> intersection
+|                                                                   |--(case)--> from
+|                                                                   |--(det)--> an
+|                                                                   |--(advmod)--> street
+|                                                                                    |--(case)--> down
+|                                                                                    |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['firing']33_1ecb.xmlsent:8967
+	['firing --(dep)--> shot']
+
+	* entity-paths for event['trial']33_1ecb.xmlsent:8967
+	['trial --(nmod)--> Timmons']
+	['trial --(acl:relcl)--> accused', 'accused --(nmod)--> firing', 'firing --(dep)--> shot']
+
+sentence #:in opening statements tuesday , public defender peter lynch said then- 15-year-old timmons was at the scene of the shooting and had a gun , but is n't the one who fired the fatal shot . 
+	[events]:[['fired'], ['shooting']]
+	[entities]:[['shot'], ['timmons'], ['at', 'the', 'scene']]
+said
+|--(advcl)--> opening
+|                |--(mark)--> in
+|                |--(dobj)--> statements
+|                |--(nmod:t)--> tuesday
+|--(punct)--> ,
+|--(nsubj)--> lynch
+|                |--(amod)--> public
+|                |--(compou)--> defender
+|                |--(compou)--> peter
+|--(advmod)--> then-
+|--(punct)--> then-
+|--(parata)--> R1094[scene]
+|                |--(nsubj)--> R1091[timmons]
+|                |                |--(amod)--> 15-year-old
+|                |--(cop)--> was
+|                |--(case)--> R1094[at]
+|                |--(det)--> R1094[the]
+|                |--(nmod)--> *R1095[shooting]
+|                |                |--(case)--> of
+|                |                |--(det)--> the
+|                |--(cc)--> and
+|                |--(conj)--> had
+|                |                |--(dobj)--> gun
+|                |                                 |--(det)--> a
+|                |--(punct)--> ,
+|                |--(cc)--> but
+|                |--(conj)--> one
+|                                 |--(cop)--> is
+|                                 |--(neg)--> n't
+|                                 |--(det)--> the
+|                                 |--(dep)--> *R1092[fired]
+|                                                  |--(nsubj)--> who
+|                                                  |--(dobj)--> R1093[shot]
+|                                                                   |--(det)--> the
+|                                                                   |--(amod)--> fatal
+|--(punct)--> .
+
+	* entity-paths for event['fired']33_1ecb.xmlsent:8971
+	['fired --(dobj)--> shot']
+
+	* entity-paths for event['shooting']33_1ecb.xmlsent:8971
+
+sentence #:the mother of a 10-year-old girl killed by a stray bullet on an albany street last year said she heard a loud sound before her daughter cried out " mommy , mommy , i 've been hit , " and then stumbled down the steps of their apartment . 
+	[events]:[['killed'], ['hit']]
+	[entities]:[['i'], ['mommy'], ['girl'], ['mommy'], ['on', 'an', 'albany', 'street'], ['daughter'], ['bullet'], ['last', 'year'], ['mother']]
+said
+|--(nsubj)--> R1096[mother]
+|                |--(det)--> the
+|                |--(nmod)--> R1097[girl]
+|                                 |--(case)--> of
+|                                 |--(det)--> a
+|                                 |--(amod)--> 10-year-old
+|                                 |--(acl)--> *R1098[killed]
+|                                                  |--(nmod)--> R1093[bullet]
+|                                                  |                |--(case)--> by
+|                                                  |                |--(det)--> a
+|                                                  |                |--(amod)--> stray
+|                                                  |                |--(nmod)--> R1094[street]
+|                                                  |                                 |--(case)--> R1094[on]
+|                                                  |                                 |--(det)--> R1094[an]
+|                                                  |                                 |--(compou)--> R1094[albany]
+|                                                  |--(nmod:t)--> R1099[year]
+|                                                                   |--(amod)--> R1099[last]
+|--(ccomp)--> heard
+|                |--(nsubj)--> she
+|                |--(dobj)--> sound
+|                |                |--(det)--> a
+|                |                |--(amod)--> loud
+|                |--(advcl)--> cried
+|                |                |--(mark)--> before
+|                |                |--(nsubj)--> R1097[daughter]
+|                |                |                |--(nmod:p)--> her
+|                |                |--(advmod)--> out
+|                |                |--(punct)--> "
+|                |                |--(dobj)--> R1096[mommy]
+|                |                |                |--(punct)--> ,
+|                |                |                |--(appos)--> R1096[mommy]
+|                |                |                |--(punct)--> ,
+|                |                |                |--(acl:re)--> *R1100[hit]
+|                |                |                                 |--(nsubjp)--> R1097[i]
+|                |                |                                 |--(aux)--> 've
+|                |                |                                 |--(auxpas)--> been
+|                |                |--(punct)--> ,
+|                |                |--(punct)--> "
+|                |--(cc)--> and
+|                |--(conj)--> stumbled
+|                                 |--(advmod)--> then
+|                                 |--(nmod)--> steps
+|                                                  |--(case)--> down
+|                                                  |--(det)--> the
+|                                                  |--(nmod)--> apartment
+|                                                                   |--(case)--> of
+|                                                                   |--(nmod:p)--> their
+|--(punct)--> .
+
+	* entity-paths for event['killed']33_1ecb.xmlsent:8965
+	['killed --(nmod)--> bullet']
+	['killed --(nmod:tmod)--> year']
+
+	* entity-paths for event['hit']33_1ecb.xmlsent:8965
+	['hit --(nsubjpass)--> I']
+
+sentence #:shondell mcallister on tuesday recalled screaming " somebody help me , my daughter 's been shot . " 
+	[events]:[['shot']]
+	[entities]:[['daughter']]
+recalled
+|--(nsubj)--> mcallister
+|                |--(compou)--> shondell
+|                |--(nmod)--> tuesday
+|                                 |--(case)--> on
+|--(xcomp)--> screaming
+|                |--(punct)--> "
+|                |--(dobj)--> somebody
+|                                 |--(acl:re)--> help
+|                                 |                |--(dobj)--> me
+|                                 |--(punct)--> ,
+|                                 |--(acl:re)--> *R1100[shot]
+|                                                  |--(nsubjp)--> R1097[daughter]
+|                                                  |                |--(nmod:p)--> my
+|                                                  |                |--(case)--> 's
+|                                                  |--(auxpas)--> been
+|--(punct)--> .
+|--(punct)--> "
+
+	* entity-paths for event['shot']33_1ecb.xmlsent:8966
+	['shot --(nsubjpass)--> daughter']

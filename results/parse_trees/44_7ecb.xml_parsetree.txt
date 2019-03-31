@@ -1,0 +1,148 @@
+
+-----------------------------------------
+docid:44_7ecb.xml
+-----------------------------------------
+
+sentence #:hewlett-packard ceo mark hurd believes that the $ 13 billion acquisition of electronic data systems will help build out hp 's enterprise services offerings and " accelerate " the company 's reach into new accounts , he said . 
+	[events]:[['acquisition']]
+	[entities]:[['mark', 'hurd'], ['company'], ['hp'], ['electronic', 'data', 'systems']]
+believes
+|--(nsubj)--> R1577[hurd]
+|                |--(compou)--> hewlett-packard
+|                |--(compou)--> ceo
+|                |--(compou)--> R1577[mark]
+|--(ccomp)--> help
+|                |--(mark)--> that
+|                |--(nsubj)--> *R1599[acquisition]
+|                |                |--(det)--> the
+|                |                |--(amod)--> $
+|                |                |                |--(nummod)--> billion
+|                |                |                                 |--(compou)--> 13
+|                |                |--(nmod)--> R1600[systems]
+|                |                                 |--(case)--> of
+|                |                                 |--(compou)--> R1600[electronic]
+|                |                                 |--(compou)--> R1600[data]
+|                |--(aux)--> will
+|                |--(xcomp)--> build
+|                                 |--(compou)--> out
+|                                 |--(dobj)--> offerings
+|                                 |                |--(compou)--> enterprise
+|                                 |                                 |--(nmod:p)--> R1577[hp]
+|                                 |                                 |                |--(case)--> 's
+|                                 |                                 |--(dep)--> services
+|                                 |--(advmod)--> and
+|                                 |--(punct)--> "
+|                                 |--(parata)--> accelerate
+|                                 |                |--(punct)--> "
+|                                 |                |--(dobj)--> reach
+|                                 |                |                |--(nmod:p)--> R1577[company]
+|                                 |                |                |                |--(det)--> the
+|                                 |                |                |                |--(case)--> 's
+|                                 |                |                |--(nmod)--> new
+|                                 |                |                                 |--(case)--> into
+|                                 |                |--(nsubj)--> accounts
+|                                 |--(punct)--> ,
+|                                 |--(dep)--> said
+|                                                  |--(nsubj)--> he
+|--(punct)--> .
+
+	* entity-paths for event['acquisition']44_7ecb.xmlsent:13694
+	['acquisition --(nmod)--> Systems']
+
+sentence #:in a may 20 conference call with reporters to announce hp 's 2008 second-quarter financial earnings , hurd offered his thoughts on the upcoming acquisition of eds . 
+	[events]:[['acquisition']]
+	[entities]:[['hp'], ['eds']]
+offered
+|--(nmod)--> call
+|                |--(case)--> in
+|                |--(det)--> a
+|                |--(compou)--> may
+|                |--(nummod)--> 20
+|                |--(compou)--> conference
+|                |--(nmod)--> reporters
+|                                 |--(case)--> with
+|                                 |--(acl)--> announce
+|                                                  |--(mark)--> to
+|                                                  |--(xcomp)--> earnings
+|                                                                   |--(nmod:p)--> R1577[hp]
+|                                                                   |                |--(case)--> 's
+|                                                                   |--(nummod)--> 2008
+|                                                                   |--(amod)--> second-quarter
+|                                                                   |--(amod)--> financial
+|--(punct)--> ,
+|--(nsubj)--> hurd
+|--(dobj)--> thoughts
+|                |--(nmod:p)--> his
+|--(nmod)--> *R1599[acquisition]
+|                |--(case)--> on
+|                |--(det)--> the
+|                |--(amod)--> upcoming
+|                |--(nmod)--> R1600[eds]
+|                                 |--(case)--> of
+|--(punct)--> .
+
+	* entity-paths for event['acquisition']44_7ecb.xmlsent:13695
+	['acquisition --(nmod)--> EDS']
+
+sentence #:hewlett-packard 's ceo says he believes the eds acquisition will make the company 's service offerings stronger . 
+	[events]:[['acquisition']]
+	[entities]:[['he'], ['hewlett-packard'], ['company'], ['eds']]
+says
+|--(nsubj)--> ceo
+|                |--(nmod:p)--> R1577[hewlett-packard]
+|                                 |--(case)--> 's
+|--(ccomp)--> believes
+|                |--(nsubj)--> R1577[he]
+|                |--(ccomp)--> make
+|                                 |--(nsubj)--> *R1599[acquisition]
+|                                 |                |--(det)--> the
+|                                 |                |--(compou)--> R1600[eds]
+|                                 |--(aux)--> will
+|                                 |--(xcomp)--> stronger
+|                                                  |--(nsubj)--> offerings
+|                                                                   |--(nmod:p)--> R1577[company]
+|                                                                   |                |--(det)--> the
+|                                                                   |                |--(case)--> 's
+|                                                                   |--(compou)--> service
+|--(punct)--> .
+
+	* entity-paths for event['acquisition']44_7ecb.xmlsent:13693
+	['acquisition --(compound)--> EDS']
+
+sentence #:while hurd could not say when the deal would close , he noted that hp is already looking at ways to integrate its software and services portfolio with eds ' business . 
+	[events]:[['deal']]
+	[entities]:[['eds'], ['hp']]
+noted
+|--(advcl)--> say
+|                |--(mark)--> while
+|                |--(nsubj)--> hurd
+|                |--(aux)--> could
+|                |--(neg)--> not
+|                |--(advcl)--> close
+|                                 |--(advmod)--> when
+|                                 |--(nsubj)--> *R1605[deal]
+|                                 |                |--(det)--> the
+|                                 |--(aux)--> would
+|--(punct)--> ,
+|--(nsubj)--> he
+|--(ccomp)--> looking
+|                |--(mark)--> that
+|                |--(nsubj)--> R1577[hp]
+|                |--(aux)--> is
+|                |--(advmod)--> already
+|                |--(nmod)--> ways
+|                |                |--(case)--> at
+|                |--(xcomp)--> integrate
+|                                 |--(mark)--> to
+|                                 |--(dobj)--> software
+|                                 |                |--(nmod:p)--> its
+|                                 |                |--(cc)--> and
+|                                 |                |--(conj)--> portfolio
+|                                 |                                 |--(compou)--> services
+|                                 |--(nmod)--> business
+|                                                  |--(case)--> with
+|                                                  |--(nmod:p)--> R1600[eds]
+|                                                                   |--(case)--> '
+|--(punct)--> .
+
+	* entity-paths for event['deal']44_7ecb.xmlsent:13696

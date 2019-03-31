@@ -1,0 +1,54 @@
+
+-----------------------------------------
+docid:18_5ecb.xml
+-----------------------------------------
+
+sentence #:a former employee who opened fire at an office christmas party killing one man , has been charged with first-degree murder , police said saturday . 
+	[events]:[['party'], ['murder'], ['said'], ['killing'], ['charged'], ['opened', 'fire']]
+	[entities]:[['saturday'], ['employee'], ['man'], ['police'], ['an', 'office']]
+*R387[said]
+|--(ccomp)--> *R355[charged]
+|                |--(nsubjp)--> R356[employee]
+|                |                |--(det)--> a
+|                |                |--(amod)--> former
+|                |                |--(acl:re)--> *R366[opened]
+|                |                                 |--(nsubj)--> who
+|                |                                 |--(dobj)--> *R366[fire]
+|                |                                 |--(nmod)--> *R359[party]
+|                |                                                  |--(case)--> at
+|                |                                                  |--(det)--> R383[an]
+|                |                                                  |--(compou)--> R383[office]
+|                |                                                  |--(compou)--> christmas
+|                |                                                  |--(acl)--> *R358[killing]
+|                |                                                                   |--(dobj)--> R369[man]
+|                |                                                                                    |--(nummod)--> one
+|                |--(punct)--> ,
+|                |--(aux)--> has
+|                |--(auxpas)--> been
+|                |--(nmod)--> *R357[murder]
+|                                 |--(case)--> with
+|                                 |--(amod)--> first-degree
+|--(punct)--> ,
+|--(nsubj)--> R386[police]
+|--(nmod:t)--> R384[saturday]
+|--(punct)--> .
+
+	* entity-paths for event['party']18_5ecb.xmlsent:2527
+	['party --(det)--> an']
+	['party --(compound)--> office']
+	['party --(acl)--> killing', 'killing --(dobj)--> man']
+
+	* entity-paths for event['murder']18_5ecb.xmlsent:2527
+
+	* entity-paths for event['said']18_5ecb.xmlsent:2527
+	['said --(ccomp)--> charged', 'charged --(nsubjpass)--> employee']
+	['said --(nsubj)--> police']
+	['said --(nmod:tmod)--> Saturday']
+
+	* entity-paths for event['killing']18_5ecb.xmlsent:2527
+	['killing --(dobj)--> man']
+
+	* entity-paths for event['charged']18_5ecb.xmlsent:2527
+	['charged --(nsubjpass)--> employee']
+
+	* entity-paths for event['opened', 'fire']18_5ecb.xmlsent:2527

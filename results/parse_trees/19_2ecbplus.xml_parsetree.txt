@@ -1,0 +1,98 @@
+
+-----------------------------------------
+docid:19_2ecbplus.xml
+-----------------------------------------
+
+sentence #:riots erupt following death of brooklyn teen killed by police 
+	[events]:[['erupt'], ['riots'], ['following'], ['death'], ['killed']]
+	[entities]:[['police'], ['teen']]
+*R428[erupt]
+|--(nsubj)--> *R420[riots]
+|--(xcomp)--> *R438[following]
+                 |--(xcomp)--> *R414[death]
+                                  |--(nmod)--> *R414[killed]
+                                  |                |--(case)--> of
+                                  |                |--(compou)--> brooklyn
+                                  |                |--(compou)--> R415[teen]
+                                  |--(dep)--> R413[police]
+                                                   |--(case)--> by
+
+	* entity-paths for event['erupt']19_2ecbplus.xmlsent:2934
+	['Erupt --(xcomp)--> Following', 'Following --(xcomp)--> Death', 'Death --(nmod)--> Killed', 'Killed --(compound)--> Teen']
+	['Erupt --(xcomp)--> Following', 'Following --(xcomp)--> Death', 'Death --(dep)--> Police']
+
+	* entity-paths for event['riots']19_2ecbplus.xmlsent:2934
+
+	* entity-paths for event['following']19_2ecbplus.xmlsent:2934
+	['Following --(xcomp)--> Death', 'Death --(nmod)--> Killed', 'Killed --(compound)--> Teen']
+	['Following --(xcomp)--> Death', 'Death --(dep)--> Police']
+
+	* entity-paths for event['death']19_2ecbplus.xmlsent:2934
+	['Death --(nmod)--> Killed', 'Killed --(compound)--> Teen']
+	['Death --(dep)--> Police']
+
+	* entity-paths for event['killed']19_2ecbplus.xmlsent:2934
+	['Killed --(compound)--> Teen']
+
+sentence #:in the week following the fatal shooting of 16 - year - old kimani gray , several protests and riots have erupted in the teen's brooklyn neighborhood as the cops involved have come under scrutiny for previous reported civil rights violations . 
+	[events]:[['shooting'], ['violations'], ['protests'], ['following'], ['riots'], ['erupted']]
+	[entities]:[['cops'], ['brooklyn', 'neighborhood'], ['kimani', 'gray'], ["teen's"]]
+*R428[erupted]
+|--(nmod)--> week
+|                |--(case)--> in
+|                |--(det)--> the
+|                |--(nmod)--> *R412[shooting]
+|                                 |--(case)--> *R438[following]
+|                                 |--(det)--> the
+|                                 |--(amod)--> fatal
+|                                 |--(nmod)--> 16
+|                                 |                |--(case)--> of
+|                                 |--(punct)--> -
+|                                 |--(dep)--> year
+|                                 |--(punct)--> -
+|                                 |--(amod)--> old
+|                                 |--(dep)--> R415[gray]
+|                                                  |--(compou)--> R415[kimani]
+|--(punct)--> ,
+|--(nsubj)--> *R420[protests]
+|                |--(amod)--> several
+|                |--(cc)--> and
+|                |--(conj)--> *R420[riots]
+|--(aux)--> have
+|--(nmod)--> R416[neighborhood]
+|                |--(case)--> in
+|                |--(nmod:p)--> R415[teen's]
+|                |                |--(det)--> the
+|                |                |--(case)--> R415[teen's]
+|                |--(compou)--> R416[brooklyn]
+|--(advcl)--> come
+|                |--(mark)--> as
+|                |--(nsubj)--> R413[cops]
+|                |                |--(det)--> the
+|                |                |--(acl)--> involved
+|                |--(aux)--> have
+|                |--(nmod)--> scrutiny
+|                |                |--(case)--> under
+|                |--(nmod)--> rights
+|                                 |--(case)--> for
+|                                 |--(amod)--> previous
+|                                 |--(amod)--> reported
+|                                 |--(amod)--> civil
+|                                 |--(dep)--> *R439[violations]
+|--(punct)--> .
+
+	* entity-paths for event['shooting']19_2ecbplus.xmlsent:2935
+	['shooting --(dep)--> Gray']
+
+	* entity-paths for event['violations']19_2ecbplus.xmlsent:2935
+
+	* entity-paths for event['protests']19_2ecbplus.xmlsent:2935
+
+	* entity-paths for event['following']19_2ecbplus.xmlsent:2935
+
+	* entity-paths for event['riots']19_2ecbplus.xmlsent:2935
+
+	* entity-paths for event['erupted']19_2ecbplus.xmlsent:2935
+	['erupted --(nmod)--> week', 'week --(nmod)--> shooting', 'shooting --(dep)--> Gray']
+	['erupted --(nmod)--> neighborhood']
+	['erupted --(advcl)--> come', 'come --(nsubj)--> cops']

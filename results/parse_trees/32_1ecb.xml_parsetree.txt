@@ -1,0 +1,79 @@
+
+-----------------------------------------
+docid:32_1ecb.xml
+-----------------------------------------
+
+sentence #:authorities say a 35-year-old new bedford man stabbed his ex-girlfriend and his own mother to death during a bloodbath inside his mom 's apartment and left the bodies to rot for days . 
+	[events]:[['stabbed', 'to', 'death'], ['bloodbath'], ['rot'], ['left']]
+	[entities]:[['for', 'days'], ['mother'], ['ex-girlfriend'], ['man'], ['bodies'], ['inside', 'his', 'mom', "'s", 'apartment']]
+say
+|--(nsubj)--> authorities
+|--(ccomp)--> *R1044[stabbed]
+|                |--(nsubj)--> R1045[man]
+|                |                |--(det)--> a
+|                |                |--(amod)--> 35-year-old
+|                |                |--(compou)--> new
+|                |                |--(compou)--> bedford
+|                |--(dobj)--> R1046[ex-girlfriend]
+|                |                |--(nmod:p)--> his
+|                |                |--(cc)--> and
+|                |                |--(conj)--> R1047[mother]
+|                |                                 |--(nmod:p)--> his
+|                |                                 |--(amod)--> own
+|                |--(nmod)--> *R1044[death]
+|                |                |--(case)--> *R1044[to]
+|                |--(nmod)--> *R1044[bloodbath]
+|                |                |--(case)--> during
+|                |                |--(det)--> a
+|                |                |--(nmod)--> R1048[apartment]
+|                |                                 |--(case)--> R1048[inside]
+|                |                                 |--(nmod:p)--> R1048[mom]
+|                |                                                  |--(nmod:p)--> R1048[his]
+|                |                                                  |--(case)--> R1048['s]
+|                |--(cc)--> and
+|                |--(conj)--> *R1049[left]
+|                                 |--(dobj)--> R1050[bodies]
+|                                 |                |--(det)--> the
+|                                 |--(nmod)--> *R1051[rot]
+|                                 |                |--(case)--> to
+|                                 |--(nmod)--> R1052[days]
+|                                                  |--(case)--> R1052[for]
+|--(punct)--> .
+
+	* entity-paths for event['stabbed', 'to', 'death']32_1ecb.xmlsent:8697
+
+	* entity-paths for event['bloodbath']32_1ecb.xmlsent:8697
+	['bloodbath --(nmod)--> apartment']
+
+	* entity-paths for event['rot']32_1ecb.xmlsent:8697
+
+	* entity-paths for event['left']32_1ecb.xmlsent:8697
+	['left --(dobj)--> bodies']
+	['left --(nmod)--> days']
+
+sentence #:both women had been stabbed to death and their bodies had been there for " days , " miliote said . 
+	[events]:[['stabbed', 'to', 'death']]
+	[entities]:[['bodies'], ['both', 'women'], ['for', '"', 'days'], ['there']]
+said
+|--(ccomp)--> *R1044[stabbed]
+|                |--(nsubjp)--> R1050[women]
+|                |                |--(det)--> R1050[both]
+|                |--(aux)--> had
+|                |--(auxpas)--> been
+|                |--(nmod)--> *R1044[death]
+|                |                |--(case)--> *R1044[to]
+|                |--(cc)--> and
+|                |--(conj)--> R1052[days]
+|                                 |--(nsubj)--> R1050[bodies]
+|                                 |                |--(nmod:p)--> their
+|                                 |--(aux)--> had
+|                                 |--(cop)--> been
+|                                 |--(advmod)--> R1048[there]
+|                                 |--(case)--> R1052[for]
+|                                 |--(punct)--> R1052["]
+|--(punct)--> ,
+|--(punct)--> "
+|--(nsubj)--> miliote
+|--(punct)--> .
+
+	* entity-paths for event['stabbed', 'to', 'death']32_1ecb.xmlsent:8700

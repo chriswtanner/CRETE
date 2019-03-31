@@ -1,0 +1,81 @@
+
+-----------------------------------------
+docid:35_2ecbplus.xml
+-----------------------------------------
+
+sentence #:chargers defensive lineman jamal williams was arrested early sunday on suspicion of drunken driving after he was speeding down state route 94 , the california highway patrol said . 
+	[events]:[['arrested'], ['drunken', 'driving'], ['on', 'suspicion'], ['speeding'], ['said']]
+	[entities]:[['down', 'state', 'route', '94'], ['he'], ['california', 'highway', 'patrol'], ['early', 'sunday'], ['chargers'], ['defensive', 'lineman', 'jamal', 'williams']]
+*R1165[said]
+|--(nmod:t)--> R1157[chargers]
+|                |--(acl:re)--> *R1161[arrested]
+|                                 |--(nsubjp)--> R1160[williams]
+|                                 |                |--(amod)--> R1160[defensive]
+|                                 |                |--(compou)--> R1160[lineman]
+|                                 |                |--(compou)--> R1160[jamal]
+|                                 |--(auxpas)--> was
+|                                 |--(nmod:t)--> R1168[sunday]
+|                                 |                |--(advmod)--> R1168[early]
+|                                 |--(nmod)--> *R1162[suspicion]
+|                                                  |--(case)--> *R1162[on]
+|                                                  |--(nmod)--> *R1163[drunken]
+|                                                                   |--(case)--> of
+|                                                                   |--(acl)--> *R1163[driving]
+|                                                                                    |--(advcl)--> *R1167[speeding]
+|                                                                                                     |--(mark)--> after
+|                                                                                                     |--(nsubj)--> R1160[he]
+|                                                                                                     |--(aux)--> was
+|                                                                                                     |--(compou)--> R1169[down]
+|                                                                                                     |--(dobj)--> R1169[state]
+|                                                                                                                      |--(dep)--> R1169[route]
+|                                                                                                                                       |--(nummod)--> R1169[94]
+|--(punct)--> ,
+|--(nsubj)--> R1158[patrol]
+|                |--(det)--> the
+|                |--(compou)--> R1158[california]
+|                |--(compou)--> R1158[highway]
+|--(punct)--> .
+
+	* entity-paths for event['arrested']35_2ecbplus.xmlsent:9687
+	['arrested --(nsubjpass)--> Williams']
+	['arrested --(nmod:tmod)--> Sunday']
+	['arrested --(nmod)--> suspicion', 'suspicion --(nmod)--> drunken', 'drunken --(acl)--> driving', 'driving --(advcl)--> speeding', 'speeding --(nsubj)--> he']
+	['arrested --(nmod)--> suspicion', 'suspicion --(nmod)--> drunken', 'drunken --(acl)--> driving', 'driving --(advcl)--> speeding', 'speeding --(compound:prt)--> down']
+	['arrested --(nmod)--> suspicion', 'suspicion --(nmod)--> drunken', 'drunken --(acl)--> driving', 'driving --(advcl)--> speeding', 'speeding --(dobj)--> state']
+
+	* entity-paths for event['drunken', 'driving']35_2ecbplus.xmlsent:9687
+	['driving --(advcl)--> speeding', 'speeding --(nsubj)--> he']
+	['driving --(advcl)--> speeding', 'speeding --(compound:prt)--> down']
+	['driving --(advcl)--> speeding', 'speeding --(dobj)--> state']
+
+	* entity-paths for event['on', 'suspicion']35_2ecbplus.xmlsent:9687
+	['suspicion --(nmod)--> drunken', 'drunken --(acl)--> driving', 'driving --(advcl)--> speeding', 'speeding --(nsubj)--> he']
+	['suspicion --(nmod)--> drunken', 'drunken --(acl)--> driving', 'driving --(advcl)--> speeding', 'speeding --(compound:prt)--> down']
+	['suspicion --(nmod)--> drunken', 'drunken --(acl)--> driving', 'driving --(advcl)--> speeding', 'speeding --(dobj)--> state']
+
+	* entity-paths for event['speeding']35_2ecbplus.xmlsent:9687
+	['speeding --(nsubj)--> he']
+	['speeding --(compound:prt)--> down']
+	['speeding --(dobj)--> state']
+
+	* entity-paths for event['said']35_2ecbplus.xmlsent:9687
+	['said --(nmod:tmod)--> Chargers']
+	['said --(nsubj)--> Patrol']
+
+sentence #:chargers lineman jamal williams faces dui charges 
+	[events]:[['charges'], ['dui'], ['faces']]
+	[entities]:[['chargers'], ['lineman', 'jamal', 'williams']]
+*R1170[faces]
+|--(nsubj)--> R1160[williams]
+|                |--(compou)--> R1157[chargers]
+|                |--(compou)--> R1160[lineman]
+|                |--(compou)--> R1160[jamal]
+|--(dobj)--> *R1171[charges]
+                 |--(compou)--> *R1163[dui]
+
+	* entity-paths for event['charges']35_2ecbplus.xmlsent:9685
+
+	* entity-paths for event['dui']35_2ecbplus.xmlsent:9685
+
+	* entity-paths for event['faces']35_2ecbplus.xmlsent:9685
+	['faces --(nsubj)--> Williams']

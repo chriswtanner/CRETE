@@ -1,0 +1,49 @@
+
+-----------------------------------------
+docid:11_5ecb.xml
+-----------------------------------------
+
+sentence #:voters in reclusive turkmenistan elect a parliament sunday in balloting heralded by authorities in the natural gas-rich nation as a key step toward democratic standards but dismissed by critics as a sham . 
+	[events]:[['balloting'], ['elect']]
+	[entities]:[['turkmenistan'], ['critics'], ['nation'], ['voters'], ['parliament']]
+*R187[elect]
+|--(nsubj)--> R191[voters]
+|                |--(nmod)--> R189[turkmenistan]
+|                                 |--(case)--> in
+|                                 |--(amod)--> reclusive
+|--(dobj)--> R188[parliament]
+|                |--(det)--> a
+|                |--(nmod:t)--> sunday
+|                |--(nmod)--> *R193[balloting]
+|                                 |--(case)--> in
+|                                 |--(dep)--> heralded
+|                                                  |--(nmod)--> authorities
+|                                                  |                |--(case)--> by
+|                                                  |                |--(nmod)--> R189[nation]
+|                                                  |                                 |--(case)--> in
+|                                                  |                                 |--(det)--> the
+|                                                  |                                 |--(amod)--> natural
+|                                                  |                                 |--(amod)--> gas-rich
+|                                                  |--(nmod)--> step
+|                                                  |                |--(case)--> as
+|                                                  |                |--(det)--> a
+|                                                  |                |--(amod)--> key
+|                                                  |                |--(nmod)--> standards
+|                                                  |                                 |--(case)--> toward
+|                                                  |                                 |--(amod)--> democratic
+|                                                  |--(cc)--> but
+|                                                  |--(conj)--> dismissed
+|                                                                   |--(nmod)--> R212[critics]
+|                                                                                    |--(case)--> by
+|                                                                                    |--(nmod)--> sham
+|                                                                                                     |--(case)--> as
+|                                                                                                     |--(det)--> a
+|--(punct)--> .
+
+	* entity-paths for event['balloting']11_5ecb.xmlsent:700
+	['balloting --(dep)--> heralded', 'heralded --(nmod)--> authorities', 'authorities --(nmod)--> nation']
+	['balloting --(dep)--> heralded', 'heralded --(conj)--> dismissed', 'dismissed --(nmod)--> critics']
+
+	* entity-paths for event['elect']11_5ecb.xmlsent:700
+	['elect --(nsubj)--> Voters']
+	['elect --(dobj)--> parliament']

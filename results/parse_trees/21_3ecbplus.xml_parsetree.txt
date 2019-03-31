@@ -1,0 +1,70 @@
+
+-----------------------------------------
+docid:21_3ecbplus.xml
+-----------------------------------------
+
+sentence #:a grandmother crossing a queens street to attend a religious service friday was mowed down by a drunken hit - and - run driver , cops and family said . 
+	[events]:[['mowed'], ['crossing'], ['said'], ['service']]
+	[entities]:[['friday'], ['driver'], ['cops'], ['family'], ['a', 'queens', 'street'], ['grandmother']]
+*R556[mowed]
+|--(nsubjp)--> R545[grandmother]
+|                |--(det)--> a
+|                |--(acl)--> *R583[crossing]
+|                                 |--(dobj)--> R552[street]
+|                                 |                |--(det)--> R552[a]
+|                                 |                |--(compou)--> R552[queens]
+|                                 |--(advcl)--> attend
+|                                                  |--(mark)--> to
+|                                                  |--(dobj)--> *R567[service]
+|                                                  |                |--(det)--> a
+|                                                  |                |--(amod)--> religious
+|                                                  |--(nmod:t)--> R550[friday]
+|--(auxpas)--> was
+|--(compou)--> down
+|--(nmod)--> hit
+|                |--(case)--> by
+|                |--(det)--> a
+|                |--(amod)--> drunken
+|                |--(punct)--> -
+|--(cc)--> and
+|--(parata)--> run
+|                |--(punct)--> -
+|                |--(dobj)--> R548[driver]
+|                                 |--(punct)--> ,
+|                                 |--(conj)--> R561[cops]
+|                                 |--(cc)--> and
+|                                 |--(conj)--> R584[family]
+|--(conj)--> *R585[said]
+|--(punct)--> .
+
+	* entity-paths for event['mowed']21_3ecbplus.xmlsent:4196
+	['mowed --(nsubjpass)--> grandmother']
+	['mowed --(parataxis)--> run', 'run --(dobj)--> driver']
+
+	* entity-paths for event['crossing']21_3ecbplus.xmlsent:4196
+	['crossing --(dobj)--> street']
+	['crossing --(advcl)--> attend', 'attend --(nmod:tmod)--> Friday']
+
+	* entity-paths for event['said']21_3ecbplus.xmlsent:4196
+
+	* entity-paths for event['service']21_3ecbplus.xmlsent:4196
+
+sentence #:queens grandmother killed by a drunk hit - and - run driver 
+	[events]:[['killed']]
+	[entities]:[['driver'], ['grandmother']]
+*R546[killed]
+|--(nsubj)--> R545[grandmother]
+|                |--(compou)--> queens
+|--(advcl)--> run
+                 |--(mark)--> by
+                 |--(nsubj)--> hit
+                 |                |--(det)--> a
+                 |                |--(amod)--> drunk
+                 |                |--(punct)--> -
+                 |                |--(advmod)--> and
+                 |                |--(punct)--> -
+                 |--(dobj)--> R548[driver]
+
+	* entity-paths for event['killed']21_3ecbplus.xmlsent:4193
+	['killed --(nsubj)--> grandmother']
+	['killed --(advcl)--> run', 'run --(dobj)--> driver']

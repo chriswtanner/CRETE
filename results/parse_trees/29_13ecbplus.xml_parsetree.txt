@@ -1,0 +1,82 @@
+
+-----------------------------------------
+docid:29_13ecbplus.xml
+-----------------------------------------
+
+sentence #:chiefs lose 20 - 13 to a fourth quarter indianapolis colt stampede 
+	[events]:[['lose'], ['stampede']]
+	[entities]:[['chiefs'], ['20', '-', '13'], ['indianapolis', 'colt']]
+*R859[lose]
+|--(nsubj)--> R858[chiefs]
+|--(dobj)--> R860[13]
+                 |--(nummod)--> R860[20]
+                 |--(punct)--> R860[-]
+                 |--(nmod)--> *R867[stampede]
+                                  |--(case)--> to
+                                  |--(det)--> a
+                                  |--(amod)--> fourth
+                                  |--(compou)--> quarter
+                                  |--(compou)--> R852[indianapolis]
+                                  |--(compou)--> R852[colt]
+
+	* entity-paths for event['lose']29_13ecbplus.xmlsent:6805
+	['lose --(nsubj)--> Chiefs']
+	['lose --(dobj)--> 13']
+
+	* entity-paths for event['stampede']29_13ecbplus.xmlsent:6805
+	['stampede --(compound)--> Indianapolis']
+	['stampede --(compound)--> Colt']
+
+sentence #:they lost to a fourth quarter colt stampede 20 - 13 . 
+	[events]:[['lost'], ['stampede']]
+	[entities]:[['colt'], ['they'], ['20', '-', '13']]
+*R859[lost]
+|--(nsubj)--> R858[they]
+|--(nmod)--> *R867[stampede]
+|                |--(case)--> to
+|                |--(det)--> a
+|                |--(amod)--> fourth
+|                |--(compou)--> quarter
+|                |--(compou)--> R852[colt]
+|                |--(dep)--> R860[13]
+|                                 |--(nummod)--> R860[20]
+|                                 |--(punct)--> R860[-]
+|--(punct)--> .
+
+	* entity-paths for event['lost']29_13ecbplus.xmlsent:6808
+	['lost --(nsubj)--> They']
+	['lost --(nmod)--> stampede', 'stampede --(compound)--> Colt']
+	['lost --(nmod)--> stampede', 'stampede --(dep)--> 13']
+
+	* entity-paths for event['stampede']29_13ecbplus.xmlsent:6808
+	['stampede --(compound)--> Colt']
+	['stampede --(dep)--> 13']
+
+sentence #:the kansas city chiefs lost possibly the best game they " ve played this season . 
+	[events]:[['played'], ['game'], ['lost']]
+	[entities]:[['kansas', 'city', 'chiefs'], ['they']]
+*R859[lost]
+|--(nsubj)--> R858[chiefs]
+|                |--(det)--> the
+|                |--(compou)--> R858[kansas]
+|                |--(compou)--> R858[city]
+|--(advmod)--> possibly
+|--(dobj)--> *R871[game]
+|                |--(det)--> the
+|                |--(amod)--> best
+|                |--(dep)--> R858[they]
+|--(punct)--> "
+|--(xcomp)--> ve
+|                |--(acl)--> *R872[played]
+|--(nmod:t)--> season
+|                |--(det)--> this
+|--(punct)--> .
+
+	* entity-paths for event['played']29_13ecbplus.xmlsent:6807
+
+	* entity-paths for event['game']29_13ecbplus.xmlsent:6807
+	['game --(dep)--> they']
+
+	* entity-paths for event['lost']29_13ecbplus.xmlsent:6807
+	['lost --(nsubj)--> Chiefs']
+	['lost --(dobj)--> game', 'game --(dep)--> they']

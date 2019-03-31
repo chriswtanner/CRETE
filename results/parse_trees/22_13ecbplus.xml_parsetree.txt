@@ -1,0 +1,79 @@
+
+-----------------------------------------
+docid:22_13ecbplus.xml
+-----------------------------------------
+
+sentence #:yvonne hiller , a suspended kraft foods employee at the company's philadelphia factory , returned thursday evening , gunned down two women and leaving a man wounded with shots to the neck and shoulder . 
+	[events]:[['returned'], ['gunned', 'down'], ['wounded'], ['shots'], ['suspended']]
+	[entities]:[['man'], ['philadelphia', 'factory'], ['thursday', 'evening'], ['women'], ['yvonne', 'hiller'], ['employee']]
+*R608[returned]
+|--(nsubj)--> R589[hiller]
+|                |--(compou)--> R589[yvonne]
+|                |--(punct)--> ,
+|                |--(appos)--> R589[employee]
+|                |                |--(det)--> a
+|                |                |--(amod)--> *R590[suspended]
+|                |                |--(compou)--> kraft
+|                |                |--(compou)--> foods
+|                |                |--(nmod)--> R599[factory]
+|                |                                 |--(case)--> at
+|                |                                 |--(nmod:p)--> company's
+|                |                                 |                |--(det)--> the
+|                |                                 |                |--(case)--> company's
+|                |                                 |--(compou)--> R599[philadelphia]
+|                |--(punct)--> ,
+|--(nmod:t)--> R594[evening]
+|                |--(compou)--> R594[thursday]
+|--(punct)--> ,
+|--(xcomp)--> *R592[gunned]
+|                |--(compou)--> *R592[down]
+|                |--(dobj)--> R593[women]
+|                |                |--(nummod)--> two
+|                |--(cc)--> and
+|                |--(conj)--> leaving
+|                                 |--(dobj)--> R601[man]
+|                                                  |--(det)--> a
+|                                                  |--(acl)--> *R600[wounded]
+|                                                                   |--(nmod)--> *R591[shots]
+|                                                                   |                |--(case)--> with
+|                                                                   |--(nmod)--> neck
+|                                                                                    |--(case)--> to
+|                                                                                    |--(det)--> the
+|                                                                                    |--(cc)--> and
+|                                                                                    |--(conj)--> shoulder
+|--(punct)--> .
+
+	* entity-paths for event['returned']22_13ecbplus.xmlsent:4422
+	['returned --(nsubj)--> Hiller']
+	['returned --(nmod:tmod)--> evening']
+	['returned --(xcomp)--> gunned', 'gunned --(dobj)--> women']
+	['returned --(xcomp)--> gunned', 'gunned --(conj)--> leaving', 'leaving --(dobj)--> man']
+
+	* entity-paths for event['gunned', 'down']22_13ecbplus.xmlsent:4422
+
+	* entity-paths for event['wounded']22_13ecbplus.xmlsent:4422
+
+	* entity-paths for event['shots']22_13ecbplus.xmlsent:4422
+
+	* entity-paths for event['suspended']22_13ecbplus.xmlsent:4422
+
+sentence #:krafts food shooter yvonne hiller charged with two counts of murder 
+	[events]:[['murder'], ['charged']]
+	[entities]:[['counts'], ['yvonne', 'hiller']]
+*R596[charged]
+|--(nsubj)--> R589[hiller]
+|                |--(compou)--> krafts
+|                |--(compou)--> food
+|                |--(compou)--> shooter
+|                |--(compou)--> R589[yvonne]
+|--(nmod)--> R617[counts]
+                 |--(case)--> with
+                 |--(nummod)--> two
+                 |--(nmod)--> *R597[murder]
+                                  |--(case)--> of
+
+	* entity-paths for event['murder']22_13ecbplus.xmlsent:4419
+
+	* entity-paths for event['charged']22_13ecbplus.xmlsent:4419
+	['Charged --(nsubj)--> Hiller']
+	['Charged --(nmod)--> Counts']

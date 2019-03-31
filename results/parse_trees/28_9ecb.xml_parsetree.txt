@@ -1,0 +1,94 @@
+
+-----------------------------------------
+docid:28_9ecb.xml
+-----------------------------------------
+
+sentence #:w. mark felt , who remained anonymous for more than three decades as the source known as " deep throat " in the 1972 watergate scandal that toppled richard nixon 's presidency , has died . 
+	[events]:[['watergate'], ['known'], ['died'], ['toppled']]
+	[entities]:[['richard', 'nixon'], ['deep', 'throat'], ['source'], ['w.', 'mark', 'felt']]
+*R808[died]
+|--(nsubj)--> R809[felt]
+|                |--(compou)--> R809[w.]
+|                |--(compou)--> R809[mark]
+|                |--(punct)--> ,
+|                |--(acl:re)--> remained
+|                |                |--(nsubj)--> who
+|                |                |--(xcomp)--> anonymous
+|                |                |                |--(nmod)--> decades
+|                |                |                                 |--(case)--> for
+|                |                |                                 |--(nummod)--> three
+|                |                |                                                  |--(advmod)--> more
+|                |                |                                                                   |--(mwe)--> than
+|                |                |--(nmod)--> R811[source]
+|                |                                 |--(case)--> as
+|                |                                 |--(det)--> the
+|                |                                 |--(acl)--> *R810[known]
+|                |                                                  |--(nmod)--> R811[throat]
+|                |                                                                   |--(case)--> as
+|                |                                                                   |--(punct)--> "
+|                |                                                                   |--(compou)--> R811[deep]
+|                |                                                                   |--(punct)--> "
+|                |                                                                   |--(nmod)--> scandal
+|                |                                                                                    |--(case)--> in
+|                |                                                                                    |--(det)--> the
+|                |                                                                                    |--(nummod)--> 1972
+|                |                                                                                    |--(compou)--> *R812[watergate]
+|                |                                                                                    |--(acl:re)--> *R836[toppled]
+|                |                                                                                                     |--(nsubj)--> that
+|                |                                                                                                     |--(dobj)--> presidency
+|                |                                                                                                                      |--(nmod:p)--> R837[nixon]
+|                |                                                                                                                                       |--(compou)--> R837[richard]
+|                |                                                                                                                                       |--(case)--> 's
+|                |--(punct)--> ,
+|--(aux)--> has
+|--(punct)--> .
+
+	* entity-paths for event['watergate']28_9ecb.xmlsent:6619
+
+	* entity-paths for event['known']28_9ecb.xmlsent:6619
+	['known --(nmod)--> Throat']
+
+	* entity-paths for event['died']28_9ecb.xmlsent:6619
+	['died --(nsubj)--> Felt']
+
+	* entity-paths for event['toppled']28_9ecb.xmlsent:6619
+	['toppled --(dobj)--> presidency', 'presidency --(nmod:poss)--> Nixon']
+
+sentence #:felt died at his home in santa rosa , california , thursday , the press democrat newspaper reported , citing felt 's grandson nick jones . 
+	[events]:[['citing'], ['died']]
+	[entities]:[['felt'], ['nick', 'jones'], ['at', 'his', 'home', 'in', 'santa', 'rosa', ',', 'california'], ['thursday']]
+*R808[died]
+|--(csubj)--> R809[felt]
+|--(nmod)--> R822[home]
+|                |--(case)--> R822[at]
+|                |--(nmod:p)--> R822[his]
+|                |--(nmod)--> R822[rosa]
+|                                 |--(case)--> R822[in]
+|                                 |--(compou)--> R822[santa]
+|                                 |--(punct)--> R822[,]
+|                                 |--(appos)--> R822[california]
+|                                 |--(punct)--> ,
+|--(nmod:t)--> R819[thursday]
+|--(parata)--> reported
+|                |--(punct)--> ,
+|                |--(nsubj)--> newspaper
+|                |                |--(det)--> the
+|                |                |--(compou)--> press
+|                |                |--(compou)--> democrat
+|                |--(punct)--> ,
+|--(xcomp)--> *R820[citing]
+|                |--(dobj)--> R821[jones]
+|                                 |--(nmod:p)--> felt
+|                                 |                |--(case)--> 's
+|                                 |--(compou)--> grandson
+|                                 |--(compou)--> R821[nick]
+|--(punct)--> .
+
+	* entity-paths for event['citing']28_9ecb.xmlsent:6620
+	['citing --(dobj)--> Jones']
+
+	* entity-paths for event['died']28_9ecb.xmlsent:6620
+	['died --(csubj)--> Felt']
+	['died --(nmod)--> home']
+	['died --(nmod:tmod)--> Thursday']
+	['died --(xcomp)--> citing', 'citing --(dobj)--> Jones']

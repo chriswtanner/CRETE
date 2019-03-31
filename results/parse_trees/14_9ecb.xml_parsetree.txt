@@ -1,0 +1,34 @@
+
+-----------------------------------------
+docid:14_9ecb.xml
+-----------------------------------------
+
+sentence #:a supermarket in surrey has been completely destroyed after a fire broke out on friday night . 
+	[events]:[['destroyed'], ['fire']]
+	[entities]:[['in', 'surrey'], ['a', 'supermarket'], ['friday', 'night']]
+*R297[destroyed]
+|--(nsubjp)--> R298[supermarket]
+|                |--(det)--> R298[a]
+|                |--(nmod)--> R299[surrey]
+|                                 |--(case)--> R299[in]
+|--(aux)--> has
+|--(auxpas)--> been
+|--(advmod)--> completely
+|--(nmod)--> *R296[fire]
+|                |--(case)--> after
+|                |--(det)--> a
+|                |--(acl)--> broke
+|                                 |--(compou)--> out
+|                                 |--(nmod)--> R314[friday]
+|                                 |                |--(case)--> on
+|                                 |--(nmod:t)--> R314[night]
+|--(punct)--> .
+
+	* entity-paths for event['destroyed']14_9ecb.xmlsent:1825
+	['destroyed --(nsubjpass)--> supermarket']
+	['destroyed --(nmod)--> fire', 'fire --(acl)--> broke', 'broke --(nmod)--> Friday']
+	['destroyed --(nmod)--> fire', 'fire --(acl)--> broke', 'broke --(nmod:tmod)--> night']
+
+	* entity-paths for event['fire']14_9ecb.xmlsent:1825
+	['fire --(acl)--> broke', 'broke --(nmod)--> Friday']
+	['fire --(acl)--> broke', 'broke --(nmod:tmod)--> night']

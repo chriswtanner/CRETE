@@ -1,0 +1,62 @@
+
+-----------------------------------------
+docid:14_9ecbplus.xml
+-----------------------------------------
+
+sentence #:a man has been charged on suspicion of arson following a fire that devastated a somerset supermarket . 
+	[events]:[['fire'], ['devastated'], ['arson'], ['charged']]
+	[entities]:[['somerset'], ['man'], ['supermarket']]
+*R313[charged]
+|--(nsubjp)--> R311[man]
+|                |--(det)--> a
+|--(aux)--> has
+|--(auxpas)--> been
+|--(nmod)--> suspicion
+|                |--(case)--> on
+|                |--(nmod)--> *R312[arson]
+|                                 |--(case)--> of
+|--(nmod)--> *R302[fire]
+|                |--(case)--> following
+|                |--(det)--> a
+|                |--(acl:re)--> *R307[devastated]
+|                                 |--(nsubj)--> that
+|                                 |--(dobj)--> R308[supermarket]
+|                                                  |--(det)--> a
+|                                                  |--(compou)--> R309[somerset]
+|--(punct)--> .
+
+	* entity-paths for event['fire']14_9ecbplus.xmlsent:1837
+	['fire --(acl:relcl)--> devastated', 'devastated --(dobj)--> supermarket']
+
+	* entity-paths for event['devastated']14_9ecbplus.xmlsent:1837
+	['devastated --(dobj)--> supermarket']
+
+	* entity-paths for event['arson']14_9ecbplus.xmlsent:1837
+
+	* entity-paths for event['charged']14_9ecbplus.xmlsent:1837
+	['charged --(nsubjpass)--> man']
+	['charged --(nmod)--> fire', 'fire --(acl:relcl)--> devastated', 'devastated --(dobj)--> supermarket']
+
+sentence #:breaking : man charged with arson after fire at waitrose in wellington 
+	[events]:[['fire'], ['arson'], ['charged']]
+	[entities]:[['at', 'waitrose', 'in', 'wellington'], ['man']]
+breaking
+|--(punct)--> :
+|--(parata)--> *R313[charged]
+                 |--(nsubj)--> R311[man]
+                 |--(nmod)--> *R312[arson]
+                 |                |--(case)--> with
+                 |--(nmod)--> *R302[fire]
+                 |                |--(case)--> after
+                 |--(nmod)--> R303[waitrose]
+                                  |--(case)--> R303[at]
+                                  |--(nmod)--> R303[wellington]
+                                                   |--(case)--> R303[in]
+
+	* entity-paths for event['fire']14_9ecbplus.xmlsent:1835
+
+	* entity-paths for event['arson']14_9ecbplus.xmlsent:1835
+
+	* entity-paths for event['charged']14_9ecbplus.xmlsent:1835
+	['charged --(nsubj)--> man']
+	['charged --(nmod)--> Waitrose']

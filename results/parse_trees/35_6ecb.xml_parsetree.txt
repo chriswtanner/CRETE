@@ -1,0 +1,49 @@
+
+-----------------------------------------
+docid:35_6ecb.xml
+-----------------------------------------
+
+sentence #:chargers ' jackson arrested on suspicion of dui 
+	[events]:[['suspicion'], ['dui'], ['arrested']]
+	[entities]:[['jackson']]
+R1156[jackson]
+|--(nmod:p)--> chargers
+|                |--(case)--> '
+|--(acl)--> *R1153[arrested]
+|                |--(nmod)--> *R1155[suspicion]
+|                                 |--(case)--> on
+|--(nmod)--> *R1154[dui]
+                 |--(case)--> of
+
+	* entity-paths for event['suspicion']35_6ecb.xmlsent:9784
+
+	* entity-paths for event['dui']35_6ecb.xmlsent:9784
+
+	* entity-paths for event['arrested']35_6ecb.xmlsent:9784
+
+sentence #:chargers wide receiver vincent jackson was arrested early yesterday on suspicion of drunken driving . 
+	[events]:[['drunken', 'driving'], ['arrested'], ['suspicion']]
+	[entities]:[['early', 'yesterday'], ['vincent', 'jackson']]
+*R1153[arrested]
+|--(nsubjp)--> chargers
+|                |--(dep)--> R1156[jackson]
+|                                 |--(amod)--> wide
+|                                 |--(compou)--> receiver
+|                                 |--(compou)--> R1156[vincent]
+|--(auxpas)--> was
+|--(nmod:t)--> R1159[yesterday]
+|                |--(advmod)--> R1159[early]
+|--(nmod)--> *R1155[suspicion]
+|                |--(case)--> on
+|                |--(nmod)--> *R1154[driving]
+|                                 |--(case)--> of
+|                                 |--(amod)--> *R1154[drunken]
+|--(punct)--> .
+
+	* entity-paths for event['drunken', 'driving']35_6ecb.xmlsent:9785
+
+	* entity-paths for event['arrested']35_6ecb.xmlsent:9785
+	['arrested --(nsubjpass)--> Chargers', 'Chargers --(dep)--> Jackson']
+	['arrested --(nmod:tmod)--> yesterday']
+
+	* entity-paths for event['suspicion']35_6ecb.xmlsent:9785

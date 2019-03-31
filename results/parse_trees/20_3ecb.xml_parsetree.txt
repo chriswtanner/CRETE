@@ -1,0 +1,95 @@
+
+-----------------------------------------
+docid:20_3ecb.xml
+-----------------------------------------
+
+sentence #:according to the student isna news agency , the quake on the outskirts of dargahan , a small town on the island , injured two people . 
+	[events]:[['according', 'to'], ['injured'], ['quake']]
+	[entities]:[['two', 'people'], ['isna'], ['on', 'the', 'outskirts', 'of', 'dargahan', ',', 'a', 'small', 'town', 'on', 'the', 'island']]
+*R520[injured]
+|--(ccomp)--> student
+|                |--(case)--> *R530[according]
+|                |                |--(mwe)--> *R530[to]
+|                |--(det)--> the
+|                |--(dep)--> agency
+|                                 |--(compou)--> R531[isna]
+|                                 |--(compou)--> news
+|--(punct)--> ,
+|--(nsubj)--> *R517[quake]
+|                |--(det)--> the
+|                |--(nmod)--> R515[outskirts]
+|                                 |--(case)--> R515[on]
+|                                 |--(det)--> R515[the]
+|                                 |--(nmod)--> R515[dargahan]
+|                                                  |--(case)--> R515[of]
+|                                                  |--(punct)--> R515[,]
+|                                                  |--(appos)--> R515[town]
+|                                                  |                |--(det)--> R515[a]
+|                                                  |                |--(amod)--> R515[small]
+|                                                  |                |--(nmod)--> R515[island]
+|                                                  |                                 |--(case)--> R515[on]
+|                                                  |                                 |--(det)--> R515[the]
+|                                                  |--(punct)--> ,
+|--(dobj)--> R521[people]
+|                |--(nummod)--> R521[two]
+|--(punct)--> .
+
+	* entity-paths for event['according', 'to']20_3ecb.xmlsent:3885
+
+	* entity-paths for event['injured']20_3ecb.xmlsent:3885
+	['injured --(ccomp)--> student', 'student --(dep)--> agency', 'agency --(compound)--> ISNA']
+	['injured --(nsubj)--> quake', 'quake --(nmod)--> outskirts']
+	['injured --(dobj)--> people']
+
+	* entity-paths for event['quake']20_3ecb.xmlsent:3885
+	['quake --(nmod)--> outskirts']
+
+sentence #:a strong 5.6 -magnitude earthquake jolted part of qeshm island in the gulf off iran 's southern hormozgan province at 17:06 pm ( 1336 gmt ) on sunday , state television reported , cited by afp . 
+	[events]:[['earthquake'], ['jolted']]
+	[entities]:[['at', '17:06', 'pm', '(', '1336', 'gmt', ')', 'on', 'sunday'], ['5.6'], ['part', 'of', 'qeshm', 'island', 'in', 'the', 'gulf', 'off', 'iran', "'s", 'southern', 'hormozgan', 'province']]
+*R516[jolted]
+|--(dep)--> R518[5.6]
+|                |--(det)--> a
+|                |--(amod)--> strong
+|--(punct)--> -magnitude
+|--(nsubj)--> *R517[earthquake]
+|                |--(compou)--> -magnitude
+|--(dobj)--> R515[part]
+|                |--(nmod)--> R515[island]
+|                                 |--(case)--> R515[of]
+|                                 |--(compou)--> R515[qeshm]
+|--(nmod)--> R515[gulf]
+|                |--(case)--> R515[in]
+|                |--(det)--> R515[the]
+|--(nmod)--> R515[province]
+|                |--(advmod)--> R515[off]
+|                |--(nmod:p)--> R515[iran]
+|                |                |--(case)--> R515['s]
+|                |--(amod)--> R515[southern]
+|                |--(compou)--> R515[hormozgan]
+|                |--(nmod)--> R519[pm]
+|                |                |--(case)--> R519[at]
+|                |                |--(nummod)--> R519[17:06]
+|                |--(dep)--> R519[1336]
+|                |                |--(punct)--> R519[(]
+|                |                |--(appos)--> R519[gmt]
+|                |                |--(punct)--> R519[)]
+|                |--(case)--> R519[on]
+|                |--(dep)--> R519[sunday]
+|--(parata)--> reported
+|                |--(punct)--> ,
+|                |--(nsubj)--> television
+|                |                |--(compou)--> state
+|                |--(punct)--> ,
+|--(dep)--> cited
+|                |--(nmod)--> afp
+|                                 |--(case)--> by
+|--(punct)--> .
+
+	* entity-paths for event['earthquake']20_3ecb.xmlsent:3884
+
+	* entity-paths for event['jolted']20_3ecb.xmlsent:3884
+	['jolted --(dep)--> 5.6']
+	['jolted --(dobj)--> part']
+	['jolted --(nmod)--> Gulf']
+	['jolted --(nmod)--> province']

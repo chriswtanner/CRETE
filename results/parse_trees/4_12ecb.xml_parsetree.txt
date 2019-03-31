@@ -1,0 +1,35 @@
+
+-----------------------------------------
+docid:4_12ecb.xml
+-----------------------------------------
+
+sentence #:yesterday in los angeles , pin-up icon bettie page succumbed to complications from a heart attack suffered almost three weeks ago . 
+	[events]:[['succumbed'], ['heart', 'attack']]
+	[entities]:[['three', 'weeks', 'ago'], ['bettie', 'page'], ['yesterday'], ['los', 'angeles']]
+suffered
+|--(nmod:t)--> R1367[yesterday]
+|--(nmod)--> R1368[angeles]
+|                |--(case)--> in
+|                |--(compou)--> R1368[los]
+|--(punct)--> ,
+|--(nsubj)--> icon
+|                |--(amod)--> pin-up
+|                |--(acl:re)--> *R1363[succumbed]
+|                                 |--(nsubj)--> R1364[page]
+|                                 |                |--(compou)--> R1364[bettie]
+|                                 |--(nmod)--> complications
+|                                 |                |--(case)--> to
+|                                 |--(nmod)--> *R1380[attack]
+|                                                  |--(case)--> from
+|                                                  |--(det)--> a
+|                                                  |--(compou)--> *R1380[heart]
+|--(advmod)--> R1381[ago]
+|                |--(nmod:n)--> R1381[weeks]
+|                                 |--(advmod)--> almost
+|                                 |--(nummod)--> R1381[three]
+|--(punct)--> .
+
+	* entity-paths for event['succumbed']4_12ecb.xmlsent:11249
+	['succumbed --(nsubj)--> Page']
+
+	* entity-paths for event['heart', 'attack']4_12ecb.xmlsent:11249

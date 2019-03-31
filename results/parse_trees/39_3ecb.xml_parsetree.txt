@@ -1,0 +1,36 @@
+
+-----------------------------------------
+docid:39_3ecb.xml
+-----------------------------------------
+
+sentence #:tennant has now been voted one of the most popular doctors of all time and is handing his sonic screwdriver over to actor matt smith . 
+	[events]:[['handing', 'over']]
+	[entities]:[['matt', 'smith'], ['sonic', 'screwdriver'], ['one'], ['tennant']]
+voted
+|--(nsubjp)--> R1347[tennant]
+|--(aux)--> has
+|--(advmod)--> now
+|--(auxpas)--> been
+|--(dobj)--> R1347[one]
+|                |--(nmod)--> doctors
+|                                 |--(case)--> of
+|                                 |--(det)--> the
+|                                 |--(amod)--> popular
+|                                 |                |--(advmod)--> most
+|                                 |--(nmod)--> time
+|                                                  |--(case)--> of
+|                                                  |--(det)--> all
+|--(cc)--> and
+|--(conj)--> *R1348[handing]
+|                |--(aux)--> is
+|                |--(dobj)--> R1353[screwdriver]
+|                |                |--(nmod:p)--> his
+|                |                |--(amod)--> R1353[sonic]
+|                |--(nmod)--> R1328[smith]
+|                                 |--(case)--> *R1348[over]
+|                                 |--(case)--> to
+|                                 |--(compou)--> actor
+|                                 |--(compou)--> R1328[matt]
+|--(punct)--> .
+
+	* entity-paths for event['handing', 'over']39_3ecb.xmlsent:10962

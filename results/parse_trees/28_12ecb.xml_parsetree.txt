@@ -1,0 +1,132 @@
+
+-----------------------------------------
+docid:28_12ecb.xml
+-----------------------------------------
+
+sentence #:w. mark felt , the former fbi official who ended one of the united states ' most intriguing political mysteries when he identified himself as " deep throat " -- the nickname for the anonymous source who helped guide the washington post 's pulitzer prize-winning investigation into the watergate scandal -- has died . 
+	[events]:[['died'], ['watergate'], ['identified']]
+	[entities]:[['official'], ['he'], ['deep', 'throat'], ['himself'], ['w.', 'mark', 'felt'], ['source']]
+*R808[died]
+|--(nsubj)--> R809[felt]
+|                |--(compou)--> R809[w.]
+|                |--(compou)--> R809[mark]
+|                |--(punct)--> ,
+|                |--(appos)--> R809[official]
+|                |                |--(det)--> the
+|                |                |--(amod)--> former
+|                |                |--(compou)--> fbi
+|                |--(acl:re)--> ended
+|                |                |--(nsubj)--> who
+|                |                |--(dobj)--> one
+|                |                |                |--(nmod)--> mysteries
+|                |                |                                 |--(case)--> of
+|                |                |                                 |--(nmod:p)--> states
+|                |                |                                 |                |--(det)--> the
+|                |                |                                 |                |--(compou)--> united
+|                |                |                                 |                |--(case)--> '
+|                |                |                                 |--(amod)--> intriguing
+|                |                |                                 |                |--(advmod)--> most
+|                |                |                                 |--(amod)--> political
+|                |                |--(advcl)--> *R827[identified]
+|                |                                 |--(advmod)--> when
+|                |                                 |--(nsubj)--> R809[he]
+|                |                                 |--(dobj)--> R809[himself]
+|                |                                 |--(nmod)--> R811[throat]
+|                |                                                  |--(case)--> as
+|                |                                                  |--(punct)--> "
+|                |                                                  |--(compou)--> R811[deep]
+|                |                                                  |--(punct)--> "
+|                |                                                  |--(punct)--> --
+|                |                                                  |--(dep)--> nickname
+|                |                                                                   |--(det)--> the
+|                |                                                                   |--(nmod)--> R811[source]
+|                |                                                                   |                |--(case)--> for
+|                |                                                                   |                |--(det)--> the
+|                |                                                                   |                |--(amod)--> anonymous
+|                |                                                                   |--(acl:re)--> helped
+|                |                                                                                    |--(nsubj)--> who
+|                |                                                                                    |--(dobj)--> guide
+|                |                                                                                    |--(nmod)--> investigation
+|                |                                                                                                     |--(nmod:p)--> post
+|                |                                                                                                     |                |--(det)--> the
+|                |                                                                                                     |                |--(compou)--> washington
+|                |                                                                                                     |                |--(case)--> 's
+|                |                                                                                                     |--(compou)--> pulitzer
+|                |                                                                                                     |--(amod)--> prize-winning
+|                |                                                                                                     |--(case)--> into
+|                |                                                                                                     |--(dep)--> scandal
+|                |                                                                                                                      |--(det)--> the
+|                |                                                                                                                      |--(compou)--> *R812[watergate]
+|                |--(punct)--> --
+|--(aux)--> has
+|--(punct)--> .
+
+	* entity-paths for event['died']28_12ecb.xmlsent:6108
+	['died --(nsubj)--> Felt']
+
+	* entity-paths for event['watergate']28_12ecb.xmlsent:6108
+
+	* entity-paths for event['identified']28_12ecb.xmlsent:6108
+	['identified --(nsubj)--> he']
+	['identified --(dobj)--> himself']
+	['identified --(nmod)--> Throat']
+
+sentence #:a controversial figure who was later convicted of authorizing illegal activities in pursuit of members of the radical weather underground , felt died of heart failure thursday at his home in santa rosa , calif . , his grandson rob jones said . 
+	[events]:[['said'], ['died'], ['heart', 'failure']]
+	[entities]:[['rob', 'jones'], ['at', 'his', 'home', 'in', 'santa', 'rosa', ',', 'calif', '.'], ['figure'], ['felt'], ['thursday']]
+*R820[said]
+|--(ccomp)--> *R808[died]
+|                |--(nsubj)--> R809[figure]
+|                |                |--(det)--> a
+|                |                |--(amod)--> controversial
+|                |                |--(acl:re)--> convicted
+|                |                                 |--(nsubjp)--> who
+|                |                                 |--(auxpas)--> was
+|                |                                 |--(advmod)--> later
+|                |                                 |--(advcl)--> authorizing
+|                |                                                  |--(mark)--> of
+|                |                                                  |--(dobj)--> activities
+|                |                                                  |                |--(amod)--> illegal
+|                |                                                  |--(nmod)--> pursuit
+|                |                                                                   |--(case)--> in
+|                |                                                                   |--(nmod)--> members
+|                |                                                                                    |--(case)--> of
+|                |                                                                                    |--(nmod)--> underground
+|                |                                                                                                     |--(case)--> of
+|                |                                                                                                     |--(det)--> the
+|                |                                                                                                     |--(amod)--> radical
+|                |                                                                                                     |--(compou)--> weather
+|                |                                                                                                     |--(punct)--> ,
+|                |                                                                                                     |--(appos)--> R809[felt]
+|                |--(nmod)--> *R823[failure]
+|                |                |--(case)--> of
+|                |                |--(compou)--> *R823[heart]
+|                |--(nmod:t)--> R819[thursday]
+|                |--(nmod)--> R822[home]
+|                                 |--(case)--> R822[at]
+|                                 |--(nmod:p)--> R822[his]
+|                                 |--(nmod)--> R822[rosa]
+|                                                  |--(case)--> R822[in]
+|                                                  |--(compou)--> R822[santa]
+|                                                  |--(punct)--> R822[,]
+|                                                  |--(appos)--> R822[calif]
+|                                                                   |--(punct)--> R822[.]
+|--(punct)--> ,
+|--(nsubj)--> R821[jones]
+|                |--(nmod:p)--> his
+|                |--(compou)--> grandson
+|                |--(compou)--> R821[rob]
+|--(punct)--> .
+
+	* entity-paths for event['said']28_12ecb.xmlsent:6110
+	['said --(ccomp)--> died', 'died --(nsubj)--> figure']
+	['said --(ccomp)--> died', 'died --(nmod:tmod)--> Thursday']
+	['said --(ccomp)--> died', 'died --(nmod)--> home']
+	['said --(nsubj)--> Jones']
+
+	* entity-paths for event['died']28_12ecb.xmlsent:6110
+	['died --(nsubj)--> figure']
+	['died --(nmod:tmod)--> Thursday']
+	['died --(nmod)--> home']
+
+	* entity-paths for event['heart', 'failure']28_12ecb.xmlsent:6110

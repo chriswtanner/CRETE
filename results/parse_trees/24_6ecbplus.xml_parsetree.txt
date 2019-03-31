@@ -1,0 +1,102 @@
+
+-----------------------------------------
+docid:24_6ecbplus.xml
+-----------------------------------------
+
+sentence #:four men smash their car into a jewellery store before fleeing in a different vehicle in the latest high - profile heist in france . 
+	[events]:[['fleeing'], ['heist'], ['smash']]
+	[entities]:[['into', 'a', 'jewellery', 'store'], ['in', 'france'], ['car'], ['vehicle'], ['men']]
+*R668[smash]
+|--(nsubj)--> R669[men]
+|                |--(nummod)--> four
+|--(dobj)--> R670[car]
+|                |--(nmod:p)--> their
+|--(nmod)--> R671[store]
+|                |--(case)--> R671[into]
+|                |--(det)--> R671[a]
+|                |--(compou)--> R671[jewellery]
+|--(advcl)--> *R675[fleeing]
+|                |--(mark)--> before
+|                |--(nmod)--> R704[vehicle]
+|                                 |--(case)--> in
+|                                 |--(det)--> a
+|                                 |--(amod)--> different
+|                                 |--(nmod)--> high
+|                                                  |--(case)--> in
+|                                                  |--(det)--> the
+|                                                  |--(amod)--> latest
+|                                                  |--(punct)--> -
+|                                                  |--(dep)--> *R684[heist]
+|                                                                   |--(compou)--> profile
+|                                                                   |--(nmod)--> R697[france]
+|                                                                                    |--(case)--> R697[in]
+|--(punct)--> .
+
+	* entity-paths for event['fleeing']24_6ecbplus.xmlsent:4884
+	['fleeing --(nmod)--> vehicle']
+
+	* entity-paths for event['heist']24_6ecbplus.xmlsent:4884
+	['heist --(nmod)--> France']
+
+	* entity-paths for event['smash']24_6ecbplus.xmlsent:4884
+	['smash --(nsubj)--> men']
+	['smash --(dobj)--> car']
+	['smash --(nmod)--> store']
+	['smash --(advcl)--> fleeing', 'fleeing --(nmod)--> vehicle']
+
+sentence #:paris : jewellery stolen in casty shop raid 
+	[events]:[['stolen'], ['raid']]
+	[entities]:[['jewellery'], ['in', 'casty', 'shop'], ['paris']]
+R685[paris]
+|--(punct)--> :
+|--(dep)--> *R678[stolen]
+                 |--(compou)--> R679[jewellery]
+                 |--(nmod)--> *R684[raid]
+                                  |--(case)--> R671[in]
+                                  |--(compou)--> R671[casty]
+                                  |--(compou)--> R671[shop]
+
+	* entity-paths for event['stolen']24_6ecbplus.xmlsent:4882
+	['Stolen --(compound)--> Jewellery']
+	['Stolen --(nmod)--> Raid', 'Raid --(case)--> In']
+	['Stolen --(nmod)--> Raid', 'Raid --(compound)--> Casty']
+	['Stolen --(nmod)--> Raid', 'Raid --(compound)--> Shop']
+
+	* entity-paths for event['raid']24_6ecbplus.xmlsent:4882
+	['Raid --(case)--> In']
+	['Raid --(compound)--> Casty']
+	['Raid --(compound)--> Shop']
+
+sentence #:jewellery and watches worth #1 . 7m have been stolen during a heist in an upmarket central paris shop . 
+	[events]:[['stolen'], ['heist']]
+	[entities]:[['jewellery'], ['watches'], ['in', 'an', 'upmarket', 'central', 'paris', 'shop'], ['#1', '.', '7m']]
+*R678[stolen]
+|--(ccomp)--> R679[jewellery]
+|                |--(cc)--> and
+|                |--(conj)--> R680[watches]
+|                                 |--(nmod)--> R702[#1]
+|                                                  |--(case)--> worth
+|                                                  |--(dep)--> R702[#1]
+|--(punct)--> R702[.]
+|--(nsubjp)--> R702[7m]
+|--(aux)--> have
+|--(auxpas)--> been
+|--(nmod)--> *R684[heist]
+|                |--(case)--> during
+|                |--(det)--> a
+|                |--(nmod)--> R671[shop]
+|                                 |--(case)--> R671[in]
+|                                 |--(det)--> R671[an]
+|                                 |--(amod)--> R671[upmarket]
+|                                 |--(amod)--> R671[central]
+|                                 |--(compou)--> R671[paris]
+|--(punct)--> .
+
+	* entity-paths for event['stolen']24_6ecbplus.xmlsent:4885
+	['stolen --(ccomp)--> Jewellery']
+	['stolen --(punct)--> .']
+	['stolen --(nsubjpass)--> 7m']
+	['stolen --(nmod)--> heist', 'heist --(nmod)--> shop']
+
+	* entity-paths for event['heist']24_6ecbplus.xmlsent:4885
+	['heist --(nmod)--> shop']

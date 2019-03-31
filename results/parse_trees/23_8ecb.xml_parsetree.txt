@@ -1,0 +1,51 @@
+
+-----------------------------------------
+docid:23_8ecb.xml
+-----------------------------------------
+
+sentence #:a climber who watched his brother fall to his death from a notorious ridge on mt cook , is lucky to be alive after two " horrific " nights high on the mountain . 
+	[events]:[['watched'], ['fall'], ['death']]
+	[entities]:[['on', 'the', 'mountain'], ['climber'], ['two', 'nights'], ['brother'], ['on', 'mt', 'cook'], ['ridge']]
+lucky
+|--(nsubj)--> R634[climber]
+|                |--(det)--> a
+|                |--(acl:re)--> *R636[watched]
+|                                 |--(nsubj)--> who
+|                                 |--(nmod:t)--> *R637[fall]
+|                                 |                |--(nmod:p)--> his
+|                                 |                |--(compou)--> R638[brother]
+|                                 |--(nmod)--> *R654[death]
+|                                 |                |--(case)--> to
+|                                 |                |--(nmod:p)--> his
+|                                 |--(nmod)--> R647[ridge]
+|                                                  |--(case)--> from
+|                                                  |--(det)--> a
+|                                                  |--(amod)--> notorious
+|                                                  |--(nmod)--> R639[cook]
+|                                                                   |--(case)--> R639[on]
+|                                                                   |--(compou)--> R639[mt]
+|--(punct)--> ,
+|--(cop)--> is
+|--(xcomp)--> alive
+|                |--(mark)--> to
+|                |--(cop)--> be
+|--(nmod)--> R653[two]
+|                |--(case)--> after
+|--(punct)--> "
+|--(dep)--> R653[nights]
+|                |--(amod)--> horrific
+|                |--(punct)--> "
+|                |--(amod)--> high
+|                                 |--(nmod)--> R639[mountain]
+|                                                  |--(case)--> R639[on]
+|                                                  |--(det)--> R639[the]
+|--(punct)--> .
+
+	* entity-paths for event['watched']23_8ecb.xmlsent:4763
+	['watched --(nmod:tmod)--> fall', 'fall --(compound)--> brother']
+	['watched --(nmod)--> ridge']
+
+	* entity-paths for event['fall']23_8ecb.xmlsent:4763
+	['fall --(compound)--> brother']
+
+	* entity-paths for event['death']23_8ecb.xmlsent:4763

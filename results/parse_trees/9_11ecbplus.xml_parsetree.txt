@@ -1,0 +1,25 @@
+
+-----------------------------------------
+docid:9_11ecbplus.xml
+-----------------------------------------
+
+sentence #:scientific consultations under endangered species act restored 
+	[events]:[['restored'], ['consultations']]
+	[entities]:[['endangered', 'species', 'act']]
+*R1801[consultations]
+|--(compou)--> scientific
+|--(nmod)--> *R1798[restored]
+                 |--(case)--> under
+                 |--(compou)--> R1800[endangered]
+                 |--(compou)--> R1800[species]
+                 |--(compou)--> R1800[act]
+
+	* entity-paths for event['restored']9_11ecbplus.xmlsent:15308
+	['Restored --(compound)--> Endangered']
+	['Restored --(compound)--> Species']
+	['Restored --(compound)--> Act']
+
+	* entity-paths for event['consultations']9_11ecbplus.xmlsent:15308
+	['Consultations --(nmod)--> Restored', 'Restored --(compound)--> Endangered']
+	['Consultations --(nmod)--> Restored', 'Restored --(compound)--> Species']
+	['Consultations --(nmod)--> Restored', 'Restored --(compound)--> Act']

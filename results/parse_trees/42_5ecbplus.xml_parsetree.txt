@@ -1,0 +1,65 @@
+
+-----------------------------------------
+docid:42_5ecbplus.xml
+-----------------------------------------
+
+sentence #:t - mobile today announced that the blackberry q10 will be added to its growing 4g lte smartphone portfolio . 
+	[events]:[['growing'], ['added'], ['announced']]
+	[entities]:[['blackberry', 'q10'], ['4g', 'lte', 'smartphone'], ['its'], ['t', '-', 'mobile'], ['today'], ['portfolio']]
+R1517[t]
+|--(punct)--> R1517[-]
+|--(appos)--> *R1542[announced]
+|                |--(nsubj)--> R1543[today]
+|                |                |--(compou)--> R1517[mobile]
+|                |--(ccomp)--> *R1537[added]
+|                                 |--(mark)--> that
+|                                 |--(nsubjp)--> R1525[q10]
+|                                 |                |--(det)--> the
+|                                 |                |--(compou)--> R1525[blackberry]
+|                                 |--(aux)--> will
+|                                 |--(auxpas)--> be
+|                                 |--(nmod)--> R1534[portfolio]
+|                                                  |--(case)--> to
+|                                                  |--(nmod:p)--> R1517[its]
+|                                                  |--(amod)--> *R1538[growing]
+|                                                  |--(compou)--> R1535[4g]
+|                                                  |--(compou)--> R1535[lte]
+|                                                  |--(compou)--> R1535[smartphone]
+|--(punct)--> .
+
+	* entity-paths for event['growing']42_5ecbplus.xmlsent:12791
+
+	* entity-paths for event['added']42_5ecbplus.xmlsent:12791
+	['added --(nsubjpass)--> Q10']
+	['added --(nmod)--> portfolio']
+
+	* entity-paths for event['announced']42_5ecbplus.xmlsent:12791
+	['announced --(nsubj)--> today']
+	['announced --(ccomp)--> added', 'added --(nsubjpass)--> Q10']
+	['announced --(ccomp)--> added', 'added --(nmod)--> portfolio']
+
+sentence #:t - mobile blackberry q10 pre - order begins april 29th for business customers 
+	[events]:[['pre', '-', 'order'], ['begins']]
+	[entities]:[['blackberry', 'q10'], ['business', 'customers'], ['t', '-', 'mobile'], ['april', '29th']]
+R1517[t]
+|--(punct)--> R1517[-]
+|--(appos)--> *R1523[begins]
+                 |--(nsubj)--> *R1544[pre]
+                 |                |--(compou)--> R1517[mobile]
+                 |                |--(compou)--> R1525[blackberry]
+                 |                |--(compou)--> R1525[q10]
+                 |                |--(punct)--> *R1544[-]
+                 |                |--(dep)--> *R1544[order]
+                 |--(xcomp)--> R1526[29th]
+                                  |--(nsubj)--> R1526[april]
+                                  |--(nmod)--> R1528[customers]
+                                                   |--(case)--> for
+                                                   |--(compou)--> R1528[business]
+
+	* entity-paths for event['pre', '-', 'order']42_5ecbplus.xmlsent:12789
+
+	* entity-paths for event['begins']42_5ecbplus.xmlsent:12789
+	['Begins --(nsubj)--> Pre', 'Pre --(compound)--> Mobile']
+	['Begins --(nsubj)--> Pre', 'Pre --(compound)--> BlackBerry']
+	['Begins --(nsubj)--> Pre', 'Pre --(compound)--> Q10']
+	['Begins --(xcomp)--> 29th']

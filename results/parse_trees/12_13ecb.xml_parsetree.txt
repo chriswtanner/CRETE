@@ -1,0 +1,47 @@
+
+-----------------------------------------
+docid:12_13ecb.xml
+-----------------------------------------
+
+sentence #:the indian navy captured 23 pirates in the gulf of aden after rescuing a merchant vessel that was being hijacked on saturday , the defence ministry said . 
+	[events]:[['captured'], ['hijacked'], ['rescuing']]
+	[entities]:[['navy'], ['the', 'gulf', 'of', 'aden'], ['pirates'], ['saturday'], ['vessel']]
+said
+|--(advcl)--> *R214[captured]
+|                |--(nsubj)--> R215[navy]
+|                |                |--(det)--> the
+|                |                |--(amod)--> indian
+|                |--(dobj)--> R216[pirates]
+|                |                |--(nummod)--> 23
+|                |                |--(nmod)--> R229[gulf]
+|                |                                 |--(case)--> in
+|                |                                 |--(det)--> R229[the]
+|                |                                 |--(nmod)--> R229[aden]
+|                |                                                  |--(case)--> R229[of]
+|                |--(advcl)--> *R236[rescuing]
+|                                 |--(mark)--> after
+|                                 |--(dobj)--> R228[vessel]
+|                                                  |--(det)--> a
+|                                                  |--(compou)--> merchant
+|                                                  |--(acl:re)--> *R235[hijacked]
+|                                                                   |--(nsubjp)--> that
+|                                                                   |--(aux)--> was
+|                                                                   |--(auxpas)--> being
+|                                                                   |--(nmod)--> R230[saturday]
+|                                                                                    |--(case)--> on
+|--(punct)--> ,
+|--(nsubj)--> ministry
+|                |--(det)--> the
+|                |--(compou)--> defence
+|--(punct)--> .
+
+	* entity-paths for event['captured']12_13ecb.xmlsent:814
+	['captured --(nsubj)--> navy']
+	['captured --(dobj)--> pirates']
+	['captured --(advcl)--> rescuing', 'rescuing --(dobj)--> vessel']
+
+	* entity-paths for event['hijacked']12_13ecb.xmlsent:814
+	['hijacked --(nmod)--> Saturday']
+
+	* entity-paths for event['rescuing']12_13ecb.xmlsent:814
+	['rescuing --(dobj)--> vessel']

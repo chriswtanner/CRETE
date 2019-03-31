@@ -1,0 +1,47 @@
+
+-----------------------------------------
+docid:21_3ecb.xml
+-----------------------------------------
+
+sentence #:the hennepin county attorney filed criminal charges friday against the man who they say hit and killed a woman walking out of a store . 
+	[events]:[['hit'], ['filed'], ['killed'], ['walking']]
+	[entities]:[['who'], ['a', 'store'], ['charges'], ['man'], ['friday'], ['woman']]
+*R538[filed]
+|--(nsubj)--> attorney
+|                |--(det)--> the
+|                |--(compou)--> hennepin
+|                |--(compou)--> county
+|--(dobj)--> R554[charges]
+|                |--(amod)--> criminal
+|--(nmod:t)--> R555[friday]
+|--(nmod)--> R539[man]
+|                |--(case)--> against
+|                |--(det)--> the
+|                |--(acl:re)--> say
+|                                 |--(dobj)--> R539[who]
+|                                 |--(nsubj)--> they
+|                                 |--(dobj)--> *R541[hit]
+|                                 |--(cc)--> and
+|                                 |--(conj)--> *R542[killed]
+|                                                  |--(dobj)--> R543[woman]
+|                                                  |                |--(det)--> a
+|                                                  |--(xcomp)--> *R564[walking]
+|                                                                   |--(compou)--> out
+|                                                                   |--(nmod)--> R544[store]
+|                                                                                    |--(case)--> of
+|                                                                                    |--(det)--> R544[a]
+|--(punct)--> .
+
+	* entity-paths for event['hit']21_3ecb.xmlsent:4170
+
+	* entity-paths for event['filed']21_3ecb.xmlsent:4170
+	['filed --(dobj)--> charges']
+	['filed --(nmod:tmod)--> Friday']
+	['filed --(nmod)--> man']
+
+	* entity-paths for event['killed']21_3ecb.xmlsent:4170
+	['killed --(dobj)--> woman']
+	['killed --(xcomp)--> walking', 'walking --(nmod)--> store']
+
+	* entity-paths for event['walking']21_3ecb.xmlsent:4170
+	['walking --(nmod)--> store']

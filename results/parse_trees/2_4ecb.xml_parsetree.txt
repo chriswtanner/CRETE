@@ -1,0 +1,41 @@
+
+-----------------------------------------
+docid:2_4ecb.xml
+-----------------------------------------
+
+sentence #:jackman was announced friday as the host of the 81st academy awards , a marked departure from the academy 's standard of big-name comedians . 
+	[events]:[['academy', 'awards'], ['announced']]
+	[entities]:[['friday'], ['jackman'], ['host'], ['academy']]
+*R458[announced]
+|--(nsubjp)--> R462[jackman]
+|--(auxpas)--> was
+|--(nmod:t)--> R461[friday]
+|--(nmod)--> R462[host]
+|                |--(case)--> as
+|                |--(det)--> the
+|                |--(nmod)--> *R460[awards]
+|                                 |--(case)--> of
+|                                 |--(det)--> the
+|                                 |--(amod)--> 81st
+|                                 |--(compou)--> *R460[academy]
+|                                 |--(punct)--> ,
+|                                 |--(appos)--> departure
+|                                                  |--(det)--> a
+|                                                  |--(amod)--> marked
+|                                                  |--(nmod)--> standard
+|                                                                   |--(case)--> from
+|                                                                   |--(nmod:p)--> R487[academy]
+|                                                                   |                |--(det)--> the
+|                                                                   |                |--(case)--> 's
+|                                                                   |--(nmod)--> comedians
+|                                                                                    |--(case)--> of
+|                                                                                    |--(amod)--> big-name
+|--(punct)--> .
+
+	* entity-paths for event['academy', 'awards']2_4ecb.xmlsent:3567
+	['Awards --(appos)--> departure', 'departure --(nmod)--> standard', 'standard --(nmod:poss)--> academy']
+
+	* entity-paths for event['announced']2_4ecb.xmlsent:3567
+	['announced --(nsubjpass)--> Jackman']
+	['announced --(nmod:tmod)--> Friday']
+	['announced --(nmod)--> host']

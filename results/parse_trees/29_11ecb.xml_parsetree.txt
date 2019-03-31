@@ -1,0 +1,89 @@
+
+-----------------------------------------
+docid:29_11ecb.xml
+-----------------------------------------
+
+sentence #:manning threw for 364 yards and three touchdowns , and the visiting colts secured the no. 5 seed in the afc playoffs with a 31-24 victory over the jaguars on thursday night . 
+	[events]:[['playoffs'], ['threw'], ['secured'], ['victory']]
+	[entities]:[['on', 'thursday', 'night'], ['manning'], ['jaguars'], ['31-24'], ['colts'], ['no.', '5', 'seed']]
+*R863[threw]
+|--(nsubj)--> R864[manning]
+|--(nmod)--> yards
+|                |--(case)--> for
+|                |--(nummod)--> 364
+|                |--(cc)--> and
+|                |--(conj)--> touchdowns
+|                |                |--(nummod)--> three
+|                |--(punct)--> ,
+|                |--(cc)--> and
+|                |--(conj)--> R852[colts]
+|                                 |--(det)--> the
+|                                 |--(amod)--> visiting
+|                                 |--(acl)--> *R853[secured]
+|                                                  |--(dobj)--> R851[seed]
+|                                                  |                |--(det)--> the
+|                                                  |                |--(amod)--> R851[no.]
+|                                                  |                |                |--(compou)--> R851[5]
+|                                                  |                |--(nmod)--> *R854[playoffs]
+|                                                  |                                 |--(case)--> in
+|                                                  |                                 |--(det)--> the
+|                                                  |                                 |--(compou)--> afc
+|                                                  |--(nmod)--> *R856[victory]
+|                                                                   |--(case)--> with
+|                                                                   |--(det)--> a
+|                                                                   |--(nummod)--> R855[31-24]
+|--(nmod)--> R857[jaguars]
+|                |--(case)--> over
+|                |--(det)--> the
+|--(nmod)--> R865[thursday]
+|                |--(case)--> R865[on]
+|--(nmod:t)--> R865[night]
+|--(punct)--> .
+
+	* entity-paths for event['playoffs']29_11ecb.xmlsent:6698
+
+	* entity-paths for event['threw']29_11ecb.xmlsent:6698
+	['threw --(nsubj)--> Manning']
+	['threw --(nmod)--> yards', 'yards --(conj)--> Colts']
+	['threw --(nmod)--> Jaguars']
+	['threw --(nmod)--> Thursday']
+	['threw --(nmod:tmod)--> night']
+
+	* entity-paths for event['secured']29_11ecb.xmlsent:6698
+	['secured --(dobj)--> seed']
+	['secured --(nmod)--> victory', 'victory --(nummod)--> 31-24']
+
+	* entity-paths for event['victory']29_11ecb.xmlsent:6698
+	['victory --(nummod)--> 31-24']
+
+sentence #:they won without receiver marvin harrison ( hamstring ) , running back joseph addai ( shoulder ) and linebacker gary brackett ( leg ) . 
+	[events]:[['won']]
+	[entities]:[['they']]
+*R853[won]
+|--(nsubj)--> R852[they]
+|--(nmod)--> harrison
+|                |--(case)--> without
+|                |--(compou)--> receiver
+|                |--(compou)--> marvin
+|                |--(appos)--> hamstring
+|                                 |--(punct)--> (
+|                                 |--(punct)--> )
+|--(punct)--> ,
+|--(xcomp)--> running
+|                |--(compou)--> back
+|                |--(dobj)--> addai
+|                                 |--(compou)--> joseph
+|                                 |--(appos)--> shoulder
+|                                 |                |--(punct)--> (
+|                                 |                |--(punct)--> )
+|                                 |--(cc)--> and
+|                                 |--(conj)--> brackett
+|                                                  |--(compou)--> linebacker
+|                                                  |--(compou)--> gary
+|                                                  |--(appos)--> leg
+|                                                                   |--(punct)--> (
+|                                                                   |--(punct)--> )
+|--(punct)--> .
+
+	* entity-paths for event['won']29_11ecb.xmlsent:6699
+	['won --(nsubj)--> They']

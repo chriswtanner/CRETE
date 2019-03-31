@@ -1,0 +1,105 @@
+
+-----------------------------------------
+docid:38_2ecbplus.xml
+-----------------------------------------
+
+sentence #:4 . 6 quake rattles sonoma county early thursday 
+	[events]:[['4', '.', '6', 'quake'], ['rattles']]
+	[entities]:[['early', 'thursday'], ['sonoma', 'county']]
+*R1304[rattles]
+|--(dep)--> *R1296[4]
+|                |--(punct)--> *R1296[.]
+|--(nsubj)--> *R1296[quake]
+|                |--(nummod)--> *R1296[6]
+|--(dobj)--> R1315[county]
+|                |--(compou)--> R1315[sonoma]
+|--(advmod)--> R1299[early]
+|--(dep)--> R1299[thursday]
+
+	* entity-paths for event['4', '.', '6', 'quake']38_2ecbplus.xmlsent:10755
+
+	* entity-paths for event['rattles']38_2ecbplus.xmlsent:10755
+	['rattles --(dobj)--> County']
+	['rattles --(advmod)--> early']
+	['rattles --(dep)--> Thursday']
+
+sentence #:the quake occurred at 2 : 09 a . m . , about 14 miles northeast of healdsburg , on the maacama fault with a depth of 12 miles . 
+	[events]:[['occurred'], ['quake']]
+	[entities]:[['at', '2', ':', '09', 'a', '.', 'm'], ['depth', 'of', '12', 'miles'], ['about', '14', 'miles', 'northeast', 'of', 'healdsburg', ',', 'on', 'the', 'maacama', 'fault']]
+*R1304[occurred]
+|--(nsubj)--> *R1296[quake]
+|                |--(det)--> the
+|--(nmod)--> R1299[09]
+|                |--(case)--> R1299[at]
+|                |--(nummod)--> R1299[2]
+|                |--(punct)--> R1299[:]
+|                |--(dep)--> R1299[a]
+|                |                |--(punct)--> R1299[.]
+|                |                |--(dep)--> R1299[m]
+|                |                |--(punct)--> .
+|                |--(punct)--> ,
+|                |--(advmod)--> R1298[about]
+|                                 |--(advmod)--> R1298[northeast]
+|                                 |                |--(nmod:n)--> R1298[miles]
+|                                 |                                 |--(nummod)--> R1298[14]
+|                                 |--(nmod)--> R1298[healdsburg]
+|                                                  |--(case)--> R1298[of]
+|--(punct)--> R1298[,]
+|--(nmod)--> R1298[fault]
+|                |--(case)--> R1298[on]
+|                |--(det)--> R1298[the]
+|                |--(compou)--> R1298[maacama]
+|--(nmod)--> R1300[depth]
+|                |--(case)--> with
+|                |--(det)--> a
+|                |--(nmod)--> R1300[miles]
+|                                 |--(case)--> R1300[of]
+|                                 |--(nummod)--> R1300[12]
+|--(punct)--> .
+
+	* entity-paths for event['occurred']38_2ecbplus.xmlsent:10759
+	['occurred --(nmod)--> 09']
+	['occurred --(punct)--> ,']
+	['occurred --(nmod)--> Fault']
+	['occurred --(nmod)--> depth']
+
+	* entity-paths for event['quake']38_2ecbplus.xmlsent:10759
+
+sentence #:an earthquake measuring 4 . 6 rattled sonoma and lake counties early thursday , according to the u . s . geological survey . 
+	[events]:[['rattled'], ['earthquake'], ['according', 'to']]
+	[entities]:[['early', 'thursday'], ['sonoma', 'and', 'lake', 'counties'], ['4', '.', '6'], ['u', '.', 's', '.', 'geological', 'survey']]
+*R1304[rattled]
+|--(nsubj)--> *R1296[earthquake]
+|                |--(det)--> an
+|                |--(acl)--> measuring
+|                                 |--(xcomp)--> R1301[6]
+|                                                  |--(nsubj)--> R1301[4]
+|                                                                   |--(punct)--> R1301[.]
+|--(dobj)--> R1315[counties]
+|                |--(compou)--> R1315[sonoma]
+|                                 |--(cc)--> R1315[and]
+|                                 |--(conj)--> R1315[lake]
+|--(nmod:t)--> R1299[thursday]
+|                |--(advmod)--> R1299[early]
+|--(punct)--> ,
+|--(nmod)--> R1243[u]
+|                |--(case)--> *R1303[according]
+|                |                |--(mwe)--> *R1303[to]
+|                |--(det)--> the
+|                |--(punct)--> R1243[.]
+|                |--(dep)--> R1243[s]
+|                |--(punct)--> R1243[.]
+|                |--(dep)--> R1243[survey]
+|                                 |--(amod)--> R1243[geological]
+|--(punct)--> .
+
+	* entity-paths for event['rattled']38_2ecbplus.xmlsent:10758
+	['rattled --(nsubj)--> earthquake', 'earthquake --(acl)--> measuring', 'measuring --(xcomp)--> 6']
+	['rattled --(dobj)--> counties']
+	['rattled --(nmod:tmod)--> Thursday']
+	['rattled --(nmod)--> U']
+
+	* entity-paths for event['earthquake']38_2ecbplus.xmlsent:10758
+	['earthquake --(acl)--> measuring', 'measuring --(xcomp)--> 6']
+
+	* entity-paths for event['according', 'to']38_2ecbplus.xmlsent:10758

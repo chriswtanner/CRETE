@@ -1,0 +1,55 @@
+
+-----------------------------------------
+docid:7_1ecb.xml
+-----------------------------------------
+
+sentence #:wladimir klitschko ( 52-3 , 46 kos ) blasted a sluggish hasim rahman ( 45-7-2 , 36 kos ) in mannheim , germany on saturday night to retain the ibf , wbo and ibo world heavyweight titles . 
+	[events]:[['blasted'], ['retain']]
+	[entities]:[['ibf'], ['wladimir', 'klitschko'], ['saturday', 'night'], ['hasim', 'rahman'], ['titles'], ['in', 'mannheim', ',', 'germany'], ['ibo'], ['wbo']]
+*R1719[blasted]
+|--(nsubj)--> R1716[klitschko]
+|                |--(compou)--> R1716[wladimir]
+|                |--(appos)--> 52-3
+|                                 |--(punct)--> (
+|                                 |--(punct)--> ,
+|                                 |--(dep)--> kos
+|                                 |                |--(nummod)--> 46
+|                                 |--(punct)--> )
+|--(dobj)--> R1720[rahman]
+|                |--(det)--> a
+|                |--(amod)--> sluggish
+|                |--(compou)--> R1720[hasim]
+|                |--(appos)--> 45-7-2
+|                |                |--(punct)--> (
+|                |                |--(punct)--> ,
+|                |                |--(dep)--> kos
+|                |                |                |--(nummod)--> 36
+|                |                |--(punct)--> )
+|                |--(nmod)--> R1734[germany]
+|                                 |--(case)--> R1734[in]
+|                                 |--(compou)--> R1734[mannheim]
+|                                 |--(punct)--> R1734[,]
+|                                 |--(nmod)--> R1723[saturday]
+|                                                  |--(case)--> on
+|--(nmod:t)--> R1723[night]
+|--(advcl)--> *R1715[retain]
+|                |--(mark)--> to
+|                |--(dobj)--> R1735[titles]
+|                                 |--(det)--> the
+|                                 |--(compou)--> R1718[ibf]
+|                                 |                |--(punct)--> ,
+|                                 |                |--(conj)--> R1736[wbo]
+|                                 |                |--(cc)--> and
+|                                 |                |--(conj)--> R1737[ibo]
+|                                 |--(compou)--> world
+|                                 |--(amod)--> heavyweight
+|--(punct)--> .
+
+	* entity-paths for event['blasted']7_1ecb.xmlsent:14632
+	['blasted --(nsubj)--> Klitschko']
+	['blasted --(dobj)--> Rahman']
+	['blasted --(nmod:tmod)--> night']
+	['blasted --(advcl)--> retain', 'retain --(dobj)--> titles']
+
+	* entity-paths for event['retain']7_1ecb.xmlsent:14632
+	['retain --(dobj)--> titles']

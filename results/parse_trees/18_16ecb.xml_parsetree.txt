@@ -1,0 +1,35 @@
+
+-----------------------------------------
+docid:18_16ecb.xml
+-----------------------------------------
+
+sentence #:a 61-year-old man in canada is charged with first-degree murder in a deadly office christmas party shooting . 
+	[events]:[['murder'], ['party'], ['charged'], ['shooting']]
+	[entities]:[['in', 'canada'], ['man']]
+*R355[charged]
+|--(nsubjp)--> R356[man]
+|                |--(det)--> a
+|                |--(amod)--> 61-year-old
+|                |--(nmod)--> R388[canada]
+|                                 |--(case)--> R388[in]
+|--(auxpas)--> is
+|--(nmod)--> *R357[murder]
+|                |--(case)--> with
+|                |--(amod)--> first-degree
+|                |--(nmod)--> office
+|                                 |--(case)--> in
+|                                 |--(det)--> a
+|                                 |--(amod)--> deadly
+|                                 |--(dep)--> *R366[shooting]
+|                                                  |--(compou)--> christmas
+|                                                  |--(compou)--> *R359[party]
+|--(punct)--> .
+
+	* entity-paths for event['murder']18_16ecb.xmlsent:2365
+
+	* entity-paths for event['party']18_16ecb.xmlsent:2365
+
+	* entity-paths for event['charged']18_16ecb.xmlsent:2365
+	['charged --(nsubjpass)--> man']
+
+	* entity-paths for event['shooting']18_16ecb.xmlsent:2365

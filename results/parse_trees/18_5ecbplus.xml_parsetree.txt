@@ -1,0 +1,101 @@
+
+-----------------------------------------
+docid:18_5ecbplus.xml
+-----------------------------------------
+
+sentence #:an accounting firm employee who was fired last week shot and killed a woman and wounded two men monday at the suburban detroit building where he worked , then led officers on a high - speed chase , police said . 
+	[events]:[['said'], ['worked'], ['fired'], ['shot'], ['chase'], ['killed'], ['wounded']]
+	[entities]:[['employee'], ['last', 'week'], ['woman'], ['monday'], ['men'], ['at', 'the', 'suburban', 'detroit', 'building'], ['officers'], ['where'], ['he'], ['police']]
+*R390[said]
+|--(ccomp)--> led
+|                |--(nsubj)--> R360[employee]
+|                |                |--(det)--> an
+|                |                |--(compou)--> accounting
+|                |                |--(compou)--> firm
+|                |                |--(acl:re)--> *R363[fired]
+|                |                                 |--(nsubjp)--> who
+|                |                                 |--(auxpas)--> was
+|                |                                 |--(dobj)--> *R361[shot]
+|                |                                 |                |--(amod)--> R364[last]
+|                |                                 |                |--(compou)--> R364[week]
+|                |                                 |--(cc)--> and
+|                |                                 |--(conj)--> *R373[killed]
+|                |                                 |                |--(dobj)--> R374[woman]
+|                |                                 |                                 |--(det)--> a
+|                |                                 |--(cc)--> and
+|                |                                 |--(conj)--> *R391[wounded]
+|                |                                                  |--(dobj)--> R392[men]
+|                |                                                  |                |--(nummod)--> two
+|                |                                                  |--(nmod:t)--> R379[monday]
+|                |                                                  |--(nmod)--> R375[building]
+|                |                                                                   |--(case)--> R375[at]
+|                |                                                                   |--(det)--> R375[the]
+|                |                                                                   |--(amod)--> R375[suburban]
+|                |                                                                   |--(compou)--> R375[detroit]
+|                |                                                                   |--(acl:re)--> *R394[worked]
+|                |                                                                                    |--(advmod)--> R375[where]
+|                |                                                                                    |--(nsubj)--> R360[he]
+|                |                                                                                    |--(punct)--> ,
+|                |                                                                                    |--(advmod)--> then
+|                |--(dobj)--> R396[officers]
+|                |--(nmod)--> *R376[chase]
+|                                 |--(case)--> on
+|                                 |--(det)--> a
+|                                 |--(amod)--> high
+|                                 |--(punct)--> -
+|                                 |--(compou)--> speed
+|--(punct)--> ,
+|--(nsubj)--> R393[police]
+|--(punct)--> .
+
+	* entity-paths for event['said']18_5ecbplus.xmlsent:2541
+	['said --(ccomp)--> led', 'led --(nsubj)--> employee']
+	['said --(ccomp)--> led', 'led --(dobj)--> officers']
+	['said --(nsubj)--> police']
+
+	* entity-paths for event['worked']18_5ecbplus.xmlsent:2541
+	['worked --(advmod)--> where']
+	['worked --(nsubj)--> he']
+
+	* entity-paths for event['fired']18_5ecbplus.xmlsent:2541
+	['fired --(dobj)--> shot', 'shot --(amod)--> last']
+	['fired --(dobj)--> shot', 'shot --(compound)--> week']
+	['fired --(conj)--> killed', 'killed --(dobj)--> woman']
+	['fired --(conj)--> wounded', 'wounded --(dobj)--> men']
+	['fired --(conj)--> wounded', 'wounded --(nmod:tmod)--> Monday']
+	['fired --(conj)--> wounded', 'wounded --(nmod)--> building']
+
+	* entity-paths for event['shot']18_5ecbplus.xmlsent:2541
+	['shot --(amod)--> last']
+	['shot --(compound)--> week']
+
+	* entity-paths for event['chase']18_5ecbplus.xmlsent:2541
+
+	* entity-paths for event['killed']18_5ecbplus.xmlsent:2541
+	['killed --(dobj)--> woman']
+
+	* entity-paths for event['wounded']18_5ecbplus.xmlsent:2541
+	['wounded --(dobj)--> men']
+	['wounded --(nmod:tmod)--> Monday']
+	['wounded --(nmod)--> building']
+
+sentence #:gunman kills 1 , wounds 2 at accounting office 
+	[events]:[['kills'], ['wounds']]
+	[entities]:[['2'], ['1'], ['gunman'], ['at', 'accounting', 'office']]
+*R373[kills]
+|--(nsubj)--> R360[gunman]
+|--(dobj)--> R374[1]
+                 |--(punct)--> ,
+                 |--(appos)--> *R391[wounds]
+                                  |--(nummod)--> R392[2]
+                                  |--(nmod)--> R375[office]
+                                                   |--(case)--> R375[at]
+                                                   |--(compou)--> R375[accounting]
+
+	* entity-paths for event['kills']18_5ecbplus.xmlsent:2539
+	['kills --(nsubj)--> Gunman']
+	['kills --(dobj)--> 1']
+
+	* entity-paths for event['wounds']18_5ecbplus.xmlsent:2539
+	['wounds --(nummod)--> 2']
+	['wounds --(nmod)--> office']

@@ -1,0 +1,129 @@
+
+-----------------------------------------
+docid:45_11ecbplus.xml
+-----------------------------------------
+
+sentence #:the jury deliberated almost seven hours thursday before convicting 27 - year - old christopher kenyon simpson in the death of 20 - year - old ka'loni flynn of fort smith , ark . 
+	[events]:[['deliberated'], ['death'], ['convicting']]
+	[entities]:[["ka'loni", 'flynn'], ['thursday'], ['seven', 'hours'], ['of', 'fort', 'smith', ',', 'ark'], ['jury'], ['christopher', 'kenyon', 'simpson']]
+*R1613[deliberated]
+|--(nsubj)--> R1609[jury]
+|                |--(det)--> the
+|--(dobj)--> R1614[hours]
+|                |--(nummod)--> R1614[seven]
+|                                 |--(advmod)--> almost
+|--(nmod:t)--> R1615[thursday]
+|--(advcl)--> *R1608[convicting]
+|                |--(mark)--> before
+|                |--(dobj)--> 27
+|                                 |--(punct)--> -
+|                                 |--(dep)--> year
+|                                 |--(punct)--> -
+|                                 |--(dep)--> R1610[simpson]
+|                                 |                |--(amod)--> old
+|                                 |                |--(compou)--> R1610[christopher]
+|                                 |                |--(compou)--> R1610[kenyon]
+|                                 |                |--(nmod)--> *R1611[death]
+|                                 |                                 |--(case)--> in
+|                                 |                                 |--(det)--> the
+|                                 |                                 |--(nmod)--> 20
+|                                 |                                                  |--(case)--> of
+|                                 |--(punct)--> -
+|                                 |--(dep)--> year
+|                                 |--(punct)--> -
+|                                 |--(dep)--> R1612[ka'loni]
+|                                 |                |--(amod)--> old
+|                                 |                |--(compou)--> R1612[ka'loni]
+|                                 |                |--(punct)--> R1612[ka'loni]
+|                                 |                |--(dep)--> R1612[flynn]
+|                                 |                                 |--(nmod)--> R1616[smith]
+|                                 |                                                  |--(case)--> R1616[of]
+|                                 |                                                  |--(compou)--> R1616[fort]
+|                                 |--(punct)--> R1616[,]
+|                                 |--(appos)--> R1616[ark]
+|--(punct)--> .
+
+	* entity-paths for event['deliberated']45_11ecbplus.xmlsent:13760
+	['deliberated --(nsubj)--> jury']
+	['deliberated --(dobj)--> hours']
+	['deliberated --(nmod:tmod)--> Thursday']
+	['deliberated --(advcl)--> convicting', 'convicting --(dobj)--> 27', '27 --(dep)--> Simpson']
+	['deliberated --(advcl)--> convicting', 'convicting --(dobj)--> 27', '27 --(dep)--> loni']
+	['deliberated --(advcl)--> convicting', 'convicting --(dobj)--> 27', '27 --(punct)--> ,']
+	['deliberated --(advcl)--> convicting', 'convicting --(dobj)--> 27', '27 --(appos)--> Ark']
+
+	* entity-paths for event['death']45_11ecbplus.xmlsent:13760
+
+	* entity-paths for event['convicting']45_11ecbplus.xmlsent:13760
+	['convicting --(dobj)--> 27', '27 --(dep)--> Simpson']
+	['convicting --(dobj)--> 27', '27 --(dep)--> loni']
+	['convicting --(dobj)--> 27', '27 --(punct)--> ,']
+	['convicting --(dobj)--> 27', '27 --(appos)--> Ark']
+
+sentence #:a jury in eastern oklahoma has convicted a spiro man of two counts of first - degree murder in the 2012 shooting death of his pregnant girlfriend . 
+	[events]:[['pregnant'], ['convicted'], ['shooting', 'death'], ['first', '-', 'degree', 'murder']]
+	[entities]:[['two', 'counts'], ['girlfriend'], ['spiro', 'man'], ['2012'], ['in', 'eastern', 'oklahoma'], ['jury']]
+*R1608[convicted]
+|--(nsubj)--> R1609[jury]
+|                |--(det)--> a
+|                |--(nmod)--> R1617[oklahoma]
+|                                 |--(case)--> R1617[in]
+|                                 |--(amod)--> R1617[eastern]
+|--(aux)--> has
+|--(dobj)--> R1610[man]
+|                |--(det)--> a
+|                |--(compou)--> R1610[spiro]
+|                |--(nmod)--> R1618[counts]
+|                |                |--(case)--> of
+|                |                |--(nummod)--> R1618[two]
+|                |                |--(nmod)--> *R1619[first]
+|                |                                 |--(case)--> of
+|                |--(punct)--> *R1619[-]
+|                |--(dep)--> *R1619[murder]
+|                                 |--(compou)--> *R1619[degree]
+|                                 |--(nmod)--> *R1611[death]
+|                                                  |--(case)--> in
+|                                                  |--(det)--> the
+|                                                  |--(nummod)--> R1620[2012]
+|                                                  |--(compou)--> *R1611[shooting]
+|                                                  |--(nmod)--> R1612[girlfriend]
+|                                                                   |--(case)--> of
+|                                                                   |--(nmod:p)--> his
+|                                                                   |--(amod)--> *R1621[pregnant]
+|--(punct)--> .
+
+	* entity-paths for event['pregnant']45_11ecbplus.xmlsent:13759
+
+	* entity-paths for event['convicted']45_11ecbplus.xmlsent:13759
+	['convicted --(nsubj)--> jury']
+	['convicted --(dobj)--> man']
+
+	* entity-paths for event['shooting', 'death']45_11ecbplus.xmlsent:13759
+	['death --(nummod)--> 2012']
+	['death --(nmod)--> girlfriend']
+
+	* entity-paths for event['first', '-', 'degree', 'murder']45_11ecbplus.xmlsent:13759
+	['murder --(nmod)--> death', 'death --(nummod)--> 2012']
+	['murder --(nmod)--> death', 'death --(nmod)--> girlfriend']
+
+sentence #:jury convicts spiro man in shooting death of pregnant girlfriend 
+	[events]:[['convicts'], ['pregnant'], ['shooting', 'death']]
+	[entities]:[['jury'], ['girlfriend'], ['spiro', 'man']]
+*R1608[convicts]
+|--(compou)--> R1609[jury]
+|--(dep)--> R1610[man]
+                 |--(compou)--> R1610[spiro]
+                 |--(acl:re)--> R1612[girlfriend]
+                                  |--(nmod)--> *R1611[death]
+                                  |                |--(case)--> in
+                                  |                |--(compou)--> *R1611[shooting]
+                                  |--(case)--> of
+                                  |--(amod)--> *R1621[pregnant]
+
+	* entity-paths for event['convicts']45_11ecbplus.xmlsent:13756
+	['Convicts --(compound)--> Jury']
+	['Convicts --(dep)--> Man']
+
+	* entity-paths for event['pregnant']45_11ecbplus.xmlsent:13756
+
+	* entity-paths for event['shooting', 'death']45_11ecbplus.xmlsent:13756

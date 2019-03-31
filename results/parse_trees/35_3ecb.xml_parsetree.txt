@@ -1,0 +1,109 @@
+
+-----------------------------------------
+docid:35_3ecb.xml
+-----------------------------------------
+
+sentence #:san diego chargers receiver vincent jackson was arrested on suspicion of drunk driving on tuesday morning , five days before a key nfl playoff game . 
+	[events]:[['game'], ['suspicion'], ['arrested'], ['drunk', 'driving']]
+	[entities]:[['vincent', 'jackson'], ['on', 'tuesday', 'morning']]
+*R1153[arrested]
+|--(nsubjp)--> R1156[jackson]
+|                |--(compou)--> san
+|                |--(compou)--> diego
+|                |--(compou)--> chargers
+|                |--(compou)--> receiver
+|                |--(compou)--> R1156[vincent]
+|--(auxpas)--> was
+|--(nmod)--> *R1155[suspicion]
+|                |--(case)--> on
+|                |--(nmod)--> *R1154[driving]
+|                                 |--(case)--> of
+|                                 |--(amod)--> *R1154[drunk]
+|--(nmod)--> R1159[tuesday]
+|                |--(case)--> R1159[on]
+|--(nmod:t)--> R1159[morning]
+|--(punct)--> ,
+|--(nmod)--> days
+|                |--(nummod)--> five
+|                |--(case)--> before
+|                |--(dep)--> *R1174[game]
+|                                 |--(det)--> a
+|                                 |--(amod)--> key
+|                                 |--(compou)--> nfl
+|                                 |--(compou)--> playoff
+|--(punct)--> .
+
+	* entity-paths for event['game']35_3ecb.xmlsent:9696
+
+	* entity-paths for event['suspicion']35_3ecb.xmlsent:9696
+
+	* entity-paths for event['arrested']35_3ecb.xmlsent:9696
+	['arrested --(nsubjpass)--> Jackson']
+	['arrested --(nmod)--> Tuesday']
+	['arrested --(nmod:tmod)--> morning']
+
+	* entity-paths for event['drunk', 'driving']35_3ecb.xmlsent:9696
+
+sentence #:police apprehended jackson at about 2:30 a.m. and booked him for the misdemeanour before his release , making for a long night with a playoff looming on sunday at pittsburgh against the steelers 
+	[events]:[['misdemeanour'], ['apprehended'], ['playoff']]
+	[entities]:[['at', 'about', '2:30', 'a.m.'], ['at', 'pittsburgh'], ['on', 'sunday'], ['his'], ['jackson'], ['him']]
+*R1153[apprehended]
+|--(nsubj)--> police
+|--(dobj)--> R1156[jackson]
+|--(nmod)--> R1159[a.m.]
+|                |--(case)--> R1159[at]
+|                |--(case)--> R1159[about]
+|                |--(nummod)--> R1159[2:30]
+|--(cc)--> and
+|--(conj)--> booked
+                 |--(dobj)--> R1156[him]
+                 |--(nmod)--> *R1154[misdemeanour]
+                 |                |--(case)--> for
+                 |                |--(det)--> the
+                 |--(nmod)--> release
+                 |                |--(case)--> before
+                 |                |--(nmod:p)--> R1156[his]
+                 |--(punct)--> ,
+                 |--(dep)--> making
+                                  |--(nmod)--> night
+                                  |                |--(case)--> for
+                                  |                |--(det)--> a
+                                  |                |--(amod)--> long
+                                  |--(nmod)--> *R1174[playoff]
+                                                   |--(case)--> with
+                                                   |--(det)--> a
+                                                   |--(acl)--> looming
+                                                                    |--(nmod)--> R1178[sunday]
+                                                                    |                |--(case)--> R1178[on]
+                                                                    |--(nmod)--> R1175[pittsburgh]
+                                                                                     |--(case)--> R1175[at]
+                                                                                     |--(nmod)--> steelers
+                                                                                                      |--(case)--> against
+                                                                                                      |--(det)--> the
+
+	* entity-paths for event['misdemeanour']35_3ecb.xmlsent:9697
+
+	* entity-paths for event['apprehended']35_3ecb.xmlsent:9697
+	['apprehended --(dobj)--> Jackson']
+	['apprehended --(nmod)--> a.m.']
+	['apprehended --(conj)--> booked', 'booked --(dobj)--> him']
+	['apprehended --(conj)--> booked', 'booked --(nmod)--> release', 'release --(nmod:poss)--> his']
+	['apprehended --(conj)--> booked', 'booked --(dep)--> making', 'making --(nmod)--> playoff', 'playoff --(acl)--> looming', 'looming --(nmod)--> Sunday']
+	['apprehended --(conj)--> booked', 'booked --(dep)--> making', 'making --(nmod)--> playoff', 'playoff --(acl)--> looming', 'looming --(nmod)--> Pittsburgh']
+
+	* entity-paths for event['playoff']35_3ecb.xmlsent:9697
+	['playoff --(acl)--> looming', 'looming --(nmod)--> Sunday']
+	['playoff --(acl)--> looming', 'looming --(nmod)--> Pittsburgh']
+
+sentence #:chargers receiver arrested for dui 
+	[events]:[['arrested'], ['dui']]
+	[entities]:[['receiver']]
+R1156[receiver]
+|--(nsubj)--> chargers
+|--(dep)--> *R1153[arrested]
+                 |--(nmod)--> *R1154[dui]
+                                  |--(case)--> for
+
+	* entity-paths for event['arrested']35_3ecb.xmlsent:9695
+
+	* entity-paths for event['dui']35_3ecb.xmlsent:9695

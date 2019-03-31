@@ -1,0 +1,70 @@
+
+-----------------------------------------
+docid:12_5ecbplus.xml
+-----------------------------------------
+
+sentence #:indian naval ship sukanya , deployed on anti - piracy patrols in the gulf of aden under the operational control of the western naval command , thwarted a multiple - boat attack by pirates on thursday and rescued 26 somali crewmembers . 
+	[events]:[['thwarted'], ['attack'], ['rescued'], ['deployed'], ['patrols'], ['under', 'control']]
+	[entities]:[['on', 'thursday'], ['pirates'], ['sukanya'], ['in', 'the', 'gulf', 'of', 'aden'], ['western', 'naval', 'command']]
+*R217[thwarted]
+|--(nsubj)--> R222[sukanya]
+|                |--(amod)--> indian
+|                |--(compou)--> naval
+|                |--(compou)--> ship
+|                |--(punct)--> ,
+|                |--(acl)--> *R255[deployed]
+|                |                |--(nmod)--> anti
+|                |                |                |--(case)--> on
+|                |                |                |--(punct)--> -
+|                |                |                |--(dep)--> *R243[patrols]
+|                |                |                                 |--(compou)--> piracy
+|                |                |                                 |--(nmod)--> R229[gulf]
+|                |                |                                                  |--(case)--> R229[in]
+|                |                |                                                  |--(det)--> R229[the]
+|                |                |                                                  |--(nmod)--> R229[aden]
+|                |                |                                                                   |--(case)--> R229[of]
+|                |                |--(nmod)--> *R256[control]
+|                |                                 |--(case)--> *R256[under]
+|                |                                 |--(det)--> the
+|                |                                 |--(amod)--> operational
+|                |                                 |--(nmod)--> R257[command]
+|                |                                                  |--(case)--> of
+|                |                                                  |--(det)--> the
+|                |                                                  |--(amod)--> R257[western]
+|                |                                                  |--(compou)--> R257[naval]
+|                |--(punct)--> ,
+|--(nmod)--> *R218[attack]
+|                |--(det)--> a
+|                |--(amod)--> multiple
+|                |--(punct)--> -
+|                |--(compou)--> boat
+|                |--(case)--> by
+|                |--(dep)--> R242[pirates]
+|--(nmod)--> R231[thursday]
+|                |--(case)--> R231[on]
+|--(cc)--> and
+|--(conj)--> *R258[rescued]
+|                |--(dobj)--> crewmembers
+|                                 |--(nummod)--> 26
+|                                 |--(amod)--> somali
+|--(punct)--> .
+
+	* entity-paths for event['thwarted']12_5ecbplus.xmlsent:1026
+	['thwarted --(nsubj)--> Sukanya']
+	['thwarted --(nmod)--> attack', 'attack --(dep)--> pirates']
+	['thwarted --(nmod)--> Thursday']
+
+	* entity-paths for event['attack']12_5ecbplus.xmlsent:1026
+	['attack --(dep)--> pirates']
+
+	* entity-paths for event['rescued']12_5ecbplus.xmlsent:1026
+
+	* entity-paths for event['deployed']12_5ecbplus.xmlsent:1026
+	['deployed --(nmod)--> anti', 'anti --(dep)--> patrols', 'patrols --(nmod)--> Gulf']
+	['deployed --(nmod)--> control', 'control --(nmod)--> Command']
+
+	* entity-paths for event['patrols']12_5ecbplus.xmlsent:1026
+	['patrols --(nmod)--> Gulf']
+
+	* entity-paths for event['under', 'control']12_5ecbplus.xmlsent:1026
+	['control --(nmod)--> Command']

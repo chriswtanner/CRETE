@@ -1,0 +1,51 @@
+
+-----------------------------------------
+docid:41_3ecbplus.xml
+-----------------------------------------
+
+sentence #:south sudanese officials have condemned sudan after an aerial bombardment of a refugee camp in their territory . 
+	[events]:[['bombardment'], ['condemned']]
+	[entities]:[['refugee', 'camp', 'in', 'their', 'territory'], ['sudan'], ['south', 'sudanese', 'officials']]
+*R1488[condemned]
+|--(nsubj)--> R1458[officials]
+|                |--(compou)--> R1458[south]
+|                |--(compou)--> R1458[sudanese]
+|--(aux)--> have
+|--(dobj)--> R1443[sudan]
+|--(nmod)--> *R1442[bombardment]
+|                |--(case)--> after
+|                |--(det)--> an
+|                |--(amod)--> aerial
+|                |--(nmod)--> R1444[camp]
+|                                 |--(case)--> of
+|                                 |--(det)--> a
+|                                 |--(compou)--> R1444[refugee]
+|                                 |--(nmod)--> R1444[territory]
+|                                                  |--(case)--> R1444[in]
+|                                                  |--(nmod:p)--> R1444[their]
+|--(punct)--> .
+
+	* entity-paths for event['bombardment']41_3ecbplus.xmlsent:12210
+	['bombardment --(nmod)--> camp']
+
+	* entity-paths for event['condemned']41_3ecbplus.xmlsent:12210
+	['condemned --(nsubj)--> officials']
+	['condemned --(dobj)--> Sudan']
+	['condemned --(nmod)--> bombardment', 'bombardment --(nmod)--> camp']
+
+sentence #:sudan 'bombs refugees' in south sudan's unity state 
+	[events]:[["'bombs"]]
+	[entities]:[["refugees'"], ['sudan'], ['in', 'south', "sudan's", 'unity', 'state']]
+R1443[sudan]
+|--(punct)--> *R1442['bombs]
+|--(dep)--> *R1442['bombs]
+|--(dep)--> R1457[refugees']
+                 |--(case)--> R1457[refugees']
+                 |--(nmod)--> R1460[state]
+                                  |--(case)--> R1460[in]
+                                  |--(nmod:p)--> R1460[sudan's]
+                                  |                |--(compou)--> R1460[south]
+                                  |                |--(case)--> R1460[sudan's]
+                                  |--(compou)--> R1460[unity]
+
+	* entity-paths for event["'bombs"]41_3ecbplus.xmlsent:12209

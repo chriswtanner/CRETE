@@ -1,0 +1,135 @@
+
+-----------------------------------------
+docid:3_10ecbplus.xml
+-----------------------------------------
+
+sentence #:a convicted sex offender who was the subject of a weeklong manhunt after pulling off a daring escape during a prison transfer was captured monday after authorities received several phone tips , including one from a salesman who recognized the inmate outside his business . 
+	[events]:[['captured'], ['escape'], ['tips'], ['transfer'], ['manhunt']]
+	[entities]:[['subject'], ['offender'], ['a', 'weeklong'], ['who'], ['inmate']]
+*R889[captured]
+|--(nsubjp)--> R890[offender]
+|                |--(det)--> a
+|                |--(amod)--> convicted
+|                |--(compou)--> sex
+|                |--(acl:re)--> R890[subject]
+|                                 |--(nsubj)--> R890[who]
+|                                 |--(cop)--> was
+|                                 |--(det)--> the
+|                                 |--(nmod)--> *R891[manhunt]
+|                                 |                |--(case)--> of
+|                                 |                |--(det)--> R892[a]
+|                                 |                |--(compou)--> R892[weeklong]
+|                                 |--(advcl)--> pulling
+|                                                  |--(mark)--> after
+|                                                  |--(compou)--> off
+|                                                  |--(dobj)--> *R893[escape]
+|                                                  |                |--(det)--> a
+|                                                  |                |--(amod)--> daring
+|                                                  |--(nmod)--> *R894[transfer]
+|                                                                   |--(case)--> during
+|                                                                   |--(det)--> a
+|                                                                   |--(compou)--> prison
+|--(auxpas)--> was
+|--(nmod:t)--> monday
+|--(advcl)--> received
+|                |--(mark)--> after
+|                |--(nsubj)--> authorities
+|                |--(dobj)--> *R895[tips]
+|                |                |--(amod)--> several
+|                |                |--(compou)--> phone
+|                |--(punct)--> ,
+|                |--(nmod)--> one
+|                                 |--(case)--> including
+|                                 |--(nmod)--> salesman
+|                                                  |--(case)--> from
+|                                                  |--(det)--> a
+|                                                  |--(acl:re)--> recognized
+|                                                                   |--(nsubj)--> who
+|                                                                   |--(dobj)--> R890[inmate]
+|                                                                   |                |--(det)--> the
+|                                                                   |--(nmod)--> business
+|                                                                                    |--(case)--> outside
+|                                                                                    |--(nmod:p)--> his
+|--(punct)--> .
+
+	* entity-paths for event['captured']3_10ecbplus.xmlsent:7349
+	['captured --(nsubjpass)--> offender']
+	['captured --(advcl)--> received', 'received --(nmod)--> one', 'one --(nmod)--> salesman', 'salesman --(acl:relcl)--> recognized', 'recognized --(dobj)--> inmate']
+
+	* entity-paths for event['escape']3_10ecbplus.xmlsent:7349
+
+	* entity-paths for event['tips']3_10ecbplus.xmlsent:7349
+
+	* entity-paths for event['transfer']3_10ecbplus.xmlsent:7349
+
+	* entity-paths for event['manhunt']3_10ecbplus.xmlsent:7349
+	['manhunt --(det)--> a']
+	['manhunt --(compound)--> weeklong']
+
+sentence #:a hungry , wet and barefoot arcade joseph comeaux jr . was caught in northeast houston , about 25 miles northwest of where he escaped , said alfredo perez , a spokesman for the u . s . marshals service . 
+	[events]:[['escaped'], ['caught']]
+	[entities]:[['arcade', 'joseph', 'comeaux', 'jr'], ['he']]
+said
+|--(ccomp)--> *R889[caught]
+|                |--(nsubjp)--> wet
+|                |                |--(det)--> a
+|                |                |--(amod)--> hungry
+|                |                |--(punct)--> ,
+|                |                |--(cc)--> and
+|                |                |--(conj)--> R890[jr]
+|                |                                 |--(amod)--> barefoot
+|                |                                 |--(compou)--> R890[arcade]
+|                |                                 |--(compou)--> R890[joseph]
+|                |                                 |--(compou)--> R890[comeaux]
+|                |                                 |--(punct)--> .
+|                |--(auxpas)--> was
+|                |--(nmod)--> houston
+|                |                |--(case)--> in
+|                |                |--(amod)--> northeast
+|                |--(punct)--> ,
+|                |--(nmod)--> miles
+|                                 |--(case)--> about
+|                                 |--(nummod)--> 25
+|                                 |--(advmod)--> northwest
+|                                                  |--(advcl)--> *R893[escaped]
+|                                                                   |--(mark)--> of
+|                                                                   |--(advmod)--> where
+|                                                                   |--(nsubj)--> R890[he]
+|--(punct)--> ,
+|--(nsubj)--> perez
+|                |--(compou)--> alfredo
+|                |--(punct)--> ,
+|                |--(appos)--> spokesman
+|                                 |--(det)--> a
+|                                 |--(nmod)--> u
+|                                 |                |--(case)--> for
+|                                 |                |--(det)--> the
+|                                 |--(punct)--> .
+|                                 |--(dep)--> s
+|                                 |--(punct)--> .
+|                                 |--(dep)--> service
+|                                                  |--(compou)--> marshals
+|--(punct)--> .
+
+	* entity-paths for event['escaped']3_10ecbplus.xmlsent:7350
+	['escaped --(nsubj)--> he']
+
+	* entity-paths for event['caught']3_10ecbplus.xmlsent:7350
+	['caught --(nsubjpass)--> wet', 'wet --(conj)--> Jr']
+	['caught --(nmod)--> miles', 'miles --(advmod)--> northwest', 'northwest --(advcl)--> escaped', 'escaped --(nsubj)--> he']
+
+sentence #:texas prisoner captured after week on the run 
+	[events]:[['captured']]
+	[entities]:[['prisoner'], ['after', 'week']]
+*R889[captured]
+|--(nsubj)--> R890[prisoner]
+|                |--(compou)--> texas
+|--(nmod)--> R892[week]
+                 |--(case)--> R892[after]
+                 |--(nmod)--> run
+                                  |--(case)--> on
+                                  |--(det)--> the
+
+	* entity-paths for event['captured']3_10ecbplus.xmlsent:7347
+	['captured --(nsubj)--> prisoner']
+	['captured --(nmod)--> week']

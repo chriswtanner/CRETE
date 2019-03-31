@@ -1,0 +1,89 @@
+
+-----------------------------------------
+docid:31_1ecbplus.xml
+-----------------------------------------
+
+sentence #:with a first - half free throw , junior forward doug mcdermott scored his 11th point of the bluejays " valley tournament opener and passed rodney buford to become the school " s all - time scoring leader with 2 , 117 points . 
+	[events]:[['opener'], ['valley', 'tournament'], ['become'], ['throw'], ['passed']]
+	[entities]:[['doug', 'mcdermott'], ['2', ',', '117', 'points'], ['scoring', 'leader'], ['rodney', 'buford'], ['bluejays']]
+*R1019[throw]
+|--(nmod)--> first
+|                |--(case)--> with
+|                |--(det)--> a
+|--(punct)--> -
+|--(nsubj)--> free
+|                |--(amod)--> half
+|--(parata)--> scored
+|                |--(punct)--> ,
+|                |--(nsubj)--> R1001[mcdermott]
+|                |                |--(dep)--> junior
+|                |                |                |--(dep)--> forward
+|                |                |--(compou)--> R1001[doug]
+|                |--(dobj)--> point
+|                |                |--(nmod:p)--> his
+|                |                |--(amod)--> 11th
+|                |                |--(nmod)--> R1003[bluejays]
+|                |                |                |--(case)--> of
+|                |                |                |--(det)--> the
+|                |                |--(punct)--> "
+|                |                |--(dep)--> *R1004[valley]
+|                |                                 |--(dep)--> *R1017[opener]
+|                |                                                  |--(compou)--> *R1004[tournament]
+|                |--(cc)--> and
+|                |--(conj)--> *R1020[passed]
+|                |                |--(dobj)--> R1021[buford]
+|                |                |                |--(compou)--> R1021[rodney]
+|                |                |--(xcomp)--> *R1013[become]
+|                |                                 |--(mark)--> to
+|                |                                 |--(xcomp)--> school
+|                |                                                  |--(det)--> the
+|                |                                                  |--(punct)--> "
+|                |                                                  |--(acl:re)--> all
+|                |                                                                   |--(cop)--> s
+|                |                                                                   |--(punct)--> -
+|                |                                                                   |--(dep)--> R1001[leader]
+|                |                                                                                    |--(compou)--> time
+|                |                                                                                    |--(amod)--> R1001[scoring]
+|                |                                                                                    |--(nmod)--> R1022[2]
+|                |                                                                                                     |--(case)--> with
+|                |--(punct)--> R1022[,]
+|--(dobj)--> R1022[points]
+|                |--(nummod)--> R1022[117]
+|--(punct)--> .
+
+	* entity-paths for event['opener']31_1ecbplus.xmlsent:8275
+
+	* entity-paths for event['valley', 'tournament']31_1ecbplus.xmlsent:8275
+
+	* entity-paths for event['become']31_1ecbplus.xmlsent:8275
+	['become --(xcomp)--> school', 'school --(acl:relcl)--> all', 'all --(dep)--> leader']
+
+	* entity-paths for event['throw']31_1ecbplus.xmlsent:8275
+	['throw --(parataxis)--> scored', 'scored --(nsubj)--> McDermott']
+	['throw --(parataxis)--> scored', 'scored --(dobj)--> point', 'point --(nmod)--> Bluejays']
+	['throw --(parataxis)--> scored', 'scored --(conj)--> passed', 'passed --(dobj)--> Buford']
+	['throw --(parataxis)--> scored', 'scored --(conj)--> passed', 'passed --(xcomp)--> become', 'become --(xcomp)--> school', 'school --(acl:relcl)--> all', 'all --(dep)--> leader']
+	['throw --(parataxis)--> scored', 'scored --(punct)--> ,']
+	['throw --(dobj)--> points']
+
+	* entity-paths for event['passed']31_1ecbplus.xmlsent:8275
+	['passed --(dobj)--> Buford']
+	['passed --(xcomp)--> become', 'become --(xcomp)--> school', 'school --(acl:relcl)--> all', 'all --(dep)--> leader']
+
+sentence #:mcdermott becomes cu " s all - time scoring leader 
+	[events]:[['becomes']]
+	[entities]:[['scoring', 'leader'], ['cu'], ['mcdermott']]
+*R1013[becomes]
+|--(nsubj)--> R1001[mcdermott]
+|--(xcomp)--> R1003[cu]
+                 |--(punct)--> "
+                 |--(acl:re)--> all
+                                  |--(cop)--> s
+                                  |--(punct)--> -
+                                  |--(parata)--> R1001[leader]
+                                                   |--(nsubj)--> time
+                                                   |--(amod)--> R1001[scoring]
+
+	* entity-paths for event['becomes']31_1ecbplus.xmlsent:8274
+	['becomes --(nsubj)--> McDermott']
+	['becomes --(xcomp)--> CU']

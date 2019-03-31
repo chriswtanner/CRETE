@@ -1,0 +1,65 @@
+
+-----------------------------------------
+docid:25_7ecb.xml
+-----------------------------------------
+
+sentence #:the new orleans saints placed running back reggie bush on injured reserve wednesday , ending the former first-round picks season two games short of the year 's finale with a sprained medial collateral ligament in his left knee . 
+	[events]:[['placed'], ['injured', 'reserve'], ['games'], ['ending'], ['sprained']]
+	[entities]:[['knee'], ['new', 'orleans', 'saints'], ['wednesday'], ['reggie', 'bush'], ['season']]
+*R711[placed]
+|--(nsubj)--> R706[saints]
+|                |--(det)--> the
+|                |--(compou)--> R706[new]
+|                |--(compou)--> R706[orleans]
+|--(xcomp)--> running
+|                |--(compou)--> back
+|                |--(dobj)--> R707[bush]
+|                                 |--(compou)--> R707[reggie]
+|                                 |--(nmod)--> *R712[reserve]
+|                                                  |--(case)--> on
+|                                                  |--(compou)--> *R712[injured]
+|--(nmod:t)--> R721[wednesday]
+|--(punct)--> ,
+|--(advcl)--> *R722[ending]
+|                |--(dobj)--> R708[season]
+|                |                |--(det)--> the
+|                |                |--(amod)--> former
+|                |                |--(amod)--> first-round
+|                |                |--(compou)--> picks
+|                |                |--(amod)--> short
+|                |                |                |--(nmod:n)--> *R718[games]
+|                |                |                                 |--(nummod)--> two
+|                |                |--(nmod)--> finale
+|                |                                 |--(case)--> of
+|                |                                 |--(nmod:p)--> year
+|                |                                                  |--(det)--> the
+|                |                                                  |--(case)--> 's
+|                |--(nmod)--> a
+|                                 |--(case)--> with
+|                                 |--(acl)--> *R720[sprained]
+|                                                  |--(dobj)--> ligament
+|                                                                   |--(amod)--> medial
+|                                                                   |--(compou)--> collateral
+|                                                                   |--(nmod)--> R719[knee]
+|                                                                                    |--(case)--> in
+|                                                                                    |--(nmod:p)--> his
+|                                                                                    |--(amod)--> left
+|--(punct)--> .
+
+	* entity-paths for event['placed']25_7ecb.xmlsent:5183
+	['placed --(nsubj)--> Saints']
+	['placed --(xcomp)--> running', 'running --(dobj)--> Bush']
+	['placed --(nmod:tmod)--> Wednesday']
+	['placed --(advcl)--> ending', 'ending --(dobj)--> season']
+	['placed --(advcl)--> ending', 'ending --(nmod)--> a', 'a --(acl)--> sprained', 'sprained --(dobj)--> ligament', 'ligament --(nmod)--> knee']
+
+	* entity-paths for event['injured', 'reserve']25_7ecb.xmlsent:5183
+
+	* entity-paths for event['games']25_7ecb.xmlsent:5183
+
+	* entity-paths for event['ending']25_7ecb.xmlsent:5183
+	['ending --(dobj)--> season']
+	['ending --(nmod)--> a', 'a --(acl)--> sprained', 'sprained --(dobj)--> ligament', 'ligament --(nmod)--> knee']
+
+	* entity-paths for event['sprained']25_7ecb.xmlsent:5183
+	['sprained --(dobj)--> ligament', 'ligament --(nmod)--> knee']

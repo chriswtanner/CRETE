@@ -1,0 +1,18 @@
+
+-----------------------------------------
+docid:36_9ecb.xml
+-----------------------------------------
+
+sentence #:2 polygamous leaders arrested in canada 
+	[events]:[['arrested']]
+	[entities]:[['leaders'], ['in', 'canada']]
+*R1195[arrested]
+|--(nsubj)--> R1196[leaders]
+|                |--(nummod)--> 2
+|                |--(amod)--> polygamous
+|--(nmod)--> R1198[canada]
+                 |--(case)--> R1198[in]
+
+	* entity-paths for event['arrested']36_9ecb.xmlsent:10366
+	['arrested --(nsubj)--> leaders']
+	['arrested --(nmod)--> Canada']

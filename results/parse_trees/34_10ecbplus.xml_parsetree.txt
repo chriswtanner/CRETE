@@ -1,0 +1,27 @@
+
+-----------------------------------------
+docid:34_10ecbplus.xml
+-----------------------------------------
+
+sentence #:obama nominates new surgeon general : macarthur "genius grant" fellow regina benjamin 
+	[events]:[['nominates']]
+	[entities]:[['obama'], ['macarthur', '"genius', 'grant"', 'fellow', 'regina', 'benjamin'], ['surgeon', 'general']]
+*R1138[nominates]
+|--(dep)--> R1136[obama]
+|--(dobj)--> R1135[general]
+|                |--(amod)--> new
+|                |--(compou)--> R1135[surgeon]
+|                |--(punct)--> :
+|                |--(dep)--> R1139[macarthur]
+|                                 |--(dep)--> R1139[grant"]
+|                                                  |--(punct)--> R1139["genius]
+|                                                  |--(compou)--> R1139["genius]
+|                                                  |--(punct)--> R1139[grant"]
+|--(nsubj)--> R1139[benjamin]
+                 |--(compou)--> R1139[fellow]
+                 |--(compou)--> R1139[regina]
+
+	* entity-paths for event['nominates']34_10ecbplus.xmlsent:9246
+	['nominates --(dep)--> Obama']
+	['nominates --(dobj)--> general']
+	['nominates --(nsubj)--> Benjamin']

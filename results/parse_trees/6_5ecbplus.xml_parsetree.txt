@@ -1,0 +1,24 @@
+
+-----------------------------------------
+docid:6_5ecbplus.xml
+-----------------------------------------
+
+sentence #:'hunger games' director gary ross in tough negotiation for sequel 
+	[events]:[['sequel'], ['negotiation']]
+	[entities]:[["'hunger", "games'"], ['gary', 'ross']]
+R1700['hunger]
+|--(punct)--> R1700['hunger]
+|--(dep)--> R1692[ross]
+                 |--(nmod:p)--> R1700[games']
+                 |                |--(case)--> R1700[games']
+                 |--(compou)--> director
+                 |--(compou)--> R1692[gary]
+                 |--(nmod)--> *R1696[negotiation]
+                                  |--(case)--> in
+                                  |--(amod)--> tough
+                                  |--(nmod)--> *R1701[sequel]
+                                                   |--(case)--> for
+
+	* entity-paths for event['sequel']6_5ecbplus.xmlsent:14473
+
+	* entity-paths for event['negotiation']6_5ecbplus.xmlsent:14473

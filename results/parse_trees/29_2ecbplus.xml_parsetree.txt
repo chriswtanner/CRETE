@@ -1,0 +1,61 @@
+
+-----------------------------------------
+docid:29_2ecbplus.xml
+-----------------------------------------
+
+sentence #:colts clinch playoff berth with 20 - 13 win in k . c . 
+	[events]:[['win'], ['playoff'], ['clinch']]
+	[entities]:[['20', '-', '13'], ['in', 'k', '.', 'c'], ['berth'], ['colts']]
+*R862[clinch]
+|--(nsubj)--> R852[colts]
+|--(ccomp)--> R866[berth]
+|                |--(nsubj)--> *R861[playoff]
+|                |--(nmod)--> R860[20]
+|                                 |--(case)--> with
+|--(punct)--> R860[-]
+|--(parata)--> *R859[win]
+|                |--(nsubj)--> R860[13]
+|                |--(nmod)--> R884[c]
+|                                 |--(case)--> R884[in]
+|                                 |--(compou)--> R884[k]
+|                                 |--(punct)--> R884[.]
+|--(punct)--> .
+
+	* entity-paths for event['win']29_2ecbplus.xmlsent:6919
+	['win --(nsubj)--> 13']
+	['win --(nmod)--> C']
+
+	* entity-paths for event['playoff']29_2ecbplus.xmlsent:6919
+
+	* entity-paths for event['clinch']29_2ecbplus.xmlsent:6919
+	['clinch --(nsubj)--> Colts']
+	['clinch --(ccomp)--> berth']
+	['clinch --(punct)--> -']
+	['clinch --(parataxis)--> win', 'win --(nsubj)--> 13']
+	['clinch --(parataxis)--> win', 'win --(nmod)--> C']
+
+sentence #:it paid off one more time for the game - winning play in week 16 . 
+	[events]:[['winning'], ['game'], ['play']]
+	[entities]:[]
+paid
+|--(nsubj)--> it
+|--(compou)--> off
+|--(dobj)--> time
+|                |--(nummod)--> one
+|                |--(amod)--> more
+|                |--(nmod)--> *R871[game]
+|                |                |--(case)--> for
+|                |                |--(det)--> the
+|                |--(punct)--> -
+|                |--(dep)--> *R867[play]
+|                                 |--(amod)--> *R859[winning]
+|                                 |--(nmod)--> week
+|                                                  |--(case)--> in
+|                                                  |--(nummod)--> 16
+|--(punct)--> .
+
+	* entity-paths for event['winning']29_2ecbplus.xmlsent:6922
+
+	* entity-paths for event['game']29_2ecbplus.xmlsent:6922
+
+	* entity-paths for event['play']29_2ecbplus.xmlsent:6922

@@ -1,0 +1,49 @@
+
+-----------------------------------------
+docid:23_9ecb.xml
+-----------------------------------------
+
+sentence #:an australian climber who survived two nights stuck on mount cook after seeing his brother die also narrowly escaped being buried alive himself . 
+	[events]:[['survived'], ['die'], ['buried'], ['escaped'], ['seeing']]
+	[entities]:[['himself'], ['mount', 'cook'], ['two', 'nights'], ['climber'], ['brother']]
+*R652[escaped]
+|--(dep)--> stuck
+|                |--(nsubj)--> R634[climber]
+|                |                |--(det)--> an
+|                |                |--(amod)--> australian
+|                |                |--(acl:re)--> *R652[survived]
+|                |                                 |--(nsubj)--> who
+|                |                                 |--(nmod:t)--> R653[nights]
+|                |                                                  |--(nummod)--> R653[two]
+|                |--(nmod)--> R639[cook]
+|                |                |--(case)--> on
+|                |                |--(compou)--> R639[mount]
+|                |--(advcl)--> *R636[seeing]
+|                                 |--(mark)--> after
+|                                 |--(ccomp)--> *R654[die]
+|                                                  |--(nsubj)--> R638[brother]
+|                                                  |                |--(nmod:p)--> his
+|                                                  |--(advmod)--> also
+|--(advmod)--> narrowly
+|--(xcomp)--> *R655[buried]
+|                |--(auxpas)--> being
+|                |--(xcomp)--> alive
+|--(nsubj)--> R634[himself]
+|--(punct)--> .
+
+	* entity-paths for event['survived']23_9ecb.xmlsent:4780
+	['survived --(nmod:tmod)--> nights']
+
+	* entity-paths for event['die']23_9ecb.xmlsent:4780
+	['die --(nsubj)--> brother']
+
+	* entity-paths for event['buried']23_9ecb.xmlsent:4780
+
+	* entity-paths for event['escaped']23_9ecb.xmlsent:4780
+	['escaped --(dep)--> stuck', 'stuck --(nsubj)--> climber']
+	['escaped --(dep)--> stuck', 'stuck --(nmod)--> Cook']
+	['escaped --(dep)--> stuck', 'stuck --(advcl)--> seeing', 'seeing --(ccomp)--> die', 'die --(nsubj)--> brother']
+	['escaped --(nsubj)--> himself']
+
+	* entity-paths for event['seeing']23_9ecb.xmlsent:4780
+	['seeing --(ccomp)--> die', 'die --(nsubj)--> brother']

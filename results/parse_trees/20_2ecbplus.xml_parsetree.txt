@@ -1,0 +1,24 @@
+
+-----------------------------------------
+docid:20_2ecbplus.xml
+-----------------------------------------
+
+sentence #:aftershocks jolt iran's qeshm island , death toll rises to 10 
+	[events]:[['aftershocks'], ['death']]
+	[entities]:[['10'], ["iran's", 'qeshm', 'island']]
+jolt
+|--(nsubj)--> *R529[aftershocks]
+|--(ccomp)--> rises
+                 |--(nsubj)--> R515[island]
+                 |                |--(nmod:p)--> R515[iran's]
+                 |                |                |--(case)--> R515[iran's]
+                 |                |--(compou)--> R515[qeshm]
+                 |                |--(punct)--> ,
+                 |                |--(appos)--> toll
+                 |                                 |--(compou)--> *R504[death]
+                 |--(nmod)--> R505[10]
+                                  |--(case)--> to
+
+	* entity-paths for event['aftershocks']20_2ecbplus.xmlsent:3857
+
+	* entity-paths for event['death']20_2ecbplus.xmlsent:3857

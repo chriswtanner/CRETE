@@ -1,0 +1,101 @@
+
+-----------------------------------------
+docid:34_6ecb.xml
+-----------------------------------------
+
+sentence #:cnn 's management confirmed yesterday that dr gupta had been approached by the obama team . 
+	[events]:[['approached'], ['confirmed']]
+	[entities]:[['dr', 'gupta'], ['cnn', "'s", 'management'], ['obama', 'team']]
+*R1143[confirmed]
+|--(nsubj)--> R1144[management]
+|                |--(nmod:p)--> R1144[cnn]
+|                                 |--(case)--> R1144['s]
+|--(nmod:t)--> yesterday
+|--(ccomp)--> *R1132[approached]
+|                |--(mark)--> that
+|                |--(nsubjp)--> R1130[gupta]
+|                |                |--(compou)--> R1130[dr]
+|                |--(aux)--> had
+|                |--(auxpas)--> been
+|                |--(nmod)--> R1133[team]
+|                                 |--(case)--> by
+|                                 |--(det)--> the
+|                                 |--(compou)--> R1133[obama]
+|--(punct)--> .
+
+	* entity-paths for event['approached']34_6ecb.xmlsent:9466
+	['approached --(nsubjpass)--> Gupta']
+	['approached --(nmod)--> team']
+
+	* entity-paths for event['confirmed']34_6ecb.xmlsent:9466
+	['confirmed --(nsubj)--> management']
+	['confirmed --(ccomp)--> approached', 'approached --(nsubjpass)--> Gupta']
+	['confirmed --(ccomp)--> approached', 'approached --(nmod)--> team']
+
+sentence #:cnn management said : " since first learning that dr gupta was under consideration for the surgeon-general position , cnn has made sure his on-air reporting has been on health and wellness matters and not on healthcare policy or any matters involving the new administration . " 
+	[events]:[['consideration'], ['position'], ['said'], ['reporting']]
+	[entities]:[['cnn', 'management'], ['surgeon-general'], ['administration'], ['health'], ['cnn'], ['dr', 'gupta']]
+*R1143[said]
+|--(nsubj)--> R1144[management]
+|                |--(compou)--> R1144[cnn]
+|--(punct)--> :
+|--(punct)--> "
+|--(parata)--> made
+|                |--(nmod)--> learning
+|                |                |--(case)--> since
+|                |                |--(amod)--> first
+|                |                |--(acl:re)--> *R1132[consideration]
+|                |                                 |--(dobj)--> that
+|                |                                 |--(nsubj)--> R1130[gupta]
+|                |                                 |                |--(compou)--> R1130[dr]
+|                |                                 |--(cop)--> was
+|                |                                 |--(case)--> under
+|                |                                 |--(nmod)--> *R1134[position]
+|                |                                                  |--(case)--> for
+|                |                                                  |--(det)--> the
+|                |                                                  |--(amod)--> R1135[surgeon-general]
+|                |--(punct)--> ,
+|                |--(nsubj)--> R1144[cnn]
+|                |--(aux)--> has
+|                |--(xcomp)--> sure
+|                                 |--(ccomp)--> matters
+|                                                  |--(nsubj)--> *R1151[reporting]
+|                                                  |                |--(nmod:p)--> his
+|                                                  |                |--(amod)--> on-air
+|                                                  |--(aux)--> has
+|                                                  |--(cop)--> been
+|                                                  |--(case)--> on
+|                                                  |--(compou)--> R1152[health]
+|                                                  |                |--(cc)--> and
+|                                                  |                |--(conj)--> wellness
+|                                                  |--(cc)--> and
+|                                                  |--(conj)--> involving
+|                                                                   |--(neg)--> not
+|                                                                   |--(mark)--> on
+|                                                                   |--(nsubj)--> policy
+|                                                                   |                |--(compou)--> healthcare
+|                                                                   |                |--(cc)--> or
+|                                                                   |                |--(conj)--> matters
+|                                                                   |                                 |--(det)--> any
+|                                                                   |--(dobj)--> R1133[administration]
+|                                                                                    |--(det)--> the
+|                                                                                    |--(amod)--> new
+|--(punct)--> .
+|--(punct)--> "
+
+	* entity-paths for event['consideration']34_6ecb.xmlsent:9467
+	['consideration --(nsubj)--> Gupta']
+	['consideration --(nmod)--> position', 'position --(amod)--> surgeon-general']
+
+	* entity-paths for event['position']34_6ecb.xmlsent:9467
+	['position --(amod)--> surgeon-general']
+
+	* entity-paths for event['said']34_6ecb.xmlsent:9467
+	['said --(nsubj)--> management']
+	['said --(parataxis)--> made', 'made --(nmod)--> learning', 'learning --(acl:relcl)--> consideration', 'consideration --(nsubj)--> Gupta']
+	['said --(parataxis)--> made', 'made --(nmod)--> learning', 'learning --(acl:relcl)--> consideration', 'consideration --(nmod)--> position', 'position --(amod)--> surgeon-general']
+	['said --(parataxis)--> made', 'made --(nsubj)--> CNN']
+	['said --(parataxis)--> made', 'made --(xcomp)--> sure', 'sure --(ccomp)--> matters', 'matters --(compound)--> health']
+	['said --(parataxis)--> made', 'made --(xcomp)--> sure', 'sure --(ccomp)--> matters', 'matters --(conj)--> involving', 'involving --(dobj)--> administration']
+
+	* entity-paths for event['reporting']34_6ecb.xmlsent:9467

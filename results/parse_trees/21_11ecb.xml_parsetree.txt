@@ -1,0 +1,53 @@
+
+-----------------------------------------
+docid:21_11ecb.xml
+-----------------------------------------
+
+sentence #:a man accused of running down and killing a woman in front of a bloomington store had a blood-alcohol level that was more than five times the legal limit , according to charges filed friday . 
+	[events]:[['filed'], ['running', 'down'], ['killing']]
+	[entities]:[['man'], ['friday'], ['in', 'front', 'of', 'a', 'bloomington', 'store'], ['woman'], ['charges']]
+had
+|--(nsubj)--> R539[man]
+|                |--(det)--> a
+|                |--(acl)--> accused
+|                                 |--(advcl)--> *R541[running]
+|                                                  |--(mark)--> of
+|                                                  |--(advmod)--> *R541[down]
+|                                                  |--(cc)--> and
+|                                                  |--(conj)--> *R542[killing]
+|                                                                   |--(dobj)--> R543[woman]
+|                                                                   |                |--(det)--> a
+|                                                                   |--(nmod)--> R544[front]
+|                                                                                    |--(case)--> R544[in]
+|                                                                                    |--(nmod)--> R544[store]
+|                                                                                                     |--(case)--> R544[of]
+|                                                                                                     |--(det)--> R544[a]
+|                                                                                                     |--(compou)--> R544[bloomington]
+|--(dobj)--> level
+|                |--(det)--> a
+|                |--(compou)--> blood-alcohol
+|                |--(acl:re)--> limit
+|                                 |--(nsubj)--> that
+|                                 |--(cop)--> was
+|                                 |--(nummod)--> times
+|                                 |                |--(advmod)--> more
+|                                 |                |                |--(mwe)--> than
+|                                 |                |--(compou)--> five
+|                                 |--(det)--> the
+|                                 |--(amod)--> legal
+|                                 |--(punct)--> ,
+|                                 |--(nmod)--> R554[charges]
+|                                                  |--(case)--> according
+|                                                  |                |--(mwe)--> to
+|                                                  |--(acl)--> *R538[filed]
+|                                                                   |--(nmod:t)--> R555[friday]
+|--(punct)--> .
+
+	* entity-paths for event['filed']21_11ecb.xmlsent:4037
+	['filed --(nmod:tmod)--> Friday']
+
+	* entity-paths for event['running', 'down']21_11ecb.xmlsent:4037
+
+	* entity-paths for event['killing']21_11ecb.xmlsent:4037
+	['killing --(dobj)--> woman']
+	['killing --(nmod)--> front']

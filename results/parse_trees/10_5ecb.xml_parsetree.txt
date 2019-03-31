@@ -1,0 +1,41 @@
+
+-----------------------------------------
+docid:10_5ecb.xml
+-----------------------------------------
+
+sentence #:los angeles general manager tony reagins has sounded like a broken record saying that resigning teixeira was his top priority , and backed that up now with an eight-year offer . 
+	[events]:[['offer']]
+	[entities]:[['tony', 'reagins'], ['teixeira']]
+sounded
+|--(nsubj)--> R178[reagins]
+|                |--(compou)--> los
+|                |--(compou)--> angeles
+|                |--(amod)--> general
+|                |--(compou)--> manager
+|                |--(compou)--> R178[tony]
+|--(aux)--> has
+|--(nmod)--> record
+|                |--(case)--> like
+|                |--(det)--> a
+|                |--(amod)--> broken
+|                |--(acl)--> saying
+|                                 |--(ccomp)--> priority
+|                                                  |--(mark)--> that
+|                                                  |--(csubj)--> resigning
+|                                                  |                |--(dobj)--> R163[teixeira]
+|                                                  |--(cop)--> was
+|                                                  |--(nmod:p)--> his
+|                                                  |--(amod)--> top
+|--(punct)--> ,
+|--(cc)--> and
+|--(conj)--> backed
+|                |--(advmod)--> now
+|                |                |--(case)--> that
+|                |                |--(advmod)--> up
+|                |--(nmod)--> *R176[offer]
+|                                 |--(case)--> with
+|                                 |--(det)--> an
+|                                 |--(amod)--> eight-year
+|--(punct)--> .
+
+	* entity-paths for event['offer']10_5ecb.xmlsent:524

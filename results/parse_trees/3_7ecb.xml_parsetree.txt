@@ -1,0 +1,55 @@
+
+-----------------------------------------
+docid:3_7ecb.xml
+-----------------------------------------
+
+sentence #:a judge on saturday sentenced the man who killed four people during a brazen courthouse escape to multiple life sentences with no chance of parole , and to hundreds more years on more than 50 charges . 
+	[events]:[['escape'], ['sentenced'], ['killed']]
+	[entities]:[['judge'], ['sentences'], ['hundreds', 'more', 'years'], ['people'], ['man'], ['saturday']]
+*R906[sentenced]
+|--(nsubj)--> R940[judge]
+|                |--(det)--> a
+|                |--(nmod)--> R908[saturday]
+|                                 |--(case)--> on
+|--(ccomp)--> brazen
+|                |--(nsubj)--> R903[man]
+|                |                |--(det)--> the
+|                |                |--(acl:re)--> *R904[killed]
+|                |                                 |--(nsubj)--> who
+|                |                                 |--(dobj)--> R905[people]
+|                |                                 |                |--(nummod)--> four
+|                |                                 |--(nmod)--> a
+|                |                                                  |--(case)--> during
+|                |--(dobj)--> *R907[escape]
+|                |                |--(compou)--> courthouse
+|                |--(nmod)--> R909[sentences]
+|                                 |--(case)--> to
+|                                 |--(amod)--> multiple
+|                                 |--(compou)--> life
+|                                 |--(nmod)--> chance
+|                                 |                |--(case)--> with
+|                                 |                |--(neg)--> no
+|                                 |                |--(nmod)--> parole
+|                                 |                                 |--(case)--> of
+|                                 |--(punct)--> ,
+|                                 |--(cc)--> and
+|                                 |--(conj)--> R946[hundreds]
+|                                                  |--(case)--> to
+|                                                  |--(nmod)--> R946[years]
+|                                                                   |--(nummod)--> R946[more]
+|                                                                   |--(case)--> on
+|                                                                   |--(dep)--> charges
+|                                                                                    |--(nummod)--> 50
+|                                                                                                     |--(advmod)--> more
+|                                                                                                                      |--(mwe)--> than
+|--(punct)--> .
+
+	* entity-paths for event['escape']3_7ecb.xmlsent:7582
+
+	* entity-paths for event['sentenced']3_7ecb.xmlsent:7582
+	['sentenced --(nsubj)--> judge']
+	['sentenced --(ccomp)--> brazen', 'brazen --(nsubj)--> man']
+	['sentenced --(ccomp)--> brazen', 'brazen --(nmod)--> sentences']
+
+	* entity-paths for event['killed']3_7ecb.xmlsent:7582
+	['killed --(dobj)--> people']

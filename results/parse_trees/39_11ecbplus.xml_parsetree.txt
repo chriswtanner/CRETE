@@ -1,0 +1,99 @@
+
+-----------------------------------------
+docid:39_11ecbplus.xml
+-----------------------------------------
+
+sentence #:the 55 - year - old scottish actor will replace matt smith , who announced in june that he was leaving the sci - fi show later this year . 
+	[events]:[['leaving'], ['announced'], ['replace']]
+	[entities]:[['who'], ['sci', '-', 'fi', 'show'], ['actor'], ['he'], ['matt', 'smith']]
+55
+|--(det)--> the
+|--(punct)--> -
+|--(dep)--> year
+|                |--(punct)--> -
+|                |--(appos)--> *R1334[replace]
+|                                 |--(nsubj)--> R1331[actor]
+|                                 |                |--(amod)--> old
+|                                 |                |--(amod)--> scottish
+|                                 |--(aux)--> will
+|                                 |--(dobj)--> R1328[smith]
+|                                                  |--(compou)--> R1328[matt]
+|                                                  |--(punct)--> ,
+|                                                  |--(acl:re)--> *R1340[announced]
+|                                                                   |--(nsubj)--> R1328[who]
+|                                                                   |--(nmod)--> june
+|                                                                   |                |--(case)--> in
+|                                                                   |--(ccomp)--> *R1341[leaving]
+|                                                                                    |--(mark)--> that
+|                                                                                    |--(nsubj)--> R1328[he]
+|                                                                                    |--(aux)--> was
+|                                                                                    |--(dobj)--> R1336[sci]
+|                                                                                                     |--(det)--> the
+|--(punct)--> R1336[-]
+|--(dep)--> R1336[show]
+|                |--(compou)--> R1336[fi]
+|                |--(nmod:t)--> year
+|                                 |--(advmod)--> later
+|                                 |--(det)--> this
+|--(punct)--> .
+
+	* entity-paths for event['leaving']39_11ecbplus.xmlsent:10869
+	['leaving --(nsubj)--> he']
+	['leaving --(dobj)--> sci']
+
+	* entity-paths for event['announced']39_11ecbplus.xmlsent:10869
+	['announced --(nsubj)--> who']
+	['announced --(ccomp)--> leaving', 'leaving --(nsubj)--> he']
+	['announced --(ccomp)--> leaving', 'leaving --(dobj)--> sci']
+
+	* entity-paths for event['replace']39_11ecbplus.xmlsent:10869
+	['replace --(nsubj)--> actor']
+	['replace --(dobj)--> Smith']
+
+sentence #:peter capaldi has been announced as the new doctor who , the 12th actor to take up the coveted tv role . 
+	[events]:[['announced'], ['take', 'up']]
+	[entities]:[['peter', 'capaldi'], ['actor'], ['tv'], ['role'], ['doctor', 'who']]
+*R1342[announced]
+|--(nsubjp)--> R1331[capaldi]
+|                |--(compou)--> R1331[peter]
+|--(aux)--> has
+|--(auxpas)--> been
+|--(nmod)--> R1333[doctor]
+|                |--(case)--> as
+|                |--(det)--> the
+|                |--(amod)--> new
+|                |--(acl:re)--> *R1332[take]
+|                                 |--(dobj)--> R1333[who]
+|                                 |--(punct)--> ,
+|                                 |--(nsubj)--> R1331[actor]
+|                                 |                |--(det)--> the
+|                                 |                |--(amod)--> 12th
+|                                 |--(mark)--> to
+|                                 |--(compou)--> *R1332[up]
+|                                 |--(dobj)--> R1329[role]
+|                                                  |--(det)--> the
+|                                                  |--(amod)--> coveted
+|                                                  |--(compou)--> R1339[tv]
+|--(punct)--> .
+
+	* entity-paths for event['announced']39_11ecbplus.xmlsent:10867
+	['announced --(nsubjpass)--> Capaldi']
+	['announced --(nmod)--> Doctor']
+
+	* entity-paths for event['take', 'up']39_11ecbplus.xmlsent:10867
+
+sentence #:peter capaldi announced as the new doctor who 
+	[events]:[['announced']]
+	[entities]:[['peter', 'capaldi'], ['doctor', 'who']]
+*R1342[announced]
+|--(nsubj)--> R1331[capaldi]
+|                |--(compou)--> R1331[peter]
+|--(nmod)--> R1333[doctor]
+                 |--(case)--> as
+                 |--(det)--> the
+                 |--(amod)--> new
+                 |--(acl:re)--> R1333[who]
+
+	* entity-paths for event['announced']39_11ecbplus.xmlsent:10865
+	['announced --(nsubj)--> Capaldi']
+	['announced --(nmod)--> Doctor']

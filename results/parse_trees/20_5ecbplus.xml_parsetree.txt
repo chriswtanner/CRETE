@@ -1,0 +1,78 @@
+
+-----------------------------------------
+docid:20_5ecbplus.xml
+-----------------------------------------
+
+sentence #:a 5 . 9 magnitude earthquake has leveled seven villages in iran's southern area , killing 10 persons and wounding other 70 , iranian officials were quoted by ap as saying . 
+	[events]:[['saying'], ['earthquake'], ['leveled'], ['killing'], ['wounding']]
+	[entities]:[['70'], ['villages'], ['5', '.', '9'], ['in', "iran's", 'southern', 'area'], ['persons'], ['officials']]
+quoted
+|--(nsubj)--> a
+|                |--(dep)--> were
+|                                 |--(ccomp)--> *R508[leveled]
+|                                 |                |--(dep)--> R534[5]
+|                                 |                |                |--(punct)--> R534[.]
+|                                 |                |--(nsubj)--> *R509[earthquake]
+|                                 |                |                |--(nummod)--> R534[9]
+|                                 |                |                |--(compou)--> magnitude
+|                                 |                |--(aux)--> has
+|                                 |                |--(dobj)--> R510[villages]
+|                                 |                |                |--(nummod)--> seven
+|                                 |                |                |--(nmod)--> R537[area]
+|                                 |                |                                 |--(case)--> R537[in]
+|                                 |                |                                 |--(nmod:p)--> R537[iran's]
+|                                 |                |                                 |                |--(case)--> R537[iran's]
+|                                 |                |                                 |--(amod)--> R537[southern]
+|                                 |                |--(punct)--> ,
+|                                 |                |--(dep)--> *R504[killing]
+|                                 |                                 |--(dobj)--> R505[persons]
+|                                 |                                 |                |--(nummod)--> 10
+|                                 |                                 |--(cc)--> and
+|                                 |                                 |--(conj)--> *R506[wounding]
+|                                 |                                                  |--(dobj)--> R507[70]
+|                                 |                                                                   |--(amod)--> other
+|                                 |--(punct)--> ,
+|                                 |--(nsubj)--> R513[officials]
+|                                                  |--(amod)--> iranian
+|--(nmod)--> ap
+|                |--(case)--> by
+|--(advcl)--> *R533[saying]
+|                |--(mark)--> as
+|--(punct)--> .
+
+	* entity-paths for event['saying']20_5ecbplus.xmlsent:3950
+
+	* entity-paths for event['earthquake']20_5ecbplus.xmlsent:3950
+	['earthquake --(nummod)--> 9']
+
+	* entity-paths for event['leveled']20_5ecbplus.xmlsent:3950
+	['leveled --(dep)--> 5']
+	['leveled --(nsubj)--> earthquake', 'earthquake --(nummod)--> 9']
+	['leveled --(dobj)--> villages']
+	['leveled --(dep)--> killing', 'killing --(dobj)--> persons']
+	['leveled --(dep)--> killing', 'killing --(conj)--> wounding', 'wounding --(dobj)--> 70']
+
+	* entity-paths for event['killing']20_5ecbplus.xmlsent:3950
+	['killing --(dobj)--> persons']
+	['killing --(conj)--> wounding', 'wounding --(dobj)--> 70']
+
+	* entity-paths for event['wounding']20_5ecbplus.xmlsent:3950
+	['wounding --(dobj)--> 70']
+
+sentence #:5 . 9 earthquake jolts iran 
+	[events]:[['jolts'], ['earthquake']]
+	[entities]:[['5', '.', '9'], ['iran']]
+*R524[jolts]
+|--(nsubj)--> R534[5]
+|                |--(punct)--> R534[.]
+|--(nmod:t)--> *R509[earthquake]
+|                |--(nummod)--> R534[9]
+|--(dobj)--> R537[iran]
+
+	* entity-paths for event['jolts']20_5ecbplus.xmlsent:3949
+	['Jolts --(nsubj)--> 5']
+	['Jolts --(nmod:tmod)--> Earthquake', 'Earthquake --(nummod)--> 9']
+	['Jolts --(dobj)--> Iran']
+
+	* entity-paths for event['earthquake']20_5ecbplus.xmlsent:3949
+	['Earthquake --(nummod)--> 9']

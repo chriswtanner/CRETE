@@ -1,0 +1,40 @@
+
+-----------------------------------------
+docid:24_8ecb.xml
+-----------------------------------------
+
+sentence #:jewellery worth more than $ 160 million has been stolen from a paris boutique in what is believed to be france 's biggest jewellery theft . 
+	[events]:[['theft'], ['stolen']]
+	[entities]:[['a', 'paris', 'boutique'], ['jewellery']]
+*R663[stolen]
+|--(nsubjp)--> R683[jewellery]
+|--(nmod)--> $
+|                |--(case)--> worth
+|                |--(advmod)--> more
+|                |                |--(mwe)--> than
+|                |--(nummod)--> million
+|                                 |--(compou)--> 160
+|--(aux)--> has
+|--(auxpas)--> been
+|--(nmod)--> R665[boutique]
+|                |--(case)--> from
+|                |--(det)--> R665[a]
+|                |--(compou)--> R665[paris]
+|--(advcl)--> believed
+|                |--(mark)--> in
+|                |--(nsubjp)--> what
+|                |--(auxpas)--> is
+|                |--(xcomp)--> *R666[theft]
+|                                 |--(mark)--> to
+|                                 |--(cop)--> be
+|                                 |--(nmod:p)--> france
+|                                 |                |--(case)--> 's
+|                                 |--(amod)--> biggest
+|                                 |--(compou)--> jewellery
+|--(punct)--> .
+
+	* entity-paths for event['theft']24_8ecb.xmlsent:4908
+
+	* entity-paths for event['stolen']24_8ecb.xmlsent:4908
+	['stolen --(nsubjpass)--> Jewellery']
+	['stolen --(nmod)--> boutique']

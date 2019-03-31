@@ -1,0 +1,72 @@
+
+-----------------------------------------
+docid:5_5ecbplus.xml
+-----------------------------------------
+
+sentence #:up the coast . . . the philly sixers canned jim o'brien [ who had been under fire all season ] and quickly hired mo cheeks . 
+	[events]:[['canned'], ['hired']]
+	[entities]:[['all', 'season'], ['philly', 'sixers'], ['who'], ['mo', 'cheeks'], ['jim', "o'brien"]]
+*R1683[canned]
+|--(nmod)--> coast
+|                |--(case)--> up
+|                |--(det)--> the
+|--(punct)--> .
+|--(nsubj)--> R1673[sixers]
+|                |--(det)--> the
+|                |--(compou)--> R1673[philly]
+|--(dobj)--> R1684[o'brien]
+|                |--(compou)--> R1684[jim]
+|                |--(punct)--> [
+|                |--(acl:re)--> fire
+|                                 |--(nsubj)--> R1684[who]
+|                                 |--(aux)--> had
+|                                 |--(cop)--> been
+|                                 |--(case)--> under
+|                                 |--(nmod:t)--> R1685[season]
+|                                                  |--(det)--> R1685[all]
+|--(punct)--> ]
+|--(cc)--> and
+|--(conj)--> *R1677[hired]
+|                |--(advmod)--> quickly
+|                |--(dobj)--> R1674[cheeks]
+|                                 |--(compou)--> R1674[mo]
+|--(punct)--> .
+
+	* entity-paths for event['canned']5_5ecbplus.xmlsent:14228
+	['canned --(nsubj)--> Sixers']
+	["canned --(dobj)--> O'Brien"]
+	['canned --(conj)--> hired', 'hired --(dobj)--> Cheeks']
+
+	* entity-paths for event['hired']5_5ecbplus.xmlsent:14228
+	['hired --(dobj)--> Cheeks']
+
+sentence #:after the blazers fired cheeks . . . it was only a matter of time before philly and cheeks hooked up again . 
+	[events]:[['hooked', 'up'], ['fired']]
+	[entities]:[['cheeks'], ['philly'], ['blazers'], ['cheeks']]
+matter
+|--(advcl)--> *R1688[fired]
+|                |--(mark)--> after
+|                |--(nsubj)--> R1689[blazers]
+|                |                |--(det)--> the
+|                |--(dobj)--> R1674[cheeks]
+|--(punct)--> .
+|--(nsubj)--> it
+|--(cop)--> was
+|--(advmod)--> only
+|--(det)--> a
+|--(nmod)--> time
+|                |--(case)--> of
+|--(advcl)--> *R1677[hooked]
+|                |--(mark)--> before
+|                |--(nsubj)--> R1673[philly]
+|                |                |--(cc)--> and
+|                |                |--(conj)--> R1674[cheeks]
+|                |--(compou)--> *R1677[up]
+|                |--(advmod)--> again
+|--(punct)--> .
+
+	* entity-paths for event['hooked', 'up']5_5ecbplus.xmlsent:14233
+
+	* entity-paths for event['fired']5_5ecbplus.xmlsent:14233
+	['fired --(nsubj)--> Blazers']
+	['fired --(dobj)--> Cheeks']

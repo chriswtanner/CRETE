@@ -1,0 +1,100 @@
+
+-----------------------------------------
+docid:31_7ecb.xml
+-----------------------------------------
+
+sentence #:still , given the century 's worth of tradition that has reigned in chapel hill , it was no small feat that hansbrough accomplished thursday night , when he broke ford 's school career scoring mark with less than eight minutes to play in the first half of north carolina 's game against evansville 
+	[events]:[['scoring', 'mark'], ['game'], ['accomplished'], ['broke']]
+	[entities]:[['he'], ['ford'], ['north', 'carolina'], ['thursday', 'night'], ['evansville'], ['hansbrough']]
+feat
+|--(advmod)--> still
+|--(punct)--> ,
+|--(nmod)--> worth
+|                |--(case)--> given
+|                |--(nmod:p)--> century
+|                |                |--(det)--> the
+|                |                |--(case)--> 's
+|                |--(nmod)--> tradition
+|                                 |--(case)--> of
+|                                 |--(acl:re)--> reigned
+|                                                  |--(nsubj)--> that
+|                                                  |--(aux)--> has
+|                                                  |--(nmod)--> hill
+|                                                                   |--(case)--> in
+|                                                                   |--(compou)--> chapel
+|--(punct)--> ,
+|--(nsubj)--> it
+|--(cop)--> was
+|--(neg)--> no
+|--(amod)--> small
+|--(acl:re)--> *R996[accomplished]
+                 |--(dobj)--> that
+                 |--(nsubj)--> R997[hansbrough]
+                 |--(nmod:t)--> R1006[night]
+                 |                |--(compou)--> R1006[thursday]
+                 |--(punct)--> ,
+                 |--(advcl)--> *R996[broke]
+                                  |--(advmod)--> when
+                                  |--(nsubj)--> R997[he]
+                                  |--(dobj)--> school
+                                  |                |--(nmod:p)--> R1005[ford]
+                                  |                |                |--(case)--> 's
+                                  |                |--(dep)--> *R998[mark]
+                                  |                                 |--(compou)--> career
+                                  |                                 |--(amod)--> *R998[scoring]
+                                  |                                 |--(nmod)--> minutes
+                                  |                                                  |--(case)--> with
+                                  |                                                  |--(nummod)--> eight
+                                  |                                                                   |--(advmod)--> less
+                                  |                                                                                    |--(mwe)--> than
+                                  |--(advcl)--> play
+                                                   |--(mark)--> to
+                                                   |--(nmod)--> half
+                                                   |                |--(case)--> in
+                                                   |                |--(det)--> the
+                                                   |                |--(amod)--> first
+                                                   |                |--(nmod)--> *R1010[game]
+                                                   |                                 |--(case)--> of
+                                                   |                                 |--(nmod:p)--> R999[carolina]
+                                                   |                                                  |--(compou)--> R999[north]
+                                                   |                                                  |--(case)--> 's
+                                                   |--(nmod)--> R1008[evansville]
+                                                                    |--(case)--> against
+
+	* entity-paths for event['scoring', 'mark']31_7ecb.xmlsent:8555
+
+	* entity-paths for event['game']31_7ecb.xmlsent:8555
+	['game --(nmod:poss)--> Carolina']
+
+	* entity-paths for event['accomplished']31_7ecb.xmlsent:8555
+	['accomplished --(nsubj)--> Hansbrough']
+	['accomplished --(nmod:tmod)--> night']
+	['accomplished --(advcl)--> broke', 'broke --(nsubj)--> he']
+	['accomplished --(advcl)--> broke', 'broke --(dobj)--> school', 'school --(nmod:poss)--> Ford']
+	['accomplished --(advcl)--> broke', 'broke --(advcl)--> play', 'play --(nmod)--> half', 'half --(nmod)--> game', 'game --(nmod:poss)--> Carolina']
+	['accomplished --(advcl)--> broke', 'broke --(advcl)--> play', 'play --(nmod)--> Evansville']
+
+	* entity-paths for event['broke']31_7ecb.xmlsent:8555
+	['broke --(nsubj)--> he']
+	['broke --(dobj)--> school', 'school --(nmod:poss)--> Ford']
+	['broke --(advcl)--> play', 'play --(nmod)--> half', 'half --(nmod)--> game', 'game --(nmod:poss)--> Carolina']
+	['broke --(advcl)--> play', 'play --(nmod)--> Evansville']
+
+sentence #:hansbrough broke unc 's career scoring record the carolina way 
+	[events]:[['record'], ['broke']]
+	[entities]:[['hansbrough']]
+*R996[broke]
+|--(dep)--> R997[hansbrough]
+|--(dobj)--> *R998[record]
+|                |--(nmod:p)--> unc
+|                |                |--(case)--> 's
+|                |--(compou)--> career
+|                |--(amod)--> scoring
+|--(nsubj)--> way
+                 |--(det)--> the
+                 |--(compou)--> carolina
+
+	* entity-paths for event['record']31_7ecb.xmlsent:8535
+
+	* entity-paths for event['broke']31_7ecb.xmlsent:8535
+	['broke --(dep)--> Hansbrough']

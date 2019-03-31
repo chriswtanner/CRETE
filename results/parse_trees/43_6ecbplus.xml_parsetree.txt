@@ -1,0 +1,54 @@
+
+-----------------------------------------
+docid:43_6ecbplus.xml
+-----------------------------------------
+
+sentence #:amd is paying us$334 million for seamicro , which until now was in a tight partnership with intel to develop dense servers . 
+	[events]:[['paying']]
+	[entities]:[['us$334', 'million'], ['seamicro'], ['intel'], ['amd'], ['which'], ['dense', 'servers']]
+*R1567[paying]
+|--(nsubj)--> R1547[amd]
+|--(aux)--> is
+|--(dobj)--> R1555[us$334]
+|                |--(nummod)--> R1555[million]
+|                |                |--(compou)--> R1555[us$334]
+|                |--(nmod)--> R1549[seamicro]
+|                                 |--(case)--> for
+|                                 |--(punct)--> ,
+|                                 |--(acl:re)--> partnership
+|                                                  |--(nsubj)--> R1549[which]
+|                                                  |--(advmod)--> now
+|                                                  |                |--(case)--> until
+|                                                  |--(cop)--> was
+|                                                  |--(case)--> in
+|                                                  |--(det)--> a
+|                                                  |--(amod)--> tight
+|                                                  |--(nmod)--> R1426[intel]
+|                                                  |                |--(case)--> with
+|                                                  |--(xcomp)--> develop
+|                                                                   |--(mark)--> to
+|                                                                   |--(dobj)--> R1548[servers]
+|                                                                                    |--(amod)--> R1548[dense]
+|--(punct)--> .
+
+	* entity-paths for event['paying']43_6ecbplus.xmlsent:13304
+	['paying --(nsubj)--> AMD']
+	['paying --(dobj)--> US$']
+
+sentence #:amd's acquisition of seamicro puts intel on the defensive 
+	[events]:[['acquisition']]
+	[entities]:[['seamicro'], ['intel'], ["amd's"]]
+puts
+|--(nsubj)--> *R1546[acquisition]
+|                |--(nmod:p)--> R1547[amd's]
+|                |                |--(case)--> R1547[amd's]
+|                |--(nmod)--> R1549[seamicro]
+|                                 |--(case)--> of
+|--(dobj)--> R1426[intel]
+                 |--(nmod)--> defensive
+                                  |--(case)--> on
+                                  |--(det)--> the
+
+	* entity-paths for event['acquisition']43_6ecbplus.xmlsent:13298
+	['Acquisition --(nmod:poss)--> AMD']
+	['Acquisition --(nmod)--> SeaMicro']

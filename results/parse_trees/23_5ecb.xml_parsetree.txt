@@ -1,0 +1,47 @@
+
+-----------------------------------------
+docid:23_5ecb.xml
+-----------------------------------------
+
+sentence #:an australian climber who watched his brother fall to his death on new zealand 's highest peak said he was expecting to die that night on the treacherous mountain . 
+	[events]:[['death'], ['fall'], ['watched']]
+	[entities]:[['he'], ['that', 'night'], ['new', 'zealand', "'s", 'highest', 'peak'], ['climber'], ['the', 'treacherous', 'mountain'], ['brother']]
+said
+|--(nsubj)--> R634[climber]
+|                |--(det)--> an
+|                |--(amod)--> australian
+|                |--(acl:re)--> *R636[watched]
+|                                 |--(nsubj)--> who
+|                                 |--(nmod:t)--> *R637[fall]
+|                                 |                |--(nmod:p)--> his
+|                                 |                |--(compou)--> R638[brother]
+|                                 |--(nmod)--> *R654[death]
+|                                 |                |--(case)--> to
+|                                 |                |--(nmod:p)--> his
+|                                 |--(nmod)--> R639[peak]
+|                                                  |--(case)--> on
+|                                                  |--(nmod:p)--> R639[zealand]
+|                                                  |                |--(compou)--> R639[new]
+|                                                  |                |--(case)--> R639['s]
+|                                                  |--(amod)--> R639[highest]
+|--(ccomp)--> expecting
+|                |--(nsubj)--> R634[he]
+|                |--(aux)--> was
+|                |--(xcomp)--> die
+|                                 |--(mark)--> to
+|                                 |--(nmod:t)--> R658[night]
+|                                 |                |--(det)--> R658[that]
+|                                 |--(nmod)--> R639[mountain]
+|                                                  |--(case)--> on
+|                                                  |--(det)--> R639[the]
+|                                                  |--(amod)--> R639[treacherous]
+|--(punct)--> .
+
+	* entity-paths for event['death']23_5ecb.xmlsent:4714
+
+	* entity-paths for event['fall']23_5ecb.xmlsent:4714
+	['fall --(compound)--> brother']
+
+	* entity-paths for event['watched']23_5ecb.xmlsent:4714
+	['watched --(nmod:tmod)--> fall', 'fall --(compound)--> brother']
+	['watched --(nmod)--> peak']

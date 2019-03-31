@@ -1,0 +1,68 @@
+
+-----------------------------------------
+docid:27_8ecb.xml
+-----------------------------------------
+
+sentence #:microsoft has issued a rare emergency update for its internet explorer browser as miscreants stepped up attacks targeting a vulnerability on hundreds of thousands of webpages . 
+	[events]:[['stepped', 'up'], ['issued'], ['attacks'], ['targeting']]
+	[entities]:[['internet', 'explorer'], ['update'], ['microsoft'], ['vulnerability'], ['miscreants']]
+*R763[issued]
+|--(nsubj)--> R764[microsoft]
+|--(aux)--> has
+|--(dobj)--> emergency
+|                |--(det)--> a
+|                |--(amod)--> rare
+|--(dep)--> R765[update]
+|                |--(nmod)--> R768[internet]
+|                |                |--(case)--> for
+|                |                |--(nmod:p)--> its
+|                |--(nmod:t)--> browser
+|                |                |--(compou)--> R768[explorer]
+|                |--(advcl)--> *R793[stepped]
+|                                 |--(mark)--> as
+|                                 |--(nsubj)--> R770[miscreants]
+|                                 |--(compou)--> *R793[up]
+|                                 |--(dobj)--> *R790[attacks]
+|                                                  |--(acl)--> *R799[targeting]
+|                                                                   |--(dobj)--> R767[vulnerability]
+|                                                                   |                |--(det)--> a
+|                                                                   |--(nmod)--> thousands
+|                                                                                    |--(case)--> on
+|                                                                                    |--(dep)--> hundreds
+|                                                                                    |--(advmod)--> of
+|                                                                                    |--(nmod)--> webpages
+|                                                                                                     |--(case)--> of
+|--(punct)--> .
+
+	* entity-paths for event['stepped', 'up']27_8ecb.xmlsent:6001
+
+	* entity-paths for event['issued']27_8ecb.xmlsent:6001
+	['issued --(nsubj)--> Microsoft']
+	['issued --(dep)--> update']
+
+	* entity-paths for event['attacks']27_8ecb.xmlsent:6001
+	['attacks --(acl)--> targeting', 'targeting --(dobj)--> vulnerability']
+
+	* entity-paths for event['targeting']27_8ecb.xmlsent:6001
+	['targeting --(dobj)--> vulnerability']
+
+sentence #:microsoft issues emergency ie patch as attacks escalate 
+	[events]:[['escalate'], ['attacks'], ['issues']]
+	[entities]:[['microsoft'], ['patch'], ['ie']]
+*R763[issues]
+|--(compou)--> R764[microsoft]
+|--(acl:re)--> *R793[escalate]
+                 |--(nsubj)--> R765[patch]
+                                  |--(compou)--> emergency
+                                  |--(amod)--> R768[ie]
+                                  |--(nmod)--> *R790[attacks]
+                                                   |--(case)--> as
+
+	* entity-paths for event['escalate']27_8ecb.xmlsent:6000
+	['escalate --(nsubj)--> patch']
+
+	* entity-paths for event['attacks']27_8ecb.xmlsent:6000
+
+	* entity-paths for event['issues']27_8ecb.xmlsent:6000
+	['issues --(compound)--> Microsoft']
+	['issues --(acl:relcl)--> escalate', 'escalate --(nsubj)--> patch']

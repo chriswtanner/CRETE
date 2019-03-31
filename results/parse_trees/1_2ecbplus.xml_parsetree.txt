@@ -1,0 +1,84 @@
+
+-----------------------------------------
+docid:1_2ecbplus.xml
+-----------------------------------------
+
+sentence #:lindsay lohan's attorney said thursday the actress checked into a southern california rehab facility that a state official said is unlicensed to perform the type of treatment a judge required her to receive . 
+	[events]:[['checked', 'into'], ['unlicensed'], ['receive'], ['perform'], ['said'], ['required'], ['treatment']]
+	[entities]:[['attorney'], ['lindsay', "lohan's"], ['her'], ['that'], ['actress'], ['thursday'], ['southern', 'california', 'rehab', 'facility'], ['judge']]
+*R124[said]
+|--(nsubj)--> R37[attorney]
+|                |--(nmod:p)--> R15[lohan's]
+|                                 |--(compou)--> R15[lindsay]
+|                                 |--(case)--> R15[lohan's]
+|--(nmod:t)--> R58[thursday]
+|--(ccomp)--> *R9[checked]
+|                |--(nsubj)--> R15[actress]
+|                |                |--(det)--> the
+|                |--(nmod)--> R10[facility]
+|                |                |--(case)--> *R9[into]
+|                |                |--(det)--> a
+|                |                |--(compou)--> R10[southern]
+|                |                |--(compou)--> R10[california]
+|                |                |--(compou)--> R10[rehab]
+|                |--(ccomp)--> said
+|                                 |--(mark)--> R10[that]
+|                                 |--(nsubj)--> official
+|                                 |                |--(det)--> a
+|                                 |                |--(compou)--> state
+|                                 |--(ccomp)--> *R125[unlicensed]
+|                                                  |--(cop)--> is
+|                                                  |--(xcomp)--> *R126[perform]
+|                                                                   |--(mark)--> to
+|                                                                   |--(dobj)--> type
+|                                                                                    |--(det)--> the
+|                                                                                    |--(nmod)--> *R19[treatment]
+|                                                                                    |                |--(case)--> of
+|                                                                                    |--(acl:re)--> *R127[required]
+|                                                                                                     |--(nsubj)--> R128[judge]
+|                                                                                                     |                |--(det)--> a
+|                                                                                                     |--(dobj)--> R15[her]
+|                                                                                                     |--(xcomp)--> *R111[receive]
+|                                                                                                                      |--(mark)--> to
+|--(punct)--> .
+
+	* entity-paths for event['checked', 'into']1_2ecbplus.xmlsent:196
+
+	* entity-paths for event['unlicensed']1_2ecbplus.xmlsent:196
+	['unlicensed --(xcomp)--> perform', 'perform --(dobj)--> type', 'type --(acl:relcl)--> required', 'required --(nsubj)--> judge']
+	['unlicensed --(xcomp)--> perform', 'perform --(dobj)--> type', 'type --(acl:relcl)--> required', 'required --(dobj)--> her']
+
+	* entity-paths for event['receive']1_2ecbplus.xmlsent:196
+
+	* entity-paths for event['perform']1_2ecbplus.xmlsent:196
+	['perform --(dobj)--> type', 'type --(acl:relcl)--> required', 'required --(nsubj)--> judge']
+	['perform --(dobj)--> type', 'type --(acl:relcl)--> required', 'required --(dobj)--> her']
+
+	* entity-paths for event['said']1_2ecbplus.xmlsent:196
+	['said --(nsubj)--> attorney']
+	['said --(nmod:tmod)--> Thursday']
+	['said --(ccomp)--> checked', 'checked --(nsubj)--> actress']
+	['said --(ccomp)--> checked', 'checked --(nmod)--> facility']
+	['said --(ccomp)--> checked', 'checked --(ccomp)--> said', 'said --(mark)--> that']
+	['said --(ccomp)--> checked', 'checked --(ccomp)--> said', 'said --(ccomp)--> unlicensed', 'unlicensed --(xcomp)--> perform', 'perform --(dobj)--> type', 'type --(acl:relcl)--> required', 'required --(nsubj)--> judge']
+	['said --(ccomp)--> checked', 'checked --(ccomp)--> said', 'said --(ccomp)--> unlicensed', 'unlicensed --(xcomp)--> perform', 'perform --(dobj)--> type', 'type --(acl:relcl)--> required', 'required --(dobj)--> her']
+
+	* entity-paths for event['required']1_2ecbplus.xmlsent:196
+	['required --(nsubj)--> judge']
+	['required --(dobj)--> her']
+
+	* entity-paths for event['treatment']1_2ecbplus.xmlsent:196
+
+sentence #:lawyer : lindsay lohan checks into rehab facility 
+	[events]:[['checks', 'into']]
+	[entities]:[['lindsay', 'lohan'], ['lawyer'], ['rehab', 'facility']]
+R37[lawyer]
+|--(punct)--> :
+|--(dep)--> *R9[checks]
+                 |--(compou)--> R15[lindsay]
+                 |--(compou)--> R15[lohan]
+                 |--(nmod)--> R10[facility]
+                                  |--(case)--> *R9[into]
+                                  |--(compou)--> R10[rehab]
+
+	* entity-paths for event['checks', 'into']1_2ecbplus.xmlsent:194

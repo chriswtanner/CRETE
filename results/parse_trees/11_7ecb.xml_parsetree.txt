@@ -1,0 +1,19 @@
+
+-----------------------------------------
+docid:11_7ecb.xml
+-----------------------------------------
+
+sentence #:the parliament election is over in turkmenistan . 
+	[events]:[['election']]
+	[entities]:[['turkmenistan'], ['parliament']]
+over
+|--(nsubj)--> *R193[election]
+|                |--(det)--> the
+|                |--(compou)--> R188[parliament]
+|--(cop)--> is
+|--(nmod)--> R189[turkmenistan]
+|                |--(case)--> in
+|--(punct)--> .
+
+	* entity-paths for event['election']11_7ecb.xmlsent:734
+	['election --(compound)--> parliament']

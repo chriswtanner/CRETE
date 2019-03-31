@@ -1,0 +1,78 @@
+
+-----------------------------------------
+docid:3_3ecbplus.xml
+-----------------------------------------
+
+sentence #:texas inmate arcade joseph comeaux jr . escaped when he was being transported to a prison in beaumont from huntsville . 
+	[events]:[['transported'], ['escaped']]
+	[entities]:[['arcade', 'joseph', 'comeaux', 'jr'], ['huntsville'], ['he'], ['a', 'prison', 'in', 'beaumont']]
+*R893[escaped]
+|--(nsubj)--> R890[jr]
+|                |--(compou)--> texas
+|                |--(compou)--> inmate
+|                |--(compou)--> R890[arcade]
+|                |--(compou)--> R890[joseph]
+|                |--(compou)--> R890[comeaux]
+|                |--(punct)--> .
+|--(advcl)--> *R894[transported]
+|                |--(advmod)--> when
+|                |--(nsubjp)--> R890[he]
+|                |--(aux)--> was
+|                |--(auxpas)--> being
+|                |--(nmod)--> R901[prison]
+|                |                |--(case)--> to
+|                |                |--(det)--> R901[a]
+|                |                |--(nmod)--> R901[beaumont]
+|                |                                 |--(case)--> R901[in]
+|                |--(nmod)--> R933[huntsville]
+|                                 |--(case)--> from
+|--(punct)--> .
+
+	* entity-paths for event['transported']3_3ecbplus.xmlsent:7466
+	['transported --(nsubjpass)--> he']
+	['transported --(nmod)--> prison']
+	['transported --(nmod)--> Huntsville']
+
+	* entity-paths for event['escaped']3_3ecbplus.xmlsent:7466
+	['escaped --(nsubj)--> Jr']
+	['escaped --(advcl)--> transported', 'transported --(nsubjpass)--> he']
+	['escaped --(advcl)--> transported', 'transported --(nmod)--> prison']
+	['escaped --(advcl)--> transported', 'transported --(nmod)--> Huntsville']
+
+sentence #:arcade joseph comeaux jr : texas child molester escaped and armed 
+	[events]:[['escaped']]
+	[entities]:[['arcade', 'joseph', 'comeaux', 'jr']]
+R890[jr]
+|--(compou)--> R890[arcade]
+|--(compou)--> R890[joseph]
+|--(compou)--> R890[comeaux]
+|--(punct)--> :
+|--(parata)--> *R893[escaped]
+                 |--(nsubj)--> molester
+                 |                |--(compou)--> texas
+                 |                |--(compou)--> child
+                 |--(cc)--> and
+                 |--(conj)--> armed
+
+	* entity-paths for event['escaped']3_3ecbplus.xmlsent:7464
+
+sentence #:comeaux escaped with a 12 - gauge shotgun and 2 semiautomatic pistols . 
+	[events]:[['escaped']]
+	[entities]:[['pistols'], ['shotgun'], ['comeaux']]
+*R893[escaped]
+|--(nsubj)--> R890[comeaux]
+|--(nmod)--> 12
+|                |--(case)--> with
+|                |--(det)--> a
+|--(punct)--> -
+|--(ccomp)--> gauge
+|                |--(dobj)--> R934[pistols]
+|                                 |--(compou)--> R935[shotgun]
+|                                 |                |--(cc)--> and
+|                                 |                |--(conj)--> 2
+|                                 |--(amod)--> semiautomatic
+|--(punct)--> .
+
+	* entity-paths for event['escaped']3_3ecbplus.xmlsent:7468
+	['escaped --(nsubj)--> Comeaux']
+	['escaped --(ccomp)--> gauge', 'gauge --(dobj)--> pistols']

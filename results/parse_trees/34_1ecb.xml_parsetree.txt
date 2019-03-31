@@ -1,0 +1,54 @@
+
+-----------------------------------------
+docid:34_1ecb.xml
+-----------------------------------------
+
+sentence #:cnn medical reporter and grady hospital neurosurgeon dr. sanjay gupta has been approached by the obama administration to fill the post of u.s. surgeon general , cnn officials confirmed tuesday . 
+	[events]:[['approached'], ['confirmed'], ['post']]
+	[entities]:[['tuesday'], ['u.s.', 'surgeon', 'general'], ['obama', 'administration'], ['dr.', 'sanjay', 'gupta'], ['cnn', 'officials']]
+*R1143[confirmed]
+|--(ccomp)--> *R1132[approached]
+|                |--(nsubjp)--> reporter
+|                |                |--(compou)--> cnn
+|                |                |--(amod)--> medical
+|                |                |--(cc)--> and
+|                |                |--(conj)--> R1130[gupta]
+|                |                                 |--(compou)--> grady
+|                |                                 |--(compou)--> hospital
+|                |                                 |--(compou)--> neurosurgeon
+|                |                                 |--(compou)--> R1130[dr.]
+|                |                                 |--(compou)--> R1130[sanjay]
+|                |--(aux)--> has
+|                |--(auxpas)--> been
+|                |--(nmod)--> R1133[administration]
+|                |                |--(case)--> by
+|                |                |--(det)--> the
+|                |                |--(compou)--> R1133[obama]
+|                |--(xcomp)--> fill
+|                                 |--(mark)--> to
+|                                 |--(dobj)--> *R1134[post]
+|                                                  |--(det)--> the
+|                                                  |--(nmod)--> R1135[general]
+|                                                                   |--(case)--> of
+|                                                                   |--(compou)--> R1135[u.s.]
+|                                                                   |--(compou)--> R1135[surgeon]
+|--(punct)--> ,
+|--(nsubj)--> R1144[officials]
+|                |--(compou)--> R1144[cnn]
+|--(nmod:t)--> R1146[tuesday]
+|--(punct)--> .
+
+	* entity-paths for event['approached']34_1ecb.xmlsent:9371
+	['approached --(nsubjpass)--> reporter', 'reporter --(conj)--> Gupta']
+	['approached --(nmod)--> administration']
+	['approached --(xcomp)--> fill', 'fill --(dobj)--> post', 'post --(nmod)--> General']
+
+	* entity-paths for event['confirmed']34_1ecb.xmlsent:9371
+	['confirmed --(ccomp)--> approached', 'approached --(nsubjpass)--> reporter', 'reporter --(conj)--> Gupta']
+	['confirmed --(ccomp)--> approached', 'approached --(nmod)--> administration']
+	['confirmed --(ccomp)--> approached', 'approached --(xcomp)--> fill', 'fill --(dobj)--> post', 'post --(nmod)--> General']
+	['confirmed --(nsubj)--> officials']
+	['confirmed --(nmod:tmod)--> Tuesday']
+
+	* entity-paths for event['post']34_1ecb.xmlsent:9371
+	['post --(nmod)--> General']

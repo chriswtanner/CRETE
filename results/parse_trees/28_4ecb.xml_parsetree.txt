@@ -1,0 +1,45 @@
+
+-----------------------------------------
+docid:28_4ecb.xml
+-----------------------------------------
+
+sentence #:mark felt , the most famous anonymous source in the history of journalism who was known to the world as " deep throat " , died yesterday aged 95 . 
+	[events]:[['known'], ['died']]
+	[entities]:[['source'], ['mark', 'felt'], ['yesterday'], ['deep', 'throat']]
+*R808[died]
+|--(nsubj)--> R809[felt]
+|                |--(compou)--> R809[mark]
+|                |--(punct)--> ,
+|                |--(appos)--> R811[source]
+|                |                |--(det)--> the
+|                |                |--(amod)--> famous
+|                |                |                |--(advmod)--> most
+|                |                |--(amod)--> anonymous
+|                |                |--(nmod)--> history
+|                |                                 |--(case)--> in
+|                |                                 |--(det)--> the
+|                |                                 |--(nmod)--> journalism
+|                |                                 |                |--(case)--> of
+|                |                                 |                |--(acl:re)--> *R810[known]
+|                |                                 |                                 |--(nsubjp)--> who
+|                |                                 |                                 |--(auxpas)--> was
+|                |                                 |                                 |--(nmod)--> world
+|                |                                 |                                 |                |--(case)--> to
+|                |                                 |                                 |                |--(det)--> the
+|                |                                 |                                 |--(nmod)--> R809[throat]
+|                |                                 |                                                  |--(case)--> as
+|                |                                 |                                                  |--(punct)--> "
+|                |                                 |                                                  |--(compou)--> R809[deep]
+|                |                                 |--(punct)--> "
+|                |--(punct)--> ,
+|--(dobj)--> R813[yesterday]
+|                |--(amod)--> aged
+|                                 |--(nmod:t)--> 95
+|--(punct)--> .
+
+	* entity-paths for event['known']28_4ecb.xmlsent:6361
+	['known --(nmod)--> Throat']
+
+	* entity-paths for event['died']28_4ecb.xmlsent:6361
+	['died --(nsubj)--> Felt']
+	['died --(dobj)--> yesterday']

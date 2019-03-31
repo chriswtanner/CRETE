@@ -1,0 +1,83 @@
+
+-----------------------------------------
+docid:36_6ecbplus.xml
+-----------------------------------------
+
+sentence #:warren jeffs convicted of child sexual assault charges 
+	[events]:[['charges'], ['convicted'], ['sexual', 'assault']]
+	[entities]:[['child'], ['warren', 'jeffs']]
+*R1218[convicted]
+|--(nsubj)--> R1183[jeffs]
+|                |--(compou)--> R1183[warren]
+|--(nmod)--> *R1184[charges]
+                 |--(case)--> of
+                 |--(compou)--> R1205[child]
+                 |--(amod)--> *R1186[sexual]
+                 |--(compou)--> *R1186[assault]
+
+	* entity-paths for event['charges']36_6ecbplus.xmlsent:10202
+	['charges --(compound)--> child']
+
+	* entity-paths for event['convicted']36_6ecbplus.xmlsent:10202
+	['convicted --(nsubj)--> Jeffs']
+	['convicted --(nmod)--> charges', 'charges --(compound)--> child']
+
+	* entity-paths for event['sexual', 'assault']36_6ecbplus.xmlsent:10202
+
+sentence #:a texas jury convicted polygamist sect leader warren jeffs of child sexual assault thursday in a case stemming from two young followers he took as brides in what his church calls "spiritual marriages . " 
+	[events]:[['convicted'], ['"spiritual', 'marriages'], ['calls'], ['took'], ['sexual', 'assault']]
+	[entities]:[['sect'], ['child'], ['leader', 'warren', 'jeffs'], ['thursday'], ['church'], ['he'], ['two', 'young', 'followers'], ['texas', 'jury'], ['brides']]
+*R1206[took]
+|--(nsubj)--> R1209[jury]
+|                |--(det)--> a
+|                |--(compou)--> R1209[texas]
+|                |--(acl)--> *R1218[convicted]
+|                                 |--(dobj)--> R1183[jeffs]
+|                                 |                |--(amod)--> polygamist
+|                                 |                |--(compou)--> R1204[sect]
+|                                 |                |--(compou)--> R1183[leader]
+|                                 |                |--(compou)--> R1183[warren]
+|                                 |                |--(nmod)--> *R1186[assault]
+|                                 |                                 |--(case)--> of
+|                                 |                                 |--(compou)--> R1205[child]
+|                                 |                                 |--(amod)--> *R1186[sexual]
+|                                 |--(nmod:t)--> R1211[thursday]
+|                                 |--(nmod)--> case
+|                                                  |--(case)--> in
+|                                                  |--(det)--> a
+|--(parata)--> stemming
+|                |--(nmod)--> R1188[followers]
+|                                 |--(case)--> from
+|                                 |--(nummod)--> R1188[two]
+|                                 |--(amod)--> R1188[young]
+|--(nsubj)--> R1183[he]
+|--(dobj)--> R1188[brides]
+|                |--(advmod)--> as
+|                |--(acl:re)--> *R1223[calls]
+|                                 |--(nmod)--> what
+|                                 |                |--(case)--> in
+|                                 |--(nsubj)--> R1204[church]
+|                                 |                |--(nmod:p)--> his
+|                                 |--(punct)--> *R1193["spiritual]
+|                                 |--(dobj)--> *R1193[marriages]
+|                                                  |--(amod)--> *R1193["spiritual]
+|--(punct)--> .
+|--(punct)--> "
+
+	* entity-paths for event['convicted']36_6ecbplus.xmlsent:10204
+	['convicted --(dobj)--> Jeffs']
+	['convicted --(nmod:tmod)--> Thursday']
+
+	* entity-paths for event['"spiritual', 'marriages']36_6ecbplus.xmlsent:10204
+
+	* entity-paths for event['calls']36_6ecbplus.xmlsent:10204
+	['calls --(nsubj)--> church']
+
+	* entity-paths for event['took']36_6ecbplus.xmlsent:10204
+	['took --(nsubj)--> jury']
+	['took --(parataxis)--> stemming', 'stemming --(nmod)--> followers']
+	['took --(nsubj)--> he']
+	['took --(dobj)--> brides']
+
+	* entity-paths for event['sexual', 'assault']36_6ecbplus.xmlsent:10204
+	['assault --(compound)--> child']

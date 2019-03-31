@@ -1,0 +1,63 @@
+
+-----------------------------------------
+docid:12_3ecb.xml
+-----------------------------------------
+
+sentence #:striking another blow against the pirates infesting the waters off the horn of africa , an indian navy warship not only repulsed an attack on a merchant vessel in the gulf of aden , but nabbed 23 somali and yemeni sea brigands . 
+	[events]:[['attack'], ['nabbed'], ['repulsed']]
+	[entities]:[['the', 'gulf', 'of', 'aden'], ['brigands'], ['an', 'indian', 'navy', 'warship'], ['vessel'], ['pirates']]
+*R232[repulsed]
+|--(advcl)--> striking
+|                |--(dobj)--> blow
+|                |                |--(det)--> another
+|                |--(advcl)--> infesting
+|                                 |--(mark)--> against
+|                                 |--(nsubj)--> R216[pirates]
+|                                 |                |--(det)--> the
+|                                 |--(dobj)--> waters
+|                                 |                |--(det)--> the
+|                                 |--(nmod)--> horn
+|                                                  |--(case)--> off
+|                                                  |--(det)--> the
+|                                                  |--(nmod)--> africa
+|                                                                   |--(case)--> of
+|--(punct)--> ,
+|--(nsubj)--> R234[warship]
+|                |--(det)--> R234[an]
+|                |--(amod)--> R234[indian]
+|                |--(compou)--> R234[navy]
+|--(cc:pre)--> only
+|                |--(neg)--> not
+|--(dobj)--> *R235[attack]
+|                |--(det)--> an
+|--(nmod)--> R228[vessel]
+|                |--(case)--> on
+|                |--(det)--> a
+|                |--(compou)--> merchant
+|--(nmod)--> R229[gulf]
+|                |--(case)--> in
+|                |--(det)--> R229[the]
+|                |--(nmod)--> R229[aden]
+|                                 |--(case)--> R229[of]
+|--(punct)--> ,
+|--(cc)--> but
+|--(conj)--> *R214[nabbed]
+|                |--(dobj)--> somali
+|                                 |--(nummod)--> 23
+|                                 |--(cc)--> and
+|                                 |--(conj)--> R216[brigands]
+|                                                  |--(compou)--> yemeni
+|                                                  |--(compou)--> sea
+|--(punct)--> .
+
+	* entity-paths for event['attack']12_3ecb.xmlsent:926
+
+	* entity-paths for event['nabbed']12_3ecb.xmlsent:926
+	['nabbed --(dobj)--> Somali', 'Somali --(conj)--> brigands']
+
+	* entity-paths for event['repulsed']12_3ecb.xmlsent:926
+	['repulsed --(advcl)--> Striking', 'Striking --(advcl)--> infesting', 'infesting --(nsubj)--> pirates']
+	['repulsed --(nsubj)--> warship']
+	['repulsed --(nmod)--> vessel']
+	['repulsed --(nmod)--> Gulf']
+	['repulsed --(conj)--> nabbed', 'nabbed --(dobj)--> Somali', 'Somali --(conj)--> brigands']

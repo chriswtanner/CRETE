@@ -1,0 +1,101 @@
+
+-----------------------------------------
+docid:18_2ecbplus.xml
+-----------------------------------------
+
+sentence #:1 dead , 2 hurt in mich . office shooting ; police say suspect had worked there 
+	[events]:[['worked'], ['shooting'], ['say'], ['dead'], ['hurt']]
+	[entities]:[['1'], ['there'], ['2'], ['mich', '.', 'office'], ['police'], ['suspect']]
+R374[1]
+|--(dep)--> *R373[dead]
+|                |--(punct)--> ,
+|                |--(dep)--> *R391[hurt]
+|                |                |--(compou)--> R392[2]
+|                |--(nmod)--> R375[mich]
+|                                 |--(case)--> in
+|                                 |--(punct)--> R375[.]
+|                                 |--(dep)--> *R361[shooting]
+|                                                  |--(compou)--> R375[office]
+|--(punct)--> ;
+|--(parata)--> *R390[say]
+                 |--(nsubj)--> R393[police]
+                 |--(ccomp)--> *R394[worked]
+                                  |--(nsubj)--> R360[suspect]
+                                  |--(aux)--> had
+                                  |--(advmod)--> R375[there]
+
+	* entity-paths for event['worked']18_2ecbplus.xmlsent:2417
+	['worked --(nsubj)--> suspect']
+	['worked --(advmod)--> there']
+
+	* entity-paths for event['shooting']18_2ecbplus.xmlsent:2417
+	['shooting --(compound)--> office']
+
+	* entity-paths for event['say']18_2ecbplus.xmlsent:2417
+	['say --(nsubj)--> police']
+	['say --(ccomp)--> worked', 'worked --(nsubj)--> suspect']
+	['say --(ccomp)--> worked', 'worked --(advmod)--> there']
+
+	* entity-paths for event['dead']18_2ecbplus.xmlsent:2417
+	['dead --(dep)--> hurt', 'hurt --(compound)--> 2']
+	['dead --(nmod)--> Mich']
+
+	* entity-paths for event['hurt']18_2ecbplus.xmlsent:2417
+	['hurt --(compound)--> 2']
+
+sentence #:a man suspected of shooting three people at an accounting firm where he had worked was arrested a few hours later after a high - speed chase , authorities said . 
+	[events]:[['chase'], ['arrested'], ['said'], ['suspected'], ['shooting'], ['worked']]
+	[entities]:[['where'], ['he'], ['authorities'], ['a', 'few', 'hours', 'later'], ['at', 'an', 'accounting', 'firm'], ['man'], ['people']]
+*R370[said]
+|--(ccomp)--> *R371[arrested]
+|                |--(nsubjp)--> R360[man]
+|                |                |--(det)--> a
+|                |                |--(acl)--> *R372[suspected]
+|                |                                 |--(nmod)--> R362[people]
+|                |                                 |                |--(case)--> of
+|                |                                 |                |--(amod)--> *R361[shooting]
+|                |                                 |                |--(nummod)--> three
+|                |                                 |--(nmod)--> R375[firm]
+|                |                                                  |--(case)--> R375[at]
+|                |                                                  |--(det)--> R375[an]
+|                |                                                  |--(compou)--> R375[accounting]
+|                |                                                  |--(acl:re)--> *R394[worked]
+|                |                                                                   |--(advmod)--> R375[where]
+|                |                                                                   |--(nsubj)--> R360[he]
+|                |                                                                   |--(aux)--> had
+|                |--(auxpas)--> was
+|                |--(nmod)--> *R376[chase]
+|                                 |--(advmod)--> R377[later]
+|                                 |                |--(nmod:n)--> R377[hours]
+|                                 |                                 |--(det)--> R377[a]
+|                                 |                                 |--(amod)--> R377[few]
+|                                 |--(case)--> after
+|                                 |--(det)--> a
+|                                 |--(amod)--> high
+|                                 |--(punct)--> -
+|                                 |--(compou)--> speed
+|--(punct)--> ,
+|--(nsubj)--> R380[authorities]
+|--(punct)--> .
+
+	* entity-paths for event['chase']18_2ecbplus.xmlsent:2419
+	['chase --(advmod)--> later']
+
+	* entity-paths for event['arrested']18_2ecbplus.xmlsent:2419
+	['arrested --(nsubjpass)--> man']
+	['arrested --(nmod)--> chase', 'chase --(advmod)--> later']
+
+	* entity-paths for event['said']18_2ecbplus.xmlsent:2419
+	['said --(ccomp)--> arrested', 'arrested --(nsubjpass)--> man']
+	['said --(ccomp)--> arrested', 'arrested --(nmod)--> chase', 'chase --(advmod)--> later']
+	['said --(nsubj)--> authorities']
+
+	* entity-paths for event['suspected']18_2ecbplus.xmlsent:2419
+	['suspected --(nmod)--> people']
+	['suspected --(nmod)--> firm']
+
+	* entity-paths for event['shooting']18_2ecbplus.xmlsent:2419
+
+	* entity-paths for event['worked']18_2ecbplus.xmlsent:2419
+	['worked --(advmod)--> where']
+	['worked --(nsubj)--> he']

@@ -1,0 +1,40 @@
+
+-----------------------------------------
+docid:5_13ecb.xml
+-----------------------------------------
+
+sentence #:philadelphia 76ers management had enough of the nba team lurking near the bottom of the eastern conference standings and fired head coach maurice cheeks on saturday . 
+	[events]:[['fired'], ['lurking']]
+	[entities]:[['team'], ['saturday'], ['maurice', 'cheeks']]
+had
+|--(nsubj)--> management
+|                |--(compou)--> philadelphia
+|                |--(compou)--> 76ers
+|--(dobj)--> enough
+|--(nmod)--> R1673[team]
+|                |--(case)--> of
+|                |--(det)--> the
+|                |--(compou)--> nba
+|                |--(amod)--> *R1676[lurking]
+|--(nmod)--> bottom
+|                |--(case)--> near
+|                |--(det)--> the
+|                |--(nmod)--> standings
+|                                 |--(case)--> of
+|                                 |--(det)--> the
+|                                 |--(compou)--> eastern
+|                                 |--(compou)--> conference
+|--(cc)--> and
+|--(conj)--> *R1672[fired]
+|                |--(dobj)--> R1674[cheeks]
+|                                 |--(compou)--> head
+|                                 |--(compou)--> coach
+|                                 |--(compou)--> R1674[maurice]
+|                                 |--(nmod)--> R1675[saturday]
+|                                                  |--(case)--> on
+|--(punct)--> .
+
+	* entity-paths for event['fired']5_13ecb.xmlsent:13949
+	['fired --(dobj)--> Cheeks']
+
+	* entity-paths for event['lurking']5_13ecb.xmlsent:13949

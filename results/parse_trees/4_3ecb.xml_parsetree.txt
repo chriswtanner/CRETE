@@ -1,0 +1,55 @@
+
+-----------------------------------------
+docid:4_3ecb.xml
+-----------------------------------------
+
+sentence #:bettie page , whose trademark raven hair and risque lingerie and bondage pin-up photos made her a cult favorite , died thursday night at a los angeles hospital - nine days after suffering a heart attack . 
+	[events]:[['died'], ['heart', 'attack'], ['suffering']]
+	[entities]:[['nine', 'days'], ['her'], ['hair'], ['a', 'los', 'angeles', 'hospital'], ['thursday', 'night'], ['photos'], ['bettie', 'page']]
+*R1363[died]
+|--(nsubj)--> R1364[page]
+|                |--(compou)--> R1364[bettie]
+|                |--(punct)--> ,
+|                |--(acl:re)--> made
+|                |                |--(dobj)--> R1393[hair]
+|                |                |                |--(nmod:p)--> whose
+|                |                |                |--(compou)--> trademark
+|                |                |                |--(compou)--> raven
+|                |                |                |--(cc)--> and
+|                |                |                |--(conj)--> lingerie
+|                |                |                                 |--(amod)--> risque
+|                |                |                                 |--(cc)--> and
+|                |                |                                 |--(conj)--> bondage
+|                |                |--(nsubj)--> R1384[photos]
+|                |                |                |--(amod)--> pin-up
+|                |                |--(xcomp)--> favorite
+|                |                                 |--(nsubj)--> R1364[her]
+|                |                                 |--(nmod:n)--> cult
+|                |                                                  |--(det)--> a
+|                |--(punct)--> ,
+|--(nmod:t)--> R1367[night]
+|                |--(compou)--> R1367[thursday]
+|--(nmod)--> R1368[hospital]
+|                |--(case)--> at
+|                |--(det)--> R1368[a]
+|                |--(compou)--> R1368[los]
+|                |--(compou)--> R1368[angeles]
+|--(punct)--> -
+|--(nmod)--> R1381[days]
+|                |--(nummod)--> R1381[nine]
+|                |--(mark)--> after
+|                |--(dep)--> *R1382[suffering]
+|                                 |--(dobj)--> *R1380[attack]
+|                                                  |--(det)--> a
+|                                                  |--(compou)--> *R1380[heart]
+|--(punct)--> .
+
+	* entity-paths for event['died']4_3ecb.xmlsent:11402
+	['died --(nsubj)--> Page']
+	['died --(nmod:tmod)--> night']
+	['died --(nmod)--> hospital']
+	['died --(nmod)--> days']
+
+	* entity-paths for event['heart', 'attack']4_3ecb.xmlsent:11402
+
+	* entity-paths for event['suffering']4_3ecb.xmlsent:11402

@@ -1,0 +1,69 @@
+
+-----------------------------------------
+docid:1_10ecb.xml
+-----------------------------------------
+
+sentence #:perennial party girl tara reid checked herself into promises treatment center , her rep told people . 
+	[events]:[['checked', 'into'], ['told']]
+	[entities]:[['people'], ['promises', 'treatment', 'center'], ['tara', 'reid'], ['herself'], ['rep']]
+*R0[told]
+|--(nsubj)--> girl
+|                |--(amod)--> perennial
+|                |--(compou)--> party
+|                |--(acl:re)--> *R1[checked]
+|                                 |--(nsubj)--> R2[reid]
+|                                 |                |--(compou)--> R2[tara]
+|                                 |--(dobj)--> R2[herself]
+|                                 |--(nmod)--> *R1[into]
+|--(parata)--> R3[promises]
+|                |--(nsubj)--> R3[center]
+|                                 |--(compou)--> R3[treatment]
+|                                 |--(punct)--> ,
+|                                 |--(appos)--> R4[rep]
+|                                                  |--(nmod:p)--> her
+|--(dobj)--> R5[people]
+|--(punct)--> .
+
+	* entity-paths for event['checked', 'into']1_10ecb.xmlsent:0
+
+	* entity-paths for event['told']1_10ecb.xmlsent:0
+	['told --(nsubj)--> girl', 'girl --(acl:relcl)--> checked', 'checked --(nsubj)--> Reid']
+	['told --(nsubj)--> girl', 'girl --(acl:relcl)--> checked', 'checked --(dobj)--> herself']
+	['told --(parataxis)--> Promises']
+	['told --(dobj)--> People']
+
+sentence #:a friend of the actress told people she went to promises on tuesday and that her friends and family supported her decision . 
+	[events]:[['decision'], ['went']]
+	[entities]:[['on', 'tuesday'], ['her'], ['people'], ['promises'], ['family'], ['she']]
+told
+|--(nsubj)--> friend
+|                |--(det)--> a
+|                |--(nmod)--> actress
+|                                 |--(case)--> of
+|                                 |--(det)--> the
+|--(dobj)--> R5[people]
+|--(ccomp)--> *R1[went]
+|                |--(nsubj)--> R2[she]
+|                |--(xcomp)--> R3[promises]
+|                |                |--(mark)--> to
+|                |                |--(nmod)--> R6[tuesday]
+|                |                                 |--(case)--> R6[on]
+|                |--(cc)--> and
+|                |--(conj)--> supported
+|                                 |--(mark)--> that
+|                                 |--(nsubj)--> friends
+|                                 |                |--(nmod:p)--> her
+|                                 |                |--(cc)--> and
+|                                 |                |--(conj)--> R7[family]
+|                                 |--(dobj)--> *R1[decision]
+|                                                  |--(nmod:p)--> R2[her]
+|--(punct)--> .
+
+	* entity-paths for event['decision']1_10ecb.xmlsent:3
+	['decision --(nmod:poss)--> her']
+
+	* entity-paths for event['went']1_10ecb.xmlsent:3
+	['went --(nsubj)--> she']
+	['went --(xcomp)--> Promises']
+	['went --(conj)--> supported', 'supported --(nsubj)--> friends', 'friends --(conj)--> family']
+	['went --(conj)--> supported', 'supported --(dobj)--> decision', 'decision --(nmod:poss)--> her']

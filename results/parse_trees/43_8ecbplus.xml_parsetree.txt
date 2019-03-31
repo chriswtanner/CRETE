@@ -1,0 +1,34 @@
+
+-----------------------------------------
+docid:43_8ecbplus.xml
+-----------------------------------------
+
+sentence #:summary : rich fichera looks at the risks and potential rewards of amd's recent acquisition of innovative server startup seamicro . 
+	[events]:[['acquisition']]
+	[entities]:[["amd's"], ['seamicro']]
+summary
+|--(punct)--> :
+|--(parata)--> looks
+|                |--(nsubj)--> fichera
+|                |                |--(compou)--> rich
+|                |--(nmod)--> risks
+|                                 |--(case)--> at
+|                                 |--(det)--> the
+|                                 |--(cc)--> and
+|                                 |--(conj)--> rewards
+|                                                  |--(amod)--> potential
+|                                                  |--(nmod)--> *R1546[acquisition]
+|                                                                   |--(case)--> of
+|                                                                   |--(nmod:p)--> R1547[amd's]
+|                                                                   |                |--(case)--> R1547[amd's]
+|                                                                   |--(amod)--> recent
+|                                                                   |--(nmod)--> R1549[seamicro]
+|                                                                                    |--(case)--> of
+|                                                                                    |--(amod)--> innovative
+|                                                                                    |--(compou)--> server
+|                                                                                    |--(compou)--> startup
+|--(punct)--> .
+
+	* entity-paths for event['acquisition']43_8ecbplus.xmlsent:13376
+	['acquisition --(nmod:poss)--> AMD']
+	['acquisition --(nmod)--> SeaMicro']

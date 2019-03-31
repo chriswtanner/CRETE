@@ -1,0 +1,50 @@
+
+-----------------------------------------
+docid:12_18ecb.xml
+-----------------------------------------
+
+sentence #:the indian navy said saturday it had captured 23 pirates as they tried to board an ethiopian-flagged vessel in the gulf of aden . 
+	[events]:[['tried'], ['said'], ['captured']]
+	[entities]:[['navy'], ['vessel'], ['pirates'], ['it'], ['the', 'gulf', 'of', 'aden'], ['they'], ['saturday']]
+*R226[said]
+|--(nsubj)--> R215[navy]
+|                |--(det)--> the
+|                |--(amod)--> indian
+|--(nmod:t)--> R230[saturday]
+|--(ccomp)--> *R214[captured]
+|                |--(nsubj)--> R215[it]
+|                |--(aux)--> had
+|                |--(dobj)--> R216[pirates]
+|                |                |--(nummod)--> 23
+|                |--(advcl)--> *R239[tried]
+|                                 |--(mark)--> as
+|                                 |--(nsubj)--> R216[they]
+|                                 |--(nmod)--> board
+|                                 |                |--(case)--> to
+|                                 |--(dobj)--> R228[vessel]
+|                                                  |--(det)--> an
+|                                                  |--(amod)--> ethiopian-flagged
+|                                                  |--(nmod)--> R229[gulf]
+|                                                                   |--(case)--> in
+|                                                                   |--(det)--> R229[the]
+|                                                                   |--(nmod)--> R229[aden]
+|                                                                                    |--(case)--> R229[of]
+|--(punct)--> .
+
+	* entity-paths for event['tried']12_18ecb.xmlsent:858
+	['tried --(nsubj)--> they']
+	['tried --(dobj)--> vessel']
+
+	* entity-paths for event['said']12_18ecb.xmlsent:858
+	['said --(nsubj)--> Navy']
+	['said --(nmod:tmod)--> Saturday']
+	['said --(ccomp)--> captured', 'captured --(nsubj)--> it']
+	['said --(ccomp)--> captured', 'captured --(dobj)--> pirates']
+	['said --(ccomp)--> captured', 'captured --(advcl)--> tried', 'tried --(nsubj)--> they']
+	['said --(ccomp)--> captured', 'captured --(advcl)--> tried', 'tried --(dobj)--> vessel']
+
+	* entity-paths for event['captured']12_18ecb.xmlsent:858
+	['captured --(nsubj)--> it']
+	['captured --(dobj)--> pirates']
+	['captured --(advcl)--> tried', 'tried --(nsubj)--> they']
+	['captured --(advcl)--> tried', 'tried --(dobj)--> vessel']

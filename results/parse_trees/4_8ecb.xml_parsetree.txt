@@ -1,0 +1,56 @@
+
+-----------------------------------------
+docid:4_8ecb.xml
+-----------------------------------------
+
+sentence #:bettie page , one of entertainment 's original sex kittens , the 1950s pin-up queen who many credit with having paved the way for the sexual revolution of the following decade , passed away thursday , december 11 , at age 85 . 
+	[events]:[['sexual', 'revolution'], ['passed', 'away']]
+	[entities]:[['1950s'], ['bettie', 'page'], ['the', 'following', 'decade'], ['thursday', ',', 'december', '11']]
+R1364[page]
+|--(compou)--> R1364[bettie]
+|--(punct)--> ,
+|--(appos)--> one
+|                |--(nmod)--> kittens
+|                |                |--(case)--> of
+|                |                |--(nmod:p)--> entertainment
+|                |                |                |--(case)--> 's
+|                |                |--(amod)--> original
+|                |                |--(compou)--> sex
+|                |                |--(punct)--> ,
+|                |                |--(appos)--> queen
+|                |                |                |--(det)--> the
+|                |                |                |--(nummod)--> R1365[1950s]
+|                |                |                |--(compou)--> pin-up
+|                |                |                |--(acl:re)--> *R1363[passed]
+|                |                |                                 |--(dobj)--> who
+|                |                |                                 |--(nsubj)--> credit
+|                |                |                                 |                |--(amod)--> many
+|                |                |                                 |                |--(acl)--> paved
+|                |                |                                 |                                 |--(mark)--> with
+|                |                |                                 |                                 |--(aux)--> having
+|                |                |                                 |                                 |--(dobj)--> way
+|                |                |                                 |                                 |                |--(det)--> the
+|                |                |                                 |                                 |--(nmod)--> *R1394[revolution]
+|                |                |                                 |                                                  |--(case)--> for
+|                |                |                                 |                                                  |--(det)--> the
+|                |                |                                 |                                                  |--(amod)--> *R1394[sexual]
+|                |                |                                 |                                                  |--(nmod)--> R1399[decade]
+|                |                |                                 |                                                                   |--(case)--> of
+|                |                |                                 |                                                                   |--(det)--> R1399[the]
+|                |                |                                 |                                                                   |--(amod)--> R1399[following]
+|                |                |                                 |--(punct)--> ,
+|                |                |                                 |--(advmod)--> *R1363[away]
+|                |                |                                 |--(nmod:t)--> R1367[thursday]
+|                |                |--(punct)--> R1367[,]
+|                |--(nmod:t)--> R1367[december]
+|                                 |--(nummod)--> R1367[11]
+|--(punct)--> ,
+|--(nmod)--> age
+|                |--(case)--> at
+|                |--(nummod)--> 85
+|--(punct)--> .
+
+	* entity-paths for event['sexual', 'revolution']4_8ecb.xmlsent:11585
+	['revolution --(nmod)--> decade']
+
+	* entity-paths for event['passed', 'away']4_8ecb.xmlsent:11585

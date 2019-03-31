@@ -1,0 +1,30 @@
+
+-----------------------------------------
+docid:13_13ecb.xml
+-----------------------------------------
+
+sentence #:the wasilla bible church in wasilla , alaska was apparently attacked by an arsonist last night . 
+	[events]:[['attacked']]
+	[entities]:[['in', 'wasilla', ',', 'alaska'], ['wasilla', 'bible', 'church'], ['arsonist'], ['last', 'night']]
+*R270[attacked]
+|--(nsubjp)--> R280[church]
+|                |--(det)--> the
+|                |--(compou)--> R280[wasilla]
+|                |--(compou)--> R280[bible]
+|                |--(nmod)--> R279[alaska]
+|                                 |--(case)--> R279[in]
+|                                 |--(compou)--> R279[wasilla]
+|                                 |--(punct)--> R279[,]
+|--(auxpas)--> was
+|--(advmod)--> apparently
+|--(nmod)--> R281[arsonist]
+|                |--(case)--> by
+|                |--(det)--> an
+|--(nmod:t)--> R271[night]
+|                |--(amod)--> R271[last]
+|--(punct)--> .
+
+	* entity-paths for event['attacked']13_13ecb.xmlsent:1224
+	['attacked --(nsubjpass)--> Church']
+	['attacked --(nmod)--> arsonist']
+	['attacked --(nmod:tmod)--> night']

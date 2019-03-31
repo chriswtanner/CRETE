@@ -1,0 +1,40 @@
+
+-----------------------------------------
+docid:42_13ecb.xml
+-----------------------------------------
+
+sentence #:rim and t-mobile usa have finally gone official with the blackberry curve 8900 , just one day after the smartphone was seen in one of t-mo 's retail stores . 
+	[events]:[['gone', 'official']]
+	[entities]:[['rim'], ['t-mobile', 'usa'], ['t-mo'], ['smartphone'], ['blackberry', 'curve', '8900']]
+*R1518[gone]
+|--(nsubj)--> R1532[rim]
+|                |--(cc)--> and
+|                |--(conj)--> R1517[usa]
+|                                 |--(compou)--> R1517[t-mobile]
+|--(aux)--> have
+|--(advmod)--> finally
+|--(dobj)--> *R1518[official]
+|--(nmod)--> R1520[curve]
+|                |--(case)--> with
+|                |--(det)--> the
+|                |--(compou)--> R1520[blackberry]
+|                |--(nummod)--> R1520[8900]
+|                |--(punct)--> ,
+|                |--(appos)--> day
+|                                 |--(advmod)--> just
+|                                 |--(nummod)--> one
+|--(advcl)--> seen
+|                |--(mark)--> after
+|                |--(nsubjp)--> R1520[smartphone]
+|                |                |--(det)--> the
+|                |--(auxpas)--> was
+|                |--(nmod)--> one
+|                                 |--(case)--> in
+|                                 |--(nmod)--> stores
+|                                                  |--(case)--> of
+|                                                  |--(nmod:p)--> R1517[t-mo]
+|                                                  |                |--(case)--> 's
+|                                                  |--(amod)--> retail
+|--(punct)--> .
+
+	* entity-paths for event['gone', 'official']42_13ecb.xmlsent:12675

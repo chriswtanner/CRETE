@@ -1,0 +1,40 @@
+
+-----------------------------------------
+docid:21_5ecb.xml
+-----------------------------------------
+
+sentence #:the man police say is behind a fatal hit and run outside a sam 's club store in bloomington , now faces a murder charge . 
+	[events]:[['murder'], ['hit', 'and', 'run']]
+	[entities]:[['outside', 'a', 'sam', "'s", 'club', 'store', 'in', 'bloomington'], ['man'], ['police']]
+say
+|--(nsubj)--> R563[police]
+|                |--(det)--> the
+|                |--(compou)--> R539[man]
+|--(ccomp)--> *R586[hit]
+|                |--(cop)--> is
+|                |--(case)--> behind
+|                |--(det)--> a
+|                |--(amod)--> fatal
+|                |--(cc)--> *R586[and]
+|                |--(conj)--> *R586[run]
+|                |                |--(nmod)--> R544[store]
+|                |                |                |--(case)--> R544[outside]
+|                |                |                |--(nmod:p)--> R544[sam]
+|                |                |                |                |--(det)--> R544[a]
+|                |                |                |                |--(case)--> R544['s]
+|                |                |                |--(compou)--> R544[club]
+|                |                |--(nmod)--> R544[bloomington]
+|                |                                 |--(case)--> R544[in]
+|                |--(punct)--> ,
+|                |--(dep)--> faces
+|                                 |--(advmod)--> now
+|                                 |--(dobj)--> charge
+|                                                  |--(det)--> a
+|                                                  |--(compou)--> *R540[murder]
+|--(punct)--> .
+
+	* entity-paths for event['murder']21_5ecb.xmlsent:4234
+
+	* entity-paths for event['hit', 'and', 'run']21_5ecb.xmlsent:4234
+	['run --(nmod)--> store']
+	['run --(nmod)--> Bloomington']

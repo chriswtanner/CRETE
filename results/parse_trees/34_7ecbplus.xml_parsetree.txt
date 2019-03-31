@@ -1,0 +1,82 @@
+
+-----------------------------------------
+docid:34_7ecbplus.xml
+-----------------------------------------
+
+sentence #:robert wood johnson foundation trustee , regina benjamin , m . d . , m . b . a . , nominated for surgeon general of the united states 
+	[events]:[['nominated']]
+	[entities]:[['surgeon', 'general', 'of', 'the', 'united', 'states'], ['robert', 'wood', 'johnson', 'foundation', 'trustee', ',', 'regina', 'benjamin', ',', 'm', '.', 'd', '.', ',', 'm', '.', 'b', '.', 'a', '.']]
+R1139[trustee]
+|--(compou)--> R1139[robert]
+|--(compou)--> R1139[wood]
+|--(compou)--> R1139[johnson]
+|--(compou)--> R1139[foundation]
+|--(punct)--> R1139[,]
+|--(appos)--> R1139[benjamin]
+|                |--(compou)--> R1139[regina]
+|--(punct)--> R1139[,]
+|--(appos)--> R1139[m]
+|--(punct)--> R1139[.]
+|--(dep)--> R1139[d]
+|--(punct)--> R1139[.]
+|--(dep)--> R1139[m]
+|                |--(punct)--> R1139[,]
+|                |--(punct)--> R1139[.]
+|                |--(dep)--> R1139[b]
+|                |--(punct)--> R1139[.]
+|                |--(dep)--> R1139[a]
+|                |--(punct)--> R1139[.]
+|                |--(punct)--> ,
+|--(acl)--> *R1138[nominated]
+|                |--(nmod)--> R1135[general]
+|                                 |--(case)--> for
+|                                 |--(compou)--> R1135[surgeon]
+|--(nmod)--> R1135[states]
+                 |--(case)--> R1135[of]
+                 |--(det)--> R1135[the]
+                 |--(compou)--> R1135[united]
+
+	* entity-paths for event['nominated']34_7ecbplus.xmlsent:9489
+	['Nominated --(nmod)--> General']
+
+sentence #:the robert wood johnson foundation congratulates former trustee , regina benjamin , m . d . , m . b . a . , on being nominated for surgeon general of the united states . 
+	[events]:[['nominated']]
+	[entities]:[['surgeon', 'general', 'of', 'the', 'united', 'states'], ['regina', 'benjamin', ',', 'm', '.', 'd', '.', ',', 'm', '.', 'b', '.', 'a'], ['trustee']]
+congratulates
+|--(nsubj)--> foundation
+|                |--(det)--> the
+|                |--(compou)--> robert
+|                |--(compou)--> wood
+|                |--(compou)--> johnson
+|--(dobj)--> R1139[trustee]
+|                |--(amod)--> former
+|                |--(punct)--> ,
+|                |--(appos)--> R1139[benjamin]
+|                |                |--(compou)--> R1139[regina]
+|                |--(punct)--> R1139[,]
+|                |--(appos)--> R1139[m]
+|                |--(punct)--> R1139[.]
+|                |--(dep)--> R1139[d]
+|                |--(punct)--> R1139[.]
+|                |--(dep)--> R1139[m]
+|                                 |--(punct)--> R1139[,]
+|                                 |--(punct)--> R1139[.]
+|                                 |--(dep)--> R1139[b]
+|                                 |--(punct)--> R1139[.]
+|                                 |--(dep)--> R1139[a]
+|                                 |--(punct)--> .
+|                                 |--(punct)--> ,
+|--(advcl)--> *R1138[nominated]
+|                |--(mark)--> on
+|                |--(auxpas)--> being
+|                |--(nmod)--> R1135[general]
+|                                 |--(case)--> for
+|                                 |--(compou)--> R1135[surgeon]
+|                                 |--(nmod)--> R1135[states]
+|                                                  |--(case)--> R1135[of]
+|                                                  |--(det)--> R1135[the]
+|                                                  |--(compou)--> R1135[united]
+|--(punct)--> .
+
+	* entity-paths for event['nominated']34_7ecbplus.xmlsent:9492
+	['nominated --(nmod)--> General']

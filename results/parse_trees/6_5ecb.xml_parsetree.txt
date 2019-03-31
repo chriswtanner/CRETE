@@ -1,0 +1,59 @@
+
+-----------------------------------------
+docid:6_5ecb.xml
+-----------------------------------------
+
+sentence #:days after catherine hardwicke was ousted , despite having directed the vampire romance satisfactorily enough to pull in $ 140 million worth of business from fanggirls and average moviegoers alike , the golden compass director chris weitz is close to signing on for the blockbuster 's sequel . 
+	[events]:[['signing']]
+	[entities]:[['catherine', 'hardwicke'], ['chris', 'weitz'], ['the', 'vampire', 'romance'], ['sequel']]
+close
+|--(ccomp)--> ousted
+|                |--(nsubjp)--> days
+|                |                |--(nmod)--> R1714[hardwicke]
+|                |                                 |--(case)--> after
+|                |                                 |--(compou)--> R1714[catherine]
+|                |--(auxpas)--> was
+|                |--(punct)--> ,
+|                |--(advcl)--> directed
+|                |                |--(mark)--> despite
+|                |                |--(aux)--> having
+|                |                |--(dobj)--> R1707[romance]
+|                |                |                |--(det)--> R1707[the]
+|                |                |                |--(compou)--> R1707[vampire]
+|                |                |--(advmod)--> satisfactorily
+|                |                |--(advmod)--> enough
+|                |                |--(advcl)--> pull
+|                |                                 |--(mark)--> to
+|                |                                 |--(nmod)--> worth
+|                |                                 |                |--(case)--> in
+|                |                                 |                |--(nummod)--> $
+|                |                                 |                |                |--(nummod)--> million
+|                |                                 |                |                                 |--(compou)--> 140
+|                |                                 |                |--(nmod)--> business
+|                |                                 |                                 |--(case)--> of
+|                |                                 |--(nmod)--> fanggirls
+|                |                                                  |--(case)--> from
+|                |                                                  |--(cc)--> and
+|                |                                                  |--(conj)--> moviegoers
+|                |                                                                   |--(amod)--> average
+|                |--(advmod)--> alike
+|--(punct)--> ,
+|--(nsubj)--> R1704[weitz]
+|                |--(det)--> the
+|                |--(compou)--> golden
+|                |--(compou)--> compass
+|                |--(compou)--> director
+|                |--(compou)--> R1704[chris]
+|--(cop)--> is
+|--(advcl)--> *R1706[signing]
+|                |--(mark)--> to
+|                |--(nmod)--> R1703[sequel]
+|                                 |--(case)--> on
+|                                 |--(case)--> for
+|                                 |--(nmod:p)--> blockbuster
+|                                                  |--(det)--> the
+|                                                  |--(case)--> 's
+|--(punct)--> .
+
+	* entity-paths for event['signing']6_5ecb.xmlsent:14466
+	['signing --(nmod)--> sequel']

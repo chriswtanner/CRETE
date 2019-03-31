@@ -1,0 +1,27 @@
+
+-----------------------------------------
+docid:42_7ecb.xml
+-----------------------------------------
+
+sentence #:t-mobile will be adding the blackberry curve 8900 to their lineup come february . 
+	[events]:[['adding']]
+	[entities]:[['t-mobile'], ['blackberry', 'curve', '8900'], ['february'], ['their'], ['lineup']]
+*R1533[adding]
+|--(nsubj)--> R1517[t-mobile]
+|--(aux)--> will
+|--(aux)--> be
+|--(ccomp)--> come
+|                |--(nsubj)--> R1520[curve]
+|                |                |--(det)--> the
+|                |                |--(compou)--> R1520[blackberry]
+|                |                |--(nummod)--> R1520[8900]
+|                |                |--(nmod)--> R1534[lineup]
+|                |                                 |--(case)--> to
+|                |                                 |--(nmod:p)--> R1517[their]
+|                |--(nmod:t)--> R1521[february]
+|--(punct)--> .
+
+	* entity-paths for event['adding']42_7ecb.xmlsent:12811
+	['adding --(nsubj)--> T-Mobile']
+	['adding --(ccomp)--> come', 'come --(nsubj)--> Curve']
+	['adding --(ccomp)--> come', 'come --(nmod:tmod)--> February']

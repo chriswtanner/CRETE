@@ -1,0 +1,50 @@
+
+-----------------------------------------
+docid:10_21ecbplus.xml
+-----------------------------------------
+
+sentence #:2 : 16pm : take it with a grain of salt , but we have a report of a report that the red sox offered mark teixeira an eight - year , $200mm deal . 
+	[events]:[['offered']]
+	[entities]:[['mark', 'teixeira'], ['eight', '-', 'year'], ['deal'], ['$200mm'], ['red', 'sox']]
+2
+|--(punct)--> :
+|--(dep)--> 16pm
+|                |--(nummod)--> 16pm
+|--(punct)--> :
+|--(parata)--> take
+|                |--(dobj)--> it
+|                |--(nmod)--> grain
+|                |                |--(case)--> with
+|                |                |--(det)--> a
+|                |                |--(nmod)--> salt
+|                |                                 |--(case)--> of
+|                |--(punct)--> ,
+|                |--(dep)--> have
+|                |                |--(cc)--> but
+|                |                |--(nsubj)--> we
+|                |                |--(dobj)--> report
+|                |                |                |--(det)--> a
+|                |                |                |--(nmod)--> report
+|                |                |                                 |--(case)--> of
+|                |                |                                 |--(det)--> a
+|                |                |--(ccomp)--> *R165[offered]
+|                |                                 |--(mark)--> that
+|                |                                 |--(nsubj)--> R162[sox]
+|                |                                 |                |--(det)--> the
+|                |                                 |                |--(compou)--> R162[red]
+|                |                                 |--(iobj)--> R163[teixeira]
+|                |                                 |                |--(compou)--> R163[mark]
+|                |                                 |--(dobj)--> R164[eight]
+|                |                                                  |--(det)--> an
+|                |                                                  |--(punct)--> R164[-]
+|                |                                                  |--(dep)--> R164[year]
+|                |                                                                   |--(punct)--> ,
+|                |                                                                   |--(appos)--> R166[$200mm]
+|                |                                                                                    |--(dep)--> R166[$200mm]
+|                |--(nsubj)--> R167[deal]
+|--(punct)--> .
+
+	* entity-paths for event['offered']10_21ecbplus.xmlsent:433
+	['offered --(nsubj)--> Sox']
+	['offered --(iobj)--> Teixeira']
+	['offered --(dobj)--> eight']

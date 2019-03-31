@@ -1,0 +1,118 @@
+
+-----------------------------------------
+docid:28_7ecbplus.xml
+-----------------------------------------
+
+sentence #:his body was discovered tuesday by a maid who entered his hotel room in biloxi , coroner gary hargrove said . 
+	[events]:[['discovered'], ['said'], ['entered']]
+	[entities]:[['his', 'body'], ['maid'], ['gary', 'hargrove'], ['who'], ['tuesday'], ['his', 'hotel', 'room', 'in', 'biloxi']]
+*R844[said]
+|--(ccomp)--> *R824[discovered]
+|                |--(nsubjp)--> R815[body]
+|                |                |--(nmod:p)--> R815[his]
+|                |--(auxpas)--> was
+|                |--(nmod:t)--> R826[tuesday]
+|                |--(nmod)--> R829[maid]
+|                                 |--(case)--> by
+|                                 |--(det)--> a
+|                                 |--(acl:re)--> *R830[entered]
+|                                                  |--(nsubj)--> R829[who]
+|                                                  |--(dobj)--> R825[room]
+|                                                  |                |--(nmod:p)--> R825[his]
+|                                                  |                |--(compou)--> R825[hotel]
+|                                                  |--(nmod)--> R825[biloxi]
+|                                                                   |--(case)--> R825[in]
+|--(punct)--> ,
+|--(nsubj)--> R831[hargrove]
+|                |--(compou)--> coroner
+|                |--(compou)--> R831[gary]
+|--(punct)--> .
+
+	* entity-paths for event['discovered']28_7ecbplus.xmlsent:6578
+	['discovered --(nsubjpass)--> body']
+	['discovered --(nmod:tmod)--> Tuesday']
+	['discovered --(nmod)--> maid']
+
+	* entity-paths for event['said']28_7ecbplus.xmlsent:6578
+	['said --(ccomp)--> discovered', 'discovered --(nsubjpass)--> body']
+	['said --(ccomp)--> discovered', 'discovered --(nmod:tmod)--> Tuesday']
+	['said --(ccomp)--> discovered', 'discovered --(nmod)--> maid']
+	['said --(nsubj)--> Hargrove']
+
+	* entity-paths for event['entered']28_7ecbplus.xmlsent:6578
+	['entered --(nsubj)--> who']
+	['entered --(dobj)--> room']
+	['entered --(nmod)--> Biloxi']
+
+sentence #:fred larue , a high - ranking nixon administration official who served a prison term for his role in watergate and was among those rumored to be deep throat , has died . 
+	[events]:[['died'], ['role'], ['served'], ['watergate'], ['prison', 'term'], ['rumored']]
+	[entities]:[['fred', 'larue'], ['his'], ['deep', 'throat'], ['who'], ['those']]
+*R814[died]
+|--(nsubj)--> R815[larue]
+|                |--(compou)--> R815[fred]
+|                |--(punct)--> ,
+|                |--(appos)--> high
+|                |                |--(det)--> a
+|                |                |--(punct)--> -
+|                |                |--(dep)--> official
+|                |                                 |--(amod)--> ranking
+|                |                                 |--(compou)--> nixon
+|                |                                 |--(compou)--> administration
+|                |                                 |--(acl:re)--> *R848[served]
+|                |                                                  |--(nsubj)--> R815[who]
+|                |                                                  |--(dobj)--> *R849[term]
+|                |                                                  |                |--(det)--> a
+|                |                                                  |                |--(compou)--> *R849[prison]
+|                |                                                  |--(nmod)--> *R846[role]
+|                |                                                  |                |--(case)--> for
+|                |                                                  |                |--(nmod:p)--> R815[his]
+|                |                                                  |--(nmod)--> *R812[watergate]
+|                |                                                  |                |--(case)--> in
+|                |                                                  |--(cc)--> and
+|                |                                                  |--(conj)--> R850[those]
+|                |                                                                   |--(cop)--> was
+|                |                                                                   |--(case)--> among
+|                |                                                                   |--(acl)--> *R816[rumored]
+|                |                                                                                    |--(xcomp)--> R811[throat]
+|                |                                                                                                     |--(mark)--> to
+|                |                                                                                                     |--(cop)--> be
+|                |                                                                                                     |--(amod)--> R811[deep]
+|                |--(punct)--> ,
+|--(aux)--> has
+|--(punct)--> .
+
+	* entity-paths for event['died']28_7ecbplus.xmlsent:6576
+	['died --(nsubj)--> LaRue']
+
+	* entity-paths for event['role']28_7ecbplus.xmlsent:6576
+	['role --(nmod:poss)--> his']
+
+	* entity-paths for event['served']28_7ecbplus.xmlsent:6576
+	['served --(nsubj)--> who']
+	['served --(nmod)--> role', 'role --(nmod:poss)--> his']
+	['served --(conj)--> those']
+
+	* entity-paths for event['watergate']28_7ecbplus.xmlsent:6576
+
+	* entity-paths for event['prison', 'term']28_7ecbplus.xmlsent:6576
+
+	* entity-paths for event['rumored']28_7ecbplus.xmlsent:6576
+	['rumored --(xcomp)--> Throat']
+
+sentence #:fred larue , watergate figure , dies at 75 
+	[events]:[['dies'], ['watergate']]
+	[entities]:[['fred', 'larue'], ['figure']]
+*R814[dies]
+|--(nsubj)--> R815[larue]
+|                |--(compou)--> R815[fred]
+|                |--(punct)--> ,
+|                |--(appos)--> R815[figure]
+|                |                |--(compou)--> *R812[watergate]
+|                |--(punct)--> ,
+|--(nmod)--> 75
+                 |--(case)--> at
+
+	* entity-paths for event['dies']28_7ecbplus.xmlsent:6573
+	['dies --(nsubj)--> LaRue']
+
+	* entity-paths for event['watergate']28_7ecbplus.xmlsent:6573

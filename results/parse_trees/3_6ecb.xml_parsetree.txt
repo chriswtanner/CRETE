@@ -1,0 +1,27 @@
+
+-----------------------------------------
+docid:3_6ecb.xml
+-----------------------------------------
+
+sentence #:an atlanta judge sentenced brian nichols to life in prison saturday morning . 
+	[events]:[['sentenced']]
+	[entities]:[['brian', 'nichols'], ['life', 'in', 'prison'], ['judge'], ['saturday', 'morning']]
+*R906[sentenced]
+|--(nsubj)--> R940[judge]
+|                |--(det)--> an
+|                |--(compou)--> atlanta
+|--(dobj)--> R903[nichols]
+|                |--(compou)--> R903[brian]
+|                |--(nmod)--> R909[life]
+|                                 |--(case)--> to
+|--(nmod)--> R909[prison]
+|                |--(case)--> R909[in]
+|--(nmod:t)--> R908[morning]
+|                |--(compou)--> R908[saturday]
+|--(punct)--> .
+
+	* entity-paths for event['sentenced']3_6ecb.xmlsent:7567
+	['sentenced --(nsubj)--> judge']
+	['sentenced --(dobj)--> Nichols']
+	['sentenced --(nmod)--> prison']
+	['sentenced --(nmod:tmod)--> morning']

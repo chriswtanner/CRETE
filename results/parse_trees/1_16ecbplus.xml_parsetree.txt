@@ -1,0 +1,90 @@
+
+-----------------------------------------
+docid:1_16ecbplus.xml
+-----------------------------------------
+
+sentence #:lindsay lohan checks into rehab in newport beach ; investigation of facility pending 
+	[events]:[['checks', 'into'], ['rehab'], ['investigation'], ['pending']]
+	[entities]:[['in', 'newport', 'beach'], ['lindsay', 'lohan'], ['facility']]
+*R19[rehab]
+|--(compou)--> R15[lindsay]
+|--(compou)--> R15[lohan]
+|--(compou)--> *R9[checks]
+|--(compou)--> *R9[into]
+|--(nmod)--> R10[beach]
+|                |--(case)--> R10[in]
+|                |--(compou)--> R10[newport]
+|--(punct)--> ;
+|--(dep)--> *R61[investigation]
+                 |--(nmod)--> *R62[pending]
+                                  |--(case)--> of
+                                  |--(compou)--> R10[facility]
+
+	* entity-paths for event['checks', 'into']1_16ecbplus.xmlsent:116
+
+	* entity-paths for event['rehab']1_16ecbplus.xmlsent:116
+	['Rehab --(compound)--> Lindsay']
+	['Rehab --(compound)--> Lohan']
+	['Rehab --(nmod)--> Beach']
+	['Rehab --(dep)--> Investigation', 'Investigation --(nmod)--> Pending', 'Pending --(compound)--> Facility']
+
+	* entity-paths for event['investigation']1_16ecbplus.xmlsent:116
+	['Investigation --(nmod)--> Pending', 'Pending --(compound)--> Facility']
+
+	* entity-paths for event['pending']1_16ecbplus.xmlsent:116
+	['Pending --(compound)--> Facility']
+
+sentence #:lindsay lohan has checked into rehab in newport beach , calif . , and will remain there for the time being , pending an investigation of the facility she chose . 
+	[events]:[['rehab'], ['investigation'], ['pending'], ['chose'], ['remain'], ['checked', 'into']]
+	[entities]:[['in', 'newport', 'beach'], ['lindsay', 'lohan'], ['she'], ['facility'], ['there']]
+*R63[chose]
+|--(dep)--> *R9[checked]
+|                |--(nsubj)--> R15[lohan]
+|                |                |--(compou)--> R15[lindsay]
+|                |--(aux)--> has
+|                |--(nmod)--> *R19[rehab]
+|                |                |--(case)--> *R9[into]
+|                |                |--(nmod)--> R10[beach]
+|                |                                 |--(case)--> R10[in]
+|                |                                 |--(compou)--> R10[newport]
+|                |                                 |--(punct)--> ,
+|                |                                 |--(appos)--> calif
+|                |                                 |                |--(punct)--> .
+|                |                                 |--(punct)--> ,
+|                |--(cc)--> and
+|                |--(conj)--> *R64[remain]
+|                |                |--(aux)--> will
+|                |                |--(advmod)--> R10[there]
+|                |                |--(nmod)--> time
+|                |                                 |--(case)--> for
+|                |                                 |--(det)--> the
+|                |                                 |--(amod)--> being
+|                |--(punct)--> ,
+|                |--(nmod)--> *R61[investigation]
+|                                 |--(case)--> *R62[pending]
+|                                 |--(det)--> an
+|                                 |--(nmod)--> R10[facility]
+|                                                  |--(case)--> of
+|                                                  |--(det)--> the
+|--(nsubj)--> R15[she]
+|--(punct)--> .
+
+	* entity-paths for event['rehab']1_16ecbplus.xmlsent:118
+	['rehab --(nmod)--> Beach']
+
+	* entity-paths for event['investigation']1_16ecbplus.xmlsent:118
+	['investigation --(nmod)--> facility']
+
+	* entity-paths for event['pending']1_16ecbplus.xmlsent:118
+
+	* entity-paths for event['chose']1_16ecbplus.xmlsent:118
+	['chose --(dep)--> checked', 'checked --(nsubj)--> Lohan']
+	['chose --(dep)--> checked', 'checked --(nmod)--> rehab', 'rehab --(nmod)--> Beach']
+	['chose --(dep)--> checked', 'checked --(conj)--> remain', 'remain --(advmod)--> there']
+	['chose --(dep)--> checked', 'checked --(nmod)--> investigation', 'investigation --(nmod)--> facility']
+	['chose --(nsubj)--> she']
+
+	* entity-paths for event['remain']1_16ecbplus.xmlsent:118
+	['remain --(advmod)--> there']
+
+	* entity-paths for event['checked', 'into']1_16ecbplus.xmlsent:118

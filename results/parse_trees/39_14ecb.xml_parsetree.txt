@@ -1,0 +1,63 @@
+
+-----------------------------------------
+docid:39_14ecb.xml
+-----------------------------------------
+
+sentence #:this weekend doctor who fans finally learned who would play the eleventh doctor after david tennant leaves the role . 
+	[events]:[['play'], ['leaves']]
+	[entities]:[['doctor', 'who'], ['david', 'tennant'], ['this', 'weekend'], ['role'], ['eleventh', 'doctor']]
+*R1348[leaves]
+|--(nsubj)--> R1336[doctor]
+|                |--(det)--> R1343[this]
+|                |--(compou)--> R1343[weekend]
+|                |--(acl:re)--> learned
+|                                 |--(dobj)--> R1336[who]
+|                                 |--(nsubj)--> fans
+|                                 |--(advmod)--> finally
+|                                 |--(ccomp)--> *R1327[play]
+|                                                  |--(nsubj)--> who
+|                                                  |--(aux)--> would
+|                                                  |--(dobj)--> R1338[doctor]
+|                                                  |                |--(det)--> the
+|                                                  |                |--(amod)--> R1338[eleventh]
+|                                                  |--(nmod)--> R1347[tennant]
+|                                                                   |--(case)--> after
+|                                                                   |--(compou)--> R1347[david]
+|--(dobj)--> R1338[role]
+|                |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['play']39_14ecb.xmlsent:10898
+	['play --(dobj)--> Doctor']
+	['play --(nmod)--> Tennant']
+
+	* entity-paths for event['leaves']39_14ecb.xmlsent:10898
+	['leaves --(nsubj)--> Doctor']
+	['leaves --(dobj)--> role']
+
+sentence #:matt smith will take up steering the tardis and saving the universe when the series returns for its fifth season . 
+	[events]:[['take', 'up']]
+	[entities]:[['matt', 'smith'], ['tardis'], ['series'], ['its']]
+*R1327[take]
+|--(nsubj)--> R1328[smith]
+|                |--(compou)--> R1328[matt]
+|--(aux)--> will
+|--(compou)--> *R1327[up]
+|--(ccomp)--> steering
+|                |--(dobj)--> R1345[tardis]
+|                |                |--(det)--> the
+|                |--(cc)--> and
+|                |--(conj)--> saving
+|                                 |--(dobj)--> universe
+|                                                  |--(det)--> the
+|                                                  |--(acl:re)--> returns
+|                                                                   |--(advmod)--> when
+|                                                                   |--(det)--> the
+|                                                                   |--(compou)--> R1336[series]
+|                                                                   |--(dep)--> season
+|                                                                                    |--(case)--> for
+|                                                                                    |--(nmod:p)--> R1336[its]
+|                                                                                    |--(amod)--> fifth
+|--(punct)--> .
+
+	* entity-paths for event['take', 'up']39_14ecb.xmlsent:10899

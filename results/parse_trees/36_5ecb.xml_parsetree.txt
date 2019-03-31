@@ -1,0 +1,47 @@
+
+-----------------------------------------
+docid:36_5ecb.xml
+-----------------------------------------
+
+sentence #:winston blackmore , 52 , and james oler , 44 , were arrested by rcmp on tuesday , attorney general wally oppal said at a news conference wednesday . 
+	[events]:[['arrested'], ['said']]
+	[entities]:[['wednesday'], ['on', 'tuesday'], ['winston', 'blackmore'], ['wally', 'oppal'], ['james', 'oler'], ['rcmp']]
+*R1200[said]
+|--(ccomp)--> *R1195[arrested]
+|                |--(nsubjp)--> R1221[blackmore]
+|                |                |--(compou)--> R1221[winston]
+|                |                |--(punct)--> ,
+|                |                |--(conj)--> 52
+|                |                |--(punct)--> ,
+|                |                |--(cc)--> and
+|                |                |--(conj)--> R1222[oler]
+|                |                |                |--(compou)--> R1222[james]
+|                |                |--(punct)--> ,
+|                |                |--(amod)--> 44
+|                |                |--(punct)--> ,
+|                |--(auxpas)--> were
+|                |--(nmod)--> R1215[rcmp]
+|                                 |--(case)--> by
+|                                 |--(nmod)--> R1213[tuesday]
+|                                                  |--(case)--> R1213[on]
+|--(punct)--> ,
+|--(nsubj)--> R1202[oppal]
+|                |--(compou)--> attorney
+|                |--(compou)--> general
+|                |--(compou)--> R1202[wally]
+|--(nmod)--> conference
+|                |--(case)--> at
+|                |--(det)--> a
+|                |--(compou)--> news
+|--(nmod:t)--> R1203[wednesday]
+|--(punct)--> .
+
+	* entity-paths for event['arrested']36_5ecb.xmlsent:10130
+	['arrested --(nsubjpass)--> Blackmore']
+	['arrested --(nmod)--> RCMP']
+
+	* entity-paths for event['said']36_5ecb.xmlsent:10130
+	['said --(ccomp)--> arrested', 'arrested --(nsubjpass)--> Blackmore']
+	['said --(ccomp)--> arrested', 'arrested --(nmod)--> RCMP']
+	['said --(nsubj)--> Oppal']
+	['said --(nmod:tmod)--> Wednesday']

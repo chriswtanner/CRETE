@@ -1,0 +1,35 @@
+
+-----------------------------------------
+docid:29_5ecb.xml
+-----------------------------------------
+
+sentence #:indianapolis colts wide receiver marvin harrison did not play in thursday night 's 31-24 win over jacksonville due to a hamstring injury . 
+	[events]:[['win']]
+	[entities]:[['indianapolis', 'colts'], ['31-24'], ['thursday', 'night'], ['jacksonville']]
+*R856[win]
+|--(nsubj)--> R852[colts]
+|                |--(compou)--> R852[indianapolis]
+|                |--(acl:re)--> play
+|                                 |--(nsubj)--> harrison
+|                                 |                |--(amod)--> wide
+|                                 |                |--(compou)--> receiver
+|                                 |                |--(compou)--> marvin
+|                                 |--(aux)--> did
+|                                 |--(neg)--> not
+|                                 |--(nmod)--> R865[night]
+|                                                  |--(case)--> in
+|                                                  |--(compou)--> R865[thursday]
+|                                                  |--(case)--> 's
+|                                                  |--(nummod)--> R855[31-24]
+|--(nmod)--> R857[jacksonville]
+|                |--(case)--> over
+|                |--(amod)--> due
+|                                 |--(nmod)--> injury
+|                                                  |--(case)--> to
+|                                                  |--(det)--> a
+|                                                  |--(compou)--> hamstring
+|--(punct)--> .
+
+	* entity-paths for event['win']29_5ecb.xmlsent:7091
+	['win --(nsubj)--> Colts']
+	['win --(nmod)--> Jacksonville']

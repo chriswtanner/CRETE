@@ -1,0 +1,50 @@
+
+-----------------------------------------
+docid:27_9ecbplus.xml
+-----------------------------------------
+
+sentence #:it " s not patch tuesday , but microsoft has released a crucial update for internet explorer that you should apply immediately . 
+	[events]:[['released']]
+	[entities]:[['microsoft'], ['update'], ['internet', 'explorer']]
+tuesday
+|--(nsubj)--> it
+|--(punct)--> "
+|--(cop)--> s
+|--(neg)--> not
+|--(compou)--> patch
+|--(punct)--> ,
+|--(cc)--> but
+|--(conj)--> *R779[released]
+|                |--(nsubj)--> R764[microsoft]
+|                |--(aux)--> has
+|                |--(ccomp)--> R780[update]
+|                                 |--(nsubj)--> crucial
+|                                 |                |--(det)--> a
+|                                 |--(nmod)--> R768[explorer]
+|                                 |                |--(case)--> for
+|                                 |                |--(compou)--> R768[internet]
+|                                 |--(ccomp)--> apply
+|                                                  |--(mark)--> that
+|                                                  |--(nsubj)--> you
+|                                                  |--(aux)--> should
+|                                                  |--(advmod)--> immediately
+|--(punct)--> .
+
+	* entity-paths for event['released']27_9ecbplus.xmlsent:6036
+	['released --(nsubj)--> Microsoft']
+	['released --(ccomp)--> update']
+
+sentence #:microsoft rushes urgent fix for internet explorer 
+	[events]:[['rushes']]
+	[entities]:[['microsoft'], ['fix'], ['internet', 'explorer']]
+*R779[rushes]
+|--(nsubj)--> R764[microsoft]
+|--(dobj)--> R780[fix]
+                 |--(amod)--> urgent
+                 |--(nmod)--> R768[explorer]
+                                  |--(case)--> for
+                                  |--(compou)--> R768[internet]
+
+	* entity-paths for event['rushes']27_9ecbplus.xmlsent:6035
+	['rushes --(nsubj)--> Microsoft']
+	['rushes --(dobj)--> fix']

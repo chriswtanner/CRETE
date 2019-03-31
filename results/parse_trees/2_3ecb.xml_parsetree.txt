@@ -1,0 +1,59 @@
+
+-----------------------------------------
+docid:2_3ecb.xml
+-----------------------------------------
+
+sentence #:hugh jackman , the australian actor known to film audiences for playing a furry comic-book hero in the x-men movies , will be host of the 81st incarnation of the oscars , the academy of motion picture arts and sciences announced on friday . 
+	[events]:[['announced'], ['oscars']]
+	[entities]:[['academy', 'of', 'motion', 'picture', 'arts', 'and', 'sciences'], ['friday'], ['hugh', 'jackman'], ['host']]
+*R458[announced]
+|--(ccomp)--> R462[host]
+|                |--(nsubj)--> R462[jackman]
+|                |                |--(compou)--> R462[hugh]
+|                |                |--(punct)--> ,
+|                |                |--(appos)--> actor
+|                |                |                |--(det)--> the
+|                |                |                |--(amod)--> australian
+|                |                |                |--(acl)--> known
+|                |                |                                 |--(nmod)--> audiences
+|                |                |                                 |                |--(case)--> to
+|                |                |                                 |                |--(compou)--> film
+|                |                |                                 |--(advcl)--> playing
+|                |                |                                                  |--(mark)--> for
+|                |                |                                                  |--(dobj)--> hero
+|                |                |                                                  |                |--(det)--> a
+|                |                |                                                  |                |--(amod)--> furry
+|                |                |                                                  |                |--(compou)--> comic-book
+|                |                |                                                  |--(nmod)--> movies
+|                |                |                                                                   |--(case)--> in
+|                |                |                                                                   |--(det)--> the
+|                |                |                                                                   |--(compou)--> x-men
+|                |                |--(punct)--> ,
+|                |--(aux)--> will
+|                |--(cop)--> be
+|                |--(nmod)--> incarnation
+|                                 |--(case)--> of
+|                                 |--(det)--> the
+|                                 |--(amod)--> 81st
+|                                 |--(nmod)--> *R460[oscars]
+|                                                  |--(case)--> of
+|                                                  |--(det)--> the
+|--(punct)--> ,
+|--(nsubj)--> R459[academy]
+|                |--(det)--> the
+|                |--(nmod)--> R459[arts]
+|                                 |--(case)--> R459[of]
+|                                 |--(compou)--> R459[motion]
+|                                 |--(compou)--> R459[picture]
+|                                 |--(cc)--> R459[and]
+|                                 |--(conj)--> R459[sciences]
+|--(nmod)--> R461[friday]
+|                |--(case)--> on
+|--(punct)--> .
+
+	* entity-paths for event['announced']2_3ecb.xmlsent:3523
+	['announced --(ccomp)--> host']
+	['announced --(nsubj)--> Academy']
+	['announced --(nmod)--> Friday']
+
+	* entity-paths for event['oscars']2_3ecb.xmlsent:3523

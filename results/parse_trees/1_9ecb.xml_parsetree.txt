@@ -1,0 +1,64 @@
+
+-----------------------------------------
+docid:1_9ecb.xml
+-----------------------------------------
+
+sentence #:the specific reason behind her checking in to the facility is currently unknown to the public . 
+	[events]:[['unknown'], ['checking', 'in', 'to'], ['reason']]
+	[entities]:[['facility'], ['her']]
+*R49[unknown]
+|--(nsubj)--> *R50[reason]
+|                |--(det)--> the
+|                |--(amod)--> specific
+|                |--(nmod)--> *R1[checking]
+|                                 |--(case)--> behind
+|                                 |--(nmod:p)--> R2[her]
+|                                 |--(acl)--> R3[facility]
+|                                                  |--(case)--> *R1[in]
+|                                                  |--(case)--> *R1[to]
+|                                                  |--(det)--> the
+|--(cop)--> is
+|--(advmod)--> currently
+|--(nmod)--> public
+|                |--(case)--> to
+|                |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['unknown']1_9ecb.xmlsent:305
+	['unknown --(nsubj)--> reason', 'reason --(nmod)--> checking', 'checking --(nmod:poss)--> her']
+	['unknown --(nsubj)--> reason', 'reason --(nmod)--> checking', 'checking --(acl)--> facility']
+
+	* entity-paths for event['checking', 'in', 'to']1_9ecb.xmlsent:305
+
+	* entity-paths for event['reason']1_9ecb.xmlsent:305
+	['reason --(nmod)--> checking', 'checking --(nmod:poss)--> her']
+	['reason --(nmod)--> checking', 'checking --(acl)--> facility']
+
+sentence #:actress tara reid entered well-known malibu rehab center promises treatment center , reportedly of her own desire . 
+	[events]:[['desire'], ['entered']]
+	[entities]:[['tara', 'reid'], ['promises', 'treatment', 'center'], ['her']]
+*R1[entered]
+|--(nsubj)--> R2[reid]
+|                |--(compou)--> actress
+|                |--(compou)--> R2[tara]
+|--(xcomp)--> well-known
+|                |--(ccomp)--> R3[promises]
+|                                 |--(nsubj)--> center
+|                                 |                |--(compou)--> malibu
+|                                 |                |--(compou)--> rehab
+|                                 |--(dobj)--> R3[center]
+|                                                  |--(compou)--> R3[treatment]
+|                                                  |--(punct)--> ,
+|                                                  |--(acl:re)--> *R39[desire]
+|                                                                   |--(advmod)--> reportedly
+|                                                                   |--(case)--> of
+|                                                                   |--(nmod:p)--> R2[her]
+|                                                                   |--(amod)--> own
+|--(punct)--> .
+
+	* entity-paths for event['desire']1_9ecb.xmlsent:304
+	['desire --(nmod:poss)--> her']
+
+	* entity-paths for event['entered']1_9ecb.xmlsent:304
+	['entered --(nsubj)--> Reid']
+	['entered --(xcomp)--> well-known', 'well-known --(ccomp)--> Promises']

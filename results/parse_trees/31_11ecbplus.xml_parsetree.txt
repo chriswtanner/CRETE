@@ -1,0 +1,81 @@
+
+-----------------------------------------
+docid:31_11ecbplus.xml
+-----------------------------------------
+
+sentence #:doug mcdermott scored 23 points to become creighton's all - time scoring leader and the top - seeded bluejays defeated drake 65 - 53 on friday in the quarterfinals of the missouri valley conference tournament . 
+	[events]:[['defeated'], ['quarterfinals'], ['missouri', 'valley', 'conference', 'tournament'], ['become'], ['scored']]
+	[entities]:[['23', 'points'], ['on', 'friday'], ['bluejays'], ['drake'], ['scoring', 'leader'], ['doug', 'mcdermott'], ['65', '-', '53'], ["creighton's"]]
+*R1011[scored]
+|--(nsubj)--> R1001[mcdermott]
+|                |--(compou)--> R1001[doug]
+|--(dobj)--> R1012[points]
+|                |--(nummod)--> R1012[23]
+|--(advcl)--> *R1013[become]
+|                |--(mark)--> to
+|                |--(xcomp)--> R1003[creighton's]
+|                                 |--(case)--> R1003[creighton's]
+|                                 |--(dep)--> all
+|                                 |--(punct)--> -
+|                                 |--(dep)--> R1001[leader]
+|                                                  |--(compou)--> time
+|                                                  |--(amod)--> R1001[scoring]
+|                                                  |--(cc)--> and
+|                                                  |--(conj)--> top
+|                                                                   |--(det)--> the
+|--(punct)--> -
+|--(parata)--> *R1002[defeated]
+|                |--(dep)--> seeded
+|                |--(nsubj)--> R1003[bluejays]
+|                |--(dobj)--> R1014[drake]
+|                |                |--(nummod)--> R1015[65]
+|                |                |--(punct)--> R1015[-]
+|                |                |--(dep)--> R1015[53]
+|                |                                 |--(nmod)--> R1016[friday]
+|                |                                                  |--(case)--> R1016[on]
+|                |--(nmod)--> *R1017[quarterfinals]
+|                                 |--(case)--> in
+|                                 |--(det)--> the
+|                                 |--(nmod)--> *R1004[tournament]
+|                                                  |--(case)--> of
+|                                                  |--(det)--> the
+|                                                  |--(compou)--> *R1004[missouri]
+|                                                  |--(compou)--> *R1004[valley]
+|                                                  |--(compou)--> *R1004[conference]
+|--(punct)--> .
+
+	* entity-paths for event['defeated']31_11ecbplus.xmlsent:8106
+	['defeated --(nsubj)--> Bluejays']
+	['defeated --(dobj)--> Drake']
+
+	* entity-paths for event['quarterfinals']31_11ecbplus.xmlsent:8106
+
+	* entity-paths for event['missouri', 'valley', 'conference', 'tournament']31_11ecbplus.xmlsent:8106
+
+	* entity-paths for event['become']31_11ecbplus.xmlsent:8106
+	['become --(xcomp)--> Creighton']
+
+	* entity-paths for event['scored']31_11ecbplus.xmlsent:8106
+	['scored --(nsubj)--> McDermott']
+	['scored --(dobj)--> points']
+	['scored --(advcl)--> become', 'become --(xcomp)--> Creighton']
+	['scored --(parataxis)--> defeated', 'defeated --(nsubj)--> Bluejays']
+	['scored --(parataxis)--> defeated', 'defeated --(dobj)--> Drake']
+
+sentence #:creighton defeats drake 65 - 53 in mvc tournament 
+	[events]:[['mvc', 'tournament'], ['defeats']]
+	[entities]:[['65', '-', '53'], ['drake'], ['creighton']]
+R1003[creighton]
+|--(dep)--> *R1002[defeats]
+|                |--(dobj)--> R1014[drake]
+|                                 |--(nummod)--> R1015[65]
+|--(punct)--> R1015[-]
+|--(dep)--> R1015[53]
+                 |--(nmod)--> *R1004[tournament]
+                                  |--(case)--> in
+                                  |--(compou)--> *R1004[mvc]
+
+	* entity-paths for event['mvc', 'tournament']31_11ecbplus.xmlsent:8104
+
+	* entity-paths for event['defeats']31_11ecbplus.xmlsent:8104
+	['defeats --(dobj)--> Drake']

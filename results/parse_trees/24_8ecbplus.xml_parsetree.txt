@@ -1,0 +1,77 @@
+
+-----------------------------------------
+docid:24_8ecbplus.xml
+-----------------------------------------
+
+sentence #:four men rammed their car into an upmarket jewelry store in central paris on monday , smashing the shop window and stealing $2 . 6 million ( two million euros ) in jewelry , according to afp . 
+	[events]:[['stealing'], ['rammed'], ['smashing']]
+	[entities]:[['men'], ['window'], ['on', 'monday'], ['car'], ['jewelry'], ['an', 'upmarket', 'jewelry', 'store', 'in', 'central', 'paris']]
+*R668[rammed]
+|--(nsubj)--> R669[men]
+|                |--(nummod)--> four
+|--(dobj)--> R670[car]
+|                |--(nmod:p)--> their
+|--(nmod)--> R671[store]
+|                |--(case)--> into
+|                |--(det)--> R671[an]
+|                |--(amod)--> R671[upmarket]
+|                |--(compou)--> R671[jewelry]
+|                |--(nmod)--> R671[paris]
+|                |                |--(case)--> R671[in]
+|                |                |--(amod)--> R671[central]
+|                |--(nmod)--> R672[monday]
+|                |                |--(case)--> R672[on]
+|                |--(punct)--> ,
+|                |--(dep)--> *R673[smashing]
+|                |                |--(dobj)--> R674[window]
+|                |                |                |--(det)--> the
+|                |                |                |--(compou)--> shop
+|                |                |--(cc)--> and
+|                |                |--(conj)--> *R678[stealing]
+|                |                                 |--(dobj)--> $2
+|                |                                                  |--(dep)--> $2
+|                |--(punct)--> .
+|                |--(dep)--> million
+|                |                |--(compou)--> 6
+|                |                |--(appos)--> euros
+|                |                |                |--(punct)--> (
+|                |                |                |--(nummod)--> million
+|                |                |                |                |--(compou)--> two
+|                |                |                |--(punct)--> )
+|                |                |--(nmod)--> R679[jewelry]
+|                |                                 |--(case)--> in
+|                |--(punct)--> ,
+|                |--(nmod)--> afp
+|                                 |--(case)--> according
+|                                                  |--(mwe)--> to
+|--(punct)--> .
+
+	* entity-paths for event['stealing']24_8ecbplus.xmlsent:4911
+
+	* entity-paths for event['rammed']24_8ecbplus.xmlsent:4911
+	['rammed --(nsubj)--> men']
+	['rammed --(dobj)--> car']
+	['rammed --(nmod)--> store']
+
+	* entity-paths for event['smashing']24_8ecbplus.xmlsent:4911
+	['smashing --(dobj)--> window']
+
+sentence #:paris store hit by $2 . 6 million jewelry heist 
+	[events]:[['hit'], ['heist']]
+	[entities]:[['jewelry'], ['paris', 'store']]
+R671[store]
+|--(compou)--> R671[paris]
+|--(acl)--> *R696[hit]
+|                |--(nmod)--> $2
+|                |                |--(case)--> by
+|                |                |--(dep)--> $2
+|                |--(punct)--> .
+|--(dep)--> *R684[heist]
+                 |--(nummod)--> 6
+                 |--(compou)--> million
+                 |--(compou)--> R679[jewelry]
+
+	* entity-paths for event['hit']24_8ecbplus.xmlsent:4909
+
+	* entity-paths for event['heist']24_8ecbplus.xmlsent:4909
+	['Heist --(compound)--> Jewelry']

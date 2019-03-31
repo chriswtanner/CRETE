@@ -1,0 +1,23 @@
+
+-----------------------------------------
+docid:9_8ecbplus.xml
+-----------------------------------------
+
+sentence #:president obama overturns endangered species rule bush instated 
+	[events]:[['instated'], ['overturns']]
+	[entities]:[['endangered', 'species', 'rule'], ['bush'], ['obama']]
+*R1798[overturns]
+|--(nsubj)--> R1136[obama]
+|                |--(compou)--> president
+|--(ccomp)--> *R1799[instated]
+                 |--(nsubj)--> R1803[bush]
+                                  |--(compou)--> R1800[endangered]
+                                  |--(compou)--> R1800[species]
+                                  |--(compou)--> R1800[rule]
+
+	* entity-paths for event['instated']9_8ecbplus.xmlsent:15769
+	['Instated --(nsubj)--> Bush']
+
+	* entity-paths for event['overturns']9_8ecbplus.xmlsent:15769
+	['Overturns --(nsubj)--> Obama']
+	['Overturns --(ccomp)--> Instated', 'Instated --(nsubj)--> Bush']

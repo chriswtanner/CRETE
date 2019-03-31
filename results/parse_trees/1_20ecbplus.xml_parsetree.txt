@@ -1,0 +1,111 @@
+
+-----------------------------------------
+docid:1_20ecbplus.xml
+-----------------------------------------
+
+sentence #:lindsay lohan has checked out of the betty ford treatment center in palm springs after completing a 30 - day program , but she's not in the clear yet ! 
+	[events]:[['program'], ['checked', 'out'], ['completing']]
+	[entities]:[['betty', 'ford', 'treatment', 'center', 'in', 'palm', 'springs'], ['30', '-', 'day'], ['lindsay', 'lohan'], ["she's"]]
+*R107[checked]
+|--(nsubj)--> R15[lohan]
+|                |--(compou)--> R15[lindsay]
+|--(aux)--> has
+|--(compou)--> *R107[out]
+|--(nmod)--> R16[center]
+|                |--(case)--> of
+|                |--(det)--> the
+|                |--(compou)--> R16[betty]
+|                |--(compou)--> R16[ford]
+|                |--(compou)--> R16[treatment]
+|                |--(nmod)--> R16[springs]
+|                                 |--(case)--> R16[in]
+|                                 |--(compou)--> R16[palm]
+|--(advcl)--> *R108[completing]
+|                |--(mark)--> after
+|                |--(dobj)--> R109[30]
+|                                 |--(det)--> a
+|                                 |--(punct)--> R109[-]
+|                                 |--(dep)--> *R110[program]
+|                                                  |--(compou)--> R109[day]
+|--(punct)--> ,
+|--(cc)--> but
+|--(conj)--> clear
+|                |--(nsubj)--> R15[she's]
+|                |--(cop)--> R15[she's]
+|                |--(neg)--> not
+|                |--(case)--> in
+|                |--(det)--> the
+|                |--(advmod)--> yet
+|--(punct)--> !
+
+	* entity-paths for event['program']1_20ecbplus.xmlsent:177
+	['program --(compound)--> day']
+
+	* entity-paths for event['checked', 'out']1_20ecbplus.xmlsent:177
+
+	* entity-paths for event['completing']1_20ecbplus.xmlsent:177
+	['completing --(dobj)--> 30']
+
+sentence #:lindsay lohan checks out of betty ford treatment center and into malibu rehab 
+	[events]:[['into'], ['checks', 'out']]
+	[entities]:[['malibu', 'rehab'], ['of', 'betty', 'ford', 'treatment', 'center'], ['lindsay', 'lohan']]
+*R107[checks]
+|--(compou)--> R15[lindsay]
+|--(compou)--> R15[lohan]
+|--(dep)--> *R107[out]
+|--(nmod)--> R16[center]
+                 |--(case)--> R16[of]
+                 |--(compou)--> R16[betty]
+                 |--(compou)--> R16[ford]
+                 |--(compou)--> R16[treatment]
+                 |--(cc)--> and
+                 |--(conj)--> R102[rehab]
+                                  |--(compou)--> *R101[into]
+                                  |--(compou)--> R102[malibu]
+
+	* entity-paths for event['into']1_20ecbplus.xmlsent:175
+
+	* entity-paths for event['checks', 'out']1_20ecbplus.xmlsent:175
+
+sentence #:the mean girls star just checked - in to the cliffside rehab center in malibu , where she will receive extended treatment , tmz reports . 
+	[events]:[['receive'], ['checked', '-', 'in'], ['reports'], ['treatment']]
+	[entities]:[['cliffside', 'rehab', 'center', 'in', 'malibu'], ['star'], ['she'], ['tmz'], ['where']]
+R15[star]
+|--(nsubj)--> girls
+|                |--(det)--> the
+|                |--(compou)--> mean
+|--(ccomp)--> *R101[checked]
+|                |--(advmod)--> just
+|--(punct)--> *R101[-]
+|--(nmod)--> R102[center]
+|                |--(case)--> *R101[in]
+|                |--(case)--> to
+|                |--(det)--> the
+|                |--(compou)--> R102[cliffside]
+|                |--(compou)--> R102[rehab]
+|                |--(nmod)--> R102[malibu]
+|                |                |--(case)--> R102[in]
+|                |--(punct)--> ,
+|                |--(acl:re)--> *R111[receive]
+|                                 |--(advmod)--> R102[where]
+|                                 |--(nsubj)--> R15[she]
+|                                 |--(aux)--> will
+|                                 |--(dobj)--> *R112[treatment]
+|                                                  |--(amod)--> extended
+|                                                  |--(punct)--> ,
+|                                                  |--(appos)--> *R60[reports]
+|                                                                   |--(compou)--> R59[tmz]
+|--(punct)--> .
+
+	* entity-paths for event['receive']1_20ecbplus.xmlsent:178
+	['receive --(advmod)--> where']
+	['receive --(nsubj)--> she']
+	['receive --(dobj)--> treatment', 'treatment --(appos)--> reports', 'reports --(compound)--> TMZ']
+
+	* entity-paths for event['checked', '-', 'in']1_20ecbplus.xmlsent:178
+
+	* entity-paths for event['reports']1_20ecbplus.xmlsent:178
+	['reports --(compound)--> TMZ']
+
+	* entity-paths for event['treatment']1_20ecbplus.xmlsent:178
+	['treatment --(appos)--> reports', 'reports --(compound)--> TMZ']

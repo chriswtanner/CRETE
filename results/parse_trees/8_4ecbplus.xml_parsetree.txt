@@ -1,0 +1,93 @@
+
+-----------------------------------------
+docid:8_4ecbplus.xml
+-----------------------------------------
+
+sentence #:a fire - bomb attack on a bank in athens left at least three people dead as police fought pitched battles with striking protesters furious at brutal spending cuts designed to avoid national bankruptcy . 
+	[events]:[['furious'], ['designed'], ['battles'], ['avoid'], ['left', 'dead'], ['fought'], ['striking'], ['bankruptcy'], ['cuts'], ['attack']]
+	[entities]:[['fire', '-', 'bomb'], ['protesters'], ['people'], ['a', 'bank', 'in', 'athens']]
+R1751[fire]
+|--(det)--> a
+|--(punct)--> R1751[-]
+|--(parata)--> *R1753[left]
+|                |--(nsubj)--> *R1757[attack]
+|                |                |--(compou)--> R1751[bomb]
+|                |                |--(nmod)--> R1752[bank]
+|                |                                 |--(case)--> on
+|                |                                 |--(det)--> R1752[a]
+|                |                                 |--(nmod)--> R1752[athens]
+|                |                                                  |--(case)--> R1752[in]
+|                |--(ccomp)--> *R1779[fought]
+|                                 |--(nsubj)--> R1754[people]
+|                                 |                |--(nummod)--> three
+|                                 |                |                |--(nmod:n)--> least
+|                                 |                |                                 |--(case)--> at
+|                                 |                |--(amod)--> *R1753[dead]
+|                                 |                                 |--(nmod)--> police
+|                                 |                                                  |--(case)--> as
+|                                 |--(dobj)--> *R1780[battles]
+|                                 |                |--(amod)--> pitched
+|                                 |--(nmod)--> R1750[protesters]
+|                                                  |--(case)--> with
+|                                                  |--(amod)--> *R1780[striking]
+|                                                  |--(amod)--> *R1782[furious]
+|                                                                   |--(nmod)--> *R1783[cuts]
+|                                                                                    |--(case)--> at
+|                                                                                    |--(amod)--> brutal
+|                                                                                    |--(compou)--> spending
+|                                                                                    |--(acl)--> *R1784[designed]
+|                                                                                                     |--(xcomp)--> *R1785[avoid]
+|                                                                                                                      |--(mark)--> to
+|                                                                                                                      |--(dobj)--> *R1786[bankruptcy]
+|                                                                                                                                       |--(amod)--> national
+|--(punct)--> .
+
+	* entity-paths for event['furious']8_4ecbplus.xmlsent:15045
+
+	* entity-paths for event['designed']8_4ecbplus.xmlsent:15045
+
+	* entity-paths for event['battles']8_4ecbplus.xmlsent:15045
+
+	* entity-paths for event['avoid']8_4ecbplus.xmlsent:15045
+
+	* entity-paths for event['left', 'dead']8_4ecbplus.xmlsent:15045
+
+	* entity-paths for event['fought']8_4ecbplus.xmlsent:15045
+	['fought --(nsubj)--> people']
+	['fought --(nmod)--> protesters']
+
+	* entity-paths for event['striking']8_4ecbplus.xmlsent:15045
+
+	* entity-paths for event['bankruptcy']8_4ecbplus.xmlsent:15045
+
+	* entity-paths for event['cuts']8_4ecbplus.xmlsent:15045
+
+	* entity-paths for event['attack']8_4ecbplus.xmlsent:15045
+	['attack --(compound)--> BOMB']
+	['attack --(nmod)--> bank']
+
+sentence #:three dead after fire - bomb hits bank during greek riots 
+	[events]:[['hits'], ['dead'], ['riots']]
+	[entities]:[['bank'], ['fire', '-', 'bomb'], ['three']]
+*R1753[dead]
+|--(nmod:n)--> R1754[three]
+|--(nmod)--> R1751[fire]
+|                |--(case)--> after
+|--(punct)--> R1751[-]
+|--(dep)--> R1751[bomb]
+                 |--(acl:re)--> *R1757[hits]
+                                  |--(dobj)--> R1752[bank]
+                                  |--(nmod)--> *R1780[riots]
+                                                   |--(case)--> during
+                                                   |--(amod)--> greek
+
+	* entity-paths for event['hits']8_4ecbplus.xmlsent:15044
+	['hits --(dobj)--> bank']
+
+	* entity-paths for event['dead']8_4ecbplus.xmlsent:15044
+	['dead --(nmod:npmod)--> Three']
+	['dead --(nmod)--> fire']
+	['dead --(punct)--> -']
+	['dead --(dep)--> bomb']
+
+	* entity-paths for event['riots']8_4ecbplus.xmlsent:15044

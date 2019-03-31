@@ -1,0 +1,54 @@
+
+-----------------------------------------
+docid:27_15ecb.xml
+-----------------------------------------
+
+sentence #:microsoft released a critical security patch on wednesday to plug vulnerabilities in internet explorer , a move that comes amid malicious attackers taking advantage of the security flaws . 
+	[events]:[['move'], ['taking', 'advantage'], ['released'], ['plug']]
+	[entities]:[['internet', 'explorer'], ['wednesday'], ['vulnerabilities'], ['microsoft'], ['attackers'], ['flaws'], ['patch']]
+*R763[released]
+|--(nsubj)--> R764[microsoft]
+|--(dobj)--> R765[patch]
+|                |--(det)--> a
+|                |--(amod)--> critical
+|                |--(compou)--> security
+|--(nmod)--> R766[wednesday]
+|                |--(case)--> on
+|--(advcl)--> *R782[plug]
+|                |--(mark)--> to
+|                |--(dobj)--> R767[vulnerabilities]
+|                |--(nmod)--> R768[explorer]
+|                                 |--(case)--> in
+|                                 |--(compou)--> R768[internet]
+|                                 |--(punct)--> ,
+|                                 |--(appos)--> *R763[move]
+|                                                  |--(det)--> a
+|                                                  |--(acl:re)--> comes
+|                                                                   |--(nsubj)--> that
+|                                                                   |--(nmod)--> R770[attackers]
+|                                                                                    |--(case)--> amid
+|                                                                                    |--(amod)--> malicious
+|                                                                                    |--(acl)--> *R786[taking]
+|                                                                                                     |--(dobj)--> *R786[advantage]
+|                                                                                                                      |--(nmod)--> R767[flaws]
+|                                                                                                                                       |--(case)--> of
+|                                                                                                                                       |--(det)--> the
+|                                                                                                                                       |--(compou)--> security
+|--(punct)--> .
+
+	* entity-paths for event['move']27_15ecb.xmlsent:5720
+	['move --(acl:relcl)--> comes', 'comes --(nmod)--> attackers']
+
+	* entity-paths for event['taking', 'advantage']27_15ecb.xmlsent:5720
+	['advantage --(nmod)--> flaws']
+
+	* entity-paths for event['released']27_15ecb.xmlsent:5720
+	['released --(nsubj)--> Microsoft']
+	['released --(dobj)--> patch']
+	['released --(nmod)--> Wednesday']
+	['released --(advcl)--> plug', 'plug --(dobj)--> vulnerabilities']
+	['released --(advcl)--> plug', 'plug --(nmod)--> Explorer']
+
+	* entity-paths for event['plug']27_15ecb.xmlsent:5720
+	['plug --(dobj)--> vulnerabilities']
+	['plug --(nmod)--> Explorer']

@@ -1,0 +1,116 @@
+
+-----------------------------------------
+docid:21_7ecbplus.xml
+-----------------------------------------
+
+sentence #:police say a 59 - year - old woman died after being struck by a vehicle in queens friday night and that officers found and arrested the driver who hit her a few blocks away . 
+	[events]:[['struck'], ['died'], ['hit'], ['arrested']]
+	[entities]:[['friday', 'night'], ['driver'], ['woman'], ['who'], ['vehicle'], ['her'], ['in', 'queens'], ['a', 'few', 'blocks', 'away', '.']]
+say
+|--(nsubj)--> police
+|--(dobj)--> 59
+|                |--(det)--> a
+|                |--(punct)--> -
+|                |--(dep)--> year
+|                |--(punct)--> -
+|                |--(dep)--> R545[woman]
+|                                 |--(amod)--> old
+|--(ccomp)--> *R546[died]
+|                |--(advcl)--> *R556[struck]
+|                |                |--(mark)--> after
+|                |                |--(auxpas)--> being
+|                |                |--(nmod)--> R569[vehicle]
+|                |                |                |--(case)--> by
+|                |                |                |--(det)--> a
+|                |                |                |--(nmod)--> R550[friday]
+|                |                |                                 |--(case)--> R549[in]
+|                |                |                                 |--(compou)--> R549[queens]
+|                |                |--(nmod:t)--> R550[night]
+|                |--(cc)--> and
+|                |--(conj)--> found
+|                                 |--(mark)--> that
+|                                 |--(nsubj)--> officers
+|                                 |--(cc)--> and
+|                                 |--(conj)--> *R553[arrested]
+|                                                  |--(dobj)--> R548[driver]
+|                                                                   |--(det)--> the
+|                                                                   |--(acl:re)--> *R556[hit]
+|                                                                                    |--(nsubj)--> R548[who]
+|                                                                                    |--(dobj)--> R545[her]
+|                                                                                    |--(advmod)--> R552[away]
+|                                                                                                     |--(nmod:n)--> R552[blocks]
+|                                                                                                                      |--(det)--> R552[a]
+|                                                                                                                      |--(amod)--> R552[few]
+|--(punct)--> R552[.]
+
+	* entity-paths for event['struck']21_7ecbplus.xmlsent:4323
+	['struck --(nmod)--> vehicle']
+	['struck --(nmod:tmod)--> night']
+
+	* entity-paths for event['died']21_7ecbplus.xmlsent:4323
+	['died --(advcl)--> struck', 'struck --(nmod)--> vehicle']
+	['died --(advcl)--> struck', 'struck --(nmod:tmod)--> night']
+	['died --(conj)--> found', 'found --(conj)--> arrested', 'arrested --(dobj)--> driver']
+
+	* entity-paths for event['hit']21_7ecbplus.xmlsent:4323
+	['hit --(nsubj)--> who']
+	['hit --(dobj)--> her']
+	['hit --(advmod)--> away']
+
+	* entity-paths for event['arrested']21_7ecbplus.xmlsent:4323
+	['arrested --(dobj)--> driver']
+
+sentence #:woman killed in queens hit - run , driver charged 
+	[events]:[['charged'], ['run'], ['hit'], ['killed']]
+	[entities]:[['driver'], ['in', 'queens'], ['woman']]
+*R556[hit]
+|--(nsubj)--> *R546[killed]
+|                |--(compou)--> R545[woman]
+|                |--(nmod)--> R549[queens]
+|                                 |--(case)--> R549[in]
+|--(punct)--> -
+|--(dobj)--> *R551[run]
+                 |--(punct)--> ,
+                 |--(appos)--> R548[driver]
+                                  |--(acl)--> *R557[charged]
+
+	* entity-paths for event['charged']21_7ecbplus.xmlsent:4320
+
+	* entity-paths for event['run']21_7ecbplus.xmlsent:4320
+	['Run --(appos)--> Driver']
+
+	* entity-paths for event['hit']21_7ecbplus.xmlsent:4320
+	['Hit --(nsubj)--> Killed', 'Killed --(compound)--> Woman']
+	['Hit --(nsubj)--> Killed', 'Killed --(nmod)--> Queens']
+	['Hit --(dobj)--> Run', 'Run --(appos)--> Driver']
+
+	* entity-paths for event['killed']21_7ecbplus.xmlsent:4320
+	['Killed --(compound)--> Woman']
+	['Killed --(nmod)--> Queens']
+
+sentence #:raj chohan was hit by a 2013 gray camry near 117th street and 97th avenue in richmond hill . 
+	[events]:[['hit']]
+	[entities]:[['camry'], ['raj', 'chohan'], ['near', '117th', 'street', 'and', '97th', 'avenue', 'in', 'richmond', 'hill']]
+*R556[hit]
+|--(nsubjp)--> R545[chohan]
+|                |--(compou)--> R545[raj]
+|--(auxpas)--> was
+|--(nmod)--> R569[camry]
+|                |--(case)--> by
+|                |--(det)--> a
+|                |--(amod)--> gray
+|                |                |--(nmod:n)--> 2013
+|                |--(nmod)--> R552[street]
+|                |                |--(case)--> R552[near]
+|                |                |--(compou)--> R552[117th]
+|                |--(cc)--> R552[and]
+|                |--(conj)--> R552[avenue]
+|                                 |--(amod)--> R552[97th]
+|                                 |--(nmod)--> R552[hill]
+|                                                  |--(case)--> R552[in]
+|                                                  |--(compou)--> R552[richmond]
+|--(punct)--> .
+
+	* entity-paths for event['hit']21_7ecbplus.xmlsent:4324
+	['hit --(nsubjpass)--> Chohan']
+	['hit --(nmod)--> Camry']

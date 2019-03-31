@@ -1,0 +1,123 @@
+
+-----------------------------------------
+docid:36_1ecbplus.xml
+-----------------------------------------
+
+sentence #:the 55 - year older leader of the fundamentalist church of jesus christ of latter day saints was charged with sexual assault of a child after taking a 12 - year old girl and a 15 - year girl as "spiritual wives . " 
+	[events]:[['charged'], ['sexual', 'assault'], ['taking']]
+	[entities]:[['girl'], ['child'], ['fundamentalist', 'church', 'of', 'jesus', 'christ', 'of', 'latter', 'day', 'saints'], ['girl'], ['leader'], ['wives']]
+*R1184[charged]
+|--(dep)--> 55
+|                |--(det)--> the
+|--(punct)--> -
+|--(nmod:t)--> year
+|--(nsubjp)--> R1183[leader]
+|                |--(amod)--> older
+|                |--(nmod)--> R1204[church]
+|                                 |--(case)--> of
+|                                 |--(det)--> the
+|                                 |--(compou)--> R1204[fundamentalist]
+|                                 |--(nmod)--> R1204[christ]
+|                                                  |--(case)--> R1204[of]
+|                                                  |--(compou)--> R1204[jesus]
+|                                                  |--(nmod)--> R1204[saints]
+|                                                                   |--(case)--> R1204[of]
+|                                                                   |--(compou)--> R1204[latter]
+|                                                                   |--(compou)--> R1204[day]
+|--(auxpas)--> was
+|--(nmod)--> *R1186[assault]
+|                |--(case)--> with
+|                |--(amod)--> *R1186[sexual]
+|                |--(nmod)--> R1205[child]
+|                                 |--(case)--> of
+|                                 |--(det)--> a
+|--(advcl)--> *R1206[taking]
+|                |--(mark)--> after
+|                |--(dobj)--> R1191[girl]
+|                |                |--(det)--> a
+|                |                |--(compou)--> 12
+|                |                |                |--(dep)--> R1207[girl]
+|                |                |                                 |--(punct)--> -
+|                |                |                                 |--(compou)--> year
+|                |                |                                 |--(amod)--> old
+|                |                |                                 |--(cc)--> and
+|                |                |                                 |--(conj)--> 15
+|                |                |                                 |                |--(det)--> a
+|                |                |                                 |--(punct)--> -
+|                |                |--(compou)--> year
+|                |--(nmod)--> R1188[wives]
+|                                 |--(case)--> as
+|                                 |--(punct)--> "spiritual
+|                                 |--(amod)--> "spiritual
+|--(punct)--> .
+|--(punct)--> "
+
+	* entity-paths for event['charged']36_1ecbplus.xmlsent:9917
+	['charged --(nsubjpass)--> leader']
+	['charged --(nmod)--> assault', 'assault --(nmod)--> child']
+	['charged --(advcl)--> taking', 'taking --(dobj)--> girl']
+	['charged --(advcl)--> taking', 'taking --(nmod)--> wives']
+
+	* entity-paths for event['sexual', 'assault']36_1ecbplus.xmlsent:9917
+	['assault --(nmod)--> child']
+
+	* entity-paths for event['taking']36_1ecbplus.xmlsent:9917
+	['taking --(dobj)--> girl']
+	['taking --(nmod)--> wives']
+
+sentence #:a san antonio jury has found polygamist leader warren jeffs guilty on both sexual assault charges on thursday . 
+	[events]:[['sexual', 'assault'], ['guilty'], ['charges'], ['found']]
+	[entities]:[['on', 'thursday'], ['san', 'antonio', 'jury'], ['polygamist', 'leader', 'warren', 'jeffs']]
+*R1208[found]
+|--(nsubj)--> R1209[jury]
+|                |--(det)--> a
+|                |--(amod)--> R1209[antonio]
+|                                 |--(amod)--> R1209[san]
+|--(aux)--> has
+|--(xcomp)--> *R1210[guilty]
+|                |--(nsubj)--> R1183[jeffs]
+|                |                |--(compou)--> R1183[polygamist]
+|                |                |--(compou)--> R1183[leader]
+|                |                |--(compou)--> R1183[warren]
+|                |--(nmod)--> *R1184[charges]
+|                                 |--(case)--> on
+|                                 |--(det)--> both
+|                                 |--(amod)--> *R1186[sexual]
+|                                 |--(compou)--> *R1186[assault]
+|                                 |--(nmod)--> R1211[thursday]
+|                                                  |--(case)--> R1211[on]
+|--(punct)--> .
+
+	* entity-paths for event['sexual', 'assault']36_1ecbplus.xmlsent:9916
+
+	* entity-paths for event['guilty']36_1ecbplus.xmlsent:9916
+	['guilty --(nsubj)--> Jeffs']
+	['guilty --(nmod)--> charges', 'charges --(nmod)--> Thursday']
+
+	* entity-paths for event['charges']36_1ecbplus.xmlsent:9916
+	['charges --(nmod)--> Thursday']
+
+	* entity-paths for event['found']36_1ecbplus.xmlsent:9916
+	['found --(nsubj)--> jury']
+	['found --(xcomp)--> guilty', 'guilty --(nsubj)--> Jeffs']
+	['found --(xcomp)--> guilty', 'guilty --(nmod)--> charges', 'charges --(nmod)--> Thursday']
+
+sentence #:warren jeffs found guilty on sexual assault charges 
+	[events]:[['guilty'], ['sexual', 'assault'], ['found'], ['charges']]
+	[entities]:[['warren', 'jeffs']]
+R1183[jeffs]
+|--(compou)--> R1183[warren]
+|--(dep)--> *R1210[guilty]
+                 |--(compou)--> *R1208[found]
+                 |--(nmod)--> *R1184[charges]
+                                  |--(case)--> on
+                                  |--(compou)--> *R1186[sexual]
+                                  |--(compou)--> *R1186[assault]
+
+	* entity-paths for event['guilty']36_1ecbplus.xmlsent:9914
+
+	* entity-paths for event['sexual', 'assault']36_1ecbplus.xmlsent:9914
+
+	* entity-paths for event['found']36_1ecbplus.xmlsent:9914
+
+	* entity-paths for event['charges']36_1ecbplus.xmlsent:9914

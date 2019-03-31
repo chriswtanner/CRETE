@@ -1,0 +1,56 @@
+
+-----------------------------------------
+docid:8_3ecb.xml
+-----------------------------------------
+
+sentence #:a woodburn police officer and state police bomb squad technician were killed , while the city 's police chief remained in critical condition after a bomb exploded late friday at a woodburn bank . 
+	[events]:[['exploded'], ['killed']]
+	[entities]:[['police', 'chief'], ['late', 'friday'], ['a', 'woodburn', 'bank'], ['officer'], ['technician'], ['bomb']]
+*R1763[killed]
+|--(nsubjp)--> R1766[officer]
+|                |--(det)--> a
+|                |--(amod)--> woodburn
+|                |--(compou)--> police
+|                |--(cc)--> and
+|                |--(conj)--> R1767[technician]
+|                                 |--(compou)--> state
+|                                 |--(compou)--> police
+|                                 |--(compou)--> bomb
+|                                 |--(compou)--> squad
+|--(auxpas)--> were
+|--(punct)--> ,
+|--(advcl)--> remained
+|                |--(mark)--> while
+|                |--(nsubj)--> R1787[chief]
+|                |                |--(nmod:p)--> city
+|                |                |                |--(det)--> the
+|                |                |                |--(case)--> 's
+|                |                |--(compou)--> R1787[police]
+|                |--(nmod)--> condition
+|                |                |--(case)--> in
+|                |                |--(amod)--> critical
+|                |--(advcl)--> *R1764[exploded]
+|                                 |--(mark)--> after
+|                                 |--(nsubj)--> R1788[bomb]
+|                                 |                |--(det)--> a
+|                                 |--(advmod)--> R1789[late]
+|                                 |--(nmod:t)--> R1789[friday]
+|                                 |--(nmod)--> R1765[bank]
+|                                                  |--(case)--> at
+|                                                  |--(det)--> R1765[a]
+|                                                  |--(compou)--> R1765[woodburn]
+|--(punct)--> .
+
+	* entity-paths for event['exploded']8_3ecb.xmlsent:14963
+	['exploded --(nsubj)--> bomb']
+	['exploded --(advmod)--> late']
+	['exploded --(nmod:tmod)--> Friday']
+	['exploded --(nmod)--> bank']
+
+	* entity-paths for event['killed']8_3ecb.xmlsent:14963
+	['killed --(nsubjpass)--> officer']
+	['killed --(advcl)--> remained', 'remained --(nsubj)--> chief']
+	['killed --(advcl)--> remained', 'remained --(advcl)--> exploded', 'exploded --(nsubj)--> bomb']
+	['killed --(advcl)--> remained', 'remained --(advcl)--> exploded', 'exploded --(advmod)--> late']
+	['killed --(advcl)--> remained', 'remained --(advcl)--> exploded', 'exploded --(nmod:tmod)--> Friday']
+	['killed --(advcl)--> remained', 'remained --(advcl)--> exploded', 'exploded --(nmod)--> bank']

@@ -1,0 +1,30 @@
+
+-----------------------------------------
+docid:22_9ecbplus.xml
+-----------------------------------------
+
+sentence #:in her statement , hiller admitted killing two coworkers and seriously wounding a third . 
+	[events]:[['wounding'], ['killing']]
+	[entities]:[['coworkers'], ['third'], ['hiller'], ['her']]
+admitted
+|--(nmod)--> statement
+|                |--(case)--> in
+|                |--(nmod:p)--> R589[her]
+|--(punct)--> ,
+|--(nsubj)--> R589[hiller]
+|--(ccomp)--> *R592[killing]
+|                |--(dobj)--> R593[coworkers]
+|                |                |--(nummod)--> two
+|                |--(cc)--> and
+|                |--(conj)--> *R600[wounding]
+|                                 |--(advmod)--> seriously
+|                                 |--(dobj)--> R601[third]
+|                                                  |--(det)--> a
+|--(punct)--> .
+
+	* entity-paths for event['wounding']22_9ecbplus.xmlsent:4589
+	['wounding --(dobj)--> third']
+
+	* entity-paths for event['killing']22_9ecbplus.xmlsent:4589
+	['killing --(dobj)--> coworkers']
+	['killing --(conj)--> wounding', 'wounding --(dobj)--> third']

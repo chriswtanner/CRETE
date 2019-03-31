@@ -1,0 +1,172 @@
+
+-----------------------------------------
+docid:1_8ecbplus.xml
+-----------------------------------------
+
+sentence #:lohan made it to the new facility late thursday , tmz reported . 
+	[events]:[['reported'], ['made', 'it']]
+	[entities]:[['the', 'new', 'facility'], ['tmz'], ['late', 'thursday'], ['lohan']]
+*R60[reported]
+|--(ccomp)--> *R151[made]
+|                |--(nsubj)--> R15[lohan]
+|                |--(dobj)--> *R151[it]
+|                |--(nmod)--> R16[facility]
+|                |                |--(case)--> to
+|                |                |--(det)--> R16[the]
+|                |                |--(amod)--> R16[new]
+|                |--(nmod:t)--> R24[thursday]
+|                                 |--(amod)--> R24[late]
+|--(punct)--> ,
+|--(nsubj)--> R59[tmz]
+|--(punct)--> .
+
+	* entity-paths for event['reported']1_8ecbplus.xmlsent:294
+	['reported --(ccomp)--> made', 'made --(nsubj)--> Lohan']
+	['reported --(ccomp)--> made', 'made --(nmod)--> facility']
+	['reported --(ccomp)--> made', 'made --(nmod:tmod)--> Thursday']
+	['reported --(nsubj)--> TMZ']
+
+	* entity-paths for event['made', 'it']1_8ecbplus.xmlsent:294
+
+sentence #:the actress re - hired longtime attorney shawn holley to handle her case . 
+	[events]:[['handle'], ['case'], ['re', '-', 'hired']]
+	[entities]:[['shawn', 'holley'], ['actress']]
+R15[actress]
+|--(det)--> the
+|--(ccomp)--> *R29[hired]
+                 |--(dep)--> *R29[re]
+                 |--(punct)--> *R29[-]
+                 |--(dobj)--> R30[holley]
+                 |                |--(amod)--> longtime
+                 |                |--(compou)--> attorney
+                 |                |--(compou)--> R30[shawn]
+                 |--(advcl)--> *R152[handle]
+                 |                |--(mark)--> to
+                 |                |--(dobj)--> *R43[case]
+                 |                                 |--(nmod:p)--> her
+                 |--(punct)--> .
+
+	* entity-paths for event['handle']1_8ecbplus.xmlsent:291
+
+	* entity-paths for event['case']1_8ecbplus.xmlsent:291
+
+	* entity-paths for event['re', '-', 'hired']1_8ecbplus.xmlsent:291
+	['hired --(dobj)--> Holley']
+
+sentence #:the actress , however , has since checked in to a different rehab but will not face a probation violation for leaving another treatment facility after a few minutes , a prosecutor said friday . 
+	[events]:[['leaving'], ['face'], ['violation'], ['checked', 'in']]
+	[entities]:[['after', 'a', 'few', 'minutes'], ['another', 'treatment', 'facility'], ['friday'], ['a', 'different', 'rehab'], ['actress'], ['prosecutor']]
+said
+|--(ccomp)--> *R8[checked]
+|                |--(nsubj)--> R15[actress]
+|                |                |--(det)--> the
+|                |--(punct)--> ,
+|                |--(advmod)--> however
+|                |--(punct)--> ,
+|                |--(aux)--> has
+|                |--(advmod)--> since
+|                |--(nmod)--> R16[rehab]
+|                |                |--(case)--> *R8[in]
+|                |                |--(case)--> to
+|                |                |--(det)--> R16[a]
+|                |                |--(amod)--> R16[different]
+|                |--(cc)--> but
+|                |--(conj)--> *R153[face]
+|                                 |--(aux)--> will
+|                                 |--(neg)--> not
+|                                 |--(dobj)--> *R13[violation]
+|                                 |                |--(det)--> a
+|                                 |                |--(compou)--> probation
+|                                 |--(advcl)--> *R57[leaving]
+|                                                  |--(mark)--> for
+|                                                  |--(dobj)--> R10[facility]
+|                                                  |                |--(det)--> R10[another]
+|                                                  |                |--(compou)--> R10[treatment]
+|                                                  |--(nmod)--> R132[minutes]
+|                                                                   |--(case)--> R132[after]
+|                                                                   |--(det)--> R132[a]
+|                                                                   |--(amod)--> R132[few]
+|--(punct)--> ,
+|--(nsubj)--> R36[prosecutor]
+|                |--(det)--> a
+|--(nmod:t)--> R154[friday]
+|--(punct)--> .
+
+	* entity-paths for event['leaving']1_8ecbplus.xmlsent:293
+	['leaving --(dobj)--> facility']
+	['leaving --(nmod)--> minutes']
+
+	* entity-paths for event['face']1_8ecbplus.xmlsent:293
+	['face --(advcl)--> leaving', 'leaving --(dobj)--> facility']
+	['face --(advcl)--> leaving', 'leaving --(nmod)--> minutes']
+
+	* entity-paths for event['violation']1_8ecbplus.xmlsent:293
+
+	* entity-paths for event['checked', 'in']1_8ecbplus.xmlsent:293
+
+sentence #:heller told a judge during a hearing thursday morning that lohan had checked in to the morningside recovery rehab facility , but the starlet left it after a few minutes . 
+	[events]:[['checked', 'in'], ['left'], ['hearing']]
+	[entities]:[['starlet'], ['the', 'morningside', 'recovery', 'rehab', 'facility'], ['thursday', 'morning'], ['it'], ['after', 'a', 'few', 'minutes'], ['lohan'], ['heller'], ['judge']]
+told
+|--(nsubj)--> R37[heller]
+|--(dobj)--> R35[judge]
+|                |--(det)--> a
+|--(nmod)--> *R155[hearing]
+|                |--(case)--> during
+|                |--(det)--> a
+|                |--(nmod:t)--> R156[thursday]
+|--(nmod:t)--> R156[morning]
+|--(ccomp)--> *R9[checked]
+|                |--(dobj)--> that
+|                |--(nsubj)--> R15[lohan]
+|                |--(aux)--> had
+|                |--(nmod)--> R10[facility]
+|                                 |--(case)--> *R9[in]
+|                                 |--(case)--> to
+|                                 |--(det)--> R10[the]
+|                                 |--(compou)--> R10[morningside]
+|                                 |--(compou)--> R10[recovery]
+|                                 |--(compou)--> R10[rehab]
+|--(punct)--> ,
+|--(cc)--> but
+|--(conj)--> *R57[left]
+|                |--(nsubj)--> R15[starlet]
+|                |                |--(det)--> the
+|                |--(dobj)--> R10[it]
+|                |--(nmod)--> R132[minutes]
+|                                 |--(case)--> R132[after]
+|                                 |--(det)--> R132[a]
+|                                 |--(amod)--> R132[few]
+|--(punct)--> .
+
+	* entity-paths for event['checked', 'in']1_8ecbplus.xmlsent:292
+
+	* entity-paths for event['left']1_8ecbplus.xmlsent:292
+	['left --(nsubj)--> starlet']
+	['left --(dobj)--> it']
+	['left --(nmod)--> minutes']
+
+	* entity-paths for event['hearing']1_8ecbplus.xmlsent:292
+	['hearing --(nmod:tmod)--> Thursday']
+
+sentence #:lindsay lohan rehires longtime lawyer shawn holley , heads to rehab 
+	[events]:[['rehab'], ['heads', 'to'], ['rehires']]
+	[entities]:[['lindsay', 'lohan'], ['shawn', 'holley']]
+*R157[heads]
+|--(nsubj)--> R15[lohan]
+|                |--(compou)--> R15[lindsay]
+|                |--(dep)--> *R29[rehires]
+|                                 |--(dobj)--> R30[holley]
+|                                                  |--(amod)--> longtime
+|                                                  |--(compou)--> lawyer
+|                                                  |--(compou)--> R30[shawn]
+|--(punct)--> ,
+|--(xcomp)--> *R19[rehab]
+                 |--(mark)--> *R157[to]
+
+	* entity-paths for event['rehab']1_8ecbplus.xmlsent:288
+
+	* entity-paths for event['heads', 'to']1_8ecbplus.xmlsent:288
+
+	* entity-paths for event['rehires']1_8ecbplus.xmlsent:288
+	['rehires --(dobj)--> Holley']

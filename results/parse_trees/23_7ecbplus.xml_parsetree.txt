@@ -1,0 +1,94 @@
+
+-----------------------------------------
+docid:23_7ecbplus.xml
+-----------------------------------------
+
+sentence #:the first of the deaths this weekend was that of a new zealand climber who fell on friday morning . 
+	[events]:[['deaths'], ['fell']]
+	[entities]:[['on', 'friday', 'morning'], ['climber']]
+that
+|--(nsubj)--> first
+|                |--(det)--> the
+|                |--(nmod)--> *R640[deaths]
+|                                 |--(case)--> of
+|                                 |--(det)--> the
+|--(nmod:t)--> weekend
+|                |--(det)--> this
+|--(cop)--> was
+|--(nmod)--> R644[climber]
+|                |--(case)--> of
+|                |--(det)--> a
+|                |--(compou)--> new
+|                |--(compou)--> zealand
+|--(acl:re)--> *R646[fell]
+|                |--(nsubj)--> who
+|                |--(nmod)--> R641[friday]
+|                |                |--(case)--> R641[on]
+|                |--(nmod:t)--> R641[morning]
+|--(punct)--> .
+
+	* entity-paths for event['deaths']23_7ecbplus.xmlsent:4750
+
+	* entity-paths for event['fell']23_7ecbplus.xmlsent:4750
+	['fell --(nmod)--> Friday']
+	['fell --(nmod:tmod)--> morning']
+
+sentence #:the climber fell in fading light yesterday near the mt sefton bivvy , and rescue teams were unable to reach him or his companions due to the weather . 
+	[events]:[['fell']]
+	[entities]:[['him'], ['climber'], ['yesterday'], ['near', 'the', 'mt', 'sefton', 'bivvy']]
+*R649[fell]
+|--(nsubj)--> R643[climber]
+|                |--(det)--> the
+|--(nmod)--> R648[yesterday]
+|                |--(case)--> in
+|                |--(amod)--> fading
+|                |--(amod)--> light
+|                |--(nmod)--> R662[bivvy]
+|                                 |--(case)--> R662[near]
+|                                 |--(det)--> R662[the]
+|                                 |--(compou)--> R662[mt]
+|                                 |--(compou)--> R662[sefton]
+|--(punct)--> ,
+|--(cc)--> and
+|--(conj)--> unable
+|                |--(nsubj)--> teams
+|                |                |--(compou)--> rescue
+|                |--(cop)--> were
+|                |--(xcomp)--> reach
+|                                 |--(mark)--> to
+|                                 |--(xcomp)--> due
+|                                                  |--(nsubj)--> R643[him]
+|                                                  |                |--(cc)--> or
+|                                                  |                |--(conj)--> companions
+|                                                  |                                 |--(nmod:p)--> his
+|                                                  |--(nmod)--> weather
+|                                                                   |--(case)--> to
+|                                                                   |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['fell']23_7ecbplus.xmlsent:4748
+	['fell --(nsubj)--> climber']
+	['fell --(nmod)--> yesterday']
+	['fell --(conj)--> unable', 'unable --(xcomp)--> reach', 'reach --(xcomp)--> due', 'due --(nsubj)--> him']
+
+sentence #:two men have died in separate climbing accidents at mt cook this weekend . 
+	[events]:[['died']]
+	[entities]:[['at', 'mt', 'cook'], ['men']]
+*R661[died]
+|--(nsubj)--> R660[men]
+|                |--(nummod)--> two
+|--(aux)--> have
+|--(nmod)--> separate
+|                |--(case)--> in
+|                |--(acl)--> climbing
+|                                 |--(ccomp)--> R639[cook]
+|                                                  |--(nsubj)--> accidents
+|                                                  |                |--(nmod)--> R639[mt]
+|                                                  |                                 |--(case)--> R639[at]
+|                                                  |--(dobj)--> weekend
+|                                                                   |--(det)--> this
+|--(punct)--> .
+
+	* entity-paths for event['died']23_7ecbplus.xmlsent:4746
+	['died --(nsubj)--> men']
+	['died --(nmod)--> separate', 'separate --(acl)--> climbing', 'climbing --(ccomp)--> Cook']

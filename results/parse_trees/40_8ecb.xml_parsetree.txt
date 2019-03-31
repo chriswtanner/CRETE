@@ -1,0 +1,50 @@
+
+-----------------------------------------
+docid:40_8ecb.xml
+-----------------------------------------
+
+sentence #:the only hardware release at macworld expo 2009 was a predictable unibody upgrade for the 17-inch macbook pro , which apple reports will have an eight-hour battery life . 
+	[events]:[['release'], ['battery', 'life'], ['upgrade'], ['reports'], ['macworld', 'expo', '2009']]
+	[entities]:[['apple'], ['macbook', 'pro'], ['eight-hour']]
+*R1408[upgrade]
+|--(nsubj)--> *R1404[release]
+|                |--(det)--> the
+|                |--(amod)--> only
+|                |--(compou)--> hardware
+|                |--(nmod)--> *R1406[expo]
+|                                 |--(case)--> at
+|                                 |--(compou)--> *R1406[macworld]
+|                                 |--(nummod)--> *R1406[2009]
+|--(cop)--> was
+|--(det)--> a
+|--(amod)--> predictable
+|--(amod)--> unibody
+|--(nmod)--> R1409[macbook]
+|                |--(case)--> for
+|                |--(det)--> the
+|                |--(amod)--> 17-inch
+|                |--(nmod:t)--> R1409[pro]
+|                                 |--(punct)--> ,
+|                                 |--(acl:re)--> have
+|                                                  |--(dobj)--> which
+|                                                  |--(nsubj)--> *R1428[reports]
+|                                                  |                |--(compou)--> R1405[apple]
+|                                                  |--(aux)--> will
+|                                                  |--(dobj)--> *R1431[life]
+|                                                                   |--(det)--> an
+|                                                                   |--(amod)--> R1429[eight-hour]
+|                                                                   |--(compou)--> *R1431[battery]
+|--(punct)--> .
+
+	* entity-paths for event['release']40_8ecb.xmlsent:11994
+
+	* entity-paths for event['battery', 'life']40_8ecb.xmlsent:11994
+	['life --(amod)--> eight-hour']
+
+	* entity-paths for event['upgrade']40_8ecb.xmlsent:11994
+	['upgrade --(nmod)--> MacBook']
+
+	* entity-paths for event['reports']40_8ecb.xmlsent:11994
+	['reports --(compound)--> Apple']
+
+	* entity-paths for event['macworld', 'expo', '2009']40_8ecb.xmlsent:11994

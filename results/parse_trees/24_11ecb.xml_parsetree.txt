@@ -1,0 +1,55 @@
+
+-----------------------------------------
+docid:24_11ecb.xml
+-----------------------------------------
+
+sentence #:the four robbers , two of whom were disguised as women , stole nearly all the jewellery on display at harry winston jewellers on the avenue montaigne , just off the champs-elysees in the french capital . 
+	[events]:[['stole'], ['disguised']]
+	[entities]:[['robbers'], ['jewellery'], ['at', 'harry', 'winston', 'jewellers', 'on', 'the', 'avenue', 'montaigne', ',', 'just', 'off', 'the', 'champs-elysees', 'in', 'the', 'french', 'capital']]
+*R663[stole]
+|--(nsubj)--> R664[robbers]
+|                |--(det)--> the
+|                |--(nummod)--> four
+|                |--(punct)--> ,
+|                |--(acl:re)--> *R682[disguised]
+|                |                |--(nsubjp)--> two
+|                |                |                |--(nmod)--> whom
+|                |                |                                 |--(case)--> of
+|                |                |--(auxpas)--> were
+|                |                |--(nmod)--> women
+|                |                                 |--(case)--> as
+|                |--(punct)--> ,
+|--(dobj)--> R683[jewellery]
+|                |--(advmod)--> nearly
+|                |--(det:pr)--> all
+|                |--(det)--> the
+|                |--(nmod)--> display
+|                                 |--(case)--> on
+|--(nmod)--> R665[jewellers]
+|                |--(case)--> R665[at]
+|                |--(compou)--> R665[harry]
+|                |--(compou)--> R665[winston]
+|--(nmod)--> R665[montaigne]
+|                |--(case)--> R665[on]
+|                |--(det)--> R665[the]
+|                |--(compou)--> R665[avenue]
+|--(punct)--> R665[,]
+|--(nmod)--> R665[champs-elysees]
+|                |--(advmod)--> R665[just]
+|                |--(case)--> R665[off]
+|                |--(det)--> R665[the]
+|                |--(nmod)--> R665[capital]
+|                                 |--(case)--> R665[in]
+|                                 |--(det)--> R665[the]
+|                                 |--(amod)--> R665[french]
+|--(punct)--> .
+
+	* entity-paths for event['stole']24_11ecb.xmlsent:4803
+	['stole --(nsubj)--> robbers']
+	['stole --(dobj)--> jewellery']
+	['stole --(nmod)--> jewellers']
+	['stole --(nmod)--> Montaigne']
+	['stole --(punct)--> ,']
+	['stole --(nmod)--> Champs-Elysees']
+
+	* entity-paths for event['disguised']24_11ecb.xmlsent:4803

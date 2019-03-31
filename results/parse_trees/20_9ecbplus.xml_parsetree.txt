@@ -1,0 +1,76 @@
+
+-----------------------------------------
+docid:20_9ecbplus.xml
+-----------------------------------------
+
+sentence #:tremors from an earthquake registering 6 . 1 on the richter scale 60km south west of bandar abbas in iran were felt in dubai today , prompting the evacuation of high - rise buildings on the sheikh zayed road and in the dubai media city . 
+	[events]:[['earthquake'], ['felt']]
+	[entities]:[['60km', 'south', 'west', 'of', 'bandar', 'abbas', 'in', 'iran'], ['today'], ['6', '.', '1']]
+*R532[felt]
+|--(nsubjp)--> tremors
+|                |--(nmod)--> *R509[earthquake]
+|                |                |--(case)--> from
+|                |                |--(det)--> an
+|                |                |--(acl)--> registering
+|                |                                 |--(xcomp)--> R534[1]
+|                |                                 |                |--(nsubj)--> R534[6]
+|                |                                 |                |                |--(punct)--> R534[.]
+|                |                                 |                |--(nmod)--> R526[60km]
+|                |                                 |                                 |--(case)--> on
+|                |                                 |                                 |--(det)--> the
+|                |                                 |                                 |--(compou)--> richter
+|                |                                 |                                 |--(compou)--> scale
+|                |                                 |                                 |--(nummod)--> R526[60km]
+|                |                                 |--(advmod)--> R526[south]
+|                |                                                  |--(dep)--> R526[west]
+|                |--(nmod)--> R526[abbas]
+|                                 |--(case)--> R526[of]
+|                                 |--(compou)--> R526[bandar]
+|                                 |--(nmod)--> R526[iran]
+|                                                  |--(case)--> R526[in]
+|--(auxpas)--> were
+|--(nmod)--> dubai
+|                |--(case)--> in
+|--(nmod:t)--> R512[today]
+|--(punct)--> ,
+|--(advcl)--> prompting
+|                |--(dobj)--> evacuation
+|                                 |--(det)--> the
+|                                 |--(acl)--> high
+|                                 |                |--(case)--> of
+|                                 |--(punct)--> -
+|                                 |--(dep)--> buildings
+|                                                  |--(compou)--> rise
+|                                                  |--(nmod)--> road
+|                                                                   |--(case)--> on
+|                                                                   |--(det)--> the
+|                                                                   |--(compou)--> sheikh
+|                                                                   |--(compou)--> zayed
+|                                                                   |--(cc)--> and
+|                                                                   |--(conj)--> city
+|                                                                                    |--(case)--> in
+|                                                                                    |--(det)--> the
+|                                                                                    |--(compou)--> dubai
+|                                                                                    |--(compou)--> media
+|--(punct)--> .
+
+	* entity-paths for event['earthquake']20_9ecbplus.xmlsent:3997
+	['earthquake --(acl)--> registering', 'registering --(xcomp)--> 1']
+	['earthquake --(acl)--> registering', 'registering --(advmod)--> south']
+
+	* entity-paths for event['felt']20_9ecbplus.xmlsent:3997
+	['felt --(nsubjpass)--> Tremors', 'Tremors --(nmod)--> earthquake', 'earthquake --(acl)--> registering', 'registering --(xcomp)--> 1']
+	['felt --(nsubjpass)--> Tremors', 'Tremors --(nmod)--> earthquake', 'earthquake --(acl)--> registering', 'registering --(advmod)--> south']
+	['felt --(nsubjpass)--> Tremors', 'Tremors --(nmod)--> Abbas']
+	['felt --(nmod:tmod)--> today']
+
+sentence #:iranian earthquake tremor hits dubai 
+	[events]:[['earthquake']]
+	[entities]:[]
+hits
+|--(nsubj)--> tremor
+|                |--(amod)--> iranian
+|                |--(compou)--> *R509[earthquake]
+|--(dobj)--> dubai
+
+	* entity-paths for event['earthquake']20_9ecbplus.xmlsent:3995

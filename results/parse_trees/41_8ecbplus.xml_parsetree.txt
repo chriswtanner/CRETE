@@ -1,0 +1,118 @@
+
+-----------------------------------------
+docid:41_8ecbplus.xml
+-----------------------------------------
+
+sentence #:a government official initially reported deaths , but an american activist who spoke to aid workers at the camp later said there were no casualties . 
+	[events]:[['casualties'], ['reported'], ['deaths'], ['spoke'], ['said']]
+	[entities]:[['who'], ['at', 'the', 'camp'], ['government', 'official'], ['american', 'activist'], ['aid', 'workers']]
+*R1445[reported]
+|--(nsubj)--> R1513[official]
+|                |--(det)--> a
+|                |--(compou)--> R1513[government]
+|--(advmod)--> initially
+|--(dobj)--> *R1446[deaths]
+|--(punct)--> ,
+|--(cc)--> but
+|--(conj)--> *R1514[said]
+|                |--(nsubj)--> R1448[activist]
+|                |                |--(det)--> an
+|                |                |--(amod)--> R1448[american]
+|                |                |--(acl:re)--> *R1449[spoke]
+|                |                                 |--(nsubj)--> R1448[who]
+|                |                                 |--(xcomp)--> R1450[aid]
+|                |                                                  |--(mark)--> to
+|                |                                                  |--(dobj)--> R1450[workers]
+|                |                                                  |--(nmod)--> R1444[camp]
+|                |                                                                   |--(case)--> R1444[at]
+|                |                                                                   |--(det)--> R1444[the]
+|                |--(advmod)--> later
+|                |--(ccomp)--> were
+|                                 |--(expl)--> there
+|                                 |--(nsubj)--> *R1451[casualties]
+|                                                  |--(neg)--> no
+|--(punct)--> .
+
+	* entity-paths for event['casualties']41_8ecbplus.xmlsent:12540
+
+	* entity-paths for event['reported']41_8ecbplus.xmlsent:12540
+	['reported --(nsubj)--> official']
+	['reported --(conj)--> said', 'said --(nsubj)--> activist']
+
+	* entity-paths for event['deaths']41_8ecbplus.xmlsent:12540
+
+	* entity-paths for event['spoke']41_8ecbplus.xmlsent:12540
+	['spoke --(nsubj)--> who']
+	['spoke --(xcomp)--> aid']
+
+	* entity-paths for event['said']41_8ecbplus.xmlsent:12540
+	['said --(nsubj)--> activist']
+
+sentence #:military aircraft from sudan crossed the new international border with south sudan and dropped bombs thursday in and around a camp filled with refugees , officials said . 
+	[events]:[['said'], ['dropped'], ['crossed']]
+	[entities]:[['refugees'], ['in', 'and', 'around', 'a', 'camp'], ['sudan'], ['military', 'aircraft'], ['bombs'], ['the', 'new', 'international', 'border', 'with', 'south', 'sudan'], ['officials'], ['thursday']]
+*R1452[said]
+|--(ccomp)--> *R1453[crossed]
+|                |--(nsubj)--> R1454[aircraft]
+|                |                |--(amod)--> R1454[military]
+|                |                |--(nmod)--> R1512[sudan]
+|                |                                 |--(case)--> from
+|                |--(dobj)--> R1505[border]
+|                |                |--(det)--> R1505[the]
+|                |                |--(amod)--> R1505[new]
+|                |                |--(amod)--> R1505[international]
+|                |--(nmod)--> R1505[sudan]
+|                |                |--(case)--> R1505[with]
+|                |                |--(compou)--> R1505[south]
+|                |--(cc)--> and
+|                |--(conj)--> *R1442[dropped]
+|                                 |--(dobj)--> R1455[bombs]
+|                                 |--(nmod:t)--> R1456[thursday]
+|                                 |--(nmod)--> R1444[in]
+|                                                  |--(cc)--> R1444[and]
+|                                                  |--(conj)--> R1444[camp]
+|                                                                   |--(case)--> R1444[around]
+|                                                                   |--(det)--> R1444[a]
+|                                                                   |--(acl)--> filled
+|                                                                                    |--(nmod)--> R1457[refugees]
+|                                                                                                     |--(case)--> with
+|--(punct)--> ,
+|--(nsubj)--> R1458[officials]
+|--(punct)--> .
+
+	* entity-paths for event['said']41_8ecbplus.xmlsent:12539
+	['said --(ccomp)--> crossed', 'crossed --(nsubj)--> aircraft']
+	['said --(ccomp)--> crossed', 'crossed --(dobj)--> border']
+	['said --(ccomp)--> crossed', 'crossed --(nmod)--> Sudan']
+	['said --(ccomp)--> crossed', 'crossed --(conj)--> dropped', 'dropped --(dobj)--> bombs']
+	['said --(ccomp)--> crossed', 'crossed --(conj)--> dropped', 'dropped --(nmod:tmod)--> Thursday']
+	['said --(ccomp)--> crossed', 'crossed --(conj)--> dropped', 'dropped --(nmod)--> in']
+	['said --(nsubj)--> officials']
+
+	* entity-paths for event['dropped']41_8ecbplus.xmlsent:12539
+	['dropped --(dobj)--> bombs']
+	['dropped --(nmod:tmod)--> Thursday']
+	['dropped --(nmod)--> in']
+
+	* entity-paths for event['crossed']41_8ecbplus.xmlsent:12539
+	['crossed --(nsubj)--> aircraft']
+	['crossed --(dobj)--> border']
+	['crossed --(nmod)--> Sudan']
+	['crossed --(conj)--> dropped', 'dropped --(dobj)--> bombs']
+	['crossed --(conj)--> dropped', 'dropped --(nmod:tmod)--> Thursday']
+	['crossed --(conj)--> dropped', 'dropped --(nmod)--> in']
+
+sentence #:sudan bombs south sudanese refugee camp , reports say 
+	[events]:[['bombs']]
+	[entities]:[['south', 'sudanese', 'refugee', 'camp'], ['sudan']]
+say
+|--(nsubj)--> reports
+                 |--(compou)--> R1443[sudan]
+                 |--(compou)--> *R1442[bombs]
+                 |--(compou)--> R1444[south]
+                 |--(compou)--> R1444[sudanese]
+                 |--(compou)--> R1444[refugee]
+                 |--(compou)--> R1444[camp]
+                 |--(punct)--> ,
+
+	* entity-paths for event['bombs']41_8ecbplus.xmlsent:12537

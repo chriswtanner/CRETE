@@ -1,0 +1,76 @@
+
+-----------------------------------------
+docid:39_13ecb.xml
+-----------------------------------------
+
+sentence #:on saturday , the 26-year-old was handed the keys to the tardis when he was unveiled as the 11th doctor who , replacing david tennant , who steps down later this year . 
+	[events]:[['steps', 'down'], ['handed', 'the', 'keys'], ['replacing'], ['unveiled']]
+	[entities]:[['26-year-old'], ['tardis'], ['on', 'saturday'], ['he'], ['11th', 'doctor', 'who'], ['david', 'tennant'], ['who']]
+*R1344[handed]
+|--(nmod)--> R1343[saturday]
+|                |--(case)--> R1343[on]
+|--(punct)--> ,
+|--(nsubjp)--> R1328[26-year-old]
+|                |--(det)--> the
+|--(auxpas)--> was
+|--(dobj)--> *R1344[keys]
+|                |--(det)--> *R1344[the]
+|--(nmod)--> R1345[tardis]
+|                |--(case)--> to
+|                |--(det)--> the
+|--(advcl)--> *R1337[unveiled]
+|                |--(advmod)--> when
+|                |--(nsubjp)--> R1328[he]
+|                |--(auxpas)--> was
+|                |--(nmod)--> R1338[doctor]
+|                                 |--(case)--> as
+|                                 |--(det)--> the
+|                                 |--(amod)--> R1338[11th]
+|                                 |--(acl:re)--> *R1346[replacing]
+|                                                  |--(nsubj)--> R1338[who]
+|                                                  |--(punct)--> ,
+|                                                  |--(dobj)--> R1347[tennant]
+|                                                                   |--(compou)--> R1347[david]
+|                                                                   |--(punct)--> ,
+|                                                                   |--(acl:re)--> *R1348[steps]
+|                                                                                    |--(nsubj)--> R1347[who]
+|                                                                                    |--(advmod)--> later
+|                                                                                    |                |--(advmod)--> *R1348[down]
+|                                                                                    |--(nmod:t)--> year
+|                                                                                                     |--(det)--> this
+|--(punct)--> .
+
+	* entity-paths for event['steps', 'down']39_13ecb.xmlsent:10896
+
+	* entity-paths for event['handed', 'the', 'keys']39_13ecb.xmlsent:10896
+
+	* entity-paths for event['replacing']39_13ecb.xmlsent:10896
+	['replacing --(nsubj)--> Who']
+	['replacing --(dobj)--> Tennant']
+
+	* entity-paths for event['unveiled']39_13ecb.xmlsent:10896
+	['unveiled --(nsubjpass)--> he']
+	['unveiled --(nmod)--> Doctor']
+
+sentence #:matt , who has stage and tv credits , will take up the role in 2010 . 
+	[events]:[['take', 'up']]
+	[entities]:[['tv'], ['matt'], ['in', '2010'], ['who'], ['role']]
+*R1346[take]
+|--(nsubj)--> R1328[matt]
+|                |--(punct)--> ,
+|                |--(acl:re)--> has
+|                |                |--(nsubj)--> R1328[who]
+|                |                |--(dobj)--> credits
+|                |                                 |--(compou)--> stage
+|                |                                                  |--(cc)--> and
+|                |                                                  |--(conj)--> R1339[tv]
+|                |--(punct)--> ,
+|--(aux)--> will
+|--(compou)--> *R1346[up]
+|--(dobj)--> R1338[role]
+|                |--(det)--> the
+|                |--(nmod)--> R1330[2010]
+|                                 |--(case)--> R1330[in]
+|--(punct)--> .
+
+	* entity-paths for event['take', 'up']39_13ecb.xmlsent:10897

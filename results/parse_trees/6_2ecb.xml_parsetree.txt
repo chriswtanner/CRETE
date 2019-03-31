@@ -1,0 +1,34 @@
+
+-----------------------------------------
+docid:6_2ecb.xml
+-----------------------------------------
+
+sentence #:it 's official : chris weitz is taking over the director 's chair for the " twilight " sequel " new moon . " 
+	[events]:[['taking', 'over']]
+	[entities]:[['new', 'moon'], ['chris', 'weitz'], ['twilight']]
+official
+|--(nsubj)--> it
+|--(cop)--> 's
+|--(punct)--> :
+|--(parata)--> *R1709[taking]
+|                |--(nsubj)--> R1704[weitz]
+|                |                |--(compou)--> R1704[chris]
+|                |--(aux)--> is
+|                |--(compou)--> *R1709[over]
+|                |--(dobj)--> chair
+|                |                |--(nmod:p)--> director
+|                |                                 |--(det)--> the
+|                |                                 |--(case)--> 's
+|                |--(nmod)--> the
+|                |                |--(case)--> for
+|                |--(punct)--> "
+|                |--(nmod)--> R1710[twilight]
+|                                 |--(punct)--> "
+|                                 |--(dep)--> sequel
+|                                                  |--(punct)--> "
+|                                                  |--(dep)--> R1703[moon]
+|                                                                   |--(compou)--> R1703[new]
+|--(punct)--> .
+|--(punct)--> "
+
+	* entity-paths for event['taking', 'over']6_2ecb.xmlsent:14371

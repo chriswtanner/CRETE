@@ -1,0 +1,50 @@
+
+-----------------------------------------
+docid:37_6ecb.xml
+-----------------------------------------
+
+sentence #:a series of powerful earthquakes rocked manokwari , the capital of west papua , on sunday , killing four people , injuring dozens and destroying hundreds of buildings . 
+	[events]:[['killing'], ['injuring'], ['destroying'], ['earthquakes']]
+	[entities]:[['dozens'], ['west', 'papua'], ['four', 'people'], ['on', 'sunday'], ['buildings']]
+rocked
+|--(nsubj)--> series
+|                |--(det)--> a
+|                |--(nmod)--> *R1277[earthquakes]
+|                                 |--(case)--> of
+|                                 |--(amod)--> powerful
+|--(dobj)--> manokwari
+|                |--(punct)--> ,
+|                |--(appos)--> capital
+|                |                |--(det)--> the
+|                |                |--(nmod)--> R1267[papua]
+|                |                                 |--(case)--> of
+|                |                                 |--(compou)--> R1267[west]
+|                |--(punct)--> ,
+|--(nmod)--> R1268[sunday]
+|                |--(case)--> R1268[on]
+|--(punct)--> ,
+|--(dep)--> *R1283[killing]
+|                |--(dobj)--> R1284[people]
+|                |                |--(nummod)--> R1284[four]
+|                |--(punct)--> ,
+|                |--(conj)--> *R1288[injuring]
+|                |                |--(dobj)--> R1289[dozens]
+|                |--(cc)--> and
+|                |--(conj)--> *R1287[destroying]
+|                                 |--(dobj)--> hundreds
+|                                                  |--(nmod)--> R1282[buildings]
+|                                                                   |--(case)--> of
+|--(punct)--> .
+
+	* entity-paths for event['killing']37_6ecb.xmlsent:10630
+	['killing --(dobj)--> people']
+	['killing --(conj)--> injuring', 'injuring --(dobj)--> dozens']
+	['killing --(conj)--> destroying', 'destroying --(dobj)--> hundreds', 'hundreds --(nmod)--> buildings']
+
+	* entity-paths for event['injuring']37_6ecb.xmlsent:10630
+	['injuring --(dobj)--> dozens']
+
+	* entity-paths for event['destroying']37_6ecb.xmlsent:10630
+	['destroying --(dobj)--> hundreds', 'hundreds --(nmod)--> buildings']
+
+	* entity-paths for event['earthquakes']37_6ecb.xmlsent:10630

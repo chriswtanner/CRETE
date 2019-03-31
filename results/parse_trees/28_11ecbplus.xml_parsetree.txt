@@ -1,0 +1,107 @@
+
+-----------------------------------------
+docid:28_11ecbplus.xml
+-----------------------------------------
+
+sentence #:he was found dead , reportedly of natural causes , in his room at the sun tan motel tuesday morning , officials said . 
+	[events]:[['natural', 'causes'], ['found'], ['dead']]
+	[entities]:[['in', 'his', 'room', 'at', 'the', 'sun', 'tan', 'motel'], ['he'], ['tuesday', 'morning']]
+said
+|--(ccomp)--> *R824[found]
+|                |--(nsubjp)--> R815[he]
+|                |--(auxpas)--> was
+|                |--(xcomp)--> *R814[dead]
+|                |                |--(dep)--> *R817[causes]
+|                |                                 |--(punct)--> ,
+|                |                                 |--(dep)--> reportedly
+|                |                                 |--(case)--> of
+|                |                                 |--(amod)--> *R817[natural]
+|                |                                 |--(punct)--> ,
+|                |--(nmod)--> R825[room]
+|                                 |--(case)--> R825[in]
+|                                 |--(nmod:p)--> R825[his]
+|                                 |--(nmod)--> R826[morning]
+|                                                  |--(case)--> R825[at]
+|                                                  |--(det)--> R825[the]
+|                                                  |--(compou)--> R825[sun]
+|                                                  |--(compou)--> R825[tan]
+|                                                  |--(compou)--> R825[motel]
+|                                                  |--(compou)--> R826[tuesday]
+|--(punct)--> ,
+|--(nsubj)--> officials
+|--(punct)--> .
+
+	* entity-paths for event['natural', 'causes']28_11ecbplus.xmlsent:6100
+
+	* entity-paths for event['found']28_11ecbplus.xmlsent:6100
+	['found --(nsubjpass)--> He']
+	['found --(nmod)--> room']
+
+	* entity-paths for event['dead']28_11ecbplus.xmlsent:6100
+
+sentence #:fred larue , top nixon aide , dies at 75 
+	[events]:[['dies']]
+	[entities]:[['fred', 'larue']]
+*R814[dies]
+|--(nsubj)--> R815[larue]
+|                |--(compou)--> R815[fred]
+|                |--(punct)--> ,
+|                |--(appos)--> aide
+|                |                |--(amod)--> top
+|                |                |--(compou)--> nixon
+|                |--(punct)--> ,
+|--(nmod)--> 75
+                 |--(case)--> at
+
+	* entity-paths for event['dies']28_11ecbplus.xmlsent:6096
+	['dies --(nsubj)--> LaRue']
+
+sentence #:fred larue , a richard nixon white house aide and key player in the watergate scandal , was found dead in his room at a biloxi , miss . , motel , it was reported wednesday . 
+	[events]:[['watergate'], ['dead'], ['found']]
+	[entities]:[['fred', 'larue'], ['in', 'his', 'room', 'at', 'a', 'biloxi', ',', 'miss', '.', ',', 'motel']]
+reported
+|--(ccomp)--> *R824[found]
+|                |--(nsubjp)--> R815[larue]
+|                |                |--(compou)--> R815[fred]
+|                |                |--(punct)--> ,
+|                |                |--(appos)--> aide
+|                |                |                |--(det)--> a
+|                |                |                |--(compou)--> richard
+|                |                |                |--(compou)--> nixon
+|                |                |                |--(compou)--> white
+|                |                |                |--(compou)--> house
+|                |                |                |--(cc)--> and
+|                |                |                |--(conj)--> player
+|                |                |                |                |--(amod)--> key
+|                |                |                |--(nmod)--> scandal
+|                |                |                                 |--(case)--> in
+|                |                |                                 |--(det)--> the
+|                |                |                                 |--(compou)--> *R812[watergate]
+|                |                |--(punct)--> ,
+|                |--(auxpas)--> was
+|                |--(dobj)--> R825[motel]
+|                                 |--(amod)--> *R814[dead]
+|                                                  |--(nmod)--> R825[room]
+|                                                                   |--(case)--> R825[in]
+|                                                                   |--(nmod:p)--> R825[his]
+|                                                                   |--(nmod)--> R825[biloxi]
+|                                                                                    |--(case)--> R825[at]
+|                                                                                    |--(det)--> R825[a]
+|                                                                                    |--(punct)--> R825[,]
+|                                                                                    |--(appos)--> R825[miss]
+|                                                                                    |                |--(punct)--> R825[.]
+|                                                                                    |--(punct)--> R825[,]
+|--(punct)--> ,
+|--(nsubjp)--> it
+|--(auxpas)--> was
+|--(nmod:t)--> wednesday
+|--(punct)--> .
+
+	* entity-paths for event['watergate']28_11ecbplus.xmlsent:6098
+
+	* entity-paths for event['dead']28_11ecbplus.xmlsent:6098
+	['dead --(nmod)--> room']
+
+	* entity-paths for event['found']28_11ecbplus.xmlsent:6098
+	['found --(nsubjpass)--> LaRue']
+	['found --(dobj)--> motel']

@@ -1,0 +1,109 @@
+
+-----------------------------------------
+docid:45_5ecbplus.xml
+-----------------------------------------
+
+sentence #:his sentencing is scheduled for november 8 . 
+	[events]:[['scheduled'], ['sentencing']]
+	[entities]:[['november', '8'], ['his']]
+*R1662[scheduled]
+|--(nsubjp)--> *R1663[sentencing]
+|                |--(nmod:p)--> R1610[his]
+|--(auxpas)--> is
+|--(nmod)--> R1664[november]
+|                |--(case)--> for
+|                |--(nummod)--> R1664[8]
+|--(punct)--> .
+
+	* entity-paths for event['scheduled']45_5ecbplus.xmlsent:13853
+	['scheduled --(nsubjpass)--> sentencing', 'sentencing --(nmod:poss)--> His']
+	['scheduled --(nmod)--> November']
+
+	* entity-paths for event['sentencing']45_5ecbplus.xmlsent:13853
+	['sentencing --(nmod:poss)--> His']
+
+sentence #:christopher simpson shoots pregnant girlfriend dead cause he didn't want another child to support . 
+	[events]:[['pregnant'], ['support'], ['want'], ['shoots', 'dead']]
+	[entities]:[['christopher', 'simpson'], ['he'], ['girlfriend'], ['child']]
+*R1611[shoots]
+|--(nsubj)--> R1610[simpson]
+|                |--(compou)--> R1610[christopher]
+|--(dobj)--> cause
+|                |--(amod)--> *R1621[pregnant]
+|                |--(compou)--> R1612[girlfriend]
+|                |--(amod)--> *R1611[dead]
+|                |--(acl:re)--> *R1665[want]
+|                                 |--(nsubj)--> R1610[he]
+|                                 |--(aux)--> didn't
+|                                 |--(neg)--> didn't
+|                                 |--(dobj)--> R1666[child]
+|                                                  |--(det)--> another
+|                                                  |--(acl)--> *R1667[support]
+|                                                                   |--(mark)--> to
+|--(punct)--> .
+
+	* entity-paths for event['pregnant']45_5ecbplus.xmlsent:13849
+
+	* entity-paths for event['support']45_5ecbplus.xmlsent:13849
+
+	* entity-paths for event['want']45_5ecbplus.xmlsent:13849
+	['want --(nsubj)--> he']
+	['want --(dobj)--> child']
+
+	* entity-paths for event['shoots', 'dead']45_5ecbplus.xmlsent:13849
+
+sentence #:an oklahoma jury has found 27 year old christopher simpson guilty of first degree murder of his then pregnant 20 year old girlfriend ka'loni flynn and their 12 week unborn child . 
+	[events]:[['found'], ['first', 'degree', 'murder'], ['guilty'], ['unborn'], ['pregnant']]
+	[entities]:[["ka'loni", 'flynn'], ['child'], ['christopher', 'simpson'], ['oklahoma', 'jury']]
+*R1608[found]
+|--(nsubj)--> R1609[jury]
+|                |--(det)--> an
+|                |--(compou)--> R1609[oklahoma]
+|--(aux)--> has
+|--(dobj)--> R1610[simpson]
+|                |--(amod)--> old
+|                |                |--(nmod:n)--> year
+|                |                                 |--(nummod)--> 27
+|                |--(compou)--> R1610[christopher]
+|                |--(dep)--> R1612[flynn]
+|                |                |--(amod)--> *R1636[guilty]
+|                |                                 |--(nmod)--> *R1619[murder]
+|                |                                                  |--(case)--> of
+|                |                                                  |--(amod)--> *R1619[first]
+|                |                                                  |--(compou)--> *R1619[degree]
+|                |                                                  |--(nmod)--> R1612[ka'loni]
+|                |                                                  |                |--(case)--> of
+|                |                                                  |                |--(nmod:p)--> his
+|                |                                                  |                |--(amod)--> *R1621[pregnant]
+|                |                                                  |                |                |--(advmod)--> then
+|                |                                                  |                |--(amod)--> year
+|                |                                                  |                |                |--(compou)--> 20
+|                |                                                  |                |--(amod)--> old
+|                |                                                  |                |--(compou)--> girlfriend
+|                |                                                  |--(punct)--> R1612[ka'loni]
+|                |                                                  |--(dep)--> R1612[ka'loni]
+|                |--(cc)--> and
+|                |--(conj)--> R1625[child]
+|                                 |--(nmod:p)--> their
+|                                 |--(amod)--> week
+|                                 |                |--(compou)--> 12
+|                                 |--(amod)--> *R1668[unborn]
+|--(punct)--> .
+
+	* entity-paths for event['found']45_5ecbplus.xmlsent:13850
+	['found --(nsubj)--> jury']
+	['found --(dobj)--> Simpson']
+
+	* entity-paths for event['first', 'degree', 'murder']45_5ecbplus.xmlsent:13850
+	['murder --(nmod)--> Ka']
+	["murder --(punct)--> '"]
+	['murder --(dep)--> loni']
+
+	* entity-paths for event['guilty']45_5ecbplus.xmlsent:13850
+	['guilty --(nmod)--> murder', 'murder --(nmod)--> Ka']
+	['guilty --(nmod)--> murder', "murder --(punct)--> '"]
+	['guilty --(nmod)--> murder', 'murder --(dep)--> loni']
+
+	* entity-paths for event['unborn']45_5ecbplus.xmlsent:13850
+
+	* entity-paths for event['pregnant']45_5ecbplus.xmlsent:13850

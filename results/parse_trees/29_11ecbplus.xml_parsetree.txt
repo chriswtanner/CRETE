@@ -1,0 +1,94 @@
+
+-----------------------------------------
+docid:29_11ecbplus.xml
+-----------------------------------------
+
+sentence #:indianapolis colts clinch playoff berth with win over kansas city chiefs 
+	[events]:[['win'], ['clinch'], ['playoff']]
+	[entities]:[['berth'], ['indianapolis', 'colts'], ['kansas', 'city', 'chiefs']]
+*R862[clinch]
+|--(nsubj)--> R852[colts]
+|                |--(compou)--> R852[indianapolis]
+|--(ccomp)--> R866[berth]
+                 |--(nsubj)--> *R861[playoff]
+                 |--(advcl)--> *R859[win]
+                                  |--(mark)--> with
+                                  |--(nmod)--> R858[chiefs]
+                                                   |--(case)--> over
+                                                   |--(compou)--> R858[kansas]
+                                                   |--(compou)--> R858[city]
+
+	* entity-paths for event['win']29_11ecbplus.xmlsent:6727
+	['win --(nmod)--> Chiefs']
+
+	* entity-paths for event['clinch']29_11ecbplus.xmlsent:6727
+	['clinch --(nsubj)--> Colts']
+	['clinch --(ccomp)--> berth']
+
+	* entity-paths for event['playoff']29_11ecbplus.xmlsent:6727
+
+sentence #:the colts could clinch a playoff berth with a win over the kansas city chiefs or a pittsburgh steelers loss . 
+	[events]:[['clinch'], ['playoff']]
+	[entities]:[['berth'], ['kansas', 'city', 'chiefs'], ['colts']]
+*R862[clinch]
+|--(nsubj)--> R852[colts]
+|                |--(det)--> the
+|--(aux)--> could
+|--(ccomp)--> R866[berth]
+|                |--(nsubj)--> *R861[playoff]
+|                |                |--(det)--> a
+|                |--(ccomp)--> win
+|                                 |--(nsubj)--> a
+|                                 |                |--(amod)--> with
+|                                 |--(nmod)--> R858[chiefs]
+|                                                  |--(case)--> over
+|                                                  |--(det)--> the
+|                                                  |--(compou)--> R858[kansas]
+|                                                  |--(compou)--> R858[city]
+|                                                  |--(cc)--> or
+|                                                  |--(conj)--> loss
+|                                                                   |--(det)--> a
+|                                                                   |--(compou)--> pittsburgh
+|                                                                   |--(compou)--> steelers
+|--(punct)--> .
+
+	* entity-paths for event['clinch']29_11ecbplus.xmlsent:6730
+	['clinch --(nsubj)--> Colts']
+	['clinch --(ccomp)--> berth']
+
+	* entity-paths for event['playoff']29_11ecbplus.xmlsent:6730
+
+sentence #:the young team fought hard to defeat the chiefs in another fourth quarter victory , 20 - 13 . 
+	[events]:[['defeat'], ['fought'], ['victory']]
+	[entities]:[['20', '-', '13'], ['chiefs'], ['team']]
+*R867[fought]
+|--(nsubj)--> R852[team]
+|                |--(det)--> the
+|                |--(amod)--> young
+|--(xcomp)--> hard
+|                |--(xcomp)--> *R859[defeat]
+|                                 |--(mark)--> to
+|                                 |--(dobj)--> R858[chiefs]
+|                                 |                |--(det)--> the
+|                                 |--(nmod)--> *R859[victory]
+|                                                  |--(case)--> in
+|                                                  |--(det)--> another
+|                                                  |--(amod)--> fourth
+|                                                  |--(compou)--> quarter
+|                                                  |--(punct)--> ,
+|                                                  |--(appos)--> R860[13]
+|                                                                   |--(nummod)--> R860[20]
+|                                                                   |--(punct)--> R860[-]
+|--(punct)--> .
+
+	* entity-paths for event['defeat']29_11ecbplus.xmlsent:6732
+	['defeat --(dobj)--> Chiefs']
+	['defeat --(nmod)--> victory', 'victory --(appos)--> 13']
+
+	* entity-paths for event['fought']29_11ecbplus.xmlsent:6732
+	['fought --(nsubj)--> team']
+	['fought --(xcomp)--> hard', 'hard --(xcomp)--> defeat', 'defeat --(dobj)--> Chiefs']
+	['fought --(xcomp)--> hard', 'hard --(xcomp)--> defeat', 'defeat --(nmod)--> victory', 'victory --(appos)--> 13']
+
+	* entity-paths for event['victory']29_11ecbplus.xmlsent:6732
+	['victory --(appos)--> 13']

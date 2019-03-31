@@ -1,0 +1,113 @@
+
+-----------------------------------------
+docid:2_9ecbplus.xml
+-----------------------------------------
+
+sentence #:this will be second time hosting for the daytime talkshow star who will follow on from seth macfarlane's savaged 2013 stint 
+	[events]:[['hosting'], ['stint'], ['savaged'], ['follow']]
+	[entities]:[['second', 'time'], ['2013'], ['star'], ['seth', "macfarlane's"], ['who']]
+R466[time]
+|--(nsubj)--> this
+|--(aux)--> will
+|--(cop)--> be
+|--(amod)--> R466[second]
+|--(acl)--> *R456[hosting]
+                 |--(nmod)--> R454[star]
+                                  |--(case)--> for
+                                  |--(det)--> the
+                                  |--(amod)--> daytime
+                                  |--(compou)--> talkshow
+                                  |--(acl:re)--> *R499[follow]
+                                  |                |--(nsubj)--> R454[who]
+                                  |                |--(aux)--> will
+                                  |                |--(nmod)--> R498[macfarlane's]
+                                  |                                 |--(case)--> on
+                                  |                                 |--(case)--> from
+                                  |                                 |--(compou)--> R498[seth]
+                                  |                                 |--(case)--> R498[macfarlane's]
+                                  |--(acl)--> *R500[savaged]
+                                                   |--(dobj)--> *R497[stint]
+                                                                    |--(nummod)--> R501[2013]
+
+	* entity-paths for event['hosting']2_9ecbplus.xmlsent:3772
+	['hosting --(nmod)--> star']
+
+	* entity-paths for event['stint']2_9ecbplus.xmlsent:3772
+	['stint --(nummod)--> 2013']
+
+	* entity-paths for event['savaged']2_9ecbplus.xmlsent:3772
+	['savaged --(dobj)--> stint', 'stint --(nummod)--> 2013']
+
+	* entity-paths for event['follow']2_9ecbplus.xmlsent:3772
+	['follow --(nsubj)--> who']
+	['follow --(nmod)--> MacFarlane']
+
+sentence #:the comedian ellen degeneres announced on friday that she is to return as host of the academy awards , the second time she has been tasked with saving the oscars a year after a poorly received performer . 
+	[events]:[['announced'], ['academy', 'awards'], ['oscars'], ['return']]
+	[entities]:[['a', 'year', 'after'], ['on', 'friday'], ['she'], ['the', 'second', 'time'], ['performer'], ['host'], ['ellen', 'degeneres'], ['she']]
+tasked
+|--(dep)--> *R502[announced]
+|                |--(nsubj)--> R454[degeneres]
+|                |                |--(det)--> the
+|                |                |--(compou)--> comedian
+|                |                |--(compou)--> R454[ellen]
+|                |--(nmod)--> R481[friday]
+|                |                |--(case)--> R481[on]
+|                |--(ccomp)--> is
+|                                 |--(mark)--> that
+|                                 |--(nsubj)--> R454[she]
+|                                 |--(xcomp)--> *R457[return]
+|                                                  |--(mark)--> to
+|                                                  |--(nmod)--> R454[host]
+|                                                                   |--(case)--> as
+|                                                                   |--(nmod)--> *R455[awards]
+|                                                                   |                |--(case)--> of
+|                                                                   |                |--(det)--> the
+|                                                                   |                |--(compou)--> *R455[academy]
+|                                                                   |--(punct)--> ,
+|                                                                   |--(dep)--> R466[time]
+|                                                                                    |--(det)--> R466[the]
+|                                                                                    |--(amod)--> R466[second]
+|--(nsubjp)--> R454[she]
+|--(aux)--> has
+|--(auxpas)--> been
+|--(advcl)--> saving
+|                |--(mark)--> with
+|                |--(dobj)--> *R455[oscars]
+|                |                |--(det)--> the
+|                |--(nmod:t)--> R475[year]
+|                |                |--(det)--> R475[a]
+|                |--(nmod)--> R498[performer]
+|                                 |--(case)--> R475[after]
+|                                 |--(det)--> a
+|                                 |--(advmod)--> poorly
+|                                 |--(amod)--> received
+|--(punct)--> .
+
+	* entity-paths for event['announced']2_9ecbplus.xmlsent:3773
+	['announced --(nsubj)--> DeGeneres']
+	['announced --(nmod)--> Friday']
+	['announced --(ccomp)--> is', 'is --(nsubj)--> she']
+	['announced --(ccomp)--> is', 'is --(xcomp)--> return', 'return --(nmod)--> host']
+
+	* entity-paths for event['academy', 'awards']2_9ecbplus.xmlsent:3773
+
+	* entity-paths for event['oscars']2_9ecbplus.xmlsent:3773
+
+	* entity-paths for event['return']2_9ecbplus.xmlsent:3773
+	['return --(nmod)--> host']
+
+sentence #:ellen degeneres to host oscars in 2014 
+	[events]:[['oscars'], ['host']]
+	[entities]:[['ellen', 'degeneres'], ['in', '2014']]
+R454[degeneres]
+|--(compou)--> R454[ellen]
+|--(nmod)--> *R455[oscars]
+|                |--(case)--> to
+|                |--(compou)--> *R456[host]
+|--(nmod)--> R475[2014]
+                 |--(case)--> R475[in]
+
+	* entity-paths for event['oscars']2_9ecbplus.xmlsent:3771
+
+	* entity-paths for event['host']2_9ecbplus.xmlsent:3771

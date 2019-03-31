@@ -1,0 +1,48 @@
+
+-----------------------------------------
+docid:13_12ecb.xml
+-----------------------------------------
+
+sentence #:a church was devastated by fire , which was attended by alaska gov. sarah palin on friday night in her hometown of wasilla . 
+	[events]:[['fire'], ['devastated'], ['attended']]
+	[entities]:[['church'], ['friday', 'night'], ['her', 'hometown', 'of', 'wasilla'], ['sarah', 'palin']]
+*R278[devastated]
+|--(nsubjp)--> R260[church]
+|                |--(det)--> a
+|--(auxpas)--> was
+|--(nmod)--> *R261[fire]
+|                |--(case)--> by
+|                |--(punct)--> ,
+|                |--(acl:re)--> *R273[attended]
+|                                 |--(nsubjp)--> which
+|                                 |--(auxpas)--> was
+|                                 |--(nmod)--> R262[palin]
+|                                 |                |--(case)--> by
+|                                 |                |--(compou)--> alaska
+|                                 |                |--(compou)--> gov.
+|                                 |                |--(compou)--> R262[sarah]
+|                                 |                |--(nmod)--> R271[friday]
+|                                 |                                 |--(case)--> on
+|                                 |--(nmod:t)--> R271[night]
+|                                 |--(nmod)--> R279[hometown]
+|                                                  |--(case)--> in
+|                                                  |--(nmod:p)--> R279[her]
+|                                                  |--(nmod)--> R279[wasilla]
+|                                                                   |--(case)--> R279[of]
+|--(punct)--> .
+
+	* entity-paths for event['fire']13_12ecb.xmlsent:1193
+	['fire --(acl:relcl)--> attended', 'attended --(nmod)--> Palin']
+	['fire --(acl:relcl)--> attended', 'attended --(nmod:tmod)--> night']
+	['fire --(acl:relcl)--> attended', 'attended --(nmod)--> hometown']
+
+	* entity-paths for event['devastated']13_12ecb.xmlsent:1193
+	['devastated --(nsubjpass)--> church']
+	['devastated --(nmod)--> fire', 'fire --(acl:relcl)--> attended', 'attended --(nmod)--> Palin']
+	['devastated --(nmod)--> fire', 'fire --(acl:relcl)--> attended', 'attended --(nmod:tmod)--> night']
+	['devastated --(nmod)--> fire', 'fire --(acl:relcl)--> attended', 'attended --(nmod)--> hometown']
+
+	* entity-paths for event['attended']13_12ecb.xmlsent:1193
+	['attended --(nmod)--> Palin']
+	['attended --(nmod:tmod)--> night']
+	['attended --(nmod)--> hometown']

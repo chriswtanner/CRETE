@@ -1,0 +1,101 @@
+
+-----------------------------------------
+docid:28_12ecbplus.xml
+-----------------------------------------
+
+sentence #:fred larue , a close aide to former attorney general john mitchell and the first person to plead guilty in the watergate scandal , died of natural causes . 
+	[events]:[['natural', 'causes'], ['watergate', 'scandal'], ['guilty'], ['died']]
+	[entities]:[['fred', 'larue']]
+*R814[died]
+|--(nsubj)--> R815[larue]
+|                |--(compou)--> R815[fred]
+|                |--(punct)--> ,
+|                |--(appos)--> aide
+|                |                |--(det)--> a
+|                |                |--(amod)--> close
+|                |                |--(nmod)--> mitchell
+|                |                |                |--(case)--> to
+|                |                |                |--(amod)--> former
+|                |                |                |--(compou)--> attorney
+|                |                |                |--(compou)--> general
+|                |                |                |--(compou)--> john
+|                |                |--(cc)--> and
+|                |                |--(conj)--> person
+|                |                                 |--(det)--> the
+|                |                                 |--(amod)--> first
+|                |                                 |--(acl)--> plead
+|                |                                                  |--(mark)--> to
+|                |                                                  |--(xcomp)--> *R828[guilty]
+|                |                                                  |--(nmod)--> *R812[scandal]
+|                |                                                                   |--(case)--> in
+|                |                                                                   |--(det)--> the
+|                |                                                                   |--(compou)--> *R812[watergate]
+|                |--(punct)--> ,
+|--(nmod)--> *R817[causes]
+|                |--(case)--> of
+|                |--(amod)--> *R817[natural]
+|--(punct)--> .
+
+	* entity-paths for event['natural', 'causes']28_12ecbplus.xmlsent:6146
+
+	* entity-paths for event['watergate', 'scandal']28_12ecbplus.xmlsent:6146
+
+	* entity-paths for event['guilty']28_12ecbplus.xmlsent:6146
+
+	* entity-paths for event['died']28_12ecbplus.xmlsent:6146
+	['died --(nsubj)--> LaRue']
+
+sentence #:his body was discovered yesterday by a maid who entered his hotel room in biloxi . 
+	[events]:[['entered'], ['discovered']]
+	[entities]:[['his', 'body'], ['yesterday'], ['who'], ['maid'], ['hotel', 'room', 'in', 'biloxi']]
+*R824[discovered]
+|--(nsubjp)--> R815[body]
+|                |--(nmod:p)--> R815[his]
+|--(auxpas)--> was
+|--(nmod:t)--> R826[yesterday]
+|--(nmod)--> R829[maid]
+|                |--(case)--> by
+|                |--(det)--> a
+|                |--(acl:re)--> *R830[entered]
+|                                 |--(nsubj)--> R829[who]
+|                                 |--(dobj)--> R825[room]
+|                                 |                |--(nmod:p)--> his
+|                                 |                |--(compou)--> R825[hotel]
+|                                 |--(nmod)--> R825[biloxi]
+|                                                  |--(case)--> R825[in]
+|--(punct)--> .
+
+	* entity-paths for event['entered']28_12ecbplus.xmlsent:6148
+	['entered --(nsubj)--> who']
+	['entered --(dobj)--> room']
+	['entered --(nmod)--> Biloxi']
+
+	* entity-paths for event['discovered']28_12ecbplus.xmlsent:6148
+	['discovered --(nsubjpass)--> body']
+	['discovered --(nmod:tmod)--> yesterday']
+	['discovered --(nmod)--> maid']
+
+sentence #:coroner gary hargrove said he believes that mr . larue died saturday . 
+	[events]:[['died'], ['believes']]
+	[entities]:[['mr', '.', 'larue'], ['saturday'], ['gary', 'hargrove']]
+said
+|--(nsubj)--> R831[hargrove]
+|                |--(compou)--> coroner
+|                |--(compou)--> R831[gary]
+|--(ccomp)--> *R832[believes]
+|                |--(nsubj)--> he
+|                |--(ccomp)--> *R814[died]
+|                                 |--(mark)--> that
+|                                 |--(nsubj)--> R815[larue]
+|                                 |                |--(compou)--> R815[mr]
+|                                 |                |--(punct)--> R815[.]
+|                                 |--(nmod:t)--> R833[saturday]
+|--(punct)--> .
+
+	* entity-paths for event['died']28_12ecbplus.xmlsent:6149
+	['died --(nsubj)--> LaRue']
+	['died --(nmod:tmod)--> Saturday']
+
+	* entity-paths for event['believes']28_12ecbplus.xmlsent:6149
+	['believes --(ccomp)--> died', 'died --(nsubj)--> LaRue']
+	['believes --(ccomp)--> died', 'died --(nmod:tmod)--> Saturday']

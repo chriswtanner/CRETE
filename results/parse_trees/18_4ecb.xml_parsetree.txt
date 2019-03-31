@@ -1,0 +1,51 @@
+
+-----------------------------------------
+docid:18_4ecb.xml
+-----------------------------------------
+
+sentence #:a former employee recently let go from his job opened fire at an office christmas party friday , killing one person , police said . 
+	[events]:[['said'], ['opened', 'fire'], ['party'], ['job'], ['killing'], ['let', 'go']]
+	[entities]:[['person'], ['police'], ['employee'], ['friday']]
+*R387[said]
+|--(ccomp)--> *R365[let]
+|                |--(nsubj)--> R356[employee]
+|                |                |--(det)--> a
+|                |                |--(amod)--> former
+|                |--(advmod)--> recently
+|                |--(ccomp)--> *R366[opened]
+|                                 |--(csubj)--> *R365[go]
+|                                 |                |--(nmod)--> *R367[job]
+|                                 |                                 |--(case)--> from
+|                                 |                                 |--(nmod:p)--> his
+|                                 |--(dobj)--> *R366[fire]
+|                                 |--(nmod)--> *R359[party]
+|                                 |                |--(case)--> at
+|                                 |                |--(det)--> an
+|                                 |                |--(compou)--> office
+|                                 |                |--(compou)--> christmas
+|                                 |                |--(nmod:t)--> R368[friday]
+|                                 |--(punct)--> ,
+|                                 |--(advcl)--> *R358[killing]
+|                                                  |--(dobj)--> R369[person]
+|                                                                   |--(nummod)--> one
+|--(punct)--> ,
+|--(nsubj)--> R386[police]
+|--(punct)--> .
+
+	* entity-paths for event['said']18_4ecb.xmlsent:2486
+	['said --(ccomp)--> let', 'let --(nsubj)--> employee']
+	['said --(ccomp)--> let', 'let --(ccomp)--> opened', 'opened --(nmod)--> party', 'party --(nmod:tmod)--> Friday']
+	['said --(ccomp)--> let', 'let --(ccomp)--> opened', 'opened --(advcl)--> killing', 'killing --(dobj)--> person']
+	['said --(nsubj)--> police']
+
+	* entity-paths for event['opened', 'fire']18_4ecb.xmlsent:2486
+
+	* entity-paths for event['party']18_4ecb.xmlsent:2486
+	['party --(nmod:tmod)--> Friday']
+
+	* entity-paths for event['job']18_4ecb.xmlsent:2486
+
+	* entity-paths for event['killing']18_4ecb.xmlsent:2486
+	['killing --(dobj)--> person']
+
+	* entity-paths for event['let', 'go']18_4ecb.xmlsent:2486

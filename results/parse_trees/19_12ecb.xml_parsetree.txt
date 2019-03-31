@@ -1,0 +1,57 @@
+
+-----------------------------------------
+docid:19_12ecb.xml
+-----------------------------------------
+
+sentence #:initial results from the post- mortem on a 15-year-old greek boy whose killing by police sparked five days of rioting show alexandros grigoropoulos died from a bullet ricochet . 
+	[events]:[['killing'], ['died'], ['sparked'], ['ricochet'], ['rioting']]
+	[entities]:[['whose'], ['boy'], ['police'], ['alexandros', 'grigoropoulos'], ['bullet']]
+results
+|--(amod)--> initial
+|--(nmod)--> post-
+|                |--(case)--> from
+|                |--(det)--> the
+|--(punct)--> post-
+|--(dep)--> mortem
+|                |--(nmod)--> R402[boy]
+|                                 |--(case)--> on
+|                                 |--(det)--> a
+|                                 |--(amod)--> 15-year-old
+|                                 |--(amod)--> greek
+|                                 |--(acl:re)--> *R407[sparked]
+|                                                  |--(nsubj)--> *R403[killing]
+|                                                  |                |--(nmod:p)--> R402[whose]
+|                                                  |                |--(nmod)--> R404[police]
+|                                                  |                                 |--(case)--> by
+|                                                  |--(ccomp)--> show
+|                                                                   |--(nsubj)--> days
+|                                                                   |                |--(nummod)--> five
+|                                                                   |                |--(nmod)--> *R433[rioting]
+|                                                                   |                                 |--(case)--> of
+|                                                                   |--(ccomp)--> *R403[died]
+|                                                                                    |--(nsubj)--> R402[grigoropoulos]
+|                                                                                    |                |--(compou)--> R402[alexandros]
+|                                                                                    |--(nmod)--> *R421[ricochet]
+|                                                                                                     |--(case)--> from
+|                                                                                                     |--(det)--> a
+|                                                                                                     |--(compou)--> R422[bullet]
+|--(punct)--> .
+
+	* entity-paths for event['killing']19_12ecb.xmlsent:2827
+	['killing --(nmod:poss)--> whose']
+	['killing --(nmod)--> police']
+
+	* entity-paths for event['died']19_12ecb.xmlsent:2827
+	['died --(nsubj)--> Grigoropoulos']
+	['died --(nmod)--> ricochet', 'ricochet --(compound)--> bullet']
+
+	* entity-paths for event['sparked']19_12ecb.xmlsent:2827
+	['sparked --(nsubj)--> killing', 'killing --(nmod:poss)--> whose']
+	['sparked --(nsubj)--> killing', 'killing --(nmod)--> police']
+	['sparked --(ccomp)--> show', 'show --(ccomp)--> died', 'died --(nsubj)--> Grigoropoulos']
+	['sparked --(ccomp)--> show', 'show --(ccomp)--> died', 'died --(nmod)--> ricochet', 'ricochet --(compound)--> bullet']
+
+	* entity-paths for event['ricochet']19_12ecb.xmlsent:2827
+	['ricochet --(compound)--> bullet']
+
+	* entity-paths for event['rioting']19_12ecb.xmlsent:2827

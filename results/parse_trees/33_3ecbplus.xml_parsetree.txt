@@ -1,0 +1,133 @@
+
+-----------------------------------------
+docid:33_3ecbplus.xml
+-----------------------------------------
+
+sentence #:this frightening surveillance video was presented at the brooklyn supreme court on thursday during the trial of two men accused in killing zurana horton , 34 , a mother of 12 , in 2011 and wounding two others , including an 11 - year - old girl . 
+	[events]:[['trial'], ['presented'], ['accused'], ['killing'], ['wounding']]
+	[entities]:[['in', '2011'], ['zurana', 'horton'], ['video'], ['two', 'others'], ['girl']]
+*R1101[presented]
+|--(nsubjp)--> R1103[video]
+|                |--(det)--> this
+|                |--(amod)--> frightening
+|                |--(compou)--> surveillance
+|--(auxpas)--> was
+|--(nmod)--> court
+|                |--(case)--> at
+|                |--(det)--> the
+|                |--(compou)--> brooklyn
+|                |--(compou)--> supreme
+|--(nmod)--> thursday
+|                |--(case)--> on
+|--(nmod)--> *R1104[trial]
+|                |--(case)--> during
+|                |--(det)--> the
+|                |--(nmod)--> men
+|                                 |--(case)--> of
+|                                 |--(nummod)--> two
+|                                 |--(acl)--> *R1106[accused]
+|                                                  |--(advcl)--> *R1078[killing]
+|                                                                   |--(mark)--> in
+|                                                                   |--(dobj)--> R1079[horton]
+|                                                                   |                |--(compou)--> R1079[zurana]
+|                                                                   |                |--(punct)--> ,
+|                                                                   |                |--(appos)--> 34
+|                                                                   |                |                |--(punct)--> ,
+|                                                                   |                |                |--(appos)--> mother
+|                                                                   |                |                                 |--(det)--> a
+|                                                                   |                |                                 |--(nmod)--> 12
+|                                                                   |                |                                                  |--(case)--> of
+|                                                                   |                |--(punct)--> ,
+|                                                                   |                |--(nmod)--> R1086[2011]
+|                                                                   |                                 |--(case)--> R1086[in]
+|                                                                   |--(cc)--> and
+|                                                                   |--(conj)--> *R1111[wounding]
+|                                                                                    |--(dobj)--> R1112[others]
+|                                                                                                     |--(nummod)--> R1112[two]
+|--(punct)--> ,
+|--(nmod)--> 11
+|                |--(case)--> including
+|                |--(det)--> an
+|                |--(punct)--> -
+|                |--(dep)--> year
+|                |--(punct)--> -
+|                |--(dep)--> R1113[girl]
+|                                 |--(amod)--> old
+|--(punct)--> .
+
+	* entity-paths for event['trial']33_3ecbplus.xmlsent:9096
+	['trial --(nmod)--> men', 'men --(acl)--> accused', 'accused --(advcl)--> killing', 'killing --(dobj)--> Horton']
+	['trial --(nmod)--> men', 'men --(acl)--> accused', 'accused --(advcl)--> killing', 'killing --(conj)--> wounding', 'wounding --(dobj)--> others']
+
+	* entity-paths for event['presented']33_3ecbplus.xmlsent:9096
+	['presented --(nsubjpass)--> video']
+	['presented --(nmod)--> trial', 'trial --(nmod)--> men', 'men --(acl)--> accused', 'accused --(advcl)--> killing', 'killing --(dobj)--> Horton']
+	['presented --(nmod)--> trial', 'trial --(nmod)--> men', 'men --(acl)--> accused', 'accused --(advcl)--> killing', 'killing --(conj)--> wounding', 'wounding --(dobj)--> others']
+	['presented --(nmod)--> 11', '11 --(dep)--> girl']
+
+	* entity-paths for event['accused']33_3ecbplus.xmlsent:9096
+	['accused --(advcl)--> killing', 'killing --(dobj)--> Horton']
+	['accused --(advcl)--> killing', 'killing --(conj)--> wounding', 'wounding --(dobj)--> others']
+
+	* entity-paths for event['killing']33_3ecbplus.xmlsent:9096
+	['killing --(dobj)--> Horton']
+	['killing --(conj)--> wounding', 'wounding --(dobj)--> others']
+
+	* entity-paths for event['wounding']33_3ecbplus.xmlsent:9096
+	['wounding --(dobj)--> others']
+
+sentence #:jury shown horrific moment innocent mother is shot dead shielding her child when she's caught up in gang attack as she picks up daughter from school 
+	[events]:[['attack'], ['shown'], ['shielding'], ['shot']]
+	[entities]:[['daughter'], ['mother'], ['child'], ["she's"], ['she'], ['gang'], ['jury'], ['from', 'school']]
+*R1078[shot]
+|--(nsubjp)--> R1114[jury]
+|                |--(acl)--> *R1101[shown]
+|                                 |--(dobj)--> R1079[mother]
+|                                                  |--(amod)--> horrific
+|                                                  |--(compou)--> moment
+|                                                  |--(amod)--> innocent
+|--(auxpas)--> is
+|--(xcomp)--> dead
+|--(xcomp)--> *R1081[shielding]
+                 |--(dobj)--> R1082[child]
+                 |                |--(nmod:p)--> her
+                 |--(advcl)--> caught
+                                  |--(advmod)--> when
+                                  |--(nsubjp)--> R1079[she's]
+                                  |--(auxpas)--> R1079[she's]
+                                  |--(compou)--> up
+                                  |--(nmod)--> *R1083[attack]
+                                  |                |--(case)--> in
+                                  |                |--(compou)--> R1077[gang]
+                                  |--(advcl)--> picks
+                                                   |--(mark)--> as
+                                                   |--(nsubj)--> R1079[she]
+                                                   |--(compou)--> up
+                                                   |--(dobj)--> R1115[daughter]
+                                                   |--(nmod)--> R1116[school]
+                                                                    |--(case)--> R1116[from]
+
+	* entity-paths for event['attack']33_3ecbplus.xmlsent:9089
+	['attack --(compound)--> gang']
+
+	* entity-paths for event['shown']33_3ecbplus.xmlsent:9089
+	['shown --(dobj)--> mother']
+
+	* entity-paths for event['shielding']33_3ecbplus.xmlsent:9089
+	['shielding --(dobj)--> child']
+	['shielding --(advcl)--> caught', 'caught --(nsubjpass)--> she']
+	['shielding --(advcl)--> caught', "caught --(auxpass)--> 's"]
+	['shielding --(advcl)--> caught', 'caught --(nmod)--> attack', 'attack --(compound)--> gang']
+	['shielding --(advcl)--> caught', 'caught --(advcl)--> picks', 'picks --(nsubj)--> she']
+	['shielding --(advcl)--> caught', 'caught --(advcl)--> picks', 'picks --(dobj)--> daughter']
+	['shielding --(advcl)--> caught', 'caught --(advcl)--> picks', 'picks --(nmod)--> school']
+
+	* entity-paths for event['shot']33_3ecbplus.xmlsent:9089
+	['shot --(nsubjpass)--> Jury']
+	['shot --(xcomp)--> shielding', 'shielding --(dobj)--> child']
+	['shot --(xcomp)--> shielding', 'shielding --(advcl)--> caught', 'caught --(nsubjpass)--> she']
+	['shot --(xcomp)--> shielding', 'shielding --(advcl)--> caught', "caught --(auxpass)--> 's"]
+	['shot --(xcomp)--> shielding', 'shielding --(advcl)--> caught', 'caught --(nmod)--> attack', 'attack --(compound)--> gang']
+	['shot --(xcomp)--> shielding', 'shielding --(advcl)--> caught', 'caught --(advcl)--> picks', 'picks --(nsubj)--> she']
+	['shot --(xcomp)--> shielding', 'shielding --(advcl)--> caught', 'caught --(advcl)--> picks', 'picks --(dobj)--> daughter']
+	['shot --(xcomp)--> shielding', 'shielding --(advcl)--> caught', 'caught --(advcl)--> picks', 'picks --(nmod)--> school']

@@ -1,0 +1,47 @@
+
+-----------------------------------------
+docid:14_5ecbplus.xml
+-----------------------------------------
+
+sentence #:the site manager at the waitrose supermarket in wellington that has been damaged by fire , says it will take a couple of days to assess how much work needs to be done . 
+	[events]:[['fire'], ['damaged']]
+	[entities]:[['that'], ['in', 'wellington'], ['the', 'waitrose', 'supermarket']]
+says
+|--(nsubj)--> manager
+|                |--(det)--> the
+|                |--(compou)--> site
+|                |--(nmod)--> R308[supermarket]
+|                                 |--(case)--> at
+|                                 |--(det)--> R308[the]
+|                                 |--(compou)--> R308[waitrose]
+|                                 |--(nmod)--> R309[wellington]
+|                                 |                |--(case)--> R309[in]
+|                                 |--(acl:re)--> *R307[damaged]
+|                                                  |--(nsubjp)--> R308[that]
+|                                                  |--(aux)--> has
+|                                                  |--(auxpas)--> been
+|                                                  |--(nmod)--> *R302[fire]
+|                                                                   |--(case)--> by
+|--(punct)--> ,
+|--(ccomp)--> take
+|                |--(nsubj)--> it
+|                |--(aux)--> will
+|                |--(dobj)--> couple
+|                |                |--(det)--> a
+|                |                |--(nmod)--> days
+|                |                                 |--(case)--> of
+|                |--(advcl)--> assess
+|                                 |--(mark)--> to
+|                                 |--(ccomp)--> needs
+|                                                  |--(dep)--> much
+|                                                  |                |--(advmod)--> how
+|                                                  |--(nsubj)--> work
+|                                                  |--(xcomp)--> done
+|                                                                   |--(mark)--> to
+|                                                                   |--(auxpas)--> be
+|--(punct)--> .
+
+	* entity-paths for event['fire']14_5ecbplus.xmlsent:1753
+
+	* entity-paths for event['damaged']14_5ecbplus.xmlsent:1753
+	['damaged --(nsubjpass)--> that']

@@ -1,0 +1,38 @@
+
+-----------------------------------------
+docid:29_4ecb.xml
+-----------------------------------------
+
+sentence #:manning completed 29 of 34 passes for 364 yards and 3 touchdowns in the colts ' 31-24 victory over the jaguars at jacksonville municipal stadium . 
+	[events]:[['victory']]
+	[entities]:[['colts'], ['at', 'jacksonville', 'municipal', 'stadium'], ['31-24'], ['jaguars'], ['manning']]
+completed
+|--(nsubj)--> R864[manning]
+|--(dobj)--> 29
+|                |--(nmod)--> passes
+|                                 |--(case)--> of
+|                                 |--(nummod)--> 34
+|                                 |--(nmod)--> yards
+|                                 |                |--(case)--> for
+|                                 |                |--(nummod)--> 364
+|                                 |--(cc)--> and
+|                                 |--(conj)--> touchdowns
+|                                                  |--(nummod)--> 3
+|                                                  |--(nmod)--> *R856[victory]
+|                                                                   |--(case)--> in
+|                                                                   |--(nmod:p)--> R852[colts]
+|                                                                   |                |--(det)--> the
+|                                                                   |                |--(case)--> '
+|                                                                   |--(nummod)--> R855[31-24]
+|--(nmod)--> R857[jaguars]
+|                |--(case)--> over
+|                |--(det)--> the
+|--(nmod)--> R873[stadium]
+|                |--(case)--> R873[at]
+|                |--(compou)--> R873[jacksonville]
+|                |--(compou)--> R873[municipal]
+|--(punct)--> .
+
+	* entity-paths for event['victory']29_4ecb.xmlsent:7000
+	['victory --(nmod:poss)--> Colts']
+	['victory --(nummod)--> 31-24']

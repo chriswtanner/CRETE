@@ -1,0 +1,52 @@
+
+-----------------------------------------
+docid:13_8ecb.xml
+-----------------------------------------
+
+sentence #:sarah palin actually apologized after the evangelical church she attends was nearly destroyed by arsonists -- all because she still harbors guilt over her failed vp run . 
+	[events]:[['attends'], ['apologized'], ['destroyed'], ['run']]
+	[entities]:[['the', 'evangelical', 'church'], ['she'], ['she'], ['sarah', 'palin'], ['arsonists']]
+*R284[apologized]
+|--(nsubj)--> R262[palin]
+|                |--(compou)--> R262[sarah]
+|--(advmod)--> actually
+|--(advcl)--> *R278[destroyed]
+|                |--(mark)--> after
+|                |--(nsubjp)--> R260[church]
+|                |                |--(det)--> R260[the]
+|                |                |--(amod)--> R260[evangelical]
+|                |                |--(acl:re)--> *R273[attends]
+|                |                                 |--(nsubj)--> R262[she]
+|                |--(auxpas)--> was
+|                |--(advmod)--> nearly
+|                |--(nmod)--> R281[arsonists]
+|                |                |--(case)--> by
+|                |--(punct)--> --
+|                |--(advmod)--> all
+|                |--(advcl)--> harbors
+|                                 |--(mark)--> because
+|                                 |--(nsubj)--> R262[she]
+|                                 |--(advmod)--> still
+|                                 |--(dobj)--> guilt
+|                                                  |--(nmod)--> *R285[run]
+|                                                                   |--(case)--> over
+|                                                                   |--(nmod:p)--> her
+|                                                                   |--(amod)--> failed
+|                                                                   |--(compou)--> vp
+|--(punct)--> .
+
+	* entity-paths for event['attends']13_8ecb.xmlsent:1565
+	['attends --(nsubj)--> she']
+
+	* entity-paths for event['apologized']13_8ecb.xmlsent:1565
+	['apologized --(nsubj)--> Palin']
+	['apologized --(advcl)--> destroyed', 'destroyed --(nsubjpass)--> church']
+	['apologized --(advcl)--> destroyed', 'destroyed --(nmod)--> arsonists']
+	['apologized --(advcl)--> destroyed', 'destroyed --(advcl)--> harbors', 'harbors --(nsubj)--> she']
+
+	* entity-paths for event['destroyed']13_8ecb.xmlsent:1565
+	['destroyed --(nsubjpass)--> church']
+	['destroyed --(nmod)--> arsonists']
+	['destroyed --(advcl)--> harbors', 'harbors --(nsubj)--> she']
+
+	* entity-paths for event['run']13_8ecb.xmlsent:1565

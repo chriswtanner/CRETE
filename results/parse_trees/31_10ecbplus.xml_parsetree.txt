@@ -1,0 +1,24 @@
+
+-----------------------------------------
+docid:31_10ecbplus.xml
+-----------------------------------------
+
+sentence #:mcdermott fuels bluejays in valley tournament win 
+	[events]:[['fuels'], ['valley', 'tournament'], ['win']]
+	[entities]:[['mcdermott'], ['bluejays']]
+*R1000[fuels]
+|--(compou)--> R1001[mcdermott]
+|--(acl:re)--> *R1002[win]
+                 |--(nsubj)--> R1003[bluejays]
+                                  |--(nmod)--> *R1004[tournament]
+                                                   |--(case)--> in
+                                                   |--(compou)--> *R1004[valley]
+
+	* entity-paths for event['fuels']31_10ecbplus.xmlsent:8033
+	['fuels --(compound)--> McDermott']
+	['fuels --(acl:relcl)--> win', 'win --(nsubj)--> Bluejays']
+
+	* entity-paths for event['valley', 'tournament']31_10ecbplus.xmlsent:8033
+
+	* entity-paths for event['win']31_10ecbplus.xmlsent:8033
+	['win --(nsubj)--> Bluejays']

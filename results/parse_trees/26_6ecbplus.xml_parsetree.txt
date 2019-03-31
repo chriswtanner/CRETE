@@ -1,0 +1,72 @@
+
+-----------------------------------------
+docid:26_6ecbplus.xml
+-----------------------------------------
+
+sentence #:vincent gigante , who died yesterday in federal prison at 77 , was the genovese crime family boss who for three decades feigned lunacy to evade prosecution for crimes ranging from loan sharking to murder to bribing the entire police force of old tappan , n . j . 
+	[events]:[['died'], ['feigned'], ['evade'], ['prosecution'], ['lunacy']]
+	[entities]:[['vincent', 'gigante'], ['yesterday'], ['boss'], ['three', 'decades'], ['in', 'federal', 'prison']]
+R740[boss]
+|--(nsubj)--> R740[gigante]
+|                |--(compou)--> R740[vincent]
+|                |--(punct)--> ,
+|                |--(acl:re)--> *R739[died]
+|                |                |--(nsubj)--> who
+|                |                |--(nmod:t)--> R744[yesterday]
+|                |                |--(nmod)--> R743[prison]
+|                |                                 |--(case)--> R743[in]
+|                |                                 |--(amod)--> R743[federal]
+|                |                                 |--(nmod)--> 77
+|                |                                                  |--(case)--> at
+|                |--(punct)--> ,
+|--(cop)--> was
+|--(det)--> the
+|--(compou)--> genovese
+|--(compou)--> crime
+|--(compou)--> family
+|--(acl:re)--> *R756[evade]
+|                |--(nsubj)--> who
+|                |                |--(nmod)--> *R742[lunacy]
+|                |                                 |--(case)--> for
+|                |                                 |--(amod)--> *R741[feigned]
+|                |                                                  |--(nmod:n)--> R758[decades]
+|                |                                                                   |--(nummod)--> R758[three]
+|                |--(mark)--> to
+|                |--(dobj)--> *R757[prosecution]
+|                |--(nmod)--> crimes
+|                                 |--(case)--> for
+|                                 |--(acl)--> ranging
+|                                                  |--(nmod)--> loan
+|                                                  |                |--(case)--> from
+|                                                  |--(advcl)--> sharking
+|                                                                   |--(nmod)--> murder
+|                                                                   |                |--(case)--> to
+|                                                                   |--(advcl)--> bribing
+|                                                                                    |--(mark)--> to
+|                                                                                    |--(dobj)--> force
+|                                                                                                     |--(det)--> the
+|                                                                                                     |--(amod)--> entire
+|                                                                                                     |--(compou)--> police
+|                                                                                                     |--(nmod)--> tappan
+|                                                                                                                      |--(case)--> of
+|                                                                                                                      |--(compou)--> old
+|                                                                                                                      |--(punct)--> ,
+|                                                                                                                      |--(appos)--> n
+|                                                                                                                                       |--(punct)--> .
+|                                                                                                                                       |--(appos)--> j
+|--(punct)--> .
+
+	* entity-paths for event['died']26_6ecbplus.xmlsent:5474
+	['died --(nmod:tmod)--> yesterday']
+	['died --(nmod)--> prison']
+
+	* entity-paths for event['feigned']26_6ecbplus.xmlsent:5474
+	['feigned --(nmod:npmod)--> decades']
+
+	* entity-paths for event['evade']26_6ecbplus.xmlsent:5474
+	['evade --(nsubj)--> who', 'who --(nmod)--> lunacy', 'lunacy --(amod)--> feigned', 'feigned --(nmod:npmod)--> decades']
+
+	* entity-paths for event['prosecution']26_6ecbplus.xmlsent:5474
+
+	* entity-paths for event['lunacy']26_6ecbplus.xmlsent:5474
+	['lunacy --(amod)--> feigned', 'feigned --(nmod:npmod)--> decades']

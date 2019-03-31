@@ -1,0 +1,29 @@
+
+-----------------------------------------
+docid:42_2ecb.xml
+-----------------------------------------
+
+sentence #:t-mobile usa plans it own exclusive blackberry with the introduction of the blackberry curve 8900 in february . 
+	[events]:[['introduction']]
+	[entities]:[['february'], ['blackberry'], ['t-mobile', 'usa'], ['blackberry', 'curve', '8900']]
+plans
+|--(nsubj)--> R1517[usa]
+|                |--(compou)--> R1517[t-mobile]
+|--(xcomp)--> R1520[blackberry]
+|                |--(nsubj)--> it
+|                |--(amod)--> own
+|                |--(amod)--> exclusive
+|                |--(nmod)--> *R1519[introduction]
+|                                 |--(case)--> with
+|                                 |--(det)--> the
+|                                 |--(nmod)--> R1520[curve]
+|                                                  |--(case)--> of
+|                                                  |--(det)--> the
+|                                                  |--(compou)--> R1520[blackberry]
+|                                                  |--(nummod)--> R1520[8900]
+|                                                  |--(nmod)--> R1521[february]
+|                                                                   |--(case)--> in
+|--(punct)--> .
+
+	* entity-paths for event['introduction']42_2ecb.xmlsent:12710
+	['introduction --(nmod)--> Curve']

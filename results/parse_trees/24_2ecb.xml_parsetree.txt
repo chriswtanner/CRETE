@@ -1,0 +1,47 @@
+
+-----------------------------------------
+docid:24_2ecb.xml
+-----------------------------------------
+
+sentence #:armed robbers in drag carried out one of the biggest jewel heists in history , snatching p74million of diamond rings , necklaces and luxury watches from a boutique in paris . 
+	[events]:[['history'], ['snatching'], ['heists']]
+	[entities]:[['necklaces'], ['a', 'boutique', 'in', 'paris'], ['robbers'], ['watches'], ['rings']]
+carried
+|--(nsubj)--> R664[robbers]
+|                |--(amod)--> armed
+|                |--(nmod)--> drag
+|                                 |--(case)--> in
+|--(compou)--> out
+|--(dobj)--> one
+|                |--(nmod)--> *R701[heists]
+|                                 |--(case)--> of
+|                                 |--(det)--> the
+|                                 |--(amod)--> biggest
+|                                 |--(compou)--> jewel
+|--(nmod)--> *R687[history]
+|                |--(case)--> in
+|--(punct)--> ,
+|--(advcl)--> *R663[snatching]
+|                |--(dobj)--> p74million
+|                |                |--(nmod)--> R692[rings]
+|                |                                 |--(case)--> of
+|                |                                 |--(compou)--> diamond
+|                |                                 |--(punct)--> ,
+|                |                                 |--(conj)--> R693[necklaces]
+|                |                                 |--(cc)--> and
+|                |                                 |--(conj)--> R691[watches]
+|                |                                                  |--(compou)--> luxury
+|                |--(nmod)--> R665[boutique]
+|                                 |--(case)--> from
+|                                 |--(det)--> R665[a]
+|                                 |--(nmod)--> R665[paris]
+|                                                  |--(case)--> R665[in]
+|--(punct)--> .
+
+	* entity-paths for event['history']24_2ecb.xmlsent:4832
+
+	* entity-paths for event['snatching']24_2ecb.xmlsent:4832
+	['snatching --(dobj)--> p74million', 'p74million --(nmod)--> rings']
+	['snatching --(nmod)--> boutique']
+
+	* entity-paths for event['heists']24_2ecb.xmlsent:4832

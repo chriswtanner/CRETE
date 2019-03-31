@@ -1,0 +1,45 @@
+
+-----------------------------------------
+docid:40_6ecbplus.xml
+-----------------------------------------
+
+sentence #:apple's macbook line , particularly certain portions of it , have been overdue for a refresh . 
+	[events]:[['refresh']]
+	[entities]:[["apple's"], ['it'], ['macbook', 'line']]
+overdue
+|--(nsubj)--> R1417[line]
+|                |--(nmod:p)--> R1405[apple's]
+|                |                |--(case)--> R1405[apple's]
+|                |--(compou)--> R1417[macbook]
+|                |--(punct)--> ,
+|                |--(appos)--> portions
+|                |                |--(amod)--> certain
+|                |                |                |--(advmod)--> particularly
+|                |                |--(nmod)--> R1417[it]
+|                |                                 |--(case)--> of
+|                |--(punct)--> ,
+|--(aux)--> have
+|--(cop)--> been
+|--(nmod)--> *R1411[refresh]
+|                |--(case)--> for
+|                |--(det)--> a
+|--(punct)--> .
+
+	* entity-paths for event['refresh']40_6ecbplus.xmlsent:11941
+
+sentence #:apple unveils new macbook air , next - generation macbook pro 
+	[events]:[['unveils']]
+	[entities]:[['macbook', 'air'], ['apple'], ['macbook', 'pro']]
+R1437[air]
+|--(compou)--> R1405[apple]
+|--(compou)--> *R1410[unveils]
+|--(compou)--> new
+|--(compou)--> R1437[macbook]
+|--(punct)--> ,
+|--(appos)--> next
+|--(punct)--> -
+|--(dep)--> R1414[macbook]
+                 |--(compou)--> generation
+                 |--(dep)--> R1414[pro]
+
+	* entity-paths for event['unveils']40_6ecbplus.xmlsent:11939

@@ -1,0 +1,27 @@
+
+-----------------------------------------
+docid:5_12ecb.xml
+-----------------------------------------
+
+sentence #:on saturday , cheeks was fired as head coach of the philadelphia 76ers . 
+	[events]:[['fired']]
+	[entities]:[['cheeks'], ['saturday'], ['the', 'philadelphia', '76ers']]
+*R1672[fired]
+|--(nmod)--> R1675[saturday]
+|                |--(case)--> on
+|--(punct)--> ,
+|--(nsubjp)--> R1674[cheeks]
+|--(auxpas)--> was
+|--(nmod)--> coach
+|                |--(case)--> as
+|                |--(compou)--> head
+|                |--(nmod)--> R1673[76ers]
+|                                 |--(case)--> of
+|                                 |--(det)--> R1673[the]
+|                                 |--(compou)--> R1673[philadelphia]
+|--(punct)--> .
+
+	* entity-paths for event['fired']5_12ecb.xmlsent:13939
+	['fired --(nmod)--> Saturday']
+	['fired --(nsubjpass)--> Cheeks']
+	['fired --(nmod)--> coach', 'coach --(nmod)--> 76ers']

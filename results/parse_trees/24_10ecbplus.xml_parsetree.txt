@@ -1,0 +1,130 @@
+
+-----------------------------------------
+docid:24_10ecbplus.xml
+-----------------------------------------
+
+sentence #:four men rammed their car into an upmarket jewellery store in central paris on monday , smashing the shop window and making off with a two - million - euro ( $2 . 6 - million ) booty , a police source said . 
+	[events]:[['making', 'off'], ['rammed'], ['said'], ['smashing']]
+	[entities]:[['men'], ['source'], ['on', 'monday'], ['an', 'upmarket', 'jewellery', 'store', 'in', 'central', 'paris'], ['shop', 'window'], ['car'], ['booty']]
+*R667[said]
+|--(ccomp)--> *R668[rammed]
+|                |--(nsubj)--> R669[men]
+|                |                |--(nummod)--> four
+|                |--(dobj)--> R670[car]
+|                |                |--(nmod:p)--> their
+|                |--(nmod)--> R671[store]
+|                |                |--(case)--> into
+|                |                |--(det)--> R671[an]
+|                |                |--(amod)--> R671[upmarket]
+|                |                |--(compou)--> R671[jewellery]
+|                |                |--(nmod)--> R671[paris]
+|                |                                 |--(case)--> R671[in]
+|                |                                 |--(amod)--> R671[central]
+|                |--(nmod)--> R672[monday]
+|                |                |--(case)--> R672[on]
+|                |--(punct)--> ,
+|                |--(dep)--> *R673[smashing]
+|                                 |--(dobj)--> R674[window]
+|                                 |                |--(det)--> the
+|                                 |                |--(compou)--> R674[shop]
+|                                 |--(cc)--> and
+|                                 |--(conj)--> *R675[making]
+|                                                  |--(compou)--> *R675[off]
+|                                                  |--(nmod)--> two
+|                                                                   |--(case)--> with
+|                                                                   |--(det)--> a
+|                                                                   |--(punct)--> -
+|                                                                   |--(dep)--> million
+|                                                                   |--(punct)--> -
+|                                                                   |--(dep)--> euro
+|                                                                                    |--(punct)--> (
+|                                                                                    |--(dep)--> $2
+|                                                                                                     |--(dep)--> $2
+|                                                                                                     |--(punct)--> .
+|                                                                                                     |--(dep)--> million
+|                                                                                                     |                |--(nummod)--> 6
+|                                                                                                     |                |--(punct)--> -
+|                                                                                                     |--(punct)--> )
+|                                                                                                     |--(dep)--> R676[booty]
+|--(punct)--> ,
+|--(nsubj)--> R677[source]
+|                |--(det)--> a
+|                |--(compou)--> police
+|--(punct)--> .
+
+	* entity-paths for event['making', 'off']24_10ecbplus.xmlsent:4794
+
+	* entity-paths for event['rammed']24_10ecbplus.xmlsent:4794
+	['rammed --(nsubj)--> men']
+	['rammed --(dobj)--> car']
+	['rammed --(nmod)--> store']
+	['rammed --(nmod)--> Monday']
+	['rammed --(dep)--> smashing', 'smashing --(dobj)--> window']
+	['rammed --(dep)--> smashing', 'smashing --(conj)--> making', 'making --(nmod)--> two', 'two --(dep)--> euro', 'euro --(dep)--> 2', '2 --(dep)--> $', '2 --(dep)--> booty']
+	['rammed --(dep)--> smashing', 'smashing --(conj)--> making', 'making --(nmod)--> two', 'two --(dep)--> euro', 'euro --(dep)--> 2', '2 --(dep)--> booty']
+
+	* entity-paths for event['said']24_10ecbplus.xmlsent:4794
+	['said --(ccomp)--> rammed', 'rammed --(nsubj)--> men']
+	['said --(ccomp)--> rammed', 'rammed --(dobj)--> car']
+	['said --(ccomp)--> rammed', 'rammed --(nmod)--> store']
+	['said --(ccomp)--> rammed', 'rammed --(nmod)--> Monday']
+	['said --(ccomp)--> rammed', 'rammed --(dep)--> smashing', 'smashing --(dobj)--> window']
+	['said --(ccomp)--> rammed', 'rammed --(dep)--> smashing', 'smashing --(conj)--> making', 'making --(nmod)--> two', 'two --(dep)--> euro', 'euro --(dep)--> 2', '2 --(dep)--> $', '2 --(dep)--> booty']
+	['said --(ccomp)--> rammed', 'rammed --(dep)--> smashing', 'smashing --(conj)--> making', 'making --(nmod)--> two', 'two --(dep)--> euro', 'euro --(dep)--> 2', '2 --(dep)--> booty']
+	['said --(nsubj)--> source']
+
+	* entity-paths for event['smashing']24_10ecbplus.xmlsent:4794
+	['smashing --(dobj)--> window']
+	['smashing --(conj)--> making', 'making --(nmod)--> two', 'two --(dep)--> euro', 'euro --(dep)--> 2', '2 --(dep)--> $', '2 --(dep)--> booty']
+	['smashing --(conj)--> making', 'making --(nmod)--> two', 'two --(dep)--> euro', 'euro --(dep)--> 2', '2 --(dep)--> booty']
+
+sentence #:robbers crash 4x4 into store , grabbing jewelry and watches , before setting car ablaze 
+	[events]:[['crash'], ['grabbing'], ['ablaze']]
+	[entities]:[['jewelry'], ['watches'], ['4x4'], ['car'], ['robbers'], ['store']]
+*R668[crash]
+|--(nsubj)--> R669[robbers]
+|--(dobj)--> R670[4x4]
+|--(nmod)--> R671[store]
+|                |--(case)--> into
+|--(punct)--> ,
+|--(advcl)--> *R678[grabbing]
+                 |--(dobj)--> R679[jewelry]
+                 |                |--(cc)--> and
+                 |                |--(conj)--> R680[watches]
+                 |--(punct)--> ,
+                 |--(advcl)--> setting
+                                  |--(mark)--> before
+                                  |--(dobj)--> *R681[ablaze]
+                                                   |--(compou)--> R670[car]
+
+	* entity-paths for event['crash']24_10ecbplus.xmlsent:4793
+	['crash --(nsubj)--> Robbers']
+	['crash --(dobj)--> 4x4']
+	['crash --(nmod)--> store']
+	['crash --(advcl)--> grabbing', 'grabbing --(dobj)--> jewelry']
+	['crash --(advcl)--> grabbing', 'grabbing --(advcl)--> setting', 'setting --(dobj)--> ablaze', 'ablaze --(compound)--> car']
+
+	* entity-paths for event['grabbing']24_10ecbplus.xmlsent:4793
+	['grabbing --(dobj)--> jewelry']
+	['grabbing --(advcl)--> setting', 'setting --(dobj)--> ablaze', 'ablaze --(compound)--> car']
+
+	* entity-paths for event['ablaze']24_10ecbplus.xmlsent:4793
+	['ablaze --(compound)--> car']
+
+sentence #:paris thieves nab $2 . 5 million worth of jewellery 
+	[events]:[['nab']]
+	[entities]:[['thieves'], ['jewellery']]
+paris
+|--(acl:re)--> *R678[nab]
+|                |--(nsubj)--> R669[thieves]
+|                |--(dobj)--> $2
+|                                 |--(dep)--> $2
+|--(punct)--> .
+|--(dep)--> million
+|                |--(compou)--> 5
+|                |--(dep)--> worth
+|--(nmod)--> R679[jewellery]
+                 |--(case)--> of
+
+	* entity-paths for event['nab']24_10ecbplus.xmlsent:4792
+	['nab --(nsubj)--> thieves']

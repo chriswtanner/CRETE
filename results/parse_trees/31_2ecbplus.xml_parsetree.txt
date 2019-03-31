@@ -1,0 +1,69 @@
+
+-----------------------------------------
+docid:31_2ecbplus.xml
+-----------------------------------------
+
+sentence #:creighton " s win over drake was historic for a few reasons , chief among them mcdermott setting the creighton career scoring record . 
+	[events]:[['setting'], ['win'], ['scoring', 'record']]
+	[entities]:[['drake'], ['creighton'], ['mcdermott'], ['creighton']]
+*R1002[win]
+|--(nsubj)--> R1003[creighton]
+|--(punct)--> "
+|--(aux)--> s
+|--(nmod)--> R1014[drake]
+|                |--(case)--> over
+|                |--(acl:re)--> historic
+|                                 |--(cop)--> was
+|                                 |--(nmod)--> reasons
+|                                                  |--(case)--> for
+|                                                  |--(det)--> a
+|                                                  |--(amod)--> few
+|--(punct)--> ,
+|--(parata)--> *R1023[setting]
+|                |--(nsubj)--> R1001[mcdermott]
+|                |                |--(dep)--> chief
+|                |                                 |--(nmod)--> them
+|                |                                                  |--(case)--> among
+|                |--(xcomp)--> *R1024[record]
+|                                 |--(det)--> the
+|                                 |--(compou)--> R1003[creighton]
+|                                 |--(compou)--> career
+|                                 |--(amod)--> *R1024[scoring]
+|--(punct)--> .
+
+	* entity-paths for event['setting']31_2ecbplus.xmlsent:8301
+	['setting --(nsubj)--> McDermott']
+	['setting --(xcomp)--> record', 'record --(compound)--> Creighton']
+
+	* entity-paths for event['win']31_2ecbplus.xmlsent:8301
+	['win --(nsubj)--> Creighton']
+	['win --(nmod)--> Drake']
+	['win --(parataxis)--> setting', 'setting --(nsubj)--> McDermott']
+	['win --(parataxis)--> setting', 'setting --(xcomp)--> record', 'record --(compound)--> Creighton']
+
+	* entity-paths for event['scoring', 'record']31_2ecbplus.xmlsent:8301
+	['record --(compound)--> Creighton']
+
+sentence #:ott " s thoughts : creighton returns to mvc semis with win over drake 
+	[events]:[['semis'], ['win'], ['mvc']]
+	[entities]:[['drake'], ['creighton']]
+ott
+|--(punct)--> "
+|--(dep)--> thoughts
+|                |--(compou)--> s
+|--(punct)--> :
+|--(dep)--> returns
+|                |--(compou)--> R1003[creighton]
+|                |--(nmod)--> *R1025[semis]
+|                                 |--(case)--> to
+|                                 |--(compou)--> *R1004[mvc]
+|--(nmod)--> *R1002[win]
+|                |--(case)--> with
+|--(nmod)--> R1014[drake]
+                 |--(case)--> over
+
+	* entity-paths for event['semis']31_2ecbplus.xmlsent:8288
+
+	* entity-paths for event['win']31_2ecbplus.xmlsent:8288
+
+	* entity-paths for event['mvc']31_2ecbplus.xmlsent:8288

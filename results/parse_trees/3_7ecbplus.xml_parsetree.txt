@@ -1,0 +1,78 @@
+
+-----------------------------------------
+docid:3_7ecbplus.xml
+-----------------------------------------
+
+sentence #:a texas inmate escaped from a prison van near houston after pulling a gun on two guards who were transporting him between prisons , according to a texas prison statement monday . 
+	[events]:[['statement'], ['escaped'], ['transporting'], ['pulling']]
+	[entities]:[['a', 'prison', 'van'], ['gun'], ['a', 'texas', 'prison'], ['inmate'], ['near', 'houston'], ['guards'], ['who'], ['him']]
+*R893[escaped]
+|--(nsubj)--> R890[inmate]
+|                |--(det)--> a
+|                |--(compou)--> texas
+|--(nmod)--> R921[van]
+|                |--(case)--> from
+|                |--(det)--> R921[a]
+|                |--(compou)--> R921[prison]
+|--(nmod)--> R947[houston]
+|                |--(case)--> R947[near]
+|--(advcl)--> *R898[pulling]
+|                |--(mark)--> after
+|                |--(dobj)--> R899[gun]
+|                |                |--(det)--> a
+|                |--(nmod)--> R900[guards]
+|                                 |--(case)--> on
+|                                 |--(nummod)--> two
+|                                 |--(acl:re)--> *R894[transporting]
+|                                                  |--(nsubj)--> R900[who]
+|                                                  |--(aux)--> were
+|                                                  |--(dobj)--> R890[him]
+|                                                  |--(nmod)--> prisons
+|                                                                   |--(case)--> between
+|--(punct)--> ,
+|--(nmod)--> *R910[statement]
+|                |--(case)--> according
+|                |                |--(mwe)--> to
+|                |--(det)--> R917[a]
+|                |--(compou)--> R917[texas]
+|                |--(compou)--> R917[prison]
+|                |--(nmod:t)--> monday
+|--(punct)--> .
+
+	* entity-paths for event['statement']3_7ecbplus.xmlsent:7599
+	['statement --(det)--> a']
+	['statement --(compound)--> Texas']
+	['statement --(compound)--> prison']
+
+	* entity-paths for event['escaped']3_7ecbplus.xmlsent:7599
+	['escaped --(nsubj)--> inmate']
+	['escaped --(nmod)--> van']
+	['escaped --(nmod)--> Houston']
+	['escaped --(advcl)--> pulling', 'pulling --(dobj)--> gun']
+	['escaped --(advcl)--> pulling', 'pulling --(nmod)--> guards']
+	['escaped --(nmod)--> statement', 'statement --(det)--> a']
+	['escaped --(nmod)--> statement', 'statement --(compound)--> Texas']
+	['escaped --(nmod)--> statement', 'statement --(compound)--> prison']
+
+	* entity-paths for event['transporting']3_7ecbplus.xmlsent:7599
+	['transporting --(nsubj)--> who']
+	['transporting --(dobj)--> him']
+
+	* entity-paths for event['pulling']3_7ecbplus.xmlsent:7599
+	['pulling --(dobj)--> gun']
+	['pulling --(nmod)--> guards']
+
+sentence #:texas lifer escapes prison van near houston 
+	[events]:[['escapes']]
+	[entities]:[['near', 'houston'], ['lifer'], ['prison', 'van']]
+*R893[escapes]
+|--(nsubj)--> R890[lifer]
+|                |--(compou)--> texas
+|--(xcomp)--> R921[van]
+                 |--(compou)--> R921[prison]
+                 |--(dep)--> R947[houston]
+                                  |--(case)--> R947[near]
+
+	* entity-paths for event['escapes']3_7ecbplus.xmlsent:7598
+	['Escapes --(nsubj)--> Lifer']
+	['Escapes --(xcomp)--> Van']

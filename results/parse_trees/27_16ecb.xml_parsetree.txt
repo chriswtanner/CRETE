@@ -1,0 +1,52 @@
+
+-----------------------------------------
+docid:27_16ecb.xml
+-----------------------------------------
+
+sentence #:microsoft ( nsdq : msft ) has released an out-of-band security update , ms08-078 , to fix a vulnerability in its internet explorer web browser that 's being actively exploited . 
+	[events]:[['fix'], ['released'], ['exploited']]
+	[entities]:[['that'], ['ms08-078'], ['its'], ['internet', 'explorer'], ['update'], ['vulnerability'], ['microsoft']]
+*R763[released]
+|--(nsubj)--> R764[microsoft]
+|                |--(appos)--> nsdq
+|                                 |--(punct)--> (
+|                                 |--(punct)--> :
+|                                 |--(dep)--> msft
+|                                 |--(punct)--> )
+|--(aux)--> has
+|--(ccomp)--> R765[update]
+|                |--(nsubj)--> security
+|                |                |--(det)--> an
+|                |                |--(amod)--> out-of-band
+|                |--(punct)--> ,
+|                |--(dobj)--> R765[ms08-078]
+|                |--(punct)--> ,
+|                |--(advcl)--> *R782[fix]
+|                                 |--(mark)--> to
+|                                 |--(dobj)--> R767[vulnerability]
+|                                 |                |--(det)--> a
+|                                 |--(nmod)--> R768[internet]
+|                                 |                |--(case)--> in
+|                                 |                |--(nmod:p)--> R764[its]
+|                                 |--(nmod:t)--> browser
+|                                                  |--(compou)--> R768[explorer]
+|                                                  |--(compou)--> web
+|                                                  |--(acl:re)--> *R786[exploited]
+|                                                                   |--(nsubjp)--> R767[that]
+|                                                                   |--(aux)--> 's
+|                                                                   |--(auxpas)--> being
+|                                                                   |--(advmod)--> actively
+|--(punct)--> .
+
+	* entity-paths for event['fix']27_16ecb.xmlsent:5726
+	['fix --(dobj)--> vulnerability']
+	['fix --(nmod)--> Internet']
+	['fix --(nmod:tmod)--> browser', 'browser --(compound)--> Explorer']
+	['fix --(nmod:tmod)--> browser', 'browser --(acl:relcl)--> exploited', 'exploited --(nsubjpass)--> that']
+
+	* entity-paths for event['released']27_16ecb.xmlsent:5726
+	['released --(nsubj)--> Microsoft']
+	['released --(ccomp)--> update']
+
+	* entity-paths for event['exploited']27_16ecb.xmlsent:5726
+	['exploited --(nsubjpass)--> that']

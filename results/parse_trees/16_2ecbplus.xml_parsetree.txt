@@ -1,0 +1,68 @@
+
+-----------------------------------------
+docid:16_2ecbplus.xml
+-----------------------------------------
+
+sentence #:hawaiian gardens gangmember convicted of murdering lakewood stn . sheriff's deputy jerry ortiz 
+	[events]:[['convicted'], ['murdering']]
+	[entities]:[['gangmember'], ['jerry', 'ortiz']]
+gardens
+|--(amod)--> hawaiian
+|--(acl:re)--> R319[ortiz]
+                 |--(dep)--> *R315[convicted]
+                 |                |--(compou)--> R317[gangmember]
+                 |                |--(acl)--> *R336[murdering]
+                 |                                 |--(mark)--> of
+                 |                                 |--(dobj)--> stn
+                 |                                 |                |--(compou)--> lakewood
+                 |                                 |--(punct)--> .
+                 |--(nmod:p)--> sheriff's
+                 |                |--(case)--> sheriff's
+                 |--(compou)--> deputy
+                 |--(compou)--> R319[jerry]
+
+	* entity-paths for event['convicted']16_2ecbplus.xmlsent:1947
+	['Convicted --(compound)--> Gangmember']
+
+	* entity-paths for event['murdering']16_2ecbplus.xmlsent:1947
+
+sentence #:a superior court jurty in norwalk today convicted a hawaiian gardens gang member of murdering l . a . county sheriff's deputy jerry ortiz in june , 2005 . 
+	[events]:[['convicted'], ['murdering']]
+	[entities]:[['jerry', 'ortiz'], ['jurty'], ['gang', 'member'], ['in', 'june', ',', '2005']]
+*R315[convicted]
+|--(nsubj)--> R341[jurty]
+|                |--(det)--> a
+|                |--(compou)--> superior
+|                |--(compou)--> court
+|                |--(nmod)--> norwalk
+|                                 |--(case)--> in
+|--(nmod:t)--> today
+|--(dobj)--> R317[member]
+|                |--(det)--> a
+|                |--(amod)--> hawaiian
+|                |--(compou)--> gardens
+|                |--(compou)--> R317[gang]
+|                |--(acl)--> *R336[murdering]
+|                                 |--(mark)--> of
+|                                 |--(dobj)--> l
+|                                                  |--(punct)--> .
+|                                                  |--(dep)--> a
+|                                                  |--(punct)--> .
+|                                                  |--(nmod)--> R319[ortiz]
+|                                                                   |--(nmod:p)--> sheriff's
+|                                                                   |                |--(compou)--> county
+|                                                                   |                |--(case)--> sheriff's
+|                                                                   |--(compou)--> deputy
+|                                                                   |--(compou)--> R319[jerry]
+|                                                                   |--(case)--> R338[in]
+|                                                                   |--(dep)--> R338[june]
+|                                                                                    |--(punct)--> R338[,]
+|                                                                                    |--(amod)--> R338[2005]
+|--(punct)--> .
+
+	* entity-paths for event['convicted']16_2ecbplus.xmlsent:1951
+	['convicted --(nsubj)--> jurty']
+	['convicted --(dobj)--> member']
+
+	* entity-paths for event['murdering']16_2ecbplus.xmlsent:1951
+	['murdering --(dobj)--> L', 'L --(nmod)--> Ortiz']

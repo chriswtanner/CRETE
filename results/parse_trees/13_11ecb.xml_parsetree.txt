@@ -1,0 +1,49 @@
+
+-----------------------------------------
+docid:13_11ecb.xml
+-----------------------------------------
+
+sentence #:authorities are now saying they suspect arson is to blame for friday night 's fire at wasilla bible church , where gov. sarah palin and her family attend . 
+	[events]:[['attend'], ['fire'], ['arson'], ['suspect']]
+	[entities]:[['friday', 'night'], ['wasilla', 'bible', 'church'], ['sarah', 'palin'], ['family']]
+saying
+|--(nsubj)--> authorities
+|--(aux)--> are
+|--(advmod)--> now
+|--(ccomp)--> *R269[suspect]
+|                |--(nsubj)--> they
+|                |--(ccomp)--> is
+|                                 |--(nsubj)--> *R270[arson]
+|                                 |--(xcomp)--> blame
+|                                                  |--(mark)--> to
+|                                                  |--(nmod)--> *R261[fire]
+|                                                  |                |--(case)--> for
+|                                                  |                |--(nmod:p)--> R271[night]
+|                                                  |                                 |--(compou)--> R271[friday]
+|                                                  |                                 |--(case)--> 's
+|                                                  |--(nmod)--> R272[church]
+|                                                                   |--(case)--> at
+|                                                                   |--(compou)--> R272[wasilla]
+|                                                                   |--(compou)--> R272[bible]
+|                                                                   |--(punct)--> ,
+|                                                                   |--(acl:re)--> *R273[attend]
+|                                                                                    |--(advmod)--> where
+|                                                                                    |--(nsubj)--> R262[palin]
+|                                                                                                     |--(compou)--> gov.
+|                                                                                                     |--(compou)--> R262[sarah]
+|                                                                                                     |--(cc)--> and
+|                                                                                                     |--(conj)--> R274[family]
+|                                                                                                                      |--(nmod:p)--> her
+|--(punct)--> .
+
+	* entity-paths for event['attend']13_11ecb.xmlsent:1170
+	['attend --(nsubj)--> Palin']
+
+	* entity-paths for event['fire']13_11ecb.xmlsent:1170
+	['fire --(nmod:poss)--> night']
+
+	* entity-paths for event['arson']13_11ecb.xmlsent:1170
+
+	* entity-paths for event['suspect']13_11ecb.xmlsent:1170
+	['suspect --(ccomp)--> is', 'is --(xcomp)--> blame', 'blame --(nmod)--> fire', 'fire --(nmod:poss)--> night']
+	['suspect --(ccomp)--> is', 'is --(xcomp)--> blame', 'blame --(nmod)--> Church']

@@ -1,0 +1,21 @@
+
+-----------------------------------------
+docid:9_2ecbplus.xml
+-----------------------------------------
+
+sentence #:obama overturns bush endangered species rule 
+	[events]:[['endangered'], ['overturns']]
+	[entities]:[['bush'], ['obama'], ['species'], ['rule']]
+*R1798[overturns]
+|--(nsubj)--> R1136[obama]
+|--(dobj)--> R1803[bush]
+                 |--(acl)--> *R1806[endangered]
+                                  |--(dobj)--> R1802[rule]
+                                                   |--(compou)--> R1805[species]
+
+	* entity-paths for event['endangered']9_2ecbplus.xmlsent:15450
+	['endangered --(dobj)--> rule']
+
+	* entity-paths for event['overturns']9_2ecbplus.xmlsent:15450
+	['overturns --(nsubj)--> Obama']
+	['overturns --(dobj)--> Bush']

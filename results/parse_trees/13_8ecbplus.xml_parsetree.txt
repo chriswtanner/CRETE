@@ -1,0 +1,58 @@
+
+-----------------------------------------
+docid:13_8ecbplus.xml
+-----------------------------------------
+
+sentence #:the matanuska maid block building , one of the oldest buildings in palmer , burned to the ground in a spectacular fire tuesday morning . 
+	[events]:[['fire'], ['burned']]
+	[entities]:[['in', 'palmer'], ['tuesday', 'morning'], ['the', 'matanuska', 'maid', 'block', 'building']]
+*R277[burned]
+|--(nsubj)--> R265[building]
+|                |--(det)--> R265[the]
+|                |--(compou)--> R265[matanuska]
+|                |--(compou)--> R265[maid]
+|                |--(compou)--> R265[block]
+|                |--(punct)--> ,
+|                |--(appos)--> one
+|                |                |--(nmod)--> buildings
+|                |                                 |--(case)--> of
+|                |                                 |--(det)--> the
+|                |                                 |--(amod)--> oldest
+|                |                                 |--(nmod)--> R266[palmer]
+|                |                                                  |--(case)--> R266[in]
+|                |--(punct)--> ,
+|--(nmod)--> ground
+|                |--(case)--> to
+|                |--(det)--> the
+|                |--(nmod)--> *R263[fire]
+|                |                |--(case)--> in
+|                |                |--(det)--> a
+|                |                |--(amod)--> spectacular
+|                |--(nmod:t)--> R267[tuesday]
+|--(nmod:t)--> R267[morning]
+|--(punct)--> .
+
+	* entity-paths for event['fire']13_8ecbplus.xmlsent:1571
+
+	* entity-paths for event['burned']13_8ecbplus.xmlsent:1571
+	['burned --(nsubj)--> Building']
+	['burned --(nmod)--> ground', 'ground --(nmod:tmod)--> Tuesday']
+	['burned --(nmod:tmod)--> morning']
+
+sentence #:fire destroys historic mat maid dairy building in palmer 
+	[events]:[['destroys'], ['fire']]
+	[entities]:[['mat', 'maid', 'dairy', 'building'], ['in', 'palmer']]
+*R264[destroys]
+|--(nsubj)--> *R263[fire]
+|--(dobj)--> R265[building]
+                 |--(amod)--> historic
+                 |--(compou)--> R265[mat]
+                 |--(compou)--> R265[maid]
+                 |--(compou)--> R265[dairy]
+                 |--(nmod)--> R266[palmer]
+                                  |--(case)--> R266[in]
+
+	* entity-paths for event['destroys']13_8ecbplus.xmlsent:1568
+	['destroys --(dobj)--> building']
+
+	* entity-paths for event['fire']13_8ecbplus.xmlsent:1568

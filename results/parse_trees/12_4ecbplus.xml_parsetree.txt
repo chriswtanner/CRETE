@@ -1,0 +1,80 @@
+
+-----------------------------------------
+docid:12_4ecbplus.xml
+-----------------------------------------
+
+sentence #:new delhi / mumbai : an indian warship foiled a five - boat pirate attack on merchant vessels transiting the gulf of aden on friday capturing 26 somani brigands on three of the skiffs and confiscating their weapons . 
+	[events]:[['attack'], ['capturing'], ['foiled'], ['confiscating'], ['pirate']]
+	[entities]:[['weapons'], ['warship'], ['on', 'friday'], ['new', 'delhi', '/', 'mumbai'], ['vessels'], ['brigands'], ['the', 'gulf', 'of', 'aden'], ['skiffs']]
+R251[delhi]
+|--(compou)--> R251[new]
+|--(dep)--> R251[mumbai]
+|                |--(punct)--> R251[/]
+|--(punct)--> :
+|--(dep)--> R222[warship]
+|                |--(det)--> an
+|                |--(amod)--> indian
+|                |--(dep)--> *R217[foiled]
+|                |                |--(dobj)--> five
+|                |                                 |--(advmod)--> a
+|                |--(punct)--> -
+|                |--(dep)--> *R218[attack]
+|                                 |--(compou)--> boat
+|                                 |--(compou)--> *R219[pirate]
+|                                 |--(nmod)--> R220[vessels]
+|                                                  |--(case)--> on
+|                                                  |--(compou)--> merchant
+|                                                  |--(acl)--> transiting
+|                                                                   |--(dobj)--> R229[gulf]
+|                                                                   |                |--(det)--> R229[the]
+|                                                                   |                |--(nmod)--> R229[aden]
+|                                                                   |                                 |--(case)--> R229[of]
+|                                                                   |--(nmod)--> R252[friday]
+|                                                                   |                |--(case)--> R252[on]
+|                                                                   |--(dep)--> *R244[capturing]
+|                                                                                    |--(dobj)--> R242[brigands]
+|                                                                                    |                |--(nummod)--> 26
+|                                                                                    |                |--(amod)--> somani
+|                                                                                    |--(nmod)--> three
+|                                                                                    |                |--(case)--> on
+|                                                                                    |                |--(nmod)--> R224[skiffs]
+|                                                                                    |                                 |--(case)--> of
+|                                                                                    |                                 |--(det)--> the
+|                                                                                    |--(cc)--> and
+|                                                                                    |--(conj)--> *R223[confiscating]
+|                                                                                                     |--(dobj)--> R225[weapons]
+|                                                                                                                      |--(nmod:p)--> their
+|--(punct)--> .
+
+	* entity-paths for event['attack']12_4ecbplus.xmlsent:985
+	['attack --(nmod)--> vessels']
+
+	* entity-paths for event['capturing']12_4ecbplus.xmlsent:985
+	['capturing --(dobj)--> brigands']
+	['capturing --(nmod)--> three', 'three --(nmod)--> skiffs']
+	['capturing --(conj)--> confiscating', 'confiscating --(dobj)--> weapons']
+
+	* entity-paths for event['foiled']12_4ecbplus.xmlsent:985
+
+	* entity-paths for event['confiscating']12_4ecbplus.xmlsent:985
+	['confiscating --(dobj)--> weapons']
+
+	* entity-paths for event['pirate']12_4ecbplus.xmlsent:985
+
+sentence #:indian navy captures 26 somali pirates in gulf of aden 
+	[events]:[['captures']]
+	[entities]:[['navy'], ['in', 'gulf', 'of', 'aden'], ['pirates']]
+*R244[captures]
+|--(nsubj)--> R215[navy]
+|                |--(amod)--> indian
+|--(dobj)--> R242[pirates]
+                 |--(nummod)--> 26
+                 |--(amod)--> somali
+                 |--(nmod)--> R229[gulf]
+                                  |--(case)--> R229[in]
+                                  |--(nmod)--> R229[aden]
+                                                   |--(case)--> R229[of]
+
+	* entity-paths for event['captures']12_4ecbplus.xmlsent:983
+	['captures --(nsubj)--> Navy']
+	['captures --(dobj)--> pirates']

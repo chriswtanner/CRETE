@@ -1,0 +1,17 @@
+
+-----------------------------------------
+docid:16_10ecbplus.xml
+-----------------------------------------
+
+sentence #:judge sentences orozco to death 
+	[events]:[['sentences']]
+	[entities]:[['orozco'], ['judge']]
+*R315[sentences]
+|--(compou)--> R316[judge]
+|--(dep)--> R317[orozco]
+                 |--(nmod)--> death
+                                  |--(case)--> to
+
+	* entity-paths for event['sentences']16_10ecbplus.xmlsent:1841
+	['sentences --(compound)--> Judge']
+	['sentences --(dep)--> Orozco']

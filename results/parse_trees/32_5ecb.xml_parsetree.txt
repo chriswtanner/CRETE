@@ -1,0 +1,49 @@
+
+-----------------------------------------
+docid:32_5ecb.xml
+-----------------------------------------
+
+sentence #:a 35-year-old new bedford man is awaiting a double murder arraignment after police arrested him on charges he killed his mother and ex-girlfriend . 
+	[events]:[['double', 'murder'], ['charges'], ['arrested'], ['arraignment'], ['killed']]
+	[entities]:[['man'], ['him'], ['he'], ['ex-girlfriend'], ['mother']]
+awaiting
+|--(nsubj)--> R1045[man]
+|                |--(det)--> a
+|                |--(amod)--> 35-year-old
+|                |--(compou)--> new
+|                |--(compou)--> bedford
+|--(aux)--> is
+|--(dobj)--> *R1060[arraignment]
+|                |--(det)--> a
+|                |--(amod)--> *R1059[double]
+|                |--(compou)--> *R1059[murder]
+|--(advcl)--> *R1058[arrested]
+|                |--(mark)--> after
+|                |--(nsubj)--> police
+|                |--(dobj)--> R1045[him]
+|                |--(nmod)--> *R1059[charges]
+|                                 |--(case)--> on
+|                                 |--(acl:re)--> *R1044[killed]
+|                                                  |--(nsubj)--> R1045[he]
+|                                                  |--(dobj)--> R1047[mother]
+|                                                                   |--(nmod:p)--> his
+|                                                                   |--(cc)--> and
+|                                                                   |--(conj)--> R1046[ex-girlfriend]
+|--(punct)--> .
+
+	* entity-paths for event['double', 'murder']32_5ecb.xmlsent:8865
+
+	* entity-paths for event['charges']32_5ecb.xmlsent:8865
+	['charges --(acl:relcl)--> killed', 'killed --(nsubj)--> he']
+	['charges --(acl:relcl)--> killed', 'killed --(dobj)--> mother']
+
+	* entity-paths for event['arrested']32_5ecb.xmlsent:8865
+	['arrested --(dobj)--> him']
+	['arrested --(nmod)--> charges', 'charges --(acl:relcl)--> killed', 'killed --(nsubj)--> he']
+	['arrested --(nmod)--> charges', 'charges --(acl:relcl)--> killed', 'killed --(dobj)--> mother']
+
+	* entity-paths for event['arraignment']32_5ecb.xmlsent:8865
+
+	* entity-paths for event['killed']32_5ecb.xmlsent:8865
+	['killed --(nsubj)--> he']
+	['killed --(dobj)--> mother']

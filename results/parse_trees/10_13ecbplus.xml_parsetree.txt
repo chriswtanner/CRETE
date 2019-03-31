@@ -1,0 +1,60 @@
+
+-----------------------------------------
+docid:10_13ecbplus.xml
+-----------------------------------------
+
+sentence #:dan patrick reported on his show on am 570 that the boston red sox have made first baseman mark teixeira an eight - year , $200 million offer . 
+	[events]:[['offer'], ['made']]
+	[entities]:[['boston', 'red', 'sox'], ['mark', 'teixeira'], ['$200', 'million'], ['eight', '-', 'year']]
+reported
+|--(nsubj)--> patrick
+|                |--(compou)--> dan
+|--(nmod)--> show
+|                |--(case)--> on
+|                |--(nmod:p)--> his
+|                |--(nmod)--> am
+|                                 |--(case)--> on
+|                                 |--(nummod)--> 570
+|--(ccomp)--> *R161[made]
+|                |--(mark)--> that
+|                |--(nsubj)--> R162[sox]
+|                |                |--(det)--> the
+|                |                |--(compou)--> R162[boston]
+|                |                |--(compou)--> R162[red]
+|                |--(aux)--> have
+|                |--(dobj)--> R163[teixeira]
+|                                 |--(amod)--> first
+|                                 |--(compou)--> baseman
+|                                 |--(compou)--> R163[mark]
+|                                 |--(dep)--> R164[eight]
+|                                 |                |--(det)--> an
+|                                 |--(punct)--> R164[-]
+|                                 |--(dep)--> R164[year]
+|                                                  |--(punct)--> ,
+|                                                  |--(appos)--> *R165[offer]
+|                                                                   |--(nummod)--> R166[$200]
+|                                                                                    |--(nummod)--> R166[million]
+|                                                                                                     |--(compou)--> R166[$200]
+|--(punct)--> .
+
+	* entity-paths for event['offer']10_13ecbplus.xmlsent:315
+	['offer --(nummod)--> $']
+
+	* entity-paths for event['made']10_13ecbplus.xmlsent:315
+	['made --(nsubj)--> Sox']
+	['made --(dobj)--> Teixeira']
+
+sentence #:report : red sox offer teixeira $200 million 
+	[events]:[['offer']]
+	[entities]:[['red', 'sox'], ['$200', 'million'], ['teixeira']]
+report
+|--(punct)--> :
+|--(dep)--> R163[teixeira]
+                 |--(compou)--> R162[red]
+                 |--(compou)--> R162[sox]
+                 |--(compou)--> *R165[offer]
+                 |--(dep)--> R166[$200]
+                                  |--(nummod)--> R166[million]
+                                                   |--(compou)--> R166[$200]
+
+	* entity-paths for event['offer']10_13ecbplus.xmlsent:313

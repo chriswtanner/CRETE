@@ -1,0 +1,38 @@
+
+-----------------------------------------
+docid:23_2ecb.xml
+-----------------------------------------
+
+sentence #:dr mark vinar , 43 , is presumed dead after disappearing off zurbriggens ridge , on mt cook , on thursday . 
+	[events]:[['dead'], ['disappearing']]
+	[entities]:[['mark', 'vinar'], ['thursday'], ['off', 'zurbriggens', 'ridge', ',', 'on', 'mt', 'cook']]
+presumed
+|--(nsubjp)--> R638[vinar]
+|                |--(compou)--> dr
+|                |--(compou)--> R638[mark]
+|                |--(punct)--> ,
+|                |--(amod)--> 43
+|                |--(punct)--> ,
+|--(auxpas)--> is
+|--(xcomp)--> *R654[dead]
+|                |--(advcl)--> *R637[disappearing]
+|                                 |--(mark)--> after
+|                                 |--(compou)--> R647[off]
+|                                 |--(dobj)--> R647[ridge]
+|                                                  |--(compou)--> R647[zurbriggens]
+|                                                  |--(punct)--> R647[,]
+|                                                  |--(nmod)--> R647[cook]
+|                                                  |                |--(case)--> R647[on]
+|                                                  |                |--(compou)--> R647[mt]
+|                                                  |--(punct)--> ,
+|                                                  |--(nmod)--> R658[thursday]
+|                                                                   |--(case)--> on
+|--(punct)--> .
+
+	* entity-paths for event['dead']23_2ecb.xmlsent:4668
+	['dead --(advcl)--> disappearing', 'disappearing --(compound:prt)--> off']
+	['dead --(advcl)--> disappearing', 'disappearing --(dobj)--> Ridge']
+
+	* entity-paths for event['disappearing']23_2ecb.xmlsent:4668
+	['disappearing --(compound:prt)--> off']
+	['disappearing --(dobj)--> Ridge']

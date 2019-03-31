@@ -1,0 +1,45 @@
+
+-----------------------------------------
+docid:29_6ecb.xml
+-----------------------------------------
+
+sentence #:locking up the no. 5 seed in the afc playoffs , peyton manning completed 29-of-34 passes for 364 yards and three touchdowns to lead the colts over the jaguars in week 16 . 
+	[events]:[['playoffs'], ['locking', 'up']]
+	[entities]:[['peyton', 'manning'], ['jaguars'], ['colts'], ['no.', '5', 'seed']]
+completed
+|--(advcl)--> *R853[locking]
+|                |--(compou)--> *R853[up]
+|                |--(dobj)--> R851[seed]
+|                                 |--(det)--> the
+|                                 |--(amod)--> R851[no.]
+|                                 |                |--(compou)--> R851[5]
+|                                 |--(nmod)--> *R854[playoffs]
+|                                                  |--(case)--> in
+|                                                  |--(det)--> the
+|                                                  |--(compou)--> afc
+|--(punct)--> ,
+|--(nsubj)--> R864[manning]
+|                |--(compou)--> R864[peyton]
+|--(dobj)--> passes
+|                |--(amod)--> 29-of-34
+|--(nmod)--> yards
+|                |--(case)--> for
+|                |--(nummod)--> 364
+|                |--(cc)--> and
+|                |--(conj)--> touchdowns
+|                                 |--(nummod)--> three
+|--(advcl)--> lead
+|                |--(mark)--> to
+|                |--(dobj)--> R852[colts]
+|                |                |--(det)--> the
+|                |--(nmod)--> R857[jaguars]
+|                                 |--(case)--> over
+|                                 |--(det)--> the
+|                                 |--(nmod)--> week
+|                                                  |--(case)--> in
+|                                                  |--(nummod)--> 16
+|--(punct)--> .
+
+	* entity-paths for event['playoffs']29_6ecb.xmlsent:7148
+
+	* entity-paths for event['locking', 'up']29_6ecb.xmlsent:7148

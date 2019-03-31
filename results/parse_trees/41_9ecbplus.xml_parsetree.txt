@@ -1,0 +1,86 @@
+
+-----------------------------------------
+docid:41_9ecbplus.xml
+-----------------------------------------
+
+sentence #:the bombing was a result of the heightening tensions between sudan and south sudan . 
+	[events]:[['bombing'], ['tensions']]
+	[entities]:[['south', 'sudan'], ['sudan']]
+result
+|--(nsubj)--> *R1442[bombing]
+|                |--(det)--> the
+|--(cop)--> was
+|--(det)--> a
+|--(nmod)--> *R1504[tensions]
+|                |--(case)--> of
+|                |--(det)--> the
+|                |--(amod)--> heightening
+|                |--(nmod)--> R1440[sudan]
+|                                 |--(case)--> between
+|                                 |--(compou)--> R1443[sudan]
+|                                                  |--(cc)--> and
+|                                                  |--(conj)--> R1440[south]
+|--(punct)--> .
+
+	* entity-paths for event['bombing']41_9ecbplus.xmlsent:12608
+
+	* entity-paths for event['tensions']41_9ecbplus.xmlsent:12608
+	['tensions --(nmod)--> Sudan']
+
+sentence #:the government of sudan bombed the samaritan's purse refugee camp in yida , south sudan , on thursday , nov . 10 , alleges the nondenominational evangelical christian organization . 
+	[events]:[['bombed']]
+	[entities]:[['on', 'thursday', ',', 'nov', '.', '10'], ["samaritan's", 'purse', 'refugee', 'camp', 'in', 'yida', ',', 'south', 'sudan'], ['government', 'of', 'sudan']]
+*R1442[bombed]
+|--(nsubj)--> R1443[government]
+|                |--(det)--> the
+|                |--(nmod)--> R1443[sudan]
+|                                 |--(case)--> R1443[of]
+|--(ccomp)--> alleges
+|                |--(nsubj)--> R1444[camp]
+|                |                |--(nmod:p)--> R1444[samaritan's]
+|                |                |                |--(det)--> the
+|                |                |                |--(case)--> R1444[samaritan's]
+|                |                |--(compou)--> R1444[purse]
+|                |                |--(compou)--> R1444[refugee]
+|                |                |--(nmod)--> R1444[yida]
+|                |                |                |--(case)--> R1444[in]
+|                |                |--(punct)--> R1444[,]
+|                |                |--(appos)--> R1456[nov]
+|                |                |                |--(compou)--> R1444[south]
+|                |                |                |--(compou)--> R1444[sudan]
+|                |                |                |--(nmod)--> R1456[thursday]
+|                |                |                |                |--(punct)--> ,
+|                |                |                |                |--(case)--> R1456[on]
+|                |                |                |                |--(punct)--> R1456[,]
+|                |                |                |--(punct)--> R1456[.]
+|                |                |                |--(dep)--> R1456[10]
+|                |                |--(punct)--> ,
+|                |--(dobj)--> organization
+|                                 |--(det)--> the
+|                                 |--(amod)--> nondenominational
+|                                 |--(amod)--> evangelical
+|                                 |--(amod)--> christian
+|--(punct)--> .
+
+	* entity-paths for event['bombed']41_9ecbplus.xmlsent:12605
+	['bombed --(nsubj)--> government']
+	['bombed --(ccomp)--> alleges', 'alleges --(nsubj)--> camp']
+
+sentence #:samaritan's purse refugee camp bombed , allegedly by sudanese government 
+	[events]:[['bombed']]
+	[entities]:[["samaritan's", 'purse', 'refugee', 'camp'], ['sudanese', 'government']]
+R1444[samaritan's]
+|--(case)--> R1444[samaritan's]
+|--(dep)--> R1444[refugee]
+|                |--(compou)--> R1444[purse]
+|--(dep)--> *R1442[bombed]
+                 |--(compou)--> R1444[camp]
+                 |--(punct)--> ,
+                 |--(acl:re)--> R1443[government]
+                                  |--(advmod)--> allegedly
+                                  |--(case)--> by
+                                  |--(amod)--> R1443[sudanese]
+
+	* entity-paths for event['bombed']41_9ecbplus.xmlsent:12603
+	['Bombed --(compound)--> Camp']
+	['Bombed --(acl:relcl)--> Government']

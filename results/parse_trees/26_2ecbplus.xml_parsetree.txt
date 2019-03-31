@@ -1,0 +1,75 @@
+
+-----------------------------------------
+docid:26_2ecbplus.xml
+-----------------------------------------
+
+sentence #:the head of the genovese crime family , who had suffered from heart disease , died at the federal prison in springfield , mo . , said prison spokesman al quintero . 
+	[events]:[['died'], ['suffered'], ['heart', 'disease'], ['said']]
+	[entities]:[['the', 'federal', 'prison', 'in', 'springfield', ',', 'mo', '.'], ['al', 'quintero'], ['head']]
+*R747[said]
+|--(ccomp)--> *R739[died]
+|                |--(nsubj)--> R740[head]
+|                |                |--(det)--> the
+|                |                |--(nmod)--> family
+|                |                |                |--(case)--> of
+|                |                |                |--(det)--> the
+|                |                |                |--(compou)--> genovese
+|                |                |                |--(compou)--> crime
+|                |                |--(punct)--> ,
+|                |                |--(acl:re)--> *R748[suffered]
+|                |                |                |--(nsubj)--> who
+|                |                |                |--(aux)--> had
+|                |                |                |--(nmod)--> *R749[disease]
+|                |                |                                 |--(case)--> from
+|                |                |                                 |--(compou)--> *R749[heart]
+|                |                |--(punct)--> ,
+|                |--(nmod)--> R743[prison]
+|                |                |--(case)--> at
+|                |                |--(det)--> R743[the]
+|                |                |--(amod)--> R743[federal]
+|                |--(nmod)--> R743[springfield]
+|                                 |--(case)--> R743[in]
+|                                 |--(punct)--> R743[,]
+|                                 |--(appos)--> R743[mo]
+|                                                  |--(punct)--> R743[.]
+|--(punct)--> ,
+|--(nsubj)--> R750[quintero]
+|                |--(compou)--> prison
+|                |--(compou)--> spokesman
+|                |--(compou)--> R750[al]
+|--(punct)--> .
+
+	* entity-paths for event['died']26_2ecbplus.xmlsent:5398
+	['died --(nsubj)--> head']
+	['died --(nmod)--> prison']
+	['died --(nmod)--> Springfield']
+
+	* entity-paths for event['suffered']26_2ecbplus.xmlsent:5398
+
+	* entity-paths for event['heart', 'disease']26_2ecbplus.xmlsent:5398
+
+	* entity-paths for event['said']26_2ecbplus.xmlsent:5398
+	['said --(ccomp)--> died', 'died --(nsubj)--> head']
+	['said --(ccomp)--> died', 'died --(nmod)--> prison']
+	['said --(ccomp)--> died', 'died --(nmod)--> Springfield']
+	['said --(nsubj)--> Quintero']
+
+sentence #:vincent 'the chin' gigante , last of mafia giants , dies 
+	[events]:[['dies']]
+	[entities]:[['giants'], ['vincent', "'the", "chin'", 'gigante']]
+*R739[dies]
+|--(nsubj)--> R740[vincent]
+                 |--(punct)--> R740['the]
+                 |--(dep)--> R740[gigante]
+                 |                |--(nmod:p)--> R740[chin']
+                 |                |                |--(det)--> R740['the]
+                 |                |                |--(case)--> R740[chin']
+                 |                |--(punct)--> ,
+                 |                |--(appos)--> last
+                 |                                 |--(nmod)--> R740[giants]
+                 |                                                  |--(case)--> of
+                 |                                                  |--(compou)--> mafia
+                 |--(punct)--> ,
+
+	* entity-paths for event['dies']26_2ecbplus.xmlsent:5395
+	['dies --(nsubj)--> Vincent']

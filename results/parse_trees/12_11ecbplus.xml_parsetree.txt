@@ -1,0 +1,58 @@
+
+-----------------------------------------
+docid:12_11ecbplus.xml
+-----------------------------------------
+
+sentence #:warship ins sukanya on thursday foiled a piracy attempt in the gulf of aden between somalia and yemen . 
+	[events]:[['piracy'], ['attempt'], ['foiled']]
+	[entities]:[['on', 'thursday'], ['the', 'gulf', 'of', 'aden', 'between', 'somalia', 'and', 'yemen'], ['ins', 'sukanya']]
+*R217[foiled]
+|--(nsubj)--> R222[sukanya]
+|                |--(compou)--> warship
+|                |--(compou)--> R222[ins]
+|                |--(nmod)--> R231[thursday]
+|                                 |--(case)--> R231[on]
+|--(dobj)--> *R218[attempt]
+|                |--(det)--> a
+|                |--(compou)--> *R219[piracy]
+|                |--(nmod)--> R229[gulf]
+|                                 |--(case)--> in
+|                                 |--(det)--> R229[the]
+|                                 |--(nmod)--> R229[aden]
+|                                                  |--(case)--> R229[of]
+|--(nmod)--> R229[somalia]
+|                |--(case)--> R229[between]
+|                |--(cc)--> R229[and]
+|                |--(conj)--> R229[yemen]
+|--(punct)--> .
+
+	* entity-paths for event['piracy']12_11ecbplus.xmlsent:789
+
+	* entity-paths for event['attempt']12_11ecbplus.xmlsent:789
+	['attempt --(nmod)--> Gulf']
+
+	* entity-paths for event['foiled']12_11ecbplus.xmlsent:789
+	['foiled --(nsubj)--> Sukanya']
+	['foiled --(dobj)--> attempt', 'attempt --(nmod)--> Gulf']
+	['foiled --(nmod)--> Somalia']
+
+sentence #:ins sukanya foils piracy attempt in gulf of eden 
+	[events]:[['attempt'], ['piracy'], ['foils']]
+	[entities]:[['ins', 'sukanya'], ['gulf', 'of', 'eden']]
+*R217[foils]
+|--(nsubj)--> R222[sukanya]
+|                |--(compou)--> R222[ins]
+|--(dobj)--> *R218[attempt]
+|                |--(compou)--> *R219[piracy]
+|--(nmod)--> R229[gulf]
+                 |--(case)--> in
+                 |--(nmod)--> R229[eden]
+                                  |--(case)--> R229[of]
+
+	* entity-paths for event['attempt']12_11ecbplus.xmlsent:787
+
+	* entity-paths for event['piracy']12_11ecbplus.xmlsent:787
+
+	* entity-paths for event['foils']12_11ecbplus.xmlsent:787
+	['foils --(nsubj)--> Sukanya']
+	['foils --(nmod)--> Gulf']

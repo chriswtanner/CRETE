@@ -1,0 +1,47 @@
+
+-----------------------------------------
+docid:22_3ecbplus.xml
+-----------------------------------------
+
+sentence #:charged with murder : what most of the liberal media won't tell you about the "very spiritual' female kraft employee who shot three co - workers 
+	[events]:[['shot'], ['murder'], ['charged'], ["spiritual'"]]
+	[entities]:[['co', '-', 'workers'], ['employee']]
+*R596[charged]
+|--(nmod)--> *R597[murder]
+|                |--(case)--> with
+|--(punct)--> :
+|--(ccomp)--> tell
+                 |--(dobj)--> what
+                 |--(nsubj)--> most
+                 |                |--(nmod)--> media
+                 |                                 |--(case)--> of
+                 |                                 |--(det)--> the
+                 |                                 |--(amod)--> liberal
+                 |--(aux)--> won't
+                 |--(neg)--> won't
+                 |--(dobj)--> you
+                 |--(nmod)--> R589[employee]
+                                  |--(case)--> about
+                                  |--(det)--> the
+                                  |--(punct)--> "very
+                                  |--(amod)--> female
+                                  |                |--(advmod)--> "very
+                                  |                |--(amod)--> *R630[spiritual']
+                                  |                |--(punct)--> *R630[spiritual']
+                                  |--(compou)--> kraft
+                                  |--(dep)--> R604[workers]
+                                                   |--(dep)--> *R591[shot]
+                                                   |                |--(nsubj)--> who
+                                                   |                |--(dobj)--> three
+                                                   |                                 |--(dep)--> R604[co]
+                                                   |--(punct)--> R604[-]
+
+	* entity-paths for event['shot']22_3ecbplus.xmlsent:4497
+	['shot --(dobj)--> three', 'three --(dep)--> co']
+
+	* entity-paths for event['murder']22_3ecbplus.xmlsent:4497
+
+	* entity-paths for event['charged']22_3ecbplus.xmlsent:4497
+	['CHARGED --(ccomp)--> tell', 'tell --(nmod)--> employee']
+
+	* entity-paths for event["spiritual'"]22_3ecbplus.xmlsent:4497

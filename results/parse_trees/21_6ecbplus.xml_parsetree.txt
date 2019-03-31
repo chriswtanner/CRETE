@@ -1,0 +1,68 @@
+
+-----------------------------------------
+docid:21_6ecbplus.xml
+-----------------------------------------
+
+sentence #:when a 59 - year - old woman stepped out of her car at 97th avenue and 117th street , she was struck by a car . 
+	[events]:[['stepped', 'out'], ['struck']]
+	[entities]:[['she'], ['at', '97th', 'avenue', 'and', '117th', 'street'], ['car'], ['woman'], ['car']]
+*R556[struck]
+|--(advcl)--> *R578[stepped]
+|                |--(advmod)--> when
+|                |--(nsubj)--> 59
+|                |                |--(det)--> a
+|                |                |--(dep)--> year
+|                |                                 |--(punct)--> -
+|                |                                 |--(punct)--> -
+|                |                                 |--(dep)--> R545[woman]
+|                |                                                  |--(amod)--> old
+|                |--(advmod)--> *R578[out]
+|                |                |--(nmod)--> R579[car]
+|                |                                 |--(case)--> of
+|                |                                 |--(nmod:p)--> her
+|                |--(nmod)--> R552[avenue]
+|                                 |--(case)--> R552[at]
+|                                 |--(amod)--> R552[97th]
+|                                 |--(cc)--> R552[and]
+|                                 |--(conj)--> R552[street]
+|                                                  |--(compou)--> R552[117th]
+|--(punct)--> ,
+|--(nsubjp)--> R545[she]
+|--(auxpas)--> was
+|--(nmod)--> R569[car]
+|                |--(case)--> by
+|                |--(det)--> a
+|--(punct)--> .
+
+	* entity-paths for event['stepped', 'out']21_6ecbplus.xmlsent:4282
+	['out --(nmod)--> car']
+
+	* entity-paths for event['struck']21_6ecbplus.xmlsent:4282
+	['struck --(advcl)--> stepped', 'stepped --(nsubj)--> 59', '59 --(dep)--> year', 'year --(dep)--> woman']
+	['struck --(advcl)--> stepped', 'stepped --(advmod)--> out', 'out --(nmod)--> car']
+	['struck --(advcl)--> stepped', 'stepped --(nmod)--> Avenue']
+	['struck --(nsubjpass)--> she']
+	['struck --(nmod)--> car']
+
+sentence #:just last week , a serious hit - and - run accident took place in queens . 
+	[events]:[['accident']]
+	[entities]:[['in', 'queens'], ['just', 'last', 'week']]
+run
+|--(nmod:t)--> R550[week]
+|                |--(advmod)--> R550[just]
+|                |--(amod)--> R550[last]
+|--(punct)--> ,
+|--(nsubj)--> hit
+|                |--(det)--> a
+|                |--(amod)--> serious
+|                |--(punct)--> -
+|                |--(advmod)--> and
+|                |--(punct)--> -
+|--(ccomp)--> took
+|                |--(nsubj)--> *R547[accident]
+|                |--(dobj)--> place
+|                |--(nmod)--> R549[queens]
+|                                 |--(case)--> R549[in]
+|--(punct)--> .
+
+	* entity-paths for event['accident']21_6ecbplus.xmlsent:4281

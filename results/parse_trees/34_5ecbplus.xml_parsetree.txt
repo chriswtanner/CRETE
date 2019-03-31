@@ -1,0 +1,67 @@
+
+-----------------------------------------
+docid:34_5ecbplus.xml
+-----------------------------------------
+
+sentence #:the american medical association is delighted that dr . regina benjamin , md , has been nominated to serve as our nation's next u . s . surgeon general . 
+	[events]:[['serve'], ['nominated']]
+	[entities]:[['american', 'medical', 'association'], ['our', "nation's", 'next', 'u', '.', 's', '.', 'surgeon', 'general'], ['dr', '.', 'regina', 'benjamin', ',', 'md']]
+*R1138[nominated]
+|--(ccomp)--> delighted
+|                |--(nsubj)--> R1149[association]
+|                |                |--(det)--> the
+|                |                |--(compou)--> R1149[american]
+|                |                |--(compou)--> R1149[medical]
+|                |--(cop)--> is
+|                |--(dep)--> R1139[dr]
+|                |                |--(mark)--> that
+|                |                |--(punct)--> R1139[.]
+|                |--(nmod:t)--> R1139[benjamin]
+|                                 |--(compou)--> R1139[regina]
+|                                 |--(punct)--> R1139[,]
+|                                 |--(appos)--> R1139[md]
+|--(punct)--> ,
+|--(aux)--> has
+|--(auxpas)--> been
+|--(xcomp)--> *R1150[serve]
+|                |--(mark)--> to
+|                |--(nmod)--> R1135[nation's]
+|                                 |--(case)--> as
+|                                 |--(nmod:p)--> R1135[our]
+|                                 |--(case)--> R1135[nation's]
+|                                 |--(dep)--> R1135[u]
+|                                                  |--(amod)--> R1135[next]
+|                                                  |--(punct)--> R1135[.]
+|                                                  |--(dep)--> R1135[s]
+|                                                  |--(punct)--> R1135[.]
+|--(nsubjp)--> R1135[general]
+|                |--(compou)--> R1135[surgeon]
+|--(punct)--> .
+
+	* entity-paths for event['serve']34_5ecbplus.xmlsent:9458
+	['serve --(nmod)--> nation']
+
+	* entity-paths for event['nominated']34_5ecbplus.xmlsent:9458
+	['nominated --(ccomp)--> delighted', 'delighted --(nsubj)--> Association']
+	['nominated --(ccomp)--> delighted', 'delighted --(dep)--> Dr']
+	['nominated --(ccomp)--> delighted', 'delighted --(nmod:tmod)--> Benjamin']
+	['nominated --(xcomp)--> serve', 'serve --(nmod)--> nation']
+	['nominated --(nsubjpass)--> General']
+
+sentence #:ama celebrates nomination of regina benjamin , md , surgeon general 
+	[events]:[['nomination']]
+	[entities]:[['regina', 'benjamin', ',', 'md'], ['ama'], ['surgeon', 'general']]
+celebrates
+|--(nsubj)--> R1149[ama]
+|--(dobj)--> *R1138[nomination]
+                 |--(nmod)--> R1135[general]
+                                  |--(case)--> of
+                                  |--(compou)--> R1139[regina]
+                                  |--(compou)--> R1139[benjamin]
+                                  |--(punct)--> R1139[,]
+                                  |--(appos)--> R1139[md]
+                                  |--(punct)--> ,
+                                  |--(appos)--> R1135[surgeon]
+
+	* entity-paths for event['nomination']34_5ecbplus.xmlsent:9455
+	['Nomination --(nmod)--> General']

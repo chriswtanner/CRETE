@@ -1,0 +1,36 @@
+
+-----------------------------------------
+docid:12_15ecb.xml
+-----------------------------------------
+
+sentence #:msnbc is reporting that the indian navy claims they have captured 23 pirates in the gulf of aden . 
+	[events]:[['claims'], ['captured']]
+	[entities]:[['pirates'], ['the', 'gulf', 'of', 'aden'], ['navy'], ['they']]
+reporting
+|--(nsubj)--> msnbc
+|--(aux)--> is
+|--(ccomp)--> *R214[captured]
+|                |--(mark)--> that
+|                |--(nsubj)--> *R226[claims]
+|                |                |--(det)--> the
+|                |                |--(amod)--> indian
+|                |                |--(compou)--> R215[navy]
+|                |                |--(dep)--> R215[they]
+|                |--(aux)--> have
+|                |--(dobj)--> R216[pirates]
+|                                 |--(nummod)--> 23
+|                                 |--(nmod)--> R229[gulf]
+|                                                  |--(case)--> in
+|                                                  |--(det)--> R229[the]
+|                                                  |--(nmod)--> R229[aden]
+|                                                                   |--(case)--> R229[of]
+|--(punct)--> .
+
+	* entity-paths for event['claims']12_15ecb.xmlsent:827
+	['claims --(compound)--> Navy']
+	['claims --(dep)--> they']
+
+	* entity-paths for event['captured']12_15ecb.xmlsent:827
+	['captured --(nsubj)--> claims', 'claims --(compound)--> Navy']
+	['captured --(nsubj)--> claims', 'claims --(dep)--> they']
+	['captured --(dobj)--> pirates']

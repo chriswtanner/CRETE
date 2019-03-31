@@ -1,0 +1,131 @@
+
+-----------------------------------------
+docid:26_3ecbplus.xml
+-----------------------------------------
+
+sentence #:mob boss vincent "the chin" gigante , the powerful mafioso who avoided jail for decades by wandering the streets in a ratty bathrobe and slippers , feigning mental illness , died monday in prison , officials said . 
+	[events]:[['mental', 'illness'], ['died'], ['avoided'], ['wandering'], ['feigning'], ['jail']]
+	[entities]:[['bathrobe'], ['monday'], ['vincent', '"the', 'chin"', 'gigante'], ['decades'], ['in', 'prison'], ['mafioso'], ['slippers'], ['the', 'streets']]
+said
+|--(ccomp)--> *R739[died]
+|                |--(nsubj)--> R740[vincent]
+|                |                |--(compou)--> mob
+|                |                |--(compou)--> boss
+|                |--(punct)--> R740["the]
+|                |--(nsubj)--> R740[gigante]
+|                |                |--(det)--> R740["the]
+|                |                |--(compou)--> R740[chin"]
+|                |                |--(punct)--> R740[chin"]
+|                |                |--(punct)--> ,
+|                |                |--(appos)--> R740[mafioso]
+|                |                |                |--(det)--> the
+|                |                |                |--(amod)--> powerful
+|                |                |                |--(acl:re)--> *R756[avoided]
+|                |                |                                 |--(nsubj)--> who
+|                |                |                                 |--(dobj)--> *R757[jail]
+|                |                |                                 |--(nmod)--> R758[decades]
+|                |                |                                 |                |--(case)--> for
+|                |                |                                 |--(advcl)--> *R759[wandering]
+|                |                |                                 |                |--(mark)--> by
+|                |                |                                 |                |--(dobj)--> R760[streets]
+|                |                |                                 |                |                |--(det)--> R760[the]
+|                |                |                                 |                |--(nmod)--> R761[bathrobe]
+|                |                |                                 |                                 |--(case)--> in
+|                |                |                                 |                                 |--(det)--> a
+|                |                |                                 |                                 |--(amod)--> ratty
+|                |                |                                 |                                 |--(cc)--> and
+|                |                |                                 |                                 |--(conj)--> R762[slippers]
+|                |                |                                 |--(punct)--> ,
+|                |                |                                 |--(advcl)--> *R741[feigning]
+|                |                |                                                  |--(dobj)--> *R742[illness]
+|                |                |                                                                   |--(amod)--> *R742[mental]
+|                |                |--(punct)--> ,
+|                |--(nmod:t)--> R744[monday]
+|                |--(nmod)--> R743[prison]
+|                                 |--(case)--> R743[in]
+|--(punct)--> ,
+|--(nsubj)--> officials
+|--(punct)--> .
+
+	* entity-paths for event['mental', 'illness']26_3ecbplus.xmlsent:5426
+
+	* entity-paths for event['died']26_3ecbplus.xmlsent:5426
+	['died --(nsubj)--> Vincent']
+	['died --(punct)--> "']
+	['died --(nsubj)--> Gigante']
+	['died --(nmod:tmod)--> Monday']
+	['died --(nmod)--> prison']
+
+	* entity-paths for event['avoided']26_3ecbplus.xmlsent:5426
+	['avoided --(nmod)--> decades']
+	['avoided --(advcl)--> wandering', 'wandering --(dobj)--> streets']
+	['avoided --(advcl)--> wandering', 'wandering --(nmod)--> bathrobe']
+
+	* entity-paths for event['wandering']26_3ecbplus.xmlsent:5426
+	['wandering --(dobj)--> streets']
+	['wandering --(nmod)--> bathrobe']
+
+	* entity-paths for event['feigning']26_3ecbplus.xmlsent:5426
+
+	* entity-paths for event['jail']26_3ecbplus.xmlsent:5426
+
+sentence #:gigante , who had suffered from heart disease , died at the federal prison in springfield , mo . , said prison spokesman al quintero . 
+	[events]:[['said'], ['died'], ['suffered'], ['heart', 'disease']]
+	[entities]:[['al', 'quintero'], ['gigante'], ['the', 'federal', 'prison', 'in', 'springfield', ',', 'mo']]
+*R747[said]
+|--(ccomp)--> *R739[died]
+|                |--(nsubj)--> R740[gigante]
+|                |                |--(punct)--> ,
+|                |                |--(acl:re)--> *R748[suffered]
+|                |                |                |--(nsubj)--> who
+|                |                |                |--(aux)--> had
+|                |                |                |--(nmod)--> *R749[disease]
+|                |                |                                 |--(case)--> from
+|                |                |                                 |--(compou)--> *R749[heart]
+|                |                |--(punct)--> ,
+|                |--(nmod)--> R743[prison]
+|                |                |--(case)--> at
+|                |                |--(det)--> R743[the]
+|                |                |--(amod)--> R743[federal]
+|                |--(nmod)--> R743[springfield]
+|                                 |--(case)--> R743[in]
+|                                 |--(punct)--> R743[,]
+|                                 |--(appos)--> R743[mo]
+|                                                  |--(punct)--> .
+|--(punct)--> ,
+|--(nsubj)--> R750[quintero]
+|                |--(compou)--> prison
+|                |--(compou)--> spokesman
+|                |--(compou)--> R750[al]
+|--(punct)--> .
+
+	* entity-paths for event['said']26_3ecbplus.xmlsent:5428
+	['said --(ccomp)--> died', 'died --(nsubj)--> Gigante']
+	['said --(ccomp)--> died', 'died --(nmod)--> prison']
+	['said --(ccomp)--> died', 'died --(nmod)--> Springfield']
+	['said --(nsubj)--> Quintero']
+
+	* entity-paths for event['died']26_3ecbplus.xmlsent:5428
+	['died --(nsubj)--> Gigante']
+	['died --(nmod)--> prison']
+	['died --(nmod)--> Springfield']
+
+	* entity-paths for event['suffered']26_3ecbplus.xmlsent:5428
+
+	* entity-paths for event['heart', 'disease']26_3ecbplus.xmlsent:5428
+
+sentence #:ex - mafia boss vincent gigante dies in prison 
+	[events]:[['dies']]
+	[entities]:[['in', 'prison'], ['vincent', 'gigante']]
+ex
+|--(punct)--> -
+|--(dep)--> R740[gigante]
+                 |--(compou)--> mafia
+                 |--(compou)--> boss
+                 |--(compou)--> R740[vincent]
+                 |--(acl:re)--> *R739[dies]
+                                  |--(nmod)--> R743[prison]
+                                                   |--(case)--> R743[in]
+
+	* entity-paths for event['dies']26_3ecbplus.xmlsent:5423
+	['dies --(nmod)--> prison']

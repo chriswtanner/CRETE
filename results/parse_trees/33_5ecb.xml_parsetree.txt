@@ -1,0 +1,135 @@
+
+-----------------------------------------
+docid:33_5ecb.xml
+-----------------------------------------
+
+sentence #:the 10-year-old was shot on the night of may 29th while she was playing outside her first street home . 
+	[events]:[['shot']]
+	[entities]:[['10-year-old'], ['she'], ['on', 'the', 'night', 'of', 'may', '29th'], ['outside', 'her', 'first', 'street', 'home']]
+*R1098[shot]
+|--(nsubjp)--> R1097[10-year-old]
+|                |--(det)--> the
+|--(auxpas)--> was
+|--(nmod)--> R1099[night]
+|                |--(case)--> R1099[on]
+|                |--(det)--> R1099[the]
+|                |--(nmod)--> R1099[may]
+|                                 |--(case)--> R1099[of]
+|                                 |--(amod)--> R1099[29th]
+|--(advcl)--> playing
+|                |--(mark)--> while
+|                |--(nsubj)--> R1097[she]
+|                |--(aux)--> was
+|                |--(nmod)--> R1094[home]
+|                                 |--(case)--> R1094[outside]
+|                                 |--(nmod:p)--> R1094[her]
+|                                 |--(compou)--> R1094[first]
+|                                 |--(compou)--> R1094[street]
+|--(punct)--> .
+
+	* entity-paths for event['shot']33_5ecb.xmlsent:9169
+	['shot --(nsubjpass)--> 10-year-old']
+	['shot --(nmod)--> night']
+	['shot --(advcl)--> playing', 'playing --(nsubj)--> she']
+	['shot --(advcl)--> playing', 'playing --(nmod)--> home']
+
+sentence #:her death sparked outrage , and even prompted the community to come together to get guns off albany streets . 
+	[events]:[['death']]
+	[entities]:[['her']]
+sparked
+|--(nsubj)--> *R1098[death]
+|                |--(nmod:p)--> R1097[her]
+|--(dobj)--> outrage
+|--(punct)--> ,
+|--(cc)--> and
+|--(conj)--> prompted
+|                |--(advmod)--> even
+|                |--(dobj)--> community
+|                                 |--(det)--> the
+|                                 |--(acl)--> come
+|                                                  |--(mark)--> to
+|                                                  |--(advmod)--> together
+|                                                  |--(xcomp)--> get
+|                                                                   |--(mark)--> to
+|                                                                   |--(dobj)--> guns
+|                                                                   |--(nmod)--> streets
+|                                                                                    |--(case)--> off
+|                                                                                    |--(compou)--> albany
+|--(punct)--> .
+
+	* entity-paths for event['death']33_5ecb.xmlsent:9151
+	['death --(nmod:poss)--> Her']
+
+sentence #:last may , a stray bullet killed 10-year-old kathina thomas as she played on the front steps of her home on albany 's first street 
+	[events]:[['killed']]
+	[entities]:[['kathina', 'thomas'], ['stray', 'bullet'], ['home', 'on', 'albany', "'s", 'first', 'street'], ['last', 'may']]
+*R1098[killed]
+|--(nmod:t)--> R1099[may]
+|                |--(amod)--> R1099[last]
+|--(punct)--> ,
+|--(nsubj)--> R1093[bullet]
+|                |--(det)--> a
+|                |--(amod)--> R1093[stray]
+|--(dobj)--> R1097[thomas]
+|                |--(amod)--> 10-year-old
+|                |--(compou)--> R1097[kathina]
+|--(advcl)--> played
+                 |--(mark)--> as
+                 |--(nsubj)--> she
+                 |--(nmod)--> steps
+                 |                |--(case)--> on
+                 |                |--(det)--> the
+                 |                |--(amod)--> front
+                 |                |--(nmod)--> R1094[home]
+                 |                                 |--(case)--> of
+                 |                                 |--(nmod:p)--> her
+                 |--(nmod)--> R1094[street]
+                                  |--(case)--> R1094[on]
+                                  |--(nmod:p)--> R1094[albany]
+                                  |                |--(case)--> R1094['s]
+                                  |--(compou)--> R1094[first]
+
+	* entity-paths for event['killed']33_5ecb.xmlsent:9150
+	['killed --(nmod:tmod)--> May']
+	['killed --(nsubj)--> bullet']
+	['killed --(dobj)--> Thomas']
+	['killed --(advcl)--> played', 'played --(nmod)--> steps', 'steps --(nmod)--> home']
+	['killed --(advcl)--> played', 'played --(nmod)--> Street']
+
+sentence #:now the case is back in the spotlight as the 16-year-old accused of firing the fatal shot , jermayne timmons , goes to trial . 
+	[events]:[['accused'], ['firing'], ['trial']]
+	[entities]:[['16-year-old'], ['jermayne', 'timmons'], ['fatal', 'shot']]
+*R1108[accused]
+|--(advmod)--> now
+|--(nsubjp)--> case
+|                |--(det)--> the
+|--(auxpas)--> is
+|--(advmod)--> back
+|                |--(nmod)--> spotlight
+|                                 |--(case)--> in
+|                                 |--(det)--> the
+|                                 |--(nmod)--> R1091[16-year-old]
+|                                                  |--(case)--> as
+|                                                  |--(det)--> the
+|--(nmod)--> *R1092[firing]
+|                |--(case)--> of
+|                |--(acl:re)--> goes
+|                                 |--(nsubj)--> R1093[shot]
+|                                 |                |--(det)--> the
+|                                 |                |--(amod)--> R1093[fatal]
+|                                 |                |--(punct)--> ,
+|                                 |                |--(appos)--> R1091[timmons]
+|                                 |                |                |--(compou)--> R1091[jermayne]
+|                                 |                |--(punct)--> ,
+|                                 |--(nmod)--> *R1090[trial]
+|                                                  |--(case)--> to
+|--(punct)--> .
+
+	* entity-paths for event['accused']33_5ecb.xmlsent:9152
+	['accused --(advmod)--> back', 'back --(nmod)--> spotlight', 'spotlight --(nmod)--> 16-year-old']
+	['accused --(nmod)--> firing', 'firing --(acl:relcl)--> goes', 'goes --(nsubj)--> shot']
+
+	* entity-paths for event['firing']33_5ecb.xmlsent:9152
+	['firing --(acl:relcl)--> goes', 'goes --(nsubj)--> shot']
+
+	* entity-paths for event['trial']33_5ecb.xmlsent:9152

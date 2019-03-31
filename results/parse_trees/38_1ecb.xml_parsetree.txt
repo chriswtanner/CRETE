@@ -1,0 +1,148 @@
+
+-----------------------------------------
+docid:38_1ecb.xml
+-----------------------------------------
+
+sentence #:the earthquake struck at about 9:30 a.m. and had a depth of 2.7 miles , according to the usgs . 
+	[events]:[['earthquake'], ['struck'], ['according', 'to']]
+	[entities]:[['usgs'], ['at', 'about', '9:30', 'a.m.'], ['depth', 'of', '2.7', 'miles']]
+*R1309[struck]
+|--(nsubj)--> *R1310[earthquake]
+|                |--(det)--> the
+|--(advmod)--> R1311[at]
+|--(nmod)--> R1311[a.m.]
+|                |--(case)--> R1311[about]
+|                |--(nummod)--> R1311[9:30]
+|--(cc)--> and
+|--(conj)--> had
+|                |--(dobj)--> R1312[depth]
+|                |                |--(det)--> a
+|                |                |--(nmod)--> R1312[miles]
+|                |                                 |--(case)--> R1312[of]
+|                |                                 |--(nummod)--> R1312[2.7]
+|                |--(punct)--> ,
+|                |--(nmod)--> R1243[usgs]
+|                                 |--(case)--> *R1313[according]
+|                                 |                |--(mwe)--> *R1313[to]
+|                                 |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['earthquake']38_1ecb.xmlsent:10737
+
+	* entity-paths for event['struck']38_1ecb.xmlsent:10737
+	['struck --(advmod)--> at']
+	['struck --(nmod)--> a.m.']
+	['struck --(conj)--> had', 'had --(dobj)--> depth']
+	['struck --(conj)--> had', 'had --(nmod)--> USGS']
+
+	* entity-paths for event['according', 'to']38_1ecb.xmlsent:10737
+
+sentence #:an earthquake with a preliminary magnitude of 4.4 struck in sonoma county this morning near the geysers , according to the u.s. geological survey . 
+	[events]:[['earthquake'], ['struck'], ['according', 'to']]
+	[entities]:[['magnitude', 'of', '4.4'], ['in', 'sonoma', 'county'], ['near', 'the', 'geysers'], ['u.s.', 'geological', 'survey'], ['this', 'morning']]
+*R1309[struck]
+|--(nsubj)--> *R1310[earthquake]
+|                |--(det)--> an
+|                |--(nmod)--> R1314[magnitude]
+|                                 |--(case)--> with
+|                                 |--(det)--> a
+|                                 |--(amod)--> preliminary
+|                                 |--(nmod)--> R1314[4.4]
+|                                                  |--(case)--> R1314[of]
+|--(nmod)--> R1315[county]
+|                |--(case)--> R1315[in]
+|                |--(compou)--> R1315[sonoma]
+|                |--(nmod:t)--> R1311[morning]
+|                |                |--(det)--> R1311[this]
+|                |--(nmod)--> R1316[geysers]
+|                                 |--(case)--> R1316[near]
+|                                 |--(det)--> R1316[the]
+|--(punct)--> ,
+|--(nmod)--> R1243[survey]
+|                |--(case)--> *R1313[according]
+|                |                |--(mwe)--> *R1313[to]
+|                |--(det)--> the
+|                |--(compou)--> R1243[u.s.]
+|                |--(compou)--> R1243[geological]
+|--(punct)--> .
+
+	* entity-paths for event['earthquake']38_1ecb.xmlsent:10736
+	['earthquake --(nmod)--> magnitude']
+
+	* entity-paths for event['struck']38_1ecb.xmlsent:10736
+	['struck --(nsubj)--> earthquake', 'earthquake --(nmod)--> magnitude']
+	['struck --(nmod)--> County']
+	['struck --(nmod)--> Survey']
+
+	* entity-paths for event['according', 'to']38_1ecb.xmlsent:10736
+
+sentence #:earlier this morning , an earthquake with a preliminary magnitude of 2.0 struck near the geysers , according to the usgs . 
+	[events]:[['struck'], ['earthquake'], ['according', 'to']]
+	[entities]:[['earlier', 'this', 'morning'], ['near', 'the', 'geysers'], ['usgs'], ['magnitude', 'of', '2.0']]
+*R1317[struck]
+|--(nmod:t)--> R1318[morning]
+|                |--(advmod)--> R1318[earlier]
+|                |--(det)--> R1318[this]
+|--(punct)--> ,
+|--(nsubj)--> *R1319[earthquake]
+|                |--(det)--> an
+|                |--(nmod)--> R1320[magnitude]
+|                                 |--(case)--> with
+|                                 |--(det)--> a
+|                                 |--(amod)--> preliminary
+|                                 |--(nmod)--> R1320[2.0]
+|                                                  |--(case)--> R1320[of]
+|--(nmod)--> R1316[geysers]
+|                |--(case)--> R1316[near]
+|                |--(det)--> R1316[the]
+|--(punct)--> ,
+|--(nmod)--> R1243[usgs]
+|                |--(case)--> *R1321[according]
+|                |                |--(mwe)--> *R1321[to]
+|                |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['struck']38_1ecb.xmlsent:10739
+	['struck --(nmod:tmod)--> morning']
+	['struck --(nsubj)--> earthquake', 'earthquake --(nmod)--> magnitude']
+	['struck --(nmod)--> Geysers']
+	['struck --(nmod)--> USGS']
+
+	* entity-paths for event['earthquake']38_1ecb.xmlsent:10739
+	['earthquake --(nmod)--> magnitude']
+
+	* entity-paths for event['according', 'to']38_1ecb.xmlsent:10739
+
+sentence #:the earthquake struck at about 7:30 a.m. and had a depth of 1.4 miles , according to the usgs . 
+	[events]:[['earthquake'], ['struck'], ['according', 'to']]
+	[entities]:[['depth', 'of', '1.4', 'miles'], ['usgs'], ['at', 'about', '7:30', 'a.m.']]
+*R1317[struck]
+|--(nsubj)--> *R1319[earthquake]
+|                |--(det)--> the
+|--(advmod)--> R1318[at]
+|--(nmod)--> R1318[a.m.]
+|                |--(case)--> R1318[about]
+|                |--(nummod)--> R1318[7:30]
+|--(cc)--> and
+|--(conj)--> had
+|                |--(dobj)--> R1322[depth]
+|                |                |--(det)--> a
+|                |                |--(nmod)--> R1322[miles]
+|                |                                 |--(case)--> R1322[of]
+|                |                                 |--(nummod)--> R1322[1.4]
+|                |--(punct)--> ,
+|                |--(nmod)--> R1243[usgs]
+|                                 |--(case)--> *R1321[according]
+|                                 |                |--(mwe)--> *R1321[to]
+|                                 |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['earthquake']38_1ecb.xmlsent:10740
+
+	* entity-paths for event['struck']38_1ecb.xmlsent:10740
+	['struck --(advmod)--> at']
+	['struck --(nmod)--> a.m.']
+	['struck --(conj)--> had', 'had --(dobj)--> depth']
+	['struck --(conj)--> had', 'had --(nmod)--> USGS']
+
+	* entity-paths for event['according', 'to']38_1ecb.xmlsent:10740

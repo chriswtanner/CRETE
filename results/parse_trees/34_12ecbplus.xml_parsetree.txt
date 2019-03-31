@@ -1,0 +1,66 @@
+
+-----------------------------------------
+docid:34_12ecbplus.xml
+-----------------------------------------
+
+sentence #:on july 13 , obama announced that he was nominating regina m . benjamin , md , a family physician from southern alabama , to be surgeon general . 
+	[events]:[['nominating'], ['announced']]
+	[entities]:[['obama'], ['physician'], ['alabama'], ['he'], ['surgeon', 'general'], ['on', 'july', '13'], ['regina', 'm', '.', 'benjamin', ',', 'md']]
+*R1142[announced]
+|--(nmod)--> R1141[july]
+|                |--(case)--> R1141[on]
+|                |--(nummod)--> R1141[13]
+|--(punct)--> ,
+|--(nsubj)--> R1136[obama]
+|--(ccomp)--> *R1138[nominating]
+|                |--(mark)--> that
+|                |--(nsubj)--> R1136[he]
+|                |--(aux)--> was
+|                |--(dobj)--> R1139[m]
+|                                 |--(compou)--> R1139[regina]
+|                                 |--(punct)--> R1139[.]
+|                                 |--(dep)--> R1139[md]
+|                                 |                |--(compou)--> R1139[benjamin]
+|                                 |                |--(punct)--> R1139[,]
+|                                 |--(punct)--> ,
+|                                 |--(appos)--> R1139[physician]
+|                                 |                |--(det)--> a
+|                                 |                |--(compou)--> family
+|                                 |                |--(nmod)--> R1145[alabama]
+|                                 |                                 |--(case)--> from
+|                                 |                                 |--(amod)--> southern
+|                                 |--(punct)--> ,
+|                                 |--(acl)--> R1135[surgeon]
+|                                                  |--(mark)--> to
+|                                                  |--(cop)--> be
+|                                                  |--(amod)--> R1135[general]
+|--(punct)--> .
+
+	* entity-paths for event['nominating']34_12ecbplus.xmlsent:9312
+	['nominating --(nsubj)--> he']
+	['nominating --(dobj)--> M']
+
+	* entity-paths for event['announced']34_12ecbplus.xmlsent:9312
+	['announced --(nmod)--> July']
+	['announced --(nsubj)--> Obama']
+	['announced --(ccomp)--> nominating', 'nominating --(nsubj)--> he']
+	['announced --(ccomp)--> nominating', 'nominating --(dobj)--> M']
+
+sentence #:former ama trustee dr . benjamin nominated to be surgeon general 
+	[events]:[['nominated']]
+	[entities]:[['former', 'ama', 'trustee', 'dr', '.', 'benjamin'], ['surgeon', 'general']]
+R1139[trustee]
+|--(amod)--> R1139[former]
+|--(compou)--> R1139[ama]
+|--(acl:re)--> *R1138[nominated]
+                 |--(nsubj)--> R1139[benjamin]
+                 |                |--(compou)--> R1139[dr]
+                 |                |--(punct)--> R1139[.]
+                 |--(xcomp)--> R1135[surgeon]
+                                  |--(mark)--> to
+                                  |--(cop)--> be
+                                  |--(amod)--> R1135[general]
+
+	* entity-paths for event['nominated']34_12ecbplus.xmlsent:9309
+	['nominated --(nsubj)--> Benjamin']
+	['nominated --(xcomp)--> surgeon']

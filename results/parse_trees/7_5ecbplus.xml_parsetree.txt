@@ -1,0 +1,99 @@
+
+-----------------------------------------
+docid:7_5ecbplus.xml
+-----------------------------------------
+
+sentence #:wladimir klitschko won his 16th straight fight today , successfully defending the wba , wbo , and ibf heavyweight titles against tony thompson , stopping the 40 - year - old american in the sixth round of a fight that was never really close . 
+	[events]:[['fight'], ['won'], ['fight'], ['defending'], ['stopping'], ['round']]
+	[entities]:[['titles'], ['tony', 'thompson'], ['today'], ['wladimir', 'klitschko'], ['american']]
+*R1724[won]
+|--(nsubj)--> R1716[klitschko]
+|                |--(compou)--> R1716[wladimir]
+|--(dobj)--> *R1745[fight]
+|                |--(nmod:p)--> his
+|                |--(amod)--> 16th
+|                |--(amod)--> straight
+|--(nmod:t)--> R1729[today]
+|--(punct)--> ,
+|--(dep)--> *R1727[defending]
+|                |--(advmod)--> successfully
+|                |--(dobj)--> wba
+|                |                |--(det)--> the
+|                |                |--(punct)--> ,
+|                |                |--(conj)--> wbo
+|                |                |--(punct)--> ,
+|                |                |--(cc)--> and
+|                |                |--(conj)--> R1728[titles]
+|                |                                 |--(compou)--> ibf
+|                |                                 |--(amod)--> heavyweight
+|                |                                 |--(nmod)--> R1725[thompson]
+|                |                                                  |--(case)--> against
+|                |                                                  |--(compou)--> R1725[tony]
+|                |--(punct)--> ,
+|                |--(dep)--> *R1724[stopping]
+|                                 |--(dobj)--> 40
+|                                 |                |--(det)--> the
+|                                 |                |--(dep)--> year
+|                                 |                |                |--(punct)--> -
+|                                 |                |                |--(punct)--> -
+|                                 |                |--(amod)--> R1725[american]
+|                                 |                                 |--(amod)--> old
+|                                 |--(nmod)--> *R1726[round]
+|                                                  |--(case)--> in
+|                                                  |--(det)--> the
+|                                                  |--(amod)--> sixth
+|                                                  |--(nmod)--> *R1745[fight]
+|                                                                   |--(case)--> of
+|                                                                   |--(det)--> a
+|                                                                   |--(acl:re)--> close
+|                                                                                    |--(nsubj)--> that
+|                                                                                    |--(cop)--> was
+|                                                                                    |--(neg)--> never
+|                                                                                    |--(advmod)--> really
+|--(punct)--> .
+
+	* entity-paths for event['fight']7_5ecbplus.xmlsent:14723
+
+	* entity-paths for event['won']7_5ecbplus.xmlsent:14723
+	['won --(nsubj)--> Klitschko']
+	['won --(nmod:tmod)--> today']
+	['won --(dep)--> defending', 'defending --(dobj)--> WBA', 'WBA --(conj)--> titles']
+	['won --(dep)--> defending', 'defending --(dep)--> stopping', 'stopping --(dobj)--> 40', '40 --(amod)--> American']
+
+	* entity-paths for event['fight']7_5ecbplus.xmlsent:14723
+
+	* entity-paths for event['defending']7_5ecbplus.xmlsent:14723
+	['defending --(dobj)--> WBA', 'WBA --(conj)--> titles']
+	['defending --(dep)--> stopping', 'stopping --(dobj)--> 40', '40 --(amod)--> American']
+
+	* entity-paths for event['stopping']7_5ecbplus.xmlsent:14723
+	['stopping --(dobj)--> 40', '40 --(amod)--> American']
+
+	* entity-paths for event['round']7_5ecbplus.xmlsent:14723
+
+sentence #:klitschko vs thompson ii results : wladimir klitschko cruises again , wins in six 
+	[events]:[['cruises'], ['wins'], ['six']]
+	[entities]:[['thompson'], ['klitschko'], ['wladimir', 'klitschko']]
+*R1724[wins]
+|--(nsubj)--> ii
+|                |--(compou)--> R1716[klitschko]
+|                |                |--(cc)--> vs
+|                |                |--(conj)--> R1725[thompson]
+|                |--(dep)--> results
+|                |--(punct)--> :
+|                |--(dep)--> again
+|                |                |--(compou)--> R1716[wladimir]
+|                |                |--(compou)--> R1716[klitschko]
+|                |                |--(compou)--> *R1724[cruises]
+|                |--(punct)--> ,
+|--(nmod)--> *R1726[six]
+                 |--(case)--> in
+
+	* entity-paths for event['cruises']7_5ecbplus.xmlsent:14721
+
+	* entity-paths for event['wins']7_5ecbplus.xmlsent:14721
+	['Wins --(nsubj)--> II', 'II --(compound)--> Klitschko']
+	['Wins --(nsubj)--> II', 'II --(dep)--> Again', 'Again --(compound)--> Wladimir']
+	['Wins --(nsubj)--> II', 'II --(dep)--> Again', 'Again --(compound)--> Klitschko']
+
+	* entity-paths for event['six']7_5ecbplus.xmlsent:14721

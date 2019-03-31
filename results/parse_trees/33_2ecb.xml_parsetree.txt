@@ -1,0 +1,83 @@
+
+-----------------------------------------
+docid:33_2ecb.xml
+-----------------------------------------
+
+sentence #:testimony in the murder trial of an albany teen accused in the shooting death of young kathina thomas continued for the second day on wednesday . 
+	[events]:[['murder', 'trial'], ['testimony'], ['death'], ['shooting'], ['accused']]
+	[entities]:[['kathina', 'thomas'], ['teen']]
+continued
+|--(nsubj)--> *R1107[testimony]
+|                |--(nmod)--> *R1090[trial]
+|                                 |--(case)--> in
+|                                 |--(det)--> the
+|                                 |--(compou)--> *R1090[murder]
+|                                 |--(nmod)--> R1091[teen]
+|                                                  |--(case)--> of
+|                                                  |--(det)--> an
+|                                                  |--(compou)--> albany
+|                                                  |--(acl)--> *R1108[accused]
+|                                                                   |--(nmod)--> *R1098[death]
+|                                                                                    |--(case)--> in
+|                                                                                    |--(det)--> the
+|                                                                                    |--(compou)--> *R1095[shooting]
+|                                                                                    |--(nmod)--> R1097[thomas]
+|                                                                                                     |--(case)--> of
+|                                                                                                     |--(amod)--> young
+|                                                                                                     |--(compou)--> R1097[kathina]
+|--(nmod)--> day
+|                |--(case)--> for
+|                |--(det)--> the
+|                |--(amod)--> second
+|--(nmod)--> wednesday
+|                |--(case)--> on
+|--(punct)--> .
+
+	* entity-paths for event['murder', 'trial']33_2ecb.xmlsent:9004
+	['trial --(nmod)--> teen']
+
+	* entity-paths for event['testimony']33_2ecb.xmlsent:9004
+	['Testimony --(nmod)--> trial', 'trial --(nmod)--> teen']
+
+	* entity-paths for event['death']33_2ecb.xmlsent:9004
+	['death --(nmod)--> Thomas']
+
+	* entity-paths for event['shooting']33_2ecb.xmlsent:9004
+
+	* entity-paths for event['accused']33_2ecb.xmlsent:9004
+	['accused --(nmod)--> death', 'death --(nmod)--> Thomas']
+
+sentence #:while on the stand he told jurors that timmons had asked him to tell police they were together until about 9 p.m. on the night of the shooting . 
+	[events]:[['shooting']]
+	[entities]:[['timmons'], ['police']]
+p.m.
+|--(advcl)--> told
+|                |--(mark)--> while
+|                |--(nmod)--> stand
+|                |                |--(case)--> on
+|                |                |--(det)--> the
+|                |--(nsubj)--> he
+|                |--(dobj)--> jurors
+|                                 |--(acl:re)--> asked
+|                                                  |--(nsubj)--> R1091[timmons]
+|                                                  |--(aux)--> had
+|                                                  |--(dobj)--> him
+|                                                  |--(xcomp)--> tell
+|                                                                   |--(dobj)--> that
+|                                                                   |--(mark)--> to
+|                                                                   |--(dobj)--> R1109[police]
+|--(nsubj)--> they
+|--(cop)--> were
+|--(advmod)--> together
+|--(case)--> until
+|--(case)--> about
+|--(nummod)--> 9
+|--(nmod)--> night
+|                |--(case)--> on
+|                |--(det)--> the
+|                |--(nmod)--> *R1095[shooting]
+|                                 |--(case)--> of
+|                                 |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['shooting']33_2ecb.xmlsent:9011

@@ -1,0 +1,64 @@
+
+-----------------------------------------
+docid:25_5ecbplus.xml
+-----------------------------------------
+
+sentence #:pierre thomas placed on injured reserve by new orleans saints 
+	[events]:[['injured', 'reserve'], ['placed']]
+	[entities]:[['new', 'orleans', 'saints'], ['pierre', 'thomas']]
+*R715[placed]
+|--(compou)--> R716[pierre]
+|--(compou)--> R716[thomas]
+|--(nmod)--> *R717[reserve]
+|                |--(case)--> on
+|                |--(compou)--> *R717[injured]
+|--(nmod)--> R706[saints]
+                 |--(case)--> by
+                 |--(compou)--> R706[new]
+                 |--(compou)--> R706[orleans]
+
+	* entity-paths for event['injured', 'reserve']25_5ecbplus.xmlsent:5144
+
+	* entity-paths for event['placed']25_5ecbplus.xmlsent:5144
+	['Placed --(compound)--> Pierre']
+	['Placed --(compound)--> Thomas']
+	['Placed --(nmod)--> Saints']
+
+sentence #:pierre thomas was placed on injured reserve by the new orleans saints on wednesday , meaning he won't play in the 2011 nfl playoffs . 
+	[events]:[['injured', 'reserve'], ['playoffs'], ['placed']]
+	[entities]:[['pierre', 'thomas'], ['on', 'wednesday'], ['new', 'orleans', 'saints'], ['he']]
+*R715[placed]
+|--(nsubjp)--> R716[thomas]
+|                |--(compou)--> R716[pierre]
+|--(auxpas)--> was
+|--(nmod)--> *R717[reserve]
+|                |--(case)--> on
+|                |--(amod)--> *R717[injured]
+|--(nmod)--> R706[saints]
+|                |--(case)--> by
+|                |--(det)--> the
+|                |--(compou)--> R706[new]
+|                |--(compou)--> R706[orleans]
+|                |--(nmod)--> R714[wednesday]
+|                                 |--(case)--> R714[on]
+|--(punct)--> ,
+|--(xcomp)--> meaning
+|                |--(ccomp)--> play
+|                                 |--(nsubj)--> R716[he]
+|                                 |--(aux)--> won't
+|                                 |--(neg)--> won't
+|                                 |--(nmod)--> *R728[playoffs]
+|                                                  |--(case)--> in
+|                                                  |--(det)--> the
+|                                                  |--(nummod)--> 2011
+|                                                  |--(compou)--> nfl
+|--(punct)--> .
+
+	* entity-paths for event['injured', 'reserve']25_5ecbplus.xmlsent:5146
+
+	* entity-paths for event['playoffs']25_5ecbplus.xmlsent:5146
+
+	* entity-paths for event['placed']25_5ecbplus.xmlsent:5146
+	['placed --(nsubjpass)--> Thomas']
+	['placed --(nmod)--> Saints']
+	['placed --(xcomp)--> meaning', 'meaning --(ccomp)--> play', 'play --(nsubj)--> he']

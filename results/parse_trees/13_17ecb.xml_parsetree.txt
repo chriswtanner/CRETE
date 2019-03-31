@@ -1,0 +1,29 @@
+
+-----------------------------------------
+docid:13_17ecb.xml
+-----------------------------------------
+
+sentence #:alaska gov. sarah palin 's home church has been badly damaged in an arson fire . 
+	[events]:[['fire'], ['damaged']]
+	[entities]:[['church']]
+*R278[damaged]
+|--(nsubjp)--> R260[church]
+|                |--(nmod:p)--> palin
+|                |                |--(compou)--> alaska
+|                |                |--(compou)--> gov.
+|                |                |--(compou)--> sarah
+|                |                |--(case)--> 's
+|                |--(compou)--> home
+|--(aux)--> has
+|--(auxpas)--> been
+|--(advmod)--> badly
+|--(nmod)--> *R261[fire]
+|                |--(case)--> in
+|                |--(det)--> an
+|                |--(compou)--> arson
+|--(punct)--> .
+
+	* entity-paths for event['fire']13_17ecb.xmlsent:1309
+
+	* entity-paths for event['damaged']13_17ecb.xmlsent:1309
+	['damaged --(nsubjpass)--> church']

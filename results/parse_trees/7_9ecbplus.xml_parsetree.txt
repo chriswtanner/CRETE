@@ -1,0 +1,56 @@
+
+-----------------------------------------
+docid:7_9ecbplus.xml
+-----------------------------------------
+
+sentence #:wladimir klitschko stopped tony thompson in the sixth round to retain his wba , ibf and wbo heavyweight title belts saturday night . 
+	[events]:[['stopped'], ['retain'], ['round']]
+	[entities]:[['tony', 'thompson'], ['saturday', 'night'], ['belts'], ['wladimir', 'klitschko']]
+*R1724[stopped]
+|--(nsubj)--> R1716[klitschko]
+|                |--(compou)--> R1716[wladimir]
+|--(dobj)--> R1725[thompson]
+|                |--(compou)--> R1725[tony]
+|--(nmod)--> *R1726[round]
+|                |--(case)--> in
+|                |--(det)--> the
+|                |--(amod)--> sixth
+|--(advcl)--> *R1727[retain]
+|                |--(mark)--> to
+|                |--(xcomp)--> R1728[belts]
+|                                 |--(nsubj)--> wba
+|                                 |                |--(nmod:p)--> his
+|                                 |                |--(punct)--> ,
+|                                 |                |--(conj)--> ibf
+|                                 |                |--(cc)--> and
+|                                 |                |--(conj)--> wbo
+|                                 |--(amod)--> heavyweight
+|                                 |--(compou)--> title
+|--(nmod:t)--> R1729[night]
+|                |--(compou)--> R1729[saturday]
+|--(punct)--> .
+
+	* entity-paths for event['stopped']7_9ecbplus.xmlsent:14855
+	['stopped --(nsubj)--> Klitschko']
+	['stopped --(dobj)--> Thompson']
+	['stopped --(advcl)--> retain', 'retain --(xcomp)--> belts']
+	['stopped --(nmod:tmod)--> night']
+
+	* entity-paths for event['retain']7_9ecbplus.xmlsent:14855
+	['retain --(xcomp)--> belts']
+
+	* entity-paths for event['round']7_9ecbplus.xmlsent:14855
+
+sentence #:wladimir klitschko retains world heavyweight belts 
+	[events]:[['retains']]
+	[entities]:[['wladimir', 'klitschko'], ['belts']]
+*R1727[retains]
+|--(nsubj)--> R1716[klitschko]
+|                |--(compou)--> R1716[wladimir]
+|--(dobj)--> R1728[belts]
+                 |--(compou)--> world
+                 |--(amod)--> heavyweight
+
+	* entity-paths for event['retains']7_9ecbplus.xmlsent:14853
+	['RETAINS --(nsubj)--> KLITSCHKO']
+	['RETAINS --(dobj)--> BELTS']

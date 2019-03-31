@@ -1,0 +1,44 @@
+
+-----------------------------------------
+docid:31_4ecbplus.xml
+-----------------------------------------
+
+sentence #:it gave him 2 , 117 career points , passing rodney buford's career mark that had stood since 1999 and moving him into 10th in mvc history . 
+	[events]:[['passing'], ['career', 'mark']]
+	[entities]:[['him'], ['him'], ['2', ',', '117', 'career', 'points'], ['rodney', "buford's"]]
+gave
+|--(nsubj)--> it
+|--(iobj)--> R1001[him]
+|--(dobj)--> R1022[2]
+|                |--(punct)--> R1022[,]
+|                |--(appos)--> R1022[points]
+|                |                |--(nummod)--> R1022[117]
+|                |                |--(compou)--> R1022[career]
+|                |--(punct)--> ,
+|                |--(dep)--> *R1020[passing]
+|                                 |--(dobj)--> *R1024[mark]
+|                                 |                |--(nmod:p)--> R1021[buford's]
+|                                 |                |                |--(compou)--> R1021[rodney]
+|                                 |                |                |--(case)--> R1021[buford's]
+|                                 |                |--(compou)--> *R1024[career]
+|                                 |                |--(acl:re)--> stood
+|                                 |                                 |--(nsubj)--> that
+|                                 |                                 |--(aux)--> had
+|                                 |                                 |--(nmod)--> 1999
+|                                 |                                                  |--(case)--> since
+|                                 |--(cc)--> and
+|                                 |--(conj)--> moving
+|                                                  |--(dobj)--> R1001[him]
+|                                                  |--(nmod)--> history
+|                                                                   |--(case)--> into
+|                                                                   |--(amod)--> 10th
+|                                                                                    |--(nmod)--> mvc
+|                                                                                                     |--(case)--> in
+|--(punct)--> .
+
+	* entity-paths for event['passing']31_4ecbplus.xmlsent:8481
+	['passing --(dobj)--> mark', 'mark --(nmod:poss)--> Buford']
+	['passing --(conj)--> moving', 'moving --(dobj)--> him']
+
+	* entity-paths for event['career', 'mark']31_4ecbplus.xmlsent:8481
+	['mark --(nmod:poss)--> Buford']

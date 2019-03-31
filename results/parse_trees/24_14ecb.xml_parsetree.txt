@@ -1,0 +1,36 @@
+
+-----------------------------------------
+docid:24_14ecb.xml
+-----------------------------------------
+
+sentence #:french police say armed robbers cleaned out a high-end jewelry store yesterday in paris , news organizations report . 
+	[events]:[['cleaned', 'out'], ['say']]
+	[entities]:[['paris'], ['robbers'], ['police'], ['high-end', 'jewelry', 'store'], ['yesterday']]
+report
+|--(ccomp)--> *R688[say]
+|                |--(nsubj)--> R689[police]
+|                |                |--(amod)--> french
+|                |--(ccomp)--> *R666[cleaned]
+|                                 |--(nsubj)--> R664[robbers]
+|                                 |                |--(amod)--> armed
+|                                 |--(compou)--> *R666[out]
+|                                 |--(dobj)--> R665[store]
+|                                 |                |--(det)--> a
+|                                 |                |--(amod)--> R665[high-end]
+|                                 |                |--(compou)--> R665[jewelry]
+|                                 |--(nmod:t)--> R690[yesterday]
+|                                 |--(nmod)--> R685[paris]
+|                                                  |--(case)--> in
+|--(punct)--> ,
+|--(nsubj)--> organizations
+|                |--(compou)--> news
+|--(punct)--> .
+
+	* entity-paths for event['cleaned', 'out']24_14ecb.xmlsent:4819
+
+	* entity-paths for event['say']24_14ecb.xmlsent:4819
+	['say --(nsubj)--> police']
+	['say --(ccomp)--> cleaned', 'cleaned --(nsubj)--> robbers']
+	['say --(ccomp)--> cleaned', 'cleaned --(dobj)--> store']
+	['say --(ccomp)--> cleaned', 'cleaned --(nmod:tmod)--> yesterday']
+	['say --(ccomp)--> cleaned', 'cleaned --(nmod)--> Paris']

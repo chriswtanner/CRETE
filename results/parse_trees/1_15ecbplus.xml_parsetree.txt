@@ -1,0 +1,80 @@
+
+-----------------------------------------
+docid:1_15ecbplus.xml
+-----------------------------------------
+
+sentence #:after leaving rehab in newport beach , calif . , less than an hour after checking in on thursday , lindsay lohan admitted herself to the betty ford center , according to tmz . com . 
+	[events]:[['checking', 'in'], ['leaving'], ['according'], ['admitted']]
+	[entities]:[['herself'], ['rehab', 'in', 'newport', 'beach', ',', 'calif'], ['on', 'thursday'], ['the', 'betty', 'ford', 'center'], ['tmz', '.', 'com'], ['lindsay', 'lohan']]
+*R8[admitted]
+|--(advcl)--> *R57[leaving]
+|                |--(mark)--> after
+|                |--(dobj)--> R10[rehab]
+|                |--(nmod)--> R10[beach]
+|                                 |--(case)--> R10[in]
+|                                 |--(compou)--> R10[newport]
+|                                 |--(punct)--> R10[,]
+|                                 |--(appos)--> R10[calif]
+|                                                  |--(punct)--> .
+|                                                  |--(punct)--> ,
+|                                                  |--(appos)--> hour
+|                                                                   |--(advmod)--> less
+|                                                                   |                |--(mwe)--> than
+|                                                                   |--(advmod)--> an
+|                                                                   |--(acl)--> *R9[checking]
+|                                                                                    |--(mark)--> after
+|                                                                                    |--(nmod)--> R58[thursday]
+|                                                                                                     |--(case)--> *R9[in]
+|                                                                                                     |--(case)--> R58[on]
+|--(punct)--> ,
+|--(nsubj)--> R15[lohan]
+|                |--(compou)--> R15[lindsay]
+|--(dobj)--> R15[herself]
+|--(nmod)--> R16[center]
+|                |--(case)--> to
+|                |--(det)--> R16[the]
+|                |--(compou)--> R16[betty]
+|                |--(compou)--> R16[ford]
+|--(punct)--> ,
+|--(nmod)--> R59[tmz]
+|                |--(case)--> *R60[according]
+|                |                |--(mwe)--> to
+|                |--(punct)--> R59[.]
+|                |--(dep)--> R59[com]
+|--(punct)--> .
+
+	* entity-paths for event['checking', 'in']1_15ecbplus.xmlsent:113
+
+	* entity-paths for event['leaving']1_15ecbplus.xmlsent:113
+	['leaving --(dobj)--> rehab']
+	['leaving --(nmod)--> Beach']
+
+	* entity-paths for event['according']1_15ecbplus.xmlsent:113
+
+	* entity-paths for event['admitted']1_15ecbplus.xmlsent:113
+	['admitted --(advcl)--> leaving', 'leaving --(dobj)--> rehab']
+	['admitted --(advcl)--> leaving', 'leaving --(nmod)--> Beach']
+	['admitted --(nsubj)--> Lohan']
+	['admitted --(dobj)--> herself']
+	['admitted --(nmod)--> Center']
+	['admitted --(nmod)--> TMZ']
+
+sentence #:lindsay lohan check into betty ford after fleeing other rehab facility 
+	[events]:[['check', 'into'], ['fleeing']]
+	[entities]:[['betty', 'ford'], ['lindsay', 'lohan'], ['other', 'rehab', 'facility']]
+R15[lohan]
+|--(compou)--> R15[lindsay]
+|--(dep)--> *R8[check]
+                 |--(nmod)--> R16[ford]
+                 |                |--(dep)--> *R8[into]
+                 |                |--(compou)--> R16[betty]
+                 |--(advcl)--> *R57[fleeing]
+                                  |--(mark)--> after
+                                  |--(dobj)--> R10[facility]
+                                                   |--(amod)--> R10[other]
+                                                   |--(compou)--> R10[rehab]
+
+	* entity-paths for event['check', 'into']1_15ecbplus.xmlsent:111
+
+	* entity-paths for event['fleeing']1_15ecbplus.xmlsent:111
+	['Fleeing --(dobj)--> Facility']

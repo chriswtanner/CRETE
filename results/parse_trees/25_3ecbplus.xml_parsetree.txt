@@ -1,0 +1,42 @@
+
+-----------------------------------------
+docid:25_3ecbplus.xml
+-----------------------------------------
+
+sentence #:coach sean payton announced wednesday that pierre thomas was placed on ir . 
+	[events]:[['placed'], ['ir']]
+	[entities]:[['pierre', 'thomas'], ['wednesday']]
+coach
+|--(ccomp)--> announced
+|                |--(nsubj)--> payton
+|                |                |--(compou)--> sean
+|                |--(nmod:t)--> R714[wednesday]
+|                |--(ccomp)--> *R715[placed]
+|                                 |--(mark)--> that
+|                                 |--(nsubjp)--> R716[thomas]
+|                                 |                |--(compou)--> R716[pierre]
+|                                 |--(auxpas)--> was
+|                                 |--(nmod)--> *R717[ir]
+|                                                  |--(case)--> on
+|--(punct)--> .
+
+	* entity-paths for event['placed']25_3ecbplus.xmlsent:5107
+	['placed --(nsubjpass)--> Thomas']
+
+	* entity-paths for event['ir']25_3ecbplus.xmlsent:5107
+
+sentence #:saints place rb pierre thomas on injured reserve 
+	[events]:[['place'], ['injured', 'reserve']]
+	[entities]:[['pierre', 'thomas'], ['saints']]
+R716[thomas]
+|--(compou)--> R706[saints]
+|--(compou)--> *R715[place]
+|--(compou)--> rb
+|--(compou)--> R716[pierre]
+|--(nmod)--> *R717[reserve]
+                 |--(case)--> on
+                 |--(amod)--> *R717[injured]
+
+	* entity-paths for event['place']25_3ecbplus.xmlsent:5105
+
+	* entity-paths for event['injured', 'reserve']25_3ecbplus.xmlsent:5105

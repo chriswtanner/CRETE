@@ -1,0 +1,58 @@
+
+-----------------------------------------
+docid:35_8ecb.xml
+-----------------------------------------
+
+sentence #:chargers ' jackson arrested on suspicion of dui 
+	[events]:[['suspicion'], ['arrested'], ['dui']]
+	[entities]:[['jackson']]
+R1156[jackson]
+|--(nmod:p)--> chargers
+|                |--(case)--> '
+|--(acl)--> *R1153[arrested]
+|                |--(nmod)--> *R1155[suspicion]
+|                                 |--(case)--> on
+|--(nmod)--> *R1154[dui]
+                 |--(case)--> of
+
+	* entity-paths for event['suspicion']35_8ecb.xmlsent:9821
+
+	* entity-paths for event['arrested']35_8ecb.xmlsent:9821
+
+	* entity-paths for event['dui']35_8ecb.xmlsent:9821
+
+sentence #:san diego chargers wide receiver vincent jackson was arrested on suspicion of driving under the influence early tuesday morning . 
+	[events]:[['driving', 'under', 'the', 'influence'], ['suspicion'], ['arrested']]
+	[entities]:[['early', 'tuesday', 'morning'], ['vincent', 'jackson']]
+*R1153[arrested]
+|--(nsubjp)--> chargers
+|                |--(compou)--> san
+|                |--(compou)--> diego
+|                |--(dep)--> R1156[jackson]
+|                                 |--(amod)--> wide
+|                                 |--(compou)--> receiver
+|                                 |--(compou)--> R1156[vincent]
+|--(auxpas)--> was
+|--(nmod)--> *R1155[suspicion]
+|                |--(case)--> on
+|                |--(acl)--> *R1154[driving]
+|                                 |--(mark)--> of
+|                                 |--(nmod)--> *R1154[influence]
+|                                 |                |--(case)--> *R1154[under]
+|                                 |                |--(det)--> *R1154[the]
+|                                 |                |--(nmod:t)--> R1159[tuesday]
+|                                 |                                 |--(amod)--> R1159[early]
+|                                 |--(nmod:t)--> R1159[morning]
+|--(punct)--> .
+
+	* entity-paths for event['driving', 'under', 'the', 'influence']35_8ecb.xmlsent:9822
+	['influence --(nmod:tmod)--> Tuesday']
+
+	* entity-paths for event['suspicion']35_8ecb.xmlsent:9822
+	['suspicion --(acl)--> driving', 'driving --(nmod)--> influence', 'influence --(nmod:tmod)--> Tuesday']
+	['suspicion --(acl)--> driving', 'driving --(nmod:tmod)--> morning']
+
+	* entity-paths for event['arrested']35_8ecb.xmlsent:9822
+	['arrested --(nsubjpass)--> Chargers', 'Chargers --(dep)--> Jackson']
+	['arrested --(nmod)--> suspicion', 'suspicion --(acl)--> driving', 'driving --(nmod)--> influence', 'influence --(nmod:tmod)--> Tuesday']
+	['arrested --(nmod)--> suspicion', 'suspicion --(acl)--> driving', 'driving --(nmod:tmod)--> morning']

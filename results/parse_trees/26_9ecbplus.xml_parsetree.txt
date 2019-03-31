@@ -1,0 +1,71 @@
+
+-----------------------------------------
+docid:26_9ecbplus.xml
+-----------------------------------------
+
+sentence #:gigante died at the u . s . medical center for federal prisoners in springfield , mo . , said prison spokesman al quintero . 
+	[events]:[['said'], ['died']]
+	[entities]:[['al', 'quintero'], ['the', 'u', '.', 's', '.', 'medical', 'center'], ['gigante']]
+*R747[said]
+|--(dep)--> *R739[died]
+|                |--(nsubj)--> R740[gigante]
+|                |--(nmod)--> R743[u]
+|                                 |--(case)--> at
+|                                 |--(det)--> R743[the]
+|                                 |--(punct)--> R743[.]
+|                                 |--(dep)--> R743[s]
+|                                 |--(punct)--> R743[.]
+|                                 |--(nmod)--> R743[center]
+|                                                  |--(compou)--> R743[medical]
+|                                                  |--(nmod)--> prisoners
+|                                                  |                |--(case)--> for
+|                                                  |                |--(amod)--> federal
+|                                                  |--(case)--> in
+|                                                  |--(dep)--> springfield
+|                                                                   |--(punct)--> ,
+|                                                                   |--(appos)--> mo
+|                                                                   |                |--(punct)--> .
+|                                                                   |--(punct)--> ,
+|--(nsubj)--> R750[quintero]
+|                |--(compou)--> prison
+|                |--(compou)--> spokesman
+|                |--(compou)--> R750[al]
+|--(punct)--> .
+
+	* entity-paths for event['said']26_9ecbplus.xmlsent:5561
+	['said --(dep)--> died', 'died --(nsubj)--> Gigante']
+	['said --(dep)--> died', 'died --(nmod)--> U']
+	['said --(nsubj)--> Quintero']
+
+	* entity-paths for event['died']26_9ecbplus.xmlsent:5561
+	['died --(nsubj)--> Gigante']
+	['died --(nmod)--> U']
+
+sentence #:mafia 'oddfather , ' vincent 'chin' gigante , dies in u . s . prison at 77 
+	[events]:[['dies']]
+	[entities]:[['vincent', "'chin'", 'gigante'], ['u', '.', 's', '.', 'prison']]
+*R739[dies]
+|--(nsubj)--> mafia
+|                |--(punct)--> 'oddfather
+|                |--(dep)--> 'oddfather
+|                |--(punct)--> ,
+|                |--(punct)--> '
+|                |--(dep)--> R740[gigante]
+|                |                |--(compou)--> R740[vincent]
+|                |                |--(punct)--> R740['chin']
+|                |                |--(compou)--> R740['chin']
+|                |                |--(punct)--> R740['chin']
+|                |--(punct)--> ,
+|--(advcl)--> R743[u]
+|                |--(case)--> in
+|                |--(punct)--> R743[.]
+|                |--(dep)--> R743[s]
+|                |--(punct)--> R743[.]
+|--(dobj)--> R743[prison]
+                 |--(nmod)--> 77
+                                  |--(case)--> at
+
+	* entity-paths for event['dies']26_9ecbplus.xmlsent:5557
+	['dies --(nsubj)--> Mafia', 'Mafia --(dep)--> Gigante']
+	['dies --(advcl)--> U']
+	['dies --(dobj)--> prison']

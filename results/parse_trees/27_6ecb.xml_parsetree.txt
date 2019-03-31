@@ -1,0 +1,44 @@
+
+-----------------------------------------
+docid:27_6ecb.xml
+-----------------------------------------
+
+sentence #:in record time , microsoft released today an " out of band " patch for a significant security flaw in internet explorer that burst onto the scene 8 days ago . 
+	[events]:[['released']]
+	[entities]:[['internet', 'explorer'], ['microsoft'], ['that'], ['today'], ['patch'], ['flaw']]
+*R763[released]
+|--(nmod)--> time
+|                |--(case)--> in
+|                |--(compou)--> record
+|--(punct)--> ,
+|--(nsubj)--> R764[microsoft]
+|--(nmod:t)--> R766[today]
+|                |--(dep)--> an
+|--(punct)--> "
+|--(nmod)--> R765[patch]
+|                |--(case)--> out
+|                |--(case)--> of
+|                |--(compou)--> band
+|                |--(punct)--> "
+|                |--(nmod)--> R767[flaw]
+|                                 |--(case)--> for
+|                                 |--(det)--> a
+|                                 |--(amod)--> significant
+|                                 |--(compou)--> security
+|                                 |--(nmod)--> R768[explorer]
+|                                                  |--(case)--> in
+|                                                  |--(compou)--> R768[internet]
+|                                                  |--(nmod)--> burst
+|                                                                   |--(case)--> R767[that]
+|--(nmod)--> scene
+|                |--(case)--> onto
+|                |--(det)--> the
+|--(nmod:t)--> days
+|                |--(nummod)--> 8
+|                |--(advmod)--> ago
+|--(punct)--> .
+
+	* entity-paths for event['released']27_6ecb.xmlsent:5935
+	['released --(nsubj)--> Microsoft']
+	['released --(nmod:tmod)--> today']
+	['released --(nmod)--> patch']

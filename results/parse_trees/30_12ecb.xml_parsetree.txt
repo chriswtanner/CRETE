@@ -1,0 +1,147 @@
+
+-----------------------------------------
+docid:30_12ecb.xml
+-----------------------------------------
+
+sentence #:internet and telephone communications between the middle east and europe were disrupted after three submarine cables between italy and egypt in the mediterranean sea were damaged . 
+	[events]:[['communications'], ['disrupted'], ['damaged']]
+	[entities]:[['between', 'italy', 'and', 'egypt'], ['in', 'the', 'mediterranean', 'sea'], ['internet'], ['cables'], ['telephone']]
+*R949[disrupted]
+|--(nsubjp)--> *R975[communications]
+|                |--(compou)--> R950[internet]
+|                |                |--(cc)--> and
+|                |                |--(conj)--> R976[telephone]
+|                |--(nmod)--> east
+|                                 |--(case)--> between
+|                                 |--(det)--> the
+|                                 |--(compou)--> middle
+|                                 |--(cc)--> and
+|                                 |--(conj)--> europe
+|--(auxpas)--> were
+|--(advcl)--> *R953[damaged]
+|                |--(mark)--> after
+|                |--(nsubjp)--> R951[cables]
+|                |                |--(nummod)--> three
+|                |                |--(compou)--> submarine
+|                |                |--(nmod)--> R954[italy]
+|                |                |                |--(case)--> R954[between]
+|                |                |                |--(cc)--> R954[and]
+|                |                |                |--(conj)--> R954[egypt]
+|                |                |--(nmod)--> R952[sea]
+|                |                                 |--(case)--> R952[in]
+|                |                                 |--(det)--> R952[the]
+|                |                                 |--(compou)--> R952[mediterranean]
+|                |--(auxpas)--> were
+|--(punct)--> .
+
+	* entity-paths for event['communications']30_12ecb.xmlsent:7727
+	['communications --(compound)--> Internet']
+
+	* entity-paths for event['disrupted']30_12ecb.xmlsent:7727
+	['disrupted --(nsubjpass)--> communications', 'communications --(compound)--> Internet']
+	['disrupted --(advcl)--> damaged', 'damaged --(nsubjpass)--> cables']
+
+	* entity-paths for event['damaged']30_12ecb.xmlsent:7727
+	['damaged --(nsubjpass)--> cables']
+
+sentence #:the failures cut the flow of " data of various kinds " between europe and the middle east , and there 's no timeframe for when communications will be restored , said sanjeev gaur , director of assurance at reliance globalcom ltd. in india . 
+	[events]:[['communications'], ['cut']]
+	[entities]:[]
+said
+|--(ccomp)--> *R949[cut]
+|                |--(nsubj)--> failures
+|                |                |--(det)--> the
+|                |--(dobj)--> flow
+|                |                |--(det)--> the
+|                |--(nmod)--> data
+|                |                |--(case)--> of
+|                |                |--(punct)--> "
+|                |                |--(nmod)--> kinds
+|                |                                 |--(case)--> of
+|                |                                 |--(amod)--> various
+|                |                                 |--(punct)--> "
+|                |                                 |--(nmod)--> europe
+|                |                                                  |--(case)--> between
+|                |                                                  |--(cc)--> and
+|                |                                                  |--(conj)--> east
+|                |                                                                   |--(det)--> the
+|                |                                                                   |--(compou)--> middle
+|                |--(punct)--> ,
+|                |--(cc)--> and
+|                |--(conj)--> 's
+|                                 |--(expl)--> there
+|                                 |--(nsubj)--> timeframe
+|                                                  |--(neg)--> no
+|                                                  |--(acl)--> restored
+|                                                                   |--(mark)--> for
+|                                                                   |--(advmod)--> when
+|                                                                   |--(nsubjp)--> *R975[communications]
+|                                                                   |--(aux)--> will
+|                                                                   |--(auxpas)--> be
+|--(punct)--> ,
+|--(nsubj)--> gaur
+|                |--(compou)--> sanjeev
+|                |--(punct)--> ,
+|                |--(appos)--> director
+|                                 |--(nmod)--> assurance
+|                                                  |--(case)--> of
+|                                                  |--(nmod)--> ltd.
+|                                                                   |--(case)--> at
+|                                                                   |--(compou)--> reliance
+|                                                                   |--(compou)--> globalcom
+|                                                                   |--(nmod)--> india
+|                                                                                    |--(case)--> in
+|--(punct)--> .
+
+	* entity-paths for event['communications']30_12ecb.xmlsent:7728
+
+	* entity-paths for event['cut']30_12ecb.xmlsent:7728
+
+sentence #:three cable systems carrying more than 75 percent of traffic between the middle east , europe and america have been damaged , according to the u.k. 's interoute plc , which operates a fiber- optic data network connecting 92 cities . 
+	[events]:[['damaged']]
+	[entities]:[['cable', 'systems']]
+*R953[damaged]
+|--(nsubjp)--> R951[systems]
+|                |--(nummod)--> three
+|                |--(compou)--> R951[cable]
+|                |--(acl)--> carrying
+|                                 |--(dobj)--> percent
+|                                                  |--(nummod)--> 75
+|                                                  |                |--(advmod)--> more
+|                                                  |                                 |--(mwe)--> than
+|                                                  |--(nmod)--> traffic
+|                                                                   |--(case)--> of
+|                                                                   |--(nmod)--> east
+|                                                                                    |--(case)--> between
+|                                                                                    |--(det)--> the
+|                                                                                    |--(compou)--> middle
+|                                                                                    |--(punct)--> ,
+|                                                                                    |--(conj)--> europe
+|                                                                                    |--(cc)--> and
+|                                                                                    |--(conj)--> america
+|--(aux)--> have
+|--(auxpas)--> been
+|--(punct)--> ,
+|--(nmod)--> plc
+|                |--(case)--> according
+|                |                |--(mwe)--> to
+|                |--(nmod:p)--> u.k.
+|                |                |--(det)--> the
+|                |                |--(case)--> 's
+|                |--(compou)--> interoute
+|                |--(punct)--> ,
+|                |--(acl:re)--> operates
+|                                 |--(nsubj)--> which
+|                                 |--(dobj)--> fiber-
+|                                                  |--(det)--> a
+|                                                  |--(punct)--> fiber-
+|                                                  |--(dep)--> network
+|                                                                   |--(amod)--> optic
+|                                                                   |--(compou)--> data
+|                                                                   |--(acl)--> connecting
+|                                                                                    |--(dobj)--> cities
+|                                                                                                     |--(nummod)--> 92
+|--(punct)--> .
+
+	* entity-paths for event['damaged']30_12ecb.xmlsent:7730
+	['damaged --(nsubjpass)--> systems']

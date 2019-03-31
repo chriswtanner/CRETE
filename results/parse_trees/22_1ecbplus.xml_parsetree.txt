@@ -1,0 +1,95 @@
+
+-----------------------------------------
+docid:22_1ecbplus.xml
+-----------------------------------------
+
+sentence #:kenneth dorsey says the woman accused of killing two co - workers and critically injuring a third at the kraft plant in northeast philly is a good person . 
+	[events]:[['accused'], ['injuring'], ['killing']]
+	[entities]:[['co', '-', 'workers'], ['third'], ['woman'], ['at', 'the', 'kraft', 'plant', 'in', 'northeast', 'philly']]
+says
+|--(nsubj)--> dorsey
+|                |--(compou)--> kenneth
+|--(dobj)--> R589[woman]
+|                |--(det)--> the
+|                |--(acl)--> *R623[accused]
+|                                 |--(advcl)--> *R592[killing]
+|                                                  |--(mark)--> of
+|                                                  |--(dobj)--> two
+|                                                  |--(dep)--> R593[co]
+|--(punct)--> R593[-]
+|--(parata)--> person
+|                |--(nsubj)--> R593[workers]
+|                |                |--(cc)--> and
+|                |                |--(conj)--> R599[philly]
+|                |                                 |--(amod)--> critically
+|                |                                                  |--(dep)--> *R600[injuring]
+|                |                                                                   |--(dobj)--> R601[third]
+|                |                                                                   |                |--(det)--> a
+|                |                                                                   |--(nmod)--> R599[plant]
+|                |                                                                                    |--(case)--> R599[at]
+|                |                                                                                    |--(det)--> R599[the]
+|                |                                                                                    |--(compou)--> R599[kraft]
+|                |                                                                                    |--(nmod)--> R599[northeast]
+|                |                                                                                                     |--(case)--> R599[in]
+|                |--(cop)--> is
+|                |--(det)--> a
+|                |--(amod)--> good
+|--(punct)--> .
+
+	* entity-paths for event['accused']22_1ecbplus.xmlsent:4457
+	['accused --(advcl)--> killing', 'killing --(dep)--> co']
+
+	* entity-paths for event['injuring']22_1ecbplus.xmlsent:4457
+	['injuring --(dobj)--> third']
+	['injuring --(nmod)--> plant']
+
+	* entity-paths for event['killing']22_1ecbplus.xmlsent:4457
+	['killing --(dep)--> co']
+
+sentence #:and so were the two women she's accused of gunning down with a . 357 magnum , just minutes after she'd been suspended and escorted from the building . 
+	[events]:[['escorted'], ['gunning', 'down'], ['accused'], ['suspended']]
+	[entities]:[['minutes'], ["she'd"], ['the', 'building'], ['women'], ['magnum'], ["she's"]]
+R593[women]
+|--(cc)--> and
+|--(advmod)--> so
+|--(cop)--> were
+|--(det)--> the
+|--(nummod)--> two
+|--(acl:re)--> *R623[accused]
+|                |--(nsubjp)--> R589[she's]
+|                |--(auxpas)--> R589[she's]
+|                |--(advcl)--> *R592[gunning]
+|                                 |--(mark)--> of
+|                                 |--(compou)--> *R592[down]
+|                                 |--(nmod)--> a
+|                                                  |--(case)--> with
+|--(punct)--> .
+|--(dep)--> 357
+|                |--(appos)--> R612[magnum]
+|--(punct)--> ,
+|--(advmod)--> just
+|--(dep)--> R611[minutes]
+|                |--(acl)--> *R590[suspended]
+|                                 |--(mark)--> after
+|                                 |--(nsubjp)--> R589[she'd]
+|                                 |--(aux)--> R589[she'd]
+|                                 |--(auxpas)--> been
+|                                 |--(cc)--> and
+|                                 |--(conj)--> *R610[escorted]
+|                                 |--(nmod)--> R599[building]
+|                                                  |--(case)--> from
+|                                                  |--(det)--> R599[the]
+|--(punct)--> .
+
+	* entity-paths for event['escorted']22_1ecbplus.xmlsent:4458
+
+	* entity-paths for event['gunning', 'down']22_1ecbplus.xmlsent:4458
+
+	* entity-paths for event['accused']22_1ecbplus.xmlsent:4458
+	['accused --(nsubjpass)--> she']
+	["accused --(auxpass)--> 's"]
+
+	* entity-paths for event['suspended']22_1ecbplus.xmlsent:4458
+	['suspended --(nsubjpass)--> she']
+	["suspended --(aux)--> 'd"]
+	['suspended --(nmod)--> building']

@@ -1,0 +1,79 @@
+
+-----------------------------------------
+docid:33_4ecbplus.xml
+-----------------------------------------
+
+sentence #:zurana horton was killed when the accused thugs andrew lopez , 20 and jonathan carrasquillo , 24 , were spraying bullets from a rooftop in brownsville , brooklyn and one richocheted off a wall . 
+	[events]:[['spraying'], ['accused'], ['killed']]
+	[entities]:[['jonathan', 'carrasquillo'], ['bullets'], ['zurana', 'horton'], ['andrew', 'lopez'], ['from', 'a', 'rooftop', 'in', 'brownsville', ',', 'brooklyn']]
+*R1078[killed]
+|--(nsubjp)--> R1079[horton]
+|                |--(compou)--> R1079[zurana]
+|--(auxpas)--> was
+|--(advcl)--> richocheted
+|                |--(advmod)--> when
+|                |--(nsubj)--> thugs
+|                |                |--(det)--> the
+|                |                |--(amod)--> *R1106[accused]
+|                |                |--(acl:re)--> *R1118[spraying]
+|                |                                 |--(nsubj)--> R1076[lopez]
+|                |                                 |                |--(compou)--> R1076[andrew]
+|                |                                 |                |--(punct)--> ,
+|                |                                 |                |--(conj)--> 20
+|                |                                 |                |--(cc)--> and
+|                |                                 |                |--(conj)--> R1119[carrasquillo]
+|                |                                 |                |                |--(compou)--> R1119[jonathan]
+|                |                                 |                |--(punct)--> ,
+|                |                                 |                |--(amod)--> 24
+|                |                                 |                |--(punct)--> ,
+|                |                                 |--(aux)--> were
+|                |                                 |--(dobj)--> R1087[bullets]
+|                |                                 |--(nmod)--> R1110[rooftop]
+|                |                                                  |--(case)--> R1110[from]
+|                |                                                  |--(det)--> R1110[a]
+|                |                                                  |--(nmod)--> R1110[brownsville]
+|                |                                                                   |--(case)--> R1110[in]
+|                |                                                                   |--(punct)--> R1110[,]
+|                |                                                                   |--(conj)--> R1110[brooklyn]
+|                |                                                                   |--(cc)--> and
+|                |                                                                   |--(conj)--> one
+|                |--(compou)--> off
+|                |--(dobj)--> wall
+|                                 |--(det)--> a
+|--(punct)--> .
+
+	* entity-paths for event['spraying']33_4ecbplus.xmlsent:9144
+	['spraying --(nsubj)--> Lopez']
+	['spraying --(dobj)--> bullets']
+	['spraying --(nmod)--> rooftop']
+
+	* entity-paths for event['accused']33_4ecbplus.xmlsent:9144
+
+	* entity-paths for event['killed']33_4ecbplus.xmlsent:9144
+	['killed --(nsubjpass)--> Horton']
+	['killed --(advcl)--> richocheted', 'richocheted --(nsubj)--> thugs', 'thugs --(acl:relcl)--> spraying', 'spraying --(nsubj)--> Lopez']
+	['killed --(advcl)--> richocheted', 'richocheted --(nsubj)--> thugs', 'thugs --(acl:relcl)--> spraying', 'spraying --(dobj)--> bullets']
+	['killed --(advcl)--> richocheted', 'richocheted --(nsubj)--> thugs', 'thugs --(acl:relcl)--> spraying', 'spraying --(nmod)--> rooftop']
+
+sentence #:gangbangers who allegedly killed mom of 12 in crossfire begin trial 
+	[events]:[['trial'], ['killed'], ['crossfire']]
+	[entities]:[['gangbangers'], ['who'], ['mom']]
+R1105[gangbangers]
+|--(acl:re)--> *R1078[killed]
+|                |--(nsubj)--> R1105[who]
+|                |--(advmod)--> allegedly
+|                |--(dobj)--> R1079[mom]
+|                                 |--(nmod)--> 12
+|                                                  |--(case)--> of
+|--(nmod)--> *R1083[crossfire]
+                 |--(case)--> in
+                 |--(dep)--> begin
+                                  |--(dobj)--> *R1104[trial]
+
+	* entity-paths for event['trial']33_4ecbplus.xmlsent:9143
+
+	* entity-paths for event['killed']33_4ecbplus.xmlsent:9143
+	['killed --(nsubj)--> who']
+	['killed --(dobj)--> mom']
+
+	* entity-paths for event['crossfire']33_4ecbplus.xmlsent:9143

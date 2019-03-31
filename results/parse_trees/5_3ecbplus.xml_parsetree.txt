@@ -1,0 +1,27 @@
+
+-----------------------------------------
+docid:5_3ecbplus.xml
+-----------------------------------------
+
+sentence #:philadelphia 76ers fired jim o'brien , coach . named maurice cheeks coach . 
+	[events]:[['fired'], ['named']]
+	[entities]:[['coach'], ['maurice', 'cheeks'], ['philadelphia', '76ers'], ['jim', "o'brien"]]
+*R1677[named]
+|--(nsubj)--> R1684[o'brien]
+|                |--(compou)--> R1673[philadelphia]
+|                |--(compou)--> R1673[76ers]
+|                |--(compou)--> *R1683[fired]
+|                |--(compou)--> R1684[jim]
+|                |--(punct)--> ,
+|                |--(dep)--> coach
+|                                 |--(punct)--> .
+|--(dobj)--> R1674[coach]
+|                |--(compou)--> R1674[maurice]
+|                |--(compou)--> R1674[cheeks]
+|--(punct)--> .
+
+	* entity-paths for event['fired']5_3ecbplus.xmlsent:14148
+
+	* entity-paths for event['named']5_3ecbplus.xmlsent:14148
+	["Named --(nsubj)--> O'Brien"]
+	['Named --(dobj)--> coach']

@@ -1,0 +1,116 @@
+
+-----------------------------------------
+docid:33_7ecbplus.xml
+-----------------------------------------
+
+sentence #:a shocking video released for the first time thursday captures the moment a brooklyn mother of 12 was killed in a gang shootout as she picked her daughter up from school . 
+	[events]:[['captures'], ['released'], ['shootout'], ['killed']]
+	[entities]:[['from', 'school'], ['moment'], ['brooklyn', 'mother', 'of', '12'], ['video'], ['gang'], ['daughter'], ['she']]
+*R1128[captures]
+|--(nsubj)--> R1103[video]
+|                |--(det)--> a
+|                |--(amod)--> shocking
+|                |--(acl)--> *R1101[released]
+|                                 |--(nmod)--> time
+|                                 |                |--(case)--> for
+|                                 |                |--(det)--> the
+|                                 |                |--(amod)--> first
+|                                 |--(nmod:t)--> thursday
+|--(dobj)--> R1086[moment]
+|                |--(det)--> the
+|                |--(acl:re)--> *R1078[killed]
+|                                 |--(nsubjp)--> R1079[mother]
+|                                 |                |--(det)--> a
+|                                 |                |--(compou)--> R1079[brooklyn]
+|                                 |                |--(nmod)--> R1079[12]
+|                                 |                                 |--(case)--> R1079[of]
+|                                 |--(auxpas)--> was
+|                                 |--(nmod)--> *R1083[shootout]
+|                                 |                |--(case)--> in
+|                                 |                |--(det)--> a
+|                                 |                |--(compou)--> R1077[gang]
+|                                 |--(advcl)--> picked
+|                                                  |--(mark)--> as
+|                                                  |--(nsubj)--> R1079[she]
+|                                                  |--(dobj)--> her
+|                                                  |--(nmod)--> R1116[school]
+|                                                                   |--(advmod)--> up
+|                                                                   |                |--(nmod:n)--> R1115[daughter]
+|                                                                   |--(case)--> R1116[from]
+|--(punct)--> .
+
+	* entity-paths for event['captures']33_7ecbplus.xmlsent:9200
+	['captures --(nsubj)--> video']
+	['captures --(dobj)--> moment']
+
+	* entity-paths for event['released']33_7ecbplus.xmlsent:9200
+
+	* entity-paths for event['shootout']33_7ecbplus.xmlsent:9200
+	['shootout --(compound)--> gang']
+
+	* entity-paths for event['killed']33_7ecbplus.xmlsent:9200
+	['killed --(nsubjpass)--> mother']
+	['killed --(nmod)--> shootout', 'shootout --(compound)--> gang']
+	['killed --(advcl)--> picked', 'picked --(nsubj)--> she']
+	['killed --(advcl)--> picked', 'picked --(nmod)--> school']
+
+sentence #:andrew lopez , 20 , is the accused gunman who sprayed gunfire from a rooftop . 
+	[events]:[['sprayed'], ['accused']]
+	[entities]:[['gunman'], ['andrew', 'lopez'], ['who'], ['gunfire'], ['from', 'a', 'rooftop']]
+R1076[gunman]
+|--(nsubj)--> R1076[lopez]
+|                |--(compou)--> R1076[andrew]
+|                |--(punct)--> ,
+|                |--(amod)--> 20
+|                |--(punct)--> ,
+|--(cop)--> is
+|--(det)--> the
+|--(amod)--> *R1129[accused]
+|--(acl:re)--> *R1118[sprayed]
+|                |--(nsubj)--> R1076[who]
+|                |--(dobj)--> R1087[gunfire]
+|                |--(nmod)--> R1110[rooftop]
+|                                 |--(case)--> R1110[from]
+|                                 |--(det)--> R1110[a]
+|--(punct)--> .
+
+	* entity-paths for event['sprayed']33_7ecbplus.xmlsent:9198
+	['sprayed --(nsubj)--> who']
+	['sprayed --(dobj)--> gunfire']
+	['sprayed --(nmod)--> rooftop']
+
+	* entity-paths for event['accused']33_7ecbplus.xmlsent:9198
+
+sentence #:zurana horton , 34 , was killed on oct . 21 , 2011 while walking near an intersection in brownsville after 2 p . m . 
+	[events]:[['killed']]
+	[entities]:[['zurana', 'horton'], ['on', 'oct', '.', '21', ',', '2011']]
+*R1078[killed]
+|--(nsubjp)--> R1079[horton]
+|                |--(compou)--> R1079[zurana]
+|                |--(punct)--> ,
+|                |--(amod)--> 34
+|                |--(punct)--> ,
+|--(auxpas)--> was
+|--(nmod)--> R1086[oct]
+|                |--(case)--> R1086[on]
+|                |--(punct)--> R1086[.]
+|                |--(dep)--> R1086[21]
+|                |--(punct)--> R1086[,]
+|                |--(acl:re)--> m
+|                                 |--(dep)--> R1086[2011]
+|                                                  |--(acl)--> walking
+|                                                                   |--(mark)--> while
+|                                                                   |--(nmod)--> intersection
+|                                                                   |                |--(case)--> near
+|                                                                   |                |--(det)--> an
+|                                                                   |                |--(nmod)--> brownsville
+|                                                                   |                                 |--(case)--> in
+|                                                                   |--(nmod)--> p
+|                                                                   |                |--(case)--> after
+|                                                                   |                |--(nummod)--> 2
+|                                                                   |--(punct)--> .
+|--(punct)--> .
+
+	* entity-paths for event['killed']33_7ecbplus.xmlsent:9197
+	['killed --(nsubjpass)--> Horton']
+	['killed --(nmod)--> Oct']

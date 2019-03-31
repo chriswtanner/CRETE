@@ -1,0 +1,154 @@
+
+-----------------------------------------
+docid:1_1ecbplus.xml
+-----------------------------------------
+
+sentence #:a spokesperson for the los angeles superior court confirmed to access that a judge signed an order yesterday allowing the transfer to cliffside , where she will continue with her 90 - day court - mandated rehab . 
+	[events]:[['allowing'], ['continue'], ['rehab'], ['transfer'], ['signed']]
+	[entities]:[['the', 'los', 'angeles', 'superior', 'court'], ['90', '-', 'day'], ['spokesperson'], ['yesterday'], ['she'], ['where'], ['judge'], ['access'], ['cliffside']]
+confirmed
+|--(nsubj)--> R94[spokesperson]
+|                |--(det)--> a
+|                |--(nmod)--> R95[court]
+|                                 |--(case)--> for
+|                                 |--(det)--> R95[the]
+|                                 |--(compou)--> R95[los]
+|                                 |--(compou)--> R95[angeles]
+|                                 |--(compou)--> R95[superior]
+|--(nmod)--> R96[access]
+|                |--(case)--> to
+|--(ccomp)--> *R97[signed]
+|                |--(mark)--> that
+|                |--(nsubj)--> R98[judge]
+|                |                |--(det)--> a
+|                |--(dobj)--> order
+|                |                |--(det)--> an
+|                |--(nmod:t)--> R99[yesterday]
+|                |--(xcomp)--> *R100[allowing]
+|                                 |--(dobj)--> *R101[transfer]
+|                                 |                |--(det)--> the
+|                                 |--(nmod)--> R102[cliffside]
+|                                                  |--(case)--> to
+|                                                  |--(punct)--> ,
+|                                                  |--(acl:re)--> *R103[continue]
+|                                                  |                |--(advmod)--> R102[where]
+|                                                  |                |--(nsubj)--> R15[she]
+|                                                  |                |--(aux)--> will
+|                                                  |                |--(nmod)--> R18[90]
+|                                                  |                                 |--(case)--> with
+|                                                  |                                 |--(nmod:p)--> her
+|                                                  |--(punct)--> R18[-]
+|                                                  |--(dep)--> *R19[rehab]
+|                                                                   |--(compou)--> R18[day]
+|                                                                   |--(compou)--> court
+|                                                                                    |--(punct)--> -
+|                                                                                    |--(amod)--> mandated
+|--(punct)--> .
+
+	* entity-paths for event['allowing']1_1ecbplus.xmlsent:170
+	['allowing --(nmod)--> Cliffside']
+
+	* entity-paths for event['continue']1_1ecbplus.xmlsent:170
+	['continue --(advmod)--> where']
+	['continue --(nsubj)--> she']
+	['continue --(nmod)--> 90']
+
+	* entity-paths for event['rehab']1_1ecbplus.xmlsent:170
+	['rehab --(compound)--> day']
+
+	* entity-paths for event['transfer']1_1ecbplus.xmlsent:170
+
+	* entity-paths for event['signed']1_1ecbplus.xmlsent:170
+	['signed --(nsubj)--> judge']
+	['signed --(nmod:tmod)--> yesterday']
+	['signed --(xcomp)--> allowing', 'allowing --(nmod)--> Cliffside']
+
+sentence #:lohan " s attorney , shawn holley , spoke out about the move . 
+	[events]:[['spoke'], ['move']]
+	[entities]:[['attorney', ',', 'shawn', 'holley'], ['lohan']]
+*R104[spoke]
+|--(dep)--> s
+|                |--(nsubj)--> R15[lohan]
+|                |--(punct)--> "
+|--(nsubj)--> R30[attorney]
+|                |--(punct)--> R30[,]
+|                |--(appos)--> R30[holley]
+|                |                |--(compou)--> R30[shawn]
+|                |--(punct)--> ,
+|--(compou)--> out
+|--(nmod)--> *R101[move]
+|                |--(case)--> about
+|                |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['spoke']1_1ecbplus.xmlsent:171
+	['spoke --(dep)--> s', 's --(nsubj)--> Lohan']
+	['spoke --(nsubj)--> attorney']
+
+	* entity-paths for event['move']1_1ecbplus.xmlsent:171
+
+sentence #:lindsay lohan leaves betty ford , checks into malibu rehab 
+	[events]:[['leaves'], ['checks', 'into']]
+	[entities]:[['betty', 'ford'], ['lindsay', 'lohan'], ['malibu', 'rehab']]
+*R105[leaves]
+|--(nsubj)--> R15[lohan]
+|                |--(compou)--> R15[lindsay]
+|--(dobj)--> *R101[checks]
+                 |--(compou)--> R16[betty]
+                 |--(compou)--> R16[ford]
+                 |--(punct)--> ,
+                 |--(nmod)--> R102[rehab]
+                                  |--(dep)--> *R101[into]
+                                  |--(compou)--> R102[malibu]
+
+	* entity-paths for event['leaves']1_1ecbplus.xmlsent:167
+	['Leaves --(nsubj)--> Lohan']
+	['Leaves --(dobj)--> Checks', 'Checks --(compound)--> Betty']
+	['Leaves --(dobj)--> Checks', 'Checks --(compound)--> Ford']
+	['Leaves --(dobj)--> Checks', 'Checks --(nmod)--> Rehab']
+
+	* entity-paths for event['checks', 'into']1_1ecbplus.xmlsent:167
+
+sentence #:lindsay lohan has left the betty ford center and is moving to a rehab facility in malibu , calif . , access hollywood has confirmed . 
+	[events]:[['moving'], ['left'], ['confirmed']]
+	[entities]:[['the', 'betty', 'ford', 'center'], ['access', 'hollywood'], ['lindsay', 'lohan'], ['a', 'rehab', 'facility', 'in', 'malibu', ',', 'calif']]
+*R106[confirmed]
+|--(ccomp)--> *R105[left]
+|                |--(nsubj)--> R15[lohan]
+|                |                |--(compou)--> R15[lindsay]
+|                |--(aux)--> has
+|                |--(dobj)--> R16[center]
+|                |                |--(det)--> R16[the]
+|                |                |--(compou)--> R16[betty]
+|                |                |--(compou)--> R16[ford]
+|                |--(cc)--> and
+|                |--(conj)--> *R101[moving]
+|                                 |--(aux)--> is
+|                                 |--(nmod)--> R102[facility]
+|                                                  |--(case)--> to
+|                                                  |--(det)--> R102[a]
+|                                                  |--(compou)--> R102[rehab]
+|                                                  |--(nmod)--> R102[malibu]
+|                                                                   |--(case)--> R102[in]
+|                                                                   |--(punct)--> R102[,]
+|                                                                   |--(appos)--> R102[calif]
+|                                                                                    |--(punct)--> .
+|--(punct)--> ,
+|--(nsubj)--> R96[hollywood]
+|                |--(compou)--> R96[access]
+|--(aux)--> has
+|--(punct)--> .
+
+	* entity-paths for event['moving']1_1ecbplus.xmlsent:169
+	['moving --(nmod)--> facility']
+
+	* entity-paths for event['left']1_1ecbplus.xmlsent:169
+	['left --(nsubj)--> Lohan']
+	['left --(dobj)--> Center']
+	['left --(conj)--> moving', 'moving --(nmod)--> facility']
+
+	* entity-paths for event['confirmed']1_1ecbplus.xmlsent:169
+	['confirmed --(ccomp)--> left', 'left --(nsubj)--> Lohan']
+	['confirmed --(ccomp)--> left', 'left --(dobj)--> Center']
+	['confirmed --(ccomp)--> left', 'left --(conj)--> moving', 'moving --(nmod)--> facility']
+	['confirmed --(nsubj)--> Hollywood']

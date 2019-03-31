@@ -1,0 +1,26 @@
+
+-----------------------------------------
+docid:10_17ecbplus.xml
+-----------------------------------------
+
+sentence #:herald : sox make offer to teixeira ( 8 years ? ) 
+	[events]:[['make'], ['offer']]
+	[entities]:[['herald'], ['teixeira'], ['8', 'years'], ['sox']]
+R169[herald]
+|--(punct)--> :
+|--(parata)--> *R165[offer]
+                 |--(nsubj)--> R162[sox]
+                 |--(dep)--> *R161[make]
+                 |--(nmod)--> R163[teixeira]
+                                  |--(case)--> to
+                                  |--(dep)--> R164[8]
+                                                   |--(punct)--> (
+                                                   |--(dep)--> R164[years]
+                                                   |--(punct)--> ?
+                                                   |--(punct)--> )
+
+	* entity-paths for event['make']10_17ecbplus.xmlsent:332
+
+	* entity-paths for event['offer']10_17ecbplus.xmlsent:332
+	['Offer --(nsubj)--> Sox']
+	['Offer --(nmod)--> Teixeira']

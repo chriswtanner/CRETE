@@ -1,0 +1,147 @@
+
+-----------------------------------------
+docid:1_7ecb.xml
+-----------------------------------------
+
+sentence #:the " american pie " actress has entered promises for undisclosed reasons 
+	[events]:[['entered'], ['undisclosed'], ['reasons']]
+	[entities]:[['promises'], ['american', 'pie'], ['actress']]
+R3[promises]
+|--(nsubj)--> the
+|                |--(punct)--> "
+|                |--(nmod)--> R84[pie]
+|                |                |--(case)--> R84[american]
+|                |                |--(punct)--> "
+|                |--(acl:re)--> *R1[entered]
+|                                 |--(nsubj)--> R2[actress]
+|                                 |--(aux)--> has
+|--(nmod)--> *R50[reasons]
+                 |--(case)--> for
+                 |--(amod)--> *R49[undisclosed]
+
+	* entity-paths for event['entered']1_7ecb.xmlsent:273
+	['entered --(nsubj)--> actress']
+
+	* entity-paths for event['undisclosed']1_7ecb.xmlsent:273
+
+	* entity-paths for event['reasons']1_7ecb.xmlsent:273
+
+sentence #:although the rep would n't reveal why she entered rehab , a source from the magazine said that it was her decision to get help . 
+	[events]:[['entered'], ['decision'], ['get'], ['reveal'], ['help']]
+	[entities]:[['rehab'], ['magazine'], ['she'], ['rep'], ['her']]
+said
+|--(advcl)--> *R49[reveal]
+|                |--(mark)--> although
+|                |--(nsubj)--> R4[rep]
+|                |                |--(det)--> the
+|                |--(aux)--> would
+|                |--(neg)--> n't
+|                |--(advcl)--> *R1[entered]
+|                                 |--(advmod)--> why
+|                                 |--(nsubj)--> R2[she]
+|                                 |--(dobj)--> R3[rehab]
+|--(punct)--> ,
+|--(nsubj)--> source
+|                |--(det)--> a
+|                |--(nmod)--> R5[magazine]
+|                                 |--(case)--> from
+|                                 |--(det)--> the
+|--(ccomp)--> *R39[decision]
+|                |--(mark)--> that
+|                |--(nsubj)--> it
+|                |--(cop)--> was
+|                |--(nmod:p)--> R2[her]
+|                |--(acl)--> *R47[get]
+|                                 |--(mark)--> to
+|                                 |--(dobj)--> *R46[help]
+|--(punct)--> .
+
+	* entity-paths for event['entered']1_7ecb.xmlsent:277
+	['entered --(nsubj)--> she']
+	['entered --(dobj)--> rehab']
+
+	* entity-paths for event['decision']1_7ecb.xmlsent:277
+	['decision --(nmod:poss)--> her']
+
+	* entity-paths for event['get']1_7ecb.xmlsent:277
+
+	* entity-paths for event['reveal']1_7ecb.xmlsent:277
+	['reveal --(nsubj)--> rep']
+	['reveal --(advcl)--> entered', 'entered --(nsubj)--> she']
+	['reveal --(advcl)--> entered', 'entered --(dobj)--> rehab']
+
+	* entity-paths for event['help']1_7ecb.xmlsent:277
+
+sentence #:reid became famous from her 1999 role in " american pie " and had her own reality show " taradise " in 2005 . 
+	[events]:[['became']]
+	[entities]:[['reid'], ['american', 'pie'], ['taradise'], ['her']]
+*R83[became]
+|--(nsubj)--> R2[reid]
+|--(xcomp)--> famous
+|                |--(nmod)--> role
+|                                 |--(case)--> from
+|                                 |--(nmod:p)--> R2[her]
+|                                 |--(nummod)--> 1999
+|--(nmod)--> R84[pie]
+|                |--(case)--> in
+|                |--(punct)--> "
+|                |--(amod)--> R84[american]
+|--(punct)--> "
+|--(cc)--> and
+|--(conj)--> had
+|                |--(dobj)--> R145[taradise]
+|                                 |--(nmod:p)--> her
+|                                 |--(amod)--> own
+|                                 |--(compou)--> reality
+|                                 |--(compou)--> show
+|                                 |--(punct)--> "
+|                                 |--(punct)--> "
+|                                 |--(nmod)--> 2005
+|                                                  |--(case)--> in
+|--(punct)--> .
+
+	* entity-paths for event['became']1_7ecb.xmlsent:278
+	['became --(nsubj)--> Reid']
+	['became --(xcomp)--> famous', 'famous --(nmod)--> role', 'role --(nmod:poss)--> her']
+	['became --(nmod)--> Pie']
+	['became --(conj)--> had', 'had --(dobj)--> Taradise']
+
+sentence #:the actress , 33 , reportedly headed to a malibu treatment facility on tuesday . 
+	[events]:[['headed']]
+	[entities]:[['actress'], ['on', 'tuesday'], ['to', 'a', 'malibu', 'treatment', 'facility']]
+*R1[headed]
+|--(nsubj)--> R2[actress]
+|                |--(det)--> the
+|                |--(punct)--> ,
+|                |--(amod)--> 33
+|                |--(punct)--> ,
+|--(advmod)--> reportedly
+|--(nmod)--> R3[facility]
+|                |--(case)--> R3[to]
+|                |--(det)--> R3[a]
+|                |--(compou)--> R3[malibu]
+|                |--(compou)--> R3[treatment]
+|                |--(nmod)--> R6[tuesday]
+|                                 |--(case)--> R6[on]
+|--(punct)--> .
+
+	* entity-paths for event['headed']1_7ecb.xmlsent:274
+	['headed --(nsubj)--> actress']
+	['headed --(nmod)--> facility']
+
+sentence #:" tara reid has checked herself into promises treatment center . 
+	[events]:[['checked', 'into']]
+	[entities]:[['tara', 'reid'], ['promises', 'treatment', 'center'], ['herself']]
+*R1[checked]
+|--(punct)--> "
+|--(nsubj)--> R2[reid]
+|                |--(compou)--> R2[tara]
+|--(aux)--> has
+|--(dobj)--> R2[herself]
+|--(advcl)--> R3[promises]
+|                |--(mark)--> *R1[into]
+|                |--(dobj)--> R3[center]
+|                                 |--(compou)--> R3[treatment]
+|--(punct)--> .
+
+	* entity-paths for event['checked', 'into']1_7ecb.xmlsent:275

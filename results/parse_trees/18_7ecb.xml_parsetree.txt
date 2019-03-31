@@ -1,0 +1,62 @@
+
+-----------------------------------------
+docid:18_7ecb.xml
+-----------------------------------------
+
+sentence #:a just- fired employee of a canadian health products company crashed the office christmas party in vancouver , killing the chief executive officer , police said . 
+	[events]:[['killing'], ['fired'], ['said'], ['crashed'], ['party']]
+	[entities]:[['police'], ['the', 'office'], ['employee'], ['officer'], ['company']]
+just-
+|--(det)--> a
+|--(punct)--> just-
+|--(dep)--> *R387[said]
+|                |--(ccomp)--> *R365[fired]
+|                |                |--(ccomp)--> *R385[crashed]
+|                |                                 |--(nsubj)--> R356[employee]
+|                |                                 |                |--(nmod)--> R395[company]
+|                |                                 |                                 |--(case)--> of
+|                |                                 |                                 |--(det)--> a
+|                |                                 |                                 |--(amod)--> canadian
+|                |                                 |                                 |--(compou)--> health
+|                |                                 |                                 |--(compou)--> products
+|                |                                 |--(dobj)--> *R359[party]
+|                |                                 |                |--(det)--> R383[the]
+|                |                                 |                |--(compou)--> R383[office]
+|                |                                 |                |--(compou)--> christmas
+|                |                                 |                |--(nmod)--> vancouver
+|                |                                 |                                 |--(case)--> in
+|                |                                 |--(punct)--> ,
+|                |                                 |--(advcl)--> *R358[killing]
+|                |                                                  |--(dobj)--> R369[officer]
+|                |                                                                   |--(det)--> the
+|                |                                                                   |--(amod)--> chief
+|                |                                                                   |--(compou)--> executive
+|                |--(punct)--> ,
+|                |--(nsubj)--> R386[police]
+|--(punct)--> .
+
+	* entity-paths for event['killing']18_7ecb.xmlsent:2630
+	['killing --(dobj)--> officer']
+
+	* entity-paths for event['fired']18_7ecb.xmlsent:2630
+	['fired --(ccomp)--> crashed', 'crashed --(nsubj)--> employee']
+	['fired --(ccomp)--> crashed', 'crashed --(dobj)--> party', 'party --(det)--> the']
+	['fired --(ccomp)--> crashed', 'crashed --(dobj)--> party', 'party --(compound)--> office']
+	['fired --(ccomp)--> crashed', 'crashed --(advcl)--> killing', 'killing --(dobj)--> officer']
+
+	* entity-paths for event['said']18_7ecb.xmlsent:2630
+	['said --(ccomp)--> fired', 'fired --(ccomp)--> crashed', 'crashed --(nsubj)--> employee']
+	['said --(ccomp)--> fired', 'fired --(ccomp)--> crashed', 'crashed --(dobj)--> party', 'party --(det)--> the']
+	['said --(ccomp)--> fired', 'fired --(ccomp)--> crashed', 'crashed --(dobj)--> party', 'party --(compound)--> office']
+	['said --(ccomp)--> fired', 'fired --(ccomp)--> crashed', 'crashed --(advcl)--> killing', 'killing --(dobj)--> officer']
+	['said --(nsubj)--> police']
+
+	* entity-paths for event['crashed']18_7ecb.xmlsent:2630
+	['crashed --(nsubj)--> employee']
+	['crashed --(dobj)--> party', 'party --(det)--> the']
+	['crashed --(dobj)--> party', 'party --(compound)--> office']
+	['crashed --(advcl)--> killing', 'killing --(dobj)--> officer']
+
+	* entity-paths for event['party']18_7ecb.xmlsent:2630
+	['party --(det)--> the']
+	['party --(compound)--> office']

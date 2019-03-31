@@ -1,0 +1,102 @@
+
+-----------------------------------------
+docid:36_3ecb.xml
+-----------------------------------------
+
+sentence #:two top leaders of the controversial polygamous sect in bountiful , b.c. , have been arrested and charged with practising polygamy . 
+	[events]:[['charged'], ['polygamy'], ['arrested']]
+	[entities]:[['sect'], ['in', 'bountiful', ',', 'b.c.'], ['leaders']]
+*R1195[arrested]
+|--(nsubjp)--> R1196[leaders]
+|                |--(nummod)--> two
+|                |--(amod)--> top
+|                |--(nmod)--> R1197[sect]
+|                                 |--(case)--> of
+|                                 |--(det)--> the
+|                                 |--(amod)--> controversial
+|                                 |--(amod)--> polygamous
+|                                 |--(nmod)--> R1217[b.c.]
+|                                                  |--(case)--> R1217[in]
+|                                                  |--(compou)--> R1217[bountiful]
+|                                                  |--(punct)--> R1217[,]
+|                                                  |--(punct)--> ,
+|--(aux)--> have
+|--(auxpas)--> been
+|--(cc)--> and
+|--(conj)--> *R1199[charged]
+|--(advcl)--> practising
+|                |--(mark)--> with
+|                |--(dobj)--> *R1201[polygamy]
+|--(punct)--> .
+
+	* entity-paths for event['charged']36_3ecb.xmlsent:9995
+
+	* entity-paths for event['polygamy']36_3ecb.xmlsent:9995
+
+	* entity-paths for event['arrested']36_3ecb.xmlsent:9995
+	['arrested --(nsubjpass)--> leaders']
+
+sentence #:b.c. attorney general wally oppal confirmed that winston blackmore and james oler were arrested wednesday . 
+	[events]:[['arrested'], ['confirmed']]
+	[entities]:[['james', 'oler'], ['winston', 'blackmore'], ['wednesday'], ['wally', 'oppal']]
+*R1200[confirmed]
+|--(nsubj)--> R1202[oppal]
+|                |--(compou)--> b.c.
+|                |--(compou)--> attorney
+|                |--(compou)--> general
+|                |--(compou)--> R1202[wally]
+|--(ccomp)--> *R1195[arrested]
+|                |--(mark)--> that
+|                |--(nsubjp)--> R1221[blackmore]
+|                |                |--(compou)--> R1221[winston]
+|                |                |--(cc)--> and
+|                |                |--(conj)--> R1222[oler]
+|                |                                 |--(compou)--> R1222[james]
+|                |--(auxpas)--> were
+|                |--(nmod:t)--> R1203[wednesday]
+|--(punct)--> .
+
+	* entity-paths for event['arrested']36_3ecb.xmlsent:9996
+	['arrested --(nsubjpass)--> Blackmore']
+	['arrested --(nmod:tmod)--> Wednesday']
+
+	* entity-paths for event['confirmed']36_3ecb.xmlsent:9996
+	['confirmed --(nsubj)--> Oppal']
+	['confirmed --(ccomp)--> arrested', 'arrested --(nsubjpass)--> Blackmore']
+	['confirmed --(ccomp)--> arrested', 'arrested --(nmod:tmod)--> Wednesday']
+
+sentence #:a follow-up investigation began last september and the two men were arrested this morning and taken to the rcmp detachment in cranbrook , b.c. , shields said . 
+	[events]:[['arrested']]
+	[entities]:[['two', 'men'], ['rcmp']]
+said
+|--(ccomp)--> began
+|                |--(nsubj)--> investigation
+|                |                |--(det)--> a
+|                |                |--(amod)--> follow-up
+|                |--(nmod:t)--> september
+|                |                |--(amod)--> last
+|                |--(cc)--> and
+|                |--(conj)--> *R1195[arrested]
+|                                 |--(nsubjp)--> R1196[men]
+|                                 |                |--(det)--> the
+|                                 |                |--(nummod)--> R1196[two]
+|                                 |--(auxpas)--> were
+|                                 |--(nmod:t)--> morning
+|                                 |                |--(det)--> this
+|                                 |--(cc)--> and
+|                                 |--(conj)--> taken
+|                                                  |--(nmod)--> detachment
+|                                                                   |--(case)--> to
+|                                                                   |--(det)--> the
+|                                                                   |--(compou)--> R1215[rcmp]
+|                                                                   |--(nmod)--> b.c.
+|                                                                                    |--(case)--> in
+|                                                                                    |--(compou)--> cranbrook
+|                                                                                    |--(punct)--> ,
+|--(punct)--> ,
+|--(nsubj)--> shields
+|--(punct)--> .
+
+	* entity-paths for event['arrested']36_3ecb.xmlsent:10010
+	['arrested --(nsubjpass)--> men']
+	['arrested --(conj)--> taken', 'taken --(nmod)--> detachment', 'detachment --(compound)--> RCMP']

@@ -1,0 +1,46 @@
+
+-----------------------------------------
+docid:43_15ecbplus.xml
+-----------------------------------------
+
+sentence #:much will be made of amd entering the server business with the acquisition of seamicro . 
+	[events]:[['business'], ['entering'], ['acquisition']]
+	[entities]:[['amd'], ['seamicro'], ['server']]
+made
+|--(nsubjp)--> much
+|--(aux)--> will
+|--(auxpas)--> be
+|--(nmod)--> R1547[amd]
+|                |--(case)--> of
+|--(xcomp)--> *R1557[entering]
+|                |--(dobj)--> *R1556[business]
+|                |                |--(det)--> the
+|                |                |--(compou)--> R1559[server]
+|                |--(nmod)--> *R1546[acquisition]
+|                                 |--(case)--> with
+|                                 |--(det)--> the
+|                                 |--(nmod)--> R1549[seamicro]
+|                                                  |--(case)--> of
+|--(punct)--> .
+
+	* entity-paths for event['business']43_15ecbplus.xmlsent:12976
+	['business --(compound)--> server']
+
+	* entity-paths for event['entering']43_15ecbplus.xmlsent:12976
+	['entering --(dobj)--> business', 'business --(compound)--> server']
+	['entering --(nmod)--> acquisition', 'acquisition --(nmod)--> SeaMicro']
+
+	* entity-paths for event['acquisition']43_15ecbplus.xmlsent:12976
+	['acquisition --(nmod)--> SeaMicro']
+
+sentence #:amd snaps up server upstart seamicro 
+	[events]:[['snaps', 'up']]
+	[entities]:[['amd'], ['server'], ['upstart', 'seamicro']]
+*R1546[snaps]
+|--(dep)--> R1547[amd]
+|--(compou)--> *R1546[up]
+|--(dobj)--> R1549[upstart]
+|                |--(compou)--> R1548[server]
+|--(nsubj)--> R1549[seamicro]
+
+	* entity-paths for event['snaps', 'up']43_15ecbplus.xmlsent:12960

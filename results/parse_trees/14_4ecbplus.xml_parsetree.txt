@@ -1,0 +1,35 @@
+
+-----------------------------------------
+docid:14_4ecbplus.xml
+-----------------------------------------
+
+sentence #:wellington supermarket fire 
+	[events]:[['fire']]
+	[entities]:[['wellington', 'supermarket']]
+R308[wellington]
+|--(dep)--> *R302[fire]
+                 |--(compou)--> R308[supermarket]
+
+	* entity-paths for event['fire']14_4ecbplus.xmlsent:1738
+	['fire --(compound)--> supermarket']
+
+sentence #:a large fire has destroyed much of a supermarket in somerset . 
+	[events]:[['destroyed'], ['fire']]
+	[entities]:[['in', 'somerset'], ['a', 'supermarket']]
+*R307[destroyed]
+|--(nsubj)--> *R302[fire]
+|                |--(det)--> a
+|                |--(amod)--> large
+|--(aux)--> has
+|--(dobj)--> much
+|                |--(nmod)--> R308[supermarket]
+|                                 |--(case)--> of
+|                                 |--(det)--> R308[a]
+|                                 |--(nmod)--> R309[somerset]
+|                                                  |--(case)--> R309[in]
+|--(punct)--> .
+
+	* entity-paths for event['destroyed']14_4ecbplus.xmlsent:1739
+	['destroyed --(dobj)--> much', 'much --(nmod)--> supermarket']
+
+	* entity-paths for event['fire']14_4ecbplus.xmlsent:1739

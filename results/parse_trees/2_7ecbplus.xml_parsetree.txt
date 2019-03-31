@@ -1,0 +1,107 @@
+
+-----------------------------------------
+docid:2_7ecbplus.xml
+-----------------------------------------
+
+sentence #:" we are thrilled to have ellen degeneres host the oscars , " said zadan and meron . 
+	[events]:[['thrilled'], ['oscars'], ['host'], ['said']]
+	[entities]:[['meron'], ['ellen', 'degeneres'], ['we'], ['zadan']]
+*R464[said]
+|--(punct)--> "
+|--(ccomp)--> *R484[thrilled]
+|                |--(nsubjp)--> R483[we]
+|                |--(auxpas)--> are
+|                |--(xcomp)--> have
+|                                 |--(mark)--> to
+|                                 |--(xcomp)--> *R455[oscars]
+|                                                  |--(nsubj)--> *R456[host]
+|                                                  |                |--(compou)--> R454[ellen]
+|                                                  |                |--(compou)--> R454[degeneres]
+|                                                  |--(det)--> the
+|--(punct)--> ,
+|--(punct)--> "
+|--(dep)--> R485[zadan]
+|                |--(cc)--> and
+|                |--(conj)--> R486[meron]
+|--(punct)--> .
+
+	* entity-paths for event['thrilled']2_7ecbplus.xmlsent:3702
+	['thrilled --(nsubjpass)--> We']
+	['thrilled --(xcomp)--> have', 'have --(xcomp)--> Oscars', 'Oscars --(nsubj)--> host', 'host --(compound)--> Ellen']
+	['thrilled --(xcomp)--> have', 'have --(xcomp)--> Oscars', 'Oscars --(nsubj)--> host', 'host --(compound)--> DeGeneres']
+
+	* entity-paths for event['oscars']2_7ecbplus.xmlsent:3702
+	['Oscars --(nsubj)--> host', 'host --(compound)--> Ellen']
+	['Oscars --(nsubj)--> host', 'host --(compound)--> DeGeneres']
+
+	* entity-paths for event['host']2_7ecbplus.xmlsent:3702
+	['host --(compound)--> Ellen']
+	['host --(compound)--> DeGeneres']
+
+	* entity-paths for event['said']2_7ecbplus.xmlsent:3702
+	['said --(ccomp)--> thrilled', 'thrilled --(nsubjpass)--> We']
+	['said --(ccomp)--> thrilled', 'thrilled --(xcomp)--> have', 'have --(xcomp)--> Oscars', 'Oscars --(nsubj)--> host', 'host --(compound)--> Ellen']
+	['said --(ccomp)--> thrilled', 'thrilled --(xcomp)--> have', 'have --(xcomp)--> Oscars', 'Oscars --(nsubj)--> host', 'host --(compound)--> DeGeneres']
+	['said --(dep)--> Zadan']
+
+sentence #:ellen degeneres returns to host the oscars 
+	[events]:[['returns'], ['host'], ['oscars']]
+	[entities]:[['ellen', 'degeneres']]
+*R457[returns]
+|--(nsubj)--> R454[degeneres]
+|                |--(compou)--> R454[ellen]
+|--(nmod)--> *R455[oscars]
+                 |--(case)--> to
+                 |--(compou)--> *R456[host]
+                 |--(det)--> the
+
+	* entity-paths for event['returns']2_7ecbplus.xmlsent:3699
+	['Returns --(nsubj)--> DeGeneres']
+
+	* entity-paths for event['host']2_7ecbplus.xmlsent:3699
+
+	* entity-paths for event['oscars']2_7ecbplus.xmlsent:3699
+
+sentence #:television icon ellen degeneres will return to host the oscars® for a second time , producers craig zadan and neil meron announced today . 
+	[events]:[['announced'], ['oscars®'], ['return'], ['host']]
+	[entities]:[['neil', 'meron'], ['craig', 'zadan'], ['today'], ['ellen', 'degeneres'], ['for', 'a', 'second', 'time']]
+*R464[announced]
+|--(ccomp)--> *R457[return]
+|                |--(nsubj)--> R454[degeneres]
+|                |                |--(compou)--> television
+|                |                |--(compou)--> icon
+|                |                |--(compou)--> R454[ellen]
+|                |--(aux)--> will
+|                |--(xcomp)--> *R456[host]
+|                                 |--(mark)--> to
+|                                 |--(dobj)--> *R455[oscars®]
+|                                 |                |--(det)--> the
+|                                 |                |--(compou)--> *R455[oscars®]
+|                                 |--(nmod)--> R466[time]
+|                                                  |--(case)--> R466[for]
+|                                                  |--(det)--> R466[a]
+|                                                  |--(amod)--> R466[second]
+|--(punct)--> ,
+|--(nsubj)--> R485[zadan]
+|                |--(compou)--> producers
+|                |--(compou)--> R485[craig]
+|                |--(cc)--> and
+|                |--(conj)--> R486[meron]
+|                                 |--(compou)--> R486[neil]
+|--(nmod:t)--> R481[today]
+|--(punct)--> .
+
+	* entity-paths for event['announced']2_7ecbplus.xmlsent:3701
+	['announced --(ccomp)--> return', 'return --(nsubj)--> DeGeneres']
+	['announced --(ccomp)--> return', 'return --(xcomp)--> host', 'host --(nmod)--> time']
+	['announced --(nsubj)--> Zadan']
+	['announced --(nmod:tmod)--> today']
+
+	* entity-paths for event['oscars®']2_7ecbplus.xmlsent:3701
+
+	* entity-paths for event['return']2_7ecbplus.xmlsent:3701
+	['return --(nsubj)--> DeGeneres']
+	['return --(xcomp)--> host', 'host --(nmod)--> time']
+
+	* entity-paths for event['host']2_7ecbplus.xmlsent:3701
+	['host --(nmod)--> time']

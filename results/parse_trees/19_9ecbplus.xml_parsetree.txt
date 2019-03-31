@@ -1,0 +1,61 @@
+
+-----------------------------------------
+docid:19_9ecbplus.xml
+-----------------------------------------
+
+sentence #:brooklyn vigil for slain teen killed by nypd snowballs into full blown riot 
+	[events]:[['killed'], ['vigil'], ['snowballs'], ['riot'], ['slain']]
+	[entities]:[['teen'], ['nypd'], ['brooklyn']]
+*R425[vigil]
+|--(compou)--> R416[brooklyn]
+|--(nmod)--> R415[teen]
+                 |--(case)--> for
+                 |--(amod)--> *R414[slain]
+                 |--(acl)--> *R414[killed]
+                                  |--(nmod)--> *R447[snowballs]
+                                  |                |--(case)--> by
+                                  |                |--(compou)--> R413[nypd]
+                                  |--(nmod)--> full
+                                                   |--(case)--> into
+                                                   |--(acl)--> blown
+                                                                    |--(dobj)--> *R420[riot]
+
+	* entity-paths for event['killed']19_9ecbplus.xmlsent:3414
+	['killed --(nmod)--> snowballs', 'snowballs --(compound)--> NYPD']
+
+	* entity-paths for event['vigil']19_9ecbplus.xmlsent:3414
+	['vigil --(compound)--> Brooklyn']
+	['vigil --(nmod)--> teen']
+
+	* entity-paths for event['snowballs']19_9ecbplus.xmlsent:3414
+	['snowballs --(compound)--> NYPD']
+
+	* entity-paths for event['riot']19_9ecbplus.xmlsent:3414
+
+	* entity-paths for event['slain']19_9ecbplus.xmlsent:3414
+
+sentence #:a candle light vigil turned violent monday night in east flatbush , brooklyn . 
+	[events]:[['violent'], ['vigil'], ['turned']]
+	[entities]:[['monday', 'night'], ['in', 'east', 'flatbush', ',', 'brooklyn']]
+*R447[turned]
+|--(nsubj)--> *R425[vigil]
+|                |--(det)--> a
+|                |--(compou)--> candle
+|                |--(compou)--> light
+|--(nmod:t)--> R452[night]
+|                |--(amod)--> *R453[violent]
+|                |--(compou)--> R452[monday]
+|--(nmod)--> R426[flatbush]
+|                |--(case)--> R426[in]
+|                |--(compou)--> R426[east]
+|                |--(punct)--> R426[,]
+|                |--(appos)--> R426[brooklyn]
+|--(punct)--> .
+
+	* entity-paths for event['violent']19_9ecbplus.xmlsent:3415
+
+	* entity-paths for event['vigil']19_9ecbplus.xmlsent:3415
+
+	* entity-paths for event['turned']19_9ecbplus.xmlsent:3415
+	['turned --(nmod:tmod)--> night']
+	['turned --(nmod)--> Flatbush']

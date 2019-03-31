@@ -1,0 +1,49 @@
+
+-----------------------------------------
+docid:16_9ecbplus.xml
+-----------------------------------------
+
+sentence #:jose luis orozco showed almost no emotion throughout the three - week trial in which he was convicted of the 2005 murder of los angeles county sheriff's deputy jerry ortiz . 
+	[events]:[['murder'], ['convicted']]
+	[entities]:[['jose', 'luis', 'orozco'], ['2005'], ['jerry', 'ortiz'], ['he']]
+showed
+|--(nsubj)--> R317[orozco]
+|                |--(compou)--> R317[jose]
+|                |--(compou)--> R317[luis]
+|--(dobj)--> emotion
+|                |--(advmod)--> almost
+|                |--(neg)--> no
+|--(nmod)--> three
+|                |--(case)--> throughout
+|                |--(det)--> the
+|--(punct)--> -
+|--(parata)--> trial
+|                |--(compou)--> week
+|                |--(acl:re)--> *R315[convicted]
+|                                 |--(nmod)--> which
+|                                 |                |--(case)--> in
+|                                 |--(nsubjp)--> R317[he]
+|                                 |--(auxpas)--> was
+|                                 |--(nmod)--> *R336[murder]
+|                                                  |--(case)--> of
+|                                                  |--(det)--> the
+|                                                  |--(nummod)--> R338[2005]
+|                                                  |--(nmod)--> R319[ortiz]
+|                                                                   |--(case)--> of
+|                                                                   |--(nmod:p)--> sheriff's
+|                                                                   |                |--(compou)--> los
+|                                                                   |                |--(compou)--> angeles
+|                                                                   |                |--(compou)--> county
+|                                                                   |                |--(case)--> sheriff's
+|                                                                   |--(compou)--> deputy
+|                                                                   |--(compou)--> R319[jerry]
+|--(punct)--> .
+
+	* entity-paths for event['murder']16_9ecbplus.xmlsent:2120
+	['murder --(nummod)--> 2005']
+	['murder --(nmod)--> Ortiz']
+
+	* entity-paths for event['convicted']16_9ecbplus.xmlsent:2120
+	['convicted --(nsubjpass)--> he']
+	['convicted --(nmod)--> murder', 'murder --(nummod)--> 2005']
+	['convicted --(nmod)--> murder', 'murder --(nmod)--> Ortiz']

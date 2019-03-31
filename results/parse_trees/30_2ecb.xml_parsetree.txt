@@ -1,0 +1,320 @@
+
+-----------------------------------------
+docid:30_2ecb.xml
+-----------------------------------------
+
+sentence #:many countries were affected by the outage , including india , saudi arabia , egypt and malaysia , which all lost a significant percentage on their voice traffic to europe . 
+	[events]:[['lost'], ['affected'], ['outage']]
+	[entities]:[]
+*R982[affected]
+|--(nsubjp)--> countries
+|                |--(amod)--> many
+|--(auxpas)--> were
+|--(nmod)--> *R949[outage]
+|                |--(case)--> by
+|                |--(det)--> the
+|                |--(punct)--> ,
+|                |--(nmod)--> india
+|                |                |--(case)--> including
+|                |                |--(punct)--> ,
+|                |                |--(conj)--> arabia
+|                |                |                |--(compou)--> saudi
+|                |                |--(punct)--> ,
+|                |                |--(conj)--> egypt
+|                |                |--(cc)--> and
+|                |                |--(conj)--> malaysia
+|                |--(punct)--> ,
+|                |--(acl:re)--> *R949[lost]
+|                                 |--(dobj)--> which
+|                                 |--(nsubj)--> all
+|                                 |--(dobj)--> percentage
+|                                 |                |--(det)--> a
+|                                 |                |--(amod)--> significant
+|                                 |--(nmod)--> traffic
+|                                 |                |--(case)--> on
+|                                 |                |--(nmod:p)--> their
+|                                 |                |--(compou)--> voice
+|                                 |--(nmod)--> europe
+|                                                  |--(case)--> to
+|--(punct)--> .
+
+	* entity-paths for event['lost']30_2ecb.xmlsent:7835
+
+	* entity-paths for event['affected']30_2ecb.xmlsent:7835
+
+	* entity-paths for event['outage']30_2ecb.xmlsent:7835
+
+sentence #:internet and telephone traffic between europe and the middle east and asia was hampered friday after three major underwater data lines were cut , according to france telecom . 
+	[events]:[['hampered'], ['traffic'], ['cut']]
+	[entities]:[['internet'], ['france', 'telecom'], ['friday'], ['between', 'europe', 'and', 'the', 'middle', 'east', 'and', 'asia'], ['data', 'lines'], ['telephone']]
+*R982[hampered]
+|--(nsubjp)--> *R975[traffic]
+|                |--(compou)--> R950[internet]
+|                |                |--(cc)--> and
+|                |                |--(conj)--> R976[telephone]
+|                |--(nmod)--> R965[europe]
+|                |                |--(case)--> R965[between]
+|                |--(cc)--> R965[and]
+|                |--(conj)--> R965[east]
+|                                 |--(det)--> R965[the]
+|                                 |--(compou)--> R965[middle]
+|                                 |--(cc)--> R965[and]
+|                                 |--(conj)--> R965[asia]
+|--(auxpas)--> was
+|--(nmod:t)--> R968[friday]
+|--(advcl)--> *R953[cut]
+|                |--(mark)--> after
+|                |--(nsubjp)--> R951[lines]
+|                |                |--(nummod)--> three
+|                |                |--(amod)--> major
+|                |                |--(amod)--> underwater
+|                |                |--(compou)--> R951[data]
+|                |--(auxpas)--> were
+|                |--(punct)--> ,
+|                |--(nmod)--> R983[telecom]
+|                                 |--(case)--> according
+|                                 |                |--(mwe)--> to
+|                                 |--(compou)--> R983[france]
+|--(punct)--> .
+
+	* entity-paths for event['hampered']30_2ecb.xmlsent:7825
+	['hampered --(nsubjpass)--> traffic', 'traffic --(compound)--> Internet']
+	['hampered --(nsubjpass)--> traffic', 'traffic --(nmod)--> Europe']
+	['hampered --(nsubjpass)--> traffic', 'traffic --(cc)--> and']
+	['hampered --(nsubjpass)--> traffic', 'traffic --(conj)--> East']
+	['hampered --(nmod:tmod)--> Friday']
+	['hampered --(advcl)--> cut', 'cut --(nsubjpass)--> lines']
+	['hampered --(advcl)--> cut', 'cut --(nmod)--> Telecom']
+
+	* entity-paths for event['traffic']30_2ecb.xmlsent:7825
+	['traffic --(compound)--> Internet']
+	['traffic --(nmod)--> Europe']
+	['traffic --(cc)--> and']
+	['traffic --(conj)--> East']
+
+	* entity-paths for event['cut']30_2ecb.xmlsent:7825
+	['cut --(nsubjpass)--> lines']
+	['cut --(nmod)--> Telecom']
+
+sentence #:internet traffic also has been hit by the incident , according to danny mcpherson , chief security officer with arbor networks . 
+	[events]:[['traffic'], ['hit'], ['incident']]
+	[entities]:[['internet']]
+*R982[hit]
+|--(nsubjp)--> *R975[traffic]
+|                |--(compou)--> R950[internet]
+|--(advmod)--> also
+|--(aux)--> has
+|--(auxpas)--> been
+|--(nmod)--> *R953[incident]
+|                |--(case)--> by
+|                |--(det)--> the
+|--(punct)--> ,
+|--(nmod)--> mcpherson
+|                |--(case)--> according
+|                |                |--(mwe)--> to
+|                |--(compou)--> danny
+|                |--(punct)--> ,
+|                |--(appos)--> officer
+|                                 |--(amod)--> chief
+|                                 |--(compou)--> security
+|                                 |--(nmod)--> networks
+|                                                  |--(case)--> with
+|                                                  |--(compou)--> arbor
+|--(punct)--> .
+
+	* entity-paths for event['traffic']30_2ecb.xmlsent:7837
+	['traffic --(compound)--> Internet']
+
+	* entity-paths for event['hit']30_2ecb.xmlsent:7837
+	['hit --(nsubjpass)--> traffic', 'traffic --(compound)--> Internet']
+
+	* entity-paths for event['incident']30_2ecb.xmlsent:7837
+
+sentence #:" or it could be simply a ship in the area which has cut the cable . " 
+	[events]:[['cut']]
+	[entities]:[['cable'], ['in', 'the', 'area']]
+ship
+|--(punct)--> "
+|--(nsubj)--> or
+|--(advmod)--> it
+|--(aux)--> could
+|--(cop)--> be
+|--(advmod)--> simply
+|--(det)--> a
+|--(nmod)--> R952[area]
+|                |--(case)--> R952[in]
+|                |--(det)--> R952[the]
+|                |--(acl:re)--> *R953[cut]
+|                                 |--(nsubj)--> which
+|                                 |--(aux)--> has
+|                                 |--(dobj)--> R951[cable]
+|                                                  |--(det)--> the
+|--(punct)--> .
+|--(punct)--> "
+
+	* entity-paths for event['cut']30_2ecb.xmlsent:7833
+	['cut --(dobj)--> cable']
+
+sentence #:the cuts were to the sea me we 4 and sea me we 3 lines , which connect countries between singapore and france as well as the flag cable route , which stretches from the u.k. to japan , a france telecom spokeswoman who asked not to be named said . 
+	[events]:[['cuts']]
+	[entities]:[['lines'], ['france', 'telecom']]
+we
+|--(nsubj)--> *R953[cuts]
+|                |--(det)--> the
+|--(cop)--> were
+|--(nmod)--> sea
+|                |--(case)--> to
+|                |--(det)--> the
+|--(dep)--> me
+|--(dep)--> 4
+|--(cc)--> and
+|--(conj)--> said
+|                |--(nsubj)--> sea
+|                                 |--(amod)--> me
+|                                                  |--(dep)--> we
+|                                                                   |--(dep)--> R951[lines]
+|                                                                   |                |--(nummod)--> 3
+|                                                                   |--(punct)--> ,
+|                                                                   |--(appos)--> spokeswoman
+|                                                                                    |--(dep)--> connect
+|                                                                                    |                |--(nsubj)--> which
+|                                                                                    |                |--(dobj)--> countries
+|                                                                                    |                                 |--(nmod)--> singapore
+|                                                                                    |                                 |                |--(case)--> between
+|                                                                                    |                                 |                |--(cc)--> and
+|                                                                                    |                                 |                |--(conj)--> france
+|                                                                                    |                                 |--(cc)--> as
+|                                                                                    |                                 |                |--(mwe)--> well
+|                                                                                    |                                 |                |--(mwe)--> as
+|                                                                                    |                                 |--(conj)--> route
+|                                                                                    |                                                  |--(det)--> the
+|                                                                                    |                                                  |--(compou)--> flag
+|                                                                                    |                                                  |--(compou)--> cable
+|                                                                                    |                                                  |--(punct)--> ,
+|                                                                                    |                                                  |--(acl:re)--> stretches
+|                                                                                    |                                                                   |--(nsubj)--> which
+|                                                                                    |                                                                   |--(nmod)--> u.k.
+|                                                                                    |                                                                   |                |--(case)--> from
+|                                                                                    |                                                                   |                |--(det)--> the
+|                                                                                    |                                                                   |--(nmod)--> japan
+|                                                                                    |                                                                                    |--(case)--> to
+|                                                                                    |--(punct)--> ,
+|                                                                                    |--(det)--> a
+|                                                                                    |--(compou)--> R983[france]
+|                                                                                    |--(compou)--> R983[telecom]
+|                                                                                    |--(acl:re)--> asked
+|                                                                                                     |--(nsubj)--> who
+|                                                                                                     |--(xcomp)--> named
+|                                                                                                                      |--(neg)--> not
+|                                                                                                                      |--(mark)--> to
+|                                                                                                                      |--(auxpas)--> be
+|--(punct)--> .
+
+	* entity-paths for event['cuts']30_2ecb.xmlsent:7827
+
+sentence #:france telecom is n't sure what caused the cut , she said . 
+	[events]:[['cut']]
+	[entities]:[['france', 'telecom']]
+said
+|--(ccomp)--> sure
+|                |--(nsubj)--> R983[telecom]
+|                |                |--(compou)--> R983[france]
+|                |--(cop)--> is
+|                |--(neg)--> n't
+|                |--(ccomp)--> caused
+|                                 |--(nsubj)--> what
+|                                 |--(dobj)--> *R953[cut]
+|                                                  |--(det)--> the
+|--(punct)--> ,
+|--(nsubj)--> she
+|--(punct)--> .
+
+	* entity-paths for event['cut']30_2ecb.xmlsent:7828
+
+sentence #:a maintenance boat is en route to the site of the cut , but it will not get there until monday , and it will take as many as two weeks for the situation to return to normal , she said . 
+	[events]:[['cut']]
+	[entities]:[['to', 'the', 'site'], ['there']]
+said
+|--(ccomp)--> R952[site]
+|                |--(nsubj)--> boat
+|                |                |--(det)--> a
+|                |                |--(compou)--> maintenance
+|                |--(cop)--> is
+|                |--(advmod)--> route
+|                |                |--(case)--> en
+|                |--(case)--> R952[to]
+|                |--(det)--> R952[the]
+|                |--(nmod)--> *R953[cut]
+|                |                |--(case)--> of
+|                |                |--(det)--> the
+|                |--(punct)--> ,
+|                |--(cc)--> but
+|                |--(conj)--> get
+|                                 |--(nsubj)--> it
+|                                 |--(aux)--> will
+|                                 |--(neg)--> not
+|                                 |--(advmod)--> R952[there]
+|                                 |--(nmod)--> monday
+|                                 |                |--(case)--> until
+|                                 |--(punct)--> ,
+|                                 |--(cc)--> and
+|                                 |--(conj)--> take
+|                                                  |--(nsubj)--> it
+|                                                  |--(aux)--> will
+|                                                  |--(nmod:t)--> weeks
+|                                                  |                |--(nummod)--> two
+|                                                  |                                 |--(advmod)--> as
+|                                                  |                                 |--(advmod)--> many
+|                                                  |                                 |--(advmod)--> as
+|                                                  |--(nmod)--> situation
+|                                                                   |--(case)--> for
+|                                                                   |--(det)--> the
+|                                                                   |--(acl)--> return
+|                                                                                    |--(mark)--> to
+|                                                                                    |--(advcl)--> normal
+|                                                                                                     |--(case)--> to
+|--(punct)--> ,
+|--(nsubj)--> she
+|--(punct)--> .
+
+	* entity-paths for event['cut']30_2ecb.xmlsent:7834
+
+sentence #:the cut occurred on lines between 07:28 and 08:06 coordinated universal time ( utc ) on lines in the mediterranean sea that connect sicily to tunisia and egypt , the telecommunications company said . 
+	[events]:[['cut']]
+	[entities]:[['between', '07:28', 'and', '08:06', 'coordinated', 'universal', 'time', '(', 'utc'], ['in', 'the', 'mediterranean', 'sea'], ['lines'], ['telecommunications', 'company'], ['lines']]
+said
+|--(ccomp)--> occurred
+|                |--(nsubj)--> *R953[cut]
+|                |                |--(det)--> the
+|                |--(nmod)--> R951[lines]
+|                                 |--(case)--> on
+|                                 |--(nmod)--> R968[07:28]
+|                                 |                |--(case)--> R968[between]
+|                                 |                |--(cc)--> R968[and]
+|                                 |                |--(conj)--> R968[08:06]
+|                                 |--(acl)--> R968[coordinated]
+|                                                  |--(dobj)--> R968[time]
+|                                                  |                |--(compou)--> R968[universal]
+|                                                  |                |--(appos)--> R968[utc]
+|                                                  |                                 |--(punct)--> R968[(]
+|                                                  |                                 |--(punct)--> )
+|                                                  |--(nmod)--> R951[lines]
+|                                                                   |--(case)--> on
+|                                                                   |--(nmod)--> R952[sea]
+|                                                                                    |--(case)--> R952[in]
+|                                                                                    |--(det)--> R952[the]
+|                                                                                    |--(amod)--> R952[mediterranean]
+|                                                                                    |--(acl:re)--> connect
+|                                                                                                     |--(nsubj)--> that
+|                                                                                                     |--(dobj)--> sicily
+|                                                                                                     |--(nmod)--> tunisia
+|                                                                                                                      |--(case)--> to
+|                                                                                                                      |--(cc)--> and
+|                                                                                                                      |--(conj)--> egypt
+|--(punct)--> ,
+|--(nsubj)--> R983[company]
+|                |--(det)--> the
+|                |--(compou)--> R983[telecommunications]
+|--(punct)--> .
+
+	* entity-paths for event['cut']30_2ecb.xmlsent:7826

@@ -1,0 +1,69 @@
+
+-----------------------------------------
+docid:28_5ecb.xml
+-----------------------------------------
+
+sentence #:the passing yesterday of w. mark felt , the man who was the infamous secret source for washington post reporters bob woodward and carl bernstein during their investigation of the watergate scandal , marks the end of a life that brought about both the good and the bad of anonymous sources in political journalism . 
+	[events]:[['end'], ['watergate'], ['passing']]
+	[entities]:[['bob', 'woodward'], ['yesterday'], ['w.', 'mark', 'felt'], ['carl', 'bernstein'], ['man'], ['source']]
+marks
+|--(nsubj)--> R813[yesterday]
+|                |--(det)--> the
+|                |--(amod)--> *R808[passing]
+|                |--(nmod)--> R809[felt]
+|                |                |--(case)--> of
+|                |                |--(compou)--> R809[w.]
+|                |                |--(compou)--> R809[mark]
+|                |                |--(punct)--> ,
+|                |                |--(appos)--> R809[man]
+|                |                                 |--(det)--> the
+|                |                                 |--(acl:re)--> R811[source]
+|                |                                                  |--(nsubj)--> who
+|                |                                                  |--(cop)--> was
+|                |                                                  |--(det)--> the
+|                |                                                  |--(amod)--> infamous
+|                |                                                  |--(amod)--> secret
+|                |                                                  |--(nmod)--> reporters
+|                |                                                                   |--(case)--> for
+|                |                                                                   |--(compou)--> washington
+|                |                                                                   |--(compou)--> post
+|                |                                                                   |--(dep)--> R835[woodward]
+|                |                                                                   |                |--(compou)--> R835[bob]
+|                |                                                                   |--(cc)--> and
+|                |                                                                   |--(conj)--> R843[bernstein]
+|                |                                                                                    |--(compou)--> R843[carl]
+|                |                                                                                    |--(nmod)--> investigation
+|                |                                                                                                     |--(case)--> during
+|                |                                                                                                     |--(nmod:p)--> their
+|                |                                                                                                     |--(nmod)--> scandal
+|                |                                                                                                                      |--(case)--> of
+|                |                                                                                                                      |--(det)--> the
+|                |                                                                                                                      |--(compou)--> *R812[watergate]
+|                |--(punct)--> ,
+|--(dobj)--> *R808[end]
+|                |--(det)--> the
+|                |--(nmod)--> life
+|                                 |--(case)--> of
+|                                 |--(det)--> a
+|                                 |--(acl:re)--> brought
+|                                                  |--(nsubj)--> that
+|                                                  |--(nmod)--> good
+|                                                  |                |--(case)--> about
+|                                                  |                |--(cc:pre)--> both
+|                                                  |                |--(det)--> the
+|                                                  |                |--(cc)--> and
+|                                                  |                |--(conj)--> bad
+|                                                  |                                 |--(det)--> the
+|                                                  |--(nmod)--> sources
+|                                                                   |--(case)--> of
+|                                                                   |--(amod)--> anonymous
+|                                                                   |--(nmod)--> journalism
+|                                                                                    |--(case)--> in
+|                                                                                    |--(amod)--> political
+|--(punct)--> .
+
+	* entity-paths for event['end']28_5ecb.xmlsent:6408
+
+	* entity-paths for event['watergate']28_5ecb.xmlsent:6408
+
+	* entity-paths for event['passing']28_5ecb.xmlsent:6408

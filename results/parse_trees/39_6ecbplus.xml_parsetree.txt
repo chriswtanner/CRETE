@@ -1,0 +1,95 @@
+
+-----------------------------------------
+docid:39_6ecbplus.xml
+-----------------------------------------
+
+sentence #:doctor who revealed : peter capaldi cast as the 12th time lord ! 
+	[events]:[['revealed'], ['cast']]
+	[entities]:[['peter', 'capaldi'], ['doctor', 'who'], ['12th', 'time', 'lord']]
+R1329[doctor]
+|--(acl:re)--> *R1342[revealed]
+|                |--(nsubj)--> R1329[who]
+|--(punct)--> :
+|--(parata)--> *R1356[cast]
+|                |--(nsubj)--> R1331[capaldi]
+|                |                |--(compou)--> R1331[peter]
+|                |--(nmod)--> R1333[lord]
+|                                 |--(case)--> as
+|                                 |--(det)--> the
+|                                 |--(amod)--> R1333[12th]
+|                                 |--(compou)--> R1333[time]
+|--(punct)--> !
+
+	* entity-paths for event['revealed']39_6ecbplus.xmlsent:11076
+	['Revealed --(nsubj)--> Who']
+
+	* entity-paths for event['cast']39_6ecbplus.xmlsent:11076
+	['Cast --(nsubj)--> Capaldi']
+	['Cast --(nmod)--> Lord']
+
+sentence #:doctor who has finally selected its 12th doctor : peter capaldi is officially set to replace exiting star matt smith as the tardis leader , producer steven moffat announced on the live bbc special doctor who live : the next doctor sunday . 
+	[events]:[['selected'], ['replace'], ['announced'], ['exiting'], ['set']]
+	[entities]:[['doctor', 'who', 'live', ':', 'the', 'next', 'doctor'], ['tardis'], ['leader'], ['doctor', 'who'], ['12th', 'doctor'], ['star', 'matt', 'smith'], ['peter', 'capaldi'], ['steven', 'moffat'], ['sunday']]
+R1336[doctor]
+|--(acl:re)--> *R1356[selected]
+|                |--(nsubj)--> R1336[who]
+|                |--(aux)--> has
+|                |--(advmod)--> finally
+|                |--(dobj)--> R1333[doctor]
+|                                 |--(nmod:p)--> its
+|                                 |--(amod)--> R1333[12th]
+|                                 |--(punct)--> :
+|                                 |--(dep)--> *R1342[announced]
+|                                                  |--(ccomp)--> *R1356[set]
+|                                                  |                |--(nsubjp)--> R1331[capaldi]
+|                                                  |                |                |--(compou)--> R1331[peter]
+|                                                  |                |--(auxpas)--> is
+|                                                  |                |--(advmod)--> officially
+|                                                  |                |--(xcomp)--> *R1334[replace]
+|                                                  |                                 |--(mark)--> to
+|                                                  |                                 |--(xcomp)--> *R1341[exiting]
+|                                                  |                                                  |--(dobj)--> R1328[smith]
+|                                                  |                                                                   |--(compou)--> R1328[star]
+|                                                  |                                                                   |--(compou)--> R1328[matt]
+|                                                  |                                                                   |--(nmod)--> R1329[leader]
+|                                                  |                                                                                    |--(case)--> as
+|                                                  |                                                                                    |--(det)--> the
+|                                                  |                                                                                    |--(compou)--> R1345[tardis]
+|                                                  |--(punct)--> ,
+|                                                  |--(nsubj)--> R1349[moffat]
+|                                                  |                |--(compou)--> producer
+|                                                  |                |--(compou)--> R1349[steven]
+|                                                  |--(nmod)--> bbc
+|                                                  |                |--(case)--> on
+|                                                  |                |--(det)--> the
+|                                                  |                |--(amod)--> live
+|                                                  |--(dobj)--> R1357[doctor]
+|                                                                   |--(amod)--> special
+|                                                                   |--(acl:re)--> R1357[live]
+|                                                                                    |--(nsubj)--> R1357[who]
+|--(punct)--> R1357[:]
+|--(dep)--> R1357[doctor]
+|                |--(det)--> R1357[the]
+|                |--(amod)--> R1357[next]
+|                |--(nmod:t)--> R1358[sunday]
+|--(punct)--> .
+
+	* entity-paths for event['selected']39_6ecbplus.xmlsent:11079
+	['selected --(nsubj)--> Who']
+	['selected --(dobj)--> doctor']
+
+	* entity-paths for event['replace']39_6ecbplus.xmlsent:11079
+	['replace --(xcomp)--> exiting', 'exiting --(dobj)--> Smith']
+
+	* entity-paths for event['announced']39_6ecbplus.xmlsent:11079
+	['announced --(ccomp)--> set', 'set --(nsubjpass)--> Capaldi']
+	['announced --(ccomp)--> set', 'set --(xcomp)--> replace', 'replace --(xcomp)--> exiting', 'exiting --(dobj)--> Smith']
+	['announced --(nsubj)--> Moffat']
+	['announced --(dobj)--> Doctor']
+
+	* entity-paths for event['exiting']39_6ecbplus.xmlsent:11079
+	['exiting --(dobj)--> Smith']
+
+	* entity-paths for event['set']39_6ecbplus.xmlsent:11079
+	['set --(nsubjpass)--> Capaldi']
+	['set --(xcomp)--> replace', 'replace --(xcomp)--> exiting', 'exiting --(dobj)--> Smith']

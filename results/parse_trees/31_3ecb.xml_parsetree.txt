@@ -1,0 +1,116 @@
+
+-----------------------------------------
+docid:31_3ecb.xml
+-----------------------------------------
+
+sentence #:tyler hansbrough scored 20 thursday night to break north carolina 's career scoring record and help the no. 1 tar heels remain unbeaten with a 91-73 victory over evansville in chapel hill , n.c . 
+	[events]:[['victory'], ['scoring', 'record'], ['break']]
+	[entities]:[['tar', 'heels'], ['north', 'carolina'], ['thursday', 'night'], ['evansville'], ['91-73'], ['tyler', 'hansbrough']]
+scored
+|--(nsubj)--> R997[hansbrough]
+|                |--(compou)--> R997[tyler]
+|--(dobj)--> 20
+|--(nmod:t)--> R1006[night]
+|                |--(compou)--> R1006[thursday]
+|--(advcl)--> *R996[break]
+|                |--(mark)--> to
+|                |--(dobj)--> *R998[record]
+|                |                |--(nmod:p)--> R999[carolina]
+|                |                |                |--(amod)--> R999[north]
+|                |                |                |--(case)--> 's
+|                |                |--(compou)--> career
+|                |                |--(amod)--> *R998[scoring]
+|                |--(cc)--> and
+|                |--(conj)--> help
+|                                 |--(dobj)--> no.
+|                                                  |--(det)--> the
+|                                                  |--(acl:re)--> remain
+|                                                                   |--(nsubj)--> R999[heels]
+|                                                                   |                |--(nummod)--> 1
+|                                                                   |                |--(compou)--> R999[tar]
+|                                                                   |--(xcomp)--> unbeaten
+|                                                                   |                |--(nmod)--> *R1007[victory]
+|                                                                   |                                 |--(case)--> with
+|                                                                   |                                 |--(det)--> a
+|                                                                   |                                 |--(nummod)--> R1009[91-73]
+|                                                                   |--(nmod)--> R1008[evansville]
+|                                                                                    |--(case)--> over
+|                                                                                    |--(nmod)--> n.c
+|                                                                                                     |--(case)--> in
+|                                                                                                     |--(compou)--> chapel
+|                                                                                                     |--(compou)--> hill
+|                                                                                                     |--(punct)--> ,
+|--(punct)--> .
+
+	* entity-paths for event['victory']31_3ecb.xmlsent:8346
+	['victory --(nummod)--> 91-73']
+
+	* entity-paths for event['scoring', 'record']31_3ecb.xmlsent:8346
+	['record --(nmod:poss)--> Carolina']
+
+	* entity-paths for event['break']31_3ecb.xmlsent:8346
+	['break --(dobj)--> record', 'record --(nmod:poss)--> Carolina']
+	['break --(conj)--> help', 'help --(dobj)--> No.', 'No. --(acl:relcl)--> remain', 'remain --(nsubj)--> Heels']
+	['break --(conj)--> help', 'help --(dobj)--> No.', 'No. --(acl:relcl)--> remain', 'remain --(xcomp)--> unbeaten', 'unbeaten --(nmod)--> victory', 'victory --(nummod)--> 91-73']
+	['break --(conj)--> help', 'help --(dobj)--> No.', 'No. --(acl:relcl)--> remain', 'remain --(nmod)--> Evansville']
+
+sentence #:the reigning national player of the year finished 7-for-14 from the field and had nine rebounds for north carolina ( 10-0 ) , which shook off a slow start and stretched the lead to double figures shortly after hansbrough passed phil ford for the record midway through the first half . 
+	[events]:[['record'], ['passed']]
+	[entities]:[['national', 'player', 'of', 'the', 'year'], ['hansbrough'], ['phil', 'ford'], ['north', 'carolina'], ['which']]
+finished
+|--(nsubj)--> R997[player]
+|                |--(det)--> the
+|                |--(amod)--> reigning
+|                |--(amod)--> R997[national]
+|                |--(nmod)--> R997[year]
+|                                 |--(case)--> R997[of]
+|                                 |--(det)--> R997[the]
+|--(dobj)--> 7-for-14
+|--(nmod)--> field
+|                |--(case)--> from
+|                |--(det)--> the
+|--(cc)--> and
+|--(conj)--> had
+|                |--(dobj)--> rebounds
+|                |                |--(nummod)--> nine
+|                |                |--(nmod)--> R999[carolina]
+|                |                                 |--(case)--> for
+|                |                                 |--(compou)--> R999[north]
+|                |                                 |--(appos)--> 10-0
+|                |                                 |                |--(punct)--> (
+|                |                                 |                |--(punct)--> )
+|                |                                 |--(punct)--> ,
+|                |                                 |--(acl:re)--> shook
+|                |                                                  |--(nsubj)--> R999[which]
+|                |                                                  |--(compou)--> off
+|                |                                                  |--(dobj)--> start
+|                |                                                  |                |--(det)--> a
+|                |                                                  |                |--(amod)--> slow
+|                |                                                  |--(cc)--> and
+|                |                                                  |--(conj)--> stretched
+|                |                                                                   |--(dobj)--> lead
+|                |                                                                                    |--(det)--> the
+|                |--(nmod)--> figures
+|                |                |--(case)--> to
+|                |                |--(amod)--> double
+|                |--(advcl)--> *R996[passed]
+|                                 |--(advmod)--> shortly
+|                                 |--(mark)--> after
+|                                 |--(nsubj)--> R997[hansbrough]
+|                                 |--(dobj)--> R1005[ford]
+|                                 |                |--(compou)--> R1005[phil]
+|                                 |                |--(nmod)--> *R998[record]
+|                                 |                                 |--(case)--> for
+|                                 |                                 |--(det)--> the
+|                                 |--(nmod)--> half
+|                                                  |--(advmod)--> midway
+|                                                  |--(case)--> through
+|                                                  |--(det)--> the
+|                                                  |--(amod)--> first
+|--(punct)--> .
+
+	* entity-paths for event['record']31_3ecb.xmlsent:8347
+
+	* entity-paths for event['passed']31_3ecb.xmlsent:8347
+	['passed --(nsubj)--> Hansbrough']
+	['passed --(dobj)--> Ford']

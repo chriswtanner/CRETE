@@ -1,0 +1,48 @@
+
+-----------------------------------------
+docid:43_3ecbplus.xml
+-----------------------------------------
+
+sentence #:amd will pay $334 million for seamicro , including $281 million in cash . 
+	[events]:[['pay']]
+	[entities]:[['$281', 'million'], ['amd'], ['$334', 'million'], ['cash'], ['seamicro']]
+*R1567[pay]
+|--(nsubj)--> R1547[amd]
+|--(aux)--> will
+|--(dobj)--> R1555[$334]
+|                |--(nummod)--> R1555[million]
+|                |                |--(compou)--> R1555[$334]
+|                |--(nmod)--> R1549[seamicro]
+|                |                |--(case)--> for
+|                |--(punct)--> ,
+|                |--(nmod)--> R1568[$281]
+|                                 |--(case)--> including
+|                                 |--(nummod)--> R1568[million]
+|                                 |                |--(compou)--> R1568[$281]
+|                                 |--(nmod)--> R1569[cash]
+|                                                  |--(case)--> in
+|--(punct)--> .
+
+	* entity-paths for event['pay']43_3ecbplus.xmlsent:13135
+	['pay --(nsubj)--> AMD']
+	['pay --(dobj)--> $']
+
+sentence #:amd enters server business with bold acquisition 
+	[events]:[['acquisition'], ['enters'], ['business']]
+	[entities]:[['amd'], ['server']]
+*R1557[enters]
+|--(nsubj)--> R1547[amd]
+|--(dobj)--> *R1556[business]
+                 |--(compou)--> R1559[server]
+                 |--(nmod)--> *R1546[acquisition]
+                                  |--(case)--> with
+                                  |--(amod)--> bold
+
+	* entity-paths for event['acquisition']43_3ecbplus.xmlsent:13121
+
+	* entity-paths for event['enters']43_3ecbplus.xmlsent:13121
+	['Enters --(nsubj)--> AMD']
+	['Enters --(dobj)--> Business', 'Business --(compound)--> Server']
+
+	* entity-paths for event['business']43_3ecbplus.xmlsent:13121
+	['Business --(compound)--> Server']

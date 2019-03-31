@@ -1,0 +1,97 @@
+
+-----------------------------------------
+docid:45_9ecbplus.xml
+-----------------------------------------
+
+sentence #:an oklahoma man has pleaded not guilty to two first - degree murder charges for the deaths of an arkansas woman and her fetus . 
+	[events]:[['pleaded'], ['not', 'guilty'], ['deaths'], ['first', '-', 'degree', 'murder'], ['charges']]
+	[entities]:[['oklahoma', 'man'], ['fetus'], ['arkansas', 'woman']]
+*R1657[pleaded]
+|--(nsubj)--> R1610[man]
+|                |--(det)--> an
+|                |--(compou)--> R1610[oklahoma]
+|--(aux)--> has
+|--(xcomp)--> *R1658[guilty]
+|                |--(neg)--> *R1658[not]
+|                |--(nmod)--> *R1619[first]
+|                |                |--(case)--> to
+|                |                |--(nummod)--> two
+|                |--(punct)--> *R1619[-]
+|                |--(dep)--> *R1622[charges]
+|                                 |--(compou)--> *R1619[degree]
+|                                 |--(compou)--> *R1619[murder]
+|                                 |--(nmod)--> *R1611[deaths]
+|                                                  |--(case)--> for
+|                                                  |--(det)--> the
+|                                                  |--(nmod)--> R1612[woman]
+|                                                                   |--(case)--> of
+|                                                                   |--(det)--> an
+|                                                                   |--(compou)--> R1612[arkansas]
+|                                                                   |--(cc)--> and
+|                                                                   |--(conj)--> R1625[fetus]
+|                                                                                    |--(nmod:p)--> her
+|--(punct)--> .
+
+	* entity-paths for event['pleaded']45_9ecbplus.xmlsent:13903
+	['pleaded --(nsubj)--> man']
+	['pleaded --(xcomp)--> guilty', 'guilty --(dep)--> charges', 'charges --(nmod)--> deaths', 'deaths --(nmod)--> woman']
+
+	* entity-paths for event['not', 'guilty']45_9ecbplus.xmlsent:13903
+	['guilty --(dep)--> charges', 'charges --(nmod)--> deaths', 'deaths --(nmod)--> woman']
+
+	* entity-paths for event['deaths']45_9ecbplus.xmlsent:13903
+	['deaths --(nmod)--> woman']
+
+	* entity-paths for event['first', '-', 'degree', 'murder']45_9ecbplus.xmlsent:13903
+
+	* entity-paths for event['charges']45_9ecbplus.xmlsent:13903
+	['charges --(nmod)--> deaths', 'deaths --(nmod)--> woman']
+
+sentence #:trial is set for june 17 for 26 - year - old christopher kenyon simpson of fort coffee , who is accused of fatally shooting ka'loni marie flynn of fort smith , ark . 
+	[events]:[['fatally', 'shooting'], ['accused'], ['trial'], ['set']]
+	[entities]:[['of', 'fort', 'coffee'], ['christopher', 'kenyon', 'simpson'], ['of', 'fort', 'smith', ',', 'ark'], ["ka'loni", 'marie', 'flynn'], ['for', 'june', '17'], ['who']]
+*R1659[set]
+|--(nsubjp)--> *R1626[trial]
+|--(auxpas)--> is
+|--(nmod)--> R1660[june]
+|                |--(case)--> R1660[for]
+|                |--(nummod)--> R1660[17]
+|                |--(nmod)--> 26
+|                |                |--(case)--> for
+|                |--(punct)--> -
+|                |--(dep)--> year
+|                                 |--(punct)--> -
+|                                 |--(dep)--> R1610[simpson]
+|                                                  |--(amod)--> old
+|                                                  |--(compou)--> R1610[christopher]
+|                                                  |--(compou)--> R1610[kenyon]
+|                                                  |--(nmod)--> R1656[coffee]
+|                                                                   |--(case)--> R1656[of]
+|                                                                   |--(compou)--> R1656[fort]
+|                                                                   |--(punct)--> ,
+|                                                                   |--(acl:re)--> *R1622[accused]
+|                                                                                    |--(nsubjp)--> R1610[who]
+|                                                                                    |--(auxpas)--> is
+|                                                                                    |--(nmod)--> R1612[flynn]
+|                                                                                                     |--(case)--> of
+|                                                                                                     |--(amod)--> *R1611[shooting]
+|                                                                                                     |                |--(advmod)--> *R1611[fatally]
+|                                                                                                     |--(compou)--> R1612[ka'loni]
+|                                                                                                     |--(compou)--> R1612[marie]
+|                                                                                                     |--(nmod)--> R1616[smith]
+|                                                                                                                      |--(case)--> R1616[of]
+|                                                                                                                      |--(compou)--> R1616[fort]
+|                                                                                                                      |--(punct)--> R1616[,]
+|                                                                                                                      |--(appos)--> R1616[ark]
+|--(punct)--> .
+
+	* entity-paths for event['fatally', 'shooting']45_9ecbplus.xmlsent:13904
+
+	* entity-paths for event['accused']45_9ecbplus.xmlsent:13904
+	['accused --(nsubjpass)--> who']
+	['accused --(nmod)--> Flynn']
+
+	* entity-paths for event['trial']45_9ecbplus.xmlsent:13904
+
+	* entity-paths for event['set']45_9ecbplus.xmlsent:13904
+	['set --(nmod)--> June']

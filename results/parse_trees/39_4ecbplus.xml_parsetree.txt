@@ -1,0 +1,23 @@
+
+-----------------------------------------
+docid:39_4ecbplus.xml
+-----------------------------------------
+
+sentence #:peter capaldi exclusively revealed to the nation as the twelfth doctor 
+	[events]:[['revealed']]
+	[entities]:[['twelfth', 'doctor'], ['peter', 'capaldi']]
+*R1342[revealed]
+|--(nsubj)--> R1331[capaldi]
+|                |--(compou)--> R1331[peter]
+|--(advmod)--> exclusively
+|--(nmod)--> nation
+|                |--(case)--> to
+|                |--(det)--> the
+|--(nmod)--> R1333[doctor]
+                 |--(case)--> as
+                 |--(det)--> the
+                 |--(compou)--> R1333[twelfth]
+
+	* entity-paths for event['revealed']39_4ecbplus.xmlsent:11015
+	['revealed --(nsubj)--> Capaldi']
+	['revealed --(nmod)--> Doctor']

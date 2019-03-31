@@ -1,0 +1,20 @@
+
+-----------------------------------------
+docid:11_4ecbplus.xml
+-----------------------------------------
+
+sentence #:electoral districts established in turkmenistan due to parliamentary elections 
+	[events]:[['elections']]
+	[entities]:[['parliamentary'], ['turkmenistan']]
+established
+|--(nsubj)--> districts
+|                |--(compou)--> electoral
+|--(nmod)--> R189[turkmenistan]
+                 |--(case)--> in
+                 |--(amod)--> due
+                                  |--(nmod)--> *R200[elections]
+                                                   |--(case)--> to
+                                                   |--(amod)--> R188[parliamentary]
+
+	* entity-paths for event['elections']11_4ecbplus.xmlsent:688
+	['elections --(amod)--> parliamentary']

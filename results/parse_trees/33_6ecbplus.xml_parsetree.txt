@@ -1,0 +1,122 @@
+
+-----------------------------------------
+docid:33_6ecbplus.xml
+-----------------------------------------
+
+sentence #:a brooklyn jury has returned a guilty verdict for andrew lopez for the murder of zurana horton and the injury of two others . 
+	[events]:[['returned'], ['murder'], ['guilty'], ['verdict'], ['injury']]
+	[entities]:[['andrew', 'lopez'], ['zurana', 'horton'], ['brooklyn', 'jury'], ['two', 'others']]
+*R1125[returned]
+|--(nsubj)--> R1114[jury]
+|                |--(det)--> a
+|                |--(compou)--> R1114[brooklyn]
+|--(aux)--> has
+|--(dobj)--> *R1123[verdict]
+|                |--(det)--> a
+|                |--(amod)--> *R1122[guilty]
+|--(nmod)--> R1076[lopez]
+|                |--(case)--> for
+|                |--(compou)--> R1076[andrew]
+|                |--(nmod)--> *R1078[murder]
+|                                 |--(case)--> for
+|                                 |--(det)--> the
+|                                 |--(nmod)--> R1079[horton]
+|                                 |                |--(case)--> of
+|                                 |                |--(compou)--> R1079[zurana]
+|                                 |--(cc)--> and
+|                                 |--(conj)--> *R1111[injury]
+|                                                  |--(det)--> the
+|                                                  |--(nmod)--> R1112[others]
+|                                                                   |--(case)--> of
+|                                                                   |--(nummod)--> R1112[two]
+|--(punct)--> .
+
+	* entity-paths for event['returned']33_6ecbplus.xmlsent:9184
+	['returned --(nsubj)--> jury']
+	['returned --(nmod)--> Lopez']
+
+	* entity-paths for event['murder']33_6ecbplus.xmlsent:9184
+	['murder --(nmod)--> Horton']
+	['murder --(conj)--> injury', 'injury --(nmod)--> others']
+
+	* entity-paths for event['guilty']33_6ecbplus.xmlsent:9184
+
+	* entity-paths for event['verdict']33_6ecbplus.xmlsent:9184
+
+	* entity-paths for event['injury']33_6ecbplus.xmlsent:9184
+	['injury --(nmod)--> others']
+
+sentence #:it was said throughout the investigation and trial that lopez and carrasquillo were targeting members of a rival gang when horton and the two other victims killed and injured in the crossfire . 
+	[events]:[['targeting'], ['killed'], ['crossfire'], ['injured'], ['investigation'], ['trial']]
+	[entities]:[['horton'], ['two', 'other', 'victims'], ['gang'], ['lopez'], ['carrasquillo'], ['members']]
+said
+|--(nsubjp)--> it
+|--(auxpas)--> was
+|--(nmod)--> *R1126[investigation]
+|                |--(case)--> throughout
+|                |--(det)--> the
+|                |--(cc)--> and
+|                |--(conj)--> *R1104[trial]
+|                |--(acl:re)--> *R1120[targeting]
+|                                 |--(dobj)--> that
+|                                 |--(nsubj)--> R1076[lopez]
+|                                 |                |--(cc)--> and
+|                                 |                |--(conj)--> R1119[carrasquillo]
+|                                 |--(aux)--> were
+|                                 |--(dobj)--> R1121[members]
+|                                 |                |--(nmod)--> R1127[gang]
+|                                 |                                 |--(case)--> of
+|                                 |                                 |--(det)--> a
+|                                 |                                 |--(amod)--> rival
+|                                 |--(advcl)--> *R1078[killed]
+|                                                  |--(advmod)--> when
+|                                                  |--(nsubj)--> R1079[horton]
+|                                                  |                |--(cc)--> and
+|                                                  |                |--(conj)--> R1112[victims]
+|                                                  |                                 |--(det)--> the
+|                                                  |                                 |--(nummod)--> R1112[two]
+|                                                  |                                 |--(amod)--> R1112[other]
+|                                                  |--(cc)--> and
+|                                                  |--(conj)--> *R1111[injured]
+|                                                  |--(nmod)--> *R1083[crossfire]
+|                                                                   |--(case)--> in
+|                                                                   |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['targeting']33_6ecbplus.xmlsent:9191
+	['targeting --(nsubj)--> Lopez']
+	['targeting --(dobj)--> members']
+	['targeting --(advcl)--> killed', 'killed --(nsubj)--> Horton']
+
+	* entity-paths for event['killed']33_6ecbplus.xmlsent:9191
+	['killed --(nsubj)--> Horton']
+
+	* entity-paths for event['crossfire']33_6ecbplus.xmlsent:9191
+
+	* entity-paths for event['injured']33_6ecbplus.xmlsent:9191
+
+	* entity-paths for event['investigation']33_6ecbplus.xmlsent:9191
+	['investigation --(acl:relcl)--> targeting', 'targeting --(nsubj)--> Lopez']
+	['investigation --(acl:relcl)--> targeting', 'targeting --(dobj)--> members']
+	['investigation --(acl:relcl)--> targeting', 'targeting --(advcl)--> killed', 'killed --(nsubj)--> Horton']
+
+	* entity-paths for event['trial']33_6ecbplus.xmlsent:9191
+
+sentence #:guilty verdict for murderer of brooklyn mother of 12 
+	[events]:[['verdict'], ['guilty']]
+	[entities]:[['brooklyn', 'mother', 'of', '12'], ['murderer']]
+*R1123[verdict]
+|--(amod)--> *R1122[guilty]
+|--(nmod)--> R1076[murderer]
+|                |--(case)--> for
+|                |--(nmod)--> R1079[brooklyn]
+|                                 |--(case)--> of
+|--(dep)--> R1079[mother]
+                 |--(nmod)--> R1079[12]
+                                  |--(case)--> R1079[of]
+
+	* entity-paths for event['verdict']33_6ecbplus.xmlsent:9183
+	['verdict --(nmod)--> murderer']
+	['verdict --(dep)--> mother']
+
+	* entity-paths for event['guilty']33_6ecbplus.xmlsent:9183

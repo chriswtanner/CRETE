@@ -1,0 +1,58 @@
+
+-----------------------------------------
+docid:19_9ecb.xml
+-----------------------------------------
+
+sentence #:the clashes broke out as candlelit vigils were being held to mark a week since the police shooting of a 15-year-old boy , which triggered the riots that are threatening the stability of the government . 
+	[events]:[['vigils'], ['clashes'], ['broke', 'out'], ['triggered'], ['shooting'], ['riots']]
+	[entities]:[['police'], ['boy']]
+*R407[broke]
+|--(nsubj)--> *R433[clashes]
+|                |--(det)--> the
+|--(compou)--> *R407[out]
+|--(advcl)--> held
+|                |--(mark)--> as
+|                |--(nsubjp)--> *R443[vigils]
+|                |                |--(compou)--> candlelit
+|                |--(aux)--> were
+|                |--(auxpas)--> being
+|                |--(xcomp)--> mark
+|                                 |--(mark)--> to
+|                                 |--(nmod:t)--> week
+|                                 |                |--(det)--> a
+|                                 |--(nmod)--> *R401[shooting]
+|                                                  |--(case)--> since
+|                                                  |--(det)--> the
+|                                                  |--(compou)--> R404[police]
+|                                                  |--(nmod)--> R402[boy]
+|                                                                   |--(case)--> of
+|                                                                   |--(det)--> a
+|                                                                   |--(amod)--> 15-year-old
+|                                                                   |--(punct)--> ,
+|                                                                   |--(acl:re)--> *R407[triggered]
+|                                                                                    |--(nsubj)--> which
+|                                                                                    |--(dobj)--> *R433[riots]
+|                                                                                                     |--(det)--> the
+|                                                                                                     |--(acl:re)--> threatening
+|                                                                                                                      |--(nsubj)--> that
+|                                                                                                                      |--(aux)--> are
+|                                                                                                                      |--(dobj)--> stability
+|                                                                                                                                       |--(det)--> the
+|                                                                                                                                       |--(nmod)--> government
+|                                                                                                                                                        |--(case)--> of
+|                                                                                                                                                        |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['vigils']19_9ecb.xmlsent:3383
+
+	* entity-paths for event['clashes']19_9ecb.xmlsent:3383
+
+	* entity-paths for event['broke', 'out']19_9ecb.xmlsent:3383
+
+	* entity-paths for event['triggered']19_9ecb.xmlsent:3383
+
+	* entity-paths for event['shooting']19_9ecb.xmlsent:3383
+	['shooting --(compound)--> police']
+	['shooting --(nmod)--> boy']
+
+	* entity-paths for event['riots']19_9ecb.xmlsent:3383

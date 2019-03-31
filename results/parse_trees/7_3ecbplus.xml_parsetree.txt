@@ -1,0 +1,72 @@
+
+-----------------------------------------
+docid:7_3ecbplus.xml
+-----------------------------------------
+
+sentence #:wladimir klitschko stopped tony thompson in the sixth round to keep a comfortable hold on his wba , ibf and wbo heavyweight title belts on saturday in bern , switzerland . 
+	[events]:[['keep', 'a', 'hold', 'on'], ['round'], ['stopped']]
+	[entities]:[['tony', 'thompson'], ['in', 'bern', ',', 'switzerland'], ['wladimir', 'klitschko'], ['on', 'saturday'], ['belts']]
+*R1724[stopped]
+|--(nsubj)--> R1716[klitschko]
+|                |--(compou)--> R1716[wladimir]
+|--(dobj)--> R1725[thompson]
+|                |--(compou)--> R1725[tony]
+|                |--(nmod)--> *R1726[round]
+|                                 |--(case)--> in
+|                                 |--(det)--> the
+|                                 |--(amod)--> sixth
+|--(advcl)--> *R1727[keep]
+|                |--(mark)--> to
+|                |--(dobj)--> *R1727[hold]
+|                |                |--(det)--> *R1727[a]
+|                |                |--(amod)--> comfortable
+|                |                |--(nmod)--> R1728[belts]
+|                |                                 |--(case)--> *R1727[on]
+|                |                                 |--(nmod:p)--> his
+|                |                                 |--(compou)--> wba
+|                |                                 |                |--(punct)--> ,
+|                |                                 |                |--(conj)--> ibf
+|                |                                 |                |--(cc)--> and
+|                |                                 |                |--(conj)--> wbo
+|                |                                 |--(amod)--> heavyweight
+|                |                                 |--(compou)--> title
+|                |--(nmod)--> R1729[saturday]
+|                |                |--(case)--> R1729[on]
+|                |--(nmod)--> R1739[switzerland]
+|                                 |--(case)--> R1739[in]
+|                                 |--(compou)--> R1739[bern]
+|                                 |--(punct)--> R1739[,]
+|--(punct)--> .
+
+	* entity-paths for event['keep', 'a', 'hold', 'on']7_3ecbplus.xmlsent:14688
+
+	* entity-paths for event['round']7_3ecbplus.xmlsent:14688
+
+	* entity-paths for event['stopped']7_3ecbplus.xmlsent:14688
+	['stopped --(nsubj)--> Klitschko']
+	['stopped --(dobj)--> Thompson']
+	['stopped --(advcl)--> keep', 'keep --(dobj)--> hold', 'hold --(nmod)--> belts']
+	['stopped --(advcl)--> keep', 'keep --(nmod)--> Saturday']
+	['stopped --(advcl)--> keep', 'keep --(nmod)--> Switzerland']
+
+sentence #:wladimir klitschko stops tony thompson to retain world heavyweight titles 
+	[events]:[['retain'], ['stops']]
+	[entities]:[['titles'], ['wladimir', 'klitschko'], ['tony', 'thompson']]
+*R1724[stops]
+|--(nsubj)--> R1716[klitschko]
+|                |--(compou)--> R1716[wladimir]
+|--(dobj)--> R1725[thompson]
+|                |--(compou)--> R1725[tony]
+|--(xcomp)--> *R1727[retain]
+                 |--(mark)--> to
+                 |--(dobj)--> R1728[titles]
+                                  |--(compou)--> world
+                                  |--(amod)--> heavyweight
+
+	* entity-paths for event['retain']7_3ecbplus.xmlsent:14685
+	['retain --(dobj)--> titles']
+
+	* entity-paths for event['stops']7_3ecbplus.xmlsent:14685
+	['stops --(nsubj)--> Klitschko']
+	['stops --(dobj)--> Thompson']
+	['stops --(xcomp)--> retain', 'retain --(dobj)--> titles']

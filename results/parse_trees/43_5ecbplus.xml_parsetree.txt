@@ -1,0 +1,99 @@
+
+-----------------------------------------
+docid:43_5ecbplus.xml
+-----------------------------------------
+
+sentence #:advanced micro devices announced wednesday it is buying low - power server vendor seamicro , a surprise move that puts amd in the systems business and disrupts intel by acquiring one of its close partners . 
+	[events]:[['disrupts'], ['announced'], ['puts'], ['buying'], ['systems', 'business'], ['move'], ['acquiring']]
+	[entities]:[['server'], ['intel'], ['wednesday'], ['one'], ['its'], ['it'], ['vendor', 'seamicro'], ['advanced', 'micro', 'devices'], ['amd']]
+*R1550[announced]
+|--(nsubj)--> R1547[devices]
+|                |--(compou)--> R1547[advanced]
+|                |--(compou)--> R1547[micro]
+|--(nmod:t)--> R1565[wednesday]
+|--(ccomp)--> *R1546[buying]
+|                |--(nsubj)--> R1547[it]
+|                |--(aux)--> is
+|                |--(advmod)--> low
+|                |--(punct)--> -
+|                |--(dobj)--> R1549[seamicro]
+|                                 |--(compou)--> power
+|                                 |--(compou)--> R1548[server]
+|                                 |--(compou)--> R1549[vendor]
+|                                 |--(punct)--> ,
+|                                 |--(appos)--> *R1546[move]
+|                                                  |--(det)--> a
+|                                                  |--(compou)--> surprise
+|                                                  |--(acl:re)--> *R1557[puts]
+|                                                                   |--(nsubj)--> that
+|                                                                   |--(dobj)--> R1547[amd]
+|                                                                   |                |--(nmod)--> *R1556[business]
+|                                                                   |                                 |--(case)--> in
+|                                                                   |                                 |--(det)--> the
+|                                                                   |                                 |--(compou)--> *R1556[systems]
+|                                                                   |--(cc)--> and
+|                                                                   |--(conj)--> *R1575[disrupts]
+|                                                                                    |--(dobj)--> R1426[intel]
+|                                                                                    |--(advcl)--> *R1546[acquiring]
+|                                                                                                     |--(mark)--> by
+|                                                                                                     |--(dobj)--> R1549[one]
+|                                                                                                                      |--(nmod)--> partners
+|                                                                                                                                       |--(case)--> of
+|                                                                                                                                       |--(nmod:p)--> R1426[its]
+|                                                                                                                                       |--(amod)--> close
+|--(punct)--> .
+
+	* entity-paths for event['disrupts']43_5ecbplus.xmlsent:13259
+	['disrupts --(dobj)--> Intel']
+	['disrupts --(advcl)--> acquiring', 'acquiring --(dobj)--> one']
+
+	* entity-paths for event['announced']43_5ecbplus.xmlsent:13259
+	['announced --(nsubj)--> Devices']
+	['announced --(nmod:tmod)--> Wednesday']
+	['announced --(ccomp)--> buying', 'buying --(nsubj)--> it']
+	['announced --(ccomp)--> buying', 'buying --(dobj)--> SeaMicro']
+
+	* entity-paths for event['puts']43_5ecbplus.xmlsent:13259
+	['puts --(dobj)--> AMD']
+	['puts --(conj)--> disrupts', 'disrupts --(dobj)--> Intel']
+	['puts --(conj)--> disrupts', 'disrupts --(advcl)--> acquiring', 'acquiring --(dobj)--> one']
+
+	* entity-paths for event['buying']43_5ecbplus.xmlsent:13259
+	['buying --(nsubj)--> it']
+	['buying --(dobj)--> SeaMicro']
+
+	* entity-paths for event['systems', 'business']43_5ecbplus.xmlsent:13259
+
+	* entity-paths for event['move']43_5ecbplus.xmlsent:13259
+	['move --(acl:relcl)--> puts', 'puts --(dobj)--> AMD']
+	['move --(acl:relcl)--> puts', 'puts --(conj)--> disrupts', 'disrupts --(dobj)--> Intel']
+	['move --(acl:relcl)--> puts', 'puts --(conj)--> disrupts', 'disrupts --(advcl)--> acquiring', 'acquiring --(dobj)--> one']
+
+	* entity-paths for event['acquiring']43_5ecbplus.xmlsent:13259
+	['acquiring --(dobj)--> one']
+
+sentence #:amd buys seamicro , enters server hardware business 
+	[events]:[['business'], ['enters'], ['buys']]
+	[entities]:[['seamicro'], ['amd'], ['server', 'hardware']]
+*R1557[enters]
+|--(ccomp)--> *R1546[buys]
+|                |--(nsubj)--> R1547[amd]
+|                |--(dobj)--> R1549[seamicro]
+|--(punct)--> ,
+|--(nsubj)--> *R1556[business]
+                 |--(compou)--> R1559[server]
+                 |--(compou)--> R1559[hardware]
+
+	* entity-paths for event['business']43_5ecbplus.xmlsent:13257
+	['Business --(compound)--> Server']
+	['Business --(compound)--> Hardware']
+
+	* entity-paths for event['enters']43_5ecbplus.xmlsent:13257
+	['Enters --(ccomp)--> Buys', 'Buys --(nsubj)--> AMD']
+	['Enters --(ccomp)--> Buys', 'Buys --(dobj)--> SeaMicro']
+	['Enters --(nsubj)--> Business', 'Business --(compound)--> Server']
+	['Enters --(nsubj)--> Business', 'Business --(compound)--> Hardware']
+
+	* entity-paths for event['buys']43_5ecbplus.xmlsent:13257
+	['Buys --(nsubj)--> AMD']
+	['Buys --(dobj)--> SeaMicro']

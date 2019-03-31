@@ -1,0 +1,24 @@
+
+-----------------------------------------
+docid:29_10ecbplus.xml
+-----------------------------------------
+
+sentence #:colts top chiefs , 20 - 13 , reach playoffs 
+	[events]:[['playoffs'], ['reach'], ['top']]
+	[entities]:[['20', '-', '13'], ['chiefs'], ['colts']]
+R858[chiefs]
+|--(compou)--> R852[colts]
+|--(compou)--> *R859[top]
+|--(punct)--> ,
+|--(amod)--> R860[20]
+|--(punct)--> R860[-]
+|--(dep)--> R860[13]
+                 |--(punct)--> ,
+                 |--(appos)--> *R861[playoffs]
+                                  |--(compou)--> *R862[reach]
+
+	* entity-paths for event['playoffs']29_10ecbplus.xmlsent:6675
+
+	* entity-paths for event['reach']29_10ecbplus.xmlsent:6675
+
+	* entity-paths for event['top']29_10ecbplus.xmlsent:6675

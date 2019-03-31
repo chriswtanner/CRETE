@@ -1,0 +1,34 @@
+
+-----------------------------------------
+docid:32_7ecb.xml
+-----------------------------------------
+
+sentence #:an arraignment has been scheduled for wednesday morning for a new bedford , massachusetts man accused of murdering two women . 
+	[events]:[['arraignment'], ['murdering']]
+	[entities]:[['man'], ['new', 'bedford', ',', 'massachusetts'], ['two', 'women']]
+scheduled
+|--(nsubjp)--> *R1060[arraignment]
+|                |--(det)--> an
+|--(aux)--> has
+|--(auxpas)--> been
+|--(nmod)--> wednesday
+|                |--(case)--> for
+|--(nmod:t)--> morning
+|--(nmod)--> R1045[man]
+|                |--(case)--> for
+|                |--(det)--> a
+|                |--(dep)--> R1071[new]
+|                |                |--(compou)--> R1071[bedford]
+|                |                |--(punct)--> R1071[,]
+|                |                |--(dep)--> R1071[massachusetts]
+|                |--(acl)--> accused
+|                                 |--(advcl)--> *R1044[murdering]
+|                                                  |--(mark)--> of
+|                                                  |--(dobj)--> R1050[women]
+|                                                                   |--(nummod)--> R1050[two]
+|--(punct)--> .
+
+	* entity-paths for event['arraignment']32_7ecb.xmlsent:8911
+
+	* entity-paths for event['murdering']32_7ecb.xmlsent:8911
+	['murdering --(dobj)--> women']

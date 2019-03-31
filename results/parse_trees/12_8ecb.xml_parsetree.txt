@@ -1,0 +1,54 @@
+
+-----------------------------------------
+docid:12_8ecb.xml
+-----------------------------------------
+
+sentence #:the indian navy captured 23 piracy suspects who tried to take over a merchant vessel in the gulf of aden , between the horn of africa and the arabian peninsula , indian officials said . 
+	[events]:[['take', 'over'], ['tried'], ['captured']]
+	[entities]:[['suspects'], ['in', 'the', 'gulf', 'of', 'aden', ',', 'between', 'the', 'horn', 'of', 'africa', 'and', 'the', 'arabian', 'peninsula'], ['vessel'], ['navy']]
+said
+|--(advcl)--> *R214[captured]
+|                |--(nsubj)--> R215[navy]
+|                |                |--(det)--> the
+|                |                |--(amod)--> indian
+|                |--(dobj)--> R216[suspects]
+|                |                |--(nummod)--> 23
+|                |                |--(compou)--> piracy
+|                |                |--(acl:re)--> *R239[tried]
+|                |                                 |--(nsubj)--> who
+|                |                                 |--(xcomp)--> *R235[take]
+|                |                                                  |--(mark)--> to
+|                |                                                  |--(compou)--> *R235[over]
+|                |                                                  |--(dobj)--> R228[vessel]
+|                |                                                                   |--(det)--> a
+|                |                                                                   |--(compou)--> merchant
+|                |                                                                   |--(nmod)--> R229[gulf]
+|                |                                                                                    |--(case)--> R229[in]
+|                |                                                                                    |--(det)--> R229[the]
+|                |                                                                                    |--(nmod)--> R229[aden]
+|                |                                                                                                     |--(case)--> R229[of]
+|                |--(punct)--> R229[,]
+|                |--(nmod)--> R229[horn]
+|                                 |--(case)--> R229[between]
+|                                 |--(det)--> R229[the]
+|                                 |--(nmod)--> R229[africa]
+|                                                  |--(case)--> R229[of]
+|                                                  |--(cc)--> R229[and]
+|                                                  |--(conj)--> R229[peninsula]
+|                                                                   |--(det)--> R229[the]
+|                                                                   |--(amod)--> R229[arabian]
+|--(punct)--> ,
+|--(nsubj)--> officials
+|                |--(compou)--> indian
+|--(punct)--> .
+
+	* entity-paths for event['take', 'over']12_8ecb.xmlsent:1085
+
+	* entity-paths for event['tried']12_8ecb.xmlsent:1085
+	['tried --(xcomp)--> take', 'take --(dobj)--> vessel']
+
+	* entity-paths for event['captured']12_8ecb.xmlsent:1085
+	['captured --(nsubj)--> navy']
+	['captured --(dobj)--> suspects']
+	['captured --(punct)--> ,']
+	['captured --(nmod)--> Horn']

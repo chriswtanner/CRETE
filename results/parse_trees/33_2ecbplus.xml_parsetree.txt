@@ -1,0 +1,84 @@
+
+-----------------------------------------
+docid:33_2ecbplus.xml
+-----------------------------------------
+
+sentence #:the disturbing evidence was made public at the trial of the two men accused of killing zurana horton from a brownsville rooftop in 2011 . 
+	[events]:[['made', 'public'], ['accused'], ['trial'], ['killing']]
+	[entities]:[['in', '2011'], ['men'], ['zurana', 'horton'], ['from', 'a', 'brownsville', 'rooftop'], ['evidence']]
+*R1101[made]
+|--(nsubjp)--> R1103[evidence]
+|                |--(det)--> the
+|                |--(amod)--> disturbing
+|--(auxpas)--> was
+|--(xcomp)--> *R1101[public]
+|--(nmod)--> *R1104[trial]
+|                |--(case)--> at
+|                |--(det)--> the
+|                |--(nmod)--> R1105[men]
+|                                 |--(case)--> of
+|                                 |--(det)--> the
+|                                 |--(nummod)--> two
+|                                 |--(acl)--> *R1106[accused]
+|                                                  |--(advcl)--> *R1078[killing]
+|                                                                   |--(mark)--> of
+|                                                                   |--(dobj)--> R1079[horton]
+|                                                                   |                |--(compou)--> R1079[zurana]
+|                                                                   |                |--(nmod)--> R1110[rooftop]
+|                                                                   |                                 |--(case)--> R1110[from]
+|                                                                   |                                 |--(det)--> R1110[a]
+|                                                                   |                                 |--(compou)--> R1110[brownsville]
+|                                                                   |--(nmod)--> R1086[2011]
+|                                                                                    |--(case)--> R1086[in]
+|--(punct)--> .
+
+	* entity-paths for event['made', 'public']33_2ecbplus.xmlsent:9017
+
+	* entity-paths for event['accused']33_2ecbplus.xmlsent:9017
+	['accused --(advcl)--> killing', 'killing --(dobj)--> Horton']
+	['accused --(advcl)--> killing', 'killing --(nmod)--> 2011']
+
+	* entity-paths for event['trial']33_2ecbplus.xmlsent:9017
+	['trial --(nmod)--> men']
+
+	* entity-paths for event['killing']33_2ecbplus.xmlsent:9017
+	['killing --(dobj)--> Horton']
+	['killing --(nmod)--> 2011']
+
+sentence #:video of brooklyn woman's fatal shooting is played at trial of two men charged in rooftop gunplay 
+	[events]:[['charged'], ['gunplay'], ['trial'], ['played'], ['fatal', 'shooting']]
+	[entities]:[['men'], ['video'], ['rooftop'], ['brooklyn', "woman's"]]
+*R1101[played]
+|--(nsubjp)--> R1103[video]
+|                |--(nmod)--> *R1078[shooting]
+|                                 |--(case)--> of
+|                                 |--(nmod:p)--> R1079[woman's]
+|                                 |                |--(compou)--> R1079[brooklyn]
+|                                 |                |--(case)--> R1079[woman's]
+|                                 |--(amod)--> *R1078[fatal]
+|--(auxpas)--> is
+|--(nmod)--> *R1104[trial]
+                 |--(case)--> at
+                 |--(nmod)--> R1105[men]
+                                  |--(case)--> of
+                                  |--(nummod)--> two
+                                  |--(acl)--> *R1106[charged]
+                                                   |--(nmod)--> *R1083[gunplay]
+                                                                    |--(case)--> in
+                                                                    |--(compou)--> R1110[rooftop]
+
+	* entity-paths for event['charged']33_2ecbplus.xmlsent:9014
+	['charged --(nmod)--> gunplay', 'gunplay --(compound)--> rooftop']
+
+	* entity-paths for event['gunplay']33_2ecbplus.xmlsent:9014
+	['gunplay --(compound)--> rooftop']
+
+	* entity-paths for event['trial']33_2ecbplus.xmlsent:9014
+	['trial --(nmod)--> men']
+
+	* entity-paths for event['played']33_2ecbplus.xmlsent:9014
+	['played --(nsubjpass)--> Video']
+	['played --(nmod)--> trial', 'trial --(nmod)--> men']
+
+	* entity-paths for event['fatal', 'shooting']33_2ecbplus.xmlsent:9014
+	['shooting --(nmod:poss)--> woman']

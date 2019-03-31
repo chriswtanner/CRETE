@@ -1,0 +1,48 @@
+
+-----------------------------------------
+docid:13_21ecb.xml
+-----------------------------------------
+
+sentence #:a fire that caused more than $ 1 million in damage to alaska gov. sarah palin 's church in wasilla , alaska , may have been set by an arsonist , investigators say . 
+	[events]:[['fire'], ['damage']]
+	[entities]:[['in', 'wasilla', ',', 'alaska'], ['arsonist'], ['church']]
+say
+|--(ccomp)--> set
+|                |--(nsubjp)--> *R261[fire]
+|                |                |--(det)--> a
+|                |                |--(acl:re)--> caused
+|                |                                 |--(nsubj)--> that
+|                |                                 |--(dobj)--> $
+|                |                                 |                |--(advmod)--> more
+|                |                                 |                |                |--(mwe)--> than
+|                |                                 |                |--(nummod)--> million
+|                |                                 |                                 |--(compou)--> 1
+|                |                                 |--(nmod)--> *R278[damage]
+|                |                                 |                |--(case)--> in
+|                |                                 |--(nmod)--> R260[church]
+|                |                                 |                |--(case)--> to
+|                |                                 |                |--(nmod:p)--> palin
+|                |                                 |                                 |--(compou)--> alaska
+|                |                                 |                                 |--(compou)--> gov.
+|                |                                 |                                 |--(compou)--> sarah
+|                |                                 |                                 |--(case)--> 's
+|                |                                 |--(nmod)--> R279[alaska]
+|                |                                                  |--(case)--> R279[in]
+|                |                                                  |--(compou)--> R279[wasilla]
+|                |                                                  |--(punct)--> R279[,]
+|                |                                                  |--(punct)--> ,
+|                |--(aux)--> may
+|                |--(aux)--> have
+|                |--(auxpas)--> been
+|                |--(nmod)--> R281[arsonist]
+|                                 |--(case)--> by
+|                                 |--(det)--> an
+|--(punct)--> ,
+|--(nsubj)--> investigators
+|--(punct)--> .
+
+	* entity-paths for event['fire']13_21ecb.xmlsent:1351
+	['fire --(acl:relcl)--> caused', 'caused --(nmod)--> church']
+	['fire --(acl:relcl)--> caused', 'caused --(nmod)--> Alaska']
+
+	* entity-paths for event['damage']13_21ecb.xmlsent:1351

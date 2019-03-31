@@ -1,0 +1,112 @@
+
+-----------------------------------------
+docid:20_3ecbplus.xml
+-----------------------------------------
+
+sentence #:strong earthquake jolts southern iran , felt in oman 
+	[events]:[['earthquake'], ['felt'], ['jolts']]
+	[entities]:[['southern', 'iran']]
+R525[southern]
+|--(dep)--> *R524[jolts]
+|                |--(amod)--> strong
+|                |--(compou)--> *R509[earthquake]
+|--(ccomp)--> *R532[felt]
+                 |--(nsubj)--> R525[iran]
+                 |                |--(punct)--> ,
+                 |--(nmod)--> oman
+                                  |--(case)--> in
+
+	* entity-paths for event['earthquake']20_3ecbplus.xmlsent:3890
+
+	* entity-paths for event['felt']20_3ecbplus.xmlsent:3890
+	['felt --(nsubj)--> Iran']
+
+	* entity-paths for event['jolts']20_3ecbplus.xmlsent:3890
+
+sentence #:an earthquake measuring at least magnitude - 5 . 9 shook a sparsely populated area of southern iran on sunday , flattening seven villages and killing 10 people , officials said . 
+	[events]:[['killing'], ['earthquake'], ['said'], ['shook'], ['flattening']]
+	[entities]:[['a', 'sparsely', 'populated', 'area', 'of', 'southern', 'iran'], ['villages'], ['people'], ['on', 'sunday'], ['officials'], ['-', '5', '.', '9']]
+*R509[earthquake]
+|--(det)--> an
+|--(acl)--> measuring
+|                |--(ccomp)--> *R533[said]
+|                                 |--(advcl)--> *R524[shook]
+|                                 |                |--(dep)--> R534[5]
+|                                 |                |                |--(dep)--> magnitude
+|                                 |                |                |                |--(dep)--> least
+|                                 |                |                |                                 |--(case)--> at
+|                                 |                |                |--(punct)--> R534[-]
+|                                 |                |                |--(punct)--> R534[.]
+|                                 |                |--(nsubj)--> R534[9]
+|                                 |                |--(dobj)--> R525[area]
+|                                 |                |                |--(det)--> R525[a]
+|                                 |                |                |--(amod)--> R525[populated]
+|                                 |                |                |                |--(advmod)--> R525[sparsely]
+|                                 |                |                |--(nmod)--> R525[iran]
+|                                 |                |                                 |--(case)--> R525[of]
+|                                 |                |                                 |--(amod)--> R525[southern]
+|                                 |                |--(nmod)--> R512[sunday]
+|                                 |                |                |--(case)--> R512[on]
+|                                 |                |--(punct)--> ,
+|                                 |                |--(dep)--> *R508[flattening]
+|                                 |                                 |--(dobj)--> R510[villages]
+|                                 |                                 |                |--(nummod)--> seven
+|                                 |                                 |--(cc)--> and
+|                                 |                                 |--(conj)--> *R504[killing]
+|                                 |                                                  |--(dobj)--> R505[people]
+|                                 |                                                                   |--(nummod)--> 10
+|                                 |--(punct)--> ,
+|                                 |--(nsubj)--> R513[officials]
+|--(punct)--> .
+
+	* entity-paths for event['killing']20_3ecbplus.xmlsent:3891
+	['killing --(dobj)--> people']
+
+	* entity-paths for event['earthquake']20_3ecbplus.xmlsent:3891
+	['earthquake --(acl)--> measuring', 'measuring --(ccomp)--> said', 'said --(advcl)--> shook', 'shook --(dep)--> 5']
+	['earthquake --(acl)--> measuring', 'measuring --(ccomp)--> said', 'said --(advcl)--> shook', 'shook --(nsubj)--> 9']
+	['earthquake --(acl)--> measuring', 'measuring --(ccomp)--> said', 'said --(advcl)--> shook', 'shook --(dobj)--> area']
+	['earthquake --(acl)--> measuring', 'measuring --(ccomp)--> said', 'said --(advcl)--> shook', 'shook --(nmod)--> Sunday']
+	['earthquake --(acl)--> measuring', 'measuring --(ccomp)--> said', 'said --(advcl)--> shook', 'shook --(dep)--> flattening', 'flattening --(dobj)--> villages']
+	['earthquake --(acl)--> measuring', 'measuring --(ccomp)--> said', 'said --(advcl)--> shook', 'shook --(dep)--> flattening', 'flattening --(conj)--> killing', 'killing --(dobj)--> people']
+	['earthquake --(acl)--> measuring', 'measuring --(ccomp)--> said', 'said --(nsubj)--> officials']
+
+	* entity-paths for event['said']20_3ecbplus.xmlsent:3891
+	['said --(advcl)--> shook', 'shook --(dep)--> 5']
+	['said --(advcl)--> shook', 'shook --(nsubj)--> 9']
+	['said --(advcl)--> shook', 'shook --(dobj)--> area']
+	['said --(advcl)--> shook', 'shook --(nmod)--> Sunday']
+	['said --(advcl)--> shook', 'shook --(dep)--> flattening', 'flattening --(dobj)--> villages']
+	['said --(advcl)--> shook', 'shook --(dep)--> flattening', 'flattening --(conj)--> killing', 'killing --(dobj)--> people']
+	['said --(nsubj)--> officials']
+
+	* entity-paths for event['shook']20_3ecbplus.xmlsent:3891
+	['shook --(dep)--> 5']
+	['shook --(nsubj)--> 9']
+	['shook --(dobj)--> area']
+	['shook --(nmod)--> Sunday']
+	['shook --(dep)--> flattening', 'flattening --(dobj)--> villages']
+	['shook --(dep)--> flattening', 'flattening --(conj)--> killing', 'killing --(dobj)--> people']
+
+	* entity-paths for event['flattening']20_3ecbplus.xmlsent:3891
+	['flattening --(dobj)--> villages']
+	['flattening --(conj)--> killing', 'killing --(dobj)--> people']
+
+sentence #:the usgs said the quake was 35 miles southwest of bandar abbas . 
+	[events]:[['quake']]
+	[entities]:[['35', 'miles', 'southwest', 'of', 'bandar', 'abbas']]
+said
+|--(nsubj)--> usgs
+|                |--(det)--> the
+|--(ccomp)--> R525[miles]
+|                |--(nsubj)--> *R509[quake]
+|                |                |--(det)--> the
+|                |--(cop)--> was
+|                |--(nummod)--> R525[35]
+|                |--(dep)--> R525[southwest]
+|                                 |--(nmod)--> R525[abbas]
+|                                                  |--(case)--> R525[of]
+|                                                  |--(compou)--> R525[bandar]
+|--(punct)--> .
+
+	* entity-paths for event['quake']20_3ecbplus.xmlsent:3898

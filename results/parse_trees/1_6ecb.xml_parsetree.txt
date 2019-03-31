@@ -1,0 +1,95 @@
+
+-----------------------------------------
+docid:1_6ecb.xml
+-----------------------------------------
+
+sentence #:asking to respect her and her family 's privacy , ketsoyan did not reveal what the star of " american pie " , " van wilder " and " the big lebowski " was being treated for . 
+	[events]:[['treated'], ['privacy'], ['reveal']]
+	[entities]:[['american', 'pie'], ['her'], ['family'], ['star'], ['ketsoyan']]
+*R49[reveal]
+|--(advcl)--> asking
+|                |--(xcomp)--> respect
+|                                 |--(mark)--> to
+|                                 |--(dobj)--> R2[her]
+|                                                  |--(cc)--> and
+|                                                  |--(conj)--> *R70[privacy]
+|                                                                   |--(nmod:p)--> R7[family]
+|                                                                                    |--(nmod:p)--> her
+|                                                                                    |--(case)--> 's
+|--(punct)--> ,
+|--(nsubj)--> R4[ketsoyan]
+|--(aux)--> did
+|--(neg)--> not
+|--(xcomp)--> R2[star]
+|                |--(nsubj)--> what
+|                |--(det)--> the
+|                |--(nmod)--> R84[pie]
+|                |                |--(case)--> of
+|                |                |--(punct)--> "
+|                |                |--(amod)--> R84[american]
+|                |--(punct)--> "
+|--(punct)--> ,
+|--(punct)--> "
+|--(dobj)--> wilder
+|                |--(compou)--> van
+|--(punct)--> "
+|--(cc)--> and
+|--(conj)--> big
+|                |--(punct)--> "
+|                |--(det)--> the
+|--(parata)--> *R123[treated]
+|                |--(nsubjp)--> lebowski
+|                |--(punct)--> "
+|                |--(aux)--> was
+|                |--(auxpas)--> being
+|                |--(nmod)--> for
+|--(punct)--> .
+
+	* entity-paths for event['treated']1_6ecb.xmlsent:266
+
+	* entity-paths for event['privacy']1_6ecb.xmlsent:266
+	['privacy --(nmod:poss)--> family']
+
+	* entity-paths for event['reveal']1_6ecb.xmlsent:266
+	['reveal --(advcl)--> Asking', 'Asking --(xcomp)--> respect', 'respect --(dobj)--> her']
+	['reveal --(nsubj)--> Ketsoyan']
+	['reveal --(xcomp)--> star']
+
+sentence #:talking to people magazine , jack ketsoyan , tara reid 's representative confirms the perennial party girl , has herself checked into promises treatment centre . 
+	[events]:[['talking'], ['checked', 'into'], ['confirms']]
+	[entities]:[['promises', 'treatment', 'centre'], ['jack', 'ketsoyan'], ['party', 'girl'], ['tara', 'reid'], ['herself'], ['people', 'magazine']]
+has
+|--(csubj)--> *R0[talking]
+|                |--(nmod)--> R5[magazine]
+|                                 |--(case)--> to
+|                                 |--(compou)--> R5[people]
+|--(parata)--> *R0[confirms]
+|                |--(punct)--> ,
+|                |--(nsubj)--> R4[ketsoyan]
+|                |                |--(compou)--> R4[jack]
+|                |                |--(punct)--> ,
+|                |                |--(appos)--> R2[reid]
+|                |                                 |--(compou)--> R2[tara]
+|                |                                 |--(case)--> 's
+|                |                                 |--(amod)--> representative
+|                |--(dobj)--> R2[girl]
+|                |                |--(det)--> the
+|                |                |--(compou)--> perennial
+|                |                |--(compou)--> R2[party]
+|                |--(punct)--> ,
+|--(ccomp)--> *R1[checked]
+|                |--(nsubj)--> R2[herself]
+|                |--(nmod)--> *R1[into]
+|                |--(advcl)--> R3[promises]
+|                                 |--(nsubj)--> R3[treatment]
+|                                                  |--(appos)--> R3[centre]
+|--(punct)--> .
+
+	* entity-paths for event['talking']1_6ecb.xmlsent:265
+	['Talking --(nmod)--> magazine']
+
+	* entity-paths for event['checked', 'into']1_6ecb.xmlsent:265
+
+	* entity-paths for event['confirms']1_6ecb.xmlsent:265
+	['confirms --(nsubj)--> Ketsoyan']
+	['confirms --(dobj)--> Girl']

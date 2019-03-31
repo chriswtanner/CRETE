@@ -1,0 +1,76 @@
+
+-----------------------------------------
+docid:37_4ecb.xml
+-----------------------------------------
+
+sentence #:a young girl was killed and dozens of others were seriously injured in the quakes , which also sent small tsunamis into japan 's southeastern coast . 
+	[events]:[['killed'], ['injured'], ['quakes']]
+	[entities]:[['girl'], ['dozens', 'of', 'others']]
+*R1283[killed]
+|--(nsubjp)--> R1284[girl]
+|                |--(det)--> a
+|                |--(amod)--> young
+|--(auxpas)--> was
+|--(cc)--> and
+|--(conj)--> *R1288[injured]
+|                |--(nsubjp)--> R1289[dozens]
+|                |                |--(nmod)--> R1289[others]
+|                |                                 |--(case)--> R1289[of]
+|                |--(auxpas)--> were
+|                |--(advmod)--> seriously
+|                |--(nmod)--> *R1277[quakes]
+|                                 |--(case)--> in
+|                                 |--(det)--> the
+|                                 |--(punct)--> ,
+|                                 |--(acl:re)--> sent
+|                                                  |--(nsubj)--> which
+|                                                  |--(advmod)--> also
+|                                                  |--(dobj)--> tsunamis
+|                                                  |                |--(amod)--> small
+|                                                  |--(nmod)--> coast
+|                                                                   |--(case)--> into
+|                                                                   |--(nmod:p)--> japan
+|                                                                   |                |--(case)--> 's
+|                                                                   |--(amod)--> southeastern
+|--(punct)--> .
+
+	* entity-paths for event['killed']37_4ecb.xmlsent:10574
+	['killed --(nsubjpass)--> girl']
+	['killed --(conj)--> injured', 'injured --(nsubjpass)--> dozens']
+
+	* entity-paths for event['injured']37_4ecb.xmlsent:10574
+	['injured --(nsubjpass)--> dozens']
+
+	* entity-paths for event['quakes']37_4ecb.xmlsent:10574
+
+sentence #:hengky tewu , a hospital director , said a 10-year-old girl was killed at home when a wall collapsed and crushed her head . 
+	[events]:[['killed']]
+	[entities]:[['girl'], ['her']]
+said
+|--(nsubj)--> tewu
+|                |--(compou)--> hengky
+|                |--(punct)--> ,
+|                |--(appos)--> director
+|                |                |--(det)--> a
+|                |                |--(compou)--> hospital
+|                |--(punct)--> ,
+|--(ccomp)--> *R1283[killed]
+|                |--(nsubjp)--> R1284[girl]
+|                |                |--(det)--> a
+|                |                |--(amod)--> 10-year-old
+|                |--(auxpas)--> was
+|                |--(nmod)--> home
+|                |                |--(case)--> at
+|                |--(advcl)--> collapsed
+|                                 |--(advmod)--> when
+|                                 |--(nsubj)--> wall
+|                                 |                |--(det)--> a
+|                                 |--(cc)--> and
+|                                 |--(conj)--> crushed
+|                                                  |--(dobj)--> head
+|                                                                   |--(nmod:p)--> R1284[her]
+|--(punct)--> .
+
+	* entity-paths for event['killed']37_4ecb.xmlsent:10577
+	['killed --(nsubjpass)--> girl']
+	['killed --(advcl)--> collapsed', 'collapsed --(conj)--> crushed', 'crushed --(dobj)--> head', 'head --(nmod:poss)--> her']

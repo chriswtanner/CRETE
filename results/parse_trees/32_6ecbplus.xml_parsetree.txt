@@ -1,0 +1,84 @@
+
+-----------------------------------------
+docid:32_6ecbplus.xml
+-----------------------------------------
+
+sentence #:man charged with murdering mother and sister in cumbria 
+	[events]:[['charged'], ['murdering']]
+	[entities]:[['in', 'cumbria'], ['mother'], ['man'], ['sister']]
+*R1034[charged]
+|--(nsubj)--> R1033[man]
+|--(advcl)--> *R1031[murdering]
+                 |--(mark)--> with
+                 |--(dobj)--> R1035[mother]
+                 |                |--(cc)--> and
+                 |                |--(conj)--> R1036[sister]
+                 |--(nmod)--> R1032[cumbria]
+                                  |--(case)--> R1032[in]
+
+	* entity-paths for event['charged']32_6ecbplus.xmlsent:8903
+	['charged --(nsubj)--> Man']
+	['charged --(advcl)--> murdering', 'murdering --(dobj)--> mother']
+	['charged --(advcl)--> murdering', 'murdering --(nmod)--> Cumbria']
+
+	* entity-paths for event['murdering']32_6ecbplus.xmlsent:8903
+	['murdering --(dobj)--> mother']
+	['murdering --(nmod)--> Cumbria']
+
+sentence #:a 23 - year - old man has been charged with the murders of his mother and sister . 
+	[events]:[['charged'], ['murders']]
+	[entities]:[['sister'], ['mother'], ['man']]
+23
+|--(det)--> a
+|--(punct)--> -
+|--(dep)--> year
+|--(punct)--> -
+|--(parata)--> *R1034[charged]
+|                |--(nsubjp)--> R1033[man]
+|                |                |--(amod)--> old
+|                |--(aux)--> has
+|                |--(auxpas)--> been
+|                |--(nmod)--> *R1031[murders]
+|                                 |--(case)--> with
+|                                 |--(det)--> the
+|                                 |--(nmod)--> R1035[mother]
+|                                                  |--(case)--> of
+|                                                  |--(nmod:p)--> his
+|                                                  |--(cc)--> and
+|                                                  |--(conj)--> R1036[sister]
+|--(punct)--> .
+
+	* entity-paths for event['charged']32_6ecbplus.xmlsent:8905
+	['charged --(nsubjpass)--> man']
+	['charged --(nmod)--> murders', 'murders --(nmod)--> mother']
+
+	* entity-paths for event['murders']32_6ecbplus.xmlsent:8905
+	['murders --(nmod)--> mother']
+
+sentence #:john jenkin is due in court over the murders of alice mcmeekin , 58 , and kathryn jenkin , 20 . 
+	[events]:[['murders']]
+	[entities]:[['alice', 'mcmeekin'], ['kathryn', 'jenkin'], ['john', 'jenkin']]
+due
+|--(nsubj)--> R1033[jenkin]
+|                |--(compou)--> R1033[john]
+|--(cop)--> is
+|--(nmod)--> court
+|                |--(case)--> in
+|                |--(nmod)--> *R1031[murders]
+|                                 |--(case)--> over
+|                                 |--(det)--> the
+|                                 |--(nmod)--> R1035[mcmeekin]
+|                                                  |--(case)--> of
+|                                                  |--(compou)--> R1035[alice]
+|                                                  |--(punct)--> ,
+|                                                  |--(conj)--> 58
+|                                                  |--(punct)--> ,
+|                                                  |--(cc)--> and
+|                                                  |--(conj)--> R1036[jenkin]
+|                                                                   |--(compou)--> R1036[kathryn]
+|                                                                   |--(punct)--> ,
+|                                                                   |--(amod)--> 20
+|--(punct)--> .
+
+	* entity-paths for event['murders']32_6ecbplus.xmlsent:8906
+	['murders --(nmod)--> McMeekin']

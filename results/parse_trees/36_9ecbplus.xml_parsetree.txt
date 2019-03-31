@@ -1,0 +1,99 @@
+
+-----------------------------------------
+docid:36_9ecbplus.xml
+-----------------------------------------
+
+sentence #:warren jeffs arraigned in texas on sex charges 
+	[events]:[['charges'], ['sex']]
+	[entities]:[['warren', 'jeffs'], ['in', 'texas']]
+arraigned
+|--(nsubj)--> R1183[jeffs]
+|                |--(compou)--> R1183[warren]
+|--(nmod)--> R1230[texas]
+|                |--(case)--> R1230[in]
+|--(nmod)--> *R1184[charges]
+                 |--(case)--> on
+                 |--(compou)--> *R1186[sex]
+
+	* entity-paths for event['charges']36_9ecbplus.xmlsent:10374
+
+	* entity-paths for event['sex']36_9ecbplus.xmlsent:10374
+
+sentence #:texas authorities have charged the ecclesiastical head of the fundamentalist church of jesus christ of latter day saints with felony bigamy , aggravated sexual assault and assault . 
+	[events]:[['bigamy'], ['aggravated', 'sexual', 'assault'], ['charged']]
+	[entities]:[['head'], ['fundamentalist', 'church', 'of', 'jesus', 'christ', 'of', 'latter', 'day', 'saints']]
+*R1184[charged]
+|--(nsubj)--> authorities
+|                |--(compou)--> texas
+|--(aux)--> have
+|--(dobj)--> R1183[head]
+|                |--(det)--> the
+|                |--(amod)--> ecclesiastical
+|                |--(nmod)--> R1204[church]
+|                                 |--(case)--> of
+|                                 |--(det)--> the
+|                                 |--(compou)--> R1204[fundamentalist]
+|                                 |--(nmod)--> R1204[christ]
+|                                                  |--(case)--> R1204[of]
+|                                                  |--(compou)--> R1204[jesus]
+|                                                  |--(nmod)--> R1204[saints]
+|                                                                   |--(case)--> R1204[of]
+|                                                                   |--(compou)--> R1204[latter]
+|                                                                   |--(compou)--> R1204[day]
+|--(nmod)--> *R1231[bigamy]
+|                |--(case)--> with
+|                |--(compou)--> felony
+|                |--(punct)--> ,
+|                |--(conj)--> *R1186[assault]
+|                |                |--(amod)--> *R1186[aggravated]
+|                |                |--(amod)--> *R1186[sexual]
+|                |--(cc)--> and
+|                |--(conj)--> assault
+|--(punct)--> .
+
+	* entity-paths for event['bigamy']36_9ecbplus.xmlsent:10379
+
+	* entity-paths for event['aggravated', 'sexual', 'assault']36_9ecbplus.xmlsent:10379
+
+	* entity-paths for event['charged']36_9ecbplus.xmlsent:10379
+	['charged --(dobj)--> head']
+
+sentence #:polygamist sect leader warren jeffs was quietly extradited from utah to texas , where he was arraigned wednesday to face trial on bigamy and sexual assault charges . 
+	[events]:[['charges'], ['bigamy'], ['sexual', 'assault'], ['trial']]
+	[entities]:[['where'], ['leader', 'warren', 'jeffs'], ['he'], ['utah'], ['to', 'texas'], ['polygamist', 'sect']]
+R1204[sect]
+|--(nsubj)--> R1204[polygamist]
+|--(ccomp)--> extradited
+|                |--(nsubjp)--> R1183[jeffs]
+|                |                |--(compou)--> R1183[leader]
+|                |                |--(compou)--> R1183[warren]
+|                |--(auxpas)--> was
+|                |--(advmod)--> quietly
+|                |--(nmod)--> R1232[utah]
+|                |                |--(case)--> from
+|                |--(nmod)--> R1230[texas]
+|                                 |--(case)--> R1230[to]
+|                                 |--(punct)--> ,
+|                                 |--(acl:re)--> arraigned
+|                                                  |--(advmod)--> R1230[where]
+|                                                  |--(nsubjp)--> R1183[he]
+|                                                  |--(auxpas)--> was
+|                                                  |--(nmod:t)--> wednesday
+|                                                  |--(xcomp)--> face
+|                                                                   |--(mark)--> to
+|                                                                   |--(dobj)--> *R1192[trial]
+|                                                                   |--(nmod)--> *R1184[charges]
+|                                                                                    |--(case)--> on
+|                                                                                    |--(compou)--> *R1231[bigamy]
+|                                                                                    |                |--(cc)--> and
+|                                                                                    |                |--(conj)--> *R1186[sexual]
+|                                                                                    |--(compou)--> *R1186[assault]
+|--(punct)--> .
+
+	* entity-paths for event['charges']36_9ecbplus.xmlsent:10376
+
+	* entity-paths for event['bigamy']36_9ecbplus.xmlsent:10376
+
+	* entity-paths for event['sexual', 'assault']36_9ecbplus.xmlsent:10376
+
+	* entity-paths for event['trial']36_9ecbplus.xmlsent:10376

@@ -1,0 +1,58 @@
+
+-----------------------------------------
+docid:4_9ecbplus.xml
+-----------------------------------------
+
+sentence #:esther williams , swimming champion , actress , and pin - up icon , has died . 
+	[events]:[['died']]
+	[entities]:[['champion'], ['esther', 'williams'], ['actress'], ['icon']]
+*R1369[died]
+|--(nsubj)--> R1370[williams]
+|                |--(compou)--> R1370[esther]
+|                |--(punct)--> ,
+|                |--(acl)--> swimming
+|                |                |--(dobj)--> R1370[champion]
+|                |                |                |--(punct)--> ,
+|                |                |                |--(conj)--> R1370[actress]
+|                |                |                |--(punct)--> ,
+|                |                |                |--(cc)--> and
+|                |                |                |--(conj)--> pin
+|                |                |--(punct)--> -
+|                |                |--(nmod)--> R1370[icon]
+|                |                                 |--(case)--> up
+|                |--(punct)--> ,
+|--(aux)--> has
+|--(punct)--> .
+
+	* entity-paths for event['died']4_9ecbplus.xmlsent:11629
+	['died --(nsubj)--> Williams']
+
+sentence #:williams , 91 , passed away early thursday in her sleep , according to her publicist . 
+	[events]:[['according', 'to'], ['passed'], ['sleep']]
+	[entities]:[['williams'], ['publicist'], ['early', 'thursday']]
+*R1369[passed]
+|--(nsubj)--> R1370[williams]
+|                |--(punct)--> ,
+|                |--(amod)--> 91
+|                |--(punct)--> ,
+|--(nmod:t)--> R1376[thursday]
+|                |--(advmod)--> away
+|                |--(amod)--> R1376[early]
+|--(nmod)--> *R1377[sleep]
+|                |--(case)--> in
+|                |--(nmod:p)--> her
+|--(punct)--> ,
+|--(nmod)--> R1378[publicist]
+|                |--(case)--> *R1379[according]
+|                |                |--(mwe)--> *R1379[to]
+|                |--(nmod:p)--> her
+|--(punct)--> .
+
+	* entity-paths for event['according', 'to']4_9ecbplus.xmlsent:11631
+
+	* entity-paths for event['passed']4_9ecbplus.xmlsent:11631
+	['passed --(nsubj)--> Williams']
+	['passed --(nmod:tmod)--> Thursday']
+	['passed --(nmod)--> publicist']
+
+	* entity-paths for event['sleep']4_9ecbplus.xmlsent:11631

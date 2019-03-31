@@ -1,0 +1,51 @@
+
+-----------------------------------------
+docid:12_10ecbplus.xml
+-----------------------------------------
+
+sentence #:indian navy has foiled a piracy attempt on 5 indian merchant vessels in international waters . 
+	[events]:[['piracy'], ['attempt'], ['foiled']]
+	[entities]:[['navy'], ['vessels']]
+has
+|--(nsubj)--> R215[navy]
+|                |--(amod)--> indian
+|--(ccomp)--> *R217[foiled]
+|                |--(dobj)--> *R218[attempt]
+|                                 |--(det)--> a
+|                                 |--(compou)--> *R219[piracy]
+|                                 |--(nmod)--> R220[vessels]
+|                                                  |--(case)--> on
+|                                                  |--(nummod)--> 5
+|                                                  |--(amod)--> indian
+|                                                  |--(compou)--> merchant
+|--(nmod)--> waters
+|                |--(case)--> in
+|                |--(amod)--> international
+|--(punct)--> .
+
+	* entity-paths for event['piracy']12_10ecbplus.xmlsent:775
+
+	* entity-paths for event['attempt']12_10ecbplus.xmlsent:775
+	['attempt --(nmod)--> vessels']
+
+	* entity-paths for event['foiled']12_10ecbplus.xmlsent:775
+	['foiled --(dobj)--> attempt', 'attempt --(nmod)--> vessels']
+
+sentence #:ins sukanya intercepts pirate ships , arms seized 
+	[events]:[['seized'], ['intercepts']]
+	[entities]:[['ships'], ['ins', 'sukanya'], ['arms']]
+*R221[intercepts]
+|--(nsubj)--> R222[sukanya]
+|                |--(compou)--> R222[ins]
+|--(ccomp)--> *R223[seized]
+                 |--(nsubj)--> R224[ships]
+                                  |--(amod)--> pirate
+                                  |--(punct)--> ,
+                                  |--(appos)--> R225[arms]
+
+	* entity-paths for event['seized']12_10ecbplus.xmlsent:773
+	['seized --(nsubj)--> ships']
+
+	* entity-paths for event['intercepts']12_10ecbplus.xmlsent:773
+	['intercepts --(nsubj)--> Sukanya']
+	['intercepts --(ccomp)--> seized', 'seized --(nsubj)--> ships']

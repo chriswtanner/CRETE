@@ -1,0 +1,132 @@
+
+-----------------------------------------
+docid:45_12ecbplus.xml
+-----------------------------------------
+
+sentence #:prosecutors have charged 27 - year - old christopher kenyon simpson with two counts of first - degree murder in the april 2012 shooting death of 20 - year - old ka'loni flynn of fort smith and the resulting death of the fetus . 
+	[events]:[['death'], ['first', '-', 'degree', 'murder'], ['charged'], ['shooting', 'death']]
+	[entities]:[['of', 'fort', 'smith'], ['april', '2012'], ['two', 'counts'], ['prosecutors'], ['christopher', 'kenyon', 'simpson'], ["ka'loni", 'flynn'], ['fetus']]
+*R1622[charged]
+|--(nsubj)--> R1623[prosecutors]
+|--(aux)--> have
+|--(dobj)--> 27
+|                |--(punct)--> -
+|                |--(dep)--> year
+|                |--(punct)--> -
+|                |--(dep)--> R1610[simpson]
+|                |                |--(amod)--> old
+|                |                |--(compou)--> R1610[christopher]
+|                |                |--(compou)--> R1610[kenyon]
+|                |                |--(nmod)--> R1618[counts]
+|                |                                 |--(case)--> with
+|                |                                 |--(nummod)--> R1618[two]
+|                |                                 |--(nmod)--> *R1619[first]
+|                |                                                  |--(case)--> of
+|                |--(punct)--> *R1619[-]
+|                |--(dep)--> *R1619[murder]
+|                |                |--(compou)--> *R1619[degree]
+|                |                |--(nmod)--> *R1611[death]
+|                |                |                |--(case)--> in
+|                |                |                |--(det)--> the
+|                |                |                |--(compou)--> R1620[april]
+|                |                |                |--(nummod)--> R1620[2012]
+|                |                |                |--(amod)--> *R1611[shooting]
+|                |                |--(nmod)--> 20
+|                |                                 |--(case)--> of
+|                |--(punct)--> -
+|                |--(dep)--> year
+|                |                |--(punct)--> -
+|                |                |--(dep)--> R1612[flynn]
+|                |                                 |--(amod)--> old
+|                |                                 |--(compou)--> R1612[ka'loni]
+|                |                                 |--(nmod)--> R1616[smith]
+|                |                                                  |--(case)--> R1616[of]
+|                |                                                  |--(compou)--> R1616[fort]
+|                |--(cc)--> and
+|                |--(conj)--> *R1624[death]
+|                                 |--(det)--> the
+|                                 |--(amod)--> resulting
+|                                 |--(nmod)--> R1625[fetus]
+|                                                  |--(case)--> of
+|                                                  |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['death']45_12ecbplus.xmlsent:13767
+	['death --(nmod)--> fetus']
+
+	* entity-paths for event['first', '-', 'degree', 'murder']45_12ecbplus.xmlsent:13767
+	['murder --(nmod)--> death', 'death --(compound)--> April']
+	['murder --(nmod)--> death', 'death --(nummod)--> 2012']
+
+	* entity-paths for event['charged']45_12ecbplus.xmlsent:13767
+	['charged --(nsubj)--> Prosecutors']
+	['charged --(dobj)--> 27', '27 --(dep)--> Simpson']
+	['charged --(dobj)--> 27', '27 --(dep)--> murder', 'murder --(nmod)--> death', 'death --(compound)--> April']
+	['charged --(dobj)--> 27', '27 --(dep)--> murder', 'murder --(nmod)--> death', 'death --(nummod)--> 2012']
+	['charged --(dobj)--> 27', '27 --(dep)--> year', 'year --(dep)--> Flynn']
+	['charged --(dobj)--> 27', '27 --(conj)--> death', 'death --(nmod)--> fetus']
+
+	* entity-paths for event['shooting', 'death']45_12ecbplus.xmlsent:13767
+	['death --(compound)--> April']
+	['death --(nummod)--> 2012']
+
+sentence #:the murder trial of a spiro man charged in the deaths of a pregnant arkansas woman and her fetus is underway in poteau . 
+	[events]:[['charged'], ['deaths'], ['trial'], ['pregnant'], ['murder']]
+	[entities]:[['fetus'], ['arkansas', 'woman'], ['spiro', 'man']]
+underway
+|--(nsubj)--> *R1626[trial]
+|                |--(det)--> the
+|                |--(compou)--> *R1619[murder]
+|                |--(nmod)--> R1610[man]
+|                                 |--(case)--> of
+|                                 |--(det)--> a
+|                                 |--(compou)--> R1610[spiro]
+|                                 |--(acl)--> *R1622[charged]
+|                                                  |--(nmod)--> *R1611[deaths]
+|                                                                   |--(case)--> in
+|                                                                   |--(det)--> the
+|                                                                   |--(nmod)--> R1612[woman]
+|                                                                                    |--(case)--> of
+|                                                                                    |--(det)--> a
+|                                                                                    |--(amod)--> *R1621[pregnant]
+|                                                                                    |--(compou)--> R1612[arkansas]
+|                                                                                    |--(cc)--> and
+|                                                                                    |--(conj)--> R1625[fetus]
+|                                                                                                     |--(nmod:p)--> her
+|--(cop)--> is
+|--(nmod)--> poteau
+|                |--(case)--> in
+|--(punct)--> .
+
+	* entity-paths for event['charged']45_12ecbplus.xmlsent:13766
+	['charged --(nmod)--> deaths', 'deaths --(nmod)--> woman']
+
+	* entity-paths for event['deaths']45_12ecbplus.xmlsent:13766
+	['deaths --(nmod)--> woman']
+
+	* entity-paths for event['trial']45_12ecbplus.xmlsent:13766
+	['trial --(nmod)--> man']
+
+	* entity-paths for event['pregnant']45_12ecbplus.xmlsent:13766
+
+	* entity-paths for event['murder']45_12ecbplus.xmlsent:13766
+
+sentence #:the times record reported friday that trial is expected to last several days . 
+	[events]:[['trial']]
+	[entities]:[]
+reported
+|--(nsubj)--> record
+|                |--(det)--> the
+|                |--(compou)--> times
+|--(nmod:t)--> friday
+|--(ccomp)--> expected
+|                |--(mark)--> that
+|                |--(nsubjp)--> *R1626[trial]
+|                |--(auxpas)--> is
+|                |--(xcomp)--> last
+|                                 |--(mark)--> to
+|                                 |--(nmod:t)--> days
+|                                                  |--(amod)--> several
+|--(punct)--> .
+
+	* entity-paths for event['trial']45_12ecbplus.xmlsent:13768

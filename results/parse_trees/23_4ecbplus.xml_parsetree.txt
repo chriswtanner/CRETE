@@ -1,0 +1,135 @@
+
+-----------------------------------------
+docid:23_4ecbplus.xml
+-----------------------------------------
+
+sentence #:australian , english climbers fall to their deaths in new zealand mountains 
+	[events]:[['fall'], ['deaths']]
+	[entities]:[['in', 'new', 'zealand', 'mountains'], ['climbers']]
+*R659[fall]
+|--(nsubj)--> R660[climbers]
+|                |--(amod)--> australian
+|                |--(punct)--> ,
+|                |--(amod)--> english
+|--(nmod)--> *R661[deaths]
+|                |--(case)--> to
+|                |--(nmod:p)--> their
+|--(nmod)--> R650[mountains]
+                 |--(case)--> R650[in]
+                 |--(compou)--> R650[new]
+                 |--(compou)--> R650[zealand]
+
+	* entity-paths for event['fall']23_4ecbplus.xmlsent:4705
+	['fall --(nsubj)--> climbers']
+	['fall --(nmod)--> mountains']
+
+	* entity-paths for event['deaths']23_4ecbplus.xmlsent:4705
+
+sentence #:one australian and one english climber have fallen to their deaths in new zealand . 
+	[events]:[['fallen'], ['deaths']]
+	[entities]:[['climber'], ['in', 'new', 'zealand'], ['australian']]
+*R659[fallen]
+|--(nsubj)--> one
+|                |--(dep)--> R644[australian]
+|                |--(cc)--> and
+|                |--(conj)--> R643[climber]
+|                                 |--(nummod)--> one
+|                                 |--(amod)--> english
+|--(aux)--> have
+|--(nmod)--> *R661[deaths]
+|                |--(case)--> to
+|                |--(nmod:p)--> their
+|--(nmod)--> R650[zealand]
+|                |--(case)--> R650[in]
+|                |--(compou)--> R650[new]
+|--(punct)--> .
+
+	* entity-paths for event['fallen']23_4ecbplus.xmlsent:4706
+	['fallen --(nsubj)--> One', 'One --(dep)--> Australian']
+	['fallen --(nsubj)--> One', 'One --(conj)--> climber']
+	['fallen --(nmod)--> Zealand']
+
+	* entity-paths for event['deaths']23_4ecbplus.xmlsent:4706
+
+sentence #:on saturday , 32 - year - old englishman robert buckley fell about 600 metres ( 2 , 000 feet ) while climbing to a small hut on mount sefton . 
+	[events]:[['fell'], ['climbing']]
+	[entities]:[['on', 'saturday'], ['to', 'a', 'small', 'hut', 'on', 'mount', 'sefton'], ['robert', 'buckley']]
+*R649[fell]
+|--(nmod)--> R648[saturday]
+|                |--(case)--> R648[on]
+|--(punct)--> ,
+|--(nsubj)--> 32
+|                |--(dep)--> year
+|                                 |--(punct)--> -
+|                                 |--(punct)--> -
+|                                 |--(dep)--> R643[buckley]
+|                                                  |--(amod)--> old
+|                                                  |--(compou)--> englishman
+|                                                  |--(compou)--> R643[robert]
+|--(dobj)--> metres
+|                |--(nummod)--> 600
+|                |                |--(advmod)--> about
+|                |--(appos)--> 2
+|                                 |--(punct)--> (
+|                                 |--(punct)--> ,
+|                                 |--(dep)--> feet
+|                                 |                |--(nummod)--> 000
+|                                 |--(punct)--> )
+|--(advcl)--> *R651[climbing]
+|                |--(mark)--> while
+|                |--(nmod)--> R662[hut]
+|                                 |--(case)--> R662[to]
+|                                 |--(det)--> R662[a]
+|                                 |--(amod)--> R662[small]
+|                                 |--(nmod)--> R662[sefton]
+|                                                  |--(case)--> R662[on]
+|                                                  |--(compou)--> R662[mount]
+|--(punct)--> .
+
+	* entity-paths for event['fell']23_4ecbplus.xmlsent:4712
+	['fell --(nmod)--> Saturday']
+	['fell --(nsubj)--> 32', '32 --(dep)--> year', 'year --(dep)--> Buckley']
+	['fell --(advcl)--> climbing', 'climbing --(nmod)--> hut']
+
+	* entity-paths for event['climbing']23_4ecbplus.xmlsent:4712
+	['climbing --(nmod)--> hut']
+
+sentence #:on friday , 36 - year - old duncan raite died after slipping and falling about 60 metres ( 200 feet ) from a ridge . 
+	[events]:[['died'], ['slipping'], ['falling']]
+	[entities]:[['on', 'friday'], ['a', 'ridge'], ['duncan', 'raite']]
+*R640[died]
+|--(nmod)--> R641[friday]
+|                |--(case)--> R641[on]
+|--(punct)--> ,
+|--(nsubj)--> 36
+|                |--(dep)--> year
+|                                 |--(punct)--> -
+|                                 |--(punct)--> -
+|                                 |--(dep)--> R644[raite]
+|                                                  |--(amod)--> old
+|                                                  |--(compou)--> R644[duncan]
+|--(advcl)--> *R645[slipping]
+|                |--(mark)--> after
+|                |--(cc)--> and
+|                |--(conj)--> *R646[falling]
+|                |--(dobj)--> metres
+|                |                |--(nummod)--> 60
+|                |                |                |--(advmod)--> about
+|                |                |--(appos)--> feet
+|                |                                 |--(punct)--> (
+|                |                                 |--(nummod)--> 200
+|                |                                 |--(punct)--> )
+|                |--(nmod)--> R647[ridge]
+|                                 |--(case)--> from
+|                                 |--(det)--> R647[a]
+|--(punct)--> .
+
+	* entity-paths for event['died']23_4ecbplus.xmlsent:4709
+	['died --(nmod)--> Friday']
+	['died --(nsubj)--> 36', '36 --(dep)--> year', 'year --(dep)--> Raite']
+	['died --(advcl)--> slipping', 'slipping --(nmod)--> ridge']
+
+	* entity-paths for event['slipping']23_4ecbplus.xmlsent:4709
+	['slipping --(nmod)--> ridge']
+
+	* entity-paths for event['falling']23_4ecbplus.xmlsent:4709

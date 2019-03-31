@@ -1,0 +1,64 @@
+
+-----------------------------------------
+docid:24_6ecb.xml
+-----------------------------------------
+
+sentence #:a savvy band of jewel thieves , armed with guns and some posing as women , have struck in the heart of the city 's golden triangle of luxury shops , stealing more than e85 million worth of diamonds , rings and watches from a posh harry winston boutique . 
+	[events]:[['posing'], ['stealing']]
+	[entities]:[['some'], ['rings'], ['a', 'posh', 'harry', 'winston', 'boutique'], ['watches'], ['guns'], ['thieves'], ['diamonds']]
+struck
+|--(nsubj)--> band
+|                |--(det)--> a
+|                |--(amod)--> savvy
+|                |--(nmod)--> R664[thieves]
+|                |                |--(case)--> of
+|                |                |--(compou)--> jewel
+|                |--(punct)--> ,
+|                |--(acl)--> armed
+|                |                |--(nmod)--> R703[guns]
+|                |                |                |--(case)--> with
+|                |                |                |--(cc)--> and
+|                |                |                |--(conj)--> R664[some]
+|                |                |--(xcomp)--> *R682[posing]
+|                |                                 |--(nmod)--> women
+|                |                                                  |--(case)--> as
+|                |--(punct)--> ,
+|--(aux)--> have
+|--(nmod)--> heart
+|                |--(case)--> in
+|                |--(det)--> the
+|                |--(nmod)--> triangle
+|                                 |--(case)--> of
+|                                 |--(nmod:p)--> city
+|                                 |                |--(det)--> the
+|                                 |                |--(case)--> 's
+|                                 |--(amod)--> golden
+|                                 |--(nmod)--> shops
+|                                                  |--(case)--> of
+|                                                  |--(compou)--> luxury
+|--(punct)--> ,
+|--(xcomp)--> *R663[stealing]
+|                |--(dobj)--> worth
+|                |                |--(nummod)--> million
+|                |                |                |--(advmod)--> more
+|                |                |                |                |--(mwe)--> than
+|                |                |                |--(compou)--> e85
+|                |                |--(nmod)--> R695[diamonds]
+|                |                                 |--(case)--> of
+|                |                                 |--(punct)--> ,
+|                |                                 |--(conj)--> R692[rings]
+|                |                                 |--(cc)--> and
+|                |                                 |--(conj)--> R691[watches]
+|                |--(nmod)--> R665[boutique]
+|                                 |--(case)--> from
+|                                 |--(det)--> R665[a]
+|                                 |--(amod)--> R665[posh]
+|                                 |--(compou)--> R665[harry]
+|                                 |--(compou)--> R665[winston]
+|--(punct)--> .
+
+	* entity-paths for event['posing']24_6ecb.xmlsent:4881
+
+	* entity-paths for event['stealing']24_6ecb.xmlsent:4881
+	['stealing --(dobj)--> worth', 'worth --(nmod)--> diamonds']
+	['stealing --(nmod)--> boutique']

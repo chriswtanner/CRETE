@@ -1,0 +1,100 @@
+
+-----------------------------------------
+docid:34_9ecbplus.xml
+-----------------------------------------
+
+sentence #:in a monday statement president obama said he intended to nominate dr . regina benjamin as surgeon general , the united states government's "chief health educator . " 
+	[events]:[['statement'], ['nominate']]
+	[entities]:[['he'], ['obama'], ['surgeon', 'general'], ['dr', '.', 'regina', 'benjamin'], ['monday'], ['health', 'educator']]
+said
+|--(nmod)--> *R1142[statement]
+|                |--(case)--> in
+|                |--(det)--> a
+|                |--(compou)--> R1141[monday]
+|--(nsubj)--> R1136[obama]
+|                |--(compou)--> president
+|--(ccomp)--> intended
+|                |--(nsubj)--> R1136[he]
+|                |--(xcomp)--> *R1138[nominate]
+|                                 |--(mark)--> to
+|                                 |--(dobj)--> R1139[benjamin]
+|                                 |                |--(compou)--> R1139[dr]
+|                                 |                |--(punct)--> R1139[.]
+|                                 |                |--(compou)--> R1139[regina]
+|                                 |                |--(nmod)--> R1135[general]
+|                                 |                                 |--(case)--> as
+|                                 |                                 |--(compou)--> R1135[surgeon]
+|                                 |--(punct)--> ,
+|                                 |--(xcomp)--> R1135[educator]
+|                                                  |--(nsubj)--> states
+|                                                  |                |--(det)--> the
+|                                                  |                |--(compou)--> united
+|                                                  |--(nmod:p)--> government's
+|                                                  |                |--(case)--> government's
+|                                                  |--(punct)--> "chief
+|                                                  |--(amod)--> "chief
+|                                                  |--(compou)--> R1135[health]
+|--(punct)--> .
+|--(punct)--> "
+
+	* entity-paths for event['statement']34_9ecbplus.xmlsent:9524
+	['statement --(compound)--> Monday']
+
+	* entity-paths for event['nominate']34_9ecbplus.xmlsent:9524
+	['nominate --(dobj)--> Benjamin']
+	['nominate --(xcomp)--> educator']
+
+sentence #:obama nominates rural catholic doctor as surgeon general 
+	[events]:[['nominates']]
+	[entities]:[['obama'], ['surgeon', 'general'], ['rural', 'catholic', 'doctor']]
+*R1138[nominates]
+|--(nsubj)--> R1136[obama]
+|--(dobj)--> R1139[doctor]
+                 |--(amod)--> R1139[rural]
+                 |--(amod)--> R1139[catholic]
+                 |--(nmod)--> R1135[general]
+                                  |--(case)--> as
+                                  |--(compou)--> R1135[surgeon]
+
+	* entity-paths for event['nominates']34_9ecbplus.xmlsent:9520
+	['nominates --(nsubj)--> Obama']
+	['nominates --(dobj)--> doctor']
+
+sentence #:president barack obama has announced that he is nominating a rural alabama catholic doctor to be the u . s . surgeon general . 
+	[events]:[['announced'], ['nominating']]
+	[entities]:[['u', '.', 's', '.', 'surgeon', 'general'], ['rural', 'alabama', 'catholic', 'doctor'], ['he'], ['barack', 'obama'], ['alabama']]
+*R1142[announced]
+|--(nsubj)--> R1136[obama]
+|                |--(compou)--> president
+|                |--(compou)--> R1136[barack]
+|--(aux)--> has
+|--(ccomp)--> *R1138[nominating]
+|                |--(mark)--> that
+|                |--(nsubj)--> R1136[he]
+|                |--(aux)--> is
+|                |--(dobj)--> R1139[doctor]
+|                |                |--(det)--> a
+|                |                |--(amod)--> R1139[rural]
+|                |                |--(compou)--> R1139[alabama]
+|                |                |--(compou)--> R1139[catholic]
+|                |--(advcl)--> R1135[u]
+|                                 |--(mark)--> to
+|                                 |--(cop)--> be
+|                                 |--(det)--> the
+|                                 |--(punct)--> R1135[.]
+|                                 |--(dep)--> R1135[s]
+|                                 |--(punct)--> R1135[.]
+|                                 |--(dep)--> R1135[general]
+|                                                  |--(compou)--> R1135[surgeon]
+|--(punct)--> .
+
+	* entity-paths for event['announced']34_9ecbplus.xmlsent:9522
+	['announced --(nsubj)--> Obama']
+	['announced --(ccomp)--> nominating', 'nominating --(nsubj)--> he']
+	['announced --(ccomp)--> nominating', 'nominating --(dobj)--> doctor']
+	['announced --(ccomp)--> nominating', 'nominating --(advcl)--> U']
+
+	* entity-paths for event['nominating']34_9ecbplus.xmlsent:9522
+	['nominating --(nsubj)--> he']
+	['nominating --(dobj)--> doctor']
+	['nominating --(advcl)--> U']

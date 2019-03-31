@@ -1,0 +1,113 @@
+
+-----------------------------------------
+docid:26_7ecb.xml
+-----------------------------------------
+
+sentence #:gaetano lo presti , 52 , who had taken over control of mafia clans in the porta nuova area of palermo and had previous convictions , was found dead in pagliarelli prison , police said today . 
+	[events]:[['convictions'], ['found'], ['dead'], ['said']]
+	[entities]:[['today'], ['in', 'pagliarelli', 'prison'], ['police'], ['gaetano', 'lo', 'presti'], ['in', 'the', 'porta', 'nuova', 'area', 'of', 'palermo']]
+*R751[said]
+|--(ccomp)--> *R745[found]
+|                |--(nsubjp)--> R733[presti]
+|                |                |--(compou)--> R733[gaetano]
+|                |                |--(compou)--> R733[lo]
+|                |                |--(punct)--> ,
+|                |                |--(amod)--> 52
+|                |                |--(punct)--> ,
+|                |                |--(acl:re)--> taken
+|                |                |                |--(nsubj)--> who
+|                |                |                |--(aux)--> had
+|                |                |                |--(nmod)--> control
+|                |                |                |                |--(case)--> over
+|                |                |                |                |--(nmod)--> clans
+|                |                |                |                                 |--(case)--> of
+|                |                |                |                                 |--(compou)--> mafia
+|                |                |                |--(nmod)--> R755[area]
+|                |                |                |                |--(case)--> R755[in]
+|                |                |                |                |--(det)--> R755[the]
+|                |                |                |                |--(compou)--> R755[porta]
+|                |                |                |                |--(compou)--> R755[nuova]
+|                |                |                |                |--(nmod)--> R755[palermo]
+|                |                |                |                                 |--(case)--> R755[of]
+|                |                |                |--(cc)--> and
+|                |                |                |--(conj)--> had
+|                |                |                                 |--(dobj)--> *R754[convictions]
+|                |                |                                                  |--(amod)--> previous
+|                |                |--(punct)--> ,
+|                |--(auxpas)--> was
+|                |--(xcomp)--> *R732[dead]
+|                |--(nmod)--> R734[prison]
+|                                 |--(case)--> R734[in]
+|                                 |--(compou)--> R734[pagliarelli]
+|--(punct)--> ,
+|--(nsubj)--> R738[police]
+|--(nmod:t)--> R752[today]
+|--(punct)--> .
+
+	* entity-paths for event['convictions']26_7ecb.xmlsent:5527
+
+	* entity-paths for event['found']26_7ecb.xmlsent:5527
+	['found --(nsubjpass)--> Presti']
+	['found --(nmod)--> prison']
+
+	* entity-paths for event['dead']26_7ecb.xmlsent:5527
+
+	* entity-paths for event['said']26_7ecb.xmlsent:5527
+	['said --(ccomp)--> found', 'found --(nsubjpass)--> Presti']
+	['said --(ccomp)--> found', 'found --(nmod)--> prison']
+	['said --(nsubj)--> police']
+	['said --(nmod:tmod)--> today']
+
+sentence #:one of the mafia bosses and clan members arrested in a major police crackdown has hung himself in his prison cell in palermo . 
+	[events]:[['crackdown'], ['hung'], ['arrested']]
+	[entities]:[['in', 'his', 'prison', 'cell', 'in', 'palermo'], ['mafia', 'bosses'], ['himself'], ['clan', 'members']]
+*R732[hung]
+|--(nsubj)--> one
+|                |--(nmod)--> R733[bosses]
+|                |                |--(case)--> of
+|                |                |--(det)--> the
+|                |                |--(compou)--> R733[mafia]
+|                |                |--(cc)--> and
+|                |                |--(conj)--> R733[members]
+|                |                                 |--(compou)--> R733[clan]
+|                |--(acl)--> *R736[arrested]
+|                                 |--(nmod)--> *R737[crackdown]
+|                                                  |--(case)--> in
+|                                                  |--(det)--> a
+|                                                  |--(amod)--> major
+|                                                  |--(compou)--> police
+|--(aux)--> has
+|--(dobj)--> R733[himself]
+|--(nmod)--> R734[cell]
+|                |--(case)--> R734[in]
+|                |--(nmod:p)--> R734[his]
+|                |--(compou)--> R734[prison]
+|                |--(nmod)--> R734[palermo]
+|                                 |--(case)--> R734[in]
+|--(punct)--> .
+
+	* entity-paths for event['crackdown']26_7ecb.xmlsent:5525
+
+	* entity-paths for event['hung']26_7ecb.xmlsent:5525
+	['hung --(nsubj)--> One', 'One --(nmod)--> bosses']
+	['hung --(dobj)--> himself']
+	['hung --(nmod)--> cell']
+
+	* entity-paths for event['arrested']26_7ecb.xmlsent:5525
+
+sentence #:his suicide appeared to be related to clan feuds . 
+	[events]:[['suicide']]
+	[entities]:[['his']]
+appeared
+|--(nsubj)--> *R732[suicide]
+|                |--(nmod:p)--> R733[his]
+|--(xcomp)--> related
+|                |--(mark)--> to
+|                |--(auxpas)--> be
+|                |--(nmod)--> feuds
+|                                 |--(case)--> to
+|                                 |--(compou)--> clan
+|--(punct)--> .
+
+	* entity-paths for event['suicide']26_7ecb.xmlsent:5526
+	['suicide --(nmod:poss)--> His']

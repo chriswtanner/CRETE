@@ -1,0 +1,75 @@
+
+-----------------------------------------
+docid:16_11ecbplus.xml
+-----------------------------------------
+
+sentence #:officer ortiz was knocking on doors down in the city of hawaiian gardens looking for gang members and he was shot point blank range in the head by gang member jose luis orozco . 
+	[events]:[['shot'], ['looking'], ['knocking']]
+	[entities]:[['in', 'the', 'head'], ['ortiz'], ['jose', 'luis', 'orozco'], ['gang', 'members'], ['doors'], ['in', 'the', 'city', 'of', 'hawaiian', 'gardens'], ['he']]
+*R318[knocking]
+|--(nsubj)--> R319[ortiz]
+|                |--(compou)--> officer
+|--(aux)--> was
+|--(nmod)--> R320[doors]
+|                |--(case)--> on
+|                |--(acl)--> *R321[looking]
+|                                 |--(advmod)--> down
+|                                 |                |--(nmod)--> R322[city]
+|                                 |                                 |--(case)--> R322[in]
+|                                 |                                 |--(det)--> R322[the]
+|                                 |                                 |--(nmod)--> R322[gardens]
+|                                 |                                                  |--(case)--> R322[of]
+|                                 |                                                  |--(amod)--> R322[hawaiian]
+|                                 |--(nmod)--> R323[members]
+|                                                  |--(case)--> for
+|                                                  |--(compou)--> R323[gang]
+|--(cc)--> and
+|--(conj)--> *R324[shot]
+|                |--(nsubjp)--> R319[he]
+|                |--(auxpas)--> was
+|                |--(dobj)--> range
+|                |                |--(compou)--> point
+|                |                |--(amod)--> blank
+|                |                |--(nmod)--> R325[head]
+|                |                                 |--(case)--> R325[in]
+|                |                                 |--(det)--> R325[the]
+|                |--(nmod)--> R317[orozco]
+|                                 |--(case)--> by
+|                                 |--(compou)--> gang
+|                                 |--(compou)--> member
+|                                 |--(compou)--> R317[jose]
+|                                 |--(compou)--> R317[luis]
+|--(punct)--> .
+
+	* entity-paths for event['shot']16_11ecbplus.xmlsent:1891
+	['shot --(nsubjpass)--> he']
+	['shot --(dobj)--> range', 'range --(nmod)--> head']
+	['shot --(nmod)--> Orozco']
+
+	* entity-paths for event['looking']16_11ecbplus.xmlsent:1891
+	['looking --(advmod)--> down', 'down --(nmod)--> city']
+	['looking --(nmod)--> members']
+
+	* entity-paths for event['knocking']16_11ecbplus.xmlsent:1891
+	['knocking --(nsubj)--> Ortiz']
+	['knocking --(nmod)--> doors']
+	['knocking --(conj)--> shot', 'shot --(nsubjpass)--> he']
+	['knocking --(conj)--> shot', 'shot --(dobj)--> range', 'range --(nmod)--> head']
+	['knocking --(conj)--> shot', 'shot --(nmod)--> Orozco']
+
+sentence #:another peace officer has been gunned down in cold blood . 
+	[events]:[['gunned', 'down']]
+	[entities]:[['officer']]
+*R324[gunned]
+|--(nsubjp)--> R319[officer]
+|                |--(det)--> another
+|                |--(compou)--> peace
+|--(aux)--> has
+|--(auxpas)--> been
+|--(compou)--> *R324[down]
+|--(nmod)--> blood
+|                |--(case)--> in
+|                |--(amod)--> cold
+|--(punct)--> .
+
+	* entity-paths for event['gunned', 'down']16_11ecbplus.xmlsent:1889

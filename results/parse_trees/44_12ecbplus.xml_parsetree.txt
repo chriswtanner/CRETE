@@ -1,0 +1,73 @@
+
+-----------------------------------------
+docid:44_12ecbplus.xml
+-----------------------------------------
+
+sentence #:hewlett - packard engineers deal for eyp 
+	[events]:[['engineers'], ['deal']]
+	[entities]:[['hewlett', '-', 'packard'], ['eyp']]
+R1577[hewlett]
+|--(punct)--> R1577[-]
+|--(dep)--> *R1581[deal]
+                 |--(compou)--> R1577[packard]
+                 |--(compou)--> *R1597[engineers]
+                 |--(nmod)--> R1583[eyp]
+                                  |--(case)--> for
+
+	* entity-paths for event['engineers']44_12ecbplus.xmlsent:13439
+
+	* entity-paths for event['deal']44_12ecbplus.xmlsent:13439
+	['Deal --(compound)--> Packard']
+	['Deal --(nmod)--> EYP']
+
+sentence #:hewlett - packard agreed to buy eyp mission critical facilities , a data center engineering firm , for an undisclosed sum in a deal that will provide an exit for ta associates . 
+	[events]:[['buy'], ['agreed'], ['undisclosed'], ['engineering'], ['deal']]
+	[entities]:[['sum'], ['firm'], ['data', 'center'], ['hewlett', '-', 'packard'], ['eyp', 'mission', 'critical', 'facilities']]
+R1577[hewlett]
+|--(punct)--> R1577[-]
+|--(parata)--> *R1598[agreed]
+|                |--(nsubj)--> R1577[packard]
+|                |--(xcomp)--> *R1582[buy]
+|                                 |--(mark)--> to
+|                                 |--(xcomp)--> R1583[facilities]
+|                                 |                |--(nsubj)--> R1583[mission]
+|                                 |                |                |--(compou)--> R1583[eyp]
+|                                 |                |--(amod)--> R1583[critical]
+|                                 |                |--(punct)--> ,
+|                                 |                |--(appos)--> R1590[data]
+|                                 |                |                |--(det)--> a
+|                                 |                |                |--(dep)--> R1583[firm]
+|                                 |                |                                 |--(compou)--> R1590[center]
+|                                 |                |                                 |--(compou)--> *R1584[engineering]
+|                                 |                |--(punct)--> ,
+|                                 |--(nmod)--> R1596[sum]
+|                                                  |--(case)--> for
+|                                                  |--(det)--> an
+|                                                  |--(amod)--> *R1593[undisclosed]
+|                                                  |--(nmod)--> *R1581[deal]
+|                                                                   |--(case)--> in
+|                                                                   |--(det)--> a
+|                                                                   |--(acl:re)--> provide
+|                                                                                    |--(nsubj)--> that
+|                                                                                    |--(aux)--> will
+|                                                                                    |--(dobj)--> exit
+|                                                                                                     |--(det)--> an
+|                                                                                                     |--(nmod)--> associates
+|                                                                                                                      |--(case)--> for
+|                                                                                                                      |--(compou)--> ta
+|--(punct)--> .
+
+	* entity-paths for event['buy']44_12ecbplus.xmlsent:13440
+	['buy --(xcomp)--> Facilities']
+	['buy --(nmod)--> sum']
+
+	* entity-paths for event['agreed']44_12ecbplus.xmlsent:13440
+	['agreed --(nsubj)--> Packard']
+	['agreed --(xcomp)--> buy', 'buy --(xcomp)--> Facilities']
+	['agreed --(xcomp)--> buy', 'buy --(nmod)--> sum']
+
+	* entity-paths for event['undisclosed']44_12ecbplus.xmlsent:13440
+
+	* entity-paths for event['engineering']44_12ecbplus.xmlsent:13440
+
+	* entity-paths for event['deal']44_12ecbplus.xmlsent:13440

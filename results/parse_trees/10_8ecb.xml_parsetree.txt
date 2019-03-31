@@ -1,0 +1,75 @@
+
+-----------------------------------------
+docid:10_8ecb.xml
+-----------------------------------------
+
+sentence #:with last night 's news from los angeles angels gm tony reagins that the team has made an eight-year contract offer ( dollars undisclosed ) to 1b mark teixeira , the trade rumor being reported , most recently by john perrotto at baseball prospectus , about the angels going after san diego padres ' ace is likely caput . 
+	[events]:[['made'], ['offer']]
+	[entities]:[['contract'], ['mark', 'teixeira'], ['team'], ['tony', 'reagins'], ['the', 'angels'], ['ace']]
+caput
+|--(nmod)--> news
+|                |--(case)--> with
+|                |--(nmod:p)--> night
+|                |                |--(amod)--> last
+|                |                |--(case)--> 's
+|                |--(nmod)--> R178[reagins]
+|                                 |--(case)--> from
+|                                 |--(compou)--> los
+|                                 |--(compou)--> angeles
+|                                 |--(compou)--> angels
+|                                 |--(compou)--> gm
+|                                 |--(compou)--> R178[tony]
+|                                 |--(dep)--> *R174[made]
+|                                                  |--(mark)--> that
+|                                                  |--(nsubj)--> R175[team]
+|                                                  |                |--(det)--> the
+|                                                  |--(aux)--> has
+|                                                  |--(dobj)--> *R176[offer]
+|                                                  |                |--(det)--> an
+|                                                  |                |--(amod)--> eight-year
+|                                                  |                |--(compou)--> R181[contract]
+|                                                  |                |--(dep)--> dollars
+|                                                  |                                 |--(punct)--> (
+|                                                  |                                 |--(dep)--> undisclosed
+|                                                  |                                 |--(punct)--> )
+|                                                  |--(nmod)--> R163[teixeira]
+|                                                                   |--(case)--> to
+|                                                                   |--(compou)--> 1b
+|                                                                   |--(compou)--> R163[mark]
+|--(punct)--> ,
+|--(nsubj)--> rumor
+|                |--(det)--> the
+|                |--(compou)--> trade
+|                |--(acl)--> reported
+|                                 |--(auxpas)--> being
+|                                 |--(punct)--> ,
+|                                 |--(xcomp)--> recently
+|                                 |                |--(advmod)--> most
+|                                 |                |--(nmod)--> perrotto
+|                                 |                                 |--(case)--> by
+|                                 |                                 |--(compou)--> john
+|                                 |                                 |--(nmod)--> prospectus
+|                                 |                                                  |--(case)--> at
+|                                 |                                                  |--(compou)--> baseball
+|                                 |--(punct)--> ,
+|                                 |--(advcl)--> going
+|                                                  |--(mark)--> about
+|                                                  |--(nsubj)--> R175[angels]
+|                                                  |                |--(det)--> R175[the]
+|                                                  |--(nmod)--> R163[ace]
+|                                                                   |--(case)--> after
+|                                                                   |--(nmod:p)--> padres
+|                                                                                    |--(compou)--> san
+|                                                                                    |--(compou)--> diego
+|                                                                                    |--(case)--> '
+|--(cop)--> is
+|--(amod)--> likely
+|--(punct)--> .
+
+	* entity-paths for event['made']10_8ecb.xmlsent:570
+	['made --(nsubj)--> team']
+	['made --(dobj)--> offer', 'offer --(compound)--> contract']
+	['made --(nmod)--> Teixeira']
+
+	* entity-paths for event['offer']10_8ecb.xmlsent:570
+	['offer --(compound)--> contract']

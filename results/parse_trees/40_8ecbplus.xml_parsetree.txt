@@ -1,0 +1,33 @@
+
+-----------------------------------------
+docid:40_8ecbplus.xml
+-----------------------------------------
+
+sentence #:apple has unveiled the next generation of macbook pro at the wwdc keynote in san francisco . 
+	[events]:[['wwdc', 'keynote'], ['unveiled']]
+	[entities]:[['apple'], ['in', 'san', 'francisco'], ['next', 'generation', 'of', 'macbook', 'pro']]
+*R1410[unveiled]
+|--(nsubj)--> R1405[apple]
+|--(aux)--> has
+|--(dobj)--> R1423[generation]
+|                |--(det)--> the
+|                |--(amod)--> R1423[next]
+|                |--(nmod)--> R1423[macbook]
+|                                 |--(case)--> R1423[of]
+|--(nmod)--> R1423[pro]
+|                |--(case)--> at
+|                |--(dep)--> *R1438[keynote]
+|                                 |--(det)--> the
+|                                 |--(compou)--> *R1438[wwdc]
+|--(nmod)--> R1407[francisco]
+|                |--(case)--> R1407[in]
+|                |--(compou)--> R1407[san]
+|--(punct)--> .
+
+	* entity-paths for event['wwdc', 'keynote']40_8ecbplus.xmlsent:12009
+
+	* entity-paths for event['unveiled']40_8ecbplus.xmlsent:12009
+	['unveiled --(nsubj)--> Apple']
+	['unveiled --(dobj)--> generation']
+	['unveiled --(nmod)--> Pro']
+	['unveiled --(nmod)--> Francisco']

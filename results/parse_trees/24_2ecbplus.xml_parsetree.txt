@@ -1,0 +1,75 @@
+
+-----------------------------------------
+docid:24_2ecbplus.xml
+-----------------------------------------
+
+sentence #:thieves pulled off a two million - euro jewellery heist in central paris on monday morning after smashing their car through the store's front window . 
+	[events]:[['heist'], ['smashing']]
+	[entities]:[['jewellery'], ['window'], ['on', 'monday', 'morning'], ['car'], ['in', 'central', 'paris'], ['thieves']]
+pulled
+|--(nsubj)--> R669[thieves]
+|--(compou)--> off
+|--(dobj)--> million
+|                |--(det)--> a
+|                |--(compou)--> two
+|                |--(punct)--> -
+|                |--(dep)--> *R684[heist]
+|                                 |--(compou)--> euro
+|                                 |--(compou)--> R679[jewellery]
+|--(nmod)--> R685[paris]
+|                |--(case)--> R685[in]
+|                |--(amod)--> R685[central]
+|--(nmod)--> R672[monday]
+|                |--(case)--> R672[on]
+|--(nmod:t)--> R672[morning]
+|--(advcl)--> *R673[smashing]
+|                |--(mark)--> after
+|                |--(dobj)--> R670[car]
+|                |                |--(nmod:p)--> their
+|                |--(nmod)--> R674[window]
+|                                 |--(case)--> through
+|                                 |--(nmod:p)--> store's
+|                                 |                |--(det)--> the
+|                                 |                |--(case)--> store's
+|                                 |--(compou)--> front
+|--(punct)--> .
+
+	* entity-paths for event['heist']24_2ecbplus.xmlsent:4834
+	['heist --(compound)--> jewellery']
+
+	* entity-paths for event['smashing']24_2ecbplus.xmlsent:4834
+	['smashing --(dobj)--> car']
+	['smashing --(nmod)--> window']
+
+sentence #:the entire robbery was over in a matter of minutes . 
+	[events]:[['robbery']]
+	[entities]:[]
+matter
+|--(nsubj)--> *R684[robbery]
+|                |--(det)--> the
+|                |--(amod)--> entire
+|--(cop)--> was
+|--(case)--> over
+|--(case)--> in
+|--(det)--> a
+|--(nmod)--> minutes
+|                |--(case)--> of
+|--(punct)--> .
+
+	* entity-paths for event['robbery']24_2ecbplus.xmlsent:4839
+
+sentence #:two million euro jewellery heist in central paris 
+	[events]:[['heist']]
+	[entities]:[['in', 'central', 'paris'], ['jewellery']]
+million
+|--(nummod)--> two
+|--(dep)--> *R684[heist]
+                 |--(compou)--> euro
+                 |--(compou)--> R679[jewellery]
+                 |--(nmod)--> R685[paris]
+                                  |--(case)--> R685[in]
+                                  |--(amod)--> R685[central]
+
+	* entity-paths for event['heist']24_2ecbplus.xmlsent:4833
+	['heist --(compound)--> jewellery']
+	['heist --(nmod)--> Paris']

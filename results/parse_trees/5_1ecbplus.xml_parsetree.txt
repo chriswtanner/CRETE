@@ -1,0 +1,91 @@
+
+-----------------------------------------
+docid:5_1ecbplus.xml
+-----------------------------------------
+
+sentence #:billy king spun the 76ers' head coach revolving door again yesterday , pushing out jim o'brien after just one season and bringing in maurice cheeks , the popular former sixers player and assistant coach , as o'brien's replacement . 
+	[events]:[['bringing', 'in'], ['spun'], ['replacement'], ['pushing', 'out']]
+	[entities]:[["o'brien's"], ['season'], ['yesterday'], ['billy', 'king'], ['jim', "o'brien"], ['maurice', 'cheeks']]
+*R1680[spun]
+|--(nsubj)--> R1681[king]
+|                |--(compou)--> R1681[billy]
+|--(dobj)--> coach
+|                |--(nmod:p)--> 76ers'
+|                |                |--(det)--> the
+|                |                |--(case)--> 76ers'
+|                |--(compou)--> head
+|--(advmod)--> again
+|                |--(nmod:n)--> door
+|                                 |--(amod)--> revolving
+|--(nmod:t)--> R1682[yesterday]
+|--(punct)--> ,
+|--(dep)--> *R1683[pushing]
+|                |--(compou)--> *R1683[out]
+|                |--(dobj)--> R1684[o'brien]
+|                |                |--(compou)--> R1684[jim]
+|                |                |--(nmod)--> R1685[season]
+|                |                                 |--(case)--> after
+|                |                                 |--(advmod)--> just
+|                |                                 |--(nummod)--> one
+|                |--(cc)--> and
+|                |--(conj)--> *R1677[bringing]
+|                                 |--(nmod)--> R1674[cheeks]
+|                                 |                |--(case)--> *R1677[in]
+|                                 |                |--(compou)--> R1674[maurice]
+|                                 |                |--(punct)--> ,
+|                                 |                |--(appos)--> player
+|                                 |                |                |--(det)--> the
+|                                 |                |                |--(amod)--> popular
+|                                 |                |                |--(amod)--> former
+|                                 |                |                |--(compou)--> sixers
+|                                 |                |                |--(cc)--> and
+|                                 |                |                |--(conj)--> coach
+|                                 |                |                                 |--(compou)--> assistant
+|                                 |                |--(punct)--> ,
+|                                 |--(nmod)--> *R1680[replacement]
+|                                                  |--(case)--> as
+|                                                  |--(nmod:p)--> R1684[o'brien's]
+|                                                                   |--(case)--> R1684[o'brien's]
+|--(punct)--> .
+
+	* entity-paths for event['bringing', 'in']5_1ecbplus.xmlsent:13998
+
+	* entity-paths for event['spun']5_1ecbplus.xmlsent:13998
+	['spun --(nsubj)--> King']
+	['spun --(nmod:tmod)--> yesterday']
+	['spun --(dep)--> pushing', "pushing --(dobj)--> O'Brien"]
+	['spun --(dep)--> pushing', 'pushing --(conj)--> bringing', 'bringing --(nmod)--> Cheeks']
+	['spun --(dep)--> pushing', 'pushing --(conj)--> bringing', 'bringing --(nmod)--> replacement', "replacement --(nmod:poss)--> O'Brien"]
+
+	* entity-paths for event['replacement']5_1ecbplus.xmlsent:13998
+	["replacement --(nmod:poss)--> O'Brien"]
+
+	* entity-paths for event['pushing', 'out']5_1ecbplus.xmlsent:13998
+
+sentence #:cheeks returns as sixers' fixer jim o'brien was shown the door after a single tumultuous season . 
+	[events]:[['returns'], ['shown', 'door']]
+	[entities]:[['season'], ['cheeks'], ['jim', "o'brien"]]
+*R1683[shown]
+|--(nsubjp)--> *R1677[returns]
+|                |--(compou)--> R1674[cheeks]
+|                |--(nmod)--> R1684[o'brien]
+|                                 |--(case)--> as
+|                                 |--(nmod:p)--> sixers'
+|                                 |                |--(case)--> sixers'
+|                                 |--(compou)--> fixer
+|                                 |--(compou)--> R1684[jim]
+|--(auxpas)--> was
+|--(dobj)--> *R1683[door]
+|                |--(det)--> the
+|--(nmod)--> R1685[season]
+|                |--(case)--> after
+|                |--(det)--> a
+|                |--(amod)--> single
+|                |--(amod)--> tumultuous
+|--(punct)--> .
+
+	* entity-paths for event['returns']5_1ecbplus.xmlsent:13996
+	['returns --(compound)--> Cheeks']
+	["returns --(nmod)--> O'Brien"]
+
+	* entity-paths for event['shown', 'door']5_1ecbplus.xmlsent:13996

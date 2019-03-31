@@ -1,0 +1,104 @@
+
+-----------------------------------------
+docid:44_8ecbplus.xml
+-----------------------------------------
+
+sentence #:extending its reach into the ripening green - consulting space , hp today announced the acquisition of eyp mission critical facilities , a consulting company specializing in strategic technology planning , design and operations support for large - scale datacenters . 
+	[events]:[['specializing'], ['design'], ['planning'], ['operations', 'support'], ['announced'], ['acquisition'], ['consulting']]
+	[entities]:[['company'], ['its'], ['technology'], ['hp'], ['eyp', 'mission', 'critical', 'facilities'], ['today'], ['datacenters']]
+extending
+|--(dobj)--> reach
+|                |--(nmod:p)--> R1577[its]
+|--(nmod)--> green
+|                |--(case)--> into
+|                |--(det)--> the
+|                |--(amod)--> ripening
+|                |--(punct)--> -
+|                |--(dep)--> space
+|                                 |--(amod)--> consulting
+|                                 |--(punct)--> ,
+|                                 |--(appos)--> R1579[today]
+|                                                  |--(compou)--> R1577[hp]
+|--(dep)--> *R1578[announced]
+|                |--(dobj)--> *R1582[acquisition]
+|                                 |--(det)--> the
+|                                 |--(nmod)--> R1583[mission]
+|                                                  |--(case)--> of
+|                                                  |--(compou)--> R1583[eyp]
+|--(nsubj)--> R1583[facilities]
+|                |--(amod)--> R1583[critical]
+|                |--(punct)--> ,
+|                |--(appos)--> R1583[company]
+|                                 |--(det)--> a
+|                                 |--(amod)--> *R1584[consulting]
+|                                 |--(acl)--> *R1585[specializing]
+|                                                  |--(nmod)--> R1587[technology]
+|                                                                   |--(case)--> in
+|                                                                   |--(amod)--> strategic
+|                                                                   |--(acl:re)--> *R1588[support]
+|                                                                   |                |--(nsubj)--> *R1586[planning]
+|                                                                   |                |                |--(punct)--> ,
+|                                                                   |                |                |--(conj)--> *R1589[design]
+|                                                                   |                |                |--(cc)--> and
+|                                                                   |                |                |--(conj)--> *R1588[operations]
+|                                                                   |                |--(advcl)--> large
+|                                                                   |                                 |--(case)--> for
+|                                                                   |--(punct)--> -
+|                                                                   |--(dep)--> R1590[datacenters]
+|                                                                                    |--(compou)--> scale
+|--(punct)--> .
+
+	* entity-paths for event['specializing']44_8ecbplus.xmlsent:13716
+	['specializing --(nmod)--> technology']
+
+	* entity-paths for event['design']44_8ecbplus.xmlsent:13716
+
+	* entity-paths for event['planning']44_8ecbplus.xmlsent:13716
+
+	* entity-paths for event['operations', 'support']44_8ecbplus.xmlsent:13716
+
+	* entity-paths for event['announced']44_8ecbplus.xmlsent:13716
+	['announced --(dobj)--> acquisition', 'acquisition --(nmod)--> Mission']
+
+	* entity-paths for event['acquisition']44_8ecbplus.xmlsent:13716
+	['acquisition --(nmod)--> Mission']
+
+	* entity-paths for event['consulting']44_8ecbplus.xmlsent:13716
+
+sentence #:hp lands green datacenter consultant eyp 
+	[events]:[['lands'], ['consultant']]
+	[entities]:[['eyp'], ['datacenter'], ['hp']]
+*R1582[lands]
+|--(compou)--> R1577[hp]
+|--(dep)--> *R1584[consultant]
+|                |--(amod)--> green
+|                |--(compou)--> R1590[datacenter]
+|--(appos)--> R1583[eyp]
+
+	* entity-paths for event['lands']44_8ecbplus.xmlsent:13715
+	['lands --(compound)--> HP']
+	['lands --(dep)--> consultant', 'consultant --(compound)--> datacenter']
+	['lands --(appos)--> EYP']
+
+	* entity-paths for event['consultant']44_8ecbplus.xmlsent:13715
+	['consultant --(compound)--> datacenter']
+
+sentence #:the financial details of the acquisition were not disclosed . 
+	[events]:[['acquisition'], ['disclosed'], ['financial', 'details']]
+	[entities]:[]
+*R1593[disclosed]
+|--(nsubjp)--> *R1594[details]
+|                |--(det)--> the
+|                |--(amod)--> *R1594[financial]
+|                |--(nmod)--> *R1582[acquisition]
+|                                 |--(case)--> of
+|                                 |--(det)--> the
+|--(auxpas)--> were
+|--(neg)--> not
+|--(punct)--> .
+
+	* entity-paths for event['acquisition']44_8ecbplus.xmlsent:13718
+
+	* entity-paths for event['disclosed']44_8ecbplus.xmlsent:13718
+
+	* entity-paths for event['financial', 'details']44_8ecbplus.xmlsent:13718

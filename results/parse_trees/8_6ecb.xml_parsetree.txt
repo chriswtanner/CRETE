@@ -1,0 +1,37 @@
+
+-----------------------------------------
+docid:8_6ecb.xml
+-----------------------------------------
+
+sentence #:oregon state police say a bomb explosion at a woodburn-area bank killed a local police officer and a state bomb disposal technician . 
+	[events]:[['explosion'], ['killed']]
+	[entities]:[['a', 'woodburn-area', 'bank'], ['oregon', 'state', 'police'], ['technician'], ['officer']]
+*R1763[killed]
+|--(nsubj)--> R1768[police]
+|                |--(compou)--> R1768[oregon]
+|                |--(compou)--> R1768[state]
+|                |--(acl:re)--> say
+|                                 |--(dobj)--> *R1764[explosion]
+|                                 |                |--(det)--> a
+|                                 |                |--(compou)--> bomb
+|                                 |--(nmod)--> R1765[bank]
+|                                                  |--(case)--> at
+|                                                  |--(det)--> R1765[a]
+|                                                  |--(amod)--> R1765[woodburn-area]
+|--(dobj)--> R1766[officer]
+|                |--(det)--> a
+|                |--(amod)--> local
+|                |--(compou)--> police
+|                |--(cc)--> and
+|                |--(conj)--> R1767[technician]
+|                                 |--(det)--> a
+|                                 |--(compou)--> state
+|                                 |--(compou)--> bomb
+|                                 |--(compou)--> disposal
+|--(punct)--> .
+
+	* entity-paths for event['explosion']8_6ecb.xmlsent:15087
+
+	* entity-paths for event['killed']8_6ecb.xmlsent:15087
+	['killed --(nsubj)--> Police']
+	['killed --(dobj)--> officer']

@@ -1,0 +1,109 @@
+
+-----------------------------------------
+docid:21_2ecbplus.xml
+-----------------------------------------
+
+sentence #:investigators say 59 - year old raj chohan was hit while walking along parked cars at 97th avenue and 117th street in richmond hill at about 7 p . m . 
+	[events]:[['say'], ['hit'], ['walking']]
+	[entities]:[['along', 'parked', 'cars', 'at', '97th', 'avenue', 'and', '117th', 'street', 'in', 'richmond', 'hill'], ['at', 'about', '7', 'p', '.', 'm'], ['investigators'], ['raj', 'chohan']]
+*R560[say]
+|--(nsubj)--> R561[investigators]
+|--(dobj)--> 59
+|--(punct)--> -
+|--(parata)--> *R556[hit]
+|                |--(nmod:t)--> year
+|                |--(nsubjp)--> R545[chohan]
+|                |                |--(amod)--> old
+|                |                |--(compou)--> R545[raj]
+|                |--(auxpas)--> was
+|                |--(advcl)--> *R565[walking]
+|                                 |--(mark)--> while
+|                                 |--(nmod)--> R552[cars]
+|                                                  |--(case)--> R552[along]
+|                                                  |--(amod)--> R552[parked]
+|                                                  |--(nmod)--> R552[avenue]
+|                                                  |                |--(case)--> R552[at]
+|                                                  |                |--(amod)--> R552[97th]
+|                                                  |--(cc)--> R552[and]
+|                                                  |--(conj)--> R552[street]
+|                                                                   |--(compou)--> R552[117th]
+|                                                                   |--(nmod)--> R550[m]
+|                                                                                    |--(case)--> R552[in]
+|                                                                                    |--(dep)--> R552[richmond]
+|                                                                                                     |--(dep)--> R552[hill]
+|                                                                                                     |--(dep)--> R550[p]
+|                                                                                                                      |--(case)--> R550[at]
+|                                                                                                                      |--(case)--> R550[about]
+|                                                                                                                      |--(nummod)--> R550[7]
+|                                                                                                                      |--(punct)--> R550[.]
+|--(punct)--> .
+
+	* entity-paths for event['say']21_2ecbplus.xmlsent:4153
+	['say --(nsubj)--> Investigators']
+	['say --(parataxis)--> hit', 'hit --(nsubjpass)--> Chohan']
+	['say --(parataxis)--> hit', 'hit --(advcl)--> walking', 'walking --(nmod)--> cars']
+
+	* entity-paths for event['hit']21_2ecbplus.xmlsent:4153
+	['hit --(nsubjpass)--> Chohan']
+	['hit --(advcl)--> walking', 'walking --(nmod)--> cars']
+
+	* entity-paths for event['walking']21_2ecbplus.xmlsent:4153
+	['walking --(nmod)--> cars']
+
+sentence #:police have a suspect in custody after a hit and run accident that killed a woman in queens friday night . 
+	[events]:[['in', 'custody'], ['killed'], ['accident']]
+	[entities]:[['friday', 'night', '.'], ['suspect'], ['in', 'queens'], ['police'], ['woman']]
+have
+|--(nsubj)--> R561[police]
+|--(dobj)--> R548[suspect]
+|                |--(det)--> a
+|                |--(nmod)--> *R553[custody]
+|                                 |--(case)--> *R553[in]
+|--(nmod)--> hit
+|                |--(case)--> after
+|                |--(det)--> a
+|--(cc)--> and
+|--(conj)--> run
+|                |--(dobj)--> *R547[accident]
+|                                 |--(acl:re)--> *R546[killed]
+|                                                  |--(nsubj)--> that
+|                                                  |--(dobj)--> R545[woman]
+|                                                  |                |--(det)--> a
+|                                                  |--(nmod)--> R550[friday]
+|                                                  |                |--(case)--> R549[in]
+|                                                  |                |--(compou)--> R549[queens]
+|                                                  |--(nmod:t)--> R550[night]
+|--(punct)--> R550[.]
+
+	* entity-paths for event['in', 'custody']21_2ecbplus.xmlsent:4152
+
+	* entity-paths for event['killed']21_2ecbplus.xmlsent:4152
+	['killed --(dobj)--> woman']
+	['killed --(nmod)--> Friday']
+	['killed --(nmod:tmod)--> night']
+
+	* entity-paths for event['accident']21_2ecbplus.xmlsent:4152
+	['accident --(acl:relcl)--> killed', 'killed --(dobj)--> woman']
+	['accident --(acl:relcl)--> killed', 'killed --(nmod)--> Friday']
+	['accident --(acl:relcl)--> killed', 'killed --(nmod:tmod)--> night']
+
+sentence #:queens hit and run leaves woman dead 
+	[events]:[['dead'], ['run'], ['hit']]
+	[entities]:[['woman'], ['queens']]
+*R556[hit]
+|--(nsubj)--> R549[queens]
+|--(cc)--> and
+|--(conj)--> *R551[run]
+                 |--(xcomp)--> *R546[dead]
+                                  |--(nsubj)--> R545[woman]
+                                                   |--(compou)--> leaves
+
+	* entity-paths for event['dead']21_2ecbplus.xmlsent:4150
+	['dead --(nsubj)--> woman']
+
+	* entity-paths for event['run']21_2ecbplus.xmlsent:4150
+	['run --(xcomp)--> dead', 'dead --(nsubj)--> woman']
+
+	* entity-paths for event['hit']21_2ecbplus.xmlsent:4150
+	['hit --(nsubj)--> Queens']
+	['hit --(conj)--> run', 'run --(xcomp)--> dead', 'dead --(nsubj)--> woman']

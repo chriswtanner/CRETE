@@ -1,0 +1,116 @@
+
+-----------------------------------------
+docid:45_4ecb.xml
+-----------------------------------------
+
+sentence #:laci peterson 's loved ones have " a hole in their hearts that will never be repaired , " a prosecutor told jurors today as he asked them to send convicted double-murderer scott peterson to his death for killing his wife and unborn son . 
+	[events]:[['killing'], ['death'], ['convicted'], ['unborn']]
+	[entities]:[['wife'], ['he'], ['scott', 'peterson'], ['son'], ['laci', 'peterson'], ['jurors'], ['them'], ['his'], ['prosecutor']]
+told
+|--(ccomp)--> loved
+|                |--(nsubj)--> R1634[peterson]
+|                |                |--(compou)--> R1634[laci]
+|                |                |--(case)--> 's
+|                |--(dobj)--> ones
+|                |--(dep)--> have
+|                                 |--(punct)--> "
+|                                 |--(dobj)--> hole
+|                                 |                |--(det)--> a
+|                                 |--(nmod)--> hearts
+|                                                  |--(case)--> in
+|                                                  |--(nmod:p)--> their
+|                                                  |--(acl:re)--> repaired
+|                                                                   |--(nsubjp)--> that
+|                                                                   |--(aux)--> will
+|                                                                   |--(neg)--> never
+|                                                                   |--(auxpas)--> be
+|--(punct)--> ,
+|--(punct)--> "
+|--(nsubj)--> R1661[prosecutor]
+|                |--(det)--> a
+|--(dobj)--> R1632[jurors]
+|--(nmod:t)--> today
+|--(advcl)--> asked
+|                |--(mark)--> as
+|                |--(nsubj)--> R1661[he]
+|                |--(dobj)--> R1632[them]
+|                |--(xcomp)--> send
+|                                 |--(mark)--> to
+|                                 |--(dep)--> *R1627[convicted]
+|                                                  |--(dobj)--> R1628[peterson]
+|                                                  |                |--(amod)--> double-murderer
+|                                                  |                |--(compou)--> R1628[scott]
+|                                                  |                |--(nmod)--> *R1631[death]
+|                                                  |                                 |--(case)--> to
+|                                                  |                                 |--(nmod:p)--> R1628[his]
+|                                                  |--(advcl)--> *R1648[killing]
+|                                                                   |--(mark)--> for
+|                                                                   |--(dobj)--> R1634[wife]
+|                                                                                    |--(nmod:p)--> his
+|                                                                                    |--(cc)--> and
+|                                                                                    |--(conj)--> R1640[son]
+|                                                                                                     |--(amod)--> *R1651[unborn]
+|--(punct)--> .
+
+	* entity-paths for event['killing']45_4ecb.xmlsent:13839
+	['killing --(dobj)--> wife']
+
+	* entity-paths for event['death']45_4ecb.xmlsent:13839
+	['death --(nmod:poss)--> his']
+
+	* entity-paths for event['convicted']45_4ecb.xmlsent:13839
+	['convicted --(dobj)--> Peterson']
+	['convicted --(advcl)--> killing', 'killing --(dobj)--> wife']
+
+	* entity-paths for event['unborn']45_4ecb.xmlsent:13839
+
+sentence #:the jury convicted the 32-year-old peterson on nov. 12 of first-degree murder for killing his wife and second-degree murder for the death of his unborn son . 
+	[events]:[['convicted'], ['second-degree', 'murder'], ['first-degree', 'murder'], ['death'], ['unborn'], ['killing']]
+	[entities]:[['jury'], ['son'], ['wife'], ['peterson'], ['on', 'nov.', '12']]
+*R1627[convicted]
+|--(nsubj)--> R1632[jury]
+|                |--(det)--> the
+|--(dobj)--> R1628[peterson]
+|                |--(det)--> the
+|                |--(amod)--> 32-year-old
+|--(nmod)--> R1646[nov.]
+|                |--(case)--> R1646[on]
+|                |--(nummod)--> R1646[12]
+|                |--(nmod)--> *R1648[murder]
+|                                 |--(case)--> of
+|                                 |--(amod)--> *R1648[first-degree]
+|--(advcl)--> *R1635[killing]
+|                |--(mark)--> for
+|                |--(dobj)--> R1634[wife]
+|                |                |--(nmod:p)--> his
+|                |                |--(cc)--> and
+|                |                |--(conj)--> *R1630[murder]
+|                |                                 |--(amod)--> *R1630[second-degree]
+|                |--(nmod)--> *R1650[death]
+|                                 |--(case)--> for
+|                                 |--(det)--> the
+|                                 |--(nmod)--> R1640[son]
+|                                                  |--(case)--> of
+|                                                  |--(nmod:p)--> his
+|                                                  |--(amod)--> *R1651[unborn]
+|--(punct)--> .
+
+	* entity-paths for event['convicted']45_4ecb.xmlsent:13840
+	['convicted --(nsubj)--> jury']
+	['convicted --(dobj)--> Peterson']
+	['convicted --(nmod)--> Nov.']
+	['convicted --(advcl)--> killing', 'killing --(dobj)--> wife']
+	['convicted --(advcl)--> killing', 'killing --(nmod)--> death', 'death --(nmod)--> son']
+
+	* entity-paths for event['second-degree', 'murder']45_4ecb.xmlsent:13840
+
+	* entity-paths for event['first-degree', 'murder']45_4ecb.xmlsent:13840
+
+	* entity-paths for event['death']45_4ecb.xmlsent:13840
+	['death --(nmod)--> son']
+
+	* entity-paths for event['unborn']45_4ecb.xmlsent:13840
+
+	* entity-paths for event['killing']45_4ecb.xmlsent:13840
+	['killing --(dobj)--> wife']
+	['killing --(nmod)--> death', 'death --(nmod)--> son']

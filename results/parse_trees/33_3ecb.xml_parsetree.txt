@@ -1,0 +1,152 @@
+
+-----------------------------------------
+docid:33_3ecb.xml
+-----------------------------------------
+
+sentence #:a key witness against teenage murder suspect jermayne timmons identified him tuesday as the gunman who killed 10-year-old kathina thomas in may , then twice admitted he lied in his testimony . 
+	[events]:[['testimony'], ['killed']]
+	[entities]:[['him'], ['gunman'], ['jermayne', 'timmons'], ['in', 'may'], ['kathina', 'thomas']]
+identified
+|--(nsubj)--> witness
+|                |--(det)--> a
+|                |--(amod)--> key
+|                |--(nmod)--> R1091[timmons]
+|                                 |--(case)--> against
+|                                 |--(amod)--> teenage
+|                                 |--(compou)--> murder
+|                                 |--(compou)--> suspect
+|                                 |--(compou)--> R1091[jermayne]
+|--(dobj)--> R1091[him]
+|--(nmod:t)--> tuesday
+|--(nmod)--> R1091[gunman]
+|                |--(case)--> as
+|                |--(det)--> the
+|                |--(acl:re)--> *R1098[killed]
+|                                 |--(nsubj)--> who
+|                                 |--(dobj)--> R1097[thomas]
+|                                                  |--(amod)--> 10-year-old
+|                                                  |--(compou)--> R1097[kathina]
+|                                                  |--(nmod)--> R1099[may]
+|                                                  |                |--(case)--> R1099[in]
+|                                                  |--(punct)--> ,
+|                                                  |--(acl:re)--> admitted
+|                                                                   |--(advmod)--> twice
+|                                                                   |                |--(advmod)--> then
+|                                                                   |--(ccomp)--> lied
+|                                                                                    |--(nsubj)--> he
+|                                                                                    |--(nmod)--> *R1107[testimony]
+|                                                                                                     |--(case)--> in
+|                                                                                                     |--(nmod:p)--> his
+|--(punct)--> .
+
+	* entity-paths for event['testimony']33_3ecb.xmlsent:9035
+
+	* entity-paths for event['killed']33_3ecb.xmlsent:9035
+	['killed --(dobj)--> Thomas']
+
+sentence #:" jermayne fired the shot , " he said . 
+	[events]:[['fired']]
+	[entities]:[['jermayne'], ['shot']]
+said
+|--(punct)--> "
+|--(ccomp)--> *R1092[fired]
+|                |--(nsubj)--> R1091[jermayne]
+|                |--(dobj)--> R1093[shot]
+|                                 |--(det)--> the
+|--(punct)--> ,
+|--(punct)--> "
+|--(nsubj)--> he
+|--(punct)--> .
+
+	* entity-paths for event['fired']33_3ecb.xmlsent:9040
+	['fired --(nsubj)--> Jermayne']
+	['fired --(dobj)--> shot']
+
+sentence #:after a face-off with some rivals who " wanted to fight , " he testified , timmons pulled the trigger . 
+	[events]:[['pulled', 'the', 'trigger']]
+	[entities]:[['timmons']]
+*R1092[pulled]
+|--(advcl)--> wanted
+|                |--(mark)--> after
+|                |--(nsubj)--> face-off
+|                |                |--(det)--> a
+|                |                |--(nmod)--> rivals
+|                |                                 |--(case)--> with
+|                |                                 |--(det)--> some
+|                |                                 |--(acl:re)--> who
+|                |--(punct)--> "
+|                |--(xcomp)--> fight
+|                                 |--(mark)--> to
+|--(parata)--> testified
+|                |--(punct)--> ,
+|                |--(punct)--> "
+|                |--(nsubj)--> he
+|                |--(punct)--> ,
+|--(nsubj)--> R1091[timmons]
+|--(dobj)--> *R1092[trigger]
+|                |--(det)--> *R1092[the]
+|--(punct)--> .
+
+	* entity-paths for event['pulled', 'the', 'trigger']33_3ecb.xmlsent:9039
+
+sentence #:after kathina was shot , she exclaimed , " ' mommy , mommy , i got hit . 
+	[events]:[['hit'], ['shot']]
+	[entities]:[['i'], ['she'], ['kathina'], ['mommy']]
+*R1100[hit]
+|--(ccomp)--> exclaimed
+|                |--(advcl)--> *R1100[shot]
+|                |                |--(mark)--> after
+|                |                |--(nsubjp)--> R1097[kathina]
+|                |                |--(auxpas)--> was
+|                |--(punct)--> ,
+|                |--(nsubj)--> R1097[she]
+|--(punct)--> ,
+|--(punct)--> "
+|--(punct)--> '
+|--(nsubjp)--> mommy
+|                |--(compou)--> R1096[mommy]
+|                |--(punct)--> ,
+|                |--(punct)--> ,
+|                |--(advmod)--> R1097[i]
+|--(auxpas)--> got
+|--(punct)--> .
+
+	* entity-paths for event['hit']33_3ecb.xmlsent:9081
+	['hit --(ccomp)--> exclaimed', 'exclaimed --(advcl)--> shot', 'shot --(nsubjpass)--> Kathina']
+	['hit --(ccomp)--> exclaimed', 'exclaimed --(nsubj)--> she']
+	['hit --(nsubjpass)--> Mommy', 'Mommy --(compound)--> Mommy']
+	['hit --(nsubjpass)--> Mommy', 'Mommy --(advmod)--> I']
+
+	* entity-paths for event['shot']33_3ecb.xmlsent:9081
+	['shot --(nsubjpass)--> Kathina']
+
+sentence #:somebody hit me in my back . " ' 
+	[events]:[['hit']]
+	[entities]:[['me']]
+*R1100[hit]
+|--(nsubj)--> somebody
+|--(dobj)--> R1097[me]
+|--(nmod)--> back
+|                |--(case)--> in
+|                |--(nmod:p)--> my
+|--(punct)--> .
+|--(punct)--> "
+|--(punct)--> '
+
+	* entity-paths for event['hit']33_3ecb.xmlsent:9082
+	['hit --(dobj)--> me']
+
+sentence #:my daughter has been shot . " ' 
+	[events]:[['shot']]
+	[entities]:[['daughter']]
+*R1100[shot]
+|--(nsubjp)--> R1097[daughter]
+|                |--(nmod:p)--> my
+|--(aux)--> has
+|--(auxpas)--> been
+|--(punct)--> .
+|--(punct)--> "
+|--(punct)--> '
+
+	* entity-paths for event['shot']33_3ecb.xmlsent:9084
+	['shot --(nsubjpass)--> daughter']

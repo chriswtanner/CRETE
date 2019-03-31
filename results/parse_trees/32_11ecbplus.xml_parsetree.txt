@@ -1,0 +1,95 @@
+
+-----------------------------------------
+docid:32_11ecbplus.xml
+-----------------------------------------
+
+sentence #:cumbria double murder : son suspected of killing mother and sister 'had begged to stay locked up in mental hospital' 
+	[events]:[['double', 'murder'], ['suspected'], ['killing']]
+	[entities]:[['mother'], ['son'], ['sister'], ['cumbria']]
+*R1031[murder]
+|--(compou)--> R1032[cumbria]
+|--(amod)--> *R1031[double]
+|--(punct)--> :
+|--(dep)--> R1033[son]
+                 |--(acl)--> *R1043[suspected]
+                                  |--(advcl)--> *R1031[killing]
+                                                   |--(mark)--> of
+                                                   |--(ccomp)--> begged
+                                                                    |--(nsubj)--> R1035[mother]
+                                                                    |                |--(cc)--> and
+                                                                    |                |--(conj)--> R1036[sister]
+                                                                    |--(punct)--> 'had
+                                                                    |--(aux)--> 'had
+                                                                    |--(xcomp)--> stay
+                                                                    |                |--(mark)--> to
+                                                                    |                |--(dep)--> locked
+                                                                    |                                 |--(compou)--> up
+                                                                    |                                 |--(nmod)--> hospital'
+                                                                    |                                                  |--(case)--> in
+                                                                    |                                                  |--(amod)--> mental
+                                                                    |--(punct)--> hospital'
+
+	* entity-paths for event['double', 'murder']32_11ecbplus.xmlsent:8693
+	['murder --(compound)--> Cumbria']
+	['murder --(dep)--> Son']
+
+	* entity-paths for event['suspected']32_11ecbplus.xmlsent:8693
+	['suspected --(advcl)--> killing', 'killing --(ccomp)--> begged', 'begged --(nsubj)--> mother']
+
+	* entity-paths for event['killing']32_11ecbplus.xmlsent:8693
+	['killing --(ccomp)--> begged', 'begged --(nsubj)--> mother']
+
+sentence #:john jenkin , 23 , had been sectioned after an apparent suicide attempt in the week before the double murder . 
+	[events]:[['double', 'murder']]
+	[entities]:[['john', 'jenkin']]
+sectioned
+|--(nsubjp)--> R1033[jenkin]
+|                |--(compou)--> R1033[john]
+|                |--(punct)--> ,
+|                |--(amod)--> 23
+|                |--(punct)--> ,
+|--(aux)--> had
+|--(auxpas)--> been
+|--(nmod)--> attempt
+|                |--(case)--> after
+|                |--(det)--> an
+|                |--(amod)--> apparent
+|                |--(compou)--> suicide
+|                |--(nmod)--> week
+|                                 |--(case)--> in
+|                                 |--(det)--> the
+|--(nmod)--> *R1031[murder]
+|                |--(case)--> before
+|                |--(det)--> the
+|                |--(amod)--> *R1031[double]
+|--(punct)--> .
+
+	* entity-paths for event['double', 'murder']32_11ecbplus.xmlsent:8695
+
+sentence #:his sister katie and mother alice mcmeekin were found dead at their home in millom . 
+	[events]:[['dead'], ['found']]
+	[entities]:[['at', 'their', 'home', 'in', 'millom'], ['alice', 'mcmeekin'], ['katie']]
+*R1039[found]
+|--(nsubjp)--> R1036[katie]
+|                |--(nmod:p)--> his
+|                |--(compou)--> sister
+|                |--(cc)--> and
+|                |--(conj)--> R1035[mcmeekin]
+|                                 |--(compou)--> mother
+|                                 |--(compou)--> R1035[alice]
+|--(auxpas)--> were
+|--(xcomp)--> *R1031[dead]
+|                |--(nmod)--> R1042[home]
+|                                 |--(case)--> R1042[at]
+|                                 |--(nmod:p)--> R1042[their]
+|--(nmod)--> R1042[millom]
+|                |--(case)--> R1042[in]
+|--(punct)--> .
+
+	* entity-paths for event['dead']32_11ecbplus.xmlsent:8696
+	['dead --(nmod)--> home']
+
+	* entity-paths for event['found']32_11ecbplus.xmlsent:8696
+	['found --(nsubjpass)--> Katie']
+	['found --(xcomp)--> dead', 'dead --(nmod)--> home']
+	['found --(nmod)--> Millom']

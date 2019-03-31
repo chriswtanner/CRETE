@@ -1,0 +1,63 @@
+
+-----------------------------------------
+docid:29_1ecb.xml
+-----------------------------------------
+
+sentence #:manning threw for 364 yards and three touchdowns , helping the colts secure the no. 5 seed in the american football conference playoffs with a 31-24 victory over the jaguars in jacksonville , fla . 
+	[events]:[['playoffs'], ['victory'], ['threw'], ['secure']]
+	[entities]:[['jaguars'], ['manning'], ['in', 'jacksonville', ',', 'fla', '.'], ['31-24'], ['no.', '5', 'seed'], ['colts']]
+*R863[threw]
+|--(nsubj)--> R864[manning]
+|--(nmod)--> yards
+|                |--(case)--> for
+|                |--(nummod)--> 364
+|                |--(cc)--> and
+|                |--(conj)--> touchdowns
+|                                 |--(nummod)--> three
+|--(punct)--> ,
+|--(xcomp)--> helping
+|                |--(ccomp)--> *R853[secure]
+|                                 |--(nsubj)--> R852[colts]
+|                                 |                |--(det)--> the
+|                                 |--(dobj)--> R851[seed]
+|                                 |                |--(det)--> the
+|                                 |                |--(amod)--> R851[no.]
+|                                 |                                 |--(compou)--> R851[5]
+|                                 |--(nmod)--> *R854[playoffs]
+|                                 |                |--(case)--> in
+|                                 |                |--(det)--> the
+|                                 |                |--(amod)--> american
+|                                 |                |--(compou)--> football
+|                                 |                |--(compou)--> conference
+|                                 |                |--(nmod)--> *R856[victory]
+|                                 |                                 |--(case)--> with
+|                                 |                                 |--(det)--> a
+|                                 |                                 |--(nummod)--> R855[31-24]
+|                                 |--(nmod)--> R857[jaguars]
+|                                                  |--(case)--> over
+|                                                  |--(det)--> the
+|                                                  |--(nmod)--> R873[fla]
+|                                                                   |--(case)--> R873[in]
+|                                                                   |--(compou)--> R873[jacksonville]
+|                                                                   |--(punct)--> R873[,]
+|--(punct)--> R873[.]
+
+	* entity-paths for event['playoffs']29_1ecb.xmlsent:6830
+	['playoffs --(nmod)--> victory', 'victory --(nummod)--> 31-24']
+
+	* entity-paths for event['victory']29_1ecb.xmlsent:6830
+	['victory --(nummod)--> 31-24']
+
+	* entity-paths for event['threw']29_1ecb.xmlsent:6830
+	['threw --(nsubj)--> Manning']
+	['threw --(xcomp)--> helping', 'helping --(ccomp)--> secure', 'secure --(nsubj)--> Colts']
+	['threw --(xcomp)--> helping', 'helping --(ccomp)--> secure', 'secure --(dobj)--> seed']
+	['threw --(xcomp)--> helping', 'helping --(ccomp)--> secure', 'secure --(nmod)--> playoffs', 'playoffs --(nmod)--> victory', 'victory --(nummod)--> 31-24']
+	['threw --(xcomp)--> helping', 'helping --(ccomp)--> secure', 'secure --(nmod)--> Jaguars']
+	['threw --(punct)--> .']
+
+	* entity-paths for event['secure']29_1ecb.xmlsent:6830
+	['secure --(nsubj)--> Colts']
+	['secure --(dobj)--> seed']
+	['secure --(nmod)--> playoffs', 'playoffs --(nmod)--> victory', 'victory --(nummod)--> 31-24']
+	['secure --(nmod)--> Jaguars']

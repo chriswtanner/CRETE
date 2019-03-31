@@ -1,0 +1,110 @@
+
+-----------------------------------------
+docid:37_12ecbplus.xml
+-----------------------------------------
+
+sentence #:earthquake of magnitude 6 . 1 strikes indonesia's aceh province killing one 
+	[events]:[['earthquake'], ['strikes'], ['killing']]
+	[entities]:[['one'], ["indonesia's", 'aceh', 'province'], ['magnitude', '6', '.', '1']]
+*R1236[strikes]
+|--(nsubj)--> *R1233[earthquake]
+|                |--(acl:re)--> R1250[1]
+|                                 |--(nmod)--> R1250[magnitude]
+|                                                  |--(case)--> of
+|                                                  |--(nummod)--> R1250[6]
+|                                                  |--(punct)--> R1250[.]
+|--(dobj)--> *R1251[killing]
+                 |--(nmod:p)--> R1237[indonesia's]
+                 |                |--(case)--> R1237[indonesia's]
+                 |--(compou)--> R1237[aceh]
+                 |--(compou)--> R1237[province]
+                 |--(dep)--> R1252[one]
+
+	* entity-paths for event['earthquake']37_12ecbplus.xmlsent:10438
+	['Earthquake --(acl:relcl)--> 1']
+
+	* entity-paths for event['strikes']37_12ecbplus.xmlsent:10438
+	['Strikes --(nsubj)--> Earthquake', 'Earthquake --(acl:relcl)--> 1']
+	['Strikes --(dobj)--> Killing', 'Killing --(nmod:poss)--> Indonesia']
+	['Strikes --(dobj)--> Killing', 'Killing --(compound)--> Aceh']
+	['Strikes --(dobj)--> Killing', 'Killing --(compound)--> Province']
+	['Strikes --(dobj)--> Killing', 'Killing --(dep)--> One']
+
+	* entity-paths for event['killing']37_12ecbplus.xmlsent:10438
+	['Killing --(nmod:poss)--> Indonesia']
+	['Killing --(compound)--> Aceh']
+	['Killing --(compound)--> Province']
+	['Killing --(dep)--> One']
+
+sentence #:a magnitude - 6 . 1 earthquake struck indonesia's aceh province on tuesday at 07 : 37 a . m . utc ( 3 : 37 a . m . edt ) , killing at least one and leaving two others missing , the associated press reported . 
+	[events]:[['reported'], ['magnitude', '-', '6', '.', '1', 'earthquake'], ['killing'], ['missing'], ['struck']]
+	[entities]:[["indonesia's", 'aceh', 'province'], ['two', 'others'], ['on', 'tuesday', 'at', '07', ':', '37', 'a', '.', 'm', '.', 'utc', '(', '3', ':', '37', 'a', '.', 'm', '.', 'edt', ')'], ['one']]
+*R1253[reported]
+|--(ccomp)--> *R1236[struck]
+|                |--(dep)--> *R1233[magnitude]
+|                |                |--(det)--> a
+|                |                |--(punct)--> *R1233[-]
+|                |                |--(dep)--> *R1233[6]
+|                |                |--(punct)--> *R1233[.]
+|                |--(nsubj)--> *R1233[earthquake]
+|                |                |--(nummod)--> *R1233[1]
+|                |--(dobj)--> R1237[province]
+|                |                |--(nmod:p)--> R1237[indonesia's]
+|                |                |                |--(case)--> R1237[indonesia's]
+|                |                |--(compou)--> R1237[aceh]
+|                |--(nmod)--> R1254[utc]
+|                |                |--(case)--> R1254[on]
+|                |                |--(compou)--> R1254[tuesday]
+|                |                |                |--(nmod)--> R1254[37]
+|                |                |                |                |--(case)--> R1254[at]
+|                |                |                |                |--(nummod)--> R1254[07]
+|                |                |                |                |--(punct)--> R1254[:]
+|                |                |                |                |--(dep)--> R1254[a]
+|                |                |                |--(punct)--> R1254[.]
+|                |                |                |--(dep)--> R1254[m]
+|                |                |                |--(punct)--> R1254[.]
+|                |                |--(dep)--> R1254[37]
+|                |                                 |--(punct)--> R1254[(]
+|                |                                 |--(nummod)--> R1254[3]
+|                |                                 |--(punct)--> R1254[:]
+|                |                                 |--(dep)--> R1254[a]
+|                |                                 |                |--(punct)--> R1254[.]
+|                |                                 |                |--(dep)--> R1254[m]
+|                |                                 |                |--(punct)--> R1254[.]
+|                |                                 |                |--(appos)--> R1254[edt]
+|                |                                 |--(punct)--> R1254[)]
+|                |--(punct)--> ,
+|                |--(dep)--> *R1251[killing]
+|                                 |--(dobj)--> R1252[one]
+|                                 |                |--(nmod:n)--> least
+|                                 |                                 |--(case)--> at
+|                                 |--(cc)--> and
+|                                 |--(conj)--> leaving
+|                                                  |--(dobj)--> R1255[others]
+|                                                                   |--(nummod)--> R1255[two]
+|                                                                   |--(amod)--> *R1256[missing]
+|--(punct)--> ,
+|--(nsubj)--> press
+|                |--(det)--> the
+|                |--(compou)--> associated
+|--(punct)--> .
+
+	* entity-paths for event['reported']37_12ecbplus.xmlsent:10440
+	['reported --(ccomp)--> struck', 'struck --(dobj)--> province']
+	['reported --(ccomp)--> struck', 'struck --(nmod)--> UTC']
+	['reported --(ccomp)--> struck', 'struck --(dep)--> killing', 'killing --(dobj)--> one']
+	['reported --(ccomp)--> struck', 'struck --(dep)--> killing', 'killing --(conj)--> leaving', 'leaving --(dobj)--> others']
+
+	* entity-paths for event['magnitude', '-', '6', '.', '1', 'earthquake']37_12ecbplus.xmlsent:10440
+
+	* entity-paths for event['killing']37_12ecbplus.xmlsent:10440
+	['killing --(dobj)--> one']
+	['killing --(conj)--> leaving', 'leaving --(dobj)--> others']
+
+	* entity-paths for event['missing']37_12ecbplus.xmlsent:10440
+
+	* entity-paths for event['struck']37_12ecbplus.xmlsent:10440
+	['struck --(dobj)--> province']
+	['struck --(nmod)--> UTC']
+	['struck --(dep)--> killing', 'killing --(dobj)--> one']
+	['struck --(dep)--> killing', 'killing --(conj)--> leaving', 'leaving --(dobj)--> others']

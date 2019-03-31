@@ -1,0 +1,50 @@
+
+-----------------------------------------
+docid:13_3ecb.xml
+-----------------------------------------
+
+sentence #:a " suspicious " fire devastated the church attended by alaska gov. and former vice presidential candidate sarah palin on friday night in her hometown of wasilla , the church 's minister said . 
+	[events]:[['fire'], ['devastated'], ['attended']]
+	[entities]:[['sarah', 'palin'], ['wasilla'], ['the', 'church'], ['friday', 'night']]
+a
+|--(punct)--> "
+|--(nmod)--> suspicious
+|                |--(punct)--> "
+|                |--(acl:re)--> *R278[devastated]
+|                |                |--(nsubj)--> *R261[fire]
+|                |                |--(dobj)--> R260[church]
+|                |                                 |--(det)--> R260[the]
+|                |                                 |--(acl)--> *R273[attended]
+|                |                                                  |--(nmod)--> gov.
+|                |                                                                   |--(case)--> by
+|                |                                                                   |--(compou)--> alaska
+|                |                                                                   |--(cc)--> and
+|                |                                                                   |--(conj)--> R262[palin]
+|                |                                                                                    |--(amod)--> former
+|                |                                                                                    |--(compou)--> vice
+|                |                                                                                    |--(amod)--> presidential
+|                |                                                                                    |--(compou)--> candidate
+|                |                                                                                    |--(compou)--> R262[sarah]
+|                |--(case)--> on
+|                |--(dep)--> R271[night]
+|                |                |--(compou)--> R271[friday]
+|                |--(nmod)--> hometown
+|                                 |--(case)--> in
+|                                 |--(nmod:p)--> her
+|                                 |--(nmod)--> R279[wasilla]
+|                                                  |--(case)--> of
+|--(punct)--> ,
+|--(acl:re)--> said
+|                |--(nsubj)--> minister
+|                                 |--(nmod:p)--> church
+|                                                  |--(det)--> the
+|                                                  |--(case)--> 's
+|--(punct)--> .
+
+	* entity-paths for event['fire']13_3ecb.xmlsent:1370
+
+	* entity-paths for event['devastated']13_3ecb.xmlsent:1370
+	['devastated --(dobj)--> church']
+
+	* entity-paths for event['attended']13_3ecb.xmlsent:1370
+	['attended --(nmod)--> Gov.', 'Gov. --(conj)--> Palin']

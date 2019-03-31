@@ -1,0 +1,96 @@
+
+-----------------------------------------
+docid:7_4ecbplus.xml
+-----------------------------------------
+
+sentence #:the ukrainian champion dropped thompson again in the sixth , and referee sam williams gave the challenger a standing count before stopping the fight at 2 : 56 . 
+	[events]:[['count'], ['stopping'], ['fight'], ['dropped'], ['sixth'], ['gave']]
+	[entities]:[['sam', 'williams'], ['champion'], ['thompson'], ['challenger']]
+*R1740[dropped]
+|--(nsubj)--> R1716[champion]
+|                |--(det)--> the
+|                |--(amod)--> ukrainian
+|--(dobj)--> R1725[thompson]
+|--(advmod)--> again
+|--(nmod)--> *R1726[sixth]
+|                |--(case)--> in
+|                |--(det)--> the
+|--(punct)--> ,
+|--(cc)--> and
+|--(conj)--> *R1741[gave]
+|                |--(nsubj)--> R1742[williams]
+|                |                |--(compou)--> referee
+|                |                |--(compou)--> R1742[sam]
+|                |--(iobj)--> R1725[challenger]
+|                |                |--(det)--> the
+|                |--(dobj)--> *R1743[count]
+|                |                |--(det)--> a
+|                |                |--(compou)--> standing
+|                |--(advcl)--> *R1744[stopping]
+|                                 |--(mark)--> before
+|                                 |--(dobj)--> *R1745[fight]
+|                                                  |--(det)--> the
+|                                                  |--(nmod)--> 2
+|                                                  |                |--(case)--> at
+|                                                  |--(punct)--> :
+|                                                  |--(dep)--> 56
+|--(punct)--> .
+
+	* entity-paths for event['count']7_4ecbplus.xmlsent:14709
+
+	* entity-paths for event['stopping']7_4ecbplus.xmlsent:14709
+
+	* entity-paths for event['fight']7_4ecbplus.xmlsent:14709
+
+	* entity-paths for event['dropped']7_4ecbplus.xmlsent:14709
+	['dropped --(nsubj)--> champion']
+	['dropped --(dobj)--> Thompson']
+	['dropped --(conj)--> gave', 'gave --(nsubj)--> Williams']
+	['dropped --(conj)--> gave', 'gave --(iobj)--> challenger']
+
+	* entity-paths for event['sixth']7_4ecbplus.xmlsent:14709
+
+	* entity-paths for event['gave']7_4ecbplus.xmlsent:14709
+	['gave --(nsubj)--> Williams']
+	['gave --(iobj)--> challenger']
+
+sentence #:wladimir klitschko stopped tony thompson in the sixth round to keep a comfortable hold on his wba , ibf and wbo heavyweight title belts on saturday . 
+	[events]:[['stopped'], ['round'], ['keep', 'a', 'hold', 'on']]
+	[entities]:[['wladimir', 'klitschko'], ['belts'], ['tony', 'thompson'], ['on', 'saturday']]
+*R1724[stopped]
+|--(nsubj)--> R1716[klitschko]
+|                |--(compou)--> R1716[wladimir]
+|--(dobj)--> R1725[thompson]
+|                |--(compou)--> R1725[tony]
+|                |--(nmod)--> *R1726[round]
+|                                 |--(case)--> in
+|                                 |--(det)--> the
+|                                 |--(amod)--> sixth
+|--(advcl)--> *R1727[keep]
+|                |--(mark)--> to
+|                |--(dobj)--> *R1727[hold]
+|                |                |--(det)--> *R1727[a]
+|                |                |--(amod)--> comfortable
+|                |                |--(nmod)--> R1728[belts]
+|                |                                 |--(case)--> *R1727[on]
+|                |                                 |--(nmod:p)--> his
+|                |                                 |--(compou)--> wba
+|                |                                 |                |--(punct)--> ,
+|                |                                 |                |--(conj)--> ibf
+|                |                                 |                |--(cc)--> and
+|                |                                 |                |--(conj)--> wbo
+|                |                                 |--(amod)--> heavyweight
+|                |                                 |--(compou)--> title
+|                |--(nmod)--> R1729[saturday]
+|                                 |--(case)--> R1729[on]
+|--(punct)--> .
+
+	* entity-paths for event['stopped']7_4ecbplus.xmlsent:14707
+	['stopped --(nsubj)--> Klitschko']
+	['stopped --(dobj)--> Thompson']
+	['stopped --(advcl)--> keep', 'keep --(dobj)--> hold', 'hold --(nmod)--> belts']
+	['stopped --(advcl)--> keep', 'keep --(nmod)--> Saturday']
+
+	* entity-paths for event['round']7_4ecbplus.xmlsent:14707
+
+	* entity-paths for event['keep', 'a', 'hold', 'on']7_4ecbplus.xmlsent:14707

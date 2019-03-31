@@ -1,0 +1,33 @@
+
+-----------------------------------------
+docid:23_3ecb.xml
+-----------------------------------------
+
+sentence #:a colleague has paid tribute to a perth doctor feared dead after a fall from a mountain in new zealand . 
+	[events]:[['fall'], ['dead']]
+	[entities]:[['a', 'mountain', 'in', 'new', 'zealand'], ['perth'], ['doctor']]
+paid
+|--(nsubj)--> colleague
+|                |--(det)--> a
+|--(aux)--> has
+|--(ccomp)--> feared
+|                |--(nsubj)--> tribute
+|                |                |--(nmod)--> R638[doctor]
+|                |                                 |--(case)--> to
+|                |                                 |--(det)--> a
+|                |                                 |--(compou)--> R635[perth]
+|                |--(xcomp)--> *R654[dead]
+|                |                |--(nmod)--> *R637[fall]
+|                |                                 |--(case)--> after
+|                |                                 |--(det)--> a
+|                |--(nmod)--> R639[mountain]
+|                                 |--(case)--> from
+|                                 |--(det)--> R639[a]
+|                                 |--(nmod)--> R639[zealand]
+|                                                  |--(case)--> R639[in]
+|                                                  |--(compou)--> R639[new]
+|--(punct)--> .
+
+	* entity-paths for event['fall']23_3ecb.xmlsent:4688
+
+	* entity-paths for event['dead']23_3ecb.xmlsent:4688

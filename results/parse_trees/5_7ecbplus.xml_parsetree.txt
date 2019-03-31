@@ -1,0 +1,46 @@
+
+-----------------------------------------
+docid:5_7ecbplus.xml
+-----------------------------------------
+
+sentence #:sixers' coach jim o'brien was fired today and taking over will be former portland trailblazers coach . . . 
+	[events]:[['taking', 'over'], ['fired']]
+	[entities]:[['today'], ['coach'], ['portland', 'trailblazers'], ['jim', "o'brien"]]
+coach
+|--(nsubj)--> sixers'
+|                |--(case)--> sixers'
+|--(dep)--> *R1683[fired]
+                 |--(nsubjp)--> R1684[o'brien]
+                 |                |--(compou)--> R1684[jim]
+                 |--(auxpas)--> was
+                 |--(nmod:t)--> R1682[today]
+                 |--(cc)--> and
+                 |--(conj)--> R1689[trailblazers]
+                 |                |--(csubj)--> *R1677[taking]
+                 |                |                |--(compou)--> *R1677[over]
+                 |                |--(aux)--> will
+                 |                |--(cop)--> be
+                 |                |--(amod)--> former
+                 |                |--(compou)--> R1689[portland]
+                 |--(parata)--> R1674[coach]
+                                  |--(punct)--> .
+
+	* entity-paths for event['taking', 'over']5_7ecbplus.xmlsent:14281
+
+	* entity-paths for event['fired']5_7ecbplus.xmlsent:14281
+	["fired --(nsubjpass)--> O'Brien"]
+	['fired --(nmod:tmod)--> today']
+	['fired --(conj)--> Trailblazers']
+	['fired --(parataxis)--> Coach']
+
+sentence #:fired in philly ! ! 
+	[events]:[['fired']]
+	[entities]:[['philly']]
+*R1683[fired]
+|--(advcl)--> R1673[philly]
+|                |--(case)--> in
+|                |--(punct)--> !
+|--(punct)--> !
+
+	* entity-paths for event['fired']5_7ecbplus.xmlsent:14280
+	['FIRED --(advcl)--> PHILLY']

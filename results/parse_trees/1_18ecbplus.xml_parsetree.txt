@@ -1,0 +1,84 @@
+
+-----------------------------------------
+docid:1_18ecbplus.xml
+-----------------------------------------
+
+sentence #:lindsay lohan checks into unapproved rehab 
+	[events]:[['unapproved'], ['checks', 'into']]
+	[entities]:[['rehab'], ['lindsay', 'lohan']]
+R15[lohan]
+|--(compou)--> R15[lindsay]
+|--(dep)--> *R9[checks]
+                 |--(nmod)--> R10[rehab]
+                                  |--(case)--> *R9[into]
+                                  |--(amod)--> *R78[unapproved]
+
+	* entity-paths for event['unapproved']1_18ecbplus.xmlsent:142
+
+	* entity-paths for event['checks', 'into']1_18ecbplus.xmlsent:142
+
+sentence #:she checked in today . 
+	[events]:[['checked', 'in']]
+	[entities]:[['today'], ['she']]
+*R9[checked]
+|--(nsubj)--> R15[she]
+|--(nmod)--> R79[today]
+|                |--(case)--> *R9[in]
+|--(punct)--> .
+
+	* entity-paths for event['checked', 'in']1_18ecbplus.xmlsent:144
+
+sentence #:lohan lawyer mark heller told l . a . superior court judge james r . dabney that lohan had checked into a rehab , but prosecutors have not signed off on the facility , reports ap . 
+	[events]:[['signed', 'off'], ['told'], ['reports'], ['checked', 'into']]
+	[entities]:[['james', 'r', '.', 'dabney'], ['lawyer', 'mark', 'heller'], ['facility'], ['prosecutors'], ['lohan'], ['ap'], ['lohan'], ['rehab']]
+*R40[told]
+|--(nsubj)--> R37[heller]
+|                |--(compou)--> R15[lohan]
+|                |--(compou)--> R37[lawyer]
+|                |--(compou)--> R37[mark]
+|--(dobj)--> l
+|                |--(punct)--> .
+|                |--(dep)--> a
+|                |--(punct)--> .
+|                |--(dep)--> R35[r]
+|                |                |--(compou)--> superior
+|                |                |--(compou)--> court
+|                |                |--(compou)--> judge
+|                |                |--(compou)--> R35[james]
+|                |--(punct)--> R35[.]
+|                |--(dep)--> R35[dabney]
+|                                 |--(acl:re)--> *R9[checked]
+|                                                  |--(dobj)--> that
+|                                                  |--(nsubj)--> R15[lohan]
+|                                                  |--(aux)--> had
+|                                                  |--(nmod)--> R10[rehab]
+|                                                                   |--(case)--> *R9[into]
+|                                                                   |--(det)--> a
+|--(punct)--> ,
+|--(cc)--> but
+|--(conj)--> *R78[signed]
+|                |--(nsubj)--> R80[prosecutors]
+|                |--(aux)--> have
+|                |--(neg)--> not
+|                |--(compou)--> *R78[off]
+|                |--(nmod)--> R10[facility]
+|                                 |--(case)--> on
+|                                 |--(det)--> the
+|                                 |--(punct)--> ,
+|                                 |--(appos)--> R81[ap]
+|                                                  |--(compou)--> *R82[reports]
+|--(punct)--> .
+
+	* entity-paths for event['signed', 'off']1_18ecbplus.xmlsent:145
+
+	* entity-paths for event['told']1_18ecbplus.xmlsent:145
+	['told --(nsubj)--> Heller']
+	['told --(dobj)--> L', 'L --(dep)--> R']
+	['told --(dobj)--> L', 'L --(punct)--> .']
+	['told --(dobj)--> L', 'L --(dep)--> Dabney']
+	['told --(conj)--> signed', 'signed --(nsubj)--> prosecutors']
+	['told --(conj)--> signed', 'signed --(nmod)--> facility']
+
+	* entity-paths for event['reports']1_18ecbplus.xmlsent:145
+
+	* entity-paths for event['checked', 'into']1_18ecbplus.xmlsent:145

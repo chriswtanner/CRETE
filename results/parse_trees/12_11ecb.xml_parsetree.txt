@@ -1,0 +1,55 @@
+
+-----------------------------------------
+docid:12_11ecb.xml
+-----------------------------------------
+
+sentence #:the indian navy said it arrested 23 pirates who threatened a merchant vessel in the gulf of aden on saturday , the latest in a series of recent clashes with somali pirates . 
+	[events]:[['said'], ['threatened'], ['arrested']]
+	[entities]:[['vessel'], ['navy'], ['saturday'], ['pirates'], ['the', 'gulf', 'of', 'aden'], ['it'], ['pirates']]
+*R226[said]
+|--(nsubj)--> R215[navy]
+|                |--(det)--> the
+|                |--(amod)--> indian
+|--(ccomp)--> *R214[arrested]
+|                |--(nsubj)--> R215[it]
+|                |--(dobj)--> R216[pirates]
+|                                 |--(nummod)--> 23
+|                                 |--(acl:re)--> *R227[threatened]
+|                                                  |--(nsubj)--> who
+|                                                  |--(dobj)--> R228[vessel]
+|                                                  |                |--(det)--> a
+|                                                  |                |--(compou)--> merchant
+|                                                  |--(nmod)--> R229[gulf]
+|                                                  |                |--(case)--> in
+|                                                  |                |--(det)--> R229[the]
+|                                                  |                |--(nmod)--> R229[aden]
+|                                                  |                                 |--(case)--> R229[of]
+|                                                  |--(nmod)--> R230[saturday]
+|                                                                   |--(case)--> on
+|                                                                   |--(punct)--> ,
+|                                                                   |--(appos)--> latest
+|                                                                                    |--(det)--> the
+|                                                                                    |--(nmod)--> series
+|                                                                                                     |--(case)--> in
+|                                                                                                     |--(det)--> a
+|                                                                                                     |--(nmod)--> clashes
+|                                                                                                                      |--(case)--> of
+|                                                                                                                      |--(amod)--> recent
+|                                                                                                                      |--(nmod)--> R216[pirates]
+|                                                                                                                                       |--(case)--> with
+|                                                                                                                                       |--(amod)--> somali
+|--(punct)--> .
+
+	* entity-paths for event['said']12_11ecb.xmlsent:779
+	['said --(nsubj)--> navy']
+	['said --(ccomp)--> arrested', 'arrested --(nsubj)--> it']
+	['said --(ccomp)--> arrested', 'arrested --(dobj)--> pirates']
+
+	* entity-paths for event['threatened']12_11ecb.xmlsent:779
+	['threatened --(dobj)--> vessel']
+	['threatened --(nmod)--> Gulf']
+	['threatened --(nmod)--> Saturday']
+
+	* entity-paths for event['arrested']12_11ecb.xmlsent:779
+	['arrested --(nsubj)--> it']
+	['arrested --(dobj)--> pirates']

@@ -1,0 +1,34 @@
+
+-----------------------------------------
+docid:32_6ecb.xml
+-----------------------------------------
+
+sentence #:the deaths of two women found in a new bedford home on tuesday have been ruled homicides . 
+	[events]:[['found'], ['deaths'], ['homicides']]
+	[entities]:[['in', 'a', 'new', 'bedford', 'home'], ['two', 'women']]
+ruled
+|--(nsubjp)--> *R1044[deaths]
+|                |--(det)--> the
+|                |--(nmod)--> R1050[women]
+|                                 |--(case)--> of
+|                                 |--(nummod)--> R1050[two]
+|                                 |--(acl)--> *R1061[found]
+|                                                  |--(nmod)--> R1048[home]
+|                                                                   |--(case)--> R1048[in]
+|                                                                   |--(det)--> R1048[a]
+|                                                                   |--(compou)--> R1048[new]
+|                                                                   |--(compou)--> R1048[bedford]
+|                                                                   |--(nmod)--> tuesday
+|                                                                                    |--(case)--> on
+|--(aux)--> have
+|--(auxpas)--> been
+|--(dobj)--> *R1059[homicides]
+|--(punct)--> .
+
+	* entity-paths for event['found']32_6ecb.xmlsent:8895
+	['found --(nmod)--> home']
+
+	* entity-paths for event['deaths']32_6ecb.xmlsent:8895
+	['deaths --(nmod)--> women']
+
+	* entity-paths for event['homicides']32_6ecb.xmlsent:8895

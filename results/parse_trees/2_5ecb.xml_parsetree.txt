@@ -1,0 +1,63 @@
+
+-----------------------------------------
+docid:2_5ecb.xml
+-----------------------------------------
+
+sentence #:the academy of motion pictures arts and sciences , which hands out the world 's top film honors , said jackman , 40 , star of the romantic epic " australia , " will host the televised ceremony for the first time . 
+	[events]:[['said'], ['host'], ['ceremony']]
+	[entities]:[['academy', 'of', 'motion', 'pictures', 'arts', 'and', 'sciences'], ['first', 'time'], ['which'], ['film'], ['jackman']]
+*R458[said]
+|--(nsubj)--> R459[academy]
+|                |--(det)--> the
+|                |--(nmod)--> R459[arts]
+|                |                |--(case)--> R459[of]
+|                |                |--(compou)--> R459[motion]
+|                |                |--(compou)--> R459[pictures]
+|                |                |--(cc)--> R459[and]
+|                |                |--(conj)--> R459[sciences]
+|                |--(punct)--> ,
+|                |--(acl:re)--> hands
+|                |                |--(nsubj)--> R459[which]
+|                |                |--(compou)--> out
+|                |                |--(dobj)--> honors
+|                |                                 |--(nmod:p)--> world
+|                |                                 |                |--(det)--> the
+|                |                                 |                |--(case)--> 's
+|                |                                 |--(amod)--> top
+|                |                                 |--(compou)--> R490[film]
+|                |--(punct)--> ,
+|--(ccomp)--> *R469[host]
+|                |--(nsubj)--> R462[jackman]
+|                |                |--(punct)--> ,
+|                |                |--(amod)--> 40
+|                |                |--(punct)--> ,
+|                |                |--(appos)--> star
+|                |                |                |--(nmod)--> epic
+|                |                |                |                |--(case)--> of
+|                |                |                |                |--(det)--> the
+|                |                |                |                |--(amod)--> romantic
+|                |                |                |--(punct)--> "
+|                |                |                |--(appos)--> australia
+|                |                |--(punct)--> ,
+|                |                |--(punct)--> "
+|                |--(aux)--> will
+|                |--(dobj)--> *R460[ceremony]
+|                                 |--(det)--> the
+|                                 |--(amod)--> televised
+|                                 |--(nmod)--> R491[time]
+|                                                  |--(case)--> for
+|                                                  |--(det)--> the
+|                                                  |--(amod)--> R491[first]
+|--(punct)--> .
+
+	* entity-paths for event['said']2_5ecb.xmlsent:3614
+	['said --(nsubj)--> Academy']
+	['said --(ccomp)--> host', 'host --(nsubj)--> Jackman']
+	['said --(ccomp)--> host', 'host --(dobj)--> ceremony', 'ceremony --(nmod)--> time']
+
+	* entity-paths for event['host']2_5ecb.xmlsent:3614
+	['host --(nsubj)--> Jackman']
+	['host --(dobj)--> ceremony', 'ceremony --(nmod)--> time']
+
+	* entity-paths for event['ceremony']2_5ecb.xmlsent:3614
+	['ceremony --(nmod)--> time']

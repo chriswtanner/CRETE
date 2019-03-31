@@ -1,0 +1,163 @@
+
+-----------------------------------------
+docid:45_7ecbplus.xml
+-----------------------------------------
+
+sentence #:the jury deliberated almost seven hours thursday before convicting christopher kenyon simpson , of spiro , in the death of 20 - year - old ka'loni flynn , of fort smith , arkansas . 
+	[events]:[['death'], ['deliberated'], ['convicting']]
+	[entities]:[['of', 'spiro'], ['almost', 'seven', 'hours'], ['thursday'], ['of', 'fort', 'smith', ',', 'arkansas'], ['christopher', 'kenyon', 'simpson'], ['jury'], ["ka'loni", 'flynn']]
+*R1613[deliberated]
+|--(nsubj)--> R1609[jury]
+|                |--(det)--> the
+|--(dobj)--> R1614[hours]
+|                |--(nummod)--> R1614[seven]
+|                                 |--(advmod)--> R1614[almost]
+|--(nmod:t)--> R1615[thursday]
+|--(advcl)--> *R1608[convicting]
+|                |--(mark)--> before
+|                |--(dobj)--> R1610[simpson]
+|                |                |--(compou)--> R1610[christopher]
+|                |                |--(compou)--> R1610[kenyon]
+|                |                |--(punct)--> ,
+|                |                |--(nmod)--> R1669[spiro]
+|                |                |                |--(case)--> R1669[of]
+|                |                |--(punct)--> ,
+|                |--(nmod)--> *R1637[death]
+|                                 |--(case)--> in
+|                                 |--(det)--> the
+|                                 |--(nmod)--> 20
+|                                 |                |--(case)--> of
+|                                 |--(punct)--> -
+|                                 |--(dep)--> year
+|                                 |--(punct)--> -
+|                                 |--(dep)--> R1612[ka'loni]
+|                                 |                |--(amod)--> old
+|                                 |                |--(compou)--> R1612[ka'loni]
+|                                 |                |--(punct)--> R1612[ka'loni]
+|                                 |                |--(appos)--> R1612[flynn]
+|                                 |--(punct)--> ,
+|                                 |--(nmod)--> R1616[smith]
+|                                                  |--(case)--> R1616[of]
+|                                                  |--(compou)--> R1616[fort]
+|                                                  |--(punct)--> R1616[,]
+|                                                  |--(appos)--> R1616[arkansas]
+|--(punct)--> .
+
+	* entity-paths for event['death']45_7ecbplus.xmlsent:13895
+	['death --(dep)--> loni']
+	['death --(nmod)--> Smith']
+
+	* entity-paths for event['deliberated']45_7ecbplus.xmlsent:13895
+	['deliberated --(nsubj)--> jury']
+	['deliberated --(dobj)--> hours']
+	['deliberated --(nmod:tmod)--> Thursday']
+	['deliberated --(advcl)--> convicting', 'convicting --(dobj)--> Simpson']
+	['deliberated --(advcl)--> convicting', 'convicting --(nmod)--> death', 'death --(dep)--> loni']
+	['deliberated --(advcl)--> convicting', 'convicting --(nmod)--> death', 'death --(nmod)--> Smith']
+
+	* entity-paths for event['convicting']45_7ecbplus.xmlsent:13895
+	['convicting --(dobj)--> Simpson']
+	['convicting --(nmod)--> death', 'death --(dep)--> loni']
+	['convicting --(nmod)--> death', 'death --(nmod)--> Smith']
+
+sentence #:a jury in eastern oklahoma has convicted a 27 - year - old man of shooting dead his pregnant girlfriend and her unborn baby after she refused to get an abortion . 
+	[events]:[['convicted'], ['pregnant'], ['abortion'], ['unborn'], ['refused'], ['shooting', 'dead']]
+	[entities]:[['in', 'eastern', 'oklahoma'], ['man'], ['girlfriend'], ['jury'], ['baby'], ['she']]
+*R1608[convicted]
+|--(nsubj)--> R1609[jury]
+|                |--(det)--> a
+|                |--(nmod)--> R1617[oklahoma]
+|                                 |--(case)--> R1617[in]
+|                                 |--(amod)--> R1617[eastern]
+|--(aux)--> has
+|--(dobj)--> 27
+|                |--(det)--> a
+|                |--(punct)--> -
+|                |--(dep)--> year
+|                |--(punct)--> -
+|                |--(dep)--> R1610[man]
+|                                 |--(amod)--> old
+|                                 |--(nmod)--> *R1611[shooting]
+|                                                  |--(case)--> of
+|                                                  |--(amod)--> *R1611[dead]
+|                                                  |--(dep)--> R1612[girlfriend]
+|                                                  |                |--(nmod:p)--> his
+|                                                  |                |--(amod)--> *R1621[pregnant]
+|                                                  |--(cc)--> and
+|                                                  |--(conj)--> R1625[baby]
+|                                                                   |--(nmod:p)--> her
+|                                                                   |--(amod)--> *R1668[unborn]
+|--(advcl)--> *R1670[refused]
+|                |--(mark)--> after
+|                |--(nsubj)--> R1612[she]
+|                |--(xcomp)--> get
+|                                 |--(mark)--> to
+|                                 |--(dobj)--> *R1671[abortion]
+|                                                  |--(det)--> an
+|--(punct)--> .
+
+	* entity-paths for event['convicted']45_7ecbplus.xmlsent:13894
+	['convicted --(nsubj)--> jury']
+	['convicted --(dobj)--> 27', '27 --(dep)--> man']
+	['convicted --(advcl)--> refused', 'refused --(nsubj)--> she']
+
+	* entity-paths for event['pregnant']45_7ecbplus.xmlsent:13894
+
+	* entity-paths for event['abortion']45_7ecbplus.xmlsent:13894
+
+	* entity-paths for event['unborn']45_7ecbplus.xmlsent:13894
+
+	* entity-paths for event['refused']45_7ecbplus.xmlsent:13894
+	['refused --(nsubj)--> she']
+
+	* entity-paths for event['shooting', 'dead']45_7ecbplus.xmlsent:13894
+
+sentence #:man found guilty of shooting dead pregnant girlfriend execution - style because 'he didn't want another child to support' 
+	[events]:[['found'], ['guilty'], ['shooting', 'dead'], ['want'], ['pregnant'], ["support'"]]
+	[entities]:[['man'], ["'he"], ['girlfriend'], ['child']]
+*R1608[found]
+|--(nsubj)--> R1610[man]
+|--(dobj)--> *R1636[guilty]
+                 |--(nmod)--> execution
+                 |                |--(case)--> of
+                 |                |--(compou)--> *R1611[shooting]
+                 |                |--(amod)--> *R1611[dead]
+                 |                |--(amod)--> *R1621[pregnant]
+                 |                |--(compou)--> R1612[girlfriend]
+                 |--(punct)--> -
+                 |--(dep)--> style
+                                  |--(dep)--> *R1665[want]
+                                                   |--(mark)--> because
+                                                   |--(punct)--> R1610['he]
+                                                   |--(nsubj)--> R1610['he]
+                                                   |--(aux)--> didn't
+                                                   |--(neg)--> didn't
+                                                   |--(dobj)--> R1666[child]
+                                                   |                |--(det)--> another
+                                                   |                |--(acl)--> *R1667[support']
+                                                   |                                 |--(mark)--> to
+                                                   |--(punct)--> *R1667[support']
+
+	* entity-paths for event['found']45_7ecbplus.xmlsent:13892
+	['found --(nsubj)--> Man']
+	['found --(dobj)--> GUILTY', 'GUILTY --(nmod)--> execution', 'execution --(compound)--> girlfriend']
+	['found --(dobj)--> GUILTY', 'GUILTY --(dep)--> style', 'style --(dep)--> want', "want --(punct)--> '"]
+	['found --(dobj)--> GUILTY', 'GUILTY --(dep)--> style', 'style --(dep)--> want', 'want --(nsubj)--> he']
+	['found --(dobj)--> GUILTY', 'GUILTY --(dep)--> style', 'style --(dep)--> want', 'want --(dobj)--> child']
+
+	* entity-paths for event['guilty']45_7ecbplus.xmlsent:13892
+	['GUILTY --(nmod)--> execution', 'execution --(compound)--> girlfriend']
+	['GUILTY --(dep)--> style', 'style --(dep)--> want', "want --(punct)--> '"]
+	['GUILTY --(dep)--> style', 'style --(dep)--> want', 'want --(nsubj)--> he']
+	['GUILTY --(dep)--> style', 'style --(dep)--> want', 'want --(dobj)--> child']
+
+	* entity-paths for event['shooting', 'dead']45_7ecbplus.xmlsent:13892
+
+	* entity-paths for event['want']45_7ecbplus.xmlsent:13892
+	["want --(punct)--> '"]
+	['want --(nsubj)--> he']
+	['want --(dobj)--> child']
+
+	* entity-paths for event['pregnant']45_7ecbplus.xmlsent:13892
+
+	* entity-paths for event["support'"]45_7ecbplus.xmlsent:13892

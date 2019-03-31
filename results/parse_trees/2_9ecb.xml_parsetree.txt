@@ -1,0 +1,72 @@
+
+-----------------------------------------
+docid:2_9ecb.xml
+-----------------------------------------
+
+sentence #:okay , so it 's a bit of a stretch there , but regardless , today it was announced that one of our own , hugh jackman , will be the host of the ceremony , televised live on sunday , february 22 , 2009 , from the kodak theatre at hollywood and highland center on abc . 
+	[events]:[['announced'], ['ceremony']]
+	[entities]:[['the', 'kodak', 'theatre', 'at', 'hollywood', 'and', 'highland', 'center'], ['on', 'sunday', ',', 'february', '22', ',', '2009'], ['today'], ['hugh', 'jackman'], ['host']]
+bit
+|--(discou)--> okay
+|--(punct)--> ,
+|--(dep)--> so
+|--(nsubj)--> it
+|--(cop)--> 's
+|--(det)--> a
+|--(nmod)--> stretch
+|                |--(case)--> of
+|                |--(det)--> a
+|                |--(acl:re)--> *R458[announced]
+|                                 |--(advmod)--> there
+|                                 |                |--(punct)--> ,
+|                                 |                |--(cc)--> but
+|                                 |                |--(conj)--> regardless
+|                                 |                |--(punct)--> ,
+|                                 |--(nmod:t)--> R461[today]
+|                                 |--(nsubjp)--> it
+|                                 |--(auxpas)--> was
+|                                 |--(ccomp)--> R462[host]
+|                                                  |--(mark)--> that
+|                                                  |--(nsubj)--> one
+|                                                  |                |--(nmod)--> own
+|                                                  |                |                |--(case)--> of
+|                                                  |                |                |--(nmod:p)--> our
+|                                                  |                |--(punct)--> ,
+|                                                  |                |--(appos)--> R462[jackman]
+|                                                  |                |                |--(compou)--> R462[hugh]
+|                                                  |                |--(punct)--> ,
+|                                                  |--(aux)--> will
+|                                                  |--(cop)--> be
+|                                                  |--(det)--> the
+|                                                  |--(nmod)--> *R460[ceremony]
+|                                                                   |--(case)--> of
+|                                                                   |--(det)--> the
+|--(punct)--> ,
+|--(parata)--> live
+|                |--(nsubj)--> televised
+|                |--(nmod)--> R476[february]
+|                |                |--(case)--> R476[on]
+|                |                |--(compou)--> R476[sunday]
+|                |                |--(punct)--> R476[,]
+|                |                |--(nummod)--> R476[22]
+|                |                |--(punct)--> R476[,]
+|                |                |--(nummod)--> R476[2009]
+|                |                |--(punct)--> ,
+|                |--(nmod)--> R495[theatre]
+|                                 |--(case)--> from
+|                                 |--(det)--> R495[the]
+|                                 |--(compou)--> R495[kodak]
+|                                 |--(nmod)--> R495[hollywood]
+|                                                  |--(case)--> R495[at]
+|--(cc)--> R495[and]
+|--(conj)--> R495[center]
+|                |--(compou)--> R495[highland]
+|                |--(dep)--> abc
+|                                 |--(case)--> on
+|--(punct)--> .
+
+	* entity-paths for event['announced']2_9ecb.xmlsent:3766
+	['announced --(nmod:tmod)--> today']
+	['announced --(ccomp)--> host']
+
+	* entity-paths for event['ceremony']2_9ecb.xmlsent:3766

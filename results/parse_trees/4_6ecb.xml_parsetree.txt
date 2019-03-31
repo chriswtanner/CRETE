@@ -1,0 +1,55 @@
+
+-----------------------------------------
+docid:4_6ecb.xml
+-----------------------------------------
+
+sentence #:legendary pinup queen bettie page died of pneumonia at the age of 85 in a los angeles , california , hospital thursday , a week after suffering a heart attack , according to her agent . 
+	[events]:[['pneumonia'], ['heart', 'attack'], ['died'], ['suffering']]
+	[entities]:[['agent'], ['in', 'a', 'los', 'angeles', ',', 'california', ',', 'hospital'], ['thursday'], ['bettie', 'page']]
+*R1363[died]
+|--(nsubj)--> R1364[page]
+|                |--(amod)--> legendary
+|                |--(compou)--> pinup
+|                |--(compou)--> queen
+|                |--(compou)--> R1364[bettie]
+|--(nmod)--> *R1396[pneumonia]
+|                |--(case)--> of
+|                |--(nmod)--> age
+|                                 |--(case)--> at
+|                                 |--(det)--> the
+|                                 |--(nmod)--> 85
+|                                                  |--(case)--> of
+|--(nmod)--> R1368[hospital]
+|                |--(case)--> R1368[in]
+|                |--(det)--> R1368[a]
+|                |--(compou)--> R1368[los]
+|                |--(compou)--> R1368[angeles]
+|                |--(punct)--> R1368[,]
+|                |--(appos)--> R1368[california]
+|                |--(punct)--> R1368[,]
+|                |--(nmod:t)--> R1367[thursday]
+|                |--(punct)--> ,
+|                |--(dep)--> week
+|                                 |--(det)--> a
+|--(advcl)--> *R1382[suffering]
+|                |--(mark)--> after
+|                |--(dobj)--> *R1380[attack]
+|                                 |--(det)--> a
+|                                 |--(compou)--> *R1380[heart]
+|--(punct)--> ,
+|--(nmod)--> R1385[agent]
+|                |--(case)--> according
+|                |                |--(mwe)--> to
+|                |--(nmod:p)--> her
+|--(punct)--> .
+
+	* entity-paths for event['pneumonia']4_6ecb.xmlsent:11477
+
+	* entity-paths for event['heart', 'attack']4_6ecb.xmlsent:11477
+
+	* entity-paths for event['died']4_6ecb.xmlsent:11477
+	['died --(nsubj)--> Page']
+	['died --(nmod)--> hospital']
+	['died --(nmod)--> agent']
+
+	* entity-paths for event['suffering']4_6ecb.xmlsent:11477

@@ -1,0 +1,46 @@
+
+-----------------------------------------
+docid:34_14ecb.xml
+-----------------------------------------
+
+sentence #:president-elect barack obama 's reported choice for surgeon general , cnn medical correspondent sanjay gupta , could bring a dose of star power to a job that has n't had that much clout in decades . 
+	[events]:[['job']]
+	[entities]:[['surgeon', 'general'], ['choice'], ['sanjay', 'gupta'], ['barack', 'obama']]
+bring
+|--(nsubj)--> R1130[choice]
+|                |--(nmod:p)--> R1136[obama]
+|                |                |--(compou)--> president-elect
+|                |                |--(compou)--> R1136[barack]
+|                |                |--(case)--> 's
+|                |--(amod)--> reported
+|                |--(nmod)--> R1135[surgeon]
+|                                 |--(case)--> for
+|                                 |--(amod)--> R1135[general]
+|                                 |--(punct)--> ,
+|                                 |--(appos)--> R1130[gupta]
+|                                 |                |--(compou)--> cnn
+|                                 |                |--(amod)--> medical
+|                                 |                |--(compou)--> correspondent
+|                                 |                |--(compou)--> R1130[sanjay]
+|                                 |--(punct)--> ,
+|--(aux)--> could
+|--(dobj)--> dose
+|                |--(det)--> a
+|                |--(nmod)--> power
+|                                 |--(case)--> of
+|                                 |--(compou)--> star
+|--(nmod)--> *R1134[job]
+|                |--(case)--> to
+|                |--(det)--> a
+|                |--(acl:re)--> had
+|                                 |--(nsubj)--> that
+|                                 |--(aux)--> has
+|                                 |--(neg)--> n't
+|                                 |--(dobj)--> clout
+|                                                  |--(det)--> that
+|                                                  |--(amod)--> much
+|                                                  |--(nmod)--> decades
+|                                                                   |--(case)--> in
+|--(punct)--> .
+
+	* entity-paths for event['job']34_14ecb.xmlsent:9366

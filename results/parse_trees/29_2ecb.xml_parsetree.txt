@@ -1,0 +1,53 @@
+
+-----------------------------------------
+docid:29_2ecb.xml
+-----------------------------------------
+
+sentence #:colts clinch playoff spot by beating jags 
+	[events]:[['beating'], ['clinch'], ['playoff']]
+	[entities]:[['jags'], ['spot'], ['colts']]
+*R853[clinch]
+|--(nsubj)--> R852[colts]
+|--(dobj)--> R883[spot]
+|                |--(compou)--> *R854[playoff]
+|--(nmod)--> R857[jags]
+                 |--(case)--> by
+                 |--(amod)--> *R856[beating]
+
+	* entity-paths for event['beating']29_2ecb.xmlsent:6904
+
+	* entity-paths for event['clinch']29_2ecb.xmlsent:6904
+	['clinch --(nsubj)--> Colts']
+	['clinch --(dobj)--> spot']
+	['clinch --(nmod)--> Jags']
+
+	* entity-paths for event['playoff']29_2ecb.xmlsent:6904
+
+sentence #:quarterback peyton manning was nearly perfect as the colts beat the host jaguars , 31-24 , on thursday night . 
+	[events]:[['beat']]
+	[entities]:[['jaguars'], ['on', 'thursday', 'night'], ['colts'], ['peyton', 'manning'], ['31-24']]
+perfect
+|--(nsubj)--> R864[manning]
+|                |--(compou)--> quarterback
+|                |--(compou)--> R864[peyton]
+|--(cop)--> was
+|--(advmod)--> nearly
+|--(advcl)--> *R856[beat]
+|                |--(mark)--> as
+|                |--(nsubj)--> R852[colts]
+|                |                |--(det)--> the
+|                |--(dobj)--> R857[jaguars]
+|                |                |--(det)--> the
+|                |                |--(compou)--> host
+|                |                |--(punct)--> ,
+|                |                |--(amod)--> R855[31-24]
+|                |                |--(punct)--> ,
+|                |                |--(nmod)--> R865[thursday]
+|                |                                 |--(case)--> R865[on]
+|                |--(nmod:t)--> R865[night]
+|--(punct)--> .
+
+	* entity-paths for event['beat']29_2ecb.xmlsent:6905
+	['beat --(nsubj)--> Colts']
+	['beat --(dobj)--> Jaguars']
+	['beat --(nmod:tmod)--> night']

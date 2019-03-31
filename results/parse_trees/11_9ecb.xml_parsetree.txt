@@ -1,0 +1,38 @@
+
+-----------------------------------------
+docid:11_9ecb.xml
+-----------------------------------------
+
+sentence #:the government of turkmenistan said 90 per cent of eligible voters had participated in parliamentary elections sunday , despite boycotts from opposition groups . 
+	[events]:[['participated'], ['elections']]
+	[entities]:[['voters'], ['sunday'], ['turkmenistan'], ['government']]
+said
+|--(nsubj)--> R210[government]
+|                |--(det)--> the
+|                |--(nmod)--> R189[turkmenistan]
+|                                 |--(case)--> of
+|--(ccomp)--> *R187[participated]
+|                |--(nsubj)--> 90
+|                |                |--(nmod)--> cent
+|                |                                 |--(case)--> per
+|                |                                 |--(nmod)--> R191[voters]
+|                |                                                  |--(case)--> of
+|                |                                                  |--(amod)--> eligible
+|                |--(aux)--> had
+|                |--(nmod)--> *R193[elections]
+|                |                |--(case)--> in
+|                |                |--(amod)--> parliamentary
+|                |--(nmod:t)--> R208[sunday]
+|                |--(punct)--> ,
+|                |--(nmod)--> boycotts
+|                                 |--(case)--> despite
+|                                 |--(nmod)--> groups
+|                                                  |--(case)--> from
+|                                                  |--(compou)--> opposition
+|--(punct)--> .
+
+	* entity-paths for event['participated']11_9ecb.xmlsent:758
+	['participated --(nsubj)--> 90', '90 --(nmod)--> cent', 'cent --(nmod)--> voters']
+	['participated --(nmod:tmod)--> Sunday']
+
+	* entity-paths for event['elections']11_9ecb.xmlsent:758

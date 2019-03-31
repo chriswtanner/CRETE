@@ -1,0 +1,50 @@
+
+-----------------------------------------
+docid:21_7ecb.xml
+-----------------------------------------
+
+sentence #:according to police , anthony lasalle , 36 , of minneapolis , hit and killed a 66-year-old luann marie johnson in the parking lot of the bloomington sam 's club wednesday night . 
+	[events]:[['killed'], ['hit']]
+	[entities]:[['anthony', 'lasalle'], ['luann', 'marie', 'johnson'], ['wednesday', 'night'], ['in', 'the', 'parking', 'lot', 'of', 'the', 'bloomington', 'sam', "'s", 'club'], ['police']]
+*R541[hit]
+|--(nmod)--> R563[police]
+|                |--(case)--> according
+|                |                |--(mwe)--> to
+|                |--(punct)--> ,
+|                |--(appos)--> R539[lasalle]
+|                                 |--(compou)--> R539[anthony]
+|--(punct)--> ,
+|--(nsubj)--> 36
+|                |--(punct)--> ,
+|                |--(nmod)--> minneapolis
+|                |                |--(case)--> of
+|                |--(punct)--> ,
+|--(cc)--> and
+|--(conj)--> *R542[killed]
+|                |--(dobj)--> R543[johnson]
+|                |                |--(det)--> a
+|                |                |--(amod)--> 66-year-old
+|                |                |--(compou)--> R543[luann]
+|                |                |--(compou)--> R543[marie]
+|                |                |--(nmod)--> R544[lot]
+|                |                                 |--(case)--> R544[in]
+|                |                                 |--(det)--> R544[the]
+|                |                                 |--(compou)--> R544[parking]
+|                |                                 |--(nmod)--> R574[wednesday]
+|                |                                                  |--(case)--> R544[of]
+|                |                                                  |--(nmod:p)--> R544[sam]
+|                |                                                  |                |--(det)--> R544[the]
+|                |                                                  |                |--(compou)--> R544[bloomington]
+|                |                                                  |                |--(case)--> R544['s]
+|                |                                                  |--(compou)--> R544[club]
+|                |--(nmod:t)--> R574[night]
+|--(punct)--> .
+
+	* entity-paths for event['killed']21_7ecb.xmlsent:4293
+	['killed --(dobj)--> Johnson']
+	['killed --(nmod:tmod)--> night']
+
+	* entity-paths for event['hit']21_7ecb.xmlsent:4293
+	['hit --(nmod)--> police']
+	['hit --(conj)--> killed', 'killed --(dobj)--> Johnson']
+	['hit --(conj)--> killed', 'killed --(nmod:tmod)--> night']

@@ -1,0 +1,61 @@
+
+-----------------------------------------
+docid:28_7ecb.xml
+-----------------------------------------
+
+sentence #:w. mark felt , who was the no. 2 official at the fbi when he helped bring down president richard m. nixon by resisting the watergate cover-up and becoming deep throat , the most famous anonymous source in american history , died on thursday . 
+	[events]:[['died'], ['watergate', 'cover-up'], ['bring', 'down']]
+	[entities]:[['w.', 'mark', 'felt'], ['no.', '2', 'official'], ['on', 'thursday'], ['he'], ['deep', 'throat'], ['source'], ['richard', 'm.', 'nixon']]
+*R808[died]
+|--(nsubj)--> R809[felt]
+|                |--(compou)--> R809[w.]
+|                |--(compou)--> R809[mark]
+|                |--(punct)--> ,
+|                |--(acl:re)--> R809[official]
+|                |                |--(nsubj)--> who
+|                |                |--(cop)--> was
+|                |                |--(det)--> the
+|                |                |--(amod)--> R809[no.]
+|                |                |                |--(compou)--> R809[2]
+|                |                |--(nmod)--> fbi
+|                |                |                |--(case)--> at
+|                |                |                |--(det)--> the
+|                |                |--(advcl)--> helped
+|                |                                 |--(advmod)--> when
+|                |                                 |--(nsubj)--> R809[he]
+|                |                                 |--(xcomp)--> *R836[bring]
+|                |                                                  |--(compou)--> *R836[down]
+|                |                                                  |--(dobj)--> R837[nixon]
+|                |                                                  |                |--(compou)--> president
+|                |                                                  |                |--(compou)--> R837[richard]
+|                |                                                  |                |--(compou)--> R837[m.]
+|                |                                                  |--(advcl)--> resisting
+|                |                                                                   |--(mark)--> by
+|                |                                                                   |--(dobj)--> *R847[cover-up]
+|                |                                                                   |                |--(det)--> the
+|                |                                                                   |                |--(compou)--> *R847[watergate]
+|                |                                                                   |--(cc)--> and
+|                |                                                                   |--(conj)--> becoming
+|                |                                                                                    |--(xcomp)--> R811[throat]
+|                |                                                                                                     |--(compou)--> R811[deep]
+|                |                                                                                                     |--(punct)--> ,
+|                |                                                                                                     |--(appos)--> R811[source]
+|                |                                                                                                                      |--(det)--> the
+|                |                                                                                                                      |--(amod)--> famous
+|                |                                                                                                                      |                |--(advmod)--> most
+|                |                                                                                                                      |--(amod)--> anonymous
+|                |                                                                                                                      |--(nmod)--> history
+|                |                                                                                                                                       |--(case)--> in
+|                |                                                                                                                                       |--(amod)--> american
+|                |--(punct)--> ,
+|--(nmod)--> R819[thursday]
+|                |--(case)--> R819[on]
+|--(punct)--> .
+
+	* entity-paths for event['died']28_7ecb.xmlsent:6499
+	['died --(nsubj)--> Felt']
+	['died --(nmod)--> Thursday']
+
+	* entity-paths for event['watergate', 'cover-up']28_7ecb.xmlsent:6499
+
+	* entity-paths for event['bring', 'down']28_7ecb.xmlsent:6499

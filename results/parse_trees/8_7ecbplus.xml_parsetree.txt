@@ -1,0 +1,64 @@
+
+-----------------------------------------
+docid:8_7ecbplus.xml
+-----------------------------------------
+
+sentence #:a petrol bomb hurled at an athens branch of the marfin investment bank killed two women and a man who were caught in the resulting inferno . 
+	[events]:[['inferno'], ['killed'], ['hurled']]
+	[entities]:[['who'], ['women'], ['man'], ['bomb'], ['an', 'athens', 'branch', 'of', 'the', 'marfin', 'investment', 'bank']]
+*R1753[killed]
+|--(dep)--> *R1749[hurled]
+|                |--(nsubj)--> R1751[bomb]
+|                |                |--(det)--> a
+|                |                |--(compou)--> petrol
+|                |--(nmod)--> R1752[branch]
+|                                 |--(case)--> at
+|                                 |--(det)--> R1752[an]
+|                                 |--(compou)--> R1752[athens]
+|                                 |--(nmod)--> R1752[bank]
+|                                                  |--(case)--> R1752[of]
+|                                                  |--(det)--> R1752[the]
+|                                                  |--(compou)--> R1752[marfin]
+|                                                  |--(compou)--> R1752[investment]
+|--(nsubj)--> R1773[women]
+|                |--(nummod)--> two
+|                |--(cc)--> and
+|                |--(conj)--> R1774[man]
+|                                 |--(det)--> a
+|                                 |--(acl:re)--> caught
+|                                                  |--(nsubjp)--> R1754[who]
+|                                                  |--(auxpas)--> were
+|                                                  |--(nmod)--> *R1748[inferno]
+|                                                                   |--(case)--> in
+|                                                                   |--(det)--> the
+|                                                                   |--(amod)--> resulting
+|--(punct)--> .
+
+	* entity-paths for event['inferno']8_7ecbplus.xmlsent:15170
+
+	* entity-paths for event['killed']8_7ecbplus.xmlsent:15170
+	['killed --(dep)--> hurled', 'hurled --(nsubj)--> bomb']
+	['killed --(dep)--> hurled', 'hurled --(nmod)--> branch']
+	['killed --(nsubj)--> women']
+
+	* entity-paths for event['hurled']8_7ecbplus.xmlsent:15170
+	['hurled --(nsubj)--> bomb']
+	['hurled --(nmod)--> branch']
+
+sentence #:3 dead after protesters torch greek bank 
+	[events]:[['torch'], ['dead']]
+	[entities]:[['protesters'], ['greek', 'bank'], ['3']]
+R1754[3]
+|--(dep)--> *R1790[torch]
+                 |--(amod)--> *R1753[dead]
+                 |                |--(nmod)--> R1750[protesters]
+                 |                                 |--(case)--> after
+                 |--(dep)--> R1752[bank]
+                                  |--(amod)--> R1752[greek]
+
+	* entity-paths for event['torch']8_7ecbplus.xmlsent:15166
+	['torch --(amod)--> dead', 'dead --(nmod)--> protesters']
+	['torch --(dep)--> bank']
+
+	* entity-paths for event['dead']8_7ecbplus.xmlsent:15166
+	['dead --(nmod)--> protesters']

@@ -1,0 +1,76 @@
+
+-----------------------------------------
+docid:34_3ecbplus.xml
+-----------------------------------------
+
+sentence #:president barack obama announces his nomination of dr . regina benjamin , a physician who operates a clinic in bayou la batre , ala . , as the u . s . surgeon general during an announcement in the white house rose garden monday , july 13 , 2009 . 
+	[events]:[['announces'], ['announcement'], ['nomination']]
+	[entities]:[['his'], ['a', 'clinic', 'in', 'bayou', 'la', 'batre', ',', 'ala'], ['in', 'the', 'white', 'house', 'rose', 'garden'], ['barack', 'obama'], ['dr', '.', 'regina', 'benjamin'], ['physician'], ['who'], ['u', '.', 's', '.', 'surgeon', 'general'], ['monday', ',', 'july', '13', ',', '2009']]
+*R1142[announces]
+|--(nsubj)--> R1136[obama]
+|                |--(compou)--> president
+|                |--(compou)--> R1136[barack]
+|--(dobj)--> *R1138[nomination]
+|                |--(nmod:p)--> R1136[his]
+|                |--(nmod)--> R1139[dr]
+|                |                |--(case)--> of
+|                |--(punct)--> R1139[.]
+|                |--(dep)--> R1139[benjamin]
+|                |                |--(compou)--> R1139[regina]
+|                |--(punct)--> ,
+|                |--(dep)--> R1139[physician]
+|                                 |--(det)--> a
+|                                 |--(acl:re)--> operates
+|                                 |                |--(nsubj)--> R1139[who]
+|                                 |                |--(dobj)--> R1148[clinic]
+|                                 |                |                |--(det)--> R1148[a]
+|                                 |                |                |--(nmod)--> R1148[batre]
+|                                 |                |                                 |--(case)--> R1148[in]
+|                                 |                |                                 |--(compou)--> R1148[bayou]
+|                                 |                |                                 |--(compou)--> R1148[la]
+|                                 |                |                                 |--(punct)--> R1148[,]
+|                                 |                |                                 |--(appos)--> R1148[ala]
+|                                 |                |                                 |                |--(punct)--> .
+|                                 |                |                                 |--(punct)--> ,
+|                                 |                |--(nmod)--> R1135[s]
+|                                 |                                 |--(case)--> as
+|                                 |                                 |--(det)--> the
+|                                 |                                 |--(compou)--> R1135[u]
+|                                 |                                 |--(punct)--> R1135[.]
+|                                 |--(punct)--> R1135[.]
+|                                 |--(dep)--> R1135[general]
+|                                                  |--(compou)--> R1135[surgeon]
+|                                                  |--(nmod)--> *R1142[announcement]
+|                                                  |                |--(case)--> during
+|                                                  |                |--(det)--> an
+|                                                  |                |--(nmod)--> R1147[garden]
+|                                                  |                                 |--(case)--> R1147[in]
+|                                                  |                                 |--(det)--> R1147[the]
+|                                                  |                                 |--(compou)--> R1147[white]
+|                                                  |                                 |--(compou)--> R1147[house]
+|                                                  |                                 |--(compou)--> R1147[rose]
+|                                                  |--(dep)--> R1141[july]
+|                                                                   |--(compou)--> R1141[monday]
+|                                                                   |--(punct)--> R1141[,]
+|                                                                   |--(nummod)--> R1141[13]
+|                                                                   |--(punct)--> R1141[,]
+|                                                                   |--(nummod)--> R1141[2009]
+|--(punct)--> .
+
+	* entity-paths for event['announces']34_3ecbplus.xmlsent:9428
+	['announces --(nsubj)--> Obama']
+	['announces --(dobj)--> nomination', 'nomination --(nmod:poss)--> his']
+	['announces --(dobj)--> nomination', 'nomination --(nmod)--> Dr']
+	['announces --(dobj)--> nomination', 'nomination --(punct)--> .']
+	['announces --(dobj)--> nomination', 'nomination --(dep)--> Benjamin']
+	['announces --(dobj)--> nomination', 'nomination --(dep)--> physician']
+
+	* entity-paths for event['announcement']34_3ecbplus.xmlsent:9428
+	['announcement --(nmod)--> Garden']
+
+	* entity-paths for event['nomination']34_3ecbplus.xmlsent:9428
+	['nomination --(nmod:poss)--> his']
+	['nomination --(nmod)--> Dr']
+	['nomination --(punct)--> .']
+	['nomination --(dep)--> Benjamin']
+	['nomination --(dep)--> physician']

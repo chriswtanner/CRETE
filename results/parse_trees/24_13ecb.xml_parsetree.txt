@@ -1,0 +1,63 @@
+
+-----------------------------------------
+docid:24_13ecb.xml
+-----------------------------------------
+
+sentence #:armed robbers stole gems worth 85 million euros ( 74 million pounds ) from luxury jewellers in the heart of paris , during a raid described by french media on friday as the most lucrative heist in france 's history . 
+	[events]:[['heist'], ['stole'], ['history'], ['raid']]
+	[entities]:[['friday'], ['luxury', 'jewellers', 'in', 'the', 'heart', 'of', 'paris'], ['robbers'], ['gems']]
+*R663[stole]
+|--(nsubj)--> R664[robbers]
+|                |--(amod)--> armed
+|--(dobj)--> R683[gems]
+|--(nmod)--> euros
+|                |--(case)--> worth
+|                |--(nummod)--> million
+|                |                |--(compou)--> 85
+|                |--(appos)--> pounds
+|                |                |--(punct)--> (
+|                |                |--(nummod)--> million
+|                |                |                |--(compou)--> 74
+|                |                |--(punct)--> )
+|                |--(nmod)--> R665[jewellers]
+|                                 |--(case)--> from
+|                                 |--(compou)--> R665[luxury]
+|--(nmod)--> R665[heart]
+|                |--(case)--> R665[in]
+|                |--(det)--> R665[the]
+|                |--(nmod)--> R665[paris]
+|                                 |--(case)--> R665[of]
+|--(punct)--> ,
+|--(nmod)--> *R666[raid]
+|                |--(case)--> during
+|                |--(det)--> a
+|                |--(acl)--> described
+|                                 |--(nmod)--> media
+|                                 |                |--(case)--> by
+|                                 |                |--(amod)--> french
+|                                 |                |--(nmod)--> R686[friday]
+|                                 |                                 |--(case)--> on
+|                                 |--(nmod)--> *R666[heist]
+|                                                  |--(case)--> as
+|                                                  |--(det)--> the
+|                                                  |--(amod)--> lucrative
+|                                                  |                |--(advmod)--> most
+|                                                  |--(nmod)--> *R687[history]
+|                                                                   |--(case)--> in
+|                                                                   |--(nmod:p)--> france
+|                                                                                    |--(case)--> 's
+|--(punct)--> .
+
+	* entity-paths for event['heist']24_13ecb.xmlsent:4818
+
+	* entity-paths for event['stole']24_13ecb.xmlsent:4818
+	['stole --(nsubj)--> robbers']
+	['stole --(dobj)--> gems']
+	['stole --(nmod)--> euros', 'euros --(nmod)--> jewellers']
+	['stole --(nmod)--> heart']
+	['stole --(nmod)--> raid', 'raid --(acl)--> described', 'described --(nmod)--> media', 'media --(nmod)--> Friday']
+
+	* entity-paths for event['history']24_13ecb.xmlsent:4818
+
+	* entity-paths for event['raid']24_13ecb.xmlsent:4818
+	['raid --(acl)--> described', 'described --(nmod)--> media', 'media --(nmod)--> Friday']

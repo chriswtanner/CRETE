@@ -1,0 +1,39 @@
+
+-----------------------------------------
+docid:39_3ecbplus.xml
+-----------------------------------------
+
+sentence #:scottish actor best known for his role as malcolm tucker in the thick of it revealed as 12th actor to play the doctor 
+	[events]:[['play'], ['revealed']]
+	[entities]:[['12th', 'actor'], ['his'], ['the', 'thick', 'of', 'it'], ['actor'], ['doctor']]
+*R1342[revealed]
+|--(nsubj)--> R1331[actor]
+|                |--(amod)--> scottish
+|                |--(acl)--> known
+|                                 |--(advmod)--> best
+|                                 |--(nmod)--> role
+|                                 |                |--(case)--> for
+|                                 |                |--(nmod:p)--> R1331[his]
+|                                 |--(nmod)--> tucker
+|                                                  |--(case)--> as
+|                                                  |--(compou)--> malcolm
+|                                                  |--(nmod)--> R1354[thick]
+|                                                                   |--(case)--> in
+|                                                                   |--(det)--> R1354[the]
+|                                                                   |--(nmod)--> R1354[it]
+|                                                                                    |--(case)--> R1354[of]
+|--(nmod)--> R1331[actor]
+|                |--(case)--> as
+|                |--(amod)--> R1331[12th]
+|--(xcomp)--> *R1352[play]
+                 |--(mark)--> to
+                 |--(dobj)--> R1329[doctor]
+                                  |--(det)--> the
+
+	* entity-paths for event['play']39_3ecbplus.xmlsent:10966
+	['play --(dobj)--> Doctor']
+
+	* entity-paths for event['revealed']39_3ecbplus.xmlsent:10966
+	['revealed --(nsubj)--> actor']
+	['revealed --(nmod)--> actor']
+	['revealed --(xcomp)--> play', 'play --(dobj)--> Doctor']

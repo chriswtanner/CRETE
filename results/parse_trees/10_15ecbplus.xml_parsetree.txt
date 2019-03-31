@@ -1,0 +1,56 @@
+
+-----------------------------------------
+docid:10_15ecbplus.xml
+-----------------------------------------
+
+sentence #:here's a prediction : by the time this is over , win or lose , the red sox effectively will have made mark teixeira the largest contract offer in the history of your storied franchise . 
+	[events]:[['offer'], ['history'], ['made']]
+	[entities]:[['mark', 'teixeira'], ['contract'], ['red', 'sox']]
+prediction
+|--(nsubj)--> here's
+|--(cop)--> here's
+|--(det)--> a
+|--(punct)--> :
+|--(parata)--> *R161[made]
+|                |--(nmod)--> time
+|                |                |--(case)--> by
+|                |                |--(det)--> the
+|                |                |--(acl:re)--> over
+|                |                                 |--(nsubj)--> this
+|                |                                 |--(cop)--> is
+|                |                                 |--(punct)--> ,
+|                |                                 |--(ccomp)--> win
+|                |                                                  |--(cc)--> or
+|                |                                                  |--(conj)--> lose
+|                |--(punct)--> ,
+|                |--(nsubj)--> R162[sox]
+|                |                |--(det)--> the
+|                |                |--(compou)--> R162[red]
+|                |--(advmod)--> effectively
+|                |--(aux)--> will
+|                |--(aux)--> have
+|                |--(xcomp)--> *R165[offer]
+|                                 |--(nsubj)--> R163[teixeira]
+|                                 |                |--(compou)--> R163[mark]
+|                                 |--(det)--> the
+|                                 |--(amod)--> largest
+|                                 |--(compou)--> R167[contract]
+|                                 |--(nmod)--> *R168[history]
+|                                                  |--(case)--> in
+|                                                  |--(det)--> the
+|                                                  |--(nmod)--> franchise
+|                                                                   |--(case)--> of
+|                                                                   |--(nmod:p)--> your
+|                                                                   |--(amod)--> storied
+|--(punct)--> .
+
+	* entity-paths for event['offer']10_15ecbplus.xmlsent:323
+	['offer --(nsubj)--> Teixeira']
+	['offer --(compound)--> contract']
+
+	* entity-paths for event['history']10_15ecbplus.xmlsent:323
+
+	* entity-paths for event['made']10_15ecbplus.xmlsent:323
+	['made --(nsubj)--> Sox']
+	['made --(xcomp)--> offer', 'offer --(nsubj)--> Teixeira']
+	['made --(xcomp)--> offer', 'offer --(compound)--> contract']

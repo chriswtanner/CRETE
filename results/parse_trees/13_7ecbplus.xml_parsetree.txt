@@ -1,0 +1,59 @@
+
+-----------------------------------------
+docid:13_7ecbplus.xml
+-----------------------------------------
+
+sentence #:overnight fire destroys historic matanuska maid building 
+	[events]:[['fire'], ['destroys']]
+	[entities]:[['historic', 'matanuska', 'maid', 'building']]
+*R264[destroys]
+|--(nsubj)--> *R263[fire]
+|                |--(amod)--> overnight
+|--(dobj)--> R265[building]
+                 |--(amod)--> R265[historic]
+                 |--(compou)--> R265[matanuska]
+                 |--(compou)--> R265[maid]
+
+	* entity-paths for event['fire']13_7ecbplus.xmlsent:1557
+
+	* entity-paths for event['destroys']13_7ecbplus.xmlsent:1557
+	['Destroys --(dobj)--> Building']
+
+sentence #:alaska - shortly after 3 : 30 tuesday morning someone called 911 to and reported a fire at the matanuska maid building in downtown palmer . 
+	[events]:[['reported'], ['called'], ['fire']]
+	[entities]:[['someone'], ['in', 'downtown', 'palmer'], ['matanuska', 'maid', 'building'], ['shortly', 'after', '3', ':', '30', 'tuesday', 'morning']]
+*R293[called]
+|--(dep)--> alaska
+|--(punct)--> -
+|--(advmod)--> R276[shortly]
+|                |--(nmod)--> R276[3]
+|                                 |--(case)--> R276[after]
+|                                 |--(punct)--> R276[:]
+|                                 |--(dep)--> R294[someone]
+|                                                  |--(nummod)--> R276[30]
+|                                                  |--(compou)--> R276[tuesday]
+|                                                  |--(compou)--> R276[morning]
+|--(dobj)--> 911
+|--(nmod)--> to
+|--(cc)--> and
+|--(conj)--> *R275[reported]
+|                |--(dobj)--> *R263[fire]
+|                |                |--(det)--> a
+|                |--(nmod)--> R265[building]
+|                                 |--(case)--> at
+|                                 |--(det)--> the
+|                                 |--(compou)--> R265[matanuska]
+|                                 |--(compou)--> R265[maid]
+|                                 |--(nmod)--> R266[palmer]
+|                                                  |--(case)--> R266[in]
+|                                                  |--(compou)--> R266[downtown]
+|--(punct)--> .
+
+	* entity-paths for event['reported']13_7ecbplus.xmlsent:1560
+	['reported --(nmod)--> building']
+
+	* entity-paths for event['called']13_7ecbplus.xmlsent:1560
+	['called --(advmod)--> Shortly']
+	['called --(conj)--> reported', 'reported --(nmod)--> building']
+
+	* entity-paths for event['fire']13_7ecbplus.xmlsent:1560

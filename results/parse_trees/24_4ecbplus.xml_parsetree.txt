@@ -1,0 +1,88 @@
+
+-----------------------------------------
+docid:24_4ecbplus.xml
+-----------------------------------------
+
+sentence #:france jewels thefts : robbers ram 4x4 into paris shop 
+	[events]:[['ram'], ['thefts']]
+	[entities]:[['paris', 'shop'], ['4x4'], ['robbers'], ['jewels']]
+R679[jewels]
+|--(compou)--> france
+|--(dep)--> *R699[thefts]
+|--(punct)--> :
+|--(dep)--> R670[4x4]
+                 |--(compou)--> R669[robbers]
+                 |--(compou)--> *R668[ram]
+                 |--(nmod)--> R671[shop]
+                                  |--(case)--> into
+                                  |--(compou)--> R671[paris]
+
+	* entity-paths for event['ram']24_4ecbplus.xmlsent:4855
+
+	* entity-paths for event['thefts']24_4ecbplus.xmlsent:4855
+
+sentence #:french police are investigating a daring jewellery robbery in paris - the latest in a series of high - profile thefts in france this summer . 
+	[events]:[['thefts'], ['robbery']]
+	[entities]:[['jewellery'], ['in', 'france'], ['in', 'paris']]
+investigating
+|--(nsubj)--> police
+|                |--(amod)--> french
+|--(aux)--> are
+|--(dobj)--> *R684[robbery]
+|                |--(det)--> a
+|                |--(amod)--> daring
+|                |--(compou)--> R679[jewellery]
+|                |--(nmod)--> R685[paris]
+|                |                |--(case)--> R685[in]
+|                |--(punct)--> -
+|                |--(dep)--> latest
+|                |                |--(det)--> the
+|                |                |--(nmod)--> series
+|                |                                 |--(case)--> in
+|                |                                 |--(det)--> a
+|                |                                 |--(acl)--> high
+|                |                                                  |--(case)--> of
+|                |--(punct)--> -
+|                |--(dep)--> *R699[thefts]
+|                |                |--(compou)--> profile
+|                |                |--(nmod)--> R697[france]
+|                |                                 |--(case)--> R697[in]
+|                |--(nmod:t)--> summer
+|                                 |--(det)--> this
+|--(punct)--> .
+
+	* entity-paths for event['thefts']24_4ecbplus.xmlsent:4856
+	['thefts --(nmod)--> France']
+
+	* entity-paths for event['robbery']24_4ecbplus.xmlsent:4856
+	['robbery --(compound)--> jewellery']
+	['robbery --(nmod)--> Paris']
+	['robbery --(dep)--> thefts', 'thefts --(nmod)--> France']
+
+sentence #:they made off with 2m euros ( #1 . 7m ; $2 . 6m ) in gems and watches . 
+	[events]:[['made', 'off']]
+	[entities]:[['watches'], ['2m', 'euros'], ['they']]
+*R675[made]
+|--(nsubj)--> R669[they]
+|--(compou)--> *R675[off]
+|--(nmod)--> R702[euros]
+|                |--(case)--> with
+|                |--(compou)--> R702[2m]
+|                |--(dep)--> #1
+|                |                |--(punct)--> (
+|                |                |--(compou)--> #1
+|                |                |--(punct)--> .
+|                |--(dep)--> 7m
+|                |--(punct)--> ;
+|                |--(dep)--> $2
+|                                 |--(dep)--> $2
+|                                 |--(punct)--> .
+|                                 |--(dep)--> 6m
+|                                 |--(punct)--> )
+|                                 |--(nmod)--> gems
+|                                                  |--(case)--> in
+|                                                  |--(cc)--> and
+|                                                  |--(conj)--> R680[watches]
+|--(punct)--> .
+
+	* entity-paths for event['made', 'off']24_4ecbplus.xmlsent:4858

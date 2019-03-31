@@ -1,0 +1,21 @@
+
+-----------------------------------------
+docid:12_10ecb.xml
+-----------------------------------------
+
+sentence #:the indian navy has captured 23 somalian pirates . 
+	[events]:[['captured']]
+	[entities]:[['navy'], ['pirates']]
+*R214[captured]
+|--(nsubj)--> R215[navy]
+|                |--(det)--> the
+|                |--(amod)--> indian
+|--(aux)--> has
+|--(dobj)--> R216[pirates]
+|                |--(nummod)--> 23
+|                |--(amod)--> somalian
+|--(punct)--> .
+
+	* entity-paths for event['captured']12_10ecb.xmlsent:769
+	['captured --(nsubj)--> navy']
+	['captured --(dobj)--> pirates']

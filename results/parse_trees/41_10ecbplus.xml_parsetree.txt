@@ -1,0 +1,123 @@
+
+-----------------------------------------
+docid:41_10ecbplus.xml
+-----------------------------------------
+
+sentence #:south sudan warns of war after sudan bombs refugee camp 
+	[events]:[['war'], ['bombs'], ['warns']]
+	[entities]:[['south', 'sudan'], ['sudan'], ['refugee', 'camp']]
+*R1439[warns]
+|--(nsubj)--> R1440[sudan]
+|                |--(compou)--> R1440[south]
+|--(nmod)--> *R1441[war]
+|                |--(case)--> of
+|--(nmod)--> *R1442[bombs]
+                 |--(case)--> after
+                 |--(compou)--> R1443[sudan]
+                 |--(dep)--> R1444[camp]
+                                  |--(compou)--> R1444[refugee]
+
+	* entity-paths for event['war']41_10ecbplus.xmlsent:12089
+
+	* entity-paths for event['bombs']41_10ecbplus.xmlsent:12089
+	['bombs --(compound)--> Sudan']
+	['bombs --(dep)--> camp']
+
+	* entity-paths for event['warns']41_10ecbplus.xmlsent:12089
+	['warns --(nsubj)--> Sudan']
+	['warns --(nmod)--> bombs', 'bombs --(compound)--> Sudan']
+	['warns --(nmod)--> bombs', 'bombs --(dep)--> camp']
+
+sentence #:a government official initially reported deaths , but an american activist who spoke to aid workers at the camp later said there were no casualties . 
+	[events]:[['said'], ['casualties'], ['deaths'], ['reported'], ['spoke']]
+	[entities]:[['at', 'the', 'camp'], ['who'], ['activist'], ['aid', 'workers']]
+*R1445[reported]
+|--(nsubj)--> official
+|                |--(det)--> a
+|                |--(compou)--> government
+|--(advmod)--> initially
+|--(dobj)--> *R1446[deaths]
+|--(punct)--> ,
+|--(cc)--> but
+|--(conj)--> *R1447[said]
+|                |--(nsubj)--> R1448[activist]
+|                |                |--(det)--> an
+|                |                |--(amod)--> american
+|                |                |--(acl:re)--> *R1449[spoke]
+|                |                                 |--(nsubj)--> R1448[who]
+|                |                                 |--(xcomp)--> R1450[aid]
+|                |                                                  |--(mark)--> to
+|                |                                                  |--(dobj)--> R1450[workers]
+|                |                                                  |--(nmod)--> R1444[camp]
+|                |                                                                   |--(case)--> R1444[at]
+|                |                                                                   |--(det)--> R1444[the]
+|                |--(advmod)--> later
+|                |--(ccomp)--> were
+|                                 |--(expl)--> there
+|                                 |--(nsubj)--> *R1451[casualties]
+|                                                  |--(neg)--> no
+|--(punct)--> .
+
+	* entity-paths for event['said']41_10ecbplus.xmlsent:12091
+	['said --(nsubj)--> activist']
+
+	* entity-paths for event['casualties']41_10ecbplus.xmlsent:12091
+
+	* entity-paths for event['deaths']41_10ecbplus.xmlsent:12091
+
+	* entity-paths for event['reported']41_10ecbplus.xmlsent:12091
+	['reported --(conj)--> said', 'said --(nsubj)--> activist']
+
+	* entity-paths for event['spoke']41_10ecbplus.xmlsent:12091
+	['spoke --(nsubj)--> who']
+	['spoke --(xcomp)--> aid']
+
+sentence #:military aircraft from sudan crossed the new international border with south sudan and dropped bombs thursday in and around a camp filled with refugees , officials said . 
+	[events]:[['dropped'], ['crossed'], ['said']]
+	[entities]:[['bombs'], ['in', 'and', 'around', 'a', 'camp'], ['military', 'aircraft'], ['officials'], ['sudan'], ['thursday'], ['refugees']]
+*R1452[said]
+|--(ccomp)--> *R1453[crossed]
+|                |--(nsubj)--> R1454[aircraft]
+|                |                |--(amod)--> R1454[military]
+|                |                |--(nmod)--> R1443[sudan]
+|                |                                 |--(case)--> from
+|                |--(dobj)--> border
+|                |                |--(det)--> the
+|                |                |--(amod)--> new
+|                |                |--(amod)--> international
+|                |--(nmod)--> sudan
+|                |                |--(case)--> with
+|                |                |--(compou)--> south
+|                |--(cc)--> and
+|                |--(conj)--> *R1442[dropped]
+|                                 |--(dobj)--> R1455[bombs]
+|                                 |--(nmod:t)--> R1456[thursday]
+|                                 |--(nmod)--> R1444[in]
+|                                                  |--(cc)--> R1444[and]
+|                                                  |--(conj)--> R1444[camp]
+|                                                                   |--(case)--> R1444[around]
+|                                                                   |--(det)--> R1444[a]
+|                                                                   |--(acl)--> filled
+|                                                                                    |--(nmod)--> R1457[refugees]
+|                                                                                                     |--(case)--> with
+|--(punct)--> ,
+|--(nsubj)--> R1458[officials]
+|--(punct)--> .
+
+	* entity-paths for event['dropped']41_10ecbplus.xmlsent:12090
+	['dropped --(dobj)--> bombs']
+	['dropped --(nmod:tmod)--> Thursday']
+	['dropped --(nmod)--> in']
+
+	* entity-paths for event['crossed']41_10ecbplus.xmlsent:12090
+	['crossed --(nsubj)--> aircraft']
+	['crossed --(conj)--> dropped', 'dropped --(dobj)--> bombs']
+	['crossed --(conj)--> dropped', 'dropped --(nmod:tmod)--> Thursday']
+	['crossed --(conj)--> dropped', 'dropped --(nmod)--> in']
+
+	* entity-paths for event['said']41_10ecbplus.xmlsent:12090
+	['said --(ccomp)--> crossed', 'crossed --(nsubj)--> aircraft']
+	['said --(ccomp)--> crossed', 'crossed --(conj)--> dropped', 'dropped --(dobj)--> bombs']
+	['said --(ccomp)--> crossed', 'crossed --(conj)--> dropped', 'dropped --(nmod:tmod)--> Thursday']
+	['said --(ccomp)--> crossed', 'crossed --(conj)--> dropped', 'dropped --(nmod)--> in']
+	['said --(nsubj)--> officials']

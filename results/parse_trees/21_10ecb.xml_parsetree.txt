@@ -1,0 +1,47 @@
+
+-----------------------------------------
+docid:21_10ecb.xml
+-----------------------------------------
+
+sentence #:a bloomington man has been charged with third-degree murder in a hit and run that killed a woman at the bloomington sam 's club store . 
+	[events]:[['murder'], ['charged'], ['hit'], ['killed']]
+	[entities]:[['man'], ['at', 'the', 'bloomington', 'sam', "'s", 'club', 'store'], ['woman']]
+*R538[charged]
+|--(nsubjp)--> R539[man]
+|                |--(det)--> a
+|                |--(compou)--> bloomington
+|--(aux)--> has
+|--(auxpas)--> been
+|--(nmod)--> *R540[murder]
+|                |--(case)--> with
+|                |--(amod)--> third-degree
+|                |--(nmod)--> *R541[hit]
+|                                 |--(case)--> in
+|                                 |--(det)--> a
+|--(cc)--> and
+|--(conj)--> run
+|                |--(ccomp)--> *R542[killed]
+|                                 |--(nsubj)--> that
+|                                 |--(dobj)--> R543[woman]
+|                                 |                |--(det)--> a
+|                                 |--(nmod)--> R544[store]
+|                                                  |--(case)--> R544[at]
+|                                                  |--(nmod:p)--> R544[sam]
+|                                                  |                |--(det)--> R544[the]
+|                                                  |                |--(compou)--> R544[bloomington]
+|                                                  |                |--(case)--> R544['s]
+|                                                  |--(compou)--> R544[club]
+|--(punct)--> .
+
+	* entity-paths for event['murder']21_10ecb.xmlsent:4012
+
+	* entity-paths for event['charged']21_10ecb.xmlsent:4012
+	['charged --(nsubjpass)--> man']
+	['charged --(conj)--> run', 'run --(ccomp)--> killed', 'killed --(dobj)--> woman']
+	['charged --(conj)--> run', 'run --(ccomp)--> killed', 'killed --(nmod)--> store']
+
+	* entity-paths for event['hit']21_10ecb.xmlsent:4012
+
+	* entity-paths for event['killed']21_10ecb.xmlsent:4012
+	['killed --(dobj)--> woman']
+	['killed --(nmod)--> store']

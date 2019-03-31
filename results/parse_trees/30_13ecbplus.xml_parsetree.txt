@@ -1,0 +1,116 @@
+
+-----------------------------------------
+docid:30_13ecbplus.xml
+-----------------------------------------
+
+sentence #:subsea cable operator , seacom , announced on twitter today ( 20 october 2011 ) that they have restored services to all customers using alternate routes , following an outage that was initially expected to take 12 days to repair . 
+	[events]:[['restored'], ['outage'], ['expected'], ['announced'], ['services'], ['repair']]
+	[entities]:[['seacom'], ['12', 'days'], ['customers'], ['alternate', 'routes'], ['on', 'twitter'], ['they']]
+*R980[announced]
+|--(nsubj)--> operator
+|                |--(compou)--> subsea
+|                |--(compou)--> cable
+|                |--(punct)--> ,
+|                |--(appos)--> R956[seacom]
+|                |--(punct)--> ,
+|--(nmod)--> today
+|                |--(case)--> R962[on]
+|                |--(compou)--> R962[twitter]
+|                |--(dep)--> 20
+|                                 |--(punct)--> (
+|                                 |--(nmod:t)--> october
+|                                 |                |--(nummod)--> 2011
+|                                 |--(punct)--> )
+|--(ccomp)--> *R959[restored]
+|                |--(mark)--> that
+|                |--(nsubj)--> R956[they]
+|                |--(aux)--> have
+|                |--(dobj)--> *R958[services]
+|                |--(nmod)--> R955[customers]
+|                |                |--(case)--> to
+|                |                |--(det)--> all
+|                |--(xcomp)--> using
+|                |                |--(dobj)--> R961[routes]
+|                |                                 |--(amod)--> R961[alternate]
+|                |--(punct)--> ,
+|                |--(nmod)--> *R963[outage]
+|                                 |--(case)--> following
+|                                 |--(det)--> an
+|                                 |--(acl:re)--> *R981[expected]
+|                                                  |--(nsubjp)--> that
+|                                                  |--(auxpas)--> was
+|                                                  |--(advmod)--> initially
+|                                                  |--(xcomp)--> take
+|                                                                   |--(mark)--> to
+|                                                                   |--(nmod:t)--> R964[days]
+|                                                                   |                |--(nummod)--> R964[12]
+|                                                                   |--(advcl)--> *R959[repair]
+|                                                                                    |--(mark)--> to
+|--(punct)--> .
+
+	* entity-paths for event['restored']30_13ecbplus.xmlsent:7778
+	['restored --(nsubj)--> they']
+	['restored --(nmod)--> customers']
+	['restored --(xcomp)--> using', 'using --(dobj)--> routes']
+	['restored --(nmod)--> outage', 'outage --(acl:relcl)--> expected', 'expected --(xcomp)--> take', 'take --(nmod:tmod)--> days']
+
+	* entity-paths for event['outage']30_13ecbplus.xmlsent:7778
+	['outage --(acl:relcl)--> expected', 'expected --(xcomp)--> take', 'take --(nmod:tmod)--> days']
+
+	* entity-paths for event['expected']30_13ecbplus.xmlsent:7778
+	['expected --(xcomp)--> take', 'take --(nmod:tmod)--> days']
+
+	* entity-paths for event['announced']30_13ecbplus.xmlsent:7778
+	['announced --(nsubj)--> operator', 'operator --(appos)--> Seacom']
+	['announced --(nmod)--> today', 'today --(case)--> on']
+	['announced --(nmod)--> today', 'today --(compound)--> Twitter']
+	['announced --(ccomp)--> restored', 'restored --(nsubj)--> they']
+	['announced --(ccomp)--> restored', 'restored --(nmod)--> customers']
+	['announced --(ccomp)--> restored', 'restored --(xcomp)--> using', 'using --(dobj)--> routes']
+	['announced --(ccomp)--> restored', 'restored --(nmod)--> outage', 'outage --(acl:relcl)--> expected', 'expected --(xcomp)--> take', 'take --(nmod:tmod)--> days']
+
+	* entity-paths for event['services']30_13ecbplus.xmlsent:7778
+
+	* entity-paths for event['repair']30_13ecbplus.xmlsent:7778
+
+sentence #:seacom restored via alternative routes 
+	[events]:[['seacom'], ['restored']]
+	[entities]:[['alternative', 'routes']]
+*R959[restored]
+|--(nsubj)--> *R958[seacom]
+|--(nmod)--> R961[routes]
+                 |--(case)--> via
+                 |--(amod)--> R961[alternative]
+
+	* entity-paths for event['seacom']30_13ecbplus.xmlsent:7775
+
+	* entity-paths for event['restored']30_13ecbplus.xmlsent:7775
+	['restored --(nmod)--> routes']
+
+sentence #:seacom announced that it has fully restored all its customers on alternative routes 
+	[events]:[['restored'], ['announced']]
+	[entities]:[['alternative', 'routes'], ['seacom'], ['customers'], ['it']]
+*R980[announced]
+|--(nsubj)--> R956[seacom]
+|--(ccomp)--> *R959[restored]
+                 |--(mark)--> that
+                 |--(nsubj)--> R956[it]
+                 |--(aux)--> has
+                 |--(advmod)--> fully
+                 |--(dobj)--> R955[customers]
+                 |                |--(det:pr)--> all
+                 |                |--(nmod:p)--> its
+                 |--(nmod)--> R961[routes]
+                                  |--(case)--> on
+                                  |--(amod)--> R961[alternative]
+
+	* entity-paths for event['restored']30_13ecbplus.xmlsent:7776
+	['restored --(nsubj)--> it']
+	['restored --(dobj)--> customers']
+	['restored --(nmod)--> routes']
+
+	* entity-paths for event['announced']30_13ecbplus.xmlsent:7776
+	['announced --(nsubj)--> Seacom']
+	['announced --(ccomp)--> restored', 'restored --(nsubj)--> it']
+	['announced --(ccomp)--> restored', 'restored --(dobj)--> customers']
+	['announced --(ccomp)--> restored', 'restored --(nmod)--> routes']

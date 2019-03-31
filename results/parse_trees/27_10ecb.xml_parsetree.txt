@@ -1,0 +1,69 @@
+
+-----------------------------------------
+docid:27_10ecb.xml
+-----------------------------------------
+
+sentence #:microsoft ( nsdq : msft ) issued an out-of-band emergency patch wednesday for a zero-day internet explorer vulnerability that has opened the door for hackers to install malware on susceptible computers without any user intervention . 
+	[events]:[['issued'], ['opened', 'door']]
+	[entities]:[['wednesday'], ['patch'], ['vulnerability'], ['microsoft'], ['computers'], ['that'], ['hackers'], ['internet', 'explorer']]
+*R763[issued]
+|--(nsubj)--> R764[microsoft]
+|                |--(appos)--> nsdq
+|                                 |--(punct)--> (
+|                                 |--(punct)--> :
+|                                 |--(dep)--> msft
+|                                 |--(punct)--> )
+|--(dobj)--> R765[patch]
+|                |--(det)--> an
+|                |--(amod)--> out-of-band
+|                |--(compou)--> emergency
+|--(nmod:t)--> R766[wednesday]
+|--(nmod)--> R767[vulnerability]
+|                |--(case)--> for
+|                |--(det)--> a
+|                |--(amod)--> zero-day
+|                |--(compou)--> R768[internet]
+|                |--(compou)--> R768[explorer]
+|                |--(acl:re)--> *R769[opened]
+|                                 |--(nsubj)--> R767[that]
+|                                 |--(aux)--> has
+|                                 |--(dobj)--> *R769[door]
+|                                 |                |--(det)--> the
+|                                 |--(nmod)--> R770[hackers]
+|                                 |                |--(case)--> for
+|                                 |--(advcl)--> install
+|                                                  |--(mark)--> to
+|                                                  |--(dobj)--> malware
+|                                                  |                |--(nmod)--> R771[computers]
+|                                                  |                                 |--(case)--> on
+|                                                  |                                 |--(amod)--> susceptible
+|                                                  |--(nmod)--> intervention
+|                                                                   |--(case)--> without
+|                                                                   |--(det)--> any
+|                                                                   |--(compou)--> user
+|--(punct)--> .
+
+	* entity-paths for event['issued']27_10ecb.xmlsent:5612
+	['issued --(nsubj)--> Microsoft']
+	['issued --(dobj)--> patch']
+	['issued --(nmod:tmod)--> Wednesday']
+	['issued --(nmod)--> vulnerability']
+
+	* entity-paths for event['opened', 'door']27_10ecb.xmlsent:5612
+
+sentence #:microsoft releases critical patch for ie zero day flaw 
+	[events]:[['releases']]
+	[entities]:[['microsoft'], ['flaw'], ['patch']]
+*R763[releases]
+|--(nsubj)--> R764[microsoft]
+|--(xcomp)--> R765[patch]
+                 |--(amod)--> critical
+                 |--(dep)--> R767[flaw]
+                                  |--(case)--> for
+                                  |--(amod)--> ie
+                                  |--(compou)--> zero
+                                  |--(compou)--> day
+
+	* entity-paths for event['releases']27_10ecb.xmlsent:5611
+	['Releases --(nsubj)--> Microsoft']
+	['Releases --(xcomp)--> Patch']

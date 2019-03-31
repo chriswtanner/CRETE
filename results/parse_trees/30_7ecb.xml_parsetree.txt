@@ -1,0 +1,77 @@
+
+-----------------------------------------
+docid:30_7ecb.xml
+-----------------------------------------
+
+sentence #:it is thought the flag fea , smw4 , and smw3 lines , near the alexandria cable station in egypt , have all been cut . 
+	[events]:[['cut']]
+	[entities]:[['all'], ['lines']]
+thought
+|--(nsubjp)--> it
+|--(auxpas)--> is
+|--(ccomp)--> *R953[cut]
+|                |--(nsubjp)--> fea
+|                |                |--(det)--> the
+|                |                |--(compou)--> flag
+|                |                |--(punct)--> ,
+|                |                |--(appos)--> smw4
+|                |                |                |--(punct)--> ,
+|                |                |                |--(cc)--> and
+|                |                |                |--(conj)--> R951[lines]
+|                |                |                |                |--(compou)--> smw3
+|                |                |                |--(punct)--> ,
+|                |                |                |--(nmod)--> station
+|                |                |                                 |--(case)--> near
+|                |                |                                 |--(det)--> the
+|                |                |                                 |--(compou)--> alexandria
+|                |                |                                 |--(compou)--> cable
+|                |                |                                 |--(nmod)--> egypt
+|                |                |                                                  |--(case)--> in
+|                |                |--(punct)--> ,
+|                |--(aux)--> have
+|                |--(advmod)--> R951[all]
+|                |--(auxpas)--> been
+|--(punct)--> .
+
+	* entity-paths for event['cut']30_7ecb.xmlsent:7956
+	['cut --(nsubjpass)--> FEA', 'FEA --(appos)--> SMW4', 'SMW4 --(conj)--> lines']
+	['cut --(advmod)--> all']
+
+sentence #:internet and phone communications between europe , the middle east , and asia have been seriously disrupted after submarine cables were severed . 
+	[events]:[['severed'], ['disrupted'], ['communications']]
+	[entities]:[['internet'], ['phone'], ['between', 'europe', ',', 'the', 'middle', 'east', ',', 'and', 'asia'], ['cables']]
+*R982[disrupted]
+|--(nsubjp)--> *R975[communications]
+|                |--(compou)--> R950[internet]
+|                |                |--(cc)--> and
+|                |                |--(conj)--> R976[phone]
+|                |--(nmod)--> R965[europe]
+|                                 |--(case)--> R965[between]
+|                                 |--(punct)--> R965[,]
+|                                 |--(conj)--> R965[east]
+|                                 |                |--(det)--> R965[the]
+|                                 |                |--(compou)--> R965[middle]
+|                                 |--(punct)--> R965[,]
+|                                 |--(cc)--> R965[and]
+|                                 |--(conj)--> R965[asia]
+|--(aux)--> have
+|--(auxpas)--> been
+|--(advmod)--> seriously
+|--(advcl)--> *R953[severed]
+|                |--(mark)--> after
+|                |--(nsubjp)--> R951[cables]
+|                |                |--(compou)--> submarine
+|                |--(auxpas)--> were
+|--(punct)--> .
+
+	* entity-paths for event['severed']30_7ecb.xmlsent:7955
+	['severed --(nsubjpass)--> cables']
+
+	* entity-paths for event['disrupted']30_7ecb.xmlsent:7955
+	['disrupted --(nsubjpass)--> communications', 'communications --(compound)--> Internet']
+	['disrupted --(nsubjpass)--> communications', 'communications --(nmod)--> Europe']
+	['disrupted --(advcl)--> severed', 'severed --(nsubjpass)--> cables']
+
+	* entity-paths for event['communications']30_7ecb.xmlsent:7955
+	['communications --(compound)--> Internet']
+	['communications --(nmod)--> Europe']

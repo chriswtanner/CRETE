@@ -1,0 +1,93 @@
+
+-----------------------------------------
+docid:16_8ecbplus.xml
+-----------------------------------------
+
+sentence #:a 35 - year - old sheriff " s deputy working with an anti - gang unit was killed friday when he knocked on the door of a home and someone shot him in the head , authorities said . 
+	[events]:[['working'], ['killed'], ['said'], ['knocked'], ['shot']]
+	[entities]:[['home'], ['someone'], ['in', 'the', 'head'], ['authorities'], ['door'], ['deputy'], ['he'], ['friday'], ['him']]
+*R350[said]
+|--(ccomp)--> *R324[shot]
+|                |--(nsubj)--> 35
+|                |                |--(det)--> a
+|                |                |--(punct)--> -
+|                |                |--(dep)--> year
+|                |                                 |--(punct)--> -
+|                |                                 |--(dep)--> s
+|                |                                                  |--(amod)--> old
+|                |                                                  |--(compou)--> sheriff
+|                |                                                  |--(punct)--> "
+|                |                                                  |--(acl:re)--> *R336[killed]
+|                |                                                                   |--(nsubjp)--> R319[deputy]
+|                |                                                                   |                |--(acl)--> *R354[working]
+|                |                                                                   |                                 |--(nmod)--> unit
+|                |                                                                   |                                                  |--(case)--> with
+|                |                                                                   |                                                  |--(det)--> an
+|                |                                                                   |                                                  |--(amod)--> anti
+|                |                                                                   |                                                  |--(punct)--> -
+|                |                                                                   |                                                  |--(compou)--> gang
+|                |                                                                   |--(auxpas)--> was
+|                |                                                                   |--(nmod:t)--> R338[friday]
+|                |                                                                   |--(advcl)--> *R318[knocked]
+|                |                                                                                    |--(advmod)--> when
+|                |                                                                                    |--(nsubj)--> R319[he]
+|                |                                                                                    |--(nmod)--> R320[door]
+|                |                                                                                                     |--(case)--> on
+|                |                                                                                                     |--(det)--> the
+|                |                                                                                                     |--(nmod)--> R339[home]
+|                |                                                                                                                      |--(case)--> of
+|                |                                                                                                                      |--(det)--> a
+|                |                                                                                                                      |--(cc)--> and
+|                |                                                                                                                      |--(conj)--> R317[someone]
+|                |--(dobj)--> R319[him]
+|                |--(nmod)--> R325[head]
+|                                 |--(case)--> R325[in]
+|                                 |--(det)--> R325[the]
+|--(punct)--> ,
+|--(nsubj)--> R351[authorities]
+|--(punct)--> .
+
+	* entity-paths for event['working']16_8ecbplus.xmlsent:2105
+
+	* entity-paths for event['killed']16_8ecbplus.xmlsent:2105
+	['killed --(nsubjpass)--> deputy']
+	['killed --(nmod:tmod)--> Friday']
+	['killed --(advcl)--> knocked', 'knocked --(nsubj)--> he']
+	['killed --(advcl)--> knocked', 'knocked --(nmod)--> door']
+
+	* entity-paths for event['said']16_8ecbplus.xmlsent:2105
+	['said --(ccomp)--> shot', 'shot --(nsubj)--> 35', '35 --(dep)--> year', 'year --(dep)--> s', 's --(acl:relcl)--> killed', 'killed --(nsubjpass)--> deputy']
+	['said --(ccomp)--> shot', 'shot --(nsubj)--> 35', '35 --(dep)--> year', 'year --(dep)--> s', 's --(acl:relcl)--> killed', 'killed --(nmod:tmod)--> Friday']
+	['said --(ccomp)--> shot', 'shot --(nsubj)--> 35', '35 --(dep)--> year', 'year --(dep)--> s', 's --(acl:relcl)--> killed', 'killed --(advcl)--> knocked', 'knocked --(nsubj)--> he']
+	['said --(ccomp)--> shot', 'shot --(nsubj)--> 35', '35 --(dep)--> year', 'year --(dep)--> s', 's --(acl:relcl)--> killed', 'killed --(advcl)--> knocked', 'knocked --(nmod)--> door']
+	['said --(ccomp)--> shot', 'shot --(dobj)--> him']
+	['said --(ccomp)--> shot', 'shot --(nmod)--> head']
+	['said --(nsubj)--> authorities']
+
+	* entity-paths for event['knocked']16_8ecbplus.xmlsent:2105
+	['knocked --(nsubj)--> he']
+	['knocked --(nmod)--> door']
+
+	* entity-paths for event['shot']16_8ecbplus.xmlsent:2105
+	['shot --(nsubj)--> 35', '35 --(dep)--> year', 'year --(dep)--> s', 's --(acl:relcl)--> killed', 'killed --(nsubjpass)--> deputy']
+	['shot --(nsubj)--> 35', '35 --(dep)--> year', 'year --(dep)--> s', 's --(acl:relcl)--> killed', 'killed --(nmod:tmod)--> Friday']
+	['shot --(nsubj)--> 35', '35 --(dep)--> year', 'year --(dep)--> s', 's --(acl:relcl)--> killed', 'killed --(advcl)--> knocked', 'knocked --(nsubj)--> he']
+	['shot --(nsubj)--> 35', '35 --(dep)--> year', 'year --(dep)--> s', 's --(acl:relcl)--> killed', 'killed --(advcl)--> knocked', 'knocked --(nmod)--> door']
+	['shot --(dobj)--> him']
+	['shot --(nmod)--> head']
+
+sentence #:sheriff " s deputy shot and killed 
+	[events]:[['killed'], ['shot']]
+	[entities]:[['deputy']]
+sheriff
+|--(punct)--> "
+|--(dep)--> s
+|--(dep)--> *R324[shot]
+                 |--(compou)--> R319[deputy]
+                 |--(cc)--> and
+                 |--(conj)--> *R336[killed]
+
+	* entity-paths for event['killed']16_8ecbplus.xmlsent:2103
+
+	* entity-paths for event['shot']16_8ecbplus.xmlsent:2103
+	['Shot --(compound)--> Deputy']

@@ -1,0 +1,26 @@
+
+-----------------------------------------
+docid:16_6ecbplus.xml
+-----------------------------------------
+
+sentence #:the gang member shot jerry ortiz outside a hawaiian gardens building in 2005 . 
+	[events]:[['shot']]
+	[entities]:[['in', '2005'], ['member'], ['outside', 'a', 'hawaiian', 'gardens', 'building'], ['jerry', 'ortiz']]
+*R324[shot]
+|--(det)--> the
+|--(compou)--> gang
+|--(compou)--> R317[member]
+|--(dep)--> R319[ortiz]
+|                |--(compou)--> R319[jerry]
+|                |--(nmod)--> R339[building]
+|                                 |--(case)--> R339[outside]
+|                                 |--(det)--> R339[a]
+|                                 |--(amod)--> R339[hawaiian]
+|                                 |--(compou)--> R339[gardens]
+|                                 |--(nmod)--> R338[2005]
+|                                                  |--(case)--> R338[in]
+|--(punct)--> .
+
+	* entity-paths for event['shot']16_6ecbplus.xmlsent:2039
+	['shot --(compound)--> member']
+	['shot --(dep)--> Ortiz']

@@ -1,0 +1,52 @@
+
+-----------------------------------------
+docid:7_6ecb.xml
+-----------------------------------------
+
+sentence #:klitschko dominated rahman over six-plus rounds , knocking him down in a horribly one-sided sixth round and then landing enough hard blows early in the seventh for referee tony weeks to step in and call an end to it . 
+	[events]:[['dominated']]
+	[entities]:[['tony', 'weeks'], ['him'], ['rahman'], ['klitschko']]
+*R1719[dominated]
+|--(nsubj)--> R1716[klitschko]
+|--(dobj)--> R1720[rahman]
+|                |--(nmod)--> rounds
+|                |                |--(case)--> over
+|                |                |--(nummod)--> six-plus
+|                |--(punct)--> ,
+|                |--(acl)--> knocking
+|                                 |--(dobj)--> R1720[him]
+|                                 |--(compou)--> down
+|                                 |--(nmod)--> round
+|                                 |                |--(case)--> in
+|                                 |                |--(det)--> a
+|                                 |                |--(amod)--> one-sided
+|                                 |                |                |--(advmod)--> horribly
+|                                 |                |--(amod)--> sixth
+|                                 |                |--(cc)--> and
+|                                 |                |--(conj)--> landing
+|                                 |                                 |--(advmod)--> then
+|                                 |                                 |--(advmod)--> early
+|                                 |                                                  |--(nmod:n)--> blows
+|                                 |                                                  |                |--(amod)--> hard
+|                                 |                                                  |                                 |--(advmod)--> enough
+|                                 |                                                  |--(nmod)--> seventh
+|                                 |                                                                   |--(case)--> in
+|                                 |                                                                   |--(det)--> the
+|                                 |                                                                   |--(nmod)--> R1731[weeks]
+|                                 |                                                                                    |--(case)--> for
+|                                 |                                                                                    |--(compou)--> referee
+|                                 |                                                                                    |--(compou)--> R1731[tony]
+|                                 |--(advcl)--> step
+|                                                  |--(mark)--> to
+|                                                  |--(nmod)--> in
+|                                                  |--(cc)--> and
+|                                                  |--(conj)--> call
+|                                                                   |--(dobj)--> end
+|                                                                   |                |--(det)--> an
+|                                                                   |--(nmod)--> it
+|                                                                                    |--(case)--> to
+|--(punct)--> .
+
+	* entity-paths for event['dominated']7_6ecb.xmlsent:14738
+	['dominated --(nsubj)--> Klitschko']
+	['dominated --(dobj)--> Rahman']

@@ -1,0 +1,133 @@
+
+-----------------------------------------
+docid:27_1ecb.xml
+-----------------------------------------
+
+sentence #:microsoft has said that an emergency security update has fixed a flaw in internet explorer that left millions of computers vulnerable to hacking and hijack . 
+	[events]:[['hijack'], ['hacking'], ['fixed'], ['said']]
+	[entities]:[['internet', 'explorer'], ['microsoft'], ['update'], ['flaw'], ['computers']]
+*R785[said]
+|--(nsubj)--> R764[microsoft]
+|--(aux)--> has
+|--(ccomp)--> R765[update]
+|                |--(mark)--> that
+|                |--(nsubj)--> security
+|                |                |--(det)--> an
+|                |                |--(compou)--> emergency
+|                |--(ccomp)--> *R782[fixed]
+|                                 |--(aux)--> has
+|                                 |--(dobj)--> R767[flaw]
+|                                 |                |--(det)--> a
+|                                 |--(nmod)--> R768[explorer]
+|                                                  |--(case)--> in
+|                                                  |--(compou)--> R768[internet]
+|                                                  |--(acl:re)--> left
+|                                                                   |--(nsubj)--> that
+|                                                                   |--(xcomp)--> vulnerable
+|                                                                                    |--(nsubj)--> millions
+|                                                                                    |                |--(nmod)--> R771[computers]
+|                                                                                    |                                 |--(case)--> of
+|                                                                                    |--(nmod)--> *R784[hacking]
+|                                                                                                     |--(case)--> to
+|                                                                                                     |--(cc)--> and
+|                                                                                                     |--(conj)--> *R784[hijack]
+|--(punct)--> .
+
+	* entity-paths for event['hijack']27_1ecb.xmlsent:5767
+
+	* entity-paths for event['hacking']27_1ecb.xmlsent:5767
+
+	* entity-paths for event['fixed']27_1ecb.xmlsent:5767
+	['fixed --(dobj)--> flaw']
+	['fixed --(nmod)--> Explorer']
+
+	* entity-paths for event['said']27_1ecb.xmlsent:5767
+	['said --(nsubj)--> Microsoft']
+	['said --(ccomp)--> update']
+
+sentence #:" microsoft has released a security update for internet explorer that will help protect its customers from malicious attacks , " said the company in a statement . 
+	[events]:[['attacks'], ['released'], ['said']]
+	[entities]:[['company'], ['update'], ['internet', 'explorer'], ['customers'], ['that'], ['microsoft']]
+*R785[said]
+|--(punct)--> "
+|--(ccomp)--> *R763[released]
+|                |--(nsubj)--> R764[microsoft]
+|                |--(aux)--> has
+|                |--(ccomp)--> R765[update]
+|                                 |--(nsubj)--> security
+|                                 |                |--(det)--> a
+|                                 |--(nmod)--> R768[explorer]
+|                                                  |--(case)--> for
+|                                                  |--(compou)--> R768[internet]
+|                                                  |--(acl:re)--> help
+|                                                                   |--(nsubj)--> R765[that]
+|                                                                   |--(aux)--> will
+|                                                                   |--(xcomp)--> protect
+|                                                                                    |--(dobj)--> R789[customers]
+|                                                                                    |                |--(nmod:p)--> its
+|                                                                                    |--(nmod)--> *R784[attacks]
+|                                                                                                     |--(case)--> from
+|                                                                                                     |--(amod)--> malicious
+|--(punct)--> ,
+|--(punct)--> "
+|--(dep)--> R764[company]
+|                |--(det)--> the
+|                |--(nmod)--> statement
+|                                 |--(case)--> in
+|                                 |--(det)--> a
+|--(punct)--> .
+
+	* entity-paths for event['attacks']27_1ecb.xmlsent:5770
+
+	* entity-paths for event['released']27_1ecb.xmlsent:5770
+	['released --(nsubj)--> Microsoft']
+	['released --(ccomp)--> update']
+
+	* entity-paths for event['said']27_1ecb.xmlsent:5770
+	['said --(ccomp)--> released', 'released --(nsubj)--> Microsoft']
+	['said --(ccomp)--> released', 'released --(ccomp)--> update']
+	['said --(dep)--> company']
+
+sentence #:the software patch , which was released last night , has closed a loophole that has seen the computers of at least two million users hacked by cyber criminals . 
+	[events]:[['released'], ['closed'], ['hacked']]
+	[entities]:[['patch'], ['criminals'], ['last', 'night'], ['computers'], ['loophole'], ['users']]
+*R782[closed]
+|--(nsubj)--> R765[patch]
+|                |--(det)--> the
+|                |--(compou)--> software
+|                |--(punct)--> ,
+|                |--(acl:re)--> *R763[released]
+|                |                |--(nsubjp)--> which
+|                |                |--(auxpas)--> was
+|                |                |--(nmod:t)--> R766[night]
+|                |                                 |--(amod)--> R766[last]
+|                |--(punct)--> ,
+|--(aux)--> has
+|--(dobj)--> R767[loophole]
+|                |--(det)--> a
+|                |--(acl:re)--> seen
+|                                 |--(nsubj)--> that
+|                                 |--(aux)--> has
+|                                 |--(dobj)--> R771[computers]
+|                                                  |--(det)--> the
+|                                                  |--(nmod)--> R789[users]
+|                                                                   |--(case)--> of
+|                                                                   |--(nummod)--> million
+|                                                                   |                |--(nmod:n)--> least
+|                                                                   |                |                |--(case)--> at
+|                                                                   |                |--(compou)--> two
+|                                                                   |--(acl)--> *R784[hacked]
+|                                                                                    |--(nmod)--> R770[criminals]
+|                                                                                                     |--(case)--> by
+|                                                                                                     |--(compou)--> cyber
+|--(punct)--> .
+
+	* entity-paths for event['released']27_1ecb.xmlsent:5768
+	['released --(nmod:tmod)--> night']
+
+	* entity-paths for event['closed']27_1ecb.xmlsent:5768
+	['closed --(nsubj)--> patch']
+	['closed --(dobj)--> loophole']
+
+	* entity-paths for event['hacked']27_1ecb.xmlsent:5768
+	['hacked --(nmod)--> criminals']

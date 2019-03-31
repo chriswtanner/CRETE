@@ -1,0 +1,61 @@
+
+-----------------------------------------
+docid:2_11ecb.xml
+-----------------------------------------
+
+sentence #:even as oscar organizers on friday unveiled hugh jackman as the host of their gala film awards , the prospect of a u.s. actors strike was casting a long shadow over whether hollywood 's big show would go on as usual . 
+	[events]:[['oscar'], ['unveiled'], ['awards'], ['show']]
+	[entities]:[['on', 'friday'], ['host'], ['organizers'], ['hugh', 'jackman'], ['hollywood']]
+casting
+|--(advcl)--> *R458[unveiled]
+|                |--(advmod)--> even
+|                |--(mark)--> as
+|                |--(nsubj)--> R459[organizers]
+|                |                |--(compou)--> *R460[oscar]
+|                |                |--(nmod)--> R461[friday]
+|                |                                 |--(case)--> R461[on]
+|                |--(dobj)--> R462[jackman]
+|                                 |--(compou)--> R462[hugh]
+|                                 |--(nmod)--> R462[host]
+|                                                  |--(case)--> as
+|                                                  |--(det)--> the
+|                                                  |--(nmod)--> *R460[awards]
+|                                                                   |--(case)--> of
+|                                                                   |--(nmod:p)--> their
+|                                                                   |--(compou)--> gala
+|                                                                   |--(compou)--> film
+|--(punct)--> ,
+|--(nsubj)--> prospect
+|                |--(det)--> the
+|                |--(nmod)--> strike
+|                                 |--(case)--> of
+|                                 |--(det)--> a
+|                                 |--(compou)--> u.s.
+|                                 |--(compou)--> actors
+|--(aux)--> was
+|--(dobj)--> shadow
+|                |--(det)--> a
+|                |--(amod)--> long
+|--(advcl)--> go
+|                |--(mark)--> over
+|                |--(mark)--> whether
+|                |--(nsubj)--> *R460[show]
+|                |                |--(nmod:p)--> R463[hollywood]
+|                |                |                |--(case)--> 's
+|                |                |--(amod)--> big
+|                |--(aux)--> would
+|                |--(advcl)--> usual
+|                                 |--(case)--> on
+|                                 |--(advmod)--> as
+|--(punct)--> .
+
+	* entity-paths for event['oscar']2_11ecb.xmlsent:3442
+
+	* entity-paths for event['unveiled']2_11ecb.xmlsent:3442
+	['unveiled --(nsubj)--> organizers']
+	['unveiled --(dobj)--> Jackman']
+
+	* entity-paths for event['awards']2_11ecb.xmlsent:3442
+
+	* entity-paths for event['show']2_11ecb.xmlsent:3442
+	['show --(nmod:poss)--> Hollywood']

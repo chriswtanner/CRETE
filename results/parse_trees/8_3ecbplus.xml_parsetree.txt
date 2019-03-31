@@ -1,0 +1,57 @@
+
+-----------------------------------------
+docid:8_3ecbplus.xml
+-----------------------------------------
+
+sentence #:the three bank workers a man and two women died after demonstrators set their bank on fire along the main demonstration route in central athens . 
+	[events]:[['died'], ['set', 'on', 'fire']]
+	[entities]:[['man'], ['bank'], ['women'], ['demonstrators'], ['workers']]
+*R1753[died]
+|--(nsubj)--> R1754[workers]
+|                |--(det)--> the
+|                |--(nummod)--> three
+|                |--(compou)--> bank
+|                |--(dep)--> R1774[man]
+|                |                |--(det)--> a
+|                |--(cc)--> and
+|                |--(conj)--> R1773[women]
+|                                 |--(nummod)--> two
+|--(advcl)--> *R1790[set]
+|                |--(mark)--> after
+|                |--(nsubj)--> R1750[demonstrators]
+|                |--(dobj)--> R1752[bank]
+|                |                |--(nmod:p)--> their
+|                |--(nmod)--> *R1790[fire]
+|                                 |--(case)--> *R1790[on]
+|                                 |--(nmod)--> route
+|                                                  |--(case)--> along
+|                                                  |--(det)--> the
+|                                                  |--(amod)--> main
+|                                                  |--(compou)--> demonstration
+|                                                  |--(nmod)--> athens
+|                                                                   |--(case)--> in
+|                                                                   |--(amod)--> central
+|--(punct)--> .
+
+	* entity-paths for event['died']8_3ecbplus.xmlsent:14992
+	['died --(nsubj)--> workers']
+	['died --(advcl)--> set', 'set --(nsubj)--> demonstrators']
+	['died --(advcl)--> set', 'set --(dobj)--> bank']
+
+	* entity-paths for event['set', 'on', 'fire']8_3ecbplus.xmlsent:14992
+
+sentence #:three die in bank during greek riots 
+	[events]:[['die'], ['riots']]
+	[entities]:[['three'], ['bank']]
+R1754[three]
+|--(dep)--> *R1753[die]
+                 |--(nmod)--> R1752[bank]
+                 |                |--(case)--> in
+                 |--(nmod)--> *R1780[riots]
+                                  |--(case)--> during
+                                  |--(amod)--> greek
+
+	* entity-paths for event['die']8_3ecbplus.xmlsent:14987
+	['die --(nmod)--> bank']
+
+	* entity-paths for event['riots']8_3ecbplus.xmlsent:14987

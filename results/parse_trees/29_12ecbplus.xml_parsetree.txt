@@ -1,0 +1,100 @@
+
+-----------------------------------------
+docid:29_12ecbplus.xml
+-----------------------------------------
+
+sentence #:on a day when the kansas city chiefs rushed for the 3rd - most yards in franchise history and the defense played well for 55 minutes of the game , the chiefs lost to the indianapolis colts , 20 - 13 , and kept their grip on the #1 pick in the 2013 nfl draft . 
+	[events]:[['rushed'], ['lost'], ['game']]
+	[entities]:[['20', '-', '13'], ['kansas', 'city', 'chiefs'], ['yards'], ['indianapolis', 'colts'], ['when'], ['chiefs'], ['on', 'a', 'day']]
+*R859[lost]
+|--(nmod)--> R868[day]
+|                |--(case)--> R868[on]
+|                |--(det)--> R868[a]
+|                |--(acl:re)--> *R869[rushed]
+|                                 |--(advmod)--> R868[when]
+|                                 |--(nsubj)--> R858[chiefs]
+|                                 |                |--(det)--> the
+|                                 |                |--(compou)--> R858[kansas]
+|                                 |                |--(compou)--> R858[city]
+|                                 |--(nmod)--> 3rd
+|                                 |                |--(case)--> for
+|                                 |                |--(det)--> the
+|                                 |                |--(punct)--> -
+|                                 |                |--(dep)--> most
+|                                 |                                 |--(dep)--> R870[yards]
+|                                 |--(nmod)--> history
+|                                 |                |--(case)--> in
+|                                 |                |--(compou)--> franchise
+|                                 |--(cc)--> and
+|                                 |--(conj)--> played
+|                                                  |--(nsubj)--> defense
+|                                                  |                |--(det)--> the
+|                                                  |--(advmod)--> well
+|                                                  |--(nmod)--> minutes
+|                                                                   |--(case)--> for
+|                                                                   |--(nummod)--> 55
+|                                                                   |--(nmod)--> *R871[game]
+|                                                                                    |--(case)--> of
+|                                                                                    |--(det)--> the
+|--(punct)--> ,
+|--(nsubj)--> R858[chiefs]
+|                |--(det)--> the
+|--(nmod)--> R852[colts]
+|                |--(case)--> to
+|                |--(det)--> the
+|                |--(compou)--> R852[indianapolis]
+|                |--(punct)--> ,
+|                |--(appos)--> R860[13]
+|                |                |--(nummod)--> R860[20]
+|                |                |--(punct)--> R860[-]
+|                |--(punct)--> ,
+|--(cc)--> and
+|--(conj)--> kept
+|                |--(dobj)--> grip
+|                |                |--(nmod:p)--> their
+|                |--(nmod)--> pick
+|                                 |--(case)--> on
+|                                 |--(det)--> the
+|                                 |--(amod)--> #1
+|                                 |                |--(compou)--> #1
+|                                 |--(nmod)--> draft
+|                                                  |--(case)--> in
+|                                                  |--(det)--> the
+|                                                  |--(nummod)--> 2013
+|                                                  |--(compou)--> nfl
+|--(punct)--> .
+
+	* entity-paths for event['rushed']29_12ecbplus.xmlsent:6759
+	['rushed --(advmod)--> when']
+	['rushed --(nsubj)--> Chiefs']
+	['rushed --(nmod)--> 3rd', '3rd --(dep)--> most', 'most --(dep)--> yards']
+
+	* entity-paths for event['lost']29_12ecbplus.xmlsent:6759
+	['lost --(nmod)--> day']
+	['lost --(nsubj)--> Chiefs']
+	['lost --(nmod)--> Colts']
+
+	* entity-paths for event['game']29_12ecbplus.xmlsent:6759
+
+sentence #:chiefs lose 20 - 13 to colts despite charles " 226 yards rushing 
+	[events]:[['lose'], ['rushing']]
+	[entities]:[['colts'], ['20', '-', '13'], ['chiefs'], ['226', 'yards']]
+*R859[lose]
+|--(nsubj)--> R858[chiefs]
+|--(dobj)--> R860[13]
+                 |--(nummod)--> R860[20]
+                 |--(punct)--> R860[-]
+                 |--(nmod)--> charles
+                 |                |--(case)--> to
+                 |                |--(compou)--> R852[colts]
+                 |                |--(amod)--> despite
+                 |                |--(punct)--> "
+                 |                |--(dep)--> R870[yards]
+                 |                                 |--(nummod)--> R870[226]
+                 |--(acl)--> *R869[rushing]
+
+	* entity-paths for event['lose']29_12ecbplus.xmlsent:6757
+	['lose --(nsubj)--> Chiefs']
+	['lose --(dobj)--> 13']
+
+	* entity-paths for event['rushing']29_12ecbplus.xmlsent:6757

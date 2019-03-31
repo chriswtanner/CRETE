@@ -1,0 +1,44 @@
+
+-----------------------------------------
+docid:11_6ecb.xml
+-----------------------------------------
+
+sentence #:turkmens go to the polls sunday in a parliamentary election the west sees as a test of the central asian nation 's commitment to bring about change after decades of isolation . 
+	[events]:[['go', 'to', 'the', 'polls'], ['election']]
+	[entities]:[['sunday'], ['turkmens']]
+*R187[go]
+|--(nsubj)--> R191[turkmens]
+|--(nmod)--> *R187[polls]
+|                |--(case)--> *R187[to]
+|                |--(det)--> *R187[the]
+|--(nmod:t)--> R208[sunday]
+|--(nmod)--> *R193[election]
+|                |--(case)--> in
+|                |--(det)--> a
+|                |--(amod)--> parliamentary
+|                |--(acl:re)--> sees
+|                                 |--(nsubj)--> west
+|                                 |                |--(det)--> the
+|                                 |--(nmod)--> test
+|                                                  |--(case)--> as
+|                                                  |--(det)--> a
+|                                                  |--(nmod)--> commitment
+|                                                                   |--(case)--> of
+|                                                                   |--(nmod:p)--> nation
+|                                                                   |                |--(det)--> the
+|                                                                   |                |--(amod)--> central
+|                                                                   |                |--(amod)--> asian
+|                                                                   |                |--(case)--> 's
+|                                                                   |--(dep)--> bring
+|                                                                                    |--(dep)--> to
+|                                                                                    |--(advmod)--> about
+|                                                                                    |--(dep)--> change
+|                                                                                                     |--(nmod)--> decades
+|                                                                                                                      |--(case)--> after
+|                                                                                                                      |--(nmod)--> isolation
+|                                                                                                                                       |--(case)--> of
+|--(punct)--> .
+
+	* entity-paths for event['go', 'to', 'the', 'polls']11_6ecb.xmlsent:730
+
+	* entity-paths for event['election']11_6ecb.xmlsent:730

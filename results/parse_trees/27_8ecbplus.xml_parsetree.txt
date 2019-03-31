@@ -1,0 +1,127 @@
+
+-----------------------------------------
+docid:27_8ecbplus.xml
+-----------------------------------------
+
+sentence #:that happened last week as scheduled , but today the company announced it has rushed out an additional patch designed to fix an exploit that has been found in internet explorer , and is being used in attacks on ie8 and ie9 . 
+	[events]:[['used'], ['rushed', 'out'], ['fix'], ['attacks'], ['announced']]
+	[entities]:[['today'], ['it'], ['ie8'], ['patch'], ['company'], ['that'], ['exploit'], ['internet', 'explorer'], ['ie9']]
+happened
+|--(nsubj)--> that
+|--(nmod:t)--> week
+|                |--(amod)--> last
+|--(advcl)--> scheduled
+|                |--(mark)--> as
+|--(punct)--> ,
+|--(cc)--> but
+|--(conj)--> *R807[announced]
+|                |--(nmod:t)--> R787[today]
+|                |--(nsubj)--> R764[company]
+|                |                |--(det)--> the
+|                |--(ccomp)--> *R779[rushed]
+|                                 |--(nsubj)--> R764[it]
+|                                 |--(aux)--> has
+|                                 |--(compou)--> *R779[out]
+|                                 |--(dobj)--> R780[patch]
+|                                                  |--(det)--> an
+|                                                  |--(amod)--> additional
+|                                                  |--(acl)--> designed
+|                                                                   |--(xcomp)--> *R781[fix]
+|                                                                                    |--(mark)--> to
+|                                                                                    |--(ccomp)--> R777[exploit]
+|                                                                                                     |--(nsubj)--> an
+|                                                                                                     |--(ccomp)--> found
+|                                                                                                                      |--(nsubjp)--> R777[that]
+|                                                                                                                      |--(aux)--> has
+|                                                                                                                      |--(auxpas)--> been
+|                                                                                                                      |--(nmod)--> R768[explorer]
+|                                                                                                                      |                |--(case)--> in
+|                                                                                                                      |                |--(compou)--> R768[internet]
+|                                                                                                                      |--(punct)--> ,
+|                                                                                                                      |--(cc)--> and
+|                                                                                                                      |--(conj)--> *R788[used]
+|                                                                                                                                       |--(aux)--> is
+|                                                                                                                                       |--(auxpas)--> being
+|                                                                                                                                       |--(nmod)--> *R773[attacks]
+|                                                                                                                                                        |--(case)--> in
+|                                                                                                                                                        |--(nmod)--> R774[ie8]
+|                                                                                                                                                                         |--(case)--> on
+|                                                                                                                                                                         |--(cc)--> and
+|                                                                                                                                                                         |--(conj)--> R775[ie9]
+|--(punct)--> .
+
+	* entity-paths for event['used']27_8ecbplus.xmlsent:6019
+	['used --(nmod)--> attacks', 'attacks --(nmod)--> IE8']
+
+	* entity-paths for event['rushed', 'out']27_8ecbplus.xmlsent:6019
+
+	* entity-paths for event['fix']27_8ecbplus.xmlsent:6019
+	['fix --(ccomp)--> exploit']
+
+	* entity-paths for event['attacks']27_8ecbplus.xmlsent:6019
+	['attacks --(nmod)--> IE8']
+
+	* entity-paths for event['announced']27_8ecbplus.xmlsent:6019
+	['announced --(nmod:tmod)--> today']
+	['announced --(nsubj)--> company']
+	['announced --(ccomp)--> rushed', 'rushed --(nsubj)--> it']
+	['announced --(ccomp)--> rushed', 'rushed --(dobj)--> patch']
+
+sentence #:the company has released a "fix - it" patch , "cve - 2013 - 3893 mshtml shim workaround" to plug this security hole in all currently supported versions of ie . 
+	[events]:[['released'], ['plug']]
+	[entities]:[['hole'], ['versions'], ['"fix', '-', 'it"', 'patch'], ['ie'], ['company']]
+has
+|--(nsubj)--> R764[company]
+|                |--(det)--> the
+|--(ccomp)--> *R779[released]
+|                |--(xcomp)--> R780[patch]
+|                                 |--(det)--> a
+|                                 |--(punct)--> R780["fix]
+|                                 |--(dep)--> R780["fix]
+|                                 |                |--(punct)--> R780[-]
+|                                 |                |--(advmod)--> R780[it"]
+|                                 |--(punct)--> R780[it"]
+|--(punct)--> ,
+|--(punct)--> "cve
+|--(dep)--> 2013
+|                |--(dep)--> "cve
+|                |--(punct)--> -
+|--(punct)--> -
+|--(parata)--> supported
+|                |--(nsubj)--> 3893
+|                |                |--(acl)--> *R781[plug]
+|                |                                 |--(nsubj)--> workaround"
+|                |                                 |                |--(compou)--> mshtml
+|                |                                 |                |--(compou)--> shim
+|                |                                 |                |--(punct)--> workaround"
+|                |                                 |--(mark)--> to
+|                |                                 |--(dobj)--> R777[hole]
+|                |                                 |                |--(det)--> this
+|                |                                 |                |--(compou)--> security
+|                |                                 |--(nmod)--> all
+|                |                                                  |--(case)--> in
+|                |--(advmod)--> currently
+|                |--(dobj)--> R778[versions]
+|                                 |--(nmod)--> R768[ie]
+|                                                  |--(case)--> of
+|--(punct)--> .
+
+	* entity-paths for event['released']27_8ecbplus.xmlsent:6022
+	['released --(xcomp)--> patch']
+
+	* entity-paths for event['plug']27_8ecbplus.xmlsent:6022
+	['plug --(dobj)--> hole']
+
+sentence #:microsoft rushes out security patch for internet explorer 
+	[events]:[['rushes', 'out']]
+	[entities]:[['patch'], ['internet', 'explorer'], ['microsoft']]
+*R779[rushes]
+|--(nsubj)--> R764[microsoft]
+|--(compou)--> *R779[out]
+|--(dobj)--> R780[patch]
+                 |--(compou)--> security
+                 |--(nmod)--> R768[explorer]
+                                  |--(case)--> for
+                                  |--(compou)--> R768[internet]
+
+	* entity-paths for event['rushes', 'out']27_8ecbplus.xmlsent:6016

@@ -1,0 +1,73 @@
+
+-----------------------------------------
+docid:24_5ecbplus.xml
+-----------------------------------------
+
+sentence #:ram - raiders ploughed their vehicle into an upmarket jewellery boutique near place vendôme in central paris on monday in a dramatic dawn robbery , making off with $2 million worth of loot . 
+	[events]:[['ploughed'], ['robbery'], ['making', 'off']]
+	[entities]:[['vehicle'], ['an', 'upmarket', 'jewellery', 'boutique', 'near', 'place', 'vendôme', 'in', 'central', 'paris'], ['on', 'monday'], ['loot'], ['ram', '-', 'raiders'], ['$2', 'million']]
+R669[ram]
+|--(punct)--> R669[-]
+|--(parata)--> *R668[ploughed]
+|                |--(nsubj)--> R669[raiders]
+|                |--(dobj)--> R670[vehicle]
+|                |                |--(nmod:p)--> their
+|                |--(nmod)--> R671[boutique]
+|                |                |--(case)--> into
+|                |                |--(det)--> R671[an]
+|                |                |--(amod)--> R671[upmarket]
+|                |                |--(compou)--> R671[jewellery]
+|                |                |--(nmod)--> R671[vendôme]
+|                |                                 |--(case)--> R671[near]
+|                |                                 |--(compou)--> R671[place]
+|                |                                 |--(nmod)--> R671[paris]
+|                |                                                  |--(case)--> R671[in]
+|                |                                                  |--(amod)--> R671[central]
+|                |--(nmod)--> R672[monday]
+|                |                |--(case)--> R672[on]
+|                |                |--(nmod)--> *R684[robbery]
+|                |                                 |--(case)--> in
+|                |                                 |--(det)--> a
+|                |                                 |--(amod)--> dramatic
+|                |                                 |--(compou)--> dawn
+|                |--(punct)--> ,
+|                |--(advcl)--> *R675[making]
+|                                 |--(compou)--> *R675[off]
+|                                 |--(nmod)--> worth
+|                                                  |--(case)--> with
+|                                                  |--(nummod)--> R702[$2]
+|                                                  |                |--(nummod)--> R702[million]
+|                                                  |                                 |--(compou)--> R702[$2]
+|                                                  |--(nmod)--> R676[loot]
+|                                                                   |--(case)--> of
+|--(punct)--> .
+
+	* entity-paths for event['ploughed']24_5ecbplus.xmlsent:4869
+	['ploughed --(nsubj)--> raiders']
+	['ploughed --(dobj)--> vehicle']
+	['ploughed --(nmod)--> boutique']
+	['ploughed --(nmod)--> Monday']
+	['ploughed --(advcl)--> making', 'making --(nmod)--> worth', 'worth --(nummod)--> $']
+	['ploughed --(advcl)--> making', 'making --(nmod)--> worth', 'worth --(nmod)--> loot']
+
+	* entity-paths for event['robbery']24_5ecbplus.xmlsent:4869
+
+	* entity-paths for event['making', 'off']24_5ecbplus.xmlsent:4869
+
+sentence #:ram - raiders hit paris jewellery store for $2m 
+	[events]:[['hit']]
+	[entities]:[['paris', 'jewellery', 'store'], ['ram', '-', 'raiders'], ['$2m']]
+R669[ram]
+|--(punct)--> R669[-]
+|--(parata)--> *R696[hit]
+                 |--(nsubj)--> R669[raiders]
+                 |--(dobj)--> R671[store]
+                                  |--(compou)--> R671[paris]
+                                  |--(compou)--> R671[jewellery]
+                                  |--(nmod)--> R702[$2m]
+                                                   |--(case)--> for
+                                                   |--(dep)--> R702[$2m]
+
+	* entity-paths for event['hit']24_5ecbplus.xmlsent:4866
+	['hit --(nsubj)--> raiders']
+	['hit --(dobj)--> store']

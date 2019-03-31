@@ -1,0 +1,103 @@
+
+-----------------------------------------
+docid:32_3ecb.xml
+-----------------------------------------
+
+sentence #:the new bedford man arrested last night on charges of double homicide killed his mother and ex-girlfriend , according to police and prosecutors . 
+	[events]:[['killed'], ['double', 'homicide'], ['arrested']]
+	[entities]:[['mother'], ['man'], ['ex-girlfriend']]
+*R1044[killed]
+|--(nsubj)--> R1045[man]
+|                |--(det)--> the
+|                |--(compou)--> new
+|                |--(compou)--> bedford
+|                |--(acl)--> *R1058[arrested]
+|                                 |--(nmod:t)--> night
+|                                 |                |--(amod)--> last
+|                                 |--(nmod)--> charges
+|                                                  |--(case)--> on
+|                                                  |--(nmod)--> *R1059[homicide]
+|                                                                   |--(case)--> of
+|                                                                   |--(amod)--> *R1059[double]
+|--(dobj)--> R1047[mother]
+|                |--(nmod:p)--> his
+|                |--(cc)--> and
+|                |--(conj)--> R1046[ex-girlfriend]
+|--(punct)--> ,
+|--(nmod)--> police
+|                |--(case)--> according
+|                |                |--(mwe)--> to
+|                |--(cc)--> and
+|                |--(conj)--> prosecutors
+|--(punct)--> .
+
+	* entity-paths for event['killed']32_3ecb.xmlsent:8805
+	['killed --(nsubj)--> man']
+	['killed --(dobj)--> mother']
+
+	* entity-paths for event['double', 'homicide']32_3ecb.xmlsent:8805
+
+	* entity-paths for event['arrested']32_3ecb.xmlsent:8805
+
+sentence #:at the arraignment , prosecutor aaron strojny said ms. mendes was stabbed multiple times while in bed . 
+	[events]:[['arraignment']]
+	[entities]:[['ms.', 'mendes']]
+said
+|--(nmod)--> *R1060[arraignment]
+|                |--(case)--> at
+|                |--(det)--> the
+|--(punct)--> ,
+|--(nsubj)--> strojny
+|                |--(compou)--> prosecutor
+|                |--(compou)--> aaron
+|--(ccomp)--> stabbed
+|                |--(nsubjp)--> R1046[mendes]
+|                |                |--(compou)--> R1046[ms.]
+|                |--(auxpas)--> was
+|                |--(nmod:t)--> times
+|                |                |--(amod)--> multiple
+|                |--(nmod)--> bed
+|                                 |--(case)--> while
+|                                 |--(case)--> in
+|--(punct)--> .
+
+	* entity-paths for event['arraignment']32_3ecb.xmlsent:8812
+
+sentence #:gregg milliote , spokesman for the bristol county district attorney 's office , said both women were stabbed multiple times at the independent street apartment in which they were found . 
+	[events]:[['found']]
+	[entities]:[['they'], ['in', 'which'], ['at', 'the', 'independent', 'street', 'apartment'], ['both', 'women']]
+said
+|--(nsubj)--> milliote
+|                |--(compou)--> gregg
+|                |--(punct)--> ,
+|                |--(appos)--> spokesman
+|                |                |--(nmod)--> office
+|                |                                 |--(case)--> for
+|                |                                 |--(nmod:p)--> attorney
+|                |                                                  |--(det)--> the
+|                |                                                  |--(compou)--> bristol
+|                |                                                  |--(compou)--> county
+|                |                                                  |--(compou)--> district
+|                |                                                  |--(case)--> 's
+|                |--(punct)--> ,
+|--(ccomp)--> stabbed
+|                |--(nsubjp)--> R1050[women]
+|                |                |--(det)--> R1050[both]
+|                |--(auxpas)--> were
+|                |--(dobj)--> times
+|                |                |--(amod)--> multiple
+|                |--(nmod)--> R1048[apartment]
+|                                 |--(case)--> R1048[at]
+|                                 |--(det)--> R1048[the]
+|                                 |--(compou)--> R1048[independent]
+|                                 |--(compou)--> R1048[street]
+|                                 |--(acl:re)--> *R1061[found]
+|                                                  |--(nmod)--> R1048[which]
+|                                                  |                |--(case)--> R1048[in]
+|                                                  |--(nsubjp)--> R1050[they]
+|                                                  |--(auxpas)--> were
+|--(punct)--> .
+
+	* entity-paths for event['found']32_3ecb.xmlsent:8809
+	['found --(nmod)--> which']
+	['found --(nsubjpass)--> they']

@@ -1,0 +1,208 @@
+
+-----------------------------------------
+docid:43_1ecb.xml
+-----------------------------------------
+
+sentence #:chipmaker amd , hoping to gain a leg up on a resurgent rival intel ( intc ) , on july 24 ended months of speculation by saying it would buy graphics chipmaker ati for about $ 5.4 billion . 
+	[events]:[['saying'], ['buy']]
+	[entities]:[['intel'], ['amd'], ['on', 'july', '24'], ['ati'], ['it']]
+ended
+|--(nsubj)--> R1547[amd]
+|                |--(compou)--> chipmaker
+|--(punct)--> ,
+|--(advcl)--> hoping
+|                |--(xcomp)--> gain
+|                                 |--(mark)--> to
+|                                 |--(dobj)--> leg
+|                                 |                |--(det)--> a
+|                                 |--(advmod)--> up
+|                                 |                |--(nmod)--> R1426[intel]
+|                                 |                                 |--(case)--> on
+|                                 |                                 |--(det)--> a
+|                                 |                                 |--(amod)--> resurgent
+|                                 |                                 |--(amod)--> rival
+|                                 |                                 |--(appos)--> intc
+|                                 |                                                  |--(punct)--> (
+|                                 |                                                  |--(punct)--> )
+|                                 |--(punct)--> ,
+|                                 |--(nmod)--> R1560[july]
+|                                                  |--(case)--> R1560[on]
+|                                                  |--(nummod)--> R1560[24]
+|--(dobj)--> months
+|                |--(nmod)--> speculation
+|                                 |--(case)--> of
+|--(advcl)--> *R1561[saying]
+|                |--(mark)--> by
+|                |--(ccomp)--> *R1562[buy]
+|                                 |--(nsubj)--> R1547[it]
+|                                 |--(aux)--> would
+|                                 |--(iobj)--> chipmaker
+|                                 |                |--(compou)--> graphics
+|                                 |--(dobj)--> R1563[ati]
+|                                                  |--(nmod)--> $
+|                                                                   |--(case)--> for
+|                                                                   |--(advmod)--> about
+|                                                                   |--(nummod)--> billion
+|                                                                                    |--(compou)--> 5.4
+|--(punct)--> .
+
+	* entity-paths for event['saying']43_1ecb.xmlsent:12999
+	['saying --(ccomp)--> buy', 'buy --(nsubj)--> it']
+	['saying --(ccomp)--> buy', 'buy --(dobj)--> ATI']
+
+	* entity-paths for event['buy']43_1ecb.xmlsent:12999
+	['buy --(nsubj)--> it']
+	['buy --(dobj)--> ATI']
+
+sentence #:maybe that 's why intel and nvidia ( nvda ) , the companies ' two biggest rivals , found a lot to smile about on july 24 , the day the deal was announced . 
+	[events]:[['deal'], ['announced']]
+	[entities]:[['on', 'july', '24'], ['companies'], ['intel']]
+'s
+|--(advmod)--> maybe
+|--(nsubj)--> that
+|--(advcl)--> found
+|                |--(advmod)--> why
+|                |--(nsubj)--> R1426[intel]
+|                |                |--(cc)--> and
+|                |                |--(conj)--> nvidia
+|                |                |--(appos)--> nvda
+|                |                |                |--(punct)--> (
+|                |                |                |--(punct)--> )
+|                |                |--(punct)--> ,
+|                |                |--(appos)--> rivals
+|                |                |                |--(nmod:p)--> R1547[companies]
+|                |                |                |                |--(det)--> the
+|                |                |                |                |--(case)--> '
+|                |                |                |--(nummod)--> two
+|                |                |                |--(amod)--> biggest
+|                |                |--(punct)--> ,
+|                |--(dobj)--> lot
+|                |                |--(det)--> a
+|                |--(advcl)--> smile
+|                |                |--(mark)--> to
+|                |                |--(advmod)--> about
+|                |                |--(nmod)--> R1560[july]
+|                |                                 |--(case)--> R1560[on]
+|                |                                 |--(nummod)--> R1560[24]
+|                |--(punct)--> ,
+|                |--(dobj)--> day
+|                                 |--(det)--> the
+|                                 |--(acl:re)--> *R1561[announced]
+|                                                  |--(nsubjp)--> *R1562[deal]
+|                                                  |                |--(det)--> the
+|                                                  |--(auxpas)--> was
+|--(punct)--> .
+
+	* entity-paths for event['deal']43_1ecb.xmlsent:13006
+
+	* entity-paths for event['announced']43_1ecb.xmlsent:13006
+
+sentence #:amd says there 's plenty of reason to be bullish on the deal . 
+	[events]:[['deal']]
+	[entities]:[['amd']]
+says
+|--(nsubj)--> R1547[amd]
+|--(ccomp)--> 's
+|                |--(expl)--> there
+|                |--(nsubj)--> plenty
+|                                 |--(nmod)--> reason
+|                                 |                |--(case)--> of
+|                                 |--(acl)--> bullish
+|                                                  |--(mark)--> to
+|                                                  |--(cop)--> be
+|                                                  |--(nmod)--> *R1562[deal]
+|                                                                   |--(case)--> on
+|                                                                   |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['deal']43_1ecb.xmlsent:13027
+
+sentence #:advanced micro devices ( amd ) chief executive hector ruiz waxed metaphorical as he described his company 's acquisition of ati technologies ( atyt ) . 
+	[events]:[['acquisition']]
+	[entities]:[['amd'], ['company'], ['ati', 'technologies'], ['advanced', 'micro', 'devices']]
+waxed
+|--(nsubj)--> R1547[devices]
+|                |--(compou)--> R1547[advanced]
+|                |--(compou)--> R1547[micro]
+|--(dep)--> R1547[amd]
+|                |--(punct)--> (
+|                |--(punct)--> )
+|--(nsubj)--> ruiz
+|                |--(compou)--> chief
+|                |--(compou)--> executive
+|                |--(compou)--> hector
+|--(dobj)--> metaphorical
+|--(advcl)--> described
+|                |--(mark)--> as
+|                |--(nsubj)--> he
+|                |--(dobj)--> *R1562[acquisition]
+|                                 |--(nmod:p)--> R1547[company]
+|                                 |                |--(nmod:p)--> his
+|                                 |                |--(case)--> 's
+|                                 |--(nmod)--> R1563[technologies]
+|                                                  |--(case)--> of
+|                                                  |--(compou)--> R1563[ati]
+|                                                  |--(appos)--> atyt
+|                                                                   |--(punct)--> (
+|                                                                   |--(punct)--> )
+|--(punct)--> .
+
+	* entity-paths for event['acquisition']43_1ecb.xmlsent:12998
+	['acquisition --(nmod:poss)--> company']
+	['acquisition --(nmod)--> Technologies']
+
+sentence #:intel , the world 's largest graphics-chipmaker , declined to comment specifically on the deal . 
+	[events]:[['deal']]
+	[entities]:[['intel'], ['graphics-chipmaker']]
+declined
+|--(nsubj)--> R1426[intel]
+|                |--(punct)--> ,
+|                |--(appos)--> R1426[graphics-chipmaker]
+|                |                |--(nmod:p)--> world
+|                |                |                |--(det)--> the
+|                |                |                |--(case)--> 's
+|                |                |--(amod)--> largest
+|                |--(punct)--> ,
+|--(xcomp)--> comment
+|                |--(mark)--> to
+|                |--(advmod)--> specifically
+|                |--(nmod)--> *R1562[deal]
+|                                 |--(case)--> on
+|                                 |--(det)--> the
+|--(punct)--> .
+
+	* entity-paths for event['deal']43_1ecb.xmlsent:13009
+
+sentence #:the merger also could lock ati out of the business of supplying graphics chipsets to intel-based pcs , worth about $ 90 million a year in revenue . 
+	[events]:[['merger']]
+	[entities]:[['ati']]
+lock
+|--(nsubj)--> *R1562[merger]
+|                |--(det)--> the
+|--(advmod)--> also
+|--(aux)--> could
+|--(dobj)--> R1563[ati]
+|--(nmod)--> business
+|                |--(case)--> out
+|                |--(case)--> of
+|                |--(det)--> the
+|                |--(acl)--> supplying
+|                                 |--(mark)--> of
+|                                 |--(dobj)--> chipsets
+|                                 |                |--(compou)--> graphics
+|                                 |--(nmod)--> pcs
+|                                 |                |--(case)--> to
+|                                 |                |--(amod)--> intel-based
+|                                 |                |--(punct)--> ,
+|                                 |                |--(nmod)--> $
+|                                 |                                 |--(case)--> worth
+|                                 |                                 |--(case)--> about
+|                                 |                                 |--(nummod)--> million
+|                                 |                                 |                |--(compou)--> 90
+|                                 |                                 |--(dep)--> year
+|                                 |                                                  |--(det)--> a
+|                                 |--(nmod)--> revenue
+|                                                  |--(case)--> in
+|--(punct)--> .
+
+	* entity-paths for event['merger']43_1ecb.xmlsent:13016

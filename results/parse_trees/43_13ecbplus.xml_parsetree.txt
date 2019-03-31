@@ -1,0 +1,104 @@
+
+-----------------------------------------
+docid:43_13ecbplus.xml
+-----------------------------------------
+
+sentence #:on wednesday afternoon , the company announced that they have reached a $334 million agreement , to purchase seamicro , a successful microserver manufacturer . 
+	[events]:[['purchase'], ['reached'], ['announced'], ['agreement']]
+	[entities]:[['on', 'wednesday', 'afternoon'], ['microserver', 'manufacturer'], ['$334', 'million'], ['company'], ['they'], ['seamicro']]
+*R1550[announced]
+|--(nmod)--> R1551[wednesday]
+|                |--(case)--> R1551[on]
+|--(nmod:t)--> R1551[afternoon]
+|--(punct)--> ,
+|--(nsubj)--> R1547[company]
+|                |--(det)--> the
+|--(ccomp)--> *R1552[reached]
+|                |--(mark)--> that
+|                |--(nsubj)--> R1553[they]
+|                |--(aux)--> have
+|                |--(dobj)--> *R1554[agreement]
+|                |                |--(det)--> a
+|                |                |--(amod)--> R1555[$334]
+|                |                                 |--(nummod)--> R1555[million]
+|                |                                                  |--(compou)--> R1555[$334]
+|                |--(punct)--> ,
+|                |--(advcl)--> *R1546[purchase]
+|                                 |--(mark)--> to
+|                                 |--(dobj)--> R1549[seamicro]
+|                                                  |--(punct)--> ,
+|                                                  |--(appos)--> R1549[manufacturer]
+|                                                                   |--(det)--> a
+|                                                                   |--(amod)--> successful
+|                                                                   |--(compou)--> R1549[microserver]
+|--(punct)--> .
+
+	* entity-paths for event['purchase']43_13ecbplus.xmlsent:12940
+	['purchase --(dobj)--> SeaMicro']
+
+	* entity-paths for event['reached']43_13ecbplus.xmlsent:12940
+	['reached --(nsubj)--> they']
+	['reached --(dobj)--> agreement', 'agreement --(amod)--> $']
+	['reached --(advcl)--> purchase', 'purchase --(dobj)--> SeaMicro']
+
+	* entity-paths for event['announced']43_13ecbplus.xmlsent:12940
+	['announced --(nmod)--> Wednesday']
+	['announced --(nmod:tmod)--> afternoon']
+	['announced --(nsubj)--> company']
+	['announced --(ccomp)--> reached', 'reached --(nsubj)--> they']
+	['announced --(ccomp)--> reached', 'reached --(dobj)--> agreement', 'agreement --(amod)--> $']
+	['announced --(ccomp)--> reached', 'reached --(advcl)--> purchase', 'purchase --(dobj)--> SeaMicro']
+
+	* entity-paths for event['agreement']43_13ecbplus.xmlsent:12940
+	['agreement --(amod)--> $']
+
+sentence #:amd has made a $334 million bet on the energy - efficient "microserver" market . 
+	[events]:[['market']]
+	[entities]:[['amd'], ['$334', 'million'], ['"microserver"']]
+made
+|--(nsubj)--> R1547[amd]
+|--(aux)--> has
+|--(dobj)--> bet
+|                |--(det)--> a
+|                |--(amod)--> R1555[$334]
+|                |                |--(nummod)--> R1555[million]
+|                |                                 |--(compou)--> R1555[$334]
+|                |--(nmod)--> energy
+|                                 |--(case)--> on
+|                                 |--(det)--> the
+|                                 |--(punct)--> -
+|--(xcomp)--> *R1556[market]
+|                |--(amod)--> efficient
+|                |--(punct)--> R1548["microserver"]
+|                |--(compou)--> R1548["microserver"]
+|                |--(punct)--> R1548["microserver"]
+|--(punct)--> .
+
+	* entity-paths for event['market']43_13ecbplus.xmlsent:12939
+	['market --(punct)--> "']
+	['market --(compound)--> microserver']
+	['market --(punct)--> "']
+
+sentence #:amd acquires seamicro to grab share of microserver market 
+	[events]:[['grab', 'share'], ['market'], ['acquires']]
+	[entities]:[['microserver'], ['seamicro'], ['amd']]
+*R1546[acquires]
+|--(nsubj)--> R1547[amd]
+|--(dobj)--> R1549[seamicro]
+|--(xcomp)--> *R1557[grab]
+                 |--(mark)--> to
+                 |--(dobj)--> *R1557[share]
+                                  |--(nmod)--> *R1556[market]
+                                                   |--(case)--> of
+                                                   |--(compou)--> R1548[microserver]
+
+	* entity-paths for event['grab', 'share']43_13ecbplus.xmlsent:12936
+	['share --(nmod)--> market', 'market --(compound)--> microserver']
+
+	* entity-paths for event['market']43_13ecbplus.xmlsent:12936
+	['market --(compound)--> microserver']
+
+	* entity-paths for event['acquires']43_13ecbplus.xmlsent:12936
+	['acquires --(nsubj)--> AMD']
+	['acquires --(dobj)--> SeaMicro']
+	['acquires --(xcomp)--> grab', 'grab --(dobj)--> share', 'share --(nmod)--> market', 'market --(compound)--> microserver']

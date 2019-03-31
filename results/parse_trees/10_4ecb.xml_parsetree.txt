@@ -1,0 +1,38 @@
+
+-----------------------------------------
+docid:10_4ecb.xml
+-----------------------------------------
+
+sentence #:the angels have offered an eight-year contract to mark teixeira , general manager tony reagins said friday night . 
+	[events]:[['offered'], ['said']]
+	[entities]:[['the', 'angels'], ['mark', 'teixeira'], ['contract'], ['tony', 'reagins']]
+*R177[said]
+|--(ccomp)--> *R176[offered]
+|                |--(nsubj)--> R175[angels]
+|                |                |--(det)--> R175[the]
+|                |--(aux)--> have
+|                |--(dobj)--> R181[contract]
+|                |                |--(det)--> an
+|                |                |--(amod)--> eight-year
+|                |--(nmod)--> R163[teixeira]
+|                                 |--(case)--> to
+|                                 |--(compou)--> R163[mark]
+|--(punct)--> ,
+|--(nsubj)--> R178[reagins]
+|                |--(amod)--> general
+|                |--(compou)--> manager
+|                |--(compou)--> R178[tony]
+|--(nmod:t)--> friday
+|--(nmod:t)--> night
+|--(punct)--> .
+
+	* entity-paths for event['offered']10_4ecb.xmlsent:482
+	['offered --(nsubj)--> Angels']
+	['offered --(dobj)--> contract']
+	['offered --(nmod)--> Teixeira']
+
+	* entity-paths for event['said']10_4ecb.xmlsent:482
+	['said --(ccomp)--> offered', 'offered --(nsubj)--> Angels']
+	['said --(ccomp)--> offered', 'offered --(dobj)--> contract']
+	['said --(ccomp)--> offered', 'offered --(nmod)--> Teixeira']
+	['said --(nsubj)--> Reagins']
