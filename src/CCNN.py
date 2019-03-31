@@ -219,7 +219,7 @@ class CCNN:
 			model = Model(inputs=[input_a, input_b, auxiliary_input], outputs=main_output)
 			model.compile(loss=self.contrastive_loss, optimizer=Adam()) #, metrics=['accuracy'])
 			#model.compile(loss=self.contrastive_loss, optimizer=Adam())
-			print("summary:",model.summary())
+			print("summaryz:",model.summary())
 			val_loss = [1]
 			num_tries = 0
 			while val_loss[-1] > 0.1 and num_tries < 1:
@@ -633,7 +633,7 @@ class CCNN:
 				print("* ERROR: passed in predictions which belong to a dir other than what we specify")
 				exit(1)
 			if m2.doc_id != doc_id:
-				print("* ERROR: xuids are from diff docs!")
+				print("* ERROR2: xuids are from diff docs!")
 				exit(1)
 			if xuid1 not in docToXUIDsFromPredictions[doc_id]:
 				docToXUIDsFromPredictions[doc_id].append(xuid1)
@@ -1025,14 +1025,19 @@ class CCNN:
 	def create_base_network(self, input_shape):
 		seq = Sequential()
 		kernel_rows = 1
-		for i in range(self.nl):
-			nf = self.nf
-			if i == 1: # meaning 2nd layer, since i in {0,1,2, ...}
-				nf = 96
-			seq.add(Conv2D(nf, kernel_size=(kernel_rows, 3), activation='relu', padding="same", input_shape=input_shape, data_format="channels_first"))
-			seq.add(Dropout(float(self.do)))
-			seq.add(MaxPooling2D(pool_size=(kernel_rows, 2), padding="same", data_format="channels_first"))
-
+		print("self.nl:", self.nl)
+		#for i in range(self.nl):
+		#	nf = self.nf
+		#	if i == 1: # meaning 2nd layer, since i in {0,1,2, ...}
+		#		nf = 96
+		seq.add(Conv2D(self.nf, kernel_size=(kernel_rows, 3), activation='relu', padding="same", input_shape=input_shape, data_format="channels_first"))
+		seq.add(Dropout(float(self.do)))
+		seq.add(MaxPooling2D(pool_size=(kernel_rows, 2), padding="same", data_format="channels_first"))
+		
+		seq.add(Conv2D(self.nf, kernel_size=(kernel_rows, 3), activation='relu', padding="same", input_shape=input_shape, data_format="channels_first"))
+		seq.add(Dropout(float(self.do)))
+		seq.add(MaxPooling2D(pool_size=(kernel_rows, 2), padding="same", data_format="channels_first"))
+		
 		seq.add(Flatten())
 		seq.add(Dense(self.nf, activation='relu'))
 		return seq
@@ -1066,6 +1071,9 @@ class CCNN:
 
 	def standard_deviation(self, lst):
 		num_items = len(lst)
+		if num_items == 1:
+			return 0
+		
 		mean = sum(lst) / num_items
 		differences = [x - mean for x in lst]
 		sq_differences = [d ** 2 for d in differences]

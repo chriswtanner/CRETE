@@ -24,7 +24,7 @@ class Resolver:
 		self.ids = ids
 		self.preds = preds
 
-		if self.scope != "doc" and self.scope != "dir":
+		if self.scope != "doc" and self.scope != "dir" and self.scope != "dirHalf":
 			print("* ERROR: invalid scope!  must be doc or dir, for WD or CD, respectively")
 			exit(1)
 
@@ -95,8 +95,8 @@ class Resolver:
 
 		# only used for saving features
 		#fh = FeatureHandler(self.args, helper) #, trainXUIDs, devXUIDs, testXUIDs)
-		#fh.saveLemmaFeatures(lemmaFeaturesFile)
 		#fh.saveWordFeatures(wordFeaturesFile)
+		#fh.saveLemmaFeatures(lemmaFeaturesFile)
 		#fh.saveCharFeatures(charFeaturesFile)
 		#fh.savePOSFeatures(posFeaturesFile)
 		#fh.saveDependencyFeatures(dependencyFeaturesFile)
@@ -136,6 +136,7 @@ class Resolver:
 
 				# self.scope == doc or dir (WD or CD)
 				model = CCNN(helper, dh, supp_features_type, self.scope, self.presets, None, devMode, stopping_points)
+				#model = FFNN(helper, dh, self.scope, devMode)
 				
 				# this is only for printing the mention-tree-links we care about
 				'''
@@ -200,7 +201,9 @@ class Resolver:
 
 				
 				if dev_best_f1 > 0.4:
-					is_wd = True
+					is_wd = False
+					if self.scope == "doc":
+						is_wd = True
 					'''
 					if self.scope == "doc": # WD
 						print("DOING WITHIN-DOC ENSEMBLE!")
@@ -267,7 +270,7 @@ class Resolver:
 				print("* ERROR: passed in predictions which belong to a dir other than what we specify")
 				exit(1)
 			if m2.doc_id != doc_id:
-				print("* ERROR: xuids are from diff docs!")
+				print("* ERROR3: xuids are from diff docs!")
 				exit(1)
 			if xuid1 not in docToXUIDsFromPredictions[doc_id]:
 				docToXUIDsFromPredictions[doc_id].append(xuid1)

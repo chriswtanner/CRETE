@@ -24,6 +24,20 @@ from Resolver import Resolver
 #from HDF5Reader import HDF5Reader
 from sklearn import svm
 
+
+import keras
+import random
+import numpy as np
+import tensorflow as tf
+import keras.backend as K
+from keras import losses
+from math import sqrt, floor
+from keras.models import Sequential
+from keras.layers import Dense, Activation, Dropout
+from keras.optimizers import Adam
+from collections import defaultdict
+
+
 class CorefEngine:
 
 	# TODO:
@@ -43,14 +57,15 @@ class CorefEngine:
 
 		# manually-defined features (others are in Resolver.py)
 		#32, 20, 2, 32, 0
-		wdPresets = [32, 20, 2, 32, 0] # batchsize, num epochs, num layers, num filters, dropout
-		num_runs = 10
+		wdPresets = [128, 2, 2, 32, 0] # batchsize, num epochs, num layers, num filters, dropout
+		num_runs = 1
 
 		event_resolution = Resolver(args, wdPresets, "doc") # doc or dir for WD or CD, respectively
 		
 		# {none, relations, shortest, one} for supplemental path info
 		# resolve(mention_type, supp_features_type, event_pronouns, entity_pronouns, num_runs)
-		event_ids, event_preds, event_golds = event_resolution.resolve("events", "none", False, True, num_runs) 
+		# supp_features_type could be {none, shortest, one, type}
+		event_ids, event_preds, event_golds = event_resolution.resolve("events", "shortest", False, True, num_runs)
 
 		#event_resolution.aggCluster(event_ids, event_preds, event_golds)
 

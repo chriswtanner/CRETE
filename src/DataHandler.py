@@ -131,6 +131,7 @@ class DataHandler:
 						inSameDoc = True
 					if self.corpus.XUIDToMention[xuid1].dirHalf == self.corpus.XUIDToMention[xuid2].dirHalf:
 						inSameDirHalf = True
+
 					if scope == "doc" and inSameDoc:
 						xuidPairs.add((xuid1, xuid2))
 						tmp_xuids_reclaimed.add(xuid1)
@@ -167,8 +168,12 @@ class DataHandler:
 		numFeatures = 0
 		numPosAdded = 0
 		numNegAdded = 0
+
+		numPosNotAdded = 0
+		numNegNotAdded = 0
+
 		#xuidPairs = self.createXUIDPairs(XUIDs, scope)
-		print("*",split,"[createDataForCCNN] # pairs made from these: ", len(xuidPairs))
+		print("*B ",split,"[createDataForCCNN] # pairs made from these: ", len(xuidPairs))
 
 		# TMP ADDED FOR SAME LEMMA TEST
 		'''
@@ -201,7 +206,7 @@ class DataHandler:
 		for (xuid1, xuid2) in xuidPairs:
 			if xuid1 == xuid2:
 				print("whaaaaa: xuidPairs:", xuidPairs)
-			
+				exit(1)
 			# TMP ADDED FOR SAME LEMMA TEST
 			'''
 			sameLemma = True
@@ -224,8 +229,12 @@ class DataHandler:
 			m1 = self.corpus.XUIDToMention[xuid1]
 			m2 = self.corpus.XUIDToMention[xuid2]
 			if m1.isPred and not m2.isPred:
+				println("* ERROR: mismatched mention types (event and entities)")
+				exit(1)
 				continue
 			elif not m1.isPred and m2.isPred:
+				println("* ERROR: mismatched mention types (event and entities)")
+				exit(1)
 				continue
 			
 			features = []
@@ -360,9 +369,14 @@ class DataHandler:
 					m1_full_paths = m1.levelToParents
 					m2_full_paths = m2.levelToParents
 				
+
+				# actually means paths to the other mention-type, thanks to the code above
 				if len(m1_full_paths) == 0 or len(m2_full_paths) == 0:
-				#if len(m1.levelToChildrenEntities) == 0 or len(m2.levelToChildrenEntities) == 0:
 					
+					if self.corpus.XUIDToMention[xuid1].REF == self.corpus.XUIDToMention[xuid2].REF:
+						numPosNotAdded += 1
+					else:
+						numNegNotAdded += 1
 					# at least one mention doesn't have a path to an Entity
 					#features.append(0)
 					#features.append(1)
@@ -715,7 +729,7 @@ class DataHandler:
 			mentionType = str(m1.isPred) + "_" + str(m2.isPred)
 			mentionTypeToCount[mentionType] += 1
 
-		print("\t", split, "# unique XUIDs used in pairs:", len(xuids_used_for_pairs))
+		print("\t", split, "E # unique XUIDs used in pairs:", len(xuids_used_for_pairs))
 		print("\t", split, "we dont have these:", tmp_dir_to_with)
 		
 		X = np.asarray(X)
@@ -728,8 +742,13 @@ class DataHandler:
 		print("\t", split, "numNegAdded:", str(numNegAdded))
 		pp = float(numPosAdded / (numPosAdded+numNegAdded))
 		pn = float(numNegAdded / (numPosAdded+numNegAdded))
-		print("\t", split, "* createData() loaded", len(pairs), "pairs (", \
-			pp, "% pos, ", pn, "% neg); features' length = ", \
+
+		npp = float(numPosNotAdded / (numPosNotAdded + numNegNotAdded))
+		npn = float(numNegNotAdded / (numPosNotAdded + numNegNotAdded))
+
+		print("\t", split, "* createData() loaded", len(pairs), "pairs (# pos:",numPosAdded, \
+			pp, "% pos; neg:", numNegAdded, "(%", pn, "); didn't add: # pos:", numPosNotAdded, \
+			"(%", npp, "); didn't add: # neg:", numNegNotAdded, " (%", npn,"); features' length = ", \
 			numFeatures, "; supp length:", str(len(supp_features)), str(len(supp_features[0])))
 
 		if len(pairs) == 0:
@@ -752,7 +771,7 @@ class DataHandler:
 		print("ALL CORPUS tmp_coref_counts:", self.tmp_coref_counts)
 		print("shortest stats: tmp xuids (# pairs w/ 2 relations):", len(self.tmp_minipreds.keys()))
 		print("\t", split, "mentionTypeToCount:",str(mentionTypeToCount))
-		print("\t", split, "tmp_pairs_with paths:", tmp_pairs_with, "tmp_pairs_without paths", tmp_pairs_without)
+		print("\t", split, "C tmp_pairs_with paths:", tmp_pairs_with, "D tmp_pairs_without paths", tmp_pairs_without)
 		print("**** tmp_count_in:", self.tmp_count_in)
 		print("tmp_count_out:", self.tmp_count_out)
 		return (pairs, X, supp_features, Y)
@@ -768,6 +787,7 @@ class DataHandler:
 		numFeatures = 0
 		numPosAdded = 0
 		numNegAdded = 0
+
 		xuidPairs = self.createXUIDPairs(XUIDs, scope)
 		for (xuid1, xuid2) in xuidPairs:
 			label = [1, 0]

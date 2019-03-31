@@ -11,13 +11,31 @@ from keras.layers import Dense, Activation, Dropout
 from keras.optimizers import Adam
 from collections import defaultdict
 class FFNN:
-	def __init__(self, helper, coref):
+	def __init__(self, helper, dh, scope, devMode):
 		self.helper = helper
+		self.dh = dh
+		self.scope = scope # used by aggClusterCD()
+		self.devMode = devMode
+
 		self.corpus = helper.corpus
 		self.args = helper.args
-		(self.trainID, self.trainX, self.trainY) = (coref.trainID, coref.trainX, coref.trainY)
-		(self.devID, self.devX, self.devY) = (coref.devID, coref.devX, coref.devY)
+		
+		self.dh.loadNNData("None", False, self.scope) # False means use FFNN
 
+		(self.trainID, self.trainX, self.trainY) = (dh.trainID, dh.trainX, dh.trainY)
+		(self.devID, self.devX, self.devY) = (dh.devID, dh.devX, dh.devY)
+		(self.testID, self.testX, self.testY) = (dh.testID, dh.testX, dh.testY)
+
+		self.trainX = np.array(self.trainX)
+		self.trainY = np.array(self.trainY)
+		self.devX = np.array(self.devX)
+		self.devY = np.array(self.devY)
+		self.testX = np.array(self.testX)
+		self.testY = np.array(self.testY)
+
+		print("# trainx:", len(self.trainX))
+		print("self.trainX:", len(self.trainX[0]))
+		print("self.trainX:", self.trainX[0])
 		if self.args.native:
 			tf.Session(config=tf.ConfigProto(log_device_placement=True))
 			os.environ['CUDA_VISIBLE_DEVICES'] = ''
@@ -27,7 +45,7 @@ class FFNN:
 		self.hidden_size = 200
 		self.dataDim = len(self.trainX[0])
 		self.outputDim = 2
-		self.batch_size = 5
+		self.batch_size = 1
 		self.num_epochs = int(self.args.numEpochs)
 		pos_ratio = 0.8
 		neg_ratio = 1. - pos_ratio
@@ -42,19 +60,20 @@ class FFNN:
 		cost = tf.nn.weighted_cross_entropy_with_logits(y_true, y_pred, self.weights)
 		return K.mean(cost * self.pos_ratio, axis=-1)
 
-	def train_and_test_wd(self, numRuns):
+	def train_and_test(self):
 		f1s = []
 		recalls = []
 		precs = []
+		numRuns = 2
 		while len(f1s) < numRuns:
 			self.model = Sequential()
 
 			# optionally add a 3rd layer
-			if self.dataDim > 1000:
+			if self.dataDim > 2000:
 				h1 = floor(self.dataDim / 2)
 				print("h1:",h1)
-				self.model.add(Dense(units=h1, input_shape=(self.dataDim,), use_bias=True, kernel_initializer='normal'))
-				self.model.add(Activation('relu'))
+				self.model.add(Dense(units=h1, input_shape=(self.dataDim,), activation='sigmoid', use_bias=True, kernel_initializer='normal'))
+				#self.model.add(Activation('sigmoid'))
 				if h1 > 1600:
 					h2 = floor(h1 / 4.0)
 					self.model.add(Dense(units=h2, \
@@ -63,14 +82,18 @@ class FFNN:
 				self.model.add(Dense(units=self.hidden_size, use_bias=True, kernel_initializer='normal'))
 			else:
 				self.model.add(Dense(units=self.hidden_size, input_shape=(self.dataDim,), use_bias=True, kernel_initializer='normal'))
-			self.model.add(Activation('relu'))
-			self.model.add(Dense(units=50, use_bias=True, kernel_initializer='normal'))
-			self.model.add(Activation('relu'))
-			self.model.add(Dense(units=2, use_bias=True, kernel_initializer='normal'))
-			self.model.add(Activation('softmax'))
+			#self.model.add(Dropout(0.2))
+			#self.model.add(Activation('relu'))
+			self.model.add(Dense(units=200, use_bias=True, activation='relu', kernel_initializer='normal'))
+			#self.model.add(Activation('relu'))
+			#self.model.add(Dropout(0.1))
+			self.model.add(Dense(units=50, use_bias=True, activation='relu', kernel_initializer='normal'))
+			#self.model.add(Activation('relu'))
+			self.model.add(Dense(units=2, use_bias=True, activation='softmax', kernel_initializer='normal'))
+			#self.model.add(Activation('softmax'))
 			self.model.compile(loss=self.weighted_binary_crossentropy, optimizer=Adam(lr=0.001), metrics=['accuracy'])
 			self.model.summary()
-			self.model.fit(self.trainX, self.trainY, epochs=self.num_epochs, batch_size=self.batch_size, verbose=1)
+			self.model.fit(self.trainX, self.trainY, epochs=self.num_epochs, shuffle=True, batch_size=self.batch_size, verbose=1)
 			
 			preds = self.model.predict(self.devX)
 			print("# preds:",len(preds)) #, preds)

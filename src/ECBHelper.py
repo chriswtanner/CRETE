@@ -190,7 +190,7 @@ class ECBHelper:
 				print("* ERROR: passed in predictions which belong to a dir other than what we specify")
 				exit(1)
 			if withinDoc and m2.doc_id != doc_id:
-				print("* ERROR: xuids are from diff docs!")
+				print("* ERROR1: xuids are from diff docs!")
 				exit(1)
 
 			if len(ensemblePreds) == len(ids): # not empty
