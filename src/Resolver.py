@@ -133,12 +133,16 @@ class Resolver:
 
 			dev_best_f1s = []
 			while ensemble_test_predictions == [] or len(ensemble_test_predictions[0]) < num_runs:
-
+				
 				# self.scope == doc or dir (WD or CD)
 				model = CCNN(helper, dh, supp_features_type, self.scope, self.presets, None, devMode, stopping_points)
 				#model = FFNN(helper, dh, self.scope, devMode)
 				
 				# this is only for printing the mention-tree-links we care about
+				for xuid1, xuid2 in dh.trainXUIDPairs | dh.devXUIDPairs | dh.testXUIDPairs:
+					print(xuid1, xuid2)
+				
+
 				'''
 				print("#xuid_pairs_that_meet_criterion:", len(dh.xuid_pairs_that_meet_criterion))
 				for _ in range(len(dh.xuid_pairs_that_meet_criterion)):
@@ -193,13 +197,13 @@ class Resolver:
 					#helper.dfs_tree(first_token, [], [], "", sentenceTokenToMention[sentNum2], stanTokenToECBTokens)
 				'''
 
+				exit()
 
-				results = model.train_and_test()
+				#results = model.train_and_test()
 
 				dev_dirs, dev_ids, dev_preds, dev_golds, dev_best_f1 = results[0]
 				test_dirs, test_ids, test_preds, test_golds, test_best_f1 = results[1]
 
-				
 				if dev_best_f1 > 0.4:
 					is_wd = False
 					if self.scope == "doc":

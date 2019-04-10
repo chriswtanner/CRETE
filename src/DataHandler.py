@@ -76,9 +76,9 @@ class DataHandler:
 		start_time = time.time()
 
 		# constructs pairs from the XUIDs above
-		self.trainXUIDPairs = self.createXUIDPairs(self.trainXUIDs, scope)
-		self.devXUIDPairs = self.createXUIDPairs(self.devXUIDs, scope)
-		self.testXUIDPairs = self.createXUIDPairs(self.testXUIDs, scope)
+		self.trainXUIDPairs = self.createXUIDPairs(self.trainXUIDs, scope, supp_features)
+		self.devXUIDPairs = self.createXUIDPairs(self.devXUIDs, scope, supp_features)
+		self.testXUIDPairs = self.createXUIDPairs(self.testXUIDs, scope, supp_features)
 
 		if useCCNN:
 			(self.trainID, self.trainX, self.supplementalTrain, self.trainY) = self.createDataForCCNN(self.helper.trainingDirs, self.trainXUIDPairs, supp_features, True, scope, "train")
@@ -99,7 +99,7 @@ class DataHandler:
 	# (1) 'doc' = the same doc (within-dic); or,
 	# (2) 'dirHalf' = the same dirHalf (but not same doc)
 	# (3) 'dir' = the same dir (but not same doc)
-	def createXUIDPairs(self, XUIDs, scope):
+	def createXUIDPairs(self, XUIDs, scope, supp_features_type):
 		if scope != "doc" and scope != "dirHalf" and scope != "dir":
 			print("* ERROR: scope must be doc, dirHalf, or dir")
 			exit(1)
@@ -107,7 +107,7 @@ class DataHandler:
 		xuidPairs = set()
 		dirHalfToXUIDs = defaultdict(set)
 		ECBDirToXUIDs = defaultdict(set)
-		
+
 		for xuid in XUIDs:
 			mention = self.corpus.XUIDToMention[xuid]
 			dirHalfToXUIDs[mention.dirHalf].add(xuid)
@@ -122,9 +122,27 @@ class DataHandler:
 		#for dirHalf in sorted(dirHalfToXUIDs.keys()):
 			for xuid1 in sorted(ECBDirToXUIDs[ecb_dir]):
 				tmp_ecbtoxuids.add(xuid1)
+				m1 = self.corpus.XUIDToMention[xuid1]
+
 				for xuid2 in sorted(ECBDirToXUIDs[ecb_dir]):
 					if xuid2 <= xuid1:
 						continue
+					m2 = self.corpus.XUIDToMention[xuid2]
+
+					if m1.isPred and m2.isPred:  # both are events, so let's use paths to entities
+						m1_full_paths = m1.levelToChildren
+						m2_full_paths = m2.levelToChildren
+					elif not m1.isPred and not m2.isPred:  # both are entities, so let's use paths to events
+						m1_full_paths = m1.levelToParents
+						m2_full_paths = m2.levelToParents
+
+					# assume its good.  only if we care about links do we
+					# optionally set it to false
+					have_valid_links = True
+					if supp_features_type == "shortest":
+						if len(m1_full_paths) == 0 or len(m2_full_paths) == 0:
+							have_valid_links = False
+
 					inSameDoc = False
 					inSameDirHalf = False
 					if self.corpus.XUIDToMention[xuid1].doc_id == self.corpus.XUIDToMention[xuid2].doc_id:
@@ -132,19 +150,23 @@ class DataHandler:
 					if self.corpus.XUIDToMention[xuid1].dirHalf == self.corpus.XUIDToMention[xuid2].dirHalf:
 						inSameDirHalf = True
 
-					if scope == "doc" and inSameDoc:
+					to_add = False
+					if scope == "doc" and inSameDoc and have_valid_links:
+						to_add = True
+					elif scope == "dirHalf" and not inSameDoc and inSameDirHalf and have_valid_links:
+						to_add = True
+					elif scope == "dir" and not inSameDoc and have_valid_links:
+						xuidPairs.add((xuid1, xuid2))
+
+					# we passed all of our filters (appropriate scope and is 'shortest' or not)
+					if to_add:
 						xuidPairs.add((xuid1, xuid2))
 						tmp_xuids_reclaimed.add(xuid1)
 						tmp_xuids_reclaimed.add(xuid2)
-					elif scope == "dirHalf" and not inSameDoc and inSameDirHalf:
-						xuidPairs.add((xuid1, xuid2))
-						tmp_xuids_reclaimed.add(xuid1)
-						tmp_xuids_reclaimed.add(xuid2)
-					elif scope == "dir" and not inSameDoc:
-						xuidPairs.add((xuid1, xuid2))
 		#print("tmp_xuids_reclaimed:", len(tmp_xuids_reclaimed))
 		#print("tmp_ecbtoxuids:", len(tmp_ecbtoxuids))
 		print("\t# xuidPairs:", len(xuidPairs))
+
 		return xuidPairs
 	
 	# almost identical to createData() but it re-shapes the vectors to be 5D -- pairwise.
@@ -369,7 +391,6 @@ class DataHandler:
 					m1_full_paths = m1.levelToParents
 					m2_full_paths = m2.levelToParents
 				
-
 				# actually means paths to the other mention-type, thanks to the code above
 				if len(m1_full_paths) == 0 or len(m2_full_paths) == 0:
 					
@@ -743,8 +764,11 @@ class DataHandler:
 		pp = float(numPosAdded / (numPosAdded+numNegAdded))
 		pn = float(numNegAdded / (numPosAdded+numNegAdded))
 
-		npp = float(numPosNotAdded / (numPosNotAdded + numNegNotAdded))
-		npn = float(numNegNotAdded / (numPosNotAdded + numNegNotAdded))
+		npp = 0
+		npn = 0
+		if numPosNotAdded > 0 or numNegNotAdded > 0:
+			npp = float(numPosNotAdded / (numPosNotAdded + numNegNotAdded))
+			npn = float(numNegNotAdded / (numPosNotAdded + numNegNotAdded))
 
 		print("\t", split, "* createData() loaded", len(pairs), "pairs (# pos:",numPosAdded, \
 			pp, "% pos; neg:", numNegAdded, "(%", pn, "); didn't add: # pos:", numPosNotAdded, \

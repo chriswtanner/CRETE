@@ -927,7 +927,6 @@ class ECBHelper:
 			#print("\tchild:", child_stan)
 			self.dfs_tree(child_stan, new_text_branches, new_cur_nodes, child_link.relationship, sentenceTokenToMention, stanTokenToECBTokens)
 
-
 	def addDependenciesToMentions(self, dh):
 		# TMP: keeps track of how many event mentions have entities attached or not
 		have_ent = 0
@@ -1159,11 +1158,9 @@ class ECBHelper:
 
 						shortest_path_to_ent[shortest_level] += 1
 						
-						
 						for rel in one_hop_relations:
 							relation_to_count[rel] += 1
 						
-
 						'''
 						print("mentions' paths to entities:")
 						for l in sorted(m.levelToEntityPath.keys()):
