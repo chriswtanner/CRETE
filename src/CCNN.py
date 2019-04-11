@@ -71,11 +71,8 @@ class CCNN:
 			tf.Session(config=tf.ConfigProto(log_device_placement=True))
 			os.environ['CUDA_VISIBLE_DEVICES'] = ''
 		
-	def baseline_tests(self):
+	def baseline_tests(self, xuid_pairs):
 
-		# returns same lemma results
-		print(len(self.dh.testXUIDPairs))
-		
 		fh = FeatureHandler(self.args, self.helper)
 		fh.loadGloveEmbeddings()
 		
@@ -94,7 +91,7 @@ class CCNN:
 		cs_preds = []
 		l2_preds = []
 		# goes through all pairs
-		for xuid1, xuid2 in self.dh.devXUIDPairs:
+		for xuid1, xuid2 in xuid_pairs:
 			m1 = self.corpus.XUIDToMention[xuid1]
 			m2 = self.corpus.XUIDToMention[xuid2]
 			is_gold = False
@@ -167,7 +164,7 @@ class CCNN:
 		any_P = any_TP / float(any_TP + any_FP)
 		any_F1 = 2*any_P*any_R / (any_P + any_R)
 
-		print("all_F1:", all_F1, "any_F1:", any_F1)
+		#print("all_F1:", all_F1, "any_F1:", any_F1)
 		(cs_f1, bestP, bestR, bestVal) = self.helper.evaluatePairwisePreds(None, cs_preds, golds, self.dh, True)
 		(l2_f1, bestP, bestR, bestVal) = self.helper.evaluatePairwisePreds(None, l2_preds, golds, self.dh, False)
 		return (any_F1, all_F1, cs_f1, l2_f1)

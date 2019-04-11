@@ -114,7 +114,6 @@ class DataHandler:
 
 		# we sort to ensure consistency across multiple runs
 		print("# mentions passed-in:", len(XUIDs))
-		#print("createXUIDPairs() created ECBDirToXUIDs to have this many [real] dirs:",len(ECBDirToXUIDs.keys()))
 		tmp_xuids_reclaimed = set()
 		tmp_ecbtoxuids = set()
 		for ecb_dir in sorted(ECBDirToXUIDs.keys()):
@@ -174,8 +173,9 @@ class DataHandler:
 				filtered_xuid_pairs.add((xuid1, xuid2))
 		print("#filtered_xuid_pairs:", len(filtered_xuid_pairs))
 
-		TODO: print the sentences for these pairs.  can measure treelstm performance and CCNN perf
-		return xuidPairs
+		#TODO: print the sentences for these pairs.  can measure treelstm performance and CCNN perf
+		return filtered_xuid_pairs
+		#return xuidPairs
 		
 	def construct_tree_data(self, xuid_pairs):
 		rooted_xuids = set() # returns this
