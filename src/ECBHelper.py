@@ -620,6 +620,15 @@ class ECBHelper:
 				else:
 					print("\t* we either hit our original mention or found a loop")
 	
+	# explores the tree structure of valid xuids we care about
+	def construct_tree_data_(self, dh):
+		training_xuids = self.construct_tree_data(dh.trainXUIDPairs, dh)
+		dev_xuids = self.construct_tree_data(dh.devXUIDPairs, dh)
+		test_xuids = self.construct_tree_data(dh.testXUIDPairs, dh)
+		
+		# NOW REFINES THE PAIRS by removing any pair that doesn't contain these event-rooted ones
+
+
 	# returns a list of all paths to an entity mention (a list of lists)
 	def getAllChildrenMentionPaths(self, dh, tokenToMentions, originalMentionStans, token, curPath, allPaths):
 		foundEntity = False
@@ -882,6 +891,7 @@ class ECBHelper:
 		new_cur_nodes = cur_nodes.copy()
 		if not stan_node.isRoot:
 			ecb_tokens = stanTokenToECBTokens[stan_node]
+			#print("ecb_tokenszz:", ecb_tokens)
 			ecb_token = next(iter(ecb_tokens))
 			#print("\tadding ecb_token:", ecb_token)
 			new_cur_nodes.append(ecb_token)

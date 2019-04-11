@@ -65,7 +65,7 @@ class CorefEngine:
 		# {none, relations, shortest, one} for supplemental path info
 		# resolve(mention_type, supp_features_type, event_pronouns, entity_pronouns, num_runs)
 		# supp_features_type could be {none, shortest, one, type}
-		event_ids, event_preds, event_golds = event_resolution.resolve("events", "shortest", False, True, num_runs)
+		event_ids, event_preds, event_golds = event_resolution.resolve("events", "none", False, True, num_runs)
 
 		#event_resolution.aggCluster(event_ids, event_preds, event_golds)
 

@@ -123,7 +123,8 @@ class SimilarityTreeLSTM(nn.Module):
 
 		lpos = lparents.index(0)
 		rpos = rparents.index(0)
-		
+		print(left_to_hidden.keys())
+		print(right_to_hidden.keys())
 		for l in left_to_hidden:
 			for r in right_to_hidden:
 				dp = 0
@@ -146,6 +147,6 @@ class SimilarityTreeLSTM(nn.Module):
 			sim_pairs.items(), key=operator.itemgetter(1), reverse=True)
 		for i in sorted_x:
 			l, r = i[0]
-			print(self.vocab.idxToLabel[lsent.detach().numpy()[l]], "-",
-					self.vocab.idxToLabel[rsent.detach().numpy()[r]], ": ", i[1])
+			print(self.vocab.idxToLabel[lsent.detach().numpy()[l]], "-", \
+				self.vocab.idxToLabel[rsent.detach().numpy()[r]], ": ", i[1])
 		

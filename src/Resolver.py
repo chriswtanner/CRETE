@@ -132,72 +132,14 @@ class Resolver:
 			ensemble_test_predictions = []
 
 			dev_best_f1s = []
+
+			dh.load_xuid_pairs(supp_features_type, self.scope)
+			exit()
 			while ensemble_test_predictions == [] or len(ensemble_test_predictions[0]) < num_runs:
-				
+
 				# self.scope == doc or dir (WD or CD)
 				model = CCNN(helper, dh, supp_features_type, self.scope, self.presets, None, devMode, stopping_points)
 				#model = FFNN(helper, dh, self.scope, devMode)
-				
-				# this is only for printing the mention-tree-links we care about
-				for xuid1, xuid2 in dh.trainXUIDPairs | dh.devXUIDPairs | dh.testXUIDPairs:
-					print(xuid1, xuid2)
-				
-
-				'''
-				print("#xuid_pairs_that_meet_criterion:", len(dh.xuid_pairs_that_meet_criterion))
-				for _ in range(len(dh.xuid_pairs_that_meet_criterion)):
-					(xuid1, xuid2) = dh.xuid_pairs_that_meet_criterion[_]
-					print("\nboth events have 1-hops to two dobj and nsubj:", str(_))
-					sentenceTokenToMention = defaultdict(lambda: defaultdict(set))
-					m1 = corpus.EUIDToMention[xuid1]
-					m2 = corpus.EUIDToMention[xuid2]
-
-					if m1.doc_id != m2.doc_id:
-						print("* ERROR: diff docs")
-						exit(1)
-					
-					for euid in corpus.doc_idToDocs[m1.doc_id].EUIDs:
-						m = corpus.EUIDToMention[euid]
-						sentNum = m.globalSentenceNum
-						for t in m.tokens:
-							sentenceTokenToMention[sentNum][t].add(m)
-
-					stanTokenToECBTokens = defaultdict(set)
-					for t in corpus.doc_idToDocs[m1.doc_id].tokens:
-						for stan in t.stanTokens:
-							stanTokenToECBTokens[stan].add(t)
-
-					first_token = None
-					sent1_text = ""
-					sentNum1 = m1.globalSentenceNum
-					for t in corpus.globalSentenceNumToTokens[sentNum1]:
-						if t.tokenID == "-1":
-							continue
-						bestStan = dh.getBestStanToken(t.stanTokens)
-						for pl in bestStan.parentLinks[helper.dependency_parse_type]:
-							parentToken = pl.parent
-							if parentToken.isRoot:
-								first_token = parentToken
-						sent1_text += t.text + " "
-					#print("\t** m1:", m1, "from sentence:", sent1_text)
-					#helper.dfs_tree(first_token, [], [], "", sentenceTokenToMention[sentNum1], stanTokenToECBTokens)
-
-					sentNum2 = m2.globalSentenceNum
-					sent2_text = ""
-					for t in corpus.globalSentenceNumToTokens[sentNum2]:
-						if t.tokenID == "-1":
-							continue
-						bestStan = dh.getBestStanToken(t.stanTokens)
-						for pl in bestStan.parentLinks[helper.dependency_parse_type]:
-							parentToken = pl.parent
-							if parentToken.isRoot:
-								first_token = parentToken
-						sent2_text += t.text + " "
-					#print("\t*** m2:", m2, "from sentence:", sent2_text)
-					#helper.dfs_tree(first_token, [], [], "", sentenceTokenToMention[sentNum2], stanTokenToECBTokens)
-				'''
-
-				exit()
 
 				#results = model.train_and_test()
 

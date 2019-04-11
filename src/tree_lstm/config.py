@@ -5,7 +5,7 @@ def parse_args():
     parser = argparse.ArgumentParser(
         description='PyTorch TreeLSTM for Sentence Similarity on Dependency Trees')
     # data arguments
-    parser.add_argument('--sub_dir', default='orig/',
+    parser.add_argument('--sub_dir', default='sample/',
                         help='sub_dir')
     parser.add_argument('--data', default='data/sick/',
                         help='path to dataset')
