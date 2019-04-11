@@ -79,6 +79,112 @@ class DataHandler:
 		self.devXUIDPairs = self.createXUIDPairs(self.devXUIDs, scope, supp_features)
 		self.testXUIDPairs = self.createXUIDPairs(self.testXUIDs, scope, supp_features)
 
+	def construct_tree_files_(self):
+		self.construct_tree_files(self.trainXUIDPairs, "tree_lstm/data/sick/train/ecb/")
+		self.construct_tree_files(self.devXUIDPairs, "tree_lstm/data/sick/dev/ecb/")
+		self.construct_tree_files(self.testXUIDPairs, "tree_lstm/data/sick/test/ecb/")
+
+	# produces files that TreeLSTM can read
+	def construct_tree_files(self, xuid_pairs, dir_path):
+	
+		fout_a = open(dir_path + "a.toks", 'w')
+		fout_b = open(dir_path + "b.toks", 'w')
+		fout_sim = open(dir_path + "sim.txt", 'w')
+		fout_a_deps = open(dir_path + "a.parents", 'w')
+		fout_b_deps = open(dir_path + "b.parents", 'w')
+
+		# gets unique IDs
+		valid_xuids = set()
+		for xuid1, xuid2 in xuid_pairs:
+			valid_xuids.add(xuid1)
+			valid_xuids.add(xuid2)
+		print("# unique valid_xuids:", len(valid_xuids))
+		
+		# constructs ecb tokens -> mentions
+		doc_ids = set()
+		sentenceTokenToMention = defaultdict(lambda: defaultdict(set))
+		for xuid in valid_xuids:
+			m = self.corpus.EUIDToMention[xuid]
+			sentNum = m.globalSentenceNum
+			doc_ids.add(m.doc_id)
+			for t in m.tokens:
+				sentenceTokenToMention[sentNum][t].add(m)
+
+		# creates stan -> ecb tokens
+		stanTokenToECBTokens = defaultdict(set)
+		for doc_id in doc_ids:
+			for t in self.corpus.doc_idToDocs[doc_id].tokens:
+				for stan in t.stanTokens:
+					stanTokenToECBTokens[stan].add(t)
+
+		# writes out each sentence in plain text
+		for xuid1, xuid2 in xuid_pairs:
+			m1 = self.corpus.XUIDToMention[xuid1]
+			m2 = self.corpus.XUIDToMention[xuid2]
+			label = "0"
+			if m1.REF == m2.REF:
+				label = "1"
+			text1, dependency_chains1 = self.construct_tree_file(xuid1, stanTokenToECBTokens)
+			text2, dependency_chains2 = self.construct_tree_file(xuid2, stanTokenToECBTokens)
+			
+			fout_a.write(text1 + "\n")
+			fout_b.write(text2 + "\n")
+			fout_sim.write(label + "\n")
+			fout_a_deps.write(dependency_chains1 + "\n")
+			fout_b_deps.write(dependency_chains2 + "\n")
+		fout_a.close()
+		fout_b.close()
+		fout_sim.close()
+		fout_a_deps.close()
+		fout_b_deps.close()
+
+	def construct_tree_file(self, xuid, stanTokenToECBTokens):
+		m = self.corpus.XUIDToMention[xuid]
+		#sent = " ".join([t.text for t in self.corpus.globalSentenceNumToTokens[m.globalSentenceNum]])
+
+		sent = ""
+		# constructs token -> index (1-based)
+		token_to_index = {}
+		token_index = 1
+		for token in self.corpus.globalSentenceNumToTokens[m.globalSentenceNum]:
+			if token.tokenID == "-1":
+				continue
+			token_to_index[token] = token_index
+			sent += token.text + " "
+			token_index += 1
+		sent = sent.strip()
+
+		# constructs dependency chain
+		dependency_chain = []
+		for t in self.corpus.globalSentenceNumToTokens[m.globalSentenceNum]:
+			if t.tokenID == "-1":
+				continue
+			bestStan = self.getBestStanToken(t.stanTokens)
+			if len(bestStan.parentLinks[self.helper.dependency_parse_type]) > 1:
+				print("* more than 1 parent:", len(bestStan.parentLinks[self.helper.dependency_parse_type]))
+				exit()
+
+			pl = next(iter(bestStan.parentLinks[self.helper.dependency_parse_type]))
+			parentToken = pl.parent
+			#print("pl:", pl)
+			if parentToken.isRoot:
+				dependency_chain.append(0)
+			else:
+				ecb_parent_tokens = stanTokenToECBTokens[parentToken]
+				if len(ecb_parent_tokens) != 1:
+					print("* not 1 ecb parents", ecb_parent_tokens)
+					exit()
+				token = next(iter(ecb_parent_tokens))
+				dependency_chain.append(token_to_index[token])
+		if dependency_chain.count(0) != 1:
+			print("* have != 1 dependency parent")
+			exit()
+		if len(sent.split(" ")) != len(dependency_chain):
+			print("* sent len != dependency length")
+			exit()
+
+		return sent, " ".join([str(d) for d in dependency_chain])
+
 	def loadNNData(self, supp_features, useCCNN, scope):
 		print("[dh] loading ...")
 		start_time = time.time()
@@ -164,7 +270,7 @@ class DataHandler:
 		#print("tmp_xuids_reclaimed:", len(tmp_xuids_reclaimed))
 		#print("tmp_ecbtoxuids:", len(tmp_ecbtoxuids))
 		print("\t# xuidPairs:", len(xuidPairs))
-		rooted_xuids = self.construct_tree_data(xuidPairs)
+		rooted_xuids = self.construct_rooted_trees(xuidPairs)
 
 		# TODO: need to filter the pairs now
 		filtered_xuid_pairs = set()
@@ -177,7 +283,7 @@ class DataHandler:
 		return filtered_xuid_pairs
 		#return xuidPairs
 		
-	def construct_tree_data(self, xuid_pairs):
+	def construct_rooted_trees(self, xuid_pairs):
 		rooted_xuids = set() # returns this
 		valid_sentences = set()
 		valid_xuids = set()
@@ -205,7 +311,6 @@ class DataHandler:
 				for stan in t.stanTokens:
 					stanTokenToECBTokens[stan].add(t)
 
-			sentNum = m.globalSentenceNum
 			valid_sentences.add(sentNum)
 		print("# sentences:", len(valid_sentences))
 
@@ -251,7 +356,6 @@ class DataHandler:
 				exit()
 		print("has_mention:", has_mention, "; has_no_mention:", has_no_mention)
 		return rooted_xuids
-
 
 	# almost identical to createData() but it re-shapes the vectors to be 5D -- pairwise.
 	# i could probably combine this into 1 function and have a boolean flag isCCNN=True.

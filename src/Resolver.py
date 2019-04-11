@@ -117,27 +117,15 @@ class Resolver:
 		
 		# within-doc first, then cross-doc
 		if useCCNN:
-			# DEV-WD
-			'''
-			print("***** DEV SET ******")
-			wd_model = CCNN(helper, dh, useRelationalFeatures, "doc", presets, None, True) # True means use DEVSET
-			(wd_docPreds, wd_pred, wd_gold, sp_wd) = wd_model.train_and_test_wd(10) # 1 means only
-			
-			cd_model = CCNN(helper, dh, useRelationalFeatures, cd_scope, presets, wd_docPreds, True)  # True means use DEV SET
-			(cd_docPreds, cd_pred, cd_gold, sp_cd) = cd_model.train_and_test_cd(3)
-
-			print("\t** BEST DEV-WD stopping points:", sp_wd,"and",sp_cd)
-			'''
 			ensemble_dev_predictions = []
 			ensemble_test_predictions = []
-
 			dev_best_f1s = []
 			test_best_f1s = []
 
 			dh.load_xuid_pairs(supp_features_type, self.scope)
+			dh.construct_tree_files_()
+			exit()
 			while ensemble_test_predictions == [] or len(ensemble_test_predictions[0]) < num_runs:
-
-				# self.scope == doc or dir (WD or CD)
 				model = CCNN(helper, dh, supp_features_type, self.scope, self.presets, None, devMode, stopping_points)
 				#model = FFNN(helper, dh, self.scope, devMode)
 

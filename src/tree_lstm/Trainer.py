@@ -45,11 +45,11 @@ class Trainer(object):
 
 			#, "; target:", target)
 			calculate_sim = False
-			if idx == 0:
+			if idx == -1:
 				calculate_sim = True
 			output = self.model(ltree, lsent, lparents, rtree, rsent, rparents, calculate_sim)
 			
-			exit()
+			
 			#print("idx:", idx, "\n\tlabel:", label, "\n\tlwords:", lwords, "\n\trinput:", rwords, "\n\toutput:", output, "\n\ttarget:", target)
 			loss = self.criterion(output, target)
 			if idx == 6:

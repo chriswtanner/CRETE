@@ -5,7 +5,7 @@ def parse_args():
     parser = argparse.ArgumentParser(
         description='PyTorch TreeLSTM for Sentence Similarity on Dependency Trees')
     # data arguments
-    parser.add_argument('--sub_dir', default='sample/',
+    parser.add_argument('--sub_dir', default='ecb/',
                         help='sub_dir')
     parser.add_argument('--data', default='data/sick/',
                         help='path to dataset')
@@ -22,7 +22,7 @@ def parse_args():
                         help='Size of TreeLSTM cell state')
     parser.add_argument('--hidden_dim', default=50, type=int,
                         help='Size of classifier MLP')
-    parser.add_argument('--num_classes', default=5, type=int,
+    parser.add_argument('--num_classes', default=2, type=int,
                         help='Number of classes in dataset')
     parser.add_argument('--freeze_embed', default=True, action='store_true',
                         help='Freeze word embeddings')
