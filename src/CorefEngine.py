@@ -49,7 +49,6 @@ class CorefEngine:
 	# - make 2 new Gold files (CoNLL format) which includes
 	#     entity information: (1) all Ent+Events; (2) Ent+Events and remove sindgletons
 	#      (3) Ents (minus pronouns)+Events
-
 	if __name__ == "__main__":
 		# handles passed-in args
 		args = params.setCorefEngineParams()
