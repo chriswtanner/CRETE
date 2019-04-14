@@ -16,6 +16,16 @@ class SentTree:
 	def __str__(self):
 		return("sent:" + self.sent + "; ROOT:" + str(self.root_XUID))
 
+class TreeSet:
+	def __init__(self, sent_legend, sent_labels, sent_key_to_index, xuid_pair_and_sent_key):
+		self.sent_legend = sent_legend
+		self.sent_labels = sent_labels
+		self.sent_key_to_index = sent_key_to_index
+		self.xuid_pair_and_sent_key = xuid_pair_and_sent_key
+
+	def __str__(self):
+		print("# sent pairs:", len(self.sent_labels), "; # pos:", str(sent_labels.count(2)), "; # neg:", str(sent_labels.count(1)))
+		
 class DataHandler:
 	def __init__(self, helper, trainXUIDs, devXUIDs, testXUIDs):
 
@@ -34,9 +44,11 @@ class DataHandler:
 		self.devXUIDs = devXUIDs
 		self.testXUIDs = testXUIDs
 		self.allXUIDs = trainXUIDs | devXUIDs | testXUIDs
-		self.train_trees = []
-		self.dev_trees = []
-		self.test_trees = []
+
+		# to be filled in by the Construct Trees functions
+		self.train_tree_set = None
+		self.dev_tree_set = None
+		self.test_tree_set = None
 		self.sent_num_to_obj = {}
 		# we are passing in 3 sets of XUIDs, and these are the ones we
 		# actually want to use for our model, so this is where we
@@ -106,10 +118,9 @@ class DataHandler:
 		# the True passed-in below corresponds to if we should construct only Trees that are rooted w/ events or not
 		# (so, training should always be True, but dev and test can be False)
 		self.sent_num_to_obj = {}
-		self.trainXUIDPairs, self.train_trees = self.construct_tree_files(True, self.trainXUIDPairs, self.args.baseDir + "src/tree_lstm/data/sick/train/" + dir_path, True, evaluate_all_pairs)
-		self.devXUIDPairs, self.dev_trees = self.construct_tree_files(False, self.devXUIDPairs, self.args.baseDir + "src/tree_lstm/data/sick/dev/" + dir_path, False, evaluate_all_pairs)
-		self.testXUIDPairs, self.test_trees = self.construct_tree_files(False, self.testXUIDPairs, self.args.baseDir + "src/tree_lstm/data/sick/test/" + dir_path, False, evaluate_all_pairs)
-		exit()
+		self.trainXUIDPairs, self.train_tree_set = self.construct_tree_files(True, self.trainXUIDPairs, self.args.baseDir + "src/tree_lstm/data/sick/train/" + dir_path, True, evaluate_all_pairs)
+		self.devXUIDPairs, self.dev_tree_set = self.construct_tree_files(False, self.devXUIDPairs, self.args.baseDir + "src/tree_lstm/data/sick/dev/" + dir_path, False, evaluate_all_pairs)
+		self.testXUIDPairs, self.test_tree_set = self.construct_tree_files(False, self.testXUIDPairs, self.args.baseDir + "src/tree_lstm/data/sick/test/" + dir_path, False, evaluate_all_pairs)
 
 	# produces files that TreeLSTM can read
 	def construct_tree_files(self, is_training, xuid_pairs, dir_path, filter_only_roots, evaluate_all_pairs):
@@ -207,6 +218,10 @@ class DataHandler:
 		num_same_sentences = 0
 		num_pairs_belonging_to_null_sents = 0
 		for xuid1, xuid2 in ret_xuid_pairs:
+
+			if xuid1 == xuid2:
+				print("* ERROR: xuids are the same")
+				exit()
 			sent_num1 = xuid_to_sentence_num[xuid1]
 			sent_num2 = xuid_to_sentence_num[xuid2]
 
@@ -271,7 +286,8 @@ class DataHandler:
 					exit()
 		print("# numPosAdded:", numPosAdded, "; numNegAdded:", numNegAdded)
 		print("* orig xuid pairs:", len(xuid_pairs), "; # refined:", len(ret_xuid_pairs), "# sent pairs:", len(sent_legend))
-		return ret_xuid_pairs, sent_legend
+		tree_set = TreeSet(sent_legend, sent_labels, sent_key_to_index, xuid_pair_and_sent_key)
+		return ret_xuid_pairs, tree_set
 
 	# we only care about the XUIDs that fit our scope (doc, dir, dirHalf)
 	def construct_sent_tree(self, sent_num, candidate_xuids, stanTokenToECBTokens):

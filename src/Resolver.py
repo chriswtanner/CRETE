@@ -128,28 +128,11 @@ class Resolver:
 			dev_best_f1s = []
 			test_best_f1s = []
 
-			# these are the xuids we'll test
-			# TODO: change it so we're filtering the construction of trees, not the xuids
-			# that is, let this generate all the xuids that we'll use for testing
-			# but let construct have the flag for which trees we create!
 			dh.load_xuid_pairs(supp_features_type, self.scope)
-
-			'''
-			if filter_by_roots:
-				rooted_xuids = self.get_rooted_xuids(xuidPairs)
-				filtered_xuid_pairs = set()
-				for xuid1, xuid2 in xuidPairs:
-					if xuid1 in rooted_xuids and xuid2 in rooted_xuids:
-						filtered_xuid_pairs.add((xuid1, xuid2))
-				print("* had", len(xuidPairs), " but filtered them to being just:", len(filtered_xuid_pairs))
-				return filtered_xuid_pairs
-			print("* didn't filter pairs.  returning all:", len(xuidPairs))
-			'''
-
-			# but we construct sentences 
-			dh.construct_tree_files_(self.is_wd)
+			dh.construct_tree_files_(self.is_wd) # but we construct sentences 
 			td = TreeDriver.main()
 			exit()
+
 			while ensemble_test_predictions == [] or len(ensemble_test_predictions[0]) < num_runs:
 				model = CCNN(helper, dh, supp_features_type, self.scope, self.presets, None, devMode, stopping_points)
 				#model = FFNN(helper, dh, self.scope, devMode)
