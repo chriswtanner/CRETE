@@ -1,11 +1,11 @@
 import argparse
 
 
-def parse_args():
+def parse_known_args():
     parser = argparse.ArgumentParser(
         description='PyTorch TreeLSTM for Sentence Similarity on Dependency Trees')
     # data arguments
-    parser.add_argument('--sub_dir', default='ecb/',
+    parser.add_argument('--sub_dir', default='ecb_wd/',
                         help='sub_dir')
     parser.add_argument('--data', default='data/sick/',
                         help='path to dataset')
@@ -27,7 +27,7 @@ def parse_args():
     parser.add_argument('--freeze_embed', default=True, action='store_true',
                         help='Freeze word embeddings')
     # training arguments
-    parser.add_argument('--epochs', default=10, type=int,
+    parser.add_argument('--epochs', default=15, type=int,
                         help='number of total epochs to run')
     parser.add_argument('--batchsize', default=25, type=int,
                         help='batchsize for optimizer updates')
@@ -48,5 +48,5 @@ def parse_args():
     cuda_parser.add_argument('--no-cuda', dest='cuda', action='store_false')
     parser.set_defaults(cuda=False)
 
-    args = parser.parse_args()
+    args, unk = parser.parse_known_args()
     return args

@@ -5,6 +5,17 @@ import random
 from MiniPred import MiniPred
 from itertools import chain
 from collections import defaultdict
+
+class SentTree:
+	def __init__(self, sent, dependency_chain, mention_token_indices, root_XUID):
+		self.sent = sent
+		self.dependency_chain = " ".join([str(d) for d in dependency_chain])
+		self.mention_token_indices = mention_token_indices
+		self.root_XUID = root_XUID
+
+	def __str__(self):
+		return("sent:" + self.sent + "; ROOT:" + str(self.root_XUID))
+
 class DataHandler:
 	def __init__(self, helper, trainXUIDs, devXUIDs, testXUIDs):
 
@@ -22,7 +33,10 @@ class DataHandler:
 		self.trainXUIDs = trainXUIDs
 		self.devXUIDs = devXUIDs
 		self.testXUIDs = testXUIDs
-
+		self.train_trees = []
+		self.dev_trees = []
+		self.test_trees = []
+		self.sent_num_to_obj = {}
 		# we are passing in 3 sets of XUIDs, and these are the ones we
 		# actually want to use for our model, so this is where we
 		# should keep track of which docs -> XUIDs (only for the sake of
@@ -43,31 +57,31 @@ class DataHandler:
 			f_suffix = "hddcrp"
 
 		if self.args.wordFeature:
-			lf = self.loadFeature("../data/features/" + str(f_suffix) + "/word.f")
+			lf = self.loadFeature(self.args.baseDir + "data/features/" + str(f_suffix) + "/word.f")
 			self.singleFeatures.append(lf.singles)
 			self.relFeatures.append(lf.relational)
 		if self.args.lemmaFeature:
-			lf = self.loadFeature("../data/features/" + str(f_suffix) + "/lemma.f")
+			lf = self.loadFeature(self.args.baseDir + "data/features/" + str(f_suffix) + "/lemma.f")
 			self.singleFeatures.append(lf.singles)
 			self.relFeatures.append(lf.relational)
 		if self.args.charFeature:
-			lf = self.loadFeature("../data/features/" + str(f_suffix) + "/char.f")
+			lf = self.loadFeature(self.args.baseDir + "data/features/" + str(f_suffix) + "/char.f")
 			self.singleFeatures.append(lf.singles)
 			self.relFeatures.append(lf.relational)
 		if self.args.posFeature:
-			lf = self.loadFeature("../data/features/" + str(f_suffix) + "/pos.f")
+			lf = self.loadFeature(self.args.baseDir + "data/features/" + str(f_suffix) + "/pos.f")
 			self.singleFeatures.append(lf.singles)
 			self.relFeatures.append(lf.relational)
 		if self.args.dependencyFeature:
-			lf = self.loadFeature("../data/features/" + str(f_suffix) + "/dependency.f")
+			lf = self.loadFeature(self.args.baseDir + "data/features/" + str(f_suffix) + "/dependency.f")
 			self.singleFeatures.append(lf.singles)
 			self.relFeatures.append(lf.relational)
 		if self.args.bowFeature:
-			lf = self.loadFeature("../data/features/" + str(f_suffix) + "/bow.f")
+			lf = self.loadFeature(self.args.baseDir + "data/features/" + str(f_suffix) + "/bow.f")
 			self.singleFeatures.append(lf.singles)
 			self.relFeatures.append(lf.relational)
 		if self.args.wordnetFeature:
-			lf = self.loadFeature("../data/features/" + str(f_suffix) + "/wordnet.f")
+			lf = self.loadFeature(self.args.baseDir + "data/features/" + str(f_suffix) + "/wordnet.f")
 			self.relFeatures.append(lf.relational)
 
 	def loadFeature(self, file):
@@ -75,23 +89,38 @@ class DataHandler:
 		return pickle.load(open(file, 'rb'))
 
 	def load_xuid_pairs(self, supp_features, scope):
+		# TRUE represents we should filter the xuids to being only root events
 		self.trainXUIDPairs = self.createXUIDPairs(self.trainXUIDs, scope, supp_features)
 		self.devXUIDPairs = self.createXUIDPairs(self.devXUIDs, scope, supp_features)
 		self.testXUIDPairs = self.createXUIDPairs(self.testXUIDs, scope, supp_features)
 
-	def construct_tree_files_(self):
-		self.construct_tree_files(self.trainXUIDPairs, "tree_lstm/data/sick/train/ecb/")
-		self.construct_tree_files(self.devXUIDPairs, "tree_lstm/data/sick/dev/ecb/")
-		self.construct_tree_files(self.testXUIDPairs, "tree_lstm/data/sick/test/ecb/")
+	def construct_tree_files_(self, is_wd):
+		#(train_mt1, train_mt2) = 
+		dir_path = "ecb_wd/"
+		if not is_wd:
+			dir_path = "ecb_cd/"
+
+		evaluate_all_pairs = True
+
+		# the True passed-in below corresponds to if we should construct only Trees that are rooted w/ events or not
+		# (so, training should always be True, but dev and test can be False)
+		self.sent_num_to_obj = {}
+		self.trainXUIDPairs, self.train_trees = self.construct_tree_files(True, self.trainXUIDPairs, self.args.baseDir + "src/tree_lstm/data/sick/train/" + dir_path, True, evaluate_all_pairs)
+		self.devXUIDPairs, self.dev_trees = self.construct_tree_files(False, self.devXUIDPairs, self.args.baseDir + "src/tree_lstm/data/sick/dev/" + dir_path, False, evaluate_all_pairs)
+		self.testXUIDPairs, self.test_trees = self.construct_tree_files(False, self.testXUIDPairs, self.args.baseDir + "src/tree_lstm/data/sick/test/" + dir_path, False, evaluate_all_pairs)
 
 	# produces files that TreeLSTM can read
-	def construct_tree_files(self, xuid_pairs, dir_path):
-	
+	def construct_tree_files(self, is_training, xuid_pairs, dir_path, filter_only_roots, evaluate_all_pairs):
+		print("dir_path:", dir_path)
 		fout_a = open(dir_path + "a.toks", 'w')
 		fout_b = open(dir_path + "b.toks", 'w')
 		fout_sim = open(dir_path + "sim.txt", 'w')
 		fout_a_deps = open(dir_path + "a.parents", 'w')
 		fout_b_deps = open(dir_path + "b.parents", 'w')
+
+		tmp_sentence_pairs = set()
+		xuid_to_sentence_num = {}
+		valid_sentences = set()
 
 		# gets unique IDs
 		valid_xuids = set()
@@ -101,14 +130,18 @@ class DataHandler:
 		print("# unique valid_xuids:", len(valid_xuids))
 		
 		# constructs ecb tokens -> mentions
+		# constructs xuid -> sentence #
 		doc_ids = set()
 		sentenceTokenToMention = defaultdict(lambda: defaultdict(set))
+
 		for xuid in valid_xuids:
 			m = self.corpus.EUIDToMention[xuid]
 			sentNum = m.globalSentenceNum
 			doc_ids.add(m.doc_id)
 			for t in m.tokens:
 				sentenceTokenToMention[sentNum][t].add(m)
+			xuid_to_sentence_num[xuid] = sentNum
+			valid_sentences.add(sentNum)
 
 		# creates stan -> ecb tokens
 		stanTokenToECBTokens = defaultdict(set)
@@ -117,16 +150,115 @@ class DataHandler:
 				for stan in t.stanTokens:
 					stanTokenToECBTokens[stan].add(t)
 
+		# creates sent -> XUIDs
+		num_ignored = 0
+		for sent_num in valid_sentences:
+			st = self.construct_sent_tree(sent_num, valid_xuids, stanTokenToECBTokens)
+			'''
+			if filter_only_roots and st.root_XUID == -1:
+				num_ignored += 1
+				continue
+			'''
+			self.sent_num_to_obj[sent_num] = st
+		print("# sent:", len(self.sent_num_to_obj)) #, " # skpped bc they're not rooted and we wanted them to be:", num_ignored)
+
+		ret_xuid_pairs = []
+		num_xuids_not_root = 0
+		num_sent_have_no_roots = 0
+		for xuid1, xuid2 in xuid_pairs:
+
+			sent_num1 = xuid_to_sentence_num[xuid1]
+			sent_num2 = xuid_to_sentence_num[xuid2]
+			# at a bare minimum, we can only train or test xuids if we
+			# have both sentences in which they're contained
+			if sent_num1 not in self.sent_num_to_obj or sent_num2 not in self.sent_num_to_obj:
+				num_xuids_not_root += 1
+				print("* ERROR: don't have the sentence corresponding to an XUID")
+				exit()
+				continue
+
+			# only look at the XUIDs which are roots
+			if not evaluate_all_pairs:
+				# current xuids must be roots				
+				if self.sent_num_to_obj[sent_num1].root_XUID == xuid1 and self.sent_num_to_obj[sent_num2].root_XUID == xuid2:
+					ret_xuid_pairs.append((xuid1, xuid2))
+			else: # if we don't require the xuid pairs to be of sentence roots, then we don't need to check anything
+				ret_xuid_pairs.append((xuid1, xuid2))
+
+		# construct the TreeLSTM training based on the unique trees
+		sent_legend = []
+		sent_set = set()
+		numNegAdded = 0
+		numPosAdded = 0
+		for xuid1, xuid2 in ret_xuid_pairs:
+			label = "1"
+			if self.corpus.EUIDToMention[xuid1].REF == self.corpus.EUIDToMention[xuid2].REF:
+				label = "2"
+
+			sent_num1 = xuid_to_sentence_num[xuid1]
+			sent_num2 = xuid_to_sentence_num[xuid2]
+			if filter_only_roots:
+				if self.sent_num_to_obj[sent_num1].root_XUID == -1 or self.sent_num_to_obj[sent_num2].root_XUID == -1:
+					num_sent_have_no_roots += 1
+					continue
+			key = str(sent_num1) + "_" + str(sent_num2)
+			key_rev = str(sent_num2) + "_" + str(sent_num1)
+			if key not in sent_set and key_rev not in sent_set:
+
+				if label == 1:
+					if is_training and numNegAdded > numPosAdded*self.args.numNeg:
+						continue
+					numNegAdded += 1
+				else:
+					numPosAdded += 1
+
+				sent_legend.append((sent_num1, sent_num2))
+				sent_legend.append((sent_num2, sent_num1))
+				sent_set.add(key)
+				sent_set.add(key_rev)
+
+				# actually write out the files
+				fout_a.write(self.sent_num_to_obj[sent_num1].sent + "\n")
+				fout_b.write(self.sent_num_to_obj[sent_num2].sent + "\n")
+				fout_sim.write(label + "\n")
+				fout_a_deps.write(self.sent_num_to_obj[sent_num1].dependency_chain + "\n")
+				fout_b_deps.write(self.sent_num_to_obj[sent_num2].dependency_chain + "\n")
+		fout_a.close()
+		fout_b.close()
+		fout_sim.close()
+		fout_a_deps.close()
+		fout_b_deps.close()
+		print("# numPosAdded:", numPosAdded, "; numNegAdded:", numNegAdded)
+		print("* orig xuid pairs:", len(xuid_pairs), "; # refined:", len(ret_xuid_pairs), "# sent pairs:", len(sent_legend), "; #num_sent_have_no_roots:", num_sent_have_no_roots)
+		return ret_xuid_pairs, sent_legend
+
+		'''
+		# we need to determine which sentences we'll construct first
+
+
+		# then construct these sentence pairs
+
+		# and return xuids that make sense for it
 		# writes out each sentence in plain text
 		for xuid1, xuid2 in xuid_pairs:
 			m1 = self.corpus.XUIDToMention[xuid1]
 			m2 = self.corpus.XUIDToMention[xuid2]
-			label = "0"
+
+			key = str(m1.globalSentenceNum) + "_" + str(m2.globalSentenceNum)
+			if key in tmp_sentence_pairs:
+				print("* error, we've already added these two sentences")
+				exit()
+			tmp_sentence_pairs.add(key)
+
+			label = "1"
 			if m1.REF == m2.REF:
-				label = "1"
-			text1, dependency_chains1 = self.construct_tree_file(xuid1, stanTokenToECBTokens)
-			text2, dependency_chains2 = self.construct_tree_file(xuid2, stanTokenToECBTokens)
+				label = "2"
+			mention_token_indices1, text1, dependency_chains1 = self.construct_tree_file(xuid1, stanTokenToECBTokens)
+			mention_token_indices2, text2, dependency_chains2 = self.construct_tree_file(xuid2, stanTokenToECBTokens)
 			
+			#mt1s.append(mention_token_indices1)
+			#mt2s.append(mention_token_indices2)
+
 			fout_a.write(text1 + "\n")
 			fout_b.write(text2 + "\n")
 			fout_sim.write(label + "\n")
@@ -137,26 +269,35 @@ class DataHandler:
 		fout_sim.close()
 		fout_a_deps.close()
 		fout_b_deps.close()
+		'''
 
-	def construct_tree_file(self, xuid, stanTokenToECBTokens):
-		m = self.corpus.XUIDToMention[xuid]
-		#sent = " ".join([t.text for t in self.corpus.globalSentenceNumToTokens[m.globalSentenceNum]])
+	# we only care about the XUIDs that fit our scope (doc, dir, dirHalf)
+	def construct_sent_tree(self, sent_num, valid_xuids, stanTokenToECBTokens):
 
+		# SAVED AS A TREE_SENT object
 		sent = ""
+		mention_token_indices = defaultdict(list) 
+		dependency_chain = []
+		root_XUID = -1
+
 		# constructs token -> index (1-based)
-		token_to_index = {}
+		token_to_index = {} # only used locally
 		token_index = 1
-		for token in self.corpus.globalSentenceNumToTokens[m.globalSentenceNum]:
-			if token.tokenID == "-1":
+		for t in self.corpus.globalSentenceNumToTokens[sent_num]:
+			if t.tokenID == "-1":
 				continue
-			token_to_index[token] = token_index
-			sent += token.text + " "
+
+			for m in t.mentions:
+				xuid = m.XUID
+				if xuid in valid_xuids: # we care about it
+					mention_token_indices[xuid].append(token_index)
+			token_to_index[t] = token_index
+			sent += t.text + " "
 			token_index += 1
 		sent = sent.strip()
 
 		# constructs dependency chain
-		dependency_chain = []
-		for t in self.corpus.globalSentenceNumToTokens[m.globalSentenceNum]:
+		for t in self.corpus.globalSentenceNumToTokens[sent_num]:
 			if t.tokenID == "-1":
 				continue
 			bestStan = self.getBestStanToken(t.stanTokens)
@@ -166,7 +307,6 @@ class DataHandler:
 
 			pl = next(iter(bestStan.parentLinks[self.helper.dependency_parse_type]))
 			parentToken = pl.parent
-			#print("pl:", pl)
 			if parentToken.isRoot:
 				dependency_chain.append(0)
 			else:
@@ -177,13 +317,35 @@ class DataHandler:
 				token = next(iter(ecb_parent_tokens))
 				dependency_chain.append(token_to_index[token])
 		if dependency_chain.count(0) != 1:
-			print("* have != 1 dependency parent")
+			print("* have != 1 dependency root")
 			exit()
 		if len(sent.split(" ")) != len(dependency_chain):
 			print("* sent len != dependency length")
 			exit()
 
-		return sent, " ".join([str(d) for d in dependency_chain])
+
+		root_index = dependency_chain.index(0)
+		root_token = self.corpus.globalSentenceNumToTokens[sent_num][root_index]
+		for m in root_token.mentions:
+			xuid = m.XUID
+			if xuid in valid_xuids:
+				root_XUID = xuid
+				break
+		
+		''' PRINT IT
+		print("sent:", sent)
+		for xuid in mention_token_indices:
+			m = self.corpus.EUIDToMention[xuid]
+			print("\t", m)
+		print("\troot_token:", root_token)
+		print("\troot_XUID:", root_XUID)
+		if root_XUID != -1:
+			print("\t[ROOT]:", self.corpus.EUIDToMention[root_XUID], mention_token_indices[root_XUID])
+		else:
+			print("\t[NO ROOT]")
+		'''
+		st = SentTree(sent, dependency_chain, mention_token_indices, root_XUID)
+		return st
 
 	def loadNNData(self, supp_features, useCCNN, scope):
 		print("[dh] loading ...")
@@ -270,20 +432,9 @@ class DataHandler:
 		#print("tmp_xuids_reclaimed:", len(tmp_xuids_reclaimed))
 		#print("tmp_ecbtoxuids:", len(tmp_ecbtoxuids))
 		print("\t# xuidPairs:", len(xuidPairs))
-		rooted_xuids = self.construct_rooted_trees(xuidPairs)
-
-		# TODO: need to filter the pairs now
-		filtered_xuid_pairs = set()
-		for xuid1, xuid2 in xuidPairs:
-			if xuid1 in rooted_xuids and xuid2 in rooted_xuids:
-				filtered_xuid_pairs.add((xuid1, xuid2))
-		print("#filtered_xuid_pairs:", len(filtered_xuid_pairs))
-
-		#TODO: print the sentences for these pairs.  can measure treelstm performance and CCNN perf
-		return filtered_xuid_pairs
-		#return xuidPairs
+		return xuidPairs
 		
-	def construct_rooted_trees(self, xuid_pairs):
+	def get_rooted_xuids(self, xuid_pairs):
 		rooted_xuids = set() # returns this
 		valid_sentences = set()
 		valid_xuids = set()
@@ -295,23 +446,23 @@ class DataHandler:
 			valid_xuids.add(xuid2)
 
 		print("# unique valid_xuids:", len(valid_xuids))
+		doc_ids = set()
 		for xuid in valid_xuids:
 			m = self.corpus.EUIDToMention[xuid]
 			sentNum = m.globalSentenceNum
-
+			doc_ids.add(m.doc_id)
+		
 			# constructs ecb tokens -> mentions
 			for t in m.tokens:
 				sentenceTokenToMention[sentNum][t].add(m)
-				# construct stan -> ecb tokens.
+			
+			valid_sentences.add(sentNum)
 
-				#for stan in t.stanTokens:
-				#	stanTokenToECBTokens[stan].add(t)
-
-			for t in self.corpus.doc_idToDocs[m.doc_id].tokens:
+		# construct stan -> ecb tokens.
+		for doc_id in doc_ids:
+			for t in self.corpus.doc_idToDocs[doc_id].tokens:
 				for stan in t.stanTokens:
 					stanTokenToECBTokens[stan].add(t)
-
-			valid_sentences.add(sentNum)
 		print("# sentences:", len(valid_sentences))
 
 		has_mention = 0
@@ -338,13 +489,10 @@ class DataHandler:
 				for ecb in ecb_tokens:
 					if ecb in sentenceTokenToMention[sent_num]:
 						rooted_mentions = sentenceTokenToMention[sent_num][ecb]
-				#print("ment:", m)
+
 				if len(rooted_mentions) == 0:
 					has_no_mention += 1
-					#print("* missing a mention. here's the dfs:")
-					#helper.dfs_tree(root_stan, [], [], "", sentenceTokenToMention[sent_num], stanTokenToECBTokens)
 				else:
-					#print("rooted_mentions:", rooted_mentions)
 					if len(rooted_mentions) > 1:
 						print("whoa:", len(rooted_mentions))
 						exit()

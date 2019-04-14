@@ -36,8 +36,7 @@ from keras.models import Sequential
 from keras.layers import Dense, Activation, Dropout
 from keras.optimizers import Adam
 from collections import defaultdict
-
-
+#from tree_lstm import TreeDriver
 class CorefEngine:
 
 	# TODO:
@@ -57,9 +56,9 @@ class CorefEngine:
 
 		# manually-defined features (others are in Resolver.py)
 		#32, 20, 2, 32, 0
-		wdPresets = [32, 3, 2, 32, 0] # batchsize, num epochs, num layers, num filters, dropout
-		num_runs = 1
-
+		wdPresets = [32, 20, 2, 32, 0] # batchsize, num epochs, num layers, num filters, dropout
+		num_runs = 3
+		
 		event_resolution = Resolver(args, wdPresets, "doc") # doc or dir for WD or CD, respectively
 		
 		# {none, relations, shortest, one} for supplemental path info

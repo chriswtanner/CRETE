@@ -14,6 +14,7 @@ from ECBHelper import ECBHelper
 from StanParser import StanParser
 from FeatureHandler import FeatureHandler
 from DataHandler import DataHandler
+from tree_lstm import TreeDriver
 from FFNN import FFNN
 from CCNN import CCNN
 class Resolver:
@@ -28,6 +29,10 @@ class Resolver:
 			print("* ERROR: invalid scope!  must be doc or dir, for WD or CD, respectively")
 			exit(1)
 
+		self.is_wd = False
+		if self.scope == "doc":
+			self.is_wd = True
+
 	def resolve(self, mention_type, supp_features_type, event_pronouns, entity_pronouns, num_runs):
 		# supp_features_type  = {none, shortest, one, type}
 
@@ -38,6 +43,7 @@ class Resolver:
 		useRelationalFeatures = False
 
 		stopping_points = [0.51] #, 0.401, 0.41, 0.42, 0.43, 0.44, 0.45, 0.46, 0.47, 0.48, 0.49, 0.501, 0.51, 0.52, 0.54, 0.55, 0.56, 0.57, 0.58, 0.59, 0.601]
+
 
 		if self.args.useECBTest:
 			f_suffix = "ecb"
@@ -122,8 +128,27 @@ class Resolver:
 			dev_best_f1s = []
 			test_best_f1s = []
 
+			# these are the xuids we'll test
+			# TODO: change it so we're filtering the construction of trees, not the xuids
+			# that is, let this generate all the xuids that we'll use for testing
+			# but let construct have the flag for which trees we create!
 			dh.load_xuid_pairs(supp_features_type, self.scope)
-			dh.construct_tree_files_()
+
+			'''
+			if filter_by_roots:
+				rooted_xuids = self.get_rooted_xuids(xuidPairs)
+				filtered_xuid_pairs = set()
+				for xuid1, xuid2 in xuidPairs:
+					if xuid1 in rooted_xuids and xuid2 in rooted_xuids:
+						filtered_xuid_pairs.add((xuid1, xuid2))
+				print("* had", len(xuidPairs), " but filtered them to being just:", len(filtered_xuid_pairs))
+				return filtered_xuid_pairs
+			print("* didn't filter pairs.  returning all:", len(xuidPairs))
+			'''
+
+			# but we construct sentences 
+			dh.construct_tree_files_(self.is_wd)
+			td = TreeDriver.main()
 			exit()
 			while ensemble_test_predictions == [] or len(ensemble_test_predictions[0]) < num_runs:
 				model = CCNN(helper, dh, supp_features_type, self.scope, self.presets, None, devMode, stopping_points)
@@ -135,11 +160,9 @@ class Resolver:
 				test_dirs, test_ids, test_preds, test_golds, test_best_f1 = results[1]
 
 				if dev_best_f1 > 0.4:
-					is_wd = False
-					if self.scope == "doc":
-						is_wd = True
-					helper.addEnsemblePredictions(is_wd, dev_dirs, dev_ids, dev_preds, ensemble_dev_predictions)	
-					helper.addEnsemblePredictions(is_wd, test_dirs, test_ids, test_preds, ensemble_test_predictions) # True means WD
+
+					helper.addEnsemblePredictions(self.is_wd, dev_dirs, dev_ids, dev_preds, ensemble_dev_predictions)	
+					helper.addEnsemblePredictions(self.is_wd, test_dirs, test_ids, test_preds, ensemble_test_predictions) # True means WD
 					dev_best_f1s.append(dev_best_f1)
 					test_best_f1s.append(test_best_f1)
 

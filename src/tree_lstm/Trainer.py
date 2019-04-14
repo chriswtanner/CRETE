@@ -1,6 +1,7 @@
 from tqdm import tqdm
 import torch
-import Helper as helper
+
+from Helper import Helper
 
 class Trainer(object):
 	def __init__(self, args, model, criterion, optimizer, device, vocab):
@@ -38,7 +39,7 @@ class Trainer(object):
 			#print("ltree:", ltree)
 			#self.dfs_tree(ltree, 0)
 			#self.dfs_tree(rtree, 0)
-			target = helper.map_label_to_target(label, dataset.num_classes)
+			target = Helper.map_label_to_target(label, dataset.num_classes)
 
 			lsent, rsent = lsent.to(self.device), rsent.to(self.device)
 			target = target.to(self.device)
@@ -49,11 +50,10 @@ class Trainer(object):
 				calculate_sim = True
 			output = self.model(ltree, lsent, lparents, rtree, rsent, rparents, calculate_sim)
 			
-			
 			#print("idx:", idx, "\n\tlabel:", label, "\n\tlwords:", lwords, "\n\trinput:", rwords, "\n\toutput:", output, "\n\ttarget:", target)
 			loss = self.criterion(output, target)
-			if idx == 6:
-				print("target:", target, "; output:", output, "; loss:", loss)
+			if idx < -1:
+				print("TRAIN idx:", idx, "; target:", target, "; output:", output, "; loss:", loss)
 
 			#ltree, "output:", output, "target:", target)
 			total_loss += loss.item()
@@ -77,7 +77,7 @@ class Trainer(object):
 				
 				ltree, lsent, lparents, rtree, rsent, rparents, label = dataset[idx]
 				
-				target = helper.map_label_to_target(label, dataset.num_classes)
+				target = Helper.map_label_to_target(label, dataset.num_classes)
 				lsent, rsent = lsent.to(self.device), rsent.to(self.device)
 				target = target.to(self.device)
 				output = self.model(ltree, lsent, lparents, rtree, rsent, rparents, False)
@@ -85,5 +85,7 @@ class Trainer(object):
 				total_loss += loss.item()
 				output = output.squeeze().to('cpu')
 				predictions[idx] = torch.dot(indices, torch.exp(output))
+				if idx < -1:
+					print("TEST idx:", idx, "; label:", label, "; target:", target, "; output:", output, "; preds:", predictions[idx])
 		return total_loss / len(dataset), predictions
 	

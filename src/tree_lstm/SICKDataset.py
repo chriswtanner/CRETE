@@ -3,6 +3,7 @@ from tqdm import tqdm
 from copy import deepcopy
 import torch
 import torch.utils.data as data
+
 import Constants
 from Tree import Tree
 
