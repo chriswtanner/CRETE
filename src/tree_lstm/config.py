@@ -26,8 +26,8 @@ def parse_known_args():
                         help='Number of classes in dataset')
     parser.add_argument('--freeze_embed', default=True, action='store_true',
                         help='Freeze word embeddings')
-    # training arguments
-    parser.add_argument('--epochs', default=15, type=int,
+    # training arguments (WAS 15 epochs)
+    parser.add_argument('--epochs', default=1, type=int,
                         help='number of total epochs to run')
     parser.add_argument('--batchsize', default=25, type=int,
                         help='batchsize for optimizer updates')

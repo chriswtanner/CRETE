@@ -5,6 +5,7 @@ import random
 import sys
 import os
 import fnmatch
+import math
 import numpy as np
 from collections import defaultdict
 from KBPParser import KBPParser
@@ -14,7 +15,8 @@ from ECBHelper import ECBHelper
 from StanParser import StanParser
 from FeatureHandler import FeatureHandler
 from DataHandler import DataHandler
-from tree_lstm import TreeDriver
+from tree_lstm.TreeDriver import TreeDriver
+from tree_lstm.Helper import Helper
 from FFNN import FFNN
 from CCNN import CCNN
 class Resolver:
@@ -127,12 +129,97 @@ class Resolver:
 			ensemble_test_predictions = []
 			dev_best_f1s = []
 			test_best_f1s = []
-
 			dh.load_xuid_pairs(supp_features_type, self.scope)
 			dh.construct_tree_files_(self.is_wd) # but we construct sentences 
-			td = TreeDriver.main()
-			exit()
+			td = TreeDriver()
+			td.train() #.main(dh.train_tree_set, dh.dev_tree_set, dh.test_tree_set)
+			preds = []
+			golds = []
+			for (xuid1,xuid2), sent_key in dh.train_tree_set.xuid_pair_and_sent_key:
+				m1 = corpus.XUIDToMention[xuid1]
+				m2 = corpus.XUIDToMention[xuid2]
 
+				# sent1 should correspond w/ the lesser sent number
+				sent_xuid1 = m1.globalSentenceNum
+				sent_xuid2 = m2.globalSentenceNum
+
+				print("sent_key:", sent_key, "sent_xuid1:", sent_xuid1, "sent_xuid2:", sent_xuid2)
+				'''
+				if sent2 < sent1:
+					sent2 = m1.globalSentenceNum
+					sent1 = m2.globalSentenceNum
+					xuid3 = xuid1
+					xuid1 = xuid2
+					xuid2 = xuid3
+				'''
+				if m1.REF == m2.REF:
+					golds.append(0)
+				else:
+					golds.append(1)
+				sent_dataset_index = dh.train_tree_set.sent_key_to_index[sent_key]
+				datum = td.train_dataset[sent_dataset_index]
+				left_to_hidden, right_to_hidden = td.fetch_hidden_embeddings(datum)
+
+				st_xuid1 = dh.sent_num_to_obj[sent_xuid1]
+				st_xuid2 = dh.sent_num_to_obj[sent_xuid2]
+
+				print("m1:", m1)
+				print("st1:", sent_xuid1, st_xuid1)
+				print("m2:", m2)
+				print("st2:", sent_xuid2, st_xuid2)
+				print("\tsent_dataset_index:", sent_dataset_index)
+				print("\tdatum:", datum)
+				print("\tleft_to_hidden:", left_to_hidden.keys())
+				print("\tright_to_hidden:", right_to_hidden.keys())
+				print("")
+				m1_vec = []
+				num_summed = 0
+				for token_index in st_xuid1.mention_token_indices[xuid1]:
+
+					
+					if sent_xuid2 < sent_xuid1:
+						left_vec = right_to_hidden[token_index-1][0].detach().numpy()
+					else:
+						left_vec = left_to_hidden[token_index-1][0].detach().numpy()
+					
+					if len(m1_vec) == 0:
+						m1_vec = left_vec
+					else:
+						m1_vec += left_vec
+					num_summed += 1
+				m1_vec[:] = [x / num_summed for x in m1_vec]
+
+				m2_vec = []
+				num_summed = 0
+				for token_index in st_xuid2.mention_token_indices[xuid2]:
+					
+					if sent_xuid2 < sent_xuid1:
+						right_vec = left_to_hidden[token_index-1][0].detach().numpy()
+					else:
+						right_vec = right_to_hidden[token_index-1][0].detach().numpy()
+					
+					if len(m2_vec) == 0:
+						m2_vec = right_vec
+					else:
+						m2_vec += right_vec
+					num_summed += 1
+				m2_vec[:] = [x / num_summed for x in m2_vec]
+				
+				print("m1_vec:", m1_vec[0:10], "m2_vec:", m2_vec[0:10])
+				dot = np.dot(m1_vec, m2_vec)
+				norma = np.linalg.norm(m1_vec)
+				normb = np.linalg.norm(m2_vec)
+				cs = dot / (norma * normb)
+
+				l2 = 0
+				for i, j in zip(m1_vec, m2_vec):
+					l2 += math.pow(i - j, 2)
+				l2 = math.sqrt(l2)
+
+				preds.append(l2) # TODO: or gold
+			(f1, prec, rec, bestThreshold) = Helper.calculate_f1(preds, golds)
+			print("f1:", f1)
+			exit()
 			while ensemble_test_predictions == [] or len(ensemble_test_predictions[0]) < num_runs:
 				model = CCNN(helper, dh, supp_features_type, self.scope, self.presets, None, devMode, stopping_points)
 				#model = FFNN(helper, dh, self.scope, devMode)

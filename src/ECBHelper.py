@@ -228,8 +228,8 @@ class ECBHelper:
 				#print("")
 
 		s = sorted(scoreToGoldTruth.keys(), reverse=rev)
-		#for _ in s:
-		#	print("score:", _, "trutH:", scoreToGoldTruth[_])
+		for _ in s:
+			print("score:", _, "trutH:", scoreToGoldTruth[_])
 
 		#print("numGoldPos:", numGoldPos)
 		TP = 0.0

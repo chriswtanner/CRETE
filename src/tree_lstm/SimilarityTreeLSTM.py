@@ -117,11 +117,16 @@ class SimilarityTreeLSTM(nn.Module):
 		if calculate_sim:
 			self.calc_sim(lsent, lparents, left_to_hidden, rsent, rparents, right_to_hidden)
 		output = self.similarity(lhidden, rhidden)
-		return output
+		return output, left_to_hidden, right_to_hidden
 
 	def calc_sim(self, lsent, lparents, left_to_hidden, rsent, rparents, right_to_hidden):
 		sim_pairs = {}
 
+		print("lsent:", lsent, "; lparents:", lparents, "; lroot:", lparents.index(0))
+
+		#ltokens = " ".join([self.vocab.idxToLabel[t] for t in lsent])
+		
+		'''
 		lpos = lparents.index(0)
 		rpos = rparents.index(0)
 		print(left_to_hidden.keys())
@@ -150,4 +155,4 @@ class SimilarityTreeLSTM(nn.Module):
 			l, r = i[0]
 			print(self.vocab.idxToLabel[lsent.detach().numpy()[l]], "-", \
 				self.vocab.idxToLabel[rsent.detach().numpy()[r]], ": ", i[1])
-		
+		'''

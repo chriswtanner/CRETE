@@ -114,7 +114,6 @@ class Helper:
 			torch.save(dataset, file)
 
 		print('\t==> Size of data split: %d ' % len(dataset))
-		
 		return dataset
 
 	# mapping from scalar to vector
@@ -147,8 +146,7 @@ class Helper:
 		scoreToGoldTruth = defaultdict(list)
 		#print("preds:", preds)
 		for _ in range(len(preds)):
-
-			pred = preds[_].item()
+			pred = preds[_] #.item()
 			if golds[_] == 2:
 				numGoldPos += 1
 				scoreToGoldTruth[pred].append(1)

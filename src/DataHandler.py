@@ -14,7 +14,8 @@ class SentTree:
 		self.root_XUID = root_XUID
 
 	def __str__(self):
-		return("sent:" + self.sent + "; ROOT:" + str(self.root_XUID))
+		return("sent:" + self.sent + "; dependency_chain:" + str(self.dependency_chain) + \
+		"mention_token_indices:" + str(self.mention_token_indices) + "ROOT:" + str(self.root_XUID))
 
 class TreeSet:
 	def __init__(self, sent_legend, sent_labels, sent_key_to_index, xuid_pair_and_sent_key):
@@ -217,6 +218,7 @@ class DataHandler:
 		numPosAdded = 0
 		num_same_sentences = 0
 		num_pairs_belonging_to_null_sents = 0
+		num_neg_not_added = 0
 		for xuid1, xuid2 in ret_xuid_pairs:
 
 			if xuid1 == xuid2:
@@ -247,10 +249,15 @@ class DataHandler:
 			if sent_num2 < sent_num1:
 				key =  str(sent_num2) + "_" + str(sent_num1)
 				tu = (sent_num2, sent_num1)
+				sent_num3 = sent_num1
+				sent_num1 = sent_num2
+				sent_num2 = sent_num3
 
+			# NOW: sent_num1 is always the lesser one
 			if key not in sent_key_to_index:
 				if sent_label == 1: # negative
 					if is_training and numNegAdded > numPosAdded*self.args.numNegPerPos:
+						num_neg_not_added += 1
 						continue
 					numNegAdded += 1
 				else:
@@ -273,6 +280,7 @@ class DataHandler:
 		fout_a_deps.close()
 		fout_b_deps.close()
 		print("num_same_sentences:", num_same_sentences, "; num_pairs_belonging_to_null_sents:", num_pairs_belonging_to_null_sents)
+		print("num_neg_not_added:", num_neg_not_added, "num_same_sentences:", num_same_sentences)
 		print("# sent pairs:", len(sent_legend))
 		i = 0
 		for sent_num1, sent_num2 in sent_legend:
@@ -285,7 +293,7 @@ class DataHandler:
 					print("* one of our sentences doesn't have a root.  wtf")
 					exit()
 		print("# numPosAdded:", numPosAdded, "; numNegAdded:", numNegAdded)
-		print("* orig xuid pairs:", len(xuid_pairs), "; # refined:", len(ret_xuid_pairs), "# sent pairs:", len(sent_legend))
+		print("* orig xuid pairs:", len(xuid_pairs), "; # refined:", len(ret_xuid_pairs), "# sent pairs:", len(sent_legend), "# saved xuid pairs:", len(xuid_pair_and_sent_key))
 		tree_set = TreeSet(sent_legend, sent_labels, sent_key_to_index, xuid_pair_and_sent_key)
 		return ret_xuid_pairs, tree_set
 
