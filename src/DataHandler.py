@@ -165,13 +165,14 @@ class DataHandler:
 
 		# creates sent -> XUIDs
 		num_rootless_sent = 0
-		for sent_num in candidate_sentences:
+		for sent_num in sorted(candidate_sentences):
 			# saves the SentTree, even if the Sentence doesn't have a proper root
 			# bc this is only an issue if we need to filter by root (which would affect
 			# the SentTrees we write out and the xuid pairs)
 			st = self.construct_sent_tree(sent_num, candidate_xuids, stanTokenToECBTokens)
 			if st.root_XUID == -1:
 				num_rootless_sent += 1
+			print("setting sent_num:", sent_num, "to being this Tree:", st)
 			self.sent_num_to_obj[sent_num] = st
 		print("# candidate_sentences:", len(candidate_sentences), " ==?== # sent:", len(self.sent_num_to_obj))
 		print("num_rootless_sent:", num_rootless_sent)
@@ -211,7 +212,7 @@ class DataHandler:
 		# construct the TreeLSTM training based on the unique trees
 		sent_legend = [] # keeps track of which sentences are on each line
 		sent_labels = [] # only used for debugging
-		sent_key_to_index = {} # maps the above so we don't need to search it
+		sent_key_to_index = {} # maps the above (and reversed) so we don't need to search it
 		xuid_pair_and_sent_key = [] # ((xuid1,xuid2), sent_key)
 		
 		numNegAdded = 0
@@ -219,6 +220,7 @@ class DataHandler:
 		num_same_sentences = 0
 		num_pairs_belonging_to_null_sents = 0
 		num_neg_not_added = 0
+		num_written = 0
 		for xuid1, xuid2 in ret_xuid_pairs:
 
 			if xuid1 == xuid2:
@@ -245,16 +247,17 @@ class DataHandler:
 					sent_label = 2
 
 			key = str(sent_num1) + "_" + str(sent_num2)
+			key_rev = str(sent_num2) + "_" + str(sent_num1)
 			tu = (sent_num1, sent_num2)
-			if sent_num2 < sent_num1:
-				key =  str(sent_num2) + "_" + str(sent_num1)
+			'''
+			if sent_num2 < sent_num1: # reverse them
+				tmp = key
+				key = key_rev
+				key_rev = tmp
 				tu = (sent_num2, sent_num1)
-				sent_num3 = sent_num1
-				sent_num1 = sent_num2
-				sent_num2 = sent_num3
+			'''
 
-			# NOW: sent_num1 is always the lesser one
-			if key not in sent_key_to_index:
+			if key not in sent_key_to_index and key_rev not in sent_key_to_index:
 				if sent_label == 1: # negative
 					if is_training and numNegAdded > numPosAdded*self.args.numNegPerPos:
 						num_neg_not_added += 1
@@ -263,15 +266,27 @@ class DataHandler:
 				else:
 					numPosAdded += 1
 
-				sent_key_to_index[key] = len(sent_key_to_index.keys())
+				sent_key_to_index[key] = num_written
+				sent_key_to_index[key_rev] = num_written
 				sent_legend.append(tu)
 				sent_labels.append(sent_label)
 				# actually write out the files
-				fout_a.write(self.sent_num_to_obj[sent_num1].sent + "\n")
-				fout_b.write(self.sent_num_to_obj[sent_num2].sent + "\n")
-				fout_sim.write(str(sent_label) + "\n")
-				fout_a_deps.write(self.sent_num_to_obj[sent_num1].dependency_chain + "\n")
-				fout_b_deps.write(self.sent_num_to_obj[sent_num2].dependency_chain + "\n")
+				if sent_num1 <= sent_num2:
+					fout_a.write(self.sent_num_to_obj[sent_num1].sent + "\n")
+					fout_b.write(self.sent_num_to_obj[sent_num2].sent + "\n")
+					fout_sim.write(str(sent_label) + "\n")
+					fout_a_deps.write(self.sent_num_to_obj[sent_num1].dependency_chain + "\n")
+					fout_b_deps.write(self.sent_num_to_obj[sent_num2].dependency_chain + "\n")
+					num_written += 1
+				else:
+					print("*** reversing it bc:", sent_num2, "is less than", sent_num1)
+					fout_a.write(self.sent_num_to_obj[sent_num2].sent + "\n")
+					fout_b.write(self.sent_num_to_obj[sent_num1].sent + "\n")
+					fout_sim.write(str(sent_label) + "\n")
+					fout_a_deps.write(self.sent_num_to_obj[sent_num2].dependency_chain + "\n")
+					fout_b_deps.write(self.sent_num_to_obj[sent_num1].dependency_chain + "\n")
+					num_written += 1
+
 			# even if it's not a unique tree, we still need to store the xuid info
 			xuid_pair_and_sent_key.append(((xuid1, xuid2), key))
 		fout_a.close()
@@ -281,12 +296,11 @@ class DataHandler:
 		fout_b_deps.close()
 		print("num_same_sentences:", num_same_sentences, "; num_pairs_belonging_to_null_sents:", num_pairs_belonging_to_null_sents)
 		print("num_neg_not_added:", num_neg_not_added, "num_same_sentences:", num_same_sentences)
-		print("# sent pairs:", len(sent_legend))
+		print("# sent legend:", len(sent_legend))
+		print("# sent labels:", len(sent_labels))
 		i = 0
 		for sent_num1, sent_num2 in sent_legend:
 			if filter_only_roots:
-				#print(sent_num1, sent_num2)
-				#print(str(i), "s1:", " ".join([t.text for t in self.corpus.globalSentenceNumToTokens[sent_num1]]), "s2:", " ".join([t.text for t in self.corpus.globalSentenceNumToTokens[sent_num2]]), "label:", sent_labels[i])
 				i += 1
 				if self.sent_num_to_obj[sent_num1].root_XUID not in self.allXUIDs or \
 					self.sent_num_to_obj[sent_num2].root_XUID not in self.allXUIDs:
@@ -294,6 +308,9 @@ class DataHandler:
 					exit()
 		print("# numPosAdded:", numPosAdded, "; numNegAdded:", numNegAdded)
 		print("* orig xuid pairs:", len(xuid_pairs), "; # refined:", len(ret_xuid_pairs), "# sent pairs:", len(sent_legend), "# saved xuid pairs:", len(xuid_pair_and_sent_key))
+		#print("sent_key_to_index:", sent_key_to_index)
+		#print("xuid_pair_and_sent_key:", xuid_pair_and_sent_key)
+		#exit()
 		tree_set = TreeSet(sent_legend, sent_labels, sent_key_to_index, xuid_pair_and_sent_key)
 		return ret_xuid_pairs, tree_set
 

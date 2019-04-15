@@ -144,7 +144,7 @@ class Helper:
 
 		numGoldPos = 0
 		scoreToGoldTruth = defaultdict(list)
-		#print("preds:", preds)
+		#print("golds:", golds)
 		for _ in range(len(preds)):
 			pred = preds[_] #.item()
 			if golds[_] == 2:

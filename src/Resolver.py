@@ -142,45 +142,47 @@ class Resolver:
 				# sent1 should correspond w/ the lesser sent number
 				sent_xuid1 = m1.globalSentenceNum
 				sent_xuid2 = m2.globalSentenceNum
-
-				print("sent_key:", sent_key, "sent_xuid1:", sent_xuid1, "sent_xuid2:", sent_xuid2)
-				'''
-				if sent2 < sent1:
-					sent2 = m1.globalSentenceNum
-					sent1 = m2.globalSentenceNum
-					xuid3 = xuid1
-					xuid1 = xuid2
-					xuid2 = xuid3
-				'''
 				if m1.REF == m2.REF:
-					golds.append(0)
-				else:
 					golds.append(1)
+				else:
+					golds.append(2)
+
 				sent_dataset_index = dh.train_tree_set.sent_key_to_index[sent_key]
 				datum = td.train_dataset[sent_dataset_index]
-				left_to_hidden, right_to_hidden = td.fetch_hidden_embeddings(datum)
+				lwords, left_to_hidden, rwords, right_to_hidden = td.fetch_hidden_embeddings(datum)
 
-				st_xuid1 = dh.sent_num_to_obj[sent_xuid1]
-				st_xuid2 = dh.sent_num_to_obj[sent_xuid2]
-
-				print("m1:", m1)
-				print("st1:", sent_xuid1, st_xuid1)
-				print("m2:", m2)
-				print("st2:", sent_xuid2, st_xuid2)
-				print("\tsent_dataset_index:", sent_dataset_index)
+				st_for_xuid1 = dh.sent_num_to_obj[sent_xuid1] # keys are actual global sent num
+				st_for_xuid2 = dh.sent_num_to_obj[sent_xuid2] # keys are actual global sent num
+				'''
+				print("\n----- looking at new xuid results -----")
+				print("corpus sent1:", [t.text for t in corpus.globalSentenceNumToTokens[sent_xuid1]])
+				print("corpus sent2:", [t.text for t in corpus.globalSentenceNumToTokens[sent_xuid2]])
+				print("sent_xuid1:", sent_xuid1, "sent_xuid2:", sent_xuid2)
+				print("sent_key:", sent_key, "--> sent_dataset_index:", sent_dataset_index)
 				print("\tdatum:", datum)
+				print("m1:", m1)
+				print("\tdatum's lwords:", lwords)
+				print("\tst1:", sent_xuid1, st_for_xuid1)
+				print("\tst_for_xuid1.mention_token_indices[xuid1]:", st_for_xuid1.mention_token_indices[xuid1])
+				
+				print("m2:", m2)
+				print("\tdatum's rwords:", rwords)
+				print("\tst2:", sent_xuid2, st_for_xuid2)
+				print("\tst_for_xuid2.mention_token_indices[xuid2]:", st_for_xuid2.mention_token_indices[xuid2])
+
 				print("\tleft_to_hidden:", left_to_hidden.keys())
 				print("\tright_to_hidden:", right_to_hidden.keys())
-				print("")
+				'''
 				m1_vec = []
 				num_summed = 0
-				for token_index in st_xuid1.mention_token_indices[xuid1]:
-
-					
+				tmp = []
+				for token_index in st_for_xuid1.mention_token_indices[xuid1]:
 					if sent_xuid2 < sent_xuid1:
 						left_vec = right_to_hidden[token_index-1][0].detach().numpy()
+						tmp.append(rwords.split(" ")[token_index-1])
 					else:
 						left_vec = left_to_hidden[token_index-1][0].detach().numpy()
+						tmp.append(lwords.split(" ")[token_index-1])
 					
 					if len(m1_vec) == 0:
 						m1_vec = left_vec
@@ -188,10 +190,12 @@ class Resolver:
 						m1_vec += left_vec
 					num_summed += 1
 				m1_vec[:] = [x / num_summed for x in m1_vec]
-
+				if " ".join(m1.text) != " ".join(tmp):
+					print("* ERROR: xuid1's text didn't match with what the sickcorpus had")
+					exit()
 				m2_vec = []
 				num_summed = 0
-				for token_index in st_xuid2.mention_token_indices[xuid2]:
+				for token_index in st_for_xuid2.mention_token_indices[xuid2]:
 					
 					if sent_xuid2 < sent_xuid1:
 						right_vec = left_to_hidden[token_index-1][0].detach().numpy()
@@ -205,7 +209,7 @@ class Resolver:
 					num_summed += 1
 				m2_vec[:] = [x / num_summed for x in m2_vec]
 				
-				print("m1_vec:", m1_vec[0:10], "m2_vec:", m2_vec[0:10])
+				#print("m1_vec:", m1_vec[0:10], "m2_vec:", m2_vec[0:10])
 				dot = np.dot(m1_vec, m2_vec)
 				norma = np.linalg.norm(m1_vec)
 				normb = np.linalg.norm(m2_vec)
@@ -218,7 +222,7 @@ class Resolver:
 
 				preds.append(l2) # TODO: or gold
 			(f1, prec, rec, bestThreshold) = Helper.calculate_f1(preds, golds)
-			print("f1:", f1)
+			print("f1:", f1, "bestThreshold:", bestThreshold)
 			exit()
 			while ensemble_test_predictions == [] or len(ensemble_test_predictions[0]) < num_runs:
 				model = CCNN(helper, dh, supp_features_type, self.scope, self.presets, None, devMode, stopping_points)

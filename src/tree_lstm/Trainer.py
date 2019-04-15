@@ -48,7 +48,7 @@ class Trainer(object):
 			calculate_sim = False
 			if idx == -1:
 				calculate_sim = True
-			output, _, _ = self.model(ltree, lsent, lparents, rtree, rsent, rparents, calculate_sim)
+			output, left_to_hidden, right_to_hidden = self.model(ltree, lsent, lparents, rtree, rsent, rparents, calculate_sim)
 			#print("idx:", idx, "\n\tlabel:", label, "\n\tlwords:", lwords, "\n\trinput:", rwords, "\n\toutput:", output, "\n\ttarget:", target)
 			loss = self.criterion(output, target)
 			if idx < -1:
@@ -110,5 +110,9 @@ class Trainer(object):
 			ltree, lsent, lparents, rtree, rsent, rparents, label = datum
 			lsent, rsent = lsent.to(self.device), rsent.to(self.device)
 			output, left_to_hidden, right_to_hidden = self.model(ltree, lsent, lparents, rtree, rsent, rparents, False)
-		return left_to_hidden, right_to_hidden
+			lwords = " ".join([self.vocab.idxToLabel[int(x)] for x in lsent])
+			rwords = " ".join([self.vocab.idxToLabel[int(x)] for x in rsent])
+			#print("\ttree's received lwords:", lwords)
+			#print("\ttree's received rwords:", rwords)
+		return lwords, left_to_hidden, rwords, right_to_hidden
 	

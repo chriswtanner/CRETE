@@ -117,6 +117,14 @@ class SimilarityTreeLSTM(nn.Module):
 		if calculate_sim:
 			self.calc_sim(lsent, lparents, left_to_hidden, rsent, rparents, right_to_hidden)
 		output = self.similarity(lhidden, rhidden)
+
+		#print(len(lsent), " vs:", len(left_to_hidden.keys()))
+		if len(lsent) != len(left_to_hidden.keys()):
+			print("* ERROR< diff sizes!")
+			print("left keys:", left_to_hidden.keys())
+			exit()
+
+
 		return output, left_to_hidden, right_to_hidden
 
 	def calc_sim(self, lsent, lparents, left_to_hidden, rsent, rparents, right_to_hidden):
