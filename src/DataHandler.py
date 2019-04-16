@@ -122,7 +122,7 @@ class DataHandler:
 		self.trainXUIDPairs, self.train_tree_set = self.construct_tree_files(True, self.trainXUIDPairs, self.args.baseDir + "src/tree_lstm/data/sick/train/" + dir_path, True, evaluate_all_pairs)
 		self.devXUIDPairs, self.dev_tree_set = self.construct_tree_files(False, self.devXUIDPairs, self.args.baseDir + "src/tree_lstm/data/sick/dev/" + dir_path, False, evaluate_all_pairs)
 		self.testXUIDPairs, self.test_tree_set = self.construct_tree_files(False, self.testXUIDPairs, self.args.baseDir + "src/tree_lstm/data/sick/test/" + dir_path, False, evaluate_all_pairs)
-
+		
 	# produces files that TreeLSTM can read
 	def construct_tree_files(self, is_training, xuid_pairs, dir_path, filter_only_roots, evaluate_all_pairs):
 		print("dir_path:", dir_path)
@@ -249,13 +249,6 @@ class DataHandler:
 			key = str(sent_num1) + "_" + str(sent_num2)
 			key_rev = str(sent_num2) + "_" + str(sent_num1)
 			tu = (sent_num1, sent_num2)
-			'''
-			if sent_num2 < sent_num1: # reverse them
-				tmp = key
-				key = key_rev
-				key_rev = tmp
-				tu = (sent_num2, sent_num1)
-			'''
 
 			if key not in sent_key_to_index and key_rev not in sent_key_to_index:
 				if sent_label == 1: # negative

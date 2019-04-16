@@ -55,7 +55,7 @@ class SICKDataset(data.Dataset):
 
     def read_tree(self, line):
         parents = list(map(int, line.split()))
-        print("line:", line, "parents:", parents, "# parents:", len(parents))
+        #print("line:", line, "parents:", parents, "# parents:", len(parents))
         trees = dict()
         root = None
         for i in range(1, len(parents) + 1):
@@ -97,12 +97,12 @@ class SICKDataset(data.Dataset):
                         #print("\t\t\t\tset prev to be = tree; idx = parent", idx, "=", parent)
                         prev = tree
                         idx = parent
-        print("# trees:", len(trees.keys()))
+        #print("# trees:", len(trees.keys()))
 
-        all_nodes = []
-        self.dfs(root, all_nodes)
-        print("all_nodes:", len(all_nodes))
-        exit()
+        #all_nodes = []
+        #self.dfs(root, all_nodes)
+        #print("all_nodes:", len(all_nodes))
+        #exit()
         return root
 
     def dfs(self, cur_node, all_nodes):

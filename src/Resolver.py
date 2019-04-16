@@ -124,28 +124,27 @@ class Resolver:
 		#corpus.calculateEntEnvAgreement()
 
 		if useTreeLSTM:
-			dh.load_xuid_pairs(supp_features_type, self.scope)
-			dh.construct_tree_files_(self.is_wd) # but we construct sentences 
+			dh.load_xuid_pairs(supp_features_type, self.scope) # CREATES ALL XUID PAIRS
+			dh.construct_tree_files_(self.is_wd) # WRITES FILES TO DISK
 			td = TreeDriver()
 			for epoch in range(td.args.epochs):
 				td.train(epoch)
-				exit()
+
 				preds = []
 				golds = []
-				for (xuid1,xuid2), sent_key in dh.train_tree_set.xuid_pair_and_sent_key:
+
+				missing_xuids = set()
+				for (xuid1,xuid2), sent_key in dh.test_tree_set.xuid_pair_and_sent_key:
 					m1 = corpus.XUIDToMention[xuid1]
 					m2 = corpus.XUIDToMention[xuid2]
 
 					# sent1 should correspond w/ the lesser sent number
 					sent_xuid1 = m1.globalSentenceNum
 					sent_xuid2 = m2.globalSentenceNum
-					if m1.REF == m2.REF:
-						golds.append(1)
-					else:
-						golds.append(2)
 
-					sent_dataset_index = dh.train_tree_set.sent_key_to_index[sent_key]
-					datum = td.train_dataset[sent_dataset_index]
+
+					sent_dataset_index = dh.test_tree_set.sent_key_to_index[sent_key]
+					datum = td.test_dataset[sent_dataset_index]
 					lwords, left_to_hidden, rwords, right_to_hidden = td.fetch_hidden_embeddings(datum)
 
 					st_for_xuid1 = dh.sent_num_to_obj[sent_xuid1] # keys are actual global sent num
@@ -173,55 +172,83 @@ class Resolver:
 					m1_vec = []
 					num_summed = 0
 					tmp = []
+
+
 					for token_index in st_for_xuid1.mention_token_indices[xuid1]:
 						if sent_xuid2 < sent_xuid1:
-							left_vec = right_to_hidden[token_index-1][0].detach().numpy()
+							vec = right_to_hidden #[token_index-1][0].detach().numpy()
 							tmp.append(rwords.split(" ")[token_index-1])
 						else:
-							left_vec = left_to_hidden[token_index-1][0].detach().numpy()
+							vec = left_to_hidden #token_index-1][0].detach().numpy()
 							tmp.append(lwords.split(" ")[token_index-1])
+						
+						if token_index-1 in vec:
+							left_vec = vec[token_index-1][0].detach().numpy()
+						else:
+							missing_xuids.add(xuid1)
+							break
 						
 						if len(m1_vec) == 0:
 							m1_vec = left_vec
 						else:
 							m1_vec += left_vec
 						num_summed += 1
-					m1_vec[:] = [x / num_summed for x in m1_vec]
+
+					'''
 					if " ".join(m1.text) != " ".join(tmp):
 						print("* ERROR: xuid1's text didn't match with what the sickcorpus had")
 						exit()
+					'''
 					m2_vec = []
 					num_summed = 0
 					for token_index in st_for_xuid2.mention_token_indices[xuid2]:
 						
 						if sent_xuid2 < sent_xuid1:
-							right_vec = left_to_hidden[token_index-1][0].detach().numpy()
+							vec = left_to_hidden
 						else:
-							right_vec = right_to_hidden[token_index-1][0].detach().numpy()
-						
+							vec = right_to_hidden
+						if token_index-1 in vec:
+							right_vec = vec[token_index-1][0].detach().numpy()
+						else:
+							missing_xuids.add(xuid2)
+							break
+
 						if len(m2_vec) == 0:
 							m2_vec = right_vec
 						else:
 							m2_vec += right_vec
 						num_summed += 1
-					m2_vec[:] = [x / num_summed for x in m2_vec]
-					
-					#print("m1_vec:", m1_vec[0:10], "m2_vec:", m2_vec[0:10])
-					dot = np.dot(m1_vec, m2_vec)
-					norma = np.linalg.norm(m1_vec)
-					normb = np.linalg.norm(m2_vec)
-					cs = dot / (norma * normb)
 
-					l2 = 0
-					for i, j in zip(m1_vec, m2_vec):
-						l2 += math.pow(i - j, 2)
-					l2 = math.sqrt(l2)
+					if xuid1 not in missing_xuids and xuid2 not in missing_xuids:
+						m1_vec[:] = [x / num_summed for x in m1_vec]
+						m2_vec[:] = [x / num_summed for x in m2_vec]
+						
+						#print("m1_vec:", m1_vec[0:10], "m2_vec:", m2_vec[0:10])
+						dot = np.dot(m1_vec, m2_vec)
+						norma = np.linalg.norm(m1_vec)
+						normb = np.linalg.norm(m2_vec)
+						cs = dot / (norma * normb)
 
-					preds.append(l2) # TODO: or gold
+						l2 = 0
+						for i, j in zip(m1_vec, m2_vec):
+							l2 += math.pow(i - j, 2)
+						l2 = math.sqrt(l2)
+
+						preds.append(l2) # TODO: or gold
+
+						if m1.REF == m2.REF:
+							golds.append(1)
+						else:
+							golds.append(2)
+
+
 				(f1, prec, rec, bestThreshold) = Helper.calculate_f1(preds, golds)
 				print("f1:", f1, "bestThreshold:", bestThreshold)
-
-		
+				print("\tlen xuid pairs to test:", len(dh.test_tree_set.xuid_pair_and_sent_key))
+				print("\tbut actually processed:", len(golds))
+				print("\t# xuids we didnt have:", len(missing_xuids))
+				for xuid in missing_xuids:
+					print("\t\tmissed:", corpus.XUIDToMention[xuid])
 
 		exit()
 		# within-doc first, then cross-doc

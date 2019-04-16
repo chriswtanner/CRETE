@@ -13,10 +13,10 @@ class ECBHelper:
 		self.dependency_parse_type = 'basic-dependencies'
 		self.tmp_ref_to_abbr = {} # tmp -- just for printing dependency parse trees
 		# data splits
-		self.trainingDirs = [2] #[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 18, 19, 20, 21, 22] #, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35]
-		self.devDirs = [2] #[23 24, 25]
+		self.trainingDirs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 18, 19, 20, 21, 22] #, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35]
+		self.devDirs = [23, 24, 25]
 		#self.testingDirs = [36, 37, 38, 39, 40, 41, 42, 43, 44, 45]
-		self.testingDirs = [2] #[26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45]
+		self.testingDirs = [26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45]
 
 		self.pronouns = self.loadPronouns(args.pronounsFile) # load the regardless
 		self.event_pronouns = event_pronouns

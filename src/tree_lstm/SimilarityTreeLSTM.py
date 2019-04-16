@@ -68,7 +68,7 @@ class ChildSumTreeLSTM(nn.Module):
 		if tree.idx in index_to_hidden:
 			print("WHOA, we already have idx:", tree.idx)
 		index_to_hidden[tree.idx] = tree.state[0] # TODO CHANGE
-		print("tree has index_to_hidden:", len(index_to_hidden.keys()))
+		#print("tree has index_to_hidden:", len(index_to_hidden.keys()))
 		#print("\ttree idx:", tree.idx, "; self.vocab.idxToLabel:", self.vocab.idxToLabel[tree.idx])#inputs[tree.idx]:", inputs[tree.idx])
 		return tree.state
 
@@ -123,6 +123,7 @@ class SimilarityTreeLSTM(nn.Module):
 			self.calc_sim(lsent, lparents, left_to_hidden, rsent, rparents, right_to_hidden)
 		output = self.similarity(lhidden, rhidden)
 
+		'''
 		print(len(lsent), " vs:", len(left_to_hidden.keys()))
 		print("larr:", len(larr), "larr:", larr)
 		if len(lsent) != len(left_to_hidden.keys()):
@@ -133,9 +134,7 @@ class SimilarityTreeLSTM(nn.Module):
 
 			print("rsent:", len(rsent))
 			print("right keys:", len(right_to_hidden.keys()))
-			exit()
-
-
+		'''
 		return output, left_to_hidden, right_to_hidden
 
 	def calc_sim(self, lsent, lparents, left_to_hidden, rsent, rparents, right_to_hidden):

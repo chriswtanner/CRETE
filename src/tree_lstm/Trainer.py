@@ -30,6 +30,7 @@ class Trainer(object):
 		total_loss = 0.0
 		#indices = torch.randperm(len(dataset), dtype=torch.long, device='cpu')
 		print("# training examples:", len(dataset))
+		num_mismatched_dependencies = 0
 		for idx in tqdm(range(len(dataset)), desc='Training epoch ' + str(self.epoch + 1) + ''):
 			#print("train: idx:", idx)
 			ltree, lsent, lparents, rtree, rsent, rparents, label = dataset[idx]
@@ -48,14 +49,17 @@ class Trainer(object):
 			calculate_sim = False
 			if idx == -1:
 				calculate_sim = True
-			print("TRAIN idx:", idx, "lwords:", lwords)
-			print("\tlenlsent:", len(lsent), "lparents:", len(lparents))
+			
+			#print("\tlenlsent:", len(lsent), "lparents:", len(lparents))
 			output, left_to_hidden, right_to_hidden = self.model(ltree, lsent, lparents, rtree, rsent, rparents, calculate_sim)
 			#print("idx:", idx, "\n\tlabel:", label, "\n\tlwords:", lwords, "\n\trinput:", rwords, "\n\toutput:", output, "\n\ttarget:", target)
 			loss = self.criterion(output, target)
-			if idx < -1:
-				print("TRAIN idx:", idx, "; target:", target, "; output:", output, "; loss:", loss)
 
+			if len(left_to_hidden) != len(lsent):
+				print("TRAIN idx:", idx, "lwords:", lwords)
+				print("* ERROR: ", len(left_to_hidden), "!=", len(lsent))
+				num_mismatched_dependencies += 1
+				
 			#ltree, "output:", output, "target:", target)
 			total_loss += loss.item()
 			loss.backward()
@@ -64,6 +68,7 @@ class Trainer(object):
 				self.optimizer.step()
 				self.optimizer.zero_grad()
 		
+		print("*** num_mismatched_dependencies:", num_mismatched_dependencies)
 		self.epoch += 1
 		return total_loss / len(dataset)
 
