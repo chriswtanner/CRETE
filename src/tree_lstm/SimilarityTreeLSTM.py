@@ -43,18 +43,17 @@ class ChildSumTreeLSTM(nn.Module):
 		#print("returning c:", len(c), "and h:", len(h))
 		return c, h
 
-	def forward(self, tree, token_embeddings, index_to_hidden):
+	def forward(self, tree, token_embeddings, index_to_hidden, arr):
 		#print("\tChildSumTreeLSTM.forward(): receiving ROOT tree:", tree, "; and inputs:", inputs[0][0:5])
 		#print("\t\t# children:", tree.num_children)
 		for idx in range(tree.num_children):
 			#print("idx:", idx, self.vocab.idxToLabel[idx])
-			self.forward(tree.children[idx], token_embeddings, index_to_hidden)
+			self.forward(tree.children[idx], token_embeddings, index_to_hidden, arr)
 
 		if tree.num_children == 0:
 			#print("*** no children!")
 			child_c = token_embeddings[0].detach().new(1, self.mem_dim).fill_(0.).requires_grad_()
-			child_h = token_embeddings[0].detach().new(
-				1, self.mem_dim).fill_(0.).requires_grad_()
+			child_h = token_embeddings[0].detach().new(1, self.mem_dim).fill_(0.).requires_grad_()
 		else:
 			#print("* we have # children:", tree.num_children)
 			child_c, child_h = zip(* map(lambda x: x.state, tree.children))
@@ -65,7 +64,11 @@ class ChildSumTreeLSTM(nn.Module):
 			#print("child_h:", child_h)
 
 		tree.state = self.node_forward(token_embeddings[tree.idx], child_c, child_h)
+		arr.append(tree.idx)
+		if tree.idx in index_to_hidden:
+			print("WHOA, we already have idx:", tree.idx)
 		index_to_hidden[tree.idx] = tree.state[0] # TODO CHANGE
+		print("tree has index_to_hidden:", len(index_to_hidden.keys()))
 		#print("\ttree idx:", tree.idx, "; self.vocab.idxToLabel:", self.vocab.idxToLabel[tree.idx])#inputs[tree.idx]:", inputs[tree.idx])
 		return tree.state
 
@@ -111,17 +114,25 @@ class SimilarityTreeLSTM(nn.Module):
 
 		left_to_hidden = {}
 		right_to_hidden = {}
-		lstate, lhidden = self.childsumtreelstm(ltree, l_input_embeddings, left_to_hidden)
-		rstate, rhidden = self.childsumtreelstm(rtree, r_input_embeddings, right_to_hidden)
+		larr = []
+		rarr = []
+		lstate, lhidden = self.childsumtreelstm(ltree, l_input_embeddings, left_to_hidden, larr)
+		rstate, rhidden = self.childsumtreelstm(rtree, r_input_embeddings, right_to_hidden, rarr)
 
 		if calculate_sim:
 			self.calc_sim(lsent, lparents, left_to_hidden, rsent, rparents, right_to_hidden)
 		output = self.similarity(lhidden, rhidden)
 
-		#print(len(lsent), " vs:", len(left_to_hidden.keys()))
+		print(len(lsent), " vs:", len(left_to_hidden.keys()))
+		print("larr:", len(larr), "larr:", larr)
 		if len(lsent) != len(left_to_hidden.keys()):
 			print("* ERROR< diff sizes!")
+			print("lsent:", lsent)
 			print("left keys:", left_to_hidden.keys())
+			print(len(lsent), " vs:", len(left_to_hidden.keys()))
+
+			print("rsent:", len(rsent))
+			print("right keys:", len(right_to_hidden.keys()))
 			exit()
 
 

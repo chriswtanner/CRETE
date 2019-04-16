@@ -68,16 +68,12 @@ class TreeDriver():
 		# create trainer object for training and testing
 		self.trainer = Trainer(self.args, model, criterion, optimizer, device, vocab)
 
-	def train(self):
-		best = -float('inf')
-		highest_dev_f1 = 0
-		highest_test_f1 = 0
-		for epoch in range(self.args.epochs):
-			train_loss = self.trainer.train(self.train_dataset)
-			train_loss, train_pred = self.trainer.test(self.train_dataset)
-			train_pearson = self.metrics.pearson(train_pred, self.train_dataset.labels)
-			train_mse = self.metrics.mse(train_pred, self.train_dataset.labels)
-			print('==> Epoch {}, Train \tLoss: {}\tPearson: {}\tMSE: {}'.format(epoch, train_loss, train_pearson, train_mse))
+	def train(self, epoch_num): # performs one epoch of training
+		train_loss = self.trainer.train(self.train_dataset)
+		train_loss, train_pred = self.trainer.test(self.train_dataset)
+		train_pearson = self.metrics.pearson(train_pred, self.train_dataset.labels)
+		train_mse = self.metrics.mse(train_pred, self.train_dataset.labels)
+		print('==> Epoch {}, Train \tLoss: {}\tPearson: {}\tMSE: {}'.format(epoch_num, train_loss, train_pearson, train_mse))
 
 	def fetch_hidden_embeddings(self, datum):
 		return self.trainer.fetch_tree_nodes(datum)

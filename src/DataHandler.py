@@ -172,7 +172,7 @@ class DataHandler:
 			st = self.construct_sent_tree(sent_num, candidate_xuids, stanTokenToECBTokens)
 			if st.root_XUID == -1:
 				num_rootless_sent += 1
-			print("setting sent_num:", sent_num, "to being this Tree:", st)
+			#print("setting sent_num:", sent_num, "to being this Tree:", st)
 			self.sent_num_to_obj[sent_num] = st
 		print("# candidate_sentences:", len(candidate_sentences), " ==?== # sent:", len(self.sent_num_to_obj))
 		print("num_rootless_sent:", num_rootless_sent)
@@ -279,7 +279,7 @@ class DataHandler:
 					fout_b_deps.write(self.sent_num_to_obj[sent_num2].dependency_chain + "\n")
 					num_written += 1
 				else:
-					print("*** reversing it bc:", sent_num2, "is less than", sent_num1)
+					#print("*** reversing it bc:", sent_num2, "is less than", sent_num1)
 					fout_a.write(self.sent_num_to_obj[sent_num2].sent + "\n")
 					fout_b.write(self.sent_num_to_obj[sent_num1].sent + "\n")
 					fout_sim.write(str(sent_label) + "\n")
@@ -328,6 +328,7 @@ class DataHandler:
 		token_index = 1
 		for t in self.corpus.globalSentenceNumToTokens[sent_num]:
 			if t.tokenID == "-1":
+				#print("*** SKIPPING TOKEN:", t, str(" ".join([t.text for t in self.corpus.globalSentenceNumToTokens[sent_num]])))
 				continue
 
 			for m in t.mentions:

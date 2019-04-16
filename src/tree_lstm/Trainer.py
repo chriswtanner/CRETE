@@ -48,6 +48,8 @@ class Trainer(object):
 			calculate_sim = False
 			if idx == -1:
 				calculate_sim = True
+			print("TRAIN idx:", idx, "lwords:", lwords)
+			print("\tlenlsent:", len(lsent), "lparents:", len(lparents))
 			output, left_to_hidden, right_to_hidden = self.model(ltree, lsent, lparents, rtree, rsent, rparents, calculate_sim)
 			#print("idx:", idx, "\n\tlabel:", label, "\n\tlwords:", lwords, "\n\trinput:", rwords, "\n\toutput:", output, "\n\ttarget:", target)
 			loss = self.criterion(output, target)
