@@ -140,7 +140,7 @@ class Helper:
 		return target
 		
 
-	def calculate_f1(preds, golds):
+	def calculate_f1(preds, golds, rev=True):
 
 		numGoldPos = 0
 		scoreToGoldTruth = defaultdict(list)
@@ -152,9 +152,9 @@ class Helper:
 				scoreToGoldTruth[pred].append(1)
 			else:
 				scoreToGoldTruth[pred].append(0)
+			print("pred:", pred, "gold:", golds[_])
 
-		s = sorted(scoreToGoldTruth.keys(), reverse=True)
-
+		s = sorted(scoreToGoldTruth.keys(), reverse=rev)
 		TP = 0.0
 		FP = 0.0
 		bestF1 = 0
@@ -185,6 +185,7 @@ class Helper:
 				bestVal = eachVal
 				bestR = recall
 				bestP = prec
+				print("new besT:", bestF1, " (", bestVal, ")")
 		if numReturnedSoFar != len(preds):
 			print("* ERROR: we didn't look at preds correctly")
 			exit(1)

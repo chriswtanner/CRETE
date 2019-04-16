@@ -40,7 +40,7 @@ class Resolver:
 
 		# classifier params
 		useCCNN = True
-		useTreeLSTM = True
+		useTreeLSTM = False
 		devMode = True
 		runStanford = False
 		useRelationalFeatures = False
@@ -123,134 +123,171 @@ class Resolver:
 		#helper.checkDependencyRelations()
 		#corpus.calculateEntEnvAgreement()
 
+		dh.load_xuid_pairs(supp_features_type, self.scope) # CREATES ALL XUID PAIRS
 		if useTreeLSTM:
-			dh.load_xuid_pairs(supp_features_type, self.scope) # CREATES ALL XUID PAIRS
+
 			dh.construct_tree_files_(self.is_wd) # WRITES FILES TO DISK
 			td = TreeDriver()
+
+			eval_set = dh.train_tree_set # TODO: adjust this to whatever you want to test on
+			dataset = td.train_dataset
+
 			for epoch in range(td.args.epochs):
 				td.train(epoch)
 
-				preds = []
-				golds = []
+				if (epoch+1) % 15 == 0:
 
-				missing_xuids = set()
-				for (xuid1,xuid2), sent_key in dh.test_tree_set.xuid_pair_and_sent_key:
-					m1 = corpus.XUIDToMention[xuid1]
-					m2 = corpus.XUIDToMention[xuid2]
+					preds = []
+					golds = []
 
-					# sent1 should correspond w/ the lesser sent number
-					sent_xuid1 = m1.globalSentenceNum
-					sent_xuid2 = m2.globalSentenceNum
+					missing_xuids = set()
+					start_time = time.time()
+					#xuid_to_vec = {}
+					for (xuid1,xuid2), sent_key in eval_set.xuid_pair_and_sent_key:
+						m1 = corpus.XUIDToMention[xuid1]
+						m2 = corpus.XUIDToMention[xuid2]
 
+						# sent1 should correspond w/ the lesser sent number
+						sent_xuid1 = m1.globalSentenceNum
+						sent_xuid2 = m2.globalSentenceNum
 
-					sent_dataset_index = dh.test_tree_set.sent_key_to_index[sent_key]
-					datum = td.test_dataset[sent_dataset_index]
-					lwords, left_to_hidden, rwords, right_to_hidden = td.fetch_hidden_embeddings(datum)
+						sent_dataset_index = eval_set.sent_key_to_index[sent_key]
+						datum = dataset[sent_dataset_index]
+						lwords, left_to_hidden, rwords, right_to_hidden = td.fetch_hidden_embeddings(datum)
 
-					st_for_xuid1 = dh.sent_num_to_obj[sent_xuid1] # keys are actual global sent num
-					st_for_xuid2 = dh.sent_num_to_obj[sent_xuid2] # keys are actual global sent num
-					'''
-					print("\n----- looking at new xuid results -----")
-					print("corpus sent1:", [t.text for t in corpus.globalSentenceNumToTokens[sent_xuid1]])
-					print("corpus sent2:", [t.text for t in corpus.globalSentenceNumToTokens[sent_xuid2]])
-					print("sent_xuid1:", sent_xuid1, "sent_xuid2:", sent_xuid2)
-					print("sent_key:", sent_key, "--> sent_dataset_index:", sent_dataset_index)
-					print("\tdatum:", datum)
-					print("m1:", m1)
-					print("\tdatum's lwords:", lwords)
-					print("\tst1:", sent_xuid1, st_for_xuid1)
-					print("\tst_for_xuid1.mention_token_indices[xuid1]:", st_for_xuid1.mention_token_indices[xuid1])
-					
-					print("m2:", m2)
-					print("\tdatum's rwords:", rwords)
-					print("\tst2:", sent_xuid2, st_for_xuid2)
-					print("\tst_for_xuid2.mention_token_indices[xuid2]:", st_for_xuid2.mention_token_indices[xuid2])
-
-					print("\tleft_to_hidden:", left_to_hidden.keys())
-					print("\tright_to_hidden:", right_to_hidden.keys())
-					'''
-					m1_vec = []
-					num_summed = 0
-					tmp = []
-
-
-					for token_index in st_for_xuid1.mention_token_indices[xuid1]:
-						if sent_xuid2 < sent_xuid1:
-							vec = right_to_hidden #[token_index-1][0].detach().numpy()
-							tmp.append(rwords.split(" ")[token_index-1])
-						else:
-							vec = left_to_hidden #token_index-1][0].detach().numpy()
-							tmp.append(lwords.split(" ")[token_index-1])
+						st_for_xuid1 = dh.sent_num_to_obj[sent_xuid1] # keys are actual global sent num
+						st_for_xuid2 = dh.sent_num_to_obj[sent_xuid2] # keys are actual global sent num
+						'''
+						print("\n----- looking at new xuid results -----")
+						print("corpus sent1:", [t.text for t in corpus.globalSentenceNumToTokens[sent_xuid1]])
+						print("corpus sent2:", [t.text for t in corpus.globalSentenceNumToTokens[sent_xuid2]])
+						print("sent_xuid1:", sent_xuid1, "sent_xuid2:", sent_xuid2)
+						print("sent_key:", sent_key, "--> sent_dataset_index:", sent_dataset_index)
+						print("\tdatum:", datum)
+						print("m1:", m1)
+						print("\tdatum's lwords:", lwords)
+						print("\tst1:", sent_xuid1, st_for_xuid1)
+						print("\tst_for_xuid1.mention_token_indices[xuid1]:", st_for_xuid1.mention_token_indices[xuid1])
 						
-						if token_index-1 in vec:
-							left_vec = vec[token_index-1][0].detach().numpy()
-						else:
-							missing_xuids.add(xuid1)
-							break
-						
-						if len(m1_vec) == 0:
-							m1_vec = left_vec
-						else:
-							m1_vec += left_vec
-						num_summed += 1
+						print("m2:", m2)
+						print("\tdatum's rwords:", rwords)
+						print("\tst2:", sent_xuid2, st_for_xuid2)
+						print("\tst_for_xuid2.mention_token_indices[xuid2]:", st_for_xuid2.mention_token_indices[xuid2])
 
-					'''
-					if " ".join(m1.text) != " ".join(tmp):
-						print("* ERROR: xuid1's text didn't match with what the sickcorpus had")
-						exit()
-					'''
-					m2_vec = []
-					num_summed = 0
-					for token_index in st_for_xuid2.mention_token_indices[xuid2]:
-						
-						if sent_xuid2 < sent_xuid1:
-							vec = left_to_hidden
-						else:
-							vec = right_to_hidden
-						if token_index-1 in vec:
-							right_vec = vec[token_index-1][0].detach().numpy()
-						else:
-							missing_xuids.add(xuid2)
-							break
+						print("\tleft_to_hidden:", left_to_hidden.keys())
+						print("\tright_to_hidden:", right_to_hidden.keys())
+						'''
+						m1_vec = []
+						m1_vecs = []
+						num_summed = 0
+						tmp = []
 
-						if len(m2_vec) == 0:
-							m2_vec = right_vec
-						else:
-							m2_vec += right_vec
-						num_summed += 1
-
-					if xuid1 not in missing_xuids and xuid2 not in missing_xuids:
+						#if xuid1 not in xuid_to_vec and xuid1 not in missing_xuids:
+						for token_index in st_for_xuid1.mention_token_indices[xuid1]:
+							if sent_xuid2 < sent_xuid1:
+								vec = right_to_hidden #[token_index-1][0].detach().numpy()
+								tmp.append(rwords.split(" ")[token_index-1])
+							else:
+								vec = left_to_hidden #token_index-1][0].detach().numpy()
+								tmp.append(lwords.split(" ")[token_index-1])
+							
+							if token_index-1 in vec:
+								left_vec = vec[token_index-1][0].detach().numpy()
+								m1_vecs.append(left_vec)
+							else:
+								missing_xuids.add(xuid1)
+								break
+							
+							if len(m1_vec) == 0:
+								m1_vec = left_vec
+							else:
+								m1_vec += left_vec
+							num_summed += 1
 						m1_vec[:] = [x / num_summed for x in m1_vec]
-						m2_vec[:] = [x / num_summed for x in m2_vec]
+							#xuid_to_vec[xuid1] = m1_vec
+						'''
+						if " ".join(m1.text) != " ".join(tmp):
+							print("* ERROR: xuid1's text didn't match with what the sickcorpus had")
+							exit()
+						'''
+						m2_vec = []
+						m2_vecs = []
+						num_summed = 0
+						#if xuid2 not in xuid_to_vec and xuid2 not in missing_xuids:
+						for token_index in st_for_xuid2.mention_token_indices[xuid2]:
+							
+							if sent_xuid2 < sent_xuid1:
+								vec = left_to_hidden
+							else:
+								vec = right_to_hidden
+							if token_index-1 in vec:
+								right_vec = vec[token_index-1][0].detach().numpy()
+								m2_vecs.append(right_vec)
+							else:
+								missing_xuids.add(xuid2)
+								break
+
+							if len(m2_vec) == 0:
+								m2_vec = right_vec
+							else:
+								m2_vec += right_vec
+							num_summed += 1
 						
-						#print("m1_vec:", m1_vec[0:10], "m2_vec:", m2_vec[0:10])
-						dot = np.dot(m1_vec, m2_vec)
-						norma = np.linalg.norm(m1_vec)
-						normb = np.linalg.norm(m2_vec)
-						cs = dot / (norma * normb)
+						m2_vec[:] = [x / num_summed for x in m2_vec]
+						#xuid_to_vec[xuid2] = m2_vec
 
-						l2 = 0
-						for i, j in zip(m1_vec, m2_vec):
-							l2 += math.pow(i - j, 2)
-						l2 = math.sqrt(l2)
+						if xuid1 not in missing_xuids and xuid2 not in missing_xuids:
 
-						preds.append(l2) # TODO: or gold
+							#m1_vec = xuid_to_vec[xuid1]
+							#m2_vec = xuid_to_vec[xuid2]
 
-						if m1.REF == m2.REF:
-							golds.append(1)
-						else:
-							golds.append(2)
+							#print("m1_vec:", m1_vec[0:10], "m2_vec:", m2_vec[0:10])
+							dot = np.dot(m1_vec, m2_vec)
+							norma = np.linalg.norm(m1_vec)
+							normb = np.linalg.norm(m2_vec)
+							cs = dot / (norma * normb)
 
+							l2 = 0
+							for i, j in zip(m1_vec, m2_vec):
+								l2 += math.pow(i - j, 2)
+							l2 = math.sqrt(l2)
 
-				(f1, prec, rec, bestThreshold) = Helper.calculate_f1(preds, golds)
-				print("f1:", f1, "bestThreshold:", bestThreshold)
-				print("\tlen xuid pairs to test:", len(dh.test_tree_set.xuid_pair_and_sent_key))
-				print("\tbut actually processed:", len(golds))
-				print("\t# xuids we didnt have:", len(missing_xuids))
-				for xuid in missing_xuids:
-					print("\t\tmissed:", corpus.XUIDToMention[xuid])
+							#preds.append(cs) # TODO: or gold
 
-		exit()
+							if m1.REF == m2.REF:
+								golds.append(2)
+							else:
+								golds.append(1)
+
+							highest_cs = -9999
+							min_l2 = 9999
+							for v1 in m1_vecs:
+								for v2 in m2_vecs:
+									dot = np.dot(v1, v2)
+									norma = np.linalg.norm(v1)
+									normb = np.linalg.norm(v2)
+									cs_intra = dot / (norma * normb)
+									if cs_intra > highest_cs:
+										highest_cs = cs_intra
+
+									l2_intra = 0
+									for i, j in zip(v1, v2):
+										l2_intra += math.pow(i - j, 2)
+									l2_intra = math.sqrt(l2)
+									if l2_intra < min_l2:
+										min_l2 = l2_intra
+
+							preds.append(highest_cs)
+					(f1, prec, rec, bestThreshold) = Helper.calculate_f1(preds, golds, True)
+					print("f1:", f1, "prec:", prec, "rec:", rec, "bestThreshold:", bestThreshold)
+					print("\tlen xuid pairs to test:", len(eval_set.xuid_pair_and_sent_key))
+					print("\tbut actually processed:", len(golds))
+					print("\t# xuids we didnt have:", len(missing_xuids))
+					print("# golds pos:", golds.count(2), "neg:", golds.count(1))
+					for xuid in missing_xuids:
+						print("\t\tmissed:", corpus.XUIDToMention[xuid])
+					print(str((time.time() - start_time)), "seconds")
+		#exit()
 		# within-doc first, then cross-doc
 		if useCCNN:
 			ensemble_dev_predictions = []

@@ -56,8 +56,8 @@ class Trainer(object):
 			loss = self.criterion(output, target)
 
 			if len(left_to_hidden) != len(lsent):
-				print("TRAIN idx:", idx, "lwords:", lwords)
-				print("* ERROR: ", len(left_to_hidden), "!=", len(lsent))
+				#print("TRAIN idx:", idx, "lwords:", lwords)
+				#print("* ERROR: ", len(left_to_hidden), "!=", len(lsent))
 				num_mismatched_dependencies += 1
 				
 			#ltree, "output:", output, "target:", target)

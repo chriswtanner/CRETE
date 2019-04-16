@@ -43,12 +43,12 @@ class ChildSumTreeLSTM(nn.Module):
 		#print("returning c:", len(c), "and h:", len(h))
 		return c, h
 
-	def forward(self, tree, token_embeddings, index_to_hidden, arr):
+	def forward(self, tree, token_embeddings, index_to_hidden):
 		#print("\tChildSumTreeLSTM.forward(): receiving ROOT tree:", tree, "; and inputs:", inputs[0][0:5])
 		#print("\t\t# children:", tree.num_children)
 		for idx in range(tree.num_children):
 			#print("idx:", idx, self.vocab.idxToLabel[idx])
-			self.forward(tree.children[idx], token_embeddings, index_to_hidden, arr)
+			self.forward(tree.children[idx], token_embeddings, index_to_hidden)
 
 		if tree.num_children == 0:
 			#print("*** no children!")
@@ -64,10 +64,7 @@ class ChildSumTreeLSTM(nn.Module):
 			#print("child_h:", child_h)
 
 		tree.state = self.node_forward(token_embeddings[tree.idx], child_c, child_h)
-		arr.append(tree.idx)
-		if tree.idx in index_to_hidden:
-			print("WHOA, we already have idx:", tree.idx)
-		index_to_hidden[tree.idx] = tree.state[0] # TODO CHANGE
+		index_to_hidden[tree.idx] = tree.state[1] # TODO   0 = cell state 1 = hidden
 		#print("tree has index_to_hidden:", len(index_to_hidden.keys()))
 		#print("\ttree idx:", tree.idx, "; self.vocab.idxToLabel:", self.vocab.idxToLabel[tree.idx])#inputs[tree.idx]:", inputs[tree.idx])
 		return tree.state
@@ -114,14 +111,12 @@ class SimilarityTreeLSTM(nn.Module):
 
 		left_to_hidden = {}
 		right_to_hidden = {}
-		larr = []
-		rarr = []
-		lstate, lhidden = self.childsumtreelstm(ltree, l_input_embeddings, left_to_hidden, larr)
-		rstate, rhidden = self.childsumtreelstm(rtree, r_input_embeddings, right_to_hidden, rarr)
+		lstate, lhidden = self.childsumtreelstm(ltree, l_input_embeddings, left_to_hidden)
+		rstate, rhidden = self.childsumtreelstm(rtree, r_input_embeddings, right_to_hidden)
 
 		if calculate_sim:
 			self.calc_sim(lsent, lparents, left_to_hidden, rsent, rparents, right_to_hidden)
-		output = self.similarity(lhidden, rhidden)
+		output = self.similarity(lhidden, rhidden) # TODO: change
 
 		'''
 		print(len(lsent), " vs:", len(left_to_hidden.keys()))
