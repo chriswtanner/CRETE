@@ -1,8 +1,6 @@
 import random
 import os
 import sys
-print("treedriver sys path:", sys.path)
-print("cwd:", os.getcwd())
 tree_dir = os.getcwd()
 if "tree_lstm" not in os.getcwd():
 	os.chdir("tree_lstm/")
@@ -23,8 +21,14 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 class TreeDriver():
-	def __init__(self):
+	def __init__(self, is_wd):
+
+		sub_dir = "ecb_wd/"
+		if not is_wd:
+			sub_dir = "ecb_cd/"
+
 		# init stuff
+		print("TORCH VERSION:", torch.__version__)
 		global args
 		self.args = config.parse_known_args()
 		
@@ -34,9 +38,9 @@ class TreeDriver():
 		random.seed(self.args.seed)
 
 		# paths
-		train_dir = os.path.join(self.args.data, 'train/', self.args.sub_dir)
-		dev_dir = os.path.join(self.args.data, 'dev/', self.args.sub_dir)
-		test_dir = os.path.join(self.args.data, 'test/', self.args.sub_dir)
+		train_dir = os.path.join(self.args.data, 'train/', sub_dir)
+		dev_dir = os.path.join(self.args.data, 'dev/', sub_dir)
+		test_dir = os.path.join(self.args.data, 'test/', sub_dir)
 
 		# builds vocabulary
 		sick_vocab_file = Helper.build_entire_vocab(os.path.join(self.args.data, 'sick.vocab'), train_dir, dev_dir, test_dir)

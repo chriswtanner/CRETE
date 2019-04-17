@@ -5,7 +5,7 @@ def parse_known_args():
     parser = argparse.ArgumentParser(
         description='PyTorch TreeLSTM for Sentence Similarity on Dependency Trees')
     # data arguments
-    parser.add_argument('--sub_dir', default='ecb_wd/',
+    parser.add_argument('--sub_dir', default='none/',
                         help='sub_dir')
     parser.add_argument('--data', default='data/sick/',
                         help='path to dataset')
@@ -27,7 +27,7 @@ def parse_known_args():
     parser.add_argument('--freeze_embed', default=True, action='store_true',
                         help='Freeze word embeddings')
     # training arguments (WAS 15 epochs)
-    parser.add_argument('--epochs', default=20, type=int,
+    parser.add_argument('--epochs', default=21, type=int,
                         help='number of total epochs to run')
     parser.add_argument('--batchsize', default=25, type=int,
                         help='batchsize for optimizer updates')

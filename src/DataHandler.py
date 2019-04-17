@@ -2,19 +2,20 @@ import time
 import pickle
 import numpy as np
 import random
+from copy import deepcopy
 from MiniPred import MiniPred
 from itertools import chain
 from collections import defaultdict
 
-class SentTree:
-	def __init__(self, sent, dependency_chain, mention_token_indices, root_XUID):
-		self.sent = sent
+class MiniTree:
+	def __init__(self, text, dependency_chain, mention_token_indices, root_XUID):
+		self.text = text
 		self.dependency_chain = " ".join([str(d) for d in dependency_chain])
 		self.mention_token_indices = mention_token_indices
 		self.root_XUID = root_XUID
 
 	def __str__(self):
-		return("sent:" + self.sent + "; dependency_chain:" + str(self.dependency_chain) + \
+		return("text:" + self.text + "; dependency_chain:" + str(self.dependency_chain) + \
 		"mention_token_indices:" + str(self.mention_token_indices) + "ROOT:" + str(self.root_XUID))
 
 class TreeSet:
@@ -104,27 +105,31 @@ class DataHandler:
 
 	def load_xuid_pairs(self, supp_features, scope):
 		# TRUE represents we should filter the xuids to being only root events
-		self.trainXUIDPairs = self.createXUIDPairs(self.trainXUIDs, "dir", False) # TODO: don't leave as 'dir' for train
+		self.trainXUIDPairs = self.createXUIDPairs(self.trainXUIDs, scope, False) # TODO: don't leave as 'dir' for train
 		self.devXUIDPairs = self.createXUIDPairs(self.devXUIDs, scope, supp_features)
 		self.testXUIDPairs = self.createXUIDPairs(self.testXUIDs, scope, supp_features)
 
 	def construct_tree_files_(self, is_wd):
-		#(train_mt1, train_mt2) = 
 		dir_path = "ecb_wd/"
 		if not is_wd:
 			dir_path = "ecb_cd/"
 
+		# TODO: update these parameters
 		evaluate_all_pairs = True
+		create_sub_trees = True # IF FALSE, our self.*_tree_sets will have just 1 per sentence.
 
-		# the True passed-in below corresponds to if we should construct only Trees that are rooted w/ events or not
+		# the 2nd True passed-in below corresponds to if we should construct only Trees that are rooted w/ events or not
 		# (so, training should always be True, but dev and test can be False)
 		self.sent_num_to_obj = {}
-		self.trainXUIDPairs, self.train_tree_set = self.construct_tree_files(True, self.trainXUIDPairs, self.args.baseDir + "src/tree_lstm/data/sick/train/" + dir_path, True, evaluate_all_pairs)
-		self.devXUIDPairs, self.dev_tree_set = self.construct_tree_files(False, self.devXUIDPairs, self.args.baseDir + "src/tree_lstm/data/sick/dev/" + dir_path, False, evaluate_all_pairs)
-		self.testXUIDPairs, self.test_tree_set = self.construct_tree_files(False, self.testXUIDPairs, self.args.baseDir + "src/tree_lstm/data/sick/test/" + dir_path, False, evaluate_all_pairs)
+		self.xuid_to_height = {} # N if root
+		self.xuid_to_depth = {} # 0 if root
+
+		self.trainXUIDPairs, self.train_tree_set = self.construct_tree_files(True, self.trainXUIDPairs, self.args.baseDir + "src/tree_lstm/data/sick/train/" + dir_path, True, evaluate_all_pairs, create_sub_trees)
+		self.devXUIDPairs, self.dev_tree_set = self.construct_tree_files(False, self.devXUIDPairs, self.args.baseDir + "src/tree_lstm/data/sick/dev/" + dir_path, False, evaluate_all_pairs, create_sub_trees)
+		self.testXUIDPairs, self.test_tree_set = self.construct_tree_files(False, self.testXUIDPairs, self.args.baseDir + "src/tree_lstm/data/sick/test/" + dir_path, False, evaluate_all_pairs, create_sub_trees)
 		
 	# produces files that TreeLSTM can read
-	def construct_tree_files(self, is_training, xuid_pairs, dir_path, filter_only_roots, evaluate_all_pairs):
+	def construct_tree_files(self, is_training, xuid_pairs, dir_path, filter_only_roots, evaluate_all_pairs, create_sub_trees):
 		print("dir_path:", dir_path)
 		fout_a = open(dir_path + "a.toks", 'w')
 		fout_b = open(dir_path + "b.toks", 'w')
@@ -166,14 +171,13 @@ class DataHandler:
 		# creates sent -> XUIDs
 		num_rootless_sent = 0
 		for sent_num in sorted(candidate_sentences):
-			# saves the SentTree, even if the Sentence doesn't have a proper root
+			# saves the MiniTree, even if the Sentence doesn't have a proper root
 			# bc this is only an issue if we need to filter by root (which would affect
-			# the SentTrees we write out and the xuid pairs)
-			st = self.construct_sent_tree(sent_num, candidate_xuids, stanTokenToECBTokens)
-			if st.root_XUID == -1:
+			# the MiniTrees we write out and the xuid pairs)
+			mt = self.construct_sent_tree(sent_num, candidate_xuids, stanTokenToECBTokens)
+			if mt.root_XUID == -1:
 				num_rootless_sent += 1
-			#print("setting sent_num:", sent_num, "to being this Tree:", st)
-			self.sent_num_to_obj[sent_num] = st
+			self.sent_num_to_obj[sent_num] = mt
 		print("# candidate_sentences:", len(candidate_sentences), " ==?== # sent:", len(self.sent_num_to_obj))
 		print("num_rootless_sent:", num_rootless_sent)
 
@@ -265,16 +269,16 @@ class DataHandler:
 				sent_labels.append(sent_label)
 				# actually write out the files
 				if sent_num1 <= sent_num2:
-					fout_a.write(self.sent_num_to_obj[sent_num1].sent + "\n")
-					fout_b.write(self.sent_num_to_obj[sent_num2].sent + "\n")
+					fout_a.write(self.sent_num_to_obj[sent_num1].text + "\n")
+					fout_b.write(self.sent_num_to_obj[sent_num2].text + "\n")
 					fout_sim.write(str(sent_label) + "\n")
 					fout_a_deps.write(self.sent_num_to_obj[sent_num1].dependency_chain + "\n")
 					fout_b_deps.write(self.sent_num_to_obj[sent_num2].dependency_chain + "\n")
 					num_written += 1
 				else:
 					#print("*** reversing it bc:", sent_num2, "is less than", sent_num1)
-					fout_a.write(self.sent_num_to_obj[sent_num2].sent + "\n")
-					fout_b.write(self.sent_num_to_obj[sent_num1].sent + "\n")
+					fout_a.write(self.sent_num_to_obj[sent_num2].text + "\n")
+					fout_b.write(self.sent_num_to_obj[sent_num1].text + "\n")
 					fout_sim.write(str(sent_label) + "\n")
 					fout_a_deps.write(self.sent_num_to_obj[sent_num2].dependency_chain + "\n")
 					fout_b_deps.write(self.sent_num_to_obj[sent_num1].dependency_chain + "\n")
@@ -308,10 +312,11 @@ class DataHandler:
 		return ret_xuid_pairs, tree_set
 
 	# we only care about the XUIDs that fit our scope (doc, dir, dirHalf)
+	# passed-in for a particular sentence_num
 	def construct_sent_tree(self, sent_num, candidate_xuids, stanTokenToECBTokens):
 
 		# SAVED AS A TREE_SENT object
-		sent = ""
+		sent_text = ""
 		mention_token_indices = defaultdict(list) 
 		dependency_chain = []
 		root_XUID = -1
@@ -329,9 +334,9 @@ class DataHandler:
 				if xuid in candidate_xuids: # we care about it
 					mention_token_indices[xuid].append(token_index)
 			token_to_index[t] = token_index
-			sent += t.text + " "
+			sent_text += t.text + " "
 			token_index += 1
-		sent = sent.strip()
+		sent_text = sent_text.strip()
 
 		# constructs dependency chain
 		for t in self.corpus.globalSentenceNumToTokens[sent_num]:
@@ -356,8 +361,8 @@ class DataHandler:
 		if dependency_chain.count(0) != 1:
 			print("* have != 1 dependency root")
 			exit()
-		if len(sent.split(" ")) != len(dependency_chain):
-			print("* sent len != dependency length")
+		if len(sent_text.split(" ")) != len(dependency_chain):
+			print("* sent_text len != dependency length")
 			exit()
 
 		root_index = dependency_chain.index(0)
@@ -369,8 +374,51 @@ class DataHandler:
 			if xuid in self.allXUIDs:
 				root_XUID = xuid
 				break
-		st = SentTree(sent, dependency_chain, mention_token_indices, root_XUID)
-		return st
+
+		# sets height and depth
+		parent_xuids = set()
+		print("sent:", sent_text)
+
+		self.dfs_mark_heights(stanTokenToECBTokens, parent_xuids, root_token, 1, set())
+		mt = MiniTree(sent_text, dependency_chain, mention_token_indices, root_XUID)
+		return mt
+
+	# traverses down the tree, dfs
+	#   - depth increases as we traverse
+	#   - height of all encountered nodes increases as we traverse down
+	def dfs_mark_heights(self, stanTokenToECBTokens, parent_xuids, cur_token, cur_depth, visited):
+			visited.add(cur_token)
+			#print("dfs received:", parent_xuids, "cur_token:", cur_token, "depth:", cur_depth)
+			# converts token to mentions
+			cur_xuids = set()
+			for m in cur_token.mentions:
+				cur_xuid = m.XUID
+				# only set the depth if it's the 1st time we've encountered the xuid (as it should be the least-depth instance)
+				if cur_xuid not in self.xuid_to_depth:
+					self.xuid_to_depth[cur_xuid] = cur_depth
+					self.xuid_to_height[cur_xuid] = 1
+				#print("m:", m, "mxuid:", m.XUID, "cur_xuid:", cur_xuid)
+				cur_xuids.add(cur_xuid)
+
+			# update heights for all parents
+			for parent_xuid in parent_xuids:
+				prev_height = self.xuid_to_height[parent_xuid]
+				cur_height = cur_depth - self.xuid_to_depth[parent_xuid] + 1
+				#print("\tparent:", parent_xuid, "; prev_height:", prev_height, "cur_height:", cur_height)
+				self.xuid_to_height[parent_xuid] = max(prev_height, cur_height)
+				
+			# recurse on children
+			bestStan = self.getBestStanToken(cur_token.stanTokens)
+			for childlink in bestStan.childLinks[self.helper.dependency_parse_type]:
+				new_parents = deepcopy(parent_xuids)
+				#print("cur_xuids:", cur_xuids)
+				for cur_xuid in cur_xuids:
+					new_parents.add(cur_xuid)
+				#print("\tcalling dfs on child:", childlink.child, "new_parents:", new_parents)
+
+				for child_token in stanTokenToECBTokens[childlink.child]:
+					if child_token not in visited:
+						self.dfs_mark_heights(stanTokenToECBTokens, new_parents, child_token, int(cur_depth + 1), visited)
 
 	def loadNNData(self, supp_features, useCCNN, scope):
 		print("[dh] loading ...")

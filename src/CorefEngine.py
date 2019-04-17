@@ -52,12 +52,6 @@ class CorefEngine:
 	#      (3) Ents (minus pronouns)+Events
 	if __name__ == "__main__":
 		# handles passed-in args
-
-		print(torch.__version__)
-		is_avail = torch.cuda.is_available()
-		device = torch.device("cuda:0" if is_avail else "cpu")
-		x = torch.empty(5, 3)
-		print(x)
 		args = params.setCorefEngineParams()
 
 		# manually-defined features (others are in Resolver.py)
@@ -65,7 +59,7 @@ class CorefEngine:
 		wdPresets = [32, 20, 2, 32, 0] # batchsize, num epochs, num layers, num filters, dropout
 		num_runs = 1
 		
-		event_resolution = Resolver(args, wdPresets, "doc") # doc or dir for WD or CD, respectively
+		event_resolution = Resolver(args, wdPresets, "dir") # doc or dir for WD or CD, respectively
 		
 		# {none, relations, shortest, one} for supplemental path info
 		# resolve(mention_type, supp_features_type, event_pronouns, entity_pronouns, num_runs)

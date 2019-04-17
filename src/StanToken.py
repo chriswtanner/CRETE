@@ -23,7 +23,7 @@ class StanToken:
         self.childLinks[dep_parse_type].append(childLink)
 
     def __str__(self):
-        return str(self.text)
+        return str("stan:" + self.text)
         '''
         parents = ""
         for pl in self.parentLinks:

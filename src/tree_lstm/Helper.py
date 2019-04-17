@@ -2,7 +2,7 @@ import os
 import math
 import torch
 import sys
-
+import numpy as np
 print("helper sys path:", sys.path)
 print("in helper; cwd:", os.getcwd())
 import Constants
@@ -139,6 +139,60 @@ class Helper:
 		#return torch.tensor([label])
 		return target
 		
+	def plot_distance_matrix(xuid_pairs, preds, golds, threshold, xuid_to_dist):
+		key_to_counts = defaultdict(int)
+		key_to_perf = defaultdict(lambda: defaultdict(int))
+		max_dist = 0
+		for i, (xuid1, xuid2) in enumerate(xuid_pairs):
+			predicted = False
+			if preds[i] >= threshold:
+				predicted = True
+			is_gold = False
+			if golds[i] == 2:
+				is_gold = True
+			
+			# make dist1 the lower one
+			dist1 = xuid_to_dist[xuid1]
+			dist2 = xuid_to_dist[xuid2]
+			if dist2 < dist1:
+				tmp = dist1
+				dist1 = dist2
+				dist2 = tmp
+			if dist2 > max_dist:
+				max_dist = dist2
+
+			key = str(dist1) + "_" + str(dist2)
+			key_to_counts[key] += 1
+			if predicted and is_gold: # TRUE POSITIVE
+				key_to_perf[key]["TP"] += 1
+			elif predicted and not is_gold: # FALSE POSITIVE
+				key_to_perf[key]["FP"] += 1
+			elif not predicted and is_gold:
+				key_to_perf[key]["FN"] += 1
+			elif not predicted and not is_gold:
+				key_to_perf[key]["TN"] += 1
+			
+		matrix_total = np.zeros(shape=(max_dist, max_dist))
+		matrix_f1 = np.zeros(shape=(max_dist, max_dist))
+		for key in key_to_counts:
+			dist1, dist2 = key.split("_")
+			dist1 = int(dist1) - 1
+			dist2 = int(dist2) - 1
+			recall = 0
+			if key_to_perf[key]["TP"] > 0 or key_to_perf[key]["FN"] > 0:
+				recall = key_to_perf[key]["TP"] / (key_to_perf[key]["TP"] + key_to_perf[key]["FN"])
+			prec = 0
+			if key_to_perf[key]["TP"] >0 or key_to_perf[key]["FP"] > 0:
+				prec = key_to_perf[key]["TP"] / (key_to_perf[key]["TP"] + key_to_perf[key]["FP"])
+			f1 = -1
+			if recall != 0 and prec != 0:
+				f1 = 2*recall*prec / (recall + prec)
+			matrix_total[dist1, dist2] = key_to_counts[key]
+			matrix_f1[dist1, dist2] = round(f1, 4)
+
+		print("matrix_total:\n", matrix_total)
+		print("matrix_f1\n:", matrix_f1)
+
 
 	def calculate_f1(preds, golds, rev=True):
 
@@ -192,4 +246,5 @@ class Helper:
 		if bestF1 <0:
 			print("* ERROR: our F1 was < 0")
 			exit(1)
+	
 		return (bestF1, bestP, bestR, bestVal)

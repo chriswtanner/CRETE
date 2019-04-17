@@ -232,7 +232,7 @@ class ECBHelper:
 		for _ in s:
 			print("score:", _, "trutH:", scoreToGoldTruth[_])
 		'''
-		
+
 		#print("numGoldPos:", numGoldPos)
 		TP = 0.0
 		FP = 0.0

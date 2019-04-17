@@ -41,6 +41,9 @@ class Resolver:
 		# classifier params
 		useCCNN = False
 		useTreeLSTM = True
+		eval_on = "test" # TODO: adjust this to whatever you want to test on
+		eval_modulo = 3 # how many epochs to go between evaluating
+
 		devMode = True
 		runStanford = False
 		useRelationalFeatures = False
@@ -126,22 +129,39 @@ class Resolver:
 		if useTreeLSTM:
 
 			dh.construct_tree_files_(self.is_wd) # WRITES FILES TO DISK
-			td = TreeDriver()
+			td = TreeDriver(self.is_wd)
 
-			eval_set = dh.test_tree_set # TODO: adjust this to whatever you want to test on
-			dataset = td.test_dataset
-
+			eval_set = None
+			dataset = None 
+			if eval_on == "train":
+				eval_set = dh.train_tree_set
+				dataset = td.train_dataset
+				dh.dev_tree_set = None
+				dh.test_tree_set = None
+			elif eval_on == "dev":
+				eval_set = dh.dev_tree_set
+				dataset = td.dev_dataset
+				dh.train_tree_set = None
+				dh.test_tree_set = None
+			elif eval_on == "test":
+				eval_set = dh.test_tree_set
+				dataset = td.test_dataset
+				dh.train_tree_set = None
+				dh.dev_tree_set = None
+			else:
+				print("* ERROR: incorrect set to eval on:", eval_on)
+				exit()
+			print("**[ EVALUATING ON:", eval_on, "]**\n-------------------------------------")
 			for epoch in range(td.args.epochs):
 				td.train(epoch)
-
-				if (epoch+1) % 3 == 0:
+				if (epoch+1) % eval_modulo == 0:
 
 					preds = []
 					golds = []
 
 					missing_xuids = set()
 					start_time = time.time()
-					#xuid_to_vec = {}
+					eval_xuid_pairs = []
 					for (xuid1,xuid2), sent_key in eval_set.xuid_pair_and_sent_key:
 						m1 = corpus.XUIDToMention[xuid1]
 						m2 = corpus.XUIDToMention[xuid2]
@@ -289,6 +309,8 @@ class Resolver:
 								preds.append(0)
 							'''
 							preds.append(cs)
+							eval_xuid_pairs.append((xuid1, xuid2))
+
 					(f1, prec, rec, bestThreshold) = Helper.calculate_f1(preds, golds, True)
 					print("f1:", f1, "prec:", prec, "rec:", rec, "bestThreshold:", bestThreshold)
 					print("\tlen xuid pairs to test:", len(eval_set.xuid_pair_and_sent_key))
@@ -297,6 +319,12 @@ class Resolver:
 					print("# golds pos:", golds.count(2), "neg:", golds.count(1))
 					for xuid in missing_xuids:
 						print("\t\tmissed:", corpus.XUIDToMention[xuid])
+
+					print("HEIGHT PERFORMANCE:")
+					Helper.plot_distance_matrix(eval_xuid_pairs, preds, golds, bestThreshold, dh.xuid_to_height)
+					print("DEPTH PERFORMANCE:")
+					Helper.plot_distance_matrix(eval_xuid_pairs, preds, golds, bestThreshold, dh.xuid_to_depth)
+
 					print(str((time.time() - start_time)), "seconds")
 		#exit()
 		# within-doc first, then cross-doc
