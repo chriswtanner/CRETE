@@ -288,7 +288,7 @@ class Resolver:
 							else:
 								preds.append(0)
 							'''
-							preds.append(highest_cs)
+							preds.append(cs)
 					(f1, prec, rec, bestThreshold) = Helper.calculate_f1(preds, golds, True)
 					print("f1:", f1, "prec:", prec, "rec:", rec, "bestThreshold:", bestThreshold)
 					print("\tlen xuid pairs to test:", len(eval_set.xuid_pair_and_sent_key))

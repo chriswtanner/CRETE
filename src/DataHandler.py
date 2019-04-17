@@ -104,7 +104,7 @@ class DataHandler:
 
 	def load_xuid_pairs(self, supp_features, scope):
 		# TRUE represents we should filter the xuids to being only root events
-		self.trainXUIDPairs = self.createXUIDPairs(self.trainXUIDs, "dir", supp_features) # TODO: don't leave as 'dir' for train
+		self.trainXUIDPairs = self.createXUIDPairs(self.trainXUIDs, "dir", False) # TODO: don't leave as 'dir' for train
 		self.devXUIDPairs = self.createXUIDPairs(self.devXUIDs, scope, supp_features)
 		self.testXUIDPairs = self.createXUIDPairs(self.testXUIDs, scope, supp_features)
 
