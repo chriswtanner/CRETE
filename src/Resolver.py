@@ -39,14 +39,13 @@ class Resolver:
 		# supp_features_type  = {none, shortest, one, type}
 
 		# classifier params
-		useCCNN = True
-		useTreeLSTM = False
+		useCCNN = False
+		useTreeLSTM = True
 		devMode = True
 		runStanford = False
 		useRelationalFeatures = False
 
 		stopping_points = [0.51] #, 0.401, 0.41, 0.42, 0.43, 0.44, 0.45, 0.46, 0.47, 0.48, 0.49, 0.501, 0.51, 0.52, 0.54, 0.55, 0.56, 0.57, 0.58, 0.59, 0.601]
-
 
 		if self.args.useECBTest:
 			f_suffix = "ecb"
@@ -122,20 +121,20 @@ class Resolver:
 		#print("tmp_xuidpair_event_entity:", dh.tmp_xuidpair_event_entity)
 		#helper.checkDependencyRelations()
 		#corpus.calculateEntEnvAgreement()
-
+		fh = FeatureHandler(self.args, helper) # TODO: TMP
 		dh.load_xuid_pairs(supp_features_type, self.scope) # CREATES ALL XUID PAIRS
 		if useTreeLSTM:
 
 			dh.construct_tree_files_(self.is_wd) # WRITES FILES TO DISK
 			td = TreeDriver()
 
-			eval_set = dh.train_tree_set # TODO: adjust this to whatever you want to test on
-			dataset = td.train_dataset
+			eval_set = dh.test_tree_set # TODO: adjust this to whatever you want to test on
+			dataset = td.test_dataset
 
 			for epoch in range(td.args.epochs):
 				td.train(epoch)
 
-				if (epoch+1) % 15 == 0:
+				if (epoch+1) % 3 == 0:
 
 					preds = []
 					golds = []
@@ -277,6 +276,18 @@ class Resolver:
 									if l2_intra < min_l2:
 										min_l2 = l2_intra
 
+							same_lemma_any = False
+							m1_lemmas = [fh.getBestStanToken(t.stanTokens).lemma.lower() for t in m1.tokens]
+							m2_lemmas = [fh.getBestStanToken(t.stanTokens).lemma.lower() for t in m2.tokens]
+							for l1 in m1_lemmas:
+								if l1 in m2_lemmas:
+									same_lemma_any = True
+							'''
+							if same_lemma_any:
+								preds.append(1)
+							else:
+								preds.append(0)
+							'''
 							preds.append(highest_cs)
 					(f1, prec, rec, bestThreshold) = Helper.calculate_f1(preds, golds, True)
 					print("f1:", f1, "prec:", prec, "rec:", rec, "bestThreshold:", bestThreshold)
