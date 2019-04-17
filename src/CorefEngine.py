@@ -36,6 +36,7 @@ from keras.models import Sequential
 from keras.layers import Dense, Activation, Dropout
 from keras.optimizers import Adam
 from collections import defaultdict
+import torch
 #from tree_lstm import TreeDriver
 class CorefEngine:
 
@@ -51,6 +52,12 @@ class CorefEngine:
 	#      (3) Ents (minus pronouns)+Events
 	if __name__ == "__main__":
 		# handles passed-in args
+
+		print(torch.__version__)
+		is_avail = torch.cuda.is_available()
+		device = torch.device("cuda:0" if is_avail else "cpu")
+		x = torch.empty(5, 3)
+		print(x)
 		args = params.setCorefEngineParams()
 
 		# manually-defined features (others are in Resolver.py)
