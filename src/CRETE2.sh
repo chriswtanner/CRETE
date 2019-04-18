@@ -20,7 +20,7 @@ then
 	then
 		export CUDA_HOME=/usr/local/cuda/
 	else
-		source ~/researchcode/venv/bin/activate
+		source ~/researchcode/grid/bin/activate
 		export CUDA_HOME=/contrib/projects/cuda8.0
 	fi
 	export LD_LIBRARY_PATH=${CUDA_HOME}/lib64:$LD_LIBRARY_PATH
