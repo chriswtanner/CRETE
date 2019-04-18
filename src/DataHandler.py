@@ -8,11 +8,14 @@ from itertools import chain
 from collections import defaultdict
 
 class MiniTree:
-	def __init__(self, text, dependency_chain, mention_token_indices, root_XUID):
+	def __init__(self, text, dependency_chain, mention_token_indices, root_XUID, root_token):
 		self.text = text
 		self.dependency_chain = " ".join([str(d) for d in dependency_chain])
-		self.mention_token_indices = mention_token_indices
+
+		# if we're storing SUBTREES, then this data structure only stores the mention
+		self.mention_token_indices = mention_token_indices 
 		self.root_XUID = root_XUID
+		self.root_token = root_token
 
 	def __str__(self):
 		return("text:" + self.text + "; dependency_chain:" + str(self.dependency_chain) + \
@@ -51,7 +54,9 @@ class DataHandler:
 		self.train_tree_set = None
 		self.dev_tree_set = None
 		self.test_tree_set = None
-		self.sent_num_to_obj = {}
+		
+		self.sent_num_to_mt = {}
+		self.xuid_to_mt = {}
 		# we are passing in 3 sets of XUIDs, and these are the ones we
 		# actually want to use for our model, so this is where we
 		# should keep track of which docs -> XUIDs (only for the sake of
@@ -116,11 +121,12 @@ class DataHandler:
 
 		# TODO: update these parameters
 		evaluate_all_pairs = True
-		create_sub_trees = True # IF FALSE, our self.*_tree_sets will have just 1 per sentence.
+		create_sub_trees = False # IF FALSE, our self.*_tree_sets will have just 1 per sentence.
 
 		# the 2nd True passed-in below corresponds to if we should construct only Trees that are rooted w/ events or not
 		# (so, training should always be True, but dev and test can be False)
-		self.sent_num_to_obj = {}
+		self.sent_num_to_mt = {}
+		self.xuid_to_mt = {}
 		self.xuid_to_height = {} # N if root
 		self.xuid_to_depth = {} # 0 if root
 
@@ -177,10 +183,15 @@ class DataHandler:
 			mt = self.construct_sent_tree(sent_num, candidate_xuids, stanTokenToECBTokens)
 			if mt.root_XUID == -1:
 				num_rootless_sent += 1
-			self.sent_num_to_obj[sent_num] = mt
-		print("# candidate_sentences:", len(candidate_sentences), " ==?== # sent:", len(self.sent_num_to_obj))
+			self.sent_num_to_mt[sent_num] = mt
+		print("# candidate_sentences:", len(candidate_sentences), " ==?== # sent:", len(self.sent_num_to_mt))
 		print("num_rootless_sent:", num_rootless_sent)
 
+		##### NEW CODE WHICH CONSTRUCTS SUB-TREES
+		if create_sub_trees:
+			for xuid in candidate_xuids:
+				self.xuid_to_mt[xuid] = self.construct_xuid_tree(xuid, stanTokenToECBTokens)
+				
 		# gather the legit XUID pairs to use for train/test
 		ret_xuid_pairs = []
 		num_xuids_not_root = 0
@@ -191,7 +202,7 @@ class DataHandler:
 			sent_num2 = xuid_to_sentence_num[xuid2]
 			# at a bare minimum, we can only train or test xuids if we
 			# have both sentences in which they're contained
-			if sent_num1 not in self.sent_num_to_obj or sent_num2 not in self.sent_num_to_obj:
+			if sent_num1 not in self.sent_num_to_mt or sent_num2 not in self.sent_num_to_mt:
 				num_xuids_not_root += 1
 				print("* ERROR: don't have the sentence corresponding to an XUID")
 				exit()
@@ -199,14 +210,14 @@ class DataHandler:
 
 			# we need to ignore all xuid pairs that are from sentences that don't contain valid roots
 			if filter_only_roots:
-				if self.sent_num_to_obj[sent_num1].root_XUID == -1 or self.sent_num_to_obj[sent_num2].root_XUID == -1:
+				if self.sent_num_to_mt[sent_num1].root_XUID == -1 or self.sent_num_to_mt[sent_num2].root_XUID == -1:
 					num_xuid_pairs_have_no_roots += 1
 					continue
 
 			# only look at the XUIDs which are roots
 			if not evaluate_all_pairs:
 				# current xuids must be roots
-				if self.sent_num_to_obj[sent_num1].root_XUID == xuid1 and self.sent_num_to_obj[sent_num2].root_XUID == xuid2:
+				if self.sent_num_to_mt[sent_num1].root_XUID == xuid1 and self.sent_num_to_mt[sent_num2].root_XUID == xuid2:
 					ret_xuid_pairs.append((xuid1, xuid2))
 			else: # if we don't require the xuid pairs to be of sentence roots, then we don't need to check anything
 				ret_xuid_pairs.append((xuid1, xuid2))
@@ -238,8 +249,8 @@ class DataHandler:
 				continue
 
 			sent_label = 1
-			root_xuid1 = self.sent_num_to_obj[sent_num1].root_XUID
-			root_xuid2 = self.sent_num_to_obj[sent_num2].root_XUID
+			root_xuid1 = self.sent_num_to_mt[sent_num1].root_XUID
+			root_xuid2 = self.sent_num_to_mt[sent_num2].root_XUID
 			if root_xuid1 == -1 or root_xuid2 == -1:
 				num_pairs_belonging_to_null_sents += 1
 				sent_label = 1
@@ -269,19 +280,19 @@ class DataHandler:
 				sent_labels.append(sent_label)
 				# actually write out the files
 				if sent_num1 <= sent_num2:
-					fout_a.write(self.sent_num_to_obj[sent_num1].text + "\n")
-					fout_b.write(self.sent_num_to_obj[sent_num2].text + "\n")
+					fout_a.write(self.sent_num_to_mt[sent_num1].text + "\n")
+					fout_b.write(self.sent_num_to_mt[sent_num2].text + "\n")
 					fout_sim.write(str(sent_label) + "\n")
-					fout_a_deps.write(self.sent_num_to_obj[sent_num1].dependency_chain + "\n")
-					fout_b_deps.write(self.sent_num_to_obj[sent_num2].dependency_chain + "\n")
+					fout_a_deps.write(self.sent_num_to_mt[sent_num1].dependency_chain + "\n")
+					fout_b_deps.write(self.sent_num_to_mt[sent_num2].dependency_chain + "\n")
 					num_written += 1
 				else:
 					#print("*** reversing it bc:", sent_num2, "is less than", sent_num1)
-					fout_a.write(self.sent_num_to_obj[sent_num2].text + "\n")
-					fout_b.write(self.sent_num_to_obj[sent_num1].text + "\n")
+					fout_a.write(self.sent_num_to_mt[sent_num2].text + "\n")
+					fout_b.write(self.sent_num_to_mt[sent_num1].text + "\n")
 					fout_sim.write(str(sent_label) + "\n")
-					fout_a_deps.write(self.sent_num_to_obj[sent_num2].dependency_chain + "\n")
-					fout_b_deps.write(self.sent_num_to_obj[sent_num1].dependency_chain + "\n")
+					fout_a_deps.write(self.sent_num_to_mt[sent_num2].dependency_chain + "\n")
+					fout_b_deps.write(self.sent_num_to_mt[sent_num1].dependency_chain + "\n")
 					num_written += 1
 
 			# even if it's not a unique tree, we still need to store the xuid info
@@ -299,8 +310,8 @@ class DataHandler:
 		for sent_num1, sent_num2 in sent_legend:
 			if filter_only_roots:
 				i += 1
-				if self.sent_num_to_obj[sent_num1].root_XUID not in self.allXUIDs or \
-					self.sent_num_to_obj[sent_num2].root_XUID not in self.allXUIDs:
+				if self.sent_num_to_mt[sent_num1].root_XUID not in self.allXUIDs or \
+					self.sent_num_to_mt[sent_num2].root_XUID not in self.allXUIDs:
 					print("* one of our sentences doesn't have a root.  wtf")
 					exit()
 		print("# numPosAdded:", numPosAdded, "; numNegAdded:", numNegAdded)
@@ -310,6 +321,61 @@ class DataHandler:
 		#exit()
 		tree_set = TreeSet(sent_legend, sent_labels, sent_key_to_index, xuid_pair_and_sent_key)
 		return ret_xuid_pairs, tree_set
+
+	# constructs the MiniTree corresponding to this sub-tree of a dependency parse
+	# NOTE: we only need to store the mention_to_tokens for the current passed-in xuid
+	def construct_xuid_tree(self, xuid, stanTokenToECBTokens):
+		chain_text = ""
+		mention_token_indices = defaultdict(list) 
+		dependency_chain = []
+
+		# since we do not necessarily have a linear sequence of coherent text, 
+		# we must do dependency exploration first, and our text is a non-sensical
+		# sequence based on it
+		chain_tokens = []
+		parent_indices = []
+
+		m = self.corpus.XUIDToMention[xuid]
+
+		# find the root of the mention tokens via BFS
+		sentence_root_token = self.sent_num_to_mt[m.globalSentenceNum].root_token
+		root_token = self.bfs_to_find_xuid(sentence_root_token, m.tokens, stanTokenToECBTokens)
+		#print("m:", m)
+		#print("\troot token:", root_token)
+		
+		self.dfs_subtree(root_token, 0, chain_tokens, parent_indices, stanTokenToECBTokens, set())
+
+		#print("text:", [t.text for t in chain_tokens])
+		#print("parent_indices:", parent_indices)
+
+	def bfs_to_find_xuid(self, root, tokens_to_find, stanTokenToECBTokens):
+		visited = set()
+		queue = [root]
+		while len(queue) > 0:
+			cur_token = queue.pop(0)
+			visited.add(cur_token)
+			if cur_token in tokens_to_find:
+				return cur_token
+			bestStan = self.getBestStanToken(cur_token.stanTokens)
+			for child_link in bestStan.childLinks[self.helper.dependency_parse_type]:
+				stan_child = child_link.child
+				for ecb_child in stanTokenToECBTokens[stan_child]:
+					if ecb_child not in visited:
+						queue.append(ecb_child)
+
+
+	def dfs_subtree(self, cur_node, parent_index, chain_tokens, parent_indices, stanTokenToECBTokens, visited):
+		visited.add(cur_node)
+		chain_tokens.append(cur_node)
+		parent_indices.append(parent_index)
+		new_index = len(chain_tokens)
+
+		bestStan = self.getBestStanToken(cur_node.stanTokens)
+		for child_link in bestStan.childLinks[self.helper.dependency_parse_type]:
+			stan_child = child_link.child
+			for ecb_child in stanTokenToECBTokens[stan_child]:
+				if ecb_child not in visited:
+					self.dfs_subtree(ecb_child, new_index, chain_tokens, parent_indices, stanTokenToECBTokens, visited)
 
 	# we only care about the XUIDs that fit our scope (doc, dir, dirHalf)
 	# passed-in for a particular sentence_num
@@ -375,12 +441,11 @@ class DataHandler:
 				root_XUID = xuid
 				break
 
-		# sets height and depth
-		parent_xuids = set()
 		print("sent:", sent_text)
 
-		self.dfs_mark_heights(stanTokenToECBTokens, parent_xuids, root_token, 1, set())
-		mt = MiniTree(sent_text, dependency_chain, mention_token_indices, root_XUID)
+		# sets height and depth
+		self.dfs_mark_heights(stanTokenToECBTokens, set(), root_token, 1, set())
+		mt = MiniTree(sent_text, dependency_chain, mention_token_indices, root_XUID, root_token)
 		return mt
 
 	# traverses down the tree, dfs

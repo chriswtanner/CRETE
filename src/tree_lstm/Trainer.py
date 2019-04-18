@@ -108,6 +108,7 @@ class Trainer(object):
 				#print("xuid1:", xuid1, "xuid2:", xuid2, "sent_key:", sent_key, " sent1:", sent1, "sent2:", sent2, " label:", label)
 			print("num_neg:", num_neg, "num_pos:", num_pos)
 			'''
+		print("DONE WITH Trainer.test()")
 		return total_loss / len(dataset), predictions
 
 	# passes in just 1 line of the SICK Dataset (2 trees)

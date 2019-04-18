@@ -42,7 +42,7 @@ class Resolver:
 		useCCNN = False
 		useTreeLSTM = True
 		eval_on = "test" # TODO: adjust this to whatever you want to test on
-		eval_modulo = 3 # how many epochs to go between evaluating
+		eval_modulo = 1 # how many epochs to go between evaluating
 
 		devMode = True
 		runStanford = False
@@ -129,6 +129,12 @@ class Resolver:
 		if useTreeLSTM:
 
 			dh.construct_tree_files_(self.is_wd) # WRITES FILES TO DISK
+
+			print("# dh.xuid_to_height:", len(dh.xuid_to_height))
+			print("# dh.xuid_to_depth:", len(dh.xuid_to_depth))
+
+
+
 			td = TreeDriver(self.is_wd)
 
 			eval_set = None
@@ -151,18 +157,25 @@ class Resolver:
 			else:
 				print("* ERROR: incorrect set to eval on:", eval_on)
 				exit()
-			print("**[ EVALUATING ON:", eval_on, "]**\n-------------------------------------")
+
 			for epoch in range(td.args.epochs):
 				td.train(epoch)
-				if (epoch+1) % eval_modulo == 0:
 
+				# TEST IT EVERY EVAL_MODULO EPOCHS
+				if (epoch+1) % eval_modulo == 5:
+					print("**[ EVALUATING ON:", eval_on, ", size:", len(eval_set.xuid_pair_and_sent_key), "]**\n-------------------------------------")
 					preds = []
 					golds = []
 
 					missing_xuids = set()
 					start_time = time.time()
 					eval_xuid_pairs = []
+					unique_xuids_to_eval = set()
 					for (xuid1,xuid2), sent_key in eval_set.xuid_pair_and_sent_key:
+
+						unique_xuids_to_eval.add(xuid1)
+						unique_xuids_to_eval.add(xuid2)
+
 						m1 = corpus.XUIDToMention[xuid1]
 						m2 = corpus.XUIDToMention[xuid2]
 
@@ -172,10 +185,11 @@ class Resolver:
 
 						sent_dataset_index = eval_set.sent_key_to_index[sent_key]
 						datum = dataset[sent_dataset_index]
+						#print("* fetching:", xuid1, xuid2)
 						lwords, left_to_hidden, rwords, right_to_hidden = td.fetch_hidden_embeddings(datum)
 
-						st_for_xuid1 = dh.sent_num_to_obj[sent_xuid1] # keys are actual global sent num
-						st_for_xuid2 = dh.sent_num_to_obj[sent_xuid2] # keys are actual global sent num
+						st_for_xuid1 = dh.sent_num_to_mt[sent_xuid1] # keys are actual global sent num
+						st_for_xuid2 = dh.sent_num_to_mt[sent_xuid2] # keys are actual global sent num
 						'''
 						print("\n----- looking at new xuid results -----")
 						print("corpus sent1:", [t.text for t in corpus.globalSentenceNumToTokens[sent_xuid1]])
@@ -311,9 +325,12 @@ class Resolver:
 							preds.append(cs)
 							eval_xuid_pairs.append((xuid1, xuid2))
 
+					print("calculating f1")
 					(f1, prec, rec, bestThreshold) = Helper.calculate_f1(preds, golds, True)
 					print("f1:", f1, "prec:", prec, "rec:", rec, "bestThreshold:", bestThreshold)
-					print("\tlen xuid pairs to test:", len(eval_set.xuid_pair_and_sent_key))
+					print("\tlen eval_set.xuid_pair_and_sent_key:", len(eval_set.xuid_pair_and_sent_key))
+					print("\teval_xuid_pairs:", eval_xuid_pairs)
+					print("\t# unique_xuids_to_eval:", unique_xuids_to_eval)
 					print("\tbut actually processed:", len(golds))
 					print("\t# xuids we didnt have:", len(missing_xuids))
 					print("# golds pos:", golds.count(2), "neg:", golds.count(1))
