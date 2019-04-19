@@ -21,7 +21,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 class TreeDriver():
-	def __init__(self, is_wd, num_dirs):
+	def __init__(self, is_wd, num_dirs, opt="adagrad", lr=0.025):
 		print("num_dirs:", num_dirs)
 		sub_dir = "ecb_wd/"
 		if not is_wd:
@@ -37,7 +37,7 @@ class TreeDriver():
 		torch.manual_seed(self.args.seed)
 		random.seed(self.args.seed)
 
-		print("self.args.data:", self.args.data)
+		print("TREELSTM:", opt, "lr:", lr)
 
 		# paths
 		train_dir = os.path.join(self.args.data, str(num_dirs), 'train/', sub_dir)
@@ -69,16 +69,20 @@ class TreeDriver():
 		model.emb.weight.data.copy_(emb) # plug these into embedding matrix inside model
 		model.to(device)
 		criterion.to(device)
-		optimizer = optim.Adagrad(filter(lambda p: p.requires_grad, \
-					model.parameters()), lr=self.args.lr, weight_decay=self.args.wd)
+		opt = optim.Adagrad(filter(lambda p: p.requires_grad, \
+					model.parameters()), lr=lr, weight_decay=self.args.wd)
+
+		if opt == "adam":
+			opt = optim.Adam(filter(lambda p: p.requires_grad, \
+					model.parameters()), lr=lr)
 
 		self.metrics = Metrics(self.args.num_classes)
 		
 		# create trainer object for training and testing
-		self.trainer = Trainer(self.args, model, criterion, optimizer, device, vocab)
+		self.trainer = Trainer(self.args, model, criterion, opt, device, vocab)
 
-	def train(self, epoch_num): # performs one epoch of training
-		train_loss = self.trainer.train(self.train_dataset)
+	def train(self, epoch_num, bs): # performs one epoch of training
+		train_loss = self.trainer.train(self.train_dataset, bs)
 		train_loss, train_pred = self.trainer.test(self.train_dataset)
 		train_pearson = self.metrics.pearson(train_pred, self.train_dataset.labels)
 		train_mse = self.metrics.mse(train_pred, self.train_dataset.labels)

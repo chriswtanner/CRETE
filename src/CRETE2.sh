@@ -73,6 +73,8 @@ FFNNnumEpochs=${22}
 native=${23}
 entity_threshold=${24}
 num_dirs=${25}
+lr=${26}
+opt=${27}
 
 echo "-------- params --------"
 echo "corpus:" ${corpusPath}
@@ -100,8 +102,9 @@ echo "FFNNnumEpochs:" $FFNNnumEpochs # 17
 echo "FFNNnumCorpusSamples:" $FFNNnumCorpusSamples # 18
 echo "FFNNOpt:" $FFNNOpt # 19
 echo "entity_threshold:" $entity_threshold
-echo "num_dirs:", $num_dirs
-
+echo "num_dirs:" $num_dirs
+echo "learning_rate:" $lr
+echo "opt:" $opt
 echo "-------- STATIC PATHS --------"
 echo "resultsDir:" ${resultsDir}
 echo "dataDir:" ${dataDir}
@@ -169,8 +172,9 @@ python3 -u CorefEngine.py \
 --FFNNnumEpochs=${FFNNnumEpochs} \
 --native=${native} \
 --entity_threshold=${entity_threshold} \
---num_dirs=${num_dirs}
-
+--num_dirs=${num_dirs} \
+--learning_rate=${lr} \
+--optimizer=${opt}
 
 if [ "$useECBTest" = false ] ; then
 	cd ${refDir}

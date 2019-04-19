@@ -24,14 +24,14 @@ class Trainer(object):
 			self.dfs_tree(child, depth+1)
 
 	# helper function for training
-	def train(self, dataset):
+	def train(self, dataset, bs=25):
 		self.model.train()
 		self.optimizer.zero_grad()
 		total_loss = 0.0
 		#indices = torch.randperm(len(dataset), dtype=torch.long, device='cpu')
 
 		num_mismatched_dependencies = 0
-		for idx in tqdm(range(len(dataset)), desc='Training epoch ' + str(self.epoch + 1) + ''):
+		for idx in tqdm(range(len(dataset)), desc='TRAINING -- bs:' + str(bs) + '; epoch ' + str(self.epoch + 1) + ''):
 			#print("train: idx:", idx)
 			ltree, lsent, lparents, rtree, rsent, rparents, label = dataset[idx]
 			lwords = " ".join([self.vocab.idxToLabel[int(x)] for x in lsent])
@@ -61,7 +61,7 @@ class Trainer(object):
 			total_loss += loss.item()
 			loss.backward()
 			
-			if idx % self.args.batchsize == 0 and idx > 0:
+			if idx % bs == 0 and idx > 0:
 				self.optimizer.step()
 				self.optimizer.zero_grad()
 		

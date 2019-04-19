@@ -75,7 +75,7 @@ class Helper:
 		print("train_dir:", train_dir)
 		print("dev_dir:", dev_dir)
 		print("sick_vocab_file:", sick_vocab_file)
-		if True or not os.path.isfile(sick_vocab_file):
+		if not os.path.isfile(sick_vocab_file): # True or 
 			print("need to build a SICK vocab:", sick_vocab_file)
 			token_files_a = [os.path.join(split, 'a.toks') for split in [train_dir, dev_dir, test_dir]]
 			token_files_b = [os.path.join(split, 'b.toks') for split in [train_dir, dev_dir, test_dir]]
@@ -109,7 +109,7 @@ class Helper:
 
 	def load_data(base_dir, file, vocab, num_classes):
 		print("* helper's load_data(); file:", file)
-		if False and os.path.isfile(file):
+		if os.path.isfile(file): # False and 
 			print("\t* loaded it")
 			dataset = torch.load(file)
 		else:
@@ -137,10 +137,6 @@ class Helper:
 		else:
 			target[0, floor-1] = ceil - label
 			target[0, ceil-1] = label - floor
-		#print("\ttarget:", target)
-		#label = label -1
-		#print(label)
-		#return torch.tensor([label])
 		return target
 		
 	def plot_distance_matrix(xuid_pairs, preds, golds, threshold, xuid_to_dist):

@@ -42,7 +42,7 @@ class Resolver:
 		useCCNN = False
 		useTreeLSTM = True
 		eval_on = "test" # TODO: adjust this to whatever you want to test on
-		eval_modulo = 6 # how many epochs to go between evaluating
+		eval_modulo = 3 # how many epochs to go between evaluating
 		evaluate_all_pairs = True
 		create_sub_trees = True # IF FALSE, our self.*_tree_sets will have just 1 per sentence.
 
@@ -136,7 +136,7 @@ class Resolver:
 			print("# dh.xuid_to_height:", len(dh.xuid_to_height))
 			print("# dh.xuid_to_depth:", len(dh.xuid_to_depth))
 			
-			td = TreeDriver(self.is_wd, self.args.num_dirs)
+			td = TreeDriver(self.is_wd, self.args.num_dirs, self.args.optimizer, self.args.learning_rate)
 
 			eval_set = None
 			dataset = None 
@@ -160,7 +160,7 @@ class Resolver:
 				exit()
 
 			for epoch in range(td.args.epochs):
-				td.train(epoch)
+				td.train(epoch, self.args.batchSize) # NOTE: PASSES IN BATCH SIZE!
 
 				# TEST IT EVERY EVAL_MODULO EPOCHS
 				if (epoch+1) % eval_modulo == 0:

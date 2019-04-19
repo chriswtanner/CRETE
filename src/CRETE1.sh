@@ -17,8 +17,9 @@ numFilters=(32)
 filterMultiplier=(1.0) # 2.0)
 devDir=(23) # this # and above will be the dev dirs.  See ECBHelper.py for more
 entity_threshold=(0.9)
-num_dirs=(1 5 10 15 20)
-
+num_dirs=(3)
+learning_rate=(0.001)
+opt="adam"
 native="False"
 hn=`hostname`
 
@@ -100,22 +101,24 @@ do
 										do
 											for et in "${entity_threshold[@]}"
 											do
-
 												for nd in "${num_dirs[@]}"
 												do
-													# qsub -pe smp 8 -l vlong -o
-													fout=tree_${prefix}_nd${nd}_ov${onlyValidSentences}_id${addIntraDocs}_nl${nl}_ne${ne}_ws${ws}_neg${neg}_bs${bs}_dr${dr}_nf${nf}_fm${fm}_dd${dd}_fn${fn}_et${et}.out
-													echo ${fout}
-													if [ ${hn} = "ctanner" ] || [ ${hn} = "Christophers-MacBook-Pro-2" ]
-													then
-														echo "* kicking off CRETE2 natively"
-														native="True"
-														#echo "would call it on" ${wordFeature} ${lemmaFeature} ${charFeature} ${posFeature} ${dependencyFeature} ${bowFeature} ${wordnetFeature} ${framenetFeature} ${dd} ${fn}
-														./CRETE2.sh ${corpus} ${useECBTest} ${onlyValidSentences} ${addIntraDocs} ${nl} ${ne} ${ws} ${neg} ${bs} ${dr} ${nf} ${fm} ${wordFeature} ${lemmaFeature} ${charFeature} ${posFeature} ${dependencyFeature} ${bowFeature} ${wordnetFeature} ${framenetFeature} ${dd} ${fn} ${native} ${et} ${nd}
-													else
-														#echo "would call it on" ${wordFeature} ${lemmaFeature} ${charFeature} ${posFeature} ${dependencyFeature} ${bowFeature} ${wordnetFeature} ${framenetFeature} ${dd} ${fn}
-														qsub -l gpus=1 -o ${fout} CRETE2.sh ${corpus} ${useECBTest} ${onlyValidSentences} ${addIntraDocs} ${nl} ${ne} ${ws} ${neg} ${bs} ${dr} ${nf} ${fm} ${wordFeature} ${lemmaFeature} ${charFeature} ${posFeature} ${dependencyFeature} ${bowFeature} ${wordnetFeature} ${framenetFeature} ${dd} ${fn} ${native} ${et} ${nd}
-													fi
+													for lr in "${learning_rate[@]}"
+													do
+														# qsub -pe smp 8 -l vlong -o
+														fout=tree_${prefix}_nd${nd}_lr${lr}_opt${opt}_ov${onlyValidSentences}_id${addIntraDocs}_nl${nl}_ne${ne}_ws${ws}_neg${neg}_bs${bs}_dr${dr}_nf${nf}_fm${fm}_dd${dd}_fn${fn}_et${et}.out
+														echo ${fout}
+														if [ ${hn} = "ctanner" ] || [ ${hn} = "Christophers-MacBook-Pro-2" ]
+														then
+															echo "* kicking off CRETE2 natively"
+															native="True"
+															#echo "would call it on" ${wordFeature} ${lemmaFeature} ${charFeature} ${posFeature} ${dependencyFeature} ${bowFeature} ${wordnetFeature} ${framenetFeature} ${dd} ${fn}
+															./CRETE2.sh ${corpus} ${useECBTest} ${onlyValidSentences} ${addIntraDocs} ${nl} ${ne} ${ws} ${neg} ${bs} ${dr} ${nf} ${fm} ${wordFeature} ${lemmaFeature} ${charFeature} ${posFeature} ${dependencyFeature} ${bowFeature} ${wordnetFeature} ${framenetFeature} ${dd} ${fn} ${native} ${et} ${nd} ${lr} ${opt}
+														else
+															#echo "would call it on" ${wordFeature} ${lemmaFeature} ${charFeature} ${posFeature} ${dependencyFeature} ${bowFeature} ${wordnetFeature} ${framenetFeature} ${dd} ${fn}
+															qsub -l gpus=1 -o ${fout} CRETE2.sh ${corpus} ${useECBTest} ${onlyValidSentences} ${addIntraDocs} ${nl} ${ne} ${ws} ${neg} ${bs} ${dr} ${nf} ${fm} ${wordFeature} ${lemmaFeature} ${charFeature} ${posFeature} ${dependencyFeature} ${bowFeature} ${wordnetFeature} ${framenetFeature} ${dd} ${fn} ${native} ${et} ${nd} ${lr} ${opt}
+														fi
+													done
 												done
 											done
 										done
