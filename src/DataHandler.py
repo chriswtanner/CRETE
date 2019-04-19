@@ -464,6 +464,61 @@ class DataHandler:
 				if ecb_child not in visited and ecb_child != None:
 					self.dfs_subtree(ecb_child, new_index, chain_tokens, parent_indices, stanTokenToECBTokens, visited)
 
+	# constructs the MiniTree corresponding to this sub-tree of a dependency parse
+	# NOTE: we only need to store the mention_to_tokens for the current passed-in xuid
+	def construct_xuid_tree(self, xuid, stanTokenToECBTokens):
+		chain_text = ""
+		mention_token_indices = defaultdict(list) 
+		dependency_chain = []
+
+		# since we do not necessarily have a linear sequence of coherent text, 
+		# we must do dependency exploration first, and our text is a non-sensical
+		# sequence based on it
+		chain_tokens = []
+		parent_indices = []
+
+		m = self.corpus.XUIDToMention[xuid]
+
+		# find the root of the mention tokens via BFS
+		sentence_root_token = self.sent_num_to_mt[m.globalSentenceNum].root_token
+		root_token = self.bfs_to_find_xuid(sentence_root_token, m.tokens, stanTokenToECBTokens)
+		#print("m:", m)
+		#print("\troot token:", root_token)
+		
+		self.dfs_subtree(root_token, 0, chain_tokens, parent_indices, stanTokenToECBTokens, set())
+
+		#print("text:", [t.text for t in chain_tokens])
+		#print("parent_indices:", parent_indices)
+
+	def bfs_to_find_xuid(self, root, tokens_to_find, stanTokenToECBTokens):
+		visited = set()
+		queue = [root]
+		while len(queue) > 0:
+			cur_token = queue.pop(0)
+			visited.add(cur_token)
+			if cur_token in tokens_to_find:
+				return cur_token
+			bestStan = self.getBestStanToken(cur_token.stanTokens)
+			for child_link in bestStan.childLinks[self.helper.dependency_parse_type]:
+				stan_child = child_link.child
+				for ecb_child in stanTokenToECBTokens[stan_child]:
+					if ecb_child not in visited:
+						queue.append(ecb_child)
+
+
+	def dfs_subtree(self, cur_node, parent_index, chain_tokens, parent_indices, stanTokenToECBTokens, visited):
+		visited.add(cur_node)
+		chain_tokens.append(cur_node)
+		parent_indices.append(parent_index)
+		new_index = len(chain_tokens)
+
+		bestStan = self.getBestStanToken(cur_node.stanTokens)
+		for child_link in bestStan.childLinks[self.helper.dependency_parse_type]:
+			stan_child = child_link.child
+			for ecb_child in stanTokenToECBTokens[stan_child]:
+				if ecb_child not in visited:
+					self.dfs_subtree(ecb_child, new_index, chain_tokens, parent_indices, stanTokenToECBTokens, visited)
+
 	# we only care about the XUIDs that fit our scope (doc, dir, dirHalf)
 	# passed-in for a particular sentence_num
 	def construct_sent_tree(self, sent_num, candidate_xuids, stanTokenToECBTokens):
@@ -528,7 +583,11 @@ class DataHandler:
 				root_XUID = xuid
 				break
 
+<<<<<<< HEAD
 		#print("sent:", sent_text)
+=======
+		print("sent:", sent_text)
+>>>>>>> f33ad25223d1fc13a1bf70c0e61999c15ad70a34
 
 		# sets height and depth
 		self.dfs_mark_heights(stanTokenToECBTokens, set(), root_token, 1, set())
