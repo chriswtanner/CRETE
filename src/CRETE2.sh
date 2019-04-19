@@ -72,6 +72,8 @@ devDir=${21}
 FFNNnumEpochs=${22}
 native=${23}
 entity_threshold=${24}
+num_dirs=${25}
+
 echo "-------- params --------"
 echo "corpus:" ${corpusPath}
 echo "useECBTest:" ${useECBTest} # 2
@@ -98,6 +100,7 @@ echo "FFNNnumEpochs:" $FFNNnumEpochs # 17
 echo "FFNNnumCorpusSamples:" $FFNNnumCorpusSamples # 18
 echo "FFNNOpt:" $FFNNOpt # 19
 echo "entity_threshold:" $entity_threshold
+echo "num_dirs:", $num_dirs
 
 echo "-------- STATIC PATHS --------"
 echo "resultsDir:" ${resultsDir}
@@ -113,6 +116,21 @@ echo "charEmbeddingsFile:" $charEmbeddingsFile
 echo "posEmbeddingsFile:" $posEmbeddingsFile
 echo "pronounsFile:" $pronounsFile
 echo "------------------------"
+
+if [ ! -d "${baseDir}src/tree_lstm/data/sick/${num_dirs}/" ]; then
+	mkdir "${baseDir}src/tree_lstm/data/sick/${num_dirs}/"
+	mkdir "${baseDir}src/tree_lstm/data/sick/${num_dirs}/train/"
+	mkdir "${baseDir}src/tree_lstm/data/sick/${num_dirs}/train/ecb_wd/"
+	mkdir "${baseDir}src/tree_lstm/data/sick/${num_dirs}/train/ecb_cd/"
+	mkdir "${baseDir}src/tree_lstm/data/sick/${num_dirs}/dev/"
+	mkdir "${baseDir}src/tree_lstm/data/sick/${num_dirs}/dev/ecb_wd/"
+	mkdir "${baseDir}src/tree_lstm/data/sick/${num_dirs}/dev/ecb_cd/"
+	mkdir "${baseDir}src/tree_lstm/data/sick/${num_dirs}/test/"
+	mkdir "${baseDir}src/tree_lstm/data/sick/${num_dirs}/test/ecb_wd/"
+	mkdir "${baseDir}src/tree_lstm/data/sick/${num_dirs}/test/ecb_cd/"
+else
+	echo "we already have the dir!"
+fi
 
 cd $scriptDir
 python3 -u CorefEngine.py \
@@ -150,7 +168,9 @@ python3 -u CorefEngine.py \
 --devDir=${devDir} \
 --FFNNnumEpochs=${FFNNnumEpochs} \
 --native=${native} \
---entity_threshold=${entity_threshold}
+--entity_threshold=${entity_threshold} \
+--num_dirs=${num_dirs}
+
 
 if [ "$useECBTest" = false ] ; then
 	cd ${refDir}

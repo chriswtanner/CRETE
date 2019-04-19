@@ -71,6 +71,10 @@ class Helper:
 		return emb
 
 	def build_entire_vocab(sick_vocab_file, train_dir, dev_dir, test_dir):
+
+		print("train_dir:", train_dir)
+		print("dev_dir:", dev_dir)
+		print("sick_vocab_file:", sick_vocab_file)
 		if True or not os.path.isfile(sick_vocab_file):
 			print("need to build a SICK vocab:", sick_vocab_file)
 			token_files_a = [os.path.join(split, 'a.toks') for split in [train_dir, dev_dir, test_dir]]
@@ -205,9 +209,7 @@ class Helper:
 		print("matrix_total:\n", matrix_total)
 		print("matrix_f1\n:", matrix_f1)
 
-
 	def calculate_f1(preds, golds, convert_from_tensor=False, rev=True):
-
 		numGoldPos = 0
 		scoreToGoldTruth = defaultdict(list)
 		#print("golds:", golds)
@@ -240,7 +242,7 @@ class Helper:
 
 			if convert_from_tensor:
 				eachVal = float(eachVal.numpy())
-				
+
 			score_rounded = str(round(eachVal,7))
 			score_to_index_rank[score_rounded] = numReturnedSoFar
 

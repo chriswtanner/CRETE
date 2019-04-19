@@ -29,6 +29,7 @@ def setCorefEngineParams():
 	parser.add_argument("--numFilters", help="num CNN filters", type=int)
 	parser.add_argument("--filterMultiplier", help="the \% of how many filters to use at each successive layer", type=float)
 	parser.add_argument("--entity_threshold", help="the threshold above which all values should be considered coref", type=float)
+	parser.add_argument("--num_dirs", help="how many training dirs to use (max of 20)", type=int)
 	# optionally added features to the CCNN
 	# note, we used to read in the files for embeddings when we wanted to use
 	# lemma, distinct from the regular word embeddings and dependency embeddings

@@ -29,7 +29,7 @@ class Trainer(object):
 		self.optimizer.zero_grad()
 		total_loss = 0.0
 		#indices = torch.randperm(len(dataset), dtype=torch.long, device='cpu')
-		print("# training examples:", len(dataset))
+
 		num_mismatched_dependencies = 0
 		for idx in tqdm(range(len(dataset)), desc='Training epoch ' + str(self.epoch + 1) + ''):
 			#print("train: idx:", idx)
@@ -89,7 +89,7 @@ class Trainer(object):
 				if idx < -1:
 					print("TEST idx:", idx, "; label:", label, "; target:", target, "; output:", output, "; preds:", predictions[idx])
 
-		print("DONE WITH Trainer.test()")
+		#print("DONE WITH Trainer.test()")
 		return total_loss / len(dataset), predictions
 
 	# passes in just 1 line of the SICK Dataset (2 trees)

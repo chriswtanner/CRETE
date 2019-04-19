@@ -112,7 +112,7 @@ class DataHandler:
 
 	def load_xuid_pairs(self, supp_features, scope):
 		# TRUE represents we should filter the xuids to being only root events
-		self.trainXUIDPairs = self.createXUIDPairs(self.trainXUIDs, scope, False) # TODO: don't leave as 'dir' for train
+		self.trainXUIDPairs = self.createXUIDPairs(self.trainXUIDs, scope, False) # TODO: could make it dir if you wanted more WD training
 		self.devXUIDPairs = self.createXUIDPairs(self.devXUIDs, scope, supp_features)
 		self.testXUIDPairs = self.createXUIDPairs(self.testXUIDs, scope, supp_features)
 
@@ -128,9 +128,9 @@ class DataHandler:
 		self.xuid_to_height = {} # N if root
 		self.xuid_to_depth = {} # 0 if root
 
-		self.trainXUIDPairs, self.train_tree_set = self.construct_tree_files(True, self.trainXUIDPairs, self.args.baseDir + "src/tree_lstm/data/sick/train/" + dir_path, True, evaluate_all_pairs, create_sub_trees)
-		self.devXUIDPairs, self.dev_tree_set = self.construct_tree_files(False, self.devXUIDPairs, self.args.baseDir + "src/tree_lstm/data/sick/dev/" + dir_path, False, evaluate_all_pairs, create_sub_trees)
-		self.testXUIDPairs, self.test_tree_set = self.construct_tree_files(False, self.testXUIDPairs, self.args.baseDir + "src/tree_lstm/data/sick/test/" + dir_path, False, evaluate_all_pairs, create_sub_trees)
+		self.trainXUIDPairs, self.train_tree_set = self.construct_tree_files(True, self.trainXUIDPairs, self.args.baseDir + "src/tree_lstm/data/sick/" + str(self.args.num_dirs) + "/train/" + dir_path, True, evaluate_all_pairs, create_sub_trees)
+		self.devXUIDPairs, self.dev_tree_set = self.construct_tree_files(False, self.devXUIDPairs, self.args.baseDir + "src/tree_lstm/data/sick/" + str(self.args.num_dirs) + "/dev/" + dir_path, False, evaluate_all_pairs, create_sub_trees)
+		self.testXUIDPairs, self.test_tree_set = self.construct_tree_files(False, self.testXUIDPairs, self.args.baseDir + "src/tree_lstm/data/sick/" + str(self.args.num_dirs) + "/test/" + dir_path, False, evaluate_all_pairs, create_sub_trees)
 
 	# produces files that TreeLSTM can read
 	def construct_tree_files(self, is_training, xuid_pairs, dir_path, filter_only_roots, evaluate_all_pairs, create_sub_trees):
@@ -195,7 +195,7 @@ class DataHandler:
 
 			num_not_found = 0
 			found = 0
-			print("candidate_xuids:", candidate_xuids)
+			#print("candidate_xuids:", candidate_xuids)
 			for xuid in candidate_xuids:
 				mt = self.construct_xuid_tree(xuid, stanTokenToECBTokens)
 				if mt == None:

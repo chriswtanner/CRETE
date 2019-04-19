@@ -21,8 +21,8 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 class TreeDriver():
-	def __init__(self, is_wd):
-
+	def __init__(self, is_wd, num_dirs):
+		print("num_dirs:", num_dirs)
 		sub_dir = "ecb_wd/"
 		if not is_wd:
 			sub_dir = "ecb_cd/"
@@ -37,20 +37,25 @@ class TreeDriver():
 		torch.manual_seed(self.args.seed)
 		random.seed(self.args.seed)
 
+		print("self.args.data:", self.args.data)
+
 		# paths
-		train_dir = os.path.join(self.args.data, 'train/', sub_dir)
-		dev_dir = os.path.join(self.args.data, 'dev/', sub_dir)
-		test_dir = os.path.join(self.args.data, 'test/', sub_dir)
+		train_dir = os.path.join(self.args.data, str(num_dirs), 'train/', sub_dir)
+		dev_dir = os.path.join(self.args.data, str(num_dirs), 'dev/', sub_dir)
+		test_dir = os.path.join(self.args.data, str(num_dirs), 'test/', sub_dir)
+
+		print("train_dir:", train_dir)
+		print("dev_dir:", dev_dir)
 
 		# builds vocabulary
-		sick_vocab_file = Helper.build_entire_vocab(os.path.join(self.args.data, 'sick.vocab'), train_dir, dev_dir, test_dir)
+		sick_vocab_file = Helper.build_entire_vocab(os.path.join(self.args.data, str(num_dirs), 'sick.vocab'), train_dir, dev_dir, test_dir)
 		vocab = Vocab(filename=sick_vocab_file, data=[Constants.PAD_WORD, Constants.UNK_WORD, Constants.BOS_WORD, Constants.EOS_WORD])
 		print('==> SICK vocabulary size : %d ' % vocab.size())
 
 		# loads SICKDataset: Trees, sentences, and labels
-		self.train_dataset = Helper.load_data(train_dir, os.path.join(self.args.data, 'sick_train.pth'), vocab, self.args.num_classes)
-		self.dev_dataset = Helper.load_data(dev_dir, os.path.join(self.args.data, 'sick_dev.pth'), vocab, self.args.num_classes)
-		self.test_dataset = Helper.load_data(test_dir, os.path.join(self.args.data, 'sick_test.pth'), vocab, self.args.num_classes)
+		self.train_dataset = Helper.load_data(train_dir, os.path.join(self.args.data, str(num_dirs), 'sick_train.pth'), vocab, self.args.num_classes)
+		self.dev_dataset = Helper.load_data(dev_dir, os.path.join(self.args.data, str(num_dirs), 'sick_dev.pth'), vocab, self.args.num_classes)
+		self.test_dataset = Helper.load_data(test_dir, os.path.join(self.args.data, str(num_dirs), 'sick_test.pth'), vocab, self.args.num_classes)
 
 		# creates the TreeLSTM
 		model = SimilarityTreeLSTM(vocab.size(), self.args.input_dim, self.args.mem_dim, self.args.hidden_dim, \
@@ -58,7 +63,7 @@ class TreeDriver():
 		criterion = nn.KLDivLoss() #nn.CrossEntropyLoss()
 
 		# loads glove embeddings
-		emb = Helper.load_embeddings(self.args, os.path.join(self.args.data, 'sick_embed.pth'), vocab, device)
+		emb = Helper.load_embeddings(self.args, os.path.join(self.args.data, str(num_dirs), 'sick_embed.pth'), vocab, device)
 
 		# sets up the model
 		model.emb.weight.data.copy_(emb) # plug these into embedding matrix inside model
@@ -77,12 +82,14 @@ class TreeDriver():
 		train_loss, train_pred = self.trainer.test(self.train_dataset)
 		train_pearson = self.metrics.pearson(train_pred, self.train_dataset.labels)
 		train_mse = self.metrics.mse(train_pred, self.train_dataset.labels)
-		print('==> Epoch {}, Train \tLoss: {}\tPearson: {}\tMSE: {}'.format(epoch_num, train_loss, train_pearson, train_mse))
+		print('==> Epoch {}, Train ({} examples) \tLoss: {}\tPearson: {}\tMSE: {}'.format(epoch_num, len(self.train_dataset), train_loss, train_pearson, train_mse))
 
 	def fetch_hidden_embeddings(self, datum):
 		return self.trainer.fetch_tree_nodes(datum)
 
 	def test_on_train(self):
+		print("test_on_train():")
+		exit()
 		highest_test_f1 = 0
 		test_loss, test_pred = self.trainer.test(self.train_dataset)
 		test_pearson = self.metrics.pearson(test_pred, self.train_dataset.labels)
@@ -94,15 +101,12 @@ class TreeDriver():
 		print("**** highest_test_f1:", highest_test_f1)
 
 	def test(self):
-		highest_test_f1 = 0
 		test_loss, test_pred = self.trainer.test(self.test_dataset)
 		test_pearson = self.metrics.pearson(test_pred, self.test_dataset.labels)
 		test_mse = self.metrics.mse(test_pred, self.test_dataset.labels)
 		(test_f1, test_prec, test_rec, test_bestThreshold) = Helper.calculate_f1(test_pred, self.test_dataset.labels, True, True)
 		print('==> Test \tLoss: {}\tPearson: {}\tMSE: {}\tF1: {}'.format(test_loss, test_pearson, test_mse, test_f1))
-		if test_f1 > highest_test_f1:
-			highest_test_f1 = test_f1
-		print("highest_test_f1:", highest_test_f1)
+		return test_f1, test_bestThreshold
 
 '''
 def main(train_set=None, dev_set=None, test_set=None):

@@ -42,7 +42,7 @@ class Resolver:
 		useCCNN = False
 		useTreeLSTM = True
 		eval_on = "test" # TODO: adjust this to whatever you want to test on
-		eval_modulo = 25 # how many epochs to go between evaluating
+		eval_modulo = 6 # how many epochs to go between evaluating
 		evaluate_all_pairs = True
 		create_sub_trees = True # IF FALSE, our self.*_tree_sets will have just 1 per sentence.
 
@@ -128,14 +128,15 @@ class Resolver:
 		#corpus.calculateEntEnvAgreement()
 		fh = FeatureHandler(self.args, helper) # TODO: TMP
 		dh.load_xuid_pairs(supp_features_type, self.scope) # CREATES ALL XUID PAIRS
-		if useTreeLSTM:
 
-			dh.construct_tree_files_(self.is_wd, evaluate_all_pairs, create_sub_trees) # WRITES FILES TO DISK
+		dh.construct_tree_files_(self.is_wd, evaluate_all_pairs, create_sub_trees) # WRITES FILES TO DISK
+
+		if useTreeLSTM:
 
 			print("# dh.xuid_to_height:", len(dh.xuid_to_height))
 			print("# dh.xuid_to_depth:", len(dh.xuid_to_depth))
 			
-			td = TreeDriver(self.is_wd)
+			td = TreeDriver(self.is_wd, self.args.num_dirs)
 
 			eval_set = None
 			dataset = None 
@@ -163,13 +164,14 @@ class Resolver:
 
 				# TEST IT EVERY EVAL_MODULO EPOCHS
 				if (epoch+1) % eval_modulo == 0:
-					print("**[ EVALUATING ON:", eval_on, ", size:", len(eval_set.xuid_pair_and_key), "]**\n-------------------------------------")
+					print("-------------------------------------\n**[ EVALUATING ON:", eval_on, ", size:", len(eval_set.xuid_pair_and_key), "]**\n-------------------------------------")
 					preds = []
 					golds = []
 
 					# TESTS BASED ON KL-DIVERGENCE OF ACTUAL MODEL
-					td.test()
-					
+					test_f1, test_threshold = td.test()
+					print("KL-BASED TEST F1:", test_f1, "threshold:", test_threshold)
+
 					# TESTS BASED ON HIDDEN LAYERS LEARNED FROM THE MODEL
 					#  (which isn't its objective function, but allows for a gradient of values)
 					missing_xuids = set()
@@ -298,12 +300,11 @@ class Resolver:
 							preds.append(highest_cs)
 							eval_xuid_pairs.append((xuid1, xuid2))
 
-					print("calculating f1")
 					(f1, prec, rec, bestThreshold) = Helper.calculate_f1(preds, golds, False, True)
-					print("f1:", f1, "prec:", prec, "rec:", rec, "bestThreshold:", bestThreshold)
+					print("HIDDEN EMBEDDINGS' F1:", f1, "prec:", prec, "rec:", rec, "bestThreshold:", bestThreshold)
 					print("\tlen eval_set.xuid_pair_and_key:", len(eval_set.xuid_pair_and_key))
-					print("\teval_xuid_pairs:", eval_xuid_pairs)
-					print("\t# unique_xuids_to_eval:", unique_xuids_to_eval)
+					print("\teval_xuid_pairs:", len(eval_xuid_pairs))
+					print("\t# unique_xuids_to_eval:", len(unique_xuids_to_eval))
 					print("\tbut actually processed:", len(golds))
 					print("\t# xuids we didnt have:", len(missing_xuids))
 					print("# golds pos:", golds.count(2), "neg:", golds.count(1))
@@ -316,9 +317,9 @@ class Resolver:
 					print("DEPTH PERFORMANCE:")
 					Helper.plot_distance_matrix(eval_xuid_pairs, preds, golds, bestThreshold, dh.xuid_to_depth)
 					print(str((time.time() - start_time)), "seconds")
-					
+	
 
-		#exit()
+		exit()
 		# within-doc first, then cross-doc
 		if useCCNN:
 			ensemble_dev_predictions = []
