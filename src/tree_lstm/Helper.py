@@ -143,6 +143,7 @@ class Helper:
 		key_to_counts = defaultdict(int)
 		key_to_perf = defaultdict(lambda: defaultdict(int))
 		max_dist = 0
+		xuids_missing = set()
 		for i, (xuid1, xuid2) in enumerate(xuid_pairs):
 			predicted = False
 			if preds[i] >= threshold:
@@ -152,6 +153,15 @@ class Helper:
 				is_gold = True
 			
 			# make dist1 the lower one
+			missing = False
+			if xuid1 not in xuid_to_dist:
+				xuids_missing.add(xuid1)
+				missing = True
+			if xuid2 not in xuid_to_dist:
+				xuids_missing.add(xuid2)
+				missing = True
+			if missing:
+				continue
 			dist1 = xuid_to_dist[xuid1]
 			dist2 = xuid_to_dist[xuid2]
 			if dist2 < dist1:
@@ -172,6 +182,8 @@ class Helper:
 			elif not predicted and not is_gold:
 				key_to_perf[key]["TN"] += 1
 			
+		print("# xuids_missing (for plotting):", xuids_missing)
+	
 		matrix_total = np.zeros(shape=(max_dist, max_dist))
 		matrix_f1 = np.zeros(shape=(max_dist, max_dist))
 		for key in key_to_counts:
@@ -194,7 +206,7 @@ class Helper:
 		print("matrix_f1\n:", matrix_f1)
 
 
-	def calculate_f1(preds, golds, rev=True):
+	def calculate_f1(preds, golds, convert_from_tensor=False, rev=True):
 
 		numGoldPos = 0
 		scoreToGoldTruth = defaultdict(list)
@@ -206,7 +218,7 @@ class Helper:
 				scoreToGoldTruth[pred].append(1)
 			else:
 				scoreToGoldTruth[pred].append(0)
-			print("pred:", pred, "gold:", golds[_])
+			#print("pred:", pred, "gold:", golds[_])
 
 		s = sorted(scoreToGoldTruth.keys(), reverse=rev)
 		TP = 0.0
@@ -225,6 +237,10 @@ class Helper:
 					FP += 1
 
 			numReturnedSoFar += len(scoreToGoldTruth[eachVal])
+
+			if convert_from_tensor:
+				eachVal = float(eachVal.numpy())
+				
 			score_rounded = str(round(eachVal,7))
 			score_to_index_rank[score_rounded] = numReturnedSoFar
 
@@ -239,7 +255,7 @@ class Helper:
 				bestVal = eachVal
 				bestR = recall
 				bestP = prec
-				print("new besT:", bestF1, " (", bestVal, ")")
+				#print("new besT:", bestF1, " (", bestVal, ")")
 		if numReturnedSoFar != len(preds):
 			print("* ERROR: we didn't look at preds correctly")
 			exit(1)

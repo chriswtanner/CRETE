@@ -55,7 +55,7 @@ class SICKDataset(data.Dataset):
 
     def read_tree(self, line):
         parents = list(map(int, line.split()))
-        #print("line:", line, "parents:", parents, "# parents:", len(parents))
+        #print("parents:", parents, "# parents:", len(parents))
         trees = dict()
         root = None
         for i in range(1, len(parents) + 1):

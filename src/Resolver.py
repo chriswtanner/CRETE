@@ -38,11 +38,13 @@ class Resolver:
 	def resolve(self, mention_type, supp_features_type, event_pronouns, entity_pronouns, num_runs):
 		# supp_features_type  = {none, shortest, one, type}
 
-		# classifier params
+		# TODO: update these parameterss
 		useCCNN = False
 		useTreeLSTM = True
 		eval_on = "test" # TODO: adjust this to whatever you want to test on
-		eval_modulo = 3 # how many epochs to go between evaluating
+		eval_modulo = 25 # how many epochs to go between evaluating
+		evaluate_all_pairs = True
+		create_sub_trees = True # IF FALSE, our self.*_tree_sets will have just 1 per sentence.
 
 		devMode = True
 		runStanford = False
@@ -128,7 +130,11 @@ class Resolver:
 		dh.load_xuid_pairs(supp_features_type, self.scope) # CREATES ALL XUID PAIRS
 		if useTreeLSTM:
 
-			dh.construct_tree_files_(self.is_wd) # WRITES FILES TO DISK
+			dh.construct_tree_files_(self.is_wd, evaluate_all_pairs, create_sub_trees) # WRITES FILES TO DISK
+
+			print("# dh.xuid_to_height:", len(dh.xuid_to_height))
+			print("# dh.xuid_to_depth:", len(dh.xuid_to_depth))
+			
 			td = TreeDriver(self.is_wd)
 
 			eval_set = None
@@ -151,47 +157,56 @@ class Resolver:
 			else:
 				print("* ERROR: incorrect set to eval on:", eval_on)
 				exit()
-			print("**[ EVALUATING ON:", eval_on, "]**\n-------------------------------------")
+
 			for epoch in range(td.args.epochs):
 				td.train(epoch)
-				if (epoch+1) % eval_modulo == 0:
 
+				# TEST IT EVERY EVAL_MODULO EPOCHS
+				if (epoch+1) % eval_modulo == 0:
+					print("**[ EVALUATING ON:", eval_on, ", size:", len(eval_set.xuid_pair_and_key), "]**\n-------------------------------------")
 					preds = []
 					golds = []
 
+					# TESTS BASED ON KL-DIVERGENCE OF ACTUAL MODEL
+					td.test()
+					
+					# TESTS BASED ON HIDDEN LAYERS LEARNED FROM THE MODEL
+					#  (which isn't its objective function, but allows for a gradient of values)
 					missing_xuids = set()
 					start_time = time.time()
 					eval_xuid_pairs = []
-					for (xuid1,xuid2), sent_key in eval_set.xuid_pair_and_sent_key:
+					unique_xuids_to_eval = set()
+					for i, (xuid1,xuid2) in enumerate(eval_set.tree_legend):
+
+						unique_xuids_to_eval.add(xuid1)
+						unique_xuids_to_eval.add(xuid2)
+
 						m1 = corpus.XUIDToMention[xuid1]
 						m2 = corpus.XUIDToMention[xuid2]
 
-						# sent1 should correspond w/ the lesser sent number
-						sent_xuid1 = m1.globalSentenceNum
-						sent_xuid2 = m2.globalSentenceNum
+						datum = dataset[i]
 
-						sent_dataset_index = eval_set.sent_key_to_index[sent_key]
-						datum = dataset[sent_dataset_index]
 						lwords, left_to_hidden, rwords, right_to_hidden = td.fetch_hidden_embeddings(datum)
 
-						st_for_xuid1 = dh.sent_num_to_obj[sent_xuid1] # keys are actual global sent num
-						st_for_xuid2 = dh.sent_num_to_obj[sent_xuid2] # keys are actual global sent num
+						mt_for_xuid1 = dh.xuid_to_mt[xuid1] # keys are actual global xuid MiniTrees
+						mt_for_xuid2 = dh.xuid_to_mt[xuid2] # keys are actual global xuid MiniTrees
+						
 						'''
+						IGNORE ALL OF THIS
 						print("\n----- looking at new xuid results -----")
 						print("corpus sent1:", [t.text for t in corpus.globalSentenceNumToTokens[sent_xuid1]])
 						print("corpus sent2:", [t.text for t in corpus.globalSentenceNumToTokens[sent_xuid2]])
 						print("sent_xuid1:", sent_xuid1, "sent_xuid2:", sent_xuid2)
 						print("sent_key:", sent_key, "--> sent_dataset_index:", sent_dataset_index)
 						print("\tdatum:", datum)
+						
 						print("m1:", m1)
 						print("\tdatum's lwords:", lwords)
-						print("\tst1:", sent_xuid1, st_for_xuid1)
-						print("\tst_for_xuid1.mention_token_indices[xuid1]:", st_for_xuid1.mention_token_indices[xuid1])
+						print("\tst_for_xuid1.mention_token_indices[xuid1]:", mt_for_xuid1.mention_token_indices[xuid1])
 						
 						print("m2:", m2)
 						print("\tdatum's rwords:", rwords)
-						print("\tst2:", sent_xuid2, st_for_xuid2)
-						print("\tst_for_xuid2.mention_token_indices[xuid2]:", st_for_xuid2.mention_token_indices[xuid2])
+						print("\tst_for_xuid2.mention_token_indices[xuid2]:", mt_for_xuid2.mention_token_indices[xuid2])
 
 						print("\tleft_to_hidden:", left_to_hidden.keys())
 						print("\tright_to_hidden:", right_to_hidden.keys())
@@ -202,8 +217,8 @@ class Resolver:
 						tmp = []
 
 						#if xuid1 not in xuid_to_vec and xuid1 not in missing_xuids:
-						for token_index in st_for_xuid1.mention_token_indices[xuid1]:
-							if sent_xuid2 < sent_xuid1:
+						for token_index in mt_for_xuid1.mention_token_indices[xuid1]:
+							if xuid2 < xuid1:
 								vec = right_to_hidden #[token_index-1][0].detach().numpy()
 								tmp.append(rwords.split(" ")[token_index-1])
 							else:
@@ -223,19 +238,14 @@ class Resolver:
 								m1_vec += left_vec
 							num_summed += 1
 						m1_vec[:] = [x / num_summed for x in m1_vec]
-							#xuid_to_vec[xuid1] = m1_vec
-						'''
-						if " ".join(m1.text) != " ".join(tmp):
-							print("* ERROR: xuid1's text didn't match with what the sickcorpus had")
-							exit()
-						'''
+
 						m2_vec = []
 						m2_vecs = []
 						num_summed = 0
 						#if xuid2 not in xuid_to_vec and xuid2 not in missing_xuids:
-						for token_index in st_for_xuid2.mention_token_indices[xuid2]:
+						for token_index in mt_for_xuid2.mention_token_indices[xuid2]:
 							
-							if sent_xuid2 < sent_xuid1:
+							if xuid2 < xuid1:
 								vec = left_to_hidden
 							else:
 								vec = right_to_hidden
@@ -253,14 +263,9 @@ class Resolver:
 							num_summed += 1
 						
 						m2_vec[:] = [x / num_summed for x in m2_vec]
-						#xuid_to_vec[xuid2] = m2_vec
 
 						if xuid1 not in missing_xuids and xuid2 not in missing_xuids:
 
-							#m1_vec = xuid_to_vec[xuid1]
-							#m2_vec = xuid_to_vec[xuid2]
-
-							#print("m1_vec:", m1_vec[0:10], "m2_vec:", m2_vec[0:10])
 							dot = np.dot(m1_vec, m2_vec)
 							norma = np.linalg.norm(m1_vec)
 							normb = np.linalg.norm(m2_vec)
@@ -303,29 +308,36 @@ class Resolver:
 								if l1 in m2_lemmas:
 									same_lemma_any = True
 							'''
+							IGNORE THIS
 							if same_lemma_any:
 								preds.append(1)
 							else:
 								preds.append(0)
+							IGNORE THIS
 							'''
 							preds.append(cs)
 							eval_xuid_pairs.append((xuid1, xuid2))
 
-					(f1, prec, rec, bestThreshold) = Helper.calculate_f1(preds, golds, True)
+					print("calculating f1")
+					(f1, prec, rec, bestThreshold) = Helper.calculate_f1(preds, golds, False, True)
 					print("f1:", f1, "prec:", prec, "rec:", rec, "bestThreshold:", bestThreshold)
-					print("\tlen xuid pairs to test:", len(eval_set.xuid_pair_and_sent_key))
+					print("\tlen eval_set.xuid_pair_and_key:", len(eval_set.xuid_pair_and_key))
+					print("\teval_xuid_pairs:", eval_xuid_pairs)
+					print("\t# unique_xuids_to_eval:", unique_xuids_to_eval)
 					print("\tbut actually processed:", len(golds))
 					print("\t# xuids we didnt have:", len(missing_xuids))
 					print("# golds pos:", golds.count(2), "neg:", golds.count(1))
 					for xuid in missing_xuids:
 						print("\t\tmissed:", corpus.XUIDToMention[xuid])
 
+					
 					print("HEIGHT PERFORMANCE:")
 					Helper.plot_distance_matrix(eval_xuid_pairs, preds, golds, bestThreshold, dh.xuid_to_height)
 					print("DEPTH PERFORMANCE:")
 					Helper.plot_distance_matrix(eval_xuid_pairs, preds, golds, bestThreshold, dh.xuid_to_depth)
-
 					print(str((time.time() - start_time)), "seconds")
+					
+
 		#exit()
 		# within-doc first, then cross-doc
 		if useCCNN:

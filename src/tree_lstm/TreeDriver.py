@@ -81,6 +81,29 @@ class TreeDriver():
 
 	def fetch_hidden_embeddings(self, datum):
 		return self.trainer.fetch_tree_nodes(datum)
+
+	def test_on_train(self):
+		highest_test_f1 = 0
+		test_loss, test_pred = self.trainer.test(self.train_dataset)
+		test_pearson = self.metrics.pearson(test_pred, self.train_dataset.labels)
+		test_mse = self.metrics.mse(test_pred, self.train_dataset.labels)
+		(test_f1, test_prec, test_rec, test_bestThreshold) = Helper.calculate_f1(test_pred, self.train_dataset.labels, True, True)
+		print('==> Test \tLoss: {}\tPearson: {}\tMSE: {}\tF1: {}'.format(test_loss, test_pearson, test_mse, test_f1))
+		if test_f1 > highest_test_f1:
+			highest_test_f1 = test_f1
+		print("**** highest_test_f1:", highest_test_f1)
+
+	def test(self):
+		highest_test_f1 = 0
+		test_loss, test_pred = self.trainer.test(self.test_dataset)
+		test_pearson = self.metrics.pearson(test_pred, self.test_dataset.labels)
+		test_mse = self.metrics.mse(test_pred, self.test_dataset.labels)
+		(test_f1, test_prec, test_rec, test_bestThreshold) = Helper.calculate_f1(test_pred, self.test_dataset.labels, True, True)
+		print('==> Test \tLoss: {}\tPearson: {}\tMSE: {}\tF1: {}'.format(test_loss, test_pearson, test_mse, test_f1))
+		if test_f1 > highest_test_f1:
+			highest_test_f1 = test_f1
+		print("highest_test_f1:", highest_test_f1)
+
 '''
 def main(train_set=None, dev_set=None, test_set=None):
 	print("**** IN TREEDRIVER MAIN()")
