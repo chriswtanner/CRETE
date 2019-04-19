@@ -34,7 +34,7 @@ do
 	bowFeature="False" # f6
 	wordnetFeature="False" # f7
 	framenetFeature="False" # f8
-	prefix="ffnn"
+	#prefix="ffnn"
 
 	if [ "$exhaustivelyTestAllFeatures" = false ] ; then
 		features=${featureMap[@]}
