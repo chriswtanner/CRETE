@@ -89,25 +89,6 @@ class Trainer(object):
 				if idx < -1:
 					print("TEST idx:", idx, "; label:", label, "; target:", target, "; output:", output, "; preds:", predictions[idx])
 
-<<<<<<< HEAD
-=======
-			'''
-			# now let's test our performance on actual XUIDs
-			num_pos = 0
-			num_neg = 0
-			for (xuid1,xuid2), sent_key in tree_set.xuid_pair_and_sent_key:
-				
-				index = tree_set.sent_key_to_index[sent_key]
-				label = tree_set.sent_labels[index]
-				if label == 1:
-					num_neg += 1
-				else:
-					num_pos += 1
-				sent1, sent2 = sent_key.split("_")
-				#print("xuid1:", xuid1, "xuid2:", xuid2, "sent_key:", sent_key, " sent1:", sent1, "sent2:", sent2, " label:", label)
-			print("num_neg:", num_neg, "num_pos:", num_pos)
-			'''
->>>>>>> f33ad25223d1fc13a1bf70c0e61999c15ad70a34
 		print("DONE WITH Trainer.test()")
 		return total_loss / len(dataset), predictions
 

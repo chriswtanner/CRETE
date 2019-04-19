@@ -130,21 +130,11 @@ class Resolver:
 		dh.load_xuid_pairs(supp_features_type, self.scope) # CREATES ALL XUID PAIRS
 		if useTreeLSTM:
 
-<<<<<<< HEAD
 			dh.construct_tree_files_(self.is_wd, evaluate_all_pairs, create_sub_trees) # WRITES FILES TO DISK
 
 			print("# dh.xuid_to_height:", len(dh.xuid_to_height))
 			print("# dh.xuid_to_depth:", len(dh.xuid_to_depth))
 			
-=======
-			dh.construct_tree_files_(self.is_wd) # WRITES FILES TO DISK
-
-			print("# dh.xuid_to_height:", len(dh.xuid_to_height))
-			print("# dh.xuid_to_depth:", len(dh.xuid_to_depth))
-
-
-
->>>>>>> f33ad25223d1fc13a1bf70c0e61999c15ad70a34
 			td = TreeDriver(self.is_wd)
 
 			eval_set = None
@@ -172,13 +162,8 @@ class Resolver:
 				td.train(epoch)
 
 				# TEST IT EVERY EVAL_MODULO EPOCHS
-<<<<<<< HEAD
 				if (epoch+1) % eval_modulo == 0:
 					print("**[ EVALUATING ON:", eval_on, ", size:", len(eval_set.xuid_pair_and_key), "]**\n-------------------------------------")
-=======
-				if (epoch+1) % eval_modulo == 5:
-					print("**[ EVALUATING ON:", eval_on, ", size:", len(eval_set.xuid_pair_and_sent_key), "]**\n-------------------------------------")
->>>>>>> f33ad25223d1fc13a1bf70c0e61999c15ad70a34
 					preds = []
 					golds = []
 
@@ -191,11 +176,7 @@ class Resolver:
 					start_time = time.time()
 					eval_xuid_pairs = []
 					unique_xuids_to_eval = set()
-<<<<<<< HEAD
 					for i, (xuid1,xuid2) in enumerate(eval_set.tree_legend):
-=======
-					for (xuid1,xuid2), sent_key in eval_set.xuid_pair_and_sent_key:
->>>>>>> f33ad25223d1fc13a1bf70c0e61999c15ad70a34
 
 						unique_xuids_to_eval.add(xuid1)
 						unique_xuids_to_eval.add(xuid2)
@@ -205,41 +186,11 @@ class Resolver:
 
 						datum = dataset[i]
 
-<<<<<<< HEAD
 						lwords, left_to_hidden, rwords, right_to_hidden = td.fetch_hidden_embeddings(datum)
 
 						mt_for_xuid1 = dh.xuid_to_mt[xuid1] # keys are actual global xuid MiniTrees
 						mt_for_xuid2 = dh.xuid_to_mt[xuid2] # keys are actual global xuid MiniTrees
 						
-=======
-						sent_dataset_index = eval_set.sent_key_to_index[sent_key]
-						datum = dataset[sent_dataset_index]
-						#print("* fetching:", xuid1, xuid2)
-						lwords, left_to_hidden, rwords, right_to_hidden = td.fetch_hidden_embeddings(datum)
-
-						st_for_xuid1 = dh.sent_num_to_mt[sent_xuid1] # keys are actual global sent num
-						st_for_xuid2 = dh.sent_num_to_mt[sent_xuid2] # keys are actual global sent num
->>>>>>> f33ad25223d1fc13a1bf70c0e61999c15ad70a34
-						'''
-						IGNORE ALL OF THIS
-						print("\n----- looking at new xuid results -----")
-						print("corpus sent1:", [t.text for t in corpus.globalSentenceNumToTokens[sent_xuid1]])
-						print("corpus sent2:", [t.text for t in corpus.globalSentenceNumToTokens[sent_xuid2]])
-						print("sent_xuid1:", sent_xuid1, "sent_xuid2:", sent_xuid2)
-						print("sent_key:", sent_key, "--> sent_dataset_index:", sent_dataset_index)
-						print("\tdatum:", datum)
-						
-						print("m1:", m1)
-						print("\tdatum's lwords:", lwords)
-						print("\tst_for_xuid1.mention_token_indices[xuid1]:", mt_for_xuid1.mention_token_indices[xuid1])
-						
-						print("m2:", m2)
-						print("\tdatum's rwords:", rwords)
-						print("\tst_for_xuid2.mention_token_indices[xuid2]:", mt_for_xuid2.mention_token_indices[xuid2])
-
-						print("\tleft_to_hidden:", left_to_hidden.keys())
-						print("\tright_to_hidden:", right_to_hidden.keys())
-						'''
 						m1_vec = []
 						m1_vecs = []
 						num_summed = 0
@@ -344,19 +295,13 @@ class Resolver:
 								preds.append(0)
 							IGNORE THIS
 							'''
-							preds.append(cs)
+							preds.append(highest_cs)
 							eval_xuid_pairs.append((xuid1, xuid2))
 
 					print("calculating f1")
-<<<<<<< HEAD
 					(f1, prec, rec, bestThreshold) = Helper.calculate_f1(preds, golds, False, True)
 					print("f1:", f1, "prec:", prec, "rec:", rec, "bestThreshold:", bestThreshold)
 					print("\tlen eval_set.xuid_pair_and_key:", len(eval_set.xuid_pair_and_key))
-=======
-					(f1, prec, rec, bestThreshold) = Helper.calculate_f1(preds, golds, True)
-					print("f1:", f1, "prec:", prec, "rec:", rec, "bestThreshold:", bestThreshold)
-					print("\tlen eval_set.xuid_pair_and_sent_key:", len(eval_set.xuid_pair_and_sent_key))
->>>>>>> f33ad25223d1fc13a1bf70c0e61999c15ad70a34
 					print("\teval_xuid_pairs:", eval_xuid_pairs)
 					print("\t# unique_xuids_to_eval:", unique_xuids_to_eval)
 					print("\tbut actually processed:", len(golds))
