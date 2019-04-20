@@ -39,12 +39,13 @@ class Resolver:
 		# supp_features_type  = {none, shortest, one, type}
 
 		# TODO: update these parameterss
-		useCCNN = True
-		useTreeLSTM = False
+		useCCNN = False
+		useTreeLSTM = True
 		eval_on = "test" # TODO: adjust this to whatever you want to test on
-		eval_modulo = 6 # how many epochs to go between evaluating
+		eval_modulo = 7 # how many epochs to go between evaluating
 		evaluate_all_pairs = True
 		create_sub_trees = True # IF FALSE, our self.*_tree_sets will have just 1 per sentence.
+		eval_events = True
 
 		devMode = True
 		runStanford = False
@@ -117,7 +118,7 @@ class Resolver:
 		#fh.saveBoWFeatures(bowFeaturesFile)
 		#exit(1)
 
-		# DEFINES WHICH MENTIONS TO USE
+		# DEFINES WHICH MENTIONS TO USE ()
 		trainXUIDs, devXUIDs, testXUIDs = helper.getCorpusMentions(mention_types)
 		dh = DataHandler(helper, trainXUIDs, devXUIDs, testXUIDs)
 		helper.addDependenciesToMentions(dh)
@@ -343,6 +344,7 @@ class Resolver:
 
 				print("# dev runs:", len(dev_best_f1s), dev_best_f1s)
 				print("# test runs:", len(test_best_f1s), test_best_f1s)
+
 
 			print("\n----- [ DEV PERFORMANCE ] -----\n-------------------------------")
 			dev_preds = helper.getEnsemblePreds(ensemble_dev_predictions) # normalizes them

@@ -244,11 +244,12 @@ class ECBHelper:
 
 		
 		s = sorted(scoreToGoldTruth.keys(), reverse=rev)
-		#for _ in s:
-		#	print("score:", _, "trutH:", scoreToGoldTruth[_])
-		
+		'''
+		for _ in s:
+			print("score:", _, "trutH:", scoreToGoldTruth[_])
+		'''
 
-		#print("numGoldPos:", numGoldPos)
+		print("numGoldPos:", numGoldPos)
 		TP = 0.0
 		FP = 0.0
 		bestF1 = 0
@@ -275,12 +276,12 @@ class ECBHelper:
 			if (recall + prec) > 0:
 				f1 = 2*(recall*prec) / (recall + prec)
 
-			#print("thres:", eachVal, "prec:", prec, "rec:", recall, "f1:", f1)
 			if f1 > bestF1:
 				bestF1 = f1
 				bestVal = eachVal
 				bestR = recall
 				bestP = prec
+				#print("new besT: thres:", eachVal, "prec:", prec, "rec:", recall, "f1:", f1)
 		if numReturnedSoFar != len(preds):
 			print("* ERROR: we didn't look at preds correctly")
 			exit(1)

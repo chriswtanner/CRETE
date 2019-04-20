@@ -336,14 +336,17 @@ class CCNN:
 			dev_preds = model.predict([self.devX[:, 0], self.devX[:, 1]])
 			test_preds = model.predict([self.testX[:, 0], self.testX[:, 1]])
 		
+		
 		# evaluates
 		(dev_f1, dev_prec, dev_rec, dev_bestThreshold) = self.helper.evaluatePairwisePreds(self.devID, dev_preds, self.devY, self.dh)
 		#print("[CCNN DEV RESULTS] f1:", round(dev_f1,4), " prec: ", round(dev_prec,4), " recall: ", round(dev_rec,4), " threshold: ", round(dev_bestThreshold,3))
 		dev_results = (self.helper.devDirs, self.devID, dev_preds, self.devY, dev_f1)
 		
+
 		(test_f1, test_prec, test_rec, test_bestThreshold) = self.helper.evaluatePairwisePreds(self.testID, test_preds, self.testY, self.dh)
 		#print("[CCNN TEST RESULTS] f1:", round(test_f1,4), " prec: ", round(test_prec,4), " recall: ", round(test_rec,4), " threshold: ", round(test_bestThreshold,3))
 		test_results = (self.helper.testingDirs, self.testID, test_preds, self.testY, test_f1)
+
 		return [dev_results, test_results]
 
 		'''
@@ -1016,7 +1019,7 @@ class CCNN:
 
 		# our base clusters are dependent on our scope (dir vs dirHalf)
 		#print("# golden clusters:",str(len(goldenSuperSet.keys())), "; # our clusters:",str(len(ourClusterSuperSet)))
-		return (   ourClusterSuperSet, goldenSuperSet)
+		return (ourClusterSuperSet, goldenSuperSet)
 
 	# Base network to be shared (eq. to feature extraction).
 	def create_base_network(self, input_shape):
@@ -1036,7 +1039,7 @@ class CCNN:
 		seq.add(MaxPooling2D(pool_size=(kernel_rows, 2), padding="same", data_format="channels_first"))
 		
 		seq.add(Flatten())
-		seq.add(Dense(self.nf, activation='relu'))
+		seq.add(Dense(self.nf, activation='sigmoid'))
 		return seq
 
 	def L1_distance(self, vects):
