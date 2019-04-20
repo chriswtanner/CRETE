@@ -56,7 +56,7 @@ class CorefEngine:
 
 		# manually-defined features (others are in Resolver.py)
 		#32, 20, 2, 32, 0
-		wdPresets = [32, 20, 2, 32, 0] # batchsize, num epochs, num layers, num filters, dropout
+		wdPresets = [32, 3, 2, 32, 0] # batchsize, num epochs, num layers, num filters, dropout
 		num_runs = 3
 		mention_types = {'events'} #, 'entities'} # NOTE: should be 'events' and/or 'entities'
 

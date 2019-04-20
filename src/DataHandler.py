@@ -116,10 +116,8 @@ class DataHandler:
 		self.devXUIDPairs = self.createXUIDPairs(self.devXUIDs, scope, supp_features)
 		self.testXUIDPairs = self.createXUIDPairs(self.testXUIDs, scope, supp_features)
 
-	def construct_tree_files_(self, is_wd, evaluate_all_pairs, create_sub_trees):
-		dir_path = "ecb_wd/"
-		if not is_wd:
-			dir_path = "ecb_cd/"
+	def construct_tree_files_(self, scope, evaluate_all_pairs, create_sub_trees):
+		dir_path = "ecb_" + scope + "/"
 
 		# the 2nd True passed-in below corresponds to if we should construct only Trees that are rooted w/ events or not
 		# (so, training should always be True, but dev and test can be False)

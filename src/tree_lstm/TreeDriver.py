@@ -21,11 +21,9 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 class TreeDriver():
-	def __init__(self, is_wd, num_dirs, opt="adagrad", lr=0.025):
+	def __init__(self, scope, num_dirs, opt="adagrad", lr=0.025):
 		print("num_dirs:", num_dirs)
-		sub_dir = "ecb_wd/"
-		if not is_wd:
-			sub_dir = "ecb_cd/"
+		sub_dir = "ecb_" + scope + "/"
 
 		# init stuff
 		print("TORCH VERSION:", torch.__version__)
