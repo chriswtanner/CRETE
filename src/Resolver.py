@@ -35,12 +35,12 @@ class Resolver:
 		if self.scope == "doc":
 			self.is_wd = True
 
-	def resolve(self, mention_type, supp_features_type, event_pronouns, entity_pronouns, num_runs):
+	def resolve(self, mention_types, supp_features_type, event_pronouns, entity_pronouns, num_runs):
 		# supp_features_type  = {none, shortest, one, type}
 
 		# TODO: update these parameterss
-		useCCNN = False
-		useTreeLSTM = True
+		useCCNN = True
+		useTreeLSTM = False
 		eval_on = "test" # TODO: adjust this to whatever you want to test on
 		eval_modulo = 6 # how many epochs to go between evaluating
 		evaluate_all_pairs = True
@@ -118,7 +118,7 @@ class Resolver:
 		#exit(1)
 
 		# DEFINES WHICH MENTIONS TO USE
-		trainXUIDs, devXUIDs, testXUIDs = helper.getCorpusMentions(mention_type)
+		trainXUIDs, devXUIDs, testXUIDs = helper.getCorpusMentions(mention_types)
 		dh = DataHandler(helper, trainXUIDs, devXUIDs, testXUIDs)
 		helper.addDependenciesToMentions(dh)
 		#helper.printCorpus("corpusMentions.txt")
@@ -319,7 +319,6 @@ class Resolver:
 					print(str((time.time() - start_time)), "seconds")
 	
 
-		exit()
 		# within-doc first, then cross-doc
 		if useCCNN:
 			ensemble_dev_predictions = []

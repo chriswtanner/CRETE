@@ -108,52 +108,63 @@ class ECBHelper:
 			for ((id1, id2), pred) in zip(ids, preds):
 				self.predictions[(id1, id2)] = pred[0]
 
-	def getCorpusMentions(self, mention_type):
+	def getCorpusMentions(self, mention_types):
 		trainXUIDs = set()
 		devXUIDs = set()
 		testXUIDs = set()
 		has_pronoun_count = 0
 		has_no_pronoun_count = 0
 		excluded_pronoun_mentions = []
-		use_pronoun = False
-		if mention_type == "events":
-			use_pronoun = self.event_pronouns
-		elif mention_type == "entities":
-			use_pronoun = self.entity_pronouns
-		else:
-			print("* ERROR: incorrect mention type")
-			exit(1)
 
+		for m_types in mention_types:
+			if m_types != "events" and m_types != "entities":
+				print("* ERROR: incorrect mention type")
+				exit(1)
+
+		all_dirs = set(self.trainingDirs) | set(self.devDirs) | set(self.testingDirs)
 		for m in self.corpus.ecb_mentions:
-			# only return the mentions that are the type we care about
-			if ("entities" == mention_type and not m.isPred) or \
-				("events" == mention_type and m.isPred):
+			if m.dir_num not in all_dirs:
+				continue
 
-				# determines if it has a pronoun or not (and if we care)
-				has_pronoun = False
-				for t in m.tokens:
-					for pronoun in self.pronouns:
-						if pronoun == t.text and len(m.tokens) == 1:
-							has_pronoun = True
-							#print("has pronoun (bad count):", m)
+			# only return the mentions that are the type(s) we care about
+			if m.isPred and "events" not in mention_types:
+				continue
+			if not m.isPred and "entities" not in mention_types:
+				continue
 
-				if has_pronoun:
-					has_pronoun_count += 1
-				else:
-					has_no_pronoun_count += 1
+			# determines if it has a pronoun or not (and if we care)
+			has_pronoun = False
+			for t in m.tokens:
+				for pronoun in self.pronouns:
+					if pronoun == t.text and len(m.tokens) == 1:
+						has_pronoun = True
+						#print("has pronoun (bad count):", m)
 
-				# possibly add the mention
-				if use_pronoun or (not use_pronoun and not has_pronoun):
-					# figures out which set we add it to
-					if m.dir_num in self.trainingDirs: # training
-						trainXUIDs.add(m.XUID)
+			if has_pronoun:
+				has_pronoun_count += 1
+			else:
+				has_no_pronoun_count += 1
 
-					elif m.dir_num in self.devDirs:
-						devXUIDs.add(m.XUID)
-					elif self.args.useECBTest and m.dir_num in self.testingDirs:
-						testXUIDs.add(m.XUID)
-				else:
+			# possibly throw it out only if it's a pronoun and we don't want pronouns
+			if has_pronoun:
+				if m.isPred and not self.event_pronouns:
 					excluded_pronoun_mentions.append(m.text)
+					continue
+				elif not m.isPred and not self.entity_pronouns:
+					excluded_pronoun_mentions.append(m.text)
+					continue
+
+			# figures out which set we add it to
+			if m.dir_num in self.trainingDirs: # training
+				trainXUIDs.add(m.XUID)
+			elif m.dir_num in self.devDirs:
+				devXUIDs.add(m.XUID)
+			elif self.args.useECBTest and m.dir_num in self.testingDirs:
+				testXUIDs.add(m.XUID)
+			else:
+				print("* we should have already dismissed the mention")
+				exit()
+				continue
 					
 		print("has_pronoun_count:", has_pronoun_count)
 		print("has_no_pronoun_count:", has_no_pronoun_count)
@@ -231,11 +242,11 @@ class ECBHelper:
 				scoreToGoldTruth[preds[_][0]].append(0)
 				#print("")
 
-		'''
+		
 		s = sorted(scoreToGoldTruth.keys(), reverse=rev)
-		for _ in s:
-			print("score:", _, "trutH:", scoreToGoldTruth[_])
-		'''
+		#for _ in s:
+		#	print("score:", _, "trutH:", scoreToGoldTruth[_])
+		
 
 		#print("numGoldPos:", numGoldPos)
 		TP = 0.0

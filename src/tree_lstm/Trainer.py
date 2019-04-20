@@ -65,7 +65,7 @@ class Trainer(object):
 				self.optimizer.step()
 				self.optimizer.zero_grad()
 		
-		print("*** num_mismatched_dependencies:", num_mismatched_dependencies)
+		print("*** training epoch", self.epoch, " complete; num_mismatched_dependencies:", num_mismatched_dependencies)
 		self.epoch += 1
 		return total_loss / len(dataset)
 

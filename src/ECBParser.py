@@ -55,7 +55,7 @@ class ECBParser:
         # used for keeping track of how many mentions were pronouns
         had_pronoun = 0
         not_had_pronoun = 0
-
+        num_events_with_pronouns = 0
         for f in sorted(files):
             lm_idToMention = {} # only used to tmp store the mentions
             removed_m_ids = set() # keeps track of the mentions that had pronouns and we removed (if we care to remove them)
@@ -235,6 +235,8 @@ class ECBParser:
 
                 if has_pronoun:
                     had_pronoun += 1
+                    if isPred:
+                        num_events_with_pronouns += 1
                 else:
                     not_had_pronoun += 1
 
@@ -359,9 +361,17 @@ class ECBParser:
         corpus.assignGlobalSentenceNums()
         print("numMentionsIgnored:", numMentionsIgnored)
         print("# ECB mentions created:", len(corpus.ecb_mentions))
+        num_events = 0
+        for m in corpus.ecb_mentions:
+            if m.isPred:
+                num_events += 1
+        print("\t# events:", num_events)
+        print("\t\t# of event which had pronouns:", num_events_with_pronouns)
+        print("\t# entities:", len(corpus.ecb_mentions) - num_events)
         print("# ECB+ tokens:", len(corpus.corpusTokens))
         print("# mentions that had_pronoun:", had_pronoun)
         print("# mentions that did not had_pronoun:", not_had_pronoun)
+
         return corpus
 
     # loads replacement file
