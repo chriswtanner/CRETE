@@ -108,6 +108,7 @@ class ECBHelper:
 			for ((id1, id2), pred) in zip(ids, preds):
 				self.predictions[(id1, id2)] = pred[0]
 
+	# gathers all of the mentions we want, based on the passed-in type(s)
 	def getCorpusMentions(self, mention_types):
 		trainXUIDs = set()
 		devXUIDs = set()
@@ -289,8 +290,6 @@ class ECBHelper:
 			print("* ERROR: our F1 was < 0")
 			exit(1)
 
-		#print("bestVal:", bestVal, " yielded F1:", bestF1)
-
 		# given the best threshold, now let's check the individual performance
 		# of both entities and events
 		mentionStats = defaultdict(lambda: defaultdict(int))
@@ -306,265 +305,6 @@ class ECBHelper:
 		wrong_pairs = set()
 		fp_pairs = []
 		fn_pairs = []
-
-		'''
-		for ((xuid1, xuid2), pred, gold) in zip(ids, preds, golds):
-			m1 = self.corpus.XUIDToMention[xuid1]
-			m2 = self.corpus.XUIDToMention[xuid2]
-			pred = pred[0]
-			mentionType = ""
-
-			gold_coref = False
-			pred_coref = False
-			
-			if (xuid1, xuid2) in dh.xuid_pairs_that_meet_criterion:
-				if m1.REF == m2.REF:
-					gold_coref = True
-				
-
-				if pred <= bestVal:
-					pred_coref = True
-
-				if not pred_coref and gold_coref:
-					A.add((xuid1, xuid2))
-				elif not pred_coref and not gold_coref:
-					B.add((xuid1, xuid2))
-				elif pred_coref and gold_coref:
-					C.add((xuid1, xuid2))
-				elif pred_coref and not gold_coref:
-					D.add((xuid1, xuid2))
-
-			if not pred_coref: # those we do not predict
-				# but are actually gold
-				if gold_coref:
-					fn_pairs.append((xuid1, xuid2))
-			else: # those we predict
-				if not gold_coref:# but are NOT actually gold
-					fp_pairs.append((xuid1, xuid2))
-
-			if m1.isPred and m2.isPred:
-				mentionType = "events"
-			elif not m1.isPred and not m2.isPred:
-				mentionType = "entities"
-				print("* ERROR: why are we looking at entity mentions?!")
-				exit(1)
-			else:
-				print("* ERROR: our IDs are of mismatched types")
-				exit(1)
-
-
-			
-			# saves the predictions
-			mp = dh.tmp_minipreds[(xuid1, xuid2)]
-			mp.set_event_pred(pred)
-
-			gold_feat = (mp.event_gold, mp.ent_gold)
-			pred_to_gold_features[pred].append(gold_feat)
-
-			score_rounded = str(round(pred,7))
-
-			# stores the falsely predicted ones
-			if gold == 0:
-				num_gold += 1
-						
-			if pred > bestVal: # those we do not predict
-				# but are actually gold
-				if gold == 0:
-					pred_to_ids_error[score_rounded].append((xuid1, xuid2, "FN"))
-					wrong_pairs.add((xuid1, xuid2))
-					num_wrong += 1
-				else:
-					num_right += 1
-			else: # those we predict
-				num_predicted += 1
-				if gold == 1:# but are NOT actually gold
-					pred_to_ids_error[score_rounded].append((xuid1, xuid2, "FP"))
-					wrong_pairs.add((xuid1, xuid2))
-					num_wrong += 1
-					FP += 1
-				else: # true positive
-					TP += 1
-					num_right += 1
-
-			if m1.isPred and m2.isPred:
-				mentionType = "events"
-			elif not m1.isPred and not m2.isPred:
-				mentionType = "entities"
-			else:
-				print("* ERROR: our IDs are of mismatched types")
-				exit(1)
-
-			both_contain_paths = True
-			# checks if one of the events doesn't have a path to an entity
-
-			# gets the paths to entities or events
-			m1_full_paths = None
-			m2_full_paths = None
-			if m1.isPred and m2.isPred: # both are events, so let's use paths to entities
-				m1_full_paths = m1.levelToChildren
-				m2_full_paths = m2.levelToChildren
-			elif not m1.isPred and not m2.isPred: # both are entities, so let's use paths to events
-				m1_full_paths = m1.levelToParents
-				m2_full_paths = m2.levelToParents
-			
-			if len(m1_full_paths) == 0 or len(m2_full_paths) == 0:
-			#if len(m1.levelToChildrenEntities) == 0 or len(m2.levelToChildrenEntities) == 0:
-				both_contain_paths = False
-			
-			# updates stats on a per event- or entity- basis
-			if gold:
-				mentionStats[mentionType]["gold"] += 1
-				if mentionType == "events":
-					the_pairs[both_contain_paths]["gold"] += 1
-			if pred <= bestVal:
-				mentionStats[mentionType]["predicted"] += 1
-				if mentionType == "events":
-					the_pairs[both_contain_paths]["predicted"] += 1
-				if gold:
-					if mentionType == "events":
-						the_pairs[both_contain_paths]["TP"] += 1
-					mentionStats[mentionType]["TP"] += 1
-			
-
-		
-		# PRINTS FALSE POSITIVES
-		for _ in range(len(fp_pairs)):
-			xuid1, xuid2 = fp_pairs[_]
-			m1 = self.corpus.XUIDToMention[xuid1]
-			m2 = self.corpus.XUIDToMention[xuid2]
-
-			sentNum1 = m1.globalSentenceNum
-			sent1 = ""
-			for t in self.corpus.globalSentenceNumToTokens[sentNum1]:
-				sent1 += t.text + " "
-			sentNum2 = m2.globalSentenceNum
-			sent2 = ""
-			for t in self.corpus.globalSentenceNumToTokens[sentNum2]:
-				sent2 += t.text + " "
-
-			print("\tFP", _, "EVENT_1:", m1)
-			print("\tFP", _, "EVENT_2:", m2)
-			print("\tFP", _, "SENTENCE1:", sent1)
-			print("\tFP", _, "SENTENCE2:", sent2)
-
-		# PRINTS FALSE POSITIVES
-		for _ in range(len(fn_pairs)):
-			xuid1, xuid2 = fn_pairs[_]
-			m1 = self.corpus.XUIDToMention[xuid1]
-			m2 = self.corpus.XUIDToMention[xuid2]
-
-			sentNum1 = m1.globalSentenceNum
-			sent1 = ""
-			for t in self.corpus.globalSentenceNumToTokens[sentNum1]:
-				sent1 += t.text + " "
-			sentNum2 = m2.globalSentenceNum
-			sent2 = ""
-			for t in self.corpus.globalSentenceNumToTokens[sentNum2]:
-				sent2 += t.text + " "
-
-			print("\tFN", _, "EVENT_1:", m1)
-			print("\tFN", _, "EVENT_2:", m2)
-			print("\tFN", _, "SENTENCE1:", sent1)
-			print("\tFN", _, "SENTENCE2:", sent2)
-		'''
-
-		'''
-		recall = float(TP / num_gold)
-		prec = float(TP / num_predicted)
-		f1 = 0
-		if (recall + prec) > 0:
-			f1 = 2*(recall*prec) / (recall + prec)
-		print("*** re-calculated f1:", f1, "num_gold:", num_gold, "TP:", TP, "FP:", FP, "len(preds):", len(preds), "num_we_think_are_gold:", num_predicted, "num_wrong:", num_wrong, "num_right:", num_right)
-		
-		err_num = 0
-		for pred in sorted(pred_to_ids_error.keys()):
-			for (xuid1, xuid2, err_type) in pred_to_ids_error[pred]:
-				m1 = self.corpus.XUIDToMention[xuid1]
-				m2 = self.corpus.XUIDToMention[xuid2]
-				mp = dh.tmp_minipreds[(xuid1, xuid2)]
-
-				index_pos = score_to_index_rank[pred]
-				percent = float(index_pos) / float(len(preds))
-
-				sentNum1 = m1.globalSentenceNum
-				sent1 = ""
-				for t in self.corpus.globalSentenceNumToTokens[sentNum1]:
-					sent1 += t.text + " "
-
-				sentNum2 = m2.globalSentenceNum
-				sent2 = ""
-				for t in self.corpus.globalSentenceNumToTokens[sentNum2]:
-					sent2 += t.text + " "
-
-				
-				print("\nWRONG #", err_num, ";pred:",pred,"; index rank:", index_pos, "of", len(preds), "; ERROR:", err_type)
-				print("\tGOLD TRUTH:\n\t\tEVENT COREF:", mp.event_gold, "\n\t\tENTITY COREF:", mp.ent_gold)
-				print("\tEVENT_1:", m1)
-				print("\tEVENT_2:", m2)
-				print("\tSENTENCE1:", sent1)
-				print("\tSENTENCE2:", sent2)
-				
-				err_num += 1
-
-		# prints the event and entity gold info
-		
-		for pred in sorted(pred_to_gold_features.keys()):
-			for (event_gold, ent_gold) in pred_to_gold_features[pred]:
-				print(pred, ",", event_gold,",",ent_gold)
-		'''
-
-		'''
-		# prints each of the event and entity performances
-		for mt in mentionStats.keys():
-			if mentionStats[mt]["gold"] > 0:
-				recall = mentionStats[mt]["TP"] / mentionStats[mt]["gold"]
-				prec = 0
-				if mentionStats[mt]["predicted"] > 0:
-					prec = mentionStats[mt]["TP"] / mentionStats[mt]["predicted"]
-				#f1 = 2*(recall*prec) / (recall + prec)
-				#print("** MENTION TYPE:", mt, "yielded F1:", str(f1))
-
-		# prints the event results (pairs with paths and not)
-		for val in the_pairs.keys():
-			if the_pairs[val]["gold"] > 0:
-				recall = the_pairs[val]["TP"] / the_pairs[val]["gold"]
-				prec = 0
-				if the_pairs[val]["predicted"] > 0:
-					prec = the_pairs[val]["TP"] / the_pairs[val]["predicted"]
-				f1 = 0
-				if recall > 0 and prec > 0:
-					f1 = 2*(recall*prec) / (recall + prec)
-				#print("** WRT PAIRS OR NOT:", val, "yielded F1:", str(f1))
-		'''
-		
-		'''
-		# sets preds on a per-xuid basis
-		key_to_pred = {}
-		for key, val in zip(dev_ids, dev_preds):
-			key_to_pred[key] = val
-		for key, val in zip(test_ids, test_preds):
-			key_to_pred[key] = val
-
-		# adds predictions
-		print("# mini preds:", len(dh.tmp_minipreds.keys()))
-		keys_to_save = []
-		for dev_id in dev_ids:
-			keys_to_save.append(dev_id)
-		for test_id in test_ids:
-			keys_to_save.append(test_id)
-		for key in keys_to_save:
-			mp = dh.tmp_minipreds[key]
-			mp.set_event_pred(key_to_pred[key])
-			#dh.tmp_minipreds[key] = mp
-		'''
-		'''
-		tmp_coref_counts = defaultdict(lambda: defaultdict(int))
-		for key in wrong_pairs: #keys_to_save:
-			mp = dh.tmp_minipreds[key]
-			#print("minipred:", dh.tmp_minipreds[key])
-			tmp_coref_counts[mp.event_gold][mp.ent_gold] += 1
-		print("WRONG PAIRS tmp_coref_counts:", tmp_coref_counts)
-		'''
 
 		#print("# fp_pairs:", len(fp_pairs), "# fn_pairs:", len(fn_pairs))
 		return (bestF1, bestP, bestR, bestVal)
@@ -667,6 +407,7 @@ class ECBHelper:
 	# just, we have to use stan tokens as the intermediatary, since that's
 	# where our dependency information comes from.  this gets tricky because
 	# there's sometimes a non-1-to-1 mapping from ecb-token to stan-token
+	'''
 	def getParents(self, mentionStans, dh, token, depth):
 		if token not in self.tokensVisited:
 			bestStan = dh.getBestStanToken(token.stanTokens)
@@ -716,6 +457,7 @@ class ECBHelper:
 						ecbChildToken = next(iter(self.stanTokenToECBTokens[p.child]))
 						self.levelToChildren[depth].add(ecbChildToken)
 						self.getChildren(mentionStans, dh, ecbChildToken, depth+1)
+	'''
 
 	def checkDependencyRelations(self):
 		distancesCounts = defaultdict(int)
@@ -770,7 +512,7 @@ class ECBHelper:
 					depthOfFirstEntity[0] += 1
 
 				# Q3
-				# print("*** M1 ents: ", str(m1.entitiesLinked))
+				# print("*** M1 ents: ", str(m1.childrenLinked))
 				m1_shortests = set()
 				if len(m1.levelToChildrenEntities) > 0:
 					shortest_level = sorted(m1.levelToChildrenEntities)[0]
@@ -954,11 +696,10 @@ class ECBHelper:
 		sentences_with_both_connections = set()
 
 		eventsConsidered = set()
-		numEntities = defaultdict(int)
 		relation_to_count = defaultdict(int)
 		shortest_path_to_ent = defaultdict(int) # keeps track of how many events had their shortest path to be of depth N
 		for doc_id in self.corpus.doc_idToDocs:
-			
+			print("doc:", doc_id)
 			#self.fout = open(doc_id + "_parsetree.txt", 'w')
 			# maps ECB Token -> StanToken and vice versa
 			self.stanTokenToECBTokens = defaultdict(set)
@@ -982,10 +723,17 @@ class ECBHelper:
 			sentenceToEntityMentions = defaultdict(set)
 			sentenceTokenToMention = defaultdict(lambda: defaultdict(set))
 			#self.fout.write("\n-----------------------------------------\ndocid:" + doc_id + "\n-----------------------------------------\n")
+			num_entities = 0
+			num_events = 0
+
 			for euid in self.corpus.doc_idToDocs[doc_id].EUIDs:
 
 				m = self.corpus.EUIDToMention[euid]
 				sentNum = m.globalSentenceNum
+				if m.isPred:
+					num_events += 1
+				else:
+					num_entities += 1
 
 				#print("\tmention:", m)
 				for t in m.tokens:
@@ -1014,16 +762,6 @@ class ECBHelper:
 							break
 					tokenText += t.text + " "
 			
-				#print("\nsentence #:", tokenText)
-				#print("\t[events]:", [_.text for _ in sentenceToEventMentions[s]])
-				#print("\t[entities]:", [_.text for _ in sentenceToEntityMentions[s]])
-				#self.fout.write("\nsentence #:" + tokenText + "\n")
-				#self.fout.write("\t[events]:" +  str([_.text for _ in sentenceToEventMentions[s]]) + "\n")
-				#self.fout.write("\t[entities]:" +  str([_.text for _ in sentenceToEntityMentions[s]]) + "\n")
-
-				#self.dfs_tree(first_token, [], [], "", sentenceTokenToMention[s], self.stanTokenToECBTokens)
-				
-				#print("details:")
 				for m in sentenceToEventMentions[s]:
 
 					# TMP, eugene's idea of using just a few relations (1-hop away)
@@ -1038,37 +776,7 @@ class ECBHelper:
 					for t in m.tokens:
 						bestStan = dh.getBestStanToken(t.stanTokens)
 						mentionStanTokens.add(bestStan)
-					#print("\n\t* entity-paths for event", m.text, str(m.doc_id), "sent:", s)
-					#self.fout.write("\n\t* entity-paths for event" + str(m.text) + str(m.doc_id) + "sent:" + str(s) + "\n")
-					allPaths = []
-					curPath = []
-					self.getAllChildrenMentionPaths(dh, sentenceTokenToMention[s], mentionStanTokens, t, curPath, allPaths)
-					for path in allPaths:
-						tmp_path = []
-						for _ in path:
-							tmp_path.append(_)
-						#print("\t", [str(a) for a in path])
-						#self.fout.write("\t" +  str([str(a) for a in path]) + "\n")
-					#print("\tvalid_hops:", m.valid_hops)
-					#print("\tvalid hop entities:", m.valid_rel_to_entities)
-					
-					'''
-					print("\t**NSUBJ and DOBJ 1-hops:")
-					for rel in sorted(m.valid_rel_to_entities.keys()):
-						for rel_men in m.valid_rel_to_entities[rel]:
-							print("\t", m.text, "--[", rel, "]-->", rel_men.text)
-					'''
-					if "nsubj" in m.valid_rel_to_entities.keys() and "dobj" in m.valid_rel_to_entities:
-						#print("\t*** WE HAVE CONNECTIONS TO BOTH!", have_ent)
-						#print("sentence:", tokenText)
-						#print("\tevent:", m.text)
 
-						have_ent += 1
-						sentences_with_both_connections.add(s)
-					else:
-						not_have_ent += 1
-					#	print("have an ent")
-						#exit(1)
 					eventsConsidered.add(m)
 				
 					# gets the StanTokens for the current mention, so that we
@@ -1078,68 +786,21 @@ class ECBHelper:
 						bestStan = dh.getBestStanToken(t.stanTokens)
 						mentionStanTokens.add(bestStan)
 
-					'''
-					# finds its parents (governors)
-					self.levelToParents = defaultdict(set)
-					self.levelToParentLinks = defaultdict(set)
-					self.tokensVisited = set()
-
-					for t in m.tokens:
-						self.getParents(mentionStanTokens, dh, t, 1)
-
-					#print("\tmention yielded following governor structure:", self.levelToParentLinks)
-					m.addParentLinks(self.levelToParentLinks)
-					#print("\tm:")
-					
-					for level in m.levelToParentLinks:
-						print("\tlevel:", level)
-						for pl in m.levelToParentLinks[level]:
-							print("\t\t", str(pl))
-					
-					if len(self.levelToParents) > 0:
-						#print("\n\tgovernors:")
-						for level in sorted(self.levelToParents):
-							#print("\t\tlevel:", level)
-							for t in self.levelToParents[level]:
-								#print("\t\t\t", t)
-
-								# adds dependency parent tokens
-								if t not in m.parentTokens:
-									m.parentTokens.append(t)
-								for parent_mention in sentenceTokenToMention[s][t]:
-									#print("\t\t\t\tparent mention:", parent_mention)
-									if not parent_mention.isPred:
-										if parent_mention not in m.parentEntities:
-											m.parentEntities.append(parent_mention)
-										#print("\t\t\t\t****** WE HAVE AN ENTITY MENTION!!! w/ ref:", parent_mention.REF)
-					'''
 					# finds its children (modifiers)
 					# was unreliable in getChildren()
 					# bc i dont explore all ecbtokens, only the first.  now it should be good, bc i explore all paths
-					#self.levelToChildren = defaultdict(set) 
-					#self.levelToChildrenLinks = defaultdict(set)
 					self.tokensVisited = set()
-
-					#print(str(m), "has", str(len(m.tokens)), "tokens")
-					entities = set()
-					isEmpty = True
 					for t in m.tokens:
 						visited = set()
 						allPaths = []
 						curPath = []
-						# prints all paths (even if there are no entities)
-						#self.getAllChildrenPaths(dh, entities, sentenceTokenToMention[s], mentionStanTokens, t, curPath, allPaths)
 
 						# constructs all paths that have a way to entities
 						allPaths = []
 						self.getAllChildrenMentionPaths(dh, sentenceTokenToMention[s], mentionStanTokens, t, curPath, allPaths)
-						#if len(allPaths) == 0:
-						#	print("")
-						
-						#print("\t\tlen paths:", str(len(allPaths)))
+
 						one_hop_relations = [] # stores the dependency relation that took us to an entity in just 1 hop
 						for path in allPaths:
-							#print("path:", path)
 							m.pathsToChildrenEntities.append(path)
 							level = 1
 							for p in path:
@@ -1153,24 +814,35 @@ class ECBHelper:
 										#print("\tecb in it!")
 										foundMentions = sentenceTokenToMention[s][ecb]
 										for mfound in foundMentions:
-											if not mfound.isPred: # mfound is an entity
-												m.entitiesLinked.add(mfound)
-												isEmpty = False
+											if not mfound.isPred: # mfound is an ENTITY
+
+												# ADDS LINKS FROM EVENT DOWN TO ENTITY
+												m.childrenLinked.add(mfound)
 												m.levelToChildrenEntities[level].add(mfound)
 												one_hop_relations.append(relation)
 												m.addEntityPath(level, path)
 
-												# NEW DATA STRUCTURE
 												if (mfound, path) not in m.levelToChildren[level]:
 													m.levelToChildren[level].append((mfound, path))
+
+												# ADDS THE REVERSE LINKS FROM ENTITY UP TO EVENTS
+
 												if (m, path.reverse()) not in mfound.levelToParents[level]:
 													mfound.levelToParents[level].append((m, path))
 												if not m.isPred or mfound.isPred:
 													print("** wrong types")
 													exit(1)
-
 								level += 1
 
+						'''
+						print("m:", m)
+						print("\tpathsToChildrenEntities:", m.pathsToChildrenEntities)
+						print("\tlevelToChildrenEntities:", m.levelToChildrenEntities)
+						for l in m.levelToChildrenEntities:
+							for m2 in m.levelToChildrenEntities[l]:
+								print("\tchlid:", m2)
+						exit()
+						'''
 						# the shortest level/depth at which an entity appears
 						shortest_level = 0 if len(m.levelToChildrenEntities) == 0 else \
 							next(iter(sorted(m.levelToChildrenEntities)))
@@ -1179,53 +851,11 @@ class ECBHelper:
 						
 						for rel in one_hop_relations:
 							relation_to_count[rel] += 1
-						
-						'''
-						print("mentions' paths to entities:")
-						for l in sorted(m.levelToEntityPath.keys()):
-							for p in m.levelToEntityPath[l]:
-								print("\t", str(l), ":", str(p))
-						'''
-					'''					
-					print("\tmention above had # entities:", str(entities))
-					if isEmpty and len(entities) > 0:
-						print("** MISMATCH")
-						print(m.levelToChildrenEntities)
-						print(entities)
-						exit(1)
-					'''
-					numEntities[len(entities)] += 1
-			
-				'''
-				print("full parse tree for the given sentence:")
-				sample_event_mention = next(iter(sentenceToEventMentions[s]))
-				print("sample_event_mention:", sample_event_mention)
-				t = sample_event_mention.tokens[0]
-				print("\t1st token:", t)
-				bestStan = dh.getBestStanToken(t.stanTokens)
-				print("\tbestStan:", bestStan)
-				print("bestStan.parentLinks:", bestStan.parentLinks)
-				print("bestStan.parentLinks[0]:", bestStan.parentLinks[self.dependency_parse_type][0])
-				parent_stan = bestStan.parentLinks[self.dependency_parse_type][0].parent
-				while parent_stan.text != "ROOT":
-					print("\t\tparent_stan:", parent_stan)
-					parent_stan = bestStan.parentLinks[self.dependency_parse_type][0].parent
 
-				print("we have root:", parent_stan)
-				'''
-				#exit(1)
-			#print("done w/ current doc:", str(doc_id))
-			
-			# prints tokens and their dependencies
-			'''
-			for t in self.corpus.doc_idToDocs[doc_id].tokens:
-				print("\n" + str(t))
-				bestStan = dh.getBestStanToken(t.stanTokens)
-				print("bestStan:", bestStan)
-			'''
-			#print("end of doc:", doc_id, "exiting...")
-			#self.fout.close()
-			#exit(1)
+					#print("EOS")
+					#exit() 
+			# END OF SENTENCE	
+		# END OF ALL DOCS
 		print("eventsConsidered:", str(len(eventsConsidered)))
 		sorted_x = sorted(relation_to_count.items(), key=operator.itemgetter(1), reverse=True)
 		rel_num = 0

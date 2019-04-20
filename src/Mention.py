@@ -27,14 +27,23 @@ class Mention:
 		self.parentEntities = []
 		self.childrenTokens = []
 		self.childrenEntities = []
-		
+
+
+
+		# DON"T need these going from entities to events
 		self.pathsToChildrenEntities = []
-		self.entitiesLinked = set()
-		self.levelToParentLinks = defaultdict(set)
+		self.pathsToParentEntities = []
+
+		# WE DONT NEED TO SPECIFY EVENTS OR ENTITIES bc we're careful in constructing these
+		# so that we're only linked to mentions of the opposite type
+		self.childrenLinked = set() # STORES MENTIONS
+		self.parentsLinked = set() # STORES MENTIONS
+
+		#self.levelToParentLinks = defaultdict(set)
 		self.levelToChildrenEntities = defaultdict(set)
 
-		self.levelToChildren = defaultdict(list) # NEW ONE, which stores tuples (mention, path)
-		self.levelToParents = defaultdict(list) # NEW ONE, which stores tuples (mention, path)
+		self.levelToChildren = defaultdict(list) # NEW ONE, which stores tuples (mention, path) to mentions of the opposite type
+		self.levelToParents = defaultdict(list) # NEW ONE, which stores tuples (mention, path) to mentions of hte opposite type
 
 		self.levelToEntityPath = defaultdict(list)
 		self.parentRel = "None"
@@ -94,4 +103,4 @@ class Mention:
 
 	def __str__(self):
 		#return str(self.XUID) + ": " + str(self.text)
-		return "MENTION: " + str(self.XUID) + " (dir " + str(self.dir_num) + "; doc: " + str(self.doc_id) + "): text: " + str(self.text) + " type: " + str(self.mentionType)
+		return "MENTION: " + str(self.XUID) + " (dir " + str(self.dir_num) + "; doc: " + str(self.doc_id) + "; sent:" + str(self.globalSentenceNum) + "): text: " + str(self.text) + " type: " + str(self.mentionType)

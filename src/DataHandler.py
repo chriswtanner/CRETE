@@ -728,11 +728,11 @@ class DataHandler:
 			m1 = self.corpus.XUIDToMention[xuid1]
 			m2 = self.corpus.XUIDToMention[xuid2]
 			if m1.isPred and not m2.isPred:
-				println("* ERROR: mismatched mention types (event and entities)")
+				print("* ERROR: mismatched mention types (event and entities)")
 				exit(1)
 				continue
 			elif not m1.isPred and m2.isPred:
-				println("* ERROR: mismatched mention types (event and entities)")
+				print("* ERROR: mismatched mention types (event and entities)")
 				exit(1)
 				continue
 			

@@ -39,8 +39,8 @@ class Resolver:
 		# supp_features_type  = {none, shortest, one, type}
 
 		# TODO: update these parameterss
-		useCCNN = False
-		useTreeLSTM = True
+		useCCNN = True
+		useTreeLSTM = False
 		eval_on = "test" # TODO: adjust this to whatever you want to test on
 		eval_modulo = 7 # how many epochs to go between evaluating
 		evaluate_all_pairs = True
@@ -118,7 +118,7 @@ class Resolver:
 		#fh.saveBoWFeatures(bowFeaturesFile)
 		#exit(1)
 
-		# DEFINES WHICH MENTIONS TO USE ()
+		# DEFINES WHICH MENTIONS TO USE (events and/or entities)
 		trainXUIDs, devXUIDs, testXUIDs = helper.getCorpusMentions(mention_types)
 		dh = DataHandler(helper, trainXUIDs, devXUIDs, testXUIDs)
 		helper.addDependenciesToMentions(dh)
