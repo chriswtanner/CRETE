@@ -1,6 +1,6 @@
 #!/bin/bash
 export PYTHONIOENCODING=UTF-8
-prefix="cd" # used to help identify experiments' outputs, as the output files will have this prefix
+prefix="dirHalf" # used to help identify experiments' outputs, as the output files will have this prefix
 corpus="FULL"
 onlyValidSentences="T"
 addIntraDocs="F" # since these are singletons w.r.t. cross-doc

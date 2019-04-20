@@ -130,9 +130,11 @@ class Resolver:
 		fh = FeatureHandler(self.args, helper) # TODO: TMP
 		dh.load_xuid_pairs(supp_features_type, self.scope) # CREATES ALL XUID PAIRS
 
+		dh.construct_tree_files_(self.scope, evaluate_all_pairs, create_sub_trees) # WRITES FILES TO DISK
+
 		if useTreeLSTM:
 			td = TreeDriver(self.scope, self.args.num_dirs, self.args.optimizer, self.args.learning_rate)
-			dh.construct_tree_files_(self.scope, evaluate_all_pairs, create_sub_trees) # WRITES FILES TO DISK
+
 			print("# dh.xuid_to_height:", len(dh.xuid_to_height))
 			print("# dh.xuid_to_depth:", len(dh.xuid_to_depth))
 
