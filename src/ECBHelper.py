@@ -18,9 +18,9 @@ class ECBHelper:
 		# immediately curtails the training dirs to being however many we specified at run-time passed-in params
 		self.trainingDirs = self.trainingDirs[:self.args.num_dirs]
 
-		self.devDirs = [23] #, 24, 25]
+		self.devDirs = [23, 24, 25]
 		#self.testingDirs = [36, 37, 38, 39, 40, 41, 42, 43, 44, 45]
-		self.testingDirs = [26] #, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45]
+		self.testingDirs = [26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45]
 
 		self.pronouns = self.loadPronouns(args.pronounsFile) # load the regardless
 		self.event_pronouns = event_pronouns
@@ -250,7 +250,7 @@ class ECBHelper:
 			print("score:", _, "trutH:", scoreToGoldTruth[_])
 		'''
 
-		print("numGoldPos:", numGoldPos)
+		#print("numGoldPos:", numGoldPos)
 		TP = 0.0
 		FP = 0.0
 		bestF1 = 0
@@ -660,8 +660,7 @@ class ECBHelper:
 							first_token = parentToken
 							break
 					tokenText += t.text + " "
-
-				tmp_entity_mentions = set()			
+		
 				for m in sentenceToEventMentions[s]:
 
 					# TMP, eugene's idea of using just a few relations (1-hop away)
@@ -755,13 +754,7 @@ class ECBHelper:
 					print("\tlevelToChildrenMentions:", m.levelToChildrenMentions)
 					print("\tlevelToChildren:", m.levelToChildren)
 					'''
-				'''
-				for m2 in tmp_entity_mentions:
-					print("entity:", m2)
-					print("\tparentsLinked:", [str(_) for _ in m2.parentsLinked])
-					print("\tlevelToParentMentions:", m2.levelToParentMentions)
-					print("\tlevelToParents:", m2.levelToParents)
-				'''
+
 			# END OF SENTENCE	
 		# END OF ALL DOCS
 		print("eventsConsidered:", str(len(eventsConsidered)))

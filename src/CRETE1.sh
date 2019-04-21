@@ -1,6 +1,6 @@
 #!/bin/bash
 export PYTHONIOENCODING=UTF-8
-prefix="dirHalf" # used to help identify experiments' outputs, as the output files will have this prefix
+prefix="dir" # used to help identify experiments' outputs, as the output files will have this prefix
 corpus="FULL"
 onlyValidSentences="T"
 addIntraDocs="F" # since these are singletons w.r.t. cross-doc
@@ -17,7 +17,7 @@ numFilters=(1)
 filterMultiplier=(1.0) # 2.0)
 devDir=(23) # this # and above will be the dev dirs.  See ECBHelper.py for more
 entity_threshold=(0.9)
-num_dirs=(1)
+num_dirs=(20)
 learning_rate=(0.01)
 opt="adagrad"
 native="False"

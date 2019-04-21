@@ -112,7 +112,7 @@ class DataHandler:
 
 	def load_xuid_pairs(self, supp_features, scope):
 		# TRUE represents we should filter the xuids to being only root events
-		self.trainXUIDPairs = self.createXUIDPairs(self.trainXUIDs, scope, False) # TODO: could make it dir if you wanted more WD training
+		self.trainXUIDPairs = self.createXUIDPairs(self.trainXUIDs, scope, supp_features) # TODO: could make it dir if you wanted more WD training
 		self.devXUIDPairs = self.createXUIDPairs(self.devXUIDs, scope, supp_features)
 		self.testXUIDPairs = self.createXUIDPairs(self.testXUIDs, scope, supp_features)
 
@@ -638,17 +638,21 @@ class DataHandler:
 		print("# mentions passed-in:", len(XUIDs))
 		tmp_xuids_reclaimed = set()
 		tmp_ecbtoxuids = set()
+
+		num_without_links = 0
 		for ecb_dir in sorted(ECBDirToXUIDs.keys()):
 		#for dirHalf in sorted(dirHalfToXUIDs.keys()):
 			for xuid1 in sorted(ECBDirToXUIDs[ecb_dir]):
 				tmp_ecbtoxuids.add(xuid1)
 				m1 = self.corpus.XUIDToMention[xuid1]
-
+				if not m1.isPred:
+					print("*** why do we have an entity", m1)
+					exit()
 				for xuid2 in sorted(ECBDirToXUIDs[ecb_dir]):
 					if xuid2 <= xuid1:
 						continue
-					m2 = self.corpus.XUIDToMention[xuid2]
 
+					m2 = self.corpus.XUIDToMention[xuid2]
 					if m1.isPred and m2.isPred:  # both are events, so let's use paths to entities
 						m1_full_paths = m1.levelToChildren
 						m2_full_paths = m2.levelToChildren
@@ -661,6 +665,7 @@ class DataHandler:
 					have_valid_links = True
 					if supp_features_type == "shortest":
 						if len(m1_full_paths) == 0 or len(m2_full_paths) == 0:
+							num_without_links += 1
 							have_valid_links = False
 
 					inSameDoc = False
@@ -676,15 +681,17 @@ class DataHandler:
 					elif scope == "dirHalf" and not inSameDoc and inSameDirHalf and have_valid_links:
 						to_add = True
 					elif scope == "dir" and not inSameDoc and have_valid_links:
-						xuidPairs.add((xuid1, xuid2))
+						to_add = True
 
 					# we passed all of our filters (appropriate scope and is 'shortest' or not)
 					if to_add:
 						xuidPairs.add((xuid1, xuid2))
 						tmp_xuids_reclaimed.add(xuid1)
 						tmp_xuids_reclaimed.add(xuid2)
+
 		#print("tmp_xuids_reclaimed:", len(tmp_xuids_reclaimed))
 		#print("tmp_ecbtoxuids:", len(tmp_ecbtoxuids))
+		print("num_without_links:", num_without_links)
 		print("\t# xuidPairs:", len(xuidPairs))
 		return xuidPairs
 
