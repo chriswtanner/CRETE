@@ -22,30 +22,21 @@ class Mention:
 		self.XUID = -1
 		self.REF = ""
 
-		#### TMP -- used for auxilary dependency info
-		self.parentTokens = []
-		self.parentEntities = []
-		self.childrenTokens = []
-		self.childrenEntities = []
-
-
-
-		# DON"T need these going from entities to events
+		# DON'T need these going from entities to events
 		self.pathsToChildrenEntities = []
 		self.pathsToParentEntities = []
 
 		# WE DONT NEED TO SPECIFY EVENTS OR ENTITIES bc we're careful in constructing these
 		# so that we're only linked to mentions of the opposite type
-		self.childrenLinked = set() # STORES MENTIONS
+		self.childrenLinked = set() # STORES MENTIONS   A 
 		self.parentsLinked = set() # STORES MENTIONS
 
-		#self.levelToParentLinks = defaultdict(set)
-		self.levelToChildrenEntities = defaultdict(set)
+		self.levelToChildrenMentions = defaultdict(set)   # B
+		self.levelToParentMentions = defaultdict(set)
 
 		self.levelToChildren = defaultdict(list) # NEW ONE, which stores tuples (mention, path) to mentions of the opposite type
 		self.levelToParents = defaultdict(list) # NEW ONE, which stores tuples (mention, path) to mentions of hte opposite type
 
-		self.levelToEntityPath = defaultdict(list)
 		self.parentRel = "None"
 		self.childRel = "None"
 		
@@ -54,10 +45,6 @@ class Mention:
 
 	# only used for trying eugene's idea of the immediate hops
 	def set_valid1hops(self, valid_hops, sentenceTokenToMention):
-		#print("* set_valid1hops(): valid_hops =", valid_hops)
-		#print("\tand passed-in mentions:")
-		#for t in sentenceTokenToMention:
-			#print("\tt:",t, "=>", sentenceTokenToMention[t])
 		self.valid_rel_to_entities = defaultdict(set)
 		for rel in valid_hops:
 			for token in valid_hops[rel]:
@@ -67,9 +54,6 @@ class Mention:
 					for mfound in foundMentions:
 						if not mfound.isPred: # mfound is an entity
 							self.valid_rel_to_entities[rel].add(mfound)
-				#else:
-					#print("\ttoken not in sentencemtnions:", token)
-		#print("valid_rel_to_entities now:", self.valid_rel_to_entities)
 		self.valid_hops = valid_hops
 
 	# only used for HDDCRP Mentions
@@ -84,22 +68,6 @@ class Mention:
 
 	def setXUID(self, XUID):
 		self.XUID = XUID
-
-	#### TMP -- used for auxilary dependency info
-	'''
-	def addParentLinks(self, levelToParentLinks):
-		self.levelToParentLinks = levelToParentLinks
-		if 1 in levelToParentLinks:
-			for pl in levelToParentLinks[1]:
-				self.parentRel = pl.relationship.lower()
-				break
-	'''
-	
-	def addEntityPath(self, level, path):
-		relations = []
-		for p in path:
-			relations.append(p.relationship)
-		self.levelToEntityPath[level].append(relations)
 
 	def __str__(self):
 		#return str(self.XUID) + ": " + str(self.text)

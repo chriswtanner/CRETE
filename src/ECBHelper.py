@@ -18,9 +18,9 @@ class ECBHelper:
 		# immediately curtails the training dirs to being however many we specified at run-time passed-in params
 		self.trainingDirs = self.trainingDirs[:self.args.num_dirs]
 
-		self.devDirs = [23, 24, 25]
+		self.devDirs = [23] #, 24, 25]
 		#self.testingDirs = [36, 37, 38, 39, 40, 41, 42, 43, 44, 45]
-		self.testingDirs = [26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45]
+		self.testingDirs = [26] #, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45]
 
 		self.pronouns = self.loadPronouns(args.pronounsFile) # load the regardless
 		self.event_pronouns = event_pronouns
@@ -334,50 +334,6 @@ class ECBHelper:
 					#print("\t\t\tvalid_1hops nwo:", valid_1hops)
 		#print("* returning valid_1hops:", valid_1hops)
 
-	def getAllChildrenPaths(self, dh, entities, tokenToMentions, originalMentionStans, token, curPath, allPaths):
-		bestStan = dh.getBestStanToken(token.stanTokens)
-
-		if token in tokenToMentions and len(curPath) > 0: # we hit a mention of some sort (event or entity)
-			foundMentions = tokenToMentions[token]
-			for m in foundMentions:
-				if not m.isPred:
-					allPaths.append(curPath)
-
-		if len(bestStan.childLinks[self.dependency_parse_type]) == 0: # we've reached the end
-			out = "\t"
-			for p in curPath:
-				cur_stan = p.child
-				ecbTokens = self.stanTokenToECBTokens[cur_stan]
-				ecbText = ""
-				
-				for ecb in ecbTokens:
-					if ecb in tokenToMentions:
-						foundMentions = tokenToMentions[ecb]
-						foundEnt = False
-						for m in foundMentions:
-							if not m.isPred:
-								foundEnt = True
-								entities.add(" ".join(m.text))
-						if foundEnt:
-							ecbText += "**[" + ecb.text + "]** "
-						else:
-							ecbText += "[" + ecb.text + "] "
-					else:
-						ecbText += ecb.text + " "
-				ecbText = ecbText.rstrip()
-				out += "-->" + str(ecbText)
-			print(out)
-		else:
-			for cl in bestStan.childLinks[self.dependency_parse_type]:
-				if cl.child not in originalMentionStans and cl not in curPath:
-					ecbTokens = self.stanTokenToECBTokens[cl.child]
-					for ecbToken in ecbTokens:
-						new_path = copy.copy(curPath) # creates its own copy of the visited
-						new_path.append(cl) # adds our new edge
-						self.getAllChildrenPaths(dh, entities, tokenToMentions, originalMentionStans, ecbToken, new_path, allPaths)
-				else:
-					print("\t* we either hit our original mention or found a loop")
-
 	# returns a list of all paths to an entity mention (a list of lists)
 	def getAllChildrenMentionPaths(self, dh, tokenToMentions, originalMentionStans, token, curPath, allPaths):
 		foundEntity = False
@@ -402,62 +358,6 @@ class ECBHelper:
 						new_path.append(cl) # adds our new edge
 						#print("\tnew_path:", str(new_path), " with token we'll explore: ", str(ecbToken))
 						self.getAllChildrenMentionPaths(dh, tokenToMentions, originalMentionStans, ecbToken, new_path, allPaths)
-
-	# given a regular ECB-token, find its ecb-governor tokens
-	# just, we have to use stan tokens as the intermediatary, since that's
-	# where our dependency information comes from.  this gets tricky because
-	# there's sometimes a non-1-to-1 mapping from ecb-token to stan-token
-	'''
-	def getParents(self, mentionStans, dh, token, depth):
-		if token not in self.tokensVisited:
-			bestStan = dh.getBestStanToken(token.stanTokens)
-			prefix = "\t"
-			for i in range(depth):
-				prefix += "\t"
-			#print(prefix, token, "; bestStan:", bestStan)
-			
-			# grab its parent(s)
-			#print(prefix,"# parentLinks:",len(bestStan.parentLinks))
-			self.tokensVisited.add(token)
-			for p in bestStan.parentLinks:
-				#print(prefix,"\tstanparent:", p.parent)
-				
-				# only explore the parent if it's not part of the original Mention!
-				if p.parent not in mentionStans:
-					ecbTokens = self.stanTokenToECBTokens[p.parent]
-					self.levelToParentLinks[depth].add(p)
-
-					#print(prefix,"\tecbTokens:", ecbTokens)
-					if len(ecbTokens) > 0:
-						ecbParentToken = next(iter(self.stanTokenToECBTokens[p.parent]))
-						self.levelToParents[depth].add(ecbParentToken)
-						self.getParents(mentionStans, dh, ecbParentToken, depth+1)
-
-	
-	def getChildren(self, mentionStans, dh, token, depth):
-		if token not in self.tokensVisited:
-			bestStan = dh.getBestStanToken(token.stanTokens)
-			prefix = "\t"
-			for i in range(depth):
-				prefix += "\t"
-			#print(prefix, token, "; bestStan:", bestStan)
-			
-			# grab its parent(s)
-			#print(prefix,"# parentLinks:",len(bestStan.parentLinks))
-			self.tokensVisited.add(token)
-			for p in bestStan.childLinks[self.dependency_parse_type]:
-				#print(prefix,"\tstanparent:", p.parent)
-
-				if p.child not in mentionStans:
-					ecbTokens = self.stanTokenToECBTokens[p.child]
-					self.levelToChildrenLinks[depth].add(p)
-
-					#print(prefix,"\tecbTokens:", ecbTokens)
-					if len(ecbTokens) > 0:
-						ecbChildToken = next(iter(self.stanTokenToECBTokens[p.child]))
-						self.levelToChildren[depth].add(ecbChildToken)
-						self.getChildren(mentionStans, dh, ecbChildToken, depth+1)
-	'''
 
 	def checkDependencyRelations(self):
 		distancesCounts = defaultdict(int)
@@ -501,12 +401,12 @@ class ECBHelper:
 					continue
 				
 				# Q1
-				num_levels = len(m1.levelToChildrenEntities.keys())
+				num_levels = len(m1.levelToChildrenMentions.keys())
 				howManyLevelEntitiesAppear[num_levels] += 1
 
 				# Q2 depthOfFirstEntity
-				if len(m1.levelToChildrenEntities) > 0:
-					shortest_level = sorted(m1.levelToChildrenEntities)[0]
+				if len(m1.levelToChildrenMentions) > 0:
+					shortest_level = sorted(m1.levelToChildrenMentions)[0]
 					depthOfFirstEntity[shortest_level] += 1
 				else:
 					depthOfFirstEntity[0] += 1
@@ -514,20 +414,20 @@ class ECBHelper:
 				# Q3
 				# print("*** M1 ents: ", str(m1.childrenLinked))
 				m1_shortests = set()
-				if len(m1.levelToChildrenEntities) > 0:
-					shortest_level = sorted(m1.levelToChildrenEntities)[0]
-					for ents in m1.levelToChildrenEntities[shortest_level]:
+				if len(m1.levelToChildrenMentions) > 0:
+					shortest_level = sorted(m1.levelToChildrenMentions)[0]
+					for ents in m1.levelToChildrenMentions[shortest_level]:
 						m1_shortests.add(ents)
 
-					num_found = len(m1.levelToChildrenEntities[shortest_level])
+					num_found = len(m1.levelToChildrenMentions[shortest_level])
 					distOfEntitiesAtFirstLevel[num_found] += 1
 				else:
 					distOfEntitiesAtFirstLevel[0] += 1
 
 				# Q6: all entities
 				m1_allEntities = set()
-				for level in m1.levelToChildrenEntities:
-					for ents in m1.levelToChildrenEntities[level]:
+				for level in m1.levelToChildrenMentions:
+					for ents in m1.levelToChildrenMentions[level]:
 						m1_allEntities.add(ents)
 
 				# Q0: how many entities
@@ -559,15 +459,15 @@ class ECBHelper:
 
 					# Q6
 					m2_allEntities = set()
-					for level in m2.levelToChildrenEntities:
-						for ents in m2.levelToChildrenEntities[level]:
+					for level in m2.levelToChildrenMentions:
+						for ents in m2.levelToChildrenMentions[level]:
 							m2_allEntities.add(ents)
 
 					num_pairs += 1
 
 					# Q4
 					entBothExist = False
-					if len(m1.levelToChildrenEntities) > 0 and len(m2.levelToChildrenEntities) > 0:
+					if len(m1.levelToChildrenMentions) > 0 and len(m2.levelToChildrenMentions) > 0:
 						entBothExist = True
 					eventsCoref = False
 					if m1.REF == m2.REF:
@@ -576,9 +476,9 @@ class ECBHelper:
 
 					# no man's land.  some other basic stat i was doing
 					m2_shortests = set()
-					if len(m2.levelToChildrenEntities) > 0:
-						shortest_level = sorted(m2.levelToChildrenEntities)[0]
-						for ents in m2.levelToChildrenEntities[shortest_level]:
+					if len(m2.levelToChildrenMentions) > 0:
+						shortest_level = sorted(m2.levelToChildrenMentions)[0]
+						for ents in m2.levelToChildrenMentions[shortest_level]:
 							m2_shortests.add(ents)
 				
 					entcoref = False
@@ -699,7 +599,6 @@ class ECBHelper:
 		relation_to_count = defaultdict(int)
 		shortest_path_to_ent = defaultdict(int) # keeps track of how many events had their shortest path to be of depth N
 		for doc_id in self.corpus.doc_idToDocs:
-			print("doc:", doc_id)
 			#self.fout = open(doc_id + "_parsetree.txt", 'w')
 			# maps ECB Token -> StanToken and vice versa
 			self.stanTokenToECBTokens = defaultdict(set)
@@ -761,7 +660,8 @@ class ECBHelper:
 							first_token = parentToken
 							break
 					tokenText += t.text + " "
-			
+
+				tmp_entity_mentions = set()			
 				for m in sentenceToEventMentions[s]:
 
 					# TMP, eugene's idea of using just a few relations (1-hop away)
@@ -789,9 +689,7 @@ class ECBHelper:
 					# finds its children (modifiers)
 					# was unreliable in getChildren()
 					# bc i dont explore all ecbtokens, only the first.  now it should be good, bc i explore all paths
-					self.tokensVisited = set()
 					for t in m.tokens:
-						visited = set()
 						allPaths = []
 						curPath = []
 
@@ -806,54 +704,64 @@ class ECBHelper:
 							for p in path:
 								relation = p.relationship
 								cur_stan = p.child
-								#print("cur_stan:", cur_stan)
 								ecbTokens = self.stanTokenToECBTokens[cur_stan]
-								#print("ecbTokens:", ecbTokens)
 								for ecb in ecbTokens:
 									if ecb in sentenceTokenToMention[s]:
-										#print("\tecb in it!")
 										foundMentions = sentenceTokenToMention[s][ecb]
 										for mfound in foundMentions:
 											if not mfound.isPred: # mfound is an ENTITY
 
-												# ADDS LINKS FROM EVENT DOWN TO ENTITY
-												m.childrenLinked.add(mfound)
-												m.levelToChildrenEntities[level].add(mfound)
-												one_hop_relations.append(relation)
-												m.addEntityPath(level, path)
-
-												if (mfound, path) not in m.levelToChildren[level]:
-													m.levelToChildren[level].append((mfound, path))
-
-												# ADDS THE REVERSE LINKS FROM ENTITY UP TO EVENTS
-
-												if (m, path.reverse()) not in mfound.levelToParents[level]:
-													mfound.levelToParents[level].append((m, path))
 												if not m.isPred or mfound.isPred:
 													print("** wrong types")
 													exit(1)
+
+												one_hop_relations.append(relation)
+
+												# ADDS LINKS FROM EVENT DOWN TO ENTITY
+												m.childrenLinked.add(mfound) # A
+												m.levelToChildrenMentions[level].add(mfound) # B
+												if (mfound, path) not in m.levelToChildren[level]: # C
+													m.levelToChildren[level].append((mfound, path))
+
+												# ADDS THE REVERSE LINKS FROM ENTITY UP TO EVENTS
+												mfound.parentsLinked.add(m) # A
+												mfound.levelToParentMentions[level].add(m) # B
+												if (m, path.reverse()) not in mfound.levelToParents[level]: # C
+													mfound.levelToParents[level].append((m, path))
+
 								level += 1
 
 						'''
 						print("m:", m)
 						print("\tpathsToChildrenEntities:", m.pathsToChildrenEntities)
-						print("\tlevelToChildrenEntities:", m.levelToChildrenEntities)
-						for l in m.levelToChildrenEntities:
-							for m2 in m.levelToChildrenEntities[l]:
+						print("\tlevelToChildrenMentions:", m.levelToChildrenMentions)
+						for l in m.levelToChildrenMentions:
+							for m2 in m.levelToChildrenMentions[l]:
 								print("\tchlid:", m2)
 						exit()
 						'''
 						# the shortest level/depth at which an entity appears
-						shortest_level = 0 if len(m.levelToChildrenEntities) == 0 else \
-							next(iter(sorted(m.levelToChildrenEntities)))
+						shortest_level = 0 if len(m.levelToChildrenMentions) == 0 else \
+							next(iter(sorted(m.levelToChildrenMentions)))
 
 						shortest_path_to_ent[shortest_level] += 1
 						
 						for rel in one_hop_relations:
 							relation_to_count[rel] += 1
 
-					#print("EOS")
-					#exit() 
+					'''
+					print("event:", m)
+					print("\tchildrenLinked:", [str(_) for _ in m.childrenLinked])
+					print("\tlevelToChildrenMentions:", m.levelToChildrenMentions)
+					print("\tlevelToChildren:", m.levelToChildren)
+					'''
+				'''
+				for m2 in tmp_entity_mentions:
+					print("entity:", m2)
+					print("\tparentsLinked:", [str(_) for _ in m2.parentsLinked])
+					print("\tlevelToParentMentions:", m2.levelToParentMentions)
+					print("\tlevelToParents:", m2.levelToParents)
+				'''
 			# END OF SENTENCE	
 		# END OF ALL DOCS
 		print("eventsConsidered:", str(len(eventsConsidered)))
