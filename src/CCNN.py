@@ -335,7 +335,9 @@ class CCNN:
 		else:
 			dev_preds = model.predict([self.devX[:, 0], self.devX[:, 1]])
 			test_preds = model.predict([self.testX[:, 0], self.testX[:, 1]])
-		
+
+		print("# test_preds:", len(test_preds))
+		exit()		
 		
 		# evaluates
 		(dev_f1, dev_prec, dev_rec, dev_bestThreshold) = self.helper.evaluatePairwisePreds(self.devID, dev_preds, self.devY, self.dh)

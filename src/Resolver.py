@@ -6,6 +6,7 @@ import sys
 import os
 import fnmatch
 import math
+import operator
 import numpy as np
 from collections import defaultdict
 from KBPParser import KBPParser
@@ -19,6 +20,36 @@ from tree_lstm.TreeDriver import TreeDriver
 from tree_lstm.Helper import Helper
 from FFNN import FFNN
 from CCNN import CCNN
+class InferenceTreePair:
+	def __init__(self):
+		self.index = 0
+		self.xuid_pairs_to_index = {}
+		self.index_to_xuid_pairs = {}
+
+		self.xuid_to_event_emb = {} # index -> xuid -> [[embeddings], ..., [embedding]]
+		self.xuid_to_childxuid_to_emb = {} # index -> xuid_parent -> xuid_child -> [[embeddings], ..., [embedding]]
+
+	def add_embeddings(self, xuid1, xuid2, event_embeddings, children_embeddings):
+		key = str(xuid1) + "_" + str(xuid2)
+		if xuid2 < xuid1:
+			key = str(xuid2) + "_" + str(xuid1)
+		self.xuid_pairs_to_index[key] = self.index
+		self.index_to_xuid_pairs[self.index] = key 
+
+		self.xuid_to_event_emb[self.index] = event_embeddings
+		self.xuid_to_childxuid_to_emb[self.index] = children_embeddings
+
+		self.index += 1
+
+	def __str__(self):
+		xuids = []
+		for xuid in xuid_to_event_emb:
+			xuids.append(xuid)
+		if xuids[0] < xuids[1]:
+			return("xuid1:" + str(xuids[0]) + "; xuid2:" + str(xuids[1]))
+		else:
+			return("xuid2:" + str(xuids[1]) + "; xuid1:" + str(xuids[0]))
+		
 class Resolver:
 	def __init__(self, args, presets, scope, ids=None, preds=None):
 		self.args = args
@@ -39,10 +70,11 @@ class Resolver:
 		# supp_features_type  = {none, shortest, one, type}
 
 		# TODO: update these parameterss
+		prefix = self.scope + "_" + str(self.args.num_dirs)
 		useCCNN = False
 		useTreeLSTM = True
 		eval_on = "test" # TODO: adjust this to whatever you want to test on
-		eval_modulo = 6 # how many epochs to go between evaluating
+		eval_modulo = 1 # how many epochs to go between evaluating
 		evaluate_all_pairs = True
 		create_sub_trees = True # IF FALSE, our self.*_tree_sets will have just 1 per sentence.
 		eval_events = True
@@ -160,6 +192,7 @@ class Resolver:
 				exit()
 
 			for epoch in range(td.args.epochs):
+
 				td.train(epoch, self.args.batchSize) # NOTE: PASSES IN BATCH SIZE!
 
 				# TEST IT EVERY EVAL_MODULO EPOCHS
@@ -178,6 +211,8 @@ class Resolver:
 					start_time = time.time()
 					eval_xuid_pairs = []
 					unique_xuids_to_eval = set()
+
+					tree_pairs = InferenceTreePair()
 					for i, (xuid1,xuid2) in enumerate(eval_set.tree_legend):
 
 						unique_xuids_to_eval.add(xuid1)
@@ -196,58 +231,52 @@ class Resolver:
 						m1_vec = []
 						m1_vecs = []
 						num_summed = 0
-						tmp = []
-
-						#if xuid1 not in xuid_to_vec and xuid1 not in missing_xuids:
-						for token_index in mt_for_xuid1.mention_token_indices[xuid1]:
-							if xuid2 < xuid1:
-								vec = right_to_hidden #[token_index-1][0].detach().numpy()
-								tmp.append(rwords.split(" ")[token_index-1])
-							else:
-								vec = left_to_hidden #token_index-1][0].detach().numpy()
-								tmp.append(lwords.split(" ")[token_index-1])
-							
-							if token_index-1 in vec:
-								left_vec = vec[token_index-1][0].detach().numpy()
-								m1_vecs.append(left_vec)
-							else:
-								missing_xuids.add(xuid1)
-								break
-							
-							if len(m1_vec) == 0:
-								m1_vec = left_vec
-							else:
-								m1_vec += left_vec
-							num_summed += 1
-						m1_vec[:] = [x / num_summed for x in m1_vec]
-
-						m2_vec = []
-						m2_vecs = []
-						num_summed = 0
-						#if xuid2 not in xuid_to_vec and xuid2 not in missing_xuids:
-						for token_index in mt_for_xuid2.mention_token_indices[xuid2]:
-							
-							if xuid2 < xuid1:
-								vec = left_to_hidden
-							else:
-								vec = right_to_hidden
-							if token_index-1 in vec:
-								right_vec = vec[token_index-1][0].detach().numpy()
-								m2_vecs.append(right_vec)
-							else:
-								missing_xuids.add(xuid2)
-								break
-
-							if len(m2_vec) == 0:
-								m2_vec = right_vec
-							else:
-								m2_vec += right_vec
-							num_summed += 1
 						
-						m2_vec[:] = [x / num_summed for x in m2_vec]
+						xuid_to_childxuid_to_emb = {}
+						xuid_to_event_emb = defaultdict(list)
+
+						#print("m1:", m1, "m2:", m2)
+						m1_vecs = self.get_tree_embedding(mt_for_xuid1.mention_token_indices[xuid1], xuid1, xuid2, left_to_hidden, right_to_hidden, lwords, rwords, missing_xuids)
+						m2_vecs = self.get_tree_embedding(mt_for_xuid2.mention_token_indices[xuid2], xuid2, xuid1, left_to_hidden, right_to_hidden, lwords, rwords, missing_xuids)
+
+						m1_avg = [sum(i)/len(m1_vecs) for i in zip(*m1_vecs)]
+						m2_avg = [sum(i)/len(m2_vecs) for i in zip(*m2_vecs)]
 
 						if xuid1 not in missing_xuids and xuid2 not in missing_xuids:
+							
+							#print("xuid1:", xuid1, "xuid2:", xuid2)
+							xuid_to_event_emb[xuid1] = m1_vecs
+							xuid_to_event_emb[xuid2] = m2_vecs
 
+							cur_event_embeddings = defaultdict(list)
+							if xuid1 in xuid_to_childxuid_to_emb:
+								cur_event_embeddings = xuid_to_childxuid_to_emb[xuid1]
+							# adds xuid1's entity children
+							for entity in m1.childrenLinked:
+								#print("\tentity:", entity)
+								#print("\tpassing:", mt_for_xuid1.mention_token_indices[entity.XUID])
+
+
+								ent_vec = self.get_tree_embedding(mt_for_xuid1.mention_token_indices[entity.XUID], xuid1, xuid2, left_to_hidden, right_to_hidden, lwords, rwords, missing_xuids)
+								cur_event_embeddings[entity.XUID] = ent_vec
+							xuid_to_childxuid_to_emb[xuid1] = cur_event_embeddings
+
+							#print("m2's children:", [str(cl) for cl in m2.childrenLinked])
+							#print("\tsee:", mt_for_xuid2.mention_token_indices)
+							cur_event_embeddings = defaultdict(list)
+							if xuid2 in xuid_to_childxuid_to_emb:
+								cur_event_embeddings = xuid_to_childxuid_to_emb[xuid2]
+							for entity in m2.childrenLinked:
+								#print("\tentity:", entity)
+								#print("\tpassing:", mt_for_xuid2.mention_token_indices[entity.XUID])
+								ent_vec = self.get_tree_embedding(mt_for_xuid2.mention_token_indices[entity.XUID], xuid2, xuid1, left_to_hidden, right_to_hidden, lwords, rwords, missing_xuids)
+								cur_event_embeddings[entity.XUID] = ent_vec
+							xuid_to_childxuid_to_emb[xuid2] = cur_event_embeddings
+
+							tree_pairs.add_embeddings(xuid1, xuid2, xuid_to_event_emb, xuid_to_childxuid_to_emb)
+									#ent1_avg = [sum(i)/len(other_emb) for i in zip(*other_emb)]
+
+							'''
 							dot = np.dot(m1_vec, m2_vec)
 							norma = np.linalg.norm(m1_vec)
 							normb = np.linalg.norm(m2_vec)
@@ -258,8 +287,13 @@ class Resolver:
 								l2 += math.pow(i - j, 2)
 							l2 = math.sqrt(l2)
 
-							#preds.append(cs) # TODO: or gold
+							dot = np.dot(m1_avg, m2_avg)
+							norma = np.linalg.norm(m1_avg)
+							normb = np.linalg.norm(m2_avg)
+							cs = dot / (norma * normb)
+							'''
 
+							#preds.append(cs) # TODO: or gold
 							if m1.REF == m2.REF:
 								golds.append(2)
 							else:
@@ -276,29 +310,25 @@ class Resolver:
 									if cs_intra > highest_cs:
 										highest_cs = cs_intra
 
+									'''
 									l2_intra = 0
 									for i, j in zip(v1, v2):
 										l2_intra += math.pow(i - j, 2)
-									l2_intra = math.sqrt(l2)
+									l2_intra = math.sqrt(l2_intra)
 									if l2_intra < min_l2:
 										min_l2 = l2_intra
-
-							same_lemma_any = False
-							m1_lemmas = [fh.getBestStanToken(t.stanTokens).lemma.lower() for t in m1.tokens]
-							m2_lemmas = [fh.getBestStanToken(t.stanTokens).lemma.lower() for t in m2.tokens]
-							for l1 in m1_lemmas:
-								if l1 in m2_lemmas:
-									same_lemma_any = True
-							'''
-							IGNORE THIS
-							if same_lemma_any:
-								preds.append(1)
-							else:
-								preds.append(0)
-							IGNORE THIS
-							'''
+									'''
 							preds.append(highest_cs)
 							eval_xuid_pairs.append((xuid1, xuid2))
+							
+						else:
+							print("skipping")
+							continue
+
+					pickle_out = open(prefix + "_e" + str(epoch) + ".p", "wb")
+					pickle.dump(tree_pairs, pickle_out)
+					pickle_out.close()
+
 
 					(f1, prec, rec, bestThreshold) = Helper.calculate_f1(preds, golds, False, True)
 					print("HIDDEN EMBEDDINGS' F1:", f1, "prec:", prec, "rec:", rec, "bestThreshold:", bestThreshold)
@@ -372,6 +402,40 @@ class Resolver:
 
 			return test_ids, test_preds, test_golds
 			
+	def get_tree_embedding(self, token_indices, xuid_desired, xuid_other, left_to_hidden, right_to_hidden, lwords, rwords, missing_xuids):
+		ret = []
+		tmp = []
+		for token_index in token_indices:
+			#print("\ttoken_index:", token_index, "xuid_desired:", xuid_desired, "xuid_other:", xuid_other, "\n\tlwords:", lwords, "\n\trwords:", rwords)
+			#print("ll:", len(lwords.split(" ")), "rr:", len(rwords.split(" ")))
+			if xuid_other < xuid_desired:
+				#print("a")
+				vec = right_to_hidden
+				tmp.append(rwords.split(" ")[token_index-1])
+			else:
+				#print("b")
+				vec = left_to_hidden
+				tmp.append(lwords.split(" ")[token_index-1])
+			#print("tokenindex-1:", (token_index-1), "; vec keys:", vec.keys())
+
+			if token_index-1 in vec:
+				ret.append(vec[token_index-1][0].detach().numpy())
+			else:
+				#print("MISSING TOKEN INDEX -1")
+				missing_xuids.add(xuid1)
+				return []
+		'''
+			if len(m2_vec) == 0:
+				m2_vec = right_vec
+			else:
+				m2_vec += right_vec
+			num_summed += 1
+		
+		m2_vec[:] = [x / num_summed for x in m2_vec]
+		'''
+		#print("tmp:", tmp)
+		return ret
+
 	def aggCluster(self, relevant_dirs, event_ids, event_preds, event_golds):
 		print("event ids:", event_ids)
 		print("event_preds:", event_preds)

@@ -112,7 +112,7 @@ class DataHandler:
 
 	def load_xuid_pairs(self, supp_features, scope):
 		# TRUE represents we should filter the xuids to being only root events
-		self.trainXUIDPairs = self.createXUIDPairs(self.trainXUIDs, scope, supp_features) # TODO: could make it dir if you wanted more WD training
+		self.trainXUIDPairs = self.createXUIDPairs(self.trainXUIDs, scope, False) # TODO: could make it dir if you wanted more WD training
 		self.devXUIDPairs = self.createXUIDPairs(self.devXUIDs, scope, supp_features)
 		self.testXUIDPairs = self.createXUIDPairs(self.testXUIDs, scope, supp_features)
 
@@ -201,6 +201,7 @@ class DataHandler:
 				else:
 					found += 1
 					self.xuid_to_mt[xuid] = mt
+
 			print("num_not_found:", num_not_found)
 			print("found:", found)
 
@@ -390,12 +391,13 @@ class DataHandler:
 			print("* orig xuid pairs:", len(xuid_pairs), "; # refined:", len(ret_xuid_pairs), "# sent pairs:", len(tree_legend), "# saved xuid pairs:", len(xuid_pair_and_key))
 			#print("tree_key_to_index:", tree_key_to_index)
 			#print("xuid_pair_and_key:", xuid_pair_and_key)
-			#exit()
+			exit()
 			tree_set = TreeSet(tree_legend, tree_labels, tree_key_to_index, xuid_pair_and_key)
 			return ret_xuid_pairs, tree_set
 
 	# constructs the MiniTree corresponding to this sub-tree of a dependency parse
-	# NOTE: we only need to store the mention_to_tokens for the current passed-in xuid
+	# NOTE: for mention_to_tokens, we NOW store the event-xuid passed in, along w/ all of its
+	# linked children entities!!
 	def construct_xuid_tree(self, xuid, stanTokenToECBTokens):
 		chain_text = ""
 		mention_token_indices = defaultdict(list) 
@@ -407,6 +409,12 @@ class DataHandler:
 		parent_indices = []
 		m = self.corpus.XUIDToMention[xuid]
 
+		entity_children = m.childrenLinked
+		entity_tokens_to_entities = defaultdict(set)
+		for m2 in entity_children:
+			for t2 in m2.tokens:
+				entity_tokens_to_entities[t2].add(m2)
+
 		# find the root of the mention tokens via BFS
 		sentence_root_token = self.sent_num_to_mt[m.globalSentenceNum].root_token
 		root_token = self.bfs_to_find_xuid(sentence_root_token, m.tokens, stanTokenToECBTokens)
@@ -416,12 +424,21 @@ class DataHandler:
 		self.dfs_subtree(root_token, 0, chain_tokens, parent_indices, stanTokenToECBTokens, set())
 		tree_text = " ".join([t.text for t in chain_tokens])
 		for i, t in enumerate(chain_tokens):
+
+			# adds the xuid's indices
 			if t in m.tokens:
 				mention_token_indices[m.XUID].append(i+1)
+
+			# adds its entity children's indices
+			if t in entity_tokens_to_entities:
+				for entity_m in entity_tokens_to_entities[t]:
+					mention_token_indices[entity_m.XUID].append(i+1)
+
 		root_XUID = m.XUID
 		if len(chain_tokens) != len(parent_indices):
 			print("diff sizes!!!", len(chain_tokens), "vs", len(parent_indices))
 			exit()
+
 		mt = MiniTree(tree_text, parent_indices, mention_token_indices, root_XUID, root_token)
 		return mt
 
