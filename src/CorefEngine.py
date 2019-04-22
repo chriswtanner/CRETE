@@ -54,13 +54,17 @@ class CorefEngine:
 		# handles passed-in args
 		args = params.setCorefEngineParams()
 
+		#saved_treelstm = pickle.load(open("doc_21_e9.p", "rb"))
+		#print(saved_treelstm.xuid_pairs_to_index)
+		#print(saved_treelstm.xuid_pairs_to_index['3905_3907'])
+		#exit()
 		# manually-defined features (others are in Resolver.py)
 		#32, 20, 2, 32, 0
-		wdPresets = [32, 5, 2, 32, 0] # batchsize, num epochs, num layers, num filters, dropout
-		num_runs = 2
+		wdPresets = [256, 2, 2, 4, 0] # batchsize, num epochs, num layers, num filters, dropout
+		num_runs = 1
 		mention_types = {'events'} #, 'entities'} # NOTE: should be 'events' and/or 'entities'
 
-		event_resolution = Resolver(args, wdPresets, "doc") # doc or dir for WD or CD, respectively
+		event_resolution = Resolver(args, wdPresets, "dirHalf") # doc or dir for WD or CD, respectively
 		
 		# {none, relations, shortest, one} for supplemental path info
 		# resolve(mention_type, supp_features_type, event_pronouns, entity_pronouns, num_runs)

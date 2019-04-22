@@ -48,6 +48,9 @@ class CCNN:
 		else:
 			(self.bs, self.ne, self.nl, self.nf, self.do) = presets
 
+		# TMP: loads the saved TreeLSTM model
+		self.saved_treelstm = pickle.load(open("doc_21_e0.p", "rb"))
+
 		print("[ccnn] scope:",self.scope,"bs:",self.bs,"ne:",self.ne,"nl:",self.nl,"nf:",self.nf,"do:",self.do, "dm:",self.devMode, "sp:",self.stopping_points)
 		sys.stdout.flush()
 
@@ -91,11 +94,21 @@ class CCNN:
 		cs_preds = []
 		l2_preds = []
 		# goes through all pairs
+
 		for xuid1, xuid2 in xuid_pairs:
 			m1 = self.corpus.XUIDToMention[xuid1]
 			m2 = self.corpus.XUIDToMention[xuid2]
 			is_gold = False
 
+			key = str(xuid1) + "_" + str(xuid2)
+			if xuid2 < xuid1:
+				key = str(xuid2) + "_" + str(xuid1)
+			tree_index = self.saved_treelstm.xuid_pairs_to_index[key]
+			#print("tree_index:", tree_index)
+			#print("self.saved_treelstm.xuid_to_event_emb:", sorted(self.saved_treelstm.xuid_to_event_emb.keys()))
+			tree_event1 = self.saved_treelstm.xuid_to_event_emb[tree_index]
+			#print("tree_event1:", tree_event1)
+			#exit()
 			if m1.REF == m2.REF:
 				is_gold = True
 				num_gold += 1
@@ -143,6 +156,8 @@ class CCNN:
 				for i in feature[uid2]:
 					m2_features.append(i)
 			
+			#print("len:", len(m1_features))
+
 			dot = np.dot(m1_features, m2_features)
 			norma = np.linalg.norm(m1_features)
 			normb = np.linalg.norm(m2_features)

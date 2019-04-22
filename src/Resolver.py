@@ -43,7 +43,7 @@ class InferenceTreePair:
 
 	def __str__(self):
 		xuids = []
-		for xuid in xuid_to_event_emb:
+		for xuid in self.xuid_to_event_emb:
 			xuids.append(xuid)
 		if xuids[0] < xuids[1]:
 			return("xuid1:" + str(xuids[0]) + "; xuid2:" + str(xuids[1]))
@@ -71,10 +71,10 @@ class Resolver:
 
 		# TODO: update these parameterss
 		prefix = self.scope + "_" + str(self.args.num_dirs)
-		useCCNN = True
-		useTreeLSTM = False
+		useCCNN = False
+		useTreeLSTM = True
 		eval_on = "test" # TODO: adjust this to whatever you want to test on
-		eval_modulo = 2 # how many epochs to go between evaluating
+		eval_modulo = 3 # how many epochs to go between evaluating
 		evaluate_all_pairs = True
 		create_sub_trees = True # IF FALSE, our self.*_tree_sets will have just 1 per sentence.
 		eval_events = True
@@ -161,9 +161,10 @@ class Resolver:
 		#corpus.calculateEntEnvAgreement()
 		fh = FeatureHandler(self.args, helper) # TODO: TMP
 		dh.load_xuid_pairs(supp_features_type, self.scope) # CREATES ALL XUID PAIRS
+		print("dh orig:", len(dh.testXUIDPairs))
 
 		dh.construct_tree_files_(self.scope, evaluate_all_pairs, create_sub_trees) # WRITES FILES TO DISK
-
+		print("dh after constructing trees:", len(dh.testXUIDPairs))
 		if useTreeLSTM:
 			td = TreeDriver(self.scope, self.args.num_dirs, self.args.optimizer, self.args.learning_rate)
 
@@ -373,7 +374,7 @@ class Resolver:
 				print("# dev runs:", len(dev_best_f1s), dev_best_f1s)
 				print("# test runs:", len(test_best_f1s), test_best_f1s)
 
-
+			'''
 			print("\n----- [ DEV PERFORMANCE ] -----\n-------------------------------")
 			dev_preds = helper.getEnsemblePreds(ensemble_dev_predictions) # normalizes them
 			print("\t# predictions:", len(dev_preds))
@@ -385,7 +386,7 @@ class Resolver:
 			print("l2:", round(l2_f1, 4))
 			print("CCNN AVERAGE:", round(sum(dev_best_f1s) / float(len(dev_best_f1s)), 4), "(", model.standard_deviation(dev_best_f1s), ")")
 			print("CCNN ENSEMBLE:", round(dev_f1, 4))
-
+			'''
 			print("\n----- [ TEST PERFORMANCE ] -----\n-------------------------------")
 			test_preds = helper.getEnsemblePreds(ensemble_test_predictions) # normalizes them
 			print("\t# predictions:", len(test_preds))
