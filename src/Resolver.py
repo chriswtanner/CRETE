@@ -71,10 +71,10 @@ class Resolver:
 
 		# TODO: update these parameterss
 		prefix = self.scope + "_" + str(self.args.num_dirs)
-		useCCNN = False
-		useTreeLSTM = True
+		useCCNN = True
+		useTreeLSTM = False
 		eval_on = "test" # TODO: adjust this to whatever you want to test on
-		eval_modulo = 1 # how many epochs to go between evaluating
+		eval_modulo = 2 # how many epochs to go between evaluating
 		evaluate_all_pairs = True
 		create_sub_trees = True # IF FALSE, our self.*_tree_sets will have just 1 per sentence.
 		eval_events = True
