@@ -71,8 +71,8 @@ class Resolver:
 
 		# TODO: update these parameterss
 		prefix = self.scope + "_" + str(self.args.num_dirs)
-		useCCNN = False
-		useTreeLSTM = True
+		useCCNN = True
+		useTreeLSTM = False
 		eval_on = "test" # TODO: adjust this to whatever you want to test on
 		eval_modulo = 3 # how many epochs to go between evaluating
 		evaluate_all_pairs = True
@@ -165,6 +165,8 @@ class Resolver:
 
 		dh.construct_tree_files_(self.scope, evaluate_all_pairs, create_sub_trees) # WRITES FILES TO DISK
 		print("dh after constructing trees:", len(dh.testXUIDPairs))
+
+		
 		if useTreeLSTM:
 			td = TreeDriver(self.scope, self.args.num_dirs, self.args.optimizer, self.args.learning_rate)
 
@@ -329,7 +331,6 @@ class Resolver:
 					pickle.dump(tree_pairs, pickle_out)
 					pickle_out.close()
 
-
 					(f1, prec, rec, bestThreshold) = Helper.calculate_f1(preds, golds, False, True)
 					print("HIDDEN EMBEDDINGS' F1:", f1, "prec:", prec, "rec:", rec, "bestThreshold:", bestThreshold)
 					print("\tlen eval_set.xuid_pair_and_key:", len(eval_set.xuid_pair_and_key))
@@ -341,7 +342,6 @@ class Resolver:
 					for xuid in missing_xuids:
 						print("\t\tmissed:", corpus.XUIDToMention[xuid])
 
-					
 					print("HEIGHT PERFORMANCE:")
 					Helper.plot_distance_matrix(eval_xuid_pairs, preds, golds, bestThreshold, dh.xuid_to_height)
 					print("DEPTH PERFORMANCE:")
@@ -391,11 +391,13 @@ class Resolver:
 			test_preds = helper.getEnsemblePreds(ensemble_test_predictions) # normalizes them
 			print("\t# predictions:", len(test_preds))
 			(test_f1, test_prec, test_rec, test_bestThreshold) = helper.evaluatePairwisePreds(test_ids, test_preds, test_golds, dh)
-			(any_F1, all_F1, cs_f1, l2_f1) = model.baseline_tests(dh.testXUIDPairs)
+			(any_F1, all_F1, cs_f1, l2_f1, hidden_cs, hidden_l2) = model.baseline_tests(dh.testXUIDPairs)
 			print("samelemma_any:", round(any_F1, 4))
 			print("samelemma_all:", round(all_F1, 4))
 			print("cosine sim:", round(cs_f1, 4))
 			print("l2:", round(l2_f1, 4))
+			print("hidden_cs:", round(hidden_cs, 4))
+			print("hidden_l2:", round(hidden_l2, 4))
 			print("CCNN AVERAGE:", round(sum(test_best_f1s) / float(len(test_best_f1s)), 4), "(", model.standard_deviation(test_best_f1s), ")")
 			print("CCNN ENSEMBLE:", round(test_f1, 4))
 			print("* done.  took ", str((time.time() - start_time)), "seconds")

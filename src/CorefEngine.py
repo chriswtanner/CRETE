@@ -64,7 +64,7 @@ class CorefEngine:
 		num_runs = 1
 		mention_types = {'events'} #, 'entities'} # NOTE: should be 'events' and/or 'entities'
 
-		event_resolution = Resolver(args, wdPresets, "dirHalf") # doc or dir for WD or CD, respectively
+		event_resolution = Resolver(args, wdPresets, "dir") # doc or dir for WD or CD, respectively
 		
 		# {none, relations, shortest, one} for supplemental path info
 		# resolve(mention_type, supp_features_type, event_pronouns, entity_pronouns, num_runs)

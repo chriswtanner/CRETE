@@ -49,7 +49,9 @@ class CCNN:
 			(self.bs, self.ne, self.nl, self.nf, self.do) = presets
 
 		# TMP: loads the saved TreeLSTM model
-		self.saved_treelstm = pickle.load(open("doc_21_e0.p", "rb"))
+		self.saved_treelstm = pickle.load(open("dir_20_e5.p", "rb"))
+		#self.saved_treelstm = pickle.load(open("dir_shortest20_e17.p", "rb"))
+		#self.saved_treelstm = pickle.load(open("dir_1_e0.p", "rb"))
 
 		print("[ccnn] scope:",self.scope,"bs:",self.bs,"ne:",self.ne,"nl:",self.nl,"nf:",self.nf,"do:",self.do, "dm:",self.devMode, "sp:",self.stopping_points)
 		sys.stdout.flush()
@@ -74,6 +76,17 @@ class CCNN:
 			tf.Session(config=tf.ConfigProto(log_device_placement=True))
 			os.environ['CUDA_VISIBLE_DEVICES'] = ''
 		
+	def get_cosine_sim(self, vec1, vec2):
+		dot = np.dot(vec1, vec2)
+		norma = np.linalg.norm(vec1)
+		normb = np.linalg.norm(vec2)
+		cs = dot / (norma * normb)
+		return cs
+
+	# returns the average of a list of lists (embeddings)
+	def get_avg_vector(self, vectors):
+		return [sum(i)/len(vectors) for i in zip(*vectors)]
+
 	def baseline_tests(self, xuid_pairs):
 
 		fh = FeatureHandler(self.args, self.helper)
@@ -93,9 +106,23 @@ class CCNN:
 
 		cs_preds = []
 		l2_preds = []
-		# goes through all pairs
 
-		for xuid1, xuid2 in xuid_pairs:
+		hidden_cs_preds = []
+		hidden_l2_preds = []
+		# goes through all pairs
+		num_good = 0
+		num_bad = 0
+
+		alphas = [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]
+		threshold_env = defaultdict(list)
+		threshold_children = defaultdict(list)
+		threshold_avgavg = defaultdict(list)
+		threshold_minavg = defaultdict(list)
+		threshold_min = defaultdict(list)
+		processed = set()
+		for proc, (xuid1, xuid2) in enumerate(xuid_pairs):
+			if proc % 5000 == 0:
+				print("processed:", proc)
 			m1 = self.corpus.XUIDToMention[xuid1]
 			m2 = self.corpus.XUIDToMention[xuid2]
 			is_gold = False
@@ -104,11 +131,21 @@ class CCNN:
 			if xuid2 < xuid1:
 				key = str(xuid2) + "_" + str(xuid1)
 			tree_index = self.saved_treelstm.xuid_pairs_to_index[key]
-			#print("tree_index:", tree_index)
-			#print("self.saved_treelstm.xuid_to_event_emb:", sorted(self.saved_treelstm.xuid_to_event_emb.keys()))
-			tree_event1 = self.saved_treelstm.xuid_to_event_emb[tree_index]
-			#print("tree_event1:", tree_event1)
-			#exit()
+			tree_event_embs = self.saved_treelstm.xuid_to_event_emb[tree_index]
+
+			is_good = True
+			if len(m1.tokens) != len(tree_event_embs[xuid1]):
+				is_good = False 
+				#exit()
+			if len(m2.tokens) != len(tree_event_embs[xuid2]):
+				is_good = False
+			if is_good:
+				num_good += 1
+			else:
+				num_bad += 1
+			m1_avg_emb = self.get_avg_vector(tree_event_embs[xuid1])
+			m2_avg_emb = self.get_avg_vector(tree_event_embs[xuid2])
+
 			if m1.REF == m2.REF:
 				is_gold = True
 				num_gold += 1
@@ -155,22 +192,126 @@ class CCNN:
 					m1_features.append(i)
 				for i in feature[uid2]:
 					m2_features.append(i)
-			
-			#print("len:", len(m1_features))
 
-			dot = np.dot(m1_features, m2_features)
-			norma = np.linalg.norm(m1_features)
-			normb = np.linalg.norm(m2_features)
-			cs = dot / (norma * normb)
+			# LEMMA + CHAR -- [COSINE SIM]
+			cs = self.get_cosine_sim(m1_features, m2_features)
+			cs_preds.append([cs])
 
+			# LEMMA + CHAR -- [L2]
 			l2 = 0
 			for i, j in zip(m1_features, m2_features):
 				l2 += math.pow(i - j, 2)
 			l2 = math.sqrt(l2)
-
-			#print("m1:", m1.text, "m2:", m2.text, "cs:", cs, "l2:", l2)
-			cs_preds.append([cs])
 			l2_preds.append([l2])
+
+			# ----------------------------------
+			# HIDDEN NODES -- [COSINE SIM]
+			hidden_cs = self.get_cosine_sim(m1_avg_emb, m2_avg_emb)
+			cnn_cs = self.get_cosine_sim(m1_features, m2_features)
+			#hidden_cs_preds.append([cs])
+
+			# looks at the entity children
+			entity_embs = self.saved_treelstm.xuid_to_childxuid_to_emb[tree_index]
+			entity1_embs = entity_embs[xuid1]
+			entity2_embs = entity_embs[xuid2]
+
+			'''
+			children1 = []
+			for child_xuid in entity1_embs.keys():
+				child_emb = []
+				uid = self.corpus.XUIDToMention[child_xuid].UID
+				for feature in self.dh.singleFeatures:
+					for i in feature[uid]:
+						child_emb.append(i)
+				children1.append(child_emb)
+
+			children2 = []
+			for child_xuid in entity2_embs.keys():
+				child_emb = []
+				uid = self.corpus.XUIDToMention[child_xuid].UID
+				for feature in self.dh.singleFeatures:
+					for i in feature[uid]:
+						child_emb.append(i)
+				children2.append(child_emb)
+			
+			highest_children_cs = -1
+			for child1 in children1:
+				for child2 in children2:
+					cur_cs = self.get_cosine_sim(child1, child2)
+					if cur_cs > highest_children_cs:
+						highest_children_cs = cur_cs
+			
+			avg_child1 = self.get_avg_vector(children1)
+			avg_child2 = self.get_avg_vector(children2)
+			highest_children_cs = self.get_cosine_sim(avg_child1, avg_child2)
+			'''
+			every_ent1 = [] # stores every individual token (can be used for avg everything and min everything)
+			avg_ent1 = [] # stores an avg_vector for each child entity (can be used for min)
+			for ent1 in entity1_embs:
+				#child = []
+				for ent_v in entity1_embs[ent1]:
+					every_ent1.append(ent_v)
+					#child.append(ent_v)
+				#avg_child = self.get_avg_vector(child)
+				#avg_ent1.append(avg_child)
+
+			every_ent2 = []
+			avg_ent2 = []
+			for ent2 in entity2_embs:
+				child = []
+				for ent_v in entity2_embs[ent2]:
+					every_ent2.append(ent_v)
+					#child.append(ent_v)
+				#avg_child = self.get_avg_vector(child)
+				#avg_ent2.append(avg_child)
+			
+			avg_avg_cs = hidden_cs
+			highest_avg_cs = -1
+			highest_individual_cs = -1
+
+			if len(every_ent1) == 0 or len(every_ent2) == 0:
+				print("WTF current size:", len(processed), " of ", len(xuid_pairs))
+
+				highest_avg_cs = hidden_cs
+				highest_individual_cs = hidden_cs
+			else:
+				processed.add(key)
+				avg_avg1 = self.get_avg_vector(every_ent1)
+				avg_avg2 = self.get_avg_vector(every_ent2)
+				avg_avg_cs = self.get_cosine_sim(avg_avg1, avg_avg2)
+
+				'''
+				for each_vec1 in avg_ent1:
+					for each_vec2 in avg_ent2:
+						cur_cs = self.get_cosine_sim(each_vec1, each_vec2)
+						if cur_cs > highest_avg_cs:
+							highest_avg_cs = cur_cs
+
+				for each_vec1 in avg_avg1:
+					for each_vec2 in avg_avg2:
+						cur_cs = self.get_cosine_sim(each_vec1, each_vec2)
+						if cur_cs > highest_individual_cs:
+							highest_individual_cs = cur_cs
+				'''
+			for alpha in alphas:
+				threshold_env[alpha].append([alpha*hidden_cs + (1-alpha)*cnn_cs])
+				threshold_children[alpha].append([alpha*avg_avg_cs + (1-alpha)*cnn_cs])
+				#threshold_avgavg[alpha].append([alpha*avg_avg_cs + (1-alpha)*cnn_cs])
+				#threshold_minavg[alpha].append([alpha*highest_avg_cs + (1-alpha)*cnn_cs])
+				#threshold_min[alpha].append([alpha*highest_individual_cs + (1-alpha)*cnn_cs])
+			
+
+			# HIDDEN NODES -- [L2]
+			v1 = m1_avg_emb + m1_features
+			v2 = m2_avg_emb + m2_features
+
+			l2 = 0
+			for i, j in zip(v1, v2):
+				l2 += math.pow(i - j, 2)
+			l2 = math.sqrt(l2)
+			hidden_l2_preds.append([l2])
+
+
 		all_R = all_TP / float(num_gold)
 		all_P = all_TP / float(all_TP + all_FP)
 		all_F1 = 2*all_P*all_R / (all_P + all_R)
@@ -182,7 +323,50 @@ class CCNN:
 		#print("all_F1:", all_F1, "any_F1:", any_F1)
 		(cs_f1, bestP, bestR, bestVal) = self.helper.evaluatePairwisePreds(None, cs_preds, golds, self.dh, True)
 		(l2_f1, bestP, bestR, bestVal) = self.helper.evaluatePairwisePreds(None, l2_preds, golds, self.dh, False)
-		return (any_F1, all_F1, cs_f1, l2_f1)
+
+		#(hidden_cs_f1, bestP, bestR, bestVal) = self.helper.evaluatePairwisePreds(None, hidden_cs_preds, golds, self.dh, True)
+		(hidden_l2_f1, bestP, bestR, bestVal) = self.helper.evaluatePairwisePreds(None, hidden_l2_preds, golds, self.dh, False)
+
+		max_hidden_cs = -1
+		max_children = -1
+		max_avgavg = -1
+		max_minavg = -1
+		max_min = -1
+		for alpha in alphas:
+			(hidden_cs_f1, bestP, bestR, bestVal) = self.helper.evaluatePairwisePreds(None, threshold_env[alpha], golds, self.dh, True)
+			print("ENV alpha:", alpha, " =", hidden_cs_f1)
+			if hidden_cs_f1 > max_hidden_cs:
+				max_hidden_cs = hidden_cs_f1
+
+			(children_cs_f1, bestP, bestR, bestVal) = self.helper.evaluatePairwisePreds(None, threshold_children[alpha], golds, self.dh, True)
+			print("ENTITY alpha:", alpha, " =", children_cs_f1)
+			if children_cs_f1 > max_children:
+				max_children = children_cs_f1
+
+			'''
+			(hidden_avgavg_f1, bestP, bestR, bestVal) = self.helper.evaluatePairwisePreds(None, threshold_avgavg[alpha], golds, self.dh, True)
+			print("hidden_avgavg_f1 alpha:", alpha, " =", hidden_avgavg_f1)
+			if hidden_avgavg_f1 > max_avgavg:
+				max_avgavg = hidden_avgavg_f1
+
+			(hidden_minavg_f1, bestP, bestR, bestVal) = self.helper.evaluatePairwisePreds(None, threshold_minavg[alpha], golds, self.dh, True)
+			print("hidden_minavg_f1 alpha:", alpha, " =", hidden_minavg_f1)
+			if hidden_minavg_f1 > max_minavg:
+				max_minavg = hidden_minavg_f1
+
+			(hidden_min_f1, bestP, bestR, bestVal) = self.helper.evaluatePairwisePreds(None, threshold_min[alpha], golds, self.dh, True)
+			print("hidden_min_f1 alpha:", alpha, " =", hidden_min_f1)
+			if hidden_min_f1 > max_min:
+				max_min = hidden_min_f1
+			'''
+		print("num_good:", num_good, "numbad:", num_bad)
+		print("max_children:", max_children)
+		'''
+		print("max_avgavg:", max_avgavg)
+		print("max_minavg:", max_minavg)
+		print("max_min:", max_min)
+		'''
+		return (any_F1, all_F1, cs_f1, l2_f1, max_hidden_cs, hidden_l2_f1)
 
 	# WITHIN-DOC MODEL
 	def train_and_test(self):
