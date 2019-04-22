@@ -256,7 +256,6 @@ class Resolver:
 								#print("\tentity:", entity)
 								#print("\tpassing:", mt_for_xuid1.mention_token_indices[entity.XUID])
 
-
 								ent_vec = self.get_tree_embedding(mt_for_xuid1.mention_token_indices[entity.XUID], xuid1, xuid2, left_to_hidden, right_to_hidden, lwords, rwords, missing_xuids)
 								cur_event_embeddings[entity.XUID] = ent_vec
 							xuid_to_childxuid_to_emb[xuid1] = cur_event_embeddings
