@@ -60,7 +60,7 @@ class CorefEngine:
 		#exit()
 		# manually-defined features (others are in Resolver.py)
 		#32, 20, 2, 32, 0
-		wdPresets = [256, 2, 2, 4, 0] # batchsize, num epochs, num layers, num filters, dropout
+		wdPresets = [32, 3, 2, 32, 0] # batchsize, num epochs, num layers, num filters, dropout
 		num_runs = 1
 		mention_types = {'events'} #, 'entities'} # NOTE: should be 'events' and/or 'entities'
 
@@ -69,7 +69,7 @@ class CorefEngine:
 		# {none, relations, shortest, one} for supplemental path info
 		# resolve(mention_type, supp_features_type, event_pronouns, entity_pronouns, num_runs)
 		# supp_features_type could be {none, shortest, one, type}
-		event_ids, event_preds, event_golds = event_resolution.resolve(mention_types, "shortest", True, True, num_runs)
+		event_ids, event_preds, event_golds = event_resolution.resolve(mention_types, "none", True, True, num_runs)
 
 		#event_resolution.aggCluster(event_ids, event_preds, event_golds)
 

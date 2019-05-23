@@ -159,14 +159,17 @@ class Resolver:
 		#print("tmp_xuidpair_event_entity:", dh.tmp_xuidpair_event_entity)
 		#helper.checkDependencyRelations()
 		#corpus.calculateEntEnvAgreement()
+
 		fh = FeatureHandler(self.args, helper) # TODO: TMP
 		dh.load_xuid_pairs(supp_features_type, self.scope) # CREATES ALL XUID PAIRS
 		print("dh orig:", len(dh.testXUIDPairs))
 
+		corpus.calculateLexicalDistortion(dh.trainXUIDPairs)
+		exit()
+		
 		dh.construct_tree_files_(self.scope, evaluate_all_pairs, create_sub_trees) # WRITES FILES TO DISK
 		print("dh after constructing trees:", len(dh.testXUIDPairs))
 
-		
 		if useTreeLSTM:
 			td = TreeDriver(self.scope, self.args.num_dirs, self.args.optimizer, self.args.learning_rate)
 
@@ -348,7 +351,6 @@ class Resolver:
 					Helper.plot_distance_matrix(eval_xuid_pairs, preds, golds, bestThreshold, dh.xuid_to_depth)
 					print(str((time.time() - start_time)), "seconds")
 	
-
 		# within-doc first, then cross-doc
 		if useCCNN:
 			ensemble_dev_predictions = []
@@ -374,34 +376,34 @@ class Resolver:
 				print("# dev runs:", len(dev_best_f1s), dev_best_f1s)
 				print("# test runs:", len(test_best_f1s), test_best_f1s)
 
-			'''
 			print("\n----- [ DEV PERFORMANCE ] -----\n-------------------------------")
 			dev_preds = helper.getEnsemblePreds(ensemble_dev_predictions) # normalizes them
 			print("\t# predictions:", len(dev_preds))
 			(dev_f1, dev_prec, dev_rec, dev_bestThreshold) = helper.evaluatePairwisePreds(dev_ids, dev_preds, dev_golds, dh)
-			(any_F1, all_F1, cs_f1, l2_f1) = model.baseline_tests(dh.devXUIDPairs)
+			
+			(any_F1, all_F1, cs_f1, l2_f1, extended_cs) = model.baseline_tests(dh.devXUIDPairs)
 			print("samelemma_any:", round(any_F1, 4))
 			print("samelemma_all:", round(all_F1, 4))
 			print("cosine sim:", round(cs_f1, 4))
 			print("l2:", round(l2_f1, 4))
 			print("CCNN AVERAGE:", round(sum(dev_best_f1s) / float(len(dev_best_f1s)), 4), "(", model.standard_deviation(dev_best_f1s), ")")
 			print("CCNN ENSEMBLE:", round(dev_f1, 4))
-			'''
+			
 			print("\n----- [ TEST PERFORMANCE ] -----\n-------------------------------")
 			test_preds = helper.getEnsemblePreds(ensemble_test_predictions) # normalizes them
 			print("\t# predictions:", len(test_preds))
 			(test_f1, test_prec, test_rec, test_bestThreshold) = helper.evaluatePairwisePreds(test_ids, test_preds, test_golds, dh)
-			(any_F1, all_F1, cs_f1, l2_f1, hidden_cs, hidden_l2) = model.baseline_tests(dh.testXUIDPairs)
+			
+			(any_F1, all_F1, cs_f1, l2_f1, extended_cs) = model.baseline_tests(dh.testXUIDPairs)
 			print("samelemma_any:", round(any_F1, 4))
 			print("samelemma_all:", round(all_F1, 4))
 			print("cosine sim:", round(cs_f1, 4))
 			print("l2:", round(l2_f1, 4))
-			print("hidden_cs:", round(hidden_cs, 4))
-			print("hidden_l2:", round(hidden_l2, 4))
+			print("hidden_cs:", round(extended_cs, 4))
 			print("CCNN AVERAGE:", round(sum(test_best_f1s) / float(len(test_best_f1s)), 4), "(", model.standard_deviation(test_best_f1s), ")")
 			print("CCNN ENSEMBLE:", round(test_f1, 4))
 			print("* done.  took ", str((time.time() - start_time)), "seconds")
-
+			
 			return test_ids, test_preds, test_golds
 			
 	def get_tree_embedding(self, token_indices, xuid_desired, xuid_other, left_to_hidden, right_to_hidden, lwords, rwords, missing_xuids):

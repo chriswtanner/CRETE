@@ -2,6 +2,7 @@ from collections import defaultdict
 from DirHalf import DirHalf
 from ECBDir import ECBDir
 
+import math
 # TMP for plotting dependency relations
 #import matplotlib
 #import matplotlib.pyplot as plt
@@ -53,6 +54,58 @@ class Corpus:
 		# to easily parse the original sentence which contains each Mention
 		self.globalSentenceNumToTokens = defaultdict(list)
 
+	def calculateLexicalDistortion(self, xuid_pairs):
+		xuidToIndexedWords = defaultdict(lambda: defaultdict(set))
+
+		XUIDs = set()
+		dist_hist = defaultdict(int)
+
+		for xuid1, xuid2 in xuid_pairs:
+			XUIDs.add(xuid1)
+			XUIDs.add(xuid2)
+		
+		for xuid in XUIDs:
+			m = self.XUIDToMention[xuid]
+			if not m.isPred:
+				continue
+			
+			mention_token_indices = [t.tokenNum for t in m.tokens]
+			print(mention_token_indices)
+			for t in self.globalSentenceNumToTokens[m.globalSentenceNum]:
+				if t.tokenNum < mention_token_indices[0]:
+					diff = mention_token_indices[0] - t.tokenNum
+					if diff <= 5:
+						xuidToIndexedWords[xuid][t.text].add(-1*diff)
+				elif t.tokenNum > mention_token_indices[-1]:
+					diff = t.tokenNum - mention_token_indices[-1]
+					if diff <= 5:
+						xuidToIndexedWords[xuid][t.text].add(diff)
+			
+		for xuid1, xuid2 in xuid_pairs:
+			m1= self.XUIDToMention[xuid1]
+			m2 = self.XUIDToMention[xuid2]
+
+			if m1.REF != m2.REF:
+				continue
+
+			# they coref
+			for token1 in xuidToIndexedWords[xuid1]:
+				
+				if token1 in xuidToIndexedWords[xuid2]:
+					min_dist = 9999
+					indices1 = xuidToIndexedWords[xuid1][token1]
+					indices2 = xuidToIndexedWords[xuid2][token1]
+					for i1 in indices1:
+						for i2 in indices2:
+							dist = abs(i1 - i2)
+							if dist < min_dist:
+								min_dist = dist
+					dist_hist[min_dist] += 1
+				else:
+					dist_hist[-1] += 1
+		total = sum([dist_hist[k] for k in dist_hist])
+		print(dist_hist)
+		print("total:", total)
 	# TMP: just displays how many times each event-pair is co-ref or not, w.r.t.
 	# belonging to sentences which contain co-ref entities
 	def calculateEntEnvAgreement(self):

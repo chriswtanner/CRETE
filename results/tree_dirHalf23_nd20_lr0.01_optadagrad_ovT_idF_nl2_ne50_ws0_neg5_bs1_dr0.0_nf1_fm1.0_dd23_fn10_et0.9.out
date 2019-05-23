@@ -1,0 +1,771 @@
+[ RUNNING ON BROWN NETWORK ]
+-------- params --------
+corpus: /home/ctanner/researchcode/CRETE/data/ECB_FULL/
+useECBTest: true
+onlyValidSentences: T
+addIntraDocs: F
+numLayers: 2
+numEpochs: 50
+windowSize: 0
+numNegPerPos: 5
+batchSize: 1
+dropout: 0.0
+numFilters: 1
+filterMultiplier: 1.0
+wordFeature: False
+lemmaFeature: T
+charFeature: T
+posFeature: False
+dependencyFeature: False
+bowFeature: False
+wordnetFeature: False
+framenetFeature: False
+devDir: 23
+FFNNnumEpochs: 10
+FFNNnumCorpusSamples:
+FFNNOpt:
+entity_threshold: 0.9
+num_dirs: 20
+learning_rate: 0.01
+opt: adagrad
+-------- STATIC PATHS --------
+resultsDir: /home/ctanner/researchcode/CRETE/results/
+dataDir: /home/ctanner/researchcode/CRETE/data/
+verbose: true
+replacementsFile: /home/ctanner/researchcode/CRETE/data/replacements.txt
+embeddingsFile: /home/ctanner/researchcode/CRETE/data/features/gloveEmbeddings.6B.300.txt
+hddcrpFullFile: /home/ctanner/researchcode/CRETE/data/predict.ran.WD.semeval.txt
+stanOutputDir: /home/ctanner/researchcode/CRETE/data/stanford_out/
+stanTokensFile: /home/ctanner/researchcode/CRETE/data/stan_tokens.p
+verifiedSentencesFile: /home/ctanner/researchcode/CRETE/data/ECBplus_coreference_sentences.csv
+charEmbeddingsFile: /home/ctanner/researchcode/CRETE/data/features/charRandomEmbeddings.txt
+posEmbeddingsFile: /home/ctanner/researchcode/CRETE/data/features/posEmbeddings100.txt
+pronounsFile: /home/ctanner/researchcode/CRETE/data/pronouns.txt
+------------------------
+helper sys path: ['/gpfs/main/home/ctanner/researchcode/CRETE/src/tree_lstm/', '/gpfs/main/home/ctanner/researchcode/CRETE/src', '/gpfs/main/home/ctanner/researchcode/grid/lib/python35.zip', '/gpfs/main/home/ctanner/researchcode/grid/lib/python3.5', '/gpfs/main/home/ctanner/researchcode/grid/lib/python3.5/plat-x86_64-linux-gnu', '/gpfs/main/home/ctanner/researchcode/grid/lib/python3.5/lib-dynload', '/usr/lib/python3.5', '/usr/lib/python3.5/plat-x86_64-linux-gnu', '/gpfs/main/home/ctanner/researchcode/grid/lib/python3.5/site-packages', '/home/ctanner/.local/lib/python3.5/site-packages', '/usr/local/lib/python3.5/dist-packages', '/usr/lib/python3/dist-packages']
+in helper; cwd: /gpfs/main/home/ctanner/researchcode/CRETE/src/tree_lstm
+helper sys path: ['/gpfs/main/home/ctanner/researchcode/CRETE/src/tree_lstm/', '/gpfs/main/home/ctanner/researchcode/CRETE/src', '/gpfs/main/home/ctanner/researchcode/grid/lib/python35.zip', '/gpfs/main/home/ctanner/researchcode/grid/lib/python3.5', '/gpfs/main/home/ctanner/researchcode/grid/lib/python3.5/plat-x86_64-linux-gnu', '/gpfs/main/home/ctanner/researchcode/grid/lib/python3.5/lib-dynload', '/usr/lib/python3.5', '/usr/lib/python3.5/plat-x86_64-linux-gnu', '/gpfs/main/home/ctanner/researchcode/grid/lib/python3.5/site-packages', '/home/ctanner/.local/lib/python3.5/site-packages', '/usr/local/lib/python3.5/dist-packages', '/usr/lib/python3/dist-packages']
+in helper; cwd: /gpfs/main/home/ctanner/researchcode/CRETE/src/tree_lstm
+* parsing ECB corpus: /home/ctanner/researchcode/CRETE/data/ECB_FULL/
+filteredTrainingDirs: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 18, 19, 20, 21, 22]
+numMentionsIgnored: 5964
+# ECB mentions created: 11892
+	# events: 4993
+		# of event which had pronouns: 98
+	# entities: 6899
+# ECB+ tokens: 364936
+# mentions that had_pronoun: 1583
+# mentions that did not had_pronoun: 30714
+* [StanDB] loaded 362650 UIDs' StanTokens
+* Created 7690 Stan Mentions
+mentionStats: defaultdict(<class 'int'>, {'test': 6133, 'train': 4952, 'dev': 807})
+[ CORPUS STATS ]
+	# dirHalves: 86
+	# docs: 982
+	# REFs: 1826
+	# ECB Tokens: 364936
+	# ECB Mentions: 11892
+		# entities: 6899 # events: 4993
+		train (4952 mentions) dirs: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 18, 19, 20, 21, 22]
+		dev (807 mentions) dirs: [23, 24, 25]
+		test (6133 mentions) dirs: [26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45]
+	# Stan Mentions: 7690
+	# HDDCRP Mentions: 0
+	== # Total Mentions: 19582
+has_pronoun_count: 35
+has_no_pronoun_count: 4958
+# excluded mentions: 0
+loading /home/ctanner/researchcode/CRETE/data/features/ecb/lemma.f
+loading /home/ctanner/researchcode/CRETE/data/features/ecb/char.f
+eventsConsidered: 4993
+rel: ('nmod', 2215)
+rel: ('nsubj', 1683)
+rel: ('dobj', 1388)
+rel: ('compound', 564)
+rel: ('nmod:tmod', 441)
+rel: ('nsubjpass', 369)
+rel: ('nmod:poss', 263)
+rel: ('dep', 224)
+rel: ('punct', 106)
+rel: ('xcomp', 98)
+rel: ('nummod', 89)
+rel: ('amod', 83)
+rel: ('advmod', 76)
+rel: ('conj', 66)
+rel: ('appos', 49)
+rel: ('ccomp', 40)
+rel: ('det', 28)
+rel: ('advcl', 23)
+rel: ('case', 21)
+rel: ('iobj', 18)
+rel: ('acl', 17)
+rel: ('acl:relcl', 13)
+rel: ('mark', 11)
+rel: ('nmod:npmod', 10)
+rel: ('compound:prt', 9)
+rel: ('parataxis', 7)
+rel: ('csubj', 4)
+rel: ('auxpass', 3)
+rel: ('aux', 3)
+rel: ('cop', 2)
+rel: ('cc', 2)
+rel: ('expl', 2)
+rel: ('csubjpass', 1)
+have_ent: 0
+not_have_ent: 0
+# sentences_we_looked_at: 1825
+# which have both: 0
+# mentions passed-in: 2104
+num_without_links: 66031
+	# xuidPairs: 38625
+# mentions passed-in: 327
+num_without_links: 8518
+	# xuidPairs: 4980
+# mentions passed-in: 2562
+num_without_links: 93663
+	# xuidPairs: 42466
+dh orig: 42466
+dir_path: /home/ctanner/researchcode/CRETE/src/tree_lstm/data/sick/20/train/ecb_dirHalf/
+# unique candidate_xuids: 1501
+# candidate_sentences: 679  ==?== # sent: 679
+num_rootless_sent: 215
+num_not_found: 0
+found: 1501
+*****num_written: 33476
+num_neg_not_added: 5149
+# tree_legend: 38625
+# tree_labels: 38625
+# numPosAdded: 5583 ; numNegAdded: 27893
+* orig xuid pairs: 38625 ; # refined: 38625 #  pairs: 38625
+dir_path: /home/ctanner/researchcode/CRETE/src/tree_lstm/data/sick/20/dev/ecb_dirHalf/
+# unique candidate_xuids: 235
+# candidate_sentences: 129  ==?== # sent: 808
+num_rootless_sent: 49
+num_not_found: 0
+found: 235
+*****num_written: 4980
+num_neg_not_added: 0
+# tree_legend: 4980
+# tree_labels: 4980
+# numPosAdded: 876 ; numNegAdded: 4104
+* orig xuid pairs: 4980 ; # refined: 4980 #  pairs: 4980
+dir_path: /home/ctanner/researchcode/CRETE/src/tree_lstm/data/sick/20/test/ecb_dirHalf/
+# unique candidate_xuids: 1768
+# candidate_sentences: 857  ==?== # sent: 1665
+num_rootless_sent: 295
+num_not_found: 0
+found: 1768
+*****num_written: 42466
+num_neg_not_added: 0
+# tree_legend: 42466
+# tree_labels: 42466
+# numPosAdded: 7716 ; numNegAdded: 34750
+* orig xuid pairs: 42466 ; # refined: 42466 #  pairs: 42466
+dh after constructing trees: 42466
+num_dirs: 20
+TORCH VERSION: 1.0.1.post2
+TREELSTM: adagrad lr: 0.01
+train_dir: data/sick/20/train/ecb_dirHalf/
+dev_dir: data/sick/20/dev/ecb_dirHalf/
+train_dir: data/sick/20/train/ecb_dirHalf/
+dev_dir: data/sick/20/dev/ecb_dirHalf/
+sick_vocab_file: data/sick/20/sick.vocab
+need to build a SICK vocab: data/sick/20/sick.vocab
+==> SICK vocabulary size : 4284 
+* helper's load_data(); file: data/sick/20/sick_train.pth
+	* we dont have it
+	* init new SICKDataset: data/sick/20/train/ecb_dirHalf/ <Vocab.Vocab object at 0x2b5691177be0> 2
+	==> Size of data split: 33476 
+* helper's load_data(); file: data/sick/20/sick_dev.pth
+	* we dont have it
+	* init new SICKDataset: data/sick/20/dev/ecb_dirHalf/ <Vocab.Vocab object at 0x2b5691177be0> 2
+	==> Size of data split: 4980 
+* helper's load_data(); file: data/sick/20/sick_test.pth
+	* we dont have it
+	* init new SICKDataset: data/sick/20/test/ecb_dirHalf/ <Vocab.Vocab object at 0x2b5691177be0> 2
+	==> Size of data split: 42466 
+[] SimilarityTreeLSTM init()
+*** FREEZE EMBEDDINGS!!!
+[] ChildSumTreeLSTM init()
+[] Similarity init()
+* load_embeddings() -- creating dict of embeddings
+==> File found, loading to memory
+==> GLOVE vocabulary size: 2196016 
+* saving emb ( 4284 ) items to: data/sick/20/sick_embed.pth
+# dh.xuid_to_height: 11303
+# dh.xuid_to_depth: 11303
+*** training epoch 0  complete; num_mismatched_dependencies: 0
+==> Epoch 0, Train (33476 examples) 	Loss: 0.021467247371808763	Pearson: 0.9658188819885254	MSE: 0.009551828727126122
+*** training epoch 1  complete; num_mismatched_dependencies: 0
+==> Epoch 1, Train (33476 examples) 	Loss: 0.00901136163269153	Pearson: 0.9887824058532715	MSE: 0.0031810307409614325
+*** training epoch 2  complete; num_mismatched_dependencies: 0
+==> Epoch 2, Train (33476 examples) 	Loss: 0.005126951458879605	Pearson: 0.9950952529907227	MSE: 0.0014067747397348285
+-------------------------------------
+**[ EVALUATING ON: test , size: 42466 ]**
+-------------------------------------
+==> Test 	Loss: 0.22504371230813813	Pearson: 0.563563883304596	MSE: 0.110745869576931	F1: 0.6011268700213717
+KL-BASED TEST F1: 0.6011268700213717 threshold: 1.2834877967834473
+HIDDEN EMBEDDINGS' F1: 0.5611128675308251 prec: 0.5478454130139523 rec: 0.5750388802488335 bestThreshold: 0.83386755
+	len eval_set.xuid_pair_and_key: 42466
+	eval_xuid_pairs: 42466
+	# unique_xuids_to_eval: 1768
+	but actually processed: 42466
+	# xuids we didnt have: 0
+# golds pos: 7716 neg: 34750
+HEIGHT PERFORMANCE:
+# xuids_missing (for plotting): set()
+matrix_total:
+ [[0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
+  0.000e+00 0.000e+00 0.000e+00 0.000e+00]
+ [0.000e+00 1.780e+02 1.214e+03 1.174e+03 8.990e+02 6.940e+02 4.570e+02
+  2.360e+02 1.220e+02 6.200e+01 1.000e+01]
+ [0.000e+00 0.000e+00 2.251e+03 4.412e+03 3.530e+03 2.666e+03 1.601e+03
+  7.860e+02 4.370e+02 1.900e+02 5.600e+01]
+ [0.000e+00 0.000e+00 0.000e+00 2.142e+03 3.463e+03 2.582e+03 1.542e+03
+  8.220e+02 4.180e+02 2.010e+02 4.900e+01]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 1.451e+03 2.182e+03 1.252e+03
+  6.310e+02 3.340e+02 1.700e+02 5.100e+01]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 8.870e+02 1.061e+03
+  4.930e+02 2.800e+02 1.400e+02 3.900e+01]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 3.190e+02
+  3.410e+02 1.780e+02 9.600e+01 2.500e+01]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
+  9.200e+01 9.200e+01 5.500e+01 2.200e+01]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
+  0.000e+00 3.100e+01 3.300e+01 6.000e+00]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
+  0.000e+00 0.000e+00 7.000e+00 3.000e+00]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
+  0.000e+00 0.000e+00 0.000e+00 1.000e+00]]
+matrix_f1
+: [[ 0.      0.      0.      0.      0.      0.      0.      0.      0.
+   0.      0.    ]
+ [ 0.      0.82    0.5154  0.4435  0.3053  0.4078  0.1429  0.087   0.3158
+   0.25   -1.    ]
+ [ 0.      0.      0.7108  0.5234  0.4576  0.475   0.4368  0.3886  0.5487
+   0.6     0.6667]
+ [ 0.      0.      0.      0.6254  0.5754  0.5005  0.5345  0.5482  0.6358
+   0.6562  0.7143]
+ [ 0.      0.      0.      0.      0.6603  0.5345  0.6015  0.6486  0.6202
+   0.5283  0.6154]
+ [ 0.      0.      0.      0.      0.      0.577   0.538   0.6111  0.6897
+   0.5581  0.5926]
+ [ 0.      0.      0.      0.      0.      0.      0.6195  0.5534  0.6621
+   0.6512  0.4444]
+ [ 0.      0.      0.      0.      0.      0.      0.      0.6757  0.7059
+   0.5789  0.7857]
+ [ 0.      0.      0.      0.      0.      0.      0.      0.      0.7647
+   0.7895  0.8571]
+ [ 0.      0.      0.      0.      0.      0.      0.      0.      0.
+   0.75    1.    ]
+ [ 0.      0.      0.      0.      0.      0.      0.      0.      0.
+   0.      1.    ]]
+DEPTH PERFORMANCE:
+# xuids_missing (for plotting): set()
+matrix_total:
+ [[4.511e+03 7.113e+03 4.154e+03 3.225e+03 1.695e+03 9.340e+02 4.380e+02
+  1.390e+02 6.000e+01 2.300e+01 1.100e+01]
+ [0.000e+00 3.318e+03 3.970e+03 2.758e+03 1.335e+03 7.690e+02 2.780e+02
+  1.030e+02 4.600e+01 3.400e+01 1.800e+01]
+ [0.000e+00 0.000e+00 1.224e+03 1.729e+03 8.670e+02 4.940e+02 1.930e+02
+  7.400e+01 3.400e+01 2.100e+01 1.400e+01]
+ [0.000e+00 0.000e+00 0.000e+00 6.700e+02 7.000e+02 3.870e+02 1.670e+02
+  7.100e+01 2.600e+01 1.400e+01 9.000e+00]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 1.990e+02 2.290e+02 1.130e+02
+  3.500e+01 1.500e+01 6.000e+00 3.000e+00]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 7.400e+01 8.100e+01
+  2.800e+01 1.300e+01 4.000e+00 2.000e+00]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 1.800e+01
+  8.000e+00 3.000e+00 2.000e+00 2.000e+00]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
+  1.000e+00 2.000e+00 1.000e+00 1.000e+00]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
+  0.000e+00 0.000e+00 0.000e+00 0.000e+00]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
+  0.000e+00 0.000e+00 0.000e+00 0.000e+00]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
+  0.000e+00 0.000e+00 0.000e+00 0.000e+00]]
+matrix_f1
+: [[ 0.6762  0.5348  0.5162  0.4471  0.3475  0.3926  0.3556 -1.     -1.
+  -1.     -1.    ]
+ [ 0.      0.5766  0.5535  0.5442  0.5215  0.39    0.3333  0.4     0.2857
+   1.     -1.    ]
+ [ 0.      0.      0.614   0.5468  0.3715  0.4304  0.2667 -1.     -1.
+   0.8889  0.5   ]
+ [ 0.      0.      0.      0.7466  0.5616  0.44    0.4     0.4    -1.
+   1.     -1.    ]
+ [ 0.      0.      0.      0.      0.7593  0.411   0.6     0.75   -1.
+   1.     -1.    ]
+ [ 0.      0.      0.      0.      0.      0.6667  0.6429  0.9231  0.5714
+   1.     -1.    ]
+ [ 0.      0.      0.      0.      0.      0.      1.      0.8    -1.
+  -1.      1.    ]
+ [ 0.      0.      0.      0.      0.      0.      0.     -1.      0.6667
+  -1.     -1.    ]
+ [ 0.      0.      0.      0.      0.      0.      0.      0.      0.
+   0.      0.    ]
+ [ 0.      0.      0.      0.      0.      0.      0.      0.      0.
+   0.      0.    ]
+ [ 0.      0.      0.      0.      0.      0.      0.      0.      0.
+   0.      0.    ]]
+1983.7591061592102 seconds
+*** training epoch 3  complete; num_mismatched_dependencies: 0
+==> Epoch 3, Train (33476 examples) 	Loss: 0.0035533223179651852	Pearson: 0.9973089098930359	MSE: 0.0007763229077681899
+*** training epoch 4  complete; num_mismatched_dependencies: 0
+==> Epoch 4, Train (33476 examples) 	Loss: 0.002739015008289621	Pearson: 0.9983787536621094	MSE: 0.00046955107245594263
+*** training epoch 5  complete; num_mismatched_dependencies: 0
+==> Epoch 5, Train (33476 examples) 	Loss: 0.002295051449757349	Pearson: 0.9988344311714172	MSE: 0.0003378169785719365
+-------------------------------------
+**[ EVALUATING ON: test , size: 42466 ]**
+-------------------------------------
+==> Test 	Loss: 0.2473072018538379	Pearson: 0.5584003925323486	MSE: 0.11279855668544769	F1: 0.5967590564975287
+KL-BASED TEST F1: 0.5967590564975287 threshold: 1.205349087715149
+HIDDEN EMBEDDINGS' F1: 0.5599610207686218 prec: 0.5282086636791911 rec: 0.595775012960083 bestThreshold: 0.8349241
+	len eval_set.xuid_pair_and_key: 42466
+	eval_xuid_pairs: 42466
+	# unique_xuids_to_eval: 1768
+	but actually processed: 42466
+	# xuids we didnt have: 0
+# golds pos: 7716 neg: 34750
+HEIGHT PERFORMANCE:
+# xuids_missing (for plotting): set()
+matrix_total:
+ [[0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
+  0.000e+00 0.000e+00 0.000e+00 0.000e+00]
+ [0.000e+00 1.780e+02 1.214e+03 1.174e+03 8.990e+02 6.940e+02 4.570e+02
+  2.360e+02 1.220e+02 6.200e+01 1.000e+01]
+ [0.000e+00 0.000e+00 2.251e+03 4.412e+03 3.530e+03 2.666e+03 1.601e+03
+  7.860e+02 4.370e+02 1.900e+02 5.600e+01]
+ [0.000e+00 0.000e+00 0.000e+00 2.142e+03 3.463e+03 2.582e+03 1.542e+03
+  8.220e+02 4.180e+02 2.010e+02 4.900e+01]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 1.451e+03 2.182e+03 1.252e+03
+  6.310e+02 3.340e+02 1.700e+02 5.100e+01]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 8.870e+02 1.061e+03
+  4.930e+02 2.800e+02 1.400e+02 3.900e+01]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 3.190e+02
+  3.410e+02 1.780e+02 9.600e+01 2.500e+01]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
+  9.200e+01 9.200e+01 5.500e+01 2.200e+01]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
+  0.000e+00 3.100e+01 3.300e+01 6.000e+00]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
+  0.000e+00 0.000e+00 7.000e+00 3.000e+00]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
+  0.000e+00 0.000e+00 0.000e+00 1.000e+00]]
+matrix_f1
+: [[ 0.      0.      0.      0.      0.      0.      0.      0.      0.
+   0.      0.    ]
+ [ 0.      0.8119  0.5455  0.49    0.3407  0.4078  0.1429  0.1667  0.3158
+   0.25   -1.    ]
+ [ 0.      0.      0.7156  0.535   0.451   0.486   0.4543  0.4     0.6102
+   0.6207  0.8   ]
+ [ 0.      0.      0.      0.63    0.5685  0.4823  0.5085  0.5655  0.6323
+   0.6452  0.7143]
+ [ 0.      0.      0.      0.      0.6702  0.5388  0.5683  0.6271  0.6471
+   0.5091  0.6667]
+ [ 0.      0.      0.      0.      0.      0.5714  0.5167  0.5828  0.6761
+   0.5517  0.5714]
+ [ 0.      0.      0.      0.      0.      0.      0.5826  0.5308  0.6575
+   0.6364  0.6   ]
+ [ 0.      0.      0.      0.      0.      0.      0.      0.6667  0.6857
+   0.5946  0.7857]
+ [ 0.      0.      0.      0.      0.      0.      0.      0.      0.7647
+   0.7895  0.8571]
+ [ 0.      0.      0.      0.      0.      0.      0.      0.      0.
+   0.75    1.    ]
+ [ 0.      0.      0.      0.      0.      0.      0.      0.      0.
+   0.      1.    ]]
+DEPTH PERFORMANCE:
+# xuids_missing (for plotting): set()
+matrix_total:
+ [[4.511e+03 7.113e+03 4.154e+03 3.225e+03 1.695e+03 9.340e+02 4.380e+02
+  1.390e+02 6.000e+01 2.300e+01 1.100e+01]
+ [0.000e+00 3.318e+03 3.970e+03 2.758e+03 1.335e+03 7.690e+02 2.780e+02
+  1.030e+02 4.600e+01 3.400e+01 1.800e+01]
+ [0.000e+00 0.000e+00 1.224e+03 1.729e+03 8.670e+02 4.940e+02 1.930e+02
+  7.400e+01 3.400e+01 2.100e+01 1.400e+01]
+ [0.000e+00 0.000e+00 0.000e+00 6.700e+02 7.000e+02 3.870e+02 1.670e+02
+  7.100e+01 2.600e+01 1.400e+01 9.000e+00]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 1.990e+02 2.290e+02 1.130e+02
+  3.500e+01 1.500e+01 6.000e+00 3.000e+00]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 7.400e+01 8.100e+01
+  2.800e+01 1.300e+01 4.000e+00 2.000e+00]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 1.800e+01
+  8.000e+00 3.000e+00 2.000e+00 2.000e+00]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
+  1.000e+00 2.000e+00 1.000e+00 1.000e+00]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
+  0.000e+00 0.000e+00 0.000e+00 0.000e+00]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
+  0.000e+00 0.000e+00 0.000e+00 0.000e+00]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
+  0.000e+00 0.000e+00 0.000e+00 0.000e+00]]
+matrix_f1
+: [[ 0.6683  0.5255  0.5239  0.4611  0.3559  0.3931  0.3636 -1.      0.25
+  -1.     -1.    ]
+ [ 0.      0.5719  0.5551  0.5404  0.5166  0.4465  0.28    0.4     0.3333
+   1.     -1.    ]
+ [ 0.      0.      0.639   0.5544  0.3926  0.4379  0.3125 -1.     -1.
+   0.8889  0.5   ]
+ [ 0.      0.      0.      0.74    0.5586  0.4381  0.3636  0.4615 -1.
+   1.     -1.    ]
+ [ 0.      0.      0.      0.      0.7478  0.3846  0.5581  0.6667 -1.
+   1.     -1.    ]
+ [ 0.      0.      0.      0.      0.      0.6222  0.6429  0.8571  0.5714
+   1.     -1.    ]
+ [ 0.      0.      0.      0.      0.      0.      0.9231  0.8    -1.
+  -1.      1.    ]
+ [ 0.      0.      0.      0.      0.      0.      0.     -1.      0.6667
+  -1.     -1.    ]
+ [ 0.      0.      0.      0.      0.      0.      0.      0.      0.
+   0.      0.    ]
+ [ 0.      0.      0.      0.      0.      0.      0.      0.      0.
+   0.      0.    ]
+ [ 0.      0.      0.      0.      0.      0.      0.      0.      0.
+   0.      0.    ]]
+1991.7089173793793 seconds
+*** training epoch 6  complete; num_mismatched_dependencies: 0
+==> Epoch 6, Train (33476 examples) 	Loss: 0.001986616079112737	Pearson: 0.9991656541824341	MSE: 0.00024282785307150334
+*** training epoch 7  complete; num_mismatched_dependencies: 0
+==> Epoch 7, Train (33476 examples) 	Loss: 0.0018158277229840276	Pearson: 0.9993308186531067	MSE: 0.00019504707597661763
+*** training epoch 8  complete; num_mismatched_dependencies: 0
+==> Epoch 8, Train (33476 examples) 	Loss: 0.0016952360889962645	Pearson: 0.9994374513626099	MSE: 0.00016372643585782498
+-------------------------------------
+**[ EVALUATING ON: test , size: 42466 ]**
+-------------------------------------
+==> Test 	Loss: 0.2549308098223477	Pearson: 0.5581843256950378	MSE: 0.11296392232179642	F1: 0.5968718466195763
+KL-BASED TEST F1: 0.5968718466195763 threshold: 1.21064031124115
+HIDDEN EMBEDDINGS' F1: 0.5565599497802887 prec: 0.5396883369856342 rec: 0.5745204769310523 bestThreshold: 0.8479407
+	len eval_set.xuid_pair_and_key: 42466
+	eval_xuid_pairs: 42466
+	# unique_xuids_to_eval: 1768
+	but actually processed: 42466
+	# xuids we didnt have: 0
+# golds pos: 7716 neg: 34750
+HEIGHT PERFORMANCE:
+# xuids_missing (for plotting): set()
+matrix_total:
+ [[0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
+  0.000e+00 0.000e+00 0.000e+00 0.000e+00]
+ [0.000e+00 1.780e+02 1.214e+03 1.174e+03 8.990e+02 6.940e+02 4.570e+02
+  2.360e+02 1.220e+02 6.200e+01 1.000e+01]
+ [0.000e+00 0.000e+00 2.251e+03 4.412e+03 3.530e+03 2.666e+03 1.601e+03
+  7.860e+02 4.370e+02 1.900e+02 5.600e+01]
+ [0.000e+00 0.000e+00 0.000e+00 2.142e+03 3.463e+03 2.582e+03 1.542e+03
+  8.220e+02 4.180e+02 2.010e+02 4.900e+01]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 1.451e+03 2.182e+03 1.252e+03
+  6.310e+02 3.340e+02 1.700e+02 5.100e+01]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 8.870e+02 1.061e+03
+  4.930e+02 2.800e+02 1.400e+02 3.900e+01]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 3.190e+02
+  3.410e+02 1.780e+02 9.600e+01 2.500e+01]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
+  9.200e+01 9.200e+01 5.500e+01 2.200e+01]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
+  0.000e+00 3.100e+01 3.300e+01 6.000e+00]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
+  0.000e+00 0.000e+00 7.000e+00 3.000e+00]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
+  0.000e+00 0.000e+00 0.000e+00 1.000e+00]]
+matrix_f1
+: [[ 0.      0.      0.      0.      0.      0.      0.      0.      0.
+   0.      0.    ]
+ [ 0.      0.7843  0.5376  0.49    0.3308  0.4     0.1429  0.087   0.3158
+   0.25   -1.    ]
+ [ 0.      0.      0.713   0.5235  0.4326  0.4863  0.4152  0.3669  0.6087
+   0.5185  0.8   ]
+ [ 0.      0.      0.      0.6349  0.5656  0.483   0.5108  0.5643  0.6364
+   0.6441  0.6154]
+ [ 0.      0.      0.      0.      0.6704  0.5327  0.5524  0.6309  0.6364
+   0.5098  0.6923]
+ [ 0.      0.      0.      0.      0.      0.5714  0.5291  0.5944  0.6714
+   0.5854  0.5714]
+ [ 0.      0.      0.      0.      0.      0.      0.6009  0.5283  0.6667
+   0.6353  0.4444]
+ [ 0.      0.      0.      0.      0.      0.      0.      0.6757  0.6957
+   0.6111  0.7857]
+ [ 0.      0.      0.      0.      0.      0.      0.      0.      0.7647
+   0.8108  0.8571]
+ [ 0.      0.      0.      0.      0.      0.      0.      0.      0.
+   0.75    1.    ]
+ [ 0.      0.      0.      0.      0.      0.      0.      0.      0.
+   0.      1.    ]]
+DEPTH PERFORMANCE:
+# xuids_missing (for plotting): set()
+matrix_total:
+ [[4.511e+03 7.113e+03 4.154e+03 3.225e+03 1.695e+03 9.340e+02 4.380e+02
+  1.390e+02 6.000e+01 2.300e+01 1.100e+01]
+ [0.000e+00 3.318e+03 3.970e+03 2.758e+03 1.335e+03 7.690e+02 2.780e+02
+  1.030e+02 4.600e+01 3.400e+01 1.800e+01]
+ [0.000e+00 0.000e+00 1.224e+03 1.729e+03 8.670e+02 4.940e+02 1.930e+02
+  7.400e+01 3.400e+01 2.100e+01 1.400e+01]
+ [0.000e+00 0.000e+00 0.000e+00 6.700e+02 7.000e+02 3.870e+02 1.670e+02
+  7.100e+01 2.600e+01 1.400e+01 9.000e+00]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 1.990e+02 2.290e+02 1.130e+02
+  3.500e+01 1.500e+01 6.000e+00 3.000e+00]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 7.400e+01 8.100e+01
+  2.800e+01 1.300e+01 4.000e+00 2.000e+00]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 1.800e+01
+  8.000e+00 3.000e+00 2.000e+00 2.000e+00]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
+  1.000e+00 2.000e+00 1.000e+00 1.000e+00]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
+  0.000e+00 0.000e+00 0.000e+00 0.000e+00]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
+  0.000e+00 0.000e+00 0.000e+00 0.000e+00]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
+  0.000e+00 0.000e+00 0.000e+00 0.000e+00]]
+matrix_f1
+: [[ 0.666   0.5192  0.5223  0.4516  0.3596  0.3827  0.381  -1.      0.25
+  -1.     -1.    ]
+ [ 0.      0.5695  0.5502  0.541   0.5238  0.41    0.2857  0.4444  0.3333
+   1.     -1.    ]
+ [ 0.      0.      0.6265  0.5532  0.3792  0.4596  0.3871 -1.     -1.
+   0.8889  0.5   ]
+ [ 0.      0.      0.      0.739   0.552   0.4314  0.3636  0.4615 -1.
+   1.     -1.    ]
+ [ 0.      0.      0.      0.      0.7321  0.3733  0.5455  0.6667 -1.
+   1.     -1.    ]
+ [ 0.      0.      0.      0.      0.      0.6222  0.6429  0.8571  0.5714
+   1.     -1.    ]
+ [ 0.      0.      0.      0.      0.      0.      0.9231  0.8    -1.
+  -1.      1.    ]
+ [ 0.      0.      0.      0.      0.      0.      0.     -1.      0.6667
+  -1.     -1.    ]
+ [ 0.      0.      0.      0.      0.      0.      0.      0.      0.
+   0.      0.    ]
+ [ 0.      0.      0.      0.      0.      0.      0.      0.      0.
+   0.      0.    ]
+ [ 0.      0.      0.      0.      0.      0.      0.      0.      0.
+   0.      0.    ]]
+2030.2322611808777 seconds
+*** training epoch 9  complete; num_mismatched_dependencies: 0
+==> Epoch 9, Train (33476 examples) 	Loss: 0.0016099142660938265	Pearson: 0.9994925260543823	MSE: 0.00014729186659678817
+*** training epoch 10  complete; num_mismatched_dependencies: 0
+==> Epoch 10, Train (33476 examples) 	Loss: 0.0015392181492361748	Pearson: 0.9995357990264893	MSE: 0.00013419128663372248
+*** training epoch 11  complete; num_mismatched_dependencies: 0
+==> Epoch 11, Train (33476 examples) 	Loss: 0.0014827187665048102	Pearson: 0.9995765686035156	MSE: 0.0001221449056174606
+-------------------------------------
+**[ EVALUATING ON: test , size: 42466 ]**
+-------------------------------------
+==> Test 	Loss: 0.25777238158610283	Pearson: 0.5594598650932312	MSE: 0.11259626597166061	F1: 0.5964603991464793
+KL-BASED TEST F1: 0.5964603991464793 threshold: 1.1977646350860596
+HIDDEN EMBEDDINGS' F1: 0.5552590753955942 prec: 0.5326824621978807 rec: 0.57983411093831 bestThreshold: 0.854302
+	len eval_set.xuid_pair_and_key: 42466
+	eval_xuid_pairs: 42466
+	# unique_xuids_to_eval: 1768
+	but actually processed: 42466
+	# xuids we didnt have: 0
+# golds pos: 7716 neg: 34750
+HEIGHT PERFORMANCE:
+# xuids_missing (for plotting): set()
+matrix_total:
+ [[0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
+  0.000e+00 0.000e+00 0.000e+00 0.000e+00]
+ [0.000e+00 1.780e+02 1.214e+03 1.174e+03 8.990e+02 6.940e+02 4.570e+02
+  2.360e+02 1.220e+02 6.200e+01 1.000e+01]
+ [0.000e+00 0.000e+00 2.251e+03 4.412e+03 3.530e+03 2.666e+03 1.601e+03
+  7.860e+02 4.370e+02 1.900e+02 5.600e+01]
+ [0.000e+00 0.000e+00 0.000e+00 2.142e+03 3.463e+03 2.582e+03 1.542e+03
+  8.220e+02 4.180e+02 2.010e+02 4.900e+01]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 1.451e+03 2.182e+03 1.252e+03
+  6.310e+02 3.340e+02 1.700e+02 5.100e+01]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 8.870e+02 1.061e+03
+  4.930e+02 2.800e+02 1.400e+02 3.900e+01]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 3.190e+02
+  3.410e+02 1.780e+02 9.600e+01 2.500e+01]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
+  9.200e+01 9.200e+01 5.500e+01 2.200e+01]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
+  0.000e+00 3.100e+01 3.300e+01 6.000e+00]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
+  0.000e+00 0.000e+00 7.000e+00 3.000e+00]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
+  0.000e+00 0.000e+00 0.000e+00 1.000e+00]]
+matrix_f1
+: [[ 0.      0.      0.      0.      0.      0.      0.      0.      0.
+   0.      0.    ]
+ [ 0.      0.7843  0.5368  0.4941  0.3284  0.4     0.1429  0.087   0.3158
+  -1.     -1.    ]
+ [ 0.      0.      0.7087  0.5351  0.4457  0.4801  0.4189  0.3529  0.6087
+   0.5217  0.8   ]
+ [ 0.      0.      0.      0.6305  0.5587  0.4817  0.4965  0.5706  0.6316
+   0.6552  0.5714]
+ [ 0.      0.      0.      0.      0.6603  0.535   0.5597  0.6179  0.6412
+   0.48    0.6923]
+ [ 0.      0.      0.      0.      0.      0.567   0.5214  0.589   0.662
+   0.5926  0.5185]
+ [ 0.      0.      0.      0.      0.      0.      0.6044  0.5234  0.6667
+   0.6585  0.4444]
+ [ 0.      0.      0.      0.      0.      0.      0.      0.6757  0.6849
+   0.5946  0.7857]
+ [ 0.      0.      0.      0.      0.      0.      0.      0.      0.7647
+   0.8108  0.8571]
+ [ 0.      0.      0.      0.      0.      0.      0.      0.      0.
+   0.75    1.    ]
+ [ 0.      0.      0.      0.      0.      0.      0.      0.      0.
+   0.      1.    ]]
+DEPTH PERFORMANCE:
+# xuids_missing (for plotting): set()
+matrix_total:
+ [[4.511e+03 7.113e+03 4.154e+03 3.225e+03 1.695e+03 9.340e+02 4.380e+02
+  1.390e+02 6.000e+01 2.300e+01 1.100e+01]
+ [0.000e+00 3.318e+03 3.970e+03 2.758e+03 1.335e+03 7.690e+02 2.780e+02
+  1.030e+02 4.600e+01 3.400e+01 1.800e+01]
+ [0.000e+00 0.000e+00 1.224e+03 1.729e+03 8.670e+02 4.940e+02 1.930e+02
+  7.400e+01 3.400e+01 2.100e+01 1.400e+01]
+ [0.000e+00 0.000e+00 0.000e+00 6.700e+02 7.000e+02 3.870e+02 1.670e+02
+  7.100e+01 2.600e+01 1.400e+01 9.000e+00]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 1.990e+02 2.290e+02 1.130e+02
+  3.500e+01 1.500e+01 6.000e+00 3.000e+00]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 7.400e+01 8.100e+01
+  2.800e+01 1.300e+01 4.000e+00 2.000e+00]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 1.800e+01
+  8.000e+00 3.000e+00 2.000e+00 2.000e+00]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
+  1.000e+00 2.000e+00 1.000e+00 1.000e+00]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
+  0.000e+00 0.000e+00 0.000e+00 0.000e+00]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
+  0.000e+00 0.000e+00 0.000e+00 0.000e+00]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
+  0.000e+00 0.000e+00 0.000e+00 0.000e+00]]
+matrix_f1
+: [[ 0.6608  0.5195  0.518   0.4468  0.3596  0.4151  0.3721 -1.      0.5
+  -1.     -1.    ]
+ [ 0.      0.5701  0.5516  0.5298  0.5143  0.402   0.32    0.4     0.3333
+   1.     -1.    ]
+ [ 0.      0.      0.6376  0.5464  0.3885  0.4756  0.3636 -1.     -1.
+   0.8889  0.4   ]
+ [ 0.      0.      0.      0.7407  0.5495  0.4158  0.3636  0.4615 -1.
+   1.     -1.    ]
+ [ 0.      0.      0.      0.      0.7387  0.3684  0.5455  0.6667 -1.
+   1.     -1.    ]
+ [ 0.      0.      0.      0.      0.      0.6222  0.6     0.8571  0.5714
+   1.     -1.    ]
+ [ 0.      0.      0.      0.      0.      0.      0.9231  0.8    -1.
+   0.6667  1.    ]
+ [ 0.      0.      0.      0.      0.      0.      0.     -1.      0.6667
+  -1.     -1.    ]
+ [ 0.      0.      0.      0.      0.      0.      0.      0.      0.
+   0.      0.    ]
+ [ 0.      0.      0.      0.      0.      0.      0.      0.      0.
+   0.      0.    ]
+ [ 0.      0.      0.      0.      0.      0.      0.      0.      0.
+   0.      0.    ]]
+1693.1504707336426 seconds
+*** training epoch 12  complete; num_mismatched_dependencies: 0
+==> Epoch 12, Train (33476 examples) 	Loss: 0.0014282040901580923	Pearson: 0.9996081590652466	MSE: 0.00011288275709375739
+*** training epoch 13  complete; num_mismatched_dependencies: 0
+==> Epoch 13, Train (33476 examples) 	Loss: 0.0013893886716017686	Pearson: 0.9996261596679688	MSE: 0.00010731381189543754
+*** training epoch 14  complete; num_mismatched_dependencies: 0
+==> Epoch 14, Train (33476 examples) 	Loss: 0.001352262781475134	Pearson: 0.9996439814567566	MSE: 0.00010206883598584682
+-------------------------------------
+**[ EVALUATING ON: test , size: 42466 ]**
+-------------------------------------
+==> Test 	Loss: 0.2598638749143533	Pearson: 0.5599115490913391	MSE: 0.11235977709293365	F1: 0.5961302012554196
+KL-BASED TEST F1: 0.5961302012554196 threshold: 1.2396252155303955
+HIDDEN EMBEDDINGS' F1: 0.554375824590061 prec: 0.5379831727838068 rec: 0.5717988595127009 bestThreshold: 0.86248404
+	len eval_set.xuid_pair_and_key: 42466
+	eval_xuid_pairs: 42466
+	# unique_xuids_to_eval: 1768
+	but actually processed: 42466
+	# xuids we didnt have: 0
+# golds pos: 7716 neg: 34750
+HEIGHT PERFORMANCE:
+# xuids_missing (for plotting): set()
+matrix_total:
+ [[0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
+  0.000e+00 0.000e+00 0.000e+00 0.000e+00]
+ [0.000e+00 1.780e+02 1.214e+03 1.174e+03 8.990e+02 6.940e+02 4.570e+02
+  2.360e+02 1.220e+02 6.200e+01 1.000e+01]
+ [0.000e+00 0.000e+00 2.251e+03 4.412e+03 3.530e+03 2.666e+03 1.601e+03
+  7.860e+02 4.370e+02 1.900e+02 5.600e+01]
+ [0.000e+00 0.000e+00 0.000e+00 2.142e+03 3.463e+03 2.582e+03 1.542e+03
+  8.220e+02 4.180e+02 2.010e+02 4.900e+01]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 1.451e+03 2.182e+03 1.252e+03
+  6.310e+02 3.340e+02 1.700e+02 5.100e+01]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 8.870e+02 1.061e+03
+  4.930e+02 2.800e+02 1.400e+02 3.900e+01]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 3.190e+02
+  3.410e+02 1.780e+02 9.600e+01 2.500e+01]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
+  9.200e+01 9.200e+01 5.500e+01 2.200e+01]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
+  0.000e+00 3.100e+01 3.300e+01 6.000e+00]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
+  0.000e+00 0.000e+00 7.000e+00 3.000e+00]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
+  0.000e+00 0.000e+00 0.000e+00 1.000e+00]]
+matrix_f1
+: [[ 0.      0.      0.      0.      0.      0.      0.      0.      0.
+   0.      0.    ]
+ [ 0.      0.7885  0.5393  0.4922  0.3284  0.3838  0.1429  0.087   0.3158
+  -1.     -1.    ]
+ [ 0.      0.      0.708   0.5333  0.439   0.4701  0.3964  0.3473  0.5586
+   0.5455  0.6667]
+ [ 0.      0.      0.      0.6371  0.5593  0.4864  0.5128  0.5633  0.6267
+   0.6552  0.5714]
+ [ 0.      0.      0.      0.      0.6621  0.5348  0.5558  0.6081  0.6357
+   0.5     0.6923]
+ [ 0.      0.      0.      0.      0.      0.5439  0.5249  0.5965  0.6525
+   0.5926  0.5185]
+ [ 0.      0.      0.      0.      0.      0.      0.6154  0.5385  0.6667
+   0.6835  0.4444]
+ [ 0.      0.      0.      0.      0.      0.      0.      0.6757  0.6849
+   0.6111  0.8148]
+ [ 0.      0.      0.      0.      0.      0.      0.      0.      0.7879
+   0.8108  0.8571]
+ [ 0.      0.      0.      0.      0.      0.      0.      0.      0.
+   0.75    1.    ]
+ [ 0.      0.      0.      0.      0.      0.      0.      0.      0.
+   0.      1.    ]]
+DEPTH PERFORMANCE:
+# xuids_missing (for plotting): set()
+matrix_total:
+ [[4.511e+03 7.113e+03 4.154e+03 3.225e+03 1.695e+03 9.340e+02 4.380e+02
+  1.390e+02 6.000e+01 2.300e+01 1.100e+01]
+ [0.000e+00 3.318e+03 3.970e+03 2.758e+03 1.335e+03 7.690e+02 2.780e+02
+  1.030e+02 4.600e+01 3.400e+01 1.800e+01]
+ [0.000e+00 0.000e+00 1.224e+03 1.729e+03 8.670e+02 4.940e+02 1.930e+02
+  7.400e+01 3.400e+01 2.100e+01 1.400e+01]
+ [0.000e+00 0.000e+00 0.000e+00 6.700e+02 7.000e+02 3.870e+02 1.670e+02
+  7.100e+01 2.600e+01 1.400e+01 9.000e+00]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 1.990e+02 2.290e+02 1.130e+02
+  3.500e+01 1.500e+01 6.000e+00 3.000e+00]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 7.400e+01 8.100e+01
+  2.800e+01 1.300e+01 4.000e+00 2.000e+00]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 1.800e+01
+  8.000e+00 3.000e+00 2.000e+00 2.000e+00]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
+  1.000e+00 2.000e+00 1.000e+00 1.000e+00]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
+  0.000e+00 0.000e+00 0.000e+00 0.000e+00]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
+  0.000e+00 0.000e+00 0.000e+00 0.000e+00]
+ [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
+  0.000e+00 0.000e+00 0.000e+00 0.000e+00]]
+matrix_f1
+: [[ 0.6633  0.512   0.5161  0.4365  0.3556  0.4414  0.381  -1.      0.5
+  -1.     -1.    ]
+ [ 0.      0.5725  0.5517  0.5321  0.5143  0.4039  0.32    0.4     0.3333
+   1.     -1.    ]
+ [ 0.      0.      0.642   0.554   0.3799  0.4691  0.3636 -1.     -1.
+   0.8889  0.4   ]
+ [ 0.      0.      0.      0.7383  0.5455  0.4118  0.3478  0.4615 -1.
+   1.     -1.    ]
+ [ 0.      0.      0.      0.      0.7321  0.3636  0.5455  0.6667 -1.
+   1.     -1.    ]
+ [ 0.      0.      0.      0.      0.      0.5909  0.6     0.8571  0.5714
+   1.     -1.    ]
+ [ 0.      0.      0.      0.      0.      0.      0.9231  0.8    -1.
+   0.6667  1.    ]
+ [ 0.      0.      0.      0.      0.      0.      0.     -1.      0.6667
+  -1.     -1.    ]
+ [ 0.      0.      0.      0.      0.      0.      0.      0.      0.
+   0.      0.    ]
+ [ 0.      0.      0.      0.      0.      0.      0.      0.      0.
+   0.      0.    ]
+ [ 0.      0.      0.      0.      0.      0.      0.      0.      0.
+   0.      0.    ]]
+2061.4050481319427 seconds

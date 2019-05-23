@@ -112,7 +112,7 @@ class DataHandler:
 
 	def load_xuid_pairs(self, supp_features, scope):
 		# TRUE represents we should filter the xuids to being only root events
-		self.trainXUIDPairs = self.createXUIDPairs(self.trainXUIDs, scope, supp_features) # TODO: could make it dir if you wanted more WD training
+		self.trainXUIDPairs = self.createXUIDPairs(self.trainXUIDs, "dir", supp_features) # TODO: could make scope=='dir' if you wanted more WD training
 		self.devXUIDPairs = self.createXUIDPairs(self.devXUIDs, scope, supp_features)
 		self.testXUIDPairs = self.createXUIDPairs(self.testXUIDs, scope, supp_features)
 
@@ -662,9 +662,11 @@ class DataHandler:
 			for xuid1 in sorted(ECBDirToXUIDs[ecb_dir]):
 				tmp_ecbtoxuids.add(xuid1)
 				m1 = self.corpus.XUIDToMention[xuid1]
+				'''
 				if not m1.isPred:
 					print("*** why do we have an entity", m1)
 					exit()
+				'''
 				for xuid2 in sorted(ECBDirToXUIDs[ecb_dir]):
 					if xuid2 <= xuid1:
 						continue
